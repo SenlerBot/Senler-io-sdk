@@ -73,7 +73,7 @@ export interface CreateMetricDefinitionDto {
      */
     nameEn?: string;
     /**
-     * Описание метрики на русском (для builtin).
+     * Описание метрик�� на русском (для builtin).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */

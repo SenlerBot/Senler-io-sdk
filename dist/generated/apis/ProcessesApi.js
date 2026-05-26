@@ -291,7 +291,7 @@ class ProcessesApi extends runtime.BaseAPI {
     }
     /**
      * Возвращает результат выполнения процесса.
-     * Получи��ь результат процесса
+     * Получить результат ��роцесса
      */
     async getProcessesResultRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -329,7 +329,7 @@ class ProcessesApi extends runtime.BaseAPI {
     }
     /**
      * Возвращает результат выполнения процесса.
-     * Получи��ь результат процесса
+     * Получить результат ��роцесса
      */
     async getProcessesResult(requestParameters, initOverrides) {
         const response = await this.getProcessesResultRaw(requestParameters, initOverrides);

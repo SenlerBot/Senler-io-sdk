@@ -34,7 +34,7 @@ export interface GenerationCostDto {
      */
     creditsCost: number;
     /**
-     * Оценка с��оимости до генерации (кредиты, без учёта tool-calls), в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * Оценка стоимости до генерации (кредиты, без учёта tool-calls), в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
      * @type {number}
      * @memberof GenerationCostDto
      */

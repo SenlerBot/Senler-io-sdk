@@ -40,7 +40,7 @@ export interface TasksStatsDto {
      */
     pending: number;
     /**
-     * С ошибками.
+     * С ошиб��ами.
      * @type {number}
      * @memberof TasksStatsDto
      */

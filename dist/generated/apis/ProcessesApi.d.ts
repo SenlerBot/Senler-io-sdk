@@ -105,12 +105,12 @@ export declare class ProcessesApi extends runtime.BaseAPI {
     getProcessesRealtimeToken(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
     /**
      * Возвращает результат выполнения процесса.
-     * Получи��ь результат процесса
+     * Получить результат ��роцесса
      */
     getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>>;
     /**
      * Возвращает результат выполнения процесса.
-     * Получи��ь результат процесса
+     * Получить результат ��роцесса
      */
     getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto>;
 }

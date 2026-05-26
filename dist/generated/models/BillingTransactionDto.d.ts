@@ -143,7 +143,7 @@ export interface BillingTransactionDto {
      */
     status?: string | null;
     /**
-     * Флаг текущего (незакрытого) инвойса.
+     * Флаг текущего (н��закрытого) инвойса.
      * @type {boolean}
      * @memberof BillingTransactionDto
      */

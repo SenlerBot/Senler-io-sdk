@@ -34,7 +34,7 @@ export interface CreateAgentDto {
      */
     name: string;
     /**
-     * Инструкция агента.
+     * Инструкция ��гента.
      * @type {string}
      * @memberof CreateAgentDto
      */

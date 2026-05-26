@@ -227,7 +227,7 @@ export interface UpdateAgentDto {
      */
     enableQrCode?: boolean;
     /**
-     * Разрешить генерацию графиков/��иаграмм.
+     * Разрешить генерацию графиков/диаграмм.
      * @type {boolean}
      * @memberof UpdateAgentDto
      */

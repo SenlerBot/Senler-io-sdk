@@ -92,7 +92,7 @@ export interface TopAgentsResponseDto {
      */
     emptyState?: EmptyStateDto;
     /**
-     * Применённые фильтры.
+     * ��рименённые фильтры.
      * @type {AppliedFiltersDto}
      * @memberof TopAgentsResponseDto
      */

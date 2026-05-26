@@ -32,7 +32,7 @@ export interface CreateMcpServerListDto {
      */
     description?: string;
     /**
-     * Массив UUID серверов.
+     * Массив UUID сер��еров.
      * @type {Array<string>}
      * @memberof CreateMcpServerListDto
      */

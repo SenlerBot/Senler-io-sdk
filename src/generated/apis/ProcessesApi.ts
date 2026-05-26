@@ -405,7 +405,7 @@ export class ProcessesApi extends runtime.BaseAPI {
 
     /**
      * Возвращает результат выполнения процесса.
-     * Получи��ь результат процесса
+     * Получить результат ��роцесса
      */
     async getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -459,7 +459,7 @@ export class ProcessesApi extends runtime.BaseAPI {
 
     /**
      * Возвращает результат выполнения процесса.
-     * Получи��ь результат процесса
+     * Получить результат ��роцесса
      */
     async getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto> {
         const response = await this.getProcessesResultRaw(requestParameters, initOverrides);

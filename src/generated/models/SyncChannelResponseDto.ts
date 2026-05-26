@@ -47,7 +47,7 @@ export interface SyncChannelResponseDto {
      */
     token: ChannelTokenResponseDto;
     /**
-     * Информация о полях, синхр��низация которых гарантированно подтверждена в текущем ответе.
+     * Информация о полях, синхронизация которых гарантированно подтверждена в текущем ответе.
      * @type {object}
      * @memberof SyncChannelResponseDto
      */

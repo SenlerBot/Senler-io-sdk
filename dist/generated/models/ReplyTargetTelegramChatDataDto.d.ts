@@ -28,7 +28,7 @@ export interface ReplyTargetTelegramChatDataDto {
      */
     linkedChatId?: string;
     /**
-     * Тип Telegram ��ата.
+     * Тип Telegram чата.
      * @type {string}
      * @memberof ReplyTargetTelegramChatDataDto
      */
