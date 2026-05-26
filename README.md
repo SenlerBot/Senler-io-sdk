@@ -1,14 +1,17 @@
 # @aisenler/sdk-fetch
 
-Ai Senler API SDK — fetch edition.
+Senler.io API SDK — fetch edition.
 
 Auto-generated from OpenAPI specification.
 
 ## Installation
 
 ```bash
-npm install @aisenler/sdk-fetch
+npm install github:SenlerBot/Senler-io-sdk
 ```
+
+
+Private/CI installs must have SSH access to `git@github.com:SenlerBot/Senler-io-sdk.git`.
 
 ## Quick Start
 

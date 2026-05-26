@@ -1,7 +1,7 @@
 {
   "name": "@aisenler/sdk-fetch",
   "version": "0.1.0",
-  "description": "Ai Senler API SDK (fetch)",
+  "description": "Senler.io API SDK (fetch)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
