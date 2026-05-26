@@ -17,7 +17,7 @@ import type { SpaceTreeMatchHighlightDto } from './SpaceTreeMatchHighlightDto';
  */
 export interface SpaceTreeMatchMetadataDto {
     /**
-     * Те��ущий узел напрямую совпал с q или напрямую удовлетворил tree-фильтрам.
+     * Текущий узел напрямую совпал с q или напрямую удовлетворил tree-фильтрам.
      * @type {boolean}
      * @memberof SpaceTreeMatchMetadataDto
      */

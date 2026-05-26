@@ -247,7 +247,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прог��есс или результат процесса process_deleted — процесс удалён из журнала.
+     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прогресс или результат процесса process_deleted — процесс удалён из журнала.
      * Получить subscription token для realtime обновлений процессов
      */
     async getProcessesRealtimeTokenRaw(requestParameters, initOverrides) {
@@ -282,7 +282,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
     }
     /**
-     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прог��есс или результат процесса process_deleted — процесс удалён из журнала.
+     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прогресс или результат процесса process_deleted — процесс удалён из журнала.
      * Получить subscription token для realtime обновлений процессов
      */
     async getProcessesRealtimeToken(requestParameters, initOverrides) {
@@ -291,7 +291,7 @@ class ProcessesApi extends runtime.BaseAPI {
     }
     /**
      * Возвращает результат выполнения процесса.
-     * Получить результат процесса
+     * Получи��ь результат процесса
      */
     async getProcessesResultRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -329,7 +329,7 @@ class ProcessesApi extends runtime.BaseAPI {
     }
     /**
      * Возвращает результат выполнения процесса.
-     * Получить результат процесса
+     * Получи��ь результат процесса
      */
     async getProcessesResult(requestParameters, initOverrides) {
         const response = await this.getProcessesResultRaw(requestParameters, initOverrides);

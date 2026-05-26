@@ -22,7 +22,7 @@ export interface LeadSpaceLinkResponseDto {
      */
     spaceId: string;
     /**
-     * Текущее membership в space: true = состоит, false = вышел, null = просто замечен.
+     * Текущее membership в space: true = сос��оит, false = вышел, null = просто замечен.
      * @type {boolean}
      * @memberof LeadSpaceLinkResponseDto
      */

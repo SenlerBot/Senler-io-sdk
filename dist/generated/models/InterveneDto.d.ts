@@ -22,7 +22,7 @@ export interface InterveneDto {
      */
     content: string;
     /**
-     * ID пользователя, от имени которого отправляется сообщение.
+     * ID пользовател��, от имени которого отправляется сообщение.
      * @type {string}
      * @memberof InterveneDto
      */

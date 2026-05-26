@@ -76,7 +76,7 @@ export interface OrderItemResponseDto {
      */
     activationStatus: OrderItemResponseDtoActivationStatusEnum;
     /**
-     * Ошибка активации услуги.
+     * Ошибка активации ус��уги.
      * @type {string}
      * @memberof OrderItemResponseDto
      */

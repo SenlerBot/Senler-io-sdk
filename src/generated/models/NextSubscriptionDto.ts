@@ -38,7 +38,7 @@ export interface NextSubscriptionDto {
      */
     nameEn: string;
     /**
-     * Дата активации (= дата окончания т��кущей подписки).
+     * Дата активации (= дата окончания текущей подписки).
      * @type {Date}
      * @memberof NextSubscriptionDto
      */

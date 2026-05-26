@@ -144,7 +144,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет т��кущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
+     * Проверяет текущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
      * Проверить статус VK webhook
      */
     async tokensVkCheckWebhookStatusRaw(requestParameters: TokensVkCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>> {
@@ -191,7 +191,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет т��кущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
+     * Проверяет текущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
      * Проверить статус VK webhook
      */
     async tokensVkCheckWebhookStatus(requestParameters: TokensVkCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto> {

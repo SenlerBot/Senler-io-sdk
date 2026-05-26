@@ -22,7 +22,7 @@ export interface ImageGenerationCostCabinetDto {
      */
     model?: string;
     /**
-     * Тип image-тарификации, п�� которому посчитана генерация.
+     * Тип image-тарификации, по которому посчитана генерация.
      * @type {string}
      * @memberof ImageGenerationCostCabinetDto
      */

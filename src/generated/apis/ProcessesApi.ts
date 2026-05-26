@@ -348,7 +348,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прог��есс или результат процесса process_deleted — процесс удалён из журнала.
+     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прогресс или результат процесса process_deleted — процесс удалён из журнала.
      * Получить subscription token для realtime обновлений процессов
      */
     async getProcessesRealtimeTokenRaw(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>> {
@@ -395,7 +395,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прог��есс или результат процесса process_deleted — процесс удалён из журнала.
+     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прогресс или результат процесса process_deleted — процесс удалён из журнала.
      * Получить subscription token для realtime обновлений процессов
      */
     async getProcessesRealtimeToken(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto> {
@@ -405,7 +405,7 @@ export class ProcessesApi extends runtime.BaseAPI {
 
     /**
      * Возвращает результат выполнения процесса.
-     * Получить результат процесса
+     * Получи��ь результат процесса
      */
     async getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -459,7 +459,7 @@ export class ProcessesApi extends runtime.BaseAPI {
 
     /**
      * Возвращает результат выполнения процесса.
-     * Получить результат процесса
+     * Получи��ь результат процесса
      */
     async getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto> {
         const response = await this.getProcessesResultRaw(requestParameters, initOverrides);

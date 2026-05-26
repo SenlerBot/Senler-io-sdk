@@ -102,7 +102,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Проверяет т��кущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
+     * Проверяет текущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
      * Проверить статус VK webhook
      */
     async tokensVkCheckWebhookStatusRaw(requestParameters, initOverrides) {
@@ -137,7 +137,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CheckWebhookStatusResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет т��кущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
+     * Проверяет текущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
      * Проверить статус VK webhook
      */
     async tokensVkCheckWebhookStatus(requestParameters, initOverrides) {
