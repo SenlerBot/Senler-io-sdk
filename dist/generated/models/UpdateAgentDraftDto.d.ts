@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,13 +17,13 @@ import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBinding
  */
 export interface UpdateAgentDraftDto {
     /**
-     * Имя агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     name?: string;
     /**
-     * Инструкция для агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
@@ -35,193 +35,193 @@ export interface UpdateAgentDraftDto {
      */
     avatarUrl?: string;
     /**
-     * Тип агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     agentType?: UpdateAgentDraftDtoAgentTypeEnum;
     /**
-     * Режим привязки серверов: list (через ServerList), direct (напрямую), none (без серверов).
+     * : list ( ServerList), direct (), none ( ).
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     serverBindingMode?: UpdateAgentDraftDtoServerBindingModeEnum;
     /**
-     * ID списка MCP серверов (используется если server_binding_mode = "list").
+     * ID MCP ( server_binding_mode = "list").
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     mcpServerListId?: string;
     /**
-     * ID серверов для прямой привязки (используется если server_binding_mode = "direct").
+     * ID ( server_binding_mode = "direct").
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * Глобальные права агента на выбранные источники базы знаний.
+     * .
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     knowledgeBasePermissions?: Array<UpdateAgentDraftDtoKnowledgeBasePermissionsEnum>;
     /**
-     * Источники базы знаний, доступные агенту.
+     * , .
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof UpdateAgentDraftDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID канала (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     channelId?: string;
     /**
-     * Метаданные агента.
+     * .
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     meta?: object;
     /**
-     * ID выбранной модели.
+     * ID .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature для AI генерации (0.
+     * Temperature AI (0.
      * @type {number}
      * @memberof UpdateAgentDraftDto
      */
     temperature?: number | null;
     /**
-     * Сбор метрик включен.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     metricsCollectionEnabled?: boolean;
     /**
-     * Ключевые слова для автопривязки агента (массив строк).
+     * ( ).
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     triggerKeywords?: Array<string>;
     /**
-     * Роль автопривязки по ключевым словам.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     keywordAssignmentRole?: UpdateAgentDraftDtoKeywordAssignmentRoleEnum;
     /**
-     * Категория диалогов для ключевых слов.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     keywordDialogScope?: UpdateAgentDraftDtoKeywordDialogScopeEnum | null;
     /**
-     * ID каналов, в которых работают ключевые слова.
+     * ID , .
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * Режим автоназначения агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentMode?: UpdateAgentDraftDtoAutoAssignmentModeEnum;
     /**
-     * ID каналов для режима selected_channels.
+     * ID selected_channels.
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * Категория диалогов для автоназначения на все сообщения.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentDialogScope?: UpdateAgentDraftDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * Роль агента в правилах автоназначения.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentRole?: UpdateAgentDraftDtoAutoAssignmentRoleEnum;
     /**
-     * Подтвердить перезапись конфликтующих правил автоназначения.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     confirmAutoAssignmentOverwrite?: boolean;
     /**
-     * Использовать дефолтные метрики (динамический режим).
+     * ( ).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     useDefaultMetrics?: boolean;
     /**
-     * ID включенных метрик (для статического режима when use_default_metrics = false).
+     * ID ( when use_default_metrics = false).
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     enabledMetricIds?: Array<string>;
     /**
-     * Режим создания.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     creationMode?: UpdateAgentDraftDtoCreationModeEnum;
     /**
-     * Статус агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     status?: UpdateAgentDraftDtoStatusEnum;
     /**
-     * Конфигурация обучения.
+     * .
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     trainingConfig?: object;
     /**
-     * Прогресс обучения.
+     * .
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     trainingProgress?: object;
     /**
-     * Режим обучения.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     trainingMode?: UpdateAgentDraftDtoTrainingModeEnum;
     /**
-     * Время начала обучения.
+     * .
      * @type {Date}
      * @memberof UpdateAgentDraftDto
      */
     trainingStartedAt?: Date;
     /**
-     * Время завершения обучения.
+     * .
      * @type {Date}
      * @memberof UpdateAgentDraftDto
      */
     trainingCompletedAt?: Date;
     /**
-     * Статистика обучения.
+     * .
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     trainingStats?: object;
     /**
-     * Текущий шаг wizard'а.
+     * wizard'.
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     wizardCurrentStep?: string | null;
     /**
-     * Время обновления wizard'а.
+     * wizard'.
      * @type {Date}
      * @memberof UpdateAgentDraftDto
      */
@@ -233,205 +233,205 @@ export interface UpdateAgentDraftDto {
      */
     wizardWebsiteSourceIds?: Array<string> | null;
     /**
-     * ID подключенных каналов.
+     * ID .
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     wizardChannelIds?: Array<string> | null;
     /**
-     * Глубина истории каналов в днях.
+     * .
      * @type {number}
      * @memberof UpdateAgentDraftDto
      */
     wizardHistoryDepthDays?: number;
     /**
-     * Режим обучения wizard'а.
+     * wizard'.
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     wizardTrainingModeSelected?: UpdateAgentDraftDtoWizardTrainingModeSelectedEnum | null;
     /**
-     * Разрешить кнопки в ответах.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableButtons?: boolean;
     /**
-     * Разрешить действия с элементами сайта через виджет.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableWidgetPageActions?: boolean;
     /**
-     * Разрешить кастомные вложения (URL, S3, переиспользование).
+     * (URL, S3, ).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableCustomAttachments?: boolean;
     /**
-     * Разрешить генерацию изображений (DALL-E).
+     * (DALL-E).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableImageGeneration?: boolean;
     /**
-     * ID модели для генерации изображений.
+     * ID .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * Разрешить генерацию аудио (TTS).
+     * (TTS).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableAudioGeneration?: boolean;
     /**
-     * UUID модели для генерации аудио из GET /api/ai/models.
+     * UUID GET /api/ai/models.
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * Разрешить распознавание речи (STT).
+     * (STT).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableSpeechRecognition?: boolean;
     /**
-     * UUID модели для распознавания речи из GET /api/ai/models.
+     * UUID GET /api/ai/models.
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * Разрешить распознавание изображений (Vision).
+     * (Vision).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableImageRecognition?: boolean;
     /**
-     * ID модели для распознавания изображений.
+     * ID .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * Разрешить генерацию QR кодов.
+     * QR .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableQrCode?: boolean;
     /**
-     * Разрешить генерацию графиков.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableChart?: boolean;
     /**
-     * Разрешить веб-поиск.
+     * -.
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableWebSearch?: boolean;
     /**
-     * Разрешить блокировать лидов (block_lead tool).
+     * (block_lead tool).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableLeadBlocking?: boolean;
     /**
-     * Разрешить генерацию AI ответа.
+     * AI .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableAiResponse?: boolean;
     /**
-     * Отправлять сообщение пользователю.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableUserMessage?: boolean;
     /**
-     * Включить streaming режим генерации ответа.
+     * streaming .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableStreaming?: boolean;
     /**
-     * Разрешить предварительные ответы.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * Передавать реакции на сообщения в AI-контекст.
+     * AI-.
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableMessageReactionsContext?: boolean;
     /**
-     * Режим выборочных ответов (skip_response tool).
+     * (skip_response tool).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableSelectiveResponse?: boolean;
     /**
-     * Включить планирование сообщений (schedule_next_message tool).
+     * (schedule_next_message tool).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableScheduling?: boolean;
     /**
-     * Включить возможность пропуска метрик (skip_metrics в control_processing).
+     * (skip_metrics control_processing).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableSkipMetrics?: boolean;
     /**
-     * Включить мьют диалога в таймерах (mute_dialog в schedule_next_message).
+     * (mute_dialog schedule_next_message).
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableMuteDialog?: boolean;
     /**
-     * Разрешить агенту отвязываться от диалога через detach_from_dialog tool.
+     * detach_from_dialog tool.
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableDetachFromDialog?: boolean;
     /**
-     * Включить переменные проекта.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     useProjectVariables?: boolean;
     /**
-     * Включить переменные лида.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     useLeadVariables?: boolean;
     /**
-     * Режим работы с переменными проекта из инструкции.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     projectVarsInstructionMode?: UpdateAgentDraftDtoProjectVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными проекта по запросу пользователя.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     projectVarsUserRequestMode?: UpdateAgentDraftDtoProjectVarsUserRequestModeEnum;
     /**
-     * Режим работы с переменными лида из инструкции.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     leadVarsInstructionMode?: UpdateAgentDraftDtoLeadVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными лида по запросу пользователя.
+     * .
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */

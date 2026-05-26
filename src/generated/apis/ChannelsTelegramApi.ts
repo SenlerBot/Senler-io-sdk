@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -90,8 +90,8 @@ export interface TokensTelegramWebhookRequest {
 export class ChannelsTelegramApi extends runtime.BaseAPI {
 
     /**
-     * Создает канал на основе Telegram бота.
-     * Создать Telegram канал
+     * Telegram .
+     * Telegram
      */
     async telegramRaw(requestParameters: TelegramRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTelegramChannelResponseDto>> {
         if (requestParameters['createTelegramChannelDto'] == null) {
@@ -140,8 +140,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает канал на основе Telegram бота.
-     * Создать Telegram канал
+     * Telegram .
+     * Telegram
      */
     async telegram(requestParameters: TelegramRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateTelegramChannelResponseDto> {
         const response = await this.telegramRaw(requestParameters, initOverrides);
@@ -149,8 +149,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Привязывает или ротирует token Telegram бота для уже подключенного Telegram канала. Token должен принадлежать тому же bot_id, который уже зафиксирован в channel.
-     * Привязать Telegram токен к каналу
+     * token Telegram Telegram . Token bot_id, channel.
+     * Telegram
      */
     async tokensTelegramBindRaw(requestParameters: TokensTelegramBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
         if (requestParameters['channelId'] == null) {
@@ -206,8 +206,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Привязывает или ротирует token Telegram бота для уже подключенного Telegram канала. Token должен принадлежать тому же bot_id, который уже зафиксирован в channel.
-     * Привязать Telegram токен к каналу
+     * token Telegram Telegram . Token bot_id, channel.
+     * Telegram
      */
     async tokensTelegramBind(requestParameters: TokensTelegramBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
         const response = await this.tokensTelegramBindRaw(requestParameters, initOverrides);
@@ -215,8 +215,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет текущий статус Telegram webhook через Bot API и обновляет статус в БД.
-     * Проверить статус Telegram webhook
+     * Telegram webhook Bot API .
+     * Telegram webhook
      */
     async tokensTelegramCheckWebhookStatusRaw(requestParameters: TokensTelegramCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -262,8 +262,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет текущий статус Telegram webhook через Bot API и обновляет статус в БД.
-     * Проверить статус Telegram webhook
+     * Telegram webhook Bot API .
+     * Telegram webhook
      */
     async tokensTelegramCheckWebhookStatus(requestParameters: TokensTelegramCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto> {
         const response = await this.tokensTelegramCheckWebhookStatusRaw(requestParameters, initOverrides);
@@ -271,8 +271,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Скачивает аватарку бота из Telegram и загружает её в S3.
-     * Обновить аватарку Telegram бота
+     * Telegram S3.
+     * Telegram
      */
     async tokensTelegramRefreshAvatarRaw(requestParameters: TokensTelegramRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
         if (requestParameters['channelId'] == null) {
@@ -318,8 +318,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Скачивает аватарку бота из Telegram и загружает её в S3.
-     * Обновить аватарку Telegram бота
+     * Telegram S3.
+     * Telegram
      */
     async tokensTelegramRefreshAvatar(requestParameters: TokensTelegramRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
         const response = await this.tokensTelegramRefreshAvatarRaw(requestParameters, initOverrides);
@@ -327,8 +327,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет токен Telegram бота через Bot API.
-     * Проверить валидность Telegram токена
+     * Telegram Bot API.
+     * Telegram
      */
     async tokensTelegramValidateRaw(requestParameters: TokensTelegramValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateTelegramTokenResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -374,8 +374,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет токен Telegram бота через Bot API.
-     * Проверить валидность Telegram токена
+     * Telegram Bot API.
+     * Telegram
      */
     async tokensTelegramValidate(requestParameters: TokensTelegramValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateTelegramTokenResultDto> {
         const response = await this.tokensTelegramValidateRaw(requestParameters, initOverrides);
@@ -383,8 +383,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Установить или удалить вебхук Telegram (только для каналов без источника).
-     * Управление Telegram вебхуком
+     * Telegram ( ).
+     * Telegram
      */
     async tokensTelegramWebhookRaw(requestParameters: TokensTelegramWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -440,8 +440,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Установить или удалить вебхук Telegram (только для каналов без источника).
-     * Управление Telegram вебхуком
+     * Telegram ( ).
+     * Telegram
      */
     async tokensTelegramWebhook(requestParameters: TokensTelegramWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto> {
         const response = await this.tokensTelegramWebhookRaw(requestParameters, initOverrides);

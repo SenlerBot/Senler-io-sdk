@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -65,8 +65,8 @@ export interface ReadyMcpServersListRequest {
 export class ReadyMCPServersApi extends runtime.BaseAPI {
 
     /**
-     * Получить все категории готовых MCP серверов.
-     * Получить все категории готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async getCategoriesListRaw(requestParameters: GetCategoriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerTemplateCategoryDto>>> {
         const queryParameters: any = {};
@@ -88,8 +88,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить все категории готовых MCP серверов.
-     * Получить все категории готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async getCategoriesList(requestParameters: GetCategoriesListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateCategoryDto>> {
         const response = await this.getCategoriesListRaw(requestParameters, initOverrides);
@@ -97,8 +97,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает элементы базы знаний, привязанные к готовому MCP серверу.
-     * Получить базу знаний готового MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBaseRaw(requestParameters: GetKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerTemplateKnowledgeSourceDto>>> {
         if (requestParameters['id'] == null) {
@@ -127,8 +127,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает элементы базы знаний, привязанные к готовому MCP серверу.
-     * Получить базу знаний готового MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBase(requestParameters: GetKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateKnowledgeSourceDto>> {
         const response = await this.getKnowledgeBaseRaw(requestParameters, initOverrides);
@@ -136,8 +136,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить детали готового MCP сервера.
-     * Получить детали готового MCP сервера
+     * MCP .
+     * MCP
      */
     async readyMcpServersGetByIdRaw(requestParameters: ReadyMcpServersGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerTemplateResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -166,8 +166,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить детали готового MCP сервера.
-     * Получить детали готового MCP сервера
+     * MCP .
+     * MCP
      */
     async readyMcpServersGetById(requestParameters: ReadyMcpServersGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerTemplateResponseDto> {
         const response = await this.readyMcpServersGetByIdRaw(requestParameters, initOverrides);
@@ -175,8 +175,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить список публичных готовых MCP серверов.
-     * Получить список публичных готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async readyMcpServersListRaw(requestParameters: ReadyMcpServersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerTemplateListResponseDto>> {
         const queryParameters: any = {};
@@ -226,8 +226,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить список публичных готовых MCP серверов.
-     * Получить список публичных готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async readyMcpServersList(requestParameters: ReadyMcpServersListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerTemplateListResponseDto> {
         const response = await this.readyMcpServersListRaw(requestParameters, initOverrides);

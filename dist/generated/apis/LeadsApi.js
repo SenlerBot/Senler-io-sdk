@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class LeadsApi extends runtime.BaseAPI {
     /**
-     * Создать фоновую задачу для экспорта лидов в файл (TXT/CSV). Процесс выполняется асинхронно.
-     * Экспортировать лидов
+     * (TXT/CSV). .
+     *
      */
     async _exportRaw(requestParameters, initOverrides) {
         if (requestParameters['createExportProcessDto'] == null) {
@@ -91,16 +91,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создать фоновую задачу для экспорта лидов в файл (TXT/CSV). Процесс выполняется асинхронно.
-     * Экспортировать лидов
+     * (TXT/CSV). .
+     *
      */
     async _export(requestParameters, initOverrides) {
         const response = await this._exportRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создать фоновую задачу для импорта лидов с проверкой подписки. Процесс выполняется асинхронно.
-     * Импортировать лидов
+     * . .
+     *
      */
     async _importRaw(requestParameters, initOverrides) {
         if (requestParameters['createImportProcessDto'] == null) {
@@ -136,16 +136,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создать фоновую задачу для импорта лидов с проверкой подписки. Процесс выполняется асинхронно.
-     * Импортировать лидов
+     * . .
+     *
      */
     async _import(requestParameters, initOverrides) {
         const response = await this._importRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает детальную информацию о конкретном лиде.
-     * Получить лида по ID
+     * .
+     * ID
      */
     async leadsGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -179,16 +179,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает детальную информацию о конкретном лиде.
-     * Получить лида по ID
+     * .
+     * ID
      */
     async leadsGetById(requestParameters, initOverrides) {
         const response = await this.leadsGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создает фоновый процесс массового обновления профилей лидов по тем же filters, что используются в разделе leads. Pagination не учитывается.
-     * Создать массовый процесс refresh лидов
+     * filters, leads. Pagination .
+     * refresh
      */
     async refreshRaw(requestParameters, initOverrides) {
         if (requestParameters['createLeadsRefreshProcessDto'] == null) {
@@ -224,16 +224,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает фоновый процесс массового обновления профилей лидов по тем же filters, что используются в разделе leads. Pagination не учитывается.
-     * Создать массовый процесс refresh лидов
+     * filters, leads. Pagination .
+     * refresh
      */
     async refresh(requestParameters, initOverrides) {
         const response = await this.refreshRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает список лидов для проекта с фильтрацией и пагинацией. Фильтры передаются в JSON body.
-     * Поиск лидов
+     * . JSON body.
+     *
      */
     async searchRaw(requestParameters, initOverrides) {
         if (requestParameters['searchLeadsDto'] == null) {
@@ -269,16 +269,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadsListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает список лидов для проекта с фильтрацией и пагинацией. Фильтры передаются в JSON body.
-     * Поиск лидов
+     * . JSON body.
+     *
      */
     async search(requestParameters, initOverrides) {
         const response = await this.searchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Добавить или удалить лида из черного списка.
-     * Обновить статус блокировки лида
+     * .
+     *
      */
     async updateBlacklistRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -317,16 +317,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Добавить или удалить лида из черного списка.
-     * Обновить статус блокировки лида
+     * .
+     *
      */
     async updateBlacklist(requestParameters, initOverrides) {
         const response = await this.updateBlacklistRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Сохраняет операторскую заметку у лида. null или пустая строка очищают заметку.
-     * Обновить заметку лида
+     * . null .
+     *
      */
     async updateNotesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -365,16 +365,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Сохраняет операторскую заметку у лида. null или пустая строка очищают заметку.
-     * Обновить заметку лида
+     * . null .
+     *
      */
     async updateNotes(requestParameters, initOverrides) {
         const response = await this.updateNotesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Синхронно запрашивает обновление профиля лида с платформы и ждёт ответ.
-     * Запустить синхронизацию профиля лида
+     * .
+     *
      */
     async updateSyncProfileRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -413,16 +413,16 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SyncLeadProfileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Синхронно запрашивает обновление профиля лида с платформы и ждёт ответ.
-     * Запустить синхронизацию профиля лида
+     * .
+     *
      */
     async updateSyncProfile(requestParameters, initOverrides) {
         const response = await this.updateSyncProfileRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет, разрешил ли пользователь сообщения от сообщества (VK), и добавляет лида в канал.
-     * Проверить подписку и добавить лида
+     * , (VK), .
+     *
      */
     async verifySubscriptionRaw(requestParameters, initOverrides) {
         if (requestParameters['verifySubscriptionAndAddDto'] == null) {
@@ -458,8 +458,8 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.VerifySubscriptionAndAddResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет, разрешил ли пользователь сообщения от сообщества (VK), и добавляет лида в канал.
-     * Проверить подписку и добавить лида
+     * , (VK), .
+     *
      */
     async verifySubscription(requestParameters, initOverrides) {
         const response = await this.verifySubscriptionRaw(requestParameters, initOverrides);

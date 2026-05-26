@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class DataSourcesApi extends runtime.BaseAPI {
     /**
-     * Привязывает сайт как источник данных для парсинга.
-     * Привязать сайт
+     * .
+     *
      */
     async bindWebsiteRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -100,16 +100,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Привязывает сайт как источник данных для парсинга.
-     * Привязать сайт
+     * .
+     *
      */
     async bindWebsite(requestParameters, initOverrides) {
         const response = await this.bindWebsiteRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создаёт новый источник данных для проекта.
-     * Создать источник данных
+     * .
+     *
      */
     async dataSourcesCreateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -154,16 +154,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создаёт новый источник данных для проекта.
-     * Создать источник данных
+     * .
+     *
      */
     async dataSourcesCreate(requestParameters, initOverrides) {
         const response = await this.dataSourcesCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет источник данных.
-     * Удалить источник
+     * .
+     *
      */
     async dataSourcesDeactivateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -200,15 +200,15 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Удаляет источник данных.
-     * Удалить источник
+     * .
+     *
      */
     async dataSourcesDeactivate(requestParameters, initOverrides) {
         await this.dataSourcesDeactivateRaw(requestParameters, initOverrides);
     }
     /**
-     * Возвращает информацию об источнике данных.
-     * Получить источник по ID
+     * .
+     * ID
      */
     async dataSourcesGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -245,16 +245,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает информацию об источнике данных.
-     * Получить источник по ID
+     * .
+     * ID
      */
     async dataSourcesGetById(requestParameters, initOverrides) {
         const response = await this.dataSourcesGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает все источники данных проекта.
-     * Получить список источников проекта
+     * .
+     *
      */
     async dataSourcesListRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -294,16 +294,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.DataSourceResponseDtoFromJSON));
     }
     /**
-     * Возвращает все источники данных проекта.
-     * Получить список источников проекта
+     * .
+     *
      */
     async dataSourcesList(requestParameters, initOverrides) {
         const response = await this.dataSourcesListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет параметры источника данных.
-     * Обновить источник
+     * .
+     *
      */
     async dataSourcesUpdateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -345,16 +345,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет параметры источника данных.
-     * Обновить источник
+     * .
+     *
      */
     async dataSourcesUpdate(requestParameters, initOverrides) {
         const response = await this.dataSourcesUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Восстанавливает ранее удалённый источник данных.
-     * Восстановить удалённый источник
+     * .
+     *
      */
     async dataSourcesUpdateRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -391,16 +391,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Восстанавливает ранее удалённый источник данных.
-     * Восстановить удалённый источник
+     * .
+     *
      */
     async dataSourcesUpdateRestore(requestParameters, initOverrides) {
         const response = await this.dataSourcesUpdateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает источники проекта, включённые для обучения агентов.
-     * Получить активные источники для обучения
+     * , .
+     *
      */
     async getActiveForTrainingRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -440,16 +440,16 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.DataSourceResponseDtoFromJSON));
     }
     /**
-     * Возвращает источники проекта, включённые для обучения агентов.
-     * Получить активные источники для обучения
+     * , .
+     *
      */
     async getActiveForTraining(requestParameters, initOverrides) {
         const response = await this.getActiveForTrainingRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет доступность и валидность источника данных.
-     * Валидировать источник
+     * .
+     *
      */
     async validateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -486,8 +486,8 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateDataSourceResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет доступность и валидность источника данных.
-     * Валидировать источник
+     * .
+     *
      */
     async validate(requestParameters, initOverrides) {
         const response = await this.validateRaw(requestParameters, initOverrides);

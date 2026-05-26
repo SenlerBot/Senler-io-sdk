@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,151 +20,151 @@ import { mapValues } from '../runtime';
  */
 export interface ChannelTokenResponseDto {
     /**
-     * UUID токена.
+     * UUID .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     id: string;
     /**
-     * ID канала (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     channelId: string;
     /**
-     * Тип канала.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     channelType: ChannelTokenResponseDtoChannelTypeEnum;
     /**
-     * Валиден ли токен.
+     * .
      * @type {boolean}
      * @memberof ChannelTokenResponseDto
      */
     isValid: boolean;
     /**
-     * Источник токена: null — прямой платформенный, senler — через Senler OAuth.
+     * : null , senler Senler OAuth.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     tokenSource?: ChannelTokenResponseDtoTokenSourceEnum | null;
     /**
-     * Время последней проверки токена.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     lastCheckedAt?: string;
     /**
-     * Ошибка валидации.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     validationError?: string;
     /**
-     * Последняя техническая ошибка IMAP runtime для email-канала.
+     * IMAP runtime email-.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     emailImapError?: string;
     /**
-     * OAuth scope токена.
+     * OAuth scope .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     tokenScope?: string | null;
     /**
-     * Дата истечения токена в ISO формате.
+     * ISO .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     expiresAt?: string | null;
     /**
-     * ID группы ВКонтакте.
+     * ID .
      * @type {number}
      * @memberof ChannelTokenResponseDto
      */
     vkGroupId?: number;
     /**
-     * ID callback сервера VK.
+     * ID callback VK.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     vkCallbackServerId?: string;
     /**
-     * ID Telegram бота.
+     * ID Telegram .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotId?: string;
     /**
-     * Username Telegram бота.
+     * Username Telegram .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotUsername?: string;
     /**
-     * Имя Telegram бота.
+     * Telegram .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotName?: string;
     /**
-     * URL аватара Telegram бота.
+     * URL Telegram .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotAvatarUrl?: string;
     /**
-     * ID подписки MAX API.
+     * ID MAX API.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxSubscriptionId?: string;
     /**
-     * ID MAX бота.
+     * ID MAX .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotId?: string;
     /**
-     * Username MAX бота.
+     * Username MAX .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotUsername?: string;
     /**
-     * Имя MAX бота.
+     * MAX .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotName?: string;
     /**
-     * URL аватара MAX бота.
+     * URL MAX .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotAvatarUrl?: string;
     /**
-     * ID подключенного аккаунта Avito.
+     * ID Avito.
      * @type {number}
      * @memberof ChannelTokenResponseDto
      */
     avitoUserId?: number;
     /**
-     * Имя подключенного аккаунта Avito.
+     * Avito.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     avitoAccountName?: string;
     /**
-     * URL профиля Avito.
+     * URL Avito.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     avitoProfileUrl?: string;
     /**
-     * Discord application_id привязанного бота.
+     * Discord application_id .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
@@ -176,73 +176,73 @@ export interface ChannelTokenResponseDto {
      */
     discordBotUserId?: string;
     /**
-     * Username Discord бота.
+     * Username Discord .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotUsername?: string;
     /**
-     * Display name Discord бота.
+     * Display name Discord .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotName?: string;
     /**
-     * URL аватара Discord бота.
+     * URL Discord .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotAvatarUrl?: string;
     /**
-     * Статус Discord Gateway runtime.
+     * Discord Gateway runtime.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordGatewayStatus?: ChannelTokenResponseDtoDiscordGatewayStatusEnum;
     /**
-     * Последняя ошибка Discord Gateway runtime.
+     * Discord Gateway runtime.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordGatewayError?: string;
     /**
-     * Время окончания временной блокировки Discord Gateway.
+     * Discord Gateway.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordGatewayBlockedUntil?: string;
     /**
-     * URL аватара VK группы.
+     * URL VK .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     vkGroupAvatarUrl?: string;
     /**
-     * Статус вебхука.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     webhookStatus: ChannelTokenResponseDtoWebhookStatusEnum;
     /**
-     * Включен ли вебхук.
+     * .
      * @type {boolean}
      * @memberof ChannelTokenResponseDto
      */
     webhookEnabled: boolean;
     /**
-     * Ошибка вебхука.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     webhookError?: string;
     /**
-     * Дата создания.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     createdAt: string;
     /**
-     * Дата обновления.
+     * .
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */

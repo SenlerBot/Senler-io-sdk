@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,37 +17,37 @@ import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
  */
 export interface LeadResponseDto {
     /**
-     * ID лида.
+     * ID .
      * @type {string}
      * @memberof LeadResponseDto
      */
     id: string;
     /**
-     * UUID канала.
+     * UUID .
      * @type {string}
      * @memberof LeadResponseDto
      */
     channelId: string;
     /**
-     * Тип канала.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
     channelType: LeadResponseDtoChannelTypeEnum;
     /**
-     * ID пользователя на платформе.
+     * ID .
      * @type {string}
      * @memberof LeadResponseDto
      */
     externalUserId: string;
     /**
-     * Имя.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
     firstName?: string | null;
     /**
-     * Фамилия.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
@@ -59,91 +59,91 @@ export interface LeadResponseDto {
      */
     username?: string | null;
     /**
-     * URL аватара.
+     * URL .
      * @type {string}
      * @memberof LeadResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Заметка оператора по лиду.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
     operatorNotes?: string | null;
     /**
-     * Подписан ли.
+     * .
      * @type {boolean}
      * @memberof LeadResponseDto
      */
     isSubscribed: boolean;
     /**
-     * Заблокировал ли бота (техническое).
+     * ().
      * @type {boolean}
      * @memberof LeadResponseDto
      */
     isBlocked: boolean;
     /**
-     * В черном списке (бизнес-логика).
+     * (-).
      * @type {boolean}
      * @memberof LeadResponseDto
      */
     isBlacklisted: boolean;
     /**
-     * Дата добавления в ЧС.
+     * .
      * @type {Date}
      * @memberof LeadResponseDto
      */
     blacklistedAt?: Date | null;
     /**
-     * Причина добавления в ЧС.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
     blacklistReason?: string | null;
     /**
-     * Источник лида.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
     leadSource: LeadResponseDtoLeadSourceEnum;
     /**
-     * Тип лида: user = человек, group_chat = групповой чат, channel = внешний канал/сообщество.
+     * : user = , group_chat = , channel = /.
      * @type {string}
      * @memberof LeadResponseDto
      */
     leadType: LeadResponseDtoLeadTypeEnum;
     /**
-     * Язык.
+     * .
      * @type {string}
      * @memberof LeadResponseDto
      */
     languageCode?: string | null;
     /**
-     * Дата создания.
+     * .
      * @type {Date}
      * @memberof LeadResponseDto
      */
     createdAt: Date;
     /**
-     * Дата обновления.
+     * .
      * @type {Date}
      * @memberof LeadResponseDto
      */
     updatedAt: Date;
     /**
-     * Дата отписки.
+     * .
      * @type {Date}
      * @memberof LeadResponseDto
      */
     unsubscribedAt?: Date | null;
     /**
-     * Дата последней синхронизации профиля.
+     * .
      * @type {Date}
      * @memberof LeadResponseDto
      */
     lastProfileSyncAt?: Date | null;
     /**
-     * Связи лида со spaces.
+     * spaces.
      * @type {Array<LeadSpaceLinkResponseDto>}
      * @memberof LeadResponseDto
      */

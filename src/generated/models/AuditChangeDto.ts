@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,61 +28,61 @@ import {
  */
 export interface AuditChangeDto {
     /**
-     * Имя изменённого поля сущности.
+     * .
      * @type {string}
      * @memberof AuditChangeDto
      */
     field: string;
     /**
-     * Человекочитаемое название поля на языке запроса.
+     * .
      * @type {string}
      * @memberof AuditChangeDto
      */
     fieldLabel: string;
     /**
-     * Предыдущее значение (для скалярных полей и объектов). (mixed type)
+     * ( ). (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AuditChangeDto
      */
     oldValue?: { [key: string]: any; } | null;
     /**
-     * Обогащённое отображение old_value, если поле ссылается на сущность.
+     * old_value, .
      * @type {AuditValueReferenceDto}
      * @memberof AuditChangeDto
      */
     oldValueRef?: AuditValueReferenceDto;
     /**
-     * Новое значение (для скалярных полей и объектов). (mixed type)
+     * ( ). (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AuditChangeDto
      */
     newValue?: { [key: string]: any; } | null;
     /**
-     * Обогащённое отображение new_value, если поле ссылается на сущность.
+     * new_value, .
      * @type {AuditValueReferenceDto}
      * @memberof AuditChangeDto
      */
     newValueRef?: AuditValueReferenceDto;
     /**
-     * Добавленные элементы (для массивов).
+     * ( ).
      * @type {Array<{ [key: string]: any; }>}
      * @memberof AuditChangeDto
      */
     added?: Array<{ [key: string]: any; }>;
     /**
-     * Обогащённое отображение added, если элементы массива ссылаются на сущности.
+     * added, .
      * @type {Array<AuditValueReferenceDto>}
      * @memberof AuditChangeDto
      */
     addedRefs?: Array<AuditValueReferenceDto>;
     /**
-     * Удалённые элементы (для массивов).
+     * ( ).
      * @type {Array<{ [key: string]: any; }>}
      * @memberof AuditChangeDto
      */
     removed?: Array<{ [key: string]: any; }>;
     /**
-     * Обогащённое отображение removed, если элементы массива ссылаются на сущности.
+     * removed, .
      * @type {Array<AuditValueReferenceDto>}
      * @memberof AuditChangeDto
      */

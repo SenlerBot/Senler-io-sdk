@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,103 +16,103 @@
  */
 export interface TrainingChannelHistoryPreviewDto {
     /**
-     * ID канала.
+     * ID .
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     channelId: string;
     /**
-     * Название канала.
+     * .
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     channelName?: string | null;
     /**
-     * Тип канала.
+     * .
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     channelType?: string | null;
     /**
-     * Можно ли получить старую историю внешним API.
+     * API.
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     historySupported: boolean;
     /**
-     * Для канала нельзя загрузить старые сообщения: используем только уже сохраненные.
+     * : .
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     realtimeOnly: boolean;
     /**
-     * Есть активный токен, достаточный для запуска scan.
+     * , scan.
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     tokenAvailable: boolean;
     /**
-     * Scan можно запустить технически.
+     * Scan .
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     canScan: boolean;
     /**
-     * Для выбранного периода scan нужен, если пользователь включит загрузку истории.
+     * scan , .
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     scanNeeded: boolean;
     /**
-     * Scan будет запущен с текущими настройками preview.
+     * Scan preview.
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     willScan: boolean;
     /**
-     * Почему scan недоступен или не нужен.
+     * scan .
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     disabledReason?: string | null;
     /**
-     * Сколько сообщений уже есть в базе за оцениваемый период.
+     * .
      * @type {number}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     storedMessages: number;
     /**
-     * С какого времени есть сохраненные события.
+     * .
      * @type {Date}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     storedFrom?: Date | null;
     /**
-     * По какое время есть сохраненные события.
+     * .
      * @type {Date}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     storedTo?: Date | null;
     /**
-     * Минимальная оценка сообщений для загрузки истории.
+     * .
      * @type {number}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     loadableMessagesMin: number;
     /**
-     * Максимальная оценка сообщений для загрузки истории.
+     * .
      * @type {number}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     loadableMessagesMax: number;
     /**
-     * Уверенность оценки.
+     * .
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     confidence: TrainingChannelHistoryPreviewDtoConfidenceEnum;
     /**
-     * Короткий человекочитаемый статус.
+     * .
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */

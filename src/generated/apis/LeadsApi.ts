@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -124,8 +124,8 @@ export interface VerifySubscriptionRequest {
 export class LeadsApi extends runtime.BaseAPI {
 
     /**
-     * Создать фоновую задачу для экспорта лидов в файл (TXT/CSV). Процесс выполняется асинхронно.
-     * Экспортировать лидов
+     * (TXT/CSV). .
+     * 
      */
     async _exportRaw(requestParameters: ExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
         if (requestParameters['createExportProcessDto'] == null) {
@@ -174,8 +174,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создать фоновую задачу для экспорта лидов в файл (TXT/CSV). Процесс выполняется асинхронно.
-     * Экспортировать лидов
+     * (TXT/CSV). .
+     * 
      */
     async _export(requestParameters: ExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
         const response = await this._exportRaw(requestParameters, initOverrides);
@@ -183,8 +183,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создать фоновую задачу для импорта лидов с проверкой подписки. Процесс выполняется асинхронно.
-     * Импортировать лидов
+     * . .
+     * 
      */
     async _importRaw(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
         if (requestParameters['createImportProcessDto'] == null) {
@@ -233,8 +233,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создать фоновую задачу для импорта лидов с проверкой подписки. Процесс выполняется асинхронно.
-     * Импортировать лидов
+     * . .
+     * 
      */
     async _import(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
         const response = await this._importRaw(requestParameters, initOverrides);
@@ -242,8 +242,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает детальную информацию о конкретном лиде.
-     * Получить лида по ID
+     * .
+     * ID
      */
     async leadsGetByIdRaw(requestParameters: LeadsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -289,8 +289,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает детальную информацию о конкретном лиде.
-     * Получить лида по ID
+     * .
+     * ID
      */
     async leadsGetById(requestParameters: LeadsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
         const response = await this.leadsGetByIdRaw(requestParameters, initOverrides);
@@ -298,8 +298,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает фоновый процесс массового обновления профилей лидов по тем же filters, что используются в разделе leads. Pagination не учитывается.
-     * Создать массовый процесс refresh лидов
+     * filters, leads. Pagination .
+     * refresh
      */
     async refreshRaw(requestParameters: RefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
         if (requestParameters['createLeadsRefreshProcessDto'] == null) {
@@ -348,8 +348,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает фоновый процесс массового обновления профилей лидов по тем же filters, что используются в разделе leads. Pagination не учитывается.
-     * Создать массовый процесс refresh лидов
+     * filters, leads. Pagination .
+     * refresh
      */
     async refresh(requestParameters: RefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
         const response = await this.refreshRaw(requestParameters, initOverrides);
@@ -357,8 +357,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список лидов для проекта с фильтрацией и пагинацией. Фильтры передаются в JSON body.
-     * Поиск лидов
+     * . JSON body.
+     * 
      */
     async searchRaw(requestParameters: SearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadsListResponseDto>> {
         if (requestParameters['searchLeadsDto'] == null) {
@@ -407,8 +407,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список лидов для проекта с фильтрацией и пагинацией. Фильтры передаются в JSON body.
-     * Поиск лидов
+     * . JSON body.
+     * 
      */
     async search(requestParameters: SearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadsListResponseDto> {
         const response = await this.searchRaw(requestParameters, initOverrides);
@@ -416,8 +416,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Добавить или удалить лида из черного списка.
-     * Обновить статус блокировки лида
+     * .
+     * 
      */
     async updateBlacklistRaw(requestParameters: UpdateBlacklistRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -473,8 +473,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Добавить или удалить лида из черного списка.
-     * Обновить статус блокировки лида
+     * .
+     * 
      */
     async updateBlacklist(requestParameters: UpdateBlacklistRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
         const response = await this.updateBlacklistRaw(requestParameters, initOverrides);
@@ -482,8 +482,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Сохраняет операторскую заметку у лида. null или пустая строка очищают заметку.
-     * Обновить заметку лида
+     * . null .
+     * 
      */
     async updateNotesRaw(requestParameters: UpdateNotesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -539,8 +539,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Сохраняет операторскую заметку у лида. null или пустая строка очищают заметку.
-     * Обновить заметку лида
+     * . null .
+     * 
      */
     async updateNotes(requestParameters: UpdateNotesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
         const response = await this.updateNotesRaw(requestParameters, initOverrides);
@@ -548,8 +548,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Синхронно запрашивает обновление профиля лида с платформы и ждёт ответ.
-     * Запустить синхронизацию профиля лида
+     * .
+     * 
      */
     async updateSyncProfileRaw(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SyncLeadProfileResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -605,8 +605,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Синхронно запрашивает обновление профиля лида с платформы и ждёт ответ.
-     * Запустить синхронизацию профиля лида
+     * .
+     * 
      */
     async updateSyncProfile(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncLeadProfileResponseDto> {
         const response = await this.updateSyncProfileRaw(requestParameters, initOverrides);
@@ -614,8 +614,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет, разрешил ли пользователь сообщения от сообщества (VK), и добавляет лида в канал.
-     * Проверить подписку и добавить лида
+     * , (VK), .
+     * 
      */
     async verifySubscriptionRaw(requestParameters: VerifySubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerifySubscriptionAndAddResponseDto>> {
         if (requestParameters['verifySubscriptionAndAddDto'] == null) {
@@ -664,8 +664,8 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет, разрешил ли пользователь сообщения от сообщества (VK), и добавляет лида в канал.
-     * Проверить подписку и добавить лида
+     * , (VK), .
+     * 
      */
     async verifySubscription(requestParameters: VerifySubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerifySubscriptionAndAddResponseDto> {
         const response = await this.verifySubscriptionRaw(requestParameters, initOverrides);

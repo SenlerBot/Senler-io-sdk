@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -93,8 +93,8 @@ export interface UpdateMetricsRequest {
 export class MetricsConfigApi extends runtime.BaseAPI {
 
     /**
-     * Возвращает конфигурацию метрик агента с учетом прав доступа пользователя.
-     * Получить конфигурацию метрик для агента
+     * .
+     * 
      */
     async getMetricsRaw(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>> {
         if (requestParameters['agentId'] == null) {
@@ -147,8 +147,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает конфигурацию метрик агента с учетом прав доступа пользователя.
-     * Получить конфигурацию метрик для агента
+     * .
+     * 
      */
     async getMetrics(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>> {
         const response = await this.getMetricsRaw(requestParameters, initOverrides);
@@ -156,8 +156,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает количество включённых метрик агента с учетом прав доступа пользователя.
-     * Получить количество включённых метрик для агента
+     * .
+     * 
      */
     async getMetricsCountRaw(requestParameters: GetMetricsCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsCountResponseDto>> {
         if (requestParameters['agentId'] == null) {
@@ -210,8 +210,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает количество включённых метрик агента с учетом прав доступа пользователя.
-     * Получить количество включённых метрик для агента
+     * .
+     * 
      */
     async getMetricsCount(requestParameters: GetMetricsCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsCountResponseDto> {
         const response = await this.getMetricsCountRaw(requestParameters, initOverrides);
@@ -219,8 +219,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет, включена ли метрика для агента с учетом прав доступа пользователя.
-     * Проверить, включена ли метрика для агента
+     * , .
+     * ,
      */
     async getMetricsEnabledRaw(requestParameters: GetMetricsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricEnabledResponseDto>> {
         if (requestParameters['agentId'] == null) {
@@ -280,8 +280,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверяет, включена ли метрика для агента с учетом прав доступа пользователя.
-     * Проверить, включена ли метрика для агента
+     * , .
+     * ,
      */
     async getMetricsEnabled(requestParameters: GetMetricsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricEnabledResponseDto> {
         const response = await this.getMetricsEnabledRaw(requestParameters, initOverrides);
@@ -289,8 +289,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает включённые метрики агента с учетом прав доступа пользователя.
-     * Получить только включённые метрики для агента
+     * .
+     * 
      */
     async getMetricsEnabled2Raw(requestParameters: GetMetricsEnabled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>> {
         if (requestParameters['agentId'] == null) {
@@ -343,8 +343,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает включённые метрики агента с учетом прав доступа пользователя.
-     * Получить только включённые метрики для агента
+     * .
+     * 
      */
     async getMetricsEnabled2(requestParameters: GetMetricsEnabled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>> {
         const response = await this.getMetricsEnabled2Raw(requestParameters, initOverrides);
@@ -352,8 +352,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Отключает метрику для агента с учетом прав доступа пользователя.
-     * Отключить метрику для агента
+     * .
+     * 
      */
     async metricsDisableRaw(requestParameters: MetricsDisableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
         if (requestParameters['agentId'] == null) {
@@ -413,8 +413,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Отключает метрику для агента с учетом прав доступа пользователя.
-     * Отключить метрику для агента
+     * .
+     * 
      */
     async metricsDisable(requestParameters: MetricsDisableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
         const response = await this.metricsDisableRaw(requestParameters, initOverrides);
@@ -422,8 +422,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включает метрику для агента с учетом прав доступа пользователя.
-     * Включить метрику для агента
+     * .
+     * 
      */
     async metricsEnableRaw(requestParameters: MetricsEnableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigResponseDto>> {
         if (requestParameters['agentId'] == null) {
@@ -493,8 +493,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включает метрику для агента с учетом прав доступа пользователя.
-     * Включить метрику для агента
+     * .
+     * 
      */
     async metricsEnable(requestParameters: MetricsEnableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigResponseDto> {
         const response = await this.metricsEnableRaw(requestParameters, initOverrides);
@@ -502,8 +502,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Массовое обновление метрик агента с учетом прав доступа пользователя.
-     * Массовое обновление метрик агента
+     * .
+     * 
      */
     async updateMetricsRaw(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>> {
         if (requestParameters['agentId'] == null) {
@@ -566,8 +566,8 @@ export class MetricsConfigApi extends runtime.BaseAPI {
     }
 
     /**
-     * Массовое обновление метрик агента с учетом прав доступа пользователя.
-     * Массовое обновление метрик агента
+     * .
+     * 
      */
     async updateMetrics(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>> {
         const response = await this.updateMetricsRaw(requestParameters, initOverrides);

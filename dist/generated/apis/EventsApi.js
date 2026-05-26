@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class EventsApi extends runtime.BaseAPI {
     /**
-     * Возвращает CabinetEventDetailDto БЕЗ provider costs. Только события доступных каналов.
-     * Получить событие по ID
+     * CabinetEventDetailDto provider costs. .
+     * ID
      */
     async eventsGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['eventId'] == null) {
@@ -89,16 +89,16 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetEventDetailDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает CabinetEventDetailDto БЕЗ provider costs. Только события доступных каналов.
-     * Получить событие по ID
+     * CabinetEventDetailDto provider costs. .
+     * ID
      */
     async eventsGetById(requestParameters, initOverrides) {
         const response = await this.eventsGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Для владельцев каналов (интеграций).
-     * Универсальный поиск событий с фильтрами
+     * ().
+     *
      */
     async eventsListRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -204,16 +204,16 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventsList200ResponseFromJSON)(jsonValue));
     }
     /**
-     * Для владельцев каналов (интеграций).
-     * Универсальный поиск событий с фильтрами
+     * ().
+     *
      */
     async eventsList(requestParameters, initOverrides) {
         const response = await this.eventsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает project-scoped аналитику истории событий.
-     * Получить аналитику истории
+     * project-scoped .
+     *
      */
     async getAnalyticsRaw(requestParameters, initOverrides) {
         if (requestParameters['period'] == null) {
@@ -256,16 +256,16 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalyticsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает project-scoped аналитику истории событий.
-     * Получить аналитику истории
+     * project-scoped .
+     *
      */
     async getAnalytics(requestParameters, initOverrides) {
         const response = await this.getAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает быстрые маркетинговые метрики с учетом прав доступа пользователя.
-     * Получить быстрые маркетинговые метрики
+     * .
+     *
      */
     async getMarketingQuickMetricsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -305,16 +305,16 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.QuickMetricsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает быстрые маркетинговые метрики с учетом прав доступа пользователя.
-     * Получить быстрые маркетинговые метрики
+     * .
+     *
      */
     async getMarketingQuickMetrics(requestParameters, initOverrides) {
         const response = await this.getMarketingQuickMetricsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает анализ каналов трафика с учетом прав доступа пользователя.
-     * Получить анализ каналов трафика
+     * .
+     *
      */
     async getMarketingTrafficChannelsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -354,16 +354,16 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TrafficChannelsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает анализ каналов трафика с учетом прав доступа пользователя.
-     * Получить анализ каналов трафика
+     * .
+     *
      */
     async getMarketingTrafficChannels(requestParameters, initOverrides) {
         const response = await this.getMarketingTrafficChannelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает анализ источников трафика с учетом прав доступа пользователя.
-     * Получить анализ источников трафика (UTM-кампании)
+     * .
+     * (UTM-)
      */
     async getMarketingTrafficSourcesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -403,8 +403,8 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TrafficSourcesResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает анализ источников трафика с учетом прав доступа пользователя.
-     * Получить анализ источников трафика (UTM-кампании)
+     * .
+     * (UTM-)
      */
     async getMarketingTrafficSources(requestParameters, initOverrides) {
         const response = await this.getMarketingTrafficSourcesRaw(requestParameters, initOverrides);

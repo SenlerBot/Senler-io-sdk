@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,79 +16,79 @@
  */
 export interface AgentMetricDeviationDto {
     /**
-     * ID агента (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     agentId: string;
     /**
-     * Название агента.
+     * .
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     agentName: string;
     /**
-     * URL аватарки.
+     * URL .
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     avatarUrl?: string;
     /**
-     * Тип агента.
+     * .
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     agentType: string;
     /**
-     * Значение метрики у агента.
+     * .
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     value: number;
     /**
-     * Baseline: среднее, предыдущее или норма (зависит от evaluation_mode).
+     * Baseline: , ( evaluation_mode).
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     baseline: number;
     /**
-     * Score (|отклонение|) для сортировки.
+     * Score (||) .
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     score: number;
     /**
-     * Отклонение от baseline в %.
+     * baseline %.
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     deviationPercent: number;
     /**
-     * Нормализованное направление метрики.
+     * .
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     direction: AgentMetricDeviationDtoDirectionEnum | null;
     /**
-     * Изменение vs предыдущий период в %.
+     * vs %.
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     changePercent: number;
     /**
-     * Количество событий (оценок метрики).
+     * ( ).
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     eventsCount: number;
     /**
-     * Количество диалогов.
+     * .
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     dialogsCount: number;
     /**
-     * Среднее значение метрики по всем агентам.
+     * .
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */

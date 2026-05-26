@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class MCPServersApi extends runtime.BaseAPI {
     /**
-     * Начать OAuth для кастомного MCP сервера.
-     * Начать OAuth для кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async customOauthStartRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -103,16 +103,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartCustomMcpOAuthResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Начать OAuth для кастомного MCP сервера.
-     * Начать OAuth для кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async customOauthStart(requestParameters, initOverrides) {
         const response = await this.customOauthStartRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет список если у вас есть доступ к его проекту.
-     * Удалить список MCP серверов
+     * .
+     * MCP
      */
     async deleteListsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -152,15 +152,15 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Удаляет список если у вас есть доступ к его проекту.
-     * Удалить список MCP серверов
+     * .
+     * MCP
      */
     async deleteLists(requestParameters, initOverrides) {
         await this.deleteListsRaw(requestParameters, initOverrides);
     }
     /**
-     * Удалить MCP сервер из списка.
-     * Удалить MCP сервер из списка
+     * MCP .
+     * MCP
      */
     async deleteListsServersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -203,16 +203,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удалить MCP сервер из списка.
-     * Удалить MCP сервер из списка
+     * MCP .
+     * MCP
      */
     async deleteListsServers(requestParameters, initOverrides) {
         const response = await this.deleteListsServersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет глобальный credential установленного MCP сервера в режиме project.
-     * Отозвать project credential
+     * credential MCP project.
+     * project credential
      */
     async deleteProjectCredentialRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -255,16 +255,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет глобальный credential установленного MCP сервера в режиме project.
-     * Отозвать project credential
+     * credential MCP project.
+     * project credential
      */
     async deleteProjectCredential(requestParameters, initOverrides) {
         const response = await this.deleteProjectCredentialRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Callback стандартного OAuth для кастомного MCP сервера.
-     * Callback стандартного OAuth для кастомного MCP сервера
+     * Callback OAuth MCP .
+     * Callback OAuth MCP
      */
     async getCustomOauthCallbackRaw(requestParameters, initOverrides) {
         const queryParameters = {};
@@ -298,16 +298,16 @@ class MCPServersApi extends runtime.BaseAPI {
         }
     }
     /**
-     * Callback стандартного OAuth для кастомного MCP сервера.
-     * Callback стандартного OAuth для кастомного MCP сервера
+     * Callback OAuth MCP .
+     * Callback OAuth MCP
      */
     async getCustomOauthCallback(requestParameters = {}, initOverrides) {
         const response = await this.getCustomOauthCallbackRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверить OAuth у кастомного MCP сервера.
-     * Проверить OAuth у кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async getCustomOauthStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -350,16 +350,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CustomMcpOAuthStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверить OAuth у кастомного MCP сервера.
-     * Проверить OAuth у кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async getCustomOauthStatus(requestParameters, initOverrides) {
         const response = await this.getCustomOauthStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Экспортирует MCP серверы проекта.
-     * Экспортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async getExportRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -399,16 +399,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ExportServersResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Экспортирует MCP серверы проекта.
-     * Экспортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async getExport(requestParameters, initOverrides) {
         const response = await this.getExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Поиск по источникам базы знаний, привязанным к MCP серверам проекта.
-     * Поиск по базе знаний MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBaseSearchRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -466,16 +466,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PaginatedKnowledgeBaseSearchResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Поиск по источникам базы знаний, привязанным к MCP серверам проекта.
-     * Поиск по базе знаний MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBaseSearch(requestParameters, initOverrides) {
         const response = await this.getKnowledgeBaseSearchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает списки MCP серверов из указанного проекта.
-     * Получить все списки MCP серверов
+     * MCP .
+     * MCP
      */
     async getListsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -518,16 +518,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает списки MCP серверов из указанного проекта.
-     * Получить все списки MCP серверов
+     * MCP .
+     * MCP
      */
     async getLists(requestParameters, initOverrides) {
         const response = await this.getListsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает список если у вас есть доступ к его проекту.
-     * Получить список MCP серверов по ID
+     * .
+     * MCP ID
      */
     async getLists2Raw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -567,16 +567,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает список если у вас есть доступ к его проекту.
-     * Получить список MCP серверов по ID
+     * .
+     * MCP ID
      */
     async getLists2(requestParameters, initOverrides) {
         const response = await this.getLists2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает статус глобального credential установленного MCP сервера в проекте.
-     * Получить статус project credential
+     * credential MCP .
+     * project credential
      */
     async getProjectCredentialStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -619,16 +619,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает статус глобального credential установленного MCP сервера в проекте.
-     * Получить статус project credential
+     * credential MCP .
+     * project credential
      */
     async getProjectCredentialStatus(requestParameters, initOverrides) {
         const response = await this.getProjectCredentialStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создает список MCP серверов в указанном проекте.
-     * Создать список MCP серверов
+     * MCP .
+     * MCP
      */
     async listsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -670,16 +670,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает список MCP серверов в указанном проекте.
-     * Создать список MCP серверов
+     * MCP .
+     * MCP
      */
     async lists(requestParameters, initOverrides) {
         const response = await this.listsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Добавить MCP сервер в список.
-     * Добавить MCP сервер в список
+     * MCP .
+     * MCP
      */
     async listsServersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -722,16 +722,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Добавить MCP сервер в список.
-     * Добавить MCP сервер в список
+     * MCP .
+     * MCP
      */
     async listsServers(requestParameters, initOverrides) {
         const response = await this.listsServersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создает MCP сервер в указанном проекте.
-     * Создать MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersCreateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -776,16 +776,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateServerResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает MCP сервер в указанном проекте.
-     * Создать MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersCreate(requestParameters, initOverrides) {
         const response = await this.mcpServersCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет MCP сервер проекта.
-     * Удалить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersDeactivateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -828,15 +828,15 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Удаляет MCP сервер проекта.
-     * Удалить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersDeactivate(requestParameters, initOverrides) {
         await this.mcpServersDeactivateRaw(requestParameters, initOverrides);
     }
     /**
-     * Возвращает MCP сервер если у вас есть доступ к его проекту.
-     * Получить MCP сервер по ID
+     * MCP .
+     * MCP ID
      */
     async mcpServersGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -879,16 +879,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetServerResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает MCP сервер если у вас есть доступ к его проекту.
-     * Получить MCP сервер по ID
+     * MCP .
+     * MCP ID
      */
     async mcpServersGetById(requestParameters, initOverrides) {
         const response = await this.mcpServersGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Импортирует список MCP серверов в проект.
-     * Импортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async mcpServersImportRaw(requestParameters, initOverrides) {
         if (requestParameters['xSessionId'] == null) {
@@ -927,16 +927,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ImportServersResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Импортирует список MCP серверов в проект.
-     * Импортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async mcpServersImport(requestParameters, initOverrides) {
         const response = await this.mcpServersImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает MCP серверы проекта.
-     * Получить список MCP серверов
+     * MCP .
+     * MCP
      */
     async mcpServersListRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -991,16 +991,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PaginatedServersResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает MCP серверы проекта.
-     * Получить список MCP серверов
+     * MCP .
+     * MCP
      */
     async mcpServersList(requestParameters, initOverrides) {
         const response = await this.mcpServersListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет MCP сервер проекта.
-     * Обновить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1048,16 +1048,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateServerResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет MCP сервер проекта.
-     * Обновить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdate(requestParameters, initOverrides) {
         const response = await this.mcpServersUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Восстанавливает ранее удалённый MCP сервер.
-     * Восстановить удалённый MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdateRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1100,16 +1100,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Восстанавливает ранее удалённый MCP сервер.
-     * Восстановить удалённый MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdateRestore(requestParameters, initOverrides) {
         const response = await this.mcpServersUpdateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Сохраняет глобальный credential для установленного MCP сервера в режиме project.
-     * Сохранить project credential вручную
+     * credential MCP project.
+     * project credential
      */
     async projectCredentialManualRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1157,16 +1157,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Сохраняет глобальный credential для установленного MCP сервера в режиме project.
-     * Сохранить project credential вручную
+     * credential MCP project.
+     * project credential
      */
     async projectCredentialManual(requestParameters, initOverrides) {
         const response = await this.projectCredentialManualRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Начать OAuth для project credential установленного MCP сервера.
-     * Начать OAuth для project credential установленного MCP сервера
+     * OAuth project credential MCP .
+     * OAuth project credential MCP
      */
     async projectCredentialOauthStartRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1214,16 +1214,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartCustomMcpOAuthResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Начать OAuth для project credential установленного MCP сервера.
-     * Начать OAuth для project credential установленного MCP сервера
+     * OAuth project credential MCP .
+     * OAuth project credential MCP
      */
     async projectCredentialOauthStart(requestParameters, initOverrides) {
         const response = await this.projectCredentialOauthStartRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Повторно проверяет активный project credential установленного MCP сервера и сохраняет статус валидности.
-     * Проверить project credential
+     * project credential MCP .
+     * project credential
      */
     async projectCredentialValidateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1266,16 +1266,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Повторно проверяет активный project credential установленного MCP сервера и сохраняет статус валидности.
-     * Проверить project credential
+     * project credential MCP .
+     * project credential
      */
     async projectCredentialValidate(requestParameters, initOverrides) {
         const response = await this.projectCredentialValidateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет список если у вас есть доступ к его проекту.
-     * Обновить список MCP серверов
+     * .
+     * MCP
      */
     async updateListsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1320,16 +1320,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет список если у вас есть доступ к его проекту.
-     * Обновить список MCP серверов
+     * .
+     * MCP
      */
     async updateLists(requestParameters, initOverrides) {
         const response = await this.updateListsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Восстанавливает ранее удалённый список серверов.
-     * Восстановить удалённый список MCP серверов
+     * .
+     * MCP
      */
     async updateListsRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1369,8 +1369,8 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Восстанавливает ранее удалённый список серверов.
-     * Восстановить удалённый список MCP серверов
+     * .
+     * MCP
      */
     async updateListsRestore(requestParameters, initOverrides) {
         const response = await this.updateListsRestoreRaw(requestParameters, initOverrides);

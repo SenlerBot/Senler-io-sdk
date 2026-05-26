@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,73 +17,73 @@ import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachm
  */
 export interface UpdateProjectDto {
     /**
-     * Название проекта.
+     * .
      * @type {string}
      * @memberof UpdateProjectDto
      */
     name?: string;
     /**
-     * Описание проекта
+     *
      * @type {string}
      * @memberof UpdateProjectDto
      */
     description?: string;
     /**
-     * URL аватарки проекта.
+     * URL .
      * @type {string}
      * @memberof UpdateProjectDto
      */
     avatarUrl?: string;
     /**
-     * Источник создания.
+     * .
      * @type {string}
      * @memberof UpdateProjectDto
      */
     source?: UpdateProjectDtoSourceEnum;
     /**
-     * ID канала Senler.
+     * ID Senler.
      * @type {number}
      * @memberof UpdateProjectDto
      */
     senlerChannelId?: number;
     /**
-     * Основной канал проекта (UUID).
+     * (UUID).
      * @type {string}
      * @memberof UpdateProjectDto
      */
     primaryChannelId?: string;
     /**
-     * UUID владельца проекта.
+     * UUID .
      * @type {string}
      * @memberof UpdateProjectDto
      */
     ownerUserId?: string;
     /**
-     * Язык проекта по умолчанию (влияет на генерацию summary).
+     * ( summary).
      * @type {string}
      * @memberof UpdateProjectDto
      */
     defaultLanguage?: UpdateProjectDtoDefaultLanguageEnum;
     /**
-     * Активен ли проект.
+     * .
      * @type {boolean}
      * @memberof UpdateProjectDto
      */
     isActive?: boolean;
     /**
-     * Глобальный лимит загрузки вложений проекта в мегабайтах.
+     * .
      * @type {number}
      * @memberof UpdateProjectDto
      */
     attachmentUploadLimitMb?: number;
     /**
-     * Переопределения лимита загрузки вложений по типам каналов в мегабайтах.
+     * .
      * @type {ProjectAttachmentUploadLimitsByChannelDto}
      * @memberof UpdateProjectDto
      */
     attachmentUploadLimitsByChannelMb?: ProjectAttachmentUploadLimitsByChannelDto;
     /**
-     * Метаданные проекта.
+     * .
      * @type {object}
      * @memberof UpdateProjectDto
      */

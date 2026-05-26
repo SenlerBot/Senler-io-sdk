@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -91,8 +91,8 @@ export interface TrainingStartRequest {
 export class AgentTrainingApi extends runtime.BaseAPI {
 
     /**
-     * Возвращает subscription token для канала agent:{agentId}:progress с прогрессом автосоздания агента.
-     * Получить subscription token для realtime-прогресса обучения агента
+     * subscription token agent:{agentId}:progress .
+     * subscription token realtime-
      */
     async getTrainingRealtimeTokenRaw(requestParameters: GetTrainingRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>> {
         if (requestParameters['id'] == null) {
@@ -145,8 +145,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает subscription token для канала agent:{agentId}:progress с прогрессом автосоздания агента.
-     * Получить subscription token для realtime-прогресса обучения агента
+     * subscription token agent:{agentId}:progress .
+     * subscription token realtime-
      */
     async getTrainingRealtimeToken(requestParameters: GetTrainingRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto> {
         const response = await this.getTrainingRealtimeTokenRaw(requestParameters, initOverrides);
@@ -154,8 +154,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает текущий статус обучения агента и прогресс выполнения задач.
-     * Получить статус обучения
+     * .
+     * 
      */
     async getTrainingStatusRaw(requestParameters: GetTrainingStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrainingStatusResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -208,8 +208,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает текущий статус обучения агента и прогресс выполнения задач.
-     * Получить статус обучения
+     * .
+     * 
      */
     async getTrainingStatus(requestParameters: GetTrainingStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrainingStatusResponseDto> {
         const response = await this.getTrainingStatusRaw(requestParameters, initOverrides);
@@ -217,8 +217,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Отменяет процесс обучения агента и все активные задачи.
-     * Отменить обучение
+     * .
+     * 
      */
     async trainingCancelRaw(requestParameters: TrainingCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -271,16 +271,16 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Отменяет процесс обучения агента и все активные задачи.
-     * Отменить обучение
+     * .
+     * 
      */
     async trainingCancel(requestParameters: TrainingCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.trainingCancelRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Возвращает preview объема данных, доступности загрузки истории, времени и кредитов без создания задач.
-     * Оценить обучение агента
+     * preview , , .
+     * 
      */
     async trainingPreviewRaw(requestParameters: TrainingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrainingPreviewResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -343,8 +343,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает preview объема данных, доступности загрузки истории, времени и кредитов без создания задач.
-     * Оценить обучение агента
+     * preview , , .
+     * 
      */
     async trainingPreview(requestParameters: TrainingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrainingPreviewResponseDto> {
         const response = await this.trainingPreviewRaw(requestParameters, initOverrides);
@@ -352,8 +352,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Выбирает один из сгенерированных вариантов агента и активирует его.
-     * Выбрать вариант агента
+     * .
+     * 
      */
     async trainingSelectRaw(requestParameters: TrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -416,8 +416,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Выбирает один из сгенерированных вариантов агента и активирует его.
-     * Выбрать вариант агента
+     * .
+     * 
      */
     async trainingSelect(requestParameters: TrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.trainingSelectRaw(requestParameters, initOverrides);
@@ -425,8 +425,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Запускает процесс автоматического обучения агента на основе источников данных.
-     * Запустить обучение агента
+     * .
+     * 
      */
     async trainingStartRaw(requestParameters: TrainingStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartTrainingResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -489,8 +489,8 @@ export class AgentTrainingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Запускает процесс автоматического обучения агента на основе источников данных.
-     * Запустить обучение агента
+     * .
+     * 
      */
     async trainingStart(requestParameters: TrainingStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartTrainingResponseDto> {
         const response = await this.trainingStartRaw(requestParameters, initOverrides);

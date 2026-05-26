@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,25 +17,25 @@ import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBinding
  */
 export interface AgentDraftResponseDto {
     /**
-     * UUID черновика.
+     * UUID .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     id: string;
     /**
-     * ID агента (опубликованная версия).
+     * ID ( ).
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     agentId: string;
     /**
-     * Имя агента.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     name: string;
     /**
-     * Инструкция для агента.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
@@ -47,49 +47,49 @@ export interface AgentDraftResponseDto {
      */
     avatarUrl?: string | null;
     /**
-     * Тип агента.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     agentType: AgentDraftResponseDtoAgentTypeEnum;
     /**
-     * Режим привязки серверов.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     serverBindingMode: AgentDraftResponseDtoServerBindingModeEnum;
     /**
-     * ID списка MCP серверов.
+     * ID MCP .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     mcpServerListId?: string;
     /**
-     * ID прямо привязанных серверов (для режима direct).
+     * ID ( direct).
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     mcpServerIds?: Array<string> | null;
     /**
-     * Глобальные права агента на выбранные источники базы знаний.
+     * .
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     knowledgeBasePermissions?: Array<AgentDraftResponseDtoKnowledgeBasePermissionsEnum>;
     /**
-     * Источники базы знаний, доступные агенту.
+     * , .
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof AgentDraftResponseDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID проекта (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     projectId: string;
     /**
-     * Метаданные агента.
+     * .
      * @type {{ [key: string]: any; }}
      * @memberof AgentDraftResponseDto
      */
@@ -97,301 +97,301 @@ export interface AgentDraftResponseDto {
         [key: string]: any;
     };
     /**
-     * ID логической текстовой модели агента.
+     * ID .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature для AI генерации (0.
+     * Temperature AI (0.
      * @type {number}
      * @memberof AgentDraftResponseDto
      */
     temperature?: number | null;
     /**
-     * Сбор метрик включен.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     metricsCollectionEnabled: boolean;
     /**
-     * Ключевые слова для автопривязки агента.
+     * .
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     triggerKeywords: Array<string> | null;
     /**
-     * Роль автопривязки по ключевым словам.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     keywordAssignmentRole?: AgentDraftResponseDtoKeywordAssignmentRoleEnum | null;
     /**
-     * Категория диалогов для ключевых слов.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     keywordDialogScope?: AgentDraftResponseDtoKeywordDialogScopeEnum | null;
     /**
-     * ID каналов, в которых работают ключевые слова.
+     * ID , .
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * Режим автоназначения агента.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentMode: AgentDraftResponseDtoAutoAssignmentModeEnum;
     /**
-     * ID каналов для режима selected_channels.
+     * ID selected_channels.
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * Категория диалогов для автоназначения на все сообщения.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentDialogScope?: AgentDraftResponseDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * Роль агента в правилах автоназначения.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentRole: AgentDraftResponseDtoAutoAssignmentRoleEnum;
     /**
-     * Тип черновика.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     draftType: AgentDraftResponseDtoDraftTypeEnum;
     /**
-     * Использовать дефолтные метрики (динамический режим).
+     * ( ).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     useDefaultMetrics: boolean;
     /**
-     * ID включенных метрик (для статического режима).
+     * ID ( ).
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     enabledMetricIds: Array<string> | null;
     /**
-     * Обоснование от AI.
+     * AI.
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     aiReasoning?: string | null;
     /**
-     * Оценка AI.
+     * AI.
      * @type {number}
      * @memberof AgentDraftResponseDto
      */
     aiConfidenceScore?: number | null;
     /**
-     * Статус черновика.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     status: AgentDraftResponseDtoStatusEnum;
     /**
-     * Разрешить кнопки в ответах.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableButtons: boolean;
     /**
-     * Разрешить действия с элементами сайта через виджет.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableWidgetPageActions: boolean;
     /**
-     * Разрешить кастомные вложения (URL, S3, переиспользование).
+     * (URL, S3, ).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableCustomAttachments: boolean;
     /**
-     * Разрешить генерацию изображений (DALL-E).
+     * (DALL-E).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableImageGeneration: boolean;
     /**
-     * ID логической модели для генерации изображений.
+     * ID .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * Разрешить генерацию аудио (TTS).
+     * (TTS).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableAudioGeneration: boolean;
     /**
-     * ID логической модели для генерации аудио.
+     * ID .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * Разрешить распознавание речи (STT).
+     * (STT).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableSpeechRecognition: boolean;
     /**
-     * ID логической модели для распознавания речи.
+     * ID .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * Разрешить распознавание изображений (Vision).
+     * (Vision).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableImageRecognition: boolean;
     /**
-     * ID логической модели для распознавания изображений.
+     * ID .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * Разрешить генерацию QR кодов.
+     * QR .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableQrCode: boolean;
     /**
-     * Разрешить генерацию графиков.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableChart: boolean;
     /**
-     * Разрешить веб-поиск.
+     * -.
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableWebSearch: boolean;
     /**
-     * Разрешить блокировать лидов.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableLeadBlocking: boolean;
     /**
-     * Разрешить генерацию AI ответа.
+     * AI .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableAiResponse: boolean;
     /**
-     * Отправлять сообщение пользователю.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableUserMessage: boolean;
     /**
-     * Включить streaming режим генерации ответа.
+     * streaming .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableStreaming: boolean;
     /**
-     * Разрешить предварительные ответы (send_preliminary_response tool).
+     * (send_preliminary_response tool).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enablePreliminaryResponse: boolean;
     /**
-     * Передавать реакции на сообщения в AI-контекст.
+     * AI-.
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableMessageReactionsContext: boolean;
     /**
-     * Режим выборочных ответов (skip_response tool).
+     * (skip_response tool).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableSelectiveResponse: boolean;
     /**
-     * Включить планирование сообщений (schedule_next_message tool).
+     * (schedule_next_message tool).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableScheduling: boolean;
     /**
-     * Включить пропуск метрик (skip_metrics в control_processing).
+     * (skip_metrics control_processing).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableSkipMetrics: boolean;
     /**
-     * Включить мьют диалога в таймерах.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableMuteDialog: boolean;
     /**
-     * Разрешить агенту отвязываться от диалога (detach_from_dialog tool).
+     * (detach_from_dialog tool).
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableDetachFromDialog: boolean;
     /**
-     * Включить переменные проекта.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     useProjectVariables: boolean;
     /**
-     * Включить переменные лида.
+     * .
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     useLeadVariables: boolean;
     /**
-     * Режим работы с переменными проекта из инструкции.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     projectVarsInstructionMode: AgentDraftResponseDtoProjectVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными проекта по запросу пользователя.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     projectVarsUserRequestMode: AgentDraftResponseDtoProjectVarsUserRequestModeEnum;
     /**
-     * Режим работы с переменными лида из инструкции.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     leadVarsInstructionMode: AgentDraftResponseDtoLeadVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными лида по запросу пользователя.
+     * .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     leadVarsUserRequestMode: AgentDraftResponseDtoLeadVarsUserRequestModeEnum;
     /**
-     * Дата создания черновика.
+     * .
      * @type {Date}
      * @memberof AgentDraftResponseDto
      */
     createdAt: Date;
     /**
-     * Дата последнего обновления черновика.
+     * .
      * @type {Date}
      * @memberof AgentDraftResponseDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -40,133 +40,133 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  */
 export interface DialogChatEventDto {
     /**
-     * ID события.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     id: string;
     /**
-     * ID диалога; отсутствует у системных событий без диалога.
+     * ID ; .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     dialogId?: string;
     /**
-     * ID MCP сервера.
+     * ID MCP .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     mcpServerId?: string;
     /**
-     * ID канала.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     channelId?: string;
     /**
-     * Тип платформы.
+     * .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     platformType?: DialogChatEventDtoPlatformTypeEnum;
     /**
-     * ID проекта.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     projectId?: string;
     /**
-     * ID агента.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     agentId?: string;
     /**
-     * ID приложения.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     appId?: string;
     /**
-     * ID оригинального агента внутри приложения.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     appAgentId?: string;
     /**
-     * ID лида.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     leadId?: string;
     /**
-     * Тип сущности.
+     * .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     targetType?: DialogChatEventDtoTargetTypeEnum;
     /**
-     * ID сущности.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     targetId?: string;
     /**
-     * ID сообщения на внешней платформе.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     externalMessageId?: string;
     /**
-     * Отправитель события.
+     * .
      * @type {EventSenderDto}
      * @memberof DialogChatEventDto
      */
     sender?: EventSenderDto;
     /**
-     * Структурированное сообщение.
+     * .
      * @type {EventMessageDto}
      * @memberof DialogChatEventDto
      */
     message?: EventMessageDto;
     /**
-     * Вложения события в cabinet-safe формате.
+     * cabinet-safe .
      * @type {Array<EventAttachmentCabinetDto>}
      * @memberof DialogChatEventDto
      */
     attachments: Array<EventAttachmentCabinetDto>;
     /**
-     * Кнопки сообщения.
+     * .
      * @type {Array<EventButtonDto>}
      * @memberof DialogChatEventDto
      */
     buttons: Array<EventButtonDto>;
     /**
-     * Данные нажатия кнопки.
+     * .
      * @type {EventButtonClickDto}
      * @memberof DialogChatEventDto
      */
     buttonClick?: EventButtonClickDto;
     /**
-     * Данные выполнения инструмента.
+     * .
      * @type {EventToolDto}
      * @memberof DialogChatEventDto
      */
     tool?: EventToolDto;
     /**
-     * Затраты события в raw-подобной структуре без provider/admin-only полей.
+     * raw- provider/admin-only .
      * @type {EventCostsCabinetDto}
      * @memberof DialogChatEventDto
      */
     costs?: EventCostsCabinetDto;
     /**
-     * Взаимодействия с сообщением.
+     * .
      * @type {EventMessageInteractionsDto}
      * @memberof DialogChatEventDto
      */
     messageInteractions?: EventMessageInteractionsDto;
     /**
-     * Статус события.
+     * .
      * @type {EventStatusDto}
      * @memberof DialogChatEventDto
      */
@@ -244,13 +244,13 @@ export interface DialogChatEventDto {
      */
     chatChange?: EventChatChangeDto;
     /**
-     * Ошибка события.
+     * .
      * @type {EventErrorDto}
      * @memberof DialogChatEventDto
      */
     error?: EventErrorDto;
     /**
-     * Иерархия события.
+     * .
      * @type {EventHierarchyDto}
      * @memberof DialogChatEventDto
      */
@@ -262,43 +262,43 @@ export interface DialogChatEventDto {
      */
     generation?: EventGenerationDto;
     /**
-     * Теги события.
+     * .
      * @type {Array<string>}
      * @memberof DialogChatEventDto
      */
     tags: Array<string>;
     /**
-     * ID кредитной транзакции.
+     * ID .
      * @type {string}
      * @memberof DialogChatEventDto
      */
     creditTransactionId?: string;
     /**
-     * Временная метка события.
+     * .
      * @type {Date}
      * @memberof DialogChatEventDto
      */
     timestamp: Date;
     /**
-     * Когда событие было создано.
+     * .
      * @type {Date}
      * @memberof DialogChatEventDto
      */
     createdAt: Date;
     /**
-     * Когда состояние события обновлялось последний раз.
+     * .
      * @type {Date}
      * @memberof DialogChatEventDto
      */
     updatedAt: Date;
     /**
-     * Монотонная версия состояния события.
+     * .
      * @type {number}
      * @memberof DialogChatEventDto
      */
     eventVersion: number;
     /**
-     * Тип события диалоговой истории.
+     * .
      * @type {string}
      * @memberof DialogChatEventDto
      */

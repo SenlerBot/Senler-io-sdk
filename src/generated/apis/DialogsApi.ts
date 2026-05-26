@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -112,8 +112,8 @@ export interface GetEventsReactionUsersRequest {
 export class DialogsApi extends runtime.BaseAPI {
 
     /**
-     * Возвращает диалог с учетом прав доступа пользователя.
-     * Получить диалог
+     * .
+     * 
      */
     async dialogsGetByIdRaw(requestParameters: DialogsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDetailsDto>> {
         if (requestParameters['id'] == null) {
@@ -159,8 +159,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает диалог с учетом прав доступа пользователя.
-     * Получить диалог
+     * .
+     * 
      */
     async dialogsGetById(requestParameters: DialogsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDetailsDto> {
         const response = await this.dialogsGetByIdRaw(requestParameters, initOverrides);
@@ -168,8 +168,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Единый endpoint для получения списка диалогов через POST c JSON body.
-     * Список диалогов с фильтрами и поиском (JSON body)
+     * endpoint POST c JSON body.
+     * (JSON body)
      */
     async dialogsListRaw(requestParameters: DialogsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedDialogsDto>> {
         if (requestParameters['queryDialogsDto'] == null) {
@@ -218,8 +218,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Единый endpoint для получения списка диалогов через POST c JSON body.
-     * Список диалогов с фильтрами и поиском (JSON body)
+     * endpoint POST c JSON body.
+     * (JSON body)
      */
     async dialogsList(requestParameters: DialogsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedDialogsDto> {
         const response = await this.dialogsListRaw(requestParameters, initOverrides);
@@ -227,8 +227,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Для email: отправляет письмо напрямую через SMTP канала (лид/диалог не требуются). 404 если канал не найден или лид не найден (для мессенджеров).
-     * Отправить личное сообщение
+     * email: SMTP (/ ). 404 ( ).
+     * 
      */
     async directMessageRaw(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendMessageResponseDto>> {
         if (requestParameters['directMessageDto'] == null) {
@@ -277,8 +277,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Для email: отправляет письмо напрямую через SMTP канала (лид/диалог не требуются). 404 если канал не найден или лид не найден (для мессенджеров).
-     * Отправить личное сообщение
+     * email: SMTP (/ ). 404 ( ).
+     * 
      */
     async directMessage(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendMessageResponseDto> {
         const response = await this.directMessageRaw(requestParameters, initOverrides);
@@ -286,8 +286,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Делает один синхронный запрос VK polls. getById через RCommander и обновляет только snapshot опроса в сообщении.
-     * Обновить snapshot VK-опроса
+     * VK polls. getById RCommander snapshot .
+     * snapshot VK-
      */
     async eventsPollSnapshotRefreshRaw(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollSnapshotRefreshResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -340,8 +340,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Делает один синхронный запрос VK polls. getById через RCommander и обновляет только snapshot опроса в сообщении.
-     * Обновить snapshot VK-опроса
+     * VK polls. getById RCommander snapshot .
+     * snapshot VK-
      */
     async eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto> {
         const response = await this.eventsPollSnapshotRefreshRaw(requestParameters, initOverrides);
@@ -349,8 +349,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Единый endpoint для истории и поиска событий. Автоматически выбирает тип пагинации:.
-     * История событий диалога с поиском
+     * endpoint . :.
+     * 
      */
     async getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>> {
         if (requestParameters['id'] == null) {
@@ -424,8 +424,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Единый endpoint для истории и поиска событий. Автоматически выбирает тип пагинации:.
-     * История событий диалога с поиском
+     * endpoint . :.
+     * 
      */
     async getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response> {
         const response = await this.getEventsRaw(requestParameters, initOverrides);
@@ -433,8 +433,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает одну страницу пользователей варианта опроса по клику/скроллу. Для TG использует webhook-состояние ответов, для VK может использовать платформенный fallback.
-     * Страница пользователей варианта опроса
+     * /. TG webhook- , VK fallback.
+     * 
      */
     async getEventsPollOptionVotersRaw(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollOptionVotersResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -506,8 +506,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает одну страницу пользователей варианта опроса по клику/скроллу. Для TG использует webhook-состояние ответов, для VK может использовать платформенный fallback.
-     * Страница пользователей варианта опроса
+     * /. TG webhook- , VK fallback.
+     * 
      */
     async getEventsPollOptionVoters(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollOptionVotersResponseDto> {
         const response = await this.getEventsPollOptionVotersRaw(requestParameters, initOverrides);
@@ -515,8 +515,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает конечное состояние пользователей для реакции сообщения. Состояние собирается из interaction events MongoDB и ClickHouse.
-     * Пользователи активной реакции сообщения
+     * . interaction events MongoDB ClickHouse.
+     * 
      */
     async getEventsReactionUsersRaw(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventReactionUsersResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -577,8 +577,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает конечное состояние пользователей для реакции сообщения. Состояние собирается из interaction events MongoDB и ClickHouse.
-     * Пользователи активной реакции сообщения
+     * . interaction events MongoDB ClickHouse.
+     * 
      */
     async getEventsReactionUsers(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventReactionUsersResponseDto> {
         const response = await this.getEventsReactionUsersRaw(requestParameters, initOverrides);

@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class BillingApi extends runtime.BaseAPI {
     /**
-     * Удаляет запланированный downgrade. Текущая подписка продолжит автопродлеваться.
-     * Отменить запланированную смену тарифа
+     * downgrade. .
+     *
      */
     async deleteProjectsTariffNextRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -89,16 +89,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет запланированный downgrade. Текущая подписка продолжит автопродлеваться.
-     * Отменить запланированную смену тарифа
+     * downgrade. .
+     *
      */
     async deleteProjectsTariffNext(requestParameters, initOverrides) {
         const response = await this.deleteProjectsTariffNextRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обогащённые данные из ClickHouse: имена агентов, детальная разбивка токенов.
-     * Детализация кредитной транзакции
+     * ClickHouse: , .
+     *
      */
     async getCreditTransactionsDetailsRaw(requestParameters, initOverrides) {
         if (requestParameters['transactionId'] == null) {
@@ -138,16 +138,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditTransactionDetailsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обогащённые данные из ClickHouse: имена агентов, детальная разбивка токенов.
-     * Детализация кредитной транзакции
+     * ClickHouse: , .
+     *
      */
     async getCreditTransactionsDetails(requestParameters, initOverrides) {
         const response = await this.getCreditTransactionsDetailsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает текущий баланс проекта с агрегированной статистикой.
-     * Получить баланс проекта
+     * .
+     *
      */
     async getProjectsBalanceRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -181,16 +181,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectBalanceInfoDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает текущий баланс проекта с агрегированной статистикой.
-     * Получить баланс проекта
+     * .
+     *
      */
     async getProjectsBalance(requestParameters, initOverrides) {
         const response = await this.getProjectsBalanceRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает историю операций с кредитами: списания (usage), начисления от тарифа (tariff_grant), покупки пакетов (purchase/auto_purchase), сгорания (expiration), корректировки (adjustment).
-     * Получить историю кредитных транзакций проекта
+     * : (usage), (tariff_grant), (purchase/auto_purchase), (expiration), (adjustment).
+     *
      */
     async getProjectsCreditTransactionsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -242,16 +242,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditTransactionsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает историю операций с кредитами: списания (usage), начисления от тарифа (tariff_grant), покупки пакетов (purchase/auto_purchase), сгорания (expiration), корректировки (adjustment).
-     * Получить историю кредитных транзакций проекта
+     * : (usage), (tariff_grant), (purchase/auto_purchase), (expiration), (adjustment).
+     *
      */
     async getProjectsCreditTransactions(requestParameters, initOverrides) {
         const response = await this.getProjectsCreditTransactionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Вызывать при выборе пакета в диалоге покупки. Ничего не покупает — только считает.
-     * Расчёт стоимости покупки кредитов
+     * . .
+     *
      */
     async getProjectsCreditsCheckRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -294,16 +294,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditsCheckResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Вызывать при выборе пакета в диалоге покупки. Ничего не покупает — только считает.
-     * Расчёт стоимости покупки кредитов
+     * . .
+     *
      */
     async getProjectsCreditsCheck(requestParameters, initOverrides) {
         const response = await this.getProjectsCreditsCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает заказы, связанные с проектом (через order_items). Фильтр по ID заказа: ?
-     * Получить заказы проекта
+     * , ( order_items). ID : ?
+     *
      */
     async getProjectsOrdersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -349,16 +349,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.OrderListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает заказы, связанные с проектом (через order_items). Фильтр по ID заказа: ?
-     * Получить заказы проекта
+     * , ( order_items). ID : ?
+     *
      */
     async getProjectsOrders(requestParameters, initOverrides) {
         const response = await this.getProjectsOrdersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает текущие платёжные настройки: страна, платёжная система, контакт, адрес. Включает вложенный объект pay_system (если выбрана).
-     * Получить платёжные настройки проекта
+     * : , , , . pay_system ( ).
+     *
      */
     async getProjectsPaymentSettingsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -392,16 +392,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PaymentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает текущие платёжные настройки: страна, платёжная система, контакт, адрес. Включает вложенный объект pay_system (если выбрана).
-     * Получить платёжные настройки проекта
+     * : , , , . pay_system ( ).
+     *
      */
     async getProjectsPaymentSettings(requestParameters, initOverrides) {
         const response = await this.getProjectsPaymentSettingsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Вызывать при каждом изменении параметров в диалоге покупки (период, toggle баланса). Ничего не покупает — только считает.
-     * Расчёт стоимости смены тарифа
+     * (, toggle ). .
+     *
      */
     async getProjectsTariffCheckRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -450,16 +450,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TariffCheckResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Вызывать при каждом изменении параметров в диалоге покупки (период, toggle баланса). Ничего не покупает — только считает.
-     * Расчёт стоимости смены тарифа
+     * (, toggle ). .
+     *
      */
     async getProjectsTariffCheck(requestParameters, initOverrides) {
         const response = await this.getProjectsTariffCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Каждый тариф содержит status (current/upgrade/downgrade) относительно текущей подписки. Если есть запланированный переход (downgrade) — у целевого тарифа будет next_subscription.
-     * Список тарифов для проекта
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     *
      */
     async getProjectsTariffsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -493,16 +493,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectTariffsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Каждый тариф содержит status (current/upgrade/downgrade) относительно текущей подписки. Если есть запланированный переход (downgrade) — у целевого тарифа будет next_subscription.
-     * Список тарифов для проекта
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     *
      */
     async getProjectsTariffs(requestParameters, initOverrides) {
         const response = await this.getProjectsTariffsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает историю денежных операций (пополнения, покупки, возвраты, конвертации).
-     * Получить список транзакций проекта
+     * (, , , ).
+     *
      */
     async getProjectsTransactionsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -557,16 +557,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.BillingTransactionsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает историю денежных операций (пополнения, покупки, возвраты, конвертации).
-     * Получить список транзакций проекта
+     * (, , , ).
+     *
      */
     async getProjectsTransactions(requestParameters, initOverrides) {
         const response = await this.getProjectsTransactionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает детальную информацию по транзакции: статистику по агентам, моделям или список usage-событий.
-     * Получить детализацию транзакции
+     * : , usage-.
+     *
      */
     async getTransactionsDetailsRaw(requestParameters, initOverrides) {
         if (requestParameters['transactionId'] == null) {
@@ -606,16 +606,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TransactionDetailsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает детальную информацию по транзакции: статистику по агентам, моделям или список usage-событий.
-     * Получить детализацию транзакции
+     * : , usage-.
+     *
      */
     async getTransactionsDetails(requestParameters, initOverrides) {
         const response = await this.getTransactionsDetailsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Вызывать только когда credits-check вернул total == null. Кредиты зачисляются мгновенно, не сгорают при смене тарифа.
-     * Купить пакет кредитов с баланса
+     * credits-check total == null. , .
+     *
      */
     async projectsCreditsBuyRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -654,16 +654,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectBalanceInfoDtoFromJSON)(jsonValue));
     }
     /**
-     * Вызывать только когда credits-check вернул total == null. Кредиты зачисляются мгновенно, не сгорают при смене тарифа.
-     * Купить пакет кредитов с баланса
+     * credits-check total == null. , .
+     *
      */
     async projectsCreditsBuy(requestParameters, initOverrides) {
         const response = await this.projectsCreditsBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создаёт заказ, вызывает платёжный шлюз и возвращает URL для редиректа на страницу оплаты. Требует настроенные payment_settings (страна, email).
-     * Создать заказ на оплату
+     * , URL . payment_settings (, email).
+     *
      */
     async projectsOrdersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -702,16 +702,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateOrderResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создаёт заказ, вызывает платёжный шлюз и возвращает URL для редиректа на страницу оплаты. Требует настроенные payment_settings (страна, email).
-     * Создать заказ на оплату
+     * , URL . payment_settings (, email).
+     *
      */
     async projectsOrders(requestParameters, initOverrides) {
         const response = await this.projectsOrdersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Сохраняет страну, способ оплаты, контактные данные и адрес. Если страна меняет валютную зону (RU↔другие), баланс конвертируется автоматически.
-     * Сохранить платёжные настройки проекта
+     * , , . (RU), .
+     *
      */
     async projectsPaymentSettingsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -750,16 +750,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SavePaymentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Сохраняет страну, способ оплаты, контактные данные и адрес. Если страна меняет валютную зону (RU↔другие), баланс конвертируется автоматически.
-     * Сохранить платёжные настройки проекта
+     * , , . (RU), .
+     *
      */
     async projectsPaymentSettings(requestParameters, initOverrides) {
         const response = await this.projectsPaymentSettingsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Вызывать только когда tariff-check вернул total == null. Upgrade — мгновенный (возврат за остаток + новая подписка).
-     * Купить / сменить тариф с баланса
+     * tariff-check total == null. Upgrade ( + ).
+     * /
      */
     async projectsTariffBuyRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -798,16 +798,16 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectBalanceInfoDtoFromJSON)(jsonValue));
     }
     /**
-     * Вызывать только когда tariff-check вернул total == null. Upgrade — мгновенный (возврат за остаток + новая подписка).
-     * Купить / сменить тариф с баланса
+     * tariff-check total == null. Upgrade ( + ).
+     * /
      */
     async projectsTariffBuy(requestParameters, initOverrides) {
         const response = await this.projectsTariffBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Автопокупка: когда кредиты заканчиваются — автоматически покупается выбранный пакет с баланса.
-     * Настроить автопокупку кредитов
+     * : .
+     *
      */
     async updateProjectsAutoPurchaseRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -846,8 +846,8 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutoPurchaseResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Автопокупка: когда кредиты заканчиваются — автоматически покупается выбранный пакет с баланса.
-     * Настроить автопокупку кредитов
+     * : .
+     *
      */
     async updateProjectsAutoPurchase(requestParameters, initOverrides) {
         const response = await this.updateProjectsAutoPurchaseRaw(requestParameters, initOverrides);

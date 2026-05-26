@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -120,8 +120,8 @@ export interface TreeRefreshRequest {
 export class SpacesApi extends runtime.BaseAPI {
 
     /**
-     * Создает фоновый процесс полного refresh metadata spaces внутри выбранного канала.
-     * Создать фоновый процесс refresh spaces выбранного канала
+     * refresh metadata spaces .
+     * refresh spaces
      */
     async channelRefreshRaw(requestParameters: ChannelRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
         if (requestParameters['createChannelSpacesRefreshProcessDto'] == null) {
@@ -170,8 +170,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает фоновый процесс полного refresh metadata spaces внутри выбранного канала.
-     * Создать фоновый процесс refresh spaces выбранного канала
+     * refresh metadata spaces .
+     * refresh spaces
      */
     async channelRefresh(requestParameters: ChannelRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
         const response = await this.channelRefreshRaw(requestParameters, initOverrides);
@@ -179,8 +179,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить продуктовые секции spaces для типа канала.
-     * Получить продуктовые секции spaces для типа канала
+     * spaces .
+     * spaces
      */
     async getSectionsRaw(requestParameters: GetSectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelSpaceSectionsResponseDto>> {
         if (requestParameters['channelId'] == null) {
@@ -241,8 +241,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить продуктовые секции spaces для типа канала.
-     * Получить продуктовые секции spaces для типа канала
+     * spaces .
+     * spaces
      */
     async getSections(requestParameters: GetSectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelSpaceSectionsResponseDto> {
         const response = await this.getSectionsRaw(requestParameters, initOverrides);
@@ -250,8 +250,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает дочерние spaces текущего уровня с cursor-пагинацией внутри выбранного канала. При использовании q или tree-фильтров дерево prunes до совпавших веток, а ancestors остаются видимыми для drill-down.
-     * Получить страницу узлов выбранного уровня дерева spaces
+     * spaces cursor- . q tree- prunes , ancestors drill-down.
+     * spaces
      */
     async getTreeNodesRaw(requestParameters: GetTreeNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpacesTreeNodesResponseDto>> {
         if (requestParameters['channelId'] == null) {
@@ -353,8 +353,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает дочерние spaces текущего уровня с cursor-пагинацией внутри выбранного канала. При использовании q или tree-фильтров дерево prunes до совпавших веток, а ancestors остаются видимыми для drill-down.
-     * Получить страницу узлов выбранного уровня дерева spaces
+     * spaces cursor- . q tree- prunes , ancestors drill-down.
+     * spaces
      */
     async getTreeNodes(requestParameters: GetTreeNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpacesTreeNodesResponseDto> {
         const response = await this.getTreeNodesRaw(requestParameters, initOverrides);
@@ -362,8 +362,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает корневой уровень дерева с cursor-пагинацией. На текущий момент корневые узлы это каналы проекта.
-     * Получить страницу корневых узлов дерева spaces
+     * cursor-. .
+     * spaces
      */
     async getTreeRootRaw(requestParameters: GetTreeRootRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpacesTreeRootResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -461,8 +461,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает корневой уровень дерева с cursor-пагинацией. На текущий момент корневые узлы это каналы проекта.
-     * Получить страницу корневых узлов дерева spaces
+     * cursor-. .
+     * spaces
      */
     async getTreeRoot(requestParameters: GetTreeRootRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpacesTreeRootResponseDto> {
         const response = await this.getTreeRootRaw(requestParameters, initOverrides);
@@ -470,8 +470,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает полную карточку space с каноническими полями, breadcrumb ancestors и базовой информацией о канале.
-     * Получить детали space
+     * space , breadcrumb ancestors .
+     * space
      */
     async spacesGetByIdRaw(requestParameters: SpacesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpaceDetailsResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -517,8 +517,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает полную карточку space с каноническими полями, breadcrumb ancestors и базовой информацией о канале.
-     * Получить детали space
+     * space , breadcrumb ancestors .
+     * space
      */
     async spacesGetById(requestParameters: SpacesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpaceDetailsResponseDto> {
         const response = await this.spacesGetByIdRaw(requestParameters, initOverrides);
@@ -526,8 +526,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Запрашивает обновление metadata одного space и ждёт результат сразу, без создания фонового process.
-     * Синхронно обновить metadata одного space
+     * metadata space , process.
+     * metadata space
      */
     async spacesRefreshRaw(requestParameters: SpacesRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RefreshSpaceResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -573,8 +573,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Запрашивает обновление metadata одного space и ждёт результат сразу, без создания фонового process.
-     * Синхронно обновить metadata одного space
+     * metadata space , process.
+     * metadata space
      */
     async spacesRefresh(requestParameters: SpacesRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RefreshSpaceResponseDto> {
         const response = await this.spacesRefreshRaw(requestParameters, initOverrides);
@@ -582,8 +582,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает фоновый процесс обновления имен каналов для текущей страницы root дерева spaces.
-     * Создать фоновый процесс refresh корневой страницы дерева spaces
+     * root spaces.
+     * refresh spaces
      */
     async treeRefreshRaw(requestParameters: TreeRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
         if (requestParameters['createChannelsTreeRefreshProcessDto'] == null) {
@@ -632,8 +632,8 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает фоновый процесс обновления имен каналов для текущей страницы root дерева spaces.
-     * Создать фоновый процесс refresh корневой страницы дерева spaces
+     * root spaces.
+     * refresh spaces
      */
     async treeRefresh(requestParameters: TreeRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
         const response = await this.treeRefreshRaw(requestParameters, initOverrides);

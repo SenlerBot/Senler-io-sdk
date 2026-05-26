@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,253 +16,253 @@
  */
 export interface RolePermissionsDto {
     /**
-     * Просмотр проекта.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProjects: boolean;
     /**
-     * Управление проектом.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProjects: boolean;
     /**
-     * Просмотр участников и их прав.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAccess: boolean;
     /**
-     * Управление участниками проекта.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAccess: boolean;
     /**
-     * Просмотр каналов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewChannels: boolean;
     /**
-     * Управление каналами (создание, редактирование).
+     * (, ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageChannels: boolean;
     /**
-     * Удаление и миграция каналов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canDeleteChannels: boolean;
     /**
-     * Просмотр агентов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAgents: boolean;
     /**
-     * Управление агентами.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAgents: boolean;
     /**
-     * Просмотр диалогов (проектный уровень).
+     * ( ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewDialogs: boolean;
     /**
-     * Управление диалогами (проектный уровень).
+     * ( ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageDialogs: boolean;
     /**
-     * Просмотр spaces (проектный уровень).
+     * spaces ( ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewSpaces: boolean;
     /**
-     * Управление spaces (проектный уровень).
+     * spaces ( ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageSpaces: boolean;
     /**
-     * Просмотр лидов (проектный уровень).
+     * ( ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewLeads: boolean;
     /**
-     * Управление лидами (проектный уровень).
+     * ( ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageLeads: boolean;
     /**
-     * Управление MCP серверами.
+     * MCP .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageMcpServers: boolean;
     /**
-     * Просмотр MCP серверов.
+     * MCP .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewMcpServers: boolean;
     /**
-     * Просмотр источников данных.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewDataSources: boolean;
     /**
-     * Управление источниками данных.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageDataSources: boolean;
     /**
-     * Управление списками серверов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageServerLists: boolean;
     /**
-     * Просмотр API токенов.
+     * API .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewApiTokens: boolean;
     /**
-     * Управление API токенами.
+     * API .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageApiTokens: boolean;
     /**
-     * Просмотр аналитики.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAnalytics: boolean;
     /**
-     * Управление аналитикой (суммаризация, настройки).
+     * (, ).
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAnalytics: boolean;
     /**
-     * Просмотр метрик.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewMetrics: boolean;
     /**
-     * Управление метриками.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageMetrics: boolean;
     /**
-     * Просмотр событий.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewEvents: boolean;
     /**
-     * Управление событиями.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageEvents: boolean;
     /**
-     * Просмотр аудита проекта.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAudit: boolean;
     /**
-     * Просмотр фоновых процессов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProcesses: boolean;
     /**
-     * Управление фоновыми процессами.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProcesses: boolean;
     /**
-     * Просмотр базы знаний.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewKnowledgeBase: boolean;
     /**
-     * Управление базой знаний.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageKnowledgeBase: boolean;
     /**
-     * Просмотр биллинга.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewBilling: boolean;
     /**
-     * Управление биллингом.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageBilling: boolean;
     /**
-     * Просмотр хранилища.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewStorage: boolean;
     /**
-     * Управление хранилищем.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageStorage: boolean;
     /**
-     * Просмотр переменных проекта.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProjectVariables: boolean;
     /**
-     * Управление переменными проекта.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProjectVariables: boolean;
     /**
-     * Просмотр определений переменных лидов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewLeadDefinitions: boolean;
     /**
-     * Управление определениями переменных лидов.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageLeadDefinitions: boolean;
     /**
-     * Доступ ко всем каналам.
+     * .
      * @type {boolean}
      * @memberof RolePermissionsDto
      */

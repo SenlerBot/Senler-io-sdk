@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -49,109 +49,109 @@ import {
  */
 export interface CreateMetricDefinitionDto {
     /**
-     * Название метрики.
+     * .
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     name: string;
     /**
-     * Описание метрики (необязательно)
+     * ()
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     description?: string;
     /**
-     * Название метрики на русском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     nameRu?: string;
     /**
-     * Название метрики на английском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     nameEn?: string;
     /**
-     * Описание метрик�� на русском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     descriptionRu?: string;
     /**
-     * Описание метрики на английском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     descriptionEn?: string;
     /**
-     * Тип значения метрики.
+     * .
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     valueType: CreateMetricDefinitionDtoValueTypeEnum;
     /**
-     * Инструкция для AI - ЧТО извлечь (БЕЗ перечисления значений).
+     * AI - ( ).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     aiExtractionPrompt: string;
     /**
-     * Пример значения (для подсказки UI и AI). (mixed type)
+     * ( UI AI). (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof CreateMetricDefinitionDto
      */
     exampleValue?: { [key: string]: any; } | null;
     /**
-     * Типы агентов (null = для всех типов, массив = для конкретных типов).
+     * (null = , = ).
      * @type {Array<string>}
      * @memberof CreateMetricDefinitionDto
      */
     agentTypes?: Array<string> | null;
     /**
-     * Валидация для STRING метрики (если value_type = 'string').
+     * STRING ( value_type = 'string').
      * @type {StringValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     stringValidation?: StringValidationDto;
     /**
-     * Валидация для NUMBER метрики (если value_type = 'number').
+     * NUMBER ( value_type = 'number').
      * @type {NumberValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     numberValidation?: NumberValidationDto;
     /**
-     * Валидация для ARRAY метрики (если value_type = 'array').
+     * ARRAY ( value_type = 'array').
      * @type {ArrayValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     arrayValidation?: ArrayValidationDto;
     /**
-     * Валидация для BOOLEAN метрики (если value_type = 'boolean').
+     * BOOLEAN ( value_type = 'boolean').
      * @type {BooleanValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     booleanValidation?: BooleanValidationDto;
     /**
-     * Участвует ли в severity-аналитике (топ хороших/плохих).
+     * severity- ( /).
      * @type {boolean}
      * @memberof CreateMetricDefinitionDto
      */
     isAnalyzable?: boolean;
     /**
-     * Норма (целевое значение) для нормативного режима аналитики.
+     * ( ) .
      * @type {number}
      * @memberof CreateMetricDefinitionDto
      */
     norm?: number;
     /**
-     * ID проекта (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     projectId?: string;
     /**
-     * ID создателя метрики.
+     * ID .
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */

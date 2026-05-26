@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -49,7 +49,7 @@ export interface AgentResponseDto {
      */
     agentType: AgentResponseDtoAgentTypeEnum;
     /**
-     * Режим привязки серверов.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
@@ -67,25 +67,25 @@ export interface AgentResponseDto {
      */
     serverList?: McpServerListResponseDto;
     /**
-     * ID прямо привязанных серверов (для режима direct).
+     * ID ( direct).
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * Развернутые данные серверов (для режима direct).
+     * ( direct).
      * @type {Array<McpServerResponseDto>}
      * @memberof AgentResponseDto
      */
     servers?: Array<McpServerResponseDto>;
     /**
-     * Глобальные права агента на выбранные источники базы знаний.
+     * .
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     knowledgeBasePermissions?: Array<AgentResponseDtoKnowledgeBasePermissionsEnum>;
     /**
-     * Источники базы знаний, доступные агенту.
+     * , .
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof AgentResponseDto
      */
@@ -111,13 +111,13 @@ export interface AgentResponseDto {
      */
     isActive: boolean;
     /**
-     * ID логической текстовой модели агента.
+     * ID .
      * @type {string}
      * @memberof AgentResponseDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature для AI генерации (0.
+     * Temperature AI (0.
      * @type {number}
      * @memberof AgentResponseDto
      */
@@ -129,67 +129,67 @@ export interface AgentResponseDto {
      */
     metricsCollectionEnabled: boolean;
     /**
-     * Ключевые слова для автопривязки агента (может быть пустым массивом).
+     * ( ).
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     triggerKeywords: Array<string>;
     /**
-     * Роль автопривязки по ключевым словам.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     keywordAssignmentRole?: AgentResponseDtoKeywordAssignmentRoleEnum | null;
     /**
-     * Категория диалогов для ключевых слов.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     keywordDialogScope?: AgentResponseDtoKeywordDialogScopeEnum | null;
     /**
-     * ID каналов, в которых работают ключевые слова.
+     * ID , .
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * Режим автоназначения агента.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     autoAssignmentMode: AgentResponseDtoAutoAssignmentModeEnum;
     /**
-     * ID каналов для режима selected_channels.
+     * ID selected_channels.
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * Категория диалогов для автоназначения на все сообщения.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     autoAssignmentDialogScope?: AgentResponseDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * Роль агента в правилах автоназначения.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     autoAssignmentRole: AgentResponseDtoAutoAssignmentRoleEnum;
     /**
-     * Статус агента.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     status: AgentResponseDtoStatusEnum | null;
     /**
-     * Текущий шаг wizard'а.
+     * wizard'.
      * @type {string}
      * @memberof AgentResponseDto
      */
     wizardCurrentStep?: string | null;
     /**
-     * Режим обучения wizard'а.
+     * wizard'.
      * @type {string}
      * @memberof AgentResponseDto
      */
@@ -201,205 +201,205 @@ export interface AgentResponseDto {
      */
     wizardWebsiteSourceIds: Array<string>;
     /**
-     * ID каналов wizard.
+     * ID wizard.
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     wizardChannelIds: Array<string>;
     /**
-     * Глубина истории каналов wizard.
+     * wizard.
      * @type {number}
      * @memberof AgentResponseDto
      */
     wizardHistoryDepthDays: number;
     /**
-     * Дозагружать историю каналов wizard.
+     * wizard.
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     wizardScanChannelHistory: boolean;
     /**
-     * Разрешить кнопки в ответах.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableButtons: boolean;
     /**
-     * Разрешить действия с элементами сайта через виджет.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableWidgetPageActions: boolean;
     /**
-     * Разрешить кастомные вложения (URL, S3, переиспользование).
+     * (URL, S3, ).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableCustomAttachments: boolean;
     /**
-     * Разрешить генерацию изображений (DALL-E).
+     * (DALL-E).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableImageGeneration: boolean;
     /**
-     * ID логической модели для генерации изображений.
+     * ID .
      * @type {string}
      * @memberof AgentResponseDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * Разрешить генерацию аудио (TTS).
+     * (TTS).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableAudioGeneration: boolean;
     /**
-     * ID логической модели для генерации аудио.
+     * ID .
      * @type {string}
      * @memberof AgentResponseDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * Разрешить распознавание речи (STT).
+     * (STT).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableSpeechRecognition: boolean;
     /**
-     * ID логической модели для распознавания речи.
+     * ID .
      * @type {string}
      * @memberof AgentResponseDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * Разрешить распознавание изображений (Vision).
+     * (Vision).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableImageRecognition: boolean;
     /**
-     * ID логической модели для распознавания изображений.
+     * ID .
      * @type {string}
      * @memberof AgentResponseDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * Разрешить генерацию QR кодов.
+     * QR .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableQrCode: boolean;
     /**
-     * Разрешить генерацию графиков.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableChart: boolean;
     /**
-     * Разрешить веб-поиск.
+     * -.
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableWebSearch: boolean;
     /**
-     * Разрешить блокировать лидов.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableLeadBlocking: boolean;
     /**
-     * Разрешить генерацию AI ответа.
+     * AI .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableAiResponse: boolean;
     /**
-     * Отправлять сообщение пользователю.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableUserMessage: boolean;
     /**
-     * Включить streaming режим генерации ответа.
+     * streaming .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableStreaming: boolean;
     /**
-     * Разрешить предварительные ответы (send_preliminary_response tool).
+     * (send_preliminary_response tool).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enablePreliminaryResponse: boolean;
     /**
-     * Передавать реакции на сообщения в AI-контекст.
+     * AI-.
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableMessageReactionsContext: boolean;
     /**
-     * Режим выборочных ответов (control_processing tool).
+     * (control_processing tool).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableSelectiveResponse: boolean;
     /**
-     * Включить таймеры (schedule_next_message tool).
+     * (schedule_next_message tool).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableScheduling: boolean;
     /**
-     * Включить пропуск метрик (skip_metrics в control_processing).
+     * (skip_metrics control_processing).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableSkipMetrics: boolean;
     /**
-     * Включить мьют диалога в таймерах (mute_dialog в schedule_next_message).
+     * (mute_dialog schedule_next_message).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableMuteDialog: boolean;
     /**
-     * Разрешить агенту отвязываться от диалога (detach_from_dialog tool).
+     * (detach_from_dialog tool).
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableDetachFromDialog: boolean;
     /**
-     * Включить переменные проекта.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     useProjectVariables: boolean;
     /**
-     * Включить переменные лида.
+     * .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     useLeadVariables: boolean;
     /**
-     * Режим работы с переменными проекта из инструкции.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     projectVarsInstructionMode: AgentResponseDtoProjectVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными проекта по запросу пользователя.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     projectVarsUserRequestMode: AgentResponseDtoProjectVarsUserRequestModeEnum;
     /**
-     * Режим работы с переменными лида из инструкции.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */
     leadVarsInstructionMode: AgentResponseDtoLeadVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными лида по запросу пользователя.
+     * .
      * @type {string}
      * @memberof AgentResponseDto
      */

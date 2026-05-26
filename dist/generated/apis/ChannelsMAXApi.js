@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class ChannelsMAXApi extends runtime.BaseAPI {
     /**
-     * Создает канал на основе MAX бота.
-     * Создать MAX канал
+     * MAX .
+     * MAX
      */
     async maxRaw(requestParameters, initOverrides) {
         if (requestParameters['createMaxChannelDto'] == null) {
@@ -91,16 +91,16 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateMaxChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает канал на основе MAX бота.
-     * Создать MAX канал
+     * MAX .
+     * MAX
      */
     async max(requestParameters, initOverrides) {
         const response = await this.maxRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Привязывает или ротирует токен MAX бота для уже подключенного MAX канала. Token должен принадлежать тому же bot_id, который уже зафиксирован в channel.
-     * Привязать MAX токен к каналу
+     * MAX MAX . Token bot_id, channel.
+     * MAX
      */
     async tokensMaxBindRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -139,16 +139,16 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Привязывает или ротирует токен MAX бота для уже подключенного MAX канала. Token должен принадлежать тому же bot_id, который уже зафиксирован в channel.
-     * Привязать MAX токен к каналу
+     * MAX MAX . Token bot_id, channel.
+     * MAX
      */
     async tokensMaxBind(requestParameters, initOverrides) {
         const response = await this.tokensMaxBindRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет текущий статус MAX webhook через MAX API (/subscriptions) и обновляет статус в БД.
-     * Проверить статус MAX webhook
+     * MAX webhook MAX API (/subscriptions) .
+     * MAX webhook
      */
     async tokensMaxCheckWebhookStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -182,16 +182,16 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CheckWebhookStatusResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет текущий статус MAX webhook через MAX API (/subscriptions) и обновляет статус в БД.
-     * Проверить статус MAX webhook
+     * MAX webhook MAX API (/subscriptions) .
+     * MAX webhook
      */
     async tokensMaxCheckWebhookStatus(requestParameters, initOverrides) {
         const response = await this.tokensMaxCheckWebhookStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Скачивает аватарку бота из MAX и загружает её в S3.
-     * Обновить аватарку MAX бота
+     * MAX S3.
+     * MAX
      */
     async tokensMaxRefreshAvatarRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -225,16 +225,16 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Скачивает аватарку бота из MAX и загружает её в S3.
-     * Обновить аватарку MAX бота
+     * MAX S3.
+     * MAX
      */
     async tokensMaxRefreshAvatar(requestParameters, initOverrides) {
         const response = await this.tokensMaxRefreshAvatarRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет сохранённый MAX access token через MAX API (/me).
-     * Проверить валидность MAX токена
+     * MAX access token MAX API (/me).
+     * MAX
      */
     async tokensMaxValidateRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -268,16 +268,16 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateMaxTokenResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет сохранённый MAX access token через MAX API (/me).
-     * Проверить валидность MAX токена
+     * MAX access token MAX API (/me).
+     * MAX
      */
     async tokensMaxValidate(requestParameters, initOverrides) {
         const response = await this.tokensMaxValidateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Устанавливает вебхук через MAX API (/subscriptions).
-     * Установить вебхук для MAX бота
+     * MAX API (/subscriptions).
+     * MAX
      */
     async tokensMaxWebhookSetupRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -316,8 +316,8 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SetupWebhookResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Устанавливает вебхук через MAX API (/subscriptions).
-     * Установить вебхук для MAX бота
+     * MAX API (/subscriptions).
+     * MAX
      */
     async tokensMaxWebhookSetup(requestParameters, initOverrides) {
         const response = await this.tokensMaxWebhookSetupRaw(requestParameters, initOverrides);

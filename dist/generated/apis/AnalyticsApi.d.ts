@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -126,123 +126,123 @@ export interface UpdateSummarizeSettingsRequest {
  */
 export declare class AnalyticsApi extends runtime.BaseAPI {
     /**
-     * Метрики агента с отклонениями. Включает контекст агента, временной ряд и общую статистику.
-     * L1: Метрики агента
+     * . , .
+     * L1:
      */
     getAgentsTopMetricsRaw(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DrillDownByAgentResponseDto>>;
     /**
-     * Метрики агента с отклонениями. Включает контекст агента, временной ряд и общую статистику.
-     * L1: Метрики агента
+     * . , .
+     * L1:
      */
     getAgentsTopMetrics(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByAgentResponseDto>;
     /**
-     * Просмотр собранных метрик из ClickHouse с фильтрами, пагинацией и агрегированной сводкой.
-     * Лог метрик
+     * ClickHouse , .
+     *
      */
     getMetricsLogRaw(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsLogResponseDto>>;
     /**
-     * Просмотр собранных метрик из ClickHouse с фильтрами, пагинацией и агрегированной сводкой.
-     * Лог метрик
+     * ClickHouse , .
+     *
      */
     getMetricsLog(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsLogResponseDto>;
     /**
-     * Агенты с отклонениями по выбранной метрике. Включает контекст метрики, временной ряд и рекомендации.
-     * L1: Агенты по метрике
+     * . , .
+     * L1:
      */
     getMetricsTopAgentsRaw(requestParameters: GetMetricsTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DrillDownByMetricResponseDto>>;
     /**
-     * Агенты с отклонениями по выбранной метрике. Включает контекст метрики, временной ряд и рекомендации.
-     * L1: Агенты по метрике
+     * . , .
+     * L1:
      */
     getMetricsTopAgents(requestParameters: GetMetricsTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByMetricResponseDto>;
     /**
-     * Возвращает конкретную суммаризацию.
-     * Суммаризация по ID
+     * .
+     * ID
      */
     getSummarizeRaw(requestParameters: GetSummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>>;
     /**
-     * Возвращает конкретную суммаризацию.
-     * Суммаризация по ID
+     * .
+     * ID
      */
     getSummarize(requestParameters: GetSummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto>;
     /**
-     * Список моделей с примерной стоимостью. Для выбора модели перед генерацией.
-     * Оценка стоимости суммаризации
+     * . .
+     *
      */
     getSummarizeEstimateRaw(requestParameters: GetSummarizeEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EstimateSummarizationResponseDto>>;
     /**
-     * Список моделей с примерной стоимостью. Для выбора модели перед генерацией.
-     * Оценка стоимости суммаризации
+     * . .
+     *
      */
     getSummarizeEstimate(requestParameters: GetSummarizeEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EstimateSummarizationResponseDto>;
     /**
-     * Список всех суммаризаций проекта с пагинацией.
-     * История суммаризаций
+     * .
+     *
      */
     getSummarizeHistoryRaw(requestParameters: GetSummarizeHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationHistoryResponseDto>>;
     /**
-     * Список всех суммаризаций проекта с пагинацией.
-     * История суммаризаций
+     * .
+     *
      */
     getSummarizeHistory(requestParameters: GetSummarizeHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationHistoryResponseDto>;
     /**
-     * Возвращает последнюю сгенерированную суммаризацию для проекта.
-     * Последняя суммаризация
+     * .
+     *
      */
     getSummarizeLatestRaw(requestParameters: GetSummarizeLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>>;
     /**
-     * Возвращает последнюю сгенерированную суммаризацию для проекта.
-     * Последняя суммаризация
+     * .
+     *
      */
     getSummarizeLatest(requestParameters: GetSummarizeLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto>;
     /**
-     * Текущие настройки автоматической суммаризации для проекта.
-     * Настройки автоматической суммаризации
+     * .
+     *
      */
     getSummarizeSettingsRaw(requestParameters: GetSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationSettingsResponseDto>>;
     /**
-     * Текущие настройки автоматической суммаризации для проекта.
-     * Настройки автоматической суммаризации
+     * .
+     *
      */
     getSummarizeSettings(requestParameters: GetSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationSettingsResponseDto>;
     /**
-     * Агенты с наибольшим совокупным отклонением по всем метрикам. Включает score, топ-3 проблемных метрик и общую статистику.
-     * L0: Топ агентов
+     * . score, -3 .
+     * L0:
      */
     getTopAgentsRaw(requestParameters: GetTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TopAgentsResponseDto>>;
     /**
-     * Агенты с наибольшим совокупным отклонением по всем метрикам. Включает score, топ-3 проблемных метрик и общую статистику.
-     * L0: Топ агентов
+     * . score, -3 .
+     * L0:
      */
     getTopAgents(requestParameters: GetTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TopAgentsResponseDto>;
     /**
-     * Метрики с наибольшими отклонениями. Поддерживает режимы оценки (anomaly/trend/normative) и фильтрацию по типу/категории.
-     * L0: Топ метрик
+     * . (anomaly/trend/normative) /.
+     * L0:
      */
     getTopMetricsRaw(requestParameters: GetTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TopMetricsResponseDto>>;
     /**
-     * Метрики с наибольшими отклонениями. Поддерживает режимы оценки (anomaly/trend/normative) и фильтрацию по типу/категории.
-     * L0: Топ метрик
+     * . (anomaly/trend/normative) /.
+     * L0:
      */
     getTopMetrics(requestParameters: GetTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TopMetricsResponseDto>;
     /**
-     * AI-анализ текущей ситуации с рекомендациями. Платная операция.
-     * Генерация суммаризации
+     * AI- . .
+     *
      */
     summarizeRaw(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>>;
     /**
-     * AI-анализ текущей ситуации с рекомендациями. Платная операция.
-     * Генерация суммаризации
+     * AI- . .
+     *
      */
     summarize(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto>;
     /**
-     * Включить/выключить автоматическую суммаризацию, настроить период и расписание.
-     * Обновить настройки суммаризации
+     * / , .
+     *
      */
     updateSummarizeSettingsRaw(requestParameters: UpdateSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationSettingsResponseDto>>;
     /**
-     * Включить/выключить автоматическую суммаризацию, настроить период и расписание.
-     * Обновить настройки суммаризации
+     * / , .
+     *
      */
     updateSummarizeSettings(requestParameters: UpdateSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationSettingsResponseDto>;
 }

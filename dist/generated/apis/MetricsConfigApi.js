@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class MetricsConfigApi extends runtime.BaseAPI {
     /**
-     * Возвращает конфигурацию метрик агента с учетом прав доступа пользователя.
-     * Получить конфигурацию метрик для агента
+     * .
+     *
      */
     async getMetricsRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -92,16 +92,16 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AgentMetricsConfigResponseDtoFromJSON));
     }
     /**
-     * Возвращает конфигурацию метрик агента с учетом прав доступа пользователя.
-     * Получить конфигурацию метрик для агента
+     * .
+     *
      */
     async getMetrics(requestParameters, initOverrides) {
         const response = await this.getMetricsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает количество включённых метрик агента с учетом прав доступа пользователя.
-     * Получить количество включённых метрик для агента
+     * .
+     *
      */
     async getMetricsCountRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -138,16 +138,16 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricsCountResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает количество включённых метрик агента с учетом прав доступа пользователя.
-     * Получить количество включённых метрик для агента
+     * .
+     *
      */
     async getMetricsCount(requestParameters, initOverrides) {
         const response = await this.getMetricsCountRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет, включена ли метрика для агента с учетом прав доступа пользователя.
-     * Проверить, включена ли метрика для агента
+     * , .
+     * ,
      */
     async getMetricsEnabledRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -187,16 +187,16 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricEnabledResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет, включена ли метрика для агента с учетом прав доступа пользователя.
-     * Проверить, включена ли метрика для агента
+     * , .
+     * ,
      */
     async getMetricsEnabled(requestParameters, initOverrides) {
         const response = await this.getMetricsEnabledRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает включённые метрики агента с учетом прав доступа пользователя.
-     * Получить только включённые метрики для агента
+     * .
+     *
      */
     async getMetricsEnabled2Raw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -233,16 +233,16 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AgentMetricsConfigResponseDtoFromJSON));
     }
     /**
-     * Возвращает включённые метрики агента с учетом прав доступа пользователя.
-     * Получить только включённые метрики для агента
+     * .
+     *
      */
     async getMetricsEnabled2(requestParameters, initOverrides) {
         const response = await this.getMetricsEnabled2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Отключает метрику для агента с учетом прав доступа пользователя.
-     * Отключить метрику для агента
+     * .
+     *
      */
     async metricsDisableRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -282,16 +282,16 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Отключает метрику для агента с учетом прав доступа пользователя.
-     * Отключить метрику для агента
+     * .
+     *
      */
     async metricsDisable(requestParameters, initOverrides) {
         const response = await this.metricsDisableRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Включает метрику для агента с учетом прав доступа пользователя.
-     * Включить метрику для агента
+     * .
+     *
      */
     async metricsEnableRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -336,16 +336,16 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentMetricsConfigResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Включает метрику для агента с учетом прав доступа пользователя.
-     * Включить метрику для агента
+     * .
+     *
      */
     async metricsEnable(requestParameters, initOverrides) {
         const response = await this.metricsEnableRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Массовое обновление метрик агента с учетом прав доступа пользователя.
-     * Массовое обновление метрик агента
+     * .
+     *
      */
     async updateMetricsRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -387,8 +387,8 @@ class MetricsConfigApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AgentMetricsConfigResponseDtoFromJSON));
     }
     /**
-     * Массовое обновление метрик агента с учетом прав доступа пользователя.
-     * Массовое обновление метрик агента
+     * .
+     *
      */
     async updateMetrics(requestParameters, initOverrides) {
         const response = await this.updateMetricsRaw(requestParameters, initOverrides);

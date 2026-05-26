@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,121 +16,121 @@
  */
 export interface StorageFileItemDto {
     /**
-     * MongoDB id файла.
+     * MongoDB id .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     id: string;
     /**
-     * Публичный UUID upload-сессии.
+     * UUID upload-.
      * @type {string}
      * @memberof StorageFileItemDto
      */
     uploadId: string;
     /**
-     * Имя файла.
+     * .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     fileName: string;
     /**
-     * Размер файла в байтах.
+     * .
      * @type {number}
      * @memberof StorageFileItemDto
      */
     fileSize: number;
     /**
-     * Размер файла в человекочитаемом формате.
+     * .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     fileSizeFormatted: string;
     /**
-     * MIME type файла.
+     * MIME type .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     mimeType: string;
     /**
-     * Категория медиа.
+     * .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     mediaCategory: StorageFileItemDtoMediaCategoryEnum;
     /**
-     * Публичный URL в storage.
+     * URL storage.
      * @type {string}
      * @memberof StorageFileItemDto
      */
     storageUrl?: string;
     /**
-     * Ключ объекта в storage.
+     * storage.
      * @type {string}
      * @memberof StorageFileItemDto
      */
     storagePath?: string;
     /**
-     * Статус файла.
+     * .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     status: StorageFileItemDtoStatusEnum;
     /**
-     * Платформа-источник.
+     * -.
      * @type {string}
      * @memberof StorageFileItemDto
      */
     platformType?: StorageFileItemDtoPlatformTypeEnum;
     /**
-     * Продуктовый источник файла.
+     * .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     storageSource?: StorageFileItemDtoStorageSourceEnum;
     /**
-     * Тип сущности-владельца файла.
+     * - .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     ownerType?: StorageFileItemDtoOwnerTypeEnum;
     /**
-     * ID сущности-владельца файла.
+     * ID - .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     ownerId?: string;
     /**
-     * ID диалога.
+     * ID .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     dialogId?: string | null;
     /**
-     * Название диалога.
+     * .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     dialogTitle?: string;
     /**
-     * ID канала.
+     * ID .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     channelId?: string;
     /**
-     * ID события.
+     * ID .
      * @type {string}
      * @memberof StorageFileItemDto
      */
     eventId?: string | null;
     /**
-     * Дата создания.
+     * .
      * @type {Date}
      * @memberof StorageFileItemDto
      */
     createdAt: Date;
     /**
-     * Дата первого использования.
+     * .
      * @type {Date}
      * @memberof StorageFileItemDto
      */

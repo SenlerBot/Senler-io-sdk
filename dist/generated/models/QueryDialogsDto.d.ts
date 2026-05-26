@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,175 +16,175 @@
  */
 export interface QueryDialogsDto {
     /**
-     * Текстовый поиск по содержимому сообщений (минимум 2 символа).
+     * ( 2 ).
      * @type {string}
      * @memberof QueryDialogsDto
      */
     q?: string;
     /**
-     * Offset для Elasticsearch-поиска по q.
+     * Offset Elasticsearch- q.
      * @type {number}
      * @memberof QueryDialogsDto
      */
     from?: number;
     /**
-     * Размер страницы для Elasticsearch-поиска по q.
+     * Elasticsearch- q.
      * @type {number}
      * @memberof QueryDialogsDto
      */
     size?: number;
     /**
-     * Cursor из предыдущего ответа для списка без q.
+     * Cursor q.
      * @type {string}
      * @memberof QueryDialogsDto
      */
     before?: string;
     /**
-     * Лимит записей.
+     * .
      * @type {number}
      * @memberof QueryDialogsDto
      */
     limit?: number;
     /**
-     * Сортировка (используется БЕЗ q).
+     * ( q).
      * @type {string}
      * @memberof QueryDialogsDto
      */
     sortBy?: QueryDialogsDtoSortByEnum;
     /**
-     * UUID проекта.
+     * UUID .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     projectId: string;
     /**
-     * Фильтр по UUID каналов (массив, до 20 элементов).
+     * UUID (, 20 ).
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     channelId?: Array<string>;
     /**
-     * Фильтр по UUID агентов (массив, до 20 элементов).
+     * UUID (, 20 ).
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     agentId?: Array<string>;
     /**
-     * Фильтр по ID лидов (ObjectId, массив, до 20 элементов).
+     * ID (ObjectId, , 20 ).
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     leadId?: Array<string>;
     /**
-     * Фильтр по статусу диалога.
+     * .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     status?: QueryDialogsDtoStatusEnum;
     /**
-     * Фильтр по статусу ответа операторской стороны: answered - клиенту ответили, unanswered - клиент ждёт ответа.
+     * : answered - , unanswered - .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     operatorResponseStatus?: QueryDialogsDtoOperatorResponseStatusEnum;
     /**
-     * Фильтр по статусу ответа лида: unanswered - ждём ответа клиента на последнее исходящее сообщение.
+     * : unanswered - .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     leadResponseStatus?: QueryDialogsDtoLeadResponseStatusEnum;
     /**
-     * Фильтр по назначению оператора: me - назначенные на текущего пользователя, none - свободные.
+     * : me - , none - .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     operatorAssignment?: QueryDialogsDtoOperatorAssignmentEnum;
     /**
-     * Фильтр по UUID назначенного оператора.
+     * UUID .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     operatorUserId?: string;
     /**
-     * Фильтр по типу диалога.
+     * .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     dialogType?: QueryDialogsDtoDialogTypeEnum;
     /**
-     * Внешний ID диалога (для VK/TG).
+     * ID ( VK/TG).
      * @type {string}
      * @memberof QueryDialogsDto
      */
     externalDialogId?: string;
     /**
-     * Фильтр по leaf space ID (ObjectId, массив, до 20 элементов).
+     * leaf space ID (ObjectId, , 20 ).
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     spaceId?: Array<string>;
     /**
-     * Фильтр по любому уровню space path (space_ids содержит хотя бы один ObjectId, до 20 элементов).
+     * space path (space_ids ObjectId, 20 ).
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     spaceIds?: Array<string>;
     /**
-     * Фильтр по наличию канала: true - только с каналом, false - только без канала, не передан - без фильтра.
+     * : true - , false - , - .
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     hasChannel?: boolean;
     /**
-     * Фильтр по наличию лида: true - только с лидом, false - только без лида.
+     * : true - , false - .
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     hasLead?: boolean;
     /**
-     * Фильтр по наличию событий: true - только с событиями, false - только без событий.
+     * : true - , false - .
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     hasEvents?: boolean;
     /**
-     * Фильтр по тестовым диалогам: true - только тестовые, false - без тестовых.
+     * : true - , false - .
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     isTest?: boolean;
     /**
-     * Фильтр по отключенной автопривязке: true - только такие диалоги, false - только обычные.
+     * : true - , false - .
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     autoAssignDisabled?: boolean;
     /**
-     * Фильтр по статусу мьюта диалога: all - все, muted - замьюченные, not_muted - не замьюченные.
+     * : all - , muted - , not_muted - .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     muteStatus?: QueryDialogsDtoMuteStatusEnum;
     /**
-     * Фильтр по spam-статусу email-диалога: all - все, spam - только спам, not_spam - без спама.
+     * spam- email-: all - , spam - , not_spam - .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     spamStatus?: QueryDialogsDtoSpamStatusEnum;
     /**
-     * Теги для фильтрации (массив строк, до 50 элементов).
+     * ( , 50 ).
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     tags?: Array<string>;
     /**
-     * Начало временного диапазона (started_at >= значение).
+     * (started_at >= ).
      * @type {string}
      * @memberof QueryDialogsDto
      */
     startedAfter?: string;
     /**
-     * Конец временного диапазона (started_at <= значение).
+     * (started_at <= ).
      * @type {string}
      * @memberof QueryDialogsDto
      */

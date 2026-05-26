@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -91,115 +91,115 @@ import {
  */
 export interface DialogDetailsDto {
     /**
-     * Уникальный ID диалога.
+     * ID .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     id: string;
     /**
-     * Агенты диалога (primary + background).
+     * (primary + background).
      * @type {Array<DialogDtoDialogAgentsInner>}
      * @memberof DialogDetailsDto
      */
     dialogAgents?: Array<DialogDtoDialogAgentsInner>;
     /**
-     * ID канала (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof DialogDetailsDto
      */
     channelId?: string;
     /**
-     * ID проекта (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof DialogDetailsDto
      */
     projectId?: string;
     /**
-     * Отключена ли повторная автопривязка агентов для диалога.
+     * .
      * @type {boolean}
      * @memberof DialogDetailsDto
      */
     autoAssignDisabled: boolean;
     /**
-     * Статус диалога.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     status: DialogDetailsDtoStatusEnum;
     /**
-     * Статус ответа операторской стороны.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     operatorResponseStatus: DialogDetailsDtoOperatorResponseStatusEnum;
     /**
-     * С какого времени клиент ждёт ответа операторской стороны.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     operatorWaitingSince?: Date;
     /**
-     * Статус ответа лида на последнее исходящее сообщение.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     leadResponseStatus: DialogDetailsDtoLeadResponseStatusEnum;
     /**
-     * С какого времени сервис ждёт ответа лида.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     leadWaitingSince?: Date;
     /**
-     * Тип диалога.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     dialogType: DialogDetailsDtoDialogTypeEnum;
     /**
-     * Внешний ID диалога.
+     * ID .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     externalDialogId?: string;
     /**
-     * ID leaf space, если диалог привязан к space.
+     * ID leaf space, space.
      * @type {string}
      * @memberof DialogDetailsDto
      */
     spaceId?: string | null;
     /**
-     * Цепочка space ID от корня к leaf.
+     * space ID leaf.
      * @type {Array<string>}
      * @memberof DialogDetailsDto
      */
     spaceIds?: Array<string>;
     /**
-     * Теги диалога.
+     * .
      * @type {Array<string>}
      * @memberof DialogDetailsDto
      */
     tags: Array<string>;
     /**
-     * Приоритет.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     priority?: DialogDetailsDtoPriorityEnum;
     /**
-     * Источник трафика.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     trafficSource?: string;
     /**
-     * Канал трафика.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     trafficMedium?: string;
     /**
-     * Тип устройства.
+     * .
      * @type {string}
      * @memberof DialogDetailsDto
      */
@@ -235,97 +235,97 @@ export interface DialogDetailsDto {
      */
     utmContent?: string;
     /**
-     * Длительность диалога в секундах.
+     * .
      * @type {number}
      * @memberof DialogDetailsDto
      */
     durationSeconds: number;
     /**
-     * Время первого ответа (секунды).
+     * ().
      * @type {number}
      * @memberof DialogDetailsDto
      */
     firstResponseTimeSeconds?: number;
     /**
-     * Время начала диалога.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     startedAt: Date;
     /**
-     * Время завершения диалога.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     completedAt?: Date;
     /**
-     * Время последнего события.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     lastEventAt?: Date;
     /**
-     * Время создания.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     createdAt: Date;
     /**
-     * Время последнего обновления.
+     * .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     updatedAt: Date;
     /**
-     * Тестовый диалог.
+     * .
      * @type {boolean}
      * @memberof DialogDetailsDto
      */
     isTest: boolean;
     /**
-     * Всего событий.
+     * .
      * @type {number}
      * @memberof DialogDetailsDto
      */
     totalEvents: number;
     /**
-     * Количество сообщений.
+     * .
      * @type {number}
      * @memberof DialogDetailsDto
      */
     messagesCount: number;
     /**
-     * Количество непрочитанных сообщений для операторов.
+     * .
      * @type {number}
      * @memberof DialogDetailsDto
      */
     operatorUnreadCount: number;
     /**
-     * Количество непрочитанных сообщений для лида.
+     * .
      * @type {number}
      * @memberof DialogDetailsDto
      */
     leadUnreadCount: number;
     /**
-     * ID primary lead, если диалог имеет каноничную привязку к одному лиду.
+     * ID primary lead, .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     primaryLeadId?: string;
     /**
-     * Информация для отображения в списке диалогов.
+     * .
      * @type {DialogDisplayInfoDto}
      * @memberof DialogDetailsDto
      */
     displayInfo?: DialogDisplayInfoDto;
     /**
-     * Краткая AI-суммаризация диалога.
+     * AI- .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     summary?: string;
     /**
-     * Когда summary была сгенерирована.
+     * summary .
      * @type {Date}
      * @memberof DialogDetailsDto
      */
@@ -337,49 +337,49 @@ export interface DialogDetailsDto {
      */
     replyTarget?: DialogDtoReplyTarget;
     /**
-     * Первое сообщение диалога.
+     * .
      * @type {DialogFirstMessageDto}
      * @memberof DialogDetailsDto
      */
     firstMessage?: DialogFirstMessageDto;
     /**
-     * Последнее сообщение диалога.
+     * .
      * @type {DialogLastMessageDto}
      * @memberof DialogDetailsDto
      */
     lastMessage?: DialogLastMessageDto;
     /**
-     * Текущий отображаемый собеседник со стороны сервиса (не lead).
+     * ( lead).
      * @type {EventSenderDto}
      * @memberof DialogDetailsDto
      */
     serviceActor?: EventSenderDto;
     /**
-     * Назначенный оператор диалога.
+     * .
      * @type {DialogOperatorAssignmentDto}
      * @memberof DialogDetailsDto
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
-     * Звук уведомлений отключен для этого диалога (UI настройка).
+     * (UI ).
      * @type {boolean}
      * @memberof DialogDetailsDto
      */
     isSoundMuted: boolean;
     /**
-     * Информация о лиде (для VK/TG личных чатов).
+     * ( VK/TG ).
      * @type {DialogLeadDto}
      * @memberof DialogDetailsDto
      */
     lead?: DialogLeadDto | null;
     /**
-     * Информация о канале.
+     * .
      * @type {DialogChannelInfoDto}
      * @memberof DialogDetailsDto
      */
     channel?: DialogChannelInfoDto | null;
     /**
-     * Кто сейчас печатает в диалоге (актуальное состояние из Redis).
+     * ( Redis).
      * @type {Array<DialogCurrentTypingDto>}
      * @memberof DialogDetailsDto
      */

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -144,8 +144,8 @@ export interface UpdateUnarchiveRequest {
 export class DialogsManagementApi extends runtime.BaseAPI {
 
     /**
-     * Отвязывает агента от диалога.
-     * Отвязать агента от диалога
+     * .
+     * 
      */
     async deleteAgentRaw(requestParameters: DeleteAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -202,8 +202,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Отвязывает агента от диалога.
-     * Отвязать агента от диалога
+     * .
+     * 
      */
     async deleteAgent(requestParameters: DeleteAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.deleteAgentRaw(requestParameters, initOverrides);
@@ -211,8 +211,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет сообщение из диалога (soft delete).
-     * Удалить сообщение
+     * (soft delete).
+     * 
      */
     async deleteEventsRaw(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteMessageResponseDto>> {
         if (requestParameters['dialogId'] == null) {
@@ -265,8 +265,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет сообщение из диалога (soft delete).
-     * Удалить сообщение
+     * (soft delete).
+     * 
      */
     async deleteEvents(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteMessageResponseDto> {
         const response = await this.deleteEventsRaw(requestParameters, initOverrides);
@@ -274,8 +274,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Очищает назначение оператора для диалога.
-     * Снять назначенного оператора
+     * .
+     * 
      */
     async deleteOperatorAssignmentRaw(requestParameters: DeleteOperatorAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -321,8 +321,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Очищает назначение оператора для диалога.
-     * Снять назначенного оператора
+     * .
+     * 
      */
     async deleteOperatorAssignment(requestParameters: DeleteOperatorAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.deleteOperatorAssignmentRaw(requestParameters, initOverrides);
@@ -330,8 +330,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить участников диалога.
-     * Получить участников диалога
+     * .
+     * 
      */
     async getParticipantsRaw(requestParameters: GetParticipantsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogParticipantsResponseDto>> {
         if (requestParameters['dialogId'] == null) {
@@ -377,8 +377,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Получить участников диалога.
-     * Получить участников диалога
+     * .
+     * 
      */
     async getParticipants(requestParameters: GetParticipantsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogParticipantsResponseDto> {
         const response = await this.getParticipantsRaw(requestParameters, initOverrides);
@@ -386,8 +386,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Привязывает агента к диалогу.
-     * Привязать агента к диалогу
+     * .
+     * 
      */
     async updateAgentRaw(requestParameters: UpdateAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -443,8 +443,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Привязывает агента к диалогу.
-     * Привязать агента к диалогу
+     * .
+     * 
      */
     async updateAgent(requestParameters: UpdateAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateAgentRaw(requestParameters, initOverrides);
@@ -452,8 +452,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Архивирует диалог (мягкое удаление).
-     * Архивировать диалог
+     * ( ).
+     * 
      */
     async updateArchiveRaw(requestParameters: UpdateArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -499,8 +499,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Архивирует диалог (мягкое удаление).
-     * Архивировать диалог
+     * ( ).
+     * 
      */
     async updateArchive(requestParameters: UpdateArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateArchiveRaw(requestParameters, initOverrides);
@@ -508,8 +508,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включает или выключает повторную автопривязку агентов для конкретного диалога.
-     * Установить флаг отключения автопривязки для диалога
+     * .
+     * 
      */
     async updateAutoAssignDisabledRaw(requestParameters: UpdateAutoAssignDisabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -565,8 +565,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включает или выключает повторную автопривязку агентов для конкретного диалога.
-     * Установить флаг отключения автопривязки для диалога
+     * .
+     * 
      */
     async updateAutoAssignDisabled(requestParameters: UpdateAutoAssignDisabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateAutoAssignDisabledRaw(requestParameters, initOverrides);
@@ -574,8 +574,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Редактирует текст сообщения в диалоге.
-     * Редактировать сообщение
+     * .
+     * 
      */
     async updateEventsRaw(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditMessageResponseDto>> {
         if (requestParameters['dialogId'] == null) {
@@ -638,8 +638,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Редактирует текст сообщения в диалоге.
-     * Редактировать сообщение
+     * .
+     * 
      */
     async updateEvents(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditMessageResponseDto> {
         const response = await this.updateEventsRaw(requestParameters, initOverrides);
@@ -647,8 +647,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Синхронизирует spam-статус выбранного входящего email-сообщения с почтовым провайдером, сохраняет override на отправителя и помечает диалог spam-тегом.
-     * Пометить email-сообщение как \"спам\"
+     * spam- email- , override spam-.
+     * email- \"\"
      */
     async updateEventsSpamRaw(requestParameters: UpdateEventsSpamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['dialogId'] == null) {
@@ -701,8 +701,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Синхронизирует spam-статус выбранного входящего email-сообщения с почтовым провайдером, сохраняет override на отправителя и помечает диалог spam-тегом.
-     * Пометить email-сообщение как \"спам\"
+     * spam- email- , override spam-.
+     * email- \"\"
      */
     async updateEventsSpam(requestParameters: UpdateEventsSpamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateEventsSpamRaw(requestParameters, initOverrides);
@@ -710,8 +710,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Снимает spam-статус с текущего email-диалога, сохраняет override на отправителя и повторно применяет auto-assign правила.
-     * Пометить email-диалог как \"не спам\"
+     * spam- email-, override auto-assign .
+     * email- \" \"
      */
     async updateNotSpamRaw(requestParameters: UpdateNotSpamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -757,8 +757,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Снимает spam-статус с текущего email-диалога, сохраняет override на отправителя и повторно применяет auto-assign правила.
-     * Пометить email-диалог как \"не спам\"
+     * spam- email-, override auto-assign .
+     * email- \" \"
      */
     async updateNotSpam(requestParameters: UpdateNotSpamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateNotSpamRaw(requestParameters, initOverrides);
@@ -766,8 +766,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Назначает текущего пользователя оператором, который отвечает на диалог.
-     * Взять диалог на себя
+     * , .
+     * 
      */
     async updateOperatorAssignmentMeRaw(requestParameters: UpdateOperatorAssignmentMeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -813,8 +813,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Назначает текущего пользователя оператором, который отвечает на диалог.
-     * Взять диалог на себя
+     * , .
+     * 
      */
     async updateOperatorAssignmentMe(requestParameters: UpdateOperatorAssignmentMeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateOperatorAssignmentMeRaw(requestParameters, initOverrides);
@@ -822,8 +822,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Вручную переводит operator_response_status в answered.
-     * Пометить диалог отвеченным операторской стороной
+     * operator_response_status answered.
+     * 
      */
     async updateOperatorResponseAnsweredRaw(requestParameters: UpdateOperatorResponseAnsweredRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -869,8 +869,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Вручную переводит operator_response_status в answered.
-     * Пометить диалог отвеченным операторской стороной
+     * operator_response_status answered.
+     * 
      */
     async updateOperatorResponseAnswered(requestParameters: UpdateOperatorResponseAnsweredRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateOperatorResponseAnsweredRaw(requestParameters, initOverrides);
@@ -878,8 +878,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включает/выключает звук уведомлений для конкретного диалога в UI.
-     * Установить звуковой mute для диалога
+     * / UI.
+     * mute
      */
     async updateSoundMuteRaw(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -935,8 +935,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включает/выключает звук уведомлений для конкретного диалога в UI.
-     * Установить звуковой mute для диалога
+     * / UI.
+     * mute
      */
     async updateSoundMute(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateSoundMuteRaw(requestParameters, initOverrides);
@@ -944,8 +944,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает архивированный диалог.
-     * Восстановить диалог из архива
+     * .
+     * 
      */
     async updateUnarchiveRaw(requestParameters: UpdateUnarchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -991,8 +991,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает архивированный диалог.
-     * Восстановить диалог из архива
+     * .
+     * 
      */
     async updateUnarchive(requestParameters: UpdateUnarchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateUnarchiveRaw(requestParameters, initOverrides);

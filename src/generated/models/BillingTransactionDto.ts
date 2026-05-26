@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,217 +28,217 @@ import {
  */
 export interface BillingTransactionDto {
     /**
-     * ID транзакции.
+     * ID .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     id: string | null;
     /**
-     * ID проекта.
+     * ID .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     projectId: string;
     /**
-     * Тип транзакции.
+     * .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     type: BillingTransactionDtoTypeEnum;
     /**
-     * Сумма в центах/копейках (отрицательная для списаний).
+     * / ( ).
      * @type {number}
      * @memberof BillingTransactionDto
      */
     amount: number;
     /**
-     * Валюта транзакции.
+     * .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     currency: string;
     /**
-     * Суммарный баланс до операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     balanceBefore: number;
     /**
-     * Суммарный баланс после операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     balanceAfter: number;
     /**
-     * Валюта баланса.
+     * .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     balanceCurrency: string;
     /**
-     * Баланс пополнений до операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceBefore: number;
     /**
-     * Баланс пополнений после операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceAfter: number;
     /**
-     * Бонусный баланс до операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceBefore: number;
     /**
-     * Бонусный баланс после операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceAfter: number;
     /**
-     * Баланс прибыли до операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     profitBalanceBefore: number;
     /**
-     * Баланс прибыли после операции.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     profitBalanceAfter: number;
     /**
-     * Начало периода.
+     * .
      * @type {Date}
      * @memberof BillingTransactionDto
      */
     periodStart?: Date | null;
     /**
-     * Конец периода.
+     * .
      * @type {Date}
      * @memberof BillingTransactionDto
      */
     periodEnd?: Date | null;
     /**
-     * Количество usage-событий.
+     * usage-.
      * @type {number}
      * @memberof BillingTransactionDto
      */
     usageEventsCount?: number | null;
     /**
-     * Общее количество токенов.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     totalTokens?: number | null;
     /**
-     * Описание транзакции
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     description?: string | null;
     /**
-     * Дата создания.
+     * .
      * @type {Date}
      * @memberof BillingTransactionDto
      */
     createdAt: Date;
     /**
-     * Статус (для живых инвойсов).
+     * ( ).
      * @type {string}
      * @memberof BillingTransactionDto
      */
     status?: string | null;
     /**
-     * Флаг текущего (н��закрытого) инвойса.
+     * () .
      * @type {boolean}
      * @memberof BillingTransactionDto
      */
     isLive?: boolean | null;
     /**
-     * Детализация по агентам (cost в центах/копейках).
+     * (cost /).
      * @type {object}
      * @memberof BillingTransactionDto
      */
     detailsByAgent: object | null;
     /**
-     * Детализация по моделям (cost в центах/копейках).
+     * (cost /).
      * @type {object}
      * @memberof BillingTransactionDto
      */
     detailsByModel: object | null;
     /**
-     * Исходная валюта при конвертации.
+     * .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     conversionFromCurrency?: string | null;
     /**
-     * Целевая валюта при конвертации.
+     * .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     conversionToCurrency?: string | null;
     /**
-     * Курс обмена при конвертации.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionRate?: number | null;
     /**
-     * Сумма в исходной валюте при конвертации.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionAmountFrom?: number | null;
     /**
-     * Сумма в целевой валюте при конвертации.
+     * .
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionAmountTo?: number | null;
     /**
-     * Способ оплаты.
+     * .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paymentMethod?: string | null;
     /**
-     * ID платежа во внешней системе.
+     * ID .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paymentId?: string | null;
     /**
-     * ID заказа.
+     * ID .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     orderId?: string | null;
     /**
-     * ID платёжной системы.
+     * ID .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paySystemId?: string | null;
     /**
-     * ID аккаунта платёжной системы.
+     * ID .
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paySystemAccountId?: string | null;
     /**
-     * Название тарифа (для покупки тарифа).
+     * ( ).
      * @type {LocalizedTextDto}
      * @memberof BillingTransactionDto
      */
     tariffName?: LocalizedTextDto | null;
     /**
-     * Название пакета кредитов (для покупки кредитов).
+     * ( ).
      * @type {LocalizedTextDto}
      * @memberof BillingTransactionDto
      */

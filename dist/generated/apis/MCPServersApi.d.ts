@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -180,253 +180,253 @@ export interface UpdateListsRestoreRequest {
  */
 export declare class MCPServersApi extends runtime.BaseAPI {
     /**
-     * Начать OAuth для кастомного MCP сервера.
-     * Начать OAuth для кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     customOauthStartRaw(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>>;
     /**
-     * Начать OAuth для кастомного MCP сервера.
-     * Начать OAuth для кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     customOauthStart(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto>;
     /**
-     * Удаляет список если у вас есть доступ к его проекту.
-     * Удалить список MCP серверов
+     * .
+     * MCP
      */
     deleteListsRaw(requestParameters: DeleteListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Удаляет список если у вас есть доступ к его проекту.
-     * Удалить список MCP серверов
+     * .
+     * MCP
      */
     deleteLists(requestParameters: DeleteListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Удалить MCP сервер из списка.
-     * Удалить MCP сервер из списка
+     * MCP .
+     * MCP
      */
     deleteListsServersRaw(requestParameters: DeleteListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * Удалить MCP сервер из списка.
-     * Удалить MCP сервер из списка
+     * MCP .
+     * MCP
      */
     deleteListsServers(requestParameters: DeleteListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * Удаляет глобальный credential установленного MCP сервера в режиме project.
-     * Отозвать project credential
+     * credential MCP project.
+     * project credential
      */
     deleteProjectCredentialRaw(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
-     * Удаляет глобальный credential установленного MCP сервера в режиме project.
-     * Отозвать project credential
+     * credential MCP project.
+     * project credential
      */
     deleteProjectCredential(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
-     * Callback стандартного OAuth для кастомного MCP сервера.
-     * Callback стандартного OAuth для кастомного MCP сервера
+     * Callback OAuth MCP .
+     * Callback OAuth MCP
      */
     getCustomOauthCallbackRaw(requestParameters: GetCustomOauthCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
     /**
-     * Callback стандартного OAuth для кастомного MCP сервера.
-     * Callback стандартного OAuth для кастомного MCP сервера
+     * Callback OAuth MCP .
+     * Callback OAuth MCP
      */
     getCustomOauthCallback(requestParameters?: GetCustomOauthCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
     /**
-     * Проверить OAuth у кастомного MCP сервера.
-     * Проверить OAuth у кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     getCustomOauthStatusRaw(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CustomMcpOAuthStatusResponseDto>>;
     /**
-     * Проверить OAuth у кастомного MCP сервера.
-     * Проверить OAuth у кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     getCustomOauthStatus(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CustomMcpOAuthStatusResponseDto>;
     /**
-     * Экспортирует MCP серверы проекта.
-     * Экспортировать MCP серверы
+     * MCP .
+     * MCP
      */
     getExportRaw(requestParameters: GetExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExportServersResponseDto>>;
     /**
-     * Экспортирует MCP серверы проекта.
-     * Экспортировать MCP серверы
+     * MCP .
+     * MCP
      */
     getExport(requestParameters: GetExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ExportServersResponseDto>;
     /**
-     * Поиск по источникам базы знаний, привязанным к MCP серверам проекта.
-     * Поиск по базе знаний MCP сервера
+     * , MCP .
+     * MCP
      */
     getKnowledgeBaseSearchRaw(requestParameters: GetKnowledgeBaseSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedKnowledgeBaseSearchResponseDto>>;
     /**
-     * Поиск по источникам базы знаний, привязанным к MCP серверам проекта.
-     * Поиск по базе знаний MCP сервера
+     * , MCP .
+     * MCP
      */
     getKnowledgeBaseSearch(requestParameters: GetKnowledgeBaseSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedKnowledgeBaseSearchResponseDto>;
     /**
-     * Возвращает списки MCP серверов из указанного проекта.
-     * Получить все списки MCP серверов
+     * MCP .
+     * MCP
      */
     getListsRaw(requestParameters: GetListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListsResponseDto>>;
     /**
-     * Возвращает списки MCP серверов из указанного проекта.
-     * Получить все списки MCP серверов
+     * MCP .
+     * MCP
      */
     getLists(requestParameters: GetListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListsResponseDto>;
     /**
-     * Возвращает список если у вас есть доступ к его проекту.
-     * Получить список MCP серверов по ID
+     * .
+     * MCP ID
      */
     getLists2Raw(requestParameters: GetLists2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * Возвращает список если у вас есть доступ к его проекту.
-     * Получить список MCP серверов по ID
+     * .
+     * MCP ID
      */
     getLists2(requestParameters: GetLists2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * Возвращает статус глобального credential установленного MCP сервера в проекте.
-     * Получить статус project credential
+     * credential MCP .
+     * project credential
      */
     getProjectCredentialStatusRaw(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
-     * Возвращает статус глобального credential установленного MCP сервера в проекте.
-     * Получить статус project credential
+     * credential MCP .
+     * project credential
      */
     getProjectCredentialStatus(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
-     * Создает список MCP серверов в указанном проекте.
-     * Создать список MCP серверов
+     * MCP .
+     * MCP
      */
     listsRaw(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * Создает список MCP серверов в указанном проекте.
-     * Создать список MCP серверов
+     * MCP .
+     * MCP
      */
     lists(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * Добавить MCP сервер в список.
-     * Добавить MCP сервер в список
+     * MCP .
+     * MCP
      */
     listsServersRaw(requestParameters: ListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * Добавить MCP сервер в список.
-     * Добавить MCP сервер в список
+     * MCP .
+     * MCP
      */
     listsServers(requestParameters: ListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * Создает MCP сервер в указанном проекте.
-     * Создать MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersCreateRaw(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateServerResponseDto>>;
     /**
-     * Создает MCP сервер в указанном проекте.
-     * Создать MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersCreate(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateServerResponseDto>;
     /**
-     * Удаляет MCP сервер проекта.
-     * Удалить MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersDeactivateRaw(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Удаляет MCP сервер проекта.
-     * Удалить MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersDeactivate(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Возвращает MCP сервер если у вас есть доступ к его проекту.
-     * Получить MCP сервер по ID
+     * MCP .
+     * MCP ID
      */
     mcpServersGetByIdRaw(requestParameters: McpServersGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetServerResponseDto>>;
     /**
-     * Возвращает MCP сервер если у вас есть доступ к его проекту.
-     * Получить MCP сервер по ID
+     * MCP .
+     * MCP ID
      */
     mcpServersGetById(requestParameters: McpServersGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetServerResponseDto>;
     /**
-     * Импортирует список MCP серверов в проект.
-     * Импортировать MCP серверы
+     * MCP .
+     * MCP
      */
     mcpServersImportRaw(requestParameters: McpServersImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ImportServersResponseDto>>;
     /**
-     * Импортирует список MCP серверов в проект.
-     * Импортировать MCP серверы
+     * MCP .
+     * MCP
      */
     mcpServersImport(requestParameters: McpServersImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ImportServersResponseDto>;
     /**
-     * Возвращает MCP серверы проекта.
-     * Получить список MCP серверов
+     * MCP .
+     * MCP
      */
     mcpServersListRaw(requestParameters: McpServersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedServersResponseDto>>;
     /**
-     * Возвращает MCP серверы проекта.
-     * Получить список MCP серверов
+     * MCP .
+     * MCP
      */
     mcpServersList(requestParameters: McpServersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedServersResponseDto>;
     /**
-     * Обновляет MCP сервер проекта.
-     * Обновить MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersUpdateRaw(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateServerResponseDto>>;
     /**
-     * Обновляет MCP сервер проекта.
-     * Обновить MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersUpdate(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateServerResponseDto>;
     /**
-     * Восстанавливает ранее удалённый MCP сервер.
-     * Восстановить удалённый MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersUpdateRestoreRaw(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerResponseDto>>;
     /**
-     * Восстанавливает ранее удалённый MCP сервер.
-     * Восстановить удалённый MCP сервер
+     * MCP .
+     * MCP
      */
     mcpServersUpdateRestore(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerResponseDto>;
     /**
-     * Сохраняет глобальный credential для установленного MCP сервера в режиме project.
-     * Сохранить project credential вручную
+     * credential MCP project.
+     * project credential
      */
     projectCredentialManualRaw(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
-     * Сохраняет глобальный credential для установленного MCP сервера в режиме project.
-     * Сохранить project credential вручную
+     * credential MCP project.
+     * project credential
      */
     projectCredentialManual(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
-     * Начать OAuth для project credential установленного MCP сервера.
-     * Начать OAuth для project credential установленного MCP сервера
+     * OAuth project credential MCP .
+     * OAuth project credential MCP
      */
     projectCredentialOauthStartRaw(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>>;
     /**
-     * Начать OAuth для project credential установленного MCP сервера.
-     * Начать OAuth для project credential установленного MCP сервера
+     * OAuth project credential MCP .
+     * OAuth project credential MCP
      */
     projectCredentialOauthStart(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto>;
     /**
-     * Повторно проверяет активный project credential установленного MCP сервера и сохраняет статус валидности.
-     * Проверить project credential
+     * project credential MCP .
+     * project credential
      */
     projectCredentialValidateRaw(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
-     * Повторно проверяет активный project credential установленного MCP сервера и сохраняет статус валидности.
-     * Проверить project credential
+     * project credential MCP .
+     * project credential
      */
     projectCredentialValidate(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
-     * Обновляет список если у вас есть доступ к его проекту.
-     * Обновить список MCP серверов
+     * .
+     * MCP
      */
     updateListsRaw(requestParameters: UpdateListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * Обновляет список если у вас есть доступ к его проекту.
-     * Обновить список MCP серверов
+     * .
+     * MCP
      */
     updateLists(requestParameters: UpdateListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * Восстанавливает ранее удалённый список серверов.
-     * Восстановить удалённый список MCP серверов
+     * .
+     * MCP
      */
     updateListsRestoreRaw(requestParameters: UpdateListsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * Восстанавливает ранее удалённый список серверов.
-     * Восстановить удалённый список MCP серверов
+     * .
+     * MCP
      */
     updateListsRestore(requestParameters: UpdateListsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
 }

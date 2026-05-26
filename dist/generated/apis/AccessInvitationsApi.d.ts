@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -34,33 +34,33 @@ export interface AccessInvitationsGetByIdRequest {
  */
 export declare class AccessInvitationsApi extends runtime.BaseAPI {
     /**
-     * Если pending-приглашение уже существует — повторно отправляет (не чаще раз в 4 часа). Возвращает ссылку для приглашения.
-     * Создать приглашение в проект
+     * pending- ( 4 ). .
+     *
      */
     accessInvitationsCreateRaw(requestParameters: AccessInvitationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>>;
     /**
-     * Если pending-приглашение уже существует — повторно отправляет (не чаще раз в 4 часа). Возвращает ссылку для приглашения.
-     * Создать приглашение в проект
+     * pending- ( 4 ). .
+     *
      */
     accessInvitationsCreate(requestParameters: AccessInvitationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto>;
     /**
-     * Отменяет pending-приглашение. Нельзя отменить уже принятое/отклонённое.
-     * Отменить приглашение
+     * pending-. /.
+     *
      */
     accessInvitationsDeactivateRaw(requestParameters: AccessInvitationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Отменяет pending-приглашение. Нельзя отменить уже принятое/отклонённое.
-     * Отменить приглашение
+     * pending-. /.
+     *
      */
     accessInvitationsDeactivate(requestParameters: AccessInvitationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * Возвращает приглашения проекта. Можно фильтровать по ?
-     * Список приглашений проекта
+     * . ?
+     *
      */
     accessInvitationsGetByIdRaw(requestParameters: AccessInvitationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<InvitationListItemDto>>>;
     /**
-     * Возвращает приглашения проекта. Можно фильтровать по ?
-     * Список приглашений проекта
+     * . ?
+     *
      */
     accessInvitationsGetById(requestParameters: AccessInvitationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InvitationListItemDto>>;
 }

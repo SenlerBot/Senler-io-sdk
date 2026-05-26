@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class DialogsManagementApi extends runtime.BaseAPI {
     /**
-     * Отвязывает агента от диалога.
-     * Отвязать агента от диалога
+     * .
+     *
      */
     async deleteAgentRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -95,16 +95,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Отвязывает агента от диалога.
-     * Отвязать агента от диалога
+     * .
+     *
      */
     async deleteAgent(requestParameters, initOverrides) {
         const response = await this.deleteAgentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет сообщение из диалога (soft delete).
-     * Удалить сообщение
+     * (soft delete).
+     *
      */
     async deleteEventsRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
@@ -141,16 +141,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeleteMessageResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет сообщение из диалога (soft delete).
-     * Удалить сообщение
+     * (soft delete).
+     *
      */
     async deleteEvents(requestParameters, initOverrides) {
         const response = await this.deleteEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Очищает назначение оператора для диалога.
-     * Снять назначенного оператора
+     * .
+     *
      */
     async deleteOperatorAssignmentRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -184,16 +184,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Очищает назначение оператора для диалога.
-     * Снять назначенного оператора
+     * .
+     *
      */
     async deleteOperatorAssignment(requestParameters, initOverrides) {
         const response = await this.deleteOperatorAssignmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Получить участников диалога.
-     * Получить участников диалога
+     * .
+     *
      */
     async getParticipantsRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
@@ -227,16 +227,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogParticipantsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Получить участников диалога.
-     * Получить участников диалога
+     * .
+     *
      */
     async getParticipants(requestParameters, initOverrides) {
         const response = await this.getParticipantsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Привязывает агента к диалогу.
-     * Привязать агента к диалогу
+     * .
+     *
      */
     async updateAgentRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -275,16 +275,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Привязывает агента к диалогу.
-     * Привязать агента к диалогу
+     * .
+     *
      */
     async updateAgent(requestParameters, initOverrides) {
         const response = await this.updateAgentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Архивирует диалог (мягкое удаление).
-     * Архивировать диалог
+     * ( ).
+     *
      */
     async updateArchiveRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -318,16 +318,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Архивирует диалог (мягкое удаление).
-     * Архивировать диалог
+     * ( ).
+     *
      */
     async updateArchive(requestParameters, initOverrides) {
         const response = await this.updateArchiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Включает или выключает повторную автопривязку агентов для конкретного диалога.
-     * Установить флаг отключения автопривязки для диалога
+     * .
+     *
      */
     async updateAutoAssignDisabledRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -366,16 +366,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Включает или выключает повторную автопривязку агентов для конкретного диалога.
-     * Установить флаг отключения автопривязки для диалога
+     * .
+     *
      */
     async updateAutoAssignDisabled(requestParameters, initOverrides) {
         const response = await this.updateAutoAssignDisabledRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Редактирует текст сообщения в диалоге.
-     * Редактировать сообщение
+     * .
+     *
      */
     async updateEventsRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
@@ -417,16 +417,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EditMessageResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Редактирует текст сообщения в диалоге.
-     * Редактировать сообщение
+     * .
+     *
      */
     async updateEvents(requestParameters, initOverrides) {
         const response = await this.updateEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Синхронизирует spam-статус выбранного входящего email-сообщения с почтовым провайдером, сохраняет override на отправителя и помечает диалог spam-тегом.
-     * Пометить email-сообщение как \"спам\"
+     * spam- email- , override spam-.
+     * email- \"\"
      */
     async updateEventsSpamRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
@@ -463,16 +463,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Синхронизирует spam-статус выбранного входящего email-сообщения с почтовым провайдером, сохраняет override на отправителя и помечает диалог spam-тегом.
-     * Пометить email-сообщение как \"спам\"
+     * spam- email- , override spam-.
+     * email- \"\"
      */
     async updateEventsSpam(requestParameters, initOverrides) {
         const response = await this.updateEventsSpamRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Снимает spam-статус с текущего email-диалога, сохраняет override на отправителя и повторно применяет auto-assign правила.
-     * Пометить email-диалог как \"не спам\"
+     * spam- email-, override auto-assign .
+     * email- \" \"
      */
     async updateNotSpamRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -506,16 +506,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Снимает spam-статус с текущего email-диалога, сохраняет override на отправителя и повторно применяет auto-assign правила.
-     * Пометить email-диалог как \"не спам\"
+     * spam- email-, override auto-assign .
+     * email- \" \"
      */
     async updateNotSpam(requestParameters, initOverrides) {
         const response = await this.updateNotSpamRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Назначает текущего пользователя оператором, который отвечает на диалог.
-     * Взять диалог на себя
+     * , .
+     *
      */
     async updateOperatorAssignmentMeRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -549,16 +549,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Назначает текущего пользователя оператором, который отвечает на диалог.
-     * Взять диалог на себя
+     * , .
+     *
      */
     async updateOperatorAssignmentMe(requestParameters, initOverrides) {
         const response = await this.updateOperatorAssignmentMeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Вручную переводит operator_response_status в answered.
-     * Пометить диалог отвеченным операторской стороной
+     * operator_response_status answered.
+     *
      */
     async updateOperatorResponseAnsweredRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -592,16 +592,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Вручную переводит operator_response_status в answered.
-     * Пометить диалог отвеченным операторской стороной
+     * operator_response_status answered.
+     *
      */
     async updateOperatorResponseAnswered(requestParameters, initOverrides) {
         const response = await this.updateOperatorResponseAnsweredRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Включает/выключает звук уведомлений для конкретного диалога в UI.
-     * Установить звуковой mute для диалога
+     * / UI.
+     * mute
      */
     async updateSoundMuteRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -640,16 +640,16 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Включает/выключает звук уведомлений для конкретного диалога в UI.
-     * Установить звуковой mute для диалога
+     * / UI.
+     * mute
      */
     async updateSoundMute(requestParameters, initOverrides) {
         const response = await this.updateSoundMuteRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Восстанавливает архивированный диалог.
-     * Восстановить диалог из архива
+     * .
+     *
      */
     async updateUnarchiveRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -683,8 +683,8 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * Восстанавливает архивированный диалог.
-     * Восстановить диалог из архива
+     * .
+     *
      */
     async updateUnarchive(requestParameters, initOverrides) {
         const response = await this.updateUnarchiveRaw(requestParameters, initOverrides);

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,109 +28,109 @@ import {
  */
 export interface EventPollSnapshotDto {
     /**
-     * Платформа опроса.
+     * .
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     platformType?: EventPollSnapshotDtoPlatformTypeEnum;
     /**
-     * Owner id опроса на платформе.
+     * Owner id .
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     ownerId?: string;
     /**
-     * ID опроса на платформе.
+     * ID .
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     pollId?: string;
     /**
-     * Вопрос опроса.
+     * .
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     question?: string;
     /**
-     * Можно выбрать несколько вариантов.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     multiple?: boolean;
     /**
-     * Анонимный опрос.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     anonymous?: boolean;
     /**
-     * Опрос завершён.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     closed?: boolean;
     /**
-     * Общее количество проголосовавших.
+     * .
      * @type {number}
      * @memberof EventPollSnapshotDto
      */
     totalVoterCount?: number;
     /**
-     * Опрос на стене/доске VK.
+     * / VK.
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     isBoard?: boolean;
     /**
-     * Текущий пользователь может голосовать.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canVote?: boolean;
     /**
-     * Опросом можно поделиться.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canShare?: boolean;
     /**
-     * Опрос можно редактировать.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canEdit?: boolean;
     /**
-     * На опрос можно пожаловаться.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canReport?: boolean;
     /**
-     * Нельзя отменить голос.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     disableUnvote?: boolean;
     /**
-     * Дата создания опроса на платформе.
+     * .
      * @type {Date}
      * @memberof EventPollSnapshotDto
      */
     createdAtPlatform?: Date;
     /**
-     * Дата окончания опроса.
+     * .
      * @type {Date}
      * @memberof EventPollSnapshotDto
      */
     endDate?: Date;
     /**
-     * Варианты ответа с текущими счётчиками.
+     * .
      * @type {Array<EventPollAnswerSnapshotDto>}
      * @memberof EventPollSnapshotDto
      */
     answers?: Array<EventPollAnswerSnapshotDto>;
     /**
-     * ID автора опроса на платформе.
+     * ID .
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
@@ -142,13 +142,13 @@ export interface EventPollSnapshotDto {
      */
     embedHash?: string;
     /**
-     * Опрос недоступен в исходном сообщении.
+     * .
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     isUnavailable?: boolean;
     /**
-     * Когда snapshot опроса обновлён.
+     * snapshot .
      * @type {Date}
      * @memberof EventPollSnapshotDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,67 +18,67 @@ import type { ButtonSettingsDto } from './ButtonSettingsDto';
  */
 export interface WidgetThemeDto {
     /**
-     * Мультиязычный заголовок чата в шапке виджета.
+     * .
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     chatTitle?: WidgetLocalizedTextDto;
     /**
-     * Мультиязычное название диалога по умолчанию до назначения агента или оператора.
+     * .
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     defaultDialogTitle?: WidgetLocalizedTextDto;
     /**
-     * Позиция виджета на странице.
+     * .
      * @type {string}
      * @memberof WidgetThemeDto
      */
     position?: WidgetThemeDtoPositionEnum;
     /**
-     * Мультиязычный placeholder в поле ввода сообщения.
+     * placeholder .
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     welcomeMessage?: WidgetLocalizedTextDto;
     /**
-     * Мультиязычное приветственное сообщение в пустом состоянии чата.
+     * .
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     emptyStateMessage?: WidgetLocalizedTextDto;
     /**
-     * Настройки кнопки виджета (позиция и цвета).
+     * ( ).
      * @type {ButtonSettingsDto}
      * @memberof WidgetThemeDto
      */
     button?: ButtonSettingsDto;
     /**
-     * Ширина окна виджета в пикселях.
+     * .
      * @type {number}
      * @memberof WidgetThemeDto
      */
     width?: number;
     /**
-     * Высота окна виджета в пикселях.
+     * .
      * @type {number}
      * @memberof WidgetThemeDto
      */
     height?: number;
     /**
-     * Цветовая схема виджета.
+     * .
      * @type {string}
      * @memberof WidgetThemeDto
      */
     themeMode?: WidgetThemeDtoThemeModeEnum;
     /**
-     * Скругление углов окна виджета в пикселях.
+     * .
      * @type {number}
      * @memberof WidgetThemeDto
      */
     borderRadius?: number;
     /**
-     * Показывать тень у окна виджета.
+     * .
      * @type {boolean}
      * @memberof WidgetThemeDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -115,183 +115,183 @@ export interface TokensSyncRequest {
  */
 export declare class ChannelsApi extends runtime.BaseAPI {
     /**
-     * Скачивает изображение по URL и загружает его в S3 как аватарку канала. Доступно только для каналов с ручным avatar management.
-     * Загрузить аватарку из URL
+     * URL S3 . avatar management.
+     * URL
      */
     avatarFromUrlRaw(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelResponseDto>>;
     /**
-     * Скачивает изображение по URL и загружает его в S3 как аватарку канала. Доступно только для каналов с ручным avatar management.
-     * Загрузить аватарку из URL
+     * URL S3 . avatar management.
+     * URL
      */
     avatarFromUrl(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
     /**
-     * Обновляет avatar_url канала после успешной загрузки в S3. Доступно только для каналов с ручным avatar management.
-     * Подтвердить загрузку аватарки
+     * avatar_url S3. avatar management.
+     *
      */
     channelsAvatarConfirmRaw(requestParameters: ChannelsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelResponseDto>>;
     /**
-     * Обновляет avatar_url канала после успешной загрузки в S3. Доступно только для каналов с ручным avatar management.
-     * Подтвердить загрузку аватарки
+     * avatar_url S3. avatar management.
+     *
      */
     channelsAvatarConfirm(requestParameters: ChannelsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
     /**
-     * Генерирует presigned URL для прямой загрузки аватарки в S3. Доступно только для каналов с ручным avatar management.
-     * Получить presigned URL для загрузки аватарки канала
+     * presigned URL S3. avatar management.
+     * presigned URL
      */
     channelsAvatarUploadUrlRaw(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<object>>;
     /**
-     * Генерирует presigned URL для прямой загрузки аватарки в S3. Доступно только для каналов с ручным avatar management.
-     * Получить presigned URL для загрузки аватарки канала
+     * presigned URL S3. avatar management.
+     * presigned URL
      */
     channelsAvatarUploadUrl(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<object>;
     /**
-     * Удаляет канал. Канал перестаёт быть виден в проекте и прекращает обработку сообщений.
-     * Удалить канал
+     * . .
+     *
      */
     channelsDeactivateRaw(requestParameters: ChannelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Удаляет канал. Канал перестаёт быть виден в проекте и прекращает обработку сообщений.
-     * Удалить канал
+     * . .
+     *
      */
     channelsDeactivate(requestParameters: ChannelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * Возвращает полную информацию о канале.
-     * Получить канал по ID
+     * .
+     * ID
      */
     channelsGetByIdRaw(requestParameters: ChannelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelUserResponseDto>>;
     /**
-     * Возвращает полную информацию о канале.
-     * Получить канал по ID
+     * .
+     * ID
      */
     channelsGetById(requestParameters: ChannelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelUserResponseDto>;
     /**
-     * Возвращает краткую информацию о каналах проекта, к которым есть доступ.
-     * Получить список каналов
+     * , .
+     *
      */
     channelsListRaw(requestParameters: ChannelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelsUserResponseDto>>;
     /**
-     * Возвращает краткую информацию о каналах проекта, к которым есть доступ.
-     * Получить список каналов
+     * , .
+     *
      */
     channelsList(requestParameters: ChannelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelsUserResponseDto>;
     /**
-     * Обновляет данные канала. Для widget каналов: возвращает обновлённый widget_code при изменении темы или настроек.
-     * Обновить канал
+     * . widget : widget_code .
+     *
      */
     channelsUpdateRaw(requestParameters: ChannelsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateChannelResponseDto>>;
     /**
-     * Обновляет данные канала. Для widget каналов: возвращает обновлённый widget_code при изменении темы или настроек.
-     * Обновить канал
+     * . widget : widget_code .
+     *
      */
     channelsUpdate(requestParameters: ChannelsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateChannelResponseDto>;
     /**
-     * Удаляет привязку Senler: деактивирует Senler-токен и сбрасывает senler_channel_id.
-     * Отвязать Senler от канала
+     * Senler: Senler- senler_channel_id.
+     * Senler
      */
     deleteSenlerRaw(requestParameters: DeleteSenlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Удаляет привязку Senler: деактивирует Senler-токен и сбрасывает senler_channel_id.
-     * Отвязать Senler от канала
+     * Senler: Senler- senler_channel_id.
+     * Senler
      */
     deleteSenler(requestParameters: DeleteSenlerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * Удаляет (деактивирует) token указанной платформы. Для email-каналов удаление token намеренно недоступно: email credentials обновляются через reconnect flow.
-     * Удалить токен
+     * () token . email- token : email credentials reconnect flow.
+     *
      */
     deleteTokensRaw(requestParameters: DeleteTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Удаляет (деактивирует) token указанной платформы. Для email-каналов удаление token намеренно недоступно: email credentials обновляются через reconnect flow.
-     * Удалить токен
+     * () token . email- token : email credentials reconnect flow.
+     *
      */
     deleteTokens(requestParameters: DeleteTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * Возвращает ChannelAccessDto для конкретного канала. Используется frontend access-layer для channel-scoped route guards без загрузки полного канала.
-     * Получить эффективный доступ текущего пользователя к каналу
+     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     *
      */
     getAccessRaw(requestParameters: GetAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelAccessUserResponseDto>>;
     /**
-     * Возвращает ChannelAccessDto для конкретного канала. Используется frontend access-layer для channel-scoped route guards без загрузки полного канала.
-     * Получить эффективный доступ текущего пользователя к каналу
+     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     *
      */
     getAccess(requestParameters: GetAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelAccessUserResponseDto>;
     /**
-     * Возвращает информацию о привязке Senler к каналу: привязан ли, ID канала Senler, валидность токена.
-     * Статус привязки Senler
+     * Senler : , ID Senler, .
+     * Senler
      */
     getSenlerStatusRaw(requestParameters: GetSenlerStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SenlerStatusDto>>;
     /**
-     * Возвращает информацию о привязке Senler к каналу: привязан ли, ID канала Senler, валидность токена.
-     * Статус привязки Senler
+     * Senler : , ID Senler, .
+     * Senler
      */
     getSenlerStatus(requestParameters: GetSenlerStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SenlerStatusDto>;
     /**
-     * Возвращает список всех активных токенов канала (без самих токенов).
-     * Получить все токены канала
+     * ( ).
+     *
      */
     getTokensRaw(requestParameters: GetTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ChannelTokenResponseDto>>>;
     /**
-     * Возвращает список всех активных токенов канала (без самих токенов).
-     * Получить все токены канала
+     * ( ).
+     *
      */
     getTokens(requestParameters: GetTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ChannelTokenResponseDto>>;
     /**
-     * Возвращает HTML код и iframe URL для widget канала. Только для type: widget.
-     * Получить код виджета для встраивания
+     * HTML iframe URL widget . type: widget.
+     *
      */
     getWidgetCodeRaw(requestParameters: GetWidgetCodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetCodeResponseDto>>;
     /**
-     * Возвращает HTML код и iframe URL для widget канала. Только для type: widget.
-     * Получить код виджета для встраивания
+     * HTML iframe URL widget . type: widget.
+     *
      */
     getWidgetCode(requestParameters: GetWidgetCodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetCodeResponseDto>;
     /**
-     * Возвращает количество данных и примерное время для каждого варианта переноса истории.
-     * Оценить миграцию канала
+     * .
+     *
      */
     migrationEstimateRaw(requestParameters: MigrationEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MigrationEstimateResponseDto>>;
     /**
-     * Возвращает количество данных и примерное время для каждого варианта переноса истории.
-     * Оценить миграцию канала
+     * .
+     *
      */
     migrationEstimate(requestParameters: MigrationEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MigrationEstimateResponseDto>;
     /**
-     * Деактивирует канал в текущем проекте, создаёт новый канал в целевом проекте и запускает фоновый перенос данных.
-     * Запустить миграцию канала в другой проект
+     * , .
+     *
      */
     migrationStartRaw(requestParameters: MigrationStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartMigrationResponseDto>>;
     /**
-     * Деактивирует канал в текущем проекте, создаёт новый канал в целевом проекте и запускает фоновый перенос данных.
-     * Запустить миграцию канала в другой проект
+     * , .
+     *
      */
     migrationStart(requestParameters: MigrationStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartMigrationResponseDto>;
     /**
-     * Переключает is_paused. Приостановленный канал не принимает и не отправляет сообщения.
-     * Приостановить/возобновить канал
+     * is_paused. .
+     * /
      */
     pauseRaw(requestParameters: PauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateChannelResponseDto>>;
     /**
-     * Переключает is_paused. Приостановленный канал не принимает и не отправляет сообщения.
-     * Приостановить/возобновить канал
+     * is_paused. .
+     * /
      */
     pause(requestParameters: PauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateChannelResponseDto>;
     /**
-     * Создаёт новый секретный ключ для HMAC-верификации (identity verification) виджета.
-     * Регенерировать секретный ключ виджета
+     * HMAC- (identity verification) .
+     *
      */
     regenerateSecretRaw(requestParameters: RegenerateSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetCodeResponseDto>>;
     /**
-     * Создаёт новый секретный ключ для HMAC-верификации (identity verification) виджета.
-     * Регенерировать секретный ключ виджета
+     * HMAC- (identity verification) .
+     *
      */
     regenerateSecret(requestParameters: RegenerateSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetCodeResponseDto>;
     /**
-     * Синхронизирует поддерживаемые данные канала из внешнего API.
-     * Синхронизировать данные канала из внешней платформы
+     * API.
+     *
      */
     tokensSyncRaw(requestParameters: TokensSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SyncChannelResponseDto>>;
     /**
-     * Синхронизирует поддерживаемые данные канала из внешнего API.
-     * Синхронизировать данные канала из внешней платформы
+     * API.
+     *
      */
     tokensSync(requestParameters: TokensSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncChannelResponseDto>;
 }

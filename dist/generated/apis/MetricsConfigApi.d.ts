@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -56,73 +56,73 @@ export interface UpdateMetricsRequest {
  */
 export declare class MetricsConfigApi extends runtime.BaseAPI {
     /**
-     * Возвращает конфигурацию метрик агента с учетом прав доступа пользователя.
-     * Получить конфигурацию метрик для агента
+     * .
+     *
      */
     getMetricsRaw(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>>;
     /**
-     * Возвращает конфигурацию метрик агента с учетом прав доступа пользователя.
-     * Получить конфигурацию метрик для агента
+     * .
+     *
      */
     getMetrics(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>>;
     /**
-     * Возвращает количество включённых метрик агента с учетом прав доступа пользователя.
-     * Получить количество включённых метрик для агента
+     * .
+     *
      */
     getMetricsCountRaw(requestParameters: GetMetricsCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsCountResponseDto>>;
     /**
-     * Возвращает количество включённых метрик агента с учетом прав доступа пользователя.
-     * Получить количество включённых метрик для агента
+     * .
+     *
      */
     getMetricsCount(requestParameters: GetMetricsCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsCountResponseDto>;
     /**
-     * Проверяет, включена ли метрика для агента с учетом прав доступа пользователя.
-     * Проверить, включена ли метрика для агента
+     * , .
+     * ,
      */
     getMetricsEnabledRaw(requestParameters: GetMetricsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricEnabledResponseDto>>;
     /**
-     * Проверяет, включена ли метрика для агента с учетом прав доступа пользователя.
-     * Проверить, включена ли метрика для агента
+     * , .
+     * ,
      */
     getMetricsEnabled(requestParameters: GetMetricsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricEnabledResponseDto>;
     /**
-     * Возвращает включённые метрики агента с учетом прав доступа пользователя.
-     * Получить только включённые метрики для агента
+     * .
+     *
      */
     getMetricsEnabled2Raw(requestParameters: GetMetricsEnabled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>>;
     /**
-     * Возвращает включённые метрики агента с учетом прав доступа пользователя.
-     * Получить только включённые метрики для агента
+     * .
+     *
      */
     getMetricsEnabled2(requestParameters: GetMetricsEnabled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>>;
     /**
-     * Отключает метрику для агента с учетом прав доступа пользователя.
-     * Отключить метрику для агента
+     * .
+     *
      */
     metricsDisableRaw(requestParameters: MetricsDisableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Отключает метрику для агента с учетом прав доступа пользователя.
-     * Отключить метрику для агента
+     * .
+     *
      */
     metricsDisable(requestParameters: MetricsDisableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * Включает метрику для агента с учетом прав доступа пользователя.
-     * Включить метрику для агента
+     * .
+     *
      */
     metricsEnableRaw(requestParameters: MetricsEnableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigResponseDto>>;
     /**
-     * Включает метрику для агента с учетом прав доступа пользователя.
-     * Включить метрику для агента
+     * .
+     *
      */
     metricsEnable(requestParameters: MetricsEnableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigResponseDto>;
     /**
-     * Массовое обновление метрик агента с учетом прав доступа пользователя.
-     * Массовое обновление метрик агента
+     * .
+     *
      */
     updateMetricsRaw(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>>;
     /**
-     * Массовое обновление метрик агента с учетом прав доступа пользователя.
-     * Массовое обновление метрик агента
+     * .
+     *
      */
     updateMetrics(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>>;
 }

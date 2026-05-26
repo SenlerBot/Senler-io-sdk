@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,187 +42,187 @@ import {
  */
 export interface PublicModelResponseDto {
     /**
-     * UUID модели.
+     * UUID .
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     id: string;
     /**
-     * Неуникальный slug модели для UI и поиска; связи и выбор модели идут по id.
+     * slug UI ; id.
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     slug: string;
     /**
-     * Отображаемое имя.
+     * .
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     displayName: string;
     /**
-     * Примечания.
+     * .
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     notes: string | null;
     /**
-     * Размер контекста.
+     * .
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     contextWindow: number | null;
     /**
-     * Максимум output токенов.
+     * output .
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     maxOutputTokens: number | null;
     /**
-     * Провайдер.
+     * .
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     provider: string;
     /**
-     * Список активных провайдеров, через которых доступна модель.
+     * , .
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     providers: Array<string>;
     /**
-     * Тип модели.
+     * .
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     type: PublicModelResponseDtoTypeEnum;
     /**
-     * Тип аудио-тарификации для audio_generation/speech_recognition.
+     * - audio_generation/speech_recognition.
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     audioPricingType?: PublicModelResponseDtoAudioPricingTypeEnum;
     /**
-     * Тип тарификации для image_generation.
+     * image_generation.
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     imagePricingType?: PublicModelResponseDtoImagePricingTypeEnum;
     /**
-     * Подсказка для фронта: какие usage/client pricing поля актуальны для аудио-модели.
+     * : usage/client pricing -.
      * @type {AudioPricingGuideDto}
      * @memberof PublicModelResponseDto
      */
     audioPricing?: AudioPricingGuideDto;
     /**
-     * Usage-поля, которые будут использованы системой при расчёте аудио-стоимости.
+     * Usage-, -.
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingUsageFields: Array<string>;
     /**
-     * Опциональные usage-поля для выбранного audio_pricing_type.
+     * usage- audio_pricing_type.
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingOptionalUsageFields: Array<string>;
     /**
-     * Provider pricing поля для выбранного audio_pricing_type.
+     * Provider pricing audio_pricing_type.
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingProviderFields: Array<string>;
     /**
-     * Опциональные provider pricing поля для выбранного audio_pricing_type.
+     * provider pricing audio_pricing_type.
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingOptionalProviderFields: Array<string>;
     /**
-     * Client pricing поля для выбранного audio_pricing_type.
+     * Client pricing audio_pricing_type.
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingClientFields: Array<string>;
     /**
-     * Опциональные client pricing поля для выбранного audio_pricing_type.
+     * client pricing audio_pricing_type.
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingOptionalClientFields: Array<string>;
     /**
-     * image_generation] Цена image input токенов за 1M в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * image_generation] image input 1M , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientImageInputPricePer1mCredits?: number;
     /**
-     * image_generation] Цена cached image input токенов за 1M в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * image_generation] cached image input 1M , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientImageCachedInputPricePer1mCredits?: number;
     /**
-     * image_generation] Цена image output токенов за 1M в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * image_generation] image output 1M , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientImageOutputPricePer1mCredits?: number;
     /**
-     * image_generation] Матрица клиентских цен за изображение по качеству и размеру.
+     * image_generation] .
      * @type {Array<PublicImageGenerationPriceResponseDto>}
      * @memberof PublicModelResponseDto
      */
     imageGenerationPrices?: Array<PublicImageGenerationPriceResponseDto>;
     /**
-     * audio_generation] Цена за 1000 символов текста в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * audio_generation] 1000 , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     pricePer1kCharsCredits?: number;
     /**
-     * speech_recognition] Цена audio input токенов за 1M в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * speech_recognition] audio input 1M , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientAudioInputPricePer1mCredits?: number;
     /**
-     * audio_generation] Цена audio output токенов за 1M в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * audio_generation] audio output 1M , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientAudioOutputPricePer1mCredits?: number;
     /**
-     * speech_recognition] Цена за минуту распознавания речи в кредитах, в минимальных единицах кредита, integer raw, scale=10000; пример преобразования display->raw: 12.
+     * speech_recognition] , , integer raw, scale=10000; display->raw: 12.
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     pricePerMinuteCredits?: number;
     /**
-     * Поддержка function calling.
+     * function calling.
      * @type {boolean}
      * @memberof PublicModelResponseDto
      */
     supportsFunctionCalling: boolean;
     /**
-     * Поддержка vision/изображений.
+     * vision/.
      * @type {boolean}
      * @memberof PublicModelResponseDto
      */
     supportsVision: boolean;
     /**
-     * Поддержка streaming.
+     * streaming.
      * @type {boolean}
      * @memberof PublicModelResponseDto
      */
     supportsStreaming: boolean;
     /**
-     * Режим тарификации: tokens (по токенам) или messages (за сообщение).
+     * : tokens ( ) messages ( ).
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     billingMode: PublicModelResponseDtoBillingModeEnum;
     /**
-     * Цены в кредитах.
+     * .
      * @type {ModelPricingDto}
      * @memberof PublicModelResponseDto
      */

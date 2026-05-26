@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -126,163 +126,163 @@ export interface UpdateProjectsAutoPurchaseRequest {
  */
 export declare class BillingApi extends runtime.BaseAPI {
     /**
-     * Удаляет запланированный downgrade. Текущая подписка продолжит автопродлеваться.
-     * Отменить запланированную смену тарифа
+     * downgrade. .
+     *
      */
     deleteProjectsTariffNextRaw(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Удаляет запланированный downgrade. Текущая подписка продолжит автопродлеваться.
-     * Отменить запланированную смену тарифа
+     * downgrade. .
+     *
      */
     deleteProjectsTariffNext(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * Обогащённые данные из ClickHouse: имена агентов, детальная разбивка токенов.
-     * Детализация кредитной транзакции
+     * ClickHouse: , .
+     *
      */
     getCreditTransactionsDetailsRaw(requestParameters: GetCreditTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditTransactionDetailsResponseDto>>;
     /**
-     * Обогащённые данные из ClickHouse: имена агентов, детальная разбивка токенов.
-     * Детализация кредитной транзакции
+     * ClickHouse: , .
+     *
      */
     getCreditTransactionsDetails(requestParameters: GetCreditTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditTransactionDetailsResponseDto>;
     /**
-     * Возвращает текущий баланс проекта с агрегированной статистикой.
-     * Получить баланс проекта
+     * .
+     *
      */
     getProjectsBalanceRaw(requestParameters: GetProjectsBalanceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
     /**
-     * Возвращает текущий баланс проекта с агрегированной статистикой.
-     * Получить баланс проекта
+     * .
+     *
      */
     getProjectsBalance(requestParameters: GetProjectsBalanceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
     /**
-     * Возвращает историю операций с кредитами: списания (usage), начисления от тарифа (tariff_grant), покупки пакетов (purchase/auto_purchase), сгорания (expiration), корректировки (adjustment).
-     * Получить историю кредитных транзакций проекта
+     * : (usage), (tariff_grant), (purchase/auto_purchase), (expiration), (adjustment).
+     *
      */
     getProjectsCreditTransactionsRaw(requestParameters: GetProjectsCreditTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditTransactionsResponseDto>>;
     /**
-     * Возвращает историю операций с кредитами: списания (usage), начисления от тарифа (tariff_grant), покупки пакетов (purchase/auto_purchase), сгорания (expiration), корректировки (adjustment).
-     * Получить историю кредитных транзакций проекта
+     * : (usage), (tariff_grant), (purchase/auto_purchase), (expiration), (adjustment).
+     *
      */
     getProjectsCreditTransactions(requestParameters: GetProjectsCreditTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditTransactionsResponseDto>;
     /**
-     * Вызывать при выборе пакета в диалоге покупки. Ничего не покупает — только считает.
-     * Расчёт стоимости покупки кредитов
+     * . .
+     *
      */
     getProjectsCreditsCheckRaw(requestParameters: GetProjectsCreditsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditsCheckResponseDto>>;
     /**
-     * Вызывать при выборе пакета в диалоге покупки. Ничего не покупает — только считает.
-     * Расчёт стоимости покупки кредитов
+     * . .
+     *
      */
     getProjectsCreditsCheck(requestParameters: GetProjectsCreditsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditsCheckResponseDto>;
     /**
-     * Возвращает заказы, связанные с проектом (через order_items). Фильтр по ID заказа: ?
-     * Получить заказы проекта
+     * , ( order_items). ID : ?
+     *
      */
     getProjectsOrdersRaw(requestParameters: GetProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OrderListResponseDto>>;
     /**
-     * Возвращает заказы, связанные с проектом (через order_items). Фильтр по ID заказа: ?
-     * Получить заказы проекта
+     * , ( order_items). ID : ?
+     *
      */
     getProjectsOrders(requestParameters: GetProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OrderListResponseDto>;
     /**
-     * Возвращает текущие платёжные настройки: страна, платёжная система, контакт, адрес. Включает вложенный объект pay_system (если выбрана).
-     * Получить платёжные настройки проекта
+     * : , , , . pay_system ( ).
+     *
      */
     getProjectsPaymentSettingsRaw(requestParameters: GetProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaymentSettingsResponseDto>>;
     /**
-     * Возвращает текущие платёжные настройки: страна, платёжная система, контакт, адрес. Включает вложенный объект pay_system (если выбрана).
-     * Получить платёжные настройки проекта
+     * : , , , . pay_system ( ).
+     *
      */
     getProjectsPaymentSettings(requestParameters: GetProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaymentSettingsResponseDto>;
     /**
-     * Вызывать при каждом изменении параметров в диалоге покупки (период, toggle баланса). Ничего не покупает — только считает.
-     * Расчёт стоимости смены тарифа
+     * (, toggle ). .
+     *
      */
     getProjectsTariffCheckRaw(requestParameters: GetProjectsTariffCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffCheckResponseDto>>;
     /**
-     * Вызывать при каждом изменении параметров в диалоге покупки (период, toggle баланса). Ничего не покупает — только считает.
-     * Расчёт стоимости смены тарифа
+     * (, toggle ). .
+     *
      */
     getProjectsTariffCheck(requestParameters: GetProjectsTariffCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffCheckResponseDto>;
     /**
-     * Каждый тариф содержит status (current/upgrade/downgrade) относительно текущей подписки. Если есть запланированный переход (downgrade) — у целевого тарифа будет next_subscription.
-     * Список тарифов для проекта
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     *
      */
     getProjectsTariffsRaw(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectTariffsResponseDto>>;
     /**
-     * Каждый тариф содержит status (current/upgrade/downgrade) относительно текущей подписки. Если есть запланированный переход (downgrade) — у целевого тарифа будет next_subscription.
-     * Список тарифов для проекта
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     *
      */
     getProjectsTariffs(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectTariffsResponseDto>;
     /**
-     * Возвращает историю денежных операций (пополнения, покупки, возвраты, конвертации).
-     * Получить список транзакций проекта
+     * (, , , ).
+     *
      */
     getProjectsTransactionsRaw(requestParameters: GetProjectsTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BillingTransactionsResponseDto>>;
     /**
-     * Возвращает историю денежных операций (пополнения, покупки, возвраты, конвертации).
-     * Получить список транзакций проекта
+     * (, , , ).
+     *
      */
     getProjectsTransactions(requestParameters: GetProjectsTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BillingTransactionsResponseDto>;
     /**
-     * Возвращает детальную информацию по транзакции: статистику по агентам, моделям или список usage-событий.
-     * Получить детализацию транзакции
+     * : , usage-.
+     *
      */
     getTransactionsDetailsRaw(requestParameters: GetTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransactionDetailsResponseDto>>;
     /**
-     * Возвращает детальную информацию по транзакции: статистику по агентам, моделям или список usage-событий.
-     * Получить детализацию транзакции
+     * : , usage-.
+     *
      */
     getTransactionsDetails(requestParameters: GetTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransactionDetailsResponseDto>;
     /**
-     * Вызывать только когда credits-check вернул total == null. Кредиты зачисляются мгновенно, не сгорают при смене тарифа.
-     * Купить пакет кредитов с баланса
+     * credits-check total == null. , .
+     *
      */
     projectsCreditsBuyRaw(requestParameters: ProjectsCreditsBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
     /**
-     * Вызывать только когда credits-check вернул total == null. Кредиты зачисляются мгновенно, не сгорают при смене тарифа.
-     * Купить пакет кредитов с баланса
+     * credits-check total == null. , .
+     *
      */
     projectsCreditsBuy(requestParameters: ProjectsCreditsBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
     /**
-     * Создаёт заказ, вызывает платёжный шлюз и возвращает URL для редиректа на страницу оплаты. Требует настроенные payment_settings (страна, email).
-     * Создать заказ на оплату
+     * , URL . payment_settings (, email).
+     *
      */
     projectsOrdersRaw(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateOrderResponseDto>>;
     /**
-     * Создаёт заказ, вызывает платёжный шлюз и возвращает URL для редиректа на страницу оплаты. Требует настроенные payment_settings (страна, email).
-     * Создать заказ на оплату
+     * , URL . payment_settings (, email).
+     *
      */
     projectsOrders(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateOrderResponseDto>;
     /**
-     * Сохраняет страну, способ оплаты, контактные данные и адрес. Если страна меняет валютную зону (RU↔другие), баланс конвертируется автоматически.
-     * Сохранить платёжные настройки проекта
+     * , , . (RU), .
+     *
      */
     projectsPaymentSettingsRaw(requestParameters: ProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SavePaymentSettingsResponseDto>>;
     /**
-     * Сохраняет страну, способ оплаты, контактные данные и адрес. Если страна меняет валютную зону (RU↔другие), баланс конвертируется автоматически.
-     * Сохранить платёжные настройки проекта
+     * , , . (RU), .
+     *
      */
     projectsPaymentSettings(requestParameters: ProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SavePaymentSettingsResponseDto>;
     /**
-     * Вызывать только когда tariff-check вернул total == null. Upgrade — мгновенный (возврат за остаток + новая подписка).
-     * Купить / сменить тариф с баланса
+     * tariff-check total == null. Upgrade ( + ).
+     * /
      */
     projectsTariffBuyRaw(requestParameters: ProjectsTariffBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
     /**
-     * Вызывать только когда tariff-check вернул total == null. Upgrade — мгновенный (возврат за остаток + новая подписка).
-     * Купить / сменить тариф с баланса
+     * tariff-check total == null. Upgrade ( + ).
+     * /
      */
     projectsTariffBuy(requestParameters: ProjectsTariffBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
     /**
-     * Автопокупка: когда кредиты заканчиваются — автоматически покупается выбранный пакет с баланса.
-     * Настроить автопокупку кредитов
+     * : .
+     *
      */
     updateProjectsAutoPurchaseRaw(requestParameters: UpdateProjectsAutoPurchaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutoPurchaseResponseDto>>;
     /**
-     * Автопокупка: когда кредиты заканчиваются — автоматически покупается выбранный пакет с баланса.
-     * Настроить автопокупку кредитов
+     * : .
+     *
      */
     updateProjectsAutoPurchase(requestParameters: UpdateProjectsAutoPurchaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutoPurchaseResponseDto>;
 }

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -101,8 +101,8 @@ export interface UpdateMembersRequest {
 export class AccessApi extends runtime.BaseAPI {
 
     /**
-     * Удаляет участника из проекта (is_active = false). Нельзя удалить owner\'а и самого себя.
-     * Удалить участника из проекта
+     * (is_active = false). owner\' .
+     * 
      */
     async deleteMembersRaw(requestParameters: DeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -155,8 +155,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет участника из проекта (is_active = false). Нельзя удалить owner\'а и самого себя.
-     * Удалить участника из проекта
+     * (is_active = false). owner\' .
+     * 
      */
     async deleteMembers(requestParameters: DeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
         const response = await this.deleteMembersRaw(requestParameters, initOverrides);
@@ -164,8 +164,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список всех участников проекта с информацией о доступах.
-     * Получить участников проекта
+     * .
+     * 
      */
     async getMembersRaw(requestParameters: GetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectMemberListItemDto>>> {
         if (requestParameters['projectId'] == null) {
@@ -211,8 +211,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список всех участников проекта с информацией о доступах.
-     * Получить участников проекта
+     * .
+     * 
      */
     async getMembers(requestParameters: GetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectMemberListItemDto>> {
         const response = await this.getMembersRaw(requestParameters, initOverrides);
@@ -220,8 +220,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает подробную информацию об участнике проекта, включая права и доступы к каналам.
-     * Получить детали участника проекта
+     * , .
+     * 
      */
     async getMembers2Raw(requestParameters: GetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectMemberResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -274,8 +274,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает подробную информацию об участнике проекта, включая права и доступы к каналам.
-     * Получить детали участника проекта
+     * , .
+     * 
      */
     async getMembers2(requestParameters: GetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectMemberResponseDto> {
         const response = await this.getMembers2Raw(requestParameters, initOverrides);
@@ -283,8 +283,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список каналов, к которым участник имеет доступ в рамках проекта.
-     * Получить каналы участника проекта
+     * , .
+     * 
      */
     async getMembersChannelsRaw(requestParameters: GetMembersChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMemberChannelsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -337,8 +337,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список каналов, к которым участник имеет доступ в рамках проекта.
-     * Получить каналы участника проекта
+     * , .
+     * 
      */
     async getMembersChannels(requestParameters: GetMembersChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMemberChannelsResponseDto> {
         const response = await this.getMembersChannelsRaw(requestParameters, initOverrides);
@@ -346,8 +346,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает описание всех ролей и их прав по умолчанию.
-     * Получить пресеты ролей
+     * .
+     * 
      */
     async getRolePresetsRaw(requestParameters: GetRolePresetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RolePresetsResponseDto>> {
         const queryParameters: any = {};
@@ -369,8 +369,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает описание всех ролей и их прав по умолчанию.
-     * Получить пресеты ролей
+     * .
+     * 
      */
     async getRolePresets(requestParameters: GetRolePresetsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RolePresetsResponseDto> {
         const response = await this.getRolePresetsRaw(requestParameters, initOverrides);
@@ -378,8 +378,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Передает права владельца проекта другому участнику. Доступно только владельцу проекта.
-     * Передать владение проектом
+     * . .
+     * 
      */
     async transferOwnershipRaw(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -435,8 +435,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Передает права владельца проекта другому участнику. Доступно только владельцу проекта.
-     * Передать владение проектом
+     * . .
+     * 
      */
     async transferOwnership(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto> {
         const response = await this.transferOwnershipRaw(requestParameters, initOverrides);
@@ -444,8 +444,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Изменяет роль и права участника проекта. Нельзя изменить owner и свои собственные права.
-     * Обновить права участника
+     * . owner .
+     * 
      */
     async updateMembersRaw(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -508,8 +508,8 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * Изменяет роль и права участника проекта. Нельзя изменить owner и свои собственные права.
-     * Обновить права участника
+     * . owner .
+     * 
      */
     async updateMembers(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto> {
         const response = await this.updateMembersRaw(requestParameters, initOverrides);

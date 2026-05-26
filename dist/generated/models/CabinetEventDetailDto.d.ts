@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -40,139 +40,139 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  */
 export interface CabinetEventDetailDto {
     /**
-     * ID события.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     id: string;
     /**
-     * ID диалога; отсутствует у системных событий без диалога.
+     * ID ; .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     dialogId?: string;
     /**
-     * ID MCP сервера.
+     * ID MCP .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     mcpServerId?: string;
     /**
-     * ID канала.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     channelId?: string;
     /**
-     * Тип платформы.
+     * .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     platformType?: CabinetEventDetailDtoPlatformTypeEnum;
     /**
-     * ID проекта.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     projectId?: string;
     /**
-     * ID агента.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     agentId?: string;
     /**
-     * ID приложения.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     appId?: string;
     /**
-     * ID оригинального агента внутри приложения.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     appAgentId?: string;
     /**
-     * ID лида.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     leadId?: string;
     /**
-     * Тип события.
+     * .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     actionType: CabinetEventDetailDtoActionTypeEnum;
     /**
-     * Тип сущности.
+     * .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     targetType?: CabinetEventDetailDtoTargetTypeEnum;
     /**
-     * ID сущности.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     targetId?: string;
     /**
-     * ID сообщения на внешней платформе.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     externalMessageId?: string;
     /**
-     * Отправитель события.
+     * .
      * @type {EventSenderDto}
      * @memberof CabinetEventDetailDto
      */
     sender?: EventSenderDto;
     /**
-     * Структурированное сообщение.
+     * .
      * @type {EventMessageDto}
      * @memberof CabinetEventDetailDto
      */
     message?: EventMessageDto;
     /**
-     * Вложения события в cabinet-safe формате.
+     * cabinet-safe .
      * @type {Array<EventAttachmentCabinetDto>}
      * @memberof CabinetEventDetailDto
      */
     attachments: Array<EventAttachmentCabinetDto>;
     /**
-     * Кнопки сообщения.
+     * .
      * @type {Array<EventButtonDto>}
      * @memberof CabinetEventDetailDto
      */
     buttons: Array<EventButtonDto>;
     /**
-     * Данные нажатия кнопки.
+     * .
      * @type {EventButtonClickDto}
      * @memberof CabinetEventDetailDto
      */
     buttonClick?: EventButtonClickDto;
     /**
-     * Данные выполнения инструмента.
+     * .
      * @type {EventToolDto}
      * @memberof CabinetEventDetailDto
      */
     tool?: EventToolDto;
     /**
-     * Затраты события в raw-подобной структуре без provider/admin-only полей.
+     * raw- provider/admin-only .
      * @type {EventCostsCabinetDto}
      * @memberof CabinetEventDetailDto
      */
     costs?: EventCostsCabinetDto;
     /**
-     * Взаимодействия с сообщением.
+     * .
      * @type {EventMessageInteractionsDto}
      * @memberof CabinetEventDetailDto
      */
     messageInteractions?: EventMessageInteractionsDto;
     /**
-     * Статус события.
+     * .
      * @type {EventStatusDto}
      * @memberof CabinetEventDetailDto
      */
@@ -250,13 +250,13 @@ export interface CabinetEventDetailDto {
      */
     chatChange?: EventChatChangeDto;
     /**
-     * Ошибка события.
+     * .
      * @type {EventErrorDto}
      * @memberof CabinetEventDetailDto
      */
     error?: EventErrorDto;
     /**
-     * Иерархия события.
+     * .
      * @type {EventHierarchyDto}
      * @memberof CabinetEventDetailDto
      */
@@ -268,37 +268,37 @@ export interface CabinetEventDetailDto {
      */
     generation?: EventGenerationDto;
     /**
-     * Теги события.
+     * .
      * @type {Array<string>}
      * @memberof CabinetEventDetailDto
      */
     tags: Array<string>;
     /**
-     * ID кредитной транзакции.
+     * ID .
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     creditTransactionId?: string;
     /**
-     * Временная метка события.
+     * .
      * @type {Date}
      * @memberof CabinetEventDetailDto
      */
     timestamp: Date;
     /**
-     * Когда событие было создано.
+     * .
      * @type {Date}
      * @memberof CabinetEventDetailDto
      */
     createdAt: Date;
     /**
-     * Когда состояние события обновлялось последний раз.
+     * .
      * @type {Date}
      * @memberof CabinetEventDetailDto
      */
     updatedAt: Date;
     /**
-     * Монотонная версия состояния события.
+     * .
      * @type {number}
      * @memberof CabinetEventDetailDto
      */

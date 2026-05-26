@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class DialogsMessagingApi extends runtime.BaseAPI {
     /**
-     * Создает событие button_click и триггерит AI агента для ответа.
-     * Обработать нажатие на кнопку в диалоге
+     * button_click AI .
+     *
      */
     async buttonClickRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
@@ -94,16 +94,16 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ButtonClickResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает событие button_click и триггерит AI агента для ответа.
-     * Обработать нажатие на кнопку в диалоге
+     * button_click AI .
+     *
      */
     async buttonClick(requestParameters, initOverrides) {
         const response = await this.buttonClickRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Вмешаться в диалог.
-     * Вмешаться в диалог
+     * .
+     *
      */
     async interveneRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
@@ -142,16 +142,16 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogChatEventDtoFromJSON)(jsonValue));
     }
     /**
-     * Вмешаться в диалог.
-     * Вмешаться в диалог
+     * .
+     *
      */
     async intervene(requestParameters, initOverrides) {
         const response = await this.interveneRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Отправляет сообщение оператора в диалог. Для обычных диалогов сообщение всегда адресовано лиду.
-     * Отправить сообщение в диалог
+     * . .
+     *
      */
     async sendRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -190,8 +190,8 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SendMessageResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Отправляет сообщение оператора в диалог. Для обычных диалогов сообщение всегда адресовано лиду.
-     * Отправить сообщение в диалог
+     * . .
+     *
      */
     async send(requestParameters, initOverrides) {
         const response = await this.sendRaw(requestParameters, initOverrides);

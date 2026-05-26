@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,61 +16,61 @@
  */
 export interface ChannelAccessDto {
     /**
-     * Может просматривать конкретный канал.
+     * .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewChannel: boolean;
     /**
-     * Может управлять конкретным каналом.
+     * .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageChannel: boolean;
     /**
-     * Может просматривать диалоги в рамках доступных каналов.
+     * .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewDialogs: boolean;
     /**
-     * Может управлять диалогами в рамках доступных каналов.
+     * .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageDialogs: boolean;
     /**
-     * Может просматривать лиды в рамках доступных каналов.
+     * .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewLeads: boolean;
     /**
-     * Может управлять лидами в рамках доступных каналов.
+     * .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageLeads: boolean;
     /**
-     * Может просматривать spaces в рамках доступных каналов.
+     * spaces .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewSpaces: boolean;
     /**
-     * Может управлять spaces в рамках доступных каналов.
+     * spaces .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageSpaces: boolean;
     /**
-     * Может просматривать data sources в рамках доступных каналов.
+     * data sources .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewDataSources: boolean;
     /**
-     * Может управлять data sources в рамках доступных каналов.
+     * data sources .
      * @type {boolean}
      * @memberof ChannelAccessDto
      */

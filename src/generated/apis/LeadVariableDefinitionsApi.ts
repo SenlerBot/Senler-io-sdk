@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -81,8 +81,8 @@ export interface LeadVariableDefinitionsUpdateRequest {
 export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
 
     /**
-     * Создает новое определение переменной для лидов проекта.
-     * Создать определение переменной лида
+     * .
+     * 
      */
     async leadVariableDefinitionsCreateRaw(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -138,8 +138,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает новое определение переменной для лидов проекта.
-     * Создать определение переменной лида
+     * .
+     * 
      */
     async leadVariableDefinitionsCreate(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
         const response = await this.leadVariableDefinitionsCreateRaw(requestParameters, initOverrides);
@@ -147,8 +147,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет определение переменной лида.
-     * Удалить определение
+     * .
+     * 
      */
     async leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
         if (requestParameters['projectId'] == null) {
@@ -201,8 +201,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет определение переменной лида.
-     * Удалить определение
+     * .
+     * 
      */
     async leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
         const response = await this.leadVariableDefinitionsDeactivateRaw(requestParameters, initOverrides);
@@ -210,8 +210,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает все определения переменных лидов проекта.
-     * Получить список определений переменных лидов
+     * .
+     * 
      */
     async leadVariableDefinitionsGetByIdRaw(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -269,8 +269,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает все определения переменных лидов проекта.
-     * Получить список определений переменных лидов
+     * .
+     * 
      */
     async leadVariableDefinitionsGetById(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto> {
         const response = await this.leadVariableDefinitionsGetByIdRaw(requestParameters, initOverrides);
@@ -278,8 +278,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает информацию об определении переменной лида.
-     * Получить определение по имени
+     * .
+     * 
      */
     async leadVariableDefinitionsGetById2Raw(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -332,8 +332,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает информацию об определении переменной лида.
-     * Получить определение по имени
+     * .
+     * 
      */
     async leadVariableDefinitionsGetById2(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
         const response = await this.leadVariableDefinitionsGetById2Raw(requestParameters, initOverrides);
@@ -341,8 +341,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет определение переменной лида.
-     * Обновить определение
+     * .
+     * 
      */
     async leadVariableDefinitionsUpdateRaw(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -405,8 +405,8 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет определение переменной лида.
-     * Обновить определение
+     * .
+     * 
      */
     async leadVariableDefinitionsUpdate(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
         const response = await this.leadVariableDefinitionsUpdateRaw(requestParameters, initOverrides);

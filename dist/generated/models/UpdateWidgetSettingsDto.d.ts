@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,55 +18,55 @@ import type { WidgetThemeDto } from './WidgetThemeDto';
  */
 export interface UpdateWidgetSettingsDto {
     /**
-     * Визуальные настройки виджета (позиция, приветствие, цвета кнопки).
+     * (, , ).
      * @type {WidgetThemeDto}
      * @memberof UpdateWidgetSettingsDto
      */
     theme?: WidgetThemeDto;
     /**
-     * Разрешенные домены для CORS.
+     * CORS.
      * @type {Array<string>}
      * @memberof UpdateWidgetSettingsDto
      */
     allowedDomains?: Array<string>;
     /**
-     * Функциональные настройки (загрузка файлов, голосовые, эмодзи, выбор элемента).
+     * ( , , , ).
      * @type {WidgetFeaturesDto}
      * @memberof UpdateWidgetSettingsDto
      */
     features?: WidgetFeaturesDto;
     /**
-     * Включить HMAC identity verification в сгенерированном коде виджета (добавляет user_hash).
+     * HMAC identity verification ( user_hash).
      * @type {boolean}
      * @memberof UpdateWidgetSettingsDto
      */
     identityVerification?: boolean;
     /**
-     * Язык виджета: ru, en или auto (автоопределение).
+     * : ru, en auto ().
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     language?: UpdateWidgetSettingsDtoLanguageEnum;
     /**
-     * Режим отображения в сгенерированном коде: popup (всплывающее окно) или embedded (встроен сразу в контейнер).
+     * : popup ( ) embedded ( ).
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
     /**
-     * Источник конфигурации: local (из JS кода на сайте) или remote (с сервера через /init).
+     * : local ( JS ) remote ( /init).
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     configSource?: UpdateWidgetSettingsDtoConfigSourceEnum;
     /**
-     * Название канала.
+     * .
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     name?: string;
     /**
-     * URL аватара канала.
+     * URL .
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */

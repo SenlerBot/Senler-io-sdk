@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -111,173 +111,173 @@ export interface UpdateWizardProgressRequest {
  */
 export declare class AgentsApi extends runtime.BaseAPI {
     /**
-     * Устанавливает is_active = true для опубликованной версии агента. Черновики не затрагиваются.
-     * Активировать агента
+     * is_active = true . .
+     *
      */
     activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Устанавливает is_active = true для опубликованной версии агента. Черновики не затрагиваются.
-     * Активировать агента
+     * is_active = true . .
+     *
      */
     activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Создает агента в указанном проекте.
-     * Создать агента
+     * .
+     *
      */
     agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Создает агента в указанном проекте.
-     * Создать агента
+     * .
+     *
      */
     agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Удаляет агента.
-     * Удалить агента
+     * .
+     *
      */
     agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Удаляет агента.
-     * Удалить агента
+     * .
+     *
      */
     agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Возвращает агента если у вас есть доступ к его проекту.
-     * Получить агента по ID
+     * .
+     * ID
      */
     agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Возвращает агента если у вас есть доступ к его проекту.
-     * Получить агента по ID
+     * .
+     * ID
      */
     agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Обновляет агента если у вас есть доступ к его проекту.
-     * Обновить агента
+     * .
+     *
      */
     agentsUpdateRaw(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Обновляет агента если у вас есть доступ к его проекту.
-     * Обновить агента
+     * .
+     *
      */
     agentsUpdate(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Устанавливает is_active = false для опубликованной версии агента. Черновики не затрагиваются.
-     * Деактивировать агента
+     * is_active = false . .
+     *
      */
     deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Устанавливает is_active = false для опубликованной версии агента. Черновики не затрагиваются.
-     * Деактивировать агента
+     * is_active = false . .
+     *
      */
     deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Удаляет черновик без публикации изменений.
-     * Удалить черновик агента
+     * .
+     *
      */
     deleteDraftRaw(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Удаляет черновик без публикации изменений.
-     * Удалить черновик агента
+     * .
+     *
      */
     deleteDraft(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Создаёт или обновляет черновик агента. Используется для кнопки \"Сохранить для теста\".
-     * Сохранить черновик агента (для теста)
+     * . \" \".
+     * ( )
      */
     draftRaw(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>>;
     /**
-     * Создаёт или обновляет черновик агента. Используется для кнопки \"Сохранить для теста\".
-     * Сохранить черновик агента (для теста)
+     * . \" \".
+     * ( )
      */
     draft(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
     /**
-     * Возвращает опубликованные правила проекта/каналов, которые будут перезаписаны выбранной настройкой автоназначения.
-     * Проверить конфликты автоназначения агента
+     * /, .
+     *
      */
     getAutoAssignmentPreviewRaw(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAutoAssignmentPreviewResponseDto>>;
     /**
-     * Возвращает опубликованные правила проекта/каналов, которые будут перезаписаны выбранной настройкой автоназначения.
-     * Проверить конфликты автоназначения агента
+     * /, .
+     *
      */
     getAutoAssignmentPreview(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto>;
     /**
-     * Возвращает агентов из указанного списка если у вас есть доступ.
-     * Получить агентов по ID списка MCP серверов
+     * .
+     * ID MCP
      */
     getByListRaw(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsByListResponseDto>>;
     /**
-     * Возвращает агентов из указанного списка если у вас есть доступ.
-     * Получить агентов по ID списка MCP серверов
+     * .
+     * ID MCP
      */
     getByList(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsByListResponseDto>;
     /**
-     * Возвращает черновик агента, если он существует.
-     * Получить черновик агента
+     * , .
+     *
      */
     getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>>;
     /**
-     * Возвращает черновик агента, если он существует.
-     * Получить черновик агента
+     * , .
+     *
      */
     getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
     /**
-     * Возвращает агента и его черновик (если есть).
-     * Получить агента с информацией о черновике
+     * ( ).
+     *
      */
     getWithDraftRaw(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentWithDraftResponseDto>>;
     /**
-     * Возвращает агента и его черновик (если есть).
-     * Получить агента с информацией о черновике
+     * ( ).
+     *
      */
     getWithDraft(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentWithDraftResponseDto>;
     /**
-     * Возвращает агентов из указанного проекта. Требуется наличие прав доступа.
-     * Получить список агентов
+     * . .
+     *
      */
     listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsListResponseDto>>;
     /**
-     * Возвращает агентов из указанного проекта. Требуется наличие прав доступа.
-     * Получить список агентов
+     * . .
+     *
      */
     list(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsListResponseDto>;
     /**
-     * Если передано тело запроса — сначала сохраняет данные в черновик, затем публикует. Если тело пустое — публикует существующий черновик.
-     * Опубликовать черновик агента
+     * , . .
+     *
      */
     publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Если передано тело запроса — сначала сохраняет данные в черновик, затем публикует. Если тело пустое — публикует существующий черновик.
-     * Опубликовать черновик агента
+     * , . .
+     *
      */
     publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Перезаписывает черновик данными из опубликованной версии агента.
-     * Откатить черновик к опубликованной версии
+     * .
+     *
      */
     revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>>;
     /**
-     * Перезаписывает черновик данными из опубликованной версии агента.
-     * Откатить черновик к опубликованной версии
+     * .
+     *
      */
     revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
     /**
-     * Восстанавливает ранее удалённого агента.
-     * Восстановить удалённого агента
+     * .
+     *
      */
     updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * Восстанавливает ранее удалённого агента.
-     * Восстановить удалённого агента
+     * .
+     *
      */
     updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * Сохраняет текущий шаг и данные wizard\'а автоматического создания агента.
-     * Сохранить прогресс wizard создания агента
+     * wizard\' .
+     * wizard
      */
     updateWizardProgressRaw(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * Сохраняет текущий шаг и данные wizard\'а автоматического создания агента.
-     * Сохранить прогресс wizard создания агента
+     * wizard\' .
+     * wizard
      */
     updateWizardProgress(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
 }

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,91 +35,91 @@ import {
  */
 export interface ChannelBriefDto {
     /**
-     * ID канала.
+     * ID .
      * @type {string}
      * @memberof ChannelBriefDto
      */
     id: string;
     /**
-     * ID канала Senler.
+     * ID Senler.
      * @type {number}
      * @memberof ChannelBriefDto
      */
     senlerChannelId?: number | null;
     /**
-     * Название канала.
+     * .
      * @type {string}
      * @memberof ChannelBriefDto
      */
     name?: string | null;
     /**
-     * Тип канала.
+     * .
      * @type {string}
      * @memberof ChannelBriefDto
      */
     type?: ChannelBriefDtoTypeEnum | null;
     /**
-     * Внешний ID канала.
+     * ID .
      * @type {string}
      * @memberof ChannelBriefDto
      */
     externalId?: string | null;
     /**
-     * URL аватара канала.
+     * URL .
      * @type {string}
      * @memberof ChannelBriefDto
      */
     avatarUrl?: string | null;
     /**
-     * Временно приостановлен.
+     * .
      * @type {boolean}
      * @memberof ChannelBriefDto
      */
     isPaused: boolean;
     /**
-     * Username бота/сообщества (TG: bot_username, MAX: bot_username, VK: screen_name).
+     * Username / (TG: bot_username, MAX: bot_username, VK: screen_name).
      * @type {string}
      * @memberof ChannelBriefDto
      */
     botUsername?: string | null;
     /**
-     * Статус миграции канала (null если миграции нет).
+     * (null ).
      * @type {ChannelMigrationStatusDto}
      * @memberof ChannelBriefDto
      */
     migration?: ChannelMigrationStatusDto | null;
     /**
-     * Эффективный доступ текущего пользователя к этому каналу.
+     * .
      * @type {ChannelAccessDto}
      * @memberof ChannelBriefDto
      */
     access?: ChannelAccessDto;
     /**
-     * История канала может быть просканирована внешним API.
+     * API.
      * @type {boolean}
      * @memberof ChannelBriefDto
      */
     historySupported?: boolean;
     /**
-     * Статус scan истории канала.
+     * scan .
      * @type {string}
      * @memberof ChannelBriefDto
      */
     historyScanStatus?: string;
     /**
-     * История покрыта с.
+     * .
      * @type {Date}
      * @memberof ChannelBriefDto
      */
     historyCoveredFrom?: Date | null;
     /**
-     * История покрыта по.
+     * .
      * @type {Date}
      * @memberof ChannelBriefDto
      */
     historyCoveredTo?: Date | null;
     /**
-     * Последняя ошибка scan истории.
+     * scan .
      * @type {string}
      * @memberof ChannelBriefDto
      */

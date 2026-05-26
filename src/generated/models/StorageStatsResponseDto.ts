@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -56,133 +56,133 @@ import {
  */
 export interface StorageStatsResponseDto {
     /**
-     * Общее количество файлов (кроме удаленных).
+     * ( ).
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     totalFiles: number;
     /**
-     * Общий размер в байтах (file_size + thumbnail_size).
+     * (file_size + thumbnail_size).
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     totalSize: number;
     /**
-     * Общий размер (форматированный).
+     * ().
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     totalSizeFormatted: string;
     /**
-     * Лимит хранилища по текущему тарифу в байтах.
+     * .
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     storageLimitBytes: number;
     /**
-     * Доступный остаток хранилища в байтах.
+     * .
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     availableSize: number;
     /**
-     * Доступный остаток хранилища (форматированный).
+     * ().
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     availableSizeFormatted: string;
     /**
-     * Процент занятого места от лимита.
+     * .
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     usagePercent: number;
     /**
-     * Занято больше лимита текущего тарифа.
+     * .
      * @type {boolean}
      * @memberof StorageStatsResponseDto
      */
     isOverLimit: boolean;
     /**
-     * Текущий тариф, из которого взят лимит хранилища.
+     * , .
      * @type {StorageTariffDto}
      * @memberof StorageStatsResponseDto
      */
     tariff?: StorageTariffDto | null;
     /**
-     * Количество использованных файлов (status = used).
+     * (status = used).
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     usedFiles: number;
     /**
-     * Размер использованных файлов в байтах (включая превью).
+     * ( ).
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     usedSize: number;
     /**
-     * Размер использованных файлов (форматированный).
+     * ().
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     usedSizeFormatted: string;
     /**
-     * Количество временных файлов.
+     * .
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     tempFiles: number;
     /**
-     * Размер временных файлов в байтах (включая превью).
+     * ( ).
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     tempSize: number;
     /**
-     * Размер временных файлов (форматированный).
+     * ().
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     tempSizeFormatted: string;
     /**
-     * Количество вложений, ожидающих свободного места.
+     * , .
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     quotaPendingFiles: number;
     /**
-     * Суммарный размер вложений, ожидающих свободного места.
+     * , .
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     quotaPendingSize: number;
     /**
-     * Размер ожидающих вложений (форматированный).
+     * ().
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     quotaPendingSizeFormatted: string;
     /**
-     * Статистика по категориям медиа (image, video, audio, document).
+     * (image, video, audio, document).
      * @type {ByCategoryStatsDto}
      * @memberof StorageStatsResponseDto
      */
     byCategory: ByCategoryStatsDto;
     /**
-     * Статистика по типу платформы (widget, tg, vk, max, ai).
+     * (widget, tg, vk, max, ai).
      * @type {ByPlatformTypeStatsDto}
      * @memberof StorageStatsResponseDto
      */
     byPlatformType: ByPlatformTypeStatsDto;
     /**
-     * Статистика по продуктовому источнику файла.
+     * .
      * @type {ByStorageSourceStatsDto}
      * @memberof StorageStatsResponseDto
      */
     byStorageSource: ByStorageSourceStatsDto;
     /**
-     * Топ 10 диалогов по занятому месту.
+     * 10 .
      * @type {Array<TopDialogDto>}
      * @memberof StorageStatsResponseDto
      */

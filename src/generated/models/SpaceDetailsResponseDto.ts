@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -83,121 +83,121 @@ export interface SpaceDetailsResponseDto {
      */
     id: string;
     /**
-     * ID проекта.
+     * ID .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     projectId?: string;
     /**
-     * ID канала интеграции.
+     * ID .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     channelId: string;
     /**
-     * Платформа space.
+     * space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     platformType: SpaceDetailsResponseDtoPlatformTypeEnum;
     /**
-     * Тип space.
+     * space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     kind: SpaceDetailsResponseDtoKindEnum;
     /**
-     * Обобщенный тип space для кросс-платформенного UI.
+     * space - UI.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     spaceType: SpaceDetailsResponseDtoSpaceTypeEnum;
     /**
-     * ID родительского space.
+     * ID space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     parentSpaceId?: string | null;
     /**
-     * Цепочка ancestor space IDs от корня до непосредственного родителя.
+     * ancestor space IDs .
      * @type {Array<string>}
      * @memberof SpaceDetailsResponseDto
      */
     ancestorSpaceIds: Array<string>;
     /**
-     * Канонический внешний ID для identity-lookup.
+     * ID identity-lookup.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     identityExternalId: string;
     /**
-     * Scope identity для platform objects, где external_id уникален только внутри контейнера.
+     * Scope identity platform objects, external_id .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     identityScope?: string | null;
     /**
-     * Нормализованный identity key space.
+     * identity key space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     identityKey: string;
     /**
-     * Сырой внешний ID space на платформе.
+     * ID space .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     externalId: string;
     /**
-     * Сырой внешний ID родительского space.
+     * ID space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     externalParentId?: string | null;
     /**
-     * Заголовок space.
+     * space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     title?: string | null;
     /**
-     * Основной текстовый контент space.
+     * space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     text?: string | null;
     /**
-     * Ссылка на оригинальный объект на платформе.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     sourceUrl?: string | null;
     /**
-     * Media контент space в порядке отображения.
+     * Media space .
      * @type {Array<SpaceMediaEmbedded>}
      * @memberof SpaceDetailsResponseDto
      */
     media?: Array<SpaceMediaEmbedded> | null;
     /**
-     * Общее количество участников space.
+     * space.
      * @type {number}
      * @memberof SpaceDetailsResponseDto
      */
     participantCount?: number | null;
     /**
-     * Общее количество сообщений в conversation-like space.
+     * conversation-like space.
      * @type {number}
      * @memberof SpaceDetailsResponseDto
      */
     messageCount?: number | null;
     /**
-     * Общее количество комментариев в content-thread space.
+     * content-thread space.
      * @type {number}
      * @memberof SpaceDetailsResponseDto
      */
     commentCount?: number | null;
     /**
-     * URL аватара space.
+     * URL space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
@@ -209,109 +209,109 @@ export interface SpaceDetailsResponseDto {
      */
     username?: string | null;
     /**
-     * Space активен.
+     * Space .
      * @type {boolean}
      * @memberof SpaceDetailsResponseDto
      */
     isActive: boolean;
     /**
-     * Откуда обнаружен space.
+     * space.
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     discoveredFrom: SpaceDetailsResponseDtoDiscoveredFromEnum;
     /**
-     * Время последнего сообщения в space.
+     * space.
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastMessageAt?: Date | null;
     /**
-     * Дата создания оригинальной сущности на платформе.
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     externalCreatedAt?: Date | null;
     /**
-     * Дата обновления оригинальной сущности на платформе.
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     externalUpdatedAt?: Date | null;
     /**
-     * Когда space последний раз наблюдался во входящем трафике.
+     * space .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastObservedAt?: Date | null;
     /**
-     * Когда metadata space последний раз синхронизировалась.
+     * metadata space .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastSyncedAt?: Date | null;
     /**
-     * Когда последний раз запрашивалась асинхронная синхронизация metadata space.
+     * metadata space.
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastSyncRequestedAt?: Date | null;
     /**
-     * Discord-specific данные без deprecated полей.
+     * Discord-specific deprecated .
      * @type {SpaceDetailsDiscordDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataDiscord?: SpaceDetailsDiscordDataDto;
     /**
-     * Telegram-specific данные без deprecated полей.
+     * Telegram-specific deprecated .
      * @type {SpaceDetailsTelegramDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataTg?: SpaceDetailsTelegramDataDto;
     /**
-     * VK-specific данные без deprecated полей.
+     * VK-specific deprecated .
      * @type {SpaceDetailsVKDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataVk?: SpaceDetailsVKDataDto;
     /**
-     * MAX-specific данные без deprecated полей.
+     * MAX-specific deprecated .
      * @type {SpaceDetailsMaxDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataMax?: SpaceDetailsMaxDataDto;
     /**
-     * Avito-specific данные без deprecated полей.
+     * Avito-specific deprecated .
      * @type {SpaceDetailsAvitoDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataAvito?: SpaceDetailsAvitoDataDto;
     /**
-     * Дата создания.
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     createdAt: Date;
     /**
-     * Дата обновления.
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     updatedAt: Date;
     /**
-     * Есть ли у space дочерние spaces.
+     * space spaces.
      * @type {boolean}
      * @memberof SpaceDetailsResponseDto
      */
     hasChildren: boolean;
     /**
-     * Ancestors текущего space в порядке root -> parent.
+     * Ancestors space root -> parent.
      * @type {Array<SpaceDetailsAncestorDto>}
      * @memberof SpaceDetailsResponseDto
      */
     ancestors: Array<SpaceDetailsAncestorDto>;
     /**
-     * Базовая информация о канале, которому принадлежит space.
+     * , space.
      * @type {SpaceDetailsChannelDto}
      * @memberof SpaceDetailsResponseDto
      */

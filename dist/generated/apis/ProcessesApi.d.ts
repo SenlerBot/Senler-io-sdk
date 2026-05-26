@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,63 +54,63 @@ export interface GetProcessesResultRequest {
  */
 export declare class ProcessesApi extends runtime.BaseAPI {
     /**
-     * Отменяет pending/preparing/processing процесс или удаляет completed/failed/cancelled процесс.
-     * Отменить или удалить процесс
+     * pending/preparing/processing completed/failed/cancelled .
+     *
      */
     deleteProcessesRaw(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>>;
     /**
-     * Отменяет pending/preparing/processing процесс или удаляет completed/failed/cancelled процесс.
-     * Отменить или удалить процесс
+     * pending/preparing/processing completed/failed/cancelled .
+     *
      */
     deleteProcesses(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
     /**
-     * Возвращает список фоновых процессов (экспорт/импорт) с фильтрами и пагинацией.
-     * Получить список процессов проекта
+     * (/) .
+     *
      */
     getProcessesRaw(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListProcessesResponseDto>>;
     /**
-     * Возвращает список фоновых процессов (экспорт/импорт) с фильтрами и пагинацией.
-     * Получить список процессов проекта
+     * (/) .
+     *
      */
     getProcesses(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListProcessesResponseDto>;
     /**
-     * Возвращает подробную информацию о процессе, включая прогресс и результат.
-     * Получить детали процесса
+     * , .
+     *
      */
     getProcesses2Raw(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
     /**
-     * Возвращает подробную информацию о процессе, включая прогресс и результат.
-     * Получить детали процесса
+     * , .
+     *
      */
     getProcesses2(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
-     * Редирект на S3 presigned URL для скачивания файла экспорта.
-     * Скачать результат экспорта
+     * S3 presigned URL .
+     *
      */
     getProcessesDownloadRaw(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>>;
     /**
-     * Редирект на S3 presigned URL для скачивания файла экспорта.
-     * Скачать результат экспорта
+     * S3 presigned URL .
+     *
      */
     getProcessesDownload(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse>;
     /**
-     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прогресс или результат процесса process_deleted — процесс удалён из журнала.
-     * Получить subscription token для realtime обновлений процессов
+     * : process_created process_updated , process_deleted .
+     * subscription token realtime
      */
     getProcessesRealtimeTokenRaw(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
     /**
-     * События в канале: process_created — создан новый процесс process_updated — обновился статус, прогресс или результат процесса process_deleted — процесс удалён из журнала.
-     * Получить subscription token для realtime обновлений процессов
+     * : process_created process_updated , process_deleted .
+     * subscription token realtime
      */
     getProcessesRealtimeToken(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
     /**
-     * Возвращает результат выполнения процесса.
-     * Получить результат ��роцесса
+     * .
+     *
      */
     getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>>;
     /**
-     * Возвращает результат выполнения процесса.
-     * Получить результат ��роцесса
+     * .
+     *
      */
     getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto>;
 }

@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class ChannelsVKApi extends runtime.BaseAPI {
     /**
-     * Привязывает или ротирует VK token для уже подключенного VK канала. Token должен относиться к той же группе, которая уже зафиксирована в channel.
-     * Привязать VK токен к каналу
+     * VK token VK . Token , channel.
+     * VK
      */
     async tokensVkBindRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -94,16 +94,16 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Привязывает или ротирует VK token для уже подключенного VK канала. Token должен относиться к той же группе, которая уже зафиксирована в channel.
-     * Привязать VK токен к каналу
+     * VK token VK . Token , channel.
+     * VK
      */
     async tokensVkBind(requestParameters, initOverrides) {
         const response = await this.tokensVkBindRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет т��кущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
-     * Проверить статус VK webhook
+     * VK webhook VK API . webhook .
+     * VK webhook
      */
     async tokensVkCheckWebhookStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -137,16 +137,16 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CheckWebhookStatusResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет т��кущий статус VK webhook через VK API и обновляет статус в БД. Полезно для проверки подтверждения webhook после установки.
-     * Проверить статус VK webhook
+     * VK webhook VK API . webhook .
+     * VK webhook
      */
     async tokensVkCheckWebhookStatus(requestParameters, initOverrides) {
         const response = await this.tokensVkCheckWebhookStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Скачивает аватарку группы из VK и загружает её в S3.
-     * Обновить аватарку VK группы
+     * VK S3.
+     * VK
      */
     async tokensVkRefreshAvatarRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -180,16 +180,16 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Скачивает аватарку группы из VK и загружает её в S3.
-     * Обновить аватарку VK группы
+     * VK S3.
+     * VK
      */
     async tokensVkRefreshAvatar(requestParameters, initOverrides) {
         const response = await this.tokensVkRefreshAvatarRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Проверяет токен ВКонтакте через VK API.
-     * Проверить валидность VK токена
+     * VK API.
+     * VK
      */
     async tokensVkValidateRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -223,16 +223,16 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateVKTokenResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Проверяет токен ВКонтакте через VK API.
-     * Проверить валидность VK токена
+     * VK API.
+     * VK
      */
     async tokensVkValidate(requestParameters, initOverrides) {
         const response = await this.tokensVkValidateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Установить или удалить вебхук ВКонтакте. Автоматически проверяет существование старого callback server в VK и создает новый если нужно.
-     * Управление VK вебхуком
+     * . callback server VK .
+     * VK
      */
     async tokensVkWebhookRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -271,8 +271,8 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SetupWebhookResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Установить или удалить вебхук ВКонтакте. Автоматически проверяет существование старого callback server в VK и создает новый если нужно.
-     * Управление VK вебхуком
+     * . callback server VK .
+     * VK
      */
     async tokensVkWebhook(requestParameters, initOverrides) {
         const response = await this.tokensVkWebhookRaw(requestParameters, initOverrides);

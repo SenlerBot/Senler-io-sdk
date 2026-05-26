@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,301 +28,301 @@ import {
  */
 export interface UpdateAgentDto {
     /**
-     * Имя агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     name?: string;
     /**
-     * Инструкция агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     instruction?: string;
     /**
-     * URL аватарки агента.
+     * URL .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     avatarUrl?: string;
     /**
-     * Тип агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     agentType?: UpdateAgentDtoAgentTypeEnum;
     /**
-     * Режим привязки серверов: list (через ServerList), direct (напрямую), none (без серверов).
+     * : list ( ServerList), direct (), none ( ).
      * @type {string}
      * @memberof UpdateAgentDto
      */
     serverBindingMode?: UpdateAgentDtoServerBindingModeEnum;
     /**
-     * ID списка MCP серверов (используется если server_binding_mode = "list").
+     * ID MCP ( server_binding_mode = "list").
      * @type {string}
      * @memberof UpdateAgentDto
      */
     mcpServerListId?: string;
     /**
-     * ID серверов для прямой привязки (используется если server_binding_mode = "direct").
+     * ID ( server_binding_mode = "direct").
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * Глобальные права агента на выбранные источники базы знаний.
+     * .
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     knowledgeBasePermissions?: Array<UpdateAgentDtoKnowledgeBasePermissionsEnum>;
     /**
-     * Источники базы знаний, доступные агенту.
+     * , .
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof UpdateAgentDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID канала (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof UpdateAgentDto
      */
     channelId?: string;
     /**
-     * ID логической текстовой модели для агента.
+     * ID .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature для AI генерации (0.
+     * Temperature AI (0.
      * @type {number}
      * @memberof UpdateAgentDto
      */
     temperature?: number | null;
     /**
-     * Метаданные.
+     * .
      * @type {object}
      * @memberof UpdateAgentDto
      */
     meta?: object;
     /**
-     * Сбор метрик включен.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     metricsCollectionEnabled?: boolean;
     /**
-     * Ключевые слова для автопривязки агента (массив строк).
+     * ( ).
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     triggerKeywords?: Array<string>;
     /**
-     * Роль автопривязки по ключевым словам.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     keywordAssignmentRole?: UpdateAgentDtoKeywordAssignmentRoleEnum;
     /**
-     * Категория диалогов для ключевых слов.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     keywordDialogScope?: UpdateAgentDtoKeywordDialogScopeEnum | null;
     /**
-     * ID каналов, в которых работают ключевые слова.
+     * ID , .
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * Режим автоназначения агента.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     autoAssignmentMode?: UpdateAgentDtoAutoAssignmentModeEnum;
     /**
-     * ID каналов для режима selected_channels.
+     * ID selected_channels.
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * Категория диалогов для автоназначения на все сообщения.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     autoAssignmentDialogScope?: UpdateAgentDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * Роль агента в правилах автоназначения.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     autoAssignmentRole?: UpdateAgentDtoAutoAssignmentRoleEnum;
     /**
-     * Подтвердить перезапись конфликтующих правил автоназначения.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     confirmAutoAssignmentOverwrite?: boolean;
     /**
-     * Разрешить кнопки в ответах.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableButtons?: boolean;
     /**
-     * Разрешить действия с элементами сайта через виджет.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableWidgetPageActions?: boolean;
     /**
-     * Разрешить кастомные вложения (URL, S3, переиспользование).
+     * (URL, S3, ).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableCustomAttachments?: boolean;
     /**
-     * Разрешить генерацию изображений (DALL-E).
+     * (DALL-E).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableImageGeneration?: boolean;
     /**
-     * ID логической модели для генерации изображений.
+     * ID .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * Разрешить генерацию аудио (TTS).
+     * (TTS).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableAudioGeneration?: boolean;
     /**
-     * UUID логической модели для генерации аудио из GET /api/ai/models.
+     * UUID GET /api/ai/models.
      * @type {string}
      * @memberof UpdateAgentDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * Разрешить распознавание речи (STT).
+     * (STT).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableSpeechRecognition?: boolean;
     /**
-     * UUID логической модели для распознавания речи из GET /api/ai/models.
+     * UUID GET /api/ai/models.
      * @type {string}
      * @memberof UpdateAgentDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * Разрешить распознавание изображений (Vision).
+     * (Vision).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableImageRecognition?: boolean;
     /**
-     * ID логической модели для распознавания изображений.
+     * ID .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * Разрешить генерацию QR кодов.
+     * QR .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableQrCode?: boolean;
     /**
-     * Разрешить генерацию графиков/диаграмм.
+     * /.
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableChart?: boolean;
     /**
-     * Разрешить веб-поиск (OpenAI web_search tool).
+     * - (OpenAI web_search tool).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableWebSearch?: boolean;
     /**
-     * Разрешить блокировать лидов (block_lead tool).
+     * (block_lead tool).
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableLeadBlocking?: boolean;
     /**
-     * Разрешить генерацию AI ответа.
+     * AI .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableAiResponse?: boolean;
     /**
-     * Отправлять сообщение пользователю.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableUserMessage?: boolean;
     /**
-     * Включить streaming режим генерации ответа.
+     * streaming .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableStreaming?: boolean;
     /**
-     * Разрешить предварительные ответы.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * Передавать реакции на сообщения в AI-контекст.
+     * AI-.
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableMessageReactionsContext?: boolean;
     /**
-     * Разрешить агенту отвязываться от диалога через detach_from_dialog tool.
+     * detach_from_dialog tool.
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableDetachFromDialog?: boolean;
     /**
-     * Включить переменные проекта.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     useProjectVariables?: boolean;
     /**
-     * Включить переменные лида.
+     * .
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     useLeadVariables?: boolean;
     /**
-     * Режим работы с переменными проекта из инструкции.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     projectVarsInstructionMode?: UpdateAgentDtoProjectVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными проекта по запросу пользователя.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     projectVarsUserRequestMode?: UpdateAgentDtoProjectVarsUserRequestModeEnum;
     /**
-     * Режим работы с переменными лида из инструкции.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     leadVarsInstructionMode?: UpdateAgentDtoLeadVarsInstructionModeEnum;
     /**
-     * Режим работы с переменными лида по запросу пользователя.
+     * .
      * @type {string}
      * @memberof UpdateAgentDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,109 +18,109 @@ import type { DataSourceMetaDto } from './DataSourceMetaDto';
  */
 export interface DataSourceResponseDto {
     /**
-     * UUID источника.
+     * UUID .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     id: string;
     /**
-     * ID проекта (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     projectId: string;
     /**
-     * Тип источника.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     sourceType: DataSourceResponseDtoSourceTypeEnum;
     /**
-     * Название источника.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     name: string;
     /**
-     * URL источника.
+     * URL .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     sourceUrl?: string | null;
     /**
-     * ID источника.
+     * ID .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     sourceId?: string | null;
     /**
-     * Конфигурация источника.
+     * .
      * @type {DataSourceConfigDto}
      * @memberof DataSourceResponseDto
      */
     config: DataSourceConfigDto;
     /**
-     * Валиден ли источник.
+     * .
      * @type {boolean}
      * @memberof DataSourceResponseDto
      */
     isValid: boolean;
     /**
-     * Время последней проверки.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     lastCheckedAt?: string;
     /**
-     * Ошибка валидации.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     validationError?: string | null;
     /**
-     * Время последнего парсинга.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     lastParsedAt?: string;
     /**
-     * Всего распарсено элементов.
+     * .
      * @type {number}
      * @memberof DataSourceResponseDto
      */
     totalItemsParsed: number;
     /**
-     * Количество парсингов.
+     * .
      * @type {number}
      * @memberof DataSourceResponseDto
      */
     parseCount: number;
     /**
-     * Метаданные.
+     * .
      * @type {DataSourceMetaDto}
      * @memberof DataSourceResponseDto
      */
     meta: DataSourceMetaDto;
     /**
-     * Активен ли источник.
+     * .
      * @type {boolean}
      * @memberof DataSourceResponseDto
      */
     isActive: boolean;
     /**
-     * Включен ли для обучения.
+     * .
      * @type {boolean}
      * @memberof DataSourceResponseDto
      */
     isEnabledForTraining: boolean;
     /**
-     * Дата создания.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     createdAt: string;
     /**
-     * Дата обновления.
+     * .
      * @type {string}
      * @memberof DataSourceResponseDto
      */

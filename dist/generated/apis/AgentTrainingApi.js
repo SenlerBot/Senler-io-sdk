@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AgentTrainingApi extends runtime.BaseAPI {
     /**
-     * Возвращает subscription token для канала agent:{agentId}:progress с прогрессом автосоздания агента.
-     * Получить subscription token для realtime-прогресса обучения агента
+     * subscription token agent:{agentId}:progress .
+     * subscription token realtime-
      */
     async getTrainingRealtimeTokenRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -92,16 +92,16 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает subscription token для канала agent:{agentId}:progress с прогрессом автосоздания агента.
-     * Получить subscription token для realtime-прогресса обучения агента
+     * subscription token agent:{agentId}:progress .
+     * subscription token realtime-
      */
     async getTrainingRealtimeToken(requestParameters, initOverrides) {
         const response = await this.getTrainingRealtimeTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает текущий статус обучения агента и прогресс выполнения задач.
-     * Получить статус обучения
+     * .
+     *
      */
     async getTrainingStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -138,16 +138,16 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TrainingStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает текущий статус обучения агента и прогресс выполнения задач.
-     * Получить статус обучения
+     * .
+     *
      */
     async getTrainingStatus(requestParameters, initOverrides) {
         const response = await this.getTrainingStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Отменяет процесс обучения агента и все активные задачи.
-     * Отменить обучение
+     * .
+     *
      */
     async trainingCancelRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -184,15 +184,15 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Отменяет процесс обучения агента и все активные задачи.
-     * Отменить обучение
+     * .
+     *
      */
     async trainingCancel(requestParameters, initOverrides) {
         await this.trainingCancelRaw(requestParameters, initOverrides);
     }
     /**
-     * Возвращает preview объема данных, доступности загрузки истории, времени и кредитов без создания задач.
-     * Оценить обучение агента
+     * preview , , .
+     *
      */
     async trainingPreviewRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -234,16 +234,16 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TrainingPreviewResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает preview объема данных, доступности загрузки истории, времени и кредитов без создания задач.
-     * Оценить обучение агента
+     * preview , , .
+     *
      */
     async trainingPreview(requestParameters, initOverrides) {
         const response = await this.trainingPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Выбирает один из сгенерированных вариантов агента и активирует его.
-     * Выбрать вариант агента
+     * .
+     *
      */
     async trainingSelectRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -285,16 +285,16 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Выбирает один из сгенерированных вариантов агента и активирует его.
-     * Выбрать вариант агента
+     * .
+     *
      */
     async trainingSelect(requestParameters, initOverrides) {
         const response = await this.trainingSelectRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Запускает процесс автоматического обучения агента на основе источников данных.
-     * Запустить обучение агента
+     * .
+     *
      */
     async trainingStartRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -336,8 +336,8 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartTrainingResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Запускает процесс автоматического обучения агента на основе источников данных.
-     * Запустить обучение агента
+     * .
+     *
      */
     async trainingStart(requestParameters, initOverrides) {
         const response = await this.trainingStartRaw(requestParameters, initOverrides);

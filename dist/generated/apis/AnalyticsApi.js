@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AnalyticsApi extends runtime.BaseAPI {
     /**
-     * Метрики агента с отклонениями. Включает контекст агента, временной ряд и общую статистику.
-     * L1: Метрики агента
+     * . , .
+     * L1:
      */
     async getAgentsTopMetricsRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
@@ -116,16 +116,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DrillDownByAgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Метрики агента с отклонениями. Включает контекст агента, временной ряд и общую статистику.
-     * L1: Метрики агента
+     * . , .
+     * L1:
      */
     async getAgentsTopMetrics(requestParameters, initOverrides) {
         const response = await this.getAgentsTopMetricsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Просмотр собранных метрик из ClickHouse с фильтрами, пагинацией и агрегированной сводкой.
-     * Лог метрик
+     * ClickHouse , .
+     *
      */
     async getMetricsLogRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -213,16 +213,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricsLogResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Просмотр собранных метрик из ClickHouse с фильтрами, пагинацией и агрегированной сводкой.
-     * Лог метрик
+     * ClickHouse , .
+     *
      */
     async getMetricsLog(requestParameters, initOverrides) {
         const response = await this.getMetricsLogRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Агенты с отклонениями по выбранной метрике. Включает контекст метрики, временной ряд и рекомендации.
-     * L1: Агенты по метрике
+     * . , .
+     * L1:
      */
     async getMetricsTopAgentsRaw(requestParameters, initOverrides) {
         if (requestParameters['metricId'] == null) {
@@ -283,16 +283,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DrillDownByMetricResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Агенты с отклонениями по выбранной метрике. Включает контекст метрики, временной ряд и рекомендации.
-     * L1: Агенты по метрике
+     * . , .
+     * L1:
      */
     async getMetricsTopAgents(requestParameters, initOverrides) {
         const response = await this.getMetricsTopAgentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает конкретную суммаризацию.
-     * Суммаризация по ID
+     * .
+     * ID
      */
     async getSummarizeRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -326,16 +326,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает конкретную суммаризацию.
-     * Суммаризация по ID
+     * .
+     * ID
      */
     async getSummarize(requestParameters, initOverrides) {
         const response = await this.getSummarizeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Список моделей с примерной стоимостью. Для выбора модели перед генерацией.
-     * Оценка стоимости суммаризации
+     * . .
+     *
      */
     async getSummarizeEstimateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -375,16 +375,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EstimateSummarizationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Список моделей с примерной стоимостью. Для выбора модели перед генерацией.
-     * Оценка стоимости суммаризации
+     * . .
+     *
      */
     async getSummarizeEstimate(requestParameters, initOverrides) {
         const response = await this.getSummarizeEstimateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Список всех суммаризаций проекта с пагинацией.
-     * История суммаризаций
+     * .
+     *
      */
     async getSummarizeHistoryRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -427,16 +427,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationHistoryResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Список всех суммаризаций проекта с пагинацией.
-     * История суммаризаций
+     * .
+     *
      */
     async getSummarizeHistory(requestParameters, initOverrides) {
         const response = await this.getSummarizeHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает последнюю сгенерированную суммаризацию для проекта.
-     * Последняя суммаризация
+     * .
+     *
      */
     async getSummarizeLatestRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -473,16 +473,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает последнюю сгенерированную суммаризацию для проекта.
-     * Последняя суммаризация
+     * .
+     *
      */
     async getSummarizeLatest(requestParameters, initOverrides) {
         const response = await this.getSummarizeLatestRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Текущие настройки автоматической суммаризации для проекта.
-     * Настройки автоматической суммаризации
+     * .
+     *
      */
     async getSummarizeSettingsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -519,16 +519,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Текущие настройки автоматической суммаризации для проекта.
-     * Настройки автоматической суммаризации
+     * .
+     *
      */
     async getSummarizeSettings(requestParameters, initOverrides) {
         const response = await this.getSummarizeSettingsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Агенты с наибольшим совокупным отклонением по всем метрикам. Включает score, топ-3 проблемных метрик и общую статистику.
-     * L0: Топ агентов
+     * . score, -3 .
+     * L0:
      */
     async getTopAgentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -589,16 +589,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TopAgentsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Агенты с наибольшим совокупным отклонением по всем метрикам. Включает score, топ-3 проблемных метрик и общую статистику.
-     * L0: Топ агентов
+     * . score, -3 .
+     * L0:
      */
     async getTopAgents(requestParameters, initOverrides) {
         const response = await this.getTopAgentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Метрики с наибольшими отклонениями. Поддерживает режимы оценки (anomaly/trend/normative) и фильтрацию по типу/категории.
-     * L0: Топ метрик
+     * . (anomaly/trend/normative) /.
+     * L0:
      */
     async getTopMetricsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -659,16 +659,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TopMetricsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Метрики с наибольшими отклонениями. Поддерживает режимы оценки (anomaly/trend/normative) и фильтрацию по типу/категории.
-     * L0: Топ метрик
+     * . (anomaly/trend/normative) /.
+     * L0:
      */
     async getTopMetrics(requestParameters, initOverrides) {
         const response = await this.getTopMetricsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * AI-анализ текущей ситуации с рекомендациями. Платная операция.
-     * Генерация суммаризации
+     * AI- . .
+     *
      */
     async summarizeRaw(requestParameters, initOverrides) {
         if (requestParameters['generateSummarizationRequestDto'] == null) {
@@ -704,16 +704,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * AI-анализ текущей ситуации с рекомендациями. Платная операция.
-     * Генерация суммаризации
+     * AI- . .
+     *
      */
     async summarize(requestParameters, initOverrides) {
         const response = await this.summarizeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Включить/выключить автоматическую суммаризацию, настроить период и расписание.
-     * Обновить настройки суммаризации
+     * / , .
+     *
      */
     async updateSummarizeSettingsRaw(requestParameters, initOverrides) {
         if (requestParameters['updateSummarizationSettingsRequestDto'] == null) {
@@ -749,8 +749,8 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Включить/выключить автоматическую суммаризацию, настроить период и расписание.
-     * Обновить настройки суммаризации
+     * / , .
+     *
      */
     async updateSummarizeSettings(requestParameters, initOverrides) {
         const response = await this.updateSummarizeSettingsRaw(requestParameters, initOverrides);

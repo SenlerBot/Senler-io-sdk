@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AccessApi extends runtime.BaseAPI {
     /**
-     * Удаляет участника из проекта (is_active = false). Нельзя удалить owner\'а и самого себя.
-     * Удалить участника из проекта
+     * (is_active = false). owner\' .
+     *
      */
     async deleteMembersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -92,16 +92,16 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет участника из проекта (is_active = false). Нельзя удалить owner\'а и самого себя.
-     * Удалить участника из проекта
+     * (is_active = false). owner\' .
+     *
      */
     async deleteMembers(requestParameters, initOverrides) {
         const response = await this.deleteMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает список всех участников проекта с информацией о доступах.
-     * Получить участников проекта
+     * .
+     *
      */
     async getMembersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -135,16 +135,16 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.ProjectMemberListItemDtoFromJSON));
     }
     /**
-     * Возвращает список всех участников проекта с информацией о доступах.
-     * Получить участников проекта
+     * .
+     *
      */
     async getMembers(requestParameters, initOverrides) {
         const response = await this.getMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает подробную информацию об участнике проекта, включая права и доступы к каналам.
-     * Получить детали участника проекта
+     * , .
+     *
      */
     async getMembers2Raw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -181,16 +181,16 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetProjectMemberResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает подробную информацию об участнике проекта, включая права и доступы к каналам.
-     * Получить детали участника проекта
+     * , .
+     *
      */
     async getMembers2(requestParameters, initOverrides) {
         const response = await this.getMembers2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает список каналов, к которым участник имеет доступ в рамках проекта.
-     * Получить каналы участника проекта
+     * , .
+     *
      */
     async getMembersChannelsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -227,16 +227,16 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetMemberChannelsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает список каналов, к которым участник имеет доступ в рамках проекта.
-     * Получить каналы участника проекта
+     * , .
+     *
      */
     async getMembersChannels(requestParameters, initOverrides) {
         const response = await this.getMembersChannelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает описание всех ролей и их прав по умолчанию.
-     * Получить пресеты ролей
+     * .
+     *
      */
     async getRolePresetsRaw(requestParameters, initOverrides) {
         const queryParameters = {};
@@ -253,16 +253,16 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.RolePresetsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает описание всех ролей и их прав по умолчанию.
-     * Получить пресеты ролей
+     * .
+     *
      */
     async getRolePresets(requestParameters = {}, initOverrides) {
         const response = await this.getRolePresetsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Передает права владельца проекта другому участнику. Доступно только владельцу проекта.
-     * Передать владение проектом
+     * . .
+     *
      */
     async transferOwnershipRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -301,16 +301,16 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TransferOwnershipResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Передает права владельца проекта другому участнику. Доступно только владельцу проекта.
-     * Передать владение проектом
+     * . .
+     *
      */
     async transferOwnership(requestParameters, initOverrides) {
         const response = await this.transferOwnershipRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Изменяет роль и права участника проекта. Нельзя изменить owner и свои собственные права.
-     * Обновить права участника
+     * . owner .
+     *
      */
     async updateMembersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -352,8 +352,8 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateProjectMemberResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Изменяет роль и права участника проекта. Нельзя изменить owner и свои собственные права.
-     * Обновить права участника
+     * . owner .
+     *
      */
     async updateMembers(requestParameters, initOverrides) {
         const response = await this.updateMembersRaw(requestParameters, initOverrides);

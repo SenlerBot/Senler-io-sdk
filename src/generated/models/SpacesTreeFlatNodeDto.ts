@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,7 +35,7 @@ import {
  */
 export interface SpacesTreeFlatNodeDto {
     /**
-     * Тип узла.
+     * .
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
@@ -47,25 +47,25 @@ export interface SpacesTreeFlatNodeDto {
      */
     id: string;
     /**
-     * Заголовок space.
+     * space.
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     title?: string | null;
     /**
-     * Тип space.
+     * space.
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     kind: SpacesTreeFlatNodeDtoKindEnum;
     /**
-     * Обобщенный тип space для кросс-платформенного UI.
+     * space - UI.
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     spaceType: SpacesTreeFlatNodeDtoSpaceTypeEnum;
     /**
-     * Платформа space.
+     * space.
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
@@ -77,37 +77,37 @@ export interface SpacesTreeFlatNodeDto {
      */
     externalId: string;
     /**
-     * Основной текстовый контент space для превью.
+     * space .
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     text?: string | null;
     /**
-     * Ссылка на оригинальный объект на платформе.
+     * .
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     sourceUrl?: string | null;
     /**
-     * Media контент space для превью в дереве.
+     * Media space .
      * @type {Array<SpaceMediaEmbedded>}
      * @memberof SpacesTreeFlatNodeDto
      */
     media?: Array<SpaceMediaEmbedded> | null;
     /**
-     * Общее количество участников space.
+     * space.
      * @type {number}
      * @memberof SpacesTreeFlatNodeDto
      */
     participantCount?: number | null;
     /**
-     * Общее количество сообщений в conversation-like space.
+     * conversation-like space.
      * @type {number}
      * @memberof SpacesTreeFlatNodeDto
      */
     messageCount?: number | null;
     /**
-     * Общее количество комментариев в content-thread space.
+     * content-thread space.
      * @type {number}
      * @memberof SpacesTreeFlatNodeDto
      */
@@ -119,43 +119,43 @@ export interface SpacesTreeFlatNodeDto {
      */
     username?: string | null;
     /**
-     * URL аватара space.
+     * URL space.
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     avatarUrl?: string | null;
     /**
-     * Дата создания оригинальной сущности на платформе.
+     * .
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto
      */
     externalCreatedAt?: Date | null;
     /**
-     * Дата обновления оригинальной сущности на платформе.
+     * .
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto
      */
     externalUpdatedAt?: Date | null;
     /**
-     * Space активен.
+     * Space .
      * @type {boolean}
      * @memberof SpacesTreeFlatNodeDto
      */
     isActive: boolean;
     /**
-     * Время последнего сообщения в space.
+     * space.
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto
      */
     lastMessageAt?: Date | null;
     /**
-     * Есть ли у space видимые дочерние spaces в текущем срезе дерева.
+     * space spaces .
      * @type {boolean}
      * @memberof SpacesTreeFlatNodeDto
      */
     hasChildren: boolean;
     /**
-     * Информация о прямом совпадении узла и/или о совпавших потомках.
+     * / .
      * @type {SpaceTreeMatchMetadataDto}
      * @memberof SpacesTreeFlatNodeDto
      */

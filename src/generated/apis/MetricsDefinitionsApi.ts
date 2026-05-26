@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -89,8 +89,8 @@ export interface MetricsDefinitionsUpdateRestoreRequest {
 export class MetricsDefinitionsApi extends runtime.BaseAPI {
 
     /**
-     * Built-in метрики недоступны для активации через кабинет.
-     * Активировать кастомную метрику
+     * Built-in .
+     * 
      */
     async metricsDefinitionsActivateRaw(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['id'] == null) {
@@ -136,8 +136,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Built-in метрики недоступны для активации через кабинет.
-     * Активировать кастомную метрику
+     * Built-in .
+     * 
      */
     async metricsDefinitionsActivate(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
         const response = await this.metricsDefinitionsActivateRaw(requestParameters, initOverrides);
@@ -145,8 +145,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создаёт кастомную метрику для проекта.
-     * Создать кастомную метрику
+     * .
+     * 
      */
     async metricsDefinitionsCreateRaw(requestParameters: MetricsDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['createMetricDefinitionDto'] == null) {
@@ -195,8 +195,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создаёт кастомную метрику для проекта.
-     * Создать кастомную метрику
+     * .
+     * 
      */
     async metricsDefinitionsCreate(requestParameters: MetricsDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
         const response = await this.metricsDefinitionsCreateRaw(requestParameters, initOverrides);
@@ -204,8 +204,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет кастомную метрику проекта. Built-in метрики недоступны для удаления.
-     * Удалить кастомную метрику
+     * . Built-in .
+     * 
      */
     async metricsDefinitionsDeactivateRaw(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -251,16 +251,16 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет кастомную метрику проекта. Built-in метрики недоступны для удаления.
-     * Удалить кастомную метрику
+     * . Built-in .
+     * 
      */
     async metricsDefinitionsDeactivate(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.metricsDefinitionsDeactivateRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Built-in метрики недоступны для деактивации через кабинет.
-     * Деактивировать кастомную метрику
+     * Built-in .
+     * 
      */
     async metricsDefinitionsDeactivate2Raw(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['id'] == null) {
@@ -306,8 +306,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Built-in метрики недоступны для деактивации через кабинет.
-     * Деактивировать кастомную метрику
+     * Built-in .
+     * 
      */
     async metricsDefinitionsDeactivate2(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
         const response = await this.metricsDefinitionsDeactivate2Raw(requestParameters, initOverrides);
@@ -315,8 +315,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает метрику. Built-in метрики доступны для чтения всем пользователям.
-     * Получить определение метрики по ID
+     * . Built-in .
+     * ID
      */
     async metricsDefinitionsGetByIdRaw(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['id'] == null) {
@@ -362,8 +362,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает метрику. Built-in метрики доступны для чтения всем пользователям.
-     * Получить определение метрики по ID
+     * . Built-in .
+     * ID
      */
     async metricsDefinitionsGetById(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
         const response = await this.metricsDefinitionsGetByIdRaw(requestParameters, initOverrides);
@@ -371,8 +371,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает built-in (глобальные) + кастомные метрики проекта.
-     * Получить определения метрик
+     * built-in () + .
+     * 
      */
     async metricsDefinitionsListRaw(requestParameters: MetricsDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<MetricDefinitionDto>>> {
         if (requestParameters['projectId'] == null) {
@@ -434,8 +434,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает built-in (глобальные) + кастомные метрики проекта.
-     * Получить определения метрик
+     * built-in () + .
+     * 
      */
     async metricsDefinitionsList(requestParameters: MetricsDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<MetricDefinitionDto>> {
         const response = await this.metricsDefinitionsListRaw(requestParameters, initOverrides);
@@ -443,8 +443,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет кастомную метрику проекта. Built-in метрики недоступны для редактирования.
-     * Обновить кастомную метрику
+     * . Built-in .
+     * 
      */
     async metricsDefinitionsUpdateRaw(requestParameters: MetricsDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['id'] == null) {
@@ -500,8 +500,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет кастомную метрику проекта. Built-in метрики недоступны для редактирования.
-     * Обновить кастомную метрику
+     * . Built-in .
+     * 
      */
     async metricsDefinitionsUpdate(requestParameters: MetricsDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
         const response = await this.metricsDefinitionsUpdateRaw(requestParameters, initOverrides);
@@ -509,8 +509,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённую кастомную метрику проекта.
-     * Восстановить кастомную метрику
+     * .
+     * 
      */
     async metricsDefinitionsUpdateRestoreRaw(requestParameters: MetricsDefinitionsUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['id'] == null) {
@@ -556,8 +556,8 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённую кастомную метрику проекта.
-     * Восстановить кастомную метрику
+     * .
+     * 
      */
     async metricsDefinitionsUpdateRestore(requestParameters: MetricsDefinitionsUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
         const response = await this.metricsDefinitionsUpdateRestoreRaw(requestParameters, initOverrides);

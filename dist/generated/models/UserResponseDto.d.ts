@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,7 +17,7 @@ import type { UserMetaDto } from './UserMetaDto';
  */
 export interface UserResponseDto {
     /**
-     * ID пользователя.
+     * ID .
      * @type {string}
      * @memberof UserResponseDto
      */
@@ -29,73 +29,73 @@ export interface UserResponseDto {
      */
     email?: string | null;
     /**
-     * Телефон.
+     * .
      * @type {string}
      * @memberof UserResponseDto
      */
     phone?: string | null;
     /**
-     * URL аватара.
+     * URL .
      * @type {string}
      * @memberof UserResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Имя.
+     * .
      * @type {string}
      * @memberof UserResponseDto
      */
     firstName?: string | null;
     /**
-     * Фамилия.
+     * .
      * @type {string}
      * @memberof UserResponseDto
      */
     lastName?: string | null;
     /**
-     * Язык.
+     * .
      * @type {string}
      * @memberof UserResponseDto
      */
     language?: string | null;
     /**
-     * Страна (ISO 3166-1 alpha-2).
+     * (ISO 3166-1 alpha-2).
      * @type {string}
      * @memberof UserResponseDto
      */
     country?: string | null;
     /**
-     * Смещение часового пояса в минутах от UTC.
+     * UTC.
      * @type {number}
      * @memberof UserResponseDto
      */
     timezoneOffsetMinutes?: number | null;
     /**
-     * Активен ли пользователь.
+     * .
      * @type {boolean}
      * @memberof UserResponseDto
      */
     isActive: boolean;
     /**
-     * Является ли пользователь администратором.
+     * .
      * @type {boolean}
      * @memberof UserResponseDto
      */
     isAdmin: boolean;
     /**
-     * Метаданные.
+     * .
      * @type {UserMetaDto}
      * @memberof UserResponseDto
      */
     meta?: UserMetaDto;
     /**
-     * Дата создания.
+     * .
      * @type {Date}
      * @memberof UserResponseDto
      */
     createdAt: Date;
     /**
-     * Дата обновления.
+     * .
      * @type {Date}
      * @memberof UserResponseDto
      */

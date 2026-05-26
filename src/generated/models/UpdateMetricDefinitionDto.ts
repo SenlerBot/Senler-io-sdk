@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -49,103 +49,103 @@ import {
  */
 export interface UpdateMetricDefinitionDto {
     /**
-     * Название метрики.
+     * .
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     name?: string;
     /**
-     * Описание метрики
+     * 
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     description?: string;
     /**
-     * Название метрики на русском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     nameRu?: string;
     /**
-     * Название метрики на английском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     nameEn?: string;
     /**
-     * Описание метрики на русском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     descriptionRu?: string;
     /**
-     * Описание метрики на английском (для builtin).
+     * ( builtin).
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     descriptionEn?: string;
     /**
-     * Тип значения метрики.
+     * .
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     valueType?: UpdateMetricDefinitionDtoValueTypeEnum;
     /**
-     * Типы агентов (null = для всех типов).
+     * (null = ).
      * @type {Array<string>}
      * @memberof UpdateMetricDefinitionDto
      */
     agentTypes?: Array<string> | null;
     /**
-     * Инструкция для AI (ЧТО извлечь, без списка значений).
+     * AI ( , ).
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     aiExtractionPrompt?: string;
     /**
-     * Пример значения. (mixed type)
+     * . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof UpdateMetricDefinitionDto
      */
     exampleValue?: { [key: string]: any; } | null;
     /**
-     * Валидация для string.
+     * string.
      * @type {StringValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     stringValidation?: StringValidationDto;
     /**
-     * Валидация для number.
+     * number.
      * @type {NumberValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     numberValidation?: NumberValidationDto;
     /**
-     * Валидация для boolean (direction: true_is_better / false_is_better).
+     * boolean (direction: true_is_better / false_is_better).
      * @type {BooleanValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     booleanValidation?: BooleanValidationDto;
     /**
-     * Валидация для array.
+     * array.
      * @type {ArrayValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     arrayValidation?: ArrayValidationDto;
     /**
-     * Активна ли метрика.
+     * .
      * @type {boolean}
      * @memberof UpdateMetricDefinitionDto
      */
     isActive?: boolean;
     /**
-     * Участвует ли в severity-аналитике.
+     * severity-.
      * @type {boolean}
      * @memberof UpdateMetricDefinitionDto
      */
     isAnalyzable?: boolean;
     /**
-     * Норма (целевое значение) для нормативного режима аналитики.
+     * ( ) .
      * @type {number}
      * @memberof UpdateMetricDefinitionDto
      */

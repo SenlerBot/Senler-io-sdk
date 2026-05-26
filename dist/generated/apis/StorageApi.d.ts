@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -43,43 +43,43 @@ export interface GetStatsRequest {
  */
 export declare class StorageApi extends runtime.BaseAPI {
     /**
-     * Удаляет файл из S3 и помечает в БД как удалённый.
-     * Удалить файл из хранилища
+     * S3 .
+     *
      */
     deleteFilesRaw(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFileDeleteResponseDto>>;
     /**
-     * Удаляет файл из S3 и помечает в БД как удалённый.
-     * Удалить файл из хранилища
+     * S3 .
+     *
      */
     deleteFiles(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFileDeleteResponseDto>;
     /**
-     * Удаляет все файлы со статусом pending/uploaded/confirmed (не использованные в сообщениях).
-     * Удалить все неиспользованные файлы
+     * pending/uploaded/confirmed ( ).
+     *
      */
     deleteOrphanedRaw(requestParameters: DeleteOrphanedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageOrphanedDeleteResponseDto>>;
     /**
-     * Удаляет все файлы со статусом pending/uploaded/confirmed (не использованные в сообщениях).
-     * Удалить все неиспользованные файлы
+     * pending/uploaded/confirmed ( ).
+     *
      */
     deleteOrphaned(requestParameters: DeleteOrphanedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageOrphanedDeleteResponseDto>;
     /**
-     * Получить список всех файлов с фильтрацией и пагинацией.
-     * Список файлов проекта
+     * .
+     *
      */
     getFilesRaw(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFilesListResponseDto>>;
     /**
-     * Получить список всех файлов с фильтрацией и пагинацией.
-     * Список файлов проекта
+     * .
+     *
      */
     getFiles(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFilesListResponseDto>;
     /**
-     * Возвращает информацию о занятом месте, количестве файлов, разбивку по типам и диалогам. Все размеры включают как оригиналы, так и превью изображений.
-     * Статистика хранилища проекта
+     * , , . , .
+     *
      */
     getStatsRaw(requestParameters: GetStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageStatsResponseDto>>;
     /**
-     * Возвращает информацию о занятом месте, количестве файлов, разбивку по типам и диалогам. Все размеры включают как оригиналы, так и превью изображений.
-     * Статистика хранилища проекта
+     * , , . , .
+     *
      */
     getStats(requestParameters: GetStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageStatsResponseDto>;
 }

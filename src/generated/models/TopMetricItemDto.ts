@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,85 +20,85 @@ import { mapValues } from '../runtime';
  */
 export interface TopMetricItemDto {
     /**
-     * ID метрики (UUID).
+     * ID (UUID).
      * @type {string}
      * @memberof TopMetricItemDto
      */
     metricId: string;
     /**
-     * Уникальный ключ метрики.
+     * .
      * @type {string}
      * @memberof TopMetricItemDto
      */
     metricKey: string;
     /**
-     * Название метрики.
+     * .
      * @type {string}
      * @memberof TopMetricItemDto
      */
     metricName: string;
     /**
-     * Тип метрики: builtin, agent_type, custom.
+     * : builtin, agent_type, custom.
      * @type {string}
      * @memberof TopMetricItemDto
      */
     metricType: TopMetricItemDtoMetricTypeEnum;
     /**
-     * Тип агента (для agent_type-метрик).
+     * ( agent_type-).
      * @type {string}
      * @memberof TopMetricItemDto
      */
     agentType?: string;
     /**
-     * Тип значения: number, string, boolean, array.
+     * : number, string, boolean, array.
      * @type {string}
      * @memberof TopMetricItemDto
      */
     valueType: string;
     /**
-     * Score — % агентов с отклонением.
+     * Score % .
      * @type {number}
      * @memberof TopMetricItemDto
      */
     score: number;
     /**
-     * Нормализованное направление метрики.
+     * .
      * @type {string}
      * @memberof TopMetricItemDto
      */
     direction: TopMetricItemDtoDirectionEnum | null;
     /**
-     * Текущее среднее значение метрики по всем агентам.
+     * .
      * @type {number}
      * @memberof TopMetricItemDto
      */
     value: number;
     /**
-     * Среднее за предыдущий период (для сравнения).
+     * ( ).
      * @type {number}
      * @memberof TopMetricItemDto
      */
     baseline: number;
     /**
-     * Изменение vs предыдущий период в %.
+     * vs %.
      * @type {number}
      * @memberof TopMetricItemDto
      */
     changePercent: number;
     /**
-     * Количество агентов с данными по этой метрике.
+     * .
      * @type {number}
      * @memberof TopMetricItemDto
      */
     affectedAgentsCount: number;
     /**
-     * Количество событий (оценок метрики).
+     * ( ).
      * @type {number}
      * @memberof TopMetricItemDto
      */
     eventsCount: number;
     /**
-     * Краткое описание для UI-карточки.
+     * UI-.
      * @type {string}
      * @memberof TopMetricItemDto
      */

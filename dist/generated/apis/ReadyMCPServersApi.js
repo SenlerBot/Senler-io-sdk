@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class ReadyMCPServersApi extends runtime.BaseAPI {
     /**
-     * Получить все категории готовых MCP серверов.
-     * Получить все категории готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async getCategoriesListRaw(requestParameters, initOverrides) {
         const queryParameters = {};
@@ -72,16 +72,16 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.ServerTemplateCategoryDtoFromJSON));
     }
     /**
-     * Получить все категории готовых MCP серверов.
-     * Получить все категории готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async getCategoriesList(requestParameters = {}, initOverrides) {
         const response = await this.getCategoriesListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает элементы базы знаний, привязанные к готовому MCP серверу.
-     * Получить базу знаний готового MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBaseRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -101,16 +101,16 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.ServerTemplateKnowledgeSourceDtoFromJSON));
     }
     /**
-     * Возвращает элементы базы знаний, привязанные к готовому MCP серверу.
-     * Получить базу знаний готового MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBase(requestParameters, initOverrides) {
         const response = await this.getKnowledgeBaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Получить детали готового MCP сервера.
-     * Получить детали готового MCP сервера
+     * MCP .
+     * MCP
      */
     async readyMcpServersGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -130,16 +130,16 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ServerTemplateResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Получить детали готового MCP сервера.
-     * Получить детали готового MCP сервера
+     * MCP .
+     * MCP
      */
     async readyMcpServersGetById(requestParameters, initOverrides) {
         const response = await this.readyMcpServersGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Получить список публичных готовых MCP серверов.
-     * Получить список публичных готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async readyMcpServersListRaw(requestParameters, initOverrides) {
         const queryParameters = {};
@@ -177,8 +177,8 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ServerTemplateListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Получить список публичных готовых MCP серверов.
-     * Получить список публичных готовых MCP серверов
+     * MCP .
+     * MCP
      */
     async readyMcpServersList(requestParameters = {}, initOverrides) {
         const response = await this.readyMcpServersListRaw(requestParameters, initOverrides);

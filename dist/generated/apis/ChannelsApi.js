@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class ChannelsApi extends runtime.BaseAPI {
     /**
-     * Скачивает изображение по URL и загружает его в S3 как аватарку канала. Доступно только для каналов с ручным avatar management.
-     * Загрузить аватарку из URL
+     * URL S3 . avatar management.
+     * URL
      */
     async avatarFromUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -94,16 +94,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Скачивает изображение по URL и загружает его в S3 как аватарку канала. Доступно только для каналов с ручным avatar management.
-     * Загрузить аватарку из URL
+     * URL S3 . avatar management.
+     * URL
      */
     async avatarFromUrl(requestParameters, initOverrides) {
         const response = await this.avatarFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет avatar_url канала после успешной загрузки в S3. Доступно только для каналов с ручным avatar management.
-     * Подтвердить загрузку аватарки
+     * avatar_url S3. avatar management.
+     *
      */
     async channelsAvatarConfirmRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -142,16 +142,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет avatar_url канала после успешной загрузки в S3. Доступно только для каналов с ручным avatar management.
-     * Подтвердить загрузку аватарки
+     * avatar_url S3. avatar management.
+     *
      */
     async channelsAvatarConfirm(requestParameters, initOverrides) {
         const response = await this.channelsAvatarConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Генерирует presigned URL для прямой загрузки аватарки в S3. Доступно только для каналов с ручным avatar management.
-     * Получить presigned URL для загрузки аватарки канала
+     * presigned URL S3. avatar management.
+     * presigned URL
      */
     async channelsAvatarUploadUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -190,16 +190,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response);
     }
     /**
-     * Генерирует presigned URL для прямой загрузки аватарки в S3. Доступно только для каналов с ручным avatar management.
-     * Получить presigned URL для загрузки аватарки канала
+     * presigned URL S3. avatar management.
+     * presigned URL
      */
     async channelsAvatarUploadUrl(requestParameters, initOverrides) {
         const response = await this.channelsAvatarUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет канал. Канал перестаёт быть виден в проекте и прекращает обработку сообщений.
-     * Удалить канал
+     * . .
+     *
      */
     async channelsDeactivateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -233,16 +233,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет канал. Канал перестаёт быть виден в проекте и прекращает обработку сообщений.
-     * Удалить канал
+     * . .
+     *
      */
     async channelsDeactivate(requestParameters, initOverrides) {
         const response = await this.channelsDeactivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает полную информацию о канале.
-     * Получить канал по ID
+     * .
+     * ID
      */
     async channelsGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -276,16 +276,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает полную информацию о канале.
-     * Получить канал по ID
+     * .
+     * ID
      */
     async channelsGetById(requestParameters, initOverrides) {
         const response = await this.channelsGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает краткую информацию о каналах проекта, к которым есть доступ.
-     * Получить список каналов
+     * , .
+     *
      */
     async channelsListRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -325,16 +325,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelsUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает краткую информацию о каналах проекта, к которым есть доступ.
-     * Получить список каналов
+     * , .
+     *
      */
     async channelsList(requestParameters, initOverrides) {
         const response = await this.channelsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет данные канала. Для widget каналов: возвращает обновлённый widget_code при изменении темы или настроек.
-     * Обновить канал
+     * . widget : widget_code .
+     *
      */
     async channelsUpdateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -373,16 +373,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет данные канала. Для widget каналов: возвращает обновлённый widget_code при изменении темы или настроек.
-     * Обновить канал
+     * . widget : widget_code .
+     *
      */
     async channelsUpdate(requestParameters, initOverrides) {
         const response = await this.channelsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет привязку Senler: деактивирует Senler-токен и сбрасывает senler_channel_id.
-     * Отвязать Senler от канала
+     * Senler: Senler- senler_channel_id.
+     * Senler
      */
     async deleteSenlerRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -416,16 +416,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет привязку Senler: деактивирует Senler-токен и сбрасывает senler_channel_id.
-     * Отвязать Senler от канала
+     * Senler: Senler- senler_channel_id.
+     * Senler
      */
     async deleteSenler(requestParameters, initOverrides) {
         const response = await this.deleteSenlerRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет (деактивирует) token указанной платформы. Для email-каналов удаление token намеренно недоступно: email credentials обновляются через reconnect flow.
-     * Удалить токен
+     * () token . email- token : email credentials reconnect flow.
+     *
      */
     async deleteTokensRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -462,16 +462,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет (деактивирует) token указанной платформы. Для email-каналов удаление token намеренно недоступно: email credentials обновляются через reconnect flow.
-     * Удалить токен
+     * () token . email- token : email credentials reconnect flow.
+     *
      */
     async deleteTokens(requestParameters, initOverrides) {
         const response = await this.deleteTokensRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает ChannelAccessDto для конкретного канала. Используется frontend access-layer для channel-scoped route guards без загрузки полного канала.
-     * Получить эффективный доступ текущего пользователя к каналу
+     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     *
      */
     async getAccessRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -505,16 +505,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelAccessUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает ChannelAccessDto для конкретного канала. Используется frontend access-layer для channel-scoped route guards без загрузки полного канала.
-     * Получить эффективный доступ текущего пользователя к каналу
+     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     *
      */
     async getAccess(requestParameters, initOverrides) {
         const response = await this.getAccessRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает информацию о привязке Senler к каналу: привязан ли, ID канала Senler, валидность токена.
-     * Статус привязки Senler
+     * Senler : , ID Senler, .
+     * Senler
      */
     async getSenlerStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -548,16 +548,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SenlerStatusDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает информацию о привязке Senler к каналу: привязан ли, ID канала Senler, валидность токена.
-     * Статус привязки Senler
+     * Senler : , ID Senler, .
+     * Senler
      */
     async getSenlerStatus(requestParameters, initOverrides) {
         const response = await this.getSenlerStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает список всех активных токенов канала (без самих токенов).
-     * Получить все токены канала
+     * ( ).
+     *
      */
     async getTokensRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -591,16 +591,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.ChannelTokenResponseDtoFromJSON));
     }
     /**
-     * Возвращает список всех активных токенов канала (без самих токенов).
-     * Получить все токены канала
+     * ( ).
+     *
      */
     async getTokens(requestParameters, initOverrides) {
         const response = await this.getTokensRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает HTML код и iframe URL для widget канала. Только для type: widget.
-     * Получить код виджета для встраивания
+     * HTML iframe URL widget . type: widget.
+     *
      */
     async getWidgetCodeRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -637,16 +637,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetCodeResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает HTML код и iframe URL для widget канала. Только для type: widget.
-     * Получить код виджета для встраивания
+     * HTML iframe URL widget . type: widget.
+     *
      */
     async getWidgetCode(requestParameters, initOverrides) {
         const response = await this.getWidgetCodeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает количество данных и примерное время для каждого варианта переноса истории.
-     * Оценить миграцию канала
+     * .
+     *
      */
     async migrationEstimateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -685,16 +685,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MigrationEstimateResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает количество данных и примерное время для каждого варианта переноса истории.
-     * Оценить миграцию канала
+     * .
+     *
      */
     async migrationEstimate(requestParameters, initOverrides) {
         const response = await this.migrationEstimateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Деактивирует канал в текущем проекте, создаёт новый канал в целевом проекте и запускает фоновый перенос данных.
-     * Запустить миграцию канала в другой проект
+     * , .
+     *
      */
     async migrationStartRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -733,16 +733,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartMigrationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Деактивирует канал в текущем проекте, создаёт новый канал в целевом проекте и запускает фоновый перенос данных.
-     * Запустить миграцию канала в другой проект
+     * , .
+     *
      */
     async migrationStart(requestParameters, initOverrides) {
         const response = await this.migrationStartRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Переключает is_paused. Приостановленный канал не принимает и не отправляет сообщения.
-     * Приостановить/возобновить канал
+     * is_paused. .
+     * /
      */
     async pauseRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -776,16 +776,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Переключает is_paused. Приостановленный канал не принимает и не отправляет сообщения.
-     * Приостановить/возобновить канал
+     * is_paused. .
+     * /
      */
     async pause(requestParameters, initOverrides) {
         const response = await this.pauseRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создаёт новый секретный ключ для HMAC-верификации (identity verification) виджета.
-     * Регенерировать секретный ключ виджета
+     * HMAC- (identity verification) .
+     *
      */
     async regenerateSecretRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -819,16 +819,16 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetCodeResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создаёт новый секретный ключ для HMAC-верификации (identity verification) виджета.
-     * Регенерировать секретный ключ виджета
+     * HMAC- (identity verification) .
+     *
      */
     async regenerateSecret(requestParameters, initOverrides) {
         const response = await this.regenerateSecretRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Синхронизирует поддерживаемые данные канала из внешнего API.
-     * Синхронизировать данные канала из внешней платформы
+     * API.
+     *
      */
     async tokensSyncRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -862,8 +862,8 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SyncChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Синхронизирует поддерживаемые данные канала из внешнего API.
-     * Синхронизировать данные канала из внешней платформы
+     * API.
+     *
      */
     async tokensSync(requestParameters, initOverrides) {
         const response = await this.tokensSyncRaw(requestParameters, initOverrides);

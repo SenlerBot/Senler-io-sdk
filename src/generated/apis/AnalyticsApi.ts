@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -183,8 +183,8 @@ export interface UpdateSummarizeSettingsRequest {
 export class AnalyticsApi extends runtime.BaseAPI {
 
     /**
-     * Метрики агента с отклонениями. Включает контекст агента, временной ряд и общую статистику.
-     * L1: Метрики агента
+     * . , .
+     * L1:
      */
     async getAgentsTopMetricsRaw(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DrillDownByAgentResponseDto>> {
         if (requestParameters['agentId'] == null) {
@@ -269,8 +269,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Метрики агента с отклонениями. Включает контекст агента, временной ряд и общую статистику.
-     * L1: Метрики агента
+     * . , .
+     * L1:
      */
     async getAgentsTopMetrics(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByAgentResponseDto> {
         const response = await this.getAgentsTopMetricsRaw(requestParameters, initOverrides);
@@ -278,8 +278,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Просмотр собранных метрик из ClickHouse с фильтрами, пагинацией и агрегированной сводкой.
-     * Лог метрик
+     * ClickHouse , .
+     * 
      */
     async getMetricsLogRaw(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsLogResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -403,8 +403,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Просмотр собранных метрик из ClickHouse с фильтрами, пагинацией и агрегированной сводкой.
-     * Лог метрик
+     * ClickHouse , .
+     * 
      */
     async getMetricsLog(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsLogResponseDto> {
         const response = await this.getMetricsLogRaw(requestParameters, initOverrides);
@@ -412,8 +412,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Агенты с отклонениями по выбранной метрике. Включает контекст метрики, временной ряд и рекомендации.
-     * L1: Агенты по метрике
+     * . , .
+     * L1:
      */
     async getMetricsTopAgentsRaw(requestParameters: GetMetricsTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DrillDownByMetricResponseDto>> {
         if (requestParameters['metricId'] == null) {
@@ -498,8 +498,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Агенты с отклонениями по выбранной метрике. Включает контекст метрики, временной ряд и рекомендации.
-     * L1: Агенты по метрике
+     * . , .
+     * L1:
      */
     async getMetricsTopAgents(requestParameters: GetMetricsTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByMetricResponseDto> {
         const response = await this.getMetricsTopAgentsRaw(requestParameters, initOverrides);
@@ -507,8 +507,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает конкретную суммаризацию.
-     * Суммаризация по ID
+     * .
+     * ID
      */
     async getSummarizeRaw(requestParameters: GetSummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -554,8 +554,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает конкретную суммаризацию.
-     * Суммаризация по ID
+     * .
+     * ID
      */
     async getSummarize(requestParameters: GetSummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto> {
         const response = await this.getSummarizeRaw(requestParameters, initOverrides);
@@ -563,8 +563,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Список моделей с примерной стоимостью. Для выбора модели перед генерацией.
-     * Оценка стоимости суммаризации
+     * . .
+     * 
      */
     async getSummarizeEstimateRaw(requestParameters: GetSummarizeEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EstimateSummarizationResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -618,8 +618,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Список моделей с примерной стоимостью. Для выбора модели перед генерацией.
-     * Оценка стоимости суммаризации
+     * . .
+     * 
      */
     async getSummarizeEstimate(requestParameters: GetSummarizeEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EstimateSummarizationResponseDto> {
         const response = await this.getSummarizeEstimateRaw(requestParameters, initOverrides);
@@ -627,8 +627,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Список всех суммаризаций проекта с пагинацией.
-     * История суммаризаций
+     * .
+     * 
      */
     async getSummarizeHistoryRaw(requestParameters: GetSummarizeHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationHistoryResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -686,8 +686,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Список всех суммаризаций проекта с пагинацией.
-     * История суммаризаций
+     * .
+     * 
      */
     async getSummarizeHistory(requestParameters: GetSummarizeHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationHistoryResponseDto> {
         const response = await this.getSummarizeHistoryRaw(requestParameters, initOverrides);
@@ -695,8 +695,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает последнюю сгенерированную суммаризацию для проекта.
-     * Последняя суммаризация
+     * .
+     * 
      */
     async getSummarizeLatestRaw(requestParameters: GetSummarizeLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -746,8 +746,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает последнюю сгенерированную суммаризацию для проекта.
-     * Последняя суммаризация
+     * .
+     * 
      */
     async getSummarizeLatest(requestParameters: GetSummarizeLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto> {
         const response = await this.getSummarizeLatestRaw(requestParameters, initOverrides);
@@ -755,8 +755,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Текущие настройки автоматической суммаризации для проекта.
-     * Настройки автоматической суммаризации
+     * .
+     * 
      */
     async getSummarizeSettingsRaw(requestParameters: GetSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationSettingsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -806,8 +806,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Текущие настройки автоматической суммаризации для проекта.
-     * Настройки автоматической суммаризации
+     * .
+     * 
      */
     async getSummarizeSettings(requestParameters: GetSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationSettingsResponseDto> {
         const response = await this.getSummarizeSettingsRaw(requestParameters, initOverrides);
@@ -815,8 +815,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Агенты с наибольшим совокупным отклонением по всем метрикам. Включает score, топ-3 проблемных метрик и общую статистику.
-     * L0: Топ агентов
+     * . score, -3 .
+     * L0:
      */
     async getTopAgentsRaw(requestParameters: GetTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TopAgentsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -898,8 +898,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Агенты с наибольшим совокупным отклонением по всем метрикам. Включает score, топ-3 проблемных метрик и общую статистику.
-     * L0: Топ агентов
+     * . score, -3 .
+     * L0:
      */
     async getTopAgents(requestParameters: GetTopAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TopAgentsResponseDto> {
         const response = await this.getTopAgentsRaw(requestParameters, initOverrides);
@@ -907,8 +907,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Метрики с наибольшими отклонениями. Поддерживает режимы оценки (anomaly/trend/normative) и фильтрацию по типу/категории.
-     * L0: Топ метрик
+     * . (anomaly/trend/normative) /.
+     * L0:
      */
     async getTopMetricsRaw(requestParameters: GetTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TopMetricsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -990,8 +990,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Метрики с наибольшими отклонениями. Поддерживает режимы оценки (anomaly/trend/normative) и фильтрацию по типу/категории.
-     * L0: Топ метрик
+     * . (anomaly/trend/normative) /.
+     * L0:
      */
     async getTopMetrics(requestParameters: GetTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TopMetricsResponseDto> {
         const response = await this.getTopMetricsRaw(requestParameters, initOverrides);
@@ -999,8 +999,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * AI-анализ текущей ситуации с рекомендациями. Платная операция.
-     * Генерация суммаризации
+     * AI- . .
+     * 
      */
     async summarizeRaw(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>> {
         if (requestParameters['generateSummarizationRequestDto'] == null) {
@@ -1049,8 +1049,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * AI-анализ текущей ситуации с рекомендациями. Платная операция.
-     * Генерация суммаризации
+     * AI- . .
+     * 
      */
     async summarize(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto> {
         const response = await this.summarizeRaw(requestParameters, initOverrides);
@@ -1058,8 +1058,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включить/выключить автоматическую суммаризацию, настроить период и расписание.
-     * Обновить настройки суммаризации
+     * / , .
+     * 
      */
     async updateSummarizeSettingsRaw(requestParameters: UpdateSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationSettingsResponseDto>> {
         if (requestParameters['updateSummarizationSettingsRequestDto'] == null) {
@@ -1108,8 +1108,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Включить/выключить автоматическую суммаризацию, настроить период и расписание.
-     * Обновить настройки суммаризации
+     * / , .
+     * 
      */
     async updateSummarizeSettings(requestParameters: UpdateSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationSettingsResponseDto> {
         const response = await this.updateSummarizeSettingsRaw(requestParameters, initOverrides);

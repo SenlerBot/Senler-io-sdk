@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AgentAssignmentRulesApi extends runtime.BaseAPI {
     /**
-     * Создает новое правило для автоматического назначения агента. Если указан - исключение для конкретного канала.
-     * Создать правило автоназначения
+     * . - .
+     *
      */
     async agentAssignmentRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -94,16 +94,16 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает новое правило для автоматического назначения агента. Если указан - исключение для конкретного канала.
-     * Создать правило автоназначения
+     * . - .
+     *
      */
     async agentAssignment(requestParameters, initOverrides) {
         const response = await this.agentAssignmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет правило автоназначения.
-     * Удалить правило
+     * .
+     *
      */
     async deleteAgentAssignmentRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -140,16 +140,16 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Удаляет правило автоназначения.
-     * Удалить правило
+     * .
+     *
      */
     async deleteAgentAssignment(requestParameters, initOverrides) {
         const response = await this.deleteAgentAssignmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает список всех правил автоназначения агентов для проекта (дефолт + исключения для каналов).
-     * Получить все правила автоназначения проекта
+     * ( + ).
+     *
      */
     async getAgentAssignmentRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -183,16 +183,16 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRulesListDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает список всех правил автоназначения агентов для проекта (дефолт + исключения для каналов).
-     * Получить все правила автоназначения проекта
+     * ( + ).
+     *
      */
     async getAgentAssignment(requestParameters, initOverrides) {
         const response = await this.getAgentAssignmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает информацию о конкретном правиле автоназначения.
-     * Получить правило по ID
+     * .
+     * ID
      */
     async getAgentAssignment2Raw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -229,16 +229,16 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает информацию о конкретном правиле автоназначения.
-     * Получить правило по ID
+     * .
+     * ID
      */
     async getAgentAssignment2(requestParameters, initOverrides) {
         const response = await this.getAgentAssignment2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет агента или статус активности правила.
-     * Обновить правило
+     * .
+     *
      */
     async updateAgentAssignmentRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -280,16 +280,16 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет агента или статус активности правила.
-     * Обновить правило
+     * .
+     *
      */
     async updateAgentAssignment(requestParameters, initOverrides) {
         const response = await this.updateAgentAssignmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Восстанавливает ранее удалённое правило автоназначения.
-     * Восстановить правило
+     * .
+     *
      */
     async updateAgentAssignmentRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -326,8 +326,8 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Восстанавливает ранее удалённое правило автоназначения.
-     * Восстановить правило
+     * .
+     *
      */
     async updateAgentAssignmentRestore(requestParameters, initOverrides) {
         const response = await this.updateAgentAssignmentRestoreRaw(requestParameters, initOverrides);

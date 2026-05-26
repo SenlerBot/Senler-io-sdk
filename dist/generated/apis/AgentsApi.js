@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AgentsApi extends runtime.BaseAPI {
     /**
-     * Устанавливает is_active = true для опубликованной версии агента. Черновики не затрагиваются.
-     * Активировать агента
+     * is_active = true . .
+     *
      */
     async activateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -92,16 +92,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Устанавливает is_active = true для опубликованной версии агента. Черновики не затрагиваются.
-     * Активировать агента
+     * is_active = true . .
+     *
      */
     async activate(requestParameters, initOverrides) {
         const response = await this.activateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Создает агента в указанном проекте.
-     * Создать агента
+     * .
+     *
      */
     async agentsCreateRaw(requestParameters, initOverrides) {
         if (requestParameters['xSessionId'] == null) {
@@ -140,16 +140,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создает агента в указанном проекте.
-     * Создать агента
+     * .
+     *
      */
     async agentsCreate(requestParameters, initOverrides) {
         const response = await this.agentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет агента.
-     * Удалить агента
+     * .
+     *
      */
     async agentsDeactivateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -186,15 +186,15 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Удаляет агента.
-     * Удалить агента
+     * .
+     *
      */
     async agentsDeactivate(requestParameters, initOverrides) {
         await this.agentsDeactivateRaw(requestParameters, initOverrides);
     }
     /**
-     * Возвращает агента если у вас есть доступ к его проекту.
-     * Получить агента по ID
+     * .
+     * ID
      */
     async agentsGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -231,16 +231,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает агента если у вас есть доступ к его проекту.
-     * Получить агента по ID
+     * .
+     * ID
      */
     async agentsGetById(requestParameters, initOverrides) {
         const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Обновляет агента если у вас есть доступ к его проекту.
-     * Обновить агента
+     * .
+     *
      */
     async agentsUpdateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -282,16 +282,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Обновляет агента если у вас есть доступ к его проекту.
-     * Обновить агента
+     * .
+     *
      */
     async agentsUpdate(requestParameters, initOverrides) {
         const response = await this.agentsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Устанавливает is_active = false для опубликованной версии агента. Черновики не затрагиваются.
-     * Деактивировать агента
+     * is_active = false . .
+     *
      */
     async deactivate2Raw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -328,16 +328,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Устанавливает is_active = false для опубликованной версии агента. Черновики не затрагиваются.
-     * Деактивировать агента
+     * is_active = false . .
+     *
      */
     async deactivate2(requestParameters, initOverrides) {
         const response = await this.deactivate2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Удаляет черновик без публикации изменений.
-     * Удалить черновик агента
+     * .
+     *
      */
     async deleteDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -374,15 +374,15 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Удаляет черновик без публикации изменений.
-     * Удалить черновик агента
+     * .
+     *
      */
     async deleteDraft(requestParameters, initOverrides) {
         await this.deleteDraftRaw(requestParameters, initOverrides);
     }
     /**
-     * Создаёт или обновляет черновик агента. Используется для кнопки \"Сохранить для теста\".
-     * Сохранить черновик агента (для теста)
+     * . \" \".
+     * ( )
      */
     async draftRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -424,16 +424,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Создаёт или обновляет черновик агента. Используется для кнопки \"Сохранить для теста\".
-     * Сохранить черновик агента (для теста)
+     * . \" \".
+     * ( )
      */
     async draft(requestParameters, initOverrides) {
         const response = await this.draftRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает опубликованные правила проекта/каналов, которые будут перезаписаны выбранной настройкой автоназначения.
-     * Проверить конфликты автоназначения агента
+     * /, .
+     *
      */
     async getAutoAssignmentPreviewRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -485,16 +485,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAutoAssignmentPreviewResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает опубликованные правила проекта/каналов, которые будут перезаписаны выбранной настройкой автоназначения.
-     * Проверить конфликты автоназначения агента
+     * /, .
+     *
      */
     async getAutoAssignmentPreview(requestParameters, initOverrides) {
         const response = await this.getAutoAssignmentPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает агентов из указанного списка если у вас есть доступ.
-     * Получить агентов по ID списка MCP серверов
+     * .
+     * ID MCP
      */
     async getByListRaw(requestParameters, initOverrides) {
         if (requestParameters['listId'] == null) {
@@ -531,16 +531,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentsByListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает агентов из указанного списка если у вас есть доступ.
-     * Получить агентов по ID списка MCP серверов
+     * .
+     * ID MCP
      */
     async getByList(requestParameters, initOverrides) {
         const response = await this.getByListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает черновик агента, если он существует.
-     * Получить черновик агента
+     * , .
+     *
      */
     async getDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -577,16 +577,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает черновик агента, если он существует.
-     * Получить черновик агента
+     * , .
+     *
      */
     async getDraft(requestParameters, initOverrides) {
         const response = await this.getDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает агента и его черновик (если есть).
-     * Получить агента с информацией о черновике
+     * ( ).
+     *
      */
     async getWithDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -623,16 +623,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentWithDraftResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает агента и его черновик (если есть).
-     * Получить агента с информацией о черновике
+     * ( ).
+     *
      */
     async getWithDraft(requestParameters, initOverrides) {
         const response = await this.getWithDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Возвращает агентов из указанного проекта. Требуется наличие прав доступа.
-     * Получить список агентов
+     * . .
+     *
      */
     async listRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -678,16 +678,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentsListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Возвращает агентов из указанного проекта. Требуется наличие прав доступа.
-     * Получить список агентов
+     * . .
+     *
      */
     async list(requestParameters, initOverrides) {
         const response = await this.listRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Если передано тело запроса — сначала сохраняет данные в черновик, затем публикует. Если тело пустое — публикует существующий черновик.
-     * Опубликовать черновик агента
+     * , . .
+     *
      */
     async publishRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -729,16 +729,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Если передано тело запроса — сначала сохраняет данные в черновик, затем публикует. Если тело пустое — публикует существующий черновик.
-     * Опубликовать черновик агента
+     * , . .
+     *
      */
     async publish(requestParameters, initOverrides) {
         const response = await this.publishRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Перезаписывает черновик данными из опубликованной версии агента.
-     * Откатить черновик к опубликованной версии
+     * .
+     *
      */
     async revertRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -775,16 +775,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Перезаписывает черновик данными из опубликованной версии агента.
-     * Откатить черновик к опубликованной версии
+     * .
+     *
      */
     async revert(requestParameters, initOverrides) {
         const response = await this.revertRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Восстанавливает ранее удалённого агента.
-     * Восстановить удалённого агента
+     * .
+     *
      */
     async updateRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -821,16 +821,16 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Восстанавливает ранее удалённого агента.
-     * Восстановить удалённого агента
+     * .
+     *
      */
     async updateRestore(requestParameters, initOverrides) {
         const response = await this.updateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Сохраняет текущий шаг и данные wizard\'а автоматического создания агента.
-     * Сохранить прогресс wizard создания агента
+     * wizard\' .
+     * wizard
      */
     async updateWizardProgressRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -872,8 +872,8 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Сохраняет текущий шаг и данные wizard\'а автоматического создания агента.
-     * Сохранить прогресс wizard создания агента
+     * wizard\' .
+     * wizard
      */
     async updateWizardProgress(requestParameters, initOverrides) {
         const response = await this.updateWizardProgressRaw(requestParameters, initOverrides);

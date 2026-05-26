@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -64,93 +64,93 @@ export interface ValidateRequest {
  */
 export declare class DataSourcesApi extends runtime.BaseAPI {
     /**
-     * Привязывает сайт как источник данных для парсинга.
-     * Привязать сайт
+     * .
+     *
      */
     bindWebsiteRaw(requestParameters: BindWebsiteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * Привязывает сайт как источник данных для парсинга.
-     * Привязать сайт
+     * .
+     *
      */
     bindWebsite(requestParameters: BindWebsiteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * Создаёт новый источник данных для проекта.
-     * Создать источник данных
+     * .
+     *
      */
     dataSourcesCreateRaw(requestParameters: DataSourcesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * Создаёт новый источник данных для проекта.
-     * Создать источник данных
+     * .
+     *
      */
     dataSourcesCreate(requestParameters: DataSourcesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * Удаляет источник данных.
-     * Удалить источник
+     * .
+     *
      */
     dataSourcesDeactivateRaw(requestParameters: DataSourcesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Удаляет источник данных.
-     * Удалить источник
+     * .
+     *
      */
     dataSourcesDeactivate(requestParameters: DataSourcesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Возвращает информацию об источнике данных.
-     * Получить источник по ID
+     * .
+     * ID
      */
     dataSourcesGetByIdRaw(requestParameters: DataSourcesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * Возвращает информацию об источнике данных.
-     * Получить источник по ID
+     * .
+     * ID
      */
     dataSourcesGetById(requestParameters: DataSourcesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * Возвращает все источники данных проекта.
-     * Получить список источников проекта
+     * .
+     *
      */
     dataSourcesListRaw(requestParameters: DataSourcesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataSourceResponseDto>>>;
     /**
-     * Возвращает все источники данных проекта.
-     * Получить список источников проекта
+     * .
+     *
      */
     dataSourcesList(requestParameters: DataSourcesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>>;
     /**
-     * Обновляет параметры источника данных.
-     * Обновить источник
+     * .
+     *
      */
     dataSourcesUpdateRaw(requestParameters: DataSourcesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * Обновляет параметры источника данных.
-     * Обновить источник
+     * .
+     *
      */
     dataSourcesUpdate(requestParameters: DataSourcesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * Восстанавливает ранее удалённый источник данных.
-     * Восстановить удалённый источник
+     * .
+     *
      */
     dataSourcesUpdateRestoreRaw(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * Восстанавливает ранее удалённый источник данных.
-     * Восстановить удалённый источник
+     * .
+     *
      */
     dataSourcesUpdateRestore(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * Возвращает источники проекта, включённые для обучения агентов.
-     * Получить активные источники для обучения
+     * , .
+     *
      */
     getActiveForTrainingRaw(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataSourceResponseDto>>>;
     /**
-     * Возвращает источники проекта, включённые для обучения агентов.
-     * Получить активные источники для обучения
+     * , .
+     *
      */
     getActiveForTraining(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>>;
     /**
-     * Проверяет доступность и валидность источника данных.
-     * Валидировать источник
+     * .
+     *
      */
     validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>>;
     /**
-     * Проверяет доступность и валидность источника данных.
-     * Валидировать источник
+     * .
+     *
      */
     validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto>;
 }

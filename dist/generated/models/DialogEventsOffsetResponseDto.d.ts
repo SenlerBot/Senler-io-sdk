@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,49 +18,49 @@ import type { DialogChatSearchEventDto } from './DialogChatSearchEventDto';
  */
 export interface DialogEventsOffsetResponseDto {
     /**
-     * Список найденных событий (с подсветкой совпадений в search.
+     * ( search.
      * @type {Array<DialogChatSearchEventDto>}
      * @memberof DialogEventsOffsetResponseDto
      */
     items: Array<DialogChatSearchEventDto>;
     /**
-     * Информация о канале диалога (null если диалог без канала).
+     * (null ).
      * @type {DialogChannelInfoDto}
      * @memberof DialogEventsOffsetResponseDto
      */
     channel: DialogChannelInfoDto | null;
     /**
-     * Общее количество найденных событий.
+     * .
      * @type {number}
      * @memberof DialogEventsOffsetResponseDto
      */
     total: number;
     /**
-     * Тип пагинации (offset = постраничная).
+     * (offset = ).
      * @type {string}
      * @memberof DialogEventsOffsetResponseDto
      */
     paginationType: DialogEventsOffsetResponseDtoPaginationTypeEnum;
     /**
-     * Текущая позиция (с какого элемента начинается выборка).
+     * ( ).
      * @type {number}
      * @memberof DialogEventsOffsetResponseDto
      */
     from: number;
     /**
-     * Размер страницы (сколько элементов запрошено).
+     * ( ).
      * @type {number}
      * @memberof DialogEventsOffsetResponseDto
      */
     size: number;
     /**
-     * Поисковый запрос.
+     * .
      * @type {string}
      * @memberof DialogEventsOffsetResponseDto
      */
     query?: string;
     /**
-     * Время выполнения запроса (мс).
+     * ().
      * @type {number}
      * @memberof DialogEventsOffsetResponseDto
      */

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -277,8 +277,8 @@ export interface UpdateListsRestoreRequest {
 export class MCPServersApi extends runtime.BaseAPI {
 
     /**
-     * Начать OAuth для кастомного MCP сервера.
-     * Начать OAuth для кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async customOauthStartRaw(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -352,8 +352,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Начать OAuth для кастомного MCP сервера.
-     * Начать OAuth для кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async customOauthStart(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto> {
         const response = await this.customOauthStartRaw(requestParameters, initOverrides);
@@ -361,8 +361,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет список если у вас есть доступ к его проекту.
-     * Удалить список MCP серверов
+     * .
+     * MCP
      */
     async deleteListsRaw(requestParameters: DeleteListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['projectId'] == null) {
@@ -422,16 +422,16 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет список если у вас есть доступ к его проекту.
-     * Удалить список MCP серверов
+     * .
+     * MCP
      */
     async deleteLists(requestParameters: DeleteListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteListsRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Удалить MCP сервер из списка.
-     * Удалить MCP сервер из списка
+     * MCP .
+     * MCP
      */
     async deleteListsServersRaw(requestParameters: DeleteListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -498,8 +498,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удалить MCP сервер из списка.
-     * Удалить MCP сервер из списка
+     * MCP .
+     * MCP
      */
     async deleteListsServers(requestParameters: DeleteListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
         const response = await this.deleteListsServersRaw(requestParameters, initOverrides);
@@ -507,8 +507,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет глобальный credential установленного MCP сервера в режиме project.
-     * Отозвать project credential
+     * credential MCP project.
+     * project credential
      */
     async deleteProjectCredentialRaw(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -572,8 +572,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет глобальный credential установленного MCP сервера в режиме project.
-     * Отозвать project credential
+     * credential MCP project.
+     * project credential
      */
     async deleteProjectCredential(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.deleteProjectCredentialRaw(requestParameters, initOverrides);
@@ -581,8 +581,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Callback стандартного OAuth для кастомного MCP сервера.
-     * Callback стандартного OAuth для кастомного MCP сервера
+     * Callback OAuth MCP .
+     * Callback OAuth MCP
      */
     async getCustomOauthCallbackRaw(requestParameters: GetCustomOauthCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         const queryParameters: any = {};
@@ -624,8 +624,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Callback стандартного OAuth для кастомного MCP сервера.
-     * Callback стандартного OAuth для кастомного MCP сервера
+     * Callback OAuth MCP .
+     * Callback OAuth MCP
      */
     async getCustomOauthCallback(requestParameters: GetCustomOauthCallbackRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
         const response = await this.getCustomOauthCallbackRaw(requestParameters, initOverrides);
@@ -633,8 +633,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверить OAuth у кастомного MCP сервера.
-     * Проверить OAuth у кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async getCustomOauthStatusRaw(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CustomMcpOAuthStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -698,8 +698,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Проверить OAuth у кастомного MCP сервера.
-     * Проверить OAuth у кастомного MCP сервера
+     * OAuth MCP .
+     * OAuth MCP
      */
     async getCustomOauthStatus(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CustomMcpOAuthStatusResponseDto> {
         const response = await this.getCustomOauthStatusRaw(requestParameters, initOverrides);
@@ -707,8 +707,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Экспортирует MCP серверы проекта.
-     * Экспортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async getExportRaw(requestParameters: GetExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExportServersResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -765,8 +765,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Экспортирует MCP серверы проекта.
-     * Экспортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async getExport(requestParameters: GetExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ExportServersResponseDto> {
         const response = await this.getExportRaw(requestParameters, initOverrides);
@@ -774,8 +774,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Поиск по источникам базы знаний, привязанным к MCP серверам проекта.
-     * Поиск по базе знаний MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBaseSearchRaw(requestParameters: GetKnowledgeBaseSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedKnowledgeBaseSearchResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -862,8 +862,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Поиск по источникам базы знаний, привязанным к MCP серверам проекта.
-     * Поиск по базе знаний MCP сервера
+     * , MCP .
+     * MCP
      */
     async getKnowledgeBaseSearch(requestParameters: GetKnowledgeBaseSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedKnowledgeBaseSearchResponseDto> {
         const response = await this.getKnowledgeBaseSearchRaw(requestParameters, initOverrides);
@@ -871,8 +871,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает списки MCP серверов из указанного проекта.
-     * Получить все списки MCP серверов
+     * MCP .
+     * MCP
      */
     async getListsRaw(requestParameters: GetListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -933,8 +933,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает списки MCP серверов из указанного проекта.
-     * Получить все списки MCP серверов
+     * MCP .
+     * MCP
      */
     async getLists(requestParameters: GetListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListsResponseDto> {
         const response = await this.getListsRaw(requestParameters, initOverrides);
@@ -942,8 +942,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список если у вас есть доступ к его проекту.
-     * Получить список MCP серверов по ID
+     * .
+     * MCP ID
      */
     async getLists2Raw(requestParameters: GetLists2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1003,8 +1003,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает список если у вас есть доступ к его проекту.
-     * Получить список MCP серверов по ID
+     * .
+     * MCP ID
      */
     async getLists2(requestParameters: GetLists2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
         const response = await this.getLists2Raw(requestParameters, initOverrides);
@@ -1012,8 +1012,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает статус глобального credential установленного MCP сервера в проекте.
-     * Получить статус project credential
+     * credential MCP .
+     * project credential
      */
     async getProjectCredentialStatusRaw(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1077,8 +1077,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает статус глобального credential установленного MCP сервера в проекте.
-     * Получить статус project credential
+     * credential MCP .
+     * project credential
      */
     async getProjectCredentialStatus(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.getProjectCredentialStatusRaw(requestParameters, initOverrides);
@@ -1086,8 +1086,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает список MCP серверов в указанном проекте.
-     * Создать список MCP серверов
+     * MCP .
+     * MCP
      */
     async listsRaw(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1150,8 +1150,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает список MCP серверов в указанном проекте.
-     * Создать список MCP серверов
+     * MCP .
+     * MCP
      */
     async lists(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
         const response = await this.listsRaw(requestParameters, initOverrides);
@@ -1159,8 +1159,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Добавить MCP сервер в список.
-     * Добавить MCP сервер в список
+     * MCP .
+     * MCP
      */
     async listsServersRaw(requestParameters: ListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1227,8 +1227,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Добавить MCP сервер в список.
-     * Добавить MCP сервер в список
+     * MCP .
+     * MCP
      */
     async listsServers(requestParameters: ListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
         const response = await this.listsServersRaw(requestParameters, initOverrides);
@@ -1236,8 +1236,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает MCP сервер в указанном проекте.
-     * Создать MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersCreateRaw(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateServerResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1304,8 +1304,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает MCP сервер в указанном проекте.
-     * Создать MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersCreate(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateServerResponseDto> {
         const response = await this.mcpServersCreateRaw(requestParameters, initOverrides);
@@ -1313,8 +1313,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет MCP сервер проекта.
-     * Удалить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersDeactivateRaw(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['projectId'] == null) {
@@ -1378,16 +1378,16 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет MCP сервер проекта.
-     * Удалить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersDeactivate(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.mcpServersDeactivateRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Возвращает MCP сервер если у вас есть доступ к его проекту.
-     * Получить MCP сервер по ID
+     * MCP .
+     * MCP ID
      */
     async mcpServersGetByIdRaw(requestParameters: McpServersGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetServerResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1451,8 +1451,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает MCP сервер если у вас есть доступ к его проекту.
-     * Получить MCP сервер по ID
+     * MCP .
+     * MCP ID
      */
     async mcpServersGetById(requestParameters: McpServersGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetServerResponseDto> {
         const response = await this.mcpServersGetByIdRaw(requestParameters, initOverrides);
@@ -1460,8 +1460,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Импортирует список MCP серверов в проект.
-     * Импортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async mcpServersImportRaw(requestParameters: McpServersImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ImportServersResponseDto>> {
         if (requestParameters['xSessionId'] == null) {
@@ -1517,8 +1517,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Импортирует список MCP серверов в проект.
-     * Импортировать MCP серверы
+     * MCP .
+     * MCP
      */
     async mcpServersImport(requestParameters: McpServersImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ImportServersResponseDto> {
         const response = await this.mcpServersImportRaw(requestParameters, initOverrides);
@@ -1526,8 +1526,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает MCP серверы проекта.
-     * Получить список MCP серверов
+     * MCP .
+     * MCP
      */
     async mcpServersListRaw(requestParameters: McpServersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedServersResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1604,8 +1604,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает MCP серверы проекта.
-     * Получить список MCP серверов
+     * MCP .
+     * MCP
      */
     async mcpServersList(requestParameters: McpServersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedServersResponseDto> {
         const response = await this.mcpServersListRaw(requestParameters, initOverrides);
@@ -1613,8 +1613,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет MCP сервер проекта.
-     * Обновить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdateRaw(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateServerResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1688,8 +1688,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет MCP сервер проекта.
-     * Обновить MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdate(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateServerResponseDto> {
         const response = await this.mcpServersUpdateRaw(requestParameters, initOverrides);
@@ -1697,8 +1697,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённый MCP сервер.
-     * Восстановить удалённый MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdateRestoreRaw(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1762,8 +1762,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённый MCP сервер.
-     * Восстановить удалённый MCP сервер
+     * MCP .
+     * MCP
      */
     async mcpServersUpdateRestore(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerResponseDto> {
         const response = await this.mcpServersUpdateRestoreRaw(requestParameters, initOverrides);
@@ -1771,8 +1771,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Сохраняет глобальный credential для установленного MCP сервера в режиме project.
-     * Сохранить project credential вручную
+     * credential MCP project.
+     * project credential
      */
     async projectCredentialManualRaw(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1846,8 +1846,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Сохраняет глобальный credential для установленного MCP сервера в режиме project.
-     * Сохранить project credential вручную
+     * credential MCP project.
+     * project credential
      */
     async projectCredentialManual(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.projectCredentialManualRaw(requestParameters, initOverrides);
@@ -1855,8 +1855,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Начать OAuth для project credential установленного MCP сервера.
-     * Начать OAuth для project credential установленного MCP сервера
+     * OAuth project credential MCP .
+     * OAuth project credential MCP
      */
     async projectCredentialOauthStartRaw(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1930,8 +1930,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Начать OAuth для project credential установленного MCP сервера.
-     * Начать OAuth для project credential установленного MCP сервера
+     * OAuth project credential MCP .
+     * OAuth project credential MCP
      */
     async projectCredentialOauthStart(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto> {
         const response = await this.projectCredentialOauthStartRaw(requestParameters, initOverrides);
@@ -1939,8 +1939,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Повторно проверяет активный project credential установленного MCP сервера и сохраняет статус валидности.
-     * Проверить project credential
+     * project credential MCP .
+     * project credential
      */
     async projectCredentialValidateRaw(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -2004,8 +2004,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Повторно проверяет активный project credential установленного MCP сервера и сохраняет статус валидности.
-     * Проверить project credential
+     * project credential MCP .
+     * project credential
      */
     async projectCredentialValidate(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.projectCredentialValidateRaw(requestParameters, initOverrides);
@@ -2013,8 +2013,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет список если у вас есть доступ к его проекту.
-     * Обновить список MCP серверов
+     * .
+     * MCP
      */
     async updateListsRaw(requestParameters: UpdateListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -2084,8 +2084,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет список если у вас есть доступ к его проекту.
-     * Обновить список MCP серверов
+     * .
+     * MCP
      */
     async updateLists(requestParameters: UpdateListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
         const response = await this.updateListsRaw(requestParameters, initOverrides);
@@ -2093,8 +2093,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённый список серверов.
-     * Восстановить удалённый список MCP серверов
+     * .
+     * MCP
      */
     async updateListsRestoreRaw(requestParameters: UpdateListsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -2154,8 +2154,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённый список серверов.
-     * Восстановить удалённый список MCP серверов
+     * .
+     * MCP
      */
     async updateListsRestore(requestParameters: UpdateListsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
         const response = await this.updateListsRestoreRaw(requestParameters, initOverrides);

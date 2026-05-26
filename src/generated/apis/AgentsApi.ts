@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -173,8 +173,8 @@ export interface UpdateWizardProgressRequest {
 export class AgentsApi extends runtime.BaseAPI {
 
     /**
-     * Устанавливает is_active = true для опубликованной версии агента. Черновики не затрагиваются.
-     * Активировать агента
+     * is_active = true . .
+     * 
      */
     async activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -227,8 +227,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Устанавливает is_active = true для опубликованной версии агента. Черновики не затрагиваются.
-     * Активировать агента
+     * is_active = true . .
+     * 
      */
     async activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.activateRaw(requestParameters, initOverrides);
@@ -236,8 +236,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает агента в указанном проекте.
-     * Создать агента
+     * .
+     * 
      */
     async agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['xSessionId'] == null) {
@@ -293,8 +293,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создает агента в указанном проекте.
-     * Создать агента
+     * .
+     * 
      */
     async agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.agentsCreateRaw(requestParameters, initOverrides);
@@ -302,8 +302,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет агента.
-     * Удалить агента
+     * .
+     * 
      */
     async agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -356,16 +356,16 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет агента.
-     * Удалить агента
+     * .
+     * 
      */
     async agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.agentsDeactivateRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Возвращает агента если у вас есть доступ к его проекту.
-     * Получить агента по ID
+     * .
+     * ID
      */
     async agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -418,8 +418,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агента если у вас есть доступ к его проекту.
-     * Получить агента по ID
+     * .
+     * ID
      */
     async agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
@@ -427,8 +427,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет агента если у вас есть доступ к его проекту.
-     * Обновить агента
+     * .
+     * 
      */
     async agentsUpdateRaw(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -491,8 +491,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Обновляет агента если у вас есть доступ к его проекту.
-     * Обновить агента
+     * .
+     * 
      */
     async agentsUpdate(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.agentsUpdateRaw(requestParameters, initOverrides);
@@ -500,8 +500,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Устанавливает is_active = false для опубликованной версии агента. Черновики не затрагиваются.
-     * Деактивировать агента
+     * is_active = false . .
+     * 
      */
     async deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -554,8 +554,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Устанавливает is_active = false для опубликованной версии агента. Черновики не затрагиваются.
-     * Деактивировать агента
+     * is_active = false . .
+     * 
      */
     async deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.deactivate2Raw(requestParameters, initOverrides);
@@ -563,8 +563,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет черновик без публикации изменений.
-     * Удалить черновик агента
+     * .
+     * 
      */
     async deleteDraftRaw(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -617,16 +617,16 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Удаляет черновик без публикации изменений.
-     * Удалить черновик агента
+     * .
+     * 
      */
     async deleteDraft(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteDraftRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Создаёт или обновляет черновик агента. Используется для кнопки \"Сохранить для теста\".
-     * Сохранить черновик агента (для теста)
+     * . \" \".
+     * ( )
      */
     async draftRaw(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -689,8 +689,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Создаёт или обновляет черновик агента. Используется для кнопки \"Сохранить для теста\".
-     * Сохранить черновик агента (для теста)
+     * . \" \".
+     * ( )
      */
     async draft(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto> {
         const response = await this.draftRaw(requestParameters, initOverrides);
@@ -698,8 +698,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает опубликованные правила проекта/каналов, которые будут перезаписаны выбранной настройкой автоназначения.
-     * Проверить конфликты автоназначения агента
+     * /, .
+     * 
      */
     async getAutoAssignmentPreviewRaw(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAutoAssignmentPreviewResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -775,8 +775,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает опубликованные правила проекта/каналов, которые будут перезаписаны выбранной настройкой автоназначения.
-     * Проверить конфликты автоназначения агента
+     * /, .
+     * 
      */
     async getAutoAssignmentPreview(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto> {
         const response = await this.getAutoAssignmentPreviewRaw(requestParameters, initOverrides);
@@ -784,8 +784,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агентов из указанного списка если у вас есть доступ.
-     * Получить агентов по ID списка MCP серверов
+     * .
+     * ID MCP
      */
     async getByListRaw(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsByListResponseDto>> {
         if (requestParameters['listId'] == null) {
@@ -838,8 +838,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агентов из указанного списка если у вас есть доступ.
-     * Получить агентов по ID списка MCP серверов
+     * .
+     * ID MCP
      */
     async getByList(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsByListResponseDto> {
         const response = await this.getByListRaw(requestParameters, initOverrides);
@@ -847,8 +847,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает черновик агента, если он существует.
-     * Получить черновик агента
+     * , .
+     * 
      */
     async getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -901,8 +901,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает черновик агента, если он существует.
-     * Получить черновик агента
+     * , .
+     * 
      */
     async getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto> {
         const response = await this.getDraftRaw(requestParameters, initOverrides);
@@ -910,8 +910,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агента и его черновик (если есть).
-     * Получить агента с информацией о черновике
+     * ( ).
+     * 
      */
     async getWithDraftRaw(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentWithDraftResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -964,8 +964,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агента и его черновик (если есть).
-     * Получить агента с информацией о черновике
+     * ( ).
+     * 
      */
     async getWithDraft(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentWithDraftResponseDto> {
         const response = await this.getWithDraftRaw(requestParameters, initOverrides);
@@ -973,8 +973,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агентов из указанного проекта. Требуется наличие прав доступа.
-     * Получить список агентов
+     * . .
+     * 
      */
     async listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1039,8 +1039,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает агентов из указанного проекта. Требуется наличие прав доступа.
-     * Получить список агентов
+     * . .
+     * 
      */
     async list(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsListResponseDto> {
         const response = await this.listRaw(requestParameters, initOverrides);
@@ -1048,8 +1048,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Если передано тело запроса — сначала сохраняет данные в черновик, затем публикует. Если тело пустое — публикует существующий черновик.
-     * Опубликовать черновик агента
+     * , . .
+     * 
      */
     async publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1112,8 +1112,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Если передано тело запроса — сначала сохраняет данные в черновик, затем публикует. Если тело пустое — публикует существующий черновик.
-     * Опубликовать черновик агента
+     * , . .
+     * 
      */
     async publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.publishRaw(requestParameters, initOverrides);
@@ -1121,8 +1121,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Перезаписывает черновик данными из опубликованной версии агента.
-     * Откатить черновик к опубликованной версии
+     * .
+     * 
      */
     async revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1175,8 +1175,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Перезаписывает черновик данными из опубликованной версии агента.
-     * Откатить черновик к опубликованной версии
+     * .
+     * 
      */
     async revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto> {
         const response = await this.revertRaw(requestParameters, initOverrides);
@@ -1184,8 +1184,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённого агента.
-     * Восстановить удалённого агента
+     * .
+     * 
      */
     async updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1238,8 +1238,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Восстанавливает ранее удалённого агента.
-     * Восстановить удалённого агента
+     * .
+     * 
      */
     async updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
         const response = await this.updateRestoreRaw(requestParameters, initOverrides);
@@ -1247,8 +1247,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Сохраняет текущий шаг и данные wizard\'а автоматического создания агента.
-     * Сохранить прогресс wizard создания агента
+     * wizard\' .
+     * wizard
      */
     async updateWizardProgressRaw(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1311,8 +1311,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Сохраняет текущий шаг и данные wizard\'а автоматического создания агента.
-     * Сохранить прогресс wizard создания агента
+     * wizard\' .
+     * wizard
      */
     async updateWizardProgress(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
         const response = await this.updateWizardProgressRaw(requestParameters, initOverrides);

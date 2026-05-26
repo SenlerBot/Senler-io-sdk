@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -32,33 +32,33 @@ export interface TokensDiscordValidateRequest {
  */
 export declare class ChannelsDiscordApi extends runtime.BaseAPI {
     /**
-     * Создаёт новый Discord канал и сразу привязывает bot token. Для Discord token является только credential, а metadata бота сохраняется в самом канале.
-     * Создать Discord канал
+     * Discord bot token. Discord token credential, metadata .
+     * Discord
      */
     discordRaw(requestParameters: DiscordRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateDiscordChannelResponseDto>>;
     /**
-     * Создаёт новый Discord канал и сразу привязывает bot token. Для Discord token является только credential, а metadata бота сохраняется в самом канале.
-     * Создать Discord канал
+     * Discord bot token. Discord token credential, metadata .
+     * Discord
      */
     discord(requestParameters: DiscordRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateDiscordChannelResponseDto>;
     /**
-     * Привязывает или ротирует Discord bot token для уже подключенного Discord канала. Token должен принадлежать тому же application_id, который уже зафиксирован в channel.
-     * Привязать Discord bot token к каналу
+     * Discord bot token Discord . Token application_id, channel.
+     * Discord bot token
      */
     tokensDiscordBindRaw(requestParameters: TokensDiscordBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>>;
     /**
-     * Привязывает или ротирует Discord bot token для уже подключенного Discord канала. Token должен принадлежать тому же application_id, который уже зафиксирован в channel.
-     * Привязать Discord bot token к каналу
+     * Discord bot token Discord . Token application_id, channel.
+     * Discord bot token
      */
     tokensDiscordBind(requestParameters: TokensDiscordBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto>;
     /**
-     * Проверяет сохранённый Discord bot token через Discord API и обновляет metadata Discord-канала в channels.
-     * Проверить валидность Discord bot token
+     * Discord bot token Discord API metadata Discord- channels.
+     * Discord bot token
      */
     tokensDiscordValidateRaw(requestParameters: TokensDiscordValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDiscordTokenResultDto>>;
     /**
-     * Проверяет сохранённый Discord bot token через Discord API и обновляет metadata Discord-канала в channels.
-     * Проверить валидность Discord bot token
+     * Discord bot token Discord API metadata Discord- channels.
+     * Discord bot token
      */
     tokensDiscordValidate(requestParameters: TokensDiscordValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDiscordTokenResultDto>;
 }

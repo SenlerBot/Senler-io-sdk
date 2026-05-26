@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- *  Документация Public API для внешних интеграций.  ## Авторизация  Public API поддерживает два способа авторизации: - **Bearer Token** — API-ключ проекта (`senler_sk_...`), созданный вручную в настройках проекта. - **OAuth 2.0** — access token, полученный приложением для проекта через OAuth.  Оба варианта передаются в одном и том же HTTP-заголовке:  ``` Authorization: Bearer <token> ```  ### 1. API-ключ проекта ``` senler_sk_YOUR_API_KEY ``` Вставьте ключ без префикса `Bearer`. Права уже заданы у ключа.  ### 2. OAuth 2.0 access token (для приложений) ``` eyJ... ``` Приложение получает этот токен через OAuth для выбранного проекта. Scopes выбираются здесь.  ## Базовый URL  ``` https://api.senler.io ```  ## Лимиты  Стандартные лимиты применяются к авторизованным запросам Public API. Подробности зависят от тарифного плана проекта.     
+ * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -109,8 +109,8 @@ export interface GetMarketingTrafficSourcesRequest {
 export class EventsApi extends runtime.BaseAPI {
 
     /**
-     * Возвращает CabinetEventDetailDto БЕЗ provider costs. Только события доступных каналов.
-     * Получить событие по ID
+     * CabinetEventDetailDto provider costs. .
+     * ID
      */
     async eventsGetByIdRaw(requestParameters: EventsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetEventDetailDto>> {
         if (requestParameters['eventId'] == null) {
@@ -156,8 +156,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает CabinetEventDetailDto БЕЗ provider costs. Только события доступных каналов.
-     * Получить событие по ID
+     * CabinetEventDetailDto provider costs. .
+     * ID
      */
     async eventsGetById(requestParameters: EventsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetEventDetailDto> {
         const response = await this.eventsGetByIdRaw(requestParameters, initOverrides);
@@ -165,8 +165,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Для владельцев каналов (интеграций).
-     * Универсальный поиск событий с фильтрами
+     * ().
+     * 
      */
     async eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventsList200Response>> {
         if (requestParameters['projectId'] == null) {
@@ -308,8 +308,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Для владельцев каналов (интеграций).
-     * Универсальный поиск событий с фильтрами
+     * ().
+     * 
      */
     async eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response> {
         const response = await this.eventsListRaw(requestParameters, initOverrides);
@@ -317,8 +317,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает project-scoped аналитику истории событий.
-     * Получить аналитику истории
+     * project-scoped .
+     * 
      */
     async getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
         if (requestParameters['period'] == null) {
@@ -379,8 +379,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает project-scoped аналитику истории событий.
-     * Получить аналитику истории
+     * project-scoped .
+     * 
      */
     async getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {
         const response = await this.getAnalyticsRaw(requestParameters, initOverrides);
@@ -388,8 +388,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает быстрые маркетинговые метрики с учетом прав доступа пользователя.
-     * Получить быстрые маркетинговые метрики
+     * .
+     * 
      */
     async getMarketingQuickMetricsRaw(requestParameters: GetMarketingQuickMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QuickMetricsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -443,8 +443,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает быстрые маркетинговые метрики с учетом прав доступа пользователя.
-     * Получить быстрые маркетинговые метрики
+     * .
+     * 
      */
     async getMarketingQuickMetrics(requestParameters: GetMarketingQuickMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<QuickMetricsResponseDto> {
         const response = await this.getMarketingQuickMetricsRaw(requestParameters, initOverrides);
@@ -452,8 +452,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает анализ каналов трафика с учетом прав доступа пользователя.
-     * Получить анализ каналов трафика
+     * .
+     * 
      */
     async getMarketingTrafficChannelsRaw(requestParameters: GetMarketingTrafficChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficChannelsResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -507,8 +507,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает анализ каналов трафика с учетом прав доступа пользователя.
-     * Получить анализ каналов трафика
+     * .
+     * 
      */
     async getMarketingTrafficChannels(requestParameters: GetMarketingTrafficChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficChannelsResponseDto> {
         const response = await this.getMarketingTrafficChannelsRaw(requestParameters, initOverrides);
@@ -516,8 +516,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает анализ источников трафика с учетом прав доступа пользователя.
-     * Получить анализ источников трафика (UTM-кампании)
+     * .
+     * (UTM-)
      */
     async getMarketingTrafficSourcesRaw(requestParameters: GetMarketingTrafficSourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficSourcesResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -571,8 +571,8 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Возвращает анализ источников трафика с учетом прав доступа пользователя.
-     * Получить анализ источников трафика (UTM-кампании)
+     * .
+     * (UTM-)
      */
     async getMarketingTrafficSources(requestParameters: GetMarketingTrafficSourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficSourcesResponseDto> {
         const response = await this.getMarketingTrafficSourcesRaw(requestParameters, initOverrides);
