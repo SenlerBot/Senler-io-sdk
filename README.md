@@ -11,7 +11,7 @@ API documentation: https://dev.senler.io
 Pin a version for reproducible installs:
 
 ```bash
-npm install github:SenlerBot/Senler-io-sdk#v0.1.0
+npm install github:SenlerBot/Senler-io-sdk#v0.1.1
 ```
 
 For the latest commit from `main`:
@@ -87,3 +87,15 @@ const client = new AiSenlerClient({
 ## Errors
 
 Non-2xx responses throw an error with the original `response` attached.
+
+```typescript
+import { ResponseError } from '@aisenler/sdk-fetch';
+
+try {
+  await client.projects.getMe();
+} catch (error) {
+  if (error instanceof ResponseError) {
+    console.log(error.response.status);
+  }
+}
+```

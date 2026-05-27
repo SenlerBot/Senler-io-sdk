@@ -1,17 +1,53 @@
 {
   "name": "@aisenler/sdk-fetch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Senler.io API SDK (fetch)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./apis": {
+      "types": "./dist/generated/apis/index.d.ts",
+      "require": "./dist/generated/apis/index.js",
+      "default": "./dist/generated/apis/index.js"
+    },
+    "./generated/apis/*": {
+      "types": "./dist/generated/apis/*.d.ts",
+      "require": "./dist/generated/apis/*.js",
+      "default": "./dist/generated/apis/*.js"
+    },
+    "./generated/models": {
+      "types": "./dist/generated/models/index.d.ts",
+      "require": "./dist/generated/models/index.js",
+      "default": "./dist/generated/models/index.js"
+    },
+    "./generated/models/*": {
+      "types": "./dist/generated/models/*.d.ts",
+      "require": "./dist/generated/models/*.js",
+      "default": "./dist/generated/models/*.js"
+    },
+    "./runtime": {
+      "types": "./dist/generated/runtime.d.ts",
+      "require": "./dist/generated/runtime.js",
+      "default": "./dist/generated/runtime.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist",
-    "src",
     "README.md"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
