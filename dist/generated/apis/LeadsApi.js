@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -99,7 +99,7 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
+     * . .  MAX `external_user_ids` `chatId`, - `userId`.
      *
      */
     async _importRaw(requestParameters, initOverrides) {
@@ -136,7 +136,7 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . .
+     * . .  MAX `external_user_ids` `chatId`, - `userId`.
      *
      */
     async _import(requestParameters, initOverrides) {
@@ -373,7 +373,7 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     async updateSyncProfileRaw(requestParameters, initOverrides) {
@@ -413,7 +413,7 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SyncLeadProfileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     async updateSyncProfile(requestParameters, initOverrides) {
@@ -421,7 +421,7 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , (VK), .
+     * , (VK), .  ** :** VK  **:** - ( ) - 403 Forbidden - (is_new: false) - , (is_new: false)
      *
      */
     async verifySubscriptionRaw(requestParameters, initOverrides) {
@@ -458,7 +458,7 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.VerifySubscriptionAndAddResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , (VK), .
+     * , (VK), .  ** :** VK  **:** - ( ) - 403 Forbidden - (is_new: false) - , (is_new: false)
      *
      */
     async verifySubscription(requestParameters, initOverrides) {

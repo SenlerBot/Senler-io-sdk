@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,79 +17,79 @@ import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBinding
  */
 export interface AgentDraftResponseDto {
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     id: string;
     /**
-     * ID ( ).
+     * ID ( )
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     agentId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     name: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     instruction?: string | null;
     /**
-     * Avatar URL.
+     * URL
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     agentType: AgentDraftResponseDtoAgentTypeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     serverBindingMode: AgentDraftResponseDtoServerBindingModeEnum;
     /**
-     * ID MCP .
+     * ID MCP
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     mcpServerListId?: string;
     /**
-     * ID ( direct).
+     * ID ( direct)
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     mcpServerIds?: Array<string> | null;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     knowledgeBasePermissions?: Array<AgentDraftResponseDtoKnowledgeBasePermissionsEnum>;
     /**
-     * , .
+     * ,
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof AgentDraftResponseDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     projectId: string;
     /**
-     * .
+     *
      * @type {{ [key: string]: any; }}
      * @memberof AgentDraftResponseDto
      */
@@ -97,301 +97,301 @@ export interface AgentDraftResponseDto {
         [key: string]: any;
     };
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature AI (0.
+     * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof AgentDraftResponseDto
      */
     temperature?: number | null;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     metricsCollectionEnabled: boolean;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     triggerKeywords: Array<string> | null;
     /**
-     * .
+     * . null, .
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     keywordAssignmentRole?: AgentDraftResponseDtoKeywordAssignmentRoleEnum | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     keywordDialogScope?: AgentDraftResponseDtoKeywordDialogScopeEnum | null;
     /**
-     * ID , .
+     * ID , . null/ =
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentMode: AgentDraftResponseDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels.
+     * ID selected_channels
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentDialogScope?: AgentDraftResponseDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     autoAssignmentRole: AgentDraftResponseDtoAutoAssignmentRoleEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     draftType: AgentDraftResponseDtoDraftTypeEnum;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     useDefaultMetrics: boolean;
     /**
-     * ID ( ).
+     * ID ( )
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
     enabledMetricIds: Array<string> | null;
     /**
-     * AI.
+     * AI
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     aiReasoning?: string | null;
     /**
-     * AI.
+     * AI
      * @type {number}
      * @memberof AgentDraftResponseDto
      */
     aiConfidenceScore?: number | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     status: AgentDraftResponseDtoStatusEnum;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableButtons: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableWidgetPageActions: boolean;
     /**
-     * (URL, S3, ).
+     * (URL, S3, )
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableCustomAttachments: boolean;
     /**
-     * (DALL-E).
+     * (DALL-E)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableImageGeneration: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * (TTS).
+     * (TTS)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableAudioGeneration: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * (STT).
+     * (STT)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableSpeechRecognition: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * (Vision).
+     * (Vision)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableImageRecognition: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * QR .
+     * QR
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableQrCode: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableChart: boolean;
     /**
-     * -.
+     * -
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableWebSearch: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableLeadBlocking: boolean;
     /**
-     * AI .
+     * AI . false ,
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableAiResponse: boolean;
     /**
-     * .
+     * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableUserMessage: boolean;
     /**
-     * streaming .
+     * streaming
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableStreaming: boolean;
     /**
-     * (send_preliminary_response tool).
+     * (send_preliminary_response tool)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enablePreliminaryResponse: boolean;
     /**
-     * AI-.
+     * AI-
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableMessageReactionsContext: boolean;
     /**
-     * (skip_response tool).
+     * (skip_response tool)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableSelectiveResponse: boolean;
     /**
-     * (schedule_next_message tool).
+     * (schedule_next_message tool)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableScheduling: boolean;
     /**
-     * (skip_metrics control_processing).
+     * (skip_metrics control_processing)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableSkipMetrics: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableMuteDialog: boolean;
     /**
-     * (detach_from_dialog tool).
+     * (detach_from_dialog tool)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     enableDetachFromDialog: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     useProjectVariables: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
     useLeadVariables: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     projectVarsInstructionMode: AgentDraftResponseDtoProjectVarsInstructionModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     projectVarsUserRequestMode: AgentDraftResponseDtoProjectVarsUserRequestModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     leadVarsInstructionMode: AgentDraftResponseDtoLeadVarsInstructionModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
     leadVarsUserRequestMode: AgentDraftResponseDtoLeadVarsUserRequestModeEnum;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof AgentDraftResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof AgentDraftResponseDto
      */

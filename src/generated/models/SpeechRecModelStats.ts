@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,49 +20,49 @@ import { mapValues } from '../runtime';
  */
 export interface SpeechRecModelStats {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof SpeechRecModelStats
      */
     model: string;
     /**
-     * -.
+     * -
      * @type {string}
      * @memberof SpeechRecModelStats
      */
     pricingType?: SpeechRecModelStatsPricingTypeEnum;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof SpeechRecModelStats
      */
     count: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof SpeechRecModelStats
      */
     durationSeconds: number;
     /**
-     * Text input prompt .
+     * Text input prompt
      * @type {number}
      * @memberof SpeechRecModelStats
      */
     textInputTokens: number;
     /**
-     * Text output .
+     * Text output
      * @type {number}
      * @memberof SpeechRecModelStats
      */
     textOutputTokens: number;
     /**
-     * Audio input .
+     * Audio input
      * @type {number}
      * @memberof SpeechRecModelStats
      */
     audioInputTokens: number;
     /**
-     * ( USD).
+     * ( USD)
      * @type {number}
      * @memberof SpeechRecModelStats
      */

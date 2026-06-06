@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -52,62 +52,62 @@ export interface UpdateAgentAssignmentRestoreRequest {
  */
 export declare class AgentAssignmentRulesApi extends runtime.BaseAPI {
     /**
-     * . - .
+     * . channel_id - . - .
      *
      */
     agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
-     * . - .
+     * . channel_id - . - .
      *
      */
     agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
     /**
-     * .
+     *
      *
      */
     deleteAgentAssignmentRaw(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * .
+     *
      *
      */
     deleteAgentAssignment(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * ( + ).
+     * ( + )
      *
      */
     getAgentAssignmentRaw(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>>;
     /**
-     * ( + ).
+     * ( + )
      *
      */
     getAgentAssignment(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto>;
     /**
-     * .
+     *
      * ID
      */
     getAgentAssignment2Raw(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
-     * .
+     *
      * ID
      */
     getAgentAssignment2(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
     /**
-     * .
+     *
      *
      */
     updateAgentAssignmentRaw(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
-     * .
+     *
      *
      */
     updateAgentAssignment(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
     /**
-     * .
+     *
      *
      */
     updateAgentAssignmentRestoreRaw(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
-     * .
+     *
      *
      */
     updateAgentAssignmentRestore(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;

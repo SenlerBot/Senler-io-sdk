@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -43,52 +43,52 @@ export interface TokensVkWebhookRequest {
  */
 export declare class ChannelsVKApi extends runtime.BaseAPI {
     /**
-     * VK token VK . Token , channel.
+     * VK token VK . Token , channel.external_id.
      * VK
      */
     tokensVkBindRaw(requestParameters: TokensVkBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>>;
     /**
-     * VK token VK . Token , channel.
+     * VK token VK . Token , channel.external_id.
      * VK
      */
     tokensVkBind(requestParameters: TokensVkBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto>;
     /**
-     * VK webhook VK API . webhook .
-     * VK webhook
+     * VK API .
+     * VK
      */
     tokensVkCheckWebhookStatusRaw(requestParameters: TokensVkCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>>;
     /**
-     * VK webhook VK API . webhook .
-     * VK webhook
+     * VK API .
+     * VK
      */
     tokensVkCheckWebhookStatus(requestParameters: TokensVkCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto>;
     /**
-     * VK S3.
+     * VK S3
      * VK
      */
     tokensVkRefreshAvatarRaw(requestParameters: TokensVkRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>>;
     /**
-     * VK S3.
+     * VK S3
      * VK
      */
     tokensVkRefreshAvatar(requestParameters: TokensVkRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto>;
     /**
-     * VK API.
+     * VK API
      * VK
      */
     tokensVkValidateRaw(requestParameters: TokensVkValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateVKTokenResultDto>>;
     /**
-     * VK API.
+     * VK API
      * VK
      */
     tokensVkValidate(requestParameters: TokensVkValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateVKTokenResultDto>;
     /**
-     * . callback server VK .
+     * .
      * VK
      */
     tokensVkWebhookRaw(requestParameters: TokensVkWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>>;
     /**
-     * . callback server VK .
+     * .
      * VK
      */
     tokensVkWebhook(requestParameters: TokensVkWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto>;

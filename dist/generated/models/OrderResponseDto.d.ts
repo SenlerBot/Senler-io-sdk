@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,61 +18,61 @@ import type { OrderItemResponseDto } from './OrderItemResponseDto';
  */
 export interface OrderResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof OrderResponseDto
      */
     id: string;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof OrderResponseDto
      */
     amount: number;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof OrderResponseDto
      */
     refundedAmount: number;
     /**
-     * (ISO 4217).
+     * (ISO 4217)
      * @type {string}
      * @memberof OrderResponseDto
      */
     currency: OrderResponseDtoCurrencyEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderResponseDto
      */
     status: OrderResponseDtoStatusEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof OrderResponseDto
      */
     externalPaymentId?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderResponseDto
      */
     paymentFailureCode?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderResponseDto
      */
     paymentFailureMessage?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderResponseDto
      */
     paymentFailureDetails?: string | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof OrderResponseDto
      */
@@ -84,25 +84,25 @@ export interface OrderResponseDto {
      */
     description?: string | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof OrderResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof OrderResponseDto
      */
     updatedAt: Date;
     /**
-     * .
+     *
      * @type {OrderPaySystemResponseDto}
      * @memberof OrderResponseDto
      */
     paySystem?: OrderPaySystemResponseDto | null;
     /**
-     * .
+     *
      * @type {Array<OrderItemResponseDto>}
      * @memberof OrderResponseDto
      */

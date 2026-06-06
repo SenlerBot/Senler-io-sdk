@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,55 +20,55 @@ import { mapValues } from '../runtime';
  */
 export interface EventSenderProfileDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     firstName?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     lastName?: string;
     /**
-     * username .
+     * @username
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     username?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     avatarUrl?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     platformType?: EventSenderProfileDtoPlatformTypeEnum;
     /**
-     * .
+     * . lead sender.
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     operatorNotes?: string | null;
     /**
-     * space, sender.
+     * space, sender.type=space
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     spaceKind?: EventSenderProfileDtoSpaceKindEnum;
     /**
-     * space, sender.
+     * space, sender.type=space
      * @type {string}
      * @memberof EventSenderProfileDto
      */
     spaceType?: EventSenderProfileDtoSpaceTypeEnum;
     /**
-     * , sender.
+     * , sender.type=space
      * @type {string}
      * @memberof EventSenderProfileDto
      */

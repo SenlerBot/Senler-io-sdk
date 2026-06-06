@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,43 +20,43 @@ import { mapValues } from '../runtime';
  */
 export interface SpeechRecognitionCostCabinetDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof SpeechRecognitionCostCabinetDto
      */
     model?: string;
     /**
-     * -, .
+     * -,
      * @type {string}
      * @memberof SpeechRecognitionCostCabinetDto
      */
     pricingType?: SpeechRecognitionCostCabinetDtoPricingTypeEnum;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof SpeechRecognitionCostCabinetDto
      */
     durationSeconds?: number;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof SpeechRecognitionCostCabinetDto
      */
     language?: string;
     /**
-     * Text input prompt, .
+     * Text input prompt,
      * @type {number}
      * @memberof SpeechRecognitionCostCabinetDto
      */
     textInputTokens?: number;
     /**
-     * Text output .
+     * Text output
      * @type {number}
      * @memberof SpeechRecognitionCostCabinetDto
      */
     textOutputTokens?: number;
     /**
-     * Audio input .
+     * Audio input
      * @type {number}
      * @memberof SpeechRecognitionCostCabinetDto
      */

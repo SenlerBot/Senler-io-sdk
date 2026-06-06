@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,49 +16,49 @@
  */
 export interface DiscordChannelDataDto {
     /**
-     * Discord application_id .
+     * Discord application_id
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     applicationId?: string;
     /**
-     * ID Discord bot user.
+     * ID Discord-
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     botUserId?: string;
     /**
-     * Username Discord .
+     * Username Discord
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     botUsername?: string;
     /**
-     * Display name Discord .
+     * Discord-.
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     botName?: string;
     /**
-     * S3 URL Discord .
+     * S3 URL Discord
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     botAvatarUrl?: string;
     /**
-     * Discord Gateway runtime.
+     * Discord.
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     gatewayStatus?: DiscordChannelDataDtoGatewayStatusEnum;
     /**
-     * Discord Gateway runtime.
+     * Discord.
      * @type {string}
      * @memberof DiscordChannelDataDto
      */
     gatewayError?: string;
     /**
-     * Discord Gateway runtime failure.
+     * Discord .
      * @type {string}
      * @memberof DiscordChannelDataDto
      */

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,37 +20,37 @@ import { mapValues } from '../runtime';
  */
 export interface DiscordBotInfoDto {
     /**
-     * Discord application_id .
+     * Discord application_id
      * @type {string}
      * @memberof DiscordBotInfoDto
      */
     applicationId: string;
     /**
-     * ID Discord bot user.
+     * ID Discord-
      * @type {string}
      * @memberof DiscordBotInfoDto
      */
     botUserId: string;
     /**
-     * Username Discord .
+     * Username Discord
      * @type {string}
      * @memberof DiscordBotInfoDto
      */
     username: string;
     /**
-     * Display name Discord .
+     * Discord-.
      * @type {string}
      * @memberof DiscordBotInfoDto
      */
     botName: string;
     /**
-     * Discord global_name, .
+     * Discord global_name,
      * @type {string}
      * @memberof DiscordBotInfoDto
      */
     globalName?: string;
     /**
-     * S3 URL Discord .
+     * S3 URL Discord
      * @type {string}
      * @memberof DiscordBotInfoDto
      */

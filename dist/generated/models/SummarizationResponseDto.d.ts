@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -19,67 +19,67 @@ import type { PeriodInfoDto } from './PeriodInfoDto';
  */
 export interface SummarizationResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof SummarizationResponseDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {PeriodInfoDto}
      * @memberof SummarizationResponseDto
      */
     period: PeriodInfoDto;
     /**
-     * .
+     *
      * @type {string}
      * @memberof SummarizationResponseDto
      */
     situationOverview: string;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof SummarizationResponseDto
      */
     positiveHighlights: Array<string>;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof SummarizationResponseDto
      */
     problemAreas: Array<string>;
     /**
-     * .
+     *
      * @type {Array<AgentRecommendationDto>}
      * @memberof SummarizationResponseDto
      */
     agentRecommendations: Array<AgentRecommendationDto>;
     /**
-     * -.
+     * -
      * @type {Array<string>}
      * @memberof SummarizationResponseDto
      */
     businessRecommendations: Array<string>;
     /**
-     * .
+     *
      * @type {GenerationCostDto}
      * @memberof SummarizationResponseDto
      */
     generation: GenerationCostDto;
     /**
-     * .
+     *
      * @type {string}
      * @memberof SummarizationResponseDto
      */
     trigger: SummarizationResponseDtoTriggerEnum;
     /**
-     * ID , .
+     * ID ,
      * @type {string}
      * @memberof SummarizationResponseDto
      */
     triggeredBy?: string;
     /**
-     * (ISO 8601).
+     * (ISO 8601)
      * @type {string}
      * @memberof SummarizationResponseDto
      */

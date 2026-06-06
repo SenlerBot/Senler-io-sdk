@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -48,6 +48,8 @@ function AvitoChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         'webhookEnabled': json['webhook_enabled'] == null ? undefined : json['webhook_enabled'],
         'webhookStatus': json['webhook_status'] == null ? undefined : json['webhook_status'],
         'webhookError': json['webhook_error'] == null ? undefined : json['webhook_error'],
+        'webhookWarning': json['webhook_warning'] == null ? undefined : json['webhook_warning'],
+        'webhookLastCheckedAt': json['webhook_last_checked_at'] == null ? undefined : json['webhook_last_checked_at'],
     };
 }
 function AvitoChannelDataDtoToJSON(json) {
@@ -64,5 +66,7 @@ function AvitoChannelDataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'webhook_enabled': value['webhookEnabled'],
         'webhook_status': value['webhookStatus'],
         'webhook_error': value['webhookError'],
+        'webhook_warning': value['webhookWarning'],
+        'webhook_last_checked_at': value['webhookLastCheckedAt'],
     };
 }

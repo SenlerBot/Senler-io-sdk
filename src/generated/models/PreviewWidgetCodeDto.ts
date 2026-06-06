@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,43 +35,43 @@ import {
  */
 export interface PreviewWidgetCodeDto {
     /**
-     * (, , ).
+     * (, , )
      * @type {WidgetThemeDto}
      * @memberof PreviewWidgetCodeDto
      */
     theme?: WidgetThemeDto;
     /**
-     * CORS.
+     * CORS
      * @type {Array<string>}
      * @memberof PreviewWidgetCodeDto
      */
     allowedDomains?: Array<string>;
     /**
-     * ( , , , ).
+     * ( , , , )
      * @type {WidgetFeaturesDto}
      * @memberof PreviewWidgetCodeDto
      */
     features?: WidgetFeaturesDto;
     /**
-     * HMAC identity verification ( user_hash).
+     * HMAC identity verification ( user_hash)
      * @type {boolean}
      * @memberof PreviewWidgetCodeDto
      */
     identityVerification?: boolean;
     /**
-     * : ru, en auto ().
+     * : ru, en auto ()
      * @type {string}
      * @memberof PreviewWidgetCodeDto
      */
     language?: PreviewWidgetCodeDtoLanguageEnum;
     /**
-     * : popup ( ) embedded ( ).
+     * :
      * @type {string}
      * @memberof PreviewWidgetCodeDto
      */
     displayMode?: PreviewWidgetCodeDtoDisplayModeEnum;
     /**
-     * : local ( ) remote ( ).
+     * : local ( ) remote ( )
      * @type {string}
      * @memberof PreviewWidgetCodeDto
      */

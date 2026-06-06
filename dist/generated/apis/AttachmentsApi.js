@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UploadUrlAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
+exports.UploadUrlAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AttachmentsApi extends runtime.BaseAPI {
     /**
-     * Prerequisite: S3 ( 2 - PUT ).
-     * S3
+     * , S3-, .
+     *
      */
     async confirmRaw(requestParameters, initOverrides) {
         if (requestParameters['confirmUploadDto'] == null) {
@@ -97,16 +97,94 @@ class AttachmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ConfirmUploadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Prerequisite: S3 ( 2 - PUT ).
-     * S3
+     * , S3-, .
+     *
      */
     async confirm(requestParameters, initOverrides) {
         const response = await this.confirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * (presigned URL auth) URL 1 .
-     * presigned URL
+     * . .
+     *
+     */
+    async getDownloadRaw(requestParameters, initOverrides) {
+        if (requestParameters['downloadToken'] == null) {
+            throw new runtime.RequiredError('downloadToken', 'Required parameter "downloadToken" was null or undefined when calling getDownload().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/download/{downloadToken}`.replace(`{${"downloadToken"}}`, encodeURIComponent(String(requestParameters['downloadToken']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.BlobApiResponse(response);
+    }
+    /**
+     * . .
+     *
+     */
+    async getDownload(requestParameters, initOverrides) {
+        const response = await this.getDownloadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getDownloadUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError('attachmentId', 'Required parameter "attachmentId" was null or undefined when calling getDownloadUrl().');
+        }
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling getDownloadUrl().');
+        }
+        const queryParameters = {};
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/download-url`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentDownloadUrlResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getDownloadUrl(requestParameters, initOverrides) {
+        const response = await this.getDownloadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * S3- . channelId dialogId, confirm.
+     * S3-
      */
     async uploadUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['getUploadUrlDto'] == null) {
@@ -148,8 +226,8 @@ class AttachmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetUploadUrlResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (presigned URL auth) URL 1 .
-     * presigned URL
+     * S3- . channelId dialogId, confirm.
+     * S3-
      */
     async uploadUrl(requestParameters, initOverrides) {
         const response = await this.uploadUrlRaw(requestParameters, initOverrides);
@@ -161,6 +239,20 @@ exports.AttachmentsApi = AttachmentsApi;
  * @export
  */
 exports.ConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDownloadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDownloadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

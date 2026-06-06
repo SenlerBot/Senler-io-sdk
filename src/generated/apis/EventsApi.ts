@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -109,7 +109,7 @@ export interface GetMarketingTrafficSourcesRequest {
 export class EventsApi extends runtime.BaseAPI {
 
     /**
-     * CabinetEventDetailDto provider costs. .
+     * .
      * ID
      */
     async eventsGetByIdRaw(requestParameters: EventsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetEventDetailDto>> {
@@ -156,7 +156,7 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * CabinetEventDetailDto provider costs. .
+     * .
      * ID
      */
     async eventsGetById(requestParameters: EventsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetEventDetailDto> {
@@ -165,7 +165,7 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * ().
+     * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      * 
      */
     async eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventsList200Response>> {
@@ -308,7 +308,7 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * ().
+     * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      * 
      */
     async eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response> {
@@ -317,7 +317,7 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * project-scoped .
+     * . .
      * 
      */
     async getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
@@ -379,7 +379,7 @@ export class EventsApi extends runtime.BaseAPI {
     }
 
     /**
-     * project-scoped .
+     * . .
      * 
      */
     async getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {

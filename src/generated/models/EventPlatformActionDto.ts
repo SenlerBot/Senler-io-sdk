@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,43 +20,43 @@ import { mapValues } from '../runtime';
  */
 export interface EventPlatformActionDto {
     /**
-     * platform action.
+     * platform action
      * @type {string}
      * @memberof EventPlatformActionDto
      */
     state: EventPlatformActionDtoStateEnum;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPlatformActionDto
      */
     required: boolean;
     /**
-     * platform action.
+     * platform action
      * @type {string}
      * @memberof EventPlatformActionDto
      */
     error?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventPlatformActionDto
      */
     reason?: EventPlatformActionDtoReasonEnum;
     /**
-     * platform action.
+     * platform action
      * @type {string}
      * @memberof EventPlatformActionDto
      */
     channelType?: EventPlatformActionDtoChannelTypeEnum;
     /**
-     * action .
+     * action
      * @type {Date}
      * @memberof EventPlatformActionDto
      */
     requestedAt?: Date;
     /**
-     * action .
+     * action
      * @type {Date}
      * @memberof EventPlatformActionDto
      */

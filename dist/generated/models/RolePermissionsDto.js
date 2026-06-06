@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -65,6 +65,10 @@ function instanceOfRolePermissionsDto(value) {
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined)
         return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined)
+        return false;
+    if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined)
+        return false;
+    if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined)
         return false;
     if (!('canViewAnalytics' in value) || value['canViewAnalytics'] === undefined)
         return false;
@@ -138,6 +142,8 @@ function RolePermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageServerLists': json['can_manage_server_lists'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
+        'canViewProjectApps': json['can_view_project_apps'],
+        'canManageProjectApps': json['can_manage_project_apps'],
         'canViewAnalytics': json['can_view_analytics'],
         'canManageAnalytics': json['can_manage_analytics'],
         'canViewMetrics': json['can_view_metrics'],
@@ -190,6 +196,8 @@ function RolePermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_server_lists': value['canManageServerLists'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
+        'can_view_project_apps': value['canViewProjectApps'],
+        'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_analytics': value['canViewAnalytics'],
         'can_manage_analytics': value['canManageAnalytics'],
         'can_view_metrics': value['canViewMetrics'],

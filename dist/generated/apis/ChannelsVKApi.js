@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ChannelsVKApi extends runtime.BaseAPI {
     /**
-     * VK token VK . Token , channel.
+     * VK token VK . Token , channel.external_id.
      * VK
      */
     async tokensVkBindRaw(requestParameters, initOverrides) {
@@ -94,7 +94,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * VK token VK . Token , channel.
+     * VK token VK . Token , channel.external_id.
      * VK
      */
     async tokensVkBind(requestParameters, initOverrides) {
@@ -102,8 +102,8 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * VK webhook VK API . webhook .
-     * VK webhook
+     * VK API .
+     * VK
      */
     async tokensVkCheckWebhookStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -137,15 +137,15 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CheckWebhookStatusResultDtoFromJSON)(jsonValue));
     }
     /**
-     * VK webhook VK API . webhook .
-     * VK webhook
+     * VK API .
+     * VK
      */
     async tokensVkCheckWebhookStatus(requestParameters, initOverrides) {
         const response = await this.tokensVkCheckWebhookStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * VK S3.
+     * VK S3
      * VK
      */
     async tokensVkRefreshAvatarRaw(requestParameters, initOverrides) {
@@ -180,7 +180,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * VK S3.
+     * VK S3
      * VK
      */
     async tokensVkRefreshAvatar(requestParameters, initOverrides) {
@@ -188,7 +188,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * VK API.
+     * VK API
      * VK
      */
     async tokensVkValidateRaw(requestParameters, initOverrides) {
@@ -223,7 +223,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateVKTokenResultDtoFromJSON)(jsonValue));
     }
     /**
-     * VK API.
+     * VK API
      * VK
      */
     async tokensVkValidate(requestParameters, initOverrides) {
@@ -231,7 +231,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . callback server VK .
+     * .
      * VK
      */
     async tokensVkWebhookRaw(requestParameters, initOverrides) {
@@ -271,7 +271,7 @@ class ChannelsVKApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SetupWebhookResultDtoFromJSON)(jsonValue));
     }
     /**
-     * . callback server VK .
+     * .
      * VK
      */
     async tokensVkWebhook(requestParameters, initOverrides) {

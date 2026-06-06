@@ -36,6 +36,7 @@ import { KnowledgeBaseApi } from './generated/apis/KnowledgeBaseApi';
 import { LeadsApi } from './generated/apis/LeadsApi';
 import { LeadVariableDefinitionsApi } from './generated/apis/LeadVariableDefinitionsApi';
 import { LeadVariablesApi } from './generated/apis/LeadVariablesApi';
+import { MCPExternalUserCredentialsApi } from './generated/apis/MCPExternalUserCredentialsApi';
 import { MCPServersApi } from './generated/apis/MCPServersApi';
 import { MetricsConfigApi } from './generated/apis/MetricsConfigApi';
 import { MetricsDefinitionsApi } from './generated/apis/MetricsDefinitionsApi';
@@ -88,6 +89,7 @@ export class AiSenlerClient {
   readonly leads: LeadsApi;
   readonly leadVariableDefinitions: LeadVariableDefinitionsApi;
   readonly leadVariables: LeadVariablesApi;
+  readonly mcpExternalUserCredentials: MCPExternalUserCredentialsApi;
   readonly mcpServers: MCPServersApi;
   readonly metricsConfig: MetricsConfigApi;
   readonly metricsDefinitions: MetricsDefinitionsApi;
@@ -157,6 +159,7 @@ export class AiSenlerClient {
     this.leads = new LeadsApi(configuration);
     this.leadVariableDefinitions = new LeadVariableDefinitionsApi(configuration);
     this.leadVariables = new LeadVariablesApi(configuration);
+    this.mcpExternalUserCredentials = new MCPExternalUserCredentialsApi(configuration);
     this.mcpServers = new MCPServersApi(configuration);
     this.metricsConfig = new MetricsConfigApi(configuration);
     this.metricsDefinitions = new MetricsDefinitionsApi(configuration);

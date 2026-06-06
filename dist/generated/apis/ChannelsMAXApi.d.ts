@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -48,62 +48,62 @@ export interface TokensMaxWebhookSetupRequest {
  */
 export declare class ChannelsMAXApi extends runtime.BaseAPI {
     /**
-     * MAX .
+     * MAX access token . MAX API, , . access token , MAX .
      * MAX
      */
     maxRaw(requestParameters: MaxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateMaxChannelResponseDto>>;
     /**
-     * MAX .
+     * MAX access token . MAX API, , . access token , MAX .
      * MAX
      */
     max(requestParameters: MaxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateMaxChannelResponseDto>;
     /**
-     * MAX MAX . Token bot_id, channel.
+     * MAX MAX . Token bot_id, channel.external_id. MAX identity .
      * MAX
      */
     tokensMaxBindRaw(requestParameters: TokensMaxBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>>;
     /**
-     * MAX MAX . Token bot_id, channel.
+     * MAX MAX . Token bot_id, channel.external_id. MAX identity .
      * MAX
      */
     tokensMaxBind(requestParameters: TokensMaxBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto>;
     /**
-     * MAX webhook MAX API (/subscriptions) .
-     * MAX webhook
+     * MAX API .
+     * MAX
      */
     tokensMaxCheckWebhookStatusRaw(requestParameters: TokensMaxCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>>;
     /**
-     * MAX webhook MAX API (/subscriptions) .
-     * MAX webhook
+     * MAX API .
+     * MAX
      */
     tokensMaxCheckWebhookStatus(requestParameters: TokensMaxCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto>;
     /**
-     * MAX S3.
+     * MAX S3
      * MAX
      */
     tokensMaxRefreshAvatarRaw(requestParameters: TokensMaxRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>>;
     /**
-     * MAX S3.
+     * MAX S3
      * MAX
      */
     tokensMaxRefreshAvatar(requestParameters: TokensMaxRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto>;
     /**
-     * MAX access token MAX API (/me).
+     * MAX access token MAX API (/me)
      * MAX
      */
     tokensMaxValidateRaw(requestParameters: TokensMaxValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateMaxTokenResultDto>>;
     /**
-     * MAX access token MAX API (/me).
+     * MAX access token MAX API (/me)
      * MAX
      */
     tokensMaxValidate(requestParameters: TokensMaxValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateMaxTokenResultDto>;
     /**
-     * MAX API (/subscriptions).
+     * MAX API (/subscriptions)
      * MAX
      */
     tokensMaxWebhookSetupRaw(requestParameters: TokensMaxWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>>;
     /**
-     * MAX API (/subscriptions).
+     * MAX API (/subscriptions)
      * MAX
      */
     tokensMaxWebhookSetup(requestParameters: TokensMaxWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto>;

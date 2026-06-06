@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -113,7 +113,7 @@ import {
 
 /**
  * @type DialogDtoReplyTarget
- * .
+ * 
  * @export
  */
 export type DialogDtoReplyTarget = { kind: 'avito_chat' } & DialogAvitoChatReplyTargetDto | { kind: 'discord_channel' } & DialogDiscordChannelReplyTargetDto | { kind: 'discord_dm' } & DialogDiscordDmReplyTargetDto | { kind: 'discord_thread' } & DialogDiscordThreadReplyTargetDto | { kind: 'email_thread' } & DialogEmailReplyTargetDto | { kind: 'max_channel' } & DialogMaxChannelReplyTargetDto | { kind: 'max_chat' } & DialogMaxChatReplyTargetDto | { kind: 'max_dialog' } & DialogMaxDialogReplyTargetDto | { kind: 'streamvi_broadcast' } & DialogStreamviReplyTargetDto | { kind: 'telegram_chat' } & DialogTelegramChatReplyTargetDto | { kind: 'telegram_topic' } & DialogTelegramTopicReplyTargetDto | { kind: 'vk_peer' } & DialogVkPeerReplyTargetDto | { kind: 'vk_wall_post_comments' } & DialogVkWallPostCommentsReplyTargetDto | { kind: 'widget_lead' } & DialogWidgetReplyTargetDto;

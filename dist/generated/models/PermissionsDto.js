@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -92,6 +92,10 @@ function instanceOfPermissionsDto(value) {
         return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined)
         return false;
+    if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined)
+        return false;
+    if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined)
+        return false;
     if (!('canViewStorage' in value) || value['canViewStorage'] === undefined)
         return false;
     if (!('canManageStorage' in value) || value['canManageStorage'] === undefined)
@@ -149,6 +153,8 @@ function PermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageKnowledgeBase': json['can_manage_knowledge_base'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
+        'canViewProjectApps': json['can_view_project_apps'],
+        'canManageProjectApps': json['can_manage_project_apps'],
         'canViewStorage': json['can_view_storage'],
         'canManageStorage': json['can_manage_storage'],
         'canViewProjectVariables': json['can_view_project_variables'],
@@ -200,6 +206,8 @@ function PermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_knowledge_base': value['canManageKnowledgeBase'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
+        'can_view_project_apps': value['canViewProjectApps'],
+        'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_storage': value['canViewStorage'],
         'can_manage_storage': value['canManageStorage'],
         'can_view_project_variables': value['canViewProjectVariables'],

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -181,8 +181,8 @@ export interface UpdateTablesRequest {
 export class KnowledgeBaseApi extends runtime.BaseAPI {
 
     /**
-     * Soft deletes a folder from the project knowledge base.
-     * Delete knowledge base folder
+     * .
+     * 
      */
     async deleteFoldersRaw(requestParameters: DeleteFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -228,16 +228,16 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Soft deletes a folder from the project knowledge base.
-     * Delete knowledge base folder
+     * .
+     * 
      */
     async deleteFolders(requestParameters: DeleteFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteFoldersRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Soft deletes a table from the project knowledge base.
-     * Delete knowledge base table
+     * .
+     * 
      */
     async deleteTablesRaw(requestParameters: DeleteTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -283,16 +283,16 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Soft deletes a table from the project knowledge base.
-     * Delete knowledge base table
+     * .
+     * 
      */
     async deleteTables(requestParameters: DeleteTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteTablesRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Creates a Markdown/text file in the project knowledge base.
-     * Create knowledge base text file
+     * Markdown- .
+     * 
      */
     async filesRaw(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>> {
         if (requestParameters['createKnowledgeFileDto'] == null) {
@@ -341,8 +341,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a Markdown/text file in the project knowledge base.
-     * Create knowledge base text file
+     * Markdown- .
+     * 
      */
     async files(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.filesRaw(requestParameters, initOverrides);
@@ -350,8 +350,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uploads a source file, stores the original file and extracts supported text content.
-     * Upload knowledge base file
+     * , .
+     * 
      */
     async filesUploadRaw(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -437,8 +437,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uploads a source file, stores the original file and extracts supported text content.
-     * Upload knowledge base file
+     * , .
+     * 
      */
     async filesUpload(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.filesUploadRaw(requestParameters, initOverrides);
@@ -446,8 +446,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uploads a ZIP archive up to 50 MB, creates folders from archive paths and imports supported files.
-     * Upload knowledge base ZIP archive
+     * ZIP- 50 , .
+     * ZIP-
      */
     async filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -533,8 +533,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uploads a ZIP archive up to 50 MB, creates folders from archive paths and imports supported files.
-     * Upload knowledge base ZIP archive
+     * ZIP- 50 , .
+     * ZIP-
      */
     async filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto> {
         const response = await this.filesUploadArchiveRaw(requestParameters, initOverrides);
@@ -542,8 +542,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a folder in the project knowledge base.
-     * Create knowledge base folder
+     * .
+     * 
      */
     async foldersRaw(requestParameters: FoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFolderResponseDto>> {
         if (requestParameters['createKnowledgeFolderDto'] == null) {
@@ -592,8 +592,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a folder in the project knowledge base.
-     * Create knowledge base folder
+     * .
+     * 
      */
     async folders(requestParameters: FoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFolderResponseDto> {
         const response = await this.foldersRaw(requestParameters, initOverrides);
@@ -601,8 +601,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns folders, files and tables for the selected parent folder.
-     * List knowledge base resources
+     * , .
+     * 
      */
     async getResourcesRaw(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -656,8 +656,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns folders, files and tables for the selected parent folder.
-     * List knowledge base resources
+     * , .
+     * 
      */
     async getResources(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto> {
         const response = await this.getResourcesRaw(requestParameters, initOverrides);
@@ -665,8 +665,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns selected folders, files and tables by IDs inside one project.
-     * Resolve knowledge base resources
+     * , ID .
+     * 
      */
     async getResourcesResolveRaw(requestParameters: GetResourcesResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -728,8 +728,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns selected folders, files and tables by IDs inside one project.
-     * Resolve knowledge base resources
+     * , ID .
+     * 
      */
     async getResourcesResolve(requestParameters: GetResourcesResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto> {
         const response = await this.getResourcesResolveRaw(requestParameters, initOverrides);
@@ -737,8 +737,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Searches active knowledge base folders, files and tables by text query.
-     * Search knowledge base resources
+     * , .
+     * 
      */
     async getSearchRaw(requestParameters: GetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedKnowledgeBaseSearchResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -815,8 +815,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Searches active knowledge base folders, files and tables by text query.
-     * Search knowledge base resources
+     * , .
+     * 
      */
     async getSearch(requestParameters: GetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedKnowledgeBaseSearchResponseDto> {
         const response = await this.getSearchRaw(requestParameters, initOverrides);
@@ -824,8 +824,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns a single knowledge base table in the resolved project scope.
-     * Get knowledge base table
+     * .
+     * 
      */
     async getTablesRaw(requestParameters: GetTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -871,8 +871,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns a single knowledge base table in the resolved project scope.
-     * Get knowledge base table
+     * .
+     * 
      */
     async getTables(requestParameters: GetTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.getTablesRaw(requestParameters, initOverrides);
@@ -880,8 +880,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Soft deletes a file from the project knowledge base.
-     * Delete knowledge base file
+     * .
+     * 
      */
     async knowledgeBaseDeleteFilesRaw(requestParameters: KnowledgeBaseDeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['id'] == null) {
@@ -927,16 +927,16 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Soft deletes a file from the project knowledge base.
-     * Delete knowledge base file
+     * .
+     * 
      */
     async knowledgeBaseDeleteFiles(requestParameters: KnowledgeBaseDeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.knowledgeBaseDeleteFilesRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Returns a single knowledge base file in the resolved project scope.
-     * Get knowledge base file
+     * .
+     * 
      */
     async knowledgeBaseGetFilesRaw(requestParameters: KnowledgeBaseGetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -982,8 +982,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns a single knowledge base file in the resolved project scope.
-     * Get knowledge base file
+     * .
+     * 
      */
     async knowledgeBaseGetFiles(requestParameters: KnowledgeBaseGetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.knowledgeBaseGetFilesRaw(requestParameters, initOverrides);
@@ -991,8 +991,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a table workbook resource in the project knowledge base.
-     * Create knowledge base table
+     * .
+     * 
      */
     async tablesRaw(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>> {
         if (requestParameters['createKnowledgeTableDto'] == null) {
@@ -1041,8 +1041,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a table workbook resource in the project knowledge base.
-     * Create knowledge base table
+     * .
+     * 
      */
     async tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.tablesRaw(requestParameters, initOverrides);
@@ -1050,8 +1050,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates file metadata, content, folder or active state inside the resolved project.
-     * Update knowledge base file
+     * , , .
+     * 
      */
     async updateFilesRaw(requestParameters: UpdateFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1107,8 +1107,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates file metadata, content, folder or active state inside the resolved project.
-     * Update knowledge base file
+     * , , .
+     * 
      */
     async updateFiles(requestParameters: UpdateFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.updateFilesRaw(requestParameters, initOverrides);
@@ -1116,8 +1116,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates folder name, parent folder or active state inside the resolved project.
-     * Update knowledge base folder
+     * , .
+     * 
      */
     async updateFoldersRaw(requestParameters: UpdateFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFolderResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1173,8 +1173,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates folder name, parent folder or active state inside the resolved project.
-     * Update knowledge base folder
+     * , .
+     * 
      */
     async updateFolders(requestParameters: UpdateFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFolderResponseDto> {
         const response = await this.updateFoldersRaw(requestParameters, initOverrides);
@@ -1182,8 +1182,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates table metadata, folder or active state.
-     * Update knowledge base table
+     * , .
+     * 
      */
     async updateTablesRaw(requestParameters: UpdateTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1239,8 +1239,8 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates table metadata, folder or active state.
-     * Update knowledge base table
+     * , .
+     * 
      */
     async updateTables(requestParameters: UpdateTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.updateTablesRaw(requestParameters, initOverrides);

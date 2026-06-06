@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,6 +20,13 @@ import {
     McpServerResponseDtoMetaToJSON,
     McpServerResponseDtoMetaToJSONTyped,
 } from './McpServerResponseDtoMeta';
+import type { McpCredentialConnectedIdentityDto } from './McpCredentialConnectedIdentityDto';
+import {
+    McpCredentialConnectedIdentityDtoFromJSON,
+    McpCredentialConnectedIdentityDtoFromJSONTyped,
+    McpCredentialConnectedIdentityDtoToJSON,
+    McpCredentialConnectedIdentityDtoToJSONTyped,
+} from './McpCredentialConnectedIdentityDto';
 import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateManualAuthHeaderDto';
 import {
     McpServerTemplateManualAuthHeaderDtoFromJSON,
@@ -35,107 +42,119 @@ import {
  */
 export interface McpServerResponseDto {
     /**
-     * Server UUID.
+     * UUID MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     id: string;
     /**
-     * Server name.
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     name?: string;
     /**
-     * Server URL.
+     * MCP ,
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    templateName?: string | null;
+    /**
+     * URL MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     url: string;
     /**
-     * Server description
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     description?: string | null;
     /**
-     * Avatar URL inherited from the source MCP server template.
+     * URL MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Whether custom server bearer token or active project credential is configured.
+     * MCP
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     hasAuthToken: boolean;
     /**
-     * Authorization method configured for a custom MCP server.
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     customAuthMode?: McpServerResponseDtoCustomAuthModeEnum;
     /**
-     * Whether server was installed from a managed MCP server template.
+     * MCP
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     isInstalled: boolean;
     /**
-     * Authentication mode of installed MCP server.
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     authMode: McpServerResponseDtoAuthModeEnum;
     /**
-     * Auth method used by the current project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     projectConnectedAuthMethod?: McpServerResponseDtoProjectConnectedAuthMethodEnum | null;
     /**
-     * Whether the source template supports project manual credential.
+     * MCP
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     supportsProjectManualCredential?: boolean | null;
     /**
-     * Manual authorization headers inherited from the source MCP server template.
+     * MCP
      * @type {Array<McpServerTemplateManualAuthHeaderDto>}
      * @memberof McpServerResponseDto
      */
     manualAuthHeaders?: Array<McpServerTemplateManualAuthHeaderDto>;
     /**
-     * Whether the source template supports project OAuth credential.
+     * OAuth- MCP
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     supportsProjectOauthCredential?: boolean | null;
     /**
-     * Whether active project credential is configured.
+     * MCP
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     hasProjectCredential?: boolean;
     /**
-     * Last validation status of the active project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     projectCredentialValidationStatus?: McpServerResponseDtoProjectCredentialValidationStatusEnum | null;
     /**
-     * Last validation error of the active project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     projectCredentialValidationError?: string | null;
     /**
-     * Last validation timestamp of the active project credential.
+     * MCP
      * @type {Date}
      * @memberof McpServerResponseDto
      */
     projectCredentialValidatedAt?: Date | null;
+    /**
+     * , MCP
+     * @type {McpCredentialConnectedIdentityDto}
+     * @memberof McpServerResponseDto
+     */
+    projectCredentialConnectedIdentity?: McpCredentialConnectedIdentityDto | null;
     /**
      * 
      * @type {McpServerResponseDtoMeta}
@@ -143,49 +162,49 @@ export interface McpServerResponseDto {
      */
     meta?: McpServerResponseDtoMeta;
     /**
-     * Custom query params applied to installed MCP server URL.
+     * , URL MCP
      * @type {object}
      * @memberof McpServerResponseDto
      */
     customQueryParams?: object | null;
     /**
-     * Whether server has knowledge base sources.
+     * 
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     hasKnowledgeBase?: boolean;
     /**
-     * Number of knowledge base sources.
+     * 
      * @type {number}
      * @memberof McpServerResponseDto
      */
     knowledgeBaseCount?: number;
     /**
-     * Whether server is active.
+     * 
      * @type {boolean}
      * @memberof McpServerResponseDto
      */
     isActive: boolean;
     /**
-     * Project UUID.
+     * UUID
      * @type {string}
      * @memberof McpServerResponseDto
      */
     projectId: string;
     /**
-     * App identifier for proxy MCP servers.
+     * ID MCP
      * @type {string}
      * @memberof McpServerResponseDto
      */
     appId?: string | null;
     /**
-     * Creation timestamp.
+     * 
      * @type {Date}
      * @memberof McpServerResponseDto
      */
     createdAt: Date;
     /**
-     * Last update timestamp.
+     * 
      * @type {Date}
      * @memberof McpServerResponseDto
      */
@@ -261,6 +280,7 @@ export function McpServerResponseDtoFromJSONTyped(json: any, ignoreDiscriminator
         
         'id': json['id'],
         'name': json['name'] == null ? undefined : json['name'],
+        'templateName': json['template_name'] == null ? undefined : json['template_name'],
         'url': json['url'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -276,6 +296,7 @@ export function McpServerResponseDtoFromJSONTyped(json: any, ignoreDiscriminator
         'projectCredentialValidationStatus': json['project_credential_validation_status'] == null ? undefined : json['project_credential_validation_status'],
         'projectCredentialValidationError': json['project_credential_validation_error'] == null ? undefined : json['project_credential_validation_error'],
         'projectCredentialValidatedAt': json['project_credential_validated_at'] == null ? undefined : (new Date(json['project_credential_validated_at'])),
+        'projectCredentialConnectedIdentity': json['project_credential_connected_identity'] == null ? undefined : McpCredentialConnectedIdentityDtoFromJSON(json['project_credential_connected_identity']),
         'meta': json['meta'] == null ? undefined : McpServerResponseDtoMetaFromJSON(json['meta']),
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'hasKnowledgeBase': json['has_knowledge_base'] == null ? undefined : json['has_knowledge_base'],
@@ -301,6 +322,7 @@ export function McpServerResponseDtoToJSONTyped(value?: McpServerResponseDto | n
         
         'id': value['id'],
         'name': value['name'],
+        'template_name': value['templateName'],
         'url': value['url'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],
@@ -316,6 +338,7 @@ export function McpServerResponseDtoToJSONTyped(value?: McpServerResponseDto | n
         'project_credential_validation_status': value['projectCredentialValidationStatus'],
         'project_credential_validation_error': value['projectCredentialValidationError'],
         'project_credential_validated_at': value['projectCredentialValidatedAt'] == null ? undefined : ((value['projectCredentialValidatedAt'] as any).toISOString()),
+        'project_credential_connected_identity': McpCredentialConnectedIdentityDtoToJSON(value['projectCredentialConnectedIdentity']),
         'meta': McpServerResponseDtoMetaToJSON(value['meta']),
         'custom_query_params': value['customQueryParams'],
         'has_knowledge_base': value['hasKnowledgeBase'],

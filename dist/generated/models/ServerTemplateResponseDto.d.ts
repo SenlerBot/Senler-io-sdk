@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ServerTemplateCategoryDto } from './ServerTemplateCategoryDto';
+import type { McpServerTemplateToolPolicyDto } from './McpServerTemplateToolPolicyDto';
 import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateManualAuthHeaderDto';
 /**
  *
@@ -18,55 +19,61 @@ import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateMa
  */
 export interface ServerTemplateResponseDto {
     /**
-     *
+     * ID MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     id: string;
     /**
-     *
+     * MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     name: string;
     /**
-     *
+     * MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     description?: string | null;
     /**
-     * URL MCP .
+     * URL MCP 128x128
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Service-specific auth provider key for installed credential adapters.
+     * URL MCP 706x398
+     * @type {string}
+     * @memberof ServerTemplateResponseDto
+     */
+    bannerUrl?: string | null;
+    /**
+     * MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     authProviderKey?: ServerTemplateResponseDtoAuthProviderKeyEnum | null;
     /**
-     *
+     * URL MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     baseUrl?: string | null;
     /**
-     *
+     * URL
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     requiresCustomUrl: boolean;
     /**
-     *
+     * MCP
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     supportsProjectAuth: boolean;
     /**
-     *
+     * MCP
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
@@ -78,7 +85,7 @@ export interface ServerTemplateResponseDto {
      */
     supportsManualToken: boolean;
     /**
-     *
+     * OAuth-
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
@@ -90,13 +97,31 @@ export interface ServerTemplateResponseDto {
      */
     supportsNoAuth: boolean;
     /**
-     * Manual authorization headers users can provide when installing this template.
+     * MCP
+     * @type {boolean}
+     * @memberof ServerTemplateResponseDto
+     */
+    isPrivate: boolean;
+    /**
+     * ID , MCP
+     * @type {Array<string>}
+     * @memberof ServerTemplateResponseDto
+     */
+    allowedProjectIds?: Array<string>;
+    /**
+     * , MCP- OpenAPI.
+     * @type {McpServerTemplateToolPolicyDto}
+     * @memberof ServerTemplateResponseDto
+     */
+    toolPolicy?: McpServerTemplateToolPolicyDto | null;
+    /**
+     * HTTP- , . , .
      * @type {Array<McpServerTemplateManualAuthHeaderDto>}
      * @memberof ServerTemplateResponseDto
      */
     manualAuthHeaders?: Array<McpServerTemplateManualAuthHeaderDto>;
     /**
-     *
+     * query-
      * @type {{ [key: string]: any; }}
      * @memberof ServerTemplateResponseDto
      */
@@ -104,7 +129,7 @@ export interface ServerTemplateResponseDto {
         [key: string]: any;
     };
     /**
-     *
+     * Query-
      * @type {{ [key: string]: any; }}
      * @memberof ServerTemplateResponseDto
      */
@@ -112,43 +137,43 @@ export interface ServerTemplateResponseDto {
         [key: string]: any;
     };
     /**
-     * MCP ( ).
+     * MCP ( )
      * @type {Array<string>}
      * @memberof ServerTemplateResponseDto
      */
     tags: Array<string>;
     /**
-     * MCP ( ).
-     * @type {Array<ServerTemplateCategoryDto>}
+     * MCP
+     * @type {ServerTemplateCategoryDto}
      * @memberof ServerTemplateResponseDto
      */
-    categories: Array<ServerTemplateCategoryDto>;
+    category: ServerTemplateCategoryDto | null;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof ServerTemplateResponseDto
      */
     installCount: number;
     /**
-     * MCP (-10 ).
+     * MCP (-10 )
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     isFeatured: boolean;
     /**
-     *
+     * MCP
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     isActive: boolean;
     /**
-     *
+     * MCP
      * @type {Date}
      * @memberof ServerTemplateResponseDto
      */
     createdAt: Date;
     /**
-     *
+     * MCP
      * @type {Date}
      * @memberof ServerTemplateResponseDto
      */

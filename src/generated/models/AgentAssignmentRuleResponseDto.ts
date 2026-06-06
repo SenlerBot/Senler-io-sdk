@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,67 +35,80 @@ import {
  */
 export interface AgentAssignmentRuleResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
     id: string;
     /**
-     * ID , .
+     * ID ,
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
     projectId: string;
     /**
      * ID .
+     * 
+     * - NULL ( )
+     * - UUID ()
+     * 
+     * :
+     * - { channel_id: null } " X"
+     * - { channel_id: "vk-uuid" } " VK Y "
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
     channelId?: string | null;
     /**
      * ID .
+     * 
+     * - UUID
+     * - NULL ( )
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
     agentId?: string | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
     role: AgentAssignmentRuleResponseDtoRoleEnum;
     /**
      * .
+     * 
+     * - true ,
+     * - false ,
      * @type {boolean}
      * @memberof AgentAssignmentRuleResponseDto
      */
     isActive: boolean;
     /**
-     * .
+     * . all = , private = (1-on-1), group = (2+)
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
     dialogScope?: AgentAssignmentRuleResponseDtoDialogScopeEnum | null;
     /**
-     * .
+     * . is_active !
      * @type {AssignmentRuleAgentDto}
      * @memberof AgentAssignmentRuleResponseDto
      */
     agent?: AssignmentRuleAgentDto;
     /**
-     * .
+     * . NULL =
      * @type {AssignmentRuleChannelDto}
      * @memberof AgentAssignmentRuleResponseDto
      */
     channel?: AssignmentRuleChannelDto | null;
     /**
-     * (ISO 8601).
+     * (ISO 8601)
      * @type {Date}
      * @memberof AgentAssignmentRuleResponseDto
      */
     createdAt: Date;
     /**
-     * (ISO 8601).
+     * (ISO 8601)
      * @type {Date}
      * @memberof AgentAssignmentRuleResponseDto
      */

@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AppCatalogApi extends runtime.BaseAPI {
     /**
-     * Returns public app details from catalog.
-     * Get public app details from catalog
+     * .
+     *
      */
     async appCatalogGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -75,16 +75,16 @@ class AppCatalogApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppCatalogResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Returns public app details from catalog.
-     * Get public app details from catalog
+     * .
+     *
      */
     async appCatalogGetById(requestParameters, initOverrides) {
         const response = await this.appCatalogGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Returns public apps in catalog.
-     * List public apps in catalog
+     * .
+     *
      */
     async appCatalogListRaw(requestParameters, initOverrides) {
         const queryParameters = {};
@@ -107,8 +107,8 @@ class AppCatalogApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AppCatalogResponseDtoFromJSON));
     }
     /**
-     * Returns public apps in catalog.
-     * List public apps in catalog
+     * .
+     *
      */
     async appCatalogList(requestParameters = {}, initOverrides) {
         const response = await this.appCatalogListRaw(requestParameters, initOverrides);
@@ -128,7 +128,9 @@ exports.AppCatalogGetByIdAcceptLanguageEnum = {
  */
 exports.AppCatalogListTypeEnum = {
     Oauth: 'oauth',
-    SalesFunnel: 'sales_funnel'
+    SalesFunnel: 'sales_funnel',
+    AgentTool: 'agent_tool',
+    EmbeddedPage: 'embedded_page'
 };
 /**
  * @export

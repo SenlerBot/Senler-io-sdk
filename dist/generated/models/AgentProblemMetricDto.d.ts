@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,49 +16,49 @@
  */
 export interface AgentProblemMetricDto {
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof AgentProblemMetricDto
      */
     metricId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentProblemMetricDto
      */
     metricName: string;
     /**
-     * Score (||) .
+     * Score (||) . >= 0
      * @type {number}
      * @memberof AgentProblemMetricDto
      */
     score: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof AgentProblemMetricDto
      */
     value: number;
     /**
-     * Baseline: , ( evaluation_mode).
+     * Baseline: , ( evaluation_mode)
      * @type {number}
      * @memberof AgentProblemMetricDto
      */
     baseline: number;
     /**
-     * baseline %.
+     * baseline %. = , =
      * @type {number}
      * @memberof AgentProblemMetricDto
      */
     deviationPercent: number;
     /**
-     * .
+     * . deviation_percent good/bad
      * @type {string}
      * @memberof AgentProblemMetricDto
      */
     direction: AgentProblemMetricDtoDirectionEnum | null;
     /**
-     * UI-.
+     * UI-
      * @type {string}
      * @memberof AgentProblemMetricDto
      */

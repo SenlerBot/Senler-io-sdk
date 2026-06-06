@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,53 +16,65 @@
  */
 export interface VKChannelDataDto {
     /**
-     * ID .
+     * ID
      * @type {number}
      * @memberof VKChannelDataDto
      */
     groupId?: number;
     /**
-     * Screen name ( ) VK .
+     * Screen name ( ) VK
      * @type {string}
      * @memberof VKChannelDataDto
      */
     screenName?: string;
     /**
-     * ID callback VK.
+     * ID VK
      * @type {string}
      * @memberof VKChannelDataDto
      */
     callbackServerId?: string;
     /**
-     * Confirmation token VK Callback API.
+     * .
      * @type {string}
      * @memberof VKChannelDataDto
      */
     confirmationToken?: string;
     /**
-     * URL VK .
+     * URL VK
      * @type {string}
      * @memberof VKChannelDataDto
      */
     groupAvatarUrl?: string;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof VKChannelDataDto
      */
     webhookEnabled?: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof VKChannelDataDto
      */
     webhookStatus?: VKChannelDataDtoWebhookStatusEnum;
     /**
-     * ( ).
+     * ( )
      * @type {string}
      * @memberof VKChannelDataDto
      */
     webhookError?: string;
+    /**
+     * ( )
+     * @type {string}
+     * @memberof VKChannelDataDto
+     */
+    webhookWarning?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof VKChannelDataDto
+     */
+    webhookLastCheckedAt?: string;
 }
 /**
  * @export

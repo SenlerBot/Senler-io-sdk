@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -33,33 +33,33 @@ export interface WidgetCodePreviewRequest {
  */
 export declare class ChannelsWidgetApi extends runtime.BaseAPI {
     /**
-     * .
+     * , -. , .
      * Widget
      */
     updateWidgetSettingsRaw(requestParameters: UpdateWidgetSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateWidgetSettingsResponseDto>>;
     /**
-     * .
+     * , -. , .
      * Widget
      */
     updateWidgetSettings(requestParameters: UpdateWidgetSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateWidgetSettingsResponseDto>;
     /**
-     * CORS .
+     * - , .
      * Widget
      */
     widgetRaw(requestParameters: WidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateWidgetChannelResponseDto>>;
     /**
-     * CORS .
+     * - , .
      * Widget
      */
     widget(requestParameters: WidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateWidgetChannelResponseDto>;
     /**
-     * . preview .
-     * Preview
+     * .
+     *
      */
     widgetCodePreviewRaw(requestParameters: WidgetCodePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PreviewWidgetCodeResponseDto>>;
     /**
-     * . preview .
-     * Preview
+     * .
+     *
      */
     widgetCodePreview(requestParameters: WidgetCodePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PreviewWidgetCodeResponseDto>;
 }

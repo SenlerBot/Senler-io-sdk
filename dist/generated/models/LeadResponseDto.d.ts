@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,133 +17,133 @@ import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
  */
 export interface LeadResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof LeadResponseDto
      */
     id: string;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof LeadResponseDto
      */
     channelId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     channelType: LeadResponseDtoChannelTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof LeadResponseDto
      */
     externalUserId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     firstName?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     lastName?: string | null;
     /**
-     * Username.
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     username?: string | null;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof LeadResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     operatorNotes?: string | null;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof LeadResponseDto
      */
     isSubscribed: boolean;
     /**
-     * ().
+     * ()
      * @type {boolean}
      * @memberof LeadResponseDto
      */
     isBlocked: boolean;
     /**
-     * (-).
+     * (-)
      * @type {boolean}
      * @memberof LeadResponseDto
      */
     isBlacklisted: boolean;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     blacklistedAt?: Date | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     blacklistReason?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     leadSource: LeadResponseDtoLeadSourceEnum;
     /**
-     * : user = , group_chat = , channel = /.
+     * : user = , group_chat = , channel = /
      * @type {string}
      * @memberof LeadResponseDto
      */
     leadType: LeadResponseDtoLeadTypeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof LeadResponseDto
      */
     languageCode?: string | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     updatedAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     unsubscribedAt?: Date | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     lastProfileSyncAt?: Date | null;
     /**
-     * spaces.
+     * spaces
      * @type {Array<LeadSpaceLinkResponseDto>}
      * @memberof LeadResponseDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, SetAutoAssignDisabledDto, SetSoundMuteDto } from '../models/index';
+import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto } from '../models/index';
 export interface DeleteAgentRequest {
     id: string;
     role: DeleteAgentRoleEnum;
@@ -73,10 +73,22 @@ export interface UpdateOperatorAssignmentMeRequest {
     xSessionId?: string;
     acceptLanguage?: UpdateOperatorAssignmentMeAcceptLanguageEnum;
 }
+export interface UpdateOperatorResponseRequest {
+    id: string;
+    status: UpdateOperatorResponseStatusEnum;
+    xSessionId?: string;
+    acceptLanguage?: UpdateOperatorResponseAcceptLanguageEnum;
+}
 export interface UpdateOperatorResponseAnsweredRequest {
     id: string;
     xSessionId?: string;
     acceptLanguage?: UpdateOperatorResponseAnsweredAcceptLanguageEnum;
+}
+export interface UpdatePriorityRequest {
+    id: string;
+    setDialogPriorityDto: SetDialogPriorityDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdatePriorityAcceptLanguageEnum;
 }
 export interface UpdateSoundMuteRequest {
     id: string;
@@ -104,12 +116,12 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     deleteAgent(requestParameters: DeleteAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * (soft delete).
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
      *
      */
     deleteEventsRaw(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteMessageResponseDto>>;
     /**
-     * (soft delete).
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
      *
      */
     deleteEvents(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteMessageResponseDto>;
@@ -164,12 +176,12 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateAutoAssignDisabled(requestParameters: UpdateAutoAssignDisabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * .
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     updateEventsRaw(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditMessageResponseDto>>;
     /**
-     * .
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     updateEvents(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditMessageResponseDto>;
@@ -204,6 +216,16 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateOperatorAssignmentMe(requestParameters: UpdateOperatorAssignmentMeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
+     * operator_response_status answered unanswered.
+     *
+     */
+    updateOperatorResponseRaw(requestParameters: UpdateOperatorResponseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * operator_response_status answered unanswered.
+     *
+     */
+    updateOperatorResponse(requestParameters: UpdateOperatorResponseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
+    /**
      * operator_response_status answered.
      *
      */
@@ -214,13 +236,23 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateOperatorResponseAnswered(requestParameters: UpdateOperatorResponseAnsweredRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * / UI.
-     * mute
+     * priority , .
+     *
+     */
+    updatePriorityRaw(requestParameters: UpdatePriorityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * priority , .
+     *
+     */
+    updatePriority(requestParameters: UpdatePriorityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
+    /**
+     * .
+     *
      */
     updateSoundMuteRaw(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
     /**
-     * / UI.
-     * mute
+     * .
+     *
      */
     updateSoundMute(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
@@ -333,11 +365,35 @@ export type UpdateOperatorAssignmentMeAcceptLanguageEnum = typeof UpdateOperator
 /**
  * @export
  */
+export declare const UpdateOperatorResponseStatusEnum: {
+    readonly Answered: "answered";
+    readonly Unanswered: "unanswered";
+};
+export type UpdateOperatorResponseStatusEnum = typeof UpdateOperatorResponseStatusEnum[keyof typeof UpdateOperatorResponseStatusEnum];
+/**
+ * @export
+ */
+export declare const UpdateOperatorResponseAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateOperatorResponseAcceptLanguageEnum = typeof UpdateOperatorResponseAcceptLanguageEnum[keyof typeof UpdateOperatorResponseAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateOperatorResponseAnsweredAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type UpdateOperatorResponseAnsweredAcceptLanguageEnum = typeof UpdateOperatorResponseAnsweredAcceptLanguageEnum[keyof typeof UpdateOperatorResponseAnsweredAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdatePriorityAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdatePriorityAcceptLanguageEnum = typeof UpdatePriorityAcceptLanguageEnum[keyof typeof UpdatePriorityAcceptLanguageEnum];
 /**
  * @export
  */

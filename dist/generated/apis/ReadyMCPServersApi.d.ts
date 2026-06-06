@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,6 +17,18 @@ export interface GetCategoriesListRequest {
 export interface GetKnowledgeBaseRequest {
     id: string;
     acceptLanguage?: GetKnowledgeBaseAcceptLanguageEnum;
+}
+export interface GetProjectCatalogRequest {
+    projectId: string;
+    categoryIds?: Array<string>;
+    tags?: Array<string>;
+    search?: string;
+    isActive?: boolean;
+    featuredOnly?: boolean;
+    page?: number;
+    limit?: number;
+    xSessionId?: string;
+    acceptLanguage?: GetProjectCatalogAcceptLanguageEnum;
 }
 export interface ReadyMcpServersGetByIdRequest {
     id: string;
@@ -57,6 +69,16 @@ export declare class ReadyMCPServersApi extends runtime.BaseAPI {
      */
     getKnowledgeBase(requestParameters: GetKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateKnowledgeSourceDto>>;
     /**
+     * MCP , .
+     * MCP
+     */
+    getProjectCatalogRaw(requestParameters: GetProjectCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerTemplateListResponseDto>>;
+    /**
+     * MCP , .
+     * MCP
+     */
+    getProjectCatalog(requestParameters: GetProjectCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerTemplateListResponseDto>;
+    /**
      * MCP .
      * MCP
      */
@@ -93,6 +115,14 @@ export declare const GetKnowledgeBaseAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetKnowledgeBaseAcceptLanguageEnum = typeof GetKnowledgeBaseAcceptLanguageEnum[keyof typeof GetKnowledgeBaseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetProjectCatalogAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProjectCatalogAcceptLanguageEnum = typeof GetProjectCatalogAcceptLanguageEnum[keyof typeof GetProjectCatalogAcceptLanguageEnum];
 /**
  * @export
  */

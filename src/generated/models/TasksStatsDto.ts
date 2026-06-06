@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,35 +20,41 @@ import { mapValues } from '../runtime';
  */
 export interface TasksStatsDto {
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TasksStatsDto
      */
     total: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TasksStatsDto
      */
     completed: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TasksStatsDto
      */
     processing: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TasksStatsDto
      */
     pending: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TasksStatsDto
      */
     failed: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TasksStatsDto
+     */
+    cancelled: number;
 }
 
 /**
@@ -60,6 +66,7 @@ export function instanceOfTasksStatsDto(value: object): value is TasksStatsDto {
     if (!('processing' in value) || value['processing'] === undefined) return false;
     if (!('pending' in value) || value['pending'] === undefined) return false;
     if (!('failed' in value) || value['failed'] === undefined) return false;
+    if (!('cancelled' in value) || value['cancelled'] === undefined) return false;
     return true;
 }
 
@@ -78,6 +85,7 @@ export function TasksStatsDtoFromJSONTyped(json: any, ignoreDiscriminator: boole
         'processing': json['processing'],
         'pending': json['pending'],
         'failed': json['failed'],
+        'cancelled': json['cancelled'],
     };
 }
 
@@ -97,6 +105,7 @@ export function TasksStatsDtoToJSONTyped(value?: TasksStatsDto | null, ignoreDis
         'processing': value['processing'],
         'pending': value['pending'],
         'failed': value['failed'],
+        'cancelled': value['cancelled'],
     };
 }
 

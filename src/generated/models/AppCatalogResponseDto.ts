@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface AppCatalogResponseDto {
     /**
-     * 
+     * ID
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
@@ -38,13 +38,19 @@ export interface AppCatalogResponseDto {
      */
     description: string;
     /**
-     * 
+     * URL
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
     iconUrl?: string | null;
     /**
-     * 
+     * URL 706x398.
+     * @type {string}
+     * @memberof AppCatalogResponseDto
+     */
+    coverUrl?: string | null;
+    /**
+     * URL
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
@@ -56,7 +62,7 @@ export interface AppCatalogResponseDto {
      */
     types: Array<string>;
     /**
-     * 
+     * ,
      * @type {Array<string>}
      * @memberof AppCatalogResponseDto
      */
@@ -66,13 +72,7 @@ export interface AppCatalogResponseDto {
      * @type {boolean}
      * @memberof AppCatalogResponseDto
      */
-    allowDeveloperSupportAccess: boolean;
-    /**
-     * Permissions that can be granted to app developer for support access.
-     * @type {Array<string>}
-     * @memberof AppCatalogResponseDto
-     */
-    allowedDeveloperSupportPermissions: Array<string>;
+    allowDeveloperDialogAccess: boolean;
     /**
      * 
      * @type {Date}
@@ -90,8 +90,7 @@ export function instanceOfAppCatalogResponseDto(value: object): value is AppCata
     if (!('description' in value) || value['description'] === undefined) return false;
     if (!('types' in value) || value['types'] === undefined) return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined) return false;
-    if (!('allowDeveloperSupportAccess' in value) || value['allowDeveloperSupportAccess'] === undefined) return false;
-    if (!('allowedDeveloperSupportPermissions' in value) || value['allowedDeveloperSupportPermissions'] === undefined) return false;
+    if (!('allowDeveloperDialogAccess' in value) || value['allowDeveloperDialogAccess'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     return true;
 }
@@ -110,11 +109,11 @@ export function AppCatalogResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'name': json['name'],
         'description': json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'coverUrl': json['cover_url'] == null ? undefined : json['cover_url'],
         'websiteUrl': json['website_url'] == null ? undefined : json['website_url'],
         'types': json['types'],
         'allowedPermissions': json['allowed_permissions'],
-        'allowDeveloperSupportAccess': json['allow_developer_support_access'],
-        'allowedDeveloperSupportPermissions': json['allowed_developer_support_permissions'],
+        'allowDeveloperDialogAccess': json['allow_developer_dialog_access'],
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -134,11 +133,11 @@ export function AppCatalogResponseDtoToJSONTyped(value?: AppCatalogResponseDto |
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],
+        'cover_url': value['coverUrl'],
         'website_url': value['websiteUrl'],
         'types': value['types'],
         'allowed_permissions': value['allowedPermissions'],
-        'allow_developer_support_access': value['allowDeveloperSupportAccess'],
-        'allowed_developer_support_permissions': value['allowedDeveloperSupportPermissions'],
+        'allow_developer_dialog_access': value['allowDeveloperDialogAccess'],
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

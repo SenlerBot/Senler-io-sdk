@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -20,25 +20,25 @@ import type { ProjectAccessSource } from './ProjectAccessSource';
  */
 export interface ProjectAccessDto {
     /**
-     * project_members.
+     * project_members. null API key, OAuth, admin microservice-, project_members.
      * @type {Role}
      * @memberof ProjectAccessDto
      */
     role: Role | null;
     /**
-     * .
+     *
      * @type {ProjectAccessSource}
      * @memberof ProjectAccessDto
      */
     source: ProjectAccessSource;
     /**
-     * .
+     *
      * @type {PermissionsDto}
      * @memberof ProjectAccessDto
      */
     permissions: PermissionsDto;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof ProjectAccessDto
      */
@@ -50,7 +50,7 @@ export interface ProjectAccessDto {
      */
     channelAccess: ChannelAccessDto;
     /**
-     * , .
+     * , . null token/admin synthetic-.
      * @type {Date}
      * @memberof ProjectAccessDto
      */

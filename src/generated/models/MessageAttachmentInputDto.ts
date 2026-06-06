@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,41 +20,47 @@ import { mapValues } from '../runtime';
  */
 export interface MessageAttachmentInputDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MessageAttachmentInputDto
      */
     id?: string;
     /**
-     * URL S3 ( /attachments/confirm).
+     * URL S3 ( /attachments/confirm)
      * @type {string}
      * @memberof MessageAttachmentInputDto
      */
     storageUrl: string;
     /**
-     * S3 ( /attachments/confirm).
+     * S3 ( /attachments/confirm)
      * @type {string}
      * @memberof MessageAttachmentInputDto
      */
     storagePath: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MessageAttachmentInputDto
      */
     fileName: string;
     /**
-     * MIME .
+     * MIME . : image/*, video/*, audio/*, application/* (PDF, DOC, ZIP ..), text/*
      * @type {string}
      * @memberof MessageAttachmentInputDto
      */
     mimeType: string;
     /**
-     * (.
+     * (. 500 MB = 524288000 )
      * @type {number}
      * @memberof MessageAttachmentInputDto
      */
     fileSize?: number;
+    /**
+     * / . STT.
+     * @type {number}
+     * @memberof MessageAttachmentInputDto
+     */
+    durationSeconds?: number;
 }
 
 /**
@@ -84,6 +90,7 @@ export function MessageAttachmentInputDtoFromJSONTyped(json: any, ignoreDiscrimi
         'fileName': json['file_name'],
         'mimeType': json['mime_type'],
         'fileSize': json['file_size'] == null ? undefined : json['file_size'],
+        'durationSeconds': json['duration_seconds'] == null ? undefined : json['duration_seconds'],
     };
 }
 
@@ -104,6 +111,7 @@ export function MessageAttachmentInputDtoToJSONTyped(value?: MessageAttachmentIn
         'file_name': value['fileName'],
         'mime_type': value['mimeType'],
         'file_size': value['fileSize'],
+        'duration_seconds': value['durationSeconds'],
     };
 }
 

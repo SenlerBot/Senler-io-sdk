@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,253 +20,265 @@ import { mapValues } from '../runtime';
  */
 export interface RolePermissionsDto {
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProjects: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProjects: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAccess: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAccess: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewChannels: boolean;
     /**
-     * (, ).
+     * (, )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageChannels: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canDeleteChannels: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAgents: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAgents: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewDialogs: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageDialogs: boolean;
     /**
-     * spaces ( ).
+     * spaces ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewSpaces: boolean;
     /**
-     * spaces ( ).
+     * spaces ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageSpaces: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewLeads: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageLeads: boolean;
     /**
-     * MCP .
+     * MCP
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageMcpServers: boolean;
     /**
-     * MCP .
+     * MCP
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewMcpServers: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewDataSources: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageDataSources: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageServerLists: boolean;
     /**
-     * API .
+     * API
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewApiTokens: boolean;
     /**
-     * API .
+     * API
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageApiTokens: boolean;
     /**
-     * .
+     * 
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewProjectApps: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageProjectApps: boolean;
+    /**
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAnalytics: boolean;
     /**
-     * (, ).
+     * (, )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAnalytics: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewMetrics: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageMetrics: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewEvents: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageEvents: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAudit: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProcesses: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProcesses: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewKnowledgeBase: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageKnowledgeBase: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewBilling: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageBilling: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewStorage: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageStorage: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProjectVariables: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProjectVariables: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewLeadDefinitions: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageLeadDefinitions: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
@@ -299,6 +311,8 @@ export function instanceOfRolePermissionsDto(value: object): value is RolePermis
     if (!('canManageServerLists' in value) || value['canManageServerLists'] === undefined) return false;
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined) return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined) return false;
+    if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined) return false;
+    if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined) return false;
     if (!('canViewAnalytics' in value) || value['canViewAnalytics'] === undefined) return false;
     if (!('canManageAnalytics' in value) || value['canManageAnalytics'] === undefined) return false;
     if (!('canViewMetrics' in value) || value['canViewMetrics'] === undefined) return false;
@@ -354,6 +368,8 @@ export function RolePermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'canManageServerLists': json['can_manage_server_lists'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
+        'canViewProjectApps': json['can_view_project_apps'],
+        'canManageProjectApps': json['can_manage_project_apps'],
         'canViewAnalytics': json['can_view_analytics'],
         'canManageAnalytics': json['can_manage_analytics'],
         'canViewMetrics': json['can_view_metrics'],
@@ -410,6 +426,8 @@ export function RolePermissionsDtoToJSONTyped(value?: RolePermissionsDto | null,
         'can_manage_server_lists': value['canManageServerLists'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
+        'can_view_project_apps': value['canViewProjectApps'],
+        'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_analytics': value['canViewAnalytics'],
         'can_manage_analytics': value['canManageAnalytics'],
         'can_view_metrics': value['canViewMetrics'],

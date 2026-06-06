@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ProjectVariablesApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     async deactivateRaw(requestParameters, initOverrides) {
@@ -92,7 +92,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.Deactivate200ResponseFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async deactivate(requestParameters, initOverrides) {
@@ -100,7 +100,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async getByIdRaw(requestParameters, initOverrides) {
@@ -144,7 +144,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getById(requestParameters, initOverrides) {
@@ -152,7 +152,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async getById2Raw(requestParameters, initOverrides) {
@@ -190,7 +190,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getById2(requestParameters, initOverrides) {
@@ -198,7 +198,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async projectVariablesCreateRaw(requestParameters, initOverrides) {
@@ -238,7 +238,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async projectVariablesCreate(requestParameters, initOverrides) {
@@ -246,7 +246,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (, , , ).
+     * (, , , )
      *
      */
     async projectVariablesUpdateRaw(requestParameters, initOverrides) {
@@ -289,7 +289,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (, , , ).
+     * (, , , )
      *
      */
     async projectVariablesUpdate(requestParameters, initOverrides) {
@@ -297,7 +297,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ( ).
+     * ( )
      *
      */
     async updateValueRaw(requestParameters, initOverrides) {
@@ -340,7 +340,7 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * ( ).
+     * ( )
      *
      */
     async updateValue(requestParameters, initOverrides) {

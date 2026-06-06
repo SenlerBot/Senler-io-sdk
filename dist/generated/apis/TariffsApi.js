@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class TariffsApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     async getCreditPackagesRaw(requestParameters, initOverrides) {
@@ -72,7 +72,7 @@ class TariffsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditPackageListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getCreditPackages(requestParameters = {}, initOverrides) {
@@ -80,7 +80,7 @@ class TariffsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise).
+     * (Free, Start, Base, Plus, Max, Enterprise)
      *
      */
     async getTariffsRaw(requestParameters, initOverrides) {
@@ -98,7 +98,7 @@ class TariffsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TariffListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise).
+     * (Free, Start, Base, Plus, Max, Enterprise)
      *
      */
     async getTariffs(requestParameters = {}, initOverrides) {

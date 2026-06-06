@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -114,163 +114,163 @@ export interface UpdateTablesRequest {
  */
 export declare class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
-     * Soft deletes a folder from the project knowledge base.
-     * Delete knowledge base folder
+     * .
+     *
      */
     deleteFoldersRaw(requestParameters: DeleteFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Soft deletes a folder from the project knowledge base.
-     * Delete knowledge base folder
+     * .
+     *
      */
     deleteFolders(requestParameters: DeleteFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Soft deletes a table from the project knowledge base.
-     * Delete knowledge base table
+     * .
+     *
      */
     deleteTablesRaw(requestParameters: DeleteTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Soft deletes a table from the project knowledge base.
-     * Delete knowledge base table
+     * .
+     *
      */
     deleteTables(requestParameters: DeleteTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Creates a Markdown/text file in the project knowledge base.
-     * Create knowledge base text file
+     * Markdown- .
+     *
      */
     filesRaw(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>>;
     /**
-     * Creates a Markdown/text file in the project knowledge base.
-     * Create knowledge base text file
+     * Markdown- .
+     *
      */
     files(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * Uploads a source file, stores the original file and extracts supported text content.
-     * Upload knowledge base file
+     * , .
+     *
      */
     filesUploadRaw(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>>;
     /**
-     * Uploads a source file, stores the original file and extracts supported text content.
-     * Upload knowledge base file
+     * , .
+     *
      */
     filesUpload(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * Uploads a ZIP archive up to 50 MB, creates folders from archive paths and imports supported files.
-     * Upload knowledge base ZIP archive
+     * ZIP- 50 , .
+     * ZIP-
      */
     filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>>;
     /**
-     * Uploads a ZIP archive up to 50 MB, creates folders from archive paths and imports supported files.
-     * Upload knowledge base ZIP archive
+     * ZIP- 50 , .
+     * ZIP-
      */
     filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto>;
     /**
-     * Creates a folder in the project knowledge base.
-     * Create knowledge base folder
+     * .
+     *
      */
     foldersRaw(requestParameters: FoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFolderResponseDto>>;
     /**
-     * Creates a folder in the project knowledge base.
-     * Create knowledge base folder
+     * .
+     *
      */
     folders(requestParameters: FoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFolderResponseDto>;
     /**
-     * Returns folders, files and tables for the selected parent folder.
-     * List knowledge base resources
+     * , .
+     *
      */
     getResourcesRaw(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>>;
     /**
-     * Returns folders, files and tables for the selected parent folder.
-     * List knowledge base resources
+     * , .
+     *
      */
     getResources(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto>;
     /**
-     * Returns selected folders, files and tables by IDs inside one project.
-     * Resolve knowledge base resources
+     * , ID .
+     *
      */
     getResourcesResolveRaw(requestParameters: GetResourcesResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>>;
     /**
-     * Returns selected folders, files and tables by IDs inside one project.
-     * Resolve knowledge base resources
+     * , ID .
+     *
      */
     getResourcesResolve(requestParameters: GetResourcesResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto>;
     /**
-     * Searches active knowledge base folders, files and tables by text query.
-     * Search knowledge base resources
+     * , .
+     *
      */
     getSearchRaw(requestParameters: GetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedKnowledgeBaseSearchResponseDto>>;
     /**
-     * Searches active knowledge base folders, files and tables by text query.
-     * Search knowledge base resources
+     * , .
+     *
      */
     getSearch(requestParameters: GetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedKnowledgeBaseSearchResponseDto>;
     /**
-     * Returns a single knowledge base table in the resolved project scope.
-     * Get knowledge base table
+     * .
+     *
      */
     getTablesRaw(requestParameters: GetTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>>;
     /**
-     * Returns a single knowledge base table in the resolved project scope.
-     * Get knowledge base table
+     * .
+     *
      */
     getTables(requestParameters: GetTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
     /**
-     * Soft deletes a file from the project knowledge base.
-     * Delete knowledge base file
+     * .
+     *
      */
     knowledgeBaseDeleteFilesRaw(requestParameters: KnowledgeBaseDeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Soft deletes a file from the project knowledge base.
-     * Delete knowledge base file
+     * .
+     *
      */
     knowledgeBaseDeleteFiles(requestParameters: KnowledgeBaseDeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Returns a single knowledge base file in the resolved project scope.
-     * Get knowledge base file
+     * .
+     *
      */
     knowledgeBaseGetFilesRaw(requestParameters: KnowledgeBaseGetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>>;
     /**
-     * Returns a single knowledge base file in the resolved project scope.
-     * Get knowledge base file
+     * .
+     *
      */
     knowledgeBaseGetFiles(requestParameters: KnowledgeBaseGetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * Creates a table workbook resource in the project knowledge base.
-     * Create knowledge base table
+     * .
+     *
      */
     tablesRaw(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>>;
     /**
-     * Creates a table workbook resource in the project knowledge base.
-     * Create knowledge base table
+     * .
+     *
      */
     tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
     /**
-     * Updates file metadata, content, folder or active state inside the resolved project.
-     * Update knowledge base file
+     * , , .
+     *
      */
     updateFilesRaw(requestParameters: UpdateFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>>;
     /**
-     * Updates file metadata, content, folder or active state inside the resolved project.
-     * Update knowledge base file
+     * , , .
+     *
      */
     updateFiles(requestParameters: UpdateFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * Updates folder name, parent folder or active state inside the resolved project.
-     * Update knowledge base folder
+     * , .
+     *
      */
     updateFoldersRaw(requestParameters: UpdateFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFolderResponseDto>>;
     /**
-     * Updates folder name, parent folder or active state inside the resolved project.
-     * Update knowledge base folder
+     * , .
+     *
      */
     updateFolders(requestParameters: UpdateFoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFolderResponseDto>;
     /**
-     * Updates table metadata, folder or active state.
-     * Update knowledge base table
+     * , .
+     *
      */
     updateTablesRaw(requestParameters: UpdateTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>>;
     /**
-     * Updates table metadata, folder or active state.
-     * Update knowledge base table
+     * , .
+     *
      */
     updateTables(requestParameters: UpdateTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
 }

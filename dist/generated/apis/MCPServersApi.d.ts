@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateMcpServerListDto, CreateServerDto, CreateServerResponseDto, CustomMcpOAuthStatusResponseDto, ExportServersResponseDto, GetServerResponseDto, ImportServersResponseDto, ImportServersUserDto, McpServerListResponseDto, McpServerListsResponseDto, McpServerProjectCredentialStatusResponseDto, McpServerResponseDto, PaginatedKnowledgeBaseSearchResponseDto, PaginatedServersResponseDto, StartCustomMcpOAuthDto, StartCustomMcpOAuthResponseDto, UpdateMcpServerListDto, UpdateServerDto, UpdateServerResponseDto, UpsertProjectCredentialDto } from '../models/index';
+import type { CreateMcpServerListDto, CreateServerDto, CreateServerResponseDto, CustomMcpOAuthStatusResponseDto, ExportServersResponseDto, GetServerResponseDto, ImportServersResponseDto, ImportServersUserDto, McpServerListResponseDto, McpServerListsResponseDto, McpServerProjectCredentialStatusResponseDto, PaginatedKnowledgeBaseSearchResponseDto, PaginatedServersResponseDto, StartCustomMcpOAuthDto, StartCustomMcpOAuthResponseDto, UpdateMcpServerListDto, UpdateServerDto, UpdateServerResponseDto, UpsertProjectCredentialDto } from '../models/index';
 export interface CustomOauthStartRequest {
     projectId: string;
     id: string;
@@ -136,12 +136,6 @@ export interface McpServersUpdateRequest {
     updateServerDto: UpdateServerDto;
     acceptLanguage?: McpServersUpdateAcceptLanguageEnum;
 }
-export interface McpServersUpdateRestoreRequest {
-    projectId: string;
-    id: string;
-    xSessionId: string;
-    acceptLanguage?: McpServersUpdateRestoreAcceptLanguageEnum;
-}
 export interface ProjectCredentialManualRequest {
     projectId: string;
     id: string;
@@ -180,12 +174,12 @@ export interface UpdateListsRestoreRequest {
  */
 export declare class MCPServersApi extends runtime.BaseAPI {
     /**
-     * OAuth MCP .
+     * OAuth- MCP URL .
      * OAuth MCP
      */
     customOauthStartRaw(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>>;
     /**
-     * OAuth MCP .
+     * OAuth- MCP URL .
      * OAuth MCP
      */
     customOauthStart(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto>;
@@ -210,32 +204,32 @@ export declare class MCPServersApi extends runtime.BaseAPI {
      */
     deleteListsServers(requestParameters: DeleteListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     deleteProjectCredentialRaw(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     deleteProjectCredential(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
-     * Callback OAuth MCP .
-     * Callback OAuth MCP
+     * OAuth- MCP , HTML- .
+     * OAuth- MCP
      */
     getCustomOauthCallbackRaw(requestParameters: GetCustomOauthCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
     /**
-     * Callback OAuth MCP .
-     * Callback OAuth MCP
+     * OAuth- MCP , HTML- .
+     * OAuth- MCP
      */
     getCustomOauthCallback(requestParameters?: GetCustomOauthCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
     /**
-     * OAuth MCP .
+     * OAuth- MCP .
      * OAuth MCP
      */
     getCustomOauthStatusRaw(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CustomMcpOAuthStatusResponseDto>>;
     /**
-     * OAuth MCP .
+     * OAuth- MCP .
      * OAuth MCP
      */
     getCustomOauthStatus(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CustomMcpOAuthStatusResponseDto>;
@@ -280,22 +274,22 @@ export declare class MCPServersApi extends runtime.BaseAPI {
      */
     getLists2(requestParameters: GetLists2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     getProjectCredentialStatusRaw(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
-    /**
-     * credential MCP .
-     * project credential
-     */
-    getProjectCredentialStatus(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
      * MCP .
      * MCP
      */
+    getProjectCredentialStatus(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
+    /**
+     * MCP . can_manage_mcp_servers.
+     * MCP
+     */
     listsRaw(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     lists(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
@@ -310,22 +304,22 @@ export declare class MCPServersApi extends runtime.BaseAPI {
      */
     listsServers(requestParameters: ListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     mcpServersCreateRaw(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateServerResponseDto>>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     mcpServersCreate(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateServerResponseDto>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     mcpServersDeactivateRaw(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     mcpServersDeactivate(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
@@ -360,12 +354,12 @@ export declare class MCPServersApi extends runtime.BaseAPI {
      */
     mcpServersList(requestParameters: McpServersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedServersResponseDto>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     mcpServersUpdateRaw(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateServerResponseDto>>;
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     mcpServersUpdate(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateServerResponseDto>;
@@ -373,40 +367,30 @@ export declare class MCPServersApi extends runtime.BaseAPI {
      * MCP .
      * MCP
      */
-    mcpServersUpdateRestoreRaw(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerResponseDto>>;
+    projectCredentialManualRaw(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
      * MCP .
      * MCP
      */
-    mcpServersUpdateRestore(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerResponseDto>;
-    /**
-     * credential MCP project.
-     * project credential
-     */
-    projectCredentialManualRaw(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
-    /**
-     * credential MCP project.
-     * project credential
-     */
     projectCredentialManual(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
-     * OAuth project credential MCP .
-     * OAuth project credential MCP
+     * OAuth- MCP .
+     * OAuth MCP
      */
     projectCredentialOauthStartRaw(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>>;
     /**
-     * OAuth project credential MCP .
-     * OAuth project credential MCP
+     * OAuth- MCP .
+     * OAuth MCP
      */
     projectCredentialOauthStart(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto>;
     /**
-     * project credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     projectCredentialValidateRaw(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>>;
     /**
-     * project credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     projectCredentialValidate(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto>;
     /**
@@ -582,14 +566,6 @@ export declare const McpServersUpdateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type McpServersUpdateAcceptLanguageEnum = typeof McpServersUpdateAcceptLanguageEnum[keyof typeof McpServersUpdateAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const McpServersUpdateRestoreAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type McpServersUpdateRestoreAcceptLanguageEnum = typeof McpServersUpdateRestoreAcceptLanguageEnum[keyof typeof McpServersUpdateRestoreAcceptLanguageEnum];
 /**
  * @export
  */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -65,42 +65,42 @@ export declare class AccessApi extends runtime.BaseAPI {
      */
     deleteMembers(requestParameters: DeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * .
+     *
      *
      */
     getMembersRaw(requestParameters: GetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectMemberListItemDto>>>;
     /**
-     * .
+     *
      *
      */
     getMembers(requestParameters: GetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectMemberListItemDto>>;
     /**
-     * , .
+     * ,
      *
      */
     getMembers2Raw(requestParameters: GetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectMemberResponseDto>>;
     /**
-     * , .
+     * ,
      *
      */
     getMembers2(requestParameters: GetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectMemberResponseDto>;
     /**
-     * , .
+     * , .  USE CASE: .  (owner, admin member).
      *
      */
     getMembersChannelsRaw(requestParameters: GetMembersChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMemberChannelsResponseDto>>;
     /**
-     * , .
+     * , .  USE CASE: .  (owner, admin member).
      *
      */
     getMembersChannels(requestParameters: GetMembersChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMemberChannelsResponseDto>;
     /**
-     * .
+     *
      *
      */
     getRolePresetsRaw(requestParameters: GetRolePresetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RolePresetsResponseDto>>;
     /**
-     * .
+     *
      *
      */
     getRolePresets(requestParameters?: GetRolePresetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RolePresetsResponseDto>;

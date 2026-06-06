@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,43 +17,43 @@ import type { ResourcePackagePlanItemDto } from './ResourcePackagePlanItemDto';
  */
 export interface ResourcePackageImportProcessResultDto {
     /**
-     * Import UUID.
+     * UUID
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
      */
     importId: string;
     /**
-     * Package UUID.
+     * UUID
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
      */
     packageId: string;
     /**
-     * Target project UUID.
+     * UUID
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
      */
     targetProjectId: string;
     /**
-     * Import status.
+     *
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
      */
     status: ResourcePackageImportProcessResultDtoStatusEnum;
     /**
-     * Last completed import stage.
+     *
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
      */
     stage: ResourcePackageImportProcessResultDtoStageEnum;
     /**
-     * Created or remapped root resource id.
+     * ID
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
      */
     rootResourceId?: string | null;
     /**
-     * Package-local id map.
+     * ID
      * @type {{ [key: string]: string; }}
      * @memberof ResourcePackageImportProcessResultDto
      */
@@ -61,25 +61,25 @@ export interface ResourcePackageImportProcessResultDto {
         [key: string]: string;
     };
     /**
-     * Created resources.
+     *
      * @type {Array<ResourcePackagePlanItemDto>}
      * @memberof ResourcePackageImportProcessResultDto
      */
     created: Array<ResourcePackagePlanItemDto>;
     /**
-     * Skipped resources.
+     *
      * @type {Array<ResourcePackagePlanItemDto>}
      * @memberof ResourcePackageImportProcessResultDto
      */
     skipped: Array<ResourcePackagePlanItemDto>;
     /**
-     * Failed resources.
+     *
      * @type {Array<ResourcePackagePlanItemDto>}
      * @memberof ResourcePackageImportProcessResultDto
      */
     failed: Array<ResourcePackagePlanItemDto>;
     /**
-     * .
+     *
      * @type {number}
      * @memberof ResourcePackageImportProcessResultDto
      */

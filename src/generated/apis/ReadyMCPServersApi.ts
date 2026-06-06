@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -41,6 +41,19 @@ export interface GetCategoriesListRequest {
 export interface GetKnowledgeBaseRequest {
     id: string;
     acceptLanguage?: GetKnowledgeBaseAcceptLanguageEnum;
+}
+
+export interface GetProjectCatalogRequest {
+    projectId: string;
+    categoryIds?: Array<string>;
+    tags?: Array<string>;
+    search?: string;
+    isActive?: boolean;
+    featuredOnly?: boolean;
+    page?: number;
+    limit?: number;
+    xSessionId?: string;
+    acceptLanguage?: GetProjectCatalogAcceptLanguageEnum;
 }
 
 export interface ReadyMcpServersGetByIdRequest {
@@ -132,6 +145,94 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
      */
     async getKnowledgeBase(requestParameters: GetKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateKnowledgeSourceDto>> {
         const response = await this.getKnowledgeBaseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * MCP , .
+     * MCP
+     */
+    async getProjectCatalogRaw(requestParameters: GetProjectCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerTemplateListResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectCatalog().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['categoryIds'] != null) {
+            queryParameters['category_ids'] = requestParameters['categoryIds'];
+        }
+
+        if (requestParameters['tags'] != null) {
+            queryParameters['tags'] = requestParameters['tags'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['isActive'] != null) {
+            queryParameters['is_active'] = requestParameters['isActive'];
+        }
+
+        if (requestParameters['featuredOnly'] != null) {
+            queryParameters['featured_only'] = requestParameters['featuredOnly'];
+        }
+
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_mcp_servers"]);
+        }
+
+        const response = await this.request({
+            path: `/api/mcp-server-templates/project-catalog`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ServerTemplateListResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * MCP , .
+     * MCP
+     */
+    async getProjectCatalog(requestParameters: GetProjectCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerTemplateListResponseDto> {
+        const response = await this.getProjectCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -252,6 +353,14 @@ export const GetKnowledgeBaseAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetKnowledgeBaseAcceptLanguageEnum = typeof GetKnowledgeBaseAcceptLanguageEnum[keyof typeof GetKnowledgeBaseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetProjectCatalogAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetProjectCatalogAcceptLanguageEnum = typeof GetProjectCatalogAcceptLanguageEnum[keyof typeof GetProjectCatalogAcceptLanguageEnum];
 /**
  * @export
  */

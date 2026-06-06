@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,73 +20,73 @@ import { mapValues } from '../runtime';
  */
 export interface AgentMetricItemDto {
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof AgentMetricItemDto
      */
     metricId: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentMetricItemDto
      */
     metricKey: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentMetricItemDto
      */
     metricName: string;
     /**
-     * : builtin, agent_type, custom.
+     * : builtin, agent_type, custom
      * @type {string}
      * @memberof AgentMetricItemDto
      */
     metricType: AgentMetricItemDtoMetricTypeEnum;
     /**
-     * : number, string, boolean, array.
+     * : number, string, boolean, array
      * @type {string}
      * @memberof AgentMetricItemDto
      */
     valueType: string;
     /**
-     * baseline %.
+     * baseline %. = , =
      * @type {number}
      * @memberof AgentMetricItemDto
      */
     deviationPercent: number;
     /**
-     * Score (||) .
+     * Score (||) . >= 0
      * @type {number}
      * @memberof AgentMetricItemDto
      */
     score: number;
     /**
-     * .
+     * . deviation_percent good/bad. null non-analyzable.
      * @type {string}
      * @memberof AgentMetricItemDto
      */
     direction: AgentMetricItemDtoDirectionEnum | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof AgentMetricItemDto
      */
     value: number;
     /**
-     * Baseline: , ( evaluation_mode).
+     * Baseline: , ( evaluation_mode)
      * @type {number}
      * @memberof AgentMetricItemDto
      */
     baseline: number;
     /**
-     * vs %.
+     * vs %
      * @type {number}
      * @memberof AgentMetricItemDto
      */
     changePercent: number;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof AgentMetricItemDto
      */

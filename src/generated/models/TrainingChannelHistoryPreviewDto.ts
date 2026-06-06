@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,103 +20,103 @@ import { mapValues } from '../runtime';
  */
 export interface TrainingChannelHistoryPreviewDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     channelId: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     channelName?: string | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     channelType?: string | null;
     /**
-     * API.
+     * API
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     historySupported: boolean;
     /**
-     * : .
+     * :
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     realtimeOnly: boolean;
     /**
-     * , scan.
+     * , scan
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     tokenAvailable: boolean;
     /**
-     * Scan .
+     * Scan
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     canScan: boolean;
     /**
-     * scan , .
+     * scan ,
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     scanNeeded: boolean;
     /**
-     * Scan preview.
+     * Scan preview
      * @type {boolean}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     willScan: boolean;
     /**
-     * scan .
+     * scan
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     disabledReason?: string | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     storedMessages: number;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     storedFrom?: Date | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     storedTo?: Date | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     loadableMessagesMin: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     loadableMessagesMax: number;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */
     confidence: TrainingChannelHistoryPreviewDtoConfidenceEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof TrainingChannelHistoryPreviewDto
      */

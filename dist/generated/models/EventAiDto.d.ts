@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,37 +16,37 @@
  */
 export interface EventAiDto {
     /**
-     * /.
+     * /
      * @type {string}
      * @memberof EventAiDto
      */
     skipReason?: string;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof EventAiDto
      */
     skipResponse?: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof EventAiDto
      */
     skipMetrics?: boolean;
     /**
-     * .
+     *
      * @type {number}
      * @memberof EventAiDto
      */
     generationTimeMs?: number;
     /**
-     * ID AI request-, .
+     * ID AI request-,
      * @type {string}
      * @memberof EventAiDto
      */
     requestId?: string;
     /**
-     * ID streaming- AI .
+     * ID streaming- AI
      * @type {string}
      * @memberof EventAiDto
      */

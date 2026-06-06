@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -90,7 +90,7 @@ export interface TokensMaxWebhookSetupRequest {
 export class ChannelsMAXApi extends runtime.BaseAPI {
 
     /**
-     * MAX .
+     * MAX access token . MAX API, , . access token , MAX .
      * MAX
      */
     async maxRaw(requestParameters: MaxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateMaxChannelResponseDto>> {
@@ -140,7 +140,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX .
+     * MAX access token . MAX API, , . access token , MAX .
      * MAX
      */
     async max(requestParameters: MaxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateMaxChannelResponseDto> {
@@ -149,7 +149,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX MAX . Token bot_id, channel.
+     * MAX MAX . Token bot_id, channel.external_id. MAX identity .
      * MAX
      */
     async tokensMaxBindRaw(requestParameters: TokensMaxBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
@@ -206,7 +206,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX MAX . Token bot_id, channel.
+     * MAX MAX . Token bot_id, channel.external_id. MAX identity .
      * MAX
      */
     async tokensMaxBind(requestParameters: TokensMaxBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
@@ -215,8 +215,8 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX webhook MAX API (/subscriptions) .
-     * MAX webhook
+     * MAX API .
+     * MAX
      */
     async tokensMaxCheckWebhookStatusRaw(requestParameters: TokensMaxCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -262,8 +262,8 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX webhook MAX API (/subscriptions) .
-     * MAX webhook
+     * MAX API .
+     * MAX
      */
     async tokensMaxCheckWebhookStatus(requestParameters: TokensMaxCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto> {
         const response = await this.tokensMaxCheckWebhookStatusRaw(requestParameters, initOverrides);
@@ -271,7 +271,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX S3.
+     * MAX S3
      * MAX
      */
     async tokensMaxRefreshAvatarRaw(requestParameters: TokensMaxRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
@@ -318,7 +318,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX S3.
+     * MAX S3
      * MAX
      */
     async tokensMaxRefreshAvatar(requestParameters: TokensMaxRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
@@ -327,7 +327,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX access token MAX API (/me).
+     * MAX access token MAX API (/me)
      * MAX
      */
     async tokensMaxValidateRaw(requestParameters: TokensMaxValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateMaxTokenResultDto>> {
@@ -374,7 +374,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX access token MAX API (/me).
+     * MAX access token MAX API (/me)
      * MAX
      */
     async tokensMaxValidate(requestParameters: TokensMaxValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateMaxTokenResultDto> {
@@ -383,7 +383,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX API (/subscriptions).
+     * MAX API (/subscriptions)
      * MAX
      */
     async tokensMaxWebhookSetupRaw(requestParameters: TokensMaxWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>> {
@@ -440,7 +440,7 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
     }
 
     /**
-     * MAX API (/subscriptions).
+     * MAX API (/subscriptions)
      * MAX
      */
     async tokensMaxWebhookSetup(requestParameters: TokensMaxWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto> {

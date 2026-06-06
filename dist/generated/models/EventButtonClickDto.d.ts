@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,49 +16,49 @@
  */
 export interface EventButtonClickDto {
     /**
-     * Callback data ( ).
+     * .
      * @type {string}
      * @memberof EventButtonClickDto
      */
     callbackData?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventButtonClickDto
      */
     buttonText?: string;
     /**
-     * ID callback (Telegram).
+     * ID Telegram
      * @type {string}
      * @memberof EventButtonClickDto
      */
     callbackId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventButtonClickDto
      */
     messageId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventButtonClickDto
      */
     action?: string;
     /**
-     * URL ( -).
+     * URL ( -)
      * @type {string}
      * @memberof EventButtonClickDto
      */
     url?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventButtonClickDto
      */
     eventKey?: string;
     /**
-     * platform event id callback.
+     * ID
      * @type {string}
      * @memberof EventButtonClickDto
      */

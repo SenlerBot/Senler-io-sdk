@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ChannelsTelegramApi extends runtime.BaseAPI {
     /**
-     * Telegram .
+     * Telegram bot token @BotFather. Telegram Bot API, , . , @BotFather bot token.
      * Telegram
      */
     async telegramRaw(requestParameters, initOverrides) {
@@ -91,7 +91,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateTelegramChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram .
+     * Telegram bot token @BotFather. Telegram Bot API, , . , @BotFather bot token.
      * Telegram
      */
     async telegram(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * token Telegram Telegram . Token bot_id, channel.
+     * token Telegram Telegram . Token bot_id, channel.external_id. .
      * Telegram
      */
     async tokensTelegramBindRaw(requestParameters, initOverrides) {
@@ -139,7 +139,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * token Telegram Telegram . Token bot_id, channel.
+     * token Telegram Telegram . Token bot_id, channel.external_id. .
      * Telegram
      */
     async tokensTelegramBind(requestParameters, initOverrides) {
@@ -147,8 +147,8 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Telegram webhook Bot API .
-     * Telegram webhook
+     * Telegram Bot API .
+     * Telegram
      */
     async tokensTelegramCheckWebhookStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -182,15 +182,15 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CheckWebhookStatusResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram webhook Bot API .
-     * Telegram webhook
+     * Telegram Bot API .
+     * Telegram
      */
     async tokensTelegramCheckWebhookStatus(requestParameters, initOverrides) {
         const response = await this.tokensTelegramCheckWebhookStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Telegram S3.
+     * Telegram S3
      * Telegram
      */
     async tokensTelegramRefreshAvatarRaw(requestParameters, initOverrides) {
@@ -225,7 +225,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram S3.
+     * Telegram S3
      * Telegram
      */
     async tokensTelegramRefreshAvatar(requestParameters, initOverrides) {
@@ -233,7 +233,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Telegram Bot API.
+     * Telegram Bot API
      * Telegram
      */
     async tokensTelegramValidateRaw(requestParameters, initOverrides) {
@@ -268,7 +268,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateTelegramTokenResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram Bot API.
+     * Telegram Bot API
      * Telegram
      */
     async tokensTelegramValidate(requestParameters, initOverrides) {
@@ -276,7 +276,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Telegram ( ).
+     * Telegram ( )
      * Telegram
      */
     async tokensTelegramWebhookRaw(requestParameters, initOverrides) {
@@ -316,7 +316,7 @@ class ChannelsTelegramApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SetupWebhookResultDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram ( ).
+     * Telegram ( )
      * Telegram
      */
     async tokensTelegramWebhook(requestParameters, initOverrides) {

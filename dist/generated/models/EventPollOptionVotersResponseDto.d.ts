@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,37 +17,37 @@ import type { EventPollOptionVoterDto } from './EventPollOptionVoterDto';
  */
 export interface EventPollOptionVotersResponseDto {
     /**
-     * , .
+     * ,
      * @type {Array<EventPollOptionVoterDto>}
      * @memberof EventPollOptionVotersResponseDto
      */
     voters: Array<EventPollOptionVoterDto>;
     /**
-     * , count.
+     * , count
      * @type {number}
      * @memberof EventPollOptionVotersResponseDto
      */
     total?: number;
     /**
-     * Offset .
+     * Offset
      * @type {number}
      * @memberof EventPollOptionVotersResponseDto
      */
     offset?: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof EventPollOptionVotersResponseDto
      */
     limit?: number;
     /**
-     * Offset .
+     * Offset
      * @type {number}
      * @memberof EventPollOptionVotersResponseDto
      */
     nextOffset?: number;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof EventPollOptionVotersResponseDto
      */

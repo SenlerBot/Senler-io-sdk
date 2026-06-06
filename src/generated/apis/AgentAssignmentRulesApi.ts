@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -85,7 +85,7 @@ export interface UpdateAgentAssignmentRestoreRequest {
 export class AgentAssignmentRulesApi extends runtime.BaseAPI {
 
     /**
-     * . - .
+     * . channel_id - . - .
      * 
      */
     async agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -142,7 +142,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . - .
+     * . channel_id - . - .
      * 
      */
     async agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
@@ -151,7 +151,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async deleteAgentAssignmentRaw(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
@@ -205,7 +205,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async deleteAgentAssignment(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
@@ -214,7 +214,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( + ).
+     * ( + )
      * 
      */
     async getAgentAssignmentRaw(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>> {
@@ -261,7 +261,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( + ).
+     * ( + )
      * 
      */
     async getAgentAssignment(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto> {
@@ -270,7 +270,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * ID
      */
     async getAgentAssignment2Raw(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -324,7 +324,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * ID
      */
     async getAgentAssignment2(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
@@ -333,7 +333,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async updateAgentAssignmentRaw(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -397,7 +397,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async updateAgentAssignment(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
@@ -406,7 +406,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async updateAgentAssignmentRestoreRaw(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -460,7 +460,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async updateAgentAssignmentRestore(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -23,6 +23,7 @@ import type {
   EditMessageResponseDto,
   ErrorResponse,
   SetAutoAssignDisabledDto,
+  SetDialogPriorityDto,
   SetSoundMuteDto,
 } from '../models/index';
 import {
@@ -42,6 +43,8 @@ import {
     ErrorResponseToJSON,
     SetAutoAssignDisabledDtoFromJSON,
     SetAutoAssignDisabledDtoToJSON,
+    SetDialogPriorityDtoFromJSON,
+    SetDialogPriorityDtoToJSON,
     SetSoundMuteDtoFromJSON,
     SetSoundMuteDtoToJSON,
 } from '../models/index';
@@ -119,10 +122,24 @@ export interface UpdateOperatorAssignmentMeRequest {
     acceptLanguage?: UpdateOperatorAssignmentMeAcceptLanguageEnum;
 }
 
+export interface UpdateOperatorResponseRequest {
+    id: string;
+    status: UpdateOperatorResponseStatusEnum;
+    xSessionId?: string;
+    acceptLanguage?: UpdateOperatorResponseAcceptLanguageEnum;
+}
+
 export interface UpdateOperatorResponseAnsweredRequest {
     id: string;
     xSessionId?: string;
     acceptLanguage?: UpdateOperatorResponseAnsweredAcceptLanguageEnum;
+}
+
+export interface UpdatePriorityRequest {
+    id: string;
+    setDialogPriorityDto: SetDialogPriorityDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdatePriorityAcceptLanguageEnum;
 }
 
 export interface UpdateSoundMuteRequest {
@@ -211,7 +228,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * (soft delete).
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
      * 
      */
     async deleteEventsRaw(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteMessageResponseDto>> {
@@ -265,7 +282,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * (soft delete).
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
      * 
      */
     async deleteEvents(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteMessageResponseDto> {
@@ -574,7 +591,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
      * 
      */
     async updateEventsRaw(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditMessageResponseDto>> {
@@ -638,7 +655,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
      * 
      */
     async updateEvents(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditMessageResponseDto> {
@@ -822,6 +839,69 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
+     * operator_response_status answered unanswered.
+     * 
+     */
+    async updateOperatorResponseRaw(requestParameters: UpdateOperatorResponseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateOperatorResponse().'
+            );
+        }
+
+        if (requestParameters['status'] == null) {
+            throw new runtime.RequiredError(
+                'status',
+                'Required parameter "status" was null or undefined when calling updateOperatorResponse().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{id}/operator-response/{status}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"status"}}`, encodeURIComponent(String(requestParameters['status']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * operator_response_status answered unanswered.
+     * 
+     */
+    async updateOperatorResponse(requestParameters: UpdateOperatorResponseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.updateOperatorResponseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * operator_response_status answered.
      * 
      */
@@ -878,8 +958,74 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * / UI.
-     * mute
+     * priority , .
+     * 
+     */
+    async updatePriorityRaw(requestParameters: UpdatePriorityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updatePriority().'
+            );
+        }
+
+        if (requestParameters['setDialogPriorityDto'] == null) {
+            throw new runtime.RequiredError(
+                'setDialogPriorityDto',
+                'Required parameter "setDialogPriorityDto" was null or undefined when calling updatePriority().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{id}/priority`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetDialogPriorityDtoToJSON(requestParameters['setDialogPriorityDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * priority , .
+     * 
+     */
+    async updatePriority(requestParameters: UpdatePriorityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.updatePriorityRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * 
      */
     async updateSoundMuteRaw(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
         if (requestParameters['id'] == null) {
@@ -935,8 +1081,8 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * / UI.
-     * mute
+     * .
+     * 
      */
     async updateSoundMute(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
         const response = await this.updateSoundMuteRaw(requestParameters, initOverrides);
@@ -1100,11 +1246,35 @@ export type UpdateOperatorAssignmentMeAcceptLanguageEnum = typeof UpdateOperator
 /**
  * @export
  */
+export const UpdateOperatorResponseStatusEnum = {
+    Answered: 'answered',
+    Unanswered: 'unanswered'
+} as const;
+export type UpdateOperatorResponseStatusEnum = typeof UpdateOperatorResponseStatusEnum[keyof typeof UpdateOperatorResponseStatusEnum];
+/**
+ * @export
+ */
+export const UpdateOperatorResponseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateOperatorResponseAcceptLanguageEnum = typeof UpdateOperatorResponseAcceptLanguageEnum[keyof typeof UpdateOperatorResponseAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const UpdateOperatorResponseAnsweredAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type UpdateOperatorResponseAnsweredAcceptLanguageEnum = typeof UpdateOperatorResponseAnsweredAcceptLanguageEnum[keyof typeof UpdateOperatorResponseAnsweredAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdatePriorityAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdatePriorityAcceptLanguageEnum = typeof UpdatePriorityAcceptLanguageEnum[keyof typeof UpdatePriorityAcceptLanguageEnum];
 /**
  * @export
  */

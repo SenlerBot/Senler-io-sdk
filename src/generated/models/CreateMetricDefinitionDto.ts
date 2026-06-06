@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -49,7 +49,7 @@ import {
  */
 export interface CreateMetricDefinitionDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
@@ -61,97 +61,147 @@ export interface CreateMetricDefinitionDto {
      */
     description?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     nameRu?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     nameEn?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     descriptionRu?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     descriptionEn?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     valueType: CreateMetricDefinitionDtoValueTypeEnum;
     /**
      * AI - ( ).
+     * 
+     * :
+     * - " "
+     * - " "
+     * - " "
+     * 
+     * - validation!
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     aiExtractionPrompt: string;
     /**
-     * ( UI AI). (mixed type)
+     * ( UI AI) (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof CreateMetricDefinitionDto
      */
     exampleValue?: { [key: string]: any; } | null;
     /**
-     * (null = , = ).
+     * (null = , = )
      * @type {Array<string>}
      * @memberof CreateMetricDefinitionDto
      */
     agentTypes?: Array<string> | null;
     /**
      * STRING ( value_type = 'string').
+     * 
+     * :
+     * 1. Enum ( ):
+     * { "enum": ["VIP", "", "", ""] }
+     * 
+     * 2. :
+     * { "maxLength": 200 }
      * @type {StringValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     stringValidation?: StringValidationDto;
     /**
      * NUMBER ( value_type = 'number').
+     * 
+     * :
+     * 1. 0-100:
+     * { "minimum": 0, "maximum": 100 }
+     * 
+     * 2. 1 10:
+     * { "minimum": 1, "maximum": 10, "integer": true }
      * @type {NumberValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     numberValidation?: NumberValidationDto;
     /**
      * ARRAY ( value_type = 'array').
+     * 
+     * :
+     * 1. :
+     * { "itemEnum": ["", "", ""], "maxItems": 3 }
+     * 
+     * 2. :
+     * { "maxItems": 10 }
      * @type {ArrayValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     arrayValidation?: ArrayValidationDto;
     /**
      * BOOLEAN ( value_type = 'boolean').
+     * 
+     * :
+     * { "direction": "true_is_better" }
+     * 
+     * direction:
+     * - true_is_better: true = (is_satisfied, goal_reached)
+     * - false_is_better: false = (has_complaints, needs_escalation)
      * @type {BooleanValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
     booleanValidation?: BooleanValidationDto;
     /**
      * severity- ( /).
+     * 
+     * :
+     * - text, object false ( )
+     * - true ( )
+     * 
+     * true direction ( *_validation).
+     * false /.
+     * 
+     * : conversation_topic [sales, support, billing] false ( /)
      * @type {boolean}
      * @memberof CreateMetricDefinitionDto
      */
     isAnalyzable?: boolean;
     /**
      * ( ) .
+     * 
+     * null = : 50% min max.
+     * number: ( 60 support_resolution_time).
+     * enum: 0.0-1.0 ( enum, 0.67 = 'neutral' 4- enum).
+     * array fewer/more_is_better: ( 1).
+     * boolean: % ( 0.8 = 80% ).
      * @type {number}
      * @memberof CreateMetricDefinitionDto
      */
     norm?: number;
     /**
-     * ID (UUID).
+     * ID (UUID). . project_id builtin ( ).
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */
     projectId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CreateMetricDefinitionDto
      */

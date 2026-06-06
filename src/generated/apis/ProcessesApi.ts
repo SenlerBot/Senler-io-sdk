@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -87,7 +87,7 @@ export interface GetProcessesResultRequest {
 export class ProcessesApi extends runtime.BaseAPI {
 
     /**
-     * pending/preparing/processing completed/failed/cancelled .
+     * pending/preparing/processing completed/failed/cancelled
      * 
      */
     async deleteProcessesRaw(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>> {
@@ -141,7 +141,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * pending/preparing/processing completed/failed/cancelled .
+     * pending/preparing/processing completed/failed/cancelled
      * 
      */
     async deleteProcesses(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto> {
@@ -150,7 +150,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * (/) .
+     * (/)
      * 
      */
     async getProcessesRaw(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListProcessesResponseDto>> {
@@ -213,7 +213,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * (/) .
+     * (/)
      * 
      */
     async getProcesses(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListProcessesResponseDto> {
@@ -222,7 +222,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * ,
      * 
      */
     async getProcesses2Raw(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
@@ -276,7 +276,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * ,
      * 
      */
     async getProcesses2(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
@@ -285,7 +285,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * S3 presigned URL .
+     * S3- .
      * 
      */
     async getProcessesDownloadRaw(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>> {
@@ -339,7 +339,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * S3 presigned URL .
+     * S3- .
      * 
      */
     async getProcessesDownload(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse> {
@@ -348,8 +348,8 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * : process_created process_updated , process_deleted .
-     * subscription token realtime
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     * 
      */
     async getProcessesRealtimeTokenRaw(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>> {
         if (requestParameters['projectId'] == null) {
@@ -395,8 +395,8 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * : process_created process_updated , process_deleted .
-     * subscription token realtime
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     * 
      */
     async getProcessesRealtimeToken(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto> {
         const response = await this.getProcessesRealtimeTokenRaw(requestParameters, initOverrides);
@@ -404,7 +404,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>> {
@@ -458,7 +458,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto> {

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,25 +28,48 @@ import {
  */
 export interface SendMessageToDialogDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof SendMessageToDialogDto
      */
     content: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof SendMessageToDialogDto
      */
     clientType?: SendMessageToDialogDtoClientTypeEnum;
     /**
-     * S3 (.
+     * S3 (. 10, 50 MB ).
+     * 
+     * :
+     * 1. S3- .
+     * 2. .
+     * 3. .
+     * 
+     * :
+     * ```typescript
+     * // - dialogId
+     * const confirm = await confirmUpload(uploadId, { dialogId });
+     * await sendMessage({
+     * content: '',
+     * attachments: [{
+     * storage_url: confirm.url,
+     * storage_path: confirm.storagePath,
+     * file_name: confirm.fileName,
+     * mime_type: confirm.fileType,
+     * file_size: confirm.fileSize,
+     * }],
+     * });
+     * ```
+     * 
+     * . MessageAttachmentInputDto
      * @type {Array<MessageAttachmentInputDto>}
      * @memberof SendMessageToDialogDto
      */
     attachments?: Array<MessageAttachmentInputDto>;
     /**
-     * ID , .
+     * ID ,
      * @type {string}
      * @memberof SendMessageToDialogDto
      */

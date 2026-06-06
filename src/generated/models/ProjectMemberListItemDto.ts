@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,85 +35,85 @@ import {
  */
 export interface ProjectMemberListItemDto {
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     id: string;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     userId: string;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     projectId: string;
     /**
-     * .
+     * 
      * @type {Role}
      * @memberof ProjectMemberListItemDto
      */
     role: Role;
     /**
-     * Email .
+     * Email
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     email?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     firstName?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     lastName?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */
     avatarUrl?: string;
     /**
-     * .
+     * 
      * @type {PermissionsDto}
      * @memberof ProjectMemberListItemDto
      */
     permissions: PermissionsDto;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ProjectMemberListItemDto
      */
     hasAccessToAllChannels: boolean;
     /**
-     * , .
+     * , . hasAccessToAllChannels=true,
      * @type {number}
      * @memberof ProjectMemberListItemDto
      */
     channelsCount: number;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ProjectMemberListItemDto
      */
     isActive: boolean;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ProjectMemberListItemDto
      */
     createdAt: Date;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof ProjectMemberListItemDto
      */

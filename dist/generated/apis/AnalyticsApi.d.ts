@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -136,12 +136,12 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      */
     getAgentsTopMetrics(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByAgentResponseDto>;
     /**
-     * ClickHouse , .
+     * , .
      *
      */
     getMetricsLogRaw(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsLogResponseDto>>;
     /**
-     * ClickHouse , .
+     * , .
      *
      */
     getMetricsLog(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsLogResponseDto>;
@@ -226,12 +226,12 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      */
     getTopMetrics(requestParameters: GetTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TopMetricsResponseDto>;
     /**
-     * AI- . .
+     * AI- . model_id . .
      *
      */
     summarizeRaw(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>>;
     /**
-     * AI- . .
+     * AI- . model_id . .
      *
      */
     summarize(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto>;

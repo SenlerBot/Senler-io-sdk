@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,61 +16,61 @@
  */
 export interface EventSourceTelegramTopicDataDto {
     /**
-     * ID Telegram-.
+     * ID Telegram-
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     chatId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     userId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     fromId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     messageId?: string;
     /**
-     * ID - .
+     * ID -
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     replyToMessageId?: string;
     /**
-     * Linked chat id.
+     * ID
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     linkedChatId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     chatType?: EventSourceTelegramTopicDataDtoChatTypeEnum;
     /**
-     * Callback id.
+     * ID .
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
      */
     callbackId?: string;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof EventSourceTelegramTopicDataDto
      */
     isBot?: boolean;
     /**
-     * ID .
+     * ID
      * @type {number}
      * @memberof EventSourceTelegramTopicDataDto
      */

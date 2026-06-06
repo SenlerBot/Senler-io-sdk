@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -100,7 +100,7 @@ export interface ValidateRequest {
 export class DataSourcesApi extends runtime.BaseAPI {
 
     /**
-     * .
+     * 
      * 
      */
     async bindWebsiteRaw(requestParameters: BindWebsiteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>> {
@@ -168,7 +168,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async bindWebsite(requestParameters: BindWebsiteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto> {
@@ -254,7 +254,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesDeactivateRaw(requestParameters: DataSourcesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
@@ -308,7 +308,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesDeactivate(requestParameters: DataSourcesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
@@ -316,7 +316,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * ID
      */
     async dataSourcesGetByIdRaw(requestParameters: DataSourcesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>> {
@@ -370,7 +370,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * ID
      */
     async dataSourcesGetById(requestParameters: DataSourcesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto> {
@@ -379,7 +379,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesListRaw(requestParameters: DataSourcesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataSourceResponseDto>>> {
@@ -437,7 +437,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesList(requestParameters: DataSourcesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>> {
@@ -446,7 +446,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesUpdateRaw(requestParameters: DataSourcesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>> {
@@ -510,7 +510,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesUpdate(requestParameters: DataSourcesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto> {
@@ -519,7 +519,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesUpdateRestoreRaw(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>> {
@@ -573,7 +573,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async dataSourcesUpdateRestore(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto> {
@@ -582,7 +582,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * ,
      * 
      */
     async getActiveForTrainingRaw(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataSourceResponseDto>>> {
@@ -640,7 +640,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * ,
      * 
      */
     async getActiveForTraining(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>> {
@@ -649,7 +649,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>> {
@@ -703,7 +703,7 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto> {

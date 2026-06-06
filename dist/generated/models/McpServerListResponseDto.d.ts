@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,37 +17,37 @@ import type { ServerListMemberDto } from './ServerListMemberDto';
  */
 export interface McpServerListResponseDto {
     /**
-     * Server List ID.
+     * ID MCP
      * @type {string}
      * @memberof McpServerListResponseDto
      */
     id: string;
     /**
-     * Server List name.
+     * MCP
      * @type {string}
      * @memberof McpServerListResponseDto
      */
     name: string;
     /**
-     * Server List description
+     * MCP
      * @type {string}
      * @memberof McpServerListResponseDto
      */
     description?: string | null;
     /**
-     * Servers in the list ( ).
+     * MCP . .
      * @type {Array<ServerListMemberDto>}
      * @memberof McpServerListResponseDto
      */
     servers: Array<ServerListMemberDto>;
     /**
-     * Number of servers in the list.
+     *
      * @type {number}
      * @memberof McpServerListResponseDto
      */
     serverCount?: number;
     /**
-     * Additional metadata.
+     *
      * @type {{ [key: string]: any; }}
      * @memberof McpServerListResponseDto
      */
@@ -55,13 +55,13 @@ export interface McpServerListResponseDto {
         [key: string]: any;
     };
     /**
-     * Creation timestamp.
+     *
      * @type {Date}
      * @memberof McpServerListResponseDto
      */
     createdAt: Date;
     /**
-     * Last update timestamp.
+     *
      * @type {Date}
      * @memberof McpServerListResponseDto
      */

@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -13,11 +13,26 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TrainingProgressDetailDtoStatusCodeEnum = void 0;
 exports.instanceOfTrainingProgressDetailDto = instanceOfTrainingProgressDetailDto;
 exports.TrainingProgressDetailDtoFromJSON = TrainingProgressDetailDtoFromJSON;
 exports.TrainingProgressDetailDtoFromJSONTyped = TrainingProgressDetailDtoFromJSONTyped;
 exports.TrainingProgressDetailDtoToJSON = TrainingProgressDetailDtoToJSON;
 exports.TrainingProgressDetailDtoToJSONTyped = TrainingProgressDetailDtoToJSONTyped;
+const TrainingTaskStatusParamsDto_1 = require("./TrainingTaskStatusParamsDto");
+/**
+ * @export
+ */
+exports.TrainingProgressDetailDtoStatusCodeEnum = {
+    WebsiteAiPlanning: 'website_ai_planning',
+    WebsiteAiPlanSelected: 'website_ai_plan_selected',
+    WebsiteLocalDiscovery: 'website_local_discovery',
+    WebsiteLocalDiscoveryProgress: 'website_local_discovery_progress',
+    WebsiteSaving: 'website_saving',
+    GenerationPreparing: 'generation_preparing',
+    GenerationWaiting: 'generation_waiting',
+    GenerationComposing: 'generation_composing'
+};
 /**
  * Check if a given object implements the TrainingProgressDetailDto interface.
  */
@@ -36,7 +51,8 @@ function TrainingProgressDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'stepsCompleted': json['steps_completed'] == null ? undefined : json['steps_completed'],
         'stepsTotal': json['steps_total'] == null ? undefined : json['steps_total'],
         'progressPercent': json['progress_percent'] == null ? undefined : json['progress_percent'],
-        'statusMessage': json['status_message'] == null ? undefined : json['status_message'],
+        'statusCode': json['status_code'] == null ? undefined : json['status_code'],
+        'statusParams': json['status_params'] == null ? undefined : (0, TrainingTaskStatusParamsDto_1.TrainingTaskStatusParamsDtoFromJSON)(json['status_params']),
         'stepStartedAt': json['step_started_at'] == null ? undefined : json['step_started_at'],
     };
 }
@@ -52,7 +68,8 @@ function TrainingProgressDetailDtoToJSONTyped(value, ignoreDiscriminator = false
         'steps_completed': value['stepsCompleted'],
         'steps_total': value['stepsTotal'],
         'progress_percent': value['progressPercent'],
-        'status_message': value['statusMessage'],
+        'status_code': value['statusCode'],
+        'status_params': (0, TrainingTaskStatusParamsDto_1.TrainingTaskStatusParamsDtoToJSON)(value['statusParams']),
         'step_started_at': value['stepStartedAt'],
     };
 }

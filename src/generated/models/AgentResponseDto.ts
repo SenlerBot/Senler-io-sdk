@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AgentAppOriginDto } from './AgentAppOriginDto';
+import {
+    AgentAppOriginDtoFromJSON,
+    AgentAppOriginDtoFromJSONTyped,
+    AgentAppOriginDtoToJSON,
+    AgentAppOriginDtoToJSONTyped,
+} from './AgentAppOriginDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import {
     KnowledgeBaseSourceBindingDtoFromJSON,
@@ -42,397 +49,403 @@ import {
  */
 export interface AgentResponseDto {
     /**
-     * Agent ID.
+     * ID
      * @type {string}
      * @memberof AgentResponseDto
      */
     id: string;
     /**
-     * Agent name.
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     name: string;
     /**
-     * Agent instruction/prompt.
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     instruction?: string | null;
     /**
-     * Avatar URL.
+     * URL
      * @type {string}
      * @memberof AgentResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Agent type.
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     agentType: AgentResponseDtoAgentTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     serverBindingMode: AgentResponseDtoServerBindingModeEnum;
     /**
-     * Server List ID.
+     * ID MCP
      * @type {string}
      * @memberof AgentResponseDto
      */
     mcpServerListId?: string | null;
     /**
-     * Server List details.
+     * MCP
      * @type {McpServerListResponseDto}
      * @memberof AgentResponseDto
      */
     serverList?: McpServerListResponseDto;
     /**
-     * ID ( direct).
+     * ID ( direct)
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * ( direct).
+     * ( direct)
      * @type {Array<McpServerResponseDto>}
      * @memberof AgentResponseDto
      */
     servers?: Array<McpServerResponseDto>;
     /**
-     * .
+     * 
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     knowledgeBasePermissions?: Array<AgentResponseDtoKnowledgeBasePermissionsEnum>;
     /**
-     * , .
+     * ,
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof AgentResponseDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * Project ID (UUID).
+     * ID
      * @type {string}
      * @memberof AgentResponseDto
      */
     projectId: string;
     /**
-     * Additional metadata.
+     * 
      * @type {{ [key: string]: any; }}
      * @memberof AgentResponseDto
      */
     meta?: { [key: string]: any; };
     /**
-     * Is agent active.
+     * proxy-
+     * @type {AgentAppOriginDto}
+     * @memberof AgentResponseDto
+     */
+    appOrigin?: AgentAppOriginDto | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     isActive: boolean;
     /**
-     * ID .
+     * ID . route .
      * @type {string}
      * @memberof AgentResponseDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature AI (0.
+     * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof AgentResponseDto
      */
     temperature?: number | null;
     /**
-     * Metrics collection enabled.
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     metricsCollectionEnabled: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     triggerKeywords: Array<string>;
     /**
-     * .
+     * . null, .
      * @type {string}
      * @memberof AgentResponseDto
      */
     keywordAssignmentRole?: AgentResponseDtoKeywordAssignmentRoleEnum | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof AgentResponseDto
      */
     keywordDialogScope?: AgentResponseDtoKeywordDialogScopeEnum | null;
     /**
-     * ID , .
+     * ID , . null/ =
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     autoAssignmentMode: AgentResponseDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels.
+     * ID selected_channels
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof AgentResponseDto
      */
     autoAssignmentDialogScope?: AgentResponseDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     autoAssignmentRole: AgentResponseDtoAutoAssignmentRoleEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     status: AgentResponseDtoStatusEnum | null;
     /**
-     * wizard'.
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     wizardCurrentStep?: string | null;
     /**
-     * wizard'.
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     wizardTrainingModeSelected: AgentResponseDtoWizardTrainingModeSelectedEnum | null;
     /**
-     * ID website sources wizard.
+     * ID
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     wizardWebsiteSourceIds: Array<string>;
     /**
-     * ID wizard.
+     * ID
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     wizardChannelIds: Array<string>;
     /**
-     * wizard.
+     * 
      * @type {number}
      * @memberof AgentResponseDto
      */
     wizardHistoryDepthDays: number;
     /**
-     * wizard.
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     wizardScanChannelHistory: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableButtons: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableWidgetPageActions: boolean;
     /**
-     * (URL, S3, ).
+     * (URL, S3, )
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableCustomAttachments: boolean;
     /**
-     * (DALL-E).
+     * (DALL-E)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableImageGeneration: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentResponseDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * (TTS).
+     * (TTS)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableAudioGeneration: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentResponseDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * (STT).
+     * (STT)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableSpeechRecognition: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentResponseDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * (Vision).
+     * (Vision)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableImageRecognition: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentResponseDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * QR .
+     * QR
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableQrCode: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableChart: boolean;
     /**
-     * -.
+     * -
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableWebSearch: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableLeadBlocking: boolean;
     /**
-     * AI .
+     * AI . false ,
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableAiResponse: boolean;
     /**
-     * .
+     * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableUserMessage: boolean;
     /**
-     * streaming .
+     * streaming
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableStreaming: boolean;
     /**
-     * (send_preliminary_response tool).
+     * (send_preliminary_response tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enablePreliminaryResponse: boolean;
     /**
-     * AI-.
+     * AI-
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableMessageReactionsContext: boolean;
     /**
-     * (control_processing tool).
+     * (control_processing tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableSelectiveResponse: boolean;
     /**
-     * (schedule_next_message tool).
+     * (schedule_next_message tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableScheduling: boolean;
     /**
-     * (skip_metrics control_processing).
+     * skip_metrics.
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableSkipMetrics: boolean;
     /**
-     * (mute_dialog schedule_next_message).
+     * . API: mute_dialog.
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableMuteDialog: boolean;
     /**
-     * (detach_from_dialog tool).
+     * (detach_from_dialog tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enableDetachFromDialog: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     useProjectVariables: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     useLeadVariables: boolean;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     projectVarsInstructionMode: AgentResponseDtoProjectVarsInstructionModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     projectVarsUserRequestMode: AgentResponseDtoProjectVarsUserRequestModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     leadVarsInstructionMode: AgentResponseDtoLeadVarsInstructionModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AgentResponseDto
      */
     leadVarsUserRequestMode: AgentResponseDtoLeadVarsUserRequestModeEnum;
     /**
-     * Creation timestamp.
+     * 
      * @type {Date}
      * @memberof AgentResponseDto
      */
     createdAt: Date;
     /**
-     * Last update timestamp.
+     * 
      * @type {Date}
      * @memberof AgentResponseDto
      */
@@ -670,6 +683,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : ((json['knowledge_base_sources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoFromJSON)),
         'projectId': json['project_id'],
         'meta': json['meta'] == null ? undefined : json['meta'],
+        'appOrigin': json['app_origin'] == null ? undefined : AgentAppOriginDtoFromJSON(json['app_origin']),
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
@@ -750,6 +764,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'knowledge_base_sources': value['knowledgeBaseSources'] == null ? undefined : ((value['knowledgeBaseSources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoToJSON)),
         'project_id': value['projectId'],
         'meta': value['meta'],
+        'app_origin': AgentAppOriginDtoToJSON(value['appOrigin']),
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
         'temperature': value['temperature'],

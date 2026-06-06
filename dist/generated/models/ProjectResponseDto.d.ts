@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,13 +18,13 @@ import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachm
  */
 export interface ProjectResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ProjectResponseDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ProjectResponseDto
      */
@@ -36,73 +36,73 @@ export interface ProjectResponseDto {
      */
     description?: string | null;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof ProjectResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ProjectResponseDto
      */
     source?: ProjectResponseDtoSourceEnum | null;
     /**
-     * ID Senler.
+     * ID Senler
      * @type {number}
      * @memberof ProjectResponseDto
      */
     senlerChannelId?: number | null;
     /**
-     * (UUID).
+     * (UUID)
      * @type {string}
      * @memberof ProjectResponseDto
      */
     primaryChannelId?: string | null;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof ProjectResponseDto
      */
     ownerUserId?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ProjectResponseDto
      */
     defaultLanguage: ProjectResponseDtoDefaultLanguageEnum;
     /**
-     * .
+     *
      * @type {number}
      * @memberof ProjectResponseDto
      */
     attachmentUploadLimitMb: number;
     /**
-     * .
+     *
      * @type {ProjectAttachmentUploadLimitsByChannelDto}
      * @memberof ProjectResponseDto
      */
     attachmentUploadLimitsByChannelMb?: ProjectAttachmentUploadLimitsByChannelDto;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof ProjectResponseDto
      */
     isActive: boolean;
     /**
-     * .
+     *
      * @type {ProjectMetaDto}
      * @memberof ProjectResponseDto
      */
     meta?: ProjectMetaDto;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof ProjectResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof ProjectResponseDto
      */

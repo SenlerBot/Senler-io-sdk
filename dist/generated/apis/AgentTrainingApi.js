@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AgentTrainingApi extends runtime.BaseAPI {
     /**
-     * subscription token agent:{agentId}:progress .
-     * subscription token realtime-
+     * JWT- Centrifugo .
+     * JWT-
      */
     async getTrainingRealtimeTokenRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -92,15 +92,15 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
     }
     /**
-     * subscription token agent:{agentId}:progress .
-     * subscription token realtime-
+     * JWT- Centrifugo .
+     * JWT-
      */
     async getTrainingRealtimeToken(requestParameters, initOverrides) {
         const response = await this.getTrainingRealtimeTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async getTrainingStatusRaw(requestParameters, initOverrides) {
@@ -138,7 +138,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TrainingStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getTrainingStatus(requestParameters, initOverrides) {
@@ -146,7 +146,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async trainingCancelRaw(requestParameters, initOverrides) {
@@ -184,7 +184,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * .
+     *
      *
      */
     async trainingCancel(requestParameters, initOverrides) {
@@ -242,7 +242,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async trainingSelectRaw(requestParameters, initOverrides) {
@@ -285,7 +285,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async trainingSelect(requestParameters, initOverrides) {
@@ -293,7 +293,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async trainingStartRaw(requestParameters, initOverrides) {
@@ -336,7 +336,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartTrainingResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async trainingStart(requestParameters, initOverrides) {

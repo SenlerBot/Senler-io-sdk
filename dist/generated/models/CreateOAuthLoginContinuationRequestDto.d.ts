@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,31 +16,31 @@
  */
 export interface CreateOAuthLoginContinuationRequestDto {
     /**
-     * Application client_id.
+     * client_id OAuth-
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
      */
     clientId: string;
     /**
-     * Redirect URI registered for the OAuth application.
+     * URL , OAuth-
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
      */
     redirectUri: string;
     /**
-     * Space-separated permissions.
+     *
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
      */
     scope?: string;
     /**
-     * Opaque state value passed through to redirect.
+     * state,
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
      */
     state?: string;
     /**
-     * Pre-selected project ID.
+     * ID
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
      */

@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAcceptLanguageEnum = exports.GetMeAcceptLanguageEnum = exports.ProjectsApi = void 0;
+exports.UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = exports.UpdateDialogSlaSettingsPrioritiesPriorityEnum = exports.UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = exports.UpdateDialogSlaSettingsAcceptLanguageEnum = exports.UpdateAcceptLanguageEnum = exports.GetMeAcceptLanguageEnum = exports.GetDialogSlaSettingsAcceptLanguageEnum = exports.ProjectsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,50 @@ const index_1 = require("../models/index");
  */
 class ProjectsApi extends runtime.BaseAPI {
     /**
-     * .
+     * SLA . SLA .
+     * SLA-
+     */
+    async getDialogSlaSettingsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDialogSlaSettings().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_projects"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/dialog-sla-settings`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogSlaSettingsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * SLA . SLA .
+     * SLA-
+     */
+    async getDialogSlaSettings(requestParameters, initOverrides) {
+        const response = await this.getDialogSlaSettingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , project-scoped : API key OAuth access token.
      *
      */
     async getMeRaw(requestParameters, initOverrides) {
@@ -83,7 +126,7 @@ class ProjectsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectDetailsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * , project-scoped : API key OAuth access token.
      *
      */
     async getMe(requestParameters = {}, initOverrides) {
@@ -138,8 +181,162 @@ class ProjectsApi extends runtime.BaseAPI {
         const response = await this.updateRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * SLA . , .
+     * SLA-
+     */
+    async updateDialogSlaSettingsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateDialogSlaSettings().');
+        }
+        if (requestParameters['updateDialogSlaSettingsDto'] == null) {
+            throw new runtime.RequiredError('updateDialogSlaSettingsDto', 'Required parameter "updateDialogSlaSettingsDto" was null or undefined when calling updateDialogSlaSettings().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/dialog-sla-settings`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateDialogSlaSettingsDtoToJSON)(requestParameters['updateDialogSlaSettingsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogSlaSettingsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * SLA . , .
+     * SLA-
+     */
+    async updateDialogSlaSettings(requestParameters, initOverrides) {
+        const response = await this.updateDialogSlaSettingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * SLA .
+     * SLA
+     */
+    async updateDialogSlaSettingsEnabledRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateDialogSlaSettingsEnabled().');
+        }
+        if (requestParameters['setDialogSlaEnabledDto'] == null) {
+            throw new runtime.RequiredError('setDialogSlaEnabledDto', 'Required parameter "setDialogSlaEnabledDto" was null or undefined when calling updateDialogSlaSettingsEnabled().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/dialog-sla-settings/enabled`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetDialogSlaEnabledDtoToJSON)(requestParameters['setDialogSlaEnabledDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogSlaSettingsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * SLA .
+     * SLA
+     */
+    async updateDialogSlaSettingsEnabled(requestParameters, initOverrides) {
+        const response = await this.updateDialogSlaSettingsEnabledRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * SLA, .
+     * SLA-
+     */
+    async updateDialogSlaSettingsPrioritiesRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateDialogSlaSettingsPriorities().');
+        }
+        if (requestParameters['priority'] == null) {
+            throw new runtime.RequiredError('priority', 'Required parameter "priority" was null or undefined when calling updateDialogSlaSettingsPriorities().');
+        }
+        if (requestParameters['updateDialogSlaPriorityThresholdDto'] == null) {
+            throw new runtime.RequiredError('updateDialogSlaPriorityThresholdDto', 'Required parameter "updateDialogSlaPriorityThresholdDto" was null or undefined when calling updateDialogSlaSettingsPriorities().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/dialog-sla-settings/priorities/{priority}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"priority"}}`, encodeURIComponent(String(requestParameters['priority']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateDialogSlaPriorityThresholdDtoToJSON)(requestParameters['updateDialogSlaPriorityThresholdDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogSlaSettingsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * SLA, .
+     * SLA-
+     */
+    async updateDialogSlaSettingsPriorities(requestParameters, initOverrides) {
+        const response = await this.updateDialogSlaSettingsPrioritiesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.ProjectsApi = ProjectsApi;
+/**
+ * @export
+ */
+exports.GetDialogSlaSettingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */
@@ -151,6 +348,37 @@ exports.GetMeAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateDialogSlaSettingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateDialogSlaSettingsPrioritiesPriorityEnum = {
+    NoPriority: 'no_priority',
+    Low: 'low',
+    Medium: 'medium',
+    High: 'high',
+    Urgent: 'urgent'
+};
+/**
+ * @export
+ */
+exports.UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -19,6 +19,7 @@ exports.AgentResponseDtoFromJSON = AgentResponseDtoFromJSON;
 exports.AgentResponseDtoFromJSONTyped = AgentResponseDtoFromJSONTyped;
 exports.AgentResponseDtoToJSON = AgentResponseDtoToJSON;
 exports.AgentResponseDtoToJSONTyped = AgentResponseDtoToJSONTyped;
+const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const McpServerResponseDto_1 = require("./McpServerResponseDto");
 const McpServerListResponseDto_1 = require("./McpServerListResponseDto");
@@ -265,6 +266,7 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : (json['knowledge_base_sources'].map(KnowledgeBaseSourceBindingDto_1.KnowledgeBaseSourceBindingDtoFromJSON)),
         'projectId': json['project_id'],
         'meta': json['meta'] == null ? undefined : json['meta'],
+        'appOrigin': json['app_origin'] == null ? undefined : (0, AgentAppOriginDto_1.AgentAppOriginDtoFromJSON)(json['app_origin']),
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
@@ -341,6 +343,7 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'knowledge_base_sources': value['knowledgeBaseSources'] == null ? undefined : (value['knowledgeBaseSources'].map(KnowledgeBaseSourceBindingDto_1.KnowledgeBaseSourceBindingDtoToJSON)),
         'project_id': value['projectId'],
         'meta': value['meta'],
+        'app_origin': (0, AgentAppOriginDto_1.AgentAppOriginDtoToJSON)(value['appOrigin']),
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
         'temperature': value['temperature'],

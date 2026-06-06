@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,37 +20,37 @@ import { mapValues } from '../runtime';
  */
 export interface ExportProcessResultDto {
     /**
-     * S3.
+     * S3
      * @type {string}
      * @memberof ExportProcessResultDto
      */
     s3Key: string;
     /**
-     * Presigned URL (TTL 7 ).
+     * S3- . 7 .
      * @type {string}
      * @memberof ExportProcessResultDto
      */
     s3Url: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ExportProcessResultDto
      */
     fileSize: number;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ExportProcessResultDto
      */
     format?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ExportProcessResultDto
      */
     encoding?: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ExportProcessResultDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -43,32 +43,32 @@ export interface GetStatsRequest {
  */
 export declare class StorageApi extends runtime.BaseAPI {
     /**
-     * S3 .
+     * S3
      *
      */
     deleteFilesRaw(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFileDeleteResponseDto>>;
     /**
-     * S3 .
+     * S3
      *
      */
     deleteFiles(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFileDeleteResponseDto>;
     /**
-     * pending/uploaded/confirmed ( ).
+     * pending/uploaded/confirmed ( )
      *
      */
     deleteOrphanedRaw(requestParameters: DeleteOrphanedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageOrphanedDeleteResponseDto>>;
     /**
-     * pending/uploaded/confirmed ( ).
+     * pending/uploaded/confirmed ( )
      *
      */
     deleteOrphaned(requestParameters: DeleteOrphanedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageOrphanedDeleteResponseDto>;
     /**
-     * .
+     *
      *
      */
     getFilesRaw(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFilesListResponseDto>>;
     /**
-     * .
+     *
      *
      */
     getFiles(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFilesListResponseDto>;

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -49,32 +49,32 @@ export interface TrainingStartRequest {
  */
 export declare class AgentTrainingApi extends runtime.BaseAPI {
     /**
-     * subscription token agent:{agentId}:progress .
-     * subscription token realtime-
+     * JWT- Centrifugo .
+     * JWT-
      */
     getTrainingRealtimeTokenRaw(requestParameters: GetTrainingRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
     /**
-     * subscription token agent:{agentId}:progress .
-     * subscription token realtime-
+     * JWT- Centrifugo .
+     * JWT-
      */
     getTrainingRealtimeToken(requestParameters: GetTrainingRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
     /**
-     * .
+     *
      *
      */
     getTrainingStatusRaw(requestParameters: GetTrainingStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrainingStatusResponseDto>>;
     /**
-     * .
+     *
      *
      */
     getTrainingStatus(requestParameters: GetTrainingStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrainingStatusResponseDto>;
     /**
-     * .
+     *
      *
      */
     trainingCancelRaw(requestParameters: TrainingCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * .
+     *
      *
      */
     trainingCancel(requestParameters: TrainingCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
@@ -89,22 +89,22 @@ export declare class AgentTrainingApi extends runtime.BaseAPI {
      */
     trainingPreview(requestParameters: TrainingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrainingPreviewResponseDto>;
     /**
-     * .
+     *
      *
      */
     trainingSelectRaw(requestParameters: TrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * .
+     *
      *
      */
     trainingSelect(requestParameters: TrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * .
+     *
      *
      */
     trainingStartRaw(requestParameters: TrainingStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartTrainingResponseDto>>;
     /**
-     * .
+     *
      *
      */
     trainingStart(requestParameters: TrainingStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartTrainingResponseDto>;

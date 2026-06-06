@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,61 +18,61 @@ import type { CreateServerDtoMeta } from './CreateServerDtoMeta';
  */
 export interface UpdateServerDto {
     /**
-     * Authorization method for a custom MCP server.
+     * MCP
      * @type {string}
      * @memberof UpdateServerDto
      */
     customAuthMode?: UpdateServerDtoCustomAuthModeEnum;
     /**
-     * Access token for a custom MCP server.
+     * MCP . API Authorization: Bearer <token>.
      * @type {string}
      * @memberof UpdateServerDto
      */
     authToken?: string;
     /**
-     * Custom HTTP headers sent to the custom MCP server.
+     * HTTP- MCP
      * @type {Array<CustomMcpServerAuthHeaderDto>}
      * @memberof UpdateServerDto
      */
     authHeaders?: Array<CustomMcpServerAuthHeaderDto>;
     /**
-     * Server ID.
+     * ID MCP
      * @type {string}
      * @memberof UpdateServerDto
      */
     id: string;
     /**
-     * Display label for the MCP server connection.
+     * MCP
      * @type {string}
      * @memberof UpdateServerDto
      */
     name?: string;
     /**
-     * Server URL.
+     * URL MCP
      * @type {string}
      * @memberof UpdateServerDto
      */
     url?: string;
     /**
-     * Server description
+     * MCP
      * @type {string}
      * @memberof UpdateServerDto
      */
     description?: string;
     /**
-     * Is server active (affects router loading).
+     * MCP
      * @type {boolean}
      * @memberof UpdateServerDto
      */
     isActive?: boolean;
     /**
-     * Text added before template description.
+     * ,
      * @type {string}
      * @memberof UpdateServerDto
      */
     descriptionPrepend?: string;
     /**
-     * Custom query params for installed MCP server.
+     * MCP
      * @type {{ [key: string]: any; }}
      * @memberof UpdateServerDto
      */
@@ -80,7 +80,7 @@ export interface UpdateServerDto {
         [key: string]: any;
     };
     /**
-     * Authentication mode for installed MCP server.
+     * MCP
      * @type {string}
      * @memberof UpdateServerDto
      */

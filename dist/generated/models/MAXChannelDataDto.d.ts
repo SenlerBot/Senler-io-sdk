@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,53 +16,65 @@
  */
 export interface MAXChannelDataDto {
     /**
-     * ID MAX .
+     * ID MAX
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     botId?: string;
     /**
-     * Username MAX .
+     * Username MAX
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     botUsername?: string;
     /**
-     * MAX .
+     * MAX
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     botName?: string;
     /**
-     * URL MAX .
+     * URL MAX
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     botAvatarUrl?: string;
     /**
-     * ID MAX API.
+     * ID MAX API
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     subscriptionId?: string;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof MAXChannelDataDto
      */
     webhookEnabled?: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     webhookStatus?: MAXChannelDataDtoWebhookStatusEnum;
     /**
-     * ( ).
+     * ( )
      * @type {string}
      * @memberof MAXChannelDataDto
      */
     webhookError?: string;
+    /**
+     * ( )
+     * @type {string}
+     * @memberof MAXChannelDataDto
+     */
+    webhookWarning?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof MAXChannelDataDto
+     */
+    webhookLastCheckedAt?: string;
 }
 /**
  * @export

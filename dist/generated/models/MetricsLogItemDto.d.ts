@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -19,67 +19,67 @@ import type { MetricsLogAgentDto } from './MetricsLogAgentDto';
  */
 export interface MetricsLogItemDto {
     /**
-     * ID event_metrics.
+     * ID event_metrics
      * @type {string}
      * @memberof MetricsLogItemDto
      */
     id: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MetricsLogItemDto
      */
     eventId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MetricsLogItemDto
      */
     dialogId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MetricsLogItemDto
      */
     timestamp: string;
     /**
-     * .
+     *
      * @type {MetricsLogAgentDto}
      * @memberof MetricsLogItemDto
      */
     agent: MetricsLogAgentDto;
     /**
-     * .
+     *
      * @type {MetricsLogMetricDto}
      * @memberof MetricsLogItemDto
      */
     metric: MetricsLogMetricDto;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MetricsLogItemDto
      */
     value: string;
     /**
-     * (semantic score 0-1).
+     * (semantic score 0-1)
      * @type {number}
      * @memberof MetricsLogItemDto
      */
     numericValue?: number | null;
     /**
-     * AI (0-1).
+     * AI (0-1)
      * @type {number}
      * @memberof MetricsLogItemDto
      */
     confidenceScore: number;
     /**
-     * .
+     *
      * @type {MetricsLogEvaluationDto}
      * @memberof MetricsLogItemDto
      */
     evaluation?: MetricsLogEvaluationDto | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MetricsLogItemDto
      */

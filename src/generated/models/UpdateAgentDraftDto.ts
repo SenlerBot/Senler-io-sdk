@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,421 +28,421 @@ import {
  */
 export interface UpdateAgentDraftDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     name?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     instruction?: string;
     /**
-     * Avatar URL.
+     * URL
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     avatarUrl?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     agentType?: UpdateAgentDraftDtoAgentTypeEnum;
     /**
-     * : list ( ServerList), direct (), none ( ).
+     * : list ( ServerList), direct (), none ( )
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     serverBindingMode?: UpdateAgentDraftDtoServerBindingModeEnum;
     /**
-     * ID MCP ( server_binding_mode = "list").
+     * ID MCP ( server_binding_mode = "list")
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     mcpServerListId?: string;
     /**
-     * ID ( server_binding_mode = "direct").
+     * ID ( server_binding_mode = "direct")
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * .
+     * 
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     knowledgeBasePermissions?: Array<UpdateAgentDraftDtoKnowledgeBasePermissionsEnum>;
     /**
-     * , .
+     * ,
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof UpdateAgentDraftDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     channelId?: string;
     /**
-     * .
+     * 
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     meta?: object;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature AI (0.
+     * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof UpdateAgentDraftDto
      */
     temperature?: number | null;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     metricsCollectionEnabled?: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     triggerKeywords?: Array<string>;
     /**
-     * .
+     * . , trigger_keywords.
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     keywordAssignmentRole?: UpdateAgentDraftDtoKeywordAssignmentRoleEnum;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     keywordDialogScope?: UpdateAgentDraftDtoKeywordDialogScopeEnum | null;
     /**
-     * ID , .
+     * ID , . null/ =
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentMode?: UpdateAgentDraftDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels.
+     * ID selected_channels
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentDialogScope?: UpdateAgentDraftDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     autoAssignmentRole?: UpdateAgentDraftDtoAutoAssignmentRoleEnum;
     /**
-     * .
+     * . preview/publish 409.
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     confirmAutoAssignmentOverwrite?: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     useDefaultMetrics?: boolean;
     /**
-     * ID ( when use_default_metrics = false).
+     * ID ( when use_default_metrics = false)
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     enabledMetricIds?: Array<string>;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     creationMode?: UpdateAgentDraftDtoCreationModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     status?: UpdateAgentDraftDtoStatusEnum;
     /**
-     * .
+     * 
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     trainingConfig?: object;
     /**
-     * .
+     * 
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     trainingProgress?: object;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     trainingMode?: UpdateAgentDraftDtoTrainingModeEnum;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof UpdateAgentDraftDto
      */
     trainingStartedAt?: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof UpdateAgentDraftDto
      */
     trainingCompletedAt?: Date;
     /**
-     * .
+     * 
      * @type {object}
      * @memberof UpdateAgentDraftDto
      */
     trainingStats?: object;
     /**
-     * wizard'.
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     wizardCurrentStep?: string | null;
     /**
-     * wizard'.
+     * 
      * @type {Date}
      * @memberof UpdateAgentDraftDto
      */
     wizardUpdatedAt?: Date | null;
     /**
-     * ID website sources.
+     * ID
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     wizardWebsiteSourceIds?: Array<string> | null;
     /**
-     * ID .
+     * ID
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
     wizardChannelIds?: Array<string> | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof UpdateAgentDraftDto
      */
     wizardHistoryDepthDays?: number;
     /**
-     * wizard'.
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     wizardTrainingModeSelected?: UpdateAgentDraftDtoWizardTrainingModeSelectedEnum | null;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableButtons?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableWidgetPageActions?: boolean;
     /**
-     * (URL, S3, ).
+     * (URL, S3, )
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableCustomAttachments?: boolean;
     /**
-     * (DALL-E).
+     * (DALL-E)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableImageGeneration?: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * (TTS).
+     * (TTS)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableAudioGeneration?: boolean;
     /**
-     * UUID GET /api/ai/models.
+     * UUID GET /api/ai/models
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * (STT).
+     * (STT)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableSpeechRecognition?: boolean;
     /**
-     * UUID GET /api/ai/models.
+     * UUID GET /api/ai/models
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * (Vision).
+     * (Vision)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableImageRecognition?: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * QR .
+     * QR
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableQrCode?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableChart?: boolean;
     /**
-     * -.
+     * -
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableWebSearch?: boolean;
     /**
-     * (block_lead tool).
+     * (block_lead tool)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableLeadBlocking?: boolean;
     /**
-     * AI .
+     * AI . false ,
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableAiResponse?: boolean;
     /**
-     * .
+     * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableUserMessage?: boolean;
     /**
-     * streaming .
+     * streaming
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableStreaming?: boolean;
     /**
-     * .
+     * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * AI-.
+     * AI-. true ,
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableMessageReactionsContext?: boolean;
     /**
-     * (skip_response tool).
+     * (skip_response tool). true
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableSelectiveResponse?: boolean;
     /**
-     * (schedule_next_message tool).
+     * (schedule_next_message tool)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableScheduling?: boolean;
     /**
-     * (skip_metrics control_processing).
+     * (skip_metrics control_processing)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableSkipMetrics?: boolean;
     /**
-     * (mute_dialog schedule_next_message).
+     * . API: mute_dialog.
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableMuteDialog?: boolean;
     /**
-     * detach_from_dialog tool.
+     * detach_from_dialog tool
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enableDetachFromDialog?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     useProjectVariables?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     useLeadVariables?: boolean;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     projectVarsInstructionMode?: UpdateAgentDraftDtoProjectVarsInstructionModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     projectVarsUserRequestMode?: UpdateAgentDraftDtoProjectVarsUserRequestModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */
     leadVarsInstructionMode?: UpdateAgentDraftDtoLeadVarsInstructionModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDraftDto
      */

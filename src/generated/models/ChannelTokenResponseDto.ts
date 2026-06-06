@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,229 +20,241 @@ import { mapValues } from '../runtime';
  */
 export interface ChannelTokenResponseDto {
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     id: string;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     channelId: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     channelType: ChannelTokenResponseDtoChannelTypeEnum;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelTokenResponseDto
      */
     isValid: boolean;
     /**
-     * : null , senler Senler OAuth.
+     * : null , senler Senler OAuth
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     tokenSource?: ChannelTokenResponseDtoTokenSourceEnum | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     lastCheckedAt?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     validationError?: string;
     /**
-     * IMAP runtime email-.
+     * IMAP- email-
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     emailImapError?: string;
     /**
-     * OAuth scope .
+     * OAuth scope
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     tokenScope?: string | null;
     /**
-     * ISO .
+     * ISO . null -
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     expiresAt?: string | null;
     /**
-     * ID .
+     * ID
      * @type {number}
      * @memberof ChannelTokenResponseDto
      */
     vkGroupId?: number;
     /**
-     * ID callback VK.
+     * ID VK
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     vkCallbackServerId?: string;
     /**
-     * ID Telegram .
+     * ID Telegram
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotId?: string;
     /**
-     * Username Telegram .
+     * Username Telegram
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotUsername?: string;
     /**
-     * Telegram .
+     * Telegram
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotName?: string;
     /**
-     * URL Telegram .
+     * URL Telegram
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     telegramBotAvatarUrl?: string;
     /**
-     * ID MAX API.
+     * ID MAX API
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxSubscriptionId?: string;
     /**
-     * ID MAX .
+     * ID MAX
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotId?: string;
     /**
-     * Username MAX .
+     * Username MAX
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotUsername?: string;
     /**
-     * MAX .
+     * MAX
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotName?: string;
     /**
-     * URL MAX .
+     * URL MAX
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     maxBotAvatarUrl?: string;
     /**
-     * ID Avito.
+     * ID Avito
      * @type {number}
      * @memberof ChannelTokenResponseDto
      */
     avitoUserId?: number;
     /**
-     * Avito.
+     * Avito
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     avitoAccountName?: string;
     /**
-     * URL Avito.
+     * URL Avito
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     avitoProfileUrl?: string;
     /**
-     * Discord application_id .
+     * Discord application_id
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordApplicationId?: string;
     /**
-     * ID Discord bot user.
+     * ID Discord-
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotUserId?: string;
     /**
-     * Username Discord .
+     * Username Discord
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotUsername?: string;
     /**
-     * Display name Discord .
+     * Discord-.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotName?: string;
     /**
-     * URL Discord .
+     * URL Discord
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordBotAvatarUrl?: string;
     /**
-     * Discord Gateway runtime.
+     * Discord.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordGatewayStatus?: ChannelTokenResponseDtoDiscordGatewayStatusEnum;
     /**
-     * Discord Gateway runtime.
+     * Discord.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordGatewayError?: string;
     /**
-     * Discord Gateway.
+     * Discord.
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     discordGatewayBlockedUntil?: string;
     /**
-     * URL VK .
+     * URL VK
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     vkGroupAvatarUrl?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     webhookStatus: ChannelTokenResponseDtoWebhookStatusEnum;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelTokenResponseDto
      */
     webhookEnabled: boolean;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     webhookError?: string;
     /**
-     * .
+     * 
+     * @type {string}
+     * @memberof ChannelTokenResponseDto
+     */
+    webhookWarning?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChannelTokenResponseDto
+     */
+    webhookLastCheckedAt?: string;
+    /**
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
     createdAt: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
      */
@@ -357,6 +369,8 @@ export function ChannelTokenResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
         'webhookStatus': json['webhook_status'],
         'webhookEnabled': json['webhook_enabled'],
         'webhookError': json['webhook_error'] == null ? undefined : json['webhook_error'],
+        'webhookWarning': json['webhook_warning'] == null ? undefined : json['webhook_warning'],
+        'webhookLastCheckedAt': json['webhook_last_checked_at'] == null ? undefined : json['webhook_last_checked_at'],
         'createdAt': json['created_at'],
         'updatedAt': json['updated_at'],
     };
@@ -409,6 +423,8 @@ export function ChannelTokenResponseDtoToJSONTyped(value?: ChannelTokenResponseD
         'webhook_status': value['webhookStatus'],
         'webhook_enabled': value['webhookEnabled'],
         'webhook_error': value['webhookError'],
+        'webhook_warning': value['webhookWarning'],
+        'webhook_last_checked_at': value['webhookLastCheckedAt'],
         'created_at': value['createdAt'],
         'updated_at': value['updatedAt'],
     };

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,6 +20,13 @@ import {
     ServerTemplateCategoryDtoToJSON,
     ServerTemplateCategoryDtoToJSONTyped,
 } from './ServerTemplateCategoryDto';
+import type { McpServerTemplateToolPolicyDto } from './McpServerTemplateToolPolicyDto';
+import {
+    McpServerTemplateToolPolicyDtoFromJSON,
+    McpServerTemplateToolPolicyDtoFromJSONTyped,
+    McpServerTemplateToolPolicyDtoToJSON,
+    McpServerTemplateToolPolicyDtoToJSONTyped,
+} from './McpServerTemplateToolPolicyDto';
 import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateManualAuthHeaderDto';
 import {
     McpServerTemplateManualAuthHeaderDtoFromJSON,
@@ -35,55 +42,61 @@ import {
  */
 export interface ServerTemplateResponseDto {
     /**
-     * 
+     * ID MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     id: string;
     /**
-     * 
+     * MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     name: string;
     /**
-     * 
+     * MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     description?: string | null;
     /**
-     * URL MCP .
+     * URL MCP 128x128
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Service-specific auth provider key for installed credential adapters.
+     * URL MCP 706x398
+     * @type {string}
+     * @memberof ServerTemplateResponseDto
+     */
+    bannerUrl?: string | null;
+    /**
+     * MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     authProviderKey?: ServerTemplateResponseDtoAuthProviderKeyEnum | null;
     /**
-     * 
+     * URL MCP
      * @type {string}
      * @memberof ServerTemplateResponseDto
      */
     baseUrl?: string | null;
     /**
-     * 
+     * URL
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     requiresCustomUrl: boolean;
     /**
-     * 
+     * MCP
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     supportsProjectAuth: boolean;
     /**
-     * 
+     * MCP
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
@@ -95,7 +108,7 @@ export interface ServerTemplateResponseDto {
      */
     supportsManualToken: boolean;
     /**
-     * 
+     * OAuth-
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
@@ -107,61 +120,79 @@ export interface ServerTemplateResponseDto {
      */
     supportsNoAuth: boolean;
     /**
-     * Manual authorization headers users can provide when installing this template.
+     * MCP
+     * @type {boolean}
+     * @memberof ServerTemplateResponseDto
+     */
+    isPrivate: boolean;
+    /**
+     * ID , MCP
+     * @type {Array<string>}
+     * @memberof ServerTemplateResponseDto
+     */
+    allowedProjectIds?: Array<string>;
+    /**
+     * , MCP- OpenAPI.
+     * @type {McpServerTemplateToolPolicyDto}
+     * @memberof ServerTemplateResponseDto
+     */
+    toolPolicy?: McpServerTemplateToolPolicyDto | null;
+    /**
+     * HTTP- , . , .
      * @type {Array<McpServerTemplateManualAuthHeaderDto>}
      * @memberof ServerTemplateResponseDto
      */
     manualAuthHeaders?: Array<McpServerTemplateManualAuthHeaderDto>;
     /**
-     * 
+     * query-
      * @type {{ [key: string]: any; }}
      * @memberof ServerTemplateResponseDto
      */
     availableQueryParams?: { [key: string]: any; };
     /**
-     * 
+     * Query-
      * @type {{ [key: string]: any; }}
      * @memberof ServerTemplateResponseDto
      */
     defaultQueryParams?: { [key: string]: any; };
     /**
-     * MCP ( ).
+     * MCP ( )
      * @type {Array<string>}
      * @memberof ServerTemplateResponseDto
      */
     tags: Array<string>;
     /**
-     * MCP ( ).
-     * @type {Array<ServerTemplateCategoryDto>}
+     * MCP
+     * @type {ServerTemplateCategoryDto}
      * @memberof ServerTemplateResponseDto
      */
-    categories: Array<ServerTemplateCategoryDto>;
+    category: ServerTemplateCategoryDto | null;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof ServerTemplateResponseDto
      */
     installCount: number;
     /**
-     * MCP (-10 ).
+     * MCP (-10 )
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     isFeatured: boolean;
     /**
-     * 
+     * MCP
      * @type {boolean}
      * @memberof ServerTemplateResponseDto
      */
     isActive: boolean;
     /**
-     * 
+     * MCP
      * @type {Date}
      * @memberof ServerTemplateResponseDto
      */
     createdAt: Date;
     /**
-     * 
+     * MCP
      * @type {Date}
      * @memberof ServerTemplateResponseDto
      */
@@ -191,8 +222,9 @@ export function instanceOfServerTemplateResponseDto(value: object): value is Ser
     if (!('supportsManualToken' in value) || value['supportsManualToken'] === undefined) return false;
     if (!('supportsOauth' in value) || value['supportsOauth'] === undefined) return false;
     if (!('supportsNoAuth' in value) || value['supportsNoAuth'] === undefined) return false;
+    if (!('isPrivate' in value) || value['isPrivate'] === undefined) return false;
     if (!('tags' in value) || value['tags'] === undefined) return false;
-    if (!('categories' in value) || value['categories'] === undefined) return false;
+    if (!('category' in value) || value['category'] === undefined) return false;
     if (!('installCount' in value) || value['installCount'] === undefined) return false;
     if (!('isFeatured' in value) || value['isFeatured'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
@@ -215,6 +247,7 @@ export function ServerTemplateResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'bannerUrl': json['banner_url'] == null ? undefined : json['banner_url'],
         'authProviderKey': json['auth_provider_key'] == null ? undefined : json['auth_provider_key'],
         'baseUrl': json['base_url'] == null ? undefined : json['base_url'],
         'requiresCustomUrl': json['requires_custom_url'],
@@ -223,11 +256,14 @@ export function ServerTemplateResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'supportsManualToken': json['supports_manual_token'],
         'supportsOauth': json['supports_oauth'],
         'supportsNoAuth': json['supports_no_auth'],
+        'isPrivate': json['is_private'],
+        'allowedProjectIds': json['allowed_project_ids'] == null ? undefined : json['allowed_project_ids'],
+        'toolPolicy': json['tool_policy'] == null ? undefined : McpServerTemplateToolPolicyDtoFromJSON(json['tool_policy']),
         'manualAuthHeaders': json['manual_auth_headers'] == null ? undefined : ((json['manual_auth_headers'] as Array<any>).map(McpServerTemplateManualAuthHeaderDtoFromJSON)),
         'availableQueryParams': json['available_query_params'] == null ? undefined : json['available_query_params'],
         'defaultQueryParams': json['default_query_params'] == null ? undefined : json['default_query_params'],
         'tags': json['tags'],
-        'categories': ((json['categories'] as Array<any>).map(ServerTemplateCategoryDtoFromJSON)),
+        'category': ServerTemplateCategoryDtoFromJSON(json['category']),
         'installCount': json['install_count'],
         'isFeatured': json['is_featured'],
         'isActive': json['is_active'],
@@ -251,6 +287,7 @@ export function ServerTemplateResponseDtoToJSONTyped(value?: ServerTemplateRespo
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],
+        'banner_url': value['bannerUrl'],
         'auth_provider_key': value['authProviderKey'],
         'base_url': value['baseUrl'],
         'requires_custom_url': value['requiresCustomUrl'],
@@ -259,11 +296,14 @@ export function ServerTemplateResponseDtoToJSONTyped(value?: ServerTemplateRespo
         'supports_manual_token': value['supportsManualToken'],
         'supports_oauth': value['supportsOauth'],
         'supports_no_auth': value['supportsNoAuth'],
+        'is_private': value['isPrivate'],
+        'allowed_project_ids': value['allowedProjectIds'],
+        'tool_policy': McpServerTemplateToolPolicyDtoToJSON(value['toolPolicy']),
         'manual_auth_headers': value['manualAuthHeaders'] == null ? undefined : ((value['manualAuthHeaders'] as Array<any>).map(McpServerTemplateManualAuthHeaderDtoToJSON)),
         'available_query_params': value['availableQueryParams'],
         'default_query_params': value['defaultQueryParams'],
         'tags': value['tags'],
-        'categories': ((value['categories'] as Array<any>).map(ServerTemplateCategoryDtoToJSON)),
+        'category': ServerTemplateCategoryDtoToJSON(value['category']),
         'install_count': value['installCount'],
         'is_featured': value['isFeatured'],
         'is_active': value['isActive'],

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -189,139 +189,133 @@ import {
  */
 export interface CabinetEventDetailDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     id: string;
     /**
-     * ID ; .
+     * ID ;
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     dialogId?: string;
     /**
-     * ID MCP .
+     * ID MCP
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     mcpServerId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     channelId?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     platformType?: CabinetEventDetailDtoPlatformTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     projectId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     agentId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     appId?: string;
     /**
-     * ID .
-     * @type {string}
-     * @memberof CabinetEventDetailDto
-     */
-    appAgentId?: string;
-    /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     leadId?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     actionType: CabinetEventDetailDtoActionTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     targetType?: CabinetEventDetailDtoTargetTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     targetId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     externalMessageId?: string;
     /**
-     * .
+     * 
      * @type {EventSenderDto}
      * @memberof CabinetEventDetailDto
      */
     sender?: EventSenderDto;
     /**
-     * .
+     * 
      * @type {EventMessageDto}
      * @memberof CabinetEventDetailDto
      */
     message?: EventMessageDto;
     /**
-     * cabinet-safe .
+     * cabinet-safe
      * @type {Array<EventAttachmentCabinetDto>}
      * @memberof CabinetEventDetailDto
      */
     attachments: Array<EventAttachmentCabinetDto>;
     /**
-     * .
+     * 
      * @type {Array<EventButtonDto>}
      * @memberof CabinetEventDetailDto
      */
     buttons: Array<EventButtonDto>;
     /**
-     * .
+     * 
      * @type {EventButtonClickDto}
      * @memberof CabinetEventDetailDto
      */
     buttonClick?: EventButtonClickDto;
     /**
-     * .
+     * 
      * @type {EventToolDto}
      * @memberof CabinetEventDetailDto
      */
     tool?: EventToolDto;
     /**
-     * raw- provider/admin-only .
+     * 
      * @type {EventCostsCabinetDto}
      * @memberof CabinetEventDetailDto
      */
     costs?: EventCostsCabinetDto;
     /**
-     * .
+     * 
      * @type {EventMessageInteractionsDto}
      * @memberof CabinetEventDetailDto
      */
     messageInteractions?: EventMessageInteractionsDto;
     /**
-     * .
+     * 
      * @type {EventStatusDto}
      * @memberof CabinetEventDetailDto
      */
@@ -339,115 +333,115 @@ export interface CabinetEventDetailDto {
      */
     deliveryRef?: DialogChatEventDtoDeliveryRef;
     /**
-     * AI context.
+     * AI-
      * @type {EventAiDto}
      * @memberof CabinetEventDetailDto
      */
     ai?: EventAiDto;
     /**
-     * Typing lifecycle context.
+     * 
      * @type {EventTypingDto}
      * @memberof CabinetEventDetailDto
      */
     typing?: EventTypingDto;
     /**
-     * Timer context.
+     * 
      * @type {EventTimerDto}
      * @memberof CabinetEventDetailDto
      */
     timer?: EventTimerDto;
     /**
-     * Trigger/source context.
+     * 
      * @type {EventTriggerContextDto}
      * @memberof CabinetEventDetailDto
      */
     triggerContext?: EventTriggerContextDto;
     /**
-     * Moderation context.
+     * 
      * @type {EventModerationDto}
      * @memberof CabinetEventDetailDto
      */
     moderation?: EventModerationDto;
     /**
-     * Broadcast context.
+     * 
      * @type {EventBroadcastDto}
      * @memberof CabinetEventDetailDto
      */
     broadcast?: EventBroadcastDto;
     /**
-     * Reaction context.
+     * 
      * @type {EventReactionDto}
      * @memberof CabinetEventDetailDto
      */
     reaction?: EventReactionDto;
     /**
-     * Poll answer context.
+     * 
      * @type {EventPollAnswerChangeDto}
      * @memberof CabinetEventDetailDto
      */
     pollAnswer?: EventPollAnswerChangeDto;
     /**
-     * Poll vote context.
+     * 
      * @type {EventPollVoteDto}
      * @memberof CabinetEventDetailDto
      */
     pollVote?: EventPollVoteDto;
     /**
-     * Chat change context.
+     * 
      * @type {EventChatChangeDto}
      * @memberof CabinetEventDetailDto
      */
     chatChange?: EventChatChangeDto;
     /**
-     * .
+     * 
      * @type {EventErrorDto}
      * @memberof CabinetEventDetailDto
      */
     error?: EventErrorDto;
     /**
-     * .
+     * 
      * @type {EventHierarchyDto}
      * @memberof CabinetEventDetailDto
      */
     hierarchy?: EventHierarchyDto;
     /**
-     * Generation block: summary + metrics.
+     * :
      * @type {EventGenerationDto}
      * @memberof CabinetEventDetailDto
      */
     generation?: EventGenerationDto;
     /**
-     * .
+     * 
      * @type {Array<string>}
      * @memberof CabinetEventDetailDto
      */
     tags: Array<string>;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CabinetEventDetailDto
      */
     creditTransactionId?: string;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof CabinetEventDetailDto
      */
     timestamp: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof CabinetEventDetailDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof CabinetEventDetailDto
      */
     updatedAt: Date;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof CabinetEventDetailDto
      */
@@ -594,7 +588,6 @@ export function CabinetEventDetailDtoFromJSONTyped(json: any, ignoreDiscriminato
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
-        'appAgentId': json['app_agent_id'] == null ? undefined : json['app_agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'actionType': json['action_type'],
         'targetType': json['target_type'] == null ? undefined : json['target_type'],
@@ -652,7 +645,6 @@ export function CabinetEventDetailDtoToJSONTyped(value?: CabinetEventDetailDto |
         'project_id': value['projectId'],
         'agent_id': value['agentId'],
         'app_id': value['appId'],
-        'app_agent_id': value['appAgentId'],
         'lead_id': value['leadId'],
         'action_type': value['actionType'],
         'target_type': value['targetType'],

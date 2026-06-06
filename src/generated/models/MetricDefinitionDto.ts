@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,19 +28,19 @@ import {
  */
 export interface MetricDefinitionDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     id: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     metricKey: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricDefinitionDto
      */
@@ -52,55 +52,55 @@ export interface MetricDefinitionDto {
      */
     description?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     nameRu?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     nameEn?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     descriptionRu?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     descriptionEn?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     valueType: MetricDefinitionDtoValueTypeEnum;
     /**
-     * (null = , = ).
+     * (null = , = )
      * @type {Array<string>}
      * @memberof MetricDefinitionDto
      */
     agentTypes?: Array<string> | null;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof MetricDefinitionDto
      */
     isBuiltin: boolean;
     /**
-     * AI .
+     * AI
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     aiExtractionPrompt: string;
     /**
-     * . (mixed type)
+     *  (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof MetricDefinitionDto
      */
@@ -112,49 +112,56 @@ export interface MetricDefinitionDto {
      */
     validationSchema?: MetricDefinitionDtoValidationSchema;
     /**
-     * ID ( ).
+     * ID ( )
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     projectId?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     createdBy?: string;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof MetricDefinitionDto
      */
     isActive: boolean;
     /**
-     * severity- ( /).
+     * severity- ( /). text/object false.
      * @type {boolean}
      * @memberof MetricDefinitionDto
      */
     isAnalyzable: boolean;
     /**
      * ( "").
+     * 
+     * null analyzable.
+     * 
+     * value_type:
+     * - string/number: higher_is_better, lower_is_better
+     * - boolean: true_is_better, false_is_better
+     * - array: fewer_is_better, more_is_better, higher_is_better, lower_is_better
      * @type {string}
      * @memberof MetricDefinitionDto
      */
     direction?: MetricDefinitionDtoDirectionEnum | null;
     /**
-     * ( ) .
+     * ( ) . null = .
      * @type {number}
      * @memberof MetricDefinitionDto
      */
     norm?: number;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof MetricDefinitionDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof MetricDefinitionDto
      */

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,187 +42,187 @@ import {
  */
 export interface PublicModelResponseDto {
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     id: string;
     /**
-     * slug UI ; id.
+     * slug UI ; id
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     slug: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     displayName: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     notes: string | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     contextWindow: number | null;
     /**
-     * output .
+     * output
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     maxOutputTokens: number | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     provider: string;
     /**
-     * , .
+     * ,
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     providers: Array<string>;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     type: PublicModelResponseDtoTypeEnum;
     /**
-     * - audio_generation/speech_recognition.
+     * - audio_generation/speech_recognition
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     audioPricingType?: PublicModelResponseDtoAudioPricingTypeEnum;
     /**
-     * image_generation.
+     * image_generation
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     imagePricingType?: PublicModelResponseDtoImagePricingTypeEnum;
     /**
-     * : usage/client pricing -.
+     * : usage/client pricing -
      * @type {AudioPricingGuideDto}
      * @memberof PublicModelResponseDto
      */
     audioPricing?: AudioPricingGuideDto;
     /**
-     * Usage-, -.
+     * Usage-, -
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingUsageFields: Array<string>;
     /**
-     * usage- audio_pricing_type.
+     * usage- audio_pricing_type
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingOptionalUsageFields: Array<string>;
     /**
-     * Provider pricing audio_pricing_type.
+     * Provider pricing audio_pricing_type
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingProviderFields: Array<string>;
     /**
-     * provider pricing audio_pricing_type.
+     * provider pricing audio_pricing_type
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingOptionalProviderFields: Array<string>;
     /**
-     * Client pricing audio_pricing_type.
+     * Client pricing audio_pricing_type
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingClientFields: Array<string>;
     /**
-     * client pricing audio_pricing_type.
+     * client pricing audio_pricing_type
      * @type {Array<string>}
      * @memberof PublicModelResponseDto
      */
     audioPricingOptionalClientFields: Array<string>;
     /**
-     * image_generation] image input 1M , , integer raw, scale=10000; display->raw: 12.
+     * [image_generation] image input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientImageInputPricePer1mCredits?: number;
     /**
-     * image_generation] cached image input 1M , , integer raw, scale=10000; display->raw: 12.
+     * [image_generation] cached image input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientImageCachedInputPricePer1mCredits?: number;
     /**
-     * image_generation] image output 1M , , integer raw, scale=10000; display->raw: 12.
+     * [image_generation] image output 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientImageOutputPricePer1mCredits?: number;
     /**
-     * image_generation] .
+     * [image_generation]
      * @type {Array<PublicImageGenerationPriceResponseDto>}
      * @memberof PublicModelResponseDto
      */
     imageGenerationPrices?: Array<PublicImageGenerationPriceResponseDto>;
     /**
-     * audio_generation] 1000 , , integer raw, scale=10000; display->raw: 12.
+     * [audio_generation] 1000 , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     pricePer1kCharsCredits?: number;
     /**
-     * speech_recognition] audio input 1M , , integer raw, scale=10000; display->raw: 12.
+     * [speech_recognition] audio input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientAudioInputPricePer1mCredits?: number;
     /**
-     * audio_generation] audio output 1M , , integer raw, scale=10000; display->raw: 12.
+     * [audio_generation] audio output 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     clientAudioOutputPricePer1mCredits?: number;
     /**
-     * speech_recognition] , , integer raw, scale=10000; display->raw: 12.
+     * [speech_recognition] , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
      */
     pricePerMinuteCredits?: number;
     /**
-     * function calling.
+     * function calling
      * @type {boolean}
      * @memberof PublicModelResponseDto
      */
     supportsFunctionCalling: boolean;
     /**
-     * vision/.
+     * vision/
      * @type {boolean}
      * @memberof PublicModelResponseDto
      */
     supportsVision: boolean;
     /**
-     * streaming.
+     * streaming
      * @type {boolean}
      * @memberof PublicModelResponseDto
      */
     supportsStreaming: boolean;
     /**
-     * : tokens ( ) messages ( ).
+     * : tokens ( ) messages ( )
      * @type {string}
      * @memberof PublicModelResponseDto
      */
     billingMode: PublicModelResponseDtoBillingModeEnum;
     /**
-     * .
+     * 
      * @type {ModelPricingDto}
      * @memberof PublicModelResponseDto
      */

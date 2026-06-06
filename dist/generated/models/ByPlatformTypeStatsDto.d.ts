@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,61 +17,61 @@ import type { CategoryStatsDto } from './CategoryStatsDto';
  */
 export interface ByPlatformTypeStatsDto {
     /**
-     * VK.
+     * VK
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     vk?: CategoryStatsDto;
     /**
-     * Telegram.
+     * Telegram
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     tg?: CategoryStatsDto;
     /**
-     * MAX.
+     * MAX
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     max?: CategoryStatsDto;
     /**
-     * Avito.
+     * Avito
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     avito?: CategoryStatsDto;
     /**
-     * Discord.
+     * Discord
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     discord?: CategoryStatsDto;
     /**
-     * Widget.
+     *
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     widget?: CategoryStatsDto;
     /**
-     * StreamVi.
+     * StreamVi
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     streamvi?: CategoryStatsDto;
     /**
-     * Email.
+     * Email-
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     email?: CategoryStatsDto;
     /**
-     * Web ().
+     * Web ()
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */
     web?: CategoryStatsDto;
     /**
-     * AI .
+     * AI
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
      */

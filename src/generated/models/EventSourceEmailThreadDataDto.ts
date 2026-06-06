@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,49 +20,49 @@ import { mapValues } from '../runtime';
  */
 export interface EventSourceEmailThreadDataDto {
     /**
-     * Email from.
+     * Email
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */
     from: string;
     /**
-     * Email to.
+     * Email
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */
     to: string;
     /**
-     * Email message id.
+     * ID email-
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */
     messageId?: string;
     /**
-     * Email thread id.
+     * ID email-
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */
     threadId?: string;
     /**
-     * Email in-reply-to.
+     * ID email-
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */
     inReplyTo?: string;
     /**
-     * Email references.
+     * email-
      * @type {Array<string>}
      * @memberof EventSourceEmailThreadDataDto
      */
     references?: Array<string>;
     /**
-     * Email IMAP UID for provider-side message actions.
+     * IMAP UID email-
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */
     imapUid?: string;
     /**
-     * Email IMAP mailbox for provider-side message actions.
+     * IMAP- email-
      * @type {string}
      * @memberof EventSourceEmailThreadDataDto
      */

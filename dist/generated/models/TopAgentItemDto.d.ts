@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,31 +18,31 @@ import type { AgentProblemMetricDto } from './AgentProblemMetricDto';
  */
 export interface TopAgentItemDto {
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof TopAgentItemDto
      */
     agentId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof TopAgentItemDto
      */
     agentName: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof TopAgentItemDto
      */
     avatarUrl?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof TopAgentItemDto
      */
     agentType: string;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof TopAgentItemDto
      */
@@ -54,31 +54,31 @@ export interface TopAgentItemDto {
      */
     score: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TopAgentItemDto
      */
     badMetricsCount: number;
     /**
-     * -3 ().
+     * -3 ()
      * @type {Array<AgentProblemMetricDto>}
      * @memberof TopAgentItemDto
      */
     topProblemMetrics: Array<AgentProblemMetricDto>;
     /**
-     * .
+     *
      * @type {AgentOverallStatsDto}
      * @memberof TopAgentItemDto
      */
     overallStats: AgentOverallStatsDto;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof TopAgentItemDto
      */
     eventsCount: number;
     /**
-     * UI-.
+     * UI-
      * @type {string}
      * @memberof TopAgentItemDto
      */

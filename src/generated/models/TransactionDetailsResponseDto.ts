@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -49,25 +49,25 @@ import {
  */
 export interface TransactionDetailsResponseDto {
     /**
-     * .
+     * 
      * @type {BillingTransactionDto}
      * @memberof TransactionDetailsResponseDto
      */
     transaction: BillingTransactionDto;
     /**
-     * ( group_by=agent).
+     * ( group_by=agent)
      * @type {Array<AgentStatDto>}
      * @memberof TransactionDetailsResponseDto
      */
     byAgent?: Array<AgentStatDto>;
     /**
-     * ( group_by=model).
+     * ( group_by=model)
      * @type {Array<ModelStatDto>}
      * @memberof TransactionDetailsResponseDto
      */
     byModel?: Array<ModelStatDto>;
     /**
-     * usage- ( group_by=usage_events).
+     * usage- ( group_by=usage_events)
      * @type {Array<UsageEventDetailDto>}
      * @memberof TransactionDetailsResponseDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,73 +17,73 @@ import type { EventReactionAssetDto } from './EventReactionAssetDto';
  */
 export interface EventReactionDto {
     /**
-     * ID , .
+     * ID ,
      * @type {string}
      * @memberof EventReactionDto
      */
     messageEventId?: string;
     /**
-     * Emoji .
+     * Emoji
      * @type {string}
      * @memberof EventReactionDto
      */
     emoji?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventReactionDto
      */
     type?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventReactionDto
      */
     id?: string;
     /**
-     * Asset .
+     * Asset
      * @type {EventReactionAssetDto}
      * @memberof EventReactionDto
      */
     asset?: EventReactionAssetDto;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventReactionDto
      */
     messageId?: string;
     /**
-     * Conversation message id.
+     * ID
      * @type {string}
      * @memberof EventReactionDto
      */
     conversationMessageId?: string;
     /**
-     * ID , .
+     * ID ,
      * @type {string}
      * @memberof EventReactionDto
      */
     likerId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventReactionDto
      */
     objectType?: string;
     /**
-     * Owner id .
+     * Owner id
      * @type {number}
      * @memberof EventReactionDto
      */
     objectOwnerId?: number;
     /**
-     * ID .
+     * ID
      * @type {number}
      * @memberof EventReactionDto
      */
     objectId?: number;
     /**
-     * Thread reply id.
+     * ID
      * @type {number}
      * @memberof EventReactionDto
      */

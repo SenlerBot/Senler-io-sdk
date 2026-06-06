@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,37 +16,37 @@
  */
 export interface EventSourceAvitoChatDataDto {
     /**
-     * Avito account user id.
+     * ID Avito
      * @type {string}
      * @memberof EventSourceAvitoChatDataDto
      */
     accountUserId: string;
     /**
-     * Avito chat id.
+     * ID Avito
      * @type {string}
      * @memberof EventSourceAvitoChatDataDto
      */
     chatId: string;
     /**
-     * Avito chat type.
+     * Avito
      * @type {string}
      * @memberof EventSourceAvitoChatDataDto
      */
     chatType: EventSourceAvitoChatDataDtoChatTypeEnum;
     /**
-     * Avito message id.
+     * ID Avito
      * @type {string}
      * @memberof EventSourceAvitoChatDataDto
      */
     messageId?: string;
     /**
-     * Avito item id.
+     * ID Avito
      * @type {string}
      * @memberof EventSourceAvitoChatDataDto
      */
     itemId?: string;
     /**
-     * Avito interlocutor id.
+     * ID Avito
      * @type {string}
      * @memberof EventSourceAvitoChatDataDto
      */

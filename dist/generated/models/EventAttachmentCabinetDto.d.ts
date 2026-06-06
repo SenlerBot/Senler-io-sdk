@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -19,25 +19,19 @@ import type { AttachmentRecognitionCabinetDto } from './AttachmentRecognitionCab
  */
 export interface EventAttachmentCabinetDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     type: EventAttachmentCabinetDtoTypeEnum;
     /**
-     * URL .
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    url?: string;
-    /**
-     * URL storage.
+     * URL storage. storage.
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
@@ -49,121 +43,133 @@ export interface EventAttachmentCabinetDto {
      */
     previewUrl?: string;
     /**
-     * .
+     * . .
+     * @type {string}
+     * @memberof EventAttachmentCabinetDto
+     */
+    externalUrl?: string;
+    /**
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     fileName?: string;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     fileSize?: number;
     /**
-     * MIME .
+     * MIME
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     mimeType?: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     width?: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     height?: number;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     durationSeconds?: number;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     thumbnailUrl?: string;
     /**
-     * .
+     *
      * @type {AttachmentFlagsDto}
      * @memberof EventAttachmentCabinetDto
      */
     flags?: AttachmentFlagsDto;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof EventAttachmentCabinetDto
      */
     createdAt?: Date;
     /**
-     * storage.
+     * storage
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     uploadStatus?: EventAttachmentCabinetDtoUploadStatusEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     uploadStage?: EventAttachmentCabinetDtoUploadStageEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     uploadError?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     recognitionStatus?: EventAttachmentCabinetDtoRecognitionStatusEnum;
     /**
-     * ( , ).
+     * ( , )
      * @type {AttachmentRecognitionCabinetDto}
      * @memberof EventAttachmentCabinetDto
      */
     recognition?: AttachmentRecognitionCabinetDto;
     /**
-     * , .
+     * ,
      * @type {AttachmentGenerationDto}
      * @memberof EventAttachmentCabinetDto
      */
     generation?: AttachmentGenerationDto;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     deliveryStatus?: EventAttachmentCabinetDtoDeliveryStatusEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     deliveryStage?: EventAttachmentCabinetDtoDeliveryStageEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     deliveryError?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     platformType?: EventAttachmentCabinetDtoPlatformTypeEnum;
     /**
-     * .
+     * ID . API.
+     * @type {string}
+     * @memberof EventAttachmentCabinetDto
+     */
+    platformFileId?: string;
+    /**
+     *
      * @type {Date}
      * @memberof EventAttachmentCabinetDto
      */

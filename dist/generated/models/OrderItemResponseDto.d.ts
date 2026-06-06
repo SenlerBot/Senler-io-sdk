@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,79 +17,79 @@ import type { OrderTariffResponseDto } from './OrderTariffResponseDto';
  */
 export interface OrderItemResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     id: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     projectId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     type: OrderItemResponseDtoTypeEnum;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof OrderItemResponseDto
      */
     amount: number;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof OrderItemResponseDto
      */
     refundedAmount: number;
     /**
-     * (ISO 4217).
+     * (ISO 4217)
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     currency: OrderItemResponseDtoCurrencyEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     status: OrderItemResponseDtoStatusEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     activationStatus: OrderItemResponseDtoActivationStatusEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     activationError?: string | null;
     /**
-     * item .
+     * item
      * @type {Date}
      * @memberof OrderItemResponseDto
      */
     processingStartedAt?: Date | null;
     /**
-     * ID ( type = credit_package).
+     * ID ( type = credit_package)
      * @type {string}
      * @memberof OrderItemResponseDto
      */
     creditPackageId?: string | null;
     /**
-     * ( type = tariff).
+     * ( type = tariff)
      * @type {OrderTariffResponseDto}
      * @memberof OrderItemResponseDto
      */
     tariff?: OrderTariffResponseDto | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof OrderItemResponseDto
      */

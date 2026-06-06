@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,85 +16,85 @@
  */
 export interface MemberChannelDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MemberChannelDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MemberChannelDto
      */
     name: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MemberChannelDto
      */
     type: MemberChannelDtoTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MemberChannelDto
      */
     externalId?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof MemberChannelDto
      */
     avatarUrl?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MemberChannelDto
      */
     role: MemberChannelDtoRoleEnum;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canViewLeads: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canViewChannel: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canManageLeads: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canManageChannel: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canViewDialogs: boolean;
     /**
-     * spaces.
+     * spaces
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canViewSpaces: boolean;
     /**
-     * spaces.
+     * spaces
      * @type {boolean}
      * @memberof MemberChannelDto
      */
     canManageSpaces: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof MemberChannelDto
      */

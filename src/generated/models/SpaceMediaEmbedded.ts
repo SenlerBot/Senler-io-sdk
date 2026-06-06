@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,67 +20,67 @@ import { mapValues } from '../runtime';
  */
 export interface SpaceMediaEmbedded {
     /**
-     * 
+     * .
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */
     type: SpaceMediaEmbeddedTypeEnum;
     /**
-     * 
+     * .
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */
     url: string;
     /**
-     * 
+     * .
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */
     thumbnailUrl?: string;
     /**
-     * 
+     * .
      * @type {number}
      * @memberof SpaceMediaEmbedded
      */
     width?: number;
     /**
-     * 
+     * .
      * @type {number}
      * @memberof SpaceMediaEmbedded
      */
     height?: number;
     /**
-     * 
+     * MIME- , image/png.
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */
     mimeType?: string;
     /**
-     * 
+     * .
      * @type {number}
      * @memberof SpaceMediaEmbedded
      */
     position: number;
     /**
-     * 
+     * .
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */
     caption?: string;
     /**
-     * 
+     * ID .
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */
     sourceId?: string;
     /**
-     * 
+     * .
      * @type {boolean}
      * @memberof SpaceMediaEmbedded
      */
     isCover?: boolean;
     /**
-     * 
+     * , .
      * @type {string}
      * @memberof SpaceMediaEmbedded
      */

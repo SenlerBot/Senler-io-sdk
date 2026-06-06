@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -23,241 +23,265 @@ import type { DialogFirstMessageDto } from './DialogFirstMessageDto';
  */
 export interface DialogDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogDto
      */
     id: string;
     /**
-     * (primary + background).
+     * , .
      * @type {Array<DialogDtoDialogAgentsInner>}
      * @memberof DialogDto
      */
     dialogAgents?: Array<DialogDtoDialogAgentsInner>;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof DialogDto
      */
     channelId?: string;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof DialogDto
      */
     projectId?: string;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof DialogDto
      */
     autoAssignDisabled: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     status: DialogDtoStatusEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     operatorResponseStatus: DialogDtoOperatorResponseStatusEnum;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     operatorWaitingSince?: Date;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     leadResponseStatus: DialogDtoLeadResponseStatusEnum;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     leadWaitingSince?: Date;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     dialogType: DialogDtoDialogTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogDto
      */
     externalDialogId?: string;
     /**
-     * ID leaf space, space.
+     * ID , .
      * @type {string}
      * @memberof DialogDto
      */
     spaceId?: string | null;
     /**
-     * space ID leaf.
+     * ID .
      * @type {Array<string>}
      * @memberof DialogDto
      */
     spaceIds?: Array<string>;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof DialogDto
      */
     tags: Array<string>;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
-    priority?: DialogDtoPriorityEnum;
+    priority?: DialogDtoPriorityEnum | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     trafficSource?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     trafficMedium?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogDto
      */
     deviceType?: string;
     /**
-     * UTM source.
+     * UTM-
      * @type {string}
      * @memberof DialogDto
      */
     utmSource?: string;
     /**
-     * UTM medium.
+     * UTM-
      * @type {string}
      * @memberof DialogDto
      */
     utmMedium?: string;
     /**
-     * UTM campaign.
+     * UTM-
      * @type {string}
      * @memberof DialogDto
      */
     utmCampaign?: string;
     /**
-     * UTM term.
+     * UTM-
      * @type {string}
      * @memberof DialogDto
      */
     utmTerm?: string;
     /**
-     * UTM content.
+     * UTM-
      * @type {string}
      * @memberof DialogDto
      */
     utmContent?: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DialogDto
      */
     durationSeconds: number;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof DialogDto
      */
     firstResponseTimeSeconds?: number;
     /**
-     * .
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    firstLeadMessageAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    firstOperatorMessageAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    lastLeadMessageAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    lastOperatorMessageAt?: Date;
+    /**
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     startedAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     completedAt?: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     lastEventAt?: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogDto
      */
     updatedAt: Date;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof DialogDto
      */
     isTest: boolean;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DialogDto
      */
     totalEvents: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DialogDto
      */
     messagesCount: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DialogDto
      */
     operatorUnreadCount: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DialogDto
      */
     leadUnreadCount: number;
     /**
-     * ID primary lead, .
+     * ID primary lead,
      * @type {string}
      * @memberof DialogDto
      */
     primaryLeadId?: string;
     /**
-     * .
+     *
      * @type {DialogDisplayInfoDto}
      * @memberof DialogDto
      */
     displayInfo?: DialogDisplayInfoDto;
     /**
-     * AI- .
+     * AI-
      * @type {string}
      * @memberof DialogDto
      */
     summary?: string;
     /**
-     * summary .
+     * summary
      * @type {Date}
      * @memberof DialogDto
      */
@@ -269,31 +293,31 @@ export interface DialogDto {
      */
     replyTarget?: DialogDtoReplyTarget;
     /**
-     * .
+     *
      * @type {DialogFirstMessageDto}
      * @memberof DialogDto
      */
     firstMessage?: DialogFirstMessageDto;
     /**
-     * .
+     *
      * @type {DialogLastMessageDto}
      * @memberof DialogDto
      */
     lastMessage?: DialogLastMessageDto;
     /**
-     * ( lead).
+     * , . profile .
      * @type {EventSenderDto}
      * @memberof DialogDto
      */
     serviceActor?: EventSenderDto;
     /**
-     * .
+     *
      * @type {DialogOperatorAssignmentDto}
      * @memberof DialogDto
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
-     * (UI ).
+     * (UI )
      * @type {boolean}
      * @memberof DialogDto
      */

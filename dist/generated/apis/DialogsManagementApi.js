@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUnarchiveAcceptLanguageEnum = exports.UpdateSoundMuteAcceptLanguageEnum = exports.UpdateOperatorResponseAnsweredAcceptLanguageEnum = exports.UpdateOperatorAssignmentMeAcceptLanguageEnum = exports.UpdateNotSpamAcceptLanguageEnum = exports.UpdateEventsSpamAcceptLanguageEnum = exports.UpdateEventsAcceptLanguageEnum = exports.UpdateAutoAssignDisabledAcceptLanguageEnum = exports.UpdateArchiveAcceptLanguageEnum = exports.UpdateAgentAcceptLanguageEnum = exports.GetParticipantsAcceptLanguageEnum = exports.DeleteOperatorAssignmentAcceptLanguageEnum = exports.DeleteEventsAcceptLanguageEnum = exports.DeleteAgentAcceptLanguageEnum = exports.DeleteAgentRoleEnum = exports.DialogsManagementApi = void 0;
+exports.UpdateUnarchiveAcceptLanguageEnum = exports.UpdateSoundMuteAcceptLanguageEnum = exports.UpdatePriorityAcceptLanguageEnum = exports.UpdateOperatorResponseAnsweredAcceptLanguageEnum = exports.UpdateOperatorResponseAcceptLanguageEnum = exports.UpdateOperatorResponseStatusEnum = exports.UpdateOperatorAssignmentMeAcceptLanguageEnum = exports.UpdateNotSpamAcceptLanguageEnum = exports.UpdateEventsSpamAcceptLanguageEnum = exports.UpdateEventsAcceptLanguageEnum = exports.UpdateAutoAssignDisabledAcceptLanguageEnum = exports.UpdateArchiveAcceptLanguageEnum = exports.UpdateAgentAcceptLanguageEnum = exports.GetParticipantsAcceptLanguageEnum = exports.DeleteOperatorAssignmentAcceptLanguageEnum = exports.DeleteEventsAcceptLanguageEnum = exports.DeleteAgentAcceptLanguageEnum = exports.DeleteAgentRoleEnum = exports.DialogsManagementApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -103,7 +103,7 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (soft delete).
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
      *
      */
     async deleteEventsRaw(requestParameters, initOverrides) {
@@ -141,7 +141,7 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeleteMessageResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (soft delete).
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
      *
      */
     async deleteEvents(requestParameters, initOverrides) {
@@ -374,7 +374,7 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     async updateEventsRaw(requestParameters, initOverrides) {
@@ -417,7 +417,7 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EditMessageResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     async updateEvents(requestParameters, initOverrides) {
@@ -557,6 +557,52 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * operator_response_status answered unanswered.
+     *
+     */
+    async updateOperatorResponseRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateOperatorResponse().');
+        }
+        if (requestParameters['status'] == null) {
+            throw new runtime.RequiredError('status', 'Required parameter "status" was null or undefined when calling updateOperatorResponse().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{id}/operator-response/{status}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"status"}}`, encodeURIComponent(String(requestParameters['status']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * operator_response_status answered unanswered.
+     *
+     */
+    async updateOperatorResponse(requestParameters, initOverrides) {
+        const response = await this.updateOperatorResponseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * operator_response_status answered.
      *
      */
@@ -600,8 +646,56 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * / UI.
-     * mute
+     * priority , .
+     *
+     */
+    async updatePriorityRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updatePriority().');
+        }
+        if (requestParameters['setDialogPriorityDto'] == null) {
+            throw new runtime.RequiredError('setDialogPriorityDto', 'Required parameter "setDialogPriorityDto" was null or undefined when calling updatePriority().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{id}/priority`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetDialogPriorityDtoToJSON)(requestParameters['setDialogPriorityDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * priority , .
+     *
+     */
+    async updatePriority(requestParameters, initOverrides) {
+        const response = await this.updatePriorityRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
      */
     async updateSoundMuteRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -640,8 +734,8 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
     }
     /**
-     * / UI.
-     * mute
+     * .
+     *
      */
     async updateSoundMute(requestParameters, initOverrides) {
         const response = await this.updateSoundMuteRaw(requestParameters, initOverrides);
@@ -779,7 +873,28 @@ exports.UpdateOperatorAssignmentMeAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.UpdateOperatorResponseStatusEnum = {
+    Answered: 'answered',
+    Unanswered: 'unanswered'
+};
+/**
+ * @export
+ */
+exports.UpdateOperatorResponseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.UpdateOperatorResponseAnsweredAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdatePriorityAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

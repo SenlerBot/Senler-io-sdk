@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,61 +16,61 @@
  */
 export interface SpacesTreeRootChannelDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     nodeType: string;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     title: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     name?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     channelType?: SpacesTreeRootChannelDtoChannelTypeEnum | null;
     /**
-     * Platform external ID .
+     * Platform external ID
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     externalId?: string | null;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof SpacesTreeRootChannelDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof SpacesTreeRootChannelDto
      */
     isPaused: boolean;
     /**
-     * spaces .
+     * spaces
      * @type {boolean}
      * @memberof SpacesTreeRootChannelDto
      */
     hasChildren: boolean;
     /**
-     * spaces q .
+     * spaces q
      * @type {number}
      * @memberof SpacesTreeRootChannelDto
      */

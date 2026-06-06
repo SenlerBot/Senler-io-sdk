@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -183,7 +183,7 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
+     * . .  MAX `external_user_ids` `chatId`, - `userId`.
      * 
      */
     async _importRaw(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
@@ -233,7 +233,7 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
+     * . .  MAX `external_user_ids` `chatId`, - `userId`.
      * 
      */
     async _import(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
@@ -548,7 +548,7 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      * 
      */
     async updateSyncProfileRaw(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SyncLeadProfileResponseDto>> {
@@ -605,7 +605,7 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      * 
      */
     async updateSyncProfile(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncLeadProfileResponseDto> {
@@ -614,7 +614,7 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , (VK), .
+     * , (VK), .  ** :** VK  **:** - ( ) - 403 Forbidden - (is_new: false) - , (is_new: false)
      * 
      */
     async verifySubscriptionRaw(requestParameters: VerifySubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerifySubscriptionAndAddResponseDto>> {
@@ -664,7 +664,7 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , (VK), .
+     * , (VK), .  ** :** VK  **:** - ( ) - 403 Forbidden - (is_new: false) - , (is_new: false)
      * 
      */
     async verifySubscription(requestParameters: VerifySubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerifySubscriptionAndAddResponseDto> {

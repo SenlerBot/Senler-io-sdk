@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -64,12 +64,12 @@ export interface ValidateRequest {
  */
 export declare class DataSourcesApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     bindWebsiteRaw(requestParameters: BindWebsiteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * .
+     *
      *
      */
     bindWebsite(requestParameters: BindWebsiteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
@@ -84,72 +84,72 @@ export declare class DataSourcesApi extends runtime.BaseAPI {
      */
     dataSourcesCreate(requestParameters: DataSourcesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * .
+     *
      *
      */
     dataSourcesDeactivateRaw(requestParameters: DataSourcesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * .
+     *
      *
      */
     dataSourcesDeactivate(requestParameters: DataSourcesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * .
+     *
      * ID
      */
     dataSourcesGetByIdRaw(requestParameters: DataSourcesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * .
+     *
      * ID
      */
     dataSourcesGetById(requestParameters: DataSourcesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * .
+     *
      *
      */
     dataSourcesListRaw(requestParameters: DataSourcesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataSourceResponseDto>>>;
     /**
-     * .
+     *
      *
      */
     dataSourcesList(requestParameters: DataSourcesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>>;
     /**
-     * .
+     *
      *
      */
     dataSourcesUpdateRaw(requestParameters: DataSourcesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * .
+     *
      *
      */
     dataSourcesUpdate(requestParameters: DataSourcesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * .
+     *
      *
      */
     dataSourcesUpdateRestoreRaw(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataSourceResponseDto>>;
     /**
-     * .
+     *
      *
      */
     dataSourcesUpdateRestore(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
-     * , .
+     * ,
      *
      */
     getActiveForTrainingRaw(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataSourceResponseDto>>>;
     /**
-     * , .
+     * ,
      *
      */
     getActiveForTraining(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>>;
     /**
-     * .
+     *
      *
      */
     validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>>;
     /**
-     * .
+     *
      *
      */
     validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto>;

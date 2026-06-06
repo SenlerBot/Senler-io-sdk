@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,13 +17,13 @@ import type { ChannelSpaceSectionDto } from './ChannelSpaceSectionDto';
  */
 export interface ChannelSpaceSectionsResponseDto {
     /**
-     * Channel type these sections belong to.
+     * ,
      * @type {string}
      * @memberof ChannelSpaceSectionsResponseDto
      */
     channelType: ChannelSpaceSectionsResponseDtoChannelTypeEnum;
     /**
-     * Available product sections for the channel space tree.
+     *
      * @type {Array<ChannelSpaceSectionDto>}
      * @memberof ChannelSpaceSectionsResponseDto
      */

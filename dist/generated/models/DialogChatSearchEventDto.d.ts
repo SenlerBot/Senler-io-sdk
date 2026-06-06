@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -41,133 +41,127 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  */
 export interface DialogChatSearchEventDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     id: string;
     /**
-     * ID ; .
+     * ID ;
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     dialogId?: string;
     /**
-     * ID MCP .
+     * ID MCP
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     mcpServerId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     channelId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     platformType?: DialogChatSearchEventDtoPlatformTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     projectId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     agentId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     appId?: string;
     /**
-     * ID .
-     * @type {string}
-     * @memberof DialogChatSearchEventDto
-     */
-    appAgentId?: string;
-    /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     leadId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     targetType?: DialogChatSearchEventDtoTargetTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     targetId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     externalMessageId?: string;
     /**
-     * .
+     *
      * @type {EventSenderDto}
      * @memberof DialogChatSearchEventDto
      */
     sender?: EventSenderDto;
     /**
-     * .
+     *
      * @type {EventMessageDto}
      * @memberof DialogChatSearchEventDto
      */
     message?: EventMessageDto;
     /**
-     * cabinet-safe .
+     * cabinet-safe
      * @type {Array<EventAttachmentCabinetDto>}
      * @memberof DialogChatSearchEventDto
      */
     attachments: Array<EventAttachmentCabinetDto>;
     /**
-     * .
+     *
      * @type {Array<EventButtonDto>}
      * @memberof DialogChatSearchEventDto
      */
     buttons: Array<EventButtonDto>;
     /**
-     * .
+     *
      * @type {EventButtonClickDto}
      * @memberof DialogChatSearchEventDto
      */
     buttonClick?: EventButtonClickDto;
     /**
-     * .
+     *
      * @type {EventToolDto}
      * @memberof DialogChatSearchEventDto
      */
     tool?: EventToolDto;
     /**
-     * raw- provider/admin-only .
+     *
      * @type {EventCostsCabinetDto}
      * @memberof DialogChatSearchEventDto
      */
     costs?: EventCostsCabinetDto;
     /**
-     * .
+     *
      * @type {EventMessageInteractionsDto}
      * @memberof DialogChatSearchEventDto
      */
     messageInteractions?: EventMessageInteractionsDto;
     /**
-     * .
+     *
      * @type {EventStatusDto}
      * @memberof DialogChatSearchEventDto
      */
@@ -185,127 +179,127 @@ export interface DialogChatSearchEventDto {
      */
     deliveryRef?: DialogChatEventDtoDeliveryRef;
     /**
-     * AI context.
+     * AI-
      * @type {EventAiDto}
      * @memberof DialogChatSearchEventDto
      */
     ai?: EventAiDto;
     /**
-     * Typing lifecycle context.
+     *
      * @type {EventTypingDto}
      * @memberof DialogChatSearchEventDto
      */
     typing?: EventTypingDto;
     /**
-     * Timer context.
+     *
      * @type {EventTimerDto}
      * @memberof DialogChatSearchEventDto
      */
     timer?: EventTimerDto;
     /**
-     * Trigger/source context.
+     *
      * @type {EventTriggerContextDto}
      * @memberof DialogChatSearchEventDto
      */
     triggerContext?: EventTriggerContextDto;
     /**
-     * Moderation context.
+     *
      * @type {EventModerationDto}
      * @memberof DialogChatSearchEventDto
      */
     moderation?: EventModerationDto;
     /**
-     * Broadcast context.
+     *
      * @type {EventBroadcastDto}
      * @memberof DialogChatSearchEventDto
      */
     broadcast?: EventBroadcastDto;
     /**
-     * Reaction context.
+     *
      * @type {EventReactionDto}
      * @memberof DialogChatSearchEventDto
      */
     reaction?: EventReactionDto;
     /**
-     * Poll answer context.
+     *
      * @type {EventPollAnswerChangeDto}
      * @memberof DialogChatSearchEventDto
      */
     pollAnswer?: EventPollAnswerChangeDto;
     /**
-     * Poll vote context.
+     *
      * @type {EventPollVoteDto}
      * @memberof DialogChatSearchEventDto
      */
     pollVote?: EventPollVoteDto;
     /**
-     * Chat change context.
+     *
      * @type {EventChatChangeDto}
      * @memberof DialogChatSearchEventDto
      */
     chatChange?: EventChatChangeDto;
     /**
-     * .
+     *
      * @type {EventErrorDto}
      * @memberof DialogChatSearchEventDto
      */
     error?: EventErrorDto;
     /**
-     * .
+     *
      * @type {EventHierarchyDto}
      * @memberof DialogChatSearchEventDto
      */
     hierarchy?: EventHierarchyDto;
     /**
-     * Generation block: summary + metrics.
+     * :
      * @type {EventGenerationDto}
      * @memberof DialogChatSearchEventDto
      */
     generation?: EventGenerationDto;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof DialogChatSearchEventDto
      */
     tags: Array<string>;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     creditTransactionId?: string;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogChatSearchEventDto
      */
     timestamp: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogChatSearchEventDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof DialogChatSearchEventDto
      */
     updatedAt: Date;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DialogChatSearchEventDto
      */
     eventVersion: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
     actionType: DialogChatSearchEventDtoActionTypeEnum;
     /**
-     * chat event.
+     * chat event
      * @type {EventSearchMetadataDto}
      * @memberof DialogChatSearchEventDto
      */
@@ -391,8 +385,6 @@ export declare const DialogChatSearchEventDtoActionTypeEnum: {
     readonly ReasoningRecorded: "reasoning_recorded";
     readonly ImageGenerated: "image_generated";
     readonly AudioGenerated: "audio_generated";
-    readonly SpeechRecognized: "speech_recognized";
-    readonly ImageAnalyzed: "image_analyzed";
     readonly AiActionExecuted: "ai_action_executed";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";

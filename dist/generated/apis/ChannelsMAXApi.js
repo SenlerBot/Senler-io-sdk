@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ChannelsMAXApi extends runtime.BaseAPI {
     /**
-     * MAX .
+     * MAX access token . MAX API, , . access token , MAX .
      * MAX
      */
     async maxRaw(requestParameters, initOverrides) {
@@ -91,7 +91,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateMaxChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * MAX .
+     * MAX access token . MAX API, , . access token , MAX .
      * MAX
      */
     async max(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MAX MAX . Token bot_id, channel.
+     * MAX MAX . Token bot_id, channel.external_id. MAX identity .
      * MAX
      */
     async tokensMaxBindRaw(requestParameters, initOverrides) {
@@ -139,7 +139,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * MAX MAX . Token bot_id, channel.
+     * MAX MAX . Token bot_id, channel.external_id. MAX identity .
      * MAX
      */
     async tokensMaxBind(requestParameters, initOverrides) {
@@ -147,8 +147,8 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MAX webhook MAX API (/subscriptions) .
-     * MAX webhook
+     * MAX API .
+     * MAX
      */
     async tokensMaxCheckWebhookStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
@@ -182,15 +182,15 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CheckWebhookStatusResultDtoFromJSON)(jsonValue));
     }
     /**
-     * MAX webhook MAX API (/subscriptions) .
-     * MAX webhook
+     * MAX API .
+     * MAX
      */
     async tokensMaxCheckWebhookStatus(requestParameters, initOverrides) {
         const response = await this.tokensMaxCheckWebhookStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * MAX S3.
+     * MAX S3
      * MAX
      */
     async tokensMaxRefreshAvatarRaw(requestParameters, initOverrides) {
@@ -225,7 +225,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelTokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * MAX S3.
+     * MAX S3
      * MAX
      */
     async tokensMaxRefreshAvatar(requestParameters, initOverrides) {
@@ -233,7 +233,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MAX access token MAX API (/me).
+     * MAX access token MAX API (/me)
      * MAX
      */
     async tokensMaxValidateRaw(requestParameters, initOverrides) {
@@ -268,7 +268,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateMaxTokenResultDtoFromJSON)(jsonValue));
     }
     /**
-     * MAX access token MAX API (/me).
+     * MAX access token MAX API (/me)
      * MAX
      */
     async tokensMaxValidate(requestParameters, initOverrides) {
@@ -276,7 +276,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MAX API (/subscriptions).
+     * MAX API (/subscriptions)
      * MAX
      */
     async tokensMaxWebhookSetupRaw(requestParameters, initOverrides) {
@@ -316,7 +316,7 @@ class ChannelsMAXApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SetupWebhookResultDtoFromJSON)(jsonValue));
     }
     /**
-     * MAX API (/subscriptions).
+     * MAX API (/subscriptions)
      * MAX
      */
     async tokensMaxWebhookSetup(requestParameters, initOverrides) {

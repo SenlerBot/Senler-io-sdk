@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateListsRestoreAcceptLanguageEnum = exports.UpdateListsAcceptLanguageEnum = exports.ProjectCredentialValidateAcceptLanguageEnum = exports.ProjectCredentialOauthStartAcceptLanguageEnum = exports.ProjectCredentialManualAcceptLanguageEnum = exports.McpServersUpdateRestoreAcceptLanguageEnum = exports.McpServersUpdateAcceptLanguageEnum = exports.McpServersListAcceptLanguageEnum = exports.McpServersImportAcceptLanguageEnum = exports.McpServersGetByIdAcceptLanguageEnum = exports.McpServersDeactivateAcceptLanguageEnum = exports.McpServersCreateAcceptLanguageEnum = exports.ListsServersAcceptLanguageEnum = exports.ListsAcceptLanguageEnum = exports.GetProjectCredentialStatusAcceptLanguageEnum = exports.GetLists2AcceptLanguageEnum = exports.GetListsAcceptLanguageEnum = exports.GetKnowledgeBaseSearchAcceptLanguageEnum = exports.GetExportAcceptLanguageEnum = exports.GetCustomOauthStatusAcceptLanguageEnum = exports.GetCustomOauthCallbackAcceptLanguageEnum = exports.DeleteProjectCredentialAcceptLanguageEnum = exports.DeleteListsServersAcceptLanguageEnum = exports.DeleteListsAcceptLanguageEnum = exports.CustomOauthStartAcceptLanguageEnum = exports.MCPServersApi = void 0;
+exports.UpdateListsRestoreAcceptLanguageEnum = exports.UpdateListsAcceptLanguageEnum = exports.ProjectCredentialValidateAcceptLanguageEnum = exports.ProjectCredentialOauthStartAcceptLanguageEnum = exports.ProjectCredentialManualAcceptLanguageEnum = exports.McpServersUpdateAcceptLanguageEnum = exports.McpServersListAcceptLanguageEnum = exports.McpServersImportAcceptLanguageEnum = exports.McpServersGetByIdAcceptLanguageEnum = exports.McpServersDeactivateAcceptLanguageEnum = exports.McpServersCreateAcceptLanguageEnum = exports.ListsServersAcceptLanguageEnum = exports.ListsAcceptLanguageEnum = exports.GetProjectCredentialStatusAcceptLanguageEnum = exports.GetLists2AcceptLanguageEnum = exports.GetListsAcceptLanguageEnum = exports.GetKnowledgeBaseSearchAcceptLanguageEnum = exports.GetExportAcceptLanguageEnum = exports.GetCustomOauthStatusAcceptLanguageEnum = exports.GetCustomOauthCallbackAcceptLanguageEnum = exports.DeleteProjectCredentialAcceptLanguageEnum = exports.DeleteListsServersAcceptLanguageEnum = exports.DeleteListsAcceptLanguageEnum = exports.CustomOauthStartAcceptLanguageEnum = exports.MCPServersApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class MCPServersApi extends runtime.BaseAPI {
     /**
-     * OAuth MCP .
+     * OAuth- MCP URL .
      * OAuth MCP
      */
     async customOauthStartRaw(requestParameters, initOverrides) {
@@ -103,7 +103,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartCustomMcpOAuthResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * OAuth MCP .
+     * OAuth- MCP URL .
      * OAuth MCP
      */
     async customOauthStart(requestParameters, initOverrides) {
@@ -211,8 +211,8 @@ class MCPServersApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     async deleteProjectCredentialRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -255,16 +255,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     async deleteProjectCredential(requestParameters, initOverrides) {
         const response = await this.deleteProjectCredentialRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Callback OAuth MCP .
-     * Callback OAuth MCP
+     * OAuth- MCP , HTML- .
+     * OAuth- MCP
      */
     async getCustomOauthCallbackRaw(requestParameters, initOverrides) {
         const queryParameters = {};
@@ -298,15 +298,15 @@ class MCPServersApi extends runtime.BaseAPI {
         }
     }
     /**
-     * Callback OAuth MCP .
-     * Callback OAuth MCP
+     * OAuth- MCP , HTML- .
+     * OAuth- MCP
      */
     async getCustomOauthCallback(requestParameters = {}, initOverrides) {
         const response = await this.getCustomOauthCallbackRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * OAuth MCP .
+     * OAuth- MCP .
      * OAuth MCP
      */
     async getCustomOauthStatusRaw(requestParameters, initOverrides) {
@@ -350,7 +350,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CustomMcpOAuthStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * OAuth MCP .
+     * OAuth- MCP .
      * OAuth MCP
      */
     async getCustomOauthStatus(requestParameters, initOverrides) {
@@ -575,8 +575,8 @@ class MCPServersApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async getProjectCredentialStatusRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -619,15 +619,15 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async getProjectCredentialStatus(requestParameters, initOverrides) {
         const response = await this.getProjectCredentialStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async listsRaw(requestParameters, initOverrides) {
@@ -670,7 +670,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async lists(requestParameters, initOverrides) {
@@ -730,7 +730,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersCreateRaw(requestParameters, initOverrides) {
@@ -776,7 +776,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateServerResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersCreate(requestParameters, initOverrides) {
@@ -784,7 +784,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersDeactivateRaw(requestParameters, initOverrides) {
@@ -828,7 +828,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersDeactivate(requestParameters, initOverrides) {
@@ -999,7 +999,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersUpdateRaw(requestParameters, initOverrides) {
@@ -1048,7 +1048,7 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateServerResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersUpdate(requestParameters, initOverrides) {
@@ -1058,58 +1058,6 @@ class MCPServersApi extends runtime.BaseAPI {
     /**
      * MCP .
      * MCP
-     */
-    async mcpServersUpdateRestoreRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling mcpServersUpdateRestore().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling mcpServersUpdateRestore().');
-        }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling mcpServersUpdateRestore().');
-        }
-        const queryParameters = {};
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
-        }
-        const response = await this.request({
-            path: `/api/mcp-servers/{id}/restore`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * MCP .
-     * MCP
-     */
-    async mcpServersUpdateRestore(requestParameters, initOverrides) {
-        const response = await this.mcpServersUpdateRestoreRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * credential MCP project.
-     * project credential
      */
     async projectCredentialManualRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1157,16 +1105,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     async projectCredentialManual(requestParameters, initOverrides) {
         const response = await this.projectCredentialManualRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * OAuth project credential MCP .
-     * OAuth project credential MCP
+     * OAuth- MCP .
+     * OAuth MCP
      */
     async projectCredentialOauthStartRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1214,16 +1162,16 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartCustomMcpOAuthResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * OAuth project credential MCP .
-     * OAuth project credential MCP
+     * OAuth- MCP .
+     * OAuth MCP
      */
     async projectCredentialOauthStart(requestParameters, initOverrides) {
         const response = await this.projectCredentialOauthStartRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * project credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async projectCredentialValidateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -1266,8 +1214,8 @@ class MCPServersApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerProjectCredentialStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * project credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async projectCredentialValidate(requestParameters, initOverrides) {
         const response = await this.projectCredentialValidateRaw(requestParameters, initOverrides);
@@ -1508,13 +1456,6 @@ exports.McpServersListAcceptLanguageEnum = {
  * @export
  */
 exports.McpServersUpdateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.McpServersUpdateRestoreAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

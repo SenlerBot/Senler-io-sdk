@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
-     * Soft deletes a folder from the project knowledge base.
-     * Delete knowledge base folder
+     * .
+     *
      */
     async deleteFoldersRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -89,15 +89,15 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Soft deletes a folder from the project knowledge base.
-     * Delete knowledge base folder
+     * .
+     *
      */
     async deleteFolders(requestParameters, initOverrides) {
         await this.deleteFoldersRaw(requestParameters, initOverrides);
     }
     /**
-     * Soft deletes a table from the project knowledge base.
-     * Delete knowledge base table
+     * .
+     *
      */
     async deleteTablesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -131,15 +131,15 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Soft deletes a table from the project knowledge base.
-     * Delete knowledge base table
+     * .
+     *
      */
     async deleteTables(requestParameters, initOverrides) {
         await this.deleteTablesRaw(requestParameters, initOverrides);
     }
     /**
-     * Creates a Markdown/text file in the project knowledge base.
-     * Create knowledge base text file
+     * Markdown- .
+     *
      */
     async filesRaw(requestParameters, initOverrides) {
         if (requestParameters['createKnowledgeFileDto'] == null) {
@@ -175,16 +175,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Creates a Markdown/text file in the project knowledge base.
-     * Create knowledge base text file
+     * Markdown- .
+     *
      */
     async files(requestParameters, initOverrides) {
         const response = await this.filesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Uploads a source file, stores the original file and extracts supported text content.
-     * Upload knowledge base file
+     * , .
+     *
      */
     async filesUploadRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -249,16 +249,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Uploads a source file, stores the original file and extracts supported text content.
-     * Upload knowledge base file
+     * , .
+     *
      */
     async filesUpload(requestParameters, initOverrides) {
         const response = await this.filesUploadRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Uploads a ZIP archive up to 50 MB, creates folders from archive paths and imports supported files.
-     * Upload knowledge base ZIP archive
+     * ZIP- 50 , .
+     * ZIP-
      */
     async filesUploadArchiveRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -323,16 +323,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UploadKnowledgeArchiveResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Uploads a ZIP archive up to 50 MB, creates folders from archive paths and imports supported files.
-     * Upload knowledge base ZIP archive
+     * ZIP- 50 , .
+     * ZIP-
      */
     async filesUploadArchive(requestParameters, initOverrides) {
         const response = await this.filesUploadArchiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Creates a folder in the project knowledge base.
-     * Create knowledge base folder
+     * .
+     *
      */
     async foldersRaw(requestParameters, initOverrides) {
         if (requestParameters['createKnowledgeFolderDto'] == null) {
@@ -368,16 +368,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFolderResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Creates a folder in the project knowledge base.
-     * Create knowledge base folder
+     * .
+     *
      */
     async folders(requestParameters, initOverrides) {
         const response = await this.foldersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Returns folders, files and tables for the selected parent folder.
-     * List knowledge base resources
+     * , .
+     *
      */
     async getResourcesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -417,16 +417,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeResourcesResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Returns folders, files and tables for the selected parent folder.
-     * List knowledge base resources
+     * , .
+     *
      */
     async getResources(requestParameters, initOverrides) {
         const response = await this.getResourcesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Returns selected folders, files and tables by IDs inside one project.
-     * Resolve knowledge base resources
+     * , ID .
+     *
      */
     async getResourcesResolveRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -472,16 +472,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeResourcesResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Returns selected folders, files and tables by IDs inside one project.
-     * Resolve knowledge base resources
+     * , ID .
+     *
      */
     async getResourcesResolve(requestParameters, initOverrides) {
         const response = await this.getResourcesResolveRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Searches active knowledge base folders, files and tables by text query.
-     * Search knowledge base resources
+     * , .
+     *
      */
     async getSearchRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -536,16 +536,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PaginatedKnowledgeBaseSearchResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Searches active knowledge base folders, files and tables by text query.
-     * Search knowledge base resources
+     * , .
+     *
      */
     async getSearch(requestParameters, initOverrides) {
         const response = await this.getSearchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Returns a single knowledge base table in the resolved project scope.
-     * Get knowledge base table
+     * .
+     *
      */
     async getTablesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -579,16 +579,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeTableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Returns a single knowledge base table in the resolved project scope.
-     * Get knowledge base table
+     * .
+     *
      */
     async getTables(requestParameters, initOverrides) {
         const response = await this.getTablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Soft deletes a file from the project knowledge base.
-     * Delete knowledge base file
+     * .
+     *
      */
     async knowledgeBaseDeleteFilesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -622,15 +622,15 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * Soft deletes a file from the project knowledge base.
-     * Delete knowledge base file
+     * .
+     *
      */
     async knowledgeBaseDeleteFiles(requestParameters, initOverrides) {
         await this.knowledgeBaseDeleteFilesRaw(requestParameters, initOverrides);
     }
     /**
-     * Returns a single knowledge base file in the resolved project scope.
-     * Get knowledge base file
+     * .
+     *
      */
     async knowledgeBaseGetFilesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -664,16 +664,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Returns a single knowledge base file in the resolved project scope.
-     * Get knowledge base file
+     * .
+     *
      */
     async knowledgeBaseGetFiles(requestParameters, initOverrides) {
         const response = await this.knowledgeBaseGetFilesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Creates a table workbook resource in the project knowledge base.
-     * Create knowledge base table
+     * .
+     *
      */
     async tablesRaw(requestParameters, initOverrides) {
         if (requestParameters['createKnowledgeTableDto'] == null) {
@@ -709,16 +709,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeTableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Creates a table workbook resource in the project knowledge base.
-     * Create knowledge base table
+     * .
+     *
      */
     async tables(requestParameters, initOverrides) {
         const response = await this.tablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Updates file metadata, content, folder or active state inside the resolved project.
-     * Update knowledge base file
+     * , , .
+     *
      */
     async updateFilesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -757,16 +757,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Updates file metadata, content, folder or active state inside the resolved project.
-     * Update knowledge base file
+     * , , .
+     *
      */
     async updateFiles(requestParameters, initOverrides) {
         const response = await this.updateFilesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Updates folder name, parent folder or active state inside the resolved project.
-     * Update knowledge base folder
+     * , .
+     *
      */
     async updateFoldersRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -805,16 +805,16 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFolderResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Updates folder name, parent folder or active state inside the resolved project.
-     * Update knowledge base folder
+     * , .
+     *
      */
     async updateFolders(requestParameters, initOverrides) {
         const response = await this.updateFoldersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Updates table metadata, folder or active state.
-     * Update knowledge base table
+     * , .
+     *
      */
     async updateTablesRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -853,8 +853,8 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeTableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Updates table metadata, folder or active state.
-     * Update knowledge base table
+     * , .
+     *
      */
     async updateTables(requestParameters, initOverrides) {
         const response = await this.updateTablesRaw(requestParameters, initOverrides);

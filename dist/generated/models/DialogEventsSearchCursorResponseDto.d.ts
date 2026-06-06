@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,43 +18,43 @@ import type { DialogChatSearchEventDto } from './DialogChatSearchEventDto';
  */
 export interface DialogEventsSearchCursorResponseDto {
     /**
-     * ( search.
+     * ( search.highlighted)
      * @type {Array<DialogChatSearchEventDto>}
      * @memberof DialogEventsSearchCursorResponseDto
      */
     items: Array<DialogChatSearchEventDto>;
     /**
-     * (null ).
+     * (null ). sender.type=channel
      * @type {DialogChannelInfoDto}
      * @memberof DialogEventsSearchCursorResponseDto
      */
     channel: DialogChannelInfoDto | null;
     /**
-     * (search_cursor = cursor-based ).
+     * . search_cursor .
      * @type {string}
      * @memberof DialogEventsSearchCursorResponseDto
      */
     paginationType: DialogEventsSearchCursorResponseDtoPaginationTypeEnum;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof DialogEventsSearchCursorResponseDto
      */
     hasMore: boolean;
     /**
-     * Search cursor .
+     * Search cursor . search_cursor
      * @type {string}
      * @memberof DialogEventsSearchCursorResponseDto
      */
     nextSearchCursor?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DialogEventsSearchCursorResponseDto
      */
     query?: string;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof DialogEventsSearchCursorResponseDto
      */

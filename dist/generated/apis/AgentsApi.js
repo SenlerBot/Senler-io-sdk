@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -100,7 +100,7 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     async agentsCreateRaw(requestParameters, initOverrides) {
@@ -140,7 +140,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     async agentsCreate(requestParameters, initOverrides) {
@@ -148,7 +148,7 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     async agentsDeactivateRaw(requestParameters, initOverrides) {
@@ -186,7 +186,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     async agentsDeactivate(requestParameters, initOverrides) {
@@ -783,7 +783,7 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     async updateRestoreRaw(requestParameters, initOverrides) {
@@ -821,7 +821,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     async updateRestore(requestParameters, initOverrides) {
@@ -829,8 +829,8 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * wizard\' .
-     * wizard
+     * .
+     *
      */
     async updateWizardProgressRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -872,8 +872,8 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * wizard\' .
-     * wizard
+     * .
+     *
      */
     async updateWizardProgress(requestParameters, initOverrides) {
         const response = await this.updateWizardProgressRaw(requestParameters, initOverrides);

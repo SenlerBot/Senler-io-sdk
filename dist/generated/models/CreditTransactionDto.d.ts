@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,109 +17,109 @@ import type { LocalizedTextDto } from './LocalizedTextDto';
  */
 export interface CreditTransactionDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof CreditTransactionDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreditTransactionDto
      */
     type: CreditTransactionDtoTypeEnum;
     /**
-     * (+ , ), , integer raw, scale=10000; display->raw: 12.
+     * (+ , ), ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
     creditsAmount: number;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
     tariffCreditsBefore: number;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
     tariffCreditsAfter: number;
     /**
-     * ( ), , integer raw, scale=10000; display->raw: 12.
+     * ( ), ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
     purchasedCreditsBefore: number;
     /**
-     * ( ), , integer raw, scale=10000; display->raw: 12.
+     * ( ), ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
     purchasedCreditsAfter: number;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof CreditTransactionDto
      */
     monetaryEquivalent: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreditTransactionDto
      */
     currency: CreditTransactionDtoCurrencyEnum;
     /**
-     * ( usage).
+     * ( usage)
      * @type {Date}
      * @memberof CreditTransactionDto
      */
     periodStart: Date | null;
     /**
-     * ( usage).
+     * ( usage)
      * @type {Date}
      * @memberof CreditTransactionDto
      */
     periodEnd: Date | null;
     /**
-     * usage- ( usage).
+     * usage- ( usage)
      * @type {number}
      * @memberof CreditTransactionDto
      */
     usageEventsCount?: number;
     /**
-     * ( usage).
+     * ( usage)
      * @type {number}
      * @memberof CreditTransactionDto
      */
     totalTokens?: number;
     /**
-     * ( UUID ).
+     * ( UUID )
      * @type {object}
      * @memberof CreditTransactionDto
      */
     detailsByAgent?: object | null;
     /**
-     * .
+     *
      * @type {object}
      * @memberof CreditTransactionDto
      */
     detailsByModel?: object | null;
     /**
-     * ( tariff_grant).
+     * ( tariff_grant)
      * @type {LocalizedTextDto}
      * @memberof CreditTransactionDto
      */
     tariffName?: LocalizedTextDto | null;
     /**
-     * ( purchase/auto_purchase).
+     * ( purchase/auto_purchase)
      * @type {LocalizedTextDto}
      * @memberof CreditTransactionDto
      */
     creditPackageName?: LocalizedTextDto | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof CreditTransactionDto
      */

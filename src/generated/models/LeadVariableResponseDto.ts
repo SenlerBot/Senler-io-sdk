@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,43 +20,43 @@ import { mapValues } from '../runtime';
  */
 export interface LeadVariableResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof LeadVariableResponseDto
      */
     leadId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof LeadVariableResponseDto
      */
     projectId: string;
     /**
-     * ID (null = ).
+     * ID (null = )
      * @type {string}
      * @memberof LeadVariableResponseDto
      */
     appId: string | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof LeadVariableResponseDto
      */
     name: string;
     /**
-     * . (mixed type)
+     *  (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof LeadVariableResponseDto
      */
     value: { [key: string]: any; } | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof LeadVariableResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof LeadVariableResponseDto
      */

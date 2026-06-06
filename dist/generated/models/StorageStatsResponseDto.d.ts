@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -21,133 +21,133 @@ import type { StorageTariffDto } from './StorageTariffDto';
  */
 export interface StorageStatsResponseDto {
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     totalFiles: number;
     /**
-     * (file_size + thumbnail_size).
+     * (file_size + thumbnail_size)
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     totalSize: number;
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     totalSizeFormatted: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     storageLimitBytes: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     availableSize: number;
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     availableSizeFormatted: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     usagePercent: number;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof StorageStatsResponseDto
      */
     isOverLimit: boolean;
     /**
-     * , .
+     * ,
      * @type {StorageTariffDto}
      * @memberof StorageStatsResponseDto
      */
     tariff?: StorageTariffDto | null;
     /**
-     * (status = used).
+     * (status = used)
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     usedFiles: number;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     usedSize: number;
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     usedSizeFormatted: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     tempFiles: number;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     tempSize: number;
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     tempSizeFormatted: string;
     /**
-     * , .
+     * ,
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     quotaPendingFiles: number;
     /**
-     * , .
+     * ,
      * @type {number}
      * @memberof StorageStatsResponseDto
      */
     quotaPendingSize: number;
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof StorageStatsResponseDto
      */
     quotaPendingSizeFormatted: string;
     /**
-     * (image, video, audio, document).
+     * (image, video, audio, document)
      * @type {ByCategoryStatsDto}
      * @memberof StorageStatsResponseDto
      */
     byCategory: ByCategoryStatsDto;
     /**
-     * (widget, tg, vk, max, ai).
+     * (widget, tg, vk, max, ai)
      * @type {ByPlatformTypeStatsDto}
      * @memberof StorageStatsResponseDto
      */
     byPlatformType: ByPlatformTypeStatsDto;
     /**
-     * .
+     *
      * @type {ByStorageSourceStatsDto}
      * @memberof StorageStatsResponseDto
      */
     byStorageSource: ByStorageSourceStatsDto;
     /**
-     * 10 .
+     * 10
      * @type {Array<TopDialogDto>}
      * @memberof StorageStatsResponseDto
      */

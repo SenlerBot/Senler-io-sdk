@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,247 +20,259 @@ import { mapValues } from '../runtime';
  */
 export interface PermissionsDto {
     /**
-     * View project.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewProjects: boolean;
     /**
-     * Manage project.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageProjects: boolean;
     /**
-     * View members.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewAccess: boolean;
     /**
-     * Manage members.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageAccess: boolean;
     /**
-     * View all project channels.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewChannels: boolean;
     /**
-     * Manage all project channels.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageChannels: boolean;
     /**
-     * Delete and migrate channels.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canDeleteChannels: boolean;
     /**
-     * View agents.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewAgents: boolean;
     /**
-     * Manage agents.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageAgents: boolean;
     /**
-     * View dialogs.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewDialogs: boolean;
     /**
-     * Manage dialogs.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageDialogs: boolean;
     /**
-     * View spaces.
+     * spaces
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewSpaces: boolean;
     /**
-     * Manage spaces.
+     * spaces
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageSpaces: boolean;
     /**
-     * View leads.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewLeads: boolean;
     /**
-     * Manage leads.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageLeads: boolean;
     /**
-     * View MCP servers.
+     * MCP
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewMcpServers: boolean;
     /**
-     * Manage MCP servers.
+     * MCP
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageMcpServers: boolean;
     /**
-     * View analytics.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewAnalytics: boolean;
     /**
-     * Manage analytics.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageAnalytics: boolean;
     /**
-     * View billing.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewBilling: boolean;
     /**
-     * Manage billing.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageBilling: boolean;
     /**
-     * View data sources.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewDataSources: boolean;
     /**
-     * Manage data sources.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageDataSources: boolean;
     /**
-     * Manage server lists.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageServerLists: boolean;
     /**
-     * View metrics.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewMetrics: boolean;
     /**
-     * Manage metrics.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageMetrics: boolean;
     /**
-     * View events.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewEvents: boolean;
     /**
-     * Manage events.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageEvents: boolean;
     /**
-     * View project audit log.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewAudit: boolean;
     /**
-     * View background processes.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewProcesses: boolean;
     /**
-     * Manage background processes.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageProcesses: boolean;
     /**
-     * View knowledge base.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewKnowledgeBase: boolean;
     /**
-     * Manage knowledge base.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageKnowledgeBase: boolean;
     /**
-     * View API tokens.
+     * API
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewApiTokens: boolean;
     /**
-     * Manage API tokens.
+     * API
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageApiTokens: boolean;
     /**
-     * View files.
+     * 
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewProjectApps: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageProjectApps: boolean;
+    /**
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewStorage: boolean;
     /**
-     * Manage files.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageStorage: boolean;
     /**
-     * View project variables.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewProjectVariables: boolean;
     /**
-     * Manage project variables.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageProjectVariables: boolean;
     /**
-     * View lead definitions.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canViewLeadDefinitions: boolean;
     /**
-     * Manage lead definitions.
+     * 
      * @type {boolean}
      * @memberof PermissionsDto
      */
@@ -306,6 +318,8 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canManageKnowledgeBase' in value) || value['canManageKnowledgeBase'] === undefined) return false;
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined) return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined) return false;
+    if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined) return false;
+    if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined) return false;
     if (!('canViewStorage' in value) || value['canViewStorage'] === undefined) return false;
     if (!('canManageStorage' in value) || value['canManageStorage'] === undefined) return false;
     if (!('canViewProjectVariables' in value) || value['canViewProjectVariables'] === undefined) return false;
@@ -360,6 +374,8 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canManageKnowledgeBase': json['can_manage_knowledge_base'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
+        'canViewProjectApps': json['can_view_project_apps'],
+        'canManageProjectApps': json['can_manage_project_apps'],
         'canViewStorage': json['can_view_storage'],
         'canManageStorage': json['can_manage_storage'],
         'canViewProjectVariables': json['can_view_project_variables'],
@@ -415,6 +431,8 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_manage_knowledge_base': value['canManageKnowledgeBase'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
+        'can_view_project_apps': value['canViewProjectApps'],
+        'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_storage': value['canViewStorage'],
         'can_manage_storage': value['canManageStorage'],
         'can_view_project_variables': value['canViewProjectVariables'],

@@ -32,6 +32,7 @@ export { KnowledgeBaseApi } from './KnowledgeBaseApi';
 export { LeadsApi } from './LeadsApi';
 export { LeadVariableDefinitionsApi } from './LeadVariableDefinitionsApi';
 export { LeadVariablesApi } from './LeadVariablesApi';
+export { MCPExternalUserCredentialsApi } from './MCPExternalUserCredentialsApi';
 export { MCPServersApi } from './MCPServersApi';
 export { MetricsConfigApi } from './MetricsConfigApi';
 export { MetricsDefinitionsApi } from './MetricsDefinitionsApi';

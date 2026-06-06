@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,61 +42,61 @@ import {
  */
 export interface ServerTemplateKnowledgeSourceDto {
     /**
-     * Binding UUID.
+     * UUID
      * @type {string}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     id: string;
     /**
-     * Ready MCP server UUID.
+     * UUID MCP
      * @type {string}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     mcpServerTemplateId: string;
     /**
-     * Knowledge source type.
+     * 
      * @type {string}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     sourceType: ServerTemplateKnowledgeSourceDtoSourceTypeEnum;
     /**
-     * Source UUID.
+     * UUID
      * @type {string}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     sourceId: string;
     /**
-     * Display order.
+     * 
      * @type {number}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     orderNum: number;
     /**
-     * Folder resource.
+     * 
      * @type {KnowledgeFolderResponseDto}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     folder?: KnowledgeFolderResponseDto;
     /**
-     * File resource.
+     * 
      * @type {KnowledgeFileResponseDto}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     file?: KnowledgeFileResponseDto;
     /**
-     * Table resource.
+     * 
      * @type {KnowledgeTableResponseDto}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     table?: KnowledgeTableResponseDto;
     /**
-     * Creation timestamp.
+     * 
      * @type {Date}
      * @memberof ServerTemplateKnowledgeSourceDto
      */
     createdAt: Date;
     /**
-     * Last update timestamp.
+     * 
      * @type {Date}
      * @memberof ServerTemplateKnowledgeSourceDto
      */

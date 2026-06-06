@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -27,23 +27,23 @@ export interface TokensAvitoWebhookSetupRequest {
  */
 export declare class ChannelsAvitoApi extends runtime.BaseAPI {
     /**
-     * webhook Avito API .
-     * Avito webhook
+     * Avito API .
+     * Avito
      */
     tokensAvitoCheckWebhookStatusRaw(requestParameters: TokensAvitoCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>>;
     /**
-     * webhook Avito API .
-     * Avito webhook
+     * Avito API .
+     * Avito
      */
     tokensAvitoCheckWebhookStatus(requestParameters: TokensAvitoCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto>;
     /**
-     * webhook Avito Messenger API.
-     * webhook Avito
+     * Avito Messenger API.
+     * Avito
      */
     tokensAvitoWebhookSetupRaw(requestParameters: TokensAvitoWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>>;
     /**
-     * webhook Avito Messenger API.
-     * webhook Avito
+     * Avito Messenger API.
+     * Avito
      */
     tokensAvitoWebhookSetup(requestParameters: TokensAvitoWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto>;
 }

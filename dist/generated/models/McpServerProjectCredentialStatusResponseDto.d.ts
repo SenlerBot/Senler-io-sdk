@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { McpCredentialConnectedIdentityDto } from './McpCredentialConnectedIdentityDto';
 /**
  *
  * @export
@@ -16,47 +17,53 @@
  */
 export interface McpServerProjectCredentialStatusResponseDto {
     /**
-     * Installed MCP server ID.
+     * ID MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     mcpServerId: string;
     /**
-     * Authentication mode of installed MCP server.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     authMode: McpServerProjectCredentialStatusResponseDtoAuthModeEnum;
     /**
-     * Auth method used by currently connected credential.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     connectedAuthMethod?: McpServerProjectCredentialStatusResponseDtoConnectedAuthMethodEnum | null;
     /**
-     * Whether active project credential exists.
+     * MCP
      * @type {boolean}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     hasProjectCredential: boolean;
     /**
-     * Last validation status of the active project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     credentialValidationStatus?: McpServerProjectCredentialStatusResponseDtoCredentialValidationStatusEnum | null;
     /**
-     * Last validation error of the active project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     credentialValidationError?: string | null;
     /**
-     * Last validation timestamp of the active project credential.
+     * MCP
      * @type {Date}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     credentialValidatedAt?: Date | null;
+    /**
+     * ,
+     * @type {McpCredentialConnectedIdentityDto}
+     * @memberof McpServerProjectCredentialStatusResponseDto
+     */
+    connectedIdentity?: McpCredentialConnectedIdentityDto | null;
 }
 /**
  * @export

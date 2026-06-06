@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ChannelsWidgetApi extends runtime.BaseAPI {
     /**
-     * .
+     * , -. , .
      * Widget
      */
     async updateWidgetSettingsRaw(requestParameters, initOverrides) {
@@ -94,7 +94,7 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateWidgetSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * , -. , .
      * Widget
      */
     async updateWidgetSettings(requestParameters, initOverrides) {
@@ -102,7 +102,7 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * CORS .
+     * - , .
      * Widget
      */
     async widgetRaw(requestParameters, initOverrides) {
@@ -139,7 +139,7 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateWidgetChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * CORS .
+     * - , .
      * Widget
      */
     async widget(requestParameters, initOverrides) {
@@ -147,8 +147,8 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . preview .
-     * Preview
+     * .
+     *
      */
     async widgetCodePreviewRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -187,8 +187,8 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PreviewWidgetCodeResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . preview .
-     * Preview
+     * .
+     *
      */
     async widgetCodePreview(requestParameters, initOverrides) {
         const response = await this.widgetCodePreviewRaw(requestParameters, initOverrides);

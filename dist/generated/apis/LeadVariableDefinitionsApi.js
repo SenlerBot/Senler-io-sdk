@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsCreateRaw(requestParameters, initOverrides) {
@@ -94,7 +94,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadVariableDefinitionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsCreate(requestParameters, initOverrides) {
@@ -102,7 +102,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsDeactivateRaw(requestParameters, initOverrides) {
@@ -140,7 +140,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.Deactivate200ResponseFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsDeactivate(requestParameters, initOverrides) {
@@ -148,7 +148,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsGetByIdRaw(requestParameters, initOverrides) {
@@ -192,7 +192,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadVariableDefinitionListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsGetById(requestParameters, initOverrides) {
@@ -200,7 +200,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsGetById2Raw(requestParameters, initOverrides) {
@@ -238,7 +238,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadVariableDefinitionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsGetById2(requestParameters, initOverrides) {
@@ -246,7 +246,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsUpdateRaw(requestParameters, initOverrides) {
@@ -289,7 +289,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadVariableDefinitionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async leadVariableDefinitionsUpdate(requestParameters, initOverrides) {

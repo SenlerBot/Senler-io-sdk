@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,109 +28,109 @@ import {
  */
 export interface ProjectTariffItemDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ProjectTariffItemDto
      */
     id: string;
     /**
-     * (ru).
+     * (ru)
      * @type {string}
      * @memberof ProjectTariffItemDto
      */
     nameRu: string;
     /**
-     * (en).
+     * (en)
      * @type {string}
      * @memberof ProjectTariffItemDto
      */
     nameEn: string;
     /**
-     * (ru).
+     * (ru)
      * @type {string}
      * @memberof ProjectTariffItemDto
      */
     descriptionRu?: string | null;
     /**
-     * (en).
+     * (en)
      * @type {string}
      * @memberof ProjectTariffItemDto
      */
     descriptionEn?: string | null;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     creditsPerMonth: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     approxMessages?: number | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     storageLimitBytes: number;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ProjectTariffItemDto
      */
     isUnlimited: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof ProjectTariffItemDto
      */
     isFree: boolean;
     /**
-     * (RUB).
+     * (RUB)
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceRubMonthly: number;
     /**
-     * (USD).
+     * (USD)
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceUsdMonthly: number;
     /**
-     * (RUB).
+     * (RUB)
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceRubYearly: number;
     /**
-     * (USD).
+     * (USD)
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceUsdYearly: number;
     /**
-     * ( , ).
+     * ( , )
      * @type {boolean}
      * @memberof ProjectTariffItemDto
      */
     isRequestOnly: boolean;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     sortOrder: number;
     /**
-     * current" , "upgrade" , "downgrade" .
+     * "current" , "upgrade" , "downgrade" . "upgrade".
      * @type {string}
      * @memberof ProjectTariffItemDto
      */
     status: ProjectTariffItemDtoStatusEnum;
     /**
-     * null, (downgrade).
+     * null, (downgrade). DELETE /tariff-next tariff-buy.
      * @type {NextSubscriptionDto}
      * @memberof ProjectTariffItemDto
      */

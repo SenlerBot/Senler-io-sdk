@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -99,7 +99,7 @@ class SpacesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * spaces .
+     * : .
      * spaces
      */
     async getSectionsRaw(requestParameters, initOverrides) {
@@ -143,7 +143,7 @@ class SpacesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelSpaceSectionsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * spaces .
+     * : .
      * spaces
      */
     async getSections(requestParameters, initOverrides) {
@@ -151,7 +151,7 @@ class SpacesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * spaces cursor- . q tree- prunes , ancestors drill-down.
+     * spaces cursor- . query channel_id. parent_space_id spaces . q tree- prunes , ancestors drill-down.
      * spaces
      */
     async getTreeNodesRaw(requestParameters, initOverrides) {
@@ -228,7 +228,7 @@ class SpacesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SpacesTreeNodesResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * spaces cursor- . q tree- prunes , ancestors drill-down.
+     * spaces cursor- . query channel_id. parent_space_id spaces . q tree- prunes , ancestors drill-down.
      * spaces
      */
     async getTreeNodes(requestParameters, initOverrides) {
@@ -236,7 +236,7 @@ class SpacesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * cursor-. .
+     * cursor-. . q tree- ancestors .
      * spaces
      */
     async getTreeRootRaw(requestParameters, initOverrides) {
@@ -310,7 +310,7 @@ class SpacesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SpacesTreeRootResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * cursor-. .
+     * cursor-. . q tree- ancestors .
      * spaces
      */
     async getTreeRoot(requestParameters, initOverrides) {
@@ -404,7 +404,7 @@ class SpacesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * root spaces.
+     * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
      */
     async treeRefreshRaw(requestParameters, initOverrides) {
@@ -441,7 +441,7 @@ class SpacesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * root spaces.
+     * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
      */
     async treeRefresh(requestParameters, initOverrides) {

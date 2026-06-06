@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,43 +16,43 @@
  */
 export interface QueryDialogsDto {
     /**
-     * ( 2 ).
+     * ( 2 )
      * @type {string}
      * @memberof QueryDialogsDto
      */
     q?: string;
     /**
-     * Offset Elasticsearch- q.
+     * q.
      * @type {number}
      * @memberof QueryDialogsDto
      */
     from?: number;
     /**
-     * Elasticsearch- q.
+     * q.
      * @type {number}
      * @memberof QueryDialogsDto
      */
     size?: number;
     /**
-     * Cursor q.
+     * Cursor q. , .
      * @type {string}
      * @memberof QueryDialogsDto
      */
     before?: string;
     /**
-     * .
+     * . q.
      * @type {number}
      * @memberof QueryDialogsDto
      */
     limit?: number;
     /**
-     * ( q).
+     * ( q)
      * @type {string}
      * @memberof QueryDialogsDto
      */
     sortBy?: QueryDialogsDtoSortByEnum;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof QueryDialogsDto
      */
@@ -64,127 +64,127 @@ export interface QueryDialogsDto {
      */
     channelId?: Array<string>;
     /**
-     * UUID (, 20 ).
+     * UUID (, 20 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     agentId?: Array<string>;
     /**
-     * ID (ObjectId, , 20 ).
+     * ID (ObjectId, , 20 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     leadId?: Array<string>;
     /**
-     * .
+     * . active completed ( archived)
      * @type {string}
      * @memberof QueryDialogsDto
      */
     status?: QueryDialogsDtoStatusEnum;
     /**
-     * : answered - , unanswered - .
+     * : answered - , unanswered -
      * @type {string}
      * @memberof QueryDialogsDto
      */
     operatorResponseStatus?: QueryDialogsDtoOperatorResponseStatusEnum;
     /**
-     * : unanswered - .
+     * : unanswered -
      * @type {string}
      * @memberof QueryDialogsDto
      */
     leadResponseStatus?: QueryDialogsDtoLeadResponseStatusEnum;
     /**
-     * : me - , none - .
+     * : me - , none -
      * @type {string}
      * @memberof QueryDialogsDto
      */
     operatorAssignment?: QueryDialogsDtoOperatorAssignmentEnum;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof QueryDialogsDto
      */
     operatorUserId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof QueryDialogsDto
      */
     dialogType?: QueryDialogsDtoDialogTypeEnum;
     /**
-     * ID ( VK/TG).
+     * ID ( VK/TG)
      * @type {string}
      * @memberof QueryDialogsDto
      */
     externalDialogId?: string;
     /**
-     * leaf space ID (ObjectId, , 20 ).
+     * leaf space ID (ObjectId, , 20 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     spaceId?: Array<string>;
     /**
-     * space path (space_ids ObjectId, 20 ).
+     * space path (space_ids ObjectId, 20 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     spaceIds?: Array<string>;
     /**
-     * : true - , false - , - .
+     * : true - , false - , -
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     hasChannel?: boolean;
     /**
-     * : true - , false - .
+     * : true - , false -
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     hasLead?: boolean;
     /**
-     * : true - , false - .
+     * : true - , false -
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     hasEvents?: boolean;
     /**
-     * : true - , false - .
+     * : true - , false -
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     isTest?: boolean;
     /**
-     * : true - , false - .
+     * : true - , false -
      * @type {boolean}
      * @memberof QueryDialogsDto
      */
     autoAssignDisabled?: boolean;
     /**
-     * : all - , muted - , not_muted - .
+     * : all - , muted - , not_muted -
      * @type {string}
      * @memberof QueryDialogsDto
      */
     muteStatus?: QueryDialogsDtoMuteStatusEnum;
     /**
-     * spam- email-: all - , spam - , not_spam - .
+     * spam- email-: all - , spam - , not_spam -
      * @type {string}
      * @memberof QueryDialogsDto
      */
     spamStatus?: QueryDialogsDtoSpamStatusEnum;
     /**
-     * ( , 50 ).
+     * ( , 50 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     tags?: Array<string>;
     /**
-     * (started_at >= ).
+     * (started_at >= )
      * @type {string}
      * @memberof QueryDialogsDto
      */
     startedAfter?: string;
     /**
-     * (started_at <= ).
+     * (started_at <= )
      * @type {string}
      * @memberof QueryDialogsDto
      */
@@ -196,6 +196,7 @@ export interface QueryDialogsDto {
 export declare const QueryDialogsDtoSortByEnum: {
     readonly LastEvent: "last_event";
     readonly LastMessage: "last_message";
+    readonly SupportQueue: "support_queue";
 };
 export type QueryDialogsDtoSortByEnum = typeof QueryDialogsDtoSortByEnum[keyof typeof QueryDialogsDtoSortByEnum];
 /**

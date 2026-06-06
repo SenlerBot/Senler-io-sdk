@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -20,6 +20,7 @@ exports.ServerTemplateResponseDtoFromJSONTyped = ServerTemplateResponseDtoFromJS
 exports.ServerTemplateResponseDtoToJSON = ServerTemplateResponseDtoToJSON;
 exports.ServerTemplateResponseDtoToJSONTyped = ServerTemplateResponseDtoToJSONTyped;
 const ServerTemplateCategoryDto_1 = require("./ServerTemplateCategoryDto");
+const McpServerTemplateToolPolicyDto_1 = require("./McpServerTemplateToolPolicyDto");
 const McpServerTemplateManualAuthHeaderDto_1 = require("./McpServerTemplateManualAuthHeaderDto");
 /**
  * @export
@@ -48,9 +49,11 @@ function instanceOfServerTemplateResponseDto(value) {
         return false;
     if (!('supportsNoAuth' in value) || value['supportsNoAuth'] === undefined)
         return false;
+    if (!('isPrivate' in value) || value['isPrivate'] === undefined)
+        return false;
     if (!('tags' in value) || value['tags'] === undefined)
         return false;
-    if (!('categories' in value) || value['categories'] === undefined)
+    if (!('category' in value) || value['category'] === undefined)
         return false;
     if (!('installCount' in value) || value['installCount'] === undefined)
         return false;
@@ -76,6 +79,7 @@ function ServerTemplateResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'bannerUrl': json['banner_url'] == null ? undefined : json['banner_url'],
         'authProviderKey': json['auth_provider_key'] == null ? undefined : json['auth_provider_key'],
         'baseUrl': json['base_url'] == null ? undefined : json['base_url'],
         'requiresCustomUrl': json['requires_custom_url'],
@@ -84,11 +88,14 @@ function ServerTemplateResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'supportsManualToken': json['supports_manual_token'],
         'supportsOauth': json['supports_oauth'],
         'supportsNoAuth': json['supports_no_auth'],
+        'isPrivate': json['is_private'],
+        'allowedProjectIds': json['allowed_project_ids'] == null ? undefined : json['allowed_project_ids'],
+        'toolPolicy': json['tool_policy'] == null ? undefined : (0, McpServerTemplateToolPolicyDto_1.McpServerTemplateToolPolicyDtoFromJSON)(json['tool_policy']),
         'manualAuthHeaders': json['manual_auth_headers'] == null ? undefined : (json['manual_auth_headers'].map(McpServerTemplateManualAuthHeaderDto_1.McpServerTemplateManualAuthHeaderDtoFromJSON)),
         'availableQueryParams': json['available_query_params'] == null ? undefined : json['available_query_params'],
         'defaultQueryParams': json['default_query_params'] == null ? undefined : json['default_query_params'],
         'tags': json['tags'],
-        'categories': (json['categories'].map(ServerTemplateCategoryDto_1.ServerTemplateCategoryDtoFromJSON)),
+        'category': (0, ServerTemplateCategoryDto_1.ServerTemplateCategoryDtoFromJSON)(json['category']),
         'installCount': json['install_count'],
         'isFeatured': json['is_featured'],
         'isActive': json['is_active'],
@@ -108,6 +115,7 @@ function ServerTemplateResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],
+        'banner_url': value['bannerUrl'],
         'auth_provider_key': value['authProviderKey'],
         'base_url': value['baseUrl'],
         'requires_custom_url': value['requiresCustomUrl'],
@@ -116,11 +124,14 @@ function ServerTemplateResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'supports_manual_token': value['supportsManualToken'],
         'supports_oauth': value['supportsOauth'],
         'supports_no_auth': value['supportsNoAuth'],
+        'is_private': value['isPrivate'],
+        'allowed_project_ids': value['allowedProjectIds'],
+        'tool_policy': (0, McpServerTemplateToolPolicyDto_1.McpServerTemplateToolPolicyDtoToJSON)(value['toolPolicy']),
         'manual_auth_headers': value['manualAuthHeaders'] == null ? undefined : (value['manualAuthHeaders'].map(McpServerTemplateManualAuthHeaderDto_1.McpServerTemplateManualAuthHeaderDtoToJSON)),
         'available_query_params': value['availableQueryParams'],
         'default_query_params': value['defaultQueryParams'],
         'tags': value['tags'],
-        'categories': (value['categories'].map(ServerTemplateCategoryDto_1.ServerTemplateCategoryDtoToJSON)),
+        'category': (0, ServerTemplateCategoryDto_1.ServerTemplateCategoryDtoToJSON)(value['category']),
         'install_count': value['installCount'],
         'is_featured': value['isFeatured'],
         'is_active': value['isActive'],

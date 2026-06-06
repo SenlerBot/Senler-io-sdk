@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -181,7 +181,6 @@ function CabinetEventDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
-        'appAgentId': json['app_agent_id'] == null ? undefined : json['app_agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'actionType': json['action_type'],
         'targetType': json['target_type'] == null ? undefined : json['target_type'],
@@ -235,7 +234,6 @@ function CabinetEventDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'agent_id': value['agentId'],
         'app_id': value['appId'],
-        'app_agent_id': value['appAgentId'],
         'lead_id': value['leadId'],
         'action_type': value['actionType'],
         'target_type': value['targetType'],

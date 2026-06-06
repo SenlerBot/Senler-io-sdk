@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,127 +18,127 @@ import type { SpaceTreeMatchMetadataDto } from './SpaceTreeMatchMetadataDto';
  */
 export interface SpacesTreeFlatNodeDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     nodeType: string;
     /**
-     * ID space.
+     * ID
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     id: string;
     /**
-     * space.
+     * space
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     title?: string | null;
     /**
-     * space.
+     * space
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     kind: SpacesTreeFlatNodeDtoKindEnum;
     /**
-     * space - UI.
+     * space - UI
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     spaceType: SpacesTreeFlatNodeDtoSpaceTypeEnum;
     /**
-     * space.
+     * space
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     platformType: SpacesTreeFlatNodeDtoPlatformTypeEnum;
     /**
-     * Platform external ID.
+     * ID
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     externalId: string;
     /**
-     * space .
+     * space
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     text?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     sourceUrl?: string | null;
     /**
-     * Media space .
+     * Media space
      * @type {Array<SpaceMediaEmbedded>}
      * @memberof SpacesTreeFlatNodeDto
      */
     media?: Array<SpaceMediaEmbedded> | null;
     /**
-     * space.
+     * space
      * @type {number}
      * @memberof SpacesTreeFlatNodeDto
      */
     participantCount?: number | null;
     /**
-     * conversation-like space.
+     * conversation-like space
      * @type {number}
      * @memberof SpacesTreeFlatNodeDto
      */
     messageCount?: number | null;
     /**
-     * content-thread space.
+     * content-thread space
      * @type {number}
      * @memberof SpacesTreeFlatNodeDto
      */
     commentCount?: number | null;
     /**
-     * Username/slug space.
+     *
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     username?: string | null;
     /**
-     * URL space.
+     * URL space
      * @type {string}
      * @memberof SpacesTreeFlatNodeDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto
      */
     externalCreatedAt?: Date | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto
      */
     externalUpdatedAt?: Date | null;
     /**
-     * Space .
+     * Space
      * @type {boolean}
      * @memberof SpacesTreeFlatNodeDto
      */
     isActive: boolean;
     /**
-     * space.
+     * space
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto
      */
     lastMessageAt?: Date | null;
     /**
-     * space spaces .
+     * space spaces
      * @type {boolean}
      * @memberof SpacesTreeFlatNodeDto
      */
     hasChildren: boolean;
     /**
-     * / .
+     * / . q tree-.
      * @type {SpaceTreeMatchMetadataDto}
      * @memberof SpacesTreeFlatNodeDto
      */

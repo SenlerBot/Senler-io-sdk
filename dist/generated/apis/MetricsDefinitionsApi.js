@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class MetricsDefinitionsApi extends runtime.BaseAPI {
     /**
-     * Built-in .
+     * .
      *
      */
     async metricsDefinitionsActivateRaw(requestParameters, initOverrides) {
@@ -89,7 +89,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
     }
     /**
-     * Built-in .
+     * .
      *
      */
     async metricsDefinitionsActivate(requestParameters, initOverrides) {
@@ -97,7 +97,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . project_id .
      *
      */
     async metricsDefinitionsCreateRaw(requestParameters, initOverrides) {
@@ -134,7 +134,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . project_id .
      *
      */
     async metricsDefinitionsCreate(requestParameters, initOverrides) {
@@ -142,7 +142,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . Built-in .
+     * . .
      *
      */
     async metricsDefinitionsDeactivateRaw(requestParameters, initOverrides) {
@@ -177,14 +177,14 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * . Built-in .
+     * . .
      *
      */
     async metricsDefinitionsDeactivate(requestParameters, initOverrides) {
         await this.metricsDefinitionsDeactivateRaw(requestParameters, initOverrides);
     }
     /**
-     * Built-in .
+     * .
      *
      */
     async metricsDefinitionsDeactivate2Raw(requestParameters, initOverrides) {
@@ -219,7 +219,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
     }
     /**
-     * Built-in .
+     * .
      *
      */
     async metricsDefinitionsDeactivate2(requestParameters, initOverrides) {
@@ -227,7 +227,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . Built-in .
+     * . .
      * ID
      */
     async metricsDefinitionsGetByIdRaw(requestParameters, initOverrides) {
@@ -262,7 +262,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
     }
     /**
-     * . Built-in .
+     * . .
      * ID
      */
     async metricsDefinitionsGetById(requestParameters, initOverrides) {
@@ -270,7 +270,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * built-in () + .
+     * built-in () + . project_id .
      *
      */
     async metricsDefinitionsListRaw(requestParameters, initOverrides) {
@@ -317,7 +317,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.MetricDefinitionDtoFromJSON));
     }
     /**
-     * built-in () + .
+     * built-in () + . project_id .
      *
      */
     async metricsDefinitionsList(requestParameters, initOverrides) {
@@ -325,7 +325,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . Built-in .
+     * . .
      *
      */
     async metricsDefinitionsUpdateRaw(requestParameters, initOverrides) {
@@ -365,7 +365,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
     }
     /**
-     * . Built-in .
+     * . .
      *
      */
     async metricsDefinitionsUpdate(requestParameters, initOverrides) {

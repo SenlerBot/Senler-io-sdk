@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -58,6 +58,16 @@ import {
 /**
  * @type MetricDefinitionDtoValidationSchema
  * JSON Schema (read-only, ).
+ * 
+ * value_type:
+ * - string: { type: "string", enum?: [...], enum_scores?: {...}, maxLength?: number }
+ * - number: { type: "number", minimum?: number, maximum?: number }
+ * - integer: { type: "integer", minimum?: number, maximum?: number }
+ * - boolean: { type: "boolean" }
+ * - array: { type: "array", items?: { type: "string", enum: [...] }, maxItems?: number, item_scores?: {...} }
+ * - object: { type: "object" }
+ * 
+ * direction validation_schema direction.
  * @export
  */
 export type MetricDefinitionDtoValidationSchema = { type: 'array' } & ArrayValidationSchemaDto | { type: 'boolean' } & BooleanValidationSchemaDto | { type: 'integer' } & IntegerValidationSchemaDto | { type: 'number' } & NumberValidationSchemaDto | { type: 'object' } & ObjectValidationSchemaDto | { type: 'string' } & StringValidationSchemaDto;

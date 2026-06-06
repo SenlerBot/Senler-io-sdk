@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,109 +18,109 @@ import type { DataSourceMetaDto } from './DataSourceMetaDto';
  */
 export interface DataSourceResponseDto {
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     id: string;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     projectId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     sourceType: DataSourceResponseDtoSourceTypeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     name: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     sourceUrl?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     sourceId?: string | null;
     /**
-     * .
+     *
      * @type {DataSourceConfigDto}
      * @memberof DataSourceResponseDto
      */
     config: DataSourceConfigDto;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof DataSourceResponseDto
      */
     isValid: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     lastCheckedAt?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     validationError?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     lastParsedAt?: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DataSourceResponseDto
      */
     totalItemsParsed: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DataSourceResponseDto
      */
     parseCount: number;
     /**
-     * .
+     *
      * @type {DataSourceMetaDto}
      * @memberof DataSourceResponseDto
      */
     meta: DataSourceMetaDto;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof DataSourceResponseDto
      */
     isActive: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof DataSourceResponseDto
      */
     isEnabledForTraining: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */
     createdAt: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof DataSourceResponseDto
      */

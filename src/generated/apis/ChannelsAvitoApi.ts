@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -50,8 +50,8 @@ export interface TokensAvitoWebhookSetupRequest {
 export class ChannelsAvitoApi extends runtime.BaseAPI {
 
     /**
-     * webhook Avito API .
-     * Avito webhook
+     * Avito API .
+     * Avito
      */
     async tokensAvitoCheckWebhookStatusRaw(requestParameters: TokensAvitoCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -97,8 +97,8 @@ export class ChannelsAvitoApi extends runtime.BaseAPI {
     }
 
     /**
-     * webhook Avito API .
-     * Avito webhook
+     * Avito API .
+     * Avito
      */
     async tokensAvitoCheckWebhookStatus(requestParameters: TokensAvitoCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto> {
         const response = await this.tokensAvitoCheckWebhookStatusRaw(requestParameters, initOverrides);
@@ -106,8 +106,8 @@ export class ChannelsAvitoApi extends runtime.BaseAPI {
     }
 
     /**
-     * webhook Avito Messenger API.
-     * webhook Avito
+     * Avito Messenger API.
+     * Avito
      */
     async tokensAvitoWebhookSetupRaw(requestParameters: TokensAvitoWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -163,8 +163,8 @@ export class ChannelsAvitoApi extends runtime.BaseAPI {
     }
 
     /**
-     * webhook Avito Messenger API.
-     * webhook Avito
+     * Avito Messenger API.
+     * Avito
      */
     async tokensAvitoWebhookSetup(requestParameters: TokensAvitoWebhookSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto> {
         const response = await this.tokensAvitoWebhookSetupRaw(requestParameters, initOverrides);

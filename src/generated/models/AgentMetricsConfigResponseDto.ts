@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,55 +28,55 @@ import {
  */
 export interface AgentMetricsConfigResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentMetricsConfigResponseDto
      */
     id: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentMetricsConfigResponseDto
      */
     agentId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AgentMetricsConfigResponseDto
      */
     metricId: string;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof AgentMetricsConfigResponseDto
      */
     isEnabled: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {string}
      * @memberof AgentMetricsConfigResponseDto
      */
     customPromptOverride?: string;
     /**
-     * .
+     * 
      * @type {object}
      * @memberof AgentMetricsConfigResponseDto
      */
     configParams?: object;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof AgentMetricsConfigResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof AgentMetricsConfigResponseDto
      */
     updatedAt: Date;
     /**
-     * .
+     * 
      * @type {MetricDefinitionDto}
      * @memberof AgentMetricsConfigResponseDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,43 +18,43 @@ import type { WidgetThemeDto } from './WidgetThemeDto';
  */
 export interface WidgetChannelDataDto {
     /**
-     * CORS.
+     * CORS
      * @type {Array<string>}
      * @memberof WidgetChannelDataDto
      */
     allowedDomains?: Array<string>;
     /**
-     * .
+     *
      * @type {WidgetThemeDto}
      * @memberof WidgetChannelDataDto
      */
     theme?: WidgetThemeDto;
     /**
-     * .
+     *
      * @type {WidgetFeaturesDto}
      * @memberof WidgetChannelDataDto
      */
     features?: WidgetFeaturesDto;
     /**
-     * : local ( JS ) remote ( ).
+     * : local ( JS ) remote ( )
      * @type {string}
      * @memberof WidgetChannelDataDto
      */
     configSource?: WidgetChannelDataDtoConfigSourceEnum;
     /**
-     * HMAC identity verification .
+     * HMAC identity verification
      * @type {boolean}
      * @memberof WidgetChannelDataDto
      */
     identityVerification?: boolean;
     /**
-     * : ru, en auto ().
+     * : ru, en auto ()
      * @type {string}
      * @memberof WidgetChannelDataDto
      */
     language?: WidgetChannelDataDtoLanguageEnum;
     /**
-     * : popup embedded.
+     * :
      * @type {string}
      * @memberof WidgetChannelDataDto
      */

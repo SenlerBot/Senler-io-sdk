@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -113,7 +113,7 @@ import {
 
 /**
  * @type DialogChatEventDtoSourceContext
- * kind data_* .
+ * kind data_*
  * @export
  */
 export type DialogChatEventDtoSourceContext = { kind: 'avito_chat' } & EventSourceAvitoChatContextDto | { kind: 'discord_channel' } & EventSourceDiscordChannelContextDto | { kind: 'discord_dm' } & EventSourceDiscordDmContextDto | { kind: 'discord_thread' } & EventSourceDiscordThreadContextDto | { kind: 'email_thread' } & EventSourceEmailThreadContextDto | { kind: 'max_channel' } & EventSourceMaxChannelContextDto | { kind: 'max_chat' } & EventSourceMaxChatContextDto | { kind: 'max_dialog' } & EventSourceMaxDialogContextDto | { kind: 'streamvi_broadcast' } & EventSourceStreamviBroadcastContextDto | { kind: 'telegram_chat' } & EventSourceTelegramChatContextDto | { kind: 'telegram_topic' } & EventSourceTelegramTopicContextDto | { kind: 'vk_peer' } & EventSourceVkPeerContextDto | { kind: 'vk_wall_post_comment' } & EventSourceVkWallPostCommentContextDto | { kind: 'widget_lead' } & EventSourceWidgetLeadContextDto;

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,55 +16,55 @@
  */
 export interface CreditsCheckResponseDto {
     /**
-     * (ru).
+     * (ru)
      * @type {string}
      * @memberof CreditsCheckResponseDto
      */
     packageNameRu: string;
     /**
-     * (en).
+     * (en)
      * @type {string}
      * @memberof CreditsCheckResponseDto
      */
     packageNameEn: string;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     creditsAmount: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     price: number;
     /**
-     * .
+     * . null use_balance=false
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     decreaseBalance?: number | null;
     /**
-     * .
+     * . null = ( credits-buy). > 0 = ( POST /orders)
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     total?: number | null;
     /**
-     * .
+     *
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     balance: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreditsCheckResponseDto
      */
     currency: CreditsCheckResponseDtoCurrencyEnum;
     /**
-     * confirm" = , "pay" = .
+     * "confirm" = , "pay" =
      * @type {string}
      * @memberof CreditsCheckResponseDto
      */

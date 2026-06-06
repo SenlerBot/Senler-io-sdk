@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,41 +20,47 @@ import { mapValues } from '../runtime';
  */
 export interface ConfirmUploadResponseDto {
     /**
-     * ID ( uploadId).
+     * ID ( uploadId)
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     fileId: string;
     /**
-     * URL S3.
+     * URL S3
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     url: string;
     /**
-     * S3 ( ).
+     * S3 ( )
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     storagePath: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     fileName: string;
     /**
-     * MIME .
+     * MIME
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     fileType: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ConfirmUploadResponseDto
      */
     fileSize: number;
+    /**
+     * / ,
+     * @type {number}
+     * @memberof ConfirmUploadResponseDto
+     */
+    durationSeconds?: number;
 }
 
 /**
@@ -86,6 +92,7 @@ export function ConfirmUploadResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'fileName': json['fileName'],
         'fileType': json['fileType'],
         'fileSize': json['fileSize'],
+        'durationSeconds': json['durationSeconds'] == null ? undefined : json['durationSeconds'],
     };
 }
 
@@ -106,6 +113,7 @@ export function ConfirmUploadResponseDtoToJSONTyped(value?: ConfirmUploadRespons
         'fileName': value['fileName'],
         'fileType': value['fileType'],
         'fileSize': value['fileSize'],
+        'durationSeconds': value['durationSeconds'],
     };
 }
 

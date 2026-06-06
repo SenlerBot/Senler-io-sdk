@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -71,7 +71,7 @@ export interface GetStatsRequest {
 export class StorageApi extends runtime.BaseAPI {
 
     /**
-     * S3 .
+     * S3
      * 
      */
     async deleteFilesRaw(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFileDeleteResponseDto>> {
@@ -125,7 +125,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
-     * S3 .
+     * S3
      * 
      */
     async deleteFiles(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFileDeleteResponseDto> {
@@ -134,7 +134,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
-     * pending/uploaded/confirmed ( ).
+     * pending/uploaded/confirmed ( )
      * 
      */
     async deleteOrphanedRaw(requestParameters: DeleteOrphanedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageOrphanedDeleteResponseDto>> {
@@ -181,7 +181,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
-     * pending/uploaded/confirmed ( ).
+     * pending/uploaded/confirmed ( )
      * 
      */
     async deleteOrphaned(requestParameters: DeleteOrphanedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageOrphanedDeleteResponseDto> {
@@ -190,7 +190,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getFilesRaw(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFilesListResponseDto>> {
@@ -261,7 +261,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getFiles(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFilesListResponseDto> {

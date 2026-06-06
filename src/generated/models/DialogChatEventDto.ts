@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -189,133 +189,127 @@ import {
  */
 export interface DialogChatEventDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     id: string;
     /**
-     * ID ; .
+     * ID ;
      * @type {string}
      * @memberof DialogChatEventDto
      */
     dialogId?: string;
     /**
-     * ID MCP .
+     * ID MCP
      * @type {string}
      * @memberof DialogChatEventDto
      */
     mcpServerId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     channelId?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogChatEventDto
      */
     platformType?: DialogChatEventDtoPlatformTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     projectId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     agentId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     appId?: string;
     /**
-     * ID .
-     * @type {string}
-     * @memberof DialogChatEventDto
-     */
-    appAgentId?: string;
-    /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     leadId?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogChatEventDto
      */
     targetType?: DialogChatEventDtoTargetTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     targetId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     externalMessageId?: string;
     /**
-     * .
+     * 
      * @type {EventSenderDto}
      * @memberof DialogChatEventDto
      */
     sender?: EventSenderDto;
     /**
-     * .
+     * 
      * @type {EventMessageDto}
      * @memberof DialogChatEventDto
      */
     message?: EventMessageDto;
     /**
-     * cabinet-safe .
+     * cabinet-safe
      * @type {Array<EventAttachmentCabinetDto>}
      * @memberof DialogChatEventDto
      */
     attachments: Array<EventAttachmentCabinetDto>;
     /**
-     * .
+     * 
      * @type {Array<EventButtonDto>}
      * @memberof DialogChatEventDto
      */
     buttons: Array<EventButtonDto>;
     /**
-     * .
+     * 
      * @type {EventButtonClickDto}
      * @memberof DialogChatEventDto
      */
     buttonClick?: EventButtonClickDto;
     /**
-     * .
+     * 
      * @type {EventToolDto}
      * @memberof DialogChatEventDto
      */
     tool?: EventToolDto;
     /**
-     * raw- provider/admin-only .
+     * 
      * @type {EventCostsCabinetDto}
      * @memberof DialogChatEventDto
      */
     costs?: EventCostsCabinetDto;
     /**
-     * .
+     * 
      * @type {EventMessageInteractionsDto}
      * @memberof DialogChatEventDto
      */
     messageInteractions?: EventMessageInteractionsDto;
     /**
-     * .
+     * 
      * @type {EventStatusDto}
      * @memberof DialogChatEventDto
      */
@@ -333,121 +327,121 @@ export interface DialogChatEventDto {
      */
     deliveryRef?: DialogChatEventDtoDeliveryRef;
     /**
-     * AI context.
+     * AI-
      * @type {EventAiDto}
      * @memberof DialogChatEventDto
      */
     ai?: EventAiDto;
     /**
-     * Typing lifecycle context.
+     * 
      * @type {EventTypingDto}
      * @memberof DialogChatEventDto
      */
     typing?: EventTypingDto;
     /**
-     * Timer context.
+     * 
      * @type {EventTimerDto}
      * @memberof DialogChatEventDto
      */
     timer?: EventTimerDto;
     /**
-     * Trigger/source context.
+     * 
      * @type {EventTriggerContextDto}
      * @memberof DialogChatEventDto
      */
     triggerContext?: EventTriggerContextDto;
     /**
-     * Moderation context.
+     * 
      * @type {EventModerationDto}
      * @memberof DialogChatEventDto
      */
     moderation?: EventModerationDto;
     /**
-     * Broadcast context.
+     * 
      * @type {EventBroadcastDto}
      * @memberof DialogChatEventDto
      */
     broadcast?: EventBroadcastDto;
     /**
-     * Reaction context.
+     * 
      * @type {EventReactionDto}
      * @memberof DialogChatEventDto
      */
     reaction?: EventReactionDto;
     /**
-     * Poll answer context.
+     * 
      * @type {EventPollAnswerChangeDto}
      * @memberof DialogChatEventDto
      */
     pollAnswer?: EventPollAnswerChangeDto;
     /**
-     * Poll vote context.
+     * 
      * @type {EventPollVoteDto}
      * @memberof DialogChatEventDto
      */
     pollVote?: EventPollVoteDto;
     /**
-     * Chat change context.
+     * 
      * @type {EventChatChangeDto}
      * @memberof DialogChatEventDto
      */
     chatChange?: EventChatChangeDto;
     /**
-     * .
+     * 
      * @type {EventErrorDto}
      * @memberof DialogChatEventDto
      */
     error?: EventErrorDto;
     /**
-     * .
+     * 
      * @type {EventHierarchyDto}
      * @memberof DialogChatEventDto
      */
     hierarchy?: EventHierarchyDto;
     /**
-     * Generation block: summary + metrics.
+     * :
      * @type {EventGenerationDto}
      * @memberof DialogChatEventDto
      */
     generation?: EventGenerationDto;
     /**
-     * .
+     * 
      * @type {Array<string>}
      * @memberof DialogChatEventDto
      */
     tags: Array<string>;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogChatEventDto
      */
     creditTransactionId?: string;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogChatEventDto
      */
     timestamp: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogChatEventDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogChatEventDto
      */
     updatedAt: Date;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DialogChatEventDto
      */
     eventVersion: number;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogChatEventDto
      */
@@ -537,8 +531,6 @@ export const DialogChatEventDtoActionTypeEnum = {
     ReasoningRecorded: 'reasoning_recorded',
     ImageGenerated: 'image_generated',
     AudioGenerated: 'audio_generated',
-    SpeechRecognized: 'speech_recognized',
-    ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
@@ -583,7 +575,6 @@ export function DialogChatEventDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
-        'appAgentId': json['app_agent_id'] == null ? undefined : json['app_agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'targetType': json['target_type'] == null ? undefined : json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
@@ -641,7 +632,6 @@ export function DialogChatEventDtoToJSONTyped(value?: DialogChatEventDto | null,
         'project_id': value['projectId'],
         'agent_id': value['agentId'],
         'app_id': value['appId'],
-        'app_agent_id': value['appAgentId'],
         'lead_id': value['leadId'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],

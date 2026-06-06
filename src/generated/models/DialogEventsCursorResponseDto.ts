@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,43 +35,43 @@ import {
  */
 export interface DialogEventsCursorResponseDto {
     /**
-     * .
+     * 
      * @type {Array<DialogChatEventDto>}
      * @memberof DialogEventsCursorResponseDto
      */
     items: Array<DialogChatEventDto>;
     /**
-     * (null ).
+     * (null ). sender.type=channel
      * @type {DialogChannelInfoDto}
      * @memberof DialogEventsCursorResponseDto
      */
     channel: DialogChannelInfoDto | null;
     /**
-     * (cursor = ).
+     * (cursor = )
      * @type {string}
      * @memberof DialogEventsCursorResponseDto
      */
     paginationType: DialogEventsCursorResponseDtoPaginationTypeEnum;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof DialogEventsCursorResponseDto
      */
     hasMore: boolean;
     /**
-     * .
+     * . before
      * @type {string}
      * @memberof DialogEventsCursorResponseDto
      */
     nextCursor?: string;
     /**
-     * ( ).
+     * ( )
      * @type {string}
      * @memberof DialogEventsCursorResponseDto
      */
     query?: string;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof DialogEventsCursorResponseDto
      */

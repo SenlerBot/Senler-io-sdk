@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,55 +16,55 @@
  */
 export interface EventToolListDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventToolListDto
      */
     name?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventToolListDto
      */
     kind?: EventToolListDtoKindEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventToolListDto
      */
     category?: EventToolListDtoCategoryEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventToolListDto
      */
     status?: EventToolListDtoStatusEnum;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof EventToolListDto
      */
     durationMs?: number;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof EventToolListDto
      */
     executedAt?: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof EventToolListDto
      */
     completedAt?: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof EventToolListDto
      */
     failedAt?: Date;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventToolListDto
      */

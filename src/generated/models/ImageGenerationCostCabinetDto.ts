@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,61 +20,61 @@ import { mapValues } from '../runtime';
  */
 export interface ImageGenerationCostCabinetDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ImageGenerationCostCabinetDto
      */
     model?: string;
     /**
-     * image-, .
+     * image-,
      * @type {string}
      * @memberof ImageGenerationCostCabinetDto
      */
     pricingType?: ImageGenerationCostCabinetDtoPricingTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ImageGenerationCostCabinetDto
      */
     operation?: ImageGenerationCostCabinetDtoOperationEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ImageGenerationCostCabinetDto
      */
     quality?: ImageGenerationCostCabinetDtoQualityEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ImageGenerationCostCabinetDto
      */
     size?: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */
     imageCount?: number;
     /**
-     * Text input .
+     * Text input
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */
     textInputTokens?: number;
     /**
-     * Image input .
+     * Image input
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */
     imageInputTokens?: number;
     /**
-     * Image output .
+     * Image output
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */
     imageOutputTokens?: number;
     /**
-     * Cached input .
+     * Cached input
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */

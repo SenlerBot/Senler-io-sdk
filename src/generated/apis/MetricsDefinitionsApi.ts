@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -89,7 +89,7 @@ export interface MetricsDefinitionsUpdateRestoreRequest {
 export class MetricsDefinitionsApi extends runtime.BaseAPI {
 
     /**
-     * Built-in .
+     * .
      * 
      */
     async metricsDefinitionsActivateRaw(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
@@ -136,7 +136,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Built-in .
+     * .
      * 
      */
     async metricsDefinitionsActivate(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
@@ -145,7 +145,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . project_id .
      * 
      */
     async metricsDefinitionsCreateRaw(requestParameters: MetricsDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
@@ -195,7 +195,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . project_id .
      * 
      */
     async metricsDefinitionsCreate(requestParameters: MetricsDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
@@ -204,7 +204,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Built-in .
+     * . .
      * 
      */
     async metricsDefinitionsDeactivateRaw(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
@@ -251,7 +251,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Built-in .
+     * . .
      * 
      */
     async metricsDefinitionsDeactivate(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
@@ -259,7 +259,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Built-in .
+     * .
      * 
      */
     async metricsDefinitionsDeactivate2Raw(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
@@ -306,7 +306,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Built-in .
+     * .
      * 
      */
     async metricsDefinitionsDeactivate2(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
@@ -315,7 +315,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Built-in .
+     * . .
      * ID
      */
     async metricsDefinitionsGetByIdRaw(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
@@ -362,7 +362,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Built-in .
+     * . .
      * ID
      */
     async metricsDefinitionsGetById(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
@@ -371,7 +371,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * built-in () + .
+     * built-in () + . project_id .
      * 
      */
     async metricsDefinitionsListRaw(requestParameters: MetricsDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<MetricDefinitionDto>>> {
@@ -434,7 +434,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * built-in () + .
+     * built-in () + . project_id .
      * 
      */
     async metricsDefinitionsList(requestParameters: MetricsDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<MetricDefinitionDto>> {
@@ -443,7 +443,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Built-in .
+     * . .
      * 
      */
     async metricsDefinitionsUpdateRaw(requestParameters: MetricsDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
@@ -500,7 +500,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Built-in .
+     * . .
      * 
      */
     async metricsDefinitionsUpdate(requestParameters: MetricsDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {

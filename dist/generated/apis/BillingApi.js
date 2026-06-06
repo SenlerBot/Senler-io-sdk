@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateProjectsAutoPurchaseAcceptLanguageEnum = exports.ProjectsTariffBuyAcceptLanguageEnum = exports.ProjectsPaymentSettingsAcceptLanguageEnum = exports.ProjectsOrdersAcceptLanguageEnum = exports.ProjectsCreditsBuyAcceptLanguageEnum = exports.GetTransactionsDetailsAcceptLanguageEnum = exports.GetTransactionsDetailsGroupByEnum = exports.GetProjectsTransactionsAcceptLanguageEnum = exports.GetProjectsTransactionsCurrencyEnum = exports.GetProjectsTransactionsTypeEnum = exports.GetProjectsTariffsAcceptLanguageEnum = exports.GetProjectsTariffCheckAcceptLanguageEnum = exports.GetProjectsTariffCheckPeriodEnum = exports.GetProjectsPaymentSettingsAcceptLanguageEnum = exports.GetProjectsOrdersAcceptLanguageEnum = exports.GetProjectsCreditsCheckAcceptLanguageEnum = exports.GetProjectsCreditTransactionsAcceptLanguageEnum = exports.GetProjectsCreditTransactionsTypeEnum = exports.GetProjectsBalanceAcceptLanguageEnum = exports.GetCreditTransactionsDetailsAcceptLanguageEnum = exports.DeleteProjectsTariffNextAcceptLanguageEnum = exports.BillingApi = void 0;
+exports.UpdateProjectsAutoPurchaseAcceptLanguageEnum = exports.ProjectsTariffBuyAcceptLanguageEnum = exports.ProjectsPaymentSettingsAcceptLanguageEnum = exports.ProjectsOrdersAcceptLanguageEnum = exports.ProjectsCreditsBuyAcceptLanguageEnum = exports.GetTransactionsDetailsAcceptLanguageEnum = exports.GetTransactionsDetailsGroupByEnum = exports.GetProjectsTransactionsAcceptLanguageEnum = exports.GetProjectsTransactionsCurrencyEnum = exports.GetProjectsTransactionsTypeEnum = exports.GetProjectsTariffsAcceptLanguageEnum = exports.GetProjectsTariffCheckAcceptLanguageEnum = exports.GetProjectsTariffCheckPeriodEnum = exports.GetProjectsPaymentSettingsAcceptLanguageEnum = exports.GetProjectsOrdersAcceptLanguageEnum = exports.GetProjectsCreditsCheckAcceptLanguageEnum = exports.GetProjectsCreditTransactionsAcceptLanguageEnum = exports.GetProjectsCreditTransactionsTypeEnum = exports.GetProjectsBalanceAcceptLanguageEnum = exports.GetCreditTransactionsDetailsAcceptLanguageEnum = exports.GetCreditTransactionsDetailsGroupByEnum = exports.DeleteProjectsTariffNextAcceptLanguageEnum = exports.BillingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class BillingApi extends runtime.BaseAPI {
     /**
-     * downgrade. .
+     * downgrade. . ( ).
      *
      */
     async deleteProjectsTariffNextRaw(requestParameters, initOverrides) {
@@ -89,7 +89,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * downgrade. .
+     * downgrade. . ( ).
      *
      */
     async deleteProjectsTariffNext(requestParameters, initOverrides) {
@@ -97,15 +97,12 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ClickHouse: , .
+     * : .
      *
      */
     async getCreditTransactionsDetailsRaw(requestParameters, initOverrides) {
         if (requestParameters['transactionId'] == null) {
             throw new runtime.RequiredError('transactionId', 'Required parameter "transactionId" was null or undefined when calling getCreditTransactionsDetails().');
-        }
-        if (requestParameters['groupBy'] == null) {
-            throw new runtime.RequiredError('groupBy', 'Required parameter "groupBy" was null or undefined when calling getCreditTransactionsDetails().');
         }
         const queryParameters = {};
         if (requestParameters['groupBy'] != null) {
@@ -138,7 +135,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditTransactionDetailsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * ClickHouse: , .
+     * : .
      *
      */
     async getCreditTransactionsDetails(requestParameters, initOverrides) {
@@ -146,7 +143,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async getProjectsBalanceRaw(requestParameters, initOverrides) {
@@ -181,7 +178,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectBalanceInfoDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getProjectsBalance(requestParameters, initOverrides) {
@@ -250,7 +247,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
+     * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
      *
      */
     async getProjectsCreditsCheckRaw(requestParameters, initOverrides) {
@@ -294,7 +291,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditsCheckResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . .
+     * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
      *
      */
     async getProjectsCreditsCheck(requestParameters, initOverrides) {
@@ -302,7 +299,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , ( order_items). ID : ?
+     * , ( order_items). ID : ?order_id=...; : ?status=pending,processing
      *
      */
     async getProjectsOrdersRaw(requestParameters, initOverrides) {
@@ -349,7 +346,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.OrderListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , ( order_items). ID : ?
+     * , ( order_items). ID : ?order_id=...; : ?status=pending,processing
      *
      */
     async getProjectsOrders(requestParameters, initOverrides) {
@@ -400,7 +397,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (, toggle ). .
+     * (, toggle ). . total == null tariff-buy. total > 0 POST /orders amount use_balance.
      *
      */
     async getProjectsTariffCheckRaw(requestParameters, initOverrides) {
@@ -450,7 +447,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TariffCheckResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (, toggle ). .
+     * (, toggle ). . total == null tariff-buy. total > 0 POST /orders amount use_balance.
      *
      */
     async getProjectsTariffCheck(requestParameters, initOverrides) {
@@ -458,7 +455,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Free .
      *
      */
     async getProjectsTariffsRaw(requestParameters, initOverrides) {
@@ -493,7 +490,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectTariffsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Free .
      *
      */
     async getProjectsTariffs(requestParameters, initOverrides) {
@@ -501,7 +498,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (, , , ).
+     * (, , , )
      *
      */
     async getProjectsTransactionsRaw(requestParameters, initOverrides) {
@@ -557,7 +554,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.BillingTransactionsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (, , , ).
+     * (, , , )
      *
      */
     async getProjectsTransactions(requestParameters, initOverrides) {
@@ -565,7 +562,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * : , usage-.
+     * : , usage-
      *
      */
     async getTransactionsDetailsRaw(requestParameters, initOverrides) {
@@ -606,7 +603,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TransactionDetailsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * : , usage-.
+     * : , usage-
      *
      */
     async getTransactionsDetails(requestParameters, initOverrides) {
@@ -662,7 +659,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , URL . payment_settings (, email).
+     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
      *
      */
     async projectsOrdersRaw(requestParameters, initOverrides) {
@@ -702,7 +699,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateOrderResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , URL . payment_settings (, email).
+     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
      *
      */
     async projectsOrders(requestParameters, initOverrides) {
@@ -710,7 +707,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , . (RU), .
+     * , , . (RU), . RU: email . : email + .
      *
      */
     async projectsPaymentSettingsRaw(requestParameters, initOverrides) {
@@ -750,7 +747,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SavePaymentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , . (RU), .
+     * , , . (RU), . RU: email . : email + .
      *
      */
     async projectsPaymentSettings(requestParameters, initOverrides) {
@@ -758,7 +755,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * tariff-check total == null. Upgrade ( + ).
+     * tariff-check total == null. Upgrade ( + ). Downgrade ( ). .
      * /
      */
     async projectsTariffBuyRaw(requestParameters, initOverrides) {
@@ -798,7 +795,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectBalanceInfoDtoFromJSON)(jsonValue));
     }
     /**
-     * tariff-check total == null. Upgrade ( + ).
+     * tariff-check total == null. Upgrade ( + ). Downgrade ( ). .
      * /
      */
     async projectsTariffBuy(requestParameters, initOverrides) {
@@ -806,7 +803,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * : .
+     * : . package_id ( GET /api/credit-packages).
      *
      */
     async updateProjectsAutoPurchaseRaw(requestParameters, initOverrides) {
@@ -846,7 +843,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutoPurchaseResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * : .
+     * : . package_id ( GET /api/credit-packages).
      *
      */
     async updateProjectsAutoPurchase(requestParameters, initOverrides) {
@@ -861,6 +858,13 @@ exports.BillingApi = BillingApi;
 exports.DeleteProjectsTariffNextAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetCreditTransactionsDetailsGroupByEnum = {
+    Agent: 'agent',
+    Model: 'model'
 };
 /**
  * @export

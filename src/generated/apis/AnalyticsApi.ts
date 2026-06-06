@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -278,7 +278,7 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * ClickHouse , .
+     * , .
      * 
      */
     async getMetricsLogRaw(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsLogResponseDto>> {
@@ -403,7 +403,7 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * ClickHouse , .
+     * , .
      * 
      */
     async getMetricsLog(requestParameters: GetMetricsLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsLogResponseDto> {
@@ -999,7 +999,7 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * AI- . .
+     * AI- . model_id . .
      * 
      */
     async summarizeRaw(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>> {
@@ -1049,7 +1049,7 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * AI- . .
+     * AI- . model_id . .
      * 
      */
     async summarize(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto> {

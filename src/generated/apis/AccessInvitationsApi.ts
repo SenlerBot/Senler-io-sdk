@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -64,7 +64,7 @@ export interface AccessInvitationsGetByIdRequest {
 export class AccessInvitationsApi extends runtime.BaseAPI {
 
     /**
-     * pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). .
      * 
      */
     async accessInvitationsCreateRaw(requestParameters: AccessInvitationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>> {
@@ -121,7 +121,7 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). .
      * 
      */
     async accessInvitationsCreate(requestParameters: AccessInvitationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto> {
@@ -193,7 +193,7 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . ?
+     * . ?status=pending|accepted|declined|expired|cancelled.
      * 
      */
     async accessInvitationsGetByIdRaw(requestParameters: AccessInvitationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<InvitationListItemDto>>> {
@@ -244,7 +244,7 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . ?
+     * . ?status=pending|accepted|declined|expired|cancelled.
      * 
      */
     async accessInvitationsGetById(requestParameters: AccessInvitationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InvitationListItemDto>> {

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -25,61 +25,61 @@ import type { EventPlatformActionDto } from './EventPlatformActionDto';
  */
 export interface EventMessageInteractionsDto {
     /**
-     * .
+     *
      * @type {Array<EventMessageReactionDto>}
      * @memberof EventMessageInteractionsDto
      */
     reactions?: Array<EventMessageReactionDto>;
     /**
-     * Snapshot .
+     * Snapshot
      * @type {EventPollSnapshotDto}
      * @memberof EventMessageInteractionsDto
      */
     poll?: EventPollSnapshotDto;
     /**
-     * .
+     *
      * @type {EventMessageEditingDto}
      * @memberof EventMessageInteractionsDto
      */
     editing?: EventMessageEditingDto;
     /**
-     * reply.
+     * reply
      * @type {EventMessageRepliesDto}
      * @memberof EventMessageInteractionsDto
      */
     replies?: EventMessageRepliesDto;
     /**
-     * .
+     *
      * @type {EventMessageForwardingDto}
      * @memberof EventMessageInteractionsDto
      */
     forwarding?: EventMessageForwardingDto;
     /**
-     * .
+     *
      * @type {EventMessageViewsDto}
      * @memberof EventMessageInteractionsDto
      */
     views?: EventMessageViewsDto;
     /**
-     * .
+     *
      * @type {EventMessagePinningDto}
      * @memberof EventMessageInteractionsDto
      */
     pinning?: EventMessagePinningDto;
     /**
-     * .
+     *
      * @type {EventMessageMentionsDto}
      * @memberof EventMessageInteractionsDto
      */
     mentions?: EventMessageMentionsDto;
     /**
-     * platform edit.
+     * platform edit
      * @type {EventPlatformActionDto}
      * @memberof EventMessageInteractionsDto
      */
     platformEdit?: EventPlatformActionDto;
     /**
-     * platform delete.
+     * platform delete
      * @type {EventPlatformActionDto}
      * @memberof EventMessageInteractionsDto
      */

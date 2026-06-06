@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,49 +20,49 @@ import { mapValues } from '../runtime';
  */
 export interface DialogLeadDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogLeadDto
      */
     id: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogLeadDto
      */
     firstName?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogLeadDto
      */
     lastName?: string;
     /**
-     * Username.
+     * 
      * @type {string}
      * @memberof DialogLeadDto
      */
     username?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogLeadDto
      */
     avatarUrl?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogLeadDto
      */
     operatorNotes?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogLeadDto
      */
     externalUserId: string;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof DialogLeadDto
      */

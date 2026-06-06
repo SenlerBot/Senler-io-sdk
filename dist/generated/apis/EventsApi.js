@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class EventsApi extends runtime.BaseAPI {
     /**
-     * CabinetEventDetailDto provider costs. .
+     * .
      * ID
      */
     async eventsGetByIdRaw(requestParameters, initOverrides) {
@@ -89,7 +89,7 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetEventDetailDtoFromJSON)(jsonValue));
     }
     /**
-     * CabinetEventDetailDto provider costs. .
+     * .
      * ID
      */
     async eventsGetById(requestParameters, initOverrides) {
@@ -97,7 +97,7 @@ class EventsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ().
+     * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
     async eventsListRaw(requestParameters, initOverrides) {
@@ -204,7 +204,7 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventsList200ResponseFromJSON)(jsonValue));
     }
     /**
-     * ().
+     * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
     async eventsList(requestParameters, initOverrides) {
@@ -212,7 +212,7 @@ class EventsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * project-scoped .
+     * . .
      *
      */
     async getAnalyticsRaw(requestParameters, initOverrides) {
@@ -256,7 +256,7 @@ class EventsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalyticsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * project-scoped .
+     * . .
      *
      */
     async getAnalytics(requestParameters, initOverrides) {

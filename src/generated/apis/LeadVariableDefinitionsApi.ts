@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -81,7 +81,7 @@ export interface LeadVariableDefinitionsUpdateRequest {
 export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsCreateRaw(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
@@ -138,7 +138,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsCreate(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
@@ -147,7 +147,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
@@ -201,7 +201,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
@@ -210,7 +210,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsGetByIdRaw(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>> {
@@ -269,7 +269,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsGetById(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto> {
@@ -278,7 +278,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsGetById2Raw(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
@@ -332,7 +332,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsGetById2(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
@@ -341,7 +341,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsUpdateRaw(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
@@ -405,7 +405,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async leadVariableDefinitionsUpdate(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {

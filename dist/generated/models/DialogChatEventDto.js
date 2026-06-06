@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -121,8 +121,6 @@ exports.DialogChatEventDtoActionTypeEnum = {
     ReasoningRecorded: 'reasoning_recorded',
     ImageGenerated: 'image_generated',
     AudioGenerated: 'audio_generated',
-    SpeechRecognized: 'speech_recognized',
-    ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
@@ -170,7 +168,6 @@ function DialogChatEventDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
-        'appAgentId': json['app_agent_id'] == null ? undefined : json['app_agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'targetType': json['target_type'] == null ? undefined : json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
@@ -224,7 +221,6 @@ function DialogChatEventDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'agent_id': value['agentId'],
         'app_id': value['appId'],
-        'app_agent_id': value['appAgentId'],
         'lead_id': value['leadId'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],

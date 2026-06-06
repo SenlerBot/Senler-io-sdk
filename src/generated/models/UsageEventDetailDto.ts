@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,79 +20,79 @@ import { mapValues } from '../runtime';
  */
 export interface UsageEventDetailDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UsageEventDetailDto
      */
     eventId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UsageEventDetailDto
      */
     dialogId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UsageEventDetailDto
      */
     agentId: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UsageEventDetailDto
      */
     agentType: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UsageEventDetailDto
      */
     agentName: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UsageEventDetailDto
      */
     modelName: string;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof UsageEventDetailDto
      */
     cost: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof UsageEventDetailDto
      */
     totalTokens: number;
     /**
-     * Prompt .
+     * Prompt
      * @type {number}
      * @memberof UsageEventDetailDto
      */
     promptTokens: number;
     /**
-     * Completion .
+     * Completion
      * @type {number}
      * @memberof UsageEventDetailDto
      */
     completionTokens: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof UsageEventDetailDto
      */
     cachedTokens: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof UsageEventDetailDto
      */
     cachedPercentage: number;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof UsageEventDetailDto
      */

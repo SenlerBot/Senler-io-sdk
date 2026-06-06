@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { McpCredentialConnectedIdentityDto } from './McpCredentialConnectedIdentityDto';
+import {
+    McpCredentialConnectedIdentityDtoFromJSON,
+    McpCredentialConnectedIdentityDtoFromJSONTyped,
+    McpCredentialConnectedIdentityDtoToJSON,
+    McpCredentialConnectedIdentityDtoToJSONTyped,
+} from './McpCredentialConnectedIdentityDto';
+
 /**
  * 
  * @export
@@ -20,47 +28,53 @@ import { mapValues } from '../runtime';
  */
 export interface McpServerProjectCredentialStatusResponseDto {
     /**
-     * Installed MCP server ID.
+     * ID MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     mcpServerId: string;
     /**
-     * Authentication mode of installed MCP server.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     authMode: McpServerProjectCredentialStatusResponseDtoAuthModeEnum;
     /**
-     * Auth method used by currently connected credential.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     connectedAuthMethod?: McpServerProjectCredentialStatusResponseDtoConnectedAuthMethodEnum | null;
     /**
-     * Whether active project credential exists.
+     * MCP
      * @type {boolean}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     hasProjectCredential: boolean;
     /**
-     * Last validation status of the active project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     credentialValidationStatus?: McpServerProjectCredentialStatusResponseDtoCredentialValidationStatusEnum | null;
     /**
-     * Last validation error of the active project credential.
+     * MCP
      * @type {string}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     credentialValidationError?: string | null;
     /**
-     * Last validation timestamp of the active project credential.
+     * MCP
      * @type {Date}
      * @memberof McpServerProjectCredentialStatusResponseDto
      */
     credentialValidatedAt?: Date | null;
+    /**
+     * ,
+     * @type {McpCredentialConnectedIdentityDto}
+     * @memberof McpServerProjectCredentialStatusResponseDto
+     */
+    connectedIdentity?: McpCredentialConnectedIdentityDto | null;
 }
 
 
@@ -120,6 +134,7 @@ export function McpServerProjectCredentialStatusResponseDtoFromJSONTyped(json: a
         'credentialValidationStatus': json['credential_validation_status'] == null ? undefined : json['credential_validation_status'],
         'credentialValidationError': json['credential_validation_error'] == null ? undefined : json['credential_validation_error'],
         'credentialValidatedAt': json['credential_validated_at'] == null ? undefined : (new Date(json['credential_validated_at'])),
+        'connectedIdentity': json['connected_identity'] == null ? undefined : McpCredentialConnectedIdentityDtoFromJSON(json['connected_identity']),
     };
 }
 
@@ -141,6 +156,7 @@ export function McpServerProjectCredentialStatusResponseDtoToJSONTyped(value?: M
         'credential_validation_status': value['credentialValidationStatus'],
         'credential_validation_error': value['credentialValidationError'],
         'credential_validated_at': value['credentialValidatedAt'] == null ? undefined : ((value['credentialValidatedAt'] as any).toISOString()),
+        'connected_identity': McpCredentialConnectedIdentityDtoToJSON(value['connectedIdentity']),
     };
 }
 

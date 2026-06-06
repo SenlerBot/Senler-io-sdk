@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,55 +35,55 @@ import {
  */
 export interface UpdateWidgetSettingsDto {
     /**
-     * (, , ).
+     * (, , )
      * @type {WidgetThemeDto}
      * @memberof UpdateWidgetSettingsDto
      */
     theme?: WidgetThemeDto;
     /**
-     * CORS.
+     * CORS
      * @type {Array<string>}
      * @memberof UpdateWidgetSettingsDto
      */
     allowedDomains?: Array<string>;
     /**
-     * ( , , , ).
+     * ( , , , )
      * @type {WidgetFeaturesDto}
      * @memberof UpdateWidgetSettingsDto
      */
     features?: WidgetFeaturesDto;
     /**
-     * HMAC identity verification ( user_hash).
+     * HMAC identity verification ( user_hash)
      * @type {boolean}
      * @memberof UpdateWidgetSettingsDto
      */
     identityVerification?: boolean;
     /**
-     * : ru, en auto ().
+     * : ru, en auto ()
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     language?: UpdateWidgetSettingsDtoLanguageEnum;
     /**
-     * : popup ( ) embedded ( ).
+     * :
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
     /**
-     * : local ( JS ) remote ( /init).
+     * : local ( JS ) remote ( /init)
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     configSource?: UpdateWidgetSettingsDtoConfigSourceEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */
     name?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof UpdateWidgetSettingsDto
      */

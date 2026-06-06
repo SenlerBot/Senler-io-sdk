@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -98,169 +98,169 @@ import {
  */
 export interface ChannelResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ChannelResponseDto
      */
     id: string;
     /**
-     * ID Senler.
+     * ID Senler
      * @type {number}
      * @memberof ChannelResponseDto
      */
     senlerChannelId?: number | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelResponseDto
      */
     name?: string | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelResponseDto
      */
     type?: ChannelResponseDtoTypeEnum | null;
     /**
-     * ID .
+     * ID . Discord application_id bind flow.
      * @type {string}
      * @memberof ChannelResponseDto
      */
     externalId?: string | null;
     /**
-     * URL .
+     * URL . Discord metadata .
      * @type {string}
      * @memberof ChannelResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof ChannelResponseDto
      */
     isPaused: boolean;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ChannelResponseDto
      */
     webhookSecret?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ChannelResponseDto
      */
     projectId?: string | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ChannelResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ChannelResponseDto
      */
     updatedAt: Date;
     /**
-     * spaces .
+     * spaces
      * @type {number}
      * @memberof ChannelResponseDto
      */
     spacesCount?: number;
     /**
-     * Telegram- ( type=tg).
+     * Telegram- ( type=tg)
      * @type {TelegramChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataTg?: TelegramChannelDataDto;
     /**
-     * VK- ( type=vk).
+     * VK- ( type=vk)
      * @type {VKChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataVk?: VKChannelDataDto;
     /**
-     * MAX- ( type=max).
+     * MAX- ( type=max)
      * @type {MAXChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataMax?: MAXChannelDataDto;
     /**
-     * Avito- ( type=avito).
+     * Avito- ( type=avito)
      * @type {AvitoChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataAvito?: AvitoChannelDataDto;
     /**
-     * Discord- ( type=discord).
+     * Discord- ( type=discord)
      * @type {DiscordChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataDiscord?: DiscordChannelDataDto;
     /**
-     * Widget- ( type=widget).
+     * Widget- ( type=widget)
      * @type {WidgetChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataWidget?: WidgetChannelDataDto;
     /**
-     * StreamVi- ( type=streamvi).
+     * StreamVi- ( type=streamvi)
      * @type {StreamViChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataStreamvi?: StreamViChannelDataDto;
     /**
-     * Email- ( type=email).
+     * Email- ( type=email)
      * @type {EmailChannelDataDto}
      * @memberof ChannelResponseDto
      */
     dataEmail?: EmailChannelDataDto;
     /**
-     * Senler .
+     * Senler
      * @type {SenlerStatusDto}
      * @memberof ChannelResponseDto
      */
     senler?: SenlerStatusDto;
     /**
-     * (null ).
+     * (null )
      * @type {ChannelMigrationStatusDto}
      * @memberof ChannelResponseDto
      */
     migration?: ChannelMigrationStatusDto | null;
     /**
-     * .
+     * 
      * @type {ChannelAccessDto}
      * @memberof ChannelResponseDto
      */
     access?: ChannelAccessDto;
     /**
-     * API.
+     * API
      * @type {boolean}
      * @memberof ChannelResponseDto
      */
     historySupported?: boolean;
     /**
-     * scan .
+     * scan
      * @type {string}
      * @memberof ChannelResponseDto
      */
     historyScanStatus?: string;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ChannelResponseDto
      */
     historyCoveredFrom?: Date | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ChannelResponseDto
      */
     historyCoveredTo?: Date | null;
     /**
-     * scan .
+     * scan
      * @type {string}
      * @memberof ChannelResponseDto
      */

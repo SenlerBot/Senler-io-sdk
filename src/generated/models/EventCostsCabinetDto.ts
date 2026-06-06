@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -63,49 +63,49 @@ import {
  */
 export interface EventCostsCabinetDto {
     /**
-     * .
+     * 
      * @type {TextCostCabinetDto}
      * @memberof EventCostsCabinetDto
      */
     text?: TextCostCabinetDto;
     /**
-     * vision.
+     * vision
      * @type {VisionCostCabinetDto}
      * @memberof EventCostsCabinetDto
      */
     vision?: VisionCostCabinetDto;
     /**
-     * .
+     * 
      * @type {ImageGenerationCostCabinetDto}
      * @memberof EventCostsCabinetDto
      */
     imageGeneration?: ImageGenerationCostCabinetDto;
     /**
-     * .
+     * 
      * @type {AudioGenerationCostCabinetDto}
      * @memberof EventCostsCabinetDto
      */
     audioGeneration?: AudioGenerationCostCabinetDto;
     /**
-     * .
+     * 
      * @type {SpeechRecognitionCostCabinetDto}
      * @memberof EventCostsCabinetDto
      */
     speechRecognition?: SpeechRecognitionCostCabinetDto;
     /**
-     * summary.
+     * summary
      * @type {MetricsExtractionCostCabinetDto}
      * @memberof EventCostsCabinetDto
      */
     metricsExtraction?: MetricsExtractionCostCabinetDto;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventCostsCabinetDto
      */
     billingMode?: EventCostsCabinetDtoBillingModeEnum;
     /**
-     * (USD RUB).
+     * (USD RUB)
      * @type {string}
      * @memberof EventCostsCabinetDto
      */

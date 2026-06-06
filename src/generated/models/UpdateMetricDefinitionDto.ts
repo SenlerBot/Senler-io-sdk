@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -49,7 +49,7 @@ import {
  */
 export interface UpdateMetricDefinitionDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
@@ -61,91 +61,91 @@ export interface UpdateMetricDefinitionDto {
      */
     description?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     nameRu?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     nameEn?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     descriptionRu?: string;
     /**
-     * ( builtin).
+     * ( builtin)
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     descriptionEn?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     valueType?: UpdateMetricDefinitionDtoValueTypeEnum;
     /**
-     * (null = ).
+     * (null = )
      * @type {Array<string>}
      * @memberof UpdateMetricDefinitionDto
      */
     agentTypes?: Array<string> | null;
     /**
-     * AI ( , ).
+     * AI ( , )
      * @type {string}
      * @memberof UpdateMetricDefinitionDto
      */
     aiExtractionPrompt?: string;
     /**
-     * . (mixed type)
+     *  (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof UpdateMetricDefinitionDto
      */
     exampleValue?: { [key: string]: any; } | null;
     /**
-     * string.
+     * string
      * @type {StringValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     stringValidation?: StringValidationDto;
     /**
-     * number.
+     * number
      * @type {NumberValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     numberValidation?: NumberValidationDto;
     /**
-     * boolean (direction: true_is_better / false_is_better).
+     * boolean (direction: true_is_better / false_is_better)
      * @type {BooleanValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     booleanValidation?: BooleanValidationDto;
     /**
-     * array.
+     * array
      * @type {ArrayValidationDto}
      * @memberof UpdateMetricDefinitionDto
      */
     arrayValidation?: ArrayValidationDto;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateMetricDefinitionDto
      */
     isActive?: boolean;
     /**
-     * severity-.
+     * severity-. true direction .
      * @type {boolean}
      * @memberof UpdateMetricDefinitionDto
      */
     isAnalyzable?: boolean;
     /**
-     * ( ) .
+     * ( ) . null = .
      * @type {number}
      * @memberof UpdateMetricDefinitionDto
      */

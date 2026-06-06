@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,79 +16,79 @@
  */
 export interface AgentMetricDeviationDto {
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     agentId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     agentName: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     avatarUrl?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     agentType: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     value: number;
     /**
-     * Baseline: , ( evaluation_mode).
+     * Baseline: , ( evaluation_mode)
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     baseline: number;
     /**
-     * Score (||) .
+     * Score (||) . >= 0
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     score: number;
     /**
-     * baseline %.
+     * baseline %. = , =
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     deviationPercent: number;
     /**
-     * .
+     * . deviation_percent good/bad. null non-analyzable.
      * @type {string}
      * @memberof AgentMetricDeviationDto
      */
     direction: AgentMetricDeviationDtoDirectionEnum | null;
     /**
-     * vs %.
+     * vs %
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     changePercent: number;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     eventsCount: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
     dialogsCount: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */

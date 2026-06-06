@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -115,9 +115,9 @@ function EventAttachmentCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'type': json['type'],
-        'url': json['url'] == null ? undefined : json['url'],
         'storageUrl': json['storage_url'] == null ? undefined : json['storage_url'],
         'previewUrl': json['preview_url'] == null ? undefined : json['preview_url'],
+        'externalUrl': json['external_url'] == null ? undefined : json['external_url'],
         'fileName': json['file_name'] == null ? undefined : json['file_name'],
         'fileSize': json['file_size'] == null ? undefined : json['file_size'],
         'mimeType': json['mime_type'] == null ? undefined : json['mime_type'],
@@ -137,6 +137,7 @@ function EventAttachmentCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
         'deliveryStage': json['delivery_stage'] == null ? undefined : json['delivery_stage'],
         'deliveryError': json['delivery_error'] == null ? undefined : json['delivery_error'],
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
+        'platformFileId': json['platform_file_id'] == null ? undefined : json['platform_file_id'],
         'uploadedAt': json['uploaded_at'] == null ? undefined : (new Date(json['uploaded_at'])),
     };
 }
@@ -150,9 +151,9 @@ function EventAttachmentCabinetDtoToJSONTyped(value, ignoreDiscriminator = false
     return {
         'id': value['id'],
         'type': value['type'],
-        'url': value['url'],
         'storage_url': value['storageUrl'],
         'preview_url': value['previewUrl'],
+        'external_url': value['externalUrl'],
         'file_name': value['fileName'],
         'file_size': value['fileSize'],
         'mime_type': value['mimeType'],
@@ -172,6 +173,7 @@ function EventAttachmentCabinetDtoToJSONTyped(value, ignoreDiscriminator = false
         'delivery_stage': value['deliveryStage'],
         'delivery_error': value['deliveryError'],
         'platform_type': value['platformType'],
+        'platform_file_id': value['platformFileId'],
         'uploaded_at': value['uploadedAt'] == null ? undefined : ((value['uploadedAt']).toISOString()),
     };
 }

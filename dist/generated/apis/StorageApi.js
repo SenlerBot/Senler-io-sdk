@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class StorageApi extends runtime.BaseAPI {
     /**
-     * S3 .
+     * S3
      *
      */
     async deleteFilesRaw(requestParameters, initOverrides) {
@@ -92,7 +92,7 @@ class StorageApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StorageFileDeleteResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * S3 .
+     * S3
      *
      */
     async deleteFiles(requestParameters, initOverrides) {
@@ -100,7 +100,7 @@ class StorageApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * pending/uploaded/confirmed ( ).
+     * pending/uploaded/confirmed ( )
      *
      */
     async deleteOrphanedRaw(requestParameters, initOverrides) {
@@ -135,7 +135,7 @@ class StorageApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StorageOrphanedDeleteResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * pending/uploaded/confirmed ( ).
+     * pending/uploaded/confirmed ( )
      *
      */
     async deleteOrphaned(requestParameters, initOverrides) {
@@ -143,7 +143,7 @@ class StorageApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async getFilesRaw(requestParameters, initOverrides) {
@@ -196,7 +196,7 @@ class StorageApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StorageFilesListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getFiles(requestParameters, initOverrides) {

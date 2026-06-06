@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,7 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ProjectDetailsResponseDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
+import type { DialogSlaSettingsDto, ProjectDetailsResponseDto, SetDialogSlaEnabledDto, UpdateDialogSlaPriorityThresholdDto, UpdateDialogSlaSettingsDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
+export interface GetDialogSlaSettingsRequest {
+    projectId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetDialogSlaSettingsAcceptLanguageEnum;
+}
 export interface GetMeRequest {
     acceptLanguage?: GetMeAcceptLanguageEnum;
 }
@@ -20,17 +25,46 @@ export interface UpdateRequest {
     xSessionId?: string;
     acceptLanguage?: UpdateAcceptLanguageEnum;
 }
+export interface UpdateDialogSlaSettingsRequest {
+    projectId: string;
+    updateDialogSlaSettingsDto: UpdateDialogSlaSettingsDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateDialogSlaSettingsAcceptLanguageEnum;
+}
+export interface UpdateDialogSlaSettingsEnabledRequest {
+    projectId: string;
+    setDialogSlaEnabledDto: SetDialogSlaEnabledDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateDialogSlaSettingsEnabledAcceptLanguageEnum;
+}
+export interface UpdateDialogSlaSettingsPrioritiesRequest {
+    projectId: string;
+    priority: UpdateDialogSlaSettingsPrioritiesPriorityEnum;
+    updateDialogSlaPriorityThresholdDto: UpdateDialogSlaPriorityThresholdDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum;
+}
 /**
  *
  */
 export declare class ProjectsApi extends runtime.BaseAPI {
     /**
-     * .
+     * SLA . SLA .
+     * SLA-
+     */
+    getDialogSlaSettingsRaw(requestParameters: GetDialogSlaSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogSlaSettingsDto>>;
+    /**
+     * SLA . SLA .
+     * SLA-
+     */
+    getDialogSlaSettings(requestParameters: GetDialogSlaSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogSlaSettingsDto>;
+    /**
+     * , project-scoped : API key OAuth access token.
      *
      */
     getMeRaw(requestParameters: GetMeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectDetailsResponseDto>>;
     /**
-     * .
+     * , project-scoped : API key OAuth access token.
      *
      */
     getMe(requestParameters?: GetMeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectDetailsResponseDto>;
@@ -44,7 +78,45 @@ export declare class ProjectsApi extends runtime.BaseAPI {
      *
      */
     update(requestParameters: UpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectResponseDto>;
+    /**
+     * SLA . , .
+     * SLA-
+     */
+    updateDialogSlaSettingsRaw(requestParameters: UpdateDialogSlaSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogSlaSettingsDto>>;
+    /**
+     * SLA . , .
+     * SLA-
+     */
+    updateDialogSlaSettings(requestParameters: UpdateDialogSlaSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogSlaSettingsDto>;
+    /**
+     * SLA .
+     * SLA
+     */
+    updateDialogSlaSettingsEnabledRaw(requestParameters: UpdateDialogSlaSettingsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogSlaSettingsDto>>;
+    /**
+     * SLA .
+     * SLA
+     */
+    updateDialogSlaSettingsEnabled(requestParameters: UpdateDialogSlaSettingsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogSlaSettingsDto>;
+    /**
+     * SLA, .
+     * SLA-
+     */
+    updateDialogSlaSettingsPrioritiesRaw(requestParameters: UpdateDialogSlaSettingsPrioritiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogSlaSettingsDto>>;
+    /**
+     * SLA, .
+     * SLA-
+     */
+    updateDialogSlaSettingsPriorities(requestParameters: UpdateDialogSlaSettingsPrioritiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogSlaSettingsDto>;
 }
+/**
+ * @export
+ */
+export declare const GetDialogSlaSettingsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDialogSlaSettingsAcceptLanguageEnum = typeof GetDialogSlaSettingsAcceptLanguageEnum[keyof typeof GetDialogSlaSettingsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -61,3 +133,38 @@ export declare const UpdateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateAcceptLanguageEnum = typeof UpdateAcceptLanguageEnum[keyof typeof UpdateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDialogSlaSettingsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDialogSlaSettingsAcceptLanguageEnum = typeof UpdateDialogSlaSettingsAcceptLanguageEnum[keyof typeof UpdateDialogSlaSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDialogSlaSettingsEnabledAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = typeof UpdateDialogSlaSettingsEnabledAcceptLanguageEnum[keyof typeof UpdateDialogSlaSettingsEnabledAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDialogSlaSettingsPrioritiesPriorityEnum: {
+    readonly NoPriority: "no_priority";
+    readonly Low: "low";
+    readonly Medium: "medium";
+    readonly High: "high";
+    readonly Urgent: "urgent";
+};
+export type UpdateDialogSlaSettingsPrioritiesPriorityEnum = typeof UpdateDialogSlaSettingsPrioritiesPriorityEnum[keyof typeof UpdateDialogSlaSettingsPrioritiesPriorityEnum];
+/**
+ * @export
+ */
+export declare const UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = typeof UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum[keyof typeof UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum];

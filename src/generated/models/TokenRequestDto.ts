@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,49 +20,49 @@ import { mapValues } from '../runtime';
  */
 export interface TokenRequestDto {
     /**
-     * 
+     * OAuth-
      * @type {string}
      * @memberof TokenRequestDto
      */
     grantType: TokenRequestDtoGrantTypeEnum;
     /**
-     * OAuth client_id.
+     * ID OAuth-. HTTP Basic.
      * @type {string}
      * @memberof TokenRequestDto
      */
     clientId?: string;
     /**
-     * OAuth client_secret.
+     * OAuth-. HTTP Basic.
      * @type {string}
      * @memberof TokenRequestDto
      */
     clientSecret?: string;
     /**
-     * Project ID for client_credentials grant.
+     * ID grant_type=client_credentials. grant_type=authorization_code.
      * @type {string}
      * @memberof TokenRequestDto
      */
     projectId?: string;
     /**
-     * Space-separated permissions (optional, defaults to all granted).
+     * . , .
      * @type {string}
      * @memberof TokenRequestDto
      */
     scope?: string;
     /**
-     * Required for refresh_token grant.
+     * grant_type=refresh_token
      * @type {string}
      * @memberof TokenRequestDto
      */
     refreshToken?: string;
     /**
-     * Required for authorization_code grant.
+     * grant_type=authorization_code
      * @type {string}
      * @memberof TokenRequestDto
      */
     code?: string;
     /**
-     * Redirect URI for authorization_code grant.
+     * URL grant_type=authorization_code. , redirect_uri.
      * @type {string}
      * @memberof TokenRequestDto
      */

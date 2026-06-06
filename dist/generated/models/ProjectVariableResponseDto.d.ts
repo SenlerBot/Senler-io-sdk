@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,31 +17,31 @@ import type { VariableSchemaDto } from './VariableSchemaDto';
  */
 export interface ProjectVariableResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
     projectId: string;
     /**
-     * ID (null = ).
+     * ID (null = )
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
     appId: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
     name: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
     type: ProjectVariableResponseDtoTypeEnum;
     /**
-     * . (mixed type)
+     *  (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof ProjectVariableResponseDto
      */
@@ -55,25 +55,25 @@ export interface ProjectVariableResponseDto {
      */
     description?: string;
     /**
-     * AI .
+     * AI
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
     agentInstruction?: string;
     /**
-     * .
+     *
      * @type {VariableSchemaDto}
      * @memberof ProjectVariableResponseDto
      */
     schema?: VariableSchemaDto;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof ProjectVariableResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof ProjectVariableResponseDto
      */

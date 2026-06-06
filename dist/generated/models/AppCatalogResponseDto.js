@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -32,9 +32,7 @@ function instanceOfAppCatalogResponseDto(value) {
         return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined)
         return false;
-    if (!('allowDeveloperSupportAccess' in value) || value['allowDeveloperSupportAccess'] === undefined)
-        return false;
-    if (!('allowedDeveloperSupportPermissions' in value) || value['allowedDeveloperSupportPermissions'] === undefined)
+    if (!('allowDeveloperDialogAccess' in value) || value['allowDeveloperDialogAccess'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -52,11 +50,11 @@ function AppCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'description': json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'coverUrl': json['cover_url'] == null ? undefined : json['cover_url'],
         'websiteUrl': json['website_url'] == null ? undefined : json['website_url'],
         'types': json['types'],
         'allowedPermissions': json['allowed_permissions'],
-        'allowDeveloperSupportAccess': json['allow_developer_support_access'],
-        'allowedDeveloperSupportPermissions': json['allowed_developer_support_permissions'],
+        'allowDeveloperDialogAccess': json['allow_developer_dialog_access'],
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -72,11 +70,11 @@ function AppCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],
+        'cover_url': value['coverUrl'],
         'website_url': value['websiteUrl'],
         'types': value['types'],
         'allowed_permissions': value['allowedPermissions'],
-        'allow_developer_support_access': value['allowDeveloperSupportAccess'],
-        'allowed_developer_support_permissions': value['allowedDeveloperSupportPermissions'],
+        'allow_developer_dialog_access': value['allowDeveloperDialogAccess'],
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

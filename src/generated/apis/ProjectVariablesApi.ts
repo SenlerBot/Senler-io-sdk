@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -92,7 +92,7 @@ export interface UpdateValueRequest {
 export class ProjectVariablesApi extends runtime.BaseAPI {
 
     /**
-     * .
+     * 
      * 
      */
     async deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
@@ -146,7 +146,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
@@ -155,7 +155,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableListResponseDto>> {
@@ -214,7 +214,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableListResponseDto> {
@@ -223,7 +223,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getById2Raw(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
@@ -277,7 +277,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async getById2(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
@@ -286,7 +286,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async projectVariablesCreateRaw(requestParameters: ProjectVariablesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
@@ -343,7 +343,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * 
      * 
      */
     async projectVariablesCreate(requestParameters: ProjectVariablesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
@@ -352,7 +352,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * (, , , ).
+     * (, , , )
      * 
      */
     async projectVariablesUpdateRaw(requestParameters: ProjectVariablesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
@@ -416,7 +416,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * (, , , ).
+     * (, , , )
      * 
      */
     async projectVariablesUpdate(requestParameters: ProjectVariablesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
@@ -425,7 +425,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( ).
+     * ( )
      * 
      */
     async updateValueRaw(requestParameters: UpdateValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
@@ -489,7 +489,7 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( ).
+     * ( )
      * 
      */
     async updateValue(requestParameters: UpdateValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {

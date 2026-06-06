@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,62 +54,62 @@ export interface GetProcessesResultRequest {
  */
 export declare class ProcessesApi extends runtime.BaseAPI {
     /**
-     * pending/preparing/processing completed/failed/cancelled .
+     * pending/preparing/processing completed/failed/cancelled
      *
      */
     deleteProcessesRaw(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>>;
     /**
-     * pending/preparing/processing completed/failed/cancelled .
+     * pending/preparing/processing completed/failed/cancelled
      *
      */
     deleteProcesses(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
     /**
-     * (/) .
+     * (/)
      *
      */
     getProcessesRaw(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListProcessesResponseDto>>;
     /**
-     * (/) .
+     * (/)
      *
      */
     getProcesses(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListProcessesResponseDto>;
     /**
-     * , .
+     * ,
      *
      */
     getProcesses2Raw(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
     /**
-     * , .
+     * ,
      *
      */
     getProcesses2(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
-     * S3 presigned URL .
+     * S3- .
      *
      */
     getProcessesDownloadRaw(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>>;
     /**
-     * S3 presigned URL .
+     * S3- .
      *
      */
     getProcessesDownload(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse>;
     /**
-     * : process_created process_updated , process_deleted .
-     * subscription token realtime
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     *
      */
     getProcessesRealtimeTokenRaw(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
     /**
-     * : process_created process_updated , process_deleted .
-     * subscription token realtime
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     *
      */
     getProcessesRealtimeToken(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
     /**
-     * .
+     *
      *
      */
     getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>>;
     /**
-     * .
+     *
      *
      */
     getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto>;

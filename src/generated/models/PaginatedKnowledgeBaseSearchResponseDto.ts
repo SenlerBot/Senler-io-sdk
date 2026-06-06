@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,37 +28,37 @@ import {
  */
 export interface PaginatedKnowledgeBaseSearchResponseDto {
     /**
-     * Search hits.
+     * 
      * @type {Array<KnowledgeBaseSearchHitDto>}
      * @memberof PaginatedKnowledgeBaseSearchResponseDto
      */
     items: Array<KnowledgeBaseSearchHitDto>;
     /**
-     * Total number of hits.
+     * 
      * @type {number}
      * @memberof PaginatedKnowledgeBaseSearchResponseDto
      */
     total: number;
     /**
-     * Current page number.
+     * 
      * @type {number}
      * @memberof PaginatedKnowledgeBaseSearchResponseDto
      */
     page: number;
     /**
-     * Number of items per page.
+     * 
      * @type {number}
      * @memberof PaginatedKnowledgeBaseSearchResponseDto
      */
     limit: number;
     /**
-     * Total number of pages.
+     * 
      * @type {number}
      * @memberof PaginatedKnowledgeBaseSearchResponseDto
      */
     totalPages: number;
     /**
-     * Whether there are more pages.
+     * 
      * @type {boolean}
      * @memberof PaginatedKnowledgeBaseSearchResponseDto
      */

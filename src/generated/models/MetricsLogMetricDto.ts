@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,49 +20,49 @@ import { mapValues } from '../runtime';
  */
 export interface MetricsLogMetricDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof MetricsLogMetricDto
      */
     id: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricsLogMetricDto
      */
     key: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricsLogMetricDto
      */
     name: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricsLogMetricDto
      */
     valueType: MetricsLogMetricDtoValueTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof MetricsLogMetricDto
      */
     metricType: MetricsLogMetricDtoMetricTypeEnum;
     /**
-     * ( ).
+     * ( )
      * @type {string}
      * @memberof MetricsLogMetricDto
      */
     direction?: MetricsLogMetricDtoDirectionEnum | null;
     /**
-     * ( 0-1).
+     * ( 0-1)
      * @type {number}
      * @memberof MetricsLogMetricDto
      */
     norm?: number | null;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof MetricsLogMetricDto
      */

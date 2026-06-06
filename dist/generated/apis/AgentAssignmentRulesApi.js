@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AgentAssignmentRulesApi extends runtime.BaseAPI {
     /**
-     * . - .
+     * . channel_id - . - .
      *
      */
     async agentAssignmentRaw(requestParameters, initOverrides) {
@@ -94,7 +94,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . - .
+     * . channel_id - . - .
      *
      */
     async agentAssignment(requestParameters, initOverrides) {
@@ -102,7 +102,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async deleteAgentAssignmentRaw(requestParameters, initOverrides) {
@@ -140,7 +140,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async deleteAgentAssignment(requestParameters, initOverrides) {
@@ -148,7 +148,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ( + ).
+     * ( + )
      *
      */
     async getAgentAssignmentRaw(requestParameters, initOverrides) {
@@ -183,7 +183,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRulesListDtoFromJSON)(jsonValue));
     }
     /**
-     * ( + ).
+     * ( + )
      *
      */
     async getAgentAssignment(requestParameters, initOverrides) {
@@ -191,7 +191,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      * ID
      */
     async getAgentAssignment2Raw(requestParameters, initOverrides) {
@@ -229,7 +229,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      * ID
      */
     async getAgentAssignment2(requestParameters, initOverrides) {
@@ -237,7 +237,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async updateAgentAssignmentRaw(requestParameters, initOverrides) {
@@ -280,7 +280,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async updateAgentAssignment(requestParameters, initOverrides) {
@@ -288,7 +288,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async updateAgentAssignmentRestoreRaw(requestParameters, initOverrides) {
@@ -326,7 +326,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async updateAgentAssignmentRestore(requestParameters, initOverrides) {

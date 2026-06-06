@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,67 +17,67 @@ import type { EmailChannelFilterDto } from './EmailChannelFilterDto';
  */
 export interface CreateEmailChannelDto {
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     projectId: string;
     /**
-     * Email- .
+     * Email-
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     emailAddress: string;
     /**
-     * .
+     * . , email_address. 360 ; IMAP/SMTP .
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     login?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     password: string;
     /**
-     * ID (yandex, gmail, mailru, outlook).
+     * ID (yandex, gmail, mailru, outlook). , IMAP/SMTP
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     provider?: string;
     /**
-     * IMAP- ( provider ).
+     * IMAP- ( provider )
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     imapHost?: string;
     /**
-     * IMAP-.
+     * IMAP-
      * @type {number}
      * @memberof CreateEmailChannelDto
      */
     imapPort?: number;
     /**
-     * SMTP- ( provider ).
+     * SMTP- ( provider )
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
     smtpHost?: string;
     /**
-     * SMTP-.
+     * SMTP-
      * @type {number}
      * @memberof CreateEmailChannelDto
      */
     smtpPort?: number;
     /**
-     * TLS.
+     * TLS
      * @type {boolean}
      * @memberof CreateEmailChannelDto
      */
     tls?: boolean;
     /**
-     * .
+     * . Email-
      * @type {string}
      * @memberof CreateEmailChannelDto
      */
@@ -89,7 +89,7 @@ export interface CreateEmailChannelDto {
      */
     filters?: Array<EmailChannelFilterDto>;
     /**
-     * aibot.
+     * aibot. email , display name.
      * @type {string}
      * @memberof CreateEmailChannelDto
      */

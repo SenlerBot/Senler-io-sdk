@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,79 +28,79 @@ import {
  */
 export interface ProjectBalanceInfoDto {
     /**
-     * (RUB=, USD=).
+     * (RUB=, USD=)
      * @type {string}
      * @memberof ProjectBalanceInfoDto
      */
     currency: ProjectBalanceInfoDtoCurrencyEnum;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     depositBalance: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     bonusBalance: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     profitBalance: number;
     /**
-     * (deposit + bonus + profit).
+     * (deposit + bonus + profit)
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     totalBalance: number;
     /**
-     * (null ).
+     * (null )
      * @type {TariffSubscriptionDto}
      * @memberof ProjectBalanceInfoDto
      */
     tariff?: TariffSubscriptionDto | null;
     /**
-     * (0 ), , integer raw, scale=10000; display->raw: 12.
+     * (0 ), ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     tariffCreditsTotal: number;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     tariffCreditsUsed: number;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     tariffCreditsRemaining: number;
     /**
-     * (, ; ), , integer raw, scale=10000; display->raw: 12.
+     * (, ; ), ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     purchasedCreditsRemaining: number;
     /**
-     * , ( Redis live invoice), , integer raw, scale=10000; display->raw: 12.
+     * , , , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     pendingCredits: number;
     /**
-     * ( + ) pending; , , integer raw, scale=10000; display->raw: 12.
+     * ( + ) ; , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     totalCreditsRemaining: number;
     /**
-     * (total_credits_remaining - pending_credits), , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */

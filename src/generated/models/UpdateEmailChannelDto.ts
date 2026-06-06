@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,67 +28,67 @@ import {
  */
 export interface UpdateEmailChannelDto {
     /**
-     * aibot.
+     * aibot. email , display name.
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     name?: string;
     /**
-     * Email- .
+     * Email-
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     emailAddress?: string;
     /**
-     * .
+     * . , . 360 ; IMAP/SMTP .
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     login?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     password?: string;
     /**
-     * ID (yandex, gmail, mailru, outlook).
+     * ID (yandex, gmail, mailru, outlook). , IMAP/SMTP
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     provider?: string;
     /**
-     * IMAP-.
+     * IMAP-
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     imapHost?: string;
     /**
-     * IMAP-.
+     * IMAP-
      * @type {number}
      * @memberof UpdateEmailChannelDto
      */
     imapPort?: number;
     /**
-     * SMTP-.
+     * SMTP-
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
     smtpHost?: string;
     /**
-     * SMTP-.
+     * SMTP-
      * @type {number}
      * @memberof UpdateEmailChannelDto
      */
     smtpPort?: number;
     /**
-     * TLS.
+     * TLS
      * @type {boolean}
      * @memberof UpdateEmailChannelDto
      */
     tls?: boolean;
     /**
-     * .
+     * . null Email-
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */
@@ -100,7 +100,7 @@ export interface UpdateEmailChannelDto {
      */
     filters?: Array<EmailChannelFilterDto>;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof UpdateEmailChannelDto
      */

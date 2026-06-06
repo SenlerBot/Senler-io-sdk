@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,61 +17,61 @@ import type { PaySystemResponseDto } from './PaySystemResponseDto';
  */
 export interface PaymentSettingsResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     projectId: string;
     /**
-     * (ISO 3166-1 alpha-2).
+     * (ISO 3166-1 alpha-2)
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     country: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     paySystemId: string | null;
     /**
-     * E-mail .
+     * E-mail
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     email: string;
     /**
-     * / .
+     * /
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     state: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     city: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     street: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     zip: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
     houseNumber: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaymentSettingsResponseDto
      */
@@ -83,19 +83,19 @@ export interface PaymentSettingsResponseDto {
      */
     description: string | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof PaymentSettingsResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof PaymentSettingsResponseDto
      */
     updatedAt: Date;
     /**
-     * ( ).
+     * ( )
      * @type {PaySystemResponseDto}
      * @memberof PaymentSettingsResponseDto
      */

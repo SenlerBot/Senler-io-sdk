@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,8 +35,8 @@ export interface FrontendVersionListRequest {
 export class FrontendVersionApi extends runtime.BaseAPI {
 
     /**
-     * latest- frontend- . runtime- , .
-     * cabinet dialog
+     * . , .
+     * 
      */
     async frontendVersionListRaw(requestParameters: FrontendVersionListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FrontendVersionStatusDto>> {
         const queryParameters: any = {};
@@ -58,8 +58,8 @@ export class FrontendVersionApi extends runtime.BaseAPI {
     }
 
     /**
-     * latest- frontend- . runtime- , .
-     * cabinet dialog
+     * . , .
+     * 
      */
     async frontendVersionList(requestParameters: FrontendVersionListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FrontendVersionStatusDto> {
         const response = await this.frontendVersionListRaw(requestParameters, initOverrides);

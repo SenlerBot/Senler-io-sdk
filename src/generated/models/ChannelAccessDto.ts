@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,61 +20,61 @@ import { mapValues } from '../runtime';
  */
 export interface ChannelAccessDto {
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewChannel: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageChannel: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewDialogs: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageDialogs: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewLeads: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageLeads: boolean;
     /**
-     * spaces .
+     * spaces
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewSpaces: boolean;
     /**
-     * spaces .
+     * spaces
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canManageSpaces: boolean;
     /**
-     * data sources .
+     * data sources
      * @type {boolean}
      * @memberof ChannelAccessDto
      */
     canViewDataSources: boolean;
     /**
-     * data sources .
+     * data sources
      * @type {boolean}
      * @memberof ChannelAccessDto
      */

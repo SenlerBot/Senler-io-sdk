@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,121 +16,121 @@
  */
 export interface StorageFileItemDto {
     /**
-     * MongoDB id .
+     * ID
      * @type {string}
      * @memberof StorageFileItemDto
      */
     id: string;
     /**
-     * UUID upload-.
+     * UUID upload-
      * @type {string}
      * @memberof StorageFileItemDto
      */
     uploadId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StorageFileItemDto
      */
     fileName: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof StorageFileItemDto
      */
     fileSize: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StorageFileItemDto
      */
     fileSizeFormatted: string;
     /**
-     * MIME type .
+     * MIME-
      * @type {string}
      * @memberof StorageFileItemDto
      */
     mimeType: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StorageFileItemDto
      */
     mediaCategory: StorageFileItemDtoMediaCategoryEnum;
     /**
-     * URL storage.
+     * URL
      * @type {string}
      * @memberof StorageFileItemDto
      */
     storageUrl?: string;
     /**
-     * storage.
+     * storage
      * @type {string}
      * @memberof StorageFileItemDto
      */
     storagePath?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StorageFileItemDto
      */
     status: StorageFileItemDtoStatusEnum;
     /**
-     * -.
+     * -
      * @type {string}
      * @memberof StorageFileItemDto
      */
     platformType?: StorageFileItemDtoPlatformTypeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StorageFileItemDto
      */
     storageSource?: StorageFileItemDtoStorageSourceEnum;
     /**
-     * - .
+     * -
      * @type {string}
      * @memberof StorageFileItemDto
      */
     ownerType?: StorageFileItemDtoOwnerTypeEnum;
     /**
-     * ID - .
+     * ID -
      * @type {string}
      * @memberof StorageFileItemDto
      */
     ownerId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof StorageFileItemDto
      */
     dialogId?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StorageFileItemDto
      */
     dialogTitle?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof StorageFileItemDto
      */
     channelId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof StorageFileItemDto
      */
     eventId?: string | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof StorageFileItemDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof StorageFileItemDto
      */

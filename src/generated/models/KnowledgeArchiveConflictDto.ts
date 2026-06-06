@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,37 +28,37 @@ import {
  */
 export interface KnowledgeArchiveConflictDto {
     /**
-     * Knowledge resource type.
+     * 
      * @type {string}
      * @memberof KnowledgeArchiveConflictDto
      */
     resourceType: KnowledgeArchiveConflictDtoResourceTypeEnum;
     /**
-     * Path inside uploaded archive.
+     * 
      * @type {string}
      * @memberof KnowledgeArchiveConflictDto
      */
     archivePath: string;
     /**
-     * Existing resource UUID.
+     * UUID
      * @type {string}
      * @memberof KnowledgeArchiveConflictDto
      */
     existingId: string;
     /**
-     * Existing resource name.
+     * 
      * @type {string}
      * @memberof KnowledgeArchiveConflictDto
      */
     existingName: string;
     /**
-     * Name that will be used when duplicate_resolution=rename.
+     * , duplicate_resolution=rename
      * @type {string}
      * @memberof KnowledgeArchiveConflictDto
      */
     suggestedName: string;
     /**
-     * Replace consequences for folder conflicts.
+     * 
      * @type {KnowledgeArchiveReplaceImpactDto}
      * @memberof KnowledgeArchiveConflictDto
      */

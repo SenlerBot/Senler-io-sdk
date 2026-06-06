@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -10,13 +10,23 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
+import type { AttachmentDownloadUrlResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
 export interface ConfirmRequest {
     confirmUploadDto: ConfirmUploadDto;
     dialogId?: string;
     channelId?: any;
     xSessionId?: string;
     acceptLanguage?: ConfirmAcceptLanguageEnum;
+}
+export interface GetDownloadRequest {
+    downloadToken: string;
+    acceptLanguage?: GetDownloadAcceptLanguageEnum;
+}
+export interface GetDownloadUrlRequest {
+    attachmentId: string;
+    dialogId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetDownloadUrlAcceptLanguageEnum;
 }
 export interface UploadUrlRequest {
     getUploadUrlDto: GetUploadUrlDto;
@@ -30,23 +40,43 @@ export interface UploadUrlRequest {
  */
 export declare class AttachmentsApi extends runtime.BaseAPI {
     /**
-     * Prerequisite: S3 ( 2 - PUT ).
-     * S3
+     * , S3-, .
+     *
      */
     confirmRaw(requestParameters: ConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * Prerequisite: S3 ( 2 - PUT ).
-     * S3
+     * , S3-, .
+     *
      */
     confirm(requestParameters: ConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
-     * (presigned URL auth) URL 1 .
-     * presigned URL
+     * . .
+     *
+     */
+    getDownloadRaw(requestParameters: GetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
+    /**
+     * . .
+     *
+     */
+    getDownload(requestParameters: GetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
+    /**
+     * .
+     *
+     */
+    getDownloadUrlRaw(requestParameters: GetDownloadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentDownloadUrlResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getDownloadUrl(requestParameters: GetDownloadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentDownloadUrlResponseDto>;
+    /**
+     * S3- . channelId dialogId, confirm.
+     * S3-
      */
     uploadUrlRaw(requestParameters: UploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
     /**
-     * (presigned URL auth) URL 1 .
-     * presigned URL
+     * S3- . channelId dialogId, confirm.
+     * S3-
      */
     uploadUrl(requestParameters: UploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
 }
@@ -58,6 +88,22 @@ export declare const ConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ConfirmAcceptLanguageEnum = typeof ConfirmAcceptLanguageEnum[keyof typeof ConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDownloadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDownloadAcceptLanguageEnum = typeof GetDownloadAcceptLanguageEnum[keyof typeof GetDownloadAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDownloadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDownloadUrlAcceptLanguageEnum = typeof GetDownloadUrlAcceptLanguageEnum[keyof typeof GetDownloadUrlAcceptLanguageEnum];
 /**
  * @export
  */

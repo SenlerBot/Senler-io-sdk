@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,7 +17,7 @@ import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachm
  */
 export interface UpdateProjectDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof UpdateProjectDto
      */
@@ -29,61 +29,61 @@ export interface UpdateProjectDto {
      */
     description?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof UpdateProjectDto
      */
     avatarUrl?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof UpdateProjectDto
      */
     source?: UpdateProjectDtoSourceEnum;
     /**
-     * ID Senler.
+     * ID Senler
      * @type {number}
      * @memberof UpdateProjectDto
      */
     senlerChannelId?: number;
     /**
-     * (UUID).
+     * (UUID)
      * @type {string}
      * @memberof UpdateProjectDto
      */
     primaryChannelId?: string;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof UpdateProjectDto
      */
     ownerUserId?: string;
     /**
-     * ( summary).
+     * ( summary)
      * @type {string}
      * @memberof UpdateProjectDto
      */
     defaultLanguage?: UpdateProjectDtoDefaultLanguageEnum;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof UpdateProjectDto
      */
     isActive?: boolean;
     /**
-     * .
+     *
      * @type {number}
      * @memberof UpdateProjectDto
      */
     attachmentUploadLimitMb?: number;
     /**
-     * .
+     *
      * @type {ProjectAttachmentUploadLimitsByChannelDto}
      * @memberof UpdateProjectDto
      */
     attachmentUploadLimitsByChannelMb?: ProjectAttachmentUploadLimitsByChannelDto;
     /**
-     * .
+     *
      * @type {object}
      * @memberof UpdateProjectDto
      */

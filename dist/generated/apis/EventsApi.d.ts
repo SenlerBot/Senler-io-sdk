@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -73,32 +73,32 @@ export interface GetMarketingTrafficSourcesRequest {
  */
 export declare class EventsApi extends runtime.BaseAPI {
     /**
-     * CabinetEventDetailDto provider costs. .
+     * .
      * ID
      */
     eventsGetByIdRaw(requestParameters: EventsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetEventDetailDto>>;
     /**
-     * CabinetEventDetailDto provider costs. .
+     * .
      * ID
      */
     eventsGetById(requestParameters: EventsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetEventDetailDto>;
     /**
-     * ().
+     * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
     eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventsList200Response>>;
     /**
-     * ().
+     * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
     eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response>;
     /**
-     * project-scoped .
+     * . .
      *
      */
     getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>>;
     /**
-     * project-scoped .
+     * . .
      *
      */
     getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto>;

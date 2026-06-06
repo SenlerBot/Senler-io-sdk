@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -121,22 +121,22 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
@@ -261,23 +261,23 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
     /**
-     * .
+     * . can_manage_agents.
      *
      */
     updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
     /**
-     * wizard\' .
-     * wizard
+     * .
+     *
      */
     updateWizardProgressRaw(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * wizard\' .
-     * wizard
+     * .
+     *
      */
     updateWizardProgress(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
 }

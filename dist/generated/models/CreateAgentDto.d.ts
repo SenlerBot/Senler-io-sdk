@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,331 +17,331 @@ import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBinding
  */
 export interface CreateAgentDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     name: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     instruction?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof CreateAgentDto
      */
     avatarUrl?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     agentType?: CreateAgentDtoAgentTypeEnum;
     /**
-     * : list ( ServerList), direct (), none ( ).
+     * : list ( ServerList), direct (), none ( )
      * @type {string}
      * @memberof CreateAgentDto
      */
     serverBindingMode?: CreateAgentDtoServerBindingModeEnum;
     /**
-     * ID MCP ( server_binding_mode = "list").
+     * ID MCP ( server_binding_mode = "list")
      * @type {string}
      * @memberof CreateAgentDto
      */
     mcpServerListId?: string;
     /**
-     * ID ( server_binding_mode = "direct").
+     * ID ( server_binding_mode = "direct")
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * .
+     *
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
     knowledgeBasePermissions?: Array<CreateAgentDtoKnowledgeBasePermissionsEnum>;
     /**
-     * , .
+     * ,
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof CreateAgentDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof CreateAgentDto
      */
     projectId: string;
     /**
-     * ID .
+     * ID . route .
      * @type {string}
      * @memberof CreateAgentDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature AI (0.
+     * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof CreateAgentDto
      */
     temperature?: number | null;
     /**
-     * .
+     *
      * @type {object}
      * @memberof CreateAgentDto
      */
     meta?: object;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     isActive?: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     metricsCollectionEnabled?: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
     triggerKeywords?: Array<string>;
     /**
-     * .
+     * . , trigger_keywords .
      * @type {string}
      * @memberof CreateAgentDto
      */
     keywordAssignmentRole?: CreateAgentDtoKeywordAssignmentRoleEnum;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof CreateAgentDto
      */
     keywordDialogScope?: CreateAgentDtoKeywordDialogScopeEnum | null;
     /**
-     * ID , .
+     * ID , . null/ =
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     autoAssignmentMode?: CreateAgentDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels.
+     * ID selected_channels
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof CreateAgentDto
      */
     autoAssignmentDialogScope?: CreateAgentDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     autoAssignmentRole?: CreateAgentDtoAutoAssignmentRoleEnum;
     /**
-     * .
+     * . preview/publish 409.
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     confirmAutoAssignmentOverwrite?: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     creationMode?: CreateAgentDtoCreationModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     status?: CreateAgentDtoStatusEnum;
     /**
-     * .
+     *
      * @type {object}
      * @memberof CreateAgentDto
      */
     trainingConfig?: object;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     trainingMode?: CreateAgentDtoTrainingModeEnum;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableButtons?: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableWidgetPageActions?: boolean;
     /**
-     * (URL, S3, ).
+     * (URL, S3, )
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableCustomAttachments?: boolean;
     /**
-     * (DALL-E).
+     * (DALL-E)
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableImageGeneration?: boolean;
     /**
-     * ID .
+     * ID . provider route .
      * @type {string}
      * @memberof CreateAgentDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * (TTS).
+     * (TTS)
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableAudioGeneration?: boolean;
     /**
-     * UUID GET /api/ai/models.
+     * UUID GET /api/ai/models. provider route .
      * @type {string}
      * @memberof CreateAgentDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * (STT).
+     * (STT)
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableSpeechRecognition?: boolean;
     /**
-     * UUID GET /api/ai/models.
+     * UUID GET /api/ai/models. provider route .
      * @type {string}
      * @memberof CreateAgentDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * (Vision).
+     * (Vision)
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableImageRecognition?: boolean;
     /**
-     * ID .
+     * ID . provider route .
      * @type {string}
      * @memberof CreateAgentDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * QR .
+     * QR
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableQrCode?: boolean;
     /**
-     * /.
+     * /
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableChart?: boolean;
     /**
-     * - (OpenAI web_search tool).
+     * - (OpenAI web_search tool)
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableWebSearch?: boolean;
     /**
-     * (block_lead tool).
+     * (block_lead tool)
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableLeadBlocking?: boolean;
     /**
-     * AI .
+     * AI . false ,
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableAiResponse?: boolean;
     /**
-     * .
+     * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableUserMessage?: boolean;
     /**
-     * streaming .
+     * streaming . (chunks) realtime
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableStreaming?: boolean;
     /**
-     * .
+     * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * AI-.
+     * AI-. true ,
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableMessageReactionsContext?: boolean;
     /**
-     * detach_from_dialog tool.
+     * detach_from_dialog tool
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enableDetachFromDialog?: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     useProjectVariables?: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     useLeadVariables?: boolean;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     projectVarsInstructionMode?: CreateAgentDtoProjectVarsInstructionModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     projectVarsUserRequestMode?: CreateAgentDtoProjectVarsUserRequestModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */
     leadVarsInstructionMode?: CreateAgentDtoLeadVarsInstructionModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof CreateAgentDto
      */

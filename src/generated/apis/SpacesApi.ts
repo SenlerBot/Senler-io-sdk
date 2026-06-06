@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -179,7 +179,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * spaces .
+     * : .
      * spaces
      */
     async getSectionsRaw(requestParameters: GetSectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelSpaceSectionsResponseDto>> {
@@ -241,7 +241,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * spaces .
+     * : .
      * spaces
      */
     async getSections(requestParameters: GetSectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelSpaceSectionsResponseDto> {
@@ -250,7 +250,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * spaces cursor- . q tree- prunes , ancestors drill-down.
+     * spaces cursor- . query channel_id. parent_space_id spaces . q tree- prunes , ancestors drill-down.
      * spaces
      */
     async getTreeNodesRaw(requestParameters: GetTreeNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpacesTreeNodesResponseDto>> {
@@ -353,7 +353,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * spaces cursor- . q tree- prunes , ancestors drill-down.
+     * spaces cursor- . query channel_id. parent_space_id spaces . q tree- prunes , ancestors drill-down.
      * spaces
      */
     async getTreeNodes(requestParameters: GetTreeNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpacesTreeNodesResponseDto> {
@@ -362,7 +362,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * cursor-. .
+     * cursor-. . q tree- ancestors .
      * spaces
      */
     async getTreeRootRaw(requestParameters: GetTreeRootRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpacesTreeRootResponseDto>> {
@@ -461,7 +461,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * cursor-. .
+     * cursor-. . q tree- ancestors .
      * spaces
      */
     async getTreeRoot(requestParameters: GetTreeRootRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpacesTreeRootResponseDto> {
@@ -582,7 +582,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * root spaces.
+     * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
      */
     async treeRefreshRaw(requestParameters: TreeRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
@@ -632,7 +632,7 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * root spaces.
+     * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
      */
     async treeRefresh(requestParameters: TreeRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {

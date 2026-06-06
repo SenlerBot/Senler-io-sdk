@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,31 +42,31 @@ import {
  */
 export interface InvitationListItemDto {
     /**
-     * 
+     * ID
      * @type {string}
      * @memberof InvitationListItemDto
      */
     id: string;
     /**
-     * 
+     * ID
      * @type {string}
      * @memberof InvitationListItemDto
      */
     projectId: string;
     /**
-     * 
+     * ID
      * @type {string}
      * @memberof InvitationListItemDto
      */
     userId?: string;
     /**
-     * 
+     * Email
      * @type {string}
      * @memberof InvitationListItemDto
      */
     email?: string;
     /**
-     * 
+     * ,
      * @type {Role}
      * @memberof InvitationListItemDto
      */
@@ -102,19 +102,19 @@ export interface InvitationListItemDto {
      */
     resolvedAt?: string;
     /**
-     * 
+     * ,
      * @type {InvitationInviterDto}
      * @memberof InvitationListItemDto
      */
     invitedBy: InvitationInviterDto;
     /**
-     * ( ID).
+     * ( ID)
      * @type {InvitationInviterDto}
      * @memberof InvitationListItemDto
      */
     invitedUser?: InvitationInviterDto;
     /**
-     * , (null = ).
+     * , (null = ). pending.
      * @type {Date}
      * @memberof InvitationListItemDto
      */

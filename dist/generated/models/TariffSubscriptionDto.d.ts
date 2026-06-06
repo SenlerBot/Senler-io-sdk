@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,79 +16,79 @@
  */
 export interface TariffSubscriptionDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
     tariffId: string;
     /**
-     * (ru).
+     * (ru)
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
     nameRu: string;
     /**
-     * (en).
+     * (en)
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
     nameEn: string;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof TariffSubscriptionDto
      */
     isFree: boolean;
     /**
-     * (Enterprise).
+     * (Enterprise)
      * @type {boolean}
      * @memberof TariffSubscriptionDto
      */
     isUnlimited: boolean;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TariffSubscriptionDto
      */
     storageLimitBytes: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
     status: TariffSubscriptionDtoStatusEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
     period: TariffSubscriptionDtoPeriodEnum;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof TariffSubscriptionDto
      */
     dateStart: Date;
     /**
-     * ( ).
+     * ( )
      * @type {Date}
      * @memberof TariffSubscriptionDto
      */
     dateEnd: Date;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof TariffSubscriptionDto
      */
     prolongation: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof TariffSubscriptionDto
      */
     autoPurchaseEnabled: boolean;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof TariffSubscriptionDto
      */

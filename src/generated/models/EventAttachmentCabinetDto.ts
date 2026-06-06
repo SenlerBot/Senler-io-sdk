@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,25 +42,19 @@ import {
  */
 export interface EventAttachmentCabinetDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     id: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     type: EventAttachmentCabinetDtoTypeEnum;
     /**
-     * URL .
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    url?: string;
-    /**
-     * URL storage.
+     * URL storage. storage.
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
@@ -72,121 +66,133 @@ export interface EventAttachmentCabinetDto {
      */
     previewUrl?: string;
     /**
-     * .
+     * . .
+     * @type {string}
+     * @memberof EventAttachmentCabinetDto
+     */
+    externalUrl?: string;
+    /**
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     fileName?: string;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     fileSize?: number;
     /**
-     * MIME .
+     * MIME
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     mimeType?: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     width?: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     height?: number;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof EventAttachmentCabinetDto
      */
     durationSeconds?: number;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     thumbnailUrl?: string;
     /**
-     * .
+     * 
      * @type {AttachmentFlagsDto}
      * @memberof EventAttachmentCabinetDto
      */
     flags?: AttachmentFlagsDto;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof EventAttachmentCabinetDto
      */
     createdAt?: Date;
     /**
-     * storage.
+     * storage
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     uploadStatus?: EventAttachmentCabinetDtoUploadStatusEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     uploadStage?: EventAttachmentCabinetDtoUploadStageEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     uploadError?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     recognitionStatus?: EventAttachmentCabinetDtoRecognitionStatusEnum;
     /**
-     * ( , ).
+     * ( , )
      * @type {AttachmentRecognitionCabinetDto}
      * @memberof EventAttachmentCabinetDto
      */
     recognition?: AttachmentRecognitionCabinetDto;
     /**
-     * , .
+     * ,
      * @type {AttachmentGenerationDto}
      * @memberof EventAttachmentCabinetDto
      */
     generation?: AttachmentGenerationDto;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     deliveryStatus?: EventAttachmentCabinetDtoDeliveryStatusEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     deliveryStage?: EventAttachmentCabinetDtoDeliveryStageEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     deliveryError?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
     platformType?: EventAttachmentCabinetDtoPlatformTypeEnum;
     /**
-     * .
+     * ID . API.
+     * @type {string}
+     * @memberof EventAttachmentCabinetDto
+     */
+    platformFileId?: string;
+    /**
+     * 
      * @type {Date}
      * @memberof EventAttachmentCabinetDto
      */
@@ -303,9 +309,9 @@ export function EventAttachmentCabinetDtoFromJSONTyped(json: any, ignoreDiscrimi
         
         'id': json['id'],
         'type': json['type'],
-        'url': json['url'] == null ? undefined : json['url'],
         'storageUrl': json['storage_url'] == null ? undefined : json['storage_url'],
         'previewUrl': json['preview_url'] == null ? undefined : json['preview_url'],
+        'externalUrl': json['external_url'] == null ? undefined : json['external_url'],
         'fileName': json['file_name'] == null ? undefined : json['file_name'],
         'fileSize': json['file_size'] == null ? undefined : json['file_size'],
         'mimeType': json['mime_type'] == null ? undefined : json['mime_type'],
@@ -325,6 +331,7 @@ export function EventAttachmentCabinetDtoFromJSONTyped(json: any, ignoreDiscrimi
         'deliveryStage': json['delivery_stage'] == null ? undefined : json['delivery_stage'],
         'deliveryError': json['delivery_error'] == null ? undefined : json['delivery_error'],
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
+        'platformFileId': json['platform_file_id'] == null ? undefined : json['platform_file_id'],
         'uploadedAt': json['uploaded_at'] == null ? undefined : (new Date(json['uploaded_at'])),
     };
 }
@@ -342,9 +349,9 @@ export function EventAttachmentCabinetDtoToJSONTyped(value?: EventAttachmentCabi
         
         'id': value['id'],
         'type': value['type'],
-        'url': value['url'],
         'storage_url': value['storageUrl'],
         'preview_url': value['previewUrl'],
+        'external_url': value['externalUrl'],
         'file_name': value['fileName'],
         'file_size': value['fileSize'],
         'mime_type': value['mimeType'],
@@ -364,6 +371,7 @@ export function EventAttachmentCabinetDtoToJSONTyped(value?: EventAttachmentCabi
         'delivery_stage': value['deliveryStage'],
         'delivery_error': value['deliveryError'],
         'platform_type': value['platformType'],
+        'platform_file_id': value['platformFileId'],
         'uploaded_at': value['uploadedAt'] == null ? undefined : ((value['uploadedAt']).toISOString()),
     };
 }

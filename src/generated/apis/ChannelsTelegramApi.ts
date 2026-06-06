@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -90,7 +90,7 @@ export interface TokensTelegramWebhookRequest {
 export class ChannelsTelegramApi extends runtime.BaseAPI {
 
     /**
-     * Telegram .
+     * Telegram bot token @BotFather. Telegram Bot API, , . , @BotFather bot token.
      * Telegram
      */
     async telegramRaw(requestParameters: TelegramRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTelegramChannelResponseDto>> {
@@ -140,7 +140,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram .
+     * Telegram bot token @BotFather. Telegram Bot API, , . , @BotFather bot token.
      * Telegram
      */
     async telegram(requestParameters: TelegramRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateTelegramChannelResponseDto> {
@@ -149,7 +149,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * token Telegram Telegram . Token bot_id, channel.
+     * token Telegram Telegram . Token bot_id, channel.external_id. .
      * Telegram
      */
     async tokensTelegramBindRaw(requestParameters: TokensTelegramBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
@@ -206,7 +206,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * token Telegram Telegram . Token bot_id, channel.
+     * token Telegram Telegram . Token bot_id, channel.external_id. .
      * Telegram
      */
     async tokensTelegramBind(requestParameters: TokensTelegramBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
@@ -215,8 +215,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram webhook Bot API .
-     * Telegram webhook
+     * Telegram Bot API .
+     * Telegram
      */
     async tokensTelegramCheckWebhookStatusRaw(requestParameters: TokensTelegramCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -262,8 +262,8 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram webhook Bot API .
-     * Telegram webhook
+     * Telegram Bot API .
+     * Telegram
      */
     async tokensTelegramCheckWebhookStatus(requestParameters: TokensTelegramCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto> {
         const response = await this.tokensTelegramCheckWebhookStatusRaw(requestParameters, initOverrides);
@@ -271,7 +271,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram S3.
+     * Telegram S3
      * Telegram
      */
     async tokensTelegramRefreshAvatarRaw(requestParameters: TokensTelegramRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
@@ -318,7 +318,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram S3.
+     * Telegram S3
      * Telegram
      */
     async tokensTelegramRefreshAvatar(requestParameters: TokensTelegramRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
@@ -327,7 +327,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram Bot API.
+     * Telegram Bot API
      * Telegram
      */
     async tokensTelegramValidateRaw(requestParameters: TokensTelegramValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateTelegramTokenResultDto>> {
@@ -374,7 +374,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram Bot API.
+     * Telegram Bot API
      * Telegram
      */
     async tokensTelegramValidate(requestParameters: TokensTelegramValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateTelegramTokenResultDto> {
@@ -383,7 +383,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram ( ).
+     * Telegram ( )
      * Telegram
      */
     async tokensTelegramWebhookRaw(requestParameters: TokensTelegramWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>> {
@@ -440,7 +440,7 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
     }
 
     /**
-     * Telegram ( ).
+     * Telegram ( )
      * Telegram
      */
     async tokensTelegramWebhook(requestParameters: TokensTelegramWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto> {

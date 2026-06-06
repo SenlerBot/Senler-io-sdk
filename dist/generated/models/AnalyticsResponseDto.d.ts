@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -28,91 +28,91 @@ import type { ModelsByType } from './ModelsByType';
  */
 export interface AnalyticsResponseDto {
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof AnalyticsResponseDto
      */
     periodStart: string;
     /**
-     * ().
+     * ()
      * @type {string}
      * @memberof AnalyticsResponseDto
      */
     periodEnd: string;
     /**
-     * .
+     *
      * @type {AnalyticsOverview}
      * @memberof AnalyticsResponseDto
      */
     overview: AnalyticsOverview;
     /**
-     * .
+     *
      * @type {ComparisonMetrics}
      * @memberof AnalyticsResponseDto
      */
     comparison?: ComparisonMetrics;
     /**
-     * .
+     *
      * @type {FinancialMetrics}
      * @memberof AnalyticsResponseDto
      */
     financial?: FinancialMetrics;
     /**
-     * .
+     *
      * @type {MessageMetrics}
      * @memberof AnalyticsResponseDto
      */
     messages?: MessageMetrics;
     /**
-     * ( ).
+     * ( )
      * @type {Array<EventTypeStats>}
      * @memberof AnalyticsResponseDto
      */
     eventTypes: Array<EventTypeStats>;
     /**
-     * -10 ( events_count DESC).
+     * -10 ( events_count DESC)
      * @type {Array<ServerUsageStats>}
      * @memberof AnalyticsResponseDto
      */
     topServers: Array<ServerUsageStats>;
     /**
-     * ( ).
+     * ( )
      * @type {Array<TimeSeriesDataPoint>}
      * @memberof AnalyticsResponseDto
      */
     timeSeries: Array<TimeSeriesDataPoint>;
     /**
-     * .
+     *
      * @type {Array<StorageStats>}
      * @memberof AnalyticsResponseDto
      */
     storageStats: Array<StorageStats>;
     /**
-     * AI (-10, count DESC).
+     * AI (-10, count DESC)
      * @type {ModelsByType}
      * @memberof AnalyticsResponseDto
      */
     modelsByType?: ModelsByType;
     /**
-     * -10 ( events_count DESC).
+     * -10 ( events_count DESC)
      * @type {Array<AgentUsageStats>}
      * @memberof AnalyticsResponseDto
      */
     topAgents?: Array<AgentUsageStats>;
     /**
-     * -10 ( events_count DESC).
+     * -10 ( events_count DESC)
      * @type {Array<ProjectUsageStats>}
      * @memberof AnalyticsResponseDto
      */
     topProjects?: Array<ProjectUsageStats>;
     /**
-     * ( events_count DESC).
+     * ( events_count DESC)
      * @type {Array<PlatformStats>}
      * @memberof AnalyticsResponseDto
      */
     platforms?: Array<PlatformStats>;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof AnalyticsResponseDto
      */

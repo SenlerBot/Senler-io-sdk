@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,19 +42,19 @@ import {
  */
 export interface ProcessResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ProcessResponseDto
      */
     id: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ProcessResponseDto
      */
     type: ProcessResponseDtoTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ProcessResponseDto
      */
@@ -66,7 +66,7 @@ export interface ProcessResponseDto {
      */
     payload: ProcessResponseDtoPayload;
     /**
-     * .
+     * 
      * @type {ProcessProgressDto}
      * @memberof ProcessResponseDto
      */
@@ -78,49 +78,49 @@ export interface ProcessResponseDto {
      */
     result?: ProcessResponseDtoResult;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ProcessResponseDto
      */
     errorMessage?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ProcessResponseDto
      */
     userId: string;
     /**
-     * ID .
+     * ID . Null admin/global .
      * @type {string}
      * @memberof ProcessResponseDto
      */
     projectId: string | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ProcessResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ProcessResponseDto
      */
     startedAt?: Date;
     /**
-     * retry- pending .
+     * retry- pending
      * @type {Date}
      * @memberof ProcessResponseDto
      */
     nextRetryAt?: Date;
     /**
-     * retry-.
+     * retry-
      * @type {number}
      * @memberof ProcessResponseDto
      */
     retryCount: number;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof ProcessResponseDto
      */

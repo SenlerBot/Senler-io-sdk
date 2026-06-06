@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,19 +17,19 @@ import type { NumberRangeDto } from './NumberRangeDto';
  */
 export interface EventMetricDto {
     /**
-     * ID raw event payload.
+     * ID
      * @type {string}
      * @memberof EventMetricDto
      */
     id: string;
     /**
-     * (metric_key).
+     * (metric_key)
      * @type {string}
      * @memberof EventMetricDto
      */
     name: string;
     /**
-     * Raw . (mixed type)
+     * : , , boolean, . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof EventMetricDto
      */
@@ -37,43 +37,43 @@ export interface EventMetricDto {
         [key: string]: any;
     };
     /**
-     * AI (0.
+     * AI (0.0-1.0)
      * @type {number}
      * @memberof EventMetricDto
      */
     confidenceScore?: number;
     /**
-     * UI .
+     * UI
      * @type {string}
      * @memberof EventMetricDto
      */
     displayType?: EventMetricDtoDisplayTypeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof EventMetricDto
      */
     displayName?: string;
     /**
-     * ( enum tags).
+     * ( enum tags)
      * @type {Array<string>}
      * @memberof EventMetricDto
      */
     enumValues?: Array<string>;
     /**
-     * ( percent progress bar).
+     * ( percent progress bar)
      * @type {NumberRangeDto}
      * @memberof EventMetricDto
      */
     numberRange?: NumberRangeDto;
     /**
-     * .
+     * . null non-analyzable.
      * @type {string}
      * @memberof EventMetricDto
      */
     direction?: EventMetricDtoDirectionEnum | null;
     /**
-     * (text object ).
+     * (text object )
      * @type {boolean}
      * @memberof EventMetricDto
      */

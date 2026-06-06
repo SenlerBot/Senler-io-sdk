@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,19 +16,19 @@
  */
 export interface GetUploadUrlDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof GetUploadUrlDto
      */
     fileName: string;
     /**
-     * MIME .
+     * MIME
      * @type {string}
      * @memberof GetUploadUrlDto
      */
     fileType: GetUploadUrlDtoFileTypeEnum;
     /**
-     * .
+     *
      * @type {number}
      * @memberof GetUploadUrlDto
      */
@@ -50,6 +50,9 @@ export declare const GetUploadUrlDtoFileTypeEnum: {
     readonly AudioMp3: "audio/mp3";
     readonly AudioOgg: "audio/ogg";
     readonly AudioWav: "audio/wav";
+    readonly AudioWebm: "audio/webm";
+    readonly AudioMp4: "audio/mp4";
+    readonly AudioM4a: "audio/m4a";
     readonly ApplicationPdf: "application/pdf";
     readonly ApplicationMsword: "application/msword";
     readonly ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument: "application/vnd.openxmlformats-officedocument.wordprocessingml.document";

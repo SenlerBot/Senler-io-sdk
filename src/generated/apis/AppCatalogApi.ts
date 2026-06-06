@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -42,8 +42,8 @@ export interface AppCatalogListRequest {
 export class AppCatalogApi extends runtime.BaseAPI {
 
     /**
-     * Returns public app details from catalog.
-     * Get public app details from catalog
+     * .
+     * 
      */
     async appCatalogGetByIdRaw(requestParameters: AppCatalogGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppCatalogResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -72,8 +72,8 @@ export class AppCatalogApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns public app details from catalog.
-     * Get public app details from catalog
+     * .
+     * 
      */
     async appCatalogGetById(requestParameters: AppCatalogGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppCatalogResponseDto> {
         const response = await this.appCatalogGetByIdRaw(requestParameters, initOverrides);
@@ -81,8 +81,8 @@ export class AppCatalogApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns public apps in catalog.
-     * List public apps in catalog
+     * .
+     * 
      */
     async appCatalogListRaw(requestParameters: AppCatalogListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppCatalogResponseDto>>> {
         const queryParameters: any = {};
@@ -112,8 +112,8 @@ export class AppCatalogApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns public apps in catalog.
-     * List public apps in catalog
+     * .
+     * 
      */
     async appCatalogList(requestParameters: AppCatalogListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppCatalogResponseDto>> {
         const response = await this.appCatalogListRaw(requestParameters, initOverrides);
@@ -135,7 +135,9 @@ export type AppCatalogGetByIdAcceptLanguageEnum = typeof AppCatalogGetByIdAccept
  */
 export const AppCatalogListTypeEnum = {
     Oauth: 'oauth',
-    SalesFunnel: 'sales_funnel'
+    SalesFunnel: 'sales_funnel',
+    AgentTool: 'agent_tool',
+    EmbeddedPage: 'embedded_page'
 } as const;
 export type AppCatalogListTypeEnum = typeof AppCatalogListTypeEnum[keyof typeof AppCatalogListTypeEnum];
 /**

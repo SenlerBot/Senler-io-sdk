@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,37 +20,37 @@ import { mapValues } from '../runtime';
  */
 export interface ValidationErrorDto {
     /**
-     * Object that was validated.
+     * ,
      * @type {object}
      * @memberof ValidationErrorDto
      */
     target?: object;
     /**
-     * Object's property that hasn't passed validation.
+     * ,
      * @type {string}
      * @memberof ValidationErrorDto
      */
     property?: string;
     /**
-     * Value that haven't pass a validation.
+     * ,
      * @type {object}
      * @memberof ValidationErrorDto
      */
     value?: object;
     /**
-     * Constraints that failed validation with error messages.
+     * 
      * @type {object}
      * @memberof ValidationErrorDto
      */
     constraints?: object;
     /**
-     * Contains all nested validation errors of the property.
+     * 
      * @type {Array<ValidationErrorDto>}
      * @memberof ValidationErrorDto
      */
     children: Array<ValidationErrorDto>;
     /**
-     * A transient set of data passed through to the validation result for response mapping.
+     * 
      * @type {object}
      * @memberof ValidationErrorDto
      */

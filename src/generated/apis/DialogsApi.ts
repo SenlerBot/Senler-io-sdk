@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -168,7 +168,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * endpoint POST c JSON body.
+     * . before limit; q.
      * (JSON body)
      */
     async dialogsListRaw(requestParameters: DialogsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedDialogsDto>> {
@@ -218,7 +218,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * endpoint POST c JSON body.
+     * . before limit; q.
      * (JSON body)
      */
     async dialogsList(requestParameters: DialogsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedDialogsDto> {
@@ -227,7 +227,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * email: SMTP (/ ). 404 ( ).
+     * : external_id, . email: SMTP (/ ). 404 ( ).
      * 
      */
     async directMessageRaw(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendMessageResponseDto>> {
@@ -277,7 +277,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * email: SMTP (/ ). 404 ( ).
+     * : external_id, . email: SMTP (/ ). 404 ( ).
      * 
      */
     async directMessage(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendMessageResponseDto> {
@@ -286,8 +286,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK polls. getById RCommander snapshot .
-     * snapshot VK-
+     * . Telegram API .
+     * VK-
      */
     async eventsPollSnapshotRefreshRaw(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollSnapshotRefreshResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -340,8 +340,8 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK polls. getById RCommander snapshot .
-     * snapshot VK-
+     * . Telegram API .
+     * VK-
      */
     async eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto> {
         const response = await this.eventsPollSnapshotRefreshRaw(requestParameters, initOverrides);
@@ -349,7 +349,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * endpoint . :.
+     * . before limit; q.
      * 
      */
     async getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>> {
@@ -424,7 +424,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * endpoint . :.
+     * . before limit; q.
      * 
      */
     async getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response> {
@@ -433,7 +433,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * /. TG webhook- , VK fallback.
+     * , .
      * 
      */
     async getEventsPollOptionVotersRaw(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollOptionVotersResponseDto>> {
@@ -506,7 +506,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * /. TG webhook- , VK fallback.
+     * , .
      * 
      */
     async getEventsPollOptionVoters(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollOptionVotersResponseDto> {
@@ -515,7 +515,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . interaction events MongoDB ClickHouse.
+     * .
      * 
      */
     async getEventsReactionUsersRaw(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventReactionUsersResponseDto>> {
@@ -577,7 +577,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . interaction events MongoDB ClickHouse.
+     * .
      * 
      */
     async getEventsReactionUsers(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventReactionUsersResponseDto> {

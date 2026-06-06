@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -77,241 +77,241 @@ import {
  */
 export interface SpaceDetailsResponseDto {
     /**
-     * ID space.
+     * ID
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     id: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     projectId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     channelId: string;
     /**
-     * space.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     platformType: SpaceDetailsResponseDtoPlatformTypeEnum;
     /**
-     * space.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     kind: SpaceDetailsResponseDtoKindEnum;
     /**
-     * space - UI.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     spaceType: SpaceDetailsResponseDtoSpaceTypeEnum;
     /**
-     * ID space.
+     * ID .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     parentSpaceId?: string | null;
     /**
-     * ancestor space IDs .
+     * ID .
      * @type {Array<string>}
      * @memberof SpaceDetailsResponseDto
      */
     ancestorSpaceIds: Array<string>;
     /**
-     * ID identity-lookup.
+     * ID, .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     identityExternalId: string;
     /**
-     * Scope identity platform objects, external_id .
+     * ID, .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     identityScope?: string | null;
     /**
-     * identity key space.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     identityKey: string;
     /**
-     * ID space .
+     * ID .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     externalId: string;
     /**
-     * ID space.
+     * ID .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     externalParentId?: string | null;
     /**
-     * space.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     title?: string | null;
     /**
-     * space.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     text?: string | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     sourceUrl?: string | null;
     /**
-     * Media space .
+     * .
      * @type {Array<SpaceMediaEmbedded>}
      * @memberof SpaceDetailsResponseDto
      */
     media?: Array<SpaceMediaEmbedded> | null;
     /**
-     * space.
+     * , .
      * @type {number}
      * @memberof SpaceDetailsResponseDto
      */
     participantCount?: number | null;
     /**
-     * conversation-like space.
+     * , .
      * @type {number}
      * @memberof SpaceDetailsResponseDto
      */
     messageCount?: number | null;
     /**
-     * content-thread space.
+     * , .
      * @type {number}
      * @memberof SpaceDetailsResponseDto
      */
     commentCount?: number | null;
     /**
-     * URL space.
+     * .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * Username/slug space.
+     * 
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     username?: string | null;
     /**
-     * Space .
+     * .
      * @type {boolean}
      * @memberof SpaceDetailsResponseDto
      */
     isActive: boolean;
     /**
-     * space.
+     * , .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
      */
     discoveredFrom: SpaceDetailsResponseDtoDiscoveredFromEnum;
     /**
-     * space.
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastMessageAt?: Date | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     externalCreatedAt?: Date | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     externalUpdatedAt?: Date | null;
     /**
-     * space .
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastObservedAt?: Date | null;
     /**
-     * metadata space .
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastSyncedAt?: Date | null;
     /**
-     * metadata space.
+     * .
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     lastSyncRequestedAt?: Date | null;
     /**
-     * Discord-specific deprecated .
+     * Discord.
      * @type {SpaceDetailsDiscordDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataDiscord?: SpaceDetailsDiscordDataDto;
     /**
-     * Telegram-specific deprecated .
+     * Telegram.
      * @type {SpaceDetailsTelegramDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataTg?: SpaceDetailsTelegramDataDto;
     /**
-     * VK-specific deprecated .
+     * VK.
      * @type {SpaceDetailsVKDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataVk?: SpaceDetailsVKDataDto;
     /**
-     * MAX-specific deprecated .
+     * MAX.
      * @type {SpaceDetailsMaxDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataMax?: SpaceDetailsMaxDataDto;
     /**
-     * Avito-specific deprecated .
+     * Avito.
      * @type {SpaceDetailsAvitoDataDto}
      * @memberof SpaceDetailsResponseDto
      */
     dataAvito?: SpaceDetailsAvitoDataDto;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof SpaceDetailsResponseDto
      */
     updatedAt: Date;
     /**
-     * space spaces.
+     * .
      * @type {boolean}
      * @memberof SpaceDetailsResponseDto
      */
     hasChildren: boolean;
     /**
-     * Ancestors space root -> parent.
+     * .
      * @type {Array<SpaceDetailsAncestorDto>}
      * @memberof SpaceDetailsResponseDto
      */
     ancestors: Array<SpaceDetailsAncestorDto>;
     /**
-     * , space.
+     * , .
      * @type {SpaceDetailsChannelDto}
      * @memberof SpaceDetailsResponseDto
      */

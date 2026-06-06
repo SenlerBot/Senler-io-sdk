@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -24,61 +24,61 @@ import type { PeriodInfoDto } from './PeriodInfoDto';
  */
 export interface DrillDownByAgentResponseDto {
     /**
-     * .
+     *
      * @type {AgentContextDto}
      * @memberof DrillDownByAgentResponseDto
      */
     agent: AgentContextDto;
     /**
-     * .
+     *
      * @type {PeriodInfoDto}
      * @memberof DrillDownByAgentResponseDto
      */
     period: PeriodInfoDto;
     /**
-     * .
+     *
      * @type {EvaluationInfoDto}
      * @memberof DrillDownByAgentResponseDto
      */
     evaluationInfo: EvaluationInfoDto;
     /**
-     * (, , ).
+     * (, , )
      * @type {AgentOverallStatsDto}
      * @memberof DrillDownByAgentResponseDto
      */
     overallStats: AgentOverallStatsDto;
     /**
-     * ( score).
+     * ( score)
      * @type {Array<AgentMetricItemDto>}
      * @memberof DrillDownByAgentResponseDto
      */
     metrics: Array<AgentMetricItemDto>;
     /**
-     * .
+     *
      * @type {Array<AgentTimeSeriesPointDto>}
      * @memberof DrillDownByAgentResponseDto
      */
     timeSeries: Array<AgentTimeSeriesPointDto>;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DrillDownByAgentResponseDto
      */
     totalMetrics: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof DrillDownByAgentResponseDto
      */
     badCount: number;
     /**
-     * ( / ).
+     * ( / )
      * @type {EmptyStateDto}
      * @memberof DrillDownByAgentResponseDto
      */
     emptyState?: EmptyStateDto;
     /**
-     * .
+     *
      * @type {AppliedFiltersDto}
      * @memberof DrillDownByAgentResponseDto
      */

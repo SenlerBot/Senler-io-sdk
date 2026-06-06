@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,301 +28,301 @@ import {
  */
 export interface UpdateAgentDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     name?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     instruction?: string;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof UpdateAgentDto
      */
     avatarUrl?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     agentType?: UpdateAgentDtoAgentTypeEnum;
     /**
-     * : list ( ServerList), direct (), none ( ).
+     * : list ( ServerList), direct (), none ( )
      * @type {string}
      * @memberof UpdateAgentDto
      */
     serverBindingMode?: UpdateAgentDtoServerBindingModeEnum;
     /**
-     * ID MCP ( server_binding_mode = "list").
+     * ID MCP ( server_binding_mode = "list")
      * @type {string}
      * @memberof UpdateAgentDto
      */
     mcpServerListId?: string;
     /**
-     * ID ( server_binding_mode = "direct").
+     * ID ( server_binding_mode = "direct")
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     mcpServerIds?: Array<string>;
     /**
-     * .
+     * 
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     knowledgeBasePermissions?: Array<UpdateAgentDtoKnowledgeBasePermissionsEnum>;
     /**
-     * , .
+     * ,
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof UpdateAgentDto
      */
     knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof UpdateAgentDto
      */
     channelId?: string;
     /**
-     * ID .
+     * ID . route .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     selectedModelId?: string | null;
     /**
-     * Temperature AI (0.
+     * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof UpdateAgentDto
      */
     temperature?: number | null;
     /**
-     * .
+     * 
      * @type {object}
      * @memberof UpdateAgentDto
      */
     meta?: object;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     metricsCollectionEnabled?: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     triggerKeywords?: Array<string>;
     /**
-     * .
+     * . , trigger_keywords.
      * @type {string}
      * @memberof UpdateAgentDto
      */
     keywordAssignmentRole?: UpdateAgentDtoKeywordAssignmentRoleEnum;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof UpdateAgentDto
      */
     keywordDialogScope?: UpdateAgentDtoKeywordDialogScopeEnum | null;
     /**
-     * ID , .
+     * ID , . null/ =
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     keywordChannelIds?: Array<string> | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     autoAssignmentMode?: UpdateAgentDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels.
+     * ID selected_channels
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     autoAssignmentChannelIds?: Array<string> | null;
     /**
-     * .
+     * . all = ( ), private = (1-on-1), group = (2+ )
      * @type {string}
      * @memberof UpdateAgentDto
      */
     autoAssignmentDialogScope?: UpdateAgentDtoAutoAssignmentDialogScopeEnum | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     autoAssignmentRole?: UpdateAgentDtoAutoAssignmentRoleEnum;
     /**
-     * .
+     * . preview/publish 409.
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     confirmAutoAssignmentOverwrite?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableButtons?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableWidgetPageActions?: boolean;
     /**
-     * (URL, S3, ).
+     * (URL, S3, )
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableCustomAttachments?: boolean;
     /**
-     * (DALL-E).
+     * (DALL-E)
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableImageGeneration?: boolean;
     /**
-     * ID .
+     * ID . provider route .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     imageGenerationModelId?: string | null;
     /**
-     * (TTS).
+     * (TTS)
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableAudioGeneration?: boolean;
     /**
-     * UUID GET /api/ai/models.
+     * UUID GET /api/ai/models. provider route .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     audioGenerationModelId?: string | null;
     /**
-     * (STT).
+     * (STT)
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableSpeechRecognition?: boolean;
     /**
-     * UUID GET /api/ai/models.
+     * UUID GET /api/ai/models. provider route .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     speechRecognitionModelId?: string | null;
     /**
-     * (Vision).
+     * (Vision)
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableImageRecognition?: boolean;
     /**
-     * ID .
+     * ID . provider route .
      * @type {string}
      * @memberof UpdateAgentDto
      */
     imageRecognitionModelId?: string | null;
     /**
-     * QR .
+     * QR
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableQrCode?: boolean;
     /**
-     * /.
+     * /
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableChart?: boolean;
     /**
-     * - (OpenAI web_search tool).
+     * - (OpenAI web_search tool)
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableWebSearch?: boolean;
     /**
-     * (block_lead tool).
+     * (block_lead tool)
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableLeadBlocking?: boolean;
     /**
-     * AI .
+     * AI . false ,
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableAiResponse?: boolean;
     /**
-     * .
+     * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableUserMessage?: boolean;
     /**
-     * streaming .
+     * streaming
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableStreaming?: boolean;
     /**
-     * .
+     * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * AI-.
+     * AI-. true ,
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableMessageReactionsContext?: boolean;
     /**
-     * detach_from_dialog tool.
+     * detach_from_dialog tool
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enableDetachFromDialog?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     useProjectVariables?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     useLeadVariables?: boolean;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     projectVarsInstructionMode?: UpdateAgentDtoProjectVarsInstructionModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     projectVarsUserRequestMode?: UpdateAgentDtoProjectVarsUserRequestModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */
     leadVarsInstructionMode?: UpdateAgentDtoLeadVarsInstructionModeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof UpdateAgentDto
      */

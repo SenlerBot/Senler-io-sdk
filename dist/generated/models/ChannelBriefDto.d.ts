@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,91 +18,91 @@ import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
  */
 export interface ChannelBriefDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ChannelBriefDto
      */
     id: string;
     /**
-     * ID Senler.
+     * ID Senler
      * @type {number}
      * @memberof ChannelBriefDto
      */
     senlerChannelId?: number | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ChannelBriefDto
      */
     name?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof ChannelBriefDto
      */
     type?: ChannelBriefDtoTypeEnum | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ChannelBriefDto
      */
     externalId?: string | null;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof ChannelBriefDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof ChannelBriefDto
      */
     isPaused: boolean;
     /**
-     * Username / (TG: bot_username, MAX: bot_username, VK: screen_name).
+     * Username / (TG: bot_username, MAX: bot_username, VK: screen_name)
      * @type {string}
      * @memberof ChannelBriefDto
      */
     botUsername?: string | null;
     /**
-     * (null ).
+     * (null )
      * @type {ChannelMigrationStatusDto}
      * @memberof ChannelBriefDto
      */
     migration?: ChannelMigrationStatusDto | null;
     /**
-     * .
+     *
      * @type {ChannelAccessDto}
      * @memberof ChannelBriefDto
      */
     access?: ChannelAccessDto;
     /**
-     * API.
+     * API
      * @type {boolean}
      * @memberof ChannelBriefDto
      */
     historySupported?: boolean;
     /**
-     * scan .
+     * scan
      * @type {string}
      * @memberof ChannelBriefDto
      */
     historyScanStatus?: string;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof ChannelBriefDto
      */
     historyCoveredFrom?: Date | null;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof ChannelBriefDto
      */
     historyCoveredTo?: Date | null;
     /**
-     * scan .
+     * scan
      * @type {string}
      * @memberof ChannelBriefDto
      */

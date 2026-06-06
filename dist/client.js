@@ -35,6 +35,7 @@ const KnowledgeBaseApi_1 = require("./generated/apis/KnowledgeBaseApi");
 const LeadsApi_1 = require("./generated/apis/LeadsApi");
 const LeadVariableDefinitionsApi_1 = require("./generated/apis/LeadVariableDefinitionsApi");
 const LeadVariablesApi_1 = require("./generated/apis/LeadVariablesApi");
+const MCPExternalUserCredentialsApi_1 = require("./generated/apis/MCPExternalUserCredentialsApi");
 const MCPServersApi_1 = require("./generated/apis/MCPServersApi");
 const MetricsConfigApi_1 = require("./generated/apis/MetricsConfigApi");
 const MetricsDefinitionsApi_1 = require("./generated/apis/MetricsDefinitionsApi");
@@ -102,6 +103,7 @@ class AiSenlerClient {
         this.leads = new LeadsApi_1.LeadsApi(configuration);
         this.leadVariableDefinitions = new LeadVariableDefinitionsApi_1.LeadVariableDefinitionsApi(configuration);
         this.leadVariables = new LeadVariablesApi_1.LeadVariablesApi(configuration);
+        this.mcpExternalUserCredentials = new MCPExternalUserCredentialsApi_1.MCPExternalUserCredentialsApi(configuration);
         this.mcpServers = new MCPServersApi_1.MCPServersApi(configuration);
         this.metricsConfig = new MetricsConfigApi_1.MetricsConfigApi(configuration);
         this.metricsDefinitions = new MetricsDefinitionsApi_1.MetricsDefinitionsApi(configuration);

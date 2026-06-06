@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -44,42 +44,42 @@ export interface UpdateVariablesRequest {
  */
 export declare class LeadVariablesApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     deleteVariablesRaw(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
     /**
-     * .
+     *
      *
      */
     deleteVariables(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
     /**
-     * .
+     *
      *
      */
     getVariablesRaw(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadVariableResponseDto>>>;
     /**
-     * .
+     *
      *
      */
     getVariables(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableResponseDto>>;
     /**
-     * .
+     *
      *
      */
     getVariables2Raw(requestParameters: GetVariables2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableValueResponseDto>>;
     /**
-     * .
+     *
      *
      */
     getVariables2(requestParameters: GetVariables2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableValueResponseDto>;
     /**
-     * .
+     *
      *
      */
     updateVariablesRaw(requestParameters: UpdateVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableResponseDto>>;
     /**
-     * .
+     *
      *
      */
     updateVariables(requestParameters: UpdateVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableResponseDto>;

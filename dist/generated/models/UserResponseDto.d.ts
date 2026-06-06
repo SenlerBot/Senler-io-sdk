@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -17,85 +17,85 @@ import type { UserMetaDto } from './UserMetaDto';
  */
 export interface UserResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof UserResponseDto
      */
     id: string;
     /**
-     * Email.
+     * Email
      * @type {string}
      * @memberof UserResponseDto
      */
     email?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof UserResponseDto
      */
     phone?: string | null;
     /**
-     * URL .
+     * URL
      * @type {string}
      * @memberof UserResponseDto
      */
     avatarUrl?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof UserResponseDto
      */
     firstName?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof UserResponseDto
      */
     lastName?: string | null;
     /**
-     * .
+     *
      * @type {string}
      * @memberof UserResponseDto
      */
     language?: string | null;
     /**
-     * (ISO 3166-1 alpha-2).
+     * (ISO 3166-1 alpha-2)
      * @type {string}
      * @memberof UserResponseDto
      */
     country?: string | null;
     /**
-     * UTC.
+     * UTC
      * @type {number}
      * @memberof UserResponseDto
      */
     timezoneOffsetMinutes?: number | null;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof UserResponseDto
      */
     isActive: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof UserResponseDto
      */
     isAdmin: boolean;
     /**
-     * .
+     *
      * @type {UserMetaDto}
      * @memberof UserResponseDto
      */
     meta?: UserMetaDto;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof UserResponseDto
      */
     createdAt: Date;
     /**
-     * .
+     *
      * @type {Date}
      * @memberof UserResponseDto
      */

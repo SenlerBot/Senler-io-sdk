@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -35,19 +35,57 @@ import {
  */
 export interface UpdateProjectMemberDto {
     /**
-     * .
+     * . (can_manage_projects, can_manage_access, can_manage_channels ..) .
+     * 
+     * :
+     * - owner: ,
+     * - admin: ,
+     * - member: ,
+     * - viewer: ,
      * @type {Role}
      * @memberof UpdateProjectMemberDto
      */
     role?: Role;
     /**
      * ( ).
+     * 
+     * true:
+     * -
+     * -
+     * -
+     * - channel_roles
+     * 
+     * false:
+     * - , channel_roles
+     * -
+     * -
+     * 
+     * : true ( )
      * @type {boolean}
      * @memberof UpdateProjectMemberDto
      */
     hasAccessToAllChannels?: boolean;
     /**
      * .
+     * 
+     * has_access_to_all_channels = false.
+     * 
+     * :
+     * - , /
+     * - , ( )
+     * - has_access_to_all_channels = false
+     * 
+     * :
+     * - : 0 ( )
+     * - : 100 ( )
+     * -
+     * 
+     * :
+     * [
+     * { "channel_id": "uuid1", "role": "admin" },
+     * { "channel_id": "uuid2", "role": "member" },
+     * { "channel_id": "uuid3", "role": "viewer" }
+     * ]
      * @type {Array<ChannelRoleDto>}
      * @memberof UpdateProjectMemberDto
      */

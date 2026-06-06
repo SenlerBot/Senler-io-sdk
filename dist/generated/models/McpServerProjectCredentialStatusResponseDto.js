@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -19,6 +19,7 @@ exports.McpServerProjectCredentialStatusResponseDtoFromJSON = McpServerProjectCr
 exports.McpServerProjectCredentialStatusResponseDtoFromJSONTyped = McpServerProjectCredentialStatusResponseDtoFromJSONTyped;
 exports.McpServerProjectCredentialStatusResponseDtoToJSON = McpServerProjectCredentialStatusResponseDtoToJSON;
 exports.McpServerProjectCredentialStatusResponseDtoToJSONTyped = McpServerProjectCredentialStatusResponseDtoToJSONTyped;
+const McpCredentialConnectedIdentityDto_1 = require("./McpCredentialConnectedIdentityDto");
 /**
  * @export
  */
@@ -68,6 +69,7 @@ function McpServerProjectCredentialStatusResponseDtoFromJSONTyped(json, ignoreDi
         'credentialValidationStatus': json['credential_validation_status'] == null ? undefined : json['credential_validation_status'],
         'credentialValidationError': json['credential_validation_error'] == null ? undefined : json['credential_validation_error'],
         'credentialValidatedAt': json['credential_validated_at'] == null ? undefined : (new Date(json['credential_validated_at'])),
+        'connectedIdentity': json['connected_identity'] == null ? undefined : (0, McpCredentialConnectedIdentityDto_1.McpCredentialConnectedIdentityDtoFromJSON)(json['connected_identity']),
     };
 }
 function McpServerProjectCredentialStatusResponseDtoToJSON(json) {
@@ -85,5 +87,6 @@ function McpServerProjectCredentialStatusResponseDtoToJSONTyped(value, ignoreDis
         'credential_validation_status': value['credentialValidationStatus'],
         'credential_validation_error': value['credentialValidationError'],
         'credential_validated_at': value['credentialValidatedAt'] == null ? undefined : (value['credentialValidatedAt'].toISOString()),
+        'connected_identity': (0, McpCredentialConnectedIdentityDto_1.McpCredentialConnectedIdentityDtoToJSON)(value['connectedIdentity']),
     };
 }

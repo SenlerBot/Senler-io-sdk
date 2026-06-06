@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,253 +16,265 @@
  */
 export interface RolePermissionsDto {
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProjects: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProjects: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAccess: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAccess: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewChannels: boolean;
     /**
-     * (, ).
+     * (, )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageChannels: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canDeleteChannels: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAgents: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAgents: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewDialogs: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageDialogs: boolean;
     /**
-     * spaces ( ).
+     * spaces ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewSpaces: boolean;
     /**
-     * spaces ( ).
+     * spaces ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageSpaces: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewLeads: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageLeads: boolean;
     /**
-     * MCP .
+     * MCP
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageMcpServers: boolean;
     /**
-     * MCP .
+     * MCP
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewMcpServers: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewDataSources: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageDataSources: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageServerLists: boolean;
     /**
-     * API .
+     * API
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewApiTokens: boolean;
     /**
-     * API .
+     * API
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageApiTokens: boolean;
     /**
-     * .
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewProjectApps: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageProjectApps: boolean;
+    /**
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAnalytics: boolean;
     /**
-     * (, ).
+     * (, )
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageAnalytics: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewMetrics: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageMetrics: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewEvents: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageEvents: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewAudit: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProcesses: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProcesses: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewKnowledgeBase: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageKnowledgeBase: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewBilling: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageBilling: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewStorage: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageStorage: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewProjectVariables: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageProjectVariables: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canViewLeadDefinitions: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
     canManageLeadDefinitions: boolean;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof RolePermissionsDto
      */

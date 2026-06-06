@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,55 +20,55 @@ import { mapValues } from '../runtime';
  */
 export interface AudioGenModelStats {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AudioGenModelStats
      */
     model: string;
     /**
-     * -.
+     * -
      * @type {string}
      * @memberof AudioGenModelStats
      */
     pricingType?: AudioGenModelStatsPricingTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof AudioGenModelStats
      */
     voice?: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof AudioGenModelStats
      */
     count: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof AudioGenModelStats
      */
     charCount: number;
     /**
-     * Text input .
+     * Text input
      * @type {number}
      * @memberof AudioGenModelStats
      */
     textInputTokens: number;
     /**
-     * Audio output .
+     * Audio output
      * @type {number}
      * @memberof AudioGenModelStats
      */
     audioOutputTokens: number;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof AudioGenModelStats
      */
     durationSeconds: number;
     /**
-     * ( USD).
+     * ( USD)
      * @type {number}
      * @memberof AudioGenModelStats
      */

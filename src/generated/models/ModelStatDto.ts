@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,49 +20,49 @@ import { mapValues } from '../runtime';
  */
 export interface ModelStatDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ModelStatDto
      */
     modelName: string;
     /**
-     * usage-.
+     * usage-
      * @type {number}
      * @memberof ModelStatDto
      */
     usageEventsCount: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ModelStatDto
      */
     totalTokens: number;
     /**
-     * ( ).
+     * ( )
      * @type {number}
      * @memberof ModelStatDto
      */
     cost: number;
     /**
-     * Prompt .
+     * Prompt
      * @type {number}
      * @memberof ModelStatDto
      */
     promptTokens: number;
     /**
-     * Completion .
+     * Completion
      * @type {number}
      * @memberof ModelStatDto
      */
     completionTokens: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ModelStatDto
      */
     cachedTokens: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof ModelStatDto
      */

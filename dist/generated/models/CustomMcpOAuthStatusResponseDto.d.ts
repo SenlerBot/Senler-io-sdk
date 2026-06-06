@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,43 +16,43 @@
  */
 export interface CustomMcpOAuthStatusResponseDto {
     /**
-     * MCP server UUID.
+     * UUID MCP
      * @type {string}
      * @memberof CustomMcpOAuthStatusResponseDto
      */
     mcpServerId: string;
     /**
-     * Whether the custom MCP server exposes standard OAuth metadata.
+     * OAuth- MCP
      * @type {boolean}
      * @memberof CustomMcpOAuthStatusResponseDto
      */
     supportsOauth: boolean;
     /**
-     * OAuth authorization endpoint from server metadata.
+     * URL OAuth-
      * @type {string}
      * @memberof CustomMcpOAuthStatusResponseDto
      */
     authorizationEndpoint?: string;
     /**
-     * OAuth token endpoint from server metadata.
+     * URL OAuth-
      * @type {string}
      * @memberof CustomMcpOAuthStatusResponseDto
      */
     tokenEndpoint?: string;
     /**
-     * OAuth dynamic client registration endpoint from server metadata.
+     * URL OAuth-
      * @type {string}
      * @memberof CustomMcpOAuthStatusResponseDto
      */
     registrationEndpoint?: string;
     /**
-     * Number of OAuth scopes advertised by the server.
+     * OAuth-,
      * @type {number}
      * @memberof CustomMcpOAuthStatusResponseDto
      */
     scopesCount?: number;
     /**
-     * Detection error for diagnostics when supports_oauth is false.
+     * OAuth-
      * @type {string}
      * @memberof CustomMcpOAuthStatusResponseDto
      */

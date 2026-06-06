@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -20,6 +20,7 @@ exports.McpServerResponseDtoFromJSONTyped = McpServerResponseDtoFromJSONTyped;
 exports.McpServerResponseDtoToJSON = McpServerResponseDtoToJSON;
 exports.McpServerResponseDtoToJSONTyped = McpServerResponseDtoToJSONTyped;
 const McpServerResponseDtoMeta_1 = require("./McpServerResponseDtoMeta");
+const McpCredentialConnectedIdentityDto_1 = require("./McpCredentialConnectedIdentityDto");
 const McpServerTemplateManualAuthHeaderDto_1 = require("./McpServerTemplateManualAuthHeaderDto");
 /**
  * @export
@@ -86,6 +87,7 @@ function McpServerResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'name': json['name'] == null ? undefined : json['name'],
+        'templateName': json['template_name'] == null ? undefined : json['template_name'],
         'url': json['url'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -101,6 +103,7 @@ function McpServerResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectCredentialValidationStatus': json['project_credential_validation_status'] == null ? undefined : json['project_credential_validation_status'],
         'projectCredentialValidationError': json['project_credential_validation_error'] == null ? undefined : json['project_credential_validation_error'],
         'projectCredentialValidatedAt': json['project_credential_validated_at'] == null ? undefined : (new Date(json['project_credential_validated_at'])),
+        'projectCredentialConnectedIdentity': json['project_credential_connected_identity'] == null ? undefined : (0, McpCredentialConnectedIdentityDto_1.McpCredentialConnectedIdentityDtoFromJSON)(json['project_credential_connected_identity']),
         'meta': json['meta'] == null ? undefined : (0, McpServerResponseDtoMeta_1.McpServerResponseDtoMetaFromJSON)(json['meta']),
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'hasKnowledgeBase': json['has_knowledge_base'] == null ? undefined : json['has_knowledge_base'],
@@ -122,6 +125,7 @@ function McpServerResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'id': value['id'],
         'name': value['name'],
+        'template_name': value['templateName'],
         'url': value['url'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],
@@ -137,6 +141,7 @@ function McpServerResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_credential_validation_status': value['projectCredentialValidationStatus'],
         'project_credential_validation_error': value['projectCredentialValidationError'],
         'project_credential_validated_at': value['projectCredentialValidatedAt'] == null ? undefined : (value['projectCredentialValidatedAt'].toISOString()),
+        'project_credential_connected_identity': (0, McpCredentialConnectedIdentityDto_1.McpCredentialConnectedIdentityDtoToJSON)(value['projectCredentialConnectedIdentity']),
         'meta': (0, McpServerResponseDtoMeta_1.McpServerResponseDtoMetaToJSON)(value['meta']),
         'custom_query_params': value['customQueryParams'],
         'has_knowledge_base': value['hasKnowledgeBase'],

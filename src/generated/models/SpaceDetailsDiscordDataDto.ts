@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,61 +20,61 @@ import { mapValues } from '../runtime';
  */
 export interface SpaceDetailsDiscordDataDto {
     /**
-     * 
+     * ID Discord.
      * @type {string}
      * @memberof SpaceDetailsDiscordDataDto
      */
     guildId?: string;
     /**
-     * 
+     * ID Discord.
      * @type {string}
      * @memberof SpaceDetailsDiscordDataDto
      */
     categoryId?: string;
     /**
-     * 
+     * ID Discord.
      * @type {string}
      * @memberof SpaceDetailsDiscordDataDto
      */
     channelId?: string;
     /**
-     * 
+     * ID Discord.
      * @type {string}
      * @memberof SpaceDetailsDiscordDataDto
      */
     threadId?: string;
     /**
-     * 
+     * Discord.
      * @type {string}
      * @memberof SpaceDetailsDiscordDataDto
      */
     guildIconHash?: string | null;
     /**
-     * 
+     * Discord.
      * @type {number}
      * @memberof SpaceDetailsDiscordDataDto
      */
     channelTypeCode?: number;
     /**
-     * 
+     * 18+.
      * @type {boolean}
      * @memberof SpaceDetailsDiscordDataDto
      */
     nsfw?: boolean;
     /**
-     * 
+     * .
      * @type {boolean}
      * @memberof SpaceDetailsDiscordDataDto
      */
     archived?: boolean;
     /**
-     * 
+     * .
      * @type {boolean}
      * @memberof SpaceDetailsDiscordDataDto
      */
     locked?: boolean;
     /**
-     * 
+     * ID , Discord.
      * @type {Array<string>}
      * @memberof SpaceDetailsDiscordDataDto
      */

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -91,241 +91,265 @@ import {
  */
 export interface DialogDetailsDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogDetailsDto
      */
     id: string;
     /**
-     * (primary + background).
+     * , .
      * @type {Array<DialogDtoDialogAgentsInner>}
      * @memberof DialogDetailsDto
      */
     dialogAgents?: Array<DialogDtoDialogAgentsInner>;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof DialogDetailsDto
      */
     channelId?: string;
     /**
-     * ID (UUID).
+     * ID (UUID)
      * @type {string}
      * @memberof DialogDetailsDto
      */
     projectId?: string;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof DialogDetailsDto
      */
     autoAssignDisabled: boolean;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     status: DialogDetailsDtoStatusEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     operatorResponseStatus: DialogDetailsDtoOperatorResponseStatusEnum;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     operatorWaitingSince?: Date;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     leadResponseStatus: DialogDetailsDtoLeadResponseStatusEnum;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     leadWaitingSince?: Date;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     dialogType: DialogDetailsDtoDialogTypeEnum;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof DialogDetailsDto
      */
     externalDialogId?: string;
     /**
-     * ID leaf space, space.
+     * ID , .
      * @type {string}
      * @memberof DialogDetailsDto
      */
     spaceId?: string | null;
     /**
-     * space ID leaf.
+     * ID .
      * @type {Array<string>}
      * @memberof DialogDetailsDto
      */
     spaceIds?: Array<string>;
     /**
-     * .
+     * 
      * @type {Array<string>}
      * @memberof DialogDetailsDto
      */
     tags: Array<string>;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
-    priority?: DialogDetailsDtoPriorityEnum;
+    priority?: DialogDetailsDtoPriorityEnum | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     trafficSource?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     trafficMedium?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof DialogDetailsDto
      */
     deviceType?: string;
     /**
-     * UTM source.
+     * UTM-
      * @type {string}
      * @memberof DialogDetailsDto
      */
     utmSource?: string;
     /**
-     * UTM medium.
+     * UTM-
      * @type {string}
      * @memberof DialogDetailsDto
      */
     utmMedium?: string;
     /**
-     * UTM campaign.
+     * UTM-
      * @type {string}
      * @memberof DialogDetailsDto
      */
     utmCampaign?: string;
     /**
-     * UTM term.
+     * UTM-
      * @type {string}
      * @memberof DialogDetailsDto
      */
     utmTerm?: string;
     /**
-     * UTM content.
+     * UTM-
      * @type {string}
      * @memberof DialogDetailsDto
      */
     utmContent?: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DialogDetailsDto
      */
     durationSeconds: number;
     /**
-     * ().
+     * ()
      * @type {number}
      * @memberof DialogDetailsDto
      */
     firstResponseTimeSeconds?: number;
     /**
-     * .
+     * 
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    firstLeadMessageAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    firstOperatorMessageAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    lastLeadMessageAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    lastOperatorMessageAt?: Date;
+    /**
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     startedAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     completedAt?: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     lastEventAt?: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     createdAt: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof DialogDetailsDto
      */
     updatedAt: Date;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof DialogDetailsDto
      */
     isTest: boolean;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DialogDetailsDto
      */
     totalEvents: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DialogDetailsDto
      */
     messagesCount: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DialogDetailsDto
      */
     operatorUnreadCount: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DialogDetailsDto
      */
     leadUnreadCount: number;
     /**
-     * ID primary lead, .
+     * ID primary lead,
      * @type {string}
      * @memberof DialogDetailsDto
      */
     primaryLeadId?: string;
     /**
-     * .
+     * 
      * @type {DialogDisplayInfoDto}
      * @memberof DialogDetailsDto
      */
     displayInfo?: DialogDisplayInfoDto;
     /**
-     * AI- .
+     * AI-
      * @type {string}
      * @memberof DialogDetailsDto
      */
     summary?: string;
     /**
-     * summary .
+     * summary
      * @type {Date}
      * @memberof DialogDetailsDto
      */
@@ -337,49 +361,49 @@ export interface DialogDetailsDto {
      */
     replyTarget?: DialogDtoReplyTarget;
     /**
-     * .
+     * 
      * @type {DialogFirstMessageDto}
      * @memberof DialogDetailsDto
      */
     firstMessage?: DialogFirstMessageDto;
     /**
-     * .
+     * 
      * @type {DialogLastMessageDto}
      * @memberof DialogDetailsDto
      */
     lastMessage?: DialogLastMessageDto;
     /**
-     * ( lead).
+     * , . profile .
      * @type {EventSenderDto}
      * @memberof DialogDetailsDto
      */
     serviceActor?: EventSenderDto;
     /**
-     * .
+     * 
      * @type {DialogOperatorAssignmentDto}
      * @memberof DialogDetailsDto
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
-     * (UI ).
+     * (UI )
      * @type {boolean}
      * @memberof DialogDetailsDto
      */
     isSoundMuted: boolean;
     /**
-     * ( VK/TG ).
+     * ( VK/TG )
      * @type {DialogLeadDto}
      * @memberof DialogDetailsDto
      */
     lead?: DialogLeadDto | null;
     /**
-     * .
+     * 
      * @type {DialogChannelInfoDto}
      * @memberof DialogDetailsDto
      */
     channel?: DialogChannelInfoDto | null;
     /**
-     * ( Redis).
+     * ( Redis)
      * @type {Array<DialogCurrentTypingDto>}
      * @memberof DialogDetailsDto
      */
@@ -498,6 +522,10 @@ export function DialogDetailsDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
         'durationSeconds': json['duration_seconds'],
         'firstResponseTimeSeconds': json['first_response_time_seconds'] == null ? undefined : json['first_response_time_seconds'],
+        'firstLeadMessageAt': json['first_lead_message_at'] == null ? undefined : (new Date(json['first_lead_message_at'])),
+        'firstOperatorMessageAt': json['first_operator_message_at'] == null ? undefined : (new Date(json['first_operator_message_at'])),
+        'lastLeadMessageAt': json['last_lead_message_at'] == null ? undefined : (new Date(json['last_lead_message_at'])),
+        'lastOperatorMessageAt': json['last_operator_message_at'] == null ? undefined : (new Date(json['last_operator_message_at'])),
         'startedAt': (new Date(json['started_at'])),
         'completedAt': json['completed_at'] == null ? undefined : (new Date(json['completed_at'])),
         'lastEventAt': json['last_event_at'] == null ? undefined : (new Date(json['last_event_at'])),
@@ -561,6 +589,10 @@ export function DialogDetailsDtoToJSONTyped(value?: DialogDetailsDto | null, ign
         'utm_content': value['utmContent'],
         'duration_seconds': value['durationSeconds'],
         'first_response_time_seconds': value['firstResponseTimeSeconds'],
+        'first_lead_message_at': value['firstLeadMessageAt'] == null ? undefined : ((value['firstLeadMessageAt']).toISOString()),
+        'first_operator_message_at': value['firstOperatorMessageAt'] == null ? undefined : ((value['firstOperatorMessageAt']).toISOString()),
+        'last_lead_message_at': value['lastLeadMessageAt'] == null ? undefined : ((value['lastLeadMessageAt']).toISOString()),
+        'last_operator_message_at': value['lastOperatorMessageAt'] == null ? undefined : ((value['lastOperatorMessageAt']).toISOString()),
         'started_at': ((value['startedAt']).toISOString()),
         'completed_at': value['completedAt'] == null ? undefined : ((value['completedAt']).toISOString()),
         'last_event_at': value['lastEventAt'] == null ? undefined : ((value['lastEventAt']).toISOString()),

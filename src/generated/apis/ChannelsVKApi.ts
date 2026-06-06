@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -78,7 +78,7 @@ export interface TokensVkWebhookRequest {
 export class ChannelsVKApi extends runtime.BaseAPI {
 
     /**
-     * VK token VK . Token , channel.
+     * VK token VK . Token , channel.external_id.
      * VK
      */
     async tokensVkBindRaw(requestParameters: TokensVkBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
@@ -135,7 +135,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK token VK . Token , channel.
+     * VK token VK . Token , channel.external_id.
      * VK
      */
     async tokensVkBind(requestParameters: TokensVkBindRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
@@ -144,8 +144,8 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK webhook VK API . webhook .
-     * VK webhook
+     * VK API .
+     * VK
      */
     async tokensVkCheckWebhookStatusRaw(requestParameters: TokensVkCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CheckWebhookStatusResultDto>> {
         if (requestParameters['channelId'] == null) {
@@ -191,8 +191,8 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK webhook VK API . webhook .
-     * VK webhook
+     * VK API .
+     * VK
      */
     async tokensVkCheckWebhookStatus(requestParameters: TokensVkCheckWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CheckWebhookStatusResultDto> {
         const response = await this.tokensVkCheckWebhookStatusRaw(requestParameters, initOverrides);
@@ -200,7 +200,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK S3.
+     * VK S3
      * VK
      */
     async tokensVkRefreshAvatarRaw(requestParameters: TokensVkRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelTokenResponseDto>> {
@@ -247,7 +247,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK S3.
+     * VK S3
      * VK
      */
     async tokensVkRefreshAvatar(requestParameters: TokensVkRefreshAvatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelTokenResponseDto> {
@@ -256,7 +256,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK API.
+     * VK API
      * VK
      */
     async tokensVkValidateRaw(requestParameters: TokensVkValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateVKTokenResultDto>> {
@@ -303,7 +303,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK API.
+     * VK API
      * VK
      */
     async tokensVkValidate(requestParameters: TokensVkValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateVKTokenResultDto> {
@@ -312,7 +312,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * . callback server VK .
+     * .
      * VK
      */
     async tokensVkWebhookRaw(requestParameters: TokensVkWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetupWebhookResultDto>> {
@@ -369,7 +369,7 @@ export class ChannelsVKApi extends runtime.BaseAPI {
     }
 
     /**
-     * . callback server VK .
+     * .
      * VK
      */
     async tokensVkWebhook(requestParameters: TokensVkWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetupWebhookResultDto> {

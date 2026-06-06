@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ProcessesApi extends runtime.BaseAPI {
     /**
-     * pending/preparing/processing completed/failed/cancelled .
+     * pending/preparing/processing completed/failed/cancelled
      *
      */
     async deleteProcessesRaw(requestParameters, initOverrides) {
@@ -92,7 +92,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessMessageDtoFromJSON)(jsonValue));
     }
     /**
-     * pending/preparing/processing completed/failed/cancelled .
+     * pending/preparing/processing completed/failed/cancelled
      *
      */
     async deleteProcesses(requestParameters, initOverrides) {
@@ -100,7 +100,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (/) .
+     * (/)
      *
      */
     async getProcessesRaw(requestParameters, initOverrides) {
@@ -147,7 +147,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ListProcessesResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (/) .
+     * (/)
      *
      */
     async getProcesses(requestParameters, initOverrides) {
@@ -155,7 +155,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * ,
      *
      */
     async getProcesses2Raw(requestParameters, initOverrides) {
@@ -193,7 +193,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * ,
      *
      */
     async getProcesses2(requestParameters, initOverrides) {
@@ -201,7 +201,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * S3 presigned URL .
+     * S3- .
      *
      */
     async getProcessesDownloadRaw(requestParameters, initOverrides) {
@@ -239,7 +239,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ErrorResponseFromJSON)(jsonValue));
     }
     /**
-     * S3 presigned URL .
+     * S3- .
      *
      */
     async getProcessesDownload(requestParameters, initOverrides) {
@@ -247,8 +247,8 @@ class ProcessesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * : process_created process_updated , process_deleted .
-     * subscription token realtime
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     *
      */
     async getProcessesRealtimeTokenRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -282,15 +282,15 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
     }
     /**
-     * : process_created process_updated , process_deleted .
-     * subscription token realtime
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     *
      */
     async getProcessesRealtimeToken(requestParameters, initOverrides) {
         const response = await this.getProcessesRealtimeTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async getProcessesResultRaw(requestParameters, initOverrides) {
@@ -328,7 +328,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResultResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async getProcessesResult(requestParameters, initOverrides) {

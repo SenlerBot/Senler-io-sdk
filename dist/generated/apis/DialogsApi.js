@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -97,7 +97,7 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * endpoint POST c JSON body.
+     * . before limit; q.
      * (JSON body)
      */
     async dialogsListRaw(requestParameters, initOverrides) {
@@ -134,7 +134,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PaginatedDialogsDtoFromJSON)(jsonValue));
     }
     /**
-     * endpoint POST c JSON body.
+     * . before limit; q.
      * (JSON body)
      */
     async dialogsList(requestParameters, initOverrides) {
@@ -142,7 +142,7 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * email: SMTP (/ ). 404 ( ).
+     * : external_id, . email: SMTP (/ ). 404 ( ).
      *
      */
     async directMessageRaw(requestParameters, initOverrides) {
@@ -179,7 +179,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SendMessageResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * email: SMTP (/ ). 404 ( ).
+     * : external_id, . email: SMTP (/ ). 404 ( ).
      *
      */
     async directMessage(requestParameters, initOverrides) {
@@ -187,8 +187,8 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * VK polls. getById RCommander snapshot .
-     * snapshot VK-
+     * . Telegram API .
+     * VK-
      */
     async eventsPollSnapshotRefreshRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -225,15 +225,15 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventPollSnapshotRefreshResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * VK polls. getById RCommander snapshot .
-     * snapshot VK-
+     * . Telegram API .
+     * VK-
      */
     async eventsPollSnapshotRefresh(requestParameters, initOverrides) {
         const response = await this.eventsPollSnapshotRefreshRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * endpoint . :.
+     * . before limit; q.
      *
      */
     async getEventsRaw(requestParameters, initOverrides) {
@@ -289,7 +289,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetEvents200ResponseFromJSON)(jsonValue));
     }
     /**
-     * endpoint . :.
+     * . before limit; q.
      *
      */
     async getEvents(requestParameters, initOverrides) {
@@ -297,7 +297,7 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * /. TG webhook- , VK fallback.
+     * , .
      *
      */
     async getEventsPollOptionVotersRaw(requestParameters, initOverrides) {
@@ -347,7 +347,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventPollOptionVotersResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * /. TG webhook- , VK fallback.
+     * , .
      *
      */
     async getEventsPollOptionVoters(requestParameters, initOverrides) {
@@ -355,7 +355,7 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . interaction events MongoDB ClickHouse.
+     * .
      *
      */
     async getEventsReactionUsersRaw(requestParameters, initOverrides) {
@@ -399,7 +399,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventReactionUsersResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . interaction events MongoDB ClickHouse.
+     * .
      *
      */
     async getEventsReactionUsers(requestParameters, initOverrides) {

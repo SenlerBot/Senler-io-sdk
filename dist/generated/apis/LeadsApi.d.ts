@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -74,12 +74,12 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     _export(requestParameters: ExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
-     * . .
+     * . .  MAX `external_user_ids` `chatId`, - `userId`.
      *
      */
     _importRaw(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
     /**
-     * . .
+     * . .  MAX `external_user_ids` `chatId`, - `userId`.
      *
      */
     _import(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
@@ -134,22 +134,22 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     updateNotes(requestParameters: UpdateNotesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
-     * .
+     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     updateSyncProfileRaw(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SyncLeadProfileResponseDto>>;
     /**
-     * .
+     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     updateSyncProfile(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncLeadProfileResponseDto>;
     /**
-     * , (VK), .
+     * , (VK), .  ** :** VK  **:** - ( ) - 403 Forbidden - (is_new: false) - , (is_new: false)
      *
      */
     verifySubscriptionRaw(requestParameters: VerifySubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerifySubscriptionAndAddResponseDto>>;
     /**
-     * , (VK), .
+     * , (VK), .  ** :** VK  **:** - ( ) - 403 Forbidden - (is_new: false) - , (is_new: false)
      *
      */
     verifySubscription(requestParameters: VerifySubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerifySubscriptionAndAddResponseDto>;

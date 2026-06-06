@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,37 +16,37 @@
  */
 export interface StartTrainingResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof StartTrainingResponseDto
      */
     agentId: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StartTrainingResponseDto
      */
     status: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof StartTrainingResponseDto
      */
     tasksCreated: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StartTrainingResponseDto
      */
     mode: StartTrainingResponseDtoModeEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof StartTrainingResponseDto
      */
     estimatedTime: string;
     /**
-     * ID .
+     * ID
      * @type {Array<string>}
      * @memberof StartTrainingResponseDto
      */

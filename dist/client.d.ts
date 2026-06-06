@@ -32,6 +32,7 @@ import { KnowledgeBaseApi } from './generated/apis/KnowledgeBaseApi';
 import { LeadsApi } from './generated/apis/LeadsApi';
 import { LeadVariableDefinitionsApi } from './generated/apis/LeadVariableDefinitionsApi';
 import { LeadVariablesApi } from './generated/apis/LeadVariablesApi';
+import { MCPExternalUserCredentialsApi } from './generated/apis/MCPExternalUserCredentialsApi';
 import { MCPServersApi } from './generated/apis/MCPServersApi';
 import { MetricsConfigApi } from './generated/apis/MetricsConfigApi';
 import { MetricsDefinitionsApi } from './generated/apis/MetricsDefinitionsApi';
@@ -80,6 +81,7 @@ export declare class AiSenlerClient {
     readonly leads: LeadsApi;
     readonly leadVariableDefinitions: LeadVariableDefinitionsApi;
     readonly leadVariables: LeadVariablesApi;
+    readonly mcpExternalUserCredentials: MCPExternalUserCredentialsApi;
     readonly mcpServers: MCPServersApi;
     readonly metricsConfig: MetricsConfigApi;
     readonly metricsDefinitions: MetricsDefinitionsApi;

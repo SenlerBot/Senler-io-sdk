@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class DataSourcesApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     async bindWebsiteRaw(requestParameters, initOverrides) {
@@ -100,7 +100,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async bindWebsite(requestParameters, initOverrides) {
@@ -162,7 +162,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesDeactivateRaw(requestParameters, initOverrides) {
@@ -200,14 +200,14 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.VoidApiResponse(response);
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesDeactivate(requestParameters, initOverrides) {
         await this.dataSourcesDeactivateRaw(requestParameters, initOverrides);
     }
     /**
-     * .
+     *
      * ID
      */
     async dataSourcesGetByIdRaw(requestParameters, initOverrides) {
@@ -245,7 +245,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      * ID
      */
     async dataSourcesGetById(requestParameters, initOverrides) {
@@ -253,7 +253,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesListRaw(requestParameters, initOverrides) {
@@ -294,7 +294,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.DataSourceResponseDtoFromJSON));
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesList(requestParameters, initOverrides) {
@@ -302,7 +302,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesUpdateRaw(requestParameters, initOverrides) {
@@ -345,7 +345,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesUpdate(requestParameters, initOverrides) {
@@ -353,7 +353,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesUpdateRestoreRaw(requestParameters, initOverrides) {
@@ -391,7 +391,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DataSourceResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async dataSourcesUpdateRestore(requestParameters, initOverrides) {
@@ -399,7 +399,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * ,
      *
      */
     async getActiveForTrainingRaw(requestParameters, initOverrides) {
@@ -440,7 +440,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.DataSourceResponseDtoFromJSON));
     }
     /**
-     * , .
+     * ,
      *
      */
     async getActiveForTraining(requestParameters, initOverrides) {
@@ -448,7 +448,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async validateRaw(requestParameters, initOverrides) {
@@ -486,7 +486,7 @@ class DataSourcesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateDataSourceResultDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async validate(requestParameters, initOverrides) {

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -76,62 +76,62 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     dialogsGetById(requestParameters: DialogsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDetailsDto>;
     /**
-     * endpoint POST c JSON body.
+     * . before limit; q.
      * (JSON body)
      */
     dialogsListRaw(requestParameters: DialogsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedDialogsDto>>;
     /**
-     * endpoint POST c JSON body.
+     * . before limit; q.
      * (JSON body)
      */
     dialogsList(requestParameters: DialogsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedDialogsDto>;
     /**
-     * email: SMTP (/ ). 404 ( ).
+     * : external_id, . email: SMTP (/ ). 404 ( ).
      *
      */
     directMessageRaw(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendMessageResponseDto>>;
     /**
-     * email: SMTP (/ ). 404 ( ).
+     * : external_id, . email: SMTP (/ ). 404 ( ).
      *
      */
     directMessage(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendMessageResponseDto>;
     /**
-     * VK polls. getById RCommander snapshot .
-     * snapshot VK-
+     * . Telegram API .
+     * VK-
      */
     eventsPollSnapshotRefreshRaw(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollSnapshotRefreshResponseDto>>;
     /**
-     * VK polls. getById RCommander snapshot .
-     * snapshot VK-
+     * . Telegram API .
+     * VK-
      */
     eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto>;
     /**
-     * endpoint . :.
+     * . before limit; q.
      *
      */
     getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>>;
     /**
-     * endpoint . :.
+     * . before limit; q.
      *
      */
     getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response>;
     /**
-     * /. TG webhook- , VK fallback.
+     * , .
      *
      */
     getEventsPollOptionVotersRaw(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollOptionVotersResponseDto>>;
     /**
-     * /. TG webhook- , VK fallback.
+     * , .
      *
      */
     getEventsPollOptionVoters(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollOptionVotersResponseDto>;
     /**
-     * . interaction events MongoDB ClickHouse.
+     * .
      *
      */
     getEventsReactionUsersRaw(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventReactionUsersResponseDto>>;
     /**
-     * . interaction events MongoDB ClickHouse.
+     * .
      *
      */
     getEventsReactionUsers(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventReactionUsersResponseDto>;

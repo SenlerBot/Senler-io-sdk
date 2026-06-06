@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,49 +16,49 @@
  */
 export interface PaySystemResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof PaySystemResponseDto
      */
     id: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaySystemResponseDto
      */
     name: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof PaySystemResponseDto
      */
     provider: PaySystemResponseDtoProviderEnum;
     /**
-     * (ISO 4217).
+     * (ISO 4217)
      * @type {string}
      * @memberof PaySystemResponseDto
      */
     currency: string;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof PaySystemResponseDto
      */
     minAmount: number;
     /**
-     * (/).
+     * (/)
      * @type {number}
      * @memberof PaySystemResponseDto
      */
     maxAmount: number;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof PaySystemResponseDto
      */
     topup: boolean;
     /**
-     * payment_settings .
+     * payment_settings
      * @type {Array<string>}
      * @memberof PaySystemResponseDto
      */

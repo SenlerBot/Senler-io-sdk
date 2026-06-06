@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,37 +20,37 @@ import { mapValues } from '../runtime';
  */
 export interface ReplyTargetTelegramTopicDataDto {
     /**
-     * ID Telegram chat.
+     * ID Telegram
      * @type {string}
      * @memberof ReplyTargetTelegramTopicDataDto
      */
     chatId: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof ReplyTargetTelegramTopicDataDto
      */
     linkedChatId?: string;
     /**
-     * Telegram .
+     * Telegram
      * @type {string}
      * @memberof ReplyTargetTelegramTopicDataDto
      */
     chatType?: ReplyTargetTelegramTopicDataDtoChatTypeEnum;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof ReplyTargetTelegramTopicDataDto
      */
     chatTitle?: string;
     /**
-     * Username .
+     * Username
      * @type {string}
      * @memberof ReplyTargetTelegramTopicDataDto
      */
     chatUsername?: string;
     /**
-     * ID Telegram topic/thread.
+     * ID Telegram
      * @type {number}
      * @memberof ReplyTargetTelegramTopicDataDto
      */

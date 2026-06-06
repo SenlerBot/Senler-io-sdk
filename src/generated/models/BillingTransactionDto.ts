@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,109 +28,109 @@ import {
  */
 export interface BillingTransactionDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof BillingTransactionDto
      */
     id: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof BillingTransactionDto
      */
     projectId: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     type: BillingTransactionDtoTypeEnum;
     /**
-     * / ( ).
+     * / ( )
      * @type {number}
      * @memberof BillingTransactionDto
      */
     amount: number;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     currency: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     balanceBefore: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     balanceAfter: number;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     balanceCurrency: string;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceBefore: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceAfter: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceBefore: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceAfter: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     profitBalanceBefore: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     profitBalanceAfter: number;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof BillingTransactionDto
      */
     periodStart?: Date | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof BillingTransactionDto
      */
     periodEnd?: Date | null;
     /**
-     * usage-.
+     * usage-
      * @type {number}
      * @memberof BillingTransactionDto
      */
     usageEventsCount?: number | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -142,103 +142,103 @@ export interface BillingTransactionDto {
      */
     description?: string | null;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof BillingTransactionDto
      */
     createdAt: Date;
     /**
-     * ( ).
+     * ( )
      * @type {string}
      * @memberof BillingTransactionDto
      */
     status?: string | null;
     /**
-     * () .
+     * ()
      * @type {boolean}
      * @memberof BillingTransactionDto
      */
     isLive?: boolean | null;
     /**
-     * (cost /).
+     * (cost /)
      * @type {object}
      * @memberof BillingTransactionDto
      */
     detailsByAgent: object | null;
     /**
-     * (cost /).
+     * (cost /)
      * @type {object}
      * @memberof BillingTransactionDto
      */
     detailsByModel: object | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     conversionFromCurrency?: string | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     conversionToCurrency?: string | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionRate?: number | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionAmountFrom?: number | null;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionAmountTo?: number | null;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paymentMethod?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paymentId?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof BillingTransactionDto
      */
     orderId?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paySystemId?: string | null;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof BillingTransactionDto
      */
     paySystemAccountId?: string | null;
     /**
-     * ( ).
+     * ( )
      * @type {LocalizedTextDto}
      * @memberof BillingTransactionDto
      */
     tariffName?: LocalizedTextDto | null;
     /**
-     * ( ).
+     * ( )
      * @type {LocalizedTextDto}
      * @memberof BillingTransactionDto
      */

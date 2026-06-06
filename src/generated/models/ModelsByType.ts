@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -49,25 +49,25 @@ import {
  */
 export interface ModelsByType {
     /**
-     * (LLM) - GPT, Claude, Gemini.
+     * (LLM) - GPT, Claude, Gemini. vision-capable .
      * @type {Array<TextModelStats>}
      * @memberof ModelsByType
      */
     text?: Array<TextModelStats>;
     /**
-     * - DALL-E.
+     * - DALL-E
      * @type {Array<ImageGenModelStats>}
      * @memberof ModelsByType
      */
     imageGeneration?: Array<ImageGenModelStats>;
     /**
-     * (TTS).
+     * (TTS)
      * @type {Array<AudioGenModelStats>}
      * @memberof ModelsByType
      */
     audioGeneration?: Array<AudioGenModelStats>;
     /**
-     * (STT) - Whisper.
+     * (STT) - Whisper
      * @type {Array<SpeechRecModelStats>}
      * @memberof ModelsByType
      */

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,79 +20,79 @@ import { mapValues } from '../runtime';
  */
 export interface CreateChannelsTreeRefreshProcessDto {
     /**
-     * spaces.
+     * spaces . space; ancestors .
      * @type {string}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     q?: string;
     /**
-     * UUID , .
+     * UUID , . space; ancestors .
      * @type {Array<string>}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     channelIds?: Array<string>;
     /**
-     * space.
+     * space. space; ancestors .
      * @type {Array<string>}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     kind?: Array<CreateChannelsTreeRefreshProcessDtoKindEnum>;
     /**
-     * space.
+     * space. space; ancestors .
      * @type {boolean}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     isActive?: boolean;
     /**
-     * spaces.
+     * spaces. space; ancestors .
      * @type {boolean}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     hasChildren?: boolean;
     /**
-     * space.
+     * space. space; ancestors .
      * @type {Array<string>}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     discoveredFrom?: Array<CreateChannelsTreeRefreshProcessDtoDiscoveredFromEnum>;
     /**
-     * : last_message_at >= .
+     * : last_message_at >= . space; ancestors .
      * @type {Date}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     lastMessageAtFrom?: Date;
     /**
-     * : last_message_at <= .
+     * : last_message_at <= . space; ancestors .
      * @type {Date}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     lastMessageAtTo?: Date;
     /**
-     * : last_observed_at >= .
+     * : last_observed_at >= . space; ancestors .
      * @type {Date}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     lastObservedAtFrom?: Date;
     /**
-     * : last_observed_at <= .
+     * : last_observed_at <= . space; ancestors .
      * @type {Date}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     lastObservedAtTo?: Date;
     /**
-     * UUID .
+     * UUID
      * @type {string}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     projectId: string;
     /**
-     * Cursor base64 JSON { created_at, id }.
+     * Cursor base64 JSON `{ created_at, id }`
      * @type {string}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */
     cursor?: string;
     /**
-     * (default 20, max 100).
+     * (default 20, max 100)
      * @type {number}
      * @memberof CreateChannelsTreeRefreshProcessDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,67 +18,67 @@ import type { ButtonSettingsDto } from './ButtonSettingsDto';
  */
 export interface WidgetThemeDto {
     /**
-     * .
+     * . ?lang=ru|en|auto
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     chatTitle?: WidgetLocalizedTextDto;
     /**
-     * .
+     * . ?lang=ru|en|auto
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     defaultDialogTitle?: WidgetLocalizedTextDto;
     /**
-     * .
+     *
      * @type {string}
      * @memberof WidgetThemeDto
      */
     position?: WidgetThemeDtoPositionEnum;
     /**
-     * placeholder .
+     * placeholder . ?lang=ru|en|auto
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     welcomeMessage?: WidgetLocalizedTextDto;
     /**
-     * .
+     * . ?lang=ru|en|auto
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
      */
     emptyStateMessage?: WidgetLocalizedTextDto;
     /**
-     * ( ).
+     * ( )
      * @type {ButtonSettingsDto}
      * @memberof WidgetThemeDto
      */
     button?: ButtonSettingsDto;
     /**
-     * .
+     * . 400
      * @type {number}
      * @memberof WidgetThemeDto
      */
     width?: number;
     /**
-     * .
+     * . 600
      * @type {number}
      * @memberof WidgetThemeDto
      */
     height?: number;
     /**
-     * .
+     * . light
      * @type {string}
      * @memberof WidgetThemeDto
      */
     themeMode?: WidgetThemeDtoThemeModeEnum;
     /**
-     * .
+     * . 12
      * @type {number}
      * @memberof WidgetThemeDto
      */
     borderRadius?: number;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof WidgetThemeDto
      */

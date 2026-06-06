@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -115,33 +115,33 @@ export interface TokensSyncRequest {
  */
 export declare class ChannelsApi extends runtime.BaseAPI {
     /**
-     * URL S3 . avatar management.
+     * URL S3 . .
      * URL
      */
     avatarFromUrlRaw(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelResponseDto>>;
     /**
-     * URL S3 . avatar management.
+     * URL S3 . .
      * URL
      */
     avatarFromUrl(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
     /**
-     * avatar_url S3. avatar management.
+     * avatar_url S3. .
      *
      */
     channelsAvatarConfirmRaw(requestParameters: ChannelsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelResponseDto>>;
     /**
-     * avatar_url S3. avatar management.
+     * avatar_url S3. .
      *
      */
     channelsAvatarConfirm(requestParameters: ChannelsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
     /**
-     * presigned URL S3. avatar management.
-     * presigned URL
+     * S3- . .
+     * S3-
      */
     channelsAvatarUploadUrlRaw(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<object>>;
     /**
-     * presigned URL S3. avatar management.
-     * presigned URL
+     * S3- . .
+     * S3-
      */
     channelsAvatarUploadUrl(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<object>;
     /**
@@ -155,22 +155,22 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     channelsDeactivate(requestParameters: ChannelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * .
+     * . GET /api/channels/:id/widget-code
      * ID
      */
     channelsGetByIdRaw(requestParameters: ChannelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelUserResponseDto>>;
     /**
-     * .
+     * . GET /api/channels/:id/widget-code
      * ID
      */
     channelsGetById(requestParameters: ChannelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelUserResponseDto>;
     /**
-     * , .
+     * , . GET /api/channels/:id
      *
      */
     channelsListRaw(requestParameters: ChannelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelsUserResponseDto>>;
     /**
-     * , .
+     * , . GET /api/channels/:id
      *
      */
     channelsList(requestParameters: ChannelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelsUserResponseDto>;
@@ -205,12 +205,12 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     deleteTokens(requestParameters: DeleteTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     * .
      *
      */
     getAccessRaw(requestParameters: GetAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelAccessUserResponseDto>>;
     /**
-     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     * .
      *
      */
     getAccess(requestParameters: GetAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelAccessUserResponseDto>;
@@ -225,42 +225,42 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     getSenlerStatus(requestParameters: GetSenlerStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SenlerStatusDto>;
     /**
-     * ( ).
+     * ( )
      *
      */
     getTokensRaw(requestParameters: GetTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ChannelTokenResponseDto>>>;
     /**
-     * ( ).
+     * ( )
      *
      */
     getTokens(requestParameters: GetTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ChannelTokenResponseDto>>;
     /**
-     * HTML iframe URL widget . type: widget.
+     * HTML iframe URL widget . type: widget.  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
      *
      */
     getWidgetCodeRaw(requestParameters: GetWidgetCodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetCodeResponseDto>>;
     /**
-     * HTML iframe URL widget . type: widget.
+     * HTML iframe URL widget . type: widget.  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
      *
      */
     getWidgetCode(requestParameters: GetWidgetCodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetCodeResponseDto>;
     /**
-     * .
+     *
      *
      */
     migrationEstimateRaw(requestParameters: MigrationEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MigrationEstimateResponseDto>>;
     /**
-     * .
+     *
      *
      */
     migrationEstimate(requestParameters: MigrationEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MigrationEstimateResponseDto>;
     /**
-     * , .
+     * , .  : none ( ), 1_month, 6_months, 1_year, 2_years, all. . GET /api/channels/:id.
      *
      */
     migrationStartRaw(requestParameters: MigrationStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartMigrationResponseDto>>;
     /**
-     * , .
+     * , .  : none ( ), 1_month, 6_months, 1_year, 2_years, all. . GET /api/channels/:id.
      *
      */
     migrationStart(requestParameters: MigrationStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartMigrationResponseDto>;
@@ -275,22 +275,22 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     pause(requestParameters: PauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateChannelResponseDto>;
     /**
-     * HMAC- (identity verification) .
+     * HMAC- (identity verification) .  **:** , user_hash .  .
      *
      */
     regenerateSecretRaw(requestParameters: RegenerateSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetCodeResponseDto>>;
     /**
-     * HMAC- (identity verification) .
+     * HMAC- (identity verification) .  **:** , user_hash .  .
      *
      */
     regenerateSecret(requestParameters: RegenerateSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetCodeResponseDto>;
     /**
-     * API.
+     * API.  : - VK: , screen_name; avatar best-effort - Telegram: , username; avatar best-effort - MAX: , username; avatar best-effort - Discord: application_id, username, display name, avatar - Avito: , URL ; avatar best-effort Messenger chat profile, Avito  widget streamvi .
      *
      */
     tokensSyncRaw(requestParameters: TokensSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SyncChannelResponseDto>>;
     /**
-     * API.
+     * API.  : - VK: , screen_name; avatar best-effort - Telegram: , username; avatar best-effort - MAX: , username; avatar best-effort - Discord: application_id, username, display name, avatar - Avito: , URL ; avatar best-effort Messenger chat profile, Avito  widget streamvi .
      *
      */
     tokensSync(requestParameters: TokensSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncChannelResponseDto>;

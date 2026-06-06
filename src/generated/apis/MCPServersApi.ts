@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -27,7 +27,6 @@ import type {
   McpServerListResponseDto,
   McpServerListsResponseDto,
   McpServerProjectCredentialStatusResponseDto,
-  McpServerResponseDto,
   PaginatedKnowledgeBaseSearchResponseDto,
   PaginatedServersResponseDto,
   StartCustomMcpOAuthDto,
@@ -62,8 +61,6 @@ import {
     McpServerListsResponseDtoToJSON,
     McpServerProjectCredentialStatusResponseDtoFromJSON,
     McpServerProjectCredentialStatusResponseDtoToJSON,
-    McpServerResponseDtoFromJSON,
-    McpServerResponseDtoToJSON,
     PaginatedKnowledgeBaseSearchResponseDtoFromJSON,
     PaginatedKnowledgeBaseSearchResponseDtoToJSON,
     PaginatedServersResponseDtoFromJSON,
@@ -226,13 +223,6 @@ export interface McpServersUpdateRequest {
     acceptLanguage?: McpServersUpdateAcceptLanguageEnum;
 }
 
-export interface McpServersUpdateRestoreRequest {
-    projectId: string;
-    id: string;
-    xSessionId: string;
-    acceptLanguage?: McpServersUpdateRestoreAcceptLanguageEnum;
-}
-
 export interface ProjectCredentialManualRequest {
     projectId: string;
     id: string;
@@ -277,7 +267,7 @@ export interface UpdateListsRestoreRequest {
 export class MCPServersApi extends runtime.BaseAPI {
 
     /**
-     * OAuth MCP .
+     * OAuth- MCP URL .
      * OAuth MCP
      */
     async customOauthStartRaw(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>> {
@@ -352,7 +342,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * OAuth MCP .
+     * OAuth- MCP URL .
      * OAuth MCP
      */
     async customOauthStart(requestParameters: CustomOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto> {
@@ -507,8 +497,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     async deleteProjectCredentialRaw(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -572,8 +562,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     async deleteProjectCredential(requestParameters: DeleteProjectCredentialRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.deleteProjectCredentialRaw(requestParameters, initOverrides);
@@ -581,8 +571,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Callback OAuth MCP .
-     * Callback OAuth MCP
+     * OAuth- MCP , HTML- .
+     * OAuth- MCP
      */
     async getCustomOauthCallbackRaw(requestParameters: GetCustomOauthCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         const queryParameters: any = {};
@@ -624,8 +614,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Callback OAuth MCP .
-     * Callback OAuth MCP
+     * OAuth- MCP , HTML- .
+     * OAuth- MCP
      */
     async getCustomOauthCallback(requestParameters: GetCustomOauthCallbackRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
         const response = await this.getCustomOauthCallbackRaw(requestParameters, initOverrides);
@@ -633,7 +623,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * OAuth MCP .
+     * OAuth- MCP .
      * OAuth MCP
      */
     async getCustomOauthStatusRaw(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CustomMcpOAuthStatusResponseDto>> {
@@ -698,7 +688,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * OAuth MCP .
+     * OAuth- MCP .
      * OAuth MCP
      */
     async getCustomOauthStatus(requestParameters: GetCustomOauthStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CustomMcpOAuthStatusResponseDto> {
@@ -1012,8 +1002,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async getProjectCredentialStatusRaw(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1077,8 +1067,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async getProjectCredentialStatus(requestParameters: GetProjectCredentialStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.getProjectCredentialStatusRaw(requestParameters, initOverrides);
@@ -1086,7 +1076,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async listsRaw(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
@@ -1150,7 +1140,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async lists(requestParameters: ListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerListResponseDto> {
@@ -1236,7 +1226,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersCreateRaw(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateServerResponseDto>> {
@@ -1304,7 +1294,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersCreate(requestParameters: McpServersCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateServerResponseDto> {
@@ -1313,7 +1303,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersDeactivateRaw(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
@@ -1378,7 +1368,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersDeactivate(requestParameters: McpServersDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
@@ -1613,7 +1603,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersUpdateRaw(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateServerResponseDto>> {
@@ -1688,7 +1678,7 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * MCP .
+     * MCP . can_manage_mcp_servers.
      * MCP
      */
     async mcpServersUpdate(requestParameters: McpServersUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateServerResponseDto> {
@@ -1699,80 +1689,6 @@ export class MCPServersApi extends runtime.BaseAPI {
     /**
      * MCP .
      * MCP
-     */
-    async mcpServersUpdateRestoreRaw(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling mcpServersUpdateRestore().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling mcpServersUpdateRestore().'
-            );
-        }
-
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersUpdateRestore().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
-        }
-
-        const response = await this.request({
-            path: `/api/mcp-servers/{id}/restore`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => McpServerResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * MCP .
-     * MCP
-     */
-    async mcpServersUpdateRestore(requestParameters: McpServersUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerResponseDto> {
-        const response = await this.mcpServersUpdateRestoreRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * credential MCP project.
-     * project credential
      */
     async projectCredentialManualRaw(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1846,8 +1762,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * credential MCP project.
-     * project credential
+     * MCP .
+     * MCP
      */
     async projectCredentialManual(requestParameters: ProjectCredentialManualRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.projectCredentialManualRaw(requestParameters, initOverrides);
@@ -1855,8 +1771,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * OAuth project credential MCP .
-     * OAuth project credential MCP
+     * OAuth- MCP .
+     * OAuth MCP
      */
     async projectCredentialOauthStartRaw(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartCustomMcpOAuthResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1930,8 +1846,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * OAuth project credential MCP .
-     * OAuth project credential MCP
+     * OAuth- MCP .
+     * OAuth MCP
      */
     async projectCredentialOauthStart(requestParameters: ProjectCredentialOauthStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartCustomMcpOAuthResponseDto> {
         const response = await this.projectCredentialOauthStartRaw(requestParameters, initOverrides);
@@ -1939,8 +1855,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * project credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async projectCredentialValidateRaw(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerProjectCredentialStatusResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -2004,8 +1920,8 @@ export class MCPServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * project credential MCP .
-     * project credential
+     * MCP .
+     * MCP
      */
     async projectCredentialValidate(requestParameters: ProjectCredentialValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpServerProjectCredentialStatusResponseDto> {
         const response = await this.projectCredentialValidateRaw(requestParameters, initOverrides);
@@ -2316,14 +2232,6 @@ export const McpServersUpdateAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type McpServersUpdateAcceptLanguageEnum = typeof McpServersUpdateAcceptLanguageEnum[keyof typeof McpServersUpdateAcceptLanguageEnum];
-/**
- * @export
- */
-export const McpServersUpdateRestoreAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type McpServersUpdateRestoreAcceptLanguageEnum = typeof McpServersUpdateRestoreAcceptLanguageEnum[keyof typeof McpServersUpdateRestoreAcceptLanguageEnum];
 /**
  * @export
  */

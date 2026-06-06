@@ -3,7 +3,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ChannelsApi extends runtime.BaseAPI {
     /**
-     * URL S3 . avatar management.
+     * URL S3 . .
      * URL
      */
     async avatarFromUrlRaw(requestParameters, initOverrides) {
@@ -94,7 +94,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * URL S3 . avatar management.
+     * URL S3 . .
      * URL
      */
     async avatarFromUrl(requestParameters, initOverrides) {
@@ -102,7 +102,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * avatar_url S3. avatar management.
+     * avatar_url S3. .
      *
      */
     async channelsAvatarConfirmRaw(requestParameters, initOverrides) {
@@ -142,7 +142,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * avatar_url S3. avatar management.
+     * avatar_url S3. .
      *
      */
     async channelsAvatarConfirm(requestParameters, initOverrides) {
@@ -150,8 +150,8 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * presigned URL S3. avatar management.
-     * presigned URL
+     * S3- . .
+     * S3-
      */
     async channelsAvatarUploadUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -190,8 +190,8 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response);
     }
     /**
-     * presigned URL S3. avatar management.
-     * presigned URL
+     * S3- . .
+     * S3-
      */
     async channelsAvatarUploadUrl(requestParameters, initOverrides) {
         const response = await this.channelsAvatarUploadUrlRaw(requestParameters, initOverrides);
@@ -241,7 +241,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . GET /api/channels/:id/widget-code
      * ID
      */
     async channelsGetByIdRaw(requestParameters, initOverrides) {
@@ -276,7 +276,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . GET /api/channels/:id/widget-code
      * ID
      */
     async channelsGetById(requestParameters, initOverrides) {
@@ -284,7 +284,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * , . GET /api/channels/:id
      *
      */
     async channelsListRaw(requestParameters, initOverrides) {
@@ -325,7 +325,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelsUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * , . GET /api/channels/:id
      *
      */
     async channelsList(requestParameters, initOverrides) {
@@ -470,7 +470,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     * .
      *
      */
     async getAccessRaw(requestParameters, initOverrides) {
@@ -505,7 +505,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelAccessUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * ChannelAccessDto . frontend access-layer channel-scoped route guards .
+     * .
      *
      */
     async getAccess(requestParameters, initOverrides) {
@@ -556,7 +556,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ( ).
+     * ( )
      *
      */
     async getTokensRaw(requestParameters, initOverrides) {
@@ -591,7 +591,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.ChannelTokenResponseDtoFromJSON));
     }
     /**
-     * ( ).
+     * ( )
      *
      */
     async getTokens(requestParameters, initOverrides) {
@@ -599,7 +599,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * HTML iframe URL widget . type: widget.
+     * HTML iframe URL widget . type: widget.  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
      *
      */
     async getWidgetCodeRaw(requestParameters, initOverrides) {
@@ -637,7 +637,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetCodeResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * HTML iframe URL widget . type: widget.
+     * HTML iframe URL widget . type: widget.  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
      *
      */
     async getWidgetCode(requestParameters, initOverrides) {
@@ -645,7 +645,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     *
      *
      */
     async migrationEstimateRaw(requestParameters, initOverrides) {
@@ -685,7 +685,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MigrationEstimateResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     *
      *
      */
     async migrationEstimate(requestParameters, initOverrides) {
@@ -693,7 +693,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * , .  : none ( ), 1_month, 6_months, 1_year, 2_years, all. . GET /api/channels/:id.
      *
      */
     async migrationStartRaw(requestParameters, initOverrides) {
@@ -733,7 +733,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartMigrationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * , .  : none ( ), 1_month, 6_months, 1_year, 2_years, all. . GET /api/channels/:id.
      *
      */
     async migrationStart(requestParameters, initOverrides) {
@@ -784,7 +784,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * HMAC- (identity verification) .
+     * HMAC- (identity verification) .  **:** , user_hash .  .
      *
      */
     async regenerateSecretRaw(requestParameters, initOverrides) {
@@ -819,7 +819,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetCodeResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * HMAC- (identity verification) .
+     * HMAC- (identity verification) .  **:** , user_hash .  .
      *
      */
     async regenerateSecret(requestParameters, initOverrides) {
@@ -827,7 +827,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * API.
+     * API.  : - VK: , screen_name; avatar best-effort - Telegram: , username; avatar best-effort - MAX: , username; avatar best-effort - Discord: application_id, username, display name, avatar - Avito: , URL ; avatar best-effort Messenger chat profile, Avito  widget streamvi .
      *
      */
     async tokensSyncRaw(requestParameters, initOverrides) {
@@ -862,7 +862,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SyncChannelResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * API.
+     * API.  : - VK: , screen_name; avatar best-effort - Telegram: , username; avatar best-effort - MAX: , username; avatar best-effort - Discord: application_id, username, display name, avatar - Avito: , URL ; avatar best-effort Messenger chat profile, Avito  widget streamvi .
      *
      */
     async tokensSync(requestParameters, initOverrides) {

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,67 +20,67 @@ import { mapValues } from '../runtime';
  */
 export interface TextCostCabinetDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof TextCostCabinetDto
      */
     model?: string;
     /**
-     * Prompt .
+     * Prompt
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     promptTokens?: number;
     /**
-     * Completion .
+     * Completion
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     completionTokens?: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     totalTokens?: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     cachedTokens?: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     uncachedTokens?: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     audioTokens?: number;
     /**
-     * Reasoning .
+     * Reasoning
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     reasoningTokens?: number;
     /**
-     * Completion audio .
+     * Completion audio
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     completionAudioTokens?: number;
     /**
-     * Accepted prediction .
+     * Accepted prediction
      * @type {number}
      * @memberof TextCostCabinetDto
      */
     acceptedPredictionTokens?: number;
     /**
-     * Rejected prediction .
+     * Rejected prediction
      * @type {number}
      * @memberof TextCostCabinetDto
      */

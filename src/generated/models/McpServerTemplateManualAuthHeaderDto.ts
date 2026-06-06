@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -20,37 +20,37 @@ import { mapValues } from '../runtime';
  */
 export interface McpServerTemplateManualAuthHeaderDto {
     /**
-     * HTTP header name that will be sent to the installed MCP server.
+     * HTTP-, MCP
      * @type {string}
      * @memberof McpServerTemplateManualAuthHeaderDto
      */
     name: string;
     /**
-     * Human-readable input label shown to the user during installation.
+     * ,
      * @type {string}
      * @memberof McpServerTemplateManualAuthHeaderDto
      */
     label?: string;
     /**
-     * Short helper text shown to the user during installation
+     * ,
      * @type {string}
      * @memberof McpServerTemplateManualAuthHeaderDto
      */
     description?: string;
     /**
-     * Whether the user must provide this value during installation.
+     * 
      * @type {boolean}
      * @memberof McpServerTemplateManualAuthHeaderDto
      */
     required?: boolean;
     /**
-     * Whether the input should be masked in UI.
+     * 
      * @type {boolean}
      * @memberof McpServerTemplateManualAuthHeaderDto
      */
     secret?: boolean;
     /**
-     * Optional prefix prepended to the user-provided value before sending the header.
+     * ,
      * @type {string}
      * @memberof McpServerTemplateManualAuthHeaderDto
      */

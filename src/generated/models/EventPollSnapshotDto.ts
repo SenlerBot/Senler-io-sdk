@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -28,127 +28,127 @@ import {
  */
 export interface EventPollSnapshotDto {
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     platformType?: EventPollSnapshotDtoPlatformTypeEnum;
     /**
-     * Owner id .
+     * Owner id
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     ownerId?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     pollId?: string;
     /**
-     * .
+     * 
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     question?: string;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     multiple?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     anonymous?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     closed?: boolean;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof EventPollSnapshotDto
      */
     totalVoterCount?: number;
     /**
-     * / VK.
+     * / VK
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     isBoard?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canVote?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canShare?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canEdit?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     canReport?: boolean;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     disableUnvote?: boolean;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof EventPollSnapshotDto
      */
     createdAtPlatform?: Date;
     /**
-     * .
+     * 
      * @type {Date}
      * @memberof EventPollSnapshotDto
      */
     endDate?: Date;
     /**
-     * .
+     * 
      * @type {Array<EventPollAnswerSnapshotDto>}
      * @memberof EventPollSnapshotDto
      */
     answers?: Array<EventPollAnswerSnapshotDto>;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     authorId?: string;
     /**
-     * Embed hash VK.
+     * VK
      * @type {string}
      * @memberof EventPollSnapshotDto
      */
     embedHash?: string;
     /**
-     * .
+     * 
      * @type {boolean}
      * @memberof EventPollSnapshotDto
      */
     isUnavailable?: boolean;
     /**
-     * snapshot .
+     * snapshot
      * @type {Date}
      * @memberof EventPollSnapshotDto
      */

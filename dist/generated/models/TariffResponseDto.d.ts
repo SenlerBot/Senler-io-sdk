@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,97 +16,97 @@
  */
 export interface TariffResponseDto {
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof TariffResponseDto
      */
     id: string;
     /**
-     * (ru).
+     * (ru)
      * @type {string}
      * @memberof TariffResponseDto
      */
     nameRu: string;
     /**
-     * (en).
+     * (en)
      * @type {string}
      * @memberof TariffResponseDto
      */
     nameEn: string;
     /**
-     * (ru).
+     * (ru)
      * @type {string}
      * @memberof TariffResponseDto
      */
     descriptionRu?: string | null;
     /**
-     * (en).
+     * (en)
      * @type {string}
      * @memberof TariffResponseDto
      */
     descriptionEn?: string | null;
     /**
-     * , , integer raw, scale=10000; display->raw: 12.
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof TariffResponseDto
      */
     creditsPerMonth: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TariffResponseDto
      */
     approxMessages?: number | null;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TariffResponseDto
      */
     storageLimitBytes: number;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof TariffResponseDto
      */
     isUnlimited: boolean;
     /**
-     * ( ).
+     * ( )
      * @type {boolean}
      * @memberof TariffResponseDto
      */
     isFree: boolean;
     /**
-     * (RUB).
+     * (RUB)
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceRubMonthly: number;
     /**
-     * (USD).
+     * (USD)
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceUsdMonthly: number;
     /**
-     * (RUB).
+     * (RUB)
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceRubYearly: number;
     /**
-     * (USD).
+     * (USD)
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceUsdYearly: number;
     /**
-     * ( , ).
+     * ( , )
      * @type {boolean}
      * @memberof TariffResponseDto
      */
     isRequestOnly: boolean;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TariffResponseDto
      */

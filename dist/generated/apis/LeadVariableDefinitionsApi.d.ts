@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -49,52 +49,52 @@ export interface LeadVariableDefinitionsUpdateRequest {
  */
 export declare class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsCreateRaw(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsCreate(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsGetByIdRaw(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsGetById(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsGetById2Raw(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsGetById2(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsUpdateRaw(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>>;
     /**
-     * .
+     *
      *
      */
     leadVariableDefinitionsUpdate(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto>;

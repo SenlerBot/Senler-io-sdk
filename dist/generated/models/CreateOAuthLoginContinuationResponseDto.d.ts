@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,19 +16,19 @@
  */
 export interface CreateOAuthLoginContinuationResponseDto {
     /**
-     * Short-lived continuation token for returning to the OAuth authorize flow.
+     * OAuth-
      * @type {string}
      * @memberof CreateOAuthLoginContinuationResponseDto
      */
     continuationToken: string;
     /**
-     * Relative OAuth authorize URL that resumes the saved request.
+     * URL OAuth-
      * @type {string}
      * @memberof CreateOAuthLoginContinuationResponseDto
      */
     authorizeUrl: string;
     /**
-     * Continuation lifetime in seconds.
+     *
      * @type {number}
      * @memberof CreateOAuthLoginContinuationResponseDto
      */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -60,72 +60,72 @@ export interface MetricsDefinitionsUpdateRestoreRequest {
  */
 export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
     /**
-     * Built-in .
+     * .
      *
      */
     metricsDefinitionsActivateRaw(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
-     * Built-in .
+     * .
      *
      */
     metricsDefinitionsActivate(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
-     * .
+     * . project_id .
      *
      */
     metricsDefinitionsCreateRaw(requestParameters: MetricsDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
-     * .
+     * . project_id .
      *
      */
     metricsDefinitionsCreate(requestParameters: MetricsDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
-     * . Built-in .
+     * . .
      *
      */
     metricsDefinitionsDeactivateRaw(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * . Built-in .
+     * . .
      *
      */
     metricsDefinitionsDeactivate(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * Built-in .
+     * .
      *
      */
     metricsDefinitionsDeactivate2Raw(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
-     * Built-in .
+     * .
      *
      */
     metricsDefinitionsDeactivate2(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
-     * . Built-in .
+     * . .
      * ID
      */
     metricsDefinitionsGetByIdRaw(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
-     * . Built-in .
+     * . .
      * ID
      */
     metricsDefinitionsGetById(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
-     * built-in () + .
+     * built-in () + . project_id .
      *
      */
     metricsDefinitionsListRaw(requestParameters: MetricsDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<MetricDefinitionDto>>>;
     /**
-     * built-in () + .
+     * built-in () + . project_id .
      *
      */
     metricsDefinitionsList(requestParameters: MetricsDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<MetricDefinitionDto>>;
     /**
-     * . Built-in .
+     * . .
      *
      */
     metricsDefinitionsUpdateRaw(requestParameters: MetricsDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
-     * . Built-in .
+     * . .
      *
      */
     metricsDefinitionsUpdate(requestParameters: MetricsDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;

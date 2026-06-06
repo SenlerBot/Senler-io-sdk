@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,37 +16,37 @@
  */
 export interface AppliedFiltersDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof AppliedFiltersDto
      */
     evaluationMode?: AppliedFiltersDtoEvaluationModeEnum;
     /**
-     * ( L0).
+     * ( L0)
      * @type {string}
      * @memberof AppliedFiltersDto
      */
     top?: AppliedFiltersDtoTopEnum;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AppliedFiltersDto
      */
     agentType?: string;
     /**
-     * ID .
+     * ID
      * @type {string}
      * @memberof AppliedFiltersDto
      */
     channelId?: string;
     /**
-     * .
+     *
      * @type {string}
      * @memberof AppliedFiltersDto
      */
     metricType?: AppliedFiltersDtoMetricTypeEnum;
     /**
-     * .
+     *
      * @type {boolean}
      * @memberof AppliedFiltersDto
      */

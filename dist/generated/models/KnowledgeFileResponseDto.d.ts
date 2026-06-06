@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,115 +16,115 @@
  */
 export interface KnowledgeFileResponseDto {
     /**
-     * File UUID.
+     * UUID
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     id: string;
     /**
-     * Project UUID for project-owned resources.
+     * UUID
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     projectId?: string | null;
     /**
-     * Knowledge base owner type.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     ownerType: KnowledgeFileResponseDtoOwnerTypeEnum;
     /**
-     * Knowledge base owner UUID.
+     * UUID
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     ownerId: string;
     /**
-     * Folder UUID.
+     * UUID
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     folderId: string | null;
     /**
-     * File title.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     title: string;
     /**
-     * File kind.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     fileKind: KnowledgeFileResponseDtoFileKindEnum;
     /**
-     * Markdown/text content.
+     * Markdown
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     content: string;
     /**
-     * Plain text content.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     plainText: string | null;
     /**
-     * Original file name.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     originalFileName: string | null;
     /**
-     * Original MIME type.
+     * MIME-
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     mimeType: string | null;
     /**
-     * Original file size in bytes.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     fileSize: string | null;
     /**
-     * S3 storage path.
+     * S3
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     storagePath: string | null;
     /**
-     * Public storage URL.
+     * URL
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     storageUrl: string | null;
     /**
-     * Text extraction status.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     extractionStatus: KnowledgeFileResponseDtoExtractionStatusEnum;
     /**
-     * Text extraction progress percent.
+     *
      * @type {number}
      * @memberof KnowledgeFileResponseDto
      */
     extractionProgressPercent: number;
     /**
-     * Text extraction error.
+     *
      * @type {string}
      * @memberof KnowledgeFileResponseDto
      */
     extractionError: string | null;
     /**
-     * Context keys for widget element selection.
+     *
      * @type {Array<string>}
      * @memberof KnowledgeFileResponseDto
      */
     aiContextIds: Array<string>;
     /**
-     * Private AI metadata parsed from Markdown frontmatter.
+     * AI- frontmatter Markdown
      * @type {{ [key: string]: any; }}
      * @memberof KnowledgeFileResponseDto
      */
@@ -132,19 +132,19 @@ export interface KnowledgeFileResponseDto {
         [key: string]: any;
     };
     /**
-     * File is active.
+     *
      * @type {boolean}
      * @memberof KnowledgeFileResponseDto
      */
     isActive: boolean;
     /**
-     * Creation timestamp.
+     *
      * @type {Date}
      * @memberof KnowledgeFileResponseDto
      */
     createdAt: Date;
     /**
-     * Last update timestamp.
+     *
      * @type {Date}
      * @memberof KnowledgeFileResponseDto
      */

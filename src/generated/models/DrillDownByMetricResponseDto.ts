@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -84,67 +84,67 @@ import {
  */
 export interface DrillDownByMetricResponseDto {
     /**
-     * .
+     * 
      * @type {MetricContextDto}
      * @memberof DrillDownByMetricResponseDto
      */
     metric: MetricContextDto;
     /**
-     * .
+     * 
      * @type {PeriodInfoDto}
      * @memberof DrillDownByMetricResponseDto
      */
     period: PeriodInfoDto;
     /**
-     * .
+     * 
      * @type {EvaluationInfoDto}
      * @memberof DrillDownByMetricResponseDto
      */
     evaluationInfo: EvaluationInfoDto;
     /**
-     * .
+     * 
      * @type {MetricOverallStatsDto}
      * @memberof DrillDownByMetricResponseDto
      */
     overallStats: MetricOverallStatsDto;
     /**
-     * (-N score).
+     * (-N score)
      * @type {Array<AgentMetricDeviationDto>}
      * @memberof DrillDownByMetricResponseDto
      */
     agents: Array<AgentMetricDeviationDto>;
     /**
-     * .
+     * 
      * @type {Array<MetricTimeSeriesPointDto>}
      * @memberof DrillDownByMetricResponseDto
      */
     timeSeries: Array<MetricTimeSeriesPointDto>;
     /**
-     * .
+     * 
      * @type {Array<RecommendationDto>}
      * @memberof DrillDownByMetricResponseDto
      */
     recommendations: Array<RecommendationDto>;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DrillDownByMetricResponseDto
      */
     totalAgents: number;
     /**
-     * .
+     * 
      * @type {number}
      * @memberof DrillDownByMetricResponseDto
      */
     badCount: number;
     /**
-     * ( / ).
+     * ( / )
      * @type {EmptyStateDto}
      * @memberof DrillDownByMetricResponseDto
      */
     emptyState?: EmptyStateDto;
     /**
-     * .
+     * 
      * @type {AppliedFiltersDto}
      * @memberof DrillDownByMetricResponseDto
      */

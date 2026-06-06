@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -18,7 +18,7 @@ export interface DeleteProjectsTariffNextRequest {
 }
 export interface GetCreditTransactionsDetailsRequest {
     transactionId: string;
-    groupBy: string;
+    groupBy?: GetCreditTransactionsDetailsGroupByEnum;
     xSessionId?: string;
     acceptLanguage?: GetCreditTransactionsDetailsAcceptLanguageEnum;
 }
@@ -126,32 +126,32 @@ export interface UpdateProjectsAutoPurchaseRequest {
  */
 export declare class BillingApi extends runtime.BaseAPI {
     /**
-     * downgrade. .
+     * downgrade. . ( ).
      *
      */
     deleteProjectsTariffNextRaw(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * downgrade. .
+     * downgrade. . ( ).
      *
      */
     deleteProjectsTariffNext(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * ClickHouse: , .
+     * : .
      *
      */
     getCreditTransactionsDetailsRaw(requestParameters: GetCreditTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditTransactionDetailsResponseDto>>;
     /**
-     * ClickHouse: , .
+     * : .
      *
      */
     getCreditTransactionsDetails(requestParameters: GetCreditTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditTransactionDetailsResponseDto>;
     /**
-     * .
+     *
      *
      */
     getProjectsBalanceRaw(requestParameters: GetProjectsBalanceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
     /**
-     * .
+     *
      *
      */
     getProjectsBalance(requestParameters: GetProjectsBalanceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
@@ -166,22 +166,22 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getProjectsCreditTransactions(requestParameters: GetProjectsCreditTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditTransactionsResponseDto>;
     /**
-     * . .
+     * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
      *
      */
     getProjectsCreditsCheckRaw(requestParameters: GetProjectsCreditsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditsCheckResponseDto>>;
     /**
-     * . .
+     * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
      *
      */
     getProjectsCreditsCheck(requestParameters: GetProjectsCreditsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditsCheckResponseDto>;
     /**
-     * , ( order_items). ID : ?
+     * , ( order_items). ID : ?order_id=...; : ?status=pending,processing
      *
      */
     getProjectsOrdersRaw(requestParameters: GetProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OrderListResponseDto>>;
     /**
-     * , ( order_items). ID : ?
+     * , ( order_items). ID : ?order_id=...; : ?status=pending,processing
      *
      */
     getProjectsOrders(requestParameters: GetProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OrderListResponseDto>;
@@ -196,42 +196,42 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getProjectsPaymentSettings(requestParameters: GetProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaymentSettingsResponseDto>;
     /**
-     * (, toggle ). .
+     * (, toggle ). . total == null tariff-buy. total > 0 POST /orders amount use_balance.
      *
      */
     getProjectsTariffCheckRaw(requestParameters: GetProjectsTariffCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffCheckResponseDto>>;
     /**
-     * (, toggle ). .
+     * (, toggle ). . total == null tariff-buy. total > 0 POST /orders amount use_balance.
      *
      */
     getProjectsTariffCheck(requestParameters: GetProjectsTariffCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffCheckResponseDto>;
     /**
-     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Free .
      *
      */
     getProjectsTariffsRaw(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectTariffsResponseDto>>;
     /**
-     * status (current/upgrade/downgrade) . (downgrade) next_subscription.
+     * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Free .
      *
      */
     getProjectsTariffs(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectTariffsResponseDto>;
     /**
-     * (, , , ).
+     * (, , , )
      *
      */
     getProjectsTransactionsRaw(requestParameters: GetProjectsTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BillingTransactionsResponseDto>>;
     /**
-     * (, , , ).
+     * (, , , )
      *
      */
     getProjectsTransactions(requestParameters: GetProjectsTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BillingTransactionsResponseDto>;
     /**
-     * : , usage-.
+     * : , usage-
      *
      */
     getTransactionsDetailsRaw(requestParameters: GetTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransactionDetailsResponseDto>>;
     /**
-     * : , usage-.
+     * : , usage-
      *
      */
     getTransactionsDetails(requestParameters: GetTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransactionDetailsResponseDto>;
@@ -246,42 +246,42 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     projectsCreditsBuy(requestParameters: ProjectsCreditsBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
     /**
-     * , URL . payment_settings (, email).
+     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
      *
      */
     projectsOrdersRaw(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateOrderResponseDto>>;
     /**
-     * , URL . payment_settings (, email).
+     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
      *
      */
     projectsOrders(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateOrderResponseDto>;
     /**
-     * , , . (RU), .
+     * , , . (RU), . RU: email . : email + .
      *
      */
     projectsPaymentSettingsRaw(requestParameters: ProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SavePaymentSettingsResponseDto>>;
     /**
-     * , , . (RU), .
+     * , , . (RU), . RU: email . : email + .
      *
      */
     projectsPaymentSettings(requestParameters: ProjectsPaymentSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SavePaymentSettingsResponseDto>;
     /**
-     * tariff-check total == null. Upgrade ( + ).
+     * tariff-check total == null. Upgrade ( + ). Downgrade ( ). .
      * /
      */
     projectsTariffBuyRaw(requestParameters: ProjectsTariffBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
     /**
-     * tariff-check total == null. Upgrade ( + ).
+     * tariff-check total == null. Upgrade ( + ). Downgrade ( ). .
      * /
      */
     projectsTariffBuy(requestParameters: ProjectsTariffBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
     /**
-     * : .
+     * : . package_id ( GET /api/credit-packages).
      *
      */
     updateProjectsAutoPurchaseRaw(requestParameters: UpdateProjectsAutoPurchaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutoPurchaseResponseDto>>;
     /**
-     * : .
+     * : . package_id ( GET /api/credit-packages).
      *
      */
     updateProjectsAutoPurchase(requestParameters: UpdateProjectsAutoPurchaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutoPurchaseResponseDto>;
@@ -294,6 +294,14 @@ export declare const DeleteProjectsTariffNextAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeleteProjectsTariffNextAcceptLanguageEnum = typeof DeleteProjectsTariffNextAcceptLanguageEnum[keyof typeof DeleteProjectsTariffNextAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetCreditTransactionsDetailsGroupByEnum: {
+    readonly Agent: "agent";
+    readonly Model: "model";
+};
+export type GetCreditTransactionsDetailsGroupByEnum = typeof GetCreditTransactionsDetailsGroupByEnum[keyof typeof GetCreditTransactionsDetailsGroupByEnum];
 /**
  * @export
  */

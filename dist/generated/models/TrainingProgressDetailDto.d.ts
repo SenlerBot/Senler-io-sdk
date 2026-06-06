@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingTaskStatusParamsDto } from './TrainingTaskStatusParamsDto';
 /**
  *
  * @export
@@ -16,42 +17,62 @@
  */
 export interface TrainingProgressDetailDto {
     /**
-     * .
+     *
      * @type {string}
      * @memberof TrainingProgressDetailDto
      */
     currentStep?: string;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TrainingProgressDetailDto
      */
     stepsCompleted?: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TrainingProgressDetailDto
      */
     stepsTotal?: number;
     /**
-     * .
+     *
      * @type {number}
      * @memberof TrainingProgressDetailDto
      */
     progressPercent?: number;
     /**
-     * .
+     *
      * @type {string}
      * @memberof TrainingProgressDetailDto
      */
-    statusMessage?: string;
+    statusCode?: TrainingProgressDetailDtoStatusCodeEnum;
     /**
-     * .
+     *
+     * @type {TrainingTaskStatusParamsDto}
+     * @memberof TrainingProgressDetailDto
+     */
+    statusParams?: TrainingTaskStatusParamsDto;
+    /**
+     *
      * @type {string}
      * @memberof TrainingProgressDetailDto
      */
     stepStartedAt?: string;
 }
+/**
+ * @export
+ */
+export declare const TrainingProgressDetailDtoStatusCodeEnum: {
+    readonly WebsiteAiPlanning: "website_ai_planning";
+    readonly WebsiteAiPlanSelected: "website_ai_plan_selected";
+    readonly WebsiteLocalDiscovery: "website_local_discovery";
+    readonly WebsiteLocalDiscoveryProgress: "website_local_discovery_progress";
+    readonly WebsiteSaving: "website_saving";
+    readonly GenerationPreparing: "generation_preparing";
+    readonly GenerationWaiting: "generation_waiting";
+    readonly GenerationComposing: "generation_composing";
+};
+export type TrainingProgressDetailDtoStatusCodeEnum = typeof TrainingProgressDetailDtoStatusCodeEnum[keyof typeof TrainingProgressDetailDtoStatusCodeEnum];
 /**
  * Check if a given object implements the TrainingProgressDetailDto interface.
  */

@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -16,43 +16,43 @@
  */
 export interface ResourcePackagePlanItemDto {
     /**
-     * Package-local resource id.
+     * ID
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */
     localId: string;
     /**
-     * Resource type.
+     *
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */
     resourceType: ResourcePackagePlanItemDtoResourceTypeEnum;
     /**
-     * Display name.
+     *
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */
     name: string;
     /**
-     * Planned action.
+     *
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */
     action: ResourcePackagePlanItemDtoActionEnum;
     /**
-     * Created or reused target resource id.
+     * ID . .
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */
     targetId?: string | null;
     /**
-     * Planned target display name if known.
+     * ,
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */
     targetName?: string | null;
     /**
-     * Action details.
+     *
      * @type {string}
      * @memberof ResourcePackagePlanItemDto
      */

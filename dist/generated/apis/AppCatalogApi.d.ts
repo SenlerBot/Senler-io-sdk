@@ -1,6 +1,6 @@
 /**
  * Ai Senler API
- * Public API .  ##  Public API : - **Bearer Token** API- (`senler_sk_...`), . - **OAuth 2.0** access token, OAuth.  HTTP-:  ``` Authorization: Bearer <token> ```  ### 1. API- ``` senler_sk_YOUR_API_KEY ``` `Bearer`. .  ### 2. OAuth 2.0 access token ( ) ``` eyJ... ``` OAuth . Scopes .  ## URL  ``` https://api.senler.io ```  ##  Public API. .
+ * API . : API- senler_sk_... OAuth 2.0 Bearer-.
  *
  * The version of the OpenAPI document: 1.0
  *
@@ -25,23 +25,23 @@ export interface AppCatalogListRequest {
  */
 export declare class AppCatalogApi extends runtime.BaseAPI {
     /**
-     * Returns public app details from catalog.
-     * Get public app details from catalog
+     * .
+     *
      */
     appCatalogGetByIdRaw(requestParameters: AppCatalogGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppCatalogResponseDto>>;
     /**
-     * Returns public app details from catalog.
-     * Get public app details from catalog
+     * .
+     *
      */
     appCatalogGetById(requestParameters: AppCatalogGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppCatalogResponseDto>;
     /**
-     * Returns public apps in catalog.
-     * List public apps in catalog
+     * .
+     *
      */
     appCatalogListRaw(requestParameters: AppCatalogListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppCatalogResponseDto>>>;
     /**
-     * Returns public apps in catalog.
-     * List public apps in catalog
+     * .
+     *
      */
     appCatalogList(requestParameters?: AppCatalogListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppCatalogResponseDto>>;
 }
@@ -59,6 +59,8 @@ export type AppCatalogGetByIdAcceptLanguageEnum = typeof AppCatalogGetByIdAccept
 export declare const AppCatalogListTypeEnum: {
     readonly Oauth: "oauth";
     readonly SalesFunnel: "sales_funnel";
+    readonly AgentTool: "agent_tool";
+    readonly EmbeddedPage: "embedded_page";
 };
 export type AppCatalogListTypeEnum = typeof AppCatalogListTypeEnum[keyof typeof AppCatalogListTypeEnum];
 /**
