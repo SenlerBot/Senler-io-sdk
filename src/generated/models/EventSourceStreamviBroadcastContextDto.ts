@@ -29,7 +29,7 @@ import {
 } from './EventSourceStreamviBroadcastDataDto';
 
 /**
- * 
+ * EventSourceStreamviBroadcastContextDto.
  * @export
  * @interface EventSourceStreamviBroadcastContextDto
  */

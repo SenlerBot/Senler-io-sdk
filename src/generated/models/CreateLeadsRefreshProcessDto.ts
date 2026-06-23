@@ -22,7 +22,7 @@ import {
 } from './LeadsFilterDto';
 
 /**
- * 
+ * CreateLeadsRefreshProcessDto.
  * @export
  * @interface CreateLeadsRefreshProcessDto
  */

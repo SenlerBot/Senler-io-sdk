@@ -11,7 +11,7 @@
  */
 import type { McpServerResponseDto } from './McpServerResponseDto';
 /**
- *
+ * ExportServersResponseDto.
  * @export
  * @interface ExportServersResponseDto
  */

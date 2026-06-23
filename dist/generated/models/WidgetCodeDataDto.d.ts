@@ -11,7 +11,7 @@
  */
 import type { BackendSnippetDto } from './BackendSnippetDto';
 /**
- *
+ * WidgetCodeDataDto.
  * @export
  * @interface WidgetCodeDataDto
  */

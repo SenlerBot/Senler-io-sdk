@@ -43,7 +43,7 @@ import {
 } from './McpServerListResponseDto';
 
 /**
- * 
+ * AgentResponseDto.
  * @export
  * @interface AgentResponseDto
  */
@@ -379,6 +379,12 @@ export interface AgentResponseDto {
      */
     enableSelectiveResponse: boolean;
     /**
+     * (operator_reply_template control_processing)
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    enableOperatorReplySuggestions: boolean;
+    /**
      * (schedule_next_message tool)
      * @type {boolean}
      * @memberof AgentResponseDto
@@ -644,6 +650,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined) return false;
     if (!('enableMessageReactionsContext' in value) || value['enableMessageReactionsContext'] === undefined) return false;
     if (!('enableSelectiveResponse' in value) || value['enableSelectiveResponse'] === undefined) return false;
+    if (!('enableOperatorReplySuggestions' in value) || value['enableOperatorReplySuggestions'] === undefined) return false;
     if (!('enableScheduling' in value) || value['enableScheduling'] === undefined) return false;
     if (!('enableSkipMetrics' in value) || value['enableSkipMetrics'] === undefined) return false;
     if (!('enableMuteDialog' in value) || value['enableMuteDialog'] === undefined) return false;
@@ -724,6 +731,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'],
+        'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'],
         'enableScheduling': json['enable_scheduling'],
         'enableSkipMetrics': json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'],
@@ -805,6 +813,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
+        'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],
         'enable_scheduling': value['enableScheduling'],
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],

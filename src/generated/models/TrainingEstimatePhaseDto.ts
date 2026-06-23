@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TrainingEstimatePhaseDto.
  * @export
  * @interface TrainingEstimatePhaseDto
  */

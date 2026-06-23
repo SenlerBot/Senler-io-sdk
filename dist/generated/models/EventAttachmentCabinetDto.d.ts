@@ -11,9 +11,11 @@
  */
 import type { AttachmentGenerationDto } from './AttachmentGenerationDto';
 import type { AttachmentFlagsDto } from './AttachmentFlagsDto';
+import type { EventAttachmentContactDto } from './EventAttachmentContactDto';
 import type { AttachmentRecognitionCabinetDto } from './AttachmentRecognitionCabinetDto';
+import type { EventAttachmentLocationDto } from './EventAttachmentLocationDto';
 /**
- *
+ * EventAttachmentCabinetDto.
  * @export
  * @interface EventAttachmentCabinetDto
  */
@@ -48,6 +50,18 @@ export interface EventAttachmentCabinetDto {
      * @memberof EventAttachmentCabinetDto
      */
     externalUrl?: string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof EventAttachmentCabinetDto
+     */
+    actions?: Array<EventAttachmentCabinetDtoActionsEnum>;
+    /**
+     * ,
+     * @type {string}
+     * @memberof EventAttachmentCabinetDto
+     */
+    unavailableReason?: EventAttachmentCabinetDtoUnavailableReasonEnum;
     /**
      *
      * @type {string}
@@ -169,6 +183,18 @@ export interface EventAttachmentCabinetDto {
      */
     platformFileId?: string;
     /**
+     * non-file attachment
+     * @type {EventAttachmentContactDto}
+     * @memberof EventAttachmentCabinetDto
+     */
+    contact?: EventAttachmentContactDto;
+    /**
+     * non-file attachment
+     * @type {EventAttachmentLocationDto}
+     * @memberof EventAttachmentCabinetDto
+     */
+    location?: EventAttachmentLocationDto;
+    /**
      *
      * @type {Date}
      * @memberof EventAttachmentCabinetDto
@@ -181,16 +207,34 @@ export interface EventAttachmentCabinetDto {
 export declare const EventAttachmentCabinetDtoTypeEnum: {
     readonly Photo: "photo";
     readonly Video: "video";
-    readonly Document: "document";
     readonly Voice: "voice";
     readonly Audio: "audio";
+    readonly Document: "document";
     readonly Sticker: "sticker";
-    readonly Animation: "animation";
-    readonly Location: "location";
     readonly Contact: "contact";
-    readonly Poll: "poll";
+    readonly Location: "location";
 };
 export type EventAttachmentCabinetDtoTypeEnum = typeof EventAttachmentCabinetDtoTypeEnum[keyof typeof EventAttachmentCabinetDtoTypeEnum];
+/**
+ * @export
+ */
+export declare const EventAttachmentCabinetDtoActionsEnum: {
+    readonly View: "view";
+    readonly Download: "download";
+    readonly OpenExternal: "open_external";
+    readonly SendToSelf: "send_to_self";
+};
+export type EventAttachmentCabinetDtoActionsEnum = typeof EventAttachmentCabinetDtoActionsEnum[keyof typeof EventAttachmentCabinetDtoActionsEnum];
+/**
+ * @export
+ */
+export declare const EventAttachmentCabinetDtoUnavailableReasonEnum: {
+    readonly ProjectUploadLimitExceeded: "project_upload_limit_exceeded";
+    readonly TelegramBotApiDownloadLimit: "telegram_bot_api_download_limit";
+    readonly UploadFailed: "upload_failed";
+    readonly SourceUnavailable: "source_unavailable";
+};
+export type EventAttachmentCabinetDtoUnavailableReasonEnum = typeof EventAttachmentCabinetDtoUnavailableReasonEnum[keyof typeof EventAttachmentCabinetDtoUnavailableReasonEnum];
 /**
  * @export
  */

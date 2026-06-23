@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetTelegramTopicDataDto.
  * @export
  * @interface ReplyTargetTelegramTopicDataDto
  */

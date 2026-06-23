@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EventSourceTelegramTopicDataDto.
  * @export
  * @interface EventSourceTelegramTopicDataDto
  */

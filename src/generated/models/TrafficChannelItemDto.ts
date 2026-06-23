@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TrafficChannelItemDto.
  * @export
  * @interface TrafficChannelItemDto
  */

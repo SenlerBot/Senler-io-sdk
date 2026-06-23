@@ -29,7 +29,7 @@ import {
 } from './EventSourceMaxDialogDataDto';
 
 /**
- * 
+ * EventSourceMaxDialogContextDto.
  * @export
  * @interface EventSourceMaxDialogContextDto
  */

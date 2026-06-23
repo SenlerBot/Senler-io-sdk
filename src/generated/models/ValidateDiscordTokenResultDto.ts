@@ -22,7 +22,7 @@ import {
 } from './DiscordBotInfoDto';
 
 /**
- * 
+ * ValidateDiscordTokenResultDto.
  * @export
  * @interface ValidateDiscordTokenResultDto
  */

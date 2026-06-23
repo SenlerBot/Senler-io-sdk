@@ -29,7 +29,7 @@ import {
 } from './EventSourceAvitoChatDataDto';
 
 /**
- * 
+ * EventSourceAvitoChatContextDto.
  * @export
  * @interface EventSourceAvitoChatContextDto
  */

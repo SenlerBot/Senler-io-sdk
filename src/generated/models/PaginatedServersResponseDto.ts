@@ -22,7 +22,7 @@ import {
 } from './McpServerResponseDto';
 
 /**
- * 
+ * PaginatedServersResponseDto.
  * @export
  * @interface PaginatedServersResponseDto
  */

@@ -12,7 +12,7 @@
 import type { StorageFilesPaginationDto } from './StorageFilesPaginationDto';
 import type { StorageFileItemDto } from './StorageFileItemDto';
 /**
- *
+ * StorageFilesListResponseDto.
  * @export
  * @interface StorageFilesListResponseDto
  */

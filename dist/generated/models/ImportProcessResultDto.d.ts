@@ -11,7 +11,7 @@
  */
 import type { ImportErrorDto } from './ImportErrorDto';
 /**
- *
+ * ImportProcessResultDto.
  * @export
  * @interface ImportProcessResultDto
  */

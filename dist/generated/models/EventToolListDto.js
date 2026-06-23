@@ -24,6 +24,7 @@ exports.EventToolListDtoToJSONTyped = EventToolListDtoToJSONTyped;
  */
 exports.EventToolListDtoKindEnum = {
     Builtin: 'builtin',
+    Capability: 'capability',
     Mcp: 'mcp'
 };
 /**

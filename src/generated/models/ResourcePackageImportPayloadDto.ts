@@ -22,7 +22,7 @@ import {
 } from './ResourcePackageImportParamsDto';
 
 /**
- * 
+ * ResourcePackageImportPayloadDto.
  * @export
  * @interface ResourcePackageImportPayloadDto
  */

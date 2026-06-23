@@ -85,7 +85,7 @@ import {
 } from './DialogFirstMessageDto';
 
 /**
- * 
+ * DialogDetailsDto.
  * @export
  * @interface DialogDetailsDto
  */

@@ -11,7 +11,7 @@
  */
 import type { ProcessResponseDto } from './ProcessResponseDto';
 /**
- *
+ * ListProcessesResponseDto.
  * @export
  * @interface ListProcessesResponseDto
  */

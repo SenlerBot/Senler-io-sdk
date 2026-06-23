@@ -13,7 +13,7 @@ import type { Role } from './Role';
 import type { InvitationStatus } from './InvitationStatus';
 import type { InvitationInviterDto } from './InvitationInviterDto';
 /**
- *
+ * InvitationListItemDto.
  * @export
  * @interface InvitationListItemDto
  */

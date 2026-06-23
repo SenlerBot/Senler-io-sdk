@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceTelegramChatDataDto } from './EventSourceTelegramChatDataDto';
 /**
- *
+ * EventSourceTelegramChatContextDto.
  * @export
  * @interface EventSourceTelegramChatContextDto
  */

@@ -13,6 +13,7 @@ import type { ChannelMigrationPayloadDto } from './ChannelMigrationPayloadDto';
 import type { ChannelSpacesRefreshPayloadDto } from './ChannelSpacesRefreshPayloadDto';
 import type { ChannelWebhooksRefreshPayloadDto } from './ChannelWebhooksRefreshPayloadDto';
 import type { ChannelsTreeRefreshPayloadDto } from './ChannelsTreeRefreshPayloadDto';
+import type { DeliverySendPayloadDto } from './DeliverySendPayloadDto';
 import type { ExportLeadsPayloadDto } from './ExportLeadsPayloadDto';
 import type { ImportLeadsPayloadDto } from './ImportLeadsPayloadDto';
 import type { LeadsRefreshPayloadDto } from './LeadsRefreshPayloadDto';
@@ -22,7 +23,7 @@ import type { ResourcePackageImportPayloadDto } from './ResourcePackageImportPay
  *
  * @export
  */
-export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | ResourcePackageImportPayloadDto;
+export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | ResourcePackageImportPayloadDto;
 export declare function ProcessResponseDtoPayloadFromJSON(json: any): ProcessResponseDtoPayload;
 export declare function ProcessResponseDtoPayloadFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProcessResponseDtoPayload;
 export declare function ProcessResponseDtoPayloadToJSON(json: any): any;

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceDetailsDiscordDataDto.
  * @export
  * @interface SpaceDetailsDiscordDataDto
  */

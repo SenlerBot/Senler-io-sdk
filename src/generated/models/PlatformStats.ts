@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * PlatformStats.
  * @export
  * @interface PlatformStats
  */
@@ -59,8 +59,7 @@ export const PlatformStatsPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai',
-    Unknown: 'unknown'
+    Ai: 'ai'
 } as const;
 export type PlatformStatsPlatformTypeEnum = typeof PlatformStatsPlatformTypeEnum[keyof typeof PlatformStatsPlatformTypeEnum];
 

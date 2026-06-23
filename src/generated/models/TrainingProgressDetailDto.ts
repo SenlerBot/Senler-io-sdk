@@ -22,7 +22,7 @@ import {
 } from './TrainingTaskStatusParamsDto';
 
 /**
- * 
+ * TrainingProgressDetailDto.
  * @export
  * @interface TrainingProgressDetailDto
  */

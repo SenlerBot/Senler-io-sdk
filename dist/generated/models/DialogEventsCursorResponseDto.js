@@ -56,6 +56,7 @@ function DialogEventsCursorResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'paginationType': json['pagination_type'],
         'hasMore': json['has_more'],
         'nextCursor': json['next_cursor'] == null ? undefined : json['next_cursor'],
+        'prevCursor': json['prev_cursor'] == null ? undefined : json['prev_cursor'],
         'query': json['query'] == null ? undefined : json['query'],
         'queryTimeMs': json['query_time_ms'],
     };
@@ -73,6 +74,7 @@ function DialogEventsCursorResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'pagination_type': value['paginationType'],
         'has_more': value['hasMore'],
         'next_cursor': value['nextCursor'],
+        'prev_cursor': value['prevCursor'],
         'query': value['query'],
         'query_time_ms': value['queryTimeMs'],
     };

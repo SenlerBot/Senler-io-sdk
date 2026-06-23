@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CustomMcpServerAuthHeaderDto.
  * @export
  * @interface CustomMcpServerAuthHeaderDto
  */

@@ -18,11 +18,14 @@ exports.EventButtonDtoFromJSON = EventButtonDtoFromJSON;
 exports.EventButtonDtoFromJSONTyped = EventButtonDtoFromJSONTyped;
 exports.EventButtonDtoToJSON = EventButtonDtoToJSON;
 exports.EventButtonDtoToJSONTyped = EventButtonDtoToJSONTyped;
+const EventButtonDtoAction_1 = require("./EventButtonDtoAction");
 /**
  * Check if a given object implements the EventButtonDto interface.
  */
 function instanceOfEventButtonDto(value) {
     if (!('text' in value) || value['text'] === undefined)
+        return false;
+    if (!('action' in value) || value['action'] === undefined)
         return false;
     return true;
 }
@@ -35,9 +38,8 @@ function EventButtonDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'text': json['text'],
-        'callbackData': json['callback_data'] == null ? undefined : json['callback_data'],
+        'action': (0, EventButtonDtoAction_1.EventButtonDtoActionFromJSON)(json['action']),
         'row': json['row'] == null ? undefined : json['row'],
-        'url': json['url'] == null ? undefined : json['url'],
     };
 }
 function EventButtonDtoToJSON(json) {
@@ -49,8 +51,7 @@ function EventButtonDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'text': value['text'],
-        'callback_data': value['callbackData'],
+        'action': (0, EventButtonDtoAction_1.EventButtonDtoActionToJSON)(value['action']),
         'row': value['row'],
-        'url': value['url'],
     };
 }

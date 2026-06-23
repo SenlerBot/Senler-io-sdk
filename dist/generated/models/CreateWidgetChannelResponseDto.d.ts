@@ -11,7 +11,7 @@
  */
 import type { CreateWidgetChannelDataDto } from './CreateWidgetChannelDataDto';
 /**
- *
+ * CreateWidgetChannelResponseDto.
  * @export
  * @interface CreateWidgetChannelResponseDto
  */

@@ -11,7 +11,7 @@
  */
 import type { ChannelResponseDto } from './ChannelResponseDto';
 /**
- *
+ * GetChannelUserDataDto.
  * @export
  * @interface GetChannelUserDataDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AudioGenModelStats.
  * @export
  * @interface AudioGenModelStats
  */
@@ -68,7 +68,7 @@ export interface AudioGenModelStats {
      */
     durationSeconds: number;
     /**
-     * ( USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof AudioGenModelStats
      */

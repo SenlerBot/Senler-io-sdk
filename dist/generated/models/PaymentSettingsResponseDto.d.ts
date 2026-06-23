@@ -11,7 +11,7 @@
  */
 import type { PaySystemResponseDto } from './PaySystemResponseDto';
 /**
- *
+ * PaymentSettingsResponseDto.
  * @export
  * @interface PaymentSettingsResponseDto
  */

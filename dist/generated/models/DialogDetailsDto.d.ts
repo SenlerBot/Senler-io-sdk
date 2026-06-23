@@ -20,7 +20,7 @@ import type { DialogChannelInfoDto } from './DialogChannelInfoDto';
 import type { DialogCurrentTypingDto } from './DialogCurrentTypingDto';
 import type { DialogFirstMessageDto } from './DialogFirstMessageDto';
 /**
- *
+ * DialogDetailsDto.
  * @export
  * @interface DialogDetailsDto
  */

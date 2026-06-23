@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * InvitationInviterDto.
  * @export
  * @interface InvitationInviterDto
  */

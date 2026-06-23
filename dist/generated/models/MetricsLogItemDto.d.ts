@@ -13,7 +13,7 @@ import type { MetricsLogMetricDto } from './MetricsLogMetricDto';
 import type { MetricsLogEvaluationDto } from './MetricsLogEvaluationDto';
 import type { MetricsLogAgentDto } from './MetricsLogAgentDto';
 /**
- *
+ * MetricsLogItemDto.
  * @export
  * @interface MetricsLogItemDto
  */

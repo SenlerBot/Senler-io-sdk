@@ -11,7 +11,7 @@
  */
 import type { EventDeliveryDiscordDataDto } from './EventDeliveryDiscordDataDto';
 /**
- *
+ * DiscordEventDeliveryRefDto.
  * @export
  * @interface DiscordEventDeliveryRefDto
  */

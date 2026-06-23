@@ -22,7 +22,7 @@ import {
 } from './ChannelMigrationPayloadMigrationDto';
 
 /**
- * 
+ * ChannelMigrationPayloadDto.
  * @export
  * @interface ChannelMigrationPayloadDto
  */

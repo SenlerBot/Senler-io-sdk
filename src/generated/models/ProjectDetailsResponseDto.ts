@@ -36,7 +36,7 @@ import {
 } from './ProjectResponseDto';
 
 /**
- * 
+ * ProjectDetailsResponseDto.
  * @export
  * @interface ProjectDetailsResponseDto
  */

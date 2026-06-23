@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ChannelMigrationProcessResultDto.
  * @export
  * @interface ChannelMigrationProcessResultDto
  */
@@ -33,6 +33,12 @@ export interface ChannelMigrationProcessResultDto {
      * @memberof ChannelMigrationProcessResultDto
      */
     eventsCopied: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ChannelMigrationProcessResultDto
+     */
+    historyDeferred?: boolean;
     /**
      *
      * @type {number}

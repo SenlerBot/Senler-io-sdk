@@ -13,7 +13,7 @@ import type { AudioPricingGuideDto } from './AudioPricingGuideDto';
 import type { ModelPricingDto } from './ModelPricingDto';
 import type { PublicImageGenerationPriceResponseDto } from './PublicImageGenerationPriceResponseDto';
 /**
- *
+ * PublicModelResponseDto.
  * @export
  * @interface PublicModelResponseDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * PublicImageGenerationPriceResponseDto.
  * @export
  * @interface PublicImageGenerationPriceResponseDto
  */

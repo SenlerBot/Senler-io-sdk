@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ChannelSpacesRefreshParamsDto.
  * @export
  * @interface ChannelSpacesRefreshParamsDto
  */

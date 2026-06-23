@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ChannelMigrationPayloadMigrationDto.
  * @export
  * @interface ChannelMigrationPayloadMigrationDto
  */
@@ -51,6 +51,18 @@ export interface ChannelMigrationPayloadMigrationDto {
      * @memberof ChannelMigrationPayloadMigrationDto
      */
     historyCutoffDate?: Date | null;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ChannelMigrationPayloadMigrationDto
+     */
+    migrationLinkId?: string;
+    /**
+     *
+     * @type {Date}
+     * @memberof ChannelMigrationPayloadMigrationDto
+     */
+    finishNowRequestedAt?: Date | null;
 }
 /**
  * @export

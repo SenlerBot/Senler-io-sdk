@@ -11,7 +11,7 @@
  */
 import type { EventDeliveryTelegramDataDto } from './EventDeliveryTelegramDataDto';
 /**
- *
+ * TelegramEventDeliveryRefDto.
  * @export
  * @interface TelegramEventDeliveryRefDto
  */

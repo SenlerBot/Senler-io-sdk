@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StartMigrationDto.
  * @export
  * @interface StartMigrationDto
  */

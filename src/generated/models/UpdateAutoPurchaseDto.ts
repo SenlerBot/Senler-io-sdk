@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateAutoPurchaseDto.
  * @export
  * @interface UpdateAutoPurchaseDto
  */

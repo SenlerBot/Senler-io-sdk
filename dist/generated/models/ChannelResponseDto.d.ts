@@ -14,6 +14,7 @@ import type { WidgetChannelDataDto } from './WidgetChannelDataDto';
 import type { TelegramChannelDataDto } from './TelegramChannelDataDto';
 import type { MAXChannelDataDto } from './MAXChannelDataDto';
 import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
+import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
 import type { VKChannelDataDto } from './VKChannelDataDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
 import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
@@ -21,7 +22,7 @@ import type { SenlerStatusDto } from './SenlerStatusDto';
 import type { AvitoChannelDataDto } from './AvitoChannelDataDto';
 import type { EmailChannelDataDto } from './EmailChannelDataDto';
 /**
- *
+ * ChannelResponseDto.
  * @export
  * @interface ChannelResponseDto
  */
@@ -32,6 +33,12 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ChannelResponseDto
+     */
+    publicId: string;
     /**
      * ID Senler
      * @type {number}
@@ -158,6 +165,12 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     migration?: ChannelMigrationStatusDto | null;
+    /**
+     *
+     * @type {ChannelMigrationBackfillDto}
+     * @memberof ChannelResponseDto
+     */
+    migrationBackfill?: ChannelMigrationBackfillDto | null;
     /**
      *
      * @type {ChannelAccessDto}

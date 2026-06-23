@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceTreeMatchHighlightDto.
  * @export
  * @interface SpaceTreeMatchHighlightDto
  */

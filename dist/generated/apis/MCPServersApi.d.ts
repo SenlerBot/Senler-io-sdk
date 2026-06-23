@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateMcpServerListDto, CreateServerDto, CreateServerResponseDto, CustomMcpOAuthStatusResponseDto, ExportServersResponseDto, GetServerResponseDto, ImportServersResponseDto, ImportServersUserDto, McpServerListResponseDto, McpServerListsResponseDto, McpServerProjectCredentialStatusResponseDto, PaginatedKnowledgeBaseSearchResponseDto, PaginatedServersResponseDto, StartCustomMcpOAuthDto, StartCustomMcpOAuthResponseDto, UpdateMcpServerListDto, UpdateServerDto, UpdateServerResponseDto, UpsertProjectCredentialDto } from '../models/index';
+import type { CreateMcpServerListDto, CreateServerBodyDto, CreateServerResponseDto, CustomMcpOAuthStatusResponseDto, ExportServersResponseDto, GetServerResponseDto, ImportServersResponseDto, ImportServersUserDto, McpServerListResponseDto, McpServerListsResponseDto, McpServerProjectCredentialStatusResponseDto, PaginatedKnowledgeBaseSearchResponseDto, PaginatedServersResponseDto, StartCustomMcpOAuthDto, StartCustomMcpOAuthResponseDto, UpdateMcpServerListDto, UpdateServerBodyDto, UpdateServerResponseDto, UpsertProjectCredentialDto } from '../models/index';
 export interface CustomOauthStartRequest {
     projectId: string;
     id: string;
@@ -99,7 +99,7 @@ export interface ListsServersRequest {
 export interface McpServersCreateRequest {
     projectId: string;
     xSessionId: string;
-    createServerDto: CreateServerDto;
+    createServerBodyDto: CreateServerBodyDto;
     acceptLanguage?: McpServersCreateAcceptLanguageEnum;
 }
 export interface McpServersDeactivateRequest {
@@ -133,7 +133,7 @@ export interface McpServersUpdateRequest {
     projectId: string;
     id: string;
     xSessionId: string;
-    updateServerDto: UpdateServerDto;
+    updateServerBodyDto: UpdateServerBodyDto;
     acceptLanguage?: McpServersUpdateAcceptLanguageEnum;
 }
 export interface ProjectCredentialManualRequest {

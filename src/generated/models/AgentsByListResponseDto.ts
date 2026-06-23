@@ -22,7 +22,7 @@ import {
 } from './AgentResponseDto';
 
 /**
- * 
+ * AgentsByListResponseDto.
  * @export
  * @interface AgentsByListResponseDto
  */

@@ -11,7 +11,7 @@
  */
 import type { TypingSenderDto } from './TypingSenderDto';
 /**
- *
+ * DialogCurrentTypingDto.
  * @export
  * @interface DialogCurrentTypingDto
  */

@@ -22,7 +22,7 @@ import {
 } from './EventDeliveryEmailDataDto';
 
 /**
- * 
+ * EmailEventDeliveryRefDto.
  * @export
  * @interface EmailEventDeliveryRefDto
  */

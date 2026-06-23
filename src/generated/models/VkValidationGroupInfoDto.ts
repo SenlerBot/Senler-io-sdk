@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * VkValidationGroupInfoDto.
  * @export
  * @interface VkValidationGroupInfoDto
  */

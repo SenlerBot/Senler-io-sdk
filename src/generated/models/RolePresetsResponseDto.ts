@@ -22,7 +22,7 @@ import {
 } from './RolePermissionsDto';
 
 /**
- * 
+ * RolePresetsResponseDto.
  * @export
  * @interface RolePresetsResponseDto
  */

@@ -36,7 +36,7 @@ import {
 } from './KnowledgeFolderResponseDto';
 
 /**
- * 
+ * ServerTemplateKnowledgeSourceDto.
  * @export
  * @interface ServerTemplateKnowledgeSourceDto
  */

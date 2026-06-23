@@ -22,7 +22,7 @@ import {
 } from './MigrationProgressDto';
 
 /**
- * 
+ * ChannelMigrationStatusDto.
  * @export
  * @interface ChannelMigrationStatusDto
  */
@@ -57,6 +57,12 @@ export interface ChannelMigrationStatusDto {
      * @memberof ChannelMigrationStatusDto
      */
     targetProjectName?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelMigrationStatusDto
+     */
+    finishNowRequested?: boolean;
 }
 
 
@@ -107,6 +113,7 @@ export function ChannelMigrationStatusDtoFromJSONTyped(json: any, ignoreDiscrimi
         'status': json['status'] == null ? undefined : json['status'],
         'progress': json['progress'] == null ? undefined : MigrationProgressDtoFromJSON(json['progress']),
         'targetProjectName': json['target_project_name'] == null ? undefined : json['target_project_name'],
+        'finishNowRequested': json['finish_now_requested'] == null ? undefined : json['finish_now_requested'],
     };
 }
 
@@ -126,6 +133,7 @@ export function ChannelMigrationStatusDtoToJSONTyped(value?: ChannelMigrationSta
         'status': value['status'],
         'progress': MigrationProgressDtoToJSON(value['progress']),
         'target_project_name': value['targetProjectName'],
+        'finish_now_requested': value['finishNowRequested'],
     };
 }
 

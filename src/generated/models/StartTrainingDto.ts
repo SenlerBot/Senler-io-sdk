@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StartTrainingDto.
  * @export
  * @interface StartTrainingDto
  */

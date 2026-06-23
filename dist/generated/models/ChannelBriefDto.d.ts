@@ -9,10 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
 import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
 /**
- *
+ * ChannelBriefDto.
  * @export
  * @interface ChannelBriefDto
  */
@@ -23,6 +24,12 @@ export interface ChannelBriefDto {
      * @memberof ChannelBriefDto
      */
     id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ChannelBriefDto
+     */
+    publicId: string;
     /**
      * ID Senler
      * @type {number}
@@ -71,6 +78,12 @@ export interface ChannelBriefDto {
      * @memberof ChannelBriefDto
      */
     migration?: ChannelMigrationStatusDto | null;
+    /**
+     *
+     * @type {ChannelMigrationBackfillDto}
+     * @memberof ChannelBriefDto
+     */
+    migrationBackfill?: ChannelMigrationBackfillDto | null;
     /**
      *
      * @type {ChannelAccessDto}

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SavePaymentSettingsDto.
  * @export
  * @interface SavePaymentSettingsDto
  */

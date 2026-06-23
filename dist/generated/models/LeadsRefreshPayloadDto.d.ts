@@ -11,7 +11,7 @@
  */
 import type { LeadsFilterDto } from './LeadsFilterDto';
 /**
- *
+ * LeadsRefreshPayloadDto.
  * @export
  * @interface LeadsRefreshPayloadDto
  */

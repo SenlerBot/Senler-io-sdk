@@ -11,7 +11,7 @@
  */
 import type { TrainingEstimatePhaseDto } from './TrainingEstimatePhaseDto';
 /**
- *
+ * TrainingPreviewEstimateDto.
  * @export
  * @interface TrainingPreviewEstimateDto
  */

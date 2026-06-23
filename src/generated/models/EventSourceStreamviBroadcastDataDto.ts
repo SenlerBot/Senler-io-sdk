@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventSourceStreamviBroadcastDataDto.
  * @export
  * @interface EventSourceStreamviBroadcastDataDto
  */

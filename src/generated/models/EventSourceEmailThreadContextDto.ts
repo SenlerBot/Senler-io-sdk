@@ -29,7 +29,7 @@ import {
 } from './EventAttributionDto';
 
 /**
- * 
+ * EventSourceEmailThreadContextDto.
  * @export
  * @interface EventSourceEmailThreadContextDto
  */

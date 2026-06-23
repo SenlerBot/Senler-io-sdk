@@ -11,7 +11,7 @@
  */
 import type { ProjectVariableResponseDto } from './ProjectVariableResponseDto';
 /**
- *
+ * ProjectVariableListResponseDto.
  * @export
  * @interface ProjectVariableListResponseDto
  */

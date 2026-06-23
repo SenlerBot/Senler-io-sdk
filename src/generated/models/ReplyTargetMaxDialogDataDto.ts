@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetMaxDialogDataDto.
  * @export
  * @interface ReplyTargetMaxDialogDataDto
  */

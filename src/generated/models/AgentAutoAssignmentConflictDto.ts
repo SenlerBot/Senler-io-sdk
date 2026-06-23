@@ -29,7 +29,7 @@ import {
 } from './AgentAutoAssignmentConflictChannelDto';
 
 /**
- * 
+ * AgentAutoAssignmentConflictDto.
  * @export
  * @interface AgentAutoAssignmentConflictDto
  */

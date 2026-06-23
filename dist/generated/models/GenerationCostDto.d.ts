@@ -11,7 +11,7 @@
  */
 import type { TokensUsedDto } from './TokensUsedDto';
 /**
- *
+ * GenerationCostDto.
  * @export
  * @interface GenerationCostDto
  */

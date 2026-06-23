@@ -29,7 +29,7 @@ import {
 } from './CurrencyBreakdown';
 
 /**
- * 
+ * UnitEconomics.
  * @export
  * @interface UnitEconomics
  */

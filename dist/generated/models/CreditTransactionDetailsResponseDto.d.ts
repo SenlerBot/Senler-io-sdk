@@ -13,7 +13,7 @@ import type { CreditTransactionModelStatDto } from './CreditTransactionModelStat
 import type { CreditTransactionAgentStatDto } from './CreditTransactionAgentStatDto';
 import type { CreditTransactionDto } from './CreditTransactionDto';
 /**
- *
+ * CreditTransactionDetailsResponseDto.
  * @export
  * @interface CreditTransactionDetailsResponseDto
  */

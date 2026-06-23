@@ -10,11 +10,17 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AgentVariantDto.
  * @export
  * @interface AgentVariantDto
  */
 export interface AgentVariantDto {
+    /**
+     * ID
+     * @type {string}
+     * @memberof AgentVariantDto
+     */
+    id: string;
     /**
      *
      * @type {string}

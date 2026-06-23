@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventHierarchyDto.
  * @export
  * @interface EventHierarchyDto
  */

@@ -78,7 +78,7 @@ import {
 } from './PeriodInfoDto';
 
 /**
- * 
+ * DrillDownByMetricResponseDto.
  * @export
  * @interface DrillDownByMetricResponseDto
  */

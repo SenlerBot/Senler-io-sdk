@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TextCostCabinetDto.
  * @export
  * @interface TextCostCabinetDto
  */

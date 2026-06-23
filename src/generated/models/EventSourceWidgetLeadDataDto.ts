@@ -20,6 +20,13 @@ import {
     EventSourceWidgetSelectedElementDtoToJSON,
     EventSourceWidgetSelectedElementDtoToJSONTyped,
 } from './EventSourceWidgetSelectedElementDto';
+import type { WidgetCustomActionCapabilityDto } from './WidgetCustomActionCapabilityDto';
+import {
+    WidgetCustomActionCapabilityDtoFromJSON,
+    WidgetCustomActionCapabilityDtoFromJSONTyped,
+    WidgetCustomActionCapabilityDtoToJSON,
+    WidgetCustomActionCapabilityDtoToJSONTyped,
+} from './WidgetCustomActionCapabilityDto';
 import type { EventSourceWidgetPageContextDto } from './EventSourceWidgetPageContextDto';
 import {
     EventSourceWidgetPageContextDtoFromJSON,
@@ -29,7 +36,7 @@ import {
 } from './EventSourceWidgetPageContextDto';
 
 /**
- * 
+ * EventSourceWidgetLeadDataDto.
  * @export
  * @interface EventSourceWidgetLeadDataDto
  */
@@ -58,7 +65,30 @@ export interface EventSourceWidgetLeadDataDto {
      * @memberof EventSourceWidgetLeadDataDto
      */
     selectedElement?: EventSourceWidgetSelectedElementDto;
+    /**
+     * Custom actions host-, .
+     * @type {Array<WidgetCustomActionCapabilityDto>}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    customActions?: Array<WidgetCustomActionCapabilityDto>;
+    /**
+     * title/description custom_actions. , ru+en.
+     * @type {string}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    customActionsLanguage?: EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum;
 }
+
+
+/**
+ * @export
+ */
+export const EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum = typeof EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum[keyof typeof EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum];
+
 
 /**
  * Check if a given object implements the EventSourceWidgetLeadDataDto interface.
@@ -82,6 +112,8 @@ export function EventSourceWidgetLeadDataDtoFromJSONTyped(json: any, ignoreDiscr
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'pageContext': json['page_context'] == null ? undefined : EventSourceWidgetPageContextDtoFromJSON(json['page_context']),
         'selectedElement': json['selected_element'] == null ? undefined : EventSourceWidgetSelectedElementDtoFromJSON(json['selected_element']),
+        'customActions': json['custom_actions'] == null ? undefined : ((json['custom_actions'] as Array<any>).map(WidgetCustomActionCapabilityDtoFromJSON)),
+        'customActionsLanguage': json['custom_actions_language'] == null ? undefined : json['custom_actions_language'],
     };
 }
 
@@ -100,6 +132,8 @@ export function EventSourceWidgetLeadDataDtoToJSONTyped(value?: EventSourceWidge
         'user_id': value['userId'],
         'page_context': EventSourceWidgetPageContextDtoToJSON(value['pageContext']),
         'selected_element': EventSourceWidgetSelectedElementDtoToJSON(value['selectedElement']),
+        'custom_actions': value['customActions'] == null ? undefined : ((value['customActions'] as Array<any>).map(WidgetCustomActionCapabilityDtoToJSON)),
+        'custom_actions_language': value['customActionsLanguage'],
     };
 }
 

@@ -13,8 +13,16 @@
  */
 
 import { mapValues } from '../runtime';
+import type { EventButtonDtoAction } from './EventButtonDtoAction';
+import {
+    EventButtonDtoActionFromJSON,
+    EventButtonDtoActionFromJSONTyped,
+    EventButtonDtoActionToJSON,
+    EventButtonDtoActionToJSONTyped,
+} from './EventButtonDtoAction';
+
 /**
- * 
+ * EventButtonDto.
  * @export
  * @interface EventButtonDto
  */
@@ -26,23 +34,17 @@ export interface EventButtonDto {
      */
     text: string;
     /**
-     * .
-     * @type {string}
+     * 
+     * @type {EventButtonDtoAction}
      * @memberof EventButtonDto
      */
-    callbackData?: string;
+    action: EventButtonDtoAction;
     /**
      * ( )
      * @type {number}
      * @memberof EventButtonDto
      */
     row?: number;
-    /**
-     * URL -
-     * @type {string}
-     * @memberof EventButtonDto
-     */
-    url?: string;
 }
 
 /**
@@ -50,6 +52,7 @@ export interface EventButtonDto {
  */
 export function instanceOfEventButtonDto(value: object): value is EventButtonDto {
     if (!('text' in value) || value['text'] === undefined) return false;
+    if (!('action' in value) || value['action'] === undefined) return false;
     return true;
 }
 
@@ -64,9 +67,8 @@ export function EventButtonDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'text': json['text'],
-        'callbackData': json['callback_data'] == null ? undefined : json['callback_data'],
+        'action': EventButtonDtoActionFromJSON(json['action']),
         'row': json['row'] == null ? undefined : json['row'],
-        'url': json['url'] == null ? undefined : json['url'],
     };
 }
 
@@ -82,9 +84,8 @@ export function EventButtonDtoToJSONTyped(value?: EventButtonDto | null, ignoreD
     return {
         
         'text': value['text'],
-        'callback_data': value['callbackData'],
+        'action': EventButtonDtoActionToJSON(value['action']),
         'row': value['row'],
-        'url': value['url'],
     };
 }
 

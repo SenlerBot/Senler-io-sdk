@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreateMaxChannelDto.
  * @export
  * @interface CreateMaxChannelDto
  */

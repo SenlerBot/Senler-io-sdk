@@ -11,7 +11,7 @@
  */
 import type { ChannelSpacesRefreshParamsDto } from './ChannelSpacesRefreshParamsDto';
 /**
- *
+ * ChannelSpacesRefreshPayloadDto.
  * @export
  * @interface ChannelSpacesRefreshPayloadDto
  */

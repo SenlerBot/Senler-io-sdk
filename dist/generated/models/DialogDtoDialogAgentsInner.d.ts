@@ -11,7 +11,7 @@
  */
 import type { DialogDtoDialogAgentsInnerAgentInfo } from './DialogDtoDialogAgentsInnerAgentInfo';
 /**
- *
+ * : , .
  * @export
  * @interface DialogDtoDialogAgentsInner
  */

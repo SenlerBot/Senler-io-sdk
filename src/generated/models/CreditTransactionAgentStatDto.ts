@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreditTransactionAgentStatDto.
  * @export
  * @interface CreditTransactionAgentStatDto
  */

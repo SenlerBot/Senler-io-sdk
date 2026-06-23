@@ -11,7 +11,7 @@
  */
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 /**
- *
+ * UpdateAgentDto.
  * @export
  * @interface UpdateAgentDto
  */
@@ -274,6 +274,36 @@ export interface UpdateAgentDto {
      * @memberof UpdateAgentDto
      */
     enableMessageReactionsContext?: boolean;
+    /**
+     * (skip_response tool). true
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    enableSelectiveResponse?: boolean;
+    /**
+     * . enable_selective_response=true; operator_reply_template control_processing
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    enableOperatorReplySuggestions?: boolean;
+    /**
+     * (schedule_next_message tool)
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    enableScheduling?: boolean;
+    /**
+     * (skip_metrics control_processing)
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    enableSkipMetrics?: boolean;
+    /**
+     * . API: mute_dialog.
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    enableMuteDialog?: boolean;
     /**
      * detach_from_dialog tool
      * @type {boolean}

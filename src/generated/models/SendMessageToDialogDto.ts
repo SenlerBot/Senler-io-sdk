@@ -22,7 +22,7 @@ import {
 } from './MessageAttachmentInputDto';
 
 /**
- * 
+ * SendMessageToDialogDto.
  * @export
  * @interface SendMessageToDialogDto
  */

@@ -11,7 +11,7 @@
  */
 import type { TrafficChannelItemDto } from './TrafficChannelItemDto';
 /**
- *
+ * TrafficChannelsResponseDto.
  * @export
  * @interface TrafficChannelsResponseDto
  */

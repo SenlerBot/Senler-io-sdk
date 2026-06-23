@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AnalyticsOverview.
  * @export
  * @interface AnalyticsOverview
  */

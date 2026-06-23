@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * RecommendationDto.
  * @export
  * @interface RecommendationDto
  */

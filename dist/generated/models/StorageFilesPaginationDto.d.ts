@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * StorageFilesPaginationDto.
  * @export
  * @interface StorageFilesPaginationDto
  */

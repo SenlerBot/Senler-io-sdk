@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ButtonColorsDto.
  * @export
  * @interface ButtonColorsDto
  */

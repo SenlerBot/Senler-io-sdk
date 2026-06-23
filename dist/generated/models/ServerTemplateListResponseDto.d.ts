@@ -11,7 +11,7 @@
  */
 import type { ServerTemplateResponseDto } from './ServerTemplateResponseDto';
 /**
- *
+ * ServerTemplateListResponseDto.
  * @export
  * @interface ServerTemplateListResponseDto
  */

@@ -22,7 +22,7 @@ import {
 } from './ArrayItemsSchemaDto';
 
 /**
- * 
+ * ArrayValidationSchemaDto.
  * @export
  * @interface ArrayValidationSchemaDto
  */

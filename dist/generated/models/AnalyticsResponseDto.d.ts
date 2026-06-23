@@ -22,7 +22,7 @@ import type { AgentUsageStats } from './AgentUsageStats';
 import type { FinancialMetrics } from './FinancialMetrics';
 import type { ModelsByType } from './ModelsByType';
 /**
- *
+ * AnalyticsResponseDto.
  * @export
  * @interface AnalyticsResponseDto
  */

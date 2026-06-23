@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AuditActorDto.
  * @export
  * @interface AuditActorDto
  */

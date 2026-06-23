@@ -11,7 +11,7 @@
  */
 import type { DialogSlaThresholdsByPriorityDto } from './DialogSlaThresholdsByPriorityDto';
 /**
- *
+ * DialogSlaSettingsDto.
  * @export
  * @interface DialogSlaSettingsDto
  */

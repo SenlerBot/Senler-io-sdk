@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventGenerationSummaryDto.
  * @export
  * @interface EventGenerationSummaryDto
  */

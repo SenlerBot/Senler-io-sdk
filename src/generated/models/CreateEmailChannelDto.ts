@@ -22,7 +22,7 @@ import {
 } from './EmailChannelFilterDto';
 
 /**
- * 
+ * CreateEmailChannelDto.
  * @export
  * @interface CreateEmailChannelDto
  */

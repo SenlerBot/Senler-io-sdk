@@ -22,7 +22,7 @@ import {
 } from './ActionPerformerDto';
 
 /**
- * 
+ * EditMessageResponseDto.
  * @export
  * @interface EditMessageResponseDto
  */

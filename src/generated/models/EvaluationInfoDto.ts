@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EvaluationInfoDto.
  * @export
  * @interface EvaluationInfoDto
  */

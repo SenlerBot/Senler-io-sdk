@@ -11,7 +11,7 @@
  */
 import type { ChannelWebhooksRefreshParamsDto } from './ChannelWebhooksRefreshParamsDto';
 /**
- *
+ * ChannelWebhooksRefreshPayloadDto.
  * @export
  * @interface ChannelWebhooksRefreshPayloadDto
  */

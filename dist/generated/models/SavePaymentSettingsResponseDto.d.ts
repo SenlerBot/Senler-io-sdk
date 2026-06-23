@@ -12,7 +12,7 @@
 import type { BillingTransactionDto } from './BillingTransactionDto';
 import type { PaymentSettingsResponseDto } from './PaymentSettingsResponseDto';
 /**
- *
+ * SavePaymentSettingsResponseDto.
  * @export
  * @interface SavePaymentSettingsResponseDto
  */

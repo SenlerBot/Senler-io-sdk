@@ -18,7 +18,7 @@ import type { AgentContextDto } from './AgentContextDto';
 import type { AgentMetricItemDto } from './AgentMetricItemDto';
 import type { PeriodInfoDto } from './PeriodInfoDto';
 /**
- *
+ * DrillDownByAgentResponseDto.
  * @export
  * @interface DrillDownByAgentResponseDto
  */

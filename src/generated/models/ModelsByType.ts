@@ -43,7 +43,7 @@ import {
 } from './TextModelStats';
 
 /**
- * 
+ * ModelsByType.
  * @export
  * @interface ModelsByType
  */

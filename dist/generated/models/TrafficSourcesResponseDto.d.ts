@@ -11,7 +11,7 @@
  */
 import type { TrafficSourceItemDto } from './TrafficSourceItemDto';
 /**
- *
+ * TrafficSourcesResponseDto.
  * @export
  * @interface TrafficSourcesResponseDto
  */

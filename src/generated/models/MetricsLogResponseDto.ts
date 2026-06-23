@@ -36,7 +36,7 @@ import {
 } from './MetricsLogSummaryDto';
 
 /**
- * 
+ * MetricsLogResponseDto.
  * @export
  * @interface MetricsLogResponseDto
  */

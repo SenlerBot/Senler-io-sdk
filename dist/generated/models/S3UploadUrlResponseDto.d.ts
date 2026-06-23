@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * S3UploadUrlResponseDto.
  * @export
  * @interface S3UploadUrlResponseDto
  */

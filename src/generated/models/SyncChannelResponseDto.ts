@@ -29,7 +29,7 @@ import {
 } from './ChannelResponseDto';
 
 /**
- * 
+ * SyncChannelResponseDto.
  * @export
  * @interface SyncChannelResponseDto
  */

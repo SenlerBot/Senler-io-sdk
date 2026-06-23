@@ -29,7 +29,7 @@ import {
 } from './OrderItemResponseDto';
 
 /**
- * 
+ * OrderResponseDto.
  * @export
  * @interface OrderResponseDto
  */
@@ -41,13 +41,13 @@ export interface OrderResponseDto {
      */
     id: string;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof OrderResponseDto
      */
     amount: number;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof OrderResponseDto
      */

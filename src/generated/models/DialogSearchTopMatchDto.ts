@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DialogSearchTopMatchDto.
  * @export
  * @interface DialogSearchTopMatchDto
  */

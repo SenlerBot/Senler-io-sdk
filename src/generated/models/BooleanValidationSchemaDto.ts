@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * BooleanValidationSchemaDto.
  * @export
  * @interface BooleanValidationSchemaDto
  */

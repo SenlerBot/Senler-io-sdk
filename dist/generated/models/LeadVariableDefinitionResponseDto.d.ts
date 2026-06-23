@@ -11,7 +11,7 @@
  */
 import type { VariableSchemaDto } from './VariableSchemaDto';
 /**
- *
+ * LeadVariableDefinitionResponseDto.
  * @export
  * @interface LeadVariableDefinitionResponseDto
  */

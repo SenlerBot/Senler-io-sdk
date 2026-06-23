@@ -18,6 +18,7 @@ exports.EventMessageInteractionsDtoFromJSON = EventMessageInteractionsDtoFromJSO
 exports.EventMessageInteractionsDtoFromJSONTyped = EventMessageInteractionsDtoFromJSONTyped;
 exports.EventMessageInteractionsDtoToJSON = EventMessageInteractionsDtoToJSON;
 exports.EventMessageInteractionsDtoToJSONTyped = EventMessageInteractionsDtoToJSONTyped;
+const EventChecklistSnapshotDto_1 = require("./EventChecklistSnapshotDto");
 const EventMessageEditingDto_1 = require("./EventMessageEditingDto");
 const EventMessageReactionDto_1 = require("./EventMessageReactionDto");
 const EventMessageForwardingDto_1 = require("./EventMessageForwardingDto");
@@ -43,6 +44,7 @@ function EventMessageInteractionsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'reactions': json['reactions'] == null ? undefined : (json['reactions'].map(EventMessageReactionDto_1.EventMessageReactionDtoFromJSON)),
         'poll': json['poll'] == null ? undefined : (0, EventPollSnapshotDto_1.EventPollSnapshotDtoFromJSON)(json['poll']),
+        'checklist': json['checklist'] == null ? undefined : (0, EventChecklistSnapshotDto_1.EventChecklistSnapshotDtoFromJSON)(json['checklist']),
         'editing': json['editing'] == null ? undefined : (0, EventMessageEditingDto_1.EventMessageEditingDtoFromJSON)(json['editing']),
         'replies': json['replies'] == null ? undefined : (0, EventMessageRepliesDto_1.EventMessageRepliesDtoFromJSON)(json['replies']),
         'forwarding': json['forwarding'] == null ? undefined : (0, EventMessageForwardingDto_1.EventMessageForwardingDtoFromJSON)(json['forwarding']),
@@ -63,6 +65,7 @@ function EventMessageInteractionsDtoToJSONTyped(value, ignoreDiscriminator = fal
     return {
         'reactions': value['reactions'] == null ? undefined : (value['reactions'].map(EventMessageReactionDto_1.EventMessageReactionDtoToJSON)),
         'poll': (0, EventPollSnapshotDto_1.EventPollSnapshotDtoToJSON)(value['poll']),
+        'checklist': (0, EventChecklistSnapshotDto_1.EventChecklistSnapshotDtoToJSON)(value['checklist']),
         'editing': (0, EventMessageEditingDto_1.EventMessageEditingDtoToJSON)(value['editing']),
         'replies': (0, EventMessageRepliesDto_1.EventMessageRepliesDtoToJSON)(value['replies']),
         'forwarding': (0, EventMessageForwardingDto_1.EventMessageForwardingDtoToJSON)(value['forwarding']),

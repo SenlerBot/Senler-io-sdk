@@ -25,12 +25,12 @@ exports.DialogMessageAttachmentDtoToJSONTyped = DialogMessageAttachmentDtoToJSON
 exports.DialogMessageAttachmentDtoTypeEnum = {
     Photo: 'photo',
     Video: 'video',
-    VideoNote: 'video_note',
-    Animation: 'animation',
-    Document: 'document',
     Voice: 'voice',
     Audio: 'audio',
-    Sticker: 'sticker'
+    Document: 'document',
+    Sticker: 'sticker',
+    Contact: 'contact',
+    Location: 'location'
 };
 /**
  * Check if a given object implements the DialogMessageAttachmentDto interface.

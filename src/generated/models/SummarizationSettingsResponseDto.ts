@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SummarizationSettingsResponseDto.
  * @export
  * @interface SummarizationSettingsResponseDto
  */

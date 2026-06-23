@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AppCatalogResponseDto.
  * @export
  * @interface AppCatalogResponseDto
  */
@@ -69,6 +69,12 @@ export interface AppCatalogResponseDto {
      * @memberof AppCatalogResponseDto
      */
     allowDeveloperDialogAccess: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AppCatalogResponseDto
+     */
+    allowInstalledAgentSettingsView: boolean;
     /**
      *
      * @type {Date}

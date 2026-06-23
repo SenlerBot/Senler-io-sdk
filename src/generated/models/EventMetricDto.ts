@@ -22,7 +22,7 @@ import {
 } from './NumberRangeDto';
 
 /**
- * 
+ * EventMetricDto.
  * @export
  * @interface EventMetricDto
  */

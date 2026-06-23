@@ -15,7 +15,7 @@ import type { EmptyStateDto } from './EmptyStateDto';
 import type { AppliedFiltersDto } from './AppliedFiltersDto';
 import type { PeriodInfoDto } from './PeriodInfoDto';
 /**
- *
+ * TopAgentsResponseDto.
  * @export
  * @interface TopAgentsResponseDto
  */

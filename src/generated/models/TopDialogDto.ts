@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TopDialogDto.
  * @export
  * @interface TopDialogDto
  */

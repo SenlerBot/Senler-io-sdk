@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceAvitoChatDataDto } from './EventSourceAvitoChatDataDto';
 /**
- *
+ * EventSourceAvitoChatContextDto.
  * @export
  * @interface EventSourceAvitoChatContextDto
  */

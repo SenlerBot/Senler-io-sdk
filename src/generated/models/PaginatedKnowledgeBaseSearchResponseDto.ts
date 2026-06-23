@@ -22,7 +22,7 @@ import {
 } from './KnowledgeBaseSearchHitDto';
 
 /**
- * 
+ * PaginatedKnowledgeBaseSearchResponseDto.
  * @export
  * @interface PaginatedKnowledgeBaseSearchResponseDto
  */

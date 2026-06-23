@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetDiscordThreadDataDto } from './ReplyTargetDiscordThreadDataDto';
 /**
- *
+ * DialogDiscordThreadReplyTargetDto.
  * @export
  * @interface DialogDiscordThreadReplyTargetDto
  */

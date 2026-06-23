@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DialogLeadDto.
  * @export
  * @interface DialogLeadDto
  */

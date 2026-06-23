@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventDeliveryVkWallCommentDataDto.
  * @export
  * @interface EventDeliveryVkWallCommentDataDto
  */

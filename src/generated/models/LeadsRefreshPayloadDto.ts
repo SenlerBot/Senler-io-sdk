@@ -22,7 +22,7 @@ import {
 } from './LeadsFilterDto';
 
 /**
- * 
+ * LeadsRefreshPayloadDto.
  * @export
  * @interface LeadsRefreshPayloadDto
  */

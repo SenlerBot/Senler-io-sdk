@@ -22,7 +22,7 @@ import {
 } from './Role';
 
 /**
- * 
+ * CreateInvitationDto.
  * @export
  * @interface CreateInvitationDto
  */

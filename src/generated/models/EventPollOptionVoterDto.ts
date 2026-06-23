@@ -22,7 +22,7 @@ import {
 } from './EventSenderDto';
 
 /**
- * 
+ * EventPollOptionVoterDto.
  * @export
  * @interface EventPollOptionVoterDto
  */

@@ -22,7 +22,7 @@ import {
 } from './ChannelsTreeRefreshChannelDto';
 
 /**
- * 
+ * ChannelsTreeRefreshParamsDto.
  * @export
  * @interface ChannelsTreeRefreshParamsDto
  */

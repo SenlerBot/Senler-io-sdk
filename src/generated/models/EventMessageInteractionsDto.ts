@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { EventChecklistSnapshotDto } from './EventChecklistSnapshotDto';
+import {
+    EventChecklistSnapshotDtoFromJSON,
+    EventChecklistSnapshotDtoFromJSONTyped,
+    EventChecklistSnapshotDtoToJSON,
+    EventChecklistSnapshotDtoToJSONTyped,
+} from './EventChecklistSnapshotDto';
 import type { EventMessageEditingDto } from './EventMessageEditingDto';
 import {
     EventMessageEditingDtoFromJSON,
@@ -78,7 +85,7 @@ import {
 } from './EventPlatformActionDto';
 
 /**
- * 
+ * EventMessageInteractionsDto.
  * @export
  * @interface EventMessageInteractionsDto
  */
@@ -95,6 +102,12 @@ export interface EventMessageInteractionsDto {
      * @memberof EventMessageInteractionsDto
      */
     poll?: EventPollSnapshotDto;
+    /**
+     * Snapshot Telegram checklist
+     * @type {EventChecklistSnapshotDto}
+     * @memberof EventMessageInteractionsDto
+     */
+    checklist?: EventChecklistSnapshotDto;
     /**
      * 
      * @type {EventMessageEditingDto}
@@ -164,6 +177,7 @@ export function EventMessageInteractionsDtoFromJSONTyped(json: any, ignoreDiscri
         
         'reactions': json['reactions'] == null ? undefined : ((json['reactions'] as Array<any>).map(EventMessageReactionDtoFromJSON)),
         'poll': json['poll'] == null ? undefined : EventPollSnapshotDtoFromJSON(json['poll']),
+        'checklist': json['checklist'] == null ? undefined : EventChecklistSnapshotDtoFromJSON(json['checklist']),
         'editing': json['editing'] == null ? undefined : EventMessageEditingDtoFromJSON(json['editing']),
         'replies': json['replies'] == null ? undefined : EventMessageRepliesDtoFromJSON(json['replies']),
         'forwarding': json['forwarding'] == null ? undefined : EventMessageForwardingDtoFromJSON(json['forwarding']),
@@ -188,6 +202,7 @@ export function EventMessageInteractionsDtoToJSONTyped(value?: EventMessageInter
         
         'reactions': value['reactions'] == null ? undefined : ((value['reactions'] as Array<any>).map(EventMessageReactionDtoToJSON)),
         'poll': EventPollSnapshotDtoToJSON(value['poll']),
+        'checklist': EventChecklistSnapshotDtoToJSON(value['checklist']),
         'editing': EventMessageEditingDtoToJSON(value['editing']),
         'replies': EventMessageRepliesDtoToJSON(value['replies']),
         'forwarding': EventMessageForwardingDtoToJSON(value['forwarding']),

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CentrifugoSubscriptionDto.
  * @export
  * @interface CentrifugoSubscriptionDto
  */

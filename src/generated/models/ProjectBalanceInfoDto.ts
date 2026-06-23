@@ -22,7 +22,7 @@ import {
 } from './TariffSubscriptionDto';
 
 /**
- * 
+ * ProjectBalanceInfoDto.
  * @export
  * @interface ProjectBalanceInfoDto
  */
@@ -34,25 +34,25 @@ export interface ProjectBalanceInfoDto {
      */
     currency: ProjectBalanceInfoDtoCurrencyEnum;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     depositBalance: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     bonusBalance: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */
     profitBalance: number;
     /**
-     * (deposit + bonus + profit)
+     * (deposit + bonus + profit), (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectBalanceInfoDto
      */

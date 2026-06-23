@@ -22,7 +22,7 @@ import {
 } from './TariffResponseDto';
 
 /**
- * 
+ * TariffListResponseDto.
  * @export
  * @interface TariffListResponseDto
  */

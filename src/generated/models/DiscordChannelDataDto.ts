@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DiscordChannelDataDto.
  * @export
  * @interface DiscordChannelDataDto
  */

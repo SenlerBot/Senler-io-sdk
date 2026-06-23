@@ -22,7 +22,7 @@ import {
 } from './ServerListMemberDto';
 
 /**
- * 
+ * McpServerListResponseDto.
  * @export
  * @interface McpServerListResponseDto
  */

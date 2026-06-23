@@ -14,7 +14,7 @@ import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBinding
 import type { McpServerResponseDto } from './McpServerResponseDto';
 import type { McpServerListResponseDto } from './McpServerListResponseDto';
 /**
- *
+ * AgentResponseDto.
  * @export
  * @interface AgentResponseDto
  */
@@ -351,6 +351,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     enableSelectiveResponse: boolean;
+    /**
+     * (operator_reply_template control_processing)
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    enableOperatorReplySuggestions: boolean;
     /**
      * (schedule_next_message tool)
      * @type {boolean}

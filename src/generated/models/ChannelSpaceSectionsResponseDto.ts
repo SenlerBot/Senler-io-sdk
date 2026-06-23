@@ -22,7 +22,7 @@ import {
 } from './ChannelSpaceSectionDto';
 
 /**
- * 
+ * ChannelSpaceSectionsResponseDto.
  * @export
  * @interface ChannelSpaceSectionsResponseDto
  */

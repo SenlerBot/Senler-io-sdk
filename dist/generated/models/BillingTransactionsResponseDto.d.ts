@@ -11,7 +11,7 @@
  */
 import type { BillingTransactionDto } from './BillingTransactionDto';
 /**
- *
+ * BillingTransactionsResponseDto.
  * @export
  * @interface BillingTransactionsResponseDto
  */

@@ -11,7 +11,7 @@
  */
 import type { KnowledgeArchiveReplaceImpactDto } from './KnowledgeArchiveReplaceImpactDto';
 /**
- *
+ * KnowledgeArchiveConflictDto.
  * @export
  * @interface KnowledgeArchiveConflictDto
  */

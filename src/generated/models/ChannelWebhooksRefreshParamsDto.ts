@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelWebhooksRefreshParamsDto.
  * @export
  * @interface ChannelWebhooksRefreshParamsDto
  */

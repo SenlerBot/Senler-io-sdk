@@ -20,6 +20,7 @@ exports.DialogFirstMessageDtoFromJSONTyped = DialogFirstMessageDtoFromJSONTyped;
 exports.DialogFirstMessageDtoToJSON = DialogFirstMessageDtoToJSON;
 exports.DialogFirstMessageDtoToJSONTyped = DialogFirstMessageDtoToJSONTyped;
 const DialogMessageAttachmentDto_1 = require("./DialogMessageAttachmentDto");
+const EventMessageForwardingDto_1 = require("./EventMessageForwardingDto");
 const EventSenderDto_1 = require("./EventSenderDto");
 /**
  * @export
@@ -108,6 +109,7 @@ function DialogFirstMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'actionType': json['action_type'] == null ? undefined : json['action_type'],
         'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(DialogMessageAttachmentDto_1.DialogMessageAttachmentDtoFromJSON)),
+        'forwarding': json['forwarding'] == null ? undefined : (0, EventMessageForwardingDto_1.EventMessageForwardingDtoFromJSON)(json['forwarding']),
     };
 }
 function DialogFirstMessageDtoToJSON(json) {
@@ -124,5 +126,6 @@ function DialogFirstMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'lead_id': value['leadId'],
         'action_type': value['actionType'],
         'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(DialogMessageAttachmentDto_1.DialogMessageAttachmentDtoToJSON)),
+        'forwarding': (0, EventMessageForwardingDto_1.EventMessageForwardingDtoToJSON)(value['forwarding']),
     };
 }

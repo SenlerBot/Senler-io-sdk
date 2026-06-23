@@ -22,7 +22,7 @@ import {
 } from './ProcessResponseDto';
 
 /**
- * 
+ * ListProcessesResponseDto.
  * @export
  * @interface ListProcessesResponseDto
  */

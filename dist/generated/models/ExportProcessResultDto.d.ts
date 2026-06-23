@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ExportProcessResultDto.
  * @export
  * @interface ExportProcessResultDto
  */
@@ -45,6 +45,18 @@ export interface ExportProcessResultDto {
      * @memberof ExportProcessResultDto
      */
     encoding?: string;
+    /**
+     * ,
+     * @type {number}
+     * @memberof ExportProcessResultDto
+     */
+    exportedItems?: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof ExportProcessResultDto
+     */
+    missingItems?: number;
     /**
      *
      * @type {number}

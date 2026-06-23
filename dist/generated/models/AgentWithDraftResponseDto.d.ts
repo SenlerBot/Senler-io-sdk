@@ -12,7 +12,7 @@
 import type { AgentDraftResponseDto } from './AgentDraftResponseDto';
 import type { AgentResponseDto } from './AgentResponseDto';
 /**
- *
+ * AgentWithDraftResponseDto.
  * @export
  * @interface AgentWithDraftResponseDto
  */

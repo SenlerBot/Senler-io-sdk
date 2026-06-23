@@ -14,25 +14,31 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * BalancesByCurrency.
  * @export
  * @interface BalancesByCurrency
  */
 export interface BalancesByCurrency {
     /**
-     * ( )
+     * (ISO 4217)
+     * @type {string}
+     * @memberof BalancesByCurrency
+     */
+    currency: string;
+    /**
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BalancesByCurrency
      */
     deposit: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BalancesByCurrency
      */
     bonus: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BalancesByCurrency
      */
@@ -61,6 +67,7 @@ export interface BalancesByCurrency {
  * Check if a given object implements the BalancesByCurrency interface.
  */
 export function instanceOfBalancesByCurrency(value: object): value is BalancesByCurrency {
+    if (!('currency' in value) || value['currency'] === undefined) return false;
     if (!('deposit' in value) || value['deposit'] === undefined) return false;
     if (!('bonus' in value) || value['bonus'] === undefined) return false;
     if (!('profit' in value) || value['profit'] === undefined) return false;
@@ -80,6 +87,7 @@ export function BalancesByCurrencyFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'currency': json['currency'],
         'deposit': json['deposit'],
         'bonus': json['bonus'],
         'profit': json['profit'],
@@ -100,6 +108,7 @@ export function BalancesByCurrencyToJSONTyped(value?: BalancesByCurrency | null,
 
     return {
         
+        'currency': value['currency'],
         'deposit': value['deposit'],
         'bonus': value['bonus'],
         'profit': value['profit'],

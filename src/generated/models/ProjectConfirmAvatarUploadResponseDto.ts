@@ -22,7 +22,7 @@ import {
 } from './ProjectResponseDto';
 
 /**
- * 
+ * ProjectConfirmAvatarUploadResponseDto.
  * @export
  * @interface ProjectConfirmAvatarUploadResponseDto
  */

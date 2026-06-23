@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ValidationErrorDto.
  * @export
  * @interface ValidationErrorDto
  */

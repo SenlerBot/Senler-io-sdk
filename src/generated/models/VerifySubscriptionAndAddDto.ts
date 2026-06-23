@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * VerifySubscriptionAndAddDto.
  * @export
  * @interface VerifySubscriptionAndAddDto
  */

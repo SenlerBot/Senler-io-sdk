@@ -36,7 +36,7 @@ import {
 } from './CreditTransactionDto';
 
 /**
- * 
+ * CreditTransactionDetailsResponseDto.
  * @export
  * @interface CreditTransactionDetailsResponseDto
  */

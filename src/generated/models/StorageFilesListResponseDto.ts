@@ -29,7 +29,7 @@ import {
 } from './StorageFileItemDto';
 
 /**
- * 
+ * StorageFilesListResponseDto.
  * @export
  * @interface StorageFilesListResponseDto
  */

@@ -14,7 +14,7 @@ import type { AudioGenModelStats } from './AudioGenModelStats';
 import type { ImageGenModelStats } from './ImageGenModelStats';
 import type { TextModelStats } from './TextModelStats';
 /**
- *
+ * ModelsByType.
  * @export
  * @interface ModelsByType
  */

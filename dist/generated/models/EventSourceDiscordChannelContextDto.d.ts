@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceDiscordChannelDataDto } from './EventSourceDiscordChannelDataDto';
 /**
- *
+ * EventSourceDiscordChannelContextDto.
  * @export
  * @interface EventSourceDiscordChannelContextDto
  */

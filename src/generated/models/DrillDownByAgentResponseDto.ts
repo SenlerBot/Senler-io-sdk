@@ -71,7 +71,7 @@ import {
 } from './PeriodInfoDto';
 
 /**
- * 
+ * DrillDownByAgentResponseDto.
  * @export
  * @interface DrillDownByAgentResponseDto
  */

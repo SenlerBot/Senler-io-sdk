@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ImageGenModelStats.
  * @export
  * @interface ImageGenModelStats
  */
@@ -40,7 +40,7 @@ export interface ImageGenModelStats {
      */
     count: number;
     /**
-     * ( USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ImageGenModelStats
      */

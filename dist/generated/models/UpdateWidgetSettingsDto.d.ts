@@ -12,7 +12,7 @@
 import type { WidgetFeaturesDto } from './WidgetFeaturesDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
- *
+ * UpdateWidgetSettingsDto.
  * @export
  * @interface UpdateWidgetSettingsDto
  */

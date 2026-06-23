@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetVkPeerDataDto } from './ReplyTargetVkPeerDataDto';
 /**
- *
+ * DialogVkPeerReplyTargetDto.
  * @export
  * @interface DialogVkPeerReplyTargetDto
  */

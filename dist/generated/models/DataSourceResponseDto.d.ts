@@ -12,7 +12,7 @@
 import type { DataSourceConfigDto } from './DataSourceConfigDto';
 import type { DataSourceMetaDto } from './DataSourceMetaDto';
 /**
- *
+ * DataSourceResponseDto.
  * @export
  * @interface DataSourceResponseDto
  */

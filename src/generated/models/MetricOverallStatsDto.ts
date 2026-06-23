@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MetricOverallStatsDto.
  * @export
  * @interface MetricOverallStatsDto
  */

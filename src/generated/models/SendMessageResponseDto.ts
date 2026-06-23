@@ -22,7 +22,7 @@ import {
 } from './DialogChatEventDto';
 
 /**
- * 
+ * SendMessageResponseDto.
  * @export
  * @interface SendMessageResponseDto
  */

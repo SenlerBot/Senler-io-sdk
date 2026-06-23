@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ExportLeadsParamsDto.
  * @export
  * @interface ExportLeadsParamsDto
  */

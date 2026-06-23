@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AttachmentFlagsDto.
  * @export
  * @interface AttachmentFlagsDto
  */

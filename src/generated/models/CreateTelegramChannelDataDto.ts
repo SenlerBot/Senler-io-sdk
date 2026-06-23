@@ -22,7 +22,7 @@ import {
 } from './ChannelResponseDto';
 
 /**
- * 
+ * CreateTelegramChannelDataDto.
  * @export
  * @interface CreateTelegramChannelDataDto
  */

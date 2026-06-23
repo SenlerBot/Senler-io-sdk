@@ -22,7 +22,7 @@ import {
 } from './AgentAssignmentRuleResponseDto';
 
 /**
- * 
+ * AgentAssignmentRulesListDto.
  * @export
  * @interface AgentAssignmentRulesListDto
  */
@@ -31,16 +31,17 @@ export interface AgentAssignmentRulesListDto {
      * .
      * 
      * :
-     * 1. ( ) - channel_id = null
-     * 2. - channel_id != null
+     * 1. ( )
+     * 2.
+     * 3.
      * 
-     * .
+     * scope . , .
      * @type {Array<AgentAssignmentRuleResponseDto>}
      * @memberof AgentAssignmentRulesListDto
      */
     items: Array<AgentAssignmentRuleResponseDto>;
     /**
-     * ( + )
+     * 
      * @type {number}
      * @memberof AgentAssignmentRulesListDto
      */

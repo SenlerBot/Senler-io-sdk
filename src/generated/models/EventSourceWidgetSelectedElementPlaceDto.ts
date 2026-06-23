@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventSourceWidgetSelectedElementPlaceDto.
  * @export
  * @interface EventSourceWidgetSelectedElementPlaceDto
  */

@@ -11,7 +11,7 @@
  */
 import type { SpaceDetailsResponseDto } from './SpaceDetailsResponseDto';
 /**
- *
+ * RefreshSpaceResponseDto.
  * @export
  * @interface RefreshSpaceResponseDto
  */

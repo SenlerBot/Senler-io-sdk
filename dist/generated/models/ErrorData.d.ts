@@ -11,7 +11,7 @@
  */
 import type { ErrorDataData } from './ErrorDataData';
 /**
- *
+ * ErrorData.
  * @export
  * @interface ErrorData
  */

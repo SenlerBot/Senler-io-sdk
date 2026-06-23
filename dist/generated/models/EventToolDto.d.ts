@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EventToolDto.
  * @export
  * @interface EventToolDto
  */
@@ -89,6 +89,7 @@ export interface EventToolDto {
  */
 export declare const EventToolDtoKindEnum: {
     readonly Builtin: "builtin";
+    readonly Capability: "capability";
     readonly Mcp: "mcp";
 };
 export type EventToolDtoKindEnum = typeof EventToolDtoKindEnum[keyof typeof EventToolDtoKindEnum];

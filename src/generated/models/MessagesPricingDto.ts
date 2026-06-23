@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MessagesPricingDto.
  * @export
  * @interface MessagesPricingDto
  */

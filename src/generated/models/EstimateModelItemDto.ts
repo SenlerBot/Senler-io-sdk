@@ -29,7 +29,7 @@ import {
 } from './EstimatedCostDto';
 
 /**
- * 
+ * EstimateModelItemDto.
  * @export
  * @interface EstimateModelItemDto
  */

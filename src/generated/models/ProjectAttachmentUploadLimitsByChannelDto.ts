@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ProjectAttachmentUploadLimitsByChannelDto.
  * @export
  * @interface ProjectAttachmentUploadLimitsByChannelDto
  */

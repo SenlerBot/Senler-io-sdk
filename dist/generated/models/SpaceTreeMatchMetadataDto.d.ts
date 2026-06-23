@@ -11,7 +11,7 @@
  */
 import type { SpaceTreeMatchHighlightDto } from './SpaceTreeMatchHighlightDto';
 /**
- *
+ * SpaceTreeMatchMetadataDto.
  * @export
  * @interface SpaceTreeMatchMetadataDto
  */

@@ -11,7 +11,7 @@
  */
 import type { McpCredentialConnectedIdentityDto } from './McpCredentialConnectedIdentityDto';
 /**
- *
+ * McpServerProjectCredentialStatusResponseDto.
  * @export
  * @interface McpServerProjectCredentialStatusResponseDto
  */

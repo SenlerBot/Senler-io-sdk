@@ -22,7 +22,7 @@ import {
 } from './ProcessResponseDtoResult';
 
 /**
- * 
+ * ProcessResultResponseDto.
  * @export
  * @interface ProcessResultResponseDto
  */
@@ -62,10 +62,12 @@ export const ProcessResultResponseDtoTypeEnum = {
     LeadsImport: 'leads_import',
     LeadsRefresh: 'leads_refresh',
     ChannelMigration: 'channel_migration',
+    ChannelMigrationBackfill: 'channel_migration_backfill',
     ChannelsTreeRefresh: 'channels_tree_refresh',
     ChannelWebhooksRefresh: 'channel_webhooks_refresh',
     ChannelSpacesRefresh: 'channel_spaces_refresh',
-    ResourcePackageImport: 'resource_package_import'
+    ResourcePackageImport: 'resource_package_import',
+    DeliverySend: 'delivery_send'
 } as const;
 export type ProcessResultResponseDtoTypeEnum = typeof ProcessResultResponseDtoTypeEnum[keyof typeof ProcessResultResponseDtoTypeEnum];
 

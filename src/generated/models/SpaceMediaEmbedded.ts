@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceMediaEmbedded.
  * @export
  * @interface SpaceMediaEmbedded
  */

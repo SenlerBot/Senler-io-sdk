@@ -10,11 +10,17 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * LeadsFilterDto.
  * @export
  * @interface LeadsFilterDto
  */
 export interface LeadsFilterDto {
+    /**
+     * ID (ObjectId, , 50 ). , ID
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    leadIds?: Array<string>;
     /**
      * UUID .
      * @type {Array<string>}
@@ -40,6 +46,12 @@ export interface LeadsFilterDto {
      */
     isBlacklisted?: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    isBlocked?: boolean;
+    /**
      * /username/ID
      * @type {string}
      * @memberof LeadsFilterDto
@@ -57,6 +69,18 @@ export interface LeadsFilterDto {
      * @memberof LeadsFilterDto
      */
     spaceIsMember?: boolean;
+    /**
+     * lead_group ID (ObjectId, , 20 )
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    leadGroupId?: Array<string>;
+    /**
+     * membership : true = , false =
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    leadGroupIsMember?: boolean;
 }
 /**
  * @export

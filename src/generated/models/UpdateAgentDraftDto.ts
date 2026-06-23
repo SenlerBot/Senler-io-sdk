@@ -22,7 +22,7 @@ import {
 } from './KnowledgeBaseSourceBindingDto';
 
 /**
- * 
+ * UpdateAgentDraftDto.
  * @export
  * @interface UpdateAgentDraftDto
  */
@@ -388,6 +388,12 @@ export interface UpdateAgentDraftDto {
      */
     enableSelectiveResponse?: boolean;
     /**
+     * . enable_selective_response=true; operator_reply_template control_processing
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    enableOperatorReplySuggestions?: boolean;
+    /**
      * (schedule_next_message tool)
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
@@ -699,6 +705,7 @@ export function UpdateAgentDraftDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'] == null ? undefined : json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'] == null ? undefined : json['enable_selective_response'],
+        'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'] == null ? undefined : json['enable_operator_reply_suggestions'],
         'enableScheduling': json['enable_scheduling'] == null ? undefined : json['enable_scheduling'],
         'enableSkipMetrics': json['enable_skip_metrics'] == null ? undefined : json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'] == null ? undefined : json['enable_mute_dialog'],
@@ -783,6 +790,7 @@ export function UpdateAgentDraftDtoToJSONTyped(value?: UpdateAgentDraftDto | nul
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
+        'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],
         'enable_scheduling': value['enableScheduling'],
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],

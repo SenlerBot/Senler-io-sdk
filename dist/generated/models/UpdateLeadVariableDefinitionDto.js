@@ -46,7 +46,7 @@ function UpdateLeadVariableDefinitionDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
-        'name': json['name'] == null ? undefined : json['name'],
+        'newName': json['new_name'] == null ? undefined : json['new_name'],
         'type': json['type'] == null ? undefined : json['type'],
         'description': json['description'] == null ? undefined : json['description'],
         'agentInstruction': json['agent_instruction'] == null ? undefined : json['agent_instruction'],
@@ -61,7 +61,7 @@ function UpdateLeadVariableDefinitionDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
-        'name': value['name'],
+        'new_name': value['newName'],
         'type': value['type'],
         'description': value['description'],
         'agent_instruction': value['agentInstruction'],

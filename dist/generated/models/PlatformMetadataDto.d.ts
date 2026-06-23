@@ -11,7 +11,7 @@
  */
 import type { PlatformIconsDto } from './PlatformIconsDto';
 /**
- *
+ * PlatformMetadataDto.
  * @export
  * @interface PlatformMetadataDto
  */

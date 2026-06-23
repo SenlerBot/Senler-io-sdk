@@ -14,7 +14,7 @@ import type { StringValidationDto } from './StringValidationDto';
 import type { ArrayValidationDto } from './ArrayValidationDto';
 import type { NumberValidationDto } from './NumberValidationDto';
 /**
- *
+ * UpdateMetricDefinitionDto.
  * @export
  * @interface UpdateMetricDefinitionDto
  */

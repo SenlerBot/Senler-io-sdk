@@ -11,7 +11,7 @@
  */
 import type { UploadKnowledgeArchiveConflictErrorDto } from './UploadKnowledgeArchiveConflictErrorDto';
 /**
- *
+ * UploadKnowledgeArchiveConflictResponseDto.
  * @export
  * @interface UploadKnowledgeArchiveConflictResponseDto
  */

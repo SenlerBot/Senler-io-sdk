@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadArchiveDuplicateResolutionEnum = exports.FilesUploadArchiveAcceptLanguageEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
+exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadArchiveDuplicateResolutionEnum = exports.FilesUploadArchiveAcceptLanguageEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -717,6 +717,80 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * CSV- XLSX-.
+     *
+     */
+    async tablesUploadRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling tablesUpload().');
+        }
+        if (requestParameters['file'] == null) {
+            throw new runtime.RequiredError('file', 'Required parameter "file" was null or undefined when calling tablesUpload().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const consumes = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['projectId'] != null) {
+            formParams.append('project_id', requestParameters['projectId']);
+        }
+        if (requestParameters['folderId'] != null) {
+            formParams.append('folder_id', requestParameters['folderId']);
+        }
+        if (requestParameters['name'] != null) {
+            formParams.append('name', requestParameters['name']);
+        }
+        if (requestParameters['file'] != null) {
+            formParams.append('file', requestParameters['file']);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/upload`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeTableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * CSV- XLSX-.
+     *
+     */
+    async tablesUpload(requestParameters, initOverrides) {
+        const response = await this.tablesUploadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , , .
      *
      */
@@ -966,6 +1040,13 @@ exports.KnowledgeBaseGetFilesAcceptLanguageEnum = {
  * @export
  */
 exports.TablesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.TablesUploadAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

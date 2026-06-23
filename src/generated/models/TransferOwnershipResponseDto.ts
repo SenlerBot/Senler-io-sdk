@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TransferOwnershipResponseDto.
  * @export
  * @interface TransferOwnershipResponseDto
  */

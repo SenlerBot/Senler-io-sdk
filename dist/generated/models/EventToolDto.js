@@ -24,6 +24,7 @@ exports.EventToolDtoToJSONTyped = EventToolDtoToJSONTyped;
  */
 exports.EventToolDtoKindEnum = {
     Builtin: 'builtin',
+    Capability: 'capability',
     Mcp: 'mcp'
 };
 /**

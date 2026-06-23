@@ -22,7 +22,7 @@ import {
 } from './ErrorDataData';
 
 /**
- * 
+ * ErrorData.
  * @export
  * @interface ErrorData
  */

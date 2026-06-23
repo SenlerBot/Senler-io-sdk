@@ -11,17 +11,17 @@
  */
 import type { VariableSchemaDto } from './VariableSchemaDto';
 /**
- *
+ * UpdateLeadVariableDefinitionDto.
  * @export
  * @interface UpdateLeadVariableDefinitionDto
  */
 export interface UpdateLeadVariableDefinitionDto {
     /**
-     *
+     * . ; path- name.
      * @type {string}
      * @memberof UpdateLeadVariableDefinitionDto
      */
-    name?: string;
+    newName?: string;
     /**
      *
      * @type {string}

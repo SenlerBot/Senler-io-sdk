@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetMaxChannelDataDto';
 
 /**
- * 
+ * DialogMaxChannelReplyTargetDto.
  * @export
  * @interface DialogMaxChannelReplyTargetDto
  */

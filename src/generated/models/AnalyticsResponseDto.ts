@@ -99,7 +99,7 @@ import {
 } from './ModelsByType';
 
 /**
- * 
+ * AnalyticsResponseDto.
  * @export
  * @interface AnalyticsResponseDto
  */

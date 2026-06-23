@@ -11,7 +11,7 @@
  */
 import type { OrderResponseDto } from './OrderResponseDto';
 /**
- *
+ * OrderListResponseDto.
  * @export
  * @interface OrderListResponseDto
  */

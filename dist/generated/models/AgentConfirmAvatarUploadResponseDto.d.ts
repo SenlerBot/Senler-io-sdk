@@ -11,7 +11,7 @@
  */
 import type { AgentResponseDto } from './AgentResponseDto';
 /**
- *
+ * AgentConfirmAvatarUploadResponseDto.
  * @export
  * @interface AgentConfirmAvatarUploadResponseDto
  */

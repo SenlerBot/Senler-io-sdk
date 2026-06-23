@@ -20,9 +20,23 @@ import {
     LocalizedTextDtoToJSON,
     LocalizedTextDtoToJSONTyped,
 } from './LocalizedTextDto';
+import type { CreditTransactionDtoDetailsByModelValue } from './CreditTransactionDtoDetailsByModelValue';
+import {
+    CreditTransactionDtoDetailsByModelValueFromJSON,
+    CreditTransactionDtoDetailsByModelValueFromJSONTyped,
+    CreditTransactionDtoDetailsByModelValueToJSON,
+    CreditTransactionDtoDetailsByModelValueToJSONTyped,
+} from './CreditTransactionDtoDetailsByModelValue';
+import type { CreditTransactionDtoDetailsByAgentValue } from './CreditTransactionDtoDetailsByAgentValue';
+import {
+    CreditTransactionDtoDetailsByAgentValueFromJSON,
+    CreditTransactionDtoDetailsByAgentValueFromJSONTyped,
+    CreditTransactionDtoDetailsByAgentValueToJSON,
+    CreditTransactionDtoDetailsByAgentValueToJSONTyped,
+} from './CreditTransactionDtoDetailsByAgentValue';
 
 /**
- * 
+ * CreditTransactionDto.
  * @export
  * @interface CreditTransactionDto
  */
@@ -70,7 +84,7 @@ export interface CreditTransactionDto {
      */
     purchasedCreditsAfter: number;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditTransactionDto
      */
@@ -107,16 +121,16 @@ export interface CreditTransactionDto {
     totalTokens?: number;
     /**
      * ( UUID )
-     * @type {object}
+     * @type {{ [key: string]: CreditTransactionDtoDetailsByAgentValue; }}
      * @memberof CreditTransactionDto
      */
-    detailsByAgent?: object | null;
+    detailsByAgent?: { [key: string]: CreditTransactionDtoDetailsByAgentValue; } | null;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: CreditTransactionDtoDetailsByModelValue; }}
      * @memberof CreditTransactionDto
      */
-    detailsByModel?: object | null;
+    detailsByModel?: { [key: string]: CreditTransactionDtoDetailsByModelValue; } | null;
     /**
      * ( tariff_grant)
      * @type {LocalizedTextDto}
@@ -203,8 +217,8 @@ export function CreditTransactionDtoFromJSONTyped(json: any, ignoreDiscriminator
         'periodEnd': (json['period_end'] == null ? null : new Date(json['period_end'])),
         'usageEventsCount': json['usage_events_count'] == null ? undefined : json['usage_events_count'],
         'totalTokens': json['total_tokens'] == null ? undefined : json['total_tokens'],
-        'detailsByAgent': json['details_by_agent'] == null ? undefined : json['details_by_agent'],
-        'detailsByModel': json['details_by_model'] == null ? undefined : json['details_by_model'],
+        'detailsByAgent': json['details_by_agent'] == null ? undefined : (mapValues(json['details_by_agent'], CreditTransactionDtoDetailsByAgentValueFromJSON)),
+        'detailsByModel': json['details_by_model'] == null ? undefined : (mapValues(json['details_by_model'], CreditTransactionDtoDetailsByModelValueFromJSON)),
         'tariffName': json['tariff_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['tariff_name']),
         'creditPackageName': json['credit_package_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['credit_package_name']),
         'createdAt': (new Date(json['created_at'])),
@@ -235,8 +249,8 @@ export function CreditTransactionDtoToJSONTyped(value?: CreditTransactionDto | n
         'period_end': (value['periodEnd'] == null ? null : (value['periodEnd'] as any).toISOString()),
         'usage_events_count': value['usageEventsCount'],
         'total_tokens': value['totalTokens'],
-        'details_by_agent': value['detailsByAgent'],
-        'details_by_model': value['detailsByModel'],
+        'details_by_agent': value['detailsByAgent'] == null ? undefined : (mapValues(value['detailsByAgent'], CreditTransactionDtoDetailsByAgentValueToJSON)),
+        'details_by_model': value['detailsByModel'] == null ? undefined : (mapValues(value['detailsByModel'], CreditTransactionDtoDetailsByModelValueToJSON)),
         'tariff_name': LocalizedTextDtoToJSON(value['tariffName']),
         'credit_package_name': LocalizedTextDtoToJSON(value['creditPackageName']),
         'created_at': ((value['createdAt']).toISOString()),

@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetVkWallPostCommentsDataDto';
 
 /**
- * 
+ * DialogVkWallPostCommentsReplyTargetDto.
  * @export
  * @interface DialogVkWallPostCommentsReplyTargetDto
  */

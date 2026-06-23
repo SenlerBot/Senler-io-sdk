@@ -11,7 +11,7 @@
  */
 import type { AgentAutoAssignmentConflictDto } from './AgentAutoAssignmentConflictDto';
 /**
- *
+ * AgentAutoAssignmentPreviewResponseDto.
  * @export
  * @interface AgentAutoAssignmentPreviewResponseDto
  */

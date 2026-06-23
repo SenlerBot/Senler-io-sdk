@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventSenderProfileDto.
  * @export
  * @interface EventSenderProfileDto
  */

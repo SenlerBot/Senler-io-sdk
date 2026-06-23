@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TimeSeriesDataPoint.
  * @export
  * @interface TimeSeriesDataPoint
  */
@@ -38,7 +38,7 @@ export interface TimeSeriesDataPoint {
      */
     dialogsCount?: number;
     /**
-     * ( USD). : USD
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TimeSeriesDataPoint
      */

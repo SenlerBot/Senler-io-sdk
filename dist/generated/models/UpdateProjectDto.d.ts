@@ -11,7 +11,7 @@
  */
 import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachmentUploadLimitsByChannelDto';
 /**
- *
+ * UpdateProjectDto.
  * @export
  * @interface UpdateProjectDto
  */

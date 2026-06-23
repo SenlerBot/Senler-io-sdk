@@ -12,7 +12,7 @@
 import type { ProjectTariffItemDto } from './ProjectTariffItemDto';
 import type { TariffSubscriptionDto } from './TariffSubscriptionDto';
 /**
- *
+ * ProjectTariffsResponseDto.
  * @export
  * @interface ProjectTariffsResponseDto
  */

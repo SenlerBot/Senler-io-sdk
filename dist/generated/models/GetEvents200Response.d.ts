@@ -14,7 +14,7 @@ import type { DialogEventsOffsetResponseDto } from './DialogEventsOffsetResponse
 import type { DialogEventsSearchCursorResponseDto } from './DialogEventsSearchCursorResponseDto';
 /**
  * @type GetEvents200Response
- *
+ * .
  * @export
  */
 export type GetEvents200Response = {

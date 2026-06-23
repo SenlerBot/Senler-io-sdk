@@ -12,7 +12,7 @@
 import type { BalancesByCurrency } from './BalancesByCurrency';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
 /**
- *
+ * ActualEconomics.
  * @export
  * @interface ActualEconomics
  */
@@ -30,7 +30,7 @@ export interface ActualEconomics {
      */
     revenue: CurrencyBreakdown;
     /**
-     * (revenue.total_rub - expenses.total_rub), RUB
+     * (revenue.total_rub - expenses.total_rub), (/); : 1.25 = 125
      * @type {number}
      * @memberof ActualEconomics
      */

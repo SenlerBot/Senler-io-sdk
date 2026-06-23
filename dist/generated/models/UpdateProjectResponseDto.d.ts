@@ -11,7 +11,7 @@
  */
 import type { ProjectResponseDto } from './ProjectResponseDto';
 /**
- *
+ * UpdateProjectResponseDto.
  * @export
  * @interface UpdateProjectResponseDto
  */

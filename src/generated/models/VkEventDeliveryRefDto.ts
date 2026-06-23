@@ -22,7 +22,7 @@ import {
 } from './VkEventDeliveryRefDtoDataVk';
 
 /**
- * 
+ * VkEventDeliveryRefDto.
  * @export
  * @interface VkEventDeliveryRefDto
  */

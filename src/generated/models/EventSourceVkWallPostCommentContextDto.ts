@@ -29,7 +29,7 @@ import {
 } from './EventSourceVkWallPostCommentDataDto';
 
 /**
- * 
+ * EventSourceVkWallPostCommentContextDto.
  * @export
  * @interface EventSourceVkWallPostCommentContextDto
  */

@@ -43,7 +43,7 @@ import {
 } from './BillingTransactionDto';
 
 /**
- * 
+ * TransactionDetailsResponseDto.
  * @export
  * @interface TransactionDetailsResponseDto
  */

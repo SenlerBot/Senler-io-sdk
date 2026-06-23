@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * LocalizedTextDto.
  * @export
  * @interface LocalizedTextDto
  */

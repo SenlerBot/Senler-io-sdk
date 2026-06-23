@@ -22,7 +22,7 @@ import {
 } from './VariableSchemaDto';
 
 /**
- * 
+ * CreateProjectVariableDto.
  * @export
  * @interface CreateProjectVariableDto
  */

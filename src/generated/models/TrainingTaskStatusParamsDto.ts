@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TrainingTaskStatusParamsDto.
  * @export
  * @interface TrainingTaskStatusParamsDto
  */

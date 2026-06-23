@@ -11,7 +11,7 @@
  */
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
- *
+ * UpdateChannelDto.
  * @export
  * @interface UpdateChannelDto
  */

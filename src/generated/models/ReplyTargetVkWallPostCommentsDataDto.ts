@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetVkWallPostCommentsDataDto.
  * @export
  * @interface ReplyTargetVkWallPostCommentsDataDto
  */

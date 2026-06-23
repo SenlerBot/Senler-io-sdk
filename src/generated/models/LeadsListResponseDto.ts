@@ -22,7 +22,7 @@ import {
 } from './LeadResponseDto';
 
 /**
- * 
+ * LeadsListResponseDto.
  * @export
  * @interface LeadsListResponseDto
  */

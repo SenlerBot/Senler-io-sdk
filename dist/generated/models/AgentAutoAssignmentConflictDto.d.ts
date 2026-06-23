@@ -12,7 +12,7 @@
 import type { AgentAutoAssignmentConflictAgentDto } from './AgentAutoAssignmentConflictAgentDto';
 import type { AgentAutoAssignmentConflictChannelDto } from './AgentAutoAssignmentConflictChannelDto';
 /**
- *
+ * AgentAutoAssignmentConflictDto.
  * @export
  * @interface AgentAutoAssignmentConflictDto
  */

@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceVkPeerDataDto } from './EventSourceVkPeerDataDto';
 /**
- *
+ * EventSourceVkPeerContextDto.
  * @export
  * @interface EventSourceVkPeerContextDto
  */

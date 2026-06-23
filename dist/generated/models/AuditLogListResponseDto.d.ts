@@ -11,7 +11,7 @@
  */
 import type { AuditLogResponseDto } from './AuditLogResponseDto';
 /**
- *
+ * AuditLogListResponseDto.
  * @export
  * @interface AuditLogListResponseDto
  */

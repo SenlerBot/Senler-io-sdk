@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ChannelsTreeRefreshErrorDto.
  * @export
  * @interface ChannelsTreeRefreshErrorDto
  */

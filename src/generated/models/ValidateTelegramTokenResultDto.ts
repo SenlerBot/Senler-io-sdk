@@ -22,7 +22,7 @@ import {
 } from './TelegramBotInfoDto';
 
 /**
- * 
+ * ValidateTelegramTokenResultDto.
  * @export
  * @interface ValidateTelegramTokenResultDto
  */

@@ -22,7 +22,7 @@ import {
 } from './ImportErrorDto';
 
 /**
- * 
+ * ImportProcessResultDto.
  * @export
  * @interface ImportProcessResultDto
  */

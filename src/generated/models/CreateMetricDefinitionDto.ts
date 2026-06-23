@@ -43,7 +43,7 @@ import {
 } from './NumberValidationDto';
 
 /**
- * 
+ * CreateMetricDefinitionDto.
  * @export
  * @interface CreateMetricDefinitionDto
  */

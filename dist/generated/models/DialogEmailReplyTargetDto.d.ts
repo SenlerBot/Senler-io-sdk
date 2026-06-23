@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetEmailDataDto } from './ReplyTargetEmailDataDto';
 /**
- *
+ * DialogEmailReplyTargetDto.
  * @export
  * @interface DialogEmailReplyTargetDto
  */

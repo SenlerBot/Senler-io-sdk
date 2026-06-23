@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetAvitoChatDataDto } from './ReplyTargetAvitoChatDataDto';
 /**
- *
+ * DialogAvitoChatReplyTargetDto.
  * @export
  * @interface DialogAvitoChatReplyTargetDto
  */

@@ -11,7 +11,7 @@
  */
 import type { CountryResponseDto } from './CountryResponseDto';
 /**
- *
+ * CountriesListResponseDto.
  * @export
  * @interface CountriesListResponseDto
  */

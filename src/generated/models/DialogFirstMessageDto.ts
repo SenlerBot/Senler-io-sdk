@@ -20,6 +20,13 @@ import {
     DialogMessageAttachmentDtoToJSON,
     DialogMessageAttachmentDtoToJSONTyped,
 } from './DialogMessageAttachmentDto';
+import type { EventMessageForwardingDto } from './EventMessageForwardingDto';
+import {
+    EventMessageForwardingDtoFromJSON,
+    EventMessageForwardingDtoFromJSONTyped,
+    EventMessageForwardingDtoToJSON,
+    EventMessageForwardingDtoToJSONTyped,
+} from './EventMessageForwardingDto';
 import type { EventSenderDto } from './EventSenderDto';
 import {
     EventSenderDtoFromJSON,
@@ -29,7 +36,7 @@ import {
 } from './EventSenderDto';
 
 /**
- * 
+ * DialogFirstMessageDto.
  * @export
  * @interface DialogFirstMessageDto
  */
@@ -70,6 +77,12 @@ export interface DialogFirstMessageDto {
      * @memberof DialogFirstMessageDto
      */
     attachments?: Array<DialogMessageAttachmentDto>;
+    /**
+     * 
+     * @type {EventMessageForwardingDto}
+     * @memberof DialogFirstMessageDto
+     */
+    forwarding?: EventMessageForwardingDto;
 }
 
 
@@ -164,6 +177,7 @@ export function DialogFirstMessageDtoFromJSONTyped(json: any, ignoreDiscriminato
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'actionType': json['action_type'] == null ? undefined : json['action_type'],
         'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(DialogMessageAttachmentDtoFromJSON)),
+        'forwarding': json['forwarding'] == null ? undefined : EventMessageForwardingDtoFromJSON(json['forwarding']),
     };
 }
 
@@ -184,6 +198,7 @@ export function DialogFirstMessageDtoToJSONTyped(value?: DialogFirstMessageDto |
         'lead_id': value['leadId'],
         'action_type': value['actionType'],
         'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(DialogMessageAttachmentDtoToJSON)),
+        'forwarding': EventMessageForwardingDtoToJSON(value['forwarding']),
     };
 }
 

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DialogMessageAttachmentDto.
  * @export
  * @interface DialogMessageAttachmentDto
  */
@@ -40,12 +40,12 @@ export interface DialogMessageAttachmentDto {
 export const DialogMessageAttachmentDtoTypeEnum = {
     Photo: 'photo',
     Video: 'video',
-    VideoNote: 'video_note',
-    Animation: 'animation',
-    Document: 'document',
     Voice: 'voice',
     Audio: 'audio',
-    Sticker: 'sticker'
+    Document: 'document',
+    Sticker: 'sticker',
+    Contact: 'contact',
+    Location: 'location'
 } as const;
 export type DialogMessageAttachmentDtoTypeEnum = typeof DialogMessageAttachmentDtoTypeEnum[keyof typeof DialogMessageAttachmentDtoTypeEnum];
 

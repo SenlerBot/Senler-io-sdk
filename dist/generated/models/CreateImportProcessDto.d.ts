@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * CreateImportProcessDto.
  * @export
  * @interface CreateImportProcessDto
  */
@@ -22,7 +22,7 @@ export interface CreateImportProcessDto {
      */
     channelId: string;
     /**
-     * . MAX chatId, - userId.
+     * . . MAX chatId, - userId.
      * @type {Array<string>}
      * @memberof CreateImportProcessDto
      */

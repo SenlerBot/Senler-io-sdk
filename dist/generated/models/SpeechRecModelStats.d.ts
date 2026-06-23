@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * SpeechRecModelStats.
  * @export
  * @interface SpeechRecModelStats
  */
@@ -58,7 +58,7 @@ export interface SpeechRecModelStats {
      */
     audioInputTokens: number;
     /**
-     * ( USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof SpeechRecModelStats
      */

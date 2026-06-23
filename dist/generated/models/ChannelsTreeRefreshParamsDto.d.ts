@@ -11,7 +11,7 @@
  */
 import type { ChannelsTreeRefreshChannelDto } from './ChannelsTreeRefreshChannelDto';
 /**
- *
+ * ChannelsTreeRefreshParamsDto.
  * @export
  * @interface ChannelsTreeRefreshParamsDto
  */

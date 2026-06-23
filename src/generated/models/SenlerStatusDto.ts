@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SenlerStatusDto.
  * @export
  * @interface SenlerStatusDto
  */

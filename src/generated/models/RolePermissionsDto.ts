@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * RolePermissionsDto.
  * @export
  * @interface RolePermissionsDto
  */

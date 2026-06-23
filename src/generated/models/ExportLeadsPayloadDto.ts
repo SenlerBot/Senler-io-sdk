@@ -29,7 +29,7 @@ import {
 } from './ExportLeadsParamsDto';
 
 /**
- * 
+ * ExportLeadsPayloadDto.
  * @export
  * @interface ExportLeadsPayloadDto
  */

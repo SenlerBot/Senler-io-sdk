@@ -22,7 +22,7 @@ import {
 } from './LeadsRefreshErrorDto';
 
 /**
- * 
+ * LeadsRefreshProcessResultDto.
  * @export
  * @interface LeadsRefreshProcessResultDto
  */

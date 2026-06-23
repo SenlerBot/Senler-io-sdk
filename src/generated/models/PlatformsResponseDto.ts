@@ -22,7 +22,7 @@ import {
 } from './PlatformMetadataDto';
 
 /**
- * 
+ * PlatformsResponseDto.
  * @export
  * @interface PlatformsResponseDto
  */

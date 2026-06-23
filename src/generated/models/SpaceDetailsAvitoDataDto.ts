@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceDetailsAvitoDataDto.
  * @export
  * @interface SpaceDetailsAvitoDataDto
  */

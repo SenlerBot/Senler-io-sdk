@@ -11,7 +11,7 @@
  */
 import type { ActionPerformerDto } from './ActionPerformerDto';
 /**
- *
+ * EditMessageResponseDto.
  * @export
  * @interface EditMessageResponseDto
  */

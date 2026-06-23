@@ -11,7 +11,7 @@
  */
 import type { ChannelSpaceSectionDto } from './ChannelSpaceSectionDto';
 /**
- *
+ * ChannelSpaceSectionsResponseDto.
  * @export
  * @interface ChannelSpaceSectionsResponseDto
  */

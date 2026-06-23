@@ -11,7 +11,7 @@
  */
 import type { ResourcePackageImportParamsDto } from './ResourcePackageImportParamsDto';
 /**
- *
+ * ResourcePackageImportPayloadDto.
  * @export
  * @interface ResourcePackageImportPayloadDto
  */

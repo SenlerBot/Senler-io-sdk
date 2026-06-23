@@ -22,7 +22,7 @@ import {
 } from './UploadKnowledgeArchiveConflictErrorDto';
 
 /**
- * 
+ * UploadKnowledgeArchiveConflictResponseDto.
  * @export
  * @interface UploadKnowledgeArchiveConflictResponseDto
  */

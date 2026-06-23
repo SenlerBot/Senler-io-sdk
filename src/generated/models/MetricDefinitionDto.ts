@@ -22,7 +22,7 @@ import {
 } from './MetricDefinitionDtoValidationSchema';
 
 /**
- * 
+ * MetricDefinitionDto.
  * @export
  * @interface MetricDefinitionDto
  */

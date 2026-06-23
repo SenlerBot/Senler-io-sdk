@@ -22,7 +22,7 @@ import {
 } from './DataSourceConfigDto';
 
 /**
- * 
+ * BindWebsiteDto.
  * @export
  * @interface BindWebsiteDto
  */

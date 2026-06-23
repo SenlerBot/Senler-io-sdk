@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UploadUrlAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
+exports.UploadUrlAcceptLanguageEnum = exports.SendToSelfRecipientLinkAcceptLanguageEnum = exports.SendToSelfAcceptLanguageEnum = exports.GetSendToSelfRecipientsAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -183,6 +183,158 @@ class AttachmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
+     *
+     */
+    async getSendToSelfRecipientsRaw(requestParameters, initOverrides) {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError('attachmentId', 'Required parameter "attachmentId" was null or undefined when calling getSendToSelfRecipients().');
+        }
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling getSendToSelfRecipients().');
+        }
+        const queryParameters = {};
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/send-to-self-recipients`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentSendToSelfRecipientsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getSendToSelfRecipients(requestParameters, initOverrides) {
+        const response = await this.getSendToSelfRecipientsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * API. read-like : .
+     *
+     */
+    async sendToSelfRaw(requestParameters, initOverrides) {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError('attachmentId', 'Required parameter "attachmentId" was null or undefined when calling sendToSelf().');
+        }
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling sendToSelf().');
+        }
+        if (requestParameters['attachmentSendToSelfRequestDto'] == null) {
+            throw new runtime.RequiredError('attachmentSendToSelfRequestDto', 'Required parameter "attachmentSendToSelfRequestDto" was null or undefined when calling sendToSelf().');
+        }
+        const queryParameters = {};
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/send-to-self`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AttachmentSendToSelfRequestDtoToJSON)(requestParameters['attachmentSendToSelfRequestDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentSendToSelfResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * API. read-like : .
+     *
+     */
+    async sendToSelf(requestParameters, initOverrides) {
+        const response = await this.sendToSelfRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . read-like ; Telegram-.
+     *
+     */
+    async sendToSelfRecipientLinkRaw(requestParameters, initOverrides) {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError('attachmentId', 'Required parameter "attachmentId" was null or undefined when calling sendToSelfRecipientLink().');
+        }
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling sendToSelfRecipientLink().');
+        }
+        const queryParameters = {};
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/send-to-self-recipient-link`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentSendToSelfRecipientLinkResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . read-like ; Telegram-.
+     *
+     */
+    async sendToSelfRecipientLink(requestParameters, initOverrides) {
+        const response = await this.sendToSelfRecipientLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * S3- . channelId dialogId, confirm.
      * S3-
      */
@@ -253,6 +405,27 @@ exports.GetDownloadAcceptLanguageEnum = {
  * @export
  */
 exports.GetDownloadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetSendToSelfRecipientsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SendToSelfAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SendToSelfRecipientLinkAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

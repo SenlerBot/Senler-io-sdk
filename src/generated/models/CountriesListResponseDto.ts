@@ -22,7 +22,7 @@ import {
 } from './CountryResponseDto';
 
 /**
- * 
+ * CountriesListResponseDto.
  * @export
  * @interface CountriesListResponseDto
  */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ReplyTargetTelegramChatDataDto.
  * @export
  * @interface ReplyTargetTelegramChatDataDto
  */

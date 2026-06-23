@@ -12,7 +12,7 @@
 import type { ProjectMetaDto } from './ProjectMetaDto';
 import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachmentUploadLimitsByChannelDto';
 /**
- *
+ * ProjectResponseDto.
  * @export
  * @interface ProjectResponseDto
  */
@@ -23,6 +23,12 @@ export interface ProjectResponseDto {
      * @memberof ProjectResponseDto
      */
     id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ProjectResponseDto
+     */
+    publicId: string;
     /**
      *
      * @type {string}

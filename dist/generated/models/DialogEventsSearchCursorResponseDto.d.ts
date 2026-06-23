@@ -12,7 +12,7 @@
 import type { DialogChannelInfoDto } from './DialogChannelInfoDto';
 import type { DialogChatSearchEventDto } from './DialogChatSearchEventDto';
 /**
- *
+ * DialogEventsSearchCursorResponseDto.
  * @export
  * @interface DialogEventsSearchCursorResponseDto
  */

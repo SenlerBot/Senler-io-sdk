@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ModelStatDto.
  * @export
  * @interface ModelStatDto
  */
@@ -38,7 +38,7 @@ export interface ModelStatDto {
      */
     totalTokens: number;
     /**
-     * ( )
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ModelStatDto
      */

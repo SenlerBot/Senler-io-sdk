@@ -11,7 +11,7 @@
  */
 import type { MigrationProgressDto } from './MigrationProgressDto';
 /**
- *
+ * ChannelMigrationStatusDto.
  * @export
  * @interface ChannelMigrationStatusDto
  */
@@ -46,6 +46,12 @@ export interface ChannelMigrationStatusDto {
      * @memberof ChannelMigrationStatusDto
      */
     targetProjectName?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ChannelMigrationStatusDto
+     */
+    finishNowRequested?: boolean;
 }
 /**
  * @export

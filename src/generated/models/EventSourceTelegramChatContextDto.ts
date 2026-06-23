@@ -29,7 +29,7 @@ import {
 } from './EventSourceTelegramChatDataDto';
 
 /**
- * 
+ * EventSourceTelegramChatContextDto.
  * @export
  * @interface EventSourceTelegramChatContextDto
  */

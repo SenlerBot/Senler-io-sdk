@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * KnowledgeBaseSearchHitDto.
  * @export
  * @interface KnowledgeBaseSearchHitDto
  */

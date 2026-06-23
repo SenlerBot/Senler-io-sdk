@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetMaxDialogDataDto } from './ReplyTargetMaxDialogDataDto';
 /**
- *
+ * DialogMaxDialogReplyTargetDto.
  * @export
  * @interface DialogMaxDialogReplyTargetDto
  */

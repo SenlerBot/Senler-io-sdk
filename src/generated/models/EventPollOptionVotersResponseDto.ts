@@ -22,7 +22,7 @@ import {
 } from './EventPollOptionVoterDto';
 
 /**
- * 
+ * EventPollOptionVotersResponseDto.
  * @export
  * @interface EventPollOptionVotersResponseDto
  */

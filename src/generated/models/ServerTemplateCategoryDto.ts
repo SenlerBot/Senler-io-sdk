@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ServerTemplateCategoryDto.
  * @export
  * @interface ServerTemplateCategoryDto
  */

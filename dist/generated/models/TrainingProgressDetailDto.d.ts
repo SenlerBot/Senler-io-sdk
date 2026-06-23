@@ -11,7 +11,7 @@
  */
 import type { TrainingTaskStatusParamsDto } from './TrainingTaskStatusParamsDto';
 /**
- *
+ * TrainingProgressDetailDto.
  * @export
  * @interface TrainingProgressDetailDto
  */

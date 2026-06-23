@@ -29,7 +29,7 @@ import {
 } from './AssignmentRuleChannelDto';
 
 /**
- * 
+ * AgentAssignmentRuleResponseDto.
  * @export
  * @interface AgentAssignmentRuleResponseDto
  */
@@ -59,6 +59,15 @@ export interface AgentAssignmentRuleResponseDto {
      * @memberof AgentAssignmentRuleResponseDto
      */
     channelId?: string | null;
+    /**
+     * ID .
+     * 
+     * - NULL
+     * - ObjectId
+     * @type {string}
+     * @memberof AgentAssignmentRuleResponseDto
+     */
+    leadGroupId?: string | null;
     /**
      * ID .
      * 
@@ -162,6 +171,7 @@ export function AgentAssignmentRuleResponseDtoFromJSONTyped(json: any, ignoreDis
         'id': json['id'],
         'projectId': json['project_id'],
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
+        'leadGroupId': json['lead_group_id'] == null ? undefined : json['lead_group_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'role': json['role'],
         'isActive': json['is_active'],
@@ -187,6 +197,7 @@ export function AgentAssignmentRuleResponseDtoToJSONTyped(value?: AgentAssignmen
         'id': value['id'],
         'project_id': value['projectId'],
         'channel_id': value['channelId'],
+        'lead_group_id': value['leadGroupId'],
         'agent_id': value['agentId'],
         'role': value['role'],
         'is_active': value['isActive'],

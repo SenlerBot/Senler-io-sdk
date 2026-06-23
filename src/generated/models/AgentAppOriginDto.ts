@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AgentAppOriginDto.
  * @export
  * @interface AgentAppOriginDto
  */
@@ -61,6 +61,12 @@ export interface AgentAppOriginDto {
      * @memberof AgentAppOriginDto
      */
     installedAt?: Date | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AgentAppOriginDto
+     */
+    settingsViewAllowed: boolean;
 }
 
 
@@ -83,6 +89,7 @@ export type AgentAppOriginDtoInstallationStatusEnum = typeof AgentAppOriginDtoIn
 export function instanceOfAgentAppOriginDto(value: object): value is AgentAppOriginDto {
     if (!('appId' in value) || value['appId'] === undefined) return false;
     if (!('appName' in value) || value['appName'] === undefined) return false;
+    if (!('settingsViewAllowed' in value) || value['settingsViewAllowed'] === undefined) return false;
     return true;
 }
 
@@ -103,6 +110,7 @@ export function AgentAppOriginDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'installationStatus': json['installation_status'] == null ? undefined : json['installation_status'],
         'installedVersion': json['installed_version'] == null ? undefined : json['installed_version'],
         'installedAt': json['installed_at'] == null ? undefined : (new Date(json['installed_at'])),
+        'settingsViewAllowed': json['settings_view_allowed'],
     };
 }
 
@@ -124,6 +132,7 @@ export function AgentAppOriginDtoToJSONTyped(value?: AgentAppOriginDto | null, i
         'installation_status': value['installationStatus'],
         'installed_version': value['installedVersion'],
         'installed_at': value['installedAt'] == null ? undefined : ((value['installedAt'] as any).toISOString()),
+        'settings_view_allowed': value['settingsViewAllowed'],
     };
 }
 

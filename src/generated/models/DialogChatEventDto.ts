@@ -183,7 +183,7 @@ import {
 } from './EventAttachmentCabinetDto';
 
 /**
- * 
+ * DialogChatEventDto.
  * @export
  * @interface DialogChatEventDto
  */

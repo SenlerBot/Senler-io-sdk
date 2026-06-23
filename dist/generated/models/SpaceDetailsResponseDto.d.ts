@@ -18,7 +18,7 @@ import type { SpaceMediaEmbedded } from './SpaceMediaEmbedded';
 import type { SpaceDetailsMaxDataDto } from './SpaceDetailsMaxDataDto';
 import type { SpaceDetailsChannelDto } from './SpaceDetailsChannelDto';
 /**
- *
+ * SpaceDetailsResponseDto.
  * @export
  * @interface SpaceDetailsResponseDto
  */

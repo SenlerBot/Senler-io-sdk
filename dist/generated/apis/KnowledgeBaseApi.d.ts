@@ -91,6 +91,14 @@ export interface TablesRequest {
     xSessionId?: string;
     acceptLanguage?: TablesAcceptLanguageEnum;
 }
+export interface TablesUploadRequest {
+    projectId: string;
+    file: Blob;
+    xSessionId?: string;
+    acceptLanguage?: TablesUploadAcceptLanguageEnum;
+    folderId?: string | null;
+    name?: string;
+}
 export interface UpdateFilesRequest {
     id: string;
     updateKnowledgeFileDto: UpdateKnowledgeFileDto;
@@ -244,6 +252,16 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
     /**
+     * CSV- XLSX-.
+     *
+     */
+    tablesUploadRaw(requestParameters: TablesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>>;
+    /**
+     * CSV- XLSX-.
+     *
+     */
+    tablesUpload(requestParameters: TablesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
+    /**
      * , , .
      *
      */
@@ -396,6 +414,14 @@ export declare const TablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TablesAcceptLanguageEnum = typeof TablesAcceptLanguageEnum[keyof typeof TablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesUploadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesUploadAcceptLanguageEnum = typeof TablesUploadAcceptLanguageEnum[keyof typeof TablesUploadAcceptLanguageEnum];
 /**
  * @export
  */

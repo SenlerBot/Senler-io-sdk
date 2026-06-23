@@ -740,8 +740,8 @@ class MCPServersApi extends runtime.BaseAPI {
         if (requestParameters['xSessionId'] == null) {
             throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling mcpServersCreate().');
         }
-        if (requestParameters['createServerDto'] == null) {
-            throw new runtime.RequiredError('createServerDto', 'Required parameter "createServerDto" was null or undefined when calling mcpServersCreate().');
+        if (requestParameters['createServerBodyDto'] == null) {
+            throw new runtime.RequiredError('createServerBodyDto', 'Required parameter "createServerBodyDto" was null or undefined when calling mcpServersCreate().');
         }
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
@@ -771,7 +771,7 @@ class MCPServersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.CreateServerDtoToJSON)(requestParameters['createServerDto']),
+            body: (0, index_1.CreateServerBodyDtoToJSON)(requestParameters['createServerBodyDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateServerResponseDtoFromJSON)(jsonValue));
     }
@@ -1012,8 +1012,8 @@ class MCPServersApi extends runtime.BaseAPI {
         if (requestParameters['xSessionId'] == null) {
             throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling mcpServersUpdate().');
         }
-        if (requestParameters['updateServerDto'] == null) {
-            throw new runtime.RequiredError('updateServerDto', 'Required parameter "updateServerDto" was null or undefined when calling mcpServersUpdate().');
+        if (requestParameters['updateServerBodyDto'] == null) {
+            throw new runtime.RequiredError('updateServerBodyDto', 'Required parameter "updateServerBodyDto" was null or undefined when calling mcpServersUpdate().');
         }
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
@@ -1043,7 +1043,7 @@ class MCPServersApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.UpdateServerDtoToJSON)(requestParameters['updateServerDto']),
+            body: (0, index_1.UpdateServerBodyDtoToJSON)(requestParameters['updateServerBodyDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateServerResponseDtoFromJSON)(jsonValue));
     }

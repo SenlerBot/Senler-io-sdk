@@ -22,7 +22,7 @@ import {
 } from './AuditLogResponseDto';
 
 /**
- * 
+ * AuditLogListResponseDto.
  * @export
  * @interface AuditLogListResponseDto
  */

@@ -11,7 +11,7 @@
  */
 import type { EventDeliveryMaxDataDto } from './EventDeliveryMaxDataDto';
 /**
- *
+ * MaxEventDeliveryRefDto.
  * @export
  * @interface MaxEventDeliveryRefDto
  */

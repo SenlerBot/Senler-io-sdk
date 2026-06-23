@@ -11,7 +11,7 @@
  */
 import type { Role } from './Role';
 /**
- *
+ * CreateInvitationDto.
  * @export
  * @interface CreateInvitationDto
  */

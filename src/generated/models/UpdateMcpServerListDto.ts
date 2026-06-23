@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateMcpServerListDto.
  * @export
  * @interface UpdateMcpServerListDto
  */

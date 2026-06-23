@@ -22,7 +22,7 @@ import {
 } from './MigrationHistoryOptionEstimate';
 
 /**
- * 
+ * MigrationEstimateResponseDto.
  * @export
  * @interface MigrationEstimateResponseDto
  */

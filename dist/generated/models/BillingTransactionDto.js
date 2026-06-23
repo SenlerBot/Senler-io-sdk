@@ -19,7 +19,10 @@ exports.BillingTransactionDtoFromJSON = BillingTransactionDtoFromJSON;
 exports.BillingTransactionDtoFromJSONTyped = BillingTransactionDtoFromJSONTyped;
 exports.BillingTransactionDtoToJSON = BillingTransactionDtoToJSON;
 exports.BillingTransactionDtoToJSONTyped = BillingTransactionDtoToJSONTyped;
+const runtime_1 = require("../runtime");
 const LocalizedTextDto_1 = require("./LocalizedTextDto");
+const BillingTransactionDtoDetailsByAgentValue_1 = require("./BillingTransactionDtoDetailsByAgentValue");
+const BillingTransactionDtoDetailsByModelValue_1 = require("./BillingTransactionDtoDetailsByModelValue");
 /**
  * @export
  */
@@ -102,8 +105,8 @@ function BillingTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'status': json['status'] == null ? undefined : json['status'],
         'isLive': json['is_live'] == null ? undefined : json['is_live'],
-        'detailsByAgent': json['details_by_agent'],
-        'detailsByModel': json['details_by_model'],
+        'detailsByAgent': (json['details_by_agent'] == null ? null : (0, runtime_1.mapValues)(json['details_by_agent'], BillingTransactionDtoDetailsByAgentValue_1.BillingTransactionDtoDetailsByAgentValueFromJSON)),
+        'detailsByModel': (json['details_by_model'] == null ? null : (0, runtime_1.mapValues)(json['details_by_model'], BillingTransactionDtoDetailsByModelValue_1.BillingTransactionDtoDetailsByModelValueFromJSON)),
         'conversionFromCurrency': json['conversion_from_currency'] == null ? undefined : json['conversion_from_currency'],
         'conversionToCurrency': json['conversion_to_currency'] == null ? undefined : json['conversion_to_currency'],
         'conversionRate': json['conversion_rate'] == null ? undefined : json['conversion_rate'],
@@ -148,8 +151,8 @@ function BillingTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'created_at': ((value['createdAt']).toISOString()),
         'status': value['status'],
         'is_live': value['isLive'],
-        'details_by_agent': value['detailsByAgent'],
-        'details_by_model': value['detailsByModel'],
+        'details_by_agent': (value['detailsByAgent'] == null ? null : (0, runtime_1.mapValues)(value['detailsByAgent'], BillingTransactionDtoDetailsByAgentValue_1.BillingTransactionDtoDetailsByAgentValueToJSON)),
+        'details_by_model': (value['detailsByModel'] == null ? null : (0, runtime_1.mapValues)(value['detailsByModel'], BillingTransactionDtoDetailsByModelValue_1.BillingTransactionDtoDetailsByModelValueToJSON)),
         'conversion_from_currency': value['conversionFromCurrency'],
         'conversion_to_currency': value['conversionToCurrency'],
         'conversion_rate': value['conversionRate'],

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpsertProjectCredentialDto.
  * @export
  * @interface UpsertProjectCredentialDto
  */

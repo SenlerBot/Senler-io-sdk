@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EventMessageDto.
  * @export
  * @interface EventMessageDto
  */

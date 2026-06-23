@@ -22,7 +22,7 @@ import {
 } from './EventDeliveryDiscordDataDto';
 
 /**
- * 
+ * DiscordEventDeliveryRefDto.
  * @export
  * @interface DiscordEventDeliveryRefDto
  */

@@ -22,7 +22,7 @@ import {
 } from './ChannelSpacesRefreshErrorDto';
 
 /**
- * 
+ * ChannelSpacesRefreshProcessResultDto.
  * @export
  * @interface ChannelSpacesRefreshProcessResultDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ObjectValidationSchemaDto.
  * @export
  * @interface ObjectValidationSchemaDto
  */

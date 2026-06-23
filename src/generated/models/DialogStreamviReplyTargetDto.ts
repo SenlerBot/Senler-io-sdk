@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetStreamviDataDto';
 
 /**
- * 
+ * DialogStreamviReplyTargetDto.
  * @export
  * @interface DialogStreamviReplyTargetDto
  */

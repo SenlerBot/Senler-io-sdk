@@ -36,7 +36,7 @@ import {
 } from './InvitationInviterDto';
 
 /**
- * 
+ * InvitationListItemDto.
  * @export
  * @interface InvitationListItemDto
  */

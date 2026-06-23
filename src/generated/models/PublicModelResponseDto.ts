@@ -36,7 +36,7 @@ import {
 } from './PublicImageGenerationPriceResponseDto';
 
 /**
- * 
+ * PublicModelResponseDto.
  * @export
  * @interface PublicModelResponseDto
  */

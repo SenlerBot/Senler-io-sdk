@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * LeadSpaceLinkResponseDto.
  * @export
  * @interface LeadSpaceLinkResponseDto
  */

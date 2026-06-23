@@ -22,7 +22,7 @@ import {
 } from './SpacesTreeFlatNodeDto';
 
 /**
- * 
+ * SpacesTreeNodesResponseDto.
  * @export
  * @interface SpacesTreeNodesResponseDto
  */

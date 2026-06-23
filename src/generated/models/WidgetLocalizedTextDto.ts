@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * WidgetLocalizedTextDto.
  * @export
  * @interface WidgetLocalizedTextDto
  */

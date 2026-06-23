@@ -11,7 +11,7 @@
  */
 import type { ChannelsTreeRefreshErrorDto } from './ChannelsTreeRefreshErrorDto';
 /**
- *
+ * ChannelsTreeRefreshProcessResultDto.
  * @export
  * @interface ChannelsTreeRefreshProcessResultDto
  */

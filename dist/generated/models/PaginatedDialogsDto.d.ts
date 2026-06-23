@@ -11,7 +11,7 @@
  */
 import type { DialogListItemDto } from './DialogListItemDto';
 /**
- *
+ * PaginatedDialogsDto.
  * @export
  * @interface PaginatedDialogsDto
  */

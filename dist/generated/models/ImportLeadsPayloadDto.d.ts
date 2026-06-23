@@ -11,7 +11,7 @@
  */
 import type { ImportLeadsParamsDto } from './ImportLeadsParamsDto';
 /**
- *
+ * ImportLeadsPayloadDto.
  * @export
  * @interface ImportLeadsPayloadDto
  */

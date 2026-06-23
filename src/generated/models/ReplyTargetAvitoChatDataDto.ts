@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetAvitoChatDataDto.
  * @export
  * @interface ReplyTargetAvitoChatDataDto
  */

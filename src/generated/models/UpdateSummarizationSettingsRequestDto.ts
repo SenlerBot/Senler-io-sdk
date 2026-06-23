@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateSummarizationSettingsRequestDto.
  * @export
  * @interface UpdateSummarizationSettingsRequestDto
  */

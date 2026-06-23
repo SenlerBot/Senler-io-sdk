@@ -71,7 +71,7 @@ import {
 } from './SpaceDetailsChannelDto';
 
 /**
- * 
+ * SpaceDetailsResponseDto.
  * @export
  * @interface SpaceDetailsResponseDto
  */

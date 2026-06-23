@@ -22,7 +22,7 @@ import {
 } from './TrafficSourceItemDto';
 
 /**
- * 
+ * TrafficSourcesResponseDto.
  * @export
  * @interface TrafficSourcesResponseDto
  */

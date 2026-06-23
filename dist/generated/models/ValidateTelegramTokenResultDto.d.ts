@@ -11,7 +11,7 @@
  */
 import type { TelegramBotInfoDto } from './TelegramBotInfoDto';
 /**
- *
+ * ValidateTelegramTokenResultDto.
  * @export
  * @interface ValidateTelegramTokenResultDto
  */

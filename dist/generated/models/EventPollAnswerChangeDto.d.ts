@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EventPollAnswerChangeDto.
  * @export
  * @interface EventPollAnswerChangeDto
  */

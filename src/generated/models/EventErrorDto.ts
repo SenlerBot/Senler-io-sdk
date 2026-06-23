@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventErrorDto.
  * @export
  * @interface EventErrorDto
  */

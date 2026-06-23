@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceDetailsTelegramDataDto.
  * @export
  * @interface SpaceDetailsTelegramDataDto
  */

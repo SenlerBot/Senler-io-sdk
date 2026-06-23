@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetDiscordThreadDataDto.
  * @export
  * @interface ReplyTargetDiscordThreadDataDto
  */

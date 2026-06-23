@@ -11,7 +11,7 @@
  */
 import type { ChannelBriefDto } from './ChannelBriefDto';
 /**
- *
+ * GetChannelsUserResponseDto.
  * @export
  * @interface GetChannelsUserResponseDto
  */

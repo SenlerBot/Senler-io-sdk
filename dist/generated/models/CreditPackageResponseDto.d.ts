@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * CreditPackageResponseDto.
  * @export
  * @interface CreditPackageResponseDto
  */
@@ -46,13 +46,13 @@ export interface CreditPackageResponseDto {
      */
     approxMessages: number | null;
     /**
-     * (RUB)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditPackageResponseDto
      */
     priceRub: number;
     /**
-     * (USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditPackageResponseDto
      */

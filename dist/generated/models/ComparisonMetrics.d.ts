@@ -11,7 +11,7 @@
  */
 import type { PeriodComparison } from './PeriodComparison';
 /**
- *
+ * ComparisonMetrics.
  * @export
  * @interface ComparisonMetrics
  */

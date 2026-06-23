@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpeechRecognitionCostCabinetDto.
  * @export
  * @interface SpeechRecognitionCostCabinetDto
  */

@@ -22,6 +22,8 @@ exports.BalancesByCurrencyToJSONTyped = BalancesByCurrencyToJSONTyped;
  * Check if a given object implements the BalancesByCurrency interface.
  */
 function instanceOfBalancesByCurrency(value) {
+    if (!('currency' in value) || value['currency'] === undefined)
+        return false;
     if (!('deposit' in value) || value['deposit'] === undefined)
         return false;
     if (!('bonus' in value) || value['bonus'] === undefined)
@@ -44,6 +46,7 @@ function BalancesByCurrencyFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'currency': json['currency'],
         'deposit': json['deposit'],
         'bonus': json['bonus'],
         'profit': json['profit'],
@@ -60,6 +63,7 @@ function BalancesByCurrencyToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'currency': value['currency'],
         'deposit': value['deposit'],
         'bonus': value['bonus'],
         'profit': value['profit'],

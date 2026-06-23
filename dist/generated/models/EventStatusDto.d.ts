@@ -14,7 +14,7 @@ import type { EventStatusDeletionDto } from './EventStatusDeletionDto';
 import type { EventStatusReadDto } from './EventStatusReadDto';
 import type { EventStatusSendingDto } from './EventStatusSendingDto';
 /**
- *
+ * EventStatusDto.
  * @export
  * @interface EventStatusDto
  */

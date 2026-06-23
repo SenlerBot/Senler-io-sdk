@@ -36,7 +36,7 @@ import {
 } from './TrainingDataVolumeEstimateDto';
 
 /**
- * 
+ * TrainingPreviewResponseDto.
  * @export
  * @interface TrainingPreviewResponseDto
  */

@@ -22,7 +22,7 @@ import {
 } from './LeadResponseDto';
 
 /**
- * 
+ * SyncLeadProfileResponseDto.
  * @export
  * @interface SyncLeadProfileResponseDto
  */

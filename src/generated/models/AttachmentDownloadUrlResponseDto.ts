@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AttachmentDownloadUrlResponseDto.
  * @export
  * @interface AttachmentDownloadUrlResponseDto
  */

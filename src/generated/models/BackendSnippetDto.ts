@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * BackendSnippetDto.
  * @export
  * @interface BackendSnippetDto
  */

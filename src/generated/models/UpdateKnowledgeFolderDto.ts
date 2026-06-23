@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateKnowledgeFolderDto.
  * @export
  * @interface UpdateKnowledgeFolderDto
  */

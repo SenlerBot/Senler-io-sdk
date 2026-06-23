@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceMaxDialogDataDto } from './EventSourceMaxDialogDataDto';
 /**
- *
+ * EventSourceMaxDialogContextDto.
  * @export
  * @interface EventSourceMaxDialogContextDto
  */

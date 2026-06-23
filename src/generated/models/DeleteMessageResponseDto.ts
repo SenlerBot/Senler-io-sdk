@@ -22,7 +22,7 @@ import {
 } from './ActionPerformerDto';
 
 /**
- * 
+ * DeleteMessageResponseDto.
  * @export
  * @interface DeleteMessageResponseDto
  */

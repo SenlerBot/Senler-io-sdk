@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * QueryDialogsDto.
  * @export
  * @interface QueryDialogsDto
  */
@@ -75,6 +75,12 @@ export interface QueryDialogsDto {
      * @memberof QueryDialogsDto
      */
     leadId?: Array<string>;
+    /**
+     * ID (ObjectId, , 50 )
+     * @type {Array<string>}
+     * @memberof QueryDialogsDto
+     */
+    dialogIds?: Array<string>;
     /**
      * . active completed ( archived)
      * @type {string}

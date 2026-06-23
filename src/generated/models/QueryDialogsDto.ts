@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * QueryDialogsDto.
  * @export
  * @interface QueryDialogsDto
  */
@@ -79,6 +79,12 @@ export interface QueryDialogsDto {
      * @memberof QueryDialogsDto
      */
     leadId?: Array<string>;
+    /**
+     * ID (ObjectId, , 50 )
+     * @type {Array<string>}
+     * @memberof QueryDialogsDto
+     */
+    dialogIds?: Array<string>;
     /**
      * . active completed ( archived)
      * @type {string}
@@ -303,6 +309,7 @@ export function QueryDialogsDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
+        'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'status': json['status'] == null ? undefined : json['status'],
         'operatorResponseStatus': json['operator_response_status'] == null ? undefined : json['operator_response_status'],
         'leadResponseStatus': json['lead_response_status'] == null ? undefined : json['lead_response_status'],
@@ -346,6 +353,7 @@ export function QueryDialogsDtoToJSONTyped(value?: QueryDialogsDto | null, ignor
         'channel_id': value['channelId'],
         'agent_id': value['agentId'],
         'lead_id': value['leadId'],
+        'dialog_ids': value['dialogIds'],
         'status': value['status'],
         'operator_response_status': value['operatorResponseStatus'],
         'lead_response_status': value['leadResponseStatus'],

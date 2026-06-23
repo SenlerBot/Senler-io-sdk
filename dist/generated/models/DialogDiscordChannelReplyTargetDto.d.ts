@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetDiscordChannelDataDto } from './ReplyTargetDiscordChannelDataDto';
 /**
- *
+ * DialogDiscordChannelReplyTargetDto.
  * @export
  * @interface DialogDiscordChannelReplyTargetDto
  */

@@ -11,7 +11,7 @@
  */
 import type { MemberChannelDto } from './MemberChannelDto';
 /**
- *
+ * GetMemberChannelsResponseDto.
  * @export
  * @interface GetMemberChannelsResponseDto
  */

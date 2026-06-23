@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventSourceDiscordThreadDataDto.
  * @export
  * @interface EventSourceDiscordThreadDataDto
  */

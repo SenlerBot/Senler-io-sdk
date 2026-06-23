@@ -29,7 +29,7 @@ import {
 } from './EventSourceVkPeerDataDto';
 
 /**
- * 
+ * EventSourceVkPeerContextDto.
  * @export
  * @interface EventSourceVkPeerContextDto
  */

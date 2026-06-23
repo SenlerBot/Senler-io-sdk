@@ -11,7 +11,7 @@
  */
 import type { ProjectResponseDto } from './ProjectResponseDto';
 /**
- *
+ * ProjectConfirmAvatarUploadResponseDto.
  * @export
  * @interface ProjectConfirmAvatarUploadResponseDto
  */

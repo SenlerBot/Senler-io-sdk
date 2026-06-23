@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AppCatalogResponseDto.
  * @export
  * @interface AppCatalogResponseDto
  */
@@ -75,6 +75,12 @@ export interface AppCatalogResponseDto {
     allowDeveloperDialogAccess: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof AppCatalogResponseDto
+     */
+    allowInstalledAgentSettingsView: boolean;
+    /**
+     * 
      * @type {Date}
      * @memberof AppCatalogResponseDto
      */
@@ -91,6 +97,7 @@ export function instanceOfAppCatalogResponseDto(value: object): value is AppCata
     if (!('types' in value) || value['types'] === undefined) return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined) return false;
     if (!('allowDeveloperDialogAccess' in value) || value['allowDeveloperDialogAccess'] === undefined) return false;
+    if (!('allowInstalledAgentSettingsView' in value) || value['allowInstalledAgentSettingsView'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     return true;
 }
@@ -114,6 +121,7 @@ export function AppCatalogResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'types': json['types'],
         'allowedPermissions': json['allowed_permissions'],
         'allowDeveloperDialogAccess': json['allow_developer_dialog_access'],
+        'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -138,6 +146,7 @@ export function AppCatalogResponseDtoToJSONTyped(value?: AppCatalogResponseDto |
         'types': value['types'],
         'allowed_permissions': value['allowedPermissions'],
         'allow_developer_dialog_access': value['allowDeveloperDialogAccess'],
+        'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

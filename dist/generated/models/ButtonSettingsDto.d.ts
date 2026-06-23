@@ -11,7 +11,7 @@
  */
 import type { ButtonColorsDto } from './ButtonColorsDto';
 /**
- *
+ * ButtonSettingsDto.
  * @export
  * @interface ButtonSettingsDto
  */

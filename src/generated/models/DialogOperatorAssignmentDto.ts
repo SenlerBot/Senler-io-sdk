@@ -22,7 +22,7 @@ import {
 } from './DialogOperatorAssignmentUserInfoDto';
 
 /**
- * 
+ * DialogOperatorAssignmentDto.
  * @export
  * @interface DialogOperatorAssignmentDto
  */

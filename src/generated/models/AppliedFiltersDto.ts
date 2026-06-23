@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AppliedFiltersDto.
  * @export
  * @interface AppliedFiltersDto
  */

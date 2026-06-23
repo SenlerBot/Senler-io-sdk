@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateBlacklistDto.
  * @export
  * @interface UpdateBlacklistDto
  */

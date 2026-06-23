@@ -22,7 +22,7 @@ import {
 } from './SpaceTreeMatchHighlightDto';
 
 /**
- * 
+ * SpaceTreeMatchMetadataDto.
  * @export
  * @interface SpaceTreeMatchMetadataDto
  */

@@ -22,7 +22,7 @@ import {
 } from './McpCredentialConnectedIdentityDto';
 
 /**
- * 
+ * UpsertExternalUserMcpCredentialDto.
  * @export
  * @interface UpsertExternalUserMcpCredentialDto
  */

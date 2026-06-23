@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MessageMetrics.
  * @export
  * @interface MessageMetrics
  */

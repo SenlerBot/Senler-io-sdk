@@ -11,7 +11,7 @@
  */
 import type { SummarizationResponseDto } from './SummarizationResponseDto';
 /**
- *
+ * SummarizationHistoryResponseDto.
  * @export
  * @interface SummarizationHistoryResponseDto
  */

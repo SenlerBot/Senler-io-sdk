@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AssignAgentToDialogDto.
  * @export
  * @interface AssignAgentToDialogDto
  */

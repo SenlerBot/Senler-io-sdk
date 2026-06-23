@@ -11,7 +11,7 @@
  */
 import type { DialogSearchTopMatchDto } from './DialogSearchTopMatchDto';
 /**
- *
+ * DialogSearchResultDto.
  * @export
  * @interface DialogSearchResultDto
  */

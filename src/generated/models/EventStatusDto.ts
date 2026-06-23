@@ -43,7 +43,7 @@ import {
 } from './EventStatusSendingDto';
 
 /**
- * 
+ * EventStatusDto.
  * @export
  * @interface EventStatusDto
  */

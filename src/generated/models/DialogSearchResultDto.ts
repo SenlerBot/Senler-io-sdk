@@ -22,7 +22,7 @@ import {
 } from './DialogSearchTopMatchDto';
 
 /**
- * 
+ * DialogSearchResultDto.
  * @export
  * @interface DialogSearchResultDto
  */

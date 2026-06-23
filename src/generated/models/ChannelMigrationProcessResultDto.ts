@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelMigrationProcessResultDto.
  * @export
  * @interface ChannelMigrationProcessResultDto
  */
@@ -37,6 +37,12 @@ export interface ChannelMigrationProcessResultDto {
      * @memberof ChannelMigrationProcessResultDto
      */
     eventsCopied: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelMigrationProcessResultDto
+     */
+    historyDeferred?: boolean;
     /**
      * 
      * @type {number}
@@ -68,6 +74,7 @@ export function ChannelMigrationProcessResultDtoFromJSONTyped(json: any, ignoreD
         'leadsCopied': json['leads_copied'],
         'dialogsCopied': json['dialogs_copied'],
         'eventsCopied': json['events_copied'],
+        'historyDeferred': json['history_deferred'] == null ? undefined : json['history_deferred'],
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -86,6 +93,7 @@ export function ChannelMigrationProcessResultDtoToJSONTyped(value?: ChannelMigra
         'leads_copied': value['leadsCopied'],
         'dialogs_copied': value['dialogsCopied'],
         'events_copied': value['eventsCopied'],
+        'history_deferred': value['historyDeferred'],
         'duration_ms': value['durationMs'],
     };
 }

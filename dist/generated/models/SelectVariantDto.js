@@ -22,7 +22,7 @@ exports.SelectVariantDtoToJSONTyped = SelectVariantDtoToJSONTyped;
  * Check if a given object implements the SelectVariantDto interface.
  */
 function instanceOfSelectVariantDto(value) {
-    if (!('variantIndex' in value) || value['variantIndex'] === undefined)
+    if (!('variantId' in value) || value['variantId'] === undefined)
         return false;
     return true;
 }
@@ -34,9 +34,8 @@ function SelectVariantDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'variantIndex': json['variantIndex'],
-        'customInstruction': json['customInstruction'] == null ? undefined : json['customInstruction'],
-        'customName': json['customName'] == null ? undefined : json['customName'],
+        'variantId': json['variant_id'],
+        'customName': json['custom_name'] == null ? undefined : json['custom_name'],
     };
 }
 function SelectVariantDtoToJSON(json) {
@@ -47,8 +46,7 @@ function SelectVariantDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'variantIndex': value['variantIndex'],
-        'customInstruction': value['customInstruction'],
-        'customName': value['customName'],
+        'variant_id': value['variantId'],
+        'custom_name': value['customName'],
     };
 }

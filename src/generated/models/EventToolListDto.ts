@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventToolListDto.
  * @export
  * @interface EventToolListDto
  */
@@ -81,6 +81,7 @@ export interface EventToolListDto {
  */
 export const EventToolListDtoKindEnum = {
     Builtin: 'builtin',
+    Capability: 'capability',
     Mcp: 'mcp'
 } as const;
 export type EventToolListDtoKindEnum = typeof EventToolListDtoKindEnum[keyof typeof EventToolListDtoKindEnum];

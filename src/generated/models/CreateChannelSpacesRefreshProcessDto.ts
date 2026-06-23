@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreateChannelSpacesRefreshProcessDto.
  * @export
  * @interface CreateChannelSpacesRefreshProcessDto
  */

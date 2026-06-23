@@ -29,7 +29,7 @@ import {
 } from './DataSourceMetaDto';
 
 /**
- * 
+ * DataSourceResponseDto.
  * @export
  * @interface DataSourceResponseDto
  */

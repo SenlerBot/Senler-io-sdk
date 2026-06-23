@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TypingSenderDto.
  * @export
  * @interface TypingSenderDto
  */

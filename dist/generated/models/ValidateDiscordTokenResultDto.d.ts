@@ -11,7 +11,7 @@
  */
 import type { DiscordBotInfoDto } from './DiscordBotInfoDto';
 /**
- *
+ * ValidateDiscordTokenResultDto.
  * @export
  * @interface ValidateDiscordTokenResultDto
  */

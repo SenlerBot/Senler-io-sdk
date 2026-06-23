@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetStreamviDataDto } from './ReplyTargetStreamviDataDto';
 /**
- *
+ * DialogStreamviReplyTargetDto.
  * @export
  * @interface DialogStreamviReplyTargetDto
  */

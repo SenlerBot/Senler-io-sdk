@@ -11,7 +11,7 @@
  */
 import type { KnowledgeBaseSearchHitDto } from './KnowledgeBaseSearchHitDto';
 /**
- *
+ * PaginatedKnowledgeBaseSearchResponseDto.
  * @export
  * @interface PaginatedKnowledgeBaseSearchResponseDto
  */

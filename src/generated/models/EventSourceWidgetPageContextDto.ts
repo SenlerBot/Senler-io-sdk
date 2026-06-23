@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventSourceWidgetPageContextDto.
  * @export
  * @interface EventSourceWidgetPageContextDto
  */

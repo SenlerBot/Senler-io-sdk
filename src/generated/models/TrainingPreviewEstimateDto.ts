@@ -22,7 +22,7 @@ import {
 } from './TrainingEstimatePhaseDto';
 
 /**
- * 
+ * TrainingPreviewEstimateDto.
  * @export
  * @interface TrainingPreviewEstimateDto
  */

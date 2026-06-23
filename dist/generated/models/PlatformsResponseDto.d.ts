@@ -11,7 +11,7 @@
  */
 import type { PlatformMetadataDto } from './PlatformMetadataDto';
 /**
- *
+ * PlatformsResponseDto.
  * @export
  * @interface PlatformsResponseDto
  */

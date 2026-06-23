@@ -12,7 +12,7 @@
 import type { UnitEconomics } from './UnitEconomics';
 import type { ActualEconomics } from './ActualEconomics';
 /**
- *
+ * FinancialMetrics.
  * @export
  * @interface FinancialMetrics
  */
@@ -30,19 +30,19 @@ export interface FinancialMetrics {
      */
     actual: ActualEconomics;
     /**
-     * USD/RUB
+     * USD/RUB, 1 ; : 1 USD = 95.5 RUB
      * @type {number}
      * @memberof FinancialMetrics
      */
     usdToRubRate: number;
     /**
-     * : RUB ( 1 ), ; 1 = 10000 ; : 12.5 = 125000
+     * RUB, 1 ; : 1 1 / = 10000
      * @type {number}
      * @memberof FinancialMetrics
      */
     creditRateRub: number;
     /**
-     * : USD ( 1 ), ; 1 = 10000 ; : 12.5 = 125000
+     * USD, 1 ; : 1 1 / = 10000
      * @type {number}
      * @memberof FinancialMetrics
      */

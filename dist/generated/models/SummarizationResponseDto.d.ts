@@ -13,7 +13,7 @@ import type { AgentRecommendationDto } from './AgentRecommendationDto';
 import type { GenerationCostDto } from './GenerationCostDto';
 import type { PeriodInfoDto } from './PeriodInfoDto';
 /**
- *
+ * SummarizationResponseDto.
  * @export
  * @interface SummarizationResponseDto
  */

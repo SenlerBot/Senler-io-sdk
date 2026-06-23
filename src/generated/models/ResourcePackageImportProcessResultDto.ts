@@ -22,7 +22,7 @@ import {
 } from './ResourcePackagePlanItemDto';
 
 /**
- * 
+ * ResourcePackageImportProcessResultDto.
  * @export
  * @interface ResourcePackageImportProcessResultDto
  */

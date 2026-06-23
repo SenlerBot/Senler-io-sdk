@@ -154,6 +154,15 @@ export interface TablesRequest {
     acceptLanguage?: TablesAcceptLanguageEnum;
 }
 
+export interface TablesUploadRequest {
+    projectId: string;
+    file: Blob;
+    xSessionId?: string;
+    acceptLanguage?: TablesUploadAcceptLanguageEnum;
+    folderId?: string | null;
+    name?: string;
+}
+
 export interface UpdateFilesRequest {
     id: string;
     updateKnowledgeFileDto: UpdateKnowledgeFileDto;
@@ -1050,6 +1059,102 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
+     * CSV- XLSX-.
+     * 
+     */
+    async tablesUploadRaw(requestParameters: TablesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling tablesUpload().'
+            );
+        }
+
+        if (requestParameters['file'] == null) {
+            throw new runtime.RequiredError(
+                'file',
+                'Required parameter "file" was null or undefined when calling tablesUpload().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['projectId'] != null) {
+            formParams.append('project_id', requestParameters['projectId'] as any);
+        }
+
+        if (requestParameters['folderId'] != null) {
+            formParams.append('folder_id', requestParameters['folderId'] as any);
+        }
+
+        if (requestParameters['name'] != null) {
+            formParams.append('name', requestParameters['name'] as any);
+        }
+
+        if (requestParameters['file'] != null) {
+            formParams.append('file', requestParameters['file'] as any);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/upload`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * CSV- XLSX-.
+     * 
+     */
+    async tablesUpload(requestParameters: TablesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
+        const response = await this.tablesUploadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , , .
      * 
      */
@@ -1371,6 +1476,14 @@ export const TablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type TablesAcceptLanguageEnum = typeof TablesAcceptLanguageEnum[keyof typeof TablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesUploadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesUploadAcceptLanguageEnum = typeof TablesUploadAcceptLanguageEnum[keyof typeof TablesUploadAcceptLanguageEnum];
 /**
  * @export
  */

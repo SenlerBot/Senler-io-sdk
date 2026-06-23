@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * StartTrainingDto.
  * @export
  * @interface StartTrainingDto
  */

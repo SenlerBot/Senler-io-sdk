@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventTypingDto.
  * @export
  * @interface EventTypingDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetVkPeerDataDto.
  * @export
  * @interface ReplyTargetVkPeerDataDto
  */

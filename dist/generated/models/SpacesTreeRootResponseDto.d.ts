@@ -11,7 +11,7 @@
  */
 import type { SpacesTreeRootChannelDto } from './SpacesTreeRootChannelDto';
 /**
- *
+ * SpacesTreeRootResponseDto.
  * @export
  * @interface SpacesTreeRootResponseDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * NumberRangeDto.
  * @export
  * @interface NumberRangeDto
  */

@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceWidgetLeadDataDto } from './EventSourceWidgetLeadDataDto';
 /**
- *
+ * EventSourceWidgetLeadContextDto.
  * @export
  * @interface EventSourceWidgetLeadContextDto
  */

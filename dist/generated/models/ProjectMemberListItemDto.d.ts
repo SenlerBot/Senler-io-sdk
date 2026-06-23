@@ -12,7 +12,7 @@
 import type { Role } from './Role';
 import type { PermissionsDto } from './PermissionsDto';
 /**
- *
+ * ProjectMemberListItemDto.
  * @export
  * @interface ProjectMemberListItemDto
  */

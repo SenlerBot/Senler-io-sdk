@@ -22,7 +22,7 @@ import {
 } from './AuditValueReferenceDto';
 
 /**
- * 
+ * AuditChangeDto.
  * @export
  * @interface AuditChangeDto
  */

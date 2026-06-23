@@ -11,7 +11,7 @@
  */
 import type { VkValidationGroupInfoDto } from './VkValidationGroupInfoDto';
 /**
- *
+ * ValidateVKTokenResultDto.
  * @export
  * @interface ValidateVKTokenResultDto
  */

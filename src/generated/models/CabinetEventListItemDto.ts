@@ -113,7 +113,7 @@ import {
 } from './EventAttachmentCabinetDto';
 
 /**
- * 
+ * CabinetEventListItemDto.
  * @export
  * @interface CabinetEventListItemDto
  */

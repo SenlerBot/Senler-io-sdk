@@ -11,7 +11,7 @@
  */
 import type { CreateMaxChannelDataDto } from './CreateMaxChannelDataDto';
 /**
- *
+ * CreateMaxChannelResponseDto.
  * @export
  * @interface CreateMaxChannelResponseDto
  */

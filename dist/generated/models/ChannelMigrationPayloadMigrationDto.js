@@ -60,6 +60,8 @@ function ChannelMigrationPayloadMigrationDtoFromJSONTyped(json, ignoreDiscrimina
         'newProjectId': json['new_project_id'],
         'historyOption': json['history_option'],
         'historyCutoffDate': json['history_cutoff_date'] == null ? undefined : (new Date(json['history_cutoff_date'])),
+        'migrationLinkId': json['migration_link_id'] == null ? undefined : json['migration_link_id'],
+        'finishNowRequestedAt': json['finish_now_requested_at'] == null ? undefined : (new Date(json['finish_now_requested_at'])),
     };
 }
 function ChannelMigrationPayloadMigrationDtoToJSON(json) {
@@ -76,5 +78,7 @@ function ChannelMigrationPayloadMigrationDtoToJSONTyped(value, ignoreDiscriminat
         'new_project_id': value['newProjectId'],
         'history_option': value['historyOption'],
         'history_cutoff_date': value['historyCutoffDate'] == null ? undefined : (value['historyCutoffDate'].toISOString()),
+        'migration_link_id': value['migrationLinkId'],
+        'finish_now_requested_at': value['finishNowRequestedAt'] == null ? undefined : (value['finishNowRequestedAt'].toISOString()),
     };
 }

@@ -36,7 +36,7 @@ import {
 } from './PeriodInfoDto';
 
 /**
- * 
+ * SummarizationResponseDto.
  * @export
  * @interface SummarizationResponseDto
  */

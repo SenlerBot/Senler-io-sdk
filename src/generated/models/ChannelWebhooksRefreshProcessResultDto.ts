@@ -22,7 +22,7 @@ import {
 } from './ChannelWebhooksRefreshErrorDto';
 
 /**
- * 
+ * ChannelWebhooksRefreshProcessResultDto.
  * @export
  * @interface ChannelWebhooksRefreshProcessResultDto
  */

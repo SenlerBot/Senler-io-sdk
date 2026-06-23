@@ -22,7 +22,7 @@ import {
 } from './MaxBotInfoDto';
 
 /**
- * 
+ * ValidateMaxTokenResultDto.
  * @export
  * @interface ValidateMaxTokenResultDto
  */

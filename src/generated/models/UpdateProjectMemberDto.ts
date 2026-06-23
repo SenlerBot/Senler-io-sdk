@@ -29,7 +29,7 @@ import {
 } from './ChannelRoleDto';
 
 /**
- * 
+ * UpdateProjectMemberDto.
  * @export
  * @interface UpdateProjectMemberDto
  */

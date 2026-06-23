@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * NumberValidationDto.
  * @export
  * @interface NumberValidationDto
  */

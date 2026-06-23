@@ -12,7 +12,7 @@
 import type { AuditActorDto } from './AuditActorDto';
 import type { AuditChangeDto } from './AuditChangeDto';
 /**
- *
+ * AuditLogResponseDto.
  * @export
  * @interface AuditLogResponseDto
  */
@@ -104,6 +104,8 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly KnowledgeBase: "knowledge_base";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly LeadGroup: "lead_group";
+    readonly LeadGroupConsentDocument: "lead_group_consent_document";
     readonly ProjectTariff: "project_tariff";
     readonly Invitation: "invitation";
 };

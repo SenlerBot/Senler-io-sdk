@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceStreamviBroadcastDataDto } from './EventSourceStreamviBroadcastDataDto';
 /**
- *
+ * EventSourceStreamviBroadcastContextDto.
  * @export
  * @interface EventSourceStreamviBroadcastContextDto
  */

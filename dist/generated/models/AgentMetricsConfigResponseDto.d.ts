@@ -11,7 +11,7 @@
  */
 import type { MetricDefinitionDto } from './MetricDefinitionDto';
 /**
- *
+ * AgentMetricsConfigResponseDto.
  * @export
  * @interface AgentMetricsConfigResponseDto
  */

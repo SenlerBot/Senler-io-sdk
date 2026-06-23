@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { CreateServerBodyDtoMeta } from './CreateServerBodyDtoMeta';
+import {
+    CreateServerBodyDtoMetaFromJSON,
+    CreateServerBodyDtoMetaFromJSONTyped,
+    CreateServerBodyDtoMetaToJSON,
+    CreateServerBodyDtoMetaToJSONTyped,
+} from './CreateServerBodyDtoMeta';
 import type { CustomMcpServerAuthHeaderDto } from './CustomMcpServerAuthHeaderDto';
 import {
     CustomMcpServerAuthHeaderDtoFromJSON,
@@ -20,16 +27,9 @@ import {
     CustomMcpServerAuthHeaderDtoToJSON,
     CustomMcpServerAuthHeaderDtoToJSONTyped,
 } from './CustomMcpServerAuthHeaderDto';
-import type { CreateServerDtoMeta } from './CreateServerDtoMeta';
-import {
-    CreateServerDtoMetaFromJSON,
-    CreateServerDtoMetaFromJSONTyped,
-    CreateServerDtoMetaToJSON,
-    CreateServerDtoMetaToJSONTyped,
-} from './CreateServerDtoMeta';
 
 /**
- * 
+ * CreateServerDto.
  * @export
  * @interface CreateServerDto
  */
@@ -108,10 +108,10 @@ export interface CreateServerDto {
     projectId: string;
     /**
      * 
-     * @type {CreateServerDtoMeta}
+     * @type {CreateServerBodyDtoMeta}
      * @memberof CreateServerDto
      */
-    meta?: CreateServerDtoMeta;
+    meta?: CreateServerBodyDtoMeta;
 }
 
 
@@ -166,7 +166,7 @@ export function CreateServerDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'authMode': json['auth_mode'] == null ? undefined : json['auth_mode'],
         'projectId': json['project_id'],
-        'meta': json['meta'] == null ? undefined : CreateServerDtoMetaFromJSON(json['meta']),
+        'meta': json['meta'] == null ? undefined : CreateServerBodyDtoMetaFromJSON(json['meta']),
     };
 }
 
@@ -193,7 +193,7 @@ export function CreateServerDtoToJSONTyped(value?: CreateServerDto | null, ignor
         'custom_query_params': value['customQueryParams'],
         'auth_mode': value['authMode'],
         'project_id': value['projectId'],
-        'meta': CreateServerDtoMetaToJSON(value['meta']),
+        'meta': CreateServerBodyDtoMetaToJSON(value['meta']),
     };
 }
 

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TariffCheckResponseDto.
  * @export
  * @interface TariffCheckResponseDto
  */
@@ -38,7 +38,7 @@ export interface TariffCheckResponseDto {
      */
     tariffNameEn: string;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffCheckResponseDto
      */
@@ -50,25 +50,25 @@ export interface TariffCheckResponseDto {
      */
     discountPercent?: number | null;
     /**
-     * . upgrade, null
+     * . upgrade, null, (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffCheckResponseDto
      */
     refundCurrent?: number | null;
     /**
-     * . null downgrade use_balance=false
+     * . null downgrade use_balance=false, (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffCheckResponseDto
      */
     decreaseBalance?: number | null;
     /**
-     * . null = ( tariff-buy). > 0 = ( POST /orders)
+     * . null = ( tariff-buy). > 0 = ( POST /orders), (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffCheckResponseDto
      */
     total?: number | null;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffCheckResponseDto
      */

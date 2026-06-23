@@ -82,6 +82,7 @@ export interface GetEventsRequest {
     sortBy?: GetEventsSortByEnum;
     searchCursor?: string;
     before?: string;
+    after?: string;
     limit?: number;
     xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
@@ -349,7 +350,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . before limit; q.
+     * . before/after limit; q.
      * 
      */
     async getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>> {
@@ -384,6 +385,10 @@ export class DialogsApi extends runtime.BaseAPI {
 
         if (requestParameters['before'] != null) {
             queryParameters['before'] = requestParameters['before'];
+        }
+
+        if (requestParameters['after'] != null) {
+            queryParameters['after'] = requestParameters['after'];
         }
 
         if (requestParameters['limit'] != null) {
@@ -424,7 +429,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . before limit; q.
+     * . before/after limit; q.
      * 
      */
     async getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response> {

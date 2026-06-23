@@ -11,7 +11,7 @@
  */
 import type { ChannelWebhooksRefreshErrorDto } from './ChannelWebhooksRefreshErrorDto';
 /**
- *
+ * ChannelWebhooksRefreshProcessResultDto.
  * @export
  * @interface ChannelWebhooksRefreshProcessResultDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelSpacesRefreshParamsDto.
  * @export
  * @interface ChannelSpacesRefreshParamsDto
  */

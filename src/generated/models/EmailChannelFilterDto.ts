@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EmailChannelFilterDto.
  * @export
  * @interface EmailChannelFilterDto
  */

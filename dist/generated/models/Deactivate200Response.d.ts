@@ -10,13 +10,13 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * .
  * @export
  * @interface Deactivate200Response
  */
 export interface Deactivate200Response {
     /**
-     *
+     * success.
      * @type {boolean}
      * @memberof Deactivate200Response
      */

@@ -12,7 +12,7 @@
 import type { DialogChatEventDto } from './DialogChatEventDto';
 import type { DialogChannelInfoDto } from './DialogChannelInfoDto';
 /**
- *
+ * DialogEventsCursorResponseDto.
  * @export
  * @interface DialogEventsCursorResponseDto
  */
@@ -47,6 +47,12 @@ export interface DialogEventsCursorResponseDto {
      * @memberof DialogEventsCursorResponseDto
      */
     nextCursor?: string;
+    /**
+     * . after
+     * @type {string}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    prevCursor?: string;
     /**
      * ( )
      * @type {string}

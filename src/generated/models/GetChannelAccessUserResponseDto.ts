@@ -22,7 +22,7 @@ import {
 } from './GetChannelAccessUserDataDto';
 
 /**
- * 
+ * GetChannelAccessUserResponseDto.
  * @export
  * @interface GetChannelAccessUserResponseDto
  */

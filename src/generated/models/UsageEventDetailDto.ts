@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UsageEventDetailDto.
  * @export
  * @interface UsageEventDetailDto
  */
@@ -56,7 +56,7 @@ export interface UsageEventDetailDto {
      */
     modelName: string;
     /**
-     * ( )
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof UsageEventDetailDto
      */

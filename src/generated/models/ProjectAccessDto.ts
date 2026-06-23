@@ -43,7 +43,7 @@ import {
 } from './ProjectAccessSource';
 
 /**
- * 
+ * ProjectAccessDto.
  * @export
  * @interface ProjectAccessDto
  */

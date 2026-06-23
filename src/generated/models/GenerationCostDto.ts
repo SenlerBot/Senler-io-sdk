@@ -22,7 +22,7 @@ import {
 } from './TokensUsedDto';
 
 /**
- * 
+ * GenerationCostDto.
  * @export
  * @interface GenerationCostDto
  */

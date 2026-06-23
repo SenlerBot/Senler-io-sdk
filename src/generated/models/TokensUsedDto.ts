@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TokensUsedDto.
  * @export
  * @interface TokensUsedDto
  */

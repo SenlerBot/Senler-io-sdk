@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetVkWallPostCommentsDataDto } from './ReplyTargetVkWallPostCommentsDataDto';
 /**
- *
+ * DialogVkWallPostCommentsReplyTargetDto.
  * @export
  * @interface DialogVkWallPostCommentsReplyTargetDto
  */

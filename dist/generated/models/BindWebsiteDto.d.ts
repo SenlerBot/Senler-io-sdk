@@ -11,7 +11,7 @@
  */
 import type { DataSourceConfigDto } from './DataSourceConfigDto';
 /**
- *
+ * BindWebsiteDto.
  * @export
  * @interface BindWebsiteDto
  */

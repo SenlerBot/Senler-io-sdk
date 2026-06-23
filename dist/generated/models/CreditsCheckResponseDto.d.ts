@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * CreditsCheckResponseDto.
  * @export
  * @interface CreditsCheckResponseDto
  */
@@ -34,25 +34,25 @@ export interface CreditsCheckResponseDto {
      */
     creditsAmount: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     price: number;
     /**
-     * . null use_balance=false
+     * . null use_balance=false, (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     decreaseBalance?: number | null;
     /**
-     * . null = ( credits-buy). > 0 = ( POST /orders)
+     * . null = ( credits-buy). > 0 = ( POST /orders), (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */
     total?: number | null;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditsCheckResponseDto
      */

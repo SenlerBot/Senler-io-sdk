@@ -11,7 +11,7 @@
  */
 import type { McpCredentialConnectedIdentityDto } from './McpCredentialConnectedIdentityDto';
 /**
- *
+ * UpsertExternalUserMcpCredentialDto.
  * @export
  * @interface UpsertExternalUserMcpCredentialDto
  */

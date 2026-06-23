@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
+import {
+    ChannelMigrationBackfillDtoFromJSON,
+    ChannelMigrationBackfillDtoFromJSONTyped,
+    ChannelMigrationBackfillDtoToJSON,
+    ChannelMigrationBackfillDtoToJSONTyped,
+} from './ChannelMigrationBackfillDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
 import {
     ChannelAccessDtoFromJSON,
@@ -29,7 +36,7 @@ import {
 } from './ChannelMigrationStatusDto';
 
 /**
- * 
+ * ChannelBriefDto.
  * @export
  * @interface ChannelBriefDto
  */
@@ -40,6 +47,12 @@ export interface ChannelBriefDto {
      * @memberof ChannelBriefDto
      */
     id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ChannelBriefDto
+     */
+    publicId: string;
     /**
      * ID Senler
      * @type {number}
@@ -88,6 +101,12 @@ export interface ChannelBriefDto {
      * @memberof ChannelBriefDto
      */
     migration?: ChannelMigrationStatusDto | null;
+    /**
+     * 
+     * @type {ChannelMigrationBackfillDto}
+     * @memberof ChannelBriefDto
+     */
+    migrationBackfill?: ChannelMigrationBackfillDto | null;
     /**
      * 
      * @type {ChannelAccessDto}
@@ -148,6 +167,7 @@ export type ChannelBriefDtoTypeEnum = typeof ChannelBriefDtoTypeEnum[keyof typeo
  */
 export function instanceOfChannelBriefDto(value: object): value is ChannelBriefDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('publicId' in value) || value['publicId'] === undefined) return false;
     if (!('isPaused' in value) || value['isPaused'] === undefined) return false;
     return true;
 }
@@ -163,6 +183,7 @@ export function ChannelBriefDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'id': json['id'],
+        'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'type': json['type'] == null ? undefined : json['type'],
@@ -171,6 +192,7 @@ export function ChannelBriefDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'isPaused': json['is_paused'],
         'botUsername': json['bot_username'] == null ? undefined : json['bot_username'],
         'migration': json['migration'] == null ? undefined : ChannelMigrationStatusDtoFromJSON(json['migration']),
+        'migrationBackfill': json['migration_backfill'] == null ? undefined : ChannelMigrationBackfillDtoFromJSON(json['migration_backfill']),
         'access': json['access'] == null ? undefined : ChannelAccessDtoFromJSON(json['access']),
         'historySupported': json['history_supported'] == null ? undefined : json['history_supported'],
         'historyScanStatus': json['history_scan_status'] == null ? undefined : json['history_scan_status'],
@@ -192,6 +214,7 @@ export function ChannelBriefDtoToJSONTyped(value?: ChannelBriefDto | null, ignor
     return {
         
         'id': value['id'],
+        'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],
         'type': value['type'],
@@ -200,6 +223,7 @@ export function ChannelBriefDtoToJSONTyped(value?: ChannelBriefDto | null, ignor
         'is_paused': value['isPaused'],
         'bot_username': value['botUsername'],
         'migration': ChannelMigrationStatusDtoToJSON(value['migration']),
+        'migration_backfill': ChannelMigrationBackfillDtoToJSON(value['migrationBackfill']),
         'access': ChannelAccessDtoToJSON(value['access']),
         'history_supported': value['historySupported'],
         'history_scan_status': value['historyScanStatus'],

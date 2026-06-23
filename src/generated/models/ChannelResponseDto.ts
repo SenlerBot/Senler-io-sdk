@@ -48,6 +48,13 @@ import {
     StreamViChannelDataDtoToJSON,
     StreamViChannelDataDtoToJSONTyped,
 } from './StreamViChannelDataDto';
+import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
+import {
+    ChannelMigrationBackfillDtoFromJSON,
+    ChannelMigrationBackfillDtoFromJSONTyped,
+    ChannelMigrationBackfillDtoToJSON,
+    ChannelMigrationBackfillDtoToJSONTyped,
+} from './ChannelMigrationBackfillDto';
 import type { VKChannelDataDto } from './VKChannelDataDto';
 import {
     VKChannelDataDtoFromJSON,
@@ -92,7 +99,7 @@ import {
 } from './EmailChannelDataDto';
 
 /**
- * 
+ * ChannelResponseDto.
  * @export
  * @interface ChannelResponseDto
  */
@@ -103,6 +110,12 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ChannelResponseDto
+     */
+    publicId: string;
     /**
      * ID Senler
      * @type {number}
@@ -231,6 +244,12 @@ export interface ChannelResponseDto {
     migration?: ChannelMigrationStatusDto | null;
     /**
      * 
+     * @type {ChannelMigrationBackfillDto}
+     * @memberof ChannelResponseDto
+     */
+    migrationBackfill?: ChannelMigrationBackfillDto | null;
+    /**
+     * 
      * @type {ChannelAccessDto}
      * @memberof ChannelResponseDto
      */
@@ -289,6 +308,7 @@ export type ChannelResponseDtoTypeEnum = typeof ChannelResponseDtoTypeEnum[keyof
  */
 export function instanceOfChannelResponseDto(value: object): value is ChannelResponseDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('publicId' in value) || value['publicId'] === undefined) return false;
     if (!('isPaused' in value) || value['isPaused'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -306,6 +326,7 @@ export function ChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'id': json['id'],
+        'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'type': json['type'] == null ? undefined : json['type'],
@@ -327,6 +348,7 @@ export function ChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'dataEmail': json['data_email'] == null ? undefined : EmailChannelDataDtoFromJSON(json['data_email']),
         'senler': json['senler'] == null ? undefined : SenlerStatusDtoFromJSON(json['senler']),
         'migration': json['migration'] == null ? undefined : ChannelMigrationStatusDtoFromJSON(json['migration']),
+        'migrationBackfill': json['migration_backfill'] == null ? undefined : ChannelMigrationBackfillDtoFromJSON(json['migration_backfill']),
         'access': json['access'] == null ? undefined : ChannelAccessDtoFromJSON(json['access']),
         'historySupported': json['history_supported'] == null ? undefined : json['history_supported'],
         'historyScanStatus': json['history_scan_status'] == null ? undefined : json['history_scan_status'],
@@ -348,6 +370,7 @@ export function ChannelResponseDtoToJSONTyped(value?: ChannelResponseDto | null,
     return {
         
         'id': value['id'],
+        'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],
         'type': value['type'],
@@ -369,6 +392,7 @@ export function ChannelResponseDtoToJSONTyped(value?: ChannelResponseDto | null,
         'data_email': EmailChannelDataDtoToJSON(value['dataEmail']),
         'senler': SenlerStatusDtoToJSON(value['senler']),
         'migration': ChannelMigrationStatusDtoToJSON(value['migration']),
+        'migration_backfill': ChannelMigrationBackfillDtoToJSON(value['migrationBackfill']),
         'access': ChannelAccessDtoToJSON(value['access']),
         'history_supported': value['historySupported'],
         'history_scan_status': value['historyScanStatus'],

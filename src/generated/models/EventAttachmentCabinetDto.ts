@@ -27,6 +27,13 @@ import {
     AttachmentFlagsDtoToJSON,
     AttachmentFlagsDtoToJSONTyped,
 } from './AttachmentFlagsDto';
+import type { EventAttachmentContactDto } from './EventAttachmentContactDto';
+import {
+    EventAttachmentContactDtoFromJSON,
+    EventAttachmentContactDtoFromJSONTyped,
+    EventAttachmentContactDtoToJSON,
+    EventAttachmentContactDtoToJSONTyped,
+} from './EventAttachmentContactDto';
 import type { AttachmentRecognitionCabinetDto } from './AttachmentRecognitionCabinetDto';
 import {
     AttachmentRecognitionCabinetDtoFromJSON,
@@ -34,9 +41,16 @@ import {
     AttachmentRecognitionCabinetDtoToJSON,
     AttachmentRecognitionCabinetDtoToJSONTyped,
 } from './AttachmentRecognitionCabinetDto';
+import type { EventAttachmentLocationDto } from './EventAttachmentLocationDto';
+import {
+    EventAttachmentLocationDtoFromJSON,
+    EventAttachmentLocationDtoFromJSONTyped,
+    EventAttachmentLocationDtoToJSON,
+    EventAttachmentLocationDtoToJSONTyped,
+} from './EventAttachmentLocationDto';
 
 /**
- * 
+ * EventAttachmentCabinetDto.
  * @export
  * @interface EventAttachmentCabinetDto
  */
@@ -71,6 +85,18 @@ export interface EventAttachmentCabinetDto {
      * @memberof EventAttachmentCabinetDto
      */
     externalUrl?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EventAttachmentCabinetDto
+     */
+    actions?: Array<EventAttachmentCabinetDtoActionsEnum>;
+    /**
+     * ,
+     * @type {string}
+     * @memberof EventAttachmentCabinetDto
+     */
+    unavailableReason?: EventAttachmentCabinetDtoUnavailableReasonEnum;
     /**
      * 
      * @type {string}
@@ -192,6 +218,18 @@ export interface EventAttachmentCabinetDto {
      */
     platformFileId?: string;
     /**
+     * non-file attachment
+     * @type {EventAttachmentContactDto}
+     * @memberof EventAttachmentCabinetDto
+     */
+    contact?: EventAttachmentContactDto;
+    /**
+     * non-file attachment
+     * @type {EventAttachmentLocationDto}
+     * @memberof EventAttachmentCabinetDto
+     */
+    location?: EventAttachmentLocationDto;
+    /**
      * 
      * @type {Date}
      * @memberof EventAttachmentCabinetDto
@@ -206,16 +244,36 @@ export interface EventAttachmentCabinetDto {
 export const EventAttachmentCabinetDtoTypeEnum = {
     Photo: 'photo',
     Video: 'video',
-    Document: 'document',
     Voice: 'voice',
     Audio: 'audio',
+    Document: 'document',
     Sticker: 'sticker',
-    Animation: 'animation',
-    Location: 'location',
     Contact: 'contact',
-    Poll: 'poll'
+    Location: 'location'
 } as const;
 export type EventAttachmentCabinetDtoTypeEnum = typeof EventAttachmentCabinetDtoTypeEnum[keyof typeof EventAttachmentCabinetDtoTypeEnum];
+
+/**
+ * @export
+ */
+export const EventAttachmentCabinetDtoActionsEnum = {
+    View: 'view',
+    Download: 'download',
+    OpenExternal: 'open_external',
+    SendToSelf: 'send_to_self'
+} as const;
+export type EventAttachmentCabinetDtoActionsEnum = typeof EventAttachmentCabinetDtoActionsEnum[keyof typeof EventAttachmentCabinetDtoActionsEnum];
+
+/**
+ * @export
+ */
+export const EventAttachmentCabinetDtoUnavailableReasonEnum = {
+    ProjectUploadLimitExceeded: 'project_upload_limit_exceeded',
+    TelegramBotApiDownloadLimit: 'telegram_bot_api_download_limit',
+    UploadFailed: 'upload_failed',
+    SourceUnavailable: 'source_unavailable'
+} as const;
+export type EventAttachmentCabinetDtoUnavailableReasonEnum = typeof EventAttachmentCabinetDtoUnavailableReasonEnum[keyof typeof EventAttachmentCabinetDtoUnavailableReasonEnum];
 
 /**
  * @export
@@ -312,6 +370,8 @@ export function EventAttachmentCabinetDtoFromJSONTyped(json: any, ignoreDiscrimi
         'storageUrl': json['storage_url'] == null ? undefined : json['storage_url'],
         'previewUrl': json['preview_url'] == null ? undefined : json['preview_url'],
         'externalUrl': json['external_url'] == null ? undefined : json['external_url'],
+        'actions': json['actions'] == null ? undefined : json['actions'],
+        'unavailableReason': json['unavailable_reason'] == null ? undefined : json['unavailable_reason'],
         'fileName': json['file_name'] == null ? undefined : json['file_name'],
         'fileSize': json['file_size'] == null ? undefined : json['file_size'],
         'mimeType': json['mime_type'] == null ? undefined : json['mime_type'],
@@ -332,6 +392,8 @@ export function EventAttachmentCabinetDtoFromJSONTyped(json: any, ignoreDiscrimi
         'deliveryError': json['delivery_error'] == null ? undefined : json['delivery_error'],
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
         'platformFileId': json['platform_file_id'] == null ? undefined : json['platform_file_id'],
+        'contact': json['contact'] == null ? undefined : EventAttachmentContactDtoFromJSON(json['contact']),
+        'location': json['location'] == null ? undefined : EventAttachmentLocationDtoFromJSON(json['location']),
         'uploadedAt': json['uploaded_at'] == null ? undefined : (new Date(json['uploaded_at'])),
     };
 }
@@ -352,6 +414,8 @@ export function EventAttachmentCabinetDtoToJSONTyped(value?: EventAttachmentCabi
         'storage_url': value['storageUrl'],
         'preview_url': value['previewUrl'],
         'external_url': value['externalUrl'],
+        'actions': value['actions'],
+        'unavailable_reason': value['unavailableReason'],
         'file_name': value['fileName'],
         'file_size': value['fileSize'],
         'mime_type': value['mimeType'],
@@ -372,6 +436,8 @@ export function EventAttachmentCabinetDtoToJSONTyped(value?: EventAttachmentCabi
         'delivery_error': value['deliveryError'],
         'platform_type': value['platformType'],
         'platform_file_id': value['platformFileId'],
+        'contact': EventAttachmentContactDtoToJSON(value['contact']),
+        'location': EventAttachmentLocationDtoToJSON(value['location']),
         'uploaded_at': value['uploadedAt'] == null ? undefined : ((value['uploadedAt']).toISOString()),
     };
 }

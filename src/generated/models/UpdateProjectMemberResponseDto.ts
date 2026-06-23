@@ -22,7 +22,7 @@ import {
 } from './ProjectMemberDetailDto';
 
 /**
- * 
+ * UpdateProjectMemberResponseDto.
  * @export
  * @interface UpdateProjectMemberResponseDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelHistoryScanResponseDto.
  * @export
  * @interface ChannelHistoryScanResponseDto
  */

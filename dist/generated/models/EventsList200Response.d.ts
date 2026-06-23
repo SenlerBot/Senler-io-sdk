@@ -11,13 +11,13 @@
  */
 import type { CabinetEventListItemDto } from './CabinetEventListItemDto';
 /**
- *
+ * .
  * @export
  * @interface EventsList200Response
  */
 export interface EventsList200Response {
     /**
-     *
+     * .
      * @type {Array<CabinetEventListItemDto>}
      * @memberof EventsList200Response
      */
@@ -29,13 +29,13 @@ export interface EventsList200Response {
      */
     hasMore?: boolean;
     /**
-     *
+     * next cursor.
      * @type {string}
      * @memberof EventsList200Response
      */
     nextCursor?: string;
     /**
-     *
+     * prev cursor.
      * @type {string}
      * @memberof EventsList200Response
      */

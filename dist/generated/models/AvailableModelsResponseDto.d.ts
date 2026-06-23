@@ -11,7 +11,7 @@
  */
 import type { PublicModelResponseDto } from './PublicModelResponseDto';
 /**
- *
+ * AvailableModelsResponseDto.
  * @export
  * @interface AvailableModelsResponseDto
  */

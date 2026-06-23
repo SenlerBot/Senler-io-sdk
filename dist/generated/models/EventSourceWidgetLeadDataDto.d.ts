@@ -10,9 +10,10 @@
  * Do not edit the class manually.
  */
 import type { EventSourceWidgetSelectedElementDto } from './EventSourceWidgetSelectedElementDto';
+import type { WidgetCustomActionCapabilityDto } from './WidgetCustomActionCapabilityDto';
 import type { EventSourceWidgetPageContextDto } from './EventSourceWidgetPageContextDto';
 /**
- *
+ * EventSourceWidgetLeadDataDto.
  * @export
  * @interface EventSourceWidgetLeadDataDto
  */
@@ -41,7 +42,27 @@ export interface EventSourceWidgetLeadDataDto {
      * @memberof EventSourceWidgetLeadDataDto
      */
     selectedElement?: EventSourceWidgetSelectedElementDto;
+    /**
+     * Custom actions host-, .
+     * @type {Array<WidgetCustomActionCapabilityDto>}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    customActions?: Array<WidgetCustomActionCapabilityDto>;
+    /**
+     * title/description custom_actions. , ru+en.
+     * @type {string}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    customActionsLanguage?: EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum;
 }
+/**
+ * @export
+ */
+export declare const EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum = typeof EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum[keyof typeof EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum];
 /**
  * Check if a given object implements the EventSourceWidgetLeadDataDto interface.
  */

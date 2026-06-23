@@ -12,7 +12,7 @@
 import type { AgentOverallStatsDto } from './AgentOverallStatsDto';
 import type { AgentProblemMetricDto } from './AgentProblemMetricDto';
 /**
- *
+ * TopAgentItemDto.
  * @export
  * @interface TopAgentItemDto
  */

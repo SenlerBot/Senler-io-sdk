@@ -22,7 +22,7 @@ import {
 } from './EventDeliveryTelegramDataDto';
 
 /**
- * 
+ * TelegramEventDeliveryRefDto.
  * @export
  * @interface TelegramEventDeliveryRefDto
  */

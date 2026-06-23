@@ -19,7 +19,7 @@ import type { MetricContextDto } from './MetricContextDto';
 import type { RecommendationDto } from './RecommendationDto';
 import type { PeriodInfoDto } from './PeriodInfoDto';
 /**
- *
+ * DrillDownByMetricResponseDto.
  * @export
  * @interface DrillDownByMetricResponseDto
  */

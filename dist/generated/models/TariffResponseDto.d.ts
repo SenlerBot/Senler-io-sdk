@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * TariffResponseDto.
  * @export
  * @interface TariffResponseDto
  */
@@ -76,25 +76,25 @@ export interface TariffResponseDto {
      */
     isFree: boolean;
     /**
-     * (RUB)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceRubMonthly: number;
     /**
-     * (USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceUsdMonthly: number;
     /**
-     * (RUB)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffResponseDto
      */
     priceRubYearly: number;
     /**
-     * (USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TariffResponseDto
      */

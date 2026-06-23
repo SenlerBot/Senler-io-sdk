@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * S3UploadUrlResponseDto.
  * @export
  * @interface S3UploadUrlResponseDto
  */

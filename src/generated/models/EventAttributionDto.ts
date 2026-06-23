@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventAttributionDto.
  * @export
  * @interface EventAttributionDto
  */

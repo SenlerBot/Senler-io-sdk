@@ -11,7 +11,7 @@
  */
 import type { VkEventDeliveryRefDtoDataVk } from './VkEventDeliveryRefDtoDataVk';
 /**
- *
+ * VkEventDeliveryRefDto.
  * @export
  * @interface VkEventDeliveryRefDto
  */

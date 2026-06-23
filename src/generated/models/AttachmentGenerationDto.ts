@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AttachmentGenerationDto.
  * @export
  * @interface AttachmentGenerationDto
  */

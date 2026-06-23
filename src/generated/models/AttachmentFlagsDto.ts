@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AttachmentFlagsDto.
  * @export
  * @interface AttachmentFlagsDto
  */

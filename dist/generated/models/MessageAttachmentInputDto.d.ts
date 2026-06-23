@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * MessageAttachmentInputDto.
  * @export
  * @interface MessageAttachmentInputDto
  */

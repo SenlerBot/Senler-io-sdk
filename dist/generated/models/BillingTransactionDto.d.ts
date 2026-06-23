@@ -10,8 +10,10 @@
  * Do not edit the class manually.
  */
 import type { LocalizedTextDto } from './LocalizedTextDto';
+import type { BillingTransactionDtoDetailsByAgentValue } from './BillingTransactionDtoDetailsByAgentValue';
+import type { BillingTransactionDtoDetailsByModelValue } from './BillingTransactionDtoDetailsByModelValue';
 /**
- *
+ * BillingTransactionDto.
  * @export
  * @interface BillingTransactionDto
  */
@@ -35,7 +37,7 @@ export interface BillingTransactionDto {
      */
     type: BillingTransactionDtoTypeEnum;
     /**
-     * / ( )
+     * ( ), (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -47,13 +49,13 @@ export interface BillingTransactionDto {
      */
     currency: string;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     balanceBefore: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -65,37 +67,37 @@ export interface BillingTransactionDto {
      */
     balanceCurrency: string;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceBefore: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceAfter: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceBefore: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceAfter: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     profitBalanceBefore: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -149,17 +151,21 @@ export interface BillingTransactionDto {
      */
     isLive?: boolean | null;
     /**
-     * (cost /)
-     * @type {object}
+     *
+     * @type {{ [key: string]: BillingTransactionDtoDetailsByAgentValue; }}
      * @memberof BillingTransactionDto
      */
-    detailsByAgent: object | null;
+    detailsByAgent: {
+        [key: string]: BillingTransactionDtoDetailsByAgentValue;
+    } | null;
     /**
-     * (cost /)
-     * @type {object}
+     *
+     * @type {{ [key: string]: BillingTransactionDtoDetailsByModelValue; }}
      * @memberof BillingTransactionDto
      */
-    detailsByModel: object | null;
+    detailsByModel: {
+        [key: string]: BillingTransactionDtoDetailsByModelValue;
+    } | null;
     /**
      *
      * @type {string}
@@ -173,19 +179,19 @@ export interface BillingTransactionDto {
      */
     conversionToCurrency?: string | null;
     /**
-     *
+     * , 1 ; : 1 USD = 95.5 RUB
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionRate?: number | null;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionAmountFrom?: number | null;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */

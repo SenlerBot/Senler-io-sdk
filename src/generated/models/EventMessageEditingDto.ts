@@ -22,7 +22,7 @@ import {
 } from './EventSenderDto';
 
 /**
- * 
+ * EventMessageEditingDto.
  * @export
  * @interface EventMessageEditingDto
  */

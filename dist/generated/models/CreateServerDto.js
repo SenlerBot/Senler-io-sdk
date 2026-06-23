@@ -19,8 +19,8 @@ exports.CreateServerDtoFromJSON = CreateServerDtoFromJSON;
 exports.CreateServerDtoFromJSONTyped = CreateServerDtoFromJSONTyped;
 exports.CreateServerDtoToJSON = CreateServerDtoToJSON;
 exports.CreateServerDtoToJSONTyped = CreateServerDtoToJSONTyped;
+const CreateServerBodyDtoMeta_1 = require("./CreateServerBodyDtoMeta");
 const CustomMcpServerAuthHeaderDto_1 = require("./CustomMcpServerAuthHeaderDto");
-const CreateServerDtoMeta_1 = require("./CreateServerDtoMeta");
 /**
  * @export
  */
@@ -65,7 +65,7 @@ function CreateServerDtoFromJSONTyped(json, ignoreDiscriminator) {
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'authMode': json['auth_mode'] == null ? undefined : json['auth_mode'],
         'projectId': json['project_id'],
-        'meta': json['meta'] == null ? undefined : (0, CreateServerDtoMeta_1.CreateServerDtoMetaFromJSON)(json['meta']),
+        'meta': json['meta'] == null ? undefined : (0, CreateServerBodyDtoMeta_1.CreateServerBodyDtoMetaFromJSON)(json['meta']),
     };
 }
 function CreateServerDtoToJSON(json) {
@@ -88,6 +88,6 @@ function CreateServerDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'custom_query_params': value['customQueryParams'],
         'auth_mode': value['authMode'],
         'project_id': value['projectId'],
-        'meta': (0, CreateServerDtoMeta_1.CreateServerDtoMetaToJSON)(value['meta']),
+        'meta': (0, CreateServerBodyDtoMeta_1.CreateServerBodyDtoMetaToJSON)(value['meta']),
     };
 }

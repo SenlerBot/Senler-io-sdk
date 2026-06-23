@@ -11,7 +11,7 @@
  */
 import type { DialogChatEventDto } from './DialogChatEventDto';
 /**
- *
+ * SendMessageResponseDto.
  * @export
  * @interface SendMessageResponseDto
  */

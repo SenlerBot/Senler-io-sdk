@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * McpServerTemplateToolPolicyDto.
  * @export
  * @interface McpServerTemplateToolPolicyDto
  */

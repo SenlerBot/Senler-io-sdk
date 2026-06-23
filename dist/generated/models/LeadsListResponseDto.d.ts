@@ -11,7 +11,7 @@
  */
 import type { LeadResponseDto } from './LeadResponseDto';
 /**
- *
+ * LeadsListResponseDto.
  * @export
  * @interface LeadsListResponseDto
  */

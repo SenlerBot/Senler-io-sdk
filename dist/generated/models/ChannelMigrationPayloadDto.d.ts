@@ -11,7 +11,7 @@
  */
 import type { ChannelMigrationPayloadMigrationDto } from './ChannelMigrationPayloadMigrationDto';
 /**
- *
+ * ChannelMigrationPayloadDto.
  * @export
  * @interface ChannelMigrationPayloadDto
  */

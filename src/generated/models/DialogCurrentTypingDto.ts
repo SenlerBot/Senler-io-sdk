@@ -22,7 +22,7 @@ import {
 } from './TypingSenderDto';
 
 /**
- * 
+ * DialogCurrentTypingDto.
  * @export
  * @interface DialogCurrentTypingDto
  */

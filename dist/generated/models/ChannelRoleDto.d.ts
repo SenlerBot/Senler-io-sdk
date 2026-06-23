@@ -11,7 +11,7 @@
  */
 import type { Role } from './Role';
 /**
- *
+ * ChannelRoleDto.
  * @export
  * @interface ChannelRoleDto
  */

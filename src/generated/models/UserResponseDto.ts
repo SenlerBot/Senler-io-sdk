@@ -22,7 +22,7 @@ import {
 } from './UserMetaDto';
 
 /**
- * 
+ * UserResponseDto.
  * @export
  * @interface UserResponseDto
  */

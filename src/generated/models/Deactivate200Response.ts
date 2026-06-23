@@ -14,13 +14,13 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * .
  * @export
  * @interface Deactivate200Response
  */
 export interface Deactivate200Response {
     /**
-     * 
+     * success.
      * @type {boolean}
      * @memberof Deactivate200Response
      */

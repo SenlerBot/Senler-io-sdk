@@ -10,25 +10,25 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * CurrencyBreakdown.
  * @export
  * @interface CurrencyBreakdown
  */
 export interface CurrencyBreakdown {
     /**
-     * RUB ()
+     * RUB, (/); : 1.25 = 125
      * @type {number}
      * @memberof CurrencyBreakdown
      */
     rub: number;
     /**
-     * USD ()
+     * USD, (/); : 1.25 = 125
      * @type {number}
      * @memberof CurrencyBreakdown
      */
     usd: number;
     /**
-     * RUB () USD
+     * RUB USD , (/); : 1.25 = 125
      * @type {number}
      * @memberof CurrencyBreakdown
      */

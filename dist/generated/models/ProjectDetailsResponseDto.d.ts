@@ -13,7 +13,7 @@ import type { ProjectAccessDto } from './ProjectAccessDto';
 import type { ProjectBalanceInfoDto } from './ProjectBalanceInfoDto';
 import type { ProjectResponseDto } from './ProjectResponseDto';
 /**
- *
+ * ProjectDetailsResponseDto.
  * @export
  * @interface ProjectDetailsResponseDto
  */

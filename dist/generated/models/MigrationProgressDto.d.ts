@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * MigrationProgressDto.
  * @export
  * @interface MigrationProgressDto
  */
@@ -28,7 +28,7 @@ export interface MigrationProgressDto {
      */
     processed: number;
     /**
-     *
+     * (0-100)
      * @type {number}
      * @memberof MigrationProgressDto
      */

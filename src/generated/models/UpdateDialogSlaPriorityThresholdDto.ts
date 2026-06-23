@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateDialogSlaPriorityThresholdDto.
  * @export
  * @interface UpdateDialogSlaPriorityThresholdDto
  */

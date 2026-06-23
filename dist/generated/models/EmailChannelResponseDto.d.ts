@@ -11,7 +11,7 @@
  */
 import type { EmailChannelDataResponseDto } from './EmailChannelDataResponseDto';
 /**
- *
+ * EmailChannelResponseDto.
  * @export
  * @interface EmailChannelResponseDto
  */

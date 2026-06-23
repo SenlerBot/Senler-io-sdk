@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AgentMetricDeviationDto.
  * @export
  * @interface AgentMetricDeviationDto
  */

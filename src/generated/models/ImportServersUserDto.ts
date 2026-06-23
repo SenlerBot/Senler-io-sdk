@@ -22,7 +22,7 @@ import {
 } from './CreateServerDto';
 
 /**
- * 
+ * ImportServersUserDto.
  * @export
  * @interface ImportServersUserDto
  */

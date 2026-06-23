@@ -22,7 +22,7 @@ import {
 } from './ProjectAttachmentUploadLimitsByChannelDto';
 
 /**
- * 
+ * UpdateProjectDto.
  * @export
  * @interface UpdateProjectDto
  */

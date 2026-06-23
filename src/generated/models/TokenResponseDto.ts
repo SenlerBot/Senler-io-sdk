@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TokenResponseDto.
  * @export
  * @interface TokenResponseDto
  */

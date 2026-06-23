@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventPlatformActionDto.
  * @export
  * @interface EventPlatformActionDto
  */

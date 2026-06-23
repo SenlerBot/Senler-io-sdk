@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UpdateLeadNotesDto.
  * @export
  * @interface UpdateLeadNotesDto
  */

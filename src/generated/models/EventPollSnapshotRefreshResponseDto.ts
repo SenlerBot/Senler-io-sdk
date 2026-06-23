@@ -22,7 +22,7 @@ import {
 } from './EventPollSnapshotDto';
 
 /**
- * 
+ * EventPollSnapshotRefreshResponseDto.
  * @export
  * @interface EventPollSnapshotRefreshResponseDto
  */

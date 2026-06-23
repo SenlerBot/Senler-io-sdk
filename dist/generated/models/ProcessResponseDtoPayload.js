@@ -21,6 +21,7 @@ const ChannelMigrationPayloadDto_1 = require("./ChannelMigrationPayloadDto");
 const ChannelSpacesRefreshPayloadDto_1 = require("./ChannelSpacesRefreshPayloadDto");
 const ChannelWebhooksRefreshPayloadDto_1 = require("./ChannelWebhooksRefreshPayloadDto");
 const ChannelsTreeRefreshPayloadDto_1 = require("./ChannelsTreeRefreshPayloadDto");
+const DeliverySendPayloadDto_1 = require("./DeliverySendPayloadDto");
 const ExportLeadsPayloadDto_1 = require("./ExportLeadsPayloadDto");
 const ImportLeadsPayloadDto_1 = require("./ImportLeadsPayloadDto");
 const LeadsRefreshPayloadDto_1 = require("./LeadsRefreshPayloadDto");
@@ -43,6 +44,9 @@ function ProcessResponseDtoPayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     if ((0, ChannelsTreeRefreshPayloadDto_1.instanceOfChannelsTreeRefreshPayloadDto)(json)) {
         return (0, ChannelsTreeRefreshPayloadDto_1.ChannelsTreeRefreshPayloadDtoFromJSONTyped)(json, true);
+    }
+    if ((0, DeliverySendPayloadDto_1.instanceOfDeliverySendPayloadDto)(json)) {
+        return (0, DeliverySendPayloadDto_1.DeliverySendPayloadDtoFromJSONTyped)(json, true);
     }
     if ((0, ExportLeadsPayloadDto_1.instanceOfExportLeadsPayloadDto)(json)) {
         return (0, ExportLeadsPayloadDto_1.ExportLeadsPayloadDtoFromJSONTyped)(json, true);
@@ -76,6 +80,9 @@ function ProcessResponseDtoPayloadToJSONTyped(value, ignoreDiscriminator = false
     }
     if ((0, ChannelsTreeRefreshPayloadDto_1.instanceOfChannelsTreeRefreshPayloadDto)(value)) {
         return (0, ChannelsTreeRefreshPayloadDto_1.ChannelsTreeRefreshPayloadDtoToJSON)(value);
+    }
+    if ((0, DeliverySendPayloadDto_1.instanceOfDeliverySendPayloadDto)(value)) {
+        return (0, DeliverySendPayloadDto_1.DeliverySendPayloadDtoToJSON)(value);
     }
     if ((0, ExportLeadsPayloadDto_1.instanceOfExportLeadsPayloadDto)(value)) {
         return (0, ExportLeadsPayloadDto_1.ExportLeadsPayloadDtoToJSON)(value);

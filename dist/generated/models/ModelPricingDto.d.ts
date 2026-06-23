@@ -12,7 +12,7 @@
 import type { TokensPricingDto } from './TokensPricingDto';
 import type { MessagesPricingDto } from './MessagesPricingDto';
 /**
- *
+ * ModelPricingDto.
  * @export
  * @interface ModelPricingDto
  */

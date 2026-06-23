@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * VkBindGroupInfoDto.
  * @export
  * @interface VkBindGroupInfoDto
  */

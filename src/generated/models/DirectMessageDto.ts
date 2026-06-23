@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DirectMessageDto.
  * @export
  * @interface DirectMessageDto
  */

@@ -20,9 +20,23 @@ import {
     LocalizedTextDtoToJSON,
     LocalizedTextDtoToJSONTyped,
 } from './LocalizedTextDto';
+import type { BillingTransactionDtoDetailsByAgentValue } from './BillingTransactionDtoDetailsByAgentValue';
+import {
+    BillingTransactionDtoDetailsByAgentValueFromJSON,
+    BillingTransactionDtoDetailsByAgentValueFromJSONTyped,
+    BillingTransactionDtoDetailsByAgentValueToJSON,
+    BillingTransactionDtoDetailsByAgentValueToJSONTyped,
+} from './BillingTransactionDtoDetailsByAgentValue';
+import type { BillingTransactionDtoDetailsByModelValue } from './BillingTransactionDtoDetailsByModelValue';
+import {
+    BillingTransactionDtoDetailsByModelValueFromJSON,
+    BillingTransactionDtoDetailsByModelValueFromJSONTyped,
+    BillingTransactionDtoDetailsByModelValueToJSON,
+    BillingTransactionDtoDetailsByModelValueToJSONTyped,
+} from './BillingTransactionDtoDetailsByModelValue';
 
 /**
- * 
+ * BillingTransactionDto.
  * @export
  * @interface BillingTransactionDto
  */
@@ -46,7 +60,7 @@ export interface BillingTransactionDto {
      */
     type: BillingTransactionDtoTypeEnum;
     /**
-     * / ( )
+     * ( ), (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -58,13 +72,13 @@ export interface BillingTransactionDto {
      */
     currency: string;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     balanceBefore: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -76,37 +90,37 @@ export interface BillingTransactionDto {
      */
     balanceCurrency: string;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceBefore: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     depositBalanceAfter: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceBefore: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     bonusBalanceAfter: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     profitBalanceBefore: number;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -160,17 +174,17 @@ export interface BillingTransactionDto {
      */
     isLive?: boolean | null;
     /**
-     * (cost /)
-     * @type {object}
+     * 
+     * @type {{ [key: string]: BillingTransactionDtoDetailsByAgentValue; }}
      * @memberof BillingTransactionDto
      */
-    detailsByAgent: object | null;
+    detailsByAgent: { [key: string]: BillingTransactionDtoDetailsByAgentValue; } | null;
     /**
-     * (cost /)
-     * @type {object}
+     * 
+     * @type {{ [key: string]: BillingTransactionDtoDetailsByModelValue; }}
      * @memberof BillingTransactionDto
      */
-    detailsByModel: object | null;
+    detailsByModel: { [key: string]: BillingTransactionDtoDetailsByModelValue; } | null;
     /**
      * 
      * @type {string}
@@ -184,19 +198,19 @@ export interface BillingTransactionDto {
      */
     conversionToCurrency?: string | null;
     /**
-     * 
+     * , 1 ; : 1 USD = 95.5 RUB
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionRate?: number | null;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
     conversionAmountFrom?: number | null;
     /**
-     * 
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BillingTransactionDto
      */
@@ -317,8 +331,8 @@ export function BillingTransactionDtoFromJSONTyped(json: any, ignoreDiscriminato
         'createdAt': (new Date(json['created_at'])),
         'status': json['status'] == null ? undefined : json['status'],
         'isLive': json['is_live'] == null ? undefined : json['is_live'],
-        'detailsByAgent': json['details_by_agent'],
-        'detailsByModel': json['details_by_model'],
+        'detailsByAgent': (json['details_by_agent'] == null ? null : mapValues(json['details_by_agent'], BillingTransactionDtoDetailsByAgentValueFromJSON)),
+        'detailsByModel': (json['details_by_model'] == null ? null : mapValues(json['details_by_model'], BillingTransactionDtoDetailsByModelValueFromJSON)),
         'conversionFromCurrency': json['conversion_from_currency'] == null ? undefined : json['conversion_from_currency'],
         'conversionToCurrency': json['conversion_to_currency'] == null ? undefined : json['conversion_to_currency'],
         'conversionRate': json['conversion_rate'] == null ? undefined : json['conversion_rate'],
@@ -367,8 +381,8 @@ export function BillingTransactionDtoToJSONTyped(value?: BillingTransactionDto |
         'created_at': ((value['createdAt']).toISOString()),
         'status': value['status'],
         'is_live': value['isLive'],
-        'details_by_agent': value['detailsByAgent'],
-        'details_by_model': value['detailsByModel'],
+        'details_by_agent': (value['detailsByAgent'] == null ? null : mapValues(value['detailsByAgent'], BillingTransactionDtoDetailsByAgentValueToJSON)),
+        'details_by_model': (value['detailsByModel'] == null ? null : mapValues(value['detailsByModel'], BillingTransactionDtoDetailsByModelValueToJSON)),
         'conversion_from_currency': value['conversionFromCurrency'],
         'conversion_to_currency': value['conversionToCurrency'],
         'conversion_rate': value['conversionRate'],

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AttachmentRecognitionCabinetDto.
  * @export
  * @interface AttachmentRecognitionCabinetDto
  */

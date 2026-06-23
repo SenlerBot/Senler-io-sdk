@@ -57,7 +57,7 @@ import {
 } from './SpeechRecognitionCostCabinetDto';
 
 /**
- * 
+ * EventCostsCabinetDto.
  * @export
  * @interface EventCostsCabinetDto
  */

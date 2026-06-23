@@ -22,7 +22,7 @@ import {
 } from './ChannelResponseDto';
 
 /**
- * 
+ * CreateDiscordChannelResponseDto.
  * @export
  * @interface CreateDiscordChannelResponseDto
  */

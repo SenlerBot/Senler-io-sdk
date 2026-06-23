@@ -22,7 +22,7 @@ import {
 } from './CreateWidgetChannelDataDto';
 
 /**
- * 
+ * CreateWidgetChannelResponseDto.
  * @export
  * @interface CreateWidgetChannelResponseDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TelegramChannelDataDto.
  * @export
  * @interface TelegramChannelDataDto
  */

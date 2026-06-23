@@ -22,7 +22,7 @@ import {
 } from './Role';
 
 /**
- * 
+ * ChannelRoleDto.
  * @export
  * @interface ChannelRoleDto
  */

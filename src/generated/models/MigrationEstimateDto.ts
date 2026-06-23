@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MigrationEstimateDto.
  * @export
  * @interface MigrationEstimateDto
  */

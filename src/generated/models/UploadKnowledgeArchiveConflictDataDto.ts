@@ -22,7 +22,7 @@ import {
 } from './KnowledgeArchiveConflictDto';
 
 /**
- * 
+ * UploadKnowledgeArchiveConflictDataDto.
  * @export
  * @interface UploadKnowledgeArchiveConflictDataDto
  */

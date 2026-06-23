@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SetDialogSlaEnabledDto.
  * @export
  * @interface SetDialogSlaEnabledDto
  */

@@ -22,7 +22,7 @@ import {
 } from './WidgetCodeDataDto';
 
 /**
- * 
+ * WidgetCodeResponseDto.
  * @export
  * @interface WidgetCodeResponseDto
  */

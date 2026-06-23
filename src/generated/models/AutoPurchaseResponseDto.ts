@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AutoPurchaseResponseDto.
  * @export
  * @interface AutoPurchaseResponseDto
  */

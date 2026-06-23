@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventModerationDto.
  * @export
  * @interface EventModerationDto
  */

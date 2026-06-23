@@ -20,9 +20,16 @@ import {
     LeadSpaceLinkResponseDtoToJSON,
     LeadSpaceLinkResponseDtoToJSONTyped,
 } from './LeadSpaceLinkResponseDto';
+import type { LeadGroupMembershipResponseDto } from './LeadGroupMembershipResponseDto';
+import {
+    LeadGroupMembershipResponseDtoFromJSON,
+    LeadGroupMembershipResponseDtoFromJSONTyped,
+    LeadGroupMembershipResponseDtoToJSON,
+    LeadGroupMembershipResponseDtoToJSONTyped,
+} from './LeadGroupMembershipResponseDto';
 
 /**
- * 
+ * LeadResponseDto.
  * @export
  * @interface LeadResponseDto
  */
@@ -101,6 +108,12 @@ export interface LeadResponseDto {
     isBlacklisted: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof LeadResponseDto
+     */
+    isProjectMemberIdentity: boolean;
+    /**
+     * 
      * @type {Date}
      * @memberof LeadResponseDto
      */
@@ -159,6 +172,12 @@ export interface LeadResponseDto {
      * @memberof LeadResponseDto
      */
     spaces: Array<LeadSpaceLinkResponseDto>;
+    /**
+     * 
+     * @type {Array<LeadGroupMembershipResponseDto>}
+     * @memberof LeadResponseDto
+     */
+    leadGroups: Array<LeadGroupMembershipResponseDto>;
 }
 
 
@@ -213,11 +232,13 @@ export function instanceOfLeadResponseDto(value: object): value is LeadResponseD
     if (!('isSubscribed' in value) || value['isSubscribed'] === undefined) return false;
     if (!('isBlocked' in value) || value['isBlocked'] === undefined) return false;
     if (!('isBlacklisted' in value) || value['isBlacklisted'] === undefined) return false;
+    if (!('isProjectMemberIdentity' in value) || value['isProjectMemberIdentity'] === undefined) return false;
     if (!('leadSource' in value) || value['leadSource'] === undefined) return false;
     if (!('leadType' in value) || value['leadType'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('spaces' in value) || value['spaces'] === undefined) return false;
+    if (!('leadGroups' in value) || value['leadGroups'] === undefined) return false;
     return true;
 }
 
@@ -243,6 +264,7 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'isSubscribed': json['is_subscribed'],
         'isBlocked': json['is_blocked'],
         'isBlacklisted': json['is_blacklisted'],
+        'isProjectMemberIdentity': json['is_project_member_identity'],
         'blacklistedAt': json['blacklisted_at'] == null ? undefined : (new Date(json['blacklisted_at'])),
         'blacklistReason': json['blacklist_reason'] == null ? undefined : json['blacklist_reason'],
         'leadSource': json['lead_source'],
@@ -253,6 +275,7 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'unsubscribedAt': json['unsubscribed_at'] == null ? undefined : (new Date(json['unsubscribed_at'])),
         'lastProfileSyncAt': json['last_profile_sync_at'] == null ? undefined : (new Date(json['last_profile_sync_at'])),
         'spaces': ((json['spaces'] as Array<any>).map(LeadSpaceLinkResponseDtoFromJSON)),
+        'leadGroups': ((json['lead_groups'] as Array<any>).map(LeadGroupMembershipResponseDtoFromJSON)),
     };
 }
 
@@ -279,6 +302,7 @@ export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignor
         'is_subscribed': value['isSubscribed'],
         'is_blocked': value['isBlocked'],
         'is_blacklisted': value['isBlacklisted'],
+        'is_project_member_identity': value['isProjectMemberIdentity'],
         'blacklisted_at': value['blacklistedAt'] == null ? undefined : ((value['blacklistedAt'] as any).toISOString()),
         'blacklist_reason': value['blacklistReason'],
         'lead_source': value['leadSource'],
@@ -289,6 +313,7 @@ export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignor
         'unsubscribed_at': value['unsubscribedAt'] == null ? undefined : ((value['unsubscribedAt'] as any).toISOString()),
         'last_profile_sync_at': value['lastProfileSyncAt'] == null ? undefined : ((value['lastProfileSyncAt'] as any).toISOString()),
         'spaces': ((value['spaces'] as Array<any>).map(LeadSpaceLinkResponseDtoToJSON)),
+        'lead_groups': ((value['leadGroups'] as Array<any>).map(LeadGroupMembershipResponseDtoToJSON)),
     };
 }
 

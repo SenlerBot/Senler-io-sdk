@@ -14,7 +14,7 @@ import type { AgentStatDto } from './AgentStatDto';
 import type { UsageEventDetailDto } from './UsageEventDetailDto';
 import type { BillingTransactionDto } from './BillingTransactionDto';
 /**
- *
+ * TransactionDetailsResponseDto.
  * @export
  * @interface TransactionDetailsResponseDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventButtonClickDto.
  * @export
  * @interface EventButtonClickDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StorageFilesPaginationDto.
  * @export
  * @interface StorageFilesPaginationDto
  */

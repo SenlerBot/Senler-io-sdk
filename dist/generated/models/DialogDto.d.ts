@@ -17,7 +17,7 @@ import type { EventSenderDto } from './EventSenderDto';
 import type { DialogOperatorAssignmentDto } from './DialogOperatorAssignmentDto';
 import type { DialogFirstMessageDto } from './DialogFirstMessageDto';
 /**
- *
+ * DialogDto.
  * @export
  * @interface DialogDto
  */

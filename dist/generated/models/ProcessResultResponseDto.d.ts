@@ -11,7 +11,7 @@
  */
 import type { ProcessResponseDtoResult } from './ProcessResponseDtoResult';
 /**
- *
+ * ProcessResultResponseDto.
  * @export
  * @interface ProcessResultResponseDto
  */
@@ -49,10 +49,12 @@ export declare const ProcessResultResponseDtoTypeEnum: {
     readonly LeadsImport: "leads_import";
     readonly LeadsRefresh: "leads_refresh";
     readonly ChannelMigration: "channel_migration";
+    readonly ChannelMigrationBackfill: "channel_migration_backfill";
     readonly ChannelsTreeRefresh: "channels_tree_refresh";
     readonly ChannelWebhooksRefresh: "channel_webhooks_refresh";
     readonly ChannelSpacesRefresh: "channel_spaces_refresh";
     readonly ResourcePackageImport: "resource_package_import";
+    readonly DeliverySend: "delivery_send";
 };
 export type ProcessResultResponseDtoTypeEnum = typeof ProcessResultResponseDtoTypeEnum[keyof typeof ProcessResultResponseDtoTypeEnum];
 /**

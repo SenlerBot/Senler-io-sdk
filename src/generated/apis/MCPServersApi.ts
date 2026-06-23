@@ -16,7 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   CreateMcpServerListDto,
-  CreateServerDto,
+  CreateServerBodyDto,
   CreateServerResponseDto,
   CustomMcpOAuthStatusResponseDto,
   ErrorResponse,
@@ -32,15 +32,15 @@ import type {
   StartCustomMcpOAuthDto,
   StartCustomMcpOAuthResponseDto,
   UpdateMcpServerListDto,
-  UpdateServerDto,
+  UpdateServerBodyDto,
   UpdateServerResponseDto,
   UpsertProjectCredentialDto,
 } from '../models/index';
 import {
     CreateMcpServerListDtoFromJSON,
     CreateMcpServerListDtoToJSON,
-    CreateServerDtoFromJSON,
-    CreateServerDtoToJSON,
+    CreateServerBodyDtoFromJSON,
+    CreateServerBodyDtoToJSON,
     CreateServerResponseDtoFromJSON,
     CreateServerResponseDtoToJSON,
     CustomMcpOAuthStatusResponseDtoFromJSON,
@@ -71,8 +71,8 @@ import {
     StartCustomMcpOAuthResponseDtoToJSON,
     UpdateMcpServerListDtoFromJSON,
     UpdateMcpServerListDtoToJSON,
-    UpdateServerDtoFromJSON,
-    UpdateServerDtoToJSON,
+    UpdateServerBodyDtoFromJSON,
+    UpdateServerBodyDtoToJSON,
     UpdateServerResponseDtoFromJSON,
     UpdateServerResponseDtoToJSON,
     UpsertProjectCredentialDtoFromJSON,
@@ -180,7 +180,7 @@ export interface ListsServersRequest {
 export interface McpServersCreateRequest {
     projectId: string;
     xSessionId: string;
-    createServerDto: CreateServerDto;
+    createServerBodyDto: CreateServerBodyDto;
     acceptLanguage?: McpServersCreateAcceptLanguageEnum;
 }
 
@@ -219,7 +219,7 @@ export interface McpServersUpdateRequest {
     projectId: string;
     id: string;
     xSessionId: string;
-    updateServerDto: UpdateServerDto;
+    updateServerBodyDto: UpdateServerBodyDto;
     acceptLanguage?: McpServersUpdateAcceptLanguageEnum;
 }
 
@@ -1244,10 +1244,10 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['createServerDto'] == null) {
+        if (requestParameters['createServerBodyDto'] == null) {
             throw new runtime.RequiredError(
-                'createServerDto',
-                'Required parameter "createServerDto" was null or undefined when calling mcpServersCreate().'
+                'createServerBodyDto',
+                'Required parameter "createServerBodyDto" was null or undefined when calling mcpServersCreate().'
             );
         }
 
@@ -1287,7 +1287,7 @@ export class MCPServersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateServerDtoToJSON(requestParameters['createServerDto']),
+            body: CreateServerBodyDtoToJSON(requestParameters['createServerBodyDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateServerResponseDtoFromJSON(jsonValue));
@@ -1628,10 +1628,10 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['updateServerDto'] == null) {
+        if (requestParameters['updateServerBodyDto'] == null) {
             throw new runtime.RequiredError(
-                'updateServerDto',
-                'Required parameter "updateServerDto" was null or undefined when calling mcpServersUpdate().'
+                'updateServerBodyDto',
+                'Required parameter "updateServerBodyDto" was null or undefined when calling mcpServersUpdate().'
             );
         }
 
@@ -1671,7 +1671,7 @@ export class MCPServersApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateServerDtoToJSON(requestParameters['updateServerDto']),
+            body: UpdateServerBodyDtoToJSON(requestParameters['updateServerBodyDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateServerResponseDtoFromJSON(jsonValue));

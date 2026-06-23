@@ -22,7 +22,7 @@ import {
 } from './VkBindGroupInfoDto';
 
 /**
- * 
+ * BindVKTokenDto.
  * @export
  * @interface BindVKTokenDto
  */

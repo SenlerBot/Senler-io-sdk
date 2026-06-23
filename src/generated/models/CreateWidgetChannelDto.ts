@@ -22,7 +22,7 @@ import {
 } from './WidgetThemeDto';
 
 /**
- * 
+ * CreateWidgetChannelDto.
  * @export
  * @interface CreateWidgetChannelDto
  */

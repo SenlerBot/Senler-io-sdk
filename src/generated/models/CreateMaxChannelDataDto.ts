@@ -22,7 +22,7 @@ import {
 } from './ChannelResponseDto';
 
 /**
- * 
+ * CreateMaxChannelDataDto.
  * @export
  * @interface CreateMaxChannelDataDto
  */

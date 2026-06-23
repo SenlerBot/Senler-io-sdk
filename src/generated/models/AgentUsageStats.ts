@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AgentUsageStats.
  * @export
  * @interface AgentUsageStats
  */
@@ -44,7 +44,7 @@ export interface AgentUsageStats {
      */
     dialogsCount: number;
     /**
-     * ( USD). : USD
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof AgentUsageStats
      */

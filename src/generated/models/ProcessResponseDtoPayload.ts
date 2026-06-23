@@ -40,6 +40,13 @@ import {
     ChannelsTreeRefreshPayloadDtoFromJSONTyped,
     ChannelsTreeRefreshPayloadDtoToJSON,
 } from './ChannelsTreeRefreshPayloadDto';
+import type { DeliverySendPayloadDto } from './DeliverySendPayloadDto';
+import {
+    instanceOfDeliverySendPayloadDto,
+    DeliverySendPayloadDtoFromJSON,
+    DeliverySendPayloadDtoFromJSONTyped,
+    DeliverySendPayloadDtoToJSON,
+} from './DeliverySendPayloadDto';
 import type { ExportLeadsPayloadDto } from './ExportLeadsPayloadDto';
 import {
     instanceOfExportLeadsPayloadDto,
@@ -74,7 +81,7 @@ import {
  * 
  * @export
  */
-export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | ResourcePackageImportPayloadDto;
+export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | ResourcePackageImportPayloadDto;
 
 export function ProcessResponseDtoPayloadFromJSON(json: any): ProcessResponseDtoPayload {
     return ProcessResponseDtoPayloadFromJSONTyped(json, false);
@@ -95,6 +102,9 @@ export function ProcessResponseDtoPayloadFromJSONTyped(json: any, ignoreDiscrimi
     }
     if (instanceOfChannelsTreeRefreshPayloadDto(json)) {
         return ChannelsTreeRefreshPayloadDtoFromJSONTyped(json, true);
+    }
+    if (instanceOfDeliverySendPayloadDto(json)) {
+        return DeliverySendPayloadDtoFromJSONTyped(json, true);
     }
     if (instanceOfExportLeadsPayloadDto(json)) {
         return ExportLeadsPayloadDtoFromJSONTyped(json, true);
@@ -132,6 +142,9 @@ export function ProcessResponseDtoPayloadToJSONTyped(value?: ProcessResponseDtoP
     }
     if (instanceOfChannelsTreeRefreshPayloadDto(value)) {
         return ChannelsTreeRefreshPayloadDtoToJSON(value as ChannelsTreeRefreshPayloadDto);
+    }
+    if (instanceOfDeliverySendPayloadDto(value)) {
+        return DeliverySendPayloadDtoToJSON(value as DeliverySendPayloadDto);
     }
     if (instanceOfExportLeadsPayloadDto(value)) {
         return ExportLeadsPayloadDtoToJSON(value as ExportLeadsPayloadDto);

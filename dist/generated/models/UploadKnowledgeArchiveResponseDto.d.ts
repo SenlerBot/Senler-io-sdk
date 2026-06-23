@@ -12,7 +12,7 @@
 import type { KnowledgeFileResponseDto } from './KnowledgeFileResponseDto';
 import type { KnowledgeFolderResponseDto } from './KnowledgeFolderResponseDto';
 /**
- *
+ * UploadKnowledgeArchiveResponseDto.
  * @export
  * @interface UploadKnowledgeArchiveResponseDto
  */

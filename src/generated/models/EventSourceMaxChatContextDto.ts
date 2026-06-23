@@ -29,7 +29,7 @@ import {
 } from './EventSourceMaxChatDataDto';
 
 /**
- * 
+ * EventSourceMaxChatContextDto.
  * @export
  * @interface EventSourceMaxChatContextDto
  */

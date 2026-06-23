@@ -43,7 +43,7 @@ import {
 } from './PermissionsDto';
 
 /**
- * 
+ * ProjectMemberDetailDto.
  * @export
  * @interface ProjectMemberDetailDto
  */

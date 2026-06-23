@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EditMessageDto.
  * @export
  * @interface EditMessageDto
  */

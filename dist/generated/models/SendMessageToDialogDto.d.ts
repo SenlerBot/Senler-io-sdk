@@ -11,7 +11,7 @@
  */
 import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
 /**
- *
+ * SendMessageToDialogDto.
  * @export
  * @interface SendMessageToDialogDto
  */

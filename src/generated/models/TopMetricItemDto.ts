@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TopMetricItemDto.
  * @export
  * @interface TopMetricItemDto
  */

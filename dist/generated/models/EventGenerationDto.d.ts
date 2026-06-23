@@ -12,7 +12,7 @@
 import type { EventGenerationMetricsDto } from './EventGenerationMetricsDto';
 import type { EventGenerationSummaryDto } from './EventGenerationSummaryDto';
 /**
- *
+ * EventGenerationDto.
  * @export
  * @interface EventGenerationDto
  */

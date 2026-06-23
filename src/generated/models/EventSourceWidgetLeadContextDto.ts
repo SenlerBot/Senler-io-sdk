@@ -29,7 +29,7 @@ import {
 } from './EventSourceWidgetLeadDataDto';
 
 /**
- * 
+ * EventSourceWidgetLeadContextDto.
  * @export
  * @interface EventSourceWidgetLeadContextDto
  */

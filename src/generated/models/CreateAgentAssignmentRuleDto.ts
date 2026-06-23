@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreateAgentAssignmentRuleDto.
  * @export
  * @interface CreateAgentAssignmentRuleDto
  */
@@ -25,6 +25,12 @@ export interface CreateAgentAssignmentRuleDto {
      * @memberof CreateAgentAssignmentRuleDto
      */
     channelId?: string | null;
+    /**
+     * ID . NULL = . channel_id.
+     * @type {string}
+     * @memberof CreateAgentAssignmentRuleDto
+     */
+    leadGroupId?: string | null;
     /**
      * ID . UUID = , NULL = . ( )
      * @type {string}
@@ -91,6 +97,7 @@ export function CreateAgentAssignmentRuleDtoFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
+        'leadGroupId': json['lead_group_id'] == null ? undefined : json['lead_group_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'role': json['role'],
@@ -110,6 +117,7 @@ export function CreateAgentAssignmentRuleDtoToJSONTyped(value?: CreateAgentAssig
     return {
         
         'channel_id': value['channelId'],
+        'lead_group_id': value['leadGroupId'],
         'agent_id': value['agentId'],
         'is_active': value['isActive'],
         'role': value['role'],

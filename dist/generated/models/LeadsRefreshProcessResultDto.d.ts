@@ -11,7 +11,7 @@
  */
 import type { LeadsRefreshErrorDto } from './LeadsRefreshErrorDto';
 /**
- *
+ * LeadsRefreshProcessResultDto.
  * @export
  * @interface LeadsRefreshProcessResultDto
  */

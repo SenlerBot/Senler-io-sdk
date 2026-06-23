@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ChannelTokenResponseDto, ConfirmS3UploadDto, GetAvatarUploadUrlDto, GetChannelAccessUserResponseDto, GetChannelResponseDto, GetChannelUserResponseDto, GetChannelsUserResponseDto, MigrationEstimateDto, MigrationEstimateResponseDto, SenlerStatusDto, StartMigrationDto, StartMigrationResponseDto, SuccessResponseDto, SyncChannelResponseDto, UpdateChannelDto, UpdateChannelResponseDto, UploadAvatarFromUrlDto, WidgetCodeResponseDto } from '../models/index';
+import type { ChannelTokenResponseDto, ConfirmS3UploadDto, FinishMigrationNowResponseDto, GetAvatarUploadUrlDto, GetChannelAccessUserResponseDto, GetChannelResponseDto, GetChannelUserResponseDto, GetChannelsUserResponseDto, MigrationBackfillEstimateResponseDto, MigrationEstimateDto, MigrationEstimateResponseDto, S3UploadUrlResponseDto, SenlerStatusDto, StartMigrationBackfillResponseDto, StartMigrationDto, StartMigrationResponseDto, SuccessResponseDto, SyncChannelResponseDto, UpdateChannelDto, UpdateChannelResponseDto, UploadAvatarFromUrlDto, WidgetCodeResponseDto } from '../models/index';
 export interface AvatarFromUrlRequest {
     id: string;
     uploadAvatarFromUrlDto: UploadAvatarFromUrlDto;
@@ -67,6 +67,11 @@ export interface GetAccessRequest {
     xSessionId?: string;
     acceptLanguage?: GetAccessAcceptLanguageEnum;
 }
+export interface GetMigrationBackfillEstimateRequest {
+    id: string;
+    xSessionId?: string;
+    acceptLanguage?: GetMigrationBackfillEstimateAcceptLanguageEnum;
+}
 export interface GetSenlerStatusRequest {
     id: string;
     xSessionId?: string;
@@ -83,11 +88,21 @@ export interface GetWidgetCodeRequest {
     xSessionId?: string;
     acceptLanguage?: GetWidgetCodeAcceptLanguageEnum;
 }
+export interface MigrationBackfillStartRequest {
+    id: string;
+    xSessionId?: string;
+    acceptLanguage?: MigrationBackfillStartAcceptLanguageEnum;
+}
 export interface MigrationEstimateRequest {
     id: string;
     migrationEstimateDto: MigrationEstimateDto;
     xSessionId?: string;
     acceptLanguage?: MigrationEstimateAcceptLanguageEnum;
+}
+export interface MigrationFinishNowRequest {
+    id: string;
+    xSessionId?: string;
+    acceptLanguage?: MigrationFinishNowAcceptLanguageEnum;
 }
 export interface MigrationStartRequest {
     id: string;
@@ -138,12 +153,12 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      * S3- . .
      * S3-
      */
-    channelsAvatarUploadUrlRaw(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<object>>;
+    channelsAvatarUploadUrlRaw(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
     /**
      * S3- . .
      * S3-
      */
-    channelsAvatarUploadUrl(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<object>;
+    channelsAvatarUploadUrl(requestParameters: ChannelsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
     /**
      * . .
      *
@@ -215,6 +230,16 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     getAccess(requestParameters: GetAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelAccessUserResponseDto>;
     /**
+     * , .
+     *
+     */
+    getMigrationBackfillEstimateRaw(requestParameters: GetMigrationBackfillEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MigrationBackfillEstimateResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getMigrationBackfillEstimate(requestParameters: GetMigrationBackfillEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MigrationBackfillEstimateResponseDto>;
+    /**
      * Senler : , ID Senler, .
      * Senler
      */
@@ -245,6 +270,16 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     getWidgetCode(requestParameters: GetWidgetCodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetCodeResponseDto>;
     /**
+     * , .
+     *
+     */
+    migrationBackfillStartRaw(requestParameters: MigrationBackfillStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartMigrationBackfillResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    migrationBackfillStart(requestParameters: MigrationBackfillStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartMigrationBackfillResponseDto>;
+    /**
      *
      *
      */
@@ -254,6 +289,16 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      *
      */
     migrationEstimate(requestParameters: MigrationEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MigrationEstimateResponseDto>;
+    /**
+     * , .
+     *
+     */
+    migrationFinishNowRaw(requestParameters: MigrationFinishNowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FinishMigrationNowResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    migrationFinishNow(requestParameters: MigrationFinishNowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FinishMigrationNowResponseDto>;
     /**
      * , .  : none ( ), 1_month, 6_months, 1_year, 2_years, all. . GET /api/channels/:id.
      *
@@ -403,6 +448,14 @@ export type GetAccessAcceptLanguageEnum = typeof GetAccessAcceptLanguageEnum[key
 /**
  * @export
  */
+export declare const GetMigrationBackfillEstimateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetMigrationBackfillEstimateAcceptLanguageEnum = typeof GetMigrationBackfillEstimateAcceptLanguageEnum[keyof typeof GetMigrationBackfillEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetSenlerStatusAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -427,11 +480,27 @@ export type GetWidgetCodeAcceptLanguageEnum = typeof GetWidgetCodeAcceptLanguage
 /**
  * @export
  */
+export declare const MigrationBackfillStartAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MigrationBackfillStartAcceptLanguageEnum = typeof MigrationBackfillStartAcceptLanguageEnum[keyof typeof MigrationBackfillStartAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const MigrationEstimateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type MigrationEstimateAcceptLanguageEnum = typeof MigrationEstimateAcceptLanguageEnum[keyof typeof MigrationEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const MigrationFinishNowAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MigrationFinishNowAcceptLanguageEnum = typeof MigrationFinishNowAcceptLanguageEnum[keyof typeof MigrationFinishNowAcceptLanguageEnum];
 /**
  * @export
  */

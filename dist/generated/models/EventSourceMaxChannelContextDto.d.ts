@@ -12,7 +12,7 @@
 import type { EventSourceMaxChannelDataDto } from './EventSourceMaxChannelDataDto';
 import type { EventAttributionDto } from './EventAttributionDto';
 /**
- *
+ * EventSourceMaxChannelContextDto.
  * @export
  * @interface EventSourceMaxChannelContextDto
  */

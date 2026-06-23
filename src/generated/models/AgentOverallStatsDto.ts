@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AgentOverallStatsDto.
  * @export
  * @interface AgentOverallStatsDto
  */

@@ -22,7 +22,7 @@ import {
 } from './LeadResponseDto';
 
 /**
- * 
+ * VerifySubscriptionAndAddResponseDto.
  * @export
  * @interface VerifySubscriptionAndAddResponseDto
  */

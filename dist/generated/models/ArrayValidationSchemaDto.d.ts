@@ -11,7 +11,7 @@
  */
 import type { ArrayItemsSchemaDto } from './ArrayItemsSchemaDto';
 /**
- *
+ * ArrayValidationSchemaDto.
  * @export
  * @interface ArrayValidationSchemaDto
  */

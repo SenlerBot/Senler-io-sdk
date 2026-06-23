@@ -11,7 +11,7 @@
  */
 import type { DataSourceInfoDto } from './DataSourceInfoDto';
 /**
- *
+ * ValidateDataSourceResultDto.
  * @export
  * @interface ValidateDataSourceResultDto
  */

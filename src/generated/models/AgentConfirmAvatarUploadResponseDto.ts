@@ -22,7 +22,7 @@ import {
 } from './AgentResponseDto';
 
 /**
- * 
+ * AgentConfirmAvatarUploadResponseDto.
  * @export
  * @interface AgentConfirmAvatarUploadResponseDto
  */

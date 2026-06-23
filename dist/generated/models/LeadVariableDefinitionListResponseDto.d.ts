@@ -11,7 +11,7 @@
  */
 import type { LeadVariableDefinitionResponseDto } from './LeadVariableDefinitionResponseDto';
 /**
- *
+ * LeadVariableDefinitionListResponseDto.
  * @export
  * @interface LeadVariableDefinitionListResponseDto
  */

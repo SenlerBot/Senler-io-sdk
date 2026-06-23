@@ -11,7 +11,7 @@
  */
 import type { VkBindGroupInfoDto } from './VkBindGroupInfoDto';
 /**
- *
+ * BindVKTokenDto.
  * @export
  * @interface BindVKTokenDto
  */

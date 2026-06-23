@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetDiscordThreadDataDto';
 
 /**
- * 
+ * DialogDiscordThreadReplyTargetDto.
  * @export
  * @interface DialogDiscordThreadReplyTargetDto
  */

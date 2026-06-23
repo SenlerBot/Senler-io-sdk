@@ -64,7 +64,7 @@ import {
 } from './DialogFirstMessageDto';
 
 /**
- * 
+ * DialogDto.
  * @export
  * @interface DialogDto
  */

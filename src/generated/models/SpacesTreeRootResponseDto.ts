@@ -22,7 +22,7 @@ import {
 } from './SpacesTreeRootChannelDto';
 
 /**
- * 
+ * SpacesTreeRootResponseDto.
  * @export
  * @interface SpacesTreeRootResponseDto
  */

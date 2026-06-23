@@ -22,17 +22,17 @@ import {
 } from './VariableSchemaDto';
 
 /**
- * 
+ * UpdateLeadVariableDefinitionDto.
  * @export
  * @interface UpdateLeadVariableDefinitionDto
  */
 export interface UpdateLeadVariableDefinitionDto {
     /**
-     * 
+     * . ; path- name.
      * @type {string}
      * @memberof UpdateLeadVariableDefinitionDto
      */
-    name?: string;
+    newName?: string;
     /**
      * 
      * @type {string}
@@ -92,7 +92,7 @@ export function UpdateLeadVariableDefinitionDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'name': json['name'] == null ? undefined : json['name'],
+        'newName': json['new_name'] == null ? undefined : json['new_name'],
         'type': json['type'] == null ? undefined : json['type'],
         'description': json['description'] == null ? undefined : json['description'],
         'agentInstruction': json['agent_instruction'] == null ? undefined : json['agent_instruction'],
@@ -111,7 +111,7 @@ export function UpdateLeadVariableDefinitionDtoToJSONTyped(value?: UpdateLeadVar
 
     return {
         
-        'name': value['name'],
+        'new_name': value['newName'],
         'type': value['type'],
         'description': value['description'],
         'agent_instruction': value['agentInstruction'],

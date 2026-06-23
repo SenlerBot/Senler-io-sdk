@@ -34,6 +34,8 @@ function instanceOfAppCatalogResponseDto(value) {
         return false;
     if (!('allowDeveloperDialogAccess' in value) || value['allowDeveloperDialogAccess'] === undefined)
         return false;
+    if (!('allowInstalledAgentSettingsView' in value) || value['allowInstalledAgentSettingsView'] === undefined)
+        return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
     return true;
@@ -55,6 +57,7 @@ function AppCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'types': json['types'],
         'allowedPermissions': json['allowed_permissions'],
         'allowDeveloperDialogAccess': json['allow_developer_dialog_access'],
+        'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -75,6 +78,7 @@ function AppCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'types': value['types'],
         'allowed_permissions': value['allowedPermissions'],
         'allow_developer_dialog_access': value['allowDeveloperDialogAccess'],
+        'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

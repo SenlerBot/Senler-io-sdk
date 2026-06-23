@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StartCustomMcpOAuthDto.
  * @export
  * @interface StartCustomMcpOAuthDto
  */

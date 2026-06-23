@@ -13,7 +13,7 @@ import type { TrainingPreviewEstimateDto } from './TrainingPreviewEstimateDto';
 import type { TrainingChannelHistoryPreviewDto } from './TrainingChannelHistoryPreviewDto';
 import type { TrainingDataVolumeEstimateDto } from './TrainingDataVolumeEstimateDto';
 /**
- *
+ * TrainingPreviewResponseDto.
  * @export
  * @interface TrainingPreviewResponseDto
  */

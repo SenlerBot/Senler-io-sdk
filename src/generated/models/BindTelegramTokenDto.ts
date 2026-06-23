@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * BindTelegramTokenDto.
  * @export
  * @interface BindTelegramTokenDto
  */

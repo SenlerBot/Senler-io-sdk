@@ -14,13 +14,13 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreateOrderDto.
  * @export
  * @interface CreateOrderDto
  */
 export interface CreateOrderDto {
     /**
-     * (/). topup; tariff/credits .
+     * . topup; tariff/credits ., (/); : 1.25 = 125
      * @type {number}
      * @memberof CreateOrderDto
      */

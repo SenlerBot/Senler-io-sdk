@@ -10,8 +10,9 @@
  * Do not edit the class manually.
  */
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
+import type { LeadGroupMembershipResponseDto } from './LeadGroupMembershipResponseDto';
 /**
- *
+ * LeadResponseDto.
  * @export
  * @interface LeadResponseDto
  */
@@ -90,6 +91,12 @@ export interface LeadResponseDto {
     isBlacklisted: boolean;
     /**
      *
+     * @type {boolean}
+     * @memberof LeadResponseDto
+     */
+    isProjectMemberIdentity: boolean;
+    /**
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
@@ -148,6 +155,12 @@ export interface LeadResponseDto {
      * @memberof LeadResponseDto
      */
     spaces: Array<LeadSpaceLinkResponseDto>;
+    /**
+     *
+     * @type {Array<LeadGroupMembershipResponseDto>}
+     * @memberof LeadResponseDto
+     */
+    leadGroups: Array<LeadGroupMembershipResponseDto>;
 }
 /**
  * @export

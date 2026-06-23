@@ -11,7 +11,7 @@
  */
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
- *
+ * CreateWidgetChannelDto.
  * @export
  * @interface CreateWidgetChannelDto
  */

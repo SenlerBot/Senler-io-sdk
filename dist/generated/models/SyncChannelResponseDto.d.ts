@@ -12,7 +12,7 @@
 import type { ChannelTokenResponseDto } from './ChannelTokenResponseDto';
 import type { ChannelResponseDto } from './ChannelResponseDto';
 /**
- *
+ * SyncChannelResponseDto.
  * @export
  * @interface SyncChannelResponseDto
  */

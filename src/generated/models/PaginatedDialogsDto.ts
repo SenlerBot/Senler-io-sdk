@@ -22,7 +22,7 @@ import {
 } from './DialogListItemDto';
 
 /**
- * 
+ * PaginatedDialogsDto.
  * @export
  * @interface PaginatedDialogsDto
  */

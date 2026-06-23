@@ -22,7 +22,7 @@ import {
 } from './BillingTransactionDto';
 
 /**
- * 
+ * BillingTransactionsResponseDto.
  * @export
  * @interface BillingTransactionsResponseDto
  */

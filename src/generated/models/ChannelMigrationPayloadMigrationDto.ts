@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelMigrationPayloadMigrationDto.
  * @export
  * @interface ChannelMigrationPayloadMigrationDto
  */
@@ -55,6 +55,18 @@ export interface ChannelMigrationPayloadMigrationDto {
      * @memberof ChannelMigrationPayloadMigrationDto
      */
     historyCutoffDate?: Date | null;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ChannelMigrationPayloadMigrationDto
+     */
+    migrationLinkId?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ChannelMigrationPayloadMigrationDto
+     */
+    finishNowRequestedAt?: Date | null;
 }
 
 
@@ -100,6 +112,8 @@ export function ChannelMigrationPayloadMigrationDtoFromJSONTyped(json: any, igno
         'newProjectId': json['new_project_id'],
         'historyOption': json['history_option'],
         'historyCutoffDate': json['history_cutoff_date'] == null ? undefined : (new Date(json['history_cutoff_date'])),
+        'migrationLinkId': json['migration_link_id'] == null ? undefined : json['migration_link_id'],
+        'finishNowRequestedAt': json['finish_now_requested_at'] == null ? undefined : (new Date(json['finish_now_requested_at'])),
     };
 }
 
@@ -120,6 +134,8 @@ export function ChannelMigrationPayloadMigrationDtoToJSONTyped(value?: ChannelMi
         'new_project_id': value['newProjectId'],
         'history_option': value['historyOption'],
         'history_cutoff_date': value['historyCutoffDate'] == null ? undefined : ((value['historyCutoffDate'] as any).toISOString()),
+        'migration_link_id': value['migrationLinkId'],
+        'finish_now_requested_at': value['finishNowRequestedAt'] == null ? undefined : ((value['finishNowRequestedAt'] as any).toISOString()),
     };
 }
 

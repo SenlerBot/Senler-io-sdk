@@ -21,6 +21,7 @@ const ChannelMigrationProcessResultDto_1 = require("./ChannelMigrationProcessRes
 const ChannelSpacesRefreshProcessResultDto_1 = require("./ChannelSpacesRefreshProcessResultDto");
 const ChannelWebhooksRefreshProcessResultDto_1 = require("./ChannelWebhooksRefreshProcessResultDto");
 const ChannelsTreeRefreshProcessResultDto_1 = require("./ChannelsTreeRefreshProcessResultDto");
+const DeliverySendProcessResultDto_1 = require("./DeliverySendProcessResultDto");
 const ExportProcessResultDto_1 = require("./ExportProcessResultDto");
 const ImportProcessResultDto_1 = require("./ImportProcessResultDto");
 const LeadsRefreshProcessResultDto_1 = require("./LeadsRefreshProcessResultDto");
@@ -43,6 +44,9 @@ function ProcessResponseDtoResultFromJSONTyped(json, ignoreDiscriminator) {
     }
     if ((0, ChannelsTreeRefreshProcessResultDto_1.instanceOfChannelsTreeRefreshProcessResultDto)(json)) {
         return (0, ChannelsTreeRefreshProcessResultDto_1.ChannelsTreeRefreshProcessResultDtoFromJSONTyped)(json, true);
+    }
+    if ((0, DeliverySendProcessResultDto_1.instanceOfDeliverySendProcessResultDto)(json)) {
+        return (0, DeliverySendProcessResultDto_1.DeliverySendProcessResultDtoFromJSONTyped)(json, true);
     }
     if ((0, ExportProcessResultDto_1.instanceOfExportProcessResultDto)(json)) {
         return (0, ExportProcessResultDto_1.ExportProcessResultDtoFromJSONTyped)(json, true);
@@ -76,6 +80,9 @@ function ProcessResponseDtoResultToJSONTyped(value, ignoreDiscriminator = false)
     }
     if ((0, ChannelsTreeRefreshProcessResultDto_1.instanceOfChannelsTreeRefreshProcessResultDto)(value)) {
         return (0, ChannelsTreeRefreshProcessResultDto_1.ChannelsTreeRefreshProcessResultDtoToJSON)(value);
+    }
+    if ((0, DeliverySendProcessResultDto_1.instanceOfDeliverySendProcessResultDto)(value)) {
+        return (0, DeliverySendProcessResultDto_1.DeliverySendProcessResultDtoToJSON)(value);
     }
     if ((0, ExportProcessResultDto_1.instanceOfExportProcessResultDto)(value)) {
         return (0, ExportProcessResultDto_1.ExportProcessResultDtoToJSON)(value);

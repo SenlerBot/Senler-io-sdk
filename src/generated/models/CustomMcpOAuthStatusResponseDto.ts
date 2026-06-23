@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CustomMcpOAuthStatusResponseDto.
  * @export
  * @interface CustomMcpOAuthStatusResponseDto
  */

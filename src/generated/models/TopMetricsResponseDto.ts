@@ -50,7 +50,7 @@ import {
 } from './PeriodInfoDto';
 
 /**
- * 
+ * TopMetricsResponseDto.
  * @export
  * @interface TopMetricsResponseDto
  */

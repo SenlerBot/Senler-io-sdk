@@ -11,7 +11,7 @@
  */
 import type { EventPollAnswerSnapshotDto } from './EventPollAnswerSnapshotDto';
 /**
- *
+ * EventPollSnapshotDto.
  * @export
  * @interface EventPollSnapshotDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * McpCredentialConnectedIdentityDto.
  * @export
  * @interface McpCredentialConnectedIdentityDto
  */

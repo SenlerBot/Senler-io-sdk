@@ -12,7 +12,7 @@
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceMaxChatDataDto } from './EventSourceMaxChatDataDto';
 /**
- *
+ * EventSourceMaxChatContextDto.
  * @export
  * @interface EventSourceMaxChatContextDto
  */

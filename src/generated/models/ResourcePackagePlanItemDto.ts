@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ResourcePackagePlanItemDto.
  * @export
  * @interface ResourcePackagePlanItemDto
  */

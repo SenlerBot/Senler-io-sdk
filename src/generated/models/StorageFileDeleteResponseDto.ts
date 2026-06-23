@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StorageFileDeleteResponseDto.
  * @export
  * @interface StorageFileDeleteResponseDto
  */

@@ -218,6 +218,8 @@ function instanceOfAgentResponseDto(value) {
         return false;
     if (!('enableSelectiveResponse' in value) || value['enableSelectiveResponse'] === undefined)
         return false;
+    if (!('enableOperatorReplySuggestions' in value) || value['enableOperatorReplySuggestions'] === undefined)
+        return false;
     if (!('enableScheduling' in value) || value['enableScheduling'] === undefined)
         return false;
     if (!('enableSkipMetrics' in value) || value['enableSkipMetrics'] === undefined)
@@ -307,6 +309,7 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'],
+        'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'],
         'enableScheduling': json['enable_scheduling'],
         'enableSkipMetrics': json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'],
@@ -384,6 +387,7 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
+        'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],
         'enable_scheduling': value['enableScheduling'],
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],

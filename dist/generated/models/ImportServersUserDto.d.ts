@@ -11,7 +11,7 @@
  */
 import type { CreateServerDto } from './CreateServerDto';
 /**
- *
+ * ImportServersUserDto.
  * @export
  * @interface ImportServersUserDto
  */

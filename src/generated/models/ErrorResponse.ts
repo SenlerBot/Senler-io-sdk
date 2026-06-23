@@ -22,7 +22,7 @@ import {
 } from './ErrorData';
 
 /**
- * 
+ * ErrorResponse.
  * @export
  * @interface ErrorResponse
  */

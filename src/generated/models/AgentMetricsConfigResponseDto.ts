@@ -22,7 +22,7 @@ import {
 } from './MetricDefinitionDto';
 
 /**
- * 
+ * AgentMetricsConfigResponseDto.
  * @export
  * @interface AgentMetricsConfigResponseDto
  */

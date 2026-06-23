@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventMessageForwardingDto.
  * @export
  * @interface EventMessageForwardingDto
  */

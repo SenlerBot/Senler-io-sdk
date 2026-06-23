@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetEmailDataDto';
 
 /**
- * 
+ * DialogEmailReplyTargetDto.
  * @export
  * @interface DialogEmailReplyTargetDto
  */

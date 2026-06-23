@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetWidgetDataDto.
  * @export
  * @interface ReplyTargetWidgetDataDto
  */

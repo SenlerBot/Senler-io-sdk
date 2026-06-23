@@ -22,7 +22,7 @@ import {
 } from './KnowledgeBaseSourceBindingDto';
 
 /**
- * 
+ * AgentDraftResponseDto.
  * @export
  * @interface AgentDraftResponseDto
  */
@@ -334,6 +334,12 @@ export interface AgentDraftResponseDto {
      */
     enableSelectiveResponse: boolean;
     /**
+     * (operator_reply_template control_processing)
+     * @type {boolean}
+     * @memberof AgentDraftResponseDto
+     */
+    enableOperatorReplySuggestions: boolean;
+    /**
      * (schedule_next_message tool)
      * @type {boolean}
      * @memberof AgentDraftResponseDto
@@ -595,6 +601,7 @@ export function instanceOfAgentDraftResponseDto(value: object): value is AgentDr
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined) return false;
     if (!('enableMessageReactionsContext' in value) || value['enableMessageReactionsContext'] === undefined) return false;
     if (!('enableSelectiveResponse' in value) || value['enableSelectiveResponse'] === undefined) return false;
+    if (!('enableOperatorReplySuggestions' in value) || value['enableOperatorReplySuggestions'] === undefined) return false;
     if (!('enableScheduling' in value) || value['enableScheduling'] === undefined) return false;
     if (!('enableSkipMetrics' in value) || value['enableSkipMetrics'] === undefined) return false;
     if (!('enableMuteDialog' in value) || value['enableMuteDialog'] === undefined) return false;
@@ -671,6 +678,7 @@ export function AgentDraftResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'],
+        'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'],
         'enableScheduling': json['enable_scheduling'],
         'enableSkipMetrics': json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'],
@@ -748,6 +756,7 @@ export function AgentDraftResponseDtoToJSONTyped(value?: AgentDraftResponseDto |
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
+        'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],
         'enable_scheduling': value['enableScheduling'],
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],

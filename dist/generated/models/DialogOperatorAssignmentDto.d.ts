@@ -11,7 +11,7 @@
  */
 import type { DialogOperatorAssignmentUserInfoDto } from './DialogOperatorAssignmentUserInfoDto';
 /**
- *
+ * DialogOperatorAssignmentDto.
  * @export
  * @interface DialogOperatorAssignmentDto
  */

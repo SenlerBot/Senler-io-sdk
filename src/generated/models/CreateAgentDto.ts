@@ -22,7 +22,7 @@ import {
 } from './KnowledgeBaseSourceBindingDto';
 
 /**
- * 
+ * CreateAgentDto.
  * @export
  * @interface CreateAgentDto
  */
@@ -316,6 +316,36 @@ export interface CreateAgentDto {
      */
     enableMessageReactionsContext?: boolean;
     /**
+     * (skip_response tool). true
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableSelectiveResponse?: boolean;
+    /**
+     * . enable_selective_response=true; operator_reply_template control_processing
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableOperatorReplySuggestions?: boolean;
+    /**
+     * (schedule_next_message tool)
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableScheduling?: boolean;
+    /**
+     * (skip_metrics control_processing)
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableSkipMetrics?: boolean;
+    /**
+     * . API: mute_dialog.
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableMuteDialog?: boolean;
+    /**
      * detach_from_dialog tool
      * @type {boolean}
      * @memberof CreateAgentDto
@@ -590,6 +620,11 @@ export function CreateAgentDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'] == null ? undefined : json['enable_message_reactions_context'],
+        'enableSelectiveResponse': json['enable_selective_response'] == null ? undefined : json['enable_selective_response'],
+        'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'] == null ? undefined : json['enable_operator_reply_suggestions'],
+        'enableScheduling': json['enable_scheduling'] == null ? undefined : json['enable_scheduling'],
+        'enableSkipMetrics': json['enable_skip_metrics'] == null ? undefined : json['enable_skip_metrics'],
+        'enableMuteDialog': json['enable_mute_dialog'] == null ? undefined : json['enable_mute_dialog'],
         'enableDetachFromDialog': json['enable_detach_from_dialog'] == null ? undefined : json['enable_detach_from_dialog'],
         'useProjectVariables': json['use_project_variables'] == null ? undefined : json['use_project_variables'],
         'useLeadVariables': json['use_lead_variables'] == null ? undefined : json['use_lead_variables'],
@@ -659,6 +694,11 @@ export function CreateAgentDtoToJSONTyped(value?: CreateAgentDto | null, ignoreD
         'enable_streaming': value['enableStreaming'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
+        'enable_selective_response': value['enableSelectiveResponse'],
+        'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],
+        'enable_scheduling': value['enableScheduling'],
+        'enable_skip_metrics': value['enableSkipMetrics'],
+        'enable_mute_dialog': value['enableMuteDialog'],
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
         'use_project_variables': value['useProjectVariables'],
         'use_lead_variables': value['useLeadVariables'],

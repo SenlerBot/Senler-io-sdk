@@ -11,7 +11,7 @@
  */
 import type { ResourcePackagePlanItemDto } from './ResourcePackagePlanItemDto';
 /**
- *
+ * ResourcePackageImportProcessResultDto.
  * @export
  * @interface ResourcePackageImportProcessResultDto
  */

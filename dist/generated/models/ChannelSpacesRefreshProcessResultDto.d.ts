@@ -11,7 +11,7 @@
  */
 import type { ChannelSpacesRefreshErrorDto } from './ChannelSpacesRefreshErrorDto';
 /**
- *
+ * ChannelSpacesRefreshProcessResultDto.
  * @export
  * @interface ChannelSpacesRefreshProcessResultDto
  */

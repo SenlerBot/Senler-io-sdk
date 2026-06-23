@@ -22,7 +22,7 @@ import {
 } from './TrafficChannelItemDto';
 
 /**
- * 
+ * TrafficChannelsResponseDto.
  * @export
  * @interface TrafficChannelsResponseDto
  */

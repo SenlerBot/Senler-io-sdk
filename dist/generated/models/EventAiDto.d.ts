@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EventAiDto.
  * @export
  * @interface EventAiDto
  */
@@ -33,6 +33,12 @@ export interface EventAiDto {
      * @memberof EventAiDto
      */
     skipMetrics?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof EventAiDto
+     */
+    operatorReplySuggestion?: boolean;
     /**
      *
      * @type {number}

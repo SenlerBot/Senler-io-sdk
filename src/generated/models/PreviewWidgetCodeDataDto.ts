@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * PreviewWidgetCodeDataDto.
  * @export
  * @interface PreviewWidgetCodeDataDto
  */

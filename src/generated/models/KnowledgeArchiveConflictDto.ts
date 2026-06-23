@@ -22,7 +22,7 @@ import {
 } from './KnowledgeArchiveReplaceImpactDto';
 
 /**
- * 
+ * KnowledgeArchiveConflictDto.
  * @export
  * @interface KnowledgeArchiveConflictDto
  */

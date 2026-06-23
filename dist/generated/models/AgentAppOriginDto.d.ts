@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AgentAppOriginDto.
  * @export
  * @interface AgentAppOriginDto
  */
@@ -57,6 +57,12 @@ export interface AgentAppOriginDto {
      * @memberof AgentAppOriginDto
      */
     installedAt?: Date | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentAppOriginDto
+     */
+    settingsViewAllowed: boolean;
 }
 /**
  * @export

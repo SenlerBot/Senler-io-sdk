@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreateKnowledgeTableDto.
  * @export
  * @interface CreateKnowledgeTableDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ImageGenerationCostCabinetDto.
  * @export
  * @interface ImageGenerationCostCabinetDto
  */

@@ -11,7 +11,7 @@
  */
 import type { MaxBotInfoDto } from './MaxBotInfoDto';
 /**
- *
+ * ValidateMaxTokenResultDto.
  * @export
  * @interface ValidateMaxTokenResultDto
  */

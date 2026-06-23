@@ -29,7 +29,7 @@ import {
 } from './DialogChatSearchEventDto';
 
 /**
- * 
+ * DialogEventsOffsetResponseDto.
  * @export
  * @interface DialogEventsOffsetResponseDto
  */

@@ -13,7 +13,7 @@ import type { ProcessResponseDtoPayload } from './ProcessResponseDtoPayload';
 import type { ProcessProgressDto } from './ProcessProgressDto';
 import type { ProcessResponseDtoResult } from './ProcessResponseDtoResult';
 /**
- *
+ * ProcessResponseDto.
  * @export
  * @interface ProcessResponseDto
  */
@@ -111,10 +111,12 @@ export declare const ProcessResponseDtoTypeEnum: {
     readonly LeadsImport: "leads_import";
     readonly LeadsRefresh: "leads_refresh";
     readonly ChannelMigration: "channel_migration";
+    readonly ChannelMigrationBackfill: "channel_migration_backfill";
     readonly ChannelsTreeRefresh: "channels_tree_refresh";
     readonly ChannelWebhooksRefresh: "channel_webhooks_refresh";
     readonly ChannelSpacesRefresh: "channel_spaces_refresh";
     readonly ResourcePackageImport: "resource_package_import";
+    readonly DeliverySend: "delivery_send";
 };
 export type ProcessResponseDtoTypeEnum = typeof ProcessResponseDtoTypeEnum[keyof typeof ProcessResponseDtoTypeEnum];
 /**

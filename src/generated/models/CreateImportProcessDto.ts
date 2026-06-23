@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * CreateImportProcessDto.
  * @export
  * @interface CreateImportProcessDto
  */
@@ -26,7 +26,7 @@ export interface CreateImportProcessDto {
      */
     channelId: string;
     /**
-     * . MAX chatId, - userId.
+     * . . MAX chatId, - userId.
      * @type {Array<string>}
      * @memberof CreateImportProcessDto
      */

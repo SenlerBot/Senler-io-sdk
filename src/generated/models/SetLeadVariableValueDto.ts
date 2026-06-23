@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SetLeadVariableValueDto.
  * @export
  * @interface SetLeadVariableValueDto
  */

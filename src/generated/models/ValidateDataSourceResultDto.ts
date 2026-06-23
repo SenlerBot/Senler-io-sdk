@@ -22,7 +22,7 @@ import {
 } from './DataSourceInfoDto';
 
 /**
- * 
+ * ValidateDataSourceResultDto.
  * @export
  * @interface ValidateDataSourceResultDto
  */

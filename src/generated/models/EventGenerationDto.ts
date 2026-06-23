@@ -29,7 +29,7 @@ import {
 } from './EventGenerationSummaryDto';
 
 /**
- * 
+ * EventGenerationDto.
  * @export
  * @interface EventGenerationDto
  */

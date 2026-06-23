@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetTelegramChatDataDto';
 
 /**
- * 
+ * DialogTelegramChatReplyTargetDto.
  * @export
  * @interface DialogTelegramChatReplyTargetDto
  */

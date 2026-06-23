@@ -22,7 +22,7 @@ import {
 } from './VariableSchemaDto';
 
 /**
- * 
+ * ProjectVariableResponseDto.
  * @export
  * @interface ProjectVariableResponseDto
  */

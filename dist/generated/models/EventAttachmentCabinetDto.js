@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EventAttachmentCabinetDtoPlatformTypeEnum = exports.EventAttachmentCabinetDtoDeliveryStageEnum = exports.EventAttachmentCabinetDtoDeliveryStatusEnum = exports.EventAttachmentCabinetDtoRecognitionStatusEnum = exports.EventAttachmentCabinetDtoUploadStageEnum = exports.EventAttachmentCabinetDtoUploadStatusEnum = exports.EventAttachmentCabinetDtoTypeEnum = void 0;
+exports.EventAttachmentCabinetDtoPlatformTypeEnum = exports.EventAttachmentCabinetDtoDeliveryStageEnum = exports.EventAttachmentCabinetDtoDeliveryStatusEnum = exports.EventAttachmentCabinetDtoRecognitionStatusEnum = exports.EventAttachmentCabinetDtoUploadStageEnum = exports.EventAttachmentCabinetDtoUploadStatusEnum = exports.EventAttachmentCabinetDtoUnavailableReasonEnum = exports.EventAttachmentCabinetDtoActionsEnum = exports.EventAttachmentCabinetDtoTypeEnum = void 0;
 exports.instanceOfEventAttachmentCabinetDto = instanceOfEventAttachmentCabinetDto;
 exports.EventAttachmentCabinetDtoFromJSON = EventAttachmentCabinetDtoFromJSON;
 exports.EventAttachmentCabinetDtoFromJSONTyped = EventAttachmentCabinetDtoFromJSONTyped;
@@ -21,21 +21,39 @@ exports.EventAttachmentCabinetDtoToJSON = EventAttachmentCabinetDtoToJSON;
 exports.EventAttachmentCabinetDtoToJSONTyped = EventAttachmentCabinetDtoToJSONTyped;
 const AttachmentGenerationDto_1 = require("./AttachmentGenerationDto");
 const AttachmentFlagsDto_1 = require("./AttachmentFlagsDto");
+const EventAttachmentContactDto_1 = require("./EventAttachmentContactDto");
 const AttachmentRecognitionCabinetDto_1 = require("./AttachmentRecognitionCabinetDto");
+const EventAttachmentLocationDto_1 = require("./EventAttachmentLocationDto");
 /**
  * @export
  */
 exports.EventAttachmentCabinetDtoTypeEnum = {
     Photo: 'photo',
     Video: 'video',
-    Document: 'document',
     Voice: 'voice',
     Audio: 'audio',
+    Document: 'document',
     Sticker: 'sticker',
-    Animation: 'animation',
-    Location: 'location',
     Contact: 'contact',
-    Poll: 'poll'
+    Location: 'location'
+};
+/**
+ * @export
+ */
+exports.EventAttachmentCabinetDtoActionsEnum = {
+    View: 'view',
+    Download: 'download',
+    OpenExternal: 'open_external',
+    SendToSelf: 'send_to_self'
+};
+/**
+ * @export
+ */
+exports.EventAttachmentCabinetDtoUnavailableReasonEnum = {
+    ProjectUploadLimitExceeded: 'project_upload_limit_exceeded',
+    TelegramBotApiDownloadLimit: 'telegram_bot_api_download_limit',
+    UploadFailed: 'upload_failed',
+    SourceUnavailable: 'source_unavailable'
 };
 /**
  * @export
@@ -118,6 +136,8 @@ function EventAttachmentCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
         'storageUrl': json['storage_url'] == null ? undefined : json['storage_url'],
         'previewUrl': json['preview_url'] == null ? undefined : json['preview_url'],
         'externalUrl': json['external_url'] == null ? undefined : json['external_url'],
+        'actions': json['actions'] == null ? undefined : json['actions'],
+        'unavailableReason': json['unavailable_reason'] == null ? undefined : json['unavailable_reason'],
         'fileName': json['file_name'] == null ? undefined : json['file_name'],
         'fileSize': json['file_size'] == null ? undefined : json['file_size'],
         'mimeType': json['mime_type'] == null ? undefined : json['mime_type'],
@@ -138,6 +158,8 @@ function EventAttachmentCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
         'deliveryError': json['delivery_error'] == null ? undefined : json['delivery_error'],
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
         'platformFileId': json['platform_file_id'] == null ? undefined : json['platform_file_id'],
+        'contact': json['contact'] == null ? undefined : (0, EventAttachmentContactDto_1.EventAttachmentContactDtoFromJSON)(json['contact']),
+        'location': json['location'] == null ? undefined : (0, EventAttachmentLocationDto_1.EventAttachmentLocationDtoFromJSON)(json['location']),
         'uploadedAt': json['uploaded_at'] == null ? undefined : (new Date(json['uploaded_at'])),
     };
 }
@@ -154,6 +176,8 @@ function EventAttachmentCabinetDtoToJSONTyped(value, ignoreDiscriminator = false
         'storage_url': value['storageUrl'],
         'preview_url': value['previewUrl'],
         'external_url': value['externalUrl'],
+        'actions': value['actions'],
+        'unavailable_reason': value['unavailableReason'],
         'file_name': value['fileName'],
         'file_size': value['fileSize'],
         'mime_type': value['mimeType'],
@@ -174,6 +198,8 @@ function EventAttachmentCabinetDtoToJSONTyped(value, ignoreDiscriminator = false
         'delivery_error': value['deliveryError'],
         'platform_type': value['platformType'],
         'platform_file_id': value['platformFileId'],
+        'contact': (0, EventAttachmentContactDto_1.EventAttachmentContactDtoToJSON)(value['contact']),
+        'location': (0, EventAttachmentLocationDto_1.EventAttachmentLocationDtoToJSON)(value['location']),
         'uploaded_at': value['uploadedAt'] == null ? undefined : ((value['uploadedAt']).toISOString()),
     };
 }

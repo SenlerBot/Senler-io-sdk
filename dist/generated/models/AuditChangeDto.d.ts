@@ -11,7 +11,7 @@
  */
 import type { AuditValueReferenceDto } from './AuditValueReferenceDto';
 /**
- *
+ * AuditChangeDto.
  * @export
  * @interface AuditChangeDto
  */

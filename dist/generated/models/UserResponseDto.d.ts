@@ -11,7 +11,7 @@
  */
 import type { UserMetaDto } from './UserMetaDto';
 /**
- *
+ * UserResponseDto.
  * @export
  * @interface UserResponseDto
  */

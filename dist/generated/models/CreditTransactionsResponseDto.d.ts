@@ -11,7 +11,7 @@
  */
 import type { CreditTransactionDto } from './CreditTransactionDto';
 /**
- *
+ * CreditTransactionsResponseDto.
  * @export
  * @interface CreditTransactionsResponseDto
  */

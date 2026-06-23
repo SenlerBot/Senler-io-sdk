@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * QuickMetricsResponseDto.
  * @export
  * @interface QuickMetricsResponseDto
  */

@@ -11,7 +11,7 @@
  */
 import type { EventReactionUserDto } from './EventReactionUserDto';
 /**
- *
+ * EventReactionUsersResponseDto.
  * @export
  * @interface EventReactionUsersResponseDto
  */

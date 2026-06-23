@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * PlatformStats.
  * @export
  * @interface PlatformStats
  */
@@ -54,7 +54,6 @@ export declare const PlatformStatsPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
-    readonly Unknown: "unknown";
 };
 export type PlatformStatsPlatformTypeEnum = typeof PlatformStatsPlatformTypeEnum[keyof typeof PlatformStatsPlatformTypeEnum];
 /**

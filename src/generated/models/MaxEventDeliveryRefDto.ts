@@ -22,7 +22,7 @@ import {
 } from './EventDeliveryMaxDataDto';
 
 /**
- * 
+ * MaxEventDeliveryRefDto.
  * @export
  * @interface MaxEventDeliveryRefDto
  */

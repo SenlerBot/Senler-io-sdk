@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetTelegramTopicDataDto } from './ReplyTargetTelegramTopicDataDto';
 /**
- *
+ * DialogTelegramTopicReplyTargetDto.
  * @export
  * @interface DialogTelegramTopicReplyTargetDto
  */

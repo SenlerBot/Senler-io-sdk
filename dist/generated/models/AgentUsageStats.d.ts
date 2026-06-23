@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AgentUsageStats.
  * @export
  * @interface AgentUsageStats
  */
@@ -40,7 +40,7 @@ export interface AgentUsageStats {
      */
     dialogsCount: number;
     /**
-     * ( USD). : USD
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof AgentUsageStats
      */

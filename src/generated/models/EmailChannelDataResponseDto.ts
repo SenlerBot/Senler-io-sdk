@@ -22,7 +22,7 @@ import {
 } from './ChannelResponseDto';
 
 /**
- * 
+ * EmailChannelDataResponseDto.
  * @export
  * @interface EmailChannelDataResponseDto
  */

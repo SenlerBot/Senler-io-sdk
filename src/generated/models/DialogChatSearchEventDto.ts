@@ -190,7 +190,7 @@ import {
 } from './EventAttachmentCabinetDto';
 
 /**
- * 
+ * DialogChatSearchEventDto.
  * @export
  * @interface DialogChatSearchEventDto
  */

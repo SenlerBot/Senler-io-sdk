@@ -11,7 +11,7 @@
  */
 import type { InvitationListItemDto } from './InvitationListItemDto';
 /**
- *
+ * InvitationCreatedResponseDto.
  * @export
  * @interface InvitationCreatedResponseDto
  */

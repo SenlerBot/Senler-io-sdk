@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * CreateAgentAssignmentRuleDto.
  * @export
  * @interface CreateAgentAssignmentRuleDto
  */
@@ -21,6 +21,12 @@ export interface CreateAgentAssignmentRuleDto {
      * @memberof CreateAgentAssignmentRuleDto
      */
     channelId?: string | null;
+    /**
+     * ID . NULL = . channel_id.
+     * @type {string}
+     * @memberof CreateAgentAssignmentRuleDto
+     */
+    leadGroupId?: string | null;
     /**
      * ID . UUID = , NULL = . ( )
      * @type {string}

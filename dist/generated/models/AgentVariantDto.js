@@ -35,6 +35,8 @@ exports.AgentVariantDtoAgentTypeEnum = {
  * Check if a given object implements the AgentVariantDto interface.
  */
 function instanceOfAgentVariantDto(value) {
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('instruction' in value) || value['instruction'] === undefined)
@@ -49,6 +51,7 @@ function AgentVariantDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'id': json['id'],
         'name': json['name'],
         'instruction': json['instruction'],
         'agentType': json['agent_type'] == null ? undefined : json['agent_type'],
@@ -67,6 +70,7 @@ function AgentVariantDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'id': value['id'],
         'name': value['name'],
         'instruction': value['instruction'],
         'agent_type': value['agentType'],

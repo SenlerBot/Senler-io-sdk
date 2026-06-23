@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EstimatedCostDto.
  * @export
  * @interface EstimatedCostDto
  */

@@ -19,7 +19,10 @@ exports.CreditTransactionDtoFromJSON = CreditTransactionDtoFromJSON;
 exports.CreditTransactionDtoFromJSONTyped = CreditTransactionDtoFromJSONTyped;
 exports.CreditTransactionDtoToJSON = CreditTransactionDtoToJSON;
 exports.CreditTransactionDtoToJSONTyped = CreditTransactionDtoToJSONTyped;
+const runtime_1 = require("../runtime");
 const LocalizedTextDto_1 = require("./LocalizedTextDto");
+const CreditTransactionDtoDetailsByModelValue_1 = require("./CreditTransactionDtoDetailsByModelValue");
+const CreditTransactionDtoDetailsByAgentValue_1 = require("./CreditTransactionDtoDetailsByAgentValue");
 /**
  * @export
  */
@@ -89,8 +92,8 @@ function CreditTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'periodEnd': (json['period_end'] == null ? null : new Date(json['period_end'])),
         'usageEventsCount': json['usage_events_count'] == null ? undefined : json['usage_events_count'],
         'totalTokens': json['total_tokens'] == null ? undefined : json['total_tokens'],
-        'detailsByAgent': json['details_by_agent'] == null ? undefined : json['details_by_agent'],
-        'detailsByModel': json['details_by_model'] == null ? undefined : json['details_by_model'],
+        'detailsByAgent': json['details_by_agent'] == null ? undefined : ((0, runtime_1.mapValues)(json['details_by_agent'], CreditTransactionDtoDetailsByAgentValue_1.CreditTransactionDtoDetailsByAgentValueFromJSON)),
+        'detailsByModel': json['details_by_model'] == null ? undefined : ((0, runtime_1.mapValues)(json['details_by_model'], CreditTransactionDtoDetailsByModelValue_1.CreditTransactionDtoDetailsByModelValueFromJSON)),
         'tariffName': json['tariff_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['tariff_name']),
         'creditPackageName': json['credit_package_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['credit_package_name']),
         'createdAt': (new Date(json['created_at'])),
@@ -117,8 +120,8 @@ function CreditTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'period_end': (value['periodEnd'] == null ? null : value['periodEnd'].toISOString()),
         'usage_events_count': value['usageEventsCount'],
         'total_tokens': value['totalTokens'],
-        'details_by_agent': value['detailsByAgent'],
-        'details_by_model': value['detailsByModel'],
+        'details_by_agent': value['detailsByAgent'] == null ? undefined : ((0, runtime_1.mapValues)(value['detailsByAgent'], CreditTransactionDtoDetailsByAgentValue_1.CreditTransactionDtoDetailsByAgentValueToJSON)),
+        'details_by_model': value['detailsByModel'] == null ? undefined : ((0, runtime_1.mapValues)(value['detailsByModel'], CreditTransactionDtoDetailsByModelValue_1.CreditTransactionDtoDetailsByModelValueToJSON)),
         'tariff_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['tariffName']),
         'credit_package_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['creditPackageName']),
         'created_at': ((value['createdAt']).toISOString()),

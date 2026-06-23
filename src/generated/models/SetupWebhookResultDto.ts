@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SetupWebhookResultDto.
  * @export
  * @interface SetupWebhookResultDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * TaskDetailDto.
  * @export
  * @interface TaskDetailDto
  */

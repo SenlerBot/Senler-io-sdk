@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ChannelHistoryScanResponseDto.
  * @export
  * @interface ChannelHistoryScanResponseDto
  */

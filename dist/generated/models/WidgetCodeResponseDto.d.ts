@@ -11,7 +11,7 @@
  */
 import type { WidgetCodeDataDto } from './WidgetCodeDataDto';
 /**
- *
+ * WidgetCodeResponseDto.
  * @export
  * @interface WidgetCodeResponseDto
  */

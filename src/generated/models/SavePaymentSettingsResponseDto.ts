@@ -29,7 +29,7 @@ import {
 } from './PaymentSettingsResponseDto';
 
 /**
- * 
+ * SavePaymentSettingsResponseDto.
  * @export
  * @interface SavePaymentSettingsResponseDto
  */

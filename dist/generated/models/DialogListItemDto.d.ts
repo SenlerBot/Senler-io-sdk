@@ -19,7 +19,7 @@ import type { DialogCurrentTypingDto } from './DialogCurrentTypingDto';
 import type { DialogFirstMessageDto } from './DialogFirstMessageDto';
 import type { DialogSearchResultDto } from './DialogSearchResultDto';
 /**
- *
+ * DialogListItemDto.
  * @export
  * @interface DialogListItemDto
  */

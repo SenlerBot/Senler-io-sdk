@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EstimateBalanceDto.
  * @export
  * @interface EstimateBalanceDto
  */

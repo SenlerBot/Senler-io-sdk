@@ -11,7 +11,7 @@
  */
 import type { EmailChannelFilterDto } from './EmailChannelFilterDto';
 /**
- *
+ * UpdateEmailChannelDto.
  * @export
  * @interface UpdateEmailChannelDto
  */

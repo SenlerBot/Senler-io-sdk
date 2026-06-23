@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TariffsApi = exports.StorageApi = exports.SpacesApi = exports.ReadyMCPServersApi = exports.ProjectVariablesApi = exports.ProjectsAvatarApi = exports.ProjectsApi = exports.ProcessesApi = exports.PlatformsApi = exports.OAuthApi = exports.ModelsApi = exports.MetricsDefinitionsApi = exports.MetricsConfigApi = exports.MCPServersApi = exports.MCPExternalUserCredentialsApi = exports.LeadVariablesApi = exports.LeadVariableDefinitionsApi = exports.LeadsApi = exports.KnowledgeBaseApi = exports.FrontendVersionApi = exports.EventsApi = exports.DialogsMessagingApi = exports.DialogsManagementApi = exports.DialogsApi = exports.DataSourcesApi = exports.CountriesApi = exports.ChannelsWidgetApi = exports.ChannelsVKApi = exports.ChannelsTelegramApi = exports.ChannelsMAXApi = exports.ChannelsHistoryApi = exports.ChannelsEmailApi = exports.ChannelsDiscordApi = exports.ChannelsAvitoApi = exports.ChannelsApi = exports.BillingApi = exports.AuditApi = exports.AttachmentsApi = exports.AppsApi = exports.AppCatalogApi = exports.AnalyticsApi = exports.AgentTrainingApi = exports.AgentsAvatarApi = exports.AgentsApi = exports.AgentAssignmentRulesApi = exports.AccessInvitationsApi = exports.AccessApi = void 0;
+exports.StorageApi = exports.StatisticsApi = exports.SpacesApi = exports.ReadyMCPServersApi = exports.ProjectVariablesApi = exports.ProjectsAvatarApi = exports.ProjectsApi = exports.ProcessesApi = exports.PlatformsApi = exports.OAuthApi = exports.ModelsApi = exports.MetricsDefinitionsApi = exports.MetricsConfigApi = exports.MCPServersApi = exports.MCPExternalUserCredentialsApi = exports.LeadVariablesApi = exports.LeadVariableDefinitionsApi = exports.LeadsApi = exports.LeadGroupsPublicApi = exports.LeadGroupsApi = exports.KnowledgeBaseApi = exports.FrontendVersionApi = exports.EventsApi = exports.DialogsMessagingApi = exports.DialogsManagementApi = exports.DialogsApi = exports.DeliveriesApi = exports.DataSourcesApi = exports.CountriesApi = exports.ChannelsWidgetApi = exports.ChannelsVKApi = exports.ChannelsTelegramApi = exports.ChannelsMAXApi = exports.ChannelsHistoryApi = exports.ChannelsEmailApi = exports.ChannelsDiscordApi = exports.ChannelsAvitoApi = exports.ChannelsApi = exports.BillingApi = exports.AuditApi = exports.AttachmentsApi = exports.AppsApi = exports.AppCatalogApi = exports.AnalyticsApi = exports.AgentTrainingApi = exports.AgentsAvatarApi = exports.AgentsApi = exports.AgentAssignmentRulesApi = exports.AccessInvitationsApi = exports.AccessApi = void 0;
+exports.TariffsApi = void 0;
 /* tslint:disable */
 /* eslint-disable */
 var AccessApi_1 = require("./AccessApi");
@@ -49,6 +50,8 @@ var CountriesApi_1 = require("./CountriesApi");
 Object.defineProperty(exports, "CountriesApi", { enumerable: true, get: function () { return CountriesApi_1.CountriesApi; } });
 var DataSourcesApi_1 = require("./DataSourcesApi");
 Object.defineProperty(exports, "DataSourcesApi", { enumerable: true, get: function () { return DataSourcesApi_1.DataSourcesApi; } });
+var DeliveriesApi_1 = require("./DeliveriesApi");
+Object.defineProperty(exports, "DeliveriesApi", { enumerable: true, get: function () { return DeliveriesApi_1.DeliveriesApi; } });
 var DialogsApi_1 = require("./DialogsApi");
 Object.defineProperty(exports, "DialogsApi", { enumerable: true, get: function () { return DialogsApi_1.DialogsApi; } });
 var DialogsManagementApi_1 = require("./DialogsManagementApi");
@@ -61,6 +64,10 @@ var FrontendVersionApi_1 = require("./FrontendVersionApi");
 Object.defineProperty(exports, "FrontendVersionApi", { enumerable: true, get: function () { return FrontendVersionApi_1.FrontendVersionApi; } });
 var KnowledgeBaseApi_1 = require("./KnowledgeBaseApi");
 Object.defineProperty(exports, "KnowledgeBaseApi", { enumerable: true, get: function () { return KnowledgeBaseApi_1.KnowledgeBaseApi; } });
+var LeadGroupsApi_1 = require("./LeadGroupsApi");
+Object.defineProperty(exports, "LeadGroupsApi", { enumerable: true, get: function () { return LeadGroupsApi_1.LeadGroupsApi; } });
+var LeadGroupsPublicApi_1 = require("./LeadGroupsPublicApi");
+Object.defineProperty(exports, "LeadGroupsPublicApi", { enumerable: true, get: function () { return LeadGroupsPublicApi_1.LeadGroupsPublicApi; } });
 var LeadsApi_1 = require("./LeadsApi");
 Object.defineProperty(exports, "LeadsApi", { enumerable: true, get: function () { return LeadsApi_1.LeadsApi; } });
 var LeadVariableDefinitionsApi_1 = require("./LeadVariableDefinitionsApi");
@@ -93,6 +100,8 @@ var ReadyMCPServersApi_1 = require("./ReadyMCPServersApi");
 Object.defineProperty(exports, "ReadyMCPServersApi", { enumerable: true, get: function () { return ReadyMCPServersApi_1.ReadyMCPServersApi; } });
 var SpacesApi_1 = require("./SpacesApi");
 Object.defineProperty(exports, "SpacesApi", { enumerable: true, get: function () { return SpacesApi_1.SpacesApi; } });
+var StatisticsApi_1 = require("./StatisticsApi");
+Object.defineProperty(exports, "StatisticsApi", { enumerable: true, get: function () { return StatisticsApi_1.StatisticsApi; } });
 var StorageApi_1 = require("./StorageApi");
 Object.defineProperty(exports, "StorageApi", { enumerable: true, get: function () { return StorageApi_1.StorageApi; } });
 var TariffsApi_1 = require("./TariffsApi");

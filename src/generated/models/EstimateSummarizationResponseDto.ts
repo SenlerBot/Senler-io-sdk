@@ -29,7 +29,7 @@ import {
 } from './EstimateBalanceDto';
 
 /**
- * 
+ * EstimateSummarizationResponseDto.
  * @export
  * @interface EstimateSummarizationResponseDto
  */

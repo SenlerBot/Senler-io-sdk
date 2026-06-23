@@ -14,23 +14,17 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SelectVariantDto.
  * @export
  * @interface SelectVariantDto
  */
 export interface SelectVariantDto {
     /**
-     * 
-     * @type {number}
-     * @memberof SelectVariantDto
-     */
-    variantIndex: number;
-    /**
-     * ( )
+     * ID
      * @type {string}
      * @memberof SelectVariantDto
      */
-    customInstruction?: string;
+    variantId: string;
     /**
      * ( )
      * @type {string}
@@ -43,7 +37,7 @@ export interface SelectVariantDto {
  * Check if a given object implements the SelectVariantDto interface.
  */
 export function instanceOfSelectVariantDto(value: object): value is SelectVariantDto {
-    if (!('variantIndex' in value) || value['variantIndex'] === undefined) return false;
+    if (!('variantId' in value) || value['variantId'] === undefined) return false;
     return true;
 }
 
@@ -57,9 +51,8 @@ export function SelectVariantDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'variantIndex': json['variantIndex'],
-        'customInstruction': json['customInstruction'] == null ? undefined : json['customInstruction'],
-        'customName': json['customName'] == null ? undefined : json['customName'],
+        'variantId': json['variant_id'],
+        'customName': json['custom_name'] == null ? undefined : json['custom_name'],
     };
 }
 
@@ -74,9 +67,8 @@ export function SelectVariantDtoToJSONTyped(value?: SelectVariantDto | null, ign
 
     return {
         
-        'variantIndex': value['variantIndex'],
-        'customInstruction': value['customInstruction'],
-        'customName': value['customName'],
+        'variant_id': value['variantId'],
+        'custom_name': value['customName'],
     };
 }
 

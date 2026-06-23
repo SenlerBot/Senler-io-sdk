@@ -11,7 +11,7 @@
  */
 import type { PreviewWidgetCodeDataDto } from './PreviewWidgetCodeDataDto';
 /**
- *
+ * PreviewWidgetCodeResponseDto.
  * @export
  * @interface PreviewWidgetCodeResponseDto
  */

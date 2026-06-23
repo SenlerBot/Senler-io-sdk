@@ -29,7 +29,7 @@ import {
 } from './AgentResponseDto';
 
 /**
- * 
+ * AgentWithDraftResponseDto.
  * @export
  * @interface AgentWithDraftResponseDto
  */

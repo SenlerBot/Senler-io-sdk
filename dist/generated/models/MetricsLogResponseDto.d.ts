@@ -13,7 +13,7 @@ import type { MetricsLogItemDto } from './MetricsLogItemDto';
 import type { PaginationDto } from './PaginationDto';
 import type { MetricsLogSummaryDto } from './MetricsLogSummaryDto';
 /**
- *
+ * MetricsLogResponseDto.
  * @export
  * @interface MetricsLogResponseDto
  */

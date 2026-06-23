@@ -22,7 +22,7 @@ import {
 } from './LeadsFilterDto';
 
 /**
- * 
+ * SearchLeadsDto.
  * @export
  * @interface SearchLeadsDto
  */

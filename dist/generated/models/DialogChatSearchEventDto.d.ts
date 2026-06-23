@@ -35,7 +35,7 @@ import type { EventPollVoteDto } from './EventPollVoteDto';
 import type { EventSearchMetadataDto } from './EventSearchMetadataDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
 /**
- *
+ * DialogChatSearchEventDto.
  * @export
  * @interface DialogChatSearchEventDto
  */

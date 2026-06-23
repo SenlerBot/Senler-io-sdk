@@ -12,7 +12,7 @@
 import type { Role } from './Role';
 import type { ChannelRoleDto } from './ChannelRoleDto';
 /**
- *
+ * UpdateProjectMemberDto.
  * @export
  * @interface UpdateProjectMemberDto
  */

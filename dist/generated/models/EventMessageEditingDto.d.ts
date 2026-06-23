@@ -11,7 +11,7 @@
  */
 import type { EventSenderDto } from './EventSenderDto';
 /**
- *
+ * EventMessageEditingDto.
  * @export
  * @interface EventMessageEditingDto
  */

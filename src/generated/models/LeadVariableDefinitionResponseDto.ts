@@ -22,7 +22,7 @@ import {
 } from './VariableSchemaDto';
 
 /**
- * 
+ * LeadVariableDefinitionResponseDto.
  * @export
  * @interface LeadVariableDefinitionResponseDto
  */

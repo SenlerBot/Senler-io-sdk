@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * WidgetFeaturesDto.
  * @export
  * @interface WidgetFeaturesDto
  */

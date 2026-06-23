@@ -12,7 +12,7 @@
 import type { SpaceMediaEmbedded } from './SpaceMediaEmbedded';
 import type { SpaceTreeMatchMetadataDto } from './SpaceTreeMatchMetadataDto';
 /**
- *
+ * SpacesTreeFlatNodeDto.
  * @export
  * @interface SpacesTreeFlatNodeDto
  */

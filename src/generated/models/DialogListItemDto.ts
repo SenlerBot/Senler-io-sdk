@@ -78,7 +78,7 @@ import {
 } from './DialogSearchResultDto';
 
 /**
- * 
+ * DialogListItemDto.
  * @export
  * @interface DialogListItemDto
  */

@@ -10,9 +10,10 @@
  * Do not edit the class manually.
  */
 import type { DialogMessageAttachmentDto } from './DialogMessageAttachmentDto';
+import type { EventMessageForwardingDto } from './EventMessageForwardingDto';
 import type { EventSenderDto } from './EventSenderDto';
 /**
- *
+ * DialogFirstMessageDto.
  * @export
  * @interface DialogFirstMessageDto
  */
@@ -53,6 +54,12 @@ export interface DialogFirstMessageDto {
      * @memberof DialogFirstMessageDto
      */
     attachments?: Array<DialogMessageAttachmentDto>;
+    /**
+     *
+     * @type {EventMessageForwardingDto}
+     * @memberof DialogFirstMessageDto
+     */
+    forwarding?: EventMessageForwardingDto;
 }
 /**
  * @export

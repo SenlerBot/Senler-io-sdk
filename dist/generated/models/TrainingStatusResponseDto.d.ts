@@ -14,7 +14,7 @@ import type { TaskDetailDto } from './TaskDetailDto';
 import type { TrainingProgressDetailDto } from './TrainingProgressDetailDto';
 import type { AgentVariantDto } from './AgentVariantDto';
 /**
- *
+ * TrainingStatusResponseDto.
  * @export
  * @interface TrainingStatusResponseDto
  */

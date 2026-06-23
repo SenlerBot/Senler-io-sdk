@@ -61,6 +61,7 @@ function ChannelMigrationStatusDtoFromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'] == null ? undefined : json['status'],
         'progress': json['progress'] == null ? undefined : (0, MigrationProgressDto_1.MigrationProgressDtoFromJSON)(json['progress']),
         'targetProjectName': json['target_project_name'] == null ? undefined : json['target_project_name'],
+        'finishNowRequested': json['finish_now_requested'] == null ? undefined : json['finish_now_requested'],
     };
 }
 function ChannelMigrationStatusDtoToJSON(json) {
@@ -76,5 +77,6 @@ function ChannelMigrationStatusDtoToJSONTyped(value, ignoreDiscriminator = false
         'status': value['status'],
         'progress': (0, MigrationProgressDto_1.MigrationProgressDtoToJSON)(value['progress']),
         'target_project_name': value['targetProjectName'],
+        'finish_now_requested': value['finishNowRequested'],
     };
 }

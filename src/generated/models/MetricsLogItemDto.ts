@@ -36,7 +36,7 @@ import {
 } from './MetricsLogAgentDto';
 
 /**
- * 
+ * MetricsLogItemDto.
  * @export
  * @interface MetricsLogItemDto
  */

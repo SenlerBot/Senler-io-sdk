@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventPollAnswerSnapshotDto.
  * @export
  * @interface EventPollAnswerSnapshotDto
  */

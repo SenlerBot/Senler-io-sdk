@@ -29,7 +29,7 @@ import {
 } from './KnowledgeFolderResponseDto';
 
 /**
- * 
+ * UploadKnowledgeArchiveResponseDto.
  * @export
  * @interface UploadKnowledgeArchiveResponseDto
  */

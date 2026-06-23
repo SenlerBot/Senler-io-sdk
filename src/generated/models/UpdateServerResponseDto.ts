@@ -22,7 +22,7 @@ import {
 } from './McpServerResponseDto';
 
 /**
- * 
+ * UpdateServerResponseDto.
  * @export
  * @interface UpdateServerResponseDto
  */

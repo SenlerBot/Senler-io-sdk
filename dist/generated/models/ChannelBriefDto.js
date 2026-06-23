@@ -19,6 +19,7 @@ exports.ChannelBriefDtoFromJSON = ChannelBriefDtoFromJSON;
 exports.ChannelBriefDtoFromJSONTyped = ChannelBriefDtoFromJSONTyped;
 exports.ChannelBriefDtoToJSON = ChannelBriefDtoToJSON;
 exports.ChannelBriefDtoToJSONTyped = ChannelBriefDtoToJSONTyped;
+const ChannelMigrationBackfillDto_1 = require("./ChannelMigrationBackfillDto");
 const ChannelAccessDto_1 = require("./ChannelAccessDto");
 const ChannelMigrationStatusDto_1 = require("./ChannelMigrationStatusDto");
 /**
@@ -40,6 +41,8 @@ exports.ChannelBriefDtoTypeEnum = {
 function instanceOfChannelBriefDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
+    if (!('publicId' in value) || value['publicId'] === undefined)
+        return false;
     if (!('isPaused' in value) || value['isPaused'] === undefined)
         return false;
     return true;
@@ -53,6 +56,7 @@ function ChannelBriefDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
+        'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'type': json['type'] == null ? undefined : json['type'],
@@ -61,6 +65,7 @@ function ChannelBriefDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isPaused': json['is_paused'],
         'botUsername': json['bot_username'] == null ? undefined : json['bot_username'],
         'migration': json['migration'] == null ? undefined : (0, ChannelMigrationStatusDto_1.ChannelMigrationStatusDtoFromJSON)(json['migration']),
+        'migrationBackfill': json['migration_backfill'] == null ? undefined : (0, ChannelMigrationBackfillDto_1.ChannelMigrationBackfillDtoFromJSON)(json['migration_backfill']),
         'access': json['access'] == null ? undefined : (0, ChannelAccessDto_1.ChannelAccessDtoFromJSON)(json['access']),
         'historySupported': json['history_supported'] == null ? undefined : json['history_supported'],
         'historyScanStatus': json['history_scan_status'] == null ? undefined : json['history_scan_status'],
@@ -78,6 +83,7 @@ function ChannelBriefDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
+        'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],
         'type': value['type'],
@@ -86,6 +92,7 @@ function ChannelBriefDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_paused': value['isPaused'],
         'bot_username': value['botUsername'],
         'migration': (0, ChannelMigrationStatusDto_1.ChannelMigrationStatusDtoToJSON)(value['migration']),
+        'migration_backfill': (0, ChannelMigrationBackfillDto_1.ChannelMigrationBackfillDtoToJSON)(value['migrationBackfill']),
         'access': (0, ChannelAccessDto_1.ChannelAccessDtoToJSON)(value['access']),
         'history_supported': value['historySupported'],
         'history_scan_status': value['historyScanStatus'],

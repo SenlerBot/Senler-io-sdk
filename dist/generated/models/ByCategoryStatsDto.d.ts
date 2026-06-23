@@ -11,7 +11,7 @@
  */
 import type { CategoryStatsDto } from './CategoryStatsDto';
 /**
- *
+ * ByCategoryStatsDto.
  * @export
  * @interface ByCategoryStatsDto
  */

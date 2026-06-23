@@ -11,7 +11,7 @@
  */
 import type { LeadResponseDto } from './LeadResponseDto';
 /**
- *
+ * VerifySubscriptionAndAddResponseDto.
  * @export
  * @interface VerifySubscriptionAndAddResponseDto
  */

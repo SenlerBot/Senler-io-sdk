@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventTriggerContextDto.
  * @export
  * @interface EventTriggerContextDto
  */

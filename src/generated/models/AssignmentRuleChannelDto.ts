@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AssignmentRuleChannelDto.
  * @export
  * @interface AssignmentRuleChannelDto
  */

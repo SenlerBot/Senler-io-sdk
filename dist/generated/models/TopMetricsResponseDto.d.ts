@@ -15,7 +15,7 @@ import type { AppliedFiltersDto } from './AppliedFiltersDto';
 import type { TopMetricItemDto } from './TopMetricItemDto';
 import type { PeriodInfoDto } from './PeriodInfoDto';
 /**
- *
+ * TopMetricsResponseDto.
  * @export
  * @interface TopMetricsResponseDto
  */

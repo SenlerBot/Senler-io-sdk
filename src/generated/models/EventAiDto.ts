@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventAiDto.
  * @export
  * @interface EventAiDto
  */
@@ -37,6 +37,12 @@ export interface EventAiDto {
      * @memberof EventAiDto
      */
     skipMetrics?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EventAiDto
+     */
+    operatorReplySuggestion?: boolean;
     /**
      * 
      * @type {number}
@@ -77,6 +83,7 @@ export function EventAiDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'skipReason': json['skip_reason'] == null ? undefined : json['skip_reason'],
         'skipResponse': json['skip_response'] == null ? undefined : json['skip_response'],
         'skipMetrics': json['skip_metrics'] == null ? undefined : json['skip_metrics'],
+        'operatorReplySuggestion': json['operator_reply_suggestion'] == null ? undefined : json['operator_reply_suggestion'],
         'generationTimeMs': json['generation_time_ms'] == null ? undefined : json['generation_time_ms'],
         'requestId': json['request_id'] == null ? undefined : json['request_id'],
         'streamId': json['stream_id'] == null ? undefined : json['stream_id'],
@@ -97,6 +104,7 @@ export function EventAiDtoToJSONTyped(value?: EventAiDto | null, ignoreDiscrimin
         'skip_reason': value['skipReason'],
         'skip_response': value['skipResponse'],
         'skip_metrics': value['skipMetrics'],
+        'operator_reply_suggestion': value['operatorReplySuggestion'],
         'generation_time_ms': value['generationTimeMs'],
         'request_id': value['requestId'],
         'stream_id': value['streamId'],

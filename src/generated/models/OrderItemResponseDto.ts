@@ -22,7 +22,7 @@ import {
 } from './OrderTariffResponseDto';
 
 /**
- * 
+ * OrderItemResponseDto.
  * @export
  * @interface OrderItemResponseDto
  */
@@ -46,13 +46,13 @@ export interface OrderItemResponseDto {
      */
     type: OrderItemResponseDtoTypeEnum;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof OrderItemResponseDto
      */
     amount: number;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof OrderItemResponseDto
      */

@@ -22,7 +22,7 @@ import {
 } from './OrderResponseDto';
 
 /**
- * 
+ * OrderListResponseDto.
  * @export
  * @interface OrderListResponseDto
  */

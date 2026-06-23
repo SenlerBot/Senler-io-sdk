@@ -24,7 +24,7 @@ import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto'
 import type { EventErrorDto } from './EventErrorDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
 /**
- *
+ * CabinetEventListItemDto.
  * @export
  * @interface CabinetEventListItemDto
  */

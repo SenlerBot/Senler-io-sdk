@@ -11,7 +11,7 @@
  */
 import type { EventDeliveryEmailDataDto } from './EventDeliveryEmailDataDto';
 /**
- *
+ * EmailEventDeliveryRefDto.
  * @export
  * @interface EmailEventDeliveryRefDto
  */

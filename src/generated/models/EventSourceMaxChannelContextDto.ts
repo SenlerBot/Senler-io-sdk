@@ -29,7 +29,7 @@ import {
 } from './EventAttributionDto';
 
 /**
- * 
+ * EventSourceMaxChannelContextDto.
  * @export
  * @interface EventSourceMaxChannelContextDto
  */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * BooleanValidationDto.
  * @export
  * @interface BooleanValidationDto
  */

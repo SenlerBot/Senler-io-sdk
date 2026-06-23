@@ -29,7 +29,7 @@ import {
 } from './ProjectAttachmentUploadLimitsByChannelDto';
 
 /**
- * 
+ * ProjectResponseDto.
  * @export
  * @interface ProjectResponseDto
  */
@@ -40,6 +40,12 @@ export interface ProjectResponseDto {
      * @memberof ProjectResponseDto
      */
     id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ProjectResponseDto
+     */
+    publicId: string;
     /**
      * 
      * @type {string}
@@ -151,6 +157,7 @@ export type ProjectResponseDtoDefaultLanguageEnum = typeof ProjectResponseDtoDef
  */
 export function instanceOfProjectResponseDto(value: object): value is ProjectResponseDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('publicId' in value) || value['publicId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('defaultLanguage' in value) || value['defaultLanguage'] === undefined) return false;
     if (!('attachmentUploadLimitMb' in value) || value['attachmentUploadLimitMb'] === undefined) return false;
@@ -171,6 +178,7 @@ export function ProjectResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'id': json['id'],
+        'publicId': json['public_id'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -200,6 +208,7 @@ export function ProjectResponseDtoToJSONTyped(value?: ProjectResponseDto | null,
     return {
         
         'id': value['id'],
+        'public_id': value['publicId'],
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],

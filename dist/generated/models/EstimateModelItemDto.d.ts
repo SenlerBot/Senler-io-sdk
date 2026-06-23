@@ -12,7 +12,7 @@
 import type { EstimateModelPricingDto } from './EstimateModelPricingDto';
 import type { EstimatedCostDto } from './EstimatedCostDto';
 /**
- *
+ * EstimateModelItemDto.
  * @export
  * @interface EstimateModelItemDto
  */

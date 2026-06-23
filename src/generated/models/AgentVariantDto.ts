@@ -14,11 +14,17 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AgentVariantDto.
  * @export
  * @interface AgentVariantDto
  */
 export interface AgentVariantDto {
+    /**
+     * ID
+     * @type {string}
+     * @memberof AgentVariantDto
+     */
+    id: string;
     /**
      * 
      * @type {string}
@@ -89,6 +95,7 @@ export type AgentVariantDtoAgentTypeEnum = typeof AgentVariantDtoAgentTypeEnum[k
  * Check if a given object implements the AgentVariantDto interface.
  */
 export function instanceOfAgentVariantDto(value: object): value is AgentVariantDto {
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('instruction' in value) || value['instruction'] === undefined) return false;
     return true;
@@ -104,6 +111,7 @@ export function AgentVariantDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
+        'id': json['id'],
         'name': json['name'],
         'instruction': json['instruction'],
         'agentType': json['agent_type'] == null ? undefined : json['agent_type'],
@@ -126,6 +134,7 @@ export function AgentVariantDtoToJSONTyped(value?: AgentVariantDto | null, ignor
 
     return {
         
+        'id': value['id'],
         'name': value['name'],
         'instruction': value['instruction'],
         'agent_type': value['agentType'],

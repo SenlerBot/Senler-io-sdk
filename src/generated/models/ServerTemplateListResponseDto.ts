@@ -22,7 +22,7 @@ import {
 } from './ServerTemplateResponseDto';
 
 /**
- * 
+ * ServerTemplateListResponseDto.
  * @export
  * @interface ServerTemplateListResponseDto
  */

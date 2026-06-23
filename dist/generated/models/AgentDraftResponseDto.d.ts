@@ -11,7 +11,7 @@
  */
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 /**
- *
+ * AgentDraftResponseDto.
  * @export
  * @interface AgentDraftResponseDto
  */
@@ -324,6 +324,12 @@ export interface AgentDraftResponseDto {
      * @memberof AgentDraftResponseDto
      */
     enableSelectiveResponse: boolean;
+    /**
+     * (operator_reply_template control_processing)
+     * @type {boolean}
+     * @memberof AgentDraftResponseDto
+     */
+    enableOperatorReplySuggestions: boolean;
     /**
      * (schedule_next_message tool)
      * @type {boolean}

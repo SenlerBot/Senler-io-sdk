@@ -41,6 +41,8 @@ exports.ProjectResponseDtoDefaultLanguageEnum = {
 function instanceOfProjectResponseDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
+    if (!('publicId' in value) || value['publicId'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('defaultLanguage' in value) || value['defaultLanguage'] === undefined)
@@ -64,6 +66,7 @@ function ProjectResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
+        'publicId': json['public_id'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -89,6 +92,7 @@ function ProjectResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
+        'public_id': value['publicId'],
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],

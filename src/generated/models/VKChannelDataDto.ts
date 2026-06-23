@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * VKChannelDataDto.
  * @export
  * @interface VKChannelDataDto
  */

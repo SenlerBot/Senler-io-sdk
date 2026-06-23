@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * EventSourceMaxDialogDataDto.
  * @export
  * @interface EventSourceMaxDialogDataDto
  */

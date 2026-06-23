@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ClientSpending.
  * @export
  * @interface ClientSpending
  */
@@ -26,7 +26,7 @@ export interface ClientSpending {
      */
     rubProjectsCredits: number;
     /**
-     * RUB-: ()
+     * RUB-: , (/); : 1.25 = 125
      * @type {number}
      * @memberof ClientSpending
      */
@@ -38,7 +38,7 @@ export interface ClientSpending {
      */
     usdProjectsCredits: number;
     /**
-     * USD-: ()
+     * USD-: , (/); : 1.25 = 125
      * @type {number}
      * @memberof ClientSpending
      */
@@ -50,7 +50,7 @@ export interface ClientSpending {
      */
     totalCredits: number;
     /**
-     * RUB () USD-
+     * RUB USD- , (/); : 1.25 = 125
      * @type {number}
      * @memberof ClientSpending
      */

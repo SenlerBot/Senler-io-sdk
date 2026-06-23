@@ -22,7 +22,7 @@ import {
 } from './AgentAutoAssignmentConflictDto';
 
 /**
- * 
+ * AgentAutoAssignmentPreviewResponseDto.
  * @export
  * @interface AgentAutoAssignmentPreviewResponseDto
  */

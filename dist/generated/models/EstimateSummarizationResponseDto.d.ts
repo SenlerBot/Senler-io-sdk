@@ -12,7 +12,7 @@
 import type { EstimateModelItemDto } from './EstimateModelItemDto';
 import type { EstimateBalanceDto } from './EstimateBalanceDto';
 /**
- *
+ * EstimateSummarizationResponseDto.
  * @export
  * @interface EstimateSummarizationResponseDto
  */

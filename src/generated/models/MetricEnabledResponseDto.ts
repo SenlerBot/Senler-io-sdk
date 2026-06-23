@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MetricEnabledResponseDto.
  * @export
  * @interface MetricEnabledResponseDto
  */

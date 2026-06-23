@@ -13,7 +13,7 @@ import type { McpServerResponseDtoMeta } from './McpServerResponseDtoMeta';
 import type { McpCredentialConnectedIdentityDto } from './McpCredentialConnectedIdentityDto';
 import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateManualAuthHeaderDto';
 /**
- *
+ * McpServerResponseDto.
  * @export
  * @interface McpServerResponseDto
  */

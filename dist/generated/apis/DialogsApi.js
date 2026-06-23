@@ -233,7 +233,7 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . before limit; q.
+     * . before/after limit; q.
      *
      */
     async getEventsRaw(requestParameters, initOverrides) {
@@ -258,6 +258,9 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (requestParameters['before'] != null) {
             queryParameters['before'] = requestParameters['before'];
+        }
+        if (requestParameters['after'] != null) {
+            queryParameters['after'] = requestParameters['after'];
         }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
@@ -289,7 +292,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetEvents200ResponseFromJSON)(jsonValue));
     }
     /**
-     * . before limit; q.
+     * . before/after limit; q.
      *
      */
     async getEvents(requestParameters, initOverrides) {

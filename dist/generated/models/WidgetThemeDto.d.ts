@@ -12,7 +12,7 @@
 import type { WidgetLocalizedTextDto } from './WidgetLocalizedTextDto';
 import type { ButtonSettingsDto } from './ButtonSettingsDto';
 /**
- *
+ * WidgetThemeDto.
  * @export
  * @interface WidgetThemeDto
  */

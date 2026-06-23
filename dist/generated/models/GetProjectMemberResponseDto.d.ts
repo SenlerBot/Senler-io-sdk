@@ -11,7 +11,7 @@
  */
 import type { ProjectMemberDetailDto } from './ProjectMemberDetailDto';
 /**
- *
+ * GetProjectMemberResponseDto.
  * @export
  * @interface GetProjectMemberResponseDto
  */

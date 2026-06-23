@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventSourceMaxDialogDataDto.
  * @export
  * @interface EventSourceMaxDialogDataDto
  */

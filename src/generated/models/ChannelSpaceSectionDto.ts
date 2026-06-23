@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelSpaceSectionDto.
  * @export
  * @interface ChannelSpaceSectionDto
  */

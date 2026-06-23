@@ -29,7 +29,7 @@ import {
 } from './AgentProblemMetricDto';
 
 /**
- * 
+ * TopAgentItemDto.
  * @export
  * @interface TopAgentItemDto
  */

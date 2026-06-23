@@ -127,6 +127,8 @@ exports.GetAuditEntityTypeEnum = {
     KnowledgeBase: 'knowledge_base',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    LeadGroup: 'lead_group',
+    LeadGroupConsentDocument: 'lead_group_consent_document',
     ProjectTariff: 'project_tariff',
     Invitation: 'invitation'
 };

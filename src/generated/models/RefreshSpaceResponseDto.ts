@@ -22,7 +22,7 @@ import {
 } from './SpaceDetailsResponseDto';
 
 /**
- * 
+ * RefreshSpaceResponseDto.
  * @export
  * @interface RefreshSpaceResponseDto
  */

@@ -36,7 +36,7 @@ import {
 } from './KnowledgeFolderResponseDto';
 
 /**
- * 
+ * KnowledgeResourcesResponseDto.
  * @export
  * @interface KnowledgeResourcesResponseDto
  */

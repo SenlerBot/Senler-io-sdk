@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventBroadcastDto.
  * @export
  * @interface EventBroadcastDto
  */

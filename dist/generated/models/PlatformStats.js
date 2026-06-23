@@ -32,8 +32,7 @@ exports.PlatformStatsPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai',
-    Unknown: 'unknown'
+    Ai: 'ai'
 };
 /**
  * Check if a given object implements the PlatformStats interface.

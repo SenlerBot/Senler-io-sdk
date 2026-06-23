@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DataSourceInfoDto.
  * @export
  * @interface DataSourceInfoDto
  */

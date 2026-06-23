@@ -22,7 +22,7 @@ import {
 } from './PreviewWidgetCodeDataDto';
 
 /**
- * 
+ * PreviewWidgetCodeResponseDto.
  * @export
  * @interface PreviewWidgetCodeResponseDto
  */

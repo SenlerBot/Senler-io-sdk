@@ -29,7 +29,7 @@ import {
 } from './ButtonSettingsDto';
 
 /**
- * 
+ * WidgetThemeDto.
  * @export
  * @interface WidgetThemeDto
  */

@@ -85,7 +85,7 @@ export interface UpdateAgentAssignmentRestoreRequest {
 export class AgentAssignmentRulesApi extends runtime.BaseAPI {
 
     /**
-     * . channel_id - . - .
+     * . Scope : channel_id, lead_group_id .
      * 
      */
     async agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -142,7 +142,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . channel_id - . - .
+     * . Scope : channel_id, lead_group_id .
      * 
      */
     async agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
@@ -214,7 +214,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( + )
+     * : , .
      * 
      */
     async getAgentAssignmentRaw(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>> {
@@ -261,7 +261,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( + )
+     * : , .
      * 
      */
     async getAgentAssignment(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto> {
@@ -333,7 +333,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * 
+     * ,
      * 
      */
     async updateAgentAssignmentRaw(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -397,7 +397,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * 
+     * ,
      * 
      */
     async updateAgentAssignment(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {

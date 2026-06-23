@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { CreateServerBodyDtoMeta } from './CreateServerBodyDtoMeta';
 import type { CustomMcpServerAuthHeaderDto } from './CustomMcpServerAuthHeaderDto';
-import type { CreateServerDtoMeta } from './CreateServerDtoMeta';
 /**
- *
+ * CreateServerDto.
  * @export
  * @interface CreateServerDto
  */
@@ -93,10 +93,10 @@ export interface CreateServerDto {
     projectId: string;
     /**
      *
-     * @type {CreateServerDtoMeta}
+     * @type {CreateServerBodyDtoMeta}
      * @memberof CreateServerDto
      */
-    meta?: CreateServerDtoMeta;
+    meta?: CreateServerBodyDtoMeta;
 }
 /**
  * @export

@@ -12,7 +12,7 @@
 import type { AssignmentRuleAgentDto } from './AssignmentRuleAgentDto';
 import type { AssignmentRuleChannelDto } from './AssignmentRuleChannelDto';
 /**
- *
+ * AgentAssignmentRuleResponseDto.
  * @export
  * @interface AgentAssignmentRuleResponseDto
  */
@@ -42,6 +42,15 @@ export interface AgentAssignmentRuleResponseDto {
      * @memberof AgentAssignmentRuleResponseDto
      */
     channelId?: string | null;
+    /**
+     * ID .
+     *
+     * - NULL
+     * - ObjectId
+     * @type {string}
+     * @memberof AgentAssignmentRuleResponseDto
+     */
+    leadGroupId?: string | null;
     /**
      * ID .
      *

@@ -12,7 +12,7 @@
 import type { WidgetFeaturesDto } from './WidgetFeaturesDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
- *
+ * WidgetChannelDataDto.
  * @export
  * @interface WidgetChannelDataDto
  */

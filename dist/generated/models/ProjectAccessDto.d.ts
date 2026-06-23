@@ -14,7 +14,7 @@ import type { PermissionsDto } from './PermissionsDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
 import type { ProjectAccessSource } from './ProjectAccessSource';
 /**
- *
+ * ProjectAccessDto.
  * @export
  * @interface ProjectAccessDto
  */

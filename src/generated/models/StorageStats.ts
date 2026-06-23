@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StorageStats.
  * @export
  * @interface StorageStats
  */

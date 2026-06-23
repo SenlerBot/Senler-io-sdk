@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * FrontendVersionStatusDto.
  * @export
  * @interface FrontendVersionStatusDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventMessagePinningDto.
  * @export
  * @interface EventMessagePinningDto
  */

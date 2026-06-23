@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ServerUsageStats.
  * @export
  * @interface ServerUsageStats
  */
@@ -44,7 +44,7 @@ export interface ServerUsageStats {
      */
     percentage: number;
     /**
-     * ( USD). : USD
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ServerUsageStats
      */

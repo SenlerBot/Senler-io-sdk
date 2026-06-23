@@ -22,7 +22,7 @@ import {
 } from './ButtonColorsDto';
 
 /**
- * 
+ * ButtonSettingsDto.
  * @export
  * @interface ButtonSettingsDto
  */

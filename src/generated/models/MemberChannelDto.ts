@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MemberChannelDto.
  * @export
  * @interface MemberChannelDto
  */

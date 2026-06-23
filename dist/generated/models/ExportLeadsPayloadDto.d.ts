@@ -12,7 +12,7 @@
 import type { LeadsFilterDto } from './LeadsFilterDto';
 import type { ExportLeadsParamsDto } from './ExportLeadsParamsDto';
 /**
- *
+ * ExportLeadsPayloadDto.
  * @export
  * @interface ExportLeadsPayloadDto
  */

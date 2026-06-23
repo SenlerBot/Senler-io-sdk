@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ChannelsTreeRefreshChannelDto.
  * @export
  * @interface ChannelsTreeRefreshChannelDto
  */

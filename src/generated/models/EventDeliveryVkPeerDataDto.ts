@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventDeliveryVkPeerDataDto.
  * @export
  * @interface EventDeliveryVkPeerDataDto
  */

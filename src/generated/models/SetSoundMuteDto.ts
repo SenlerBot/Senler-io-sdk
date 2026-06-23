@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SetSoundMuteDto.
  * @export
  * @interface SetSoundMuteDto
  */

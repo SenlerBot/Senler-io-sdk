@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EditMessageDto.
  * @export
  * @interface EditMessageDto
  */

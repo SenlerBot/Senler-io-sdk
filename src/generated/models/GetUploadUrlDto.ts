@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * GetUploadUrlDto.
  * @export
  * @interface GetUploadUrlDto
  */

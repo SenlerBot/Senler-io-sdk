@@ -10,8 +10,10 @@
  * Do not edit the class manually.
  */
 import type { LocalizedTextDto } from './LocalizedTextDto';
+import type { CreditTransactionDtoDetailsByModelValue } from './CreditTransactionDtoDetailsByModelValue';
+import type { CreditTransactionDtoDetailsByAgentValue } from './CreditTransactionDtoDetailsByAgentValue';
 /**
- *
+ * CreditTransactionDto.
  * @export
  * @interface CreditTransactionDto
  */
@@ -59,7 +61,7 @@ export interface CreditTransactionDto {
      */
     purchasedCreditsAfter: number;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof CreditTransactionDto
      */
@@ -96,16 +98,20 @@ export interface CreditTransactionDto {
     totalTokens?: number;
     /**
      * ( UUID )
-     * @type {object}
+     * @type {{ [key: string]: CreditTransactionDtoDetailsByAgentValue; }}
      * @memberof CreditTransactionDto
      */
-    detailsByAgent?: object | null;
+    detailsByAgent?: {
+        [key: string]: CreditTransactionDtoDetailsByAgentValue;
+    } | null;
     /**
      *
-     * @type {object}
+     * @type {{ [key: string]: CreditTransactionDtoDetailsByModelValue; }}
      * @memberof CreditTransactionDto
      */
-    detailsByModel?: object | null;
+    detailsByModel?: {
+        [key: string]: CreditTransactionDtoDetailsByModelValue;
+    } | null;
     /**
      * ( tariff_grant)
      * @type {LocalizedTextDto}

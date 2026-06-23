@@ -29,7 +29,7 @@ import {
 } from './WidgetThemeDto';
 
 /**
- * 
+ * WidgetChannelDataDto.
  * @export
  * @interface WidgetChannelDataDto
  */

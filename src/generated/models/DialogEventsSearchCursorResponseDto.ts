@@ -29,7 +29,7 @@ import {
 } from './DialogChatSearchEventDto';
 
 /**
- * 
+ * DialogEventsSearchCursorResponseDto.
  * @export
  * @interface DialogEventsSearchCursorResponseDto
  */

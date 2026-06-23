@@ -22,7 +22,7 @@ import {
 } from './SummarizationResponseDto';
 
 /**
- * 
+ * SummarizationHistoryResponseDto.
  * @export
  * @interface SummarizationHistoryResponseDto
  */

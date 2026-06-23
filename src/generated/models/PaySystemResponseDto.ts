@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * PaySystemResponseDto.
  * @export
  * @interface PaySystemResponseDto
  */
@@ -44,13 +44,13 @@ export interface PaySystemResponseDto {
      */
     currency: string;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof PaySystemResponseDto
      */
     minAmount: number;
     /**
-     * (/)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof PaySystemResponseDto
      */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceDetailsChannelDto.
  * @export
  * @interface SpaceDetailsChannelDto
  */

@@ -11,7 +11,7 @@
  */
 import type { MetricDefinitionDtoValidationSchema } from './MetricDefinitionDtoValidationSchema';
 /**
- *
+ * MetricDefinitionDto.
  * @export
  * @interface MetricDefinitionDto
  */

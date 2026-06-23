@@ -9,8 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { EventButtonDtoAction } from './EventButtonDtoAction';
 /**
- *
+ * EventButtonDto.
  * @export
  * @interface EventButtonDto
  */
@@ -22,23 +23,17 @@ export interface EventButtonDto {
      */
     text: string;
     /**
-     * .
-     * @type {string}
+     *
+     * @type {EventButtonDtoAction}
      * @memberof EventButtonDto
      */
-    callbackData?: string;
+    action: EventButtonDtoAction;
     /**
      * ( )
      * @type {number}
      * @memberof EventButtonDto
      */
     row?: number;
-    /**
-     * URL -
-     * @type {string}
-     * @memberof EventButtonDto
-     */
-    url?: string;
 }
 /**
  * Check if a given object implements the EventButtonDto interface.

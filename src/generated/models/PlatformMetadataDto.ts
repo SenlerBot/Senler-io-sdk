@@ -22,7 +22,7 @@ import {
 } from './PlatformIconsDto';
 
 /**
- * 
+ * PlatformMetadataDto.
  * @export
  * @interface PlatformMetadataDto
  */

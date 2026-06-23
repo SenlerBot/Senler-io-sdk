@@ -10,25 +10,31 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * BalancesByCurrency.
  * @export
  * @interface BalancesByCurrency
  */
 export interface BalancesByCurrency {
     /**
-     * ( )
+     * (ISO 4217)
+     * @type {string}
+     * @memberof BalancesByCurrency
+     */
+    currency: string;
+    /**
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BalancesByCurrency
      */
     deposit: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BalancesByCurrency
      */
     bonus: number;
     /**
-     *
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof BalancesByCurrency
      */

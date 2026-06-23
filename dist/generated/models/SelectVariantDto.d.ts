@@ -10,23 +10,17 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * SelectVariantDto.
  * @export
  * @interface SelectVariantDto
  */
 export interface SelectVariantDto {
     /**
-     *
-     * @type {number}
-     * @memberof SelectVariantDto
-     */
-    variantIndex: number;
-    /**
-     * ( )
+     * ID
      * @type {string}
      * @memberof SelectVariantDto
      */
-    customInstruction?: string;
+    variantId: string;
     /**
      * ( )
      * @type {string}

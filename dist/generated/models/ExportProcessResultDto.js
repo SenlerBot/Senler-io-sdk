@@ -43,6 +43,8 @@ function ExportProcessResultDtoFromJSONTyped(json, ignoreDiscriminator) {
         'fileSize': json['file_size'],
         'format': json['format'] == null ? undefined : json['format'],
         'encoding': json['encoding'] == null ? undefined : json['encoding'],
+        'exportedItems': json['exported_items'] == null ? undefined : json['exported_items'],
+        'missingItems': json['missing_items'] == null ? undefined : json['missing_items'],
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -59,6 +61,8 @@ function ExportProcessResultDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'file_size': value['fileSize'],
         'format': value['format'],
         'encoding': value['encoding'],
+        'exported_items': value['exportedItems'],
+        'missing_items': value['missingItems'],
         'duration_ms': value['durationMs'],
     };
 }

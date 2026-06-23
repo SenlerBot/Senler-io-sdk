@@ -37,6 +37,8 @@ function instanceOfAgentAppOriginDto(value) {
         return false;
     if (!('appName' in value) || value['appName'] === undefined)
         return false;
+    if (!('settingsViewAllowed' in value) || value['settingsViewAllowed'] === undefined)
+        return false;
     return true;
 }
 function AgentAppOriginDtoFromJSON(json) {
@@ -54,6 +56,7 @@ function AgentAppOriginDtoFromJSONTyped(json, ignoreDiscriminator) {
         'installationStatus': json['installation_status'] == null ? undefined : json['installation_status'],
         'installedVersion': json['installed_version'] == null ? undefined : json['installed_version'],
         'installedAt': json['installed_at'] == null ? undefined : (new Date(json['installed_at'])),
+        'settingsViewAllowed': json['settings_view_allowed'],
     };
 }
 function AgentAppOriginDtoToJSON(json) {
@@ -71,5 +74,6 @@ function AgentAppOriginDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'installation_status': value['installationStatus'],
         'installed_version': value['installedVersion'],
         'installed_at': value['installedAt'] == null ? undefined : (value['installedAt'].toISOString()),
+        'settings_view_allowed': value['settingsViewAllowed'],
     };
 }

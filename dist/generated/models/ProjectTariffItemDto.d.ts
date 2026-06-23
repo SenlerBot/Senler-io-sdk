@@ -11,7 +11,7 @@
  */
 import type { NextSubscriptionDto } from './NextSubscriptionDto';
 /**
- *
+ * ProjectTariffItemDto.
  * @export
  * @interface ProjectTariffItemDto
  */
@@ -77,25 +77,25 @@ export interface ProjectTariffItemDto {
      */
     isFree: boolean;
     /**
-     * (RUB)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceRubMonthly: number;
     /**
-     * (USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceUsdMonthly: number;
     /**
-     * (RUB)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
     priceRubYearly: number;
     /**
-     * (USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ProjectTariffItemDto
      */

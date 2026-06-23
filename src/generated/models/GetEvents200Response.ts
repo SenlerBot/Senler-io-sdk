@@ -36,7 +36,7 @@ import {
 
 /**
  * @type GetEvents200Response
- * 
+ * .
  * @export
  */
 export type GetEvents200Response = { paginationType: 'cursor' } & DialogEventsCursorResponseDto | { paginationType: 'offset' } & DialogEventsOffsetResponseDto | { paginationType: 'search_cursor' } & DialogEventsSearchCursorResponseDto;

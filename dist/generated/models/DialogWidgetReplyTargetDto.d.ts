@@ -11,7 +11,7 @@
  */
 import type { ReplyTargetWidgetDataDto } from './ReplyTargetWidgetDataDto';
 /**
- *
+ * DialogWidgetReplyTargetDto.
  * @export
  * @interface DialogWidgetReplyTargetDto
  */

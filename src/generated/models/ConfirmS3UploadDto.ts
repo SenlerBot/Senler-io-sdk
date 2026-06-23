@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ConfirmS3UploadDto.
  * @export
  * @interface ConfirmS3UploadDto
  */

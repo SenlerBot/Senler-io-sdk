@@ -11,7 +11,7 @@
  */
 import type { SpacesTreeFlatNodeDto } from './SpacesTreeFlatNodeDto';
 /**
- *
+ * SpacesTreeNodesResponseDto.
  * @export
  * @interface SpacesTreeNodesResponseDto
  */

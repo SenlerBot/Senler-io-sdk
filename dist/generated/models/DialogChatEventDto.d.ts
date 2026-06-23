@@ -34,7 +34,7 @@ import type { EventPollVoteDto } from './EventPollVoteDto';
 import type { EventErrorDto } from './EventErrorDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
 /**
- *
+ * DialogChatEventDto.
  * @export
  * @interface DialogChatEventDto
  */

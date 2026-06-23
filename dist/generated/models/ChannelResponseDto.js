@@ -24,6 +24,7 @@ const WidgetChannelDataDto_1 = require("./WidgetChannelDataDto");
 const TelegramChannelDataDto_1 = require("./TelegramChannelDataDto");
 const MAXChannelDataDto_1 = require("./MAXChannelDataDto");
 const StreamViChannelDataDto_1 = require("./StreamViChannelDataDto");
+const ChannelMigrationBackfillDto_1 = require("./ChannelMigrationBackfillDto");
 const VKChannelDataDto_1 = require("./VKChannelDataDto");
 const ChannelAccessDto_1 = require("./ChannelAccessDto");
 const ChannelMigrationStatusDto_1 = require("./ChannelMigrationStatusDto");
@@ -49,6 +50,8 @@ exports.ChannelResponseDtoTypeEnum = {
 function instanceOfChannelResponseDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
+    if (!('publicId' in value) || value['publicId'] === undefined)
+        return false;
     if (!('isPaused' in value) || value['isPaused'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -66,6 +69,7 @@ function ChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
+        'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'type': json['type'] == null ? undefined : json['type'],
@@ -87,6 +91,7 @@ function ChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'dataEmail': json['data_email'] == null ? undefined : (0, EmailChannelDataDto_1.EmailChannelDataDtoFromJSON)(json['data_email']),
         'senler': json['senler'] == null ? undefined : (0, SenlerStatusDto_1.SenlerStatusDtoFromJSON)(json['senler']),
         'migration': json['migration'] == null ? undefined : (0, ChannelMigrationStatusDto_1.ChannelMigrationStatusDtoFromJSON)(json['migration']),
+        'migrationBackfill': json['migration_backfill'] == null ? undefined : (0, ChannelMigrationBackfillDto_1.ChannelMigrationBackfillDtoFromJSON)(json['migration_backfill']),
         'access': json['access'] == null ? undefined : (0, ChannelAccessDto_1.ChannelAccessDtoFromJSON)(json['access']),
         'historySupported': json['history_supported'] == null ? undefined : json['history_supported'],
         'historyScanStatus': json['history_scan_status'] == null ? undefined : json['history_scan_status'],
@@ -104,6 +109,7 @@ function ChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
+        'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],
         'type': value['type'],
@@ -125,6 +131,7 @@ function ChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'data_email': (0, EmailChannelDataDto_1.EmailChannelDataDtoToJSON)(value['dataEmail']),
         'senler': (0, SenlerStatusDto_1.SenlerStatusDtoToJSON)(value['senler']),
         'migration': (0, ChannelMigrationStatusDto_1.ChannelMigrationStatusDtoToJSON)(value['migration']),
+        'migration_backfill': (0, ChannelMigrationBackfillDto_1.ChannelMigrationBackfillDtoToJSON)(value['migrationBackfill']),
         'access': (0, ChannelAccessDto_1.ChannelAccessDtoToJSON)(value['access']),
         'history_supported': value['historySupported'],
         'history_scan_status': value['historyScanStatus'],

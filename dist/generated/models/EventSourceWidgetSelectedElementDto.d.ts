@@ -14,7 +14,7 @@ import type { EventSourceWidgetSelectedElementPlaceDto } from './EventSourceWidg
 import type { EventSourceWidgetSelectedElementRefDto } from './EventSourceWidgetSelectedElementRefDto';
 import type { EventSourceWidgetSelectedElementStateDto } from './EventSourceWidgetSelectedElementStateDto';
 /**
- *
+ * EventSourceWidgetSelectedElementDto.
  * @export
  * @interface EventSourceWidgetSelectedElementDto
  */

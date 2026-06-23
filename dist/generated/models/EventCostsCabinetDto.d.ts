@@ -16,7 +16,7 @@ import type { AudioGenerationCostCabinetDto } from './AudioGenerationCostCabinet
 import type { VisionCostCabinetDto } from './VisionCostCabinetDto';
 import type { SpeechRecognitionCostCabinetDto } from './SpeechRecognitionCostCabinetDto';
 /**
- *
+ * EventCostsCabinetDto.
  * @export
  * @interface EventCostsCabinetDto
  */

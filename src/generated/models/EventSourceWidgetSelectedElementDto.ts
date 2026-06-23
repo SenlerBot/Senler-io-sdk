@@ -43,7 +43,7 @@ import {
 } from './EventSourceWidgetSelectedElementStateDto';
 
 /**
- * 
+ * EventSourceWidgetSelectedElementDto.
  * @export
  * @interface EventSourceWidgetSelectedElementDto
  */

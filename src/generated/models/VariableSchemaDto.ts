@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * VariableSchemaDto.
  * @export
  * @interface VariableSchemaDto
  */

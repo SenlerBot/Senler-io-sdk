@@ -11,7 +11,7 @@
  */
 import type { EventReactionAssetDto } from './EventReactionAssetDto';
 /**
- *
+ * EventReactionDto.
  * @export
  * @interface EventReactionDto
  */

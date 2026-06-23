@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetAvitoChatDataDto';
 
 /**
- * 
+ * DialogAvitoChatReplyTargetDto.
  * @export
  * @interface DialogAvitoChatReplyTargetDto
  */

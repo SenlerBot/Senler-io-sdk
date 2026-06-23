@@ -11,7 +11,7 @@
  */
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 /**
- *
+ * UpdateAgentDraftDto.
  * @export
  * @interface UpdateAgentDraftDto
  */
@@ -376,6 +376,12 @@ export interface UpdateAgentDraftDto {
      * @memberof UpdateAgentDraftDto
      */
     enableSelectiveResponse?: boolean;
+    /**
+     * . enable_selective_response=true; operator_reply_template control_processing
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    enableOperatorReplySuggestions?: boolean;
     /**
      * (schedule_next_message tool)
      * @type {boolean}

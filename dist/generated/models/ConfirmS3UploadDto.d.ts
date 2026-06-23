@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ConfirmS3UploadDto.
  * @export
  * @interface ConfirmS3UploadDto
  */

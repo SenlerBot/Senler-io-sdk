@@ -22,7 +22,7 @@ import {
 } from './CategoryStatsDto';
 
 /**
- * 
+ * ByStorageSourceStatsDto.
  * @export
  * @interface ByStorageSourceStatsDto
  */

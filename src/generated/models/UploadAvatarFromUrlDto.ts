@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * UploadAvatarFromUrlDto.
  * @export
  * @interface UploadAvatarFromUrlDto
  */

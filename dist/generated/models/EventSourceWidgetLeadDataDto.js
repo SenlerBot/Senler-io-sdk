@@ -13,13 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum = void 0;
 exports.instanceOfEventSourceWidgetLeadDataDto = instanceOfEventSourceWidgetLeadDataDto;
 exports.EventSourceWidgetLeadDataDtoFromJSON = EventSourceWidgetLeadDataDtoFromJSON;
 exports.EventSourceWidgetLeadDataDtoFromJSONTyped = EventSourceWidgetLeadDataDtoFromJSONTyped;
 exports.EventSourceWidgetLeadDataDtoToJSON = EventSourceWidgetLeadDataDtoToJSON;
 exports.EventSourceWidgetLeadDataDtoToJSONTyped = EventSourceWidgetLeadDataDtoToJSONTyped;
 const EventSourceWidgetSelectedElementDto_1 = require("./EventSourceWidgetSelectedElementDto");
+const WidgetCustomActionCapabilityDto_1 = require("./WidgetCustomActionCapabilityDto");
 const EventSourceWidgetPageContextDto_1 = require("./EventSourceWidgetPageContextDto");
+/**
+ * @export
+ */
+exports.EventSourceWidgetLeadDataDtoCustomActionsLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * Check if a given object implements the EventSourceWidgetLeadDataDto interface.
  */
@@ -40,6 +49,8 @@ function EventSourceWidgetLeadDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'pageContext': json['page_context'] == null ? undefined : (0, EventSourceWidgetPageContextDto_1.EventSourceWidgetPageContextDtoFromJSON)(json['page_context']),
         'selectedElement': json['selected_element'] == null ? undefined : (0, EventSourceWidgetSelectedElementDto_1.EventSourceWidgetSelectedElementDtoFromJSON)(json['selected_element']),
+        'customActions': json['custom_actions'] == null ? undefined : (json['custom_actions'].map(WidgetCustomActionCapabilityDto_1.WidgetCustomActionCapabilityDtoFromJSON)),
+        'customActionsLanguage': json['custom_actions_language'] == null ? undefined : json['custom_actions_language'],
     };
 }
 function EventSourceWidgetLeadDataDtoToJSON(json) {
@@ -54,5 +65,7 @@ function EventSourceWidgetLeadDataDtoToJSONTyped(value, ignoreDiscriminator = fa
         'user_id': value['userId'],
         'page_context': (0, EventSourceWidgetPageContextDto_1.EventSourceWidgetPageContextDtoToJSON)(value['pageContext']),
         'selected_element': (0, EventSourceWidgetSelectedElementDto_1.EventSourceWidgetSelectedElementDtoToJSON)(value['selectedElement']),
+        'custom_actions': value['customActions'] == null ? undefined : (value['customActions'].map(WidgetCustomActionCapabilityDto_1.WidgetCustomActionCapabilityDtoToJSON)),
+        'custom_actions_language': value['customActionsLanguage'],
     };
 }

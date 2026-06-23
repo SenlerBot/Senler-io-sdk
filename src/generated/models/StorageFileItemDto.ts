@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StorageFileItemDto.
  * @export
  * @interface StorageFileItemDto
  */

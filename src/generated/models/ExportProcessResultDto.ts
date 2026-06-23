@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ExportProcessResultDto.
  * @export
  * @interface ExportProcessResultDto
  */
@@ -50,6 +50,18 @@ export interface ExportProcessResultDto {
      */
     encoding?: string;
     /**
+     * ,
+     * @type {number}
+     * @memberof ExportProcessResultDto
+     */
+    exportedItems?: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof ExportProcessResultDto
+     */
+    missingItems?: number;
+    /**
      * 
      * @type {number}
      * @memberof ExportProcessResultDto
@@ -82,6 +94,8 @@ export function ExportProcessResultDtoFromJSONTyped(json: any, ignoreDiscriminat
         'fileSize': json['file_size'],
         'format': json['format'] == null ? undefined : json['format'],
         'encoding': json['encoding'] == null ? undefined : json['encoding'],
+        'exportedItems': json['exported_items'] == null ? undefined : json['exported_items'],
+        'missingItems': json['missing_items'] == null ? undefined : json['missing_items'],
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -102,6 +116,8 @@ export function ExportProcessResultDtoToJSONTyped(value?: ExportProcessResultDto
         'file_size': value['fileSize'],
         'format': value['format'],
         'encoding': value['encoding'],
+        'exported_items': value['exportedItems'],
+        'missing_items': value['missingItems'],
         'duration_ms': value['durationMs'],
     };
 }

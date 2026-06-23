@@ -29,7 +29,7 @@ import {
 } from './TariffSubscriptionDto';
 
 /**
- * 
+ * ProjectTariffsResponseDto.
  * @export
  * @interface ProjectTariffsResponseDto
  */

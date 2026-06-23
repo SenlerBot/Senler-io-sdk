@@ -14,7 +14,7 @@ import type { UserResponseDto } from './UserResponseDto';
 import type { MemberChannelDto } from './MemberChannelDto';
 import type { PermissionsDto } from './PermissionsDto';
 /**
- *
+ * ProjectMemberDetailDto.
  * @export
  * @interface ProjectMemberDetailDto
  */

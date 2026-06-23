@@ -22,7 +22,7 @@ import {
 } from './PeriodComparison';
 
 /**
- * 
+ * ComparisonMetrics.
  * @export
  * @interface ComparisonMetrics
  */

@@ -11,7 +11,7 @@
  */
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 /**
- *
+ * CreateAgentDto.
  * @export
  * @interface CreateAgentDto
  */
@@ -304,6 +304,36 @@ export interface CreateAgentDto {
      * @memberof CreateAgentDto
      */
     enableMessageReactionsContext?: boolean;
+    /**
+     * (skip_response tool). true
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableSelectiveResponse?: boolean;
+    /**
+     * . enable_selective_response=true; operator_reply_template control_processing
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableOperatorReplySuggestions?: boolean;
+    /**
+     * (schedule_next_message tool)
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableScheduling?: boolean;
+    /**
+     * (skip_metrics control_processing)
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableSkipMetrics?: boolean;
+    /**
+     * . API: mute_dialog.
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableMuteDialog?: boolean;
     /**
      * detach_from_dialog tool
      * @type {boolean}

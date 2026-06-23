@@ -13,7 +13,7 @@ import type { ServerTemplateCategoryDto } from './ServerTemplateCategoryDto';
 import type { McpServerTemplateToolPolicyDto } from './McpServerTemplateToolPolicyDto';
 import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateManualAuthHeaderDto';
 /**
- *
+ * ServerTemplateResponseDto.
  * @export
  * @interface ServerTemplateResponseDto
  */

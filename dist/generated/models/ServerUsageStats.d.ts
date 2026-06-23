@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * ServerUsageStats.
  * @export
  * @interface ServerUsageStats
  */
@@ -40,7 +40,7 @@ export interface ServerUsageStats {
      */
     percentage: number;
     /**
-     * ( USD). : USD
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof ServerUsageStats
      */

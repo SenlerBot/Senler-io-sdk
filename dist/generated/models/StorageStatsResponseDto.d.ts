@@ -15,7 +15,7 @@ import type { ByPlatformTypeStatsDto } from './ByPlatformTypeStatsDto';
 import type { ByCategoryStatsDto } from './ByCategoryStatsDto';
 import type { StorageTariffDto } from './StorageTariffDto';
 /**
- *
+ * StorageStatsResponseDto.
  * @export
  * @interface StorageStatsResponseDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DialogOperatorAssignmentUserInfoDto.
  * @export
  * @interface DialogOperatorAssignmentUserInfoDto
  */

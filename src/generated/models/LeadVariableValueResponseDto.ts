@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * LeadVariableValueResponseDto.
  * @export
  * @interface LeadVariableValueResponseDto
  */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AttachmentDownloadUrlResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
+import type { AttachmentDownloadUrlResponseDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
 export interface ConfirmRequest {
     confirmUploadDto: ConfirmUploadDto;
     dialogId?: string;
@@ -27,6 +27,25 @@ export interface GetDownloadUrlRequest {
     dialogId: string;
     xSessionId?: string;
     acceptLanguage?: GetDownloadUrlAcceptLanguageEnum;
+}
+export interface GetSendToSelfRecipientsRequest {
+    attachmentId: string;
+    dialogId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetSendToSelfRecipientsAcceptLanguageEnum;
+}
+export interface SendToSelfRequest {
+    attachmentId: string;
+    dialogId: string;
+    attachmentSendToSelfRequestDto: AttachmentSendToSelfRequestDto;
+    xSessionId?: string;
+    acceptLanguage?: SendToSelfAcceptLanguageEnum;
+}
+export interface SendToSelfRecipientLinkRequest {
+    attachmentId: string;
+    dialogId: string;
+    xSessionId?: string;
+    acceptLanguage?: SendToSelfRecipientLinkAcceptLanguageEnum;
 }
 export interface UploadUrlRequest {
     getUploadUrlDto: GetUploadUrlDto;
@@ -70,6 +89,36 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      */
     getDownloadUrl(requestParameters: GetDownloadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentDownloadUrlResponseDto>;
     /**
+     * .
+     *
+     */
+    getSendToSelfRecipientsRaw(requestParameters: GetSendToSelfRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentSendToSelfRecipientsResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getSendToSelfRecipients(requestParameters: GetSendToSelfRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientsResponseDto>;
+    /**
+     * API. read-like : .
+     *
+     */
+    sendToSelfRaw(requestParameters: SendToSelfRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentSendToSelfResponseDto>>;
+    /**
+     * API. read-like : .
+     *
+     */
+    sendToSelf(requestParameters: SendToSelfRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfResponseDto>;
+    /**
+     * . read-like ; Telegram-.
+     *
+     */
+    sendToSelfRecipientLinkRaw(requestParameters: SendToSelfRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentSendToSelfRecipientLinkResponseDto>>;
+    /**
+     * . read-like ; Telegram-.
+     *
+     */
+    sendToSelfRecipientLink(requestParameters: SendToSelfRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientLinkResponseDto>;
+    /**
      * S3- . channelId dialogId, confirm.
      * S3-
      */
@@ -104,6 +153,30 @@ export declare const GetDownloadUrlAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetDownloadUrlAcceptLanguageEnum = typeof GetDownloadUrlAcceptLanguageEnum[keyof typeof GetDownloadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetSendToSelfRecipientsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSendToSelfRecipientsAcceptLanguageEnum = typeof GetSendToSelfRecipientsAcceptLanguageEnum[keyof typeof GetSendToSelfRecipientsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SendToSelfAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SendToSelfAcceptLanguageEnum = typeof SendToSelfAcceptLanguageEnum[keyof typeof SendToSelfAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SendToSelfRecipientLinkAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SendToSelfRecipientLinkAcceptLanguageEnum = typeof SendToSelfRecipientLinkAcceptLanguageEnum[keyof typeof SendToSelfRecipientLinkAcceptLanguageEnum];
 /**
  * @export
  */

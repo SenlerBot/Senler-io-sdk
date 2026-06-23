@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * AgentStatDto.
  * @export
  * @interface AgentStatDto
  */
@@ -46,7 +46,7 @@ export interface AgentStatDto {
      */
     totalTokens: number;
     /**
-     * ( )
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof AgentStatDto
      */

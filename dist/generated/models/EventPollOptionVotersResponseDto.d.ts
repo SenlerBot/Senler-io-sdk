@@ -11,7 +11,7 @@
  */
 import type { EventPollOptionVoterDto } from './EventPollOptionVoterDto';
 /**
- *
+ * EventPollOptionVotersResponseDto.
  * @export
  * @interface EventPollOptionVotersResponseDto
  */

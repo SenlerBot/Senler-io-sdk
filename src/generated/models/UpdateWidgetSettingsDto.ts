@@ -29,7 +29,7 @@ import {
 } from './WidgetThemeDto';
 
 /**
- * 
+ * UpdateWidgetSettingsDto.
  * @export
  * @interface UpdateWidgetSettingsDto
  */

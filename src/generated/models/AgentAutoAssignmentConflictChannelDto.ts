@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AgentAutoAssignmentConflictChannelDto.
  * @export
  * @interface AgentAutoAssignmentConflictChannelDto
  */

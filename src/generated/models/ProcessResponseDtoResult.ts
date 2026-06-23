@@ -40,6 +40,13 @@ import {
     ChannelsTreeRefreshProcessResultDtoFromJSONTyped,
     ChannelsTreeRefreshProcessResultDtoToJSON,
 } from './ChannelsTreeRefreshProcessResultDto';
+import type { DeliverySendProcessResultDto } from './DeliverySendProcessResultDto';
+import {
+    instanceOfDeliverySendProcessResultDto,
+    DeliverySendProcessResultDtoFromJSON,
+    DeliverySendProcessResultDtoFromJSONTyped,
+    DeliverySendProcessResultDtoToJSON,
+} from './DeliverySendProcessResultDto';
 import type { ExportProcessResultDto } from './ExportProcessResultDto';
 import {
     instanceOfExportProcessResultDto,
@@ -74,7 +81,7 @@ import {
  * 
  * @export
  */
-export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | ResourcePackageImportProcessResultDto;
+export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | ResourcePackageImportProcessResultDto;
 
 export function ProcessResponseDtoResultFromJSON(json: any): ProcessResponseDtoResult {
     return ProcessResponseDtoResultFromJSONTyped(json, false);
@@ -95,6 +102,9 @@ export function ProcessResponseDtoResultFromJSONTyped(json: any, ignoreDiscrimin
     }
     if (instanceOfChannelsTreeRefreshProcessResultDto(json)) {
         return ChannelsTreeRefreshProcessResultDtoFromJSONTyped(json, true);
+    }
+    if (instanceOfDeliverySendProcessResultDto(json)) {
+        return DeliverySendProcessResultDtoFromJSONTyped(json, true);
     }
     if (instanceOfExportProcessResultDto(json)) {
         return ExportProcessResultDtoFromJSONTyped(json, true);
@@ -132,6 +142,9 @@ export function ProcessResponseDtoResultToJSONTyped(value?: ProcessResponseDtoRe
     }
     if (instanceOfChannelsTreeRefreshProcessResultDto(value)) {
         return ChannelsTreeRefreshProcessResultDtoToJSON(value as ChannelsTreeRefreshProcessResultDto);
+    }
+    if (instanceOfDeliverySendProcessResultDto(value)) {
+        return DeliverySendProcessResultDtoToJSON(value as DeliverySendProcessResultDto);
     }
     if (instanceOfExportProcessResultDto(value)) {
         return ExportProcessResultDtoToJSON(value as ExportProcessResultDto);

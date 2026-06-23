@@ -50,7 +50,7 @@ import {
 } from './StorageTariffDto';
 
 /**
- * 
+ * StorageStatsResponseDto.
  * @export
  * @interface StorageStatsResponseDto
  */

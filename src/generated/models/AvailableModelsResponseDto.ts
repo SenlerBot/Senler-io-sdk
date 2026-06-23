@@ -22,7 +22,7 @@ import {
 } from './PublicModelResponseDto';
 
 /**
- * 
+ * AvailableModelsResponseDto.
  * @export
  * @interface AvailableModelsResponseDto
  */

@@ -11,7 +11,7 @@
  */
 import type { NumberRangeDto } from './NumberRangeDto';
 /**
- *
+ * EventMetricDto.
  * @export
  * @interface EventMetricDto
  */

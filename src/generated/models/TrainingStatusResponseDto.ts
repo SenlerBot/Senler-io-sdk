@@ -43,7 +43,7 @@ import {
 } from './AgentVariantDto';
 
 /**
- * 
+ * TrainingStatusResponseDto.
  * @export
  * @interface TrainingStatusResponseDto
  */

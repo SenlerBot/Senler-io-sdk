@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * MetricTimeSeriesPointDto.
  * @export
  * @interface MetricTimeSeriesPointDto
  */

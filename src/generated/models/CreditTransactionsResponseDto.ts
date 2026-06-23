@@ -22,7 +22,7 @@ import {
 } from './CreditTransactionDto';
 
 /**
- * 
+ * CreditTransactionsResponseDto.
  * @export
  * @interface CreditTransactionsResponseDto
  */

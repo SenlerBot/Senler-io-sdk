@@ -23,12 +23,15 @@ import { ChannelsVKApi } from './generated/apis/ChannelsVKApi';
 import { ChannelsWidgetApi } from './generated/apis/ChannelsWidgetApi';
 import { CountriesApi } from './generated/apis/CountriesApi';
 import { DataSourcesApi } from './generated/apis/DataSourcesApi';
+import { DeliveriesApi } from './generated/apis/DeliveriesApi';
 import { DialogsApi } from './generated/apis/DialogsApi';
 import { DialogsManagementApi } from './generated/apis/DialogsManagementApi';
 import { DialogsMessagingApi } from './generated/apis/DialogsMessagingApi';
 import { EventsApi } from './generated/apis/EventsApi';
 import { FrontendVersionApi } from './generated/apis/FrontendVersionApi';
 import { KnowledgeBaseApi } from './generated/apis/KnowledgeBaseApi';
+import { LeadGroupsApi } from './generated/apis/LeadGroupsApi';
+import { LeadGroupsPublicApi } from './generated/apis/LeadGroupsPublicApi';
 import { LeadsApi } from './generated/apis/LeadsApi';
 import { LeadVariableDefinitionsApi } from './generated/apis/LeadVariableDefinitionsApi';
 import { LeadVariablesApi } from './generated/apis/LeadVariablesApi';
@@ -45,6 +48,7 @@ import { ProjectsAvatarApi } from './generated/apis/ProjectsAvatarApi';
 import { ProjectVariablesApi } from './generated/apis/ProjectVariablesApi';
 import { ReadyMCPServersApi } from './generated/apis/ReadyMCPServersApi';
 import { SpacesApi } from './generated/apis/SpacesApi';
+import { StatisticsApi } from './generated/apis/StatisticsApi';
 import { StorageApi } from './generated/apis/StorageApi';
 import { TariffsApi } from './generated/apis/TariffsApi';
 export declare class AiSenlerClient {
@@ -72,12 +76,15 @@ export declare class AiSenlerClient {
     readonly channelsWidget: ChannelsWidgetApi;
     readonly countries: CountriesApi;
     readonly dataSources: DataSourcesApi;
+    readonly deliveries: DeliveriesApi;
     readonly dialogs: DialogsApi;
     readonly dialogsManagement: DialogsManagementApi;
     readonly dialogsMessaging: DialogsMessagingApi;
     readonly events: EventsApi;
     readonly frontendVersion: FrontendVersionApi;
     readonly knowledgeBase: KnowledgeBaseApi;
+    readonly leadGroups: LeadGroupsApi;
+    readonly leadGroupsPublic: LeadGroupsPublicApi;
     readonly leads: LeadsApi;
     readonly leadVariableDefinitions: LeadVariableDefinitionsApi;
     readonly leadVariables: LeadVariablesApi;
@@ -94,6 +101,7 @@ export declare class AiSenlerClient {
     readonly projectVariables: ProjectVariablesApi;
     readonly readyMCPServers: ReadyMCPServersApi;
     readonly spaces: SpacesApi;
+    readonly statistics: StatisticsApi;
     readonly storage: StorageApi;
     readonly tariffs: TariffsApi;
     constructor(config: AiSenlerClientConfig & {

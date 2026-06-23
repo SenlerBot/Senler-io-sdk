@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * SpaceDetailsAncestorDto.
  * @export
  * @interface SpaceDetailsAncestorDto
  */

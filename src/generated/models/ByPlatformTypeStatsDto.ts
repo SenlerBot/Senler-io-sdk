@@ -22,7 +22,7 @@ import {
 } from './CategoryStatsDto';
 
 /**
- * 
+ * ByPlatformTypeStatsDto.
  * @export
  * @interface ByPlatformTypeStatsDto
  */

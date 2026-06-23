@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * DialogDisplayInfoDto.
  * @export
  * @interface DialogDisplayInfoDto
  */

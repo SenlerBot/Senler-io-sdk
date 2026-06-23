@@ -11,7 +11,7 @@
  */
 import type { VariableSchemaDto } from './VariableSchemaDto';
 /**
- *
+ * CreateProjectVariableDto.
  * @export
  * @interface CreateProjectVariableDto
  */

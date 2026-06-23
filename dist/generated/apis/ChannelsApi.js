@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TokensSyncAcceptLanguageEnum = exports.RegenerateSecretAcceptLanguageEnum = exports.PauseAcceptLanguageEnum = exports.MigrationStartAcceptLanguageEnum = exports.MigrationEstimateAcceptLanguageEnum = exports.GetWidgetCodeAcceptLanguageEnum = exports.GetTokensAcceptLanguageEnum = exports.GetSenlerStatusAcceptLanguageEnum = exports.GetAccessAcceptLanguageEnum = exports.DeleteTokensAcceptLanguageEnum = exports.DeleteTokensPlatformEnum = exports.DeleteSenlerAcceptLanguageEnum = exports.ChannelsUpdateAcceptLanguageEnum = exports.ChannelsListAcceptLanguageEnum = exports.ChannelsListTypeEnum = exports.ChannelsGetByIdAcceptLanguageEnum = exports.ChannelsDeactivateAcceptLanguageEnum = exports.ChannelsAvatarUploadUrlAcceptLanguageEnum = exports.ChannelsAvatarConfirmAcceptLanguageEnum = exports.AvatarFromUrlAcceptLanguageEnum = exports.ChannelsApi = void 0;
+exports.TokensSyncAcceptLanguageEnum = exports.RegenerateSecretAcceptLanguageEnum = exports.PauseAcceptLanguageEnum = exports.MigrationStartAcceptLanguageEnum = exports.MigrationFinishNowAcceptLanguageEnum = exports.MigrationEstimateAcceptLanguageEnum = exports.MigrationBackfillStartAcceptLanguageEnum = exports.GetWidgetCodeAcceptLanguageEnum = exports.GetTokensAcceptLanguageEnum = exports.GetSenlerStatusAcceptLanguageEnum = exports.GetMigrationBackfillEstimateAcceptLanguageEnum = exports.GetAccessAcceptLanguageEnum = exports.DeleteTokensAcceptLanguageEnum = exports.DeleteTokensPlatformEnum = exports.DeleteSenlerAcceptLanguageEnum = exports.ChannelsUpdateAcceptLanguageEnum = exports.ChannelsListAcceptLanguageEnum = exports.ChannelsListTypeEnum = exports.ChannelsGetByIdAcceptLanguageEnum = exports.ChannelsDeactivateAcceptLanguageEnum = exports.ChannelsAvatarUploadUrlAcceptLanguageEnum = exports.ChannelsAvatarConfirmAcceptLanguageEnum = exports.AvatarFromUrlAcceptLanguageEnum = exports.ChannelsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -187,7 +187,7 @@ class ChannelsApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.GetAvatarUploadUrlDtoToJSON)(requestParameters['getAvatarUploadUrlDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
     }
     /**
      * S3- . .
@@ -513,6 +513,49 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , .
+     *
+     */
+    async getMigrationBackfillEstimateRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getMigrationBackfillEstimate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/channels/{id}/migration/backfill/estimate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MigrationBackfillEstimateResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getMigrationBackfillEstimate(requestParameters, initOverrides) {
+        const response = await this.getMigrationBackfillEstimateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Senler : , ID Senler, .
      * Senler
      */
@@ -645,6 +688,49 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , .
+     *
+     */
+    async migrationBackfillStartRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling migrationBackfillStart().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+        const response = await this.request({
+            path: `/api/channels/{id}/migration/backfill/start`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StartMigrationBackfillResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async migrationBackfillStart(requestParameters, initOverrides) {
+        const response = await this.migrationBackfillStartRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      *
      *
      */
@@ -690,6 +776,49 @@ class ChannelsApi extends runtime.BaseAPI {
      */
     async migrationEstimate(requestParameters, initOverrides) {
         const response = await this.migrationEstimateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async migrationFinishNowRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling migrationFinishNow().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+        const response = await this.request({
+            path: `/api/channels/{id}/migration/finish-now`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.FinishMigrationNowResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async migrationFinishNow(requestParameters, initOverrides) {
+        const response = await this.migrationFinishNowRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -967,6 +1096,13 @@ exports.GetAccessAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetMigrationBackfillEstimateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetSenlerStatusAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -988,7 +1124,21 @@ exports.GetWidgetCodeAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.MigrationBackfillStartAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.MigrationEstimateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.MigrationFinishNowAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

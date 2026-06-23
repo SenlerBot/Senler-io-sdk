@@ -11,7 +11,7 @@
  */
 import type { TariffResponseDto } from './TariffResponseDto';
 /**
- *
+ * TariffListResponseDto.
  * @export
  * @interface TariffListResponseDto
  */

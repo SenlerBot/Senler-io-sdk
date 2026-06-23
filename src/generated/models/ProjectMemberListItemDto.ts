@@ -29,7 +29,7 @@ import {
 } from './PermissionsDto';
 
 /**
- * 
+ * ProjectMemberListItemDto.
  * @export
  * @interface ProjectMemberListItemDto
  */

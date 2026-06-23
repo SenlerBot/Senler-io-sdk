@@ -12,7 +12,7 @@
 import type { ClientSpending } from './ClientSpending';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
 /**
- *
+ * UnitEconomics.
  * @export
  * @interface UnitEconomics
  */

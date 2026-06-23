@@ -22,7 +22,7 @@ import {
 } from './EventReactionUserDto';
 
 /**
- * 
+ * EventReactionUsersResponseDto.
  * @export
  * @interface EventReactionUsersResponseDto
  */

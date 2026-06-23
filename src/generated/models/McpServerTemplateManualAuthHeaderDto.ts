@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * McpServerTemplateManualAuthHeaderDto.
  * @export
  * @interface McpServerTemplateManualAuthHeaderDto
  */

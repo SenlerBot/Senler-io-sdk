@@ -11,7 +11,7 @@
  */
 import type { RolePermissionsDto } from './RolePermissionsDto';
 /**
- *
+ * RolePresetsResponseDto.
  * @export
  * @interface RolePresetsResponseDto
  */

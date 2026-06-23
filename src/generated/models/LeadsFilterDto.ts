@@ -14,11 +14,17 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * LeadsFilterDto.
  * @export
  * @interface LeadsFilterDto
  */
 export interface LeadsFilterDto {
+    /**
+     * ID (ObjectId, , 50 ). , ID
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    leadIds?: Array<string>;
     /**
      * UUID .
      * @type {Array<string>}
@@ -44,6 +50,12 @@ export interface LeadsFilterDto {
      */
     isBlacklisted?: boolean;
     /**
+     * 
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    isBlocked?: boolean;
+    /**
      * /username/ID
      * @type {string}
      * @memberof LeadsFilterDto
@@ -61,6 +73,18 @@ export interface LeadsFilterDto {
      * @memberof LeadsFilterDto
      */
     spaceIsMember?: boolean;
+    /**
+     * lead_group ID (ObjectId, , 20 )
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    leadGroupId?: Array<string>;
+    /**
+     * membership : true = , false =
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    leadGroupIsMember?: boolean;
 }
 
 
@@ -97,13 +121,17 @@ export function LeadsFilterDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
+        'leadIds': json['lead_ids'] == null ? undefined : json['lead_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'channelType': json['channel_type'] == null ? undefined : json['channel_type'],
         'isSubscribed': json['is_subscribed'] == null ? undefined : json['is_subscribed'],
         'isBlacklisted': json['is_blacklisted'] == null ? undefined : json['is_blacklisted'],
+        'isBlocked': json['is_blocked'] == null ? undefined : json['is_blocked'],
         'search': json['search'] == null ? undefined : json['search'],
         'spaceId': json['space_id'] == null ? undefined : json['space_id'],
         'spaceIsMember': json['space_is_member'] == null ? undefined : json['space_is_member'],
+        'leadGroupId': json['lead_group_id'] == null ? undefined : json['lead_group_id'],
+        'leadGroupIsMember': json['lead_group_is_member'] == null ? undefined : json['lead_group_is_member'],
     };
 }
 
@@ -118,13 +146,17 @@ export function LeadsFilterDtoToJSONTyped(value?: LeadsFilterDto | null, ignoreD
 
     return {
         
+        'lead_ids': value['leadIds'],
         'channel_ids': value['channelIds'],
         'channel_type': value['channelType'],
         'is_subscribed': value['isSubscribed'],
         'is_blacklisted': value['isBlacklisted'],
+        'is_blocked': value['isBlocked'],
         'search': value['search'],
         'space_id': value['spaceId'],
         'space_is_member': value['spaceIsMember'],
+        'lead_group_id': value['leadGroupId'],
+        'lead_group_is_member': value['leadGroupIsMember'],
     };
 }
 

@@ -29,7 +29,7 @@ import {
 } from './EventSourceDiscordDmDataDto';
 
 /**
- * 
+ * EventSourceDiscordDmContextDto.
  * @export
  * @interface EventSourceDiscordDmContextDto
  */

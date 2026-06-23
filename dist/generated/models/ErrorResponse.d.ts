@@ -11,7 +11,7 @@
  */
 import type { ErrorData } from './ErrorData';
 /**
- *
+ * ErrorResponse.
  * @export
  * @interface ErrorResponse
  */

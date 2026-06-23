@@ -12,7 +12,7 @@
 import type { EventSourceEmailThreadDataDto } from './EventSourceEmailThreadDataDto';
 import type { EventAttributionDto } from './EventAttributionDto';
 /**
- *
+ * EventSourceEmailThreadContextDto.
  * @export
  * @interface EventSourceEmailThreadContextDto
  */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * DialogMessageAttachmentDto.
  * @export
  * @interface DialogMessageAttachmentDto
  */
@@ -34,12 +34,12 @@ export interface DialogMessageAttachmentDto {
 export declare const DialogMessageAttachmentDtoTypeEnum: {
     readonly Photo: "photo";
     readonly Video: "video";
-    readonly VideoNote: "video_note";
-    readonly Animation: "animation";
-    readonly Document: "document";
     readonly Voice: "voice";
     readonly Audio: "audio";
+    readonly Document: "document";
     readonly Sticker: "sticker";
+    readonly Contact: "contact";
+    readonly Location: "location";
 };
 export type DialogMessageAttachmentDtoTypeEnum = typeof DialogMessageAttachmentDtoTypeEnum[keyof typeof DialogMessageAttachmentDtoTypeEnum];
 /**

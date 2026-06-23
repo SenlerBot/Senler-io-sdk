@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * LeadsRefreshErrorDto.
  * @export
  * @interface LeadsRefreshErrorDto
  */

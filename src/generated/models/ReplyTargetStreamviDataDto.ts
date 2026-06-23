@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * ReplyTargetStreamviDataDto.
  * @export
  * @interface ReplyTargetStreamviDataDto
  */

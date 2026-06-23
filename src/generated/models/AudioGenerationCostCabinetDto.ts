@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AudioGenerationCostCabinetDto.
  * @export
  * @interface AudioGenerationCostCabinetDto
  */

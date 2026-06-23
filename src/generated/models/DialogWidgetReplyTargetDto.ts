@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetWidgetDataDto';
 
 /**
- * 
+ * DialogWidgetReplyTargetDto.
  * @export
  * @interface DialogWidgetReplyTargetDto
  */

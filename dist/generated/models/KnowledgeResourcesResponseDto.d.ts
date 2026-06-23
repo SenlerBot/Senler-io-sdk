@@ -13,7 +13,7 @@ import type { KnowledgeTableResponseDto } from './KnowledgeTableResponseDto';
 import type { KnowledgeFileResponseDto } from './KnowledgeFileResponseDto';
 import type { KnowledgeFolderResponseDto } from './KnowledgeFolderResponseDto';
 /**
- *
+ * KnowledgeResourcesResponseDto.
  * @export
  * @interface KnowledgeResourcesResponseDto
  */

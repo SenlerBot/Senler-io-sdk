@@ -11,7 +11,7 @@
  */
 import type { MigrationHistoryOptionEstimate } from './MigrationHistoryOptionEstimate';
 /**
- *
+ * MigrationEstimateResponseDto.
  * @export
  * @interface MigrationEstimateResponseDto
  */

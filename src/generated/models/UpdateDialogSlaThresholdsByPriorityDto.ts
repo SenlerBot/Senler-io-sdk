@@ -22,7 +22,7 @@ import {
 } from './UpdateDialogSlaPriorityThresholdDto';
 
 /**
- * 
+ * UpdateDialogSlaThresholdsByPriorityDto.
  * @export
  * @interface UpdateDialogSlaThresholdsByPriorityDto
  */

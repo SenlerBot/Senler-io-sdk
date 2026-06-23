@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { EventChecklistSnapshotDto } from './EventChecklistSnapshotDto';
 import type { EventMessageEditingDto } from './EventMessageEditingDto';
 import type { EventMessageReactionDto } from './EventMessageReactionDto';
 import type { EventMessageForwardingDto } from './EventMessageForwardingDto';
@@ -19,7 +20,7 @@ import type { EventMessageViewsDto } from './EventMessageViewsDto';
 import type { EventPollSnapshotDto } from './EventPollSnapshotDto';
 import type { EventPlatformActionDto } from './EventPlatformActionDto';
 /**
- *
+ * EventMessageInteractionsDto.
  * @export
  * @interface EventMessageInteractionsDto
  */
@@ -36,6 +37,12 @@ export interface EventMessageInteractionsDto {
      * @memberof EventMessageInteractionsDto
      */
     poll?: EventPollSnapshotDto;
+    /**
+     * Snapshot Telegram checklist
+     * @type {EventChecklistSnapshotDto}
+     * @memberof EventMessageInteractionsDto
+     */
+    checklist?: EventChecklistSnapshotDto;
     /**
      *
      * @type {EventMessageEditingDto}

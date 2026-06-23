@@ -40,6 +40,7 @@ export interface GetEventsRequest {
     sortBy?: GetEventsSortByEnum;
     searchCursor?: string;
     before?: string;
+    after?: string;
     limit?: number;
     xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
@@ -106,12 +107,12 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto>;
     /**
-     * . before limit; q.
+     * . before/after limit; q.
      *
      */
     getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>>;
     /**
-     * . before limit; q.
+     * . before/after limit; q.
      *
      */
     getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response>;

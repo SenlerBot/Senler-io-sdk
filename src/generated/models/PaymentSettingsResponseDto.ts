@@ -22,7 +22,7 @@ import {
 } from './PaySystemResponseDto';
 
 /**
- * 
+ * PaymentSettingsResponseDto.
  * @export
  * @interface PaymentSettingsResponseDto
  */

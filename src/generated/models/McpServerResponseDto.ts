@@ -36,7 +36,7 @@ import {
 } from './McpServerTemplateManualAuthHeaderDto';
 
 /**
- * 
+ * McpServerResponseDto.
  * @export
  * @interface McpServerResponseDto
  */

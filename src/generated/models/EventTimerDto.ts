@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * EventTimerDto.
  * @export
  * @interface EventTimerDto
  */

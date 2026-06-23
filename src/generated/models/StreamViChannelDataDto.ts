@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * StreamViChannelDataDto.
  * @export
  * @interface StreamViChannelDataDto
  */

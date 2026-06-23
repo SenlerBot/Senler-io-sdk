@@ -22,7 +22,7 @@ import {
 } from './EventMetricDto';
 
 /**
- * 
+ * EventGenerationMetricsDto.
  * @export
  * @interface EventGenerationMetricsDto
  */

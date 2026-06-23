@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * PlatformIconsDto.
  * @export
  * @interface PlatformIconsDto
  */

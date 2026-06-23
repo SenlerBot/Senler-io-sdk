@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * TextModelStats.
  * @export
  * @interface TextModelStats
  */
@@ -40,7 +40,7 @@ export interface TextModelStats {
      */
     tokens: number;
     /**
-     * ( USD)
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof TextModelStats
      */

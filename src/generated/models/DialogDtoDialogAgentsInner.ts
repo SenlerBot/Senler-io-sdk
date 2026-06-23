@@ -22,7 +22,7 @@ import {
 } from './DialogDtoDialogAgentsInnerAgentInfo';
 
 /**
- * 
+ * : , .
  * @export
  * @interface DialogDtoDialogAgentsInner
  */

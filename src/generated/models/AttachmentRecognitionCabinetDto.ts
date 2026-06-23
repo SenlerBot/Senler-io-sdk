@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * AttachmentRecognitionCabinetDto.
  * @export
  * @interface AttachmentRecognitionCabinetDto
  */

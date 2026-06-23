@@ -11,7 +11,7 @@
  */
 import type { CreateTelegramChannelDataDto } from './CreateTelegramChannelDataDto';
 /**
- *
+ * CreateTelegramChannelResponseDto.
  * @export
  * @interface CreateTelegramChannelResponseDto
  */

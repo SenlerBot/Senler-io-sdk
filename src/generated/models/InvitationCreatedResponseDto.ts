@@ -22,7 +22,7 @@ import {
 } from './InvitationListItemDto';
 
 /**
- * 
+ * InvitationCreatedResponseDto.
  * @export
  * @interface InvitationCreatedResponseDto
  */

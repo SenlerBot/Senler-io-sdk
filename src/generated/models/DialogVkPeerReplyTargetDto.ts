@@ -22,7 +22,7 @@ import {
 } from './ReplyTargetVkPeerDataDto';
 
 /**
- * 
+ * DialogVkPeerReplyTargetDto.
  * @export
  * @interface DialogVkPeerReplyTargetDto
  */

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * OrderTariffResponseDto.
  * @export
  * @interface OrderTariffResponseDto
  */
