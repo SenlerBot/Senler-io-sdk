@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { KnowledgeFileResolvedLinkDto } from './KnowledgeFileResolvedLinkDto';
 /**
  * KnowledgeFileResponseDto.
  * @export
@@ -131,6 +132,12 @@ export interface KnowledgeFileResponseDto {
     aiMetadata: {
         [key: string]: any;
     };
+    /**
+     * Markdown-
+     * @type {Array<KnowledgeFileResolvedLinkDto>}
+     * @memberof KnowledgeFileResponseDto
+     */
+    resolvedLinks?: Array<KnowledgeFileResolvedLinkDto>;
     /**
      *
      * @type {boolean}

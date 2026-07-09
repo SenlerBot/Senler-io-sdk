@@ -78,6 +78,12 @@ export interface ProjectMemberListItemDto {
      */
     hasAccessToAllChannels: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof ProjectMemberListItemDto
+     */
+    isSupportOperator: boolean;
+    /**
      * , . hasAccessToAllChannels=true,
      * @type {number}
      * @memberof ProjectMemberListItemDto

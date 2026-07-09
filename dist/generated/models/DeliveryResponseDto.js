@@ -27,6 +27,7 @@ const DeliveryRunResponseDto_1 = require("./DeliveryRunResponseDto");
  */
 exports.DeliveryResponseDtoStatusEnum = {
     Ready: 'ready',
+    Scheduled: 'scheduled',
     Queued: 'queued',
     Collecting: 'collecting',
     Sending: 'sending',
@@ -52,6 +53,8 @@ function instanceOfDeliveryResponseDto(value) {
     if (!('messageText' in value) || value['messageText'] === undefined)
         return false;
     if (!('attachments' in value) || value['attachments'] === undefined)
+        return false;
+    if (!('scheduledAt' in value) || value['scheduledAt'] === undefined)
         return false;
     if (!('recipientCount' in value) || value['recipientCount'] === undefined)
         return false;
@@ -80,6 +83,7 @@ function DeliveryResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'messageText': json['message_text'],
         'attachments': (json['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoFromJSON)),
+        'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
         'recipientCount': json['recipient_count'],
         'lastRunId': json['last_run_id'],
         'lastProcessId': json['last_process_id'],
@@ -103,6 +107,7 @@ function DeliveryResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'message_text': value['messageText'],
         'attachments': (value['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoToJSON)),
+        'scheduled_at': (value['scheduledAt'] == null ? null : value['scheduledAt'].toISOString()),
         'recipient_count': value['recipientCount'],
         'last_run_id': value['lastRunId'],
         'last_process_id': value['lastProcessId'],

@@ -26,10 +26,6 @@ function instanceOfLeadGroupPublishedConsentDto(value) {
         return false;
     if (!('version' in value) || value['version'] === undefined)
         return false;
-    if (!('text' in value) || value['text'] === undefined)
-        return false;
-    if (!('required' in value) || value['required'] === undefined)
-        return false;
     if (!('sort' in value) || value['sort'] === undefined)
         return false;
     return true;
@@ -44,11 +40,9 @@ function LeadGroupPublishedConsentDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'documentId': json['document_id'],
         'version': json['version'],
-        'text': json['text'],
         'fileUrl': json['file_url'] == null ? undefined : json['file_url'],
         'content': json['content'] == null ? undefined : json['content'],
         'documentName': json['document_name'] == null ? undefined : json['document_name'],
-        'required': json['required'],
         'sort': json['sort'],
     };
 }
@@ -62,11 +56,9 @@ function LeadGroupPublishedConsentDtoToJSONTyped(value, ignoreDiscriminator = fa
     return {
         'document_id': value['documentId'],
         'version': value['version'],
-        'text': value['text'],
         'file_url': value['fileUrl'],
         'content': value['content'],
         'document_name': value['documentName'],
-        'required': value['required'],
         'sort': value['sort'],
     };
 }

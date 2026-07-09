@@ -28,7 +28,7 @@ export interface ConfirmLeadGroupVkAppInstallationDto {
      */
     vkGroupId: number;
     /**
-     * launch- VK Mini App window.location.search.
+     * VK Mini App -.
      * @type {string}
      * @memberof ConfirmLeadGroupVkAppInstallationDto
      */

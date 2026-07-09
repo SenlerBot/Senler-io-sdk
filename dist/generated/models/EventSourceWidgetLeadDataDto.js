@@ -19,9 +19,8 @@ exports.EventSourceWidgetLeadDataDtoFromJSON = EventSourceWidgetLeadDataDtoFromJ
 exports.EventSourceWidgetLeadDataDtoFromJSONTyped = EventSourceWidgetLeadDataDtoFromJSONTyped;
 exports.EventSourceWidgetLeadDataDtoToJSON = EventSourceWidgetLeadDataDtoToJSON;
 exports.EventSourceWidgetLeadDataDtoToJSONTyped = EventSourceWidgetLeadDataDtoToJSONTyped;
-const EventSourceWidgetSelectedElementDto_1 = require("./EventSourceWidgetSelectedElementDto");
 const WidgetCustomActionCapabilityDto_1 = require("./WidgetCustomActionCapabilityDto");
-const EventSourceWidgetPageContextDto_1 = require("./EventSourceWidgetPageContextDto");
+const EventSourceWidgetContextItemDto_1 = require("./EventSourceWidgetContextItemDto");
 /**
  * @export
  */
@@ -47,8 +46,7 @@ function EventSourceWidgetLeadDataDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'leadId': json['lead_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
-        'pageContext': json['page_context'] == null ? undefined : (0, EventSourceWidgetPageContextDto_1.EventSourceWidgetPageContextDtoFromJSON)(json['page_context']),
-        'selectedElement': json['selected_element'] == null ? undefined : (0, EventSourceWidgetSelectedElementDto_1.EventSourceWidgetSelectedElementDtoFromJSON)(json['selected_element']),
+        'contextItems': json['context_items'] == null ? undefined : (json['context_items'].map(EventSourceWidgetContextItemDto_1.EventSourceWidgetContextItemDtoFromJSON)),
         'customActions': json['custom_actions'] == null ? undefined : (json['custom_actions'].map(WidgetCustomActionCapabilityDto_1.WidgetCustomActionCapabilityDtoFromJSON)),
         'customActionsLanguage': json['custom_actions_language'] == null ? undefined : json['custom_actions_language'],
     };
@@ -63,8 +61,7 @@ function EventSourceWidgetLeadDataDtoToJSONTyped(value, ignoreDiscriminator = fa
     return {
         'lead_id': value['leadId'],
         'user_id': value['userId'],
-        'page_context': (0, EventSourceWidgetPageContextDto_1.EventSourceWidgetPageContextDtoToJSON)(value['pageContext']),
-        'selected_element': (0, EventSourceWidgetSelectedElementDto_1.EventSourceWidgetSelectedElementDtoToJSON)(value['selectedElement']),
+        'context_items': value['contextItems'] == null ? undefined : (value['contextItems'].map(EventSourceWidgetContextItemDto_1.EventSourceWidgetContextItemDtoToJSON)),
         'custom_actions': value['customActions'] == null ? undefined : (value['customActions'].map(WidgetCustomActionCapabilityDto_1.WidgetCustomActionCapabilityDtoToJSON)),
         'custom_actions_language': value['customActionsLanguage'],
     };

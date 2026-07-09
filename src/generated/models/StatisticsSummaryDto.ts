@@ -124,6 +124,24 @@ export interface StatisticsSummaryDto {
      */
     averageFirstResponseTimeSeconds: StatisticsMetricDeltaDto;
     /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsSummaryDto
+     */
+    averageFirstResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsSummaryDto
+     */
+    averageResponseTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsSummaryDto
+     */
+    averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
      * 
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
@@ -163,6 +181,9 @@ export function instanceOfStatisticsSummaryDto(value: object): value is Statisti
     if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined) return false;
     if (!('operatorAssignedDialogs' in value) || value['operatorAssignedDialogs'] === undefined) return false;
     if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined) return false;
+    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined) return false;
+    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined) return false;
+    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined) return false;
     if (!('averageCreditsPerDialog' in value) || value['averageCreditsPerDialog'] === undefined) return false;
     if (!('averageCreditsPerMessage' in value) || value['averageCreditsPerMessage'] === undefined) return false;
     if (!('tokensUsed' in value) || value['tokensUsed'] === undefined) return false;
@@ -195,6 +216,9 @@ export function StatisticsSummaryDtoFromJSONTyped(json: any, ignoreDiscriminator
         'unansweredDialogs': StatisticsMetricDeltaDtoFromJSON(json['unanswered_dialogs']),
         'operatorAssignedDialogs': StatisticsMetricDeltaDtoFromJSON(json['operator_assigned_dialogs']),
         'averageFirstResponseTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_first_response_time_seconds']),
+        'averageFirstResponseRawTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_first_response_raw_time_seconds']),
+        'averageResponseTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_response_time_seconds']),
+        'averageResponseRawTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_response_raw_time_seconds']),
         'averageCreditsPerDialog': StatisticsMetricDeltaDtoFromJSON(json['average_credits_per_dialog']),
         'averageCreditsPerMessage': StatisticsMetricDeltaDtoFromJSON(json['average_credits_per_message']),
         'tokensUsed': StatisticsMetricDeltaDtoFromJSON(json['tokens_used']),
@@ -228,6 +252,9 @@ export function StatisticsSummaryDtoToJSONTyped(value?: StatisticsSummaryDto | n
         'unanswered_dialogs': StatisticsMetricDeltaDtoToJSON(value['unansweredDialogs']),
         'operator_assigned_dialogs': StatisticsMetricDeltaDtoToJSON(value['operatorAssignedDialogs']),
         'average_first_response_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageFirstResponseTimeSeconds']),
+        'average_first_response_raw_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageFirstResponseRawTimeSeconds']),
+        'average_response_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageResponseTimeSeconds']),
+        'average_response_raw_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageResponseRawTimeSeconds']),
         'average_credits_per_dialog': StatisticsMetricDeltaDtoToJSON(value['averageCreditsPerDialog']),
         'average_credits_per_message': StatisticsMetricDeltaDtoToJSON(value['averageCreditsPerMessage']),
         'tokens_used': StatisticsMetricDeltaDtoToJSON(value['tokensUsed']),

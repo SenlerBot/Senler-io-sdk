@@ -134,7 +134,25 @@ export interface StatisticsChannelBreakdownDto {
      */
     averageFirstResponseTimeSeconds: number;
     /**
-     * 
+     * ,
+     * @type {number}
+     * @memberof StatisticsChannelBreakdownDto
+     */
+    averageFirstResponseRawTimeSeconds: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof StatisticsChannelBreakdownDto
+     */
+    averageResponseTimeSeconds: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof StatisticsChannelBreakdownDto
+     */
+    averageResponseRawTimeSeconds: number;
+    /**
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */
@@ -201,6 +219,9 @@ export function instanceOfStatisticsChannelBreakdownDto(value: object): value is
     if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined) return false;
     if (!('operatorAssignedDialogs' in value) || value['operatorAssignedDialogs'] === undefined) return false;
     if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined) return false;
+    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined) return false;
+    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined) return false;
+    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined) return false;
     if (!('averageCreditsPerDialog' in value) || value['averageCreditsPerDialog'] === undefined) return false;
     if (!('tokensUsed' in value) || value['tokensUsed'] === undefined) return false;
     return true;
@@ -235,6 +256,9 @@ export function StatisticsChannelBreakdownDtoFromJSONTyped(json: any, ignoreDisc
         'unansweredDialogs': json['unanswered_dialogs'],
         'operatorAssignedDialogs': json['operator_assigned_dialogs'],
         'averageFirstResponseTimeSeconds': json['average_first_response_time_seconds'],
+        'averageFirstResponseRawTimeSeconds': json['average_first_response_raw_time_seconds'],
+        'averageResponseTimeSeconds': json['average_response_time_seconds'],
+        'averageResponseRawTimeSeconds': json['average_response_raw_time_seconds'],
         'averageCreditsPerDialog': json['average_credits_per_dialog'],
         'tokensUsed': json['tokens_used'],
     };
@@ -270,6 +294,9 @@ export function StatisticsChannelBreakdownDtoToJSONTyped(value?: StatisticsChann
         'unanswered_dialogs': value['unansweredDialogs'],
         'operator_assigned_dialogs': value['operatorAssignedDialogs'],
         'average_first_response_time_seconds': value['averageFirstResponseTimeSeconds'],
+        'average_first_response_raw_time_seconds': value['averageFirstResponseRawTimeSeconds'],
+        'average_response_time_seconds': value['averageResponseTimeSeconds'],
+        'average_response_raw_time_seconds': value['averageResponseRawTimeSeconds'],
         'average_credits_per_dialog': value['averageCreditsPerDialog'],
         'tokens_used': value['tokensUsed'],
     };

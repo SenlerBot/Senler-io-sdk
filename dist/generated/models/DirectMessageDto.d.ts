@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { MessageButtonDto } from './MessageButtonDto';
 /**
  * DirectMessageDto.
  * @export
@@ -39,6 +40,12 @@ export interface DirectMessageDto {
      * @memberof DirectMessageDto
      */
     subject?: string;
+    /**
+     * . platform buttons, email .
+     * @type {Array<MessageButtonDto>}
+     * @memberof DirectMessageDto
+     */
+    buttons?: Array<MessageButtonDto>;
 }
 /**
  * Check if a given object implements the DirectMessageDto interface.

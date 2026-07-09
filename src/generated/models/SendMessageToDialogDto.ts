@@ -20,6 +20,13 @@ import {
     MessageAttachmentInputDtoToJSON,
     MessageAttachmentInputDtoToJSONTyped,
 } from './MessageAttachmentInputDto';
+import type { MessageButtonDto } from './MessageButtonDto';
+import {
+    MessageButtonDtoFromJSON,
+    MessageButtonDtoFromJSONTyped,
+    MessageButtonDtoToJSON,
+    MessageButtonDtoToJSONTyped,
+} from './MessageButtonDto';
 
 /**
  * SendMessageToDialogDto.
@@ -69,6 +76,12 @@ export interface SendMessageToDialogDto {
      */
     attachments?: Array<MessageAttachmentInputDto>;
     /**
+     * .
+     * @type {Array<MessageButtonDto>}
+     * @memberof SendMessageToDialogDto
+     */
+    buttons?: Array<MessageButtonDto>;
+    /**
      * ID ,
      * @type {string}
      * @memberof SendMessageToDialogDto
@@ -110,6 +123,7 @@ export function SendMessageToDialogDtoFromJSONTyped(json: any, ignoreDiscriminat
         'content': json['content'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
         'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentInputDtoFromJSON)),
+        'buttons': json['buttons'] == null ? undefined : ((json['buttons'] as Array<any>).map(MessageButtonDtoFromJSON)),
         'replyToEventId': json['reply_to_event_id'] == null ? undefined : json['reply_to_event_id'],
     };
 }
@@ -128,6 +142,7 @@ export function SendMessageToDialogDtoToJSONTyped(value?: SendMessageToDialogDto
         'content': value['content'],
         'client_type': value['clientType'],
         'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentInputDtoToJSON)),
+        'buttons': value['buttons'] == null ? undefined : ((value['buttons'] as Array<any>).map(MessageButtonDtoToJSON)),
         'reply_to_event_id': value['replyToEventId'],
     };
 }

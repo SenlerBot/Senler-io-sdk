@@ -83,6 +83,12 @@ function instanceOfStatisticsChannelBreakdownDto(value) {
         return false;
     if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined)
         return false;
+    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined)
+        return false;
+    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined)
+        return false;
+    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined)
+        return false;
     if (!('averageCreditsPerDialog' in value) || value['averageCreditsPerDialog'] === undefined)
         return false;
     if (!('tokensUsed' in value) || value['tokensUsed'] === undefined)
@@ -116,6 +122,9 @@ function StatisticsChannelBreakdownDtoFromJSONTyped(json, ignoreDiscriminator) {
         'unansweredDialogs': json['unanswered_dialogs'],
         'operatorAssignedDialogs': json['operator_assigned_dialogs'],
         'averageFirstResponseTimeSeconds': json['average_first_response_time_seconds'],
+        'averageFirstResponseRawTimeSeconds': json['average_first_response_raw_time_seconds'],
+        'averageResponseTimeSeconds': json['average_response_time_seconds'],
+        'averageResponseRawTimeSeconds': json['average_response_raw_time_seconds'],
         'averageCreditsPerDialog': json['average_credits_per_dialog'],
         'tokensUsed': json['tokens_used'],
     };
@@ -147,6 +156,9 @@ function StatisticsChannelBreakdownDtoToJSONTyped(value, ignoreDiscriminator = f
         'unanswered_dialogs': value['unansweredDialogs'],
         'operator_assigned_dialogs': value['operatorAssignedDialogs'],
         'average_first_response_time_seconds': value['averageFirstResponseTimeSeconds'],
+        'average_first_response_raw_time_seconds': value['averageFirstResponseRawTimeSeconds'],
+        'average_response_time_seconds': value['averageResponseTimeSeconds'],
+        'average_response_raw_time_seconds': value['averageResponseRawTimeSeconds'],
         'average_credits_per_dialog': value['averageCreditsPerDialog'],
         'tokens_used': value['tokensUsed'],
     };

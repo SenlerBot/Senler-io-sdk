@@ -26,23 +26,11 @@ export interface LeadGroupRequiredConsentDto {
      */
     documentId: string;
     /**
-     * . , .
+     * . .
      * @type {number}
      * @memberof LeadGroupRequiredConsentDto
      */
     version?: number;
-    /**
-     * .
-     * @type {string}
-     * @memberof LeadGroupRequiredConsentDto
-     */
-    text: string;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof LeadGroupRequiredConsentDto
-     */
-    required?: boolean;
     /**
      * .
      * @type {number}
@@ -56,7 +44,6 @@ export interface LeadGroupRequiredConsentDto {
  */
 export function instanceOfLeadGroupRequiredConsentDto(value: object): value is LeadGroupRequiredConsentDto {
     if (!('documentId' in value) || value['documentId'] === undefined) return false;
-    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 
@@ -72,8 +59,6 @@ export function LeadGroupRequiredConsentDtoFromJSONTyped(json: any, ignoreDiscri
         
         'documentId': json['document_id'],
         'version': json['version'] == null ? undefined : json['version'],
-        'text': json['text'],
-        'required': json['required'] == null ? undefined : json['required'],
         'sort': json['sort'] == null ? undefined : json['sort'],
     };
 }
@@ -91,8 +76,6 @@ export function LeadGroupRequiredConsentDtoToJSONTyped(value?: LeadGroupRequired
         
         'document_id': value['documentId'],
         'version': value['version'],
-        'text': value['text'],
-        'required': value['required'],
         'sort': value['sort'],
     };
 }

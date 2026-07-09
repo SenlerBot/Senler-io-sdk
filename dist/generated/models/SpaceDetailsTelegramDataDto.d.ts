@@ -34,6 +34,24 @@ export interface SpaceDetailsTelegramDataDto {
      */
     linkedChatId?: string;
     /**
+     * ID Telegram-.
+     * @type {number}
+     * @memberof SpaceDetailsTelegramDataDto
+     */
+    postMessageId?: number;
+    /**
+     * ID Telegram-.
+     * @type {string}
+     * @memberof SpaceDetailsTelegramDataDto
+     */
+    postAuthorChatId?: string;
+    /**
+     * username Telegram-.
+     * @type {string}
+     * @memberof SpaceDetailsTelegramDataDto
+     */
+    postAuthorUsername?: string;
+    /**
      * Telegram.
      * @type {string}
      * @memberof SpaceDetailsTelegramDataDto

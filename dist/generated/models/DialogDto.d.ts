@@ -173,23 +173,29 @@ export interface DialogDto {
      */
     durationSeconds: number;
     /**
-     * ()
-     * @type {number}
+     * ID
+     * @type {string}
      * @memberof DialogDto
      */
-    firstResponseTimeSeconds?: number;
+    activeSupportCaseId?: string;
     /**
      *
      * @type {Date}
      * @memberof DialogDto
      */
-    firstLeadMessageAt?: Date;
+    activeSupportCaseOpenedAt?: Date;
     /**
      *
      * @type {Date}
      * @memberof DialogDto
      */
-    firstOperatorMessageAt?: Date;
+    activeSupportFirstResponseAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    activeSupportWaitingSince?: Date;
     /**
      *
      * @type {Date}

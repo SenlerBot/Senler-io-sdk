@@ -455,7 +455,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * ZIP- 50 , .
+     * ZIP- 500 , .
      * ZIP-
      */
     async filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>> {
@@ -542,7 +542,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * ZIP- 50 , .
+     * ZIP- 500 , .
      * ZIP-
      */
     async filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto> {

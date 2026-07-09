@@ -36,12 +36,6 @@ export interface LeadGroupPublishedConsentDto {
      * @type {string}
      * @memberof LeadGroupPublishedConsentDto
      */
-    text: string;
-    /**
-     * .
-     * @type {string}
-     * @memberof LeadGroupPublishedConsentDto
-     */
     fileUrl?: string | null;
     /**
      * .
@@ -57,12 +51,6 @@ export interface LeadGroupPublishedConsentDto {
     documentName?: string | null;
     /**
      * .
-     * @type {boolean}
-     * @memberof LeadGroupPublishedConsentDto
-     */
-    required: boolean;
-    /**
-     * .
      * @type {number}
      * @memberof LeadGroupPublishedConsentDto
      */
@@ -75,8 +63,6 @@ export interface LeadGroupPublishedConsentDto {
 export function instanceOfLeadGroupPublishedConsentDto(value: object): value is LeadGroupPublishedConsentDto {
     if (!('documentId' in value) || value['documentId'] === undefined) return false;
     if (!('version' in value) || value['version'] === undefined) return false;
-    if (!('text' in value) || value['text'] === undefined) return false;
-    if (!('required' in value) || value['required'] === undefined) return false;
     if (!('sort' in value) || value['sort'] === undefined) return false;
     return true;
 }
@@ -93,11 +79,9 @@ export function LeadGroupPublishedConsentDtoFromJSONTyped(json: any, ignoreDiscr
         
         'documentId': json['document_id'],
         'version': json['version'],
-        'text': json['text'],
         'fileUrl': json['file_url'] == null ? undefined : json['file_url'],
         'content': json['content'] == null ? undefined : json['content'],
         'documentName': json['document_name'] == null ? undefined : json['document_name'],
-        'required': json['required'],
         'sort': json['sort'],
     };
 }
@@ -115,11 +99,9 @@ export function LeadGroupPublishedConsentDtoToJSONTyped(value?: LeadGroupPublish
         
         'document_id': value['documentId'],
         'version': value['version'],
-        'text': value['text'],
         'file_url': value['fileUrl'],
         'content': value['content'],
         'document_name': value['documentName'],
-        'required': value['required'],
         'sort': value['sort'],
     };
 }

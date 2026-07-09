@@ -53,6 +53,7 @@ const ReadyMCPServersApi_1 = require("./generated/apis/ReadyMCPServersApi");
 const SpacesApi_1 = require("./generated/apis/SpacesApi");
 const StatisticsApi_1 = require("./generated/apis/StatisticsApi");
 const StorageApi_1 = require("./generated/apis/StorageApi");
+const SupportSchedulesApi_1 = require("./generated/apis/SupportSchedulesApi");
 const TariffsApi_1 = require("./generated/apis/TariffsApi");
 const DEFAULT_BASE_URL = 'https://api.senler.io';
 class AiSenlerClient {
@@ -125,6 +126,7 @@ class AiSenlerClient {
         this.spaces = new SpacesApi_1.SpacesApi(configuration);
         this.statistics = new StatisticsApi_1.StatisticsApi(configuration);
         this.storage = new StorageApi_1.StorageApi(configuration);
+        this.supportSchedules = new SupportSchedulesApi_1.SupportSchedulesApi(configuration);
         this.tariffs = new TariffsApi_1.TariffsApi(configuration);
     }
     /** Update the access token for all subsequent requests. */

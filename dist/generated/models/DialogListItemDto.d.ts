@@ -175,23 +175,29 @@ export interface DialogListItemDto {
      */
     durationSeconds: number;
     /**
-     * ()
-     * @type {number}
+     * ID
+     * @type {string}
      * @memberof DialogListItemDto
      */
-    firstResponseTimeSeconds?: number;
+    activeSupportCaseId?: string;
     /**
      *
      * @type {Date}
      * @memberof DialogListItemDto
      */
-    firstLeadMessageAt?: Date;
+    activeSupportCaseOpenedAt?: Date;
     /**
      *
      * @type {Date}
      * @memberof DialogListItemDto
      */
-    firstOperatorMessageAt?: Date;
+    activeSupportFirstResponseAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogListItemDto
+     */
+    activeSupportWaitingSince?: Date;
     /**
      *
      * @type {Date}

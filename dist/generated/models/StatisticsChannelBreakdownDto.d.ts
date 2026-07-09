@@ -130,7 +130,25 @@ export interface StatisticsChannelBreakdownDto {
      */
     averageFirstResponseTimeSeconds: number;
     /**
-     *
+     * ,
+     * @type {number}
+     * @memberof StatisticsChannelBreakdownDto
+     */
+    averageFirstResponseRawTimeSeconds: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof StatisticsChannelBreakdownDto
+     */
+    averageResponseTimeSeconds: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof StatisticsChannelBreakdownDto
+     */
+    averageResponseRawTimeSeconds: number;
+    /**
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */

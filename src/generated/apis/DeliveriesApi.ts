@@ -28,6 +28,7 @@ import type {
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
   ListDeliveriesResponseDto,
+  ScheduleDeliveryDto,
   StartDeliveryResponseDto,
   SuccessMessageDto,
   TestDeliveryDto,
@@ -61,6 +62,8 @@ import {
     GetUploadUrlResponseDtoToJSON,
     ListDeliveriesResponseDtoFromJSON,
     ListDeliveriesResponseDtoToJSON,
+    ScheduleDeliveryDtoFromJSON,
+    ScheduleDeliveryDtoToJSON,
     StartDeliveryResponseDtoFromJSON,
     StartDeliveryResponseDtoToJSON,
     SuccessMessageDtoFromJSON,
@@ -78,6 +81,13 @@ export interface DeleteDeliveriesRequest {
     id: string;
     xSessionId?: string;
     acceptLanguage?: DeleteDeliveriesAcceptLanguageEnum;
+}
+
+export interface DeleteDeliveriesScheduleRequest {
+    projectId: string;
+    id: string;
+    xSessionId?: string;
+    acceptLanguage?: DeleteDeliveriesScheduleAcceptLanguageEnum;
 }
 
 export interface DeliveriesRequest {
@@ -142,6 +152,7 @@ export interface DeliveriesTestRecipientLinkRequest {
 export interface GetDeliveriesRequest {
     projectId: string;
     tab?: GetDeliveriesTabEnum;
+    search?: string;
     xSessionId?: string;
     acceptLanguage?: GetDeliveriesAcceptLanguageEnum;
 }
@@ -187,6 +198,14 @@ export interface UpdateDeliveriesRequest {
     updateDeliveryDto: UpdateDeliveryDto;
     xSessionId?: string;
     acceptLanguage?: UpdateDeliveriesAcceptLanguageEnum;
+}
+
+export interface UpdateDeliveriesScheduleRequest {
+    projectId: string;
+    id: string;
+    scheduleDeliveryDto: ScheduleDeliveryDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateDeliveriesScheduleAcceptLanguageEnum;
 }
 
 /**
@@ -254,6 +273,69 @@ export class DeliveriesApi extends runtime.BaseAPI {
      */
     async deleteDeliveries(requestParameters: DeleteDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto> {
         const response = await this.deleteDeliveriesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ready .
+     * 
+     */
+    async deleteDeliveriesScheduleRaw(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling deleteDeliveriesSchedule().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deleteDeliveriesSchedule().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ready .
+     * 
+     */
+    async deleteDeliveriesSchedule(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.deleteDeliveriesScheduleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -818,6 +900,10 @@ export class DeliveriesApi extends runtime.BaseAPI {
             queryParameters['tab'] = requestParameters['tab'];
         }
 
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['xSessionId'] != null) {
@@ -1185,6 +1271,79 @@ export class DeliveriesApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * scheduled .
+     * 
+     */
+    async updateDeliveriesScheduleRaw(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateDeliveriesSchedule().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateDeliveriesSchedule().'
+            );
+        }
+
+        if (requestParameters['scheduleDeliveryDto'] == null) {
+            throw new runtime.RequiredError(
+                'scheduleDeliveryDto',
+                'Required parameter "scheduleDeliveryDto" was null or undefined when calling updateDeliveriesSchedule().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ScheduleDeliveryDtoToJSON(requestParameters['scheduleDeliveryDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * scheduled .
+     * 
+     */
+    async updateDeliveriesSchedule(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.updateDeliveriesScheduleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -1195,6 +1354,14 @@ export const DeleteDeliveriesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type DeleteDeliveriesAcceptLanguageEnum = typeof DeleteDeliveriesAcceptLanguageEnum[keyof typeof DeleteDeliveriesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DeleteDeliveriesScheduleAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteDeliveriesScheduleAcceptLanguageEnum = typeof DeleteDeliveriesScheduleAcceptLanguageEnum[keyof typeof DeleteDeliveriesScheduleAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1323,3 +1490,11 @@ export const UpdateDeliveriesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateDeliveriesAcceptLanguageEnum = typeof UpdateDeliveriesAcceptLanguageEnum[keyof typeof UpdateDeliveriesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateDeliveriesScheduleAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateDeliveriesScheduleAcceptLanguageEnum = typeof UpdateDeliveriesScheduleAcceptLanguageEnum[keyof typeof UpdateDeliveriesScheduleAcceptLanguageEnum];

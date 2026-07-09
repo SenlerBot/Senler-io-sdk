@@ -51,6 +51,12 @@ export interface ProjectMemberDetailDto {
     permissions: PermissionsDto;
     /**
      *
+     * @type {boolean}
+     * @memberof ProjectMemberDetailDto
+     */
+    isSupportOperator: boolean;
+    /**
+     *
      * @type {UserResponseDto}
      * @memberof ProjectMemberDetailDto
      */

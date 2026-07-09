@@ -50,6 +50,12 @@ export interface LeadGroupTelegramMenuButtonResponseDto {
      * @type {string}
      * @memberof LeadGroupTelegramMenuButtonResponseDto
      */
+    buttonText: string;
+    /**
+     * Telegram.
+     * @type {string}
+     * @memberof LeadGroupTelegramMenuButtonResponseDto
+     */
     status: LeadGroupTelegramMenuButtonResponseDtoStatusEnum;
     /**
      * .

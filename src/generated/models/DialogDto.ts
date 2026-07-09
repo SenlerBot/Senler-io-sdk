@@ -220,23 +220,29 @@ export interface DialogDto {
      */
     durationSeconds: number;
     /**
-     * ()
-     * @type {number}
+     * ID
+     * @type {string}
      * @memberof DialogDto
      */
-    firstResponseTimeSeconds?: number;
+    activeSupportCaseId?: string;
     /**
      * 
      * @type {Date}
      * @memberof DialogDto
      */
-    firstLeadMessageAt?: Date;
+    activeSupportCaseOpenedAt?: Date;
     /**
      * 
      * @type {Date}
      * @memberof DialogDto
      */
-    firstOperatorMessageAt?: Date;
+    activeSupportFirstResponseAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    activeSupportWaitingSince?: Date;
     /**
      * 
      * @type {Date}
@@ -482,9 +488,10 @@ export function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
         'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
         'durationSeconds': json['duration_seconds'],
-        'firstResponseTimeSeconds': json['first_response_time_seconds'] == null ? undefined : json['first_response_time_seconds'],
-        'firstLeadMessageAt': json['first_lead_message_at'] == null ? undefined : (new Date(json['first_lead_message_at'])),
-        'firstOperatorMessageAt': json['first_operator_message_at'] == null ? undefined : (new Date(json['first_operator_message_at'])),
+        'activeSupportCaseId': json['active_support_case_id'] == null ? undefined : json['active_support_case_id'],
+        'activeSupportCaseOpenedAt': json['active_support_case_opened_at'] == null ? undefined : (new Date(json['active_support_case_opened_at'])),
+        'activeSupportFirstResponseAt': json['active_support_first_response_at'] == null ? undefined : (new Date(json['active_support_first_response_at'])),
+        'activeSupportWaitingSince': json['active_support_waiting_since'] == null ? undefined : (new Date(json['active_support_waiting_since'])),
         'lastLeadMessageAt': json['last_lead_message_at'] == null ? undefined : (new Date(json['last_lead_message_at'])),
         'lastOperatorMessageAt': json['last_operator_message_at'] == null ? undefined : (new Date(json['last_operator_message_at'])),
         'startedAt': (new Date(json['started_at'])),
@@ -546,9 +553,10 @@ export function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminat
         'utm_term': value['utmTerm'],
         'utm_content': value['utmContent'],
         'duration_seconds': value['durationSeconds'],
-        'first_response_time_seconds': value['firstResponseTimeSeconds'],
-        'first_lead_message_at': value['firstLeadMessageAt'] == null ? undefined : ((value['firstLeadMessageAt']).toISOString()),
-        'first_operator_message_at': value['firstOperatorMessageAt'] == null ? undefined : ((value['firstOperatorMessageAt']).toISOString()),
+        'active_support_case_id': value['activeSupportCaseId'],
+        'active_support_case_opened_at': value['activeSupportCaseOpenedAt'] == null ? undefined : ((value['activeSupportCaseOpenedAt']).toISOString()),
+        'active_support_first_response_at': value['activeSupportFirstResponseAt'] == null ? undefined : ((value['activeSupportFirstResponseAt']).toISOString()),
+        'active_support_waiting_since': value['activeSupportWaitingSince'] == null ? undefined : ((value['activeSupportWaitingSince']).toISOString()),
         'last_lead_message_at': value['lastLeadMessageAt'] == null ? undefined : ((value['lastLeadMessageAt']).toISOString()),
         'last_operator_message_at': value['lastOperatorMessageAt'] == null ? undefined : ((value['lastOperatorMessageAt']).toISOString()),
         'started_at': ((value['startedAt']).toISOString()),

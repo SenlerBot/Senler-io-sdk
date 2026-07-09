@@ -10,12 +10,18 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
+import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
 export interface DeleteDeliveriesRequest {
     projectId: string;
     id: string;
     xSessionId?: string;
     acceptLanguage?: DeleteDeliveriesAcceptLanguageEnum;
+}
+export interface DeleteDeliveriesScheduleRequest {
+    projectId: string;
+    id: string;
+    xSessionId?: string;
+    acceptLanguage?: DeleteDeliveriesScheduleAcceptLanguageEnum;
 }
 export interface DeliveriesRequest {
     projectId: string;
@@ -71,6 +77,7 @@ export interface DeliveriesTestRecipientLinkRequest {
 export interface GetDeliveriesRequest {
     projectId: string;
     tab?: GetDeliveriesTabEnum;
+    search?: string;
     xSessionId?: string;
     acceptLanguage?: GetDeliveriesAcceptLanguageEnum;
 }
@@ -113,6 +120,13 @@ export interface UpdateDeliveriesRequest {
     xSessionId?: string;
     acceptLanguage?: UpdateDeliveriesAcceptLanguageEnum;
 }
+export interface UpdateDeliveriesScheduleRequest {
+    projectId: string;
+    id: string;
+    scheduleDeliveryDto: ScheduleDeliveryDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateDeliveriesScheduleAcceptLanguageEnum;
+}
 /**
  *
  */
@@ -127,6 +141,16 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      *
      */
     deleteDeliveries(requestParameters: DeleteDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
+    /**
+     * ready .
+     *
+     */
+    deleteDeliveriesScheduleRaw(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    /**
+     * ready .
+     *
+     */
+    deleteDeliveriesSchedule(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
      * . , .
      *
@@ -257,6 +281,16 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      *
      */
     updateDeliveries(requestParameters: UpdateDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    /**
+     * scheduled .
+     *
+     */
+    updateDeliveriesScheduleRaw(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    /**
+     * scheduled .
+     *
+     */
+    updateDeliveriesSchedule(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
 }
 /**
  * @export
@@ -266,6 +300,14 @@ export declare const DeleteDeliveriesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeleteDeliveriesAcceptLanguageEnum = typeof DeleteDeliveriesAcceptLanguageEnum[keyof typeof DeleteDeliveriesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteDeliveriesScheduleAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteDeliveriesScheduleAcceptLanguageEnum = typeof DeleteDeliveriesScheduleAcceptLanguageEnum[keyof typeof DeleteDeliveriesScheduleAcceptLanguageEnum];
 /**
  * @export
  */
@@ -394,3 +436,11 @@ export declare const UpdateDeliveriesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateDeliveriesAcceptLanguageEnum = typeof UpdateDeliveriesAcceptLanguageEnum[keyof typeof UpdateDeliveriesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDeliveriesScheduleAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDeliveriesScheduleAcceptLanguageEnum = typeof UpdateDeliveriesScheduleAcceptLanguageEnum[keyof typeof UpdateDeliveriesScheduleAcceptLanguageEnum];

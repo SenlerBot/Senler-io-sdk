@@ -50,6 +50,7 @@ import { ReadyMCPServersApi } from './generated/apis/ReadyMCPServersApi';
 import { SpacesApi } from './generated/apis/SpacesApi';
 import { StatisticsApi } from './generated/apis/StatisticsApi';
 import { StorageApi } from './generated/apis/StorageApi';
+import { SupportSchedulesApi } from './generated/apis/SupportSchedulesApi';
 import { TariffsApi } from './generated/apis/TariffsApi';
 export declare class AiSenlerClient {
     private readonly tokenState;
@@ -103,6 +104,7 @@ export declare class AiSenlerClient {
     readonly spaces: SpacesApi;
     readonly statistics: StatisticsApi;
     readonly storage: StorageApi;
+    readonly supportSchedules: SupportSchedulesApi;
     readonly tariffs: TariffsApi;
     constructor(config: AiSenlerClientConfig & {
         fetchApi?: FetchAPI;

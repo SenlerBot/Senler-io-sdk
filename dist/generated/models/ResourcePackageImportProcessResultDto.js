@@ -36,6 +36,8 @@ exports.ResourcePackageImportProcessResultDtoStageEnum = {
     Planned: 'planned',
     ProjectVariables: 'project_variables',
     LeadVariables: 'lead_variables',
+    LeadGroups: 'lead_groups',
+    Deliveries: 'deliveries',
     KnowledgeFolders: 'knowledge_folders',
     KnowledgeFiles: 'knowledge_files',
     KnowledgeTables: 'knowledge_tables',

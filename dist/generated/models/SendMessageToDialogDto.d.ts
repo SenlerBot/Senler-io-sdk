@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
+import type { MessageButtonDto } from './MessageButtonDto';
 /**
  * SendMessageToDialogDto.
  * @export
@@ -57,6 +58,12 @@ export interface SendMessageToDialogDto {
      * @memberof SendMessageToDialogDto
      */
     attachments?: Array<MessageAttachmentInputDto>;
+    /**
+     * .
+     * @type {Array<MessageButtonDto>}
+     * @memberof SendMessageToDialogDto
+     */
+    buttons?: Array<MessageButtonDto>;
     /**
      * ID ,
      * @type {string}

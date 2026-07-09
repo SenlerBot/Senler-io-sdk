@@ -32,12 +32,6 @@ export interface LeadGroupPublishedConsentDto {
      * @type {string}
      * @memberof LeadGroupPublishedConsentDto
      */
-    text: string;
-    /**
-     * .
-     * @type {string}
-     * @memberof LeadGroupPublishedConsentDto
-     */
     fileUrl?: string | null;
     /**
      * .
@@ -51,12 +45,6 @@ export interface LeadGroupPublishedConsentDto {
      * @memberof LeadGroupPublishedConsentDto
      */
     documentName?: string | null;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof LeadGroupPublishedConsentDto
-     */
-    required: boolean;
     /**
      * .
      * @type {number}

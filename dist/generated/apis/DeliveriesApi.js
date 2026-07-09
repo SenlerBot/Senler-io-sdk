@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewChannelTypeEnum = exports.GetDeliveries2AcceptLanguageEnum = exports.GetDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTabEnum = exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = exports.DeliveriesTestAcceptLanguageEnum = exports.DeliveriesStartAcceptLanguageEnum = exports.DeliveriesCopyAcceptLanguageEnum = exports.DeliveriesCancelAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeliveriesAcceptLanguageEnum = exports.DeleteDeliveriesAcceptLanguageEnum = exports.DeliveriesApi = void 0;
+exports.UpdateDeliveriesScheduleAcceptLanguageEnum = exports.UpdateDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewChannelTypeEnum = exports.GetDeliveries2AcceptLanguageEnum = exports.GetDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTabEnum = exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = exports.DeliveriesTestAcceptLanguageEnum = exports.DeliveriesStartAcceptLanguageEnum = exports.DeliveriesCopyAcceptLanguageEnum = exports.DeliveriesCancelAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeliveriesAcceptLanguageEnum = exports.DeleteDeliveriesScheduleAcceptLanguageEnum = exports.DeleteDeliveriesAcceptLanguageEnum = exports.DeliveriesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -97,6 +97,52 @@ class DeliveriesApi extends runtime.BaseAPI {
      */
     async deleteDeliveries(requestParameters, initOverrides) {
         const response = await this.deleteDeliveriesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ready .
+     *
+     */
+    async deleteDeliveriesScheduleRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteDeliveriesSchedule().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteDeliveriesSchedule().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ready .
+     *
+     */
+    async deleteDeliveriesSchedule(requestParameters, initOverrides) {
+        const response = await this.deleteDeliveriesScheduleRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -500,6 +546,9 @@ class DeliveriesApi extends runtime.BaseAPI {
         if (requestParameters['tab'] != null) {
             queryParameters['tab'] = requestParameters['tab'];
         }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
         const headerParameters = {};
         if (requestParameters['xSessionId'] != null) {
             headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
@@ -768,12 +817,70 @@ class DeliveriesApi extends runtime.BaseAPI {
         const response = await this.updateDeliveriesRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * scheduled .
+     *
+     */
+    async updateDeliveriesScheduleRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateDeliveriesSchedule().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateDeliveriesSchedule().');
+        }
+        if (requestParameters['scheduleDeliveryDto'] == null) {
+            throw new runtime.RequiredError('scheduleDeliveryDto', 'Required parameter "scheduleDeliveryDto" was null or undefined when calling updateDeliveriesSchedule().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ScheduleDeliveryDtoToJSON)(requestParameters['scheduleDeliveryDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * scheduled .
+     *
+     */
+    async updateDeliveriesSchedule(requestParameters, initOverrides) {
+        const response = await this.updateDeliveriesScheduleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.DeliveriesApi = DeliveriesApi;
 /**
  * @export
  */
 exports.DeleteDeliveriesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeleteDeliveriesScheduleAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -887,6 +994,13 @@ exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateDeliveriesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateDeliveriesScheduleAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

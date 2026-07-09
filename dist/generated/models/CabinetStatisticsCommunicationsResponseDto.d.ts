@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StatisticsOperatorResponseDetailDto } from './StatisticsOperatorResponseDetailDto';
+import type { StatisticsOperatorResponseBreakdownDto } from './StatisticsOperatorResponseBreakdownDto';
 import type { StatisticsCommunicationsChartsDto } from './StatisticsCommunicationsChartsDto';
 import type { StatisticsCommunicationsSummaryDto } from './StatisticsCommunicationsSummaryDto';
 /**
@@ -47,6 +49,18 @@ export interface CabinetStatisticsCommunicationsResponseDto {
      * @memberof CabinetStatisticsCommunicationsResponseDto
      */
     charts: StatisticsCommunicationsChartsDto;
+    /**
+     *
+     * @type {Array<StatisticsOperatorResponseBreakdownDto>}
+     * @memberof CabinetStatisticsCommunicationsResponseDto
+     */
+    operators: Array<StatisticsOperatorResponseBreakdownDto>;
+    /**
+     * , operator_user_id
+     * @type {StatisticsOperatorResponseDetailDto}
+     * @memberof CabinetStatisticsCommunicationsResponseDto
+     */
+    operatorDetail?: StatisticsOperatorResponseDetailDto | null;
 }
 /**
  * @export

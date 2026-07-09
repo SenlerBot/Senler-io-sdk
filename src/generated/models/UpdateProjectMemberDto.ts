@@ -66,6 +66,12 @@ export interface UpdateProjectMemberDto {
      */
     hasAccessToAllChannels?: boolean;
     /**
+     * . permission, .
+     * @type {boolean}
+     * @memberof UpdateProjectMemberDto
+     */
+    isSupportOperator?: boolean;
+    /**
      * .
      * 
      * has_access_to_all_channels = false.
@@ -113,6 +119,7 @@ export function UpdateProjectMemberDtoFromJSONTyped(json: any, ignoreDiscriminat
         
         'role': json['role'] == null ? undefined : RoleFromJSON(json['role']),
         'hasAccessToAllChannels': json['has_access_to_all_channels'] == null ? undefined : json['has_access_to_all_channels'],
+        'isSupportOperator': json['is_support_operator'] == null ? undefined : json['is_support_operator'],
         'channelRoles': json['channel_roles'] == null ? undefined : ((json['channel_roles'] as Array<any>).map(ChannelRoleDtoFromJSON)),
     };
 }
@@ -130,6 +137,7 @@ export function UpdateProjectMemberDtoToJSONTyped(value?: UpdateProjectMemberDto
         
         'role': RoleToJSON(value['role']),
         'has_access_to_all_channels': value['hasAccessToAllChannels'],
+        'is_support_operator': value['isSupportOperator'],
         'channel_roles': value['channelRoles'] == null ? undefined : ((value['channelRoles'] as Array<any>).map(ChannelRoleDtoToJSON)),
     };
 }

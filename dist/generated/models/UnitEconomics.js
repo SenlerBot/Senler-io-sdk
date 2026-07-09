@@ -19,6 +19,7 @@ exports.UnitEconomicsFromJSONTyped = UnitEconomicsFromJSONTyped;
 exports.UnitEconomicsToJSON = UnitEconomicsToJSON;
 exports.UnitEconomicsToJSONTyped = UnitEconomicsToJSONTyped;
 const ClientSpending_1 = require("./ClientSpending");
+const CostSectionEconomics_1 = require("./CostSectionEconomics");
 const CurrencyBreakdown_1 = require("./CurrencyBreakdown");
 /**
  * Check if a given object implements the UnitEconomics interface.
@@ -31,6 +32,8 @@ function instanceOfUnitEconomics(value) {
     if (!('marginPercent' in value) || value['marginPercent'] === undefined)
         return false;
     if (!('eventsWithCosts' in value) || value['eventsWithCosts'] === undefined)
+        return false;
+    if (!('costsBySection' in value) || value['costsBySection'] === undefined)
         return false;
     return true;
 }
@@ -46,6 +49,7 @@ function UnitEconomicsFromJSONTyped(json, ignoreDiscriminator) {
         'client': (0, ClientSpending_1.ClientSpendingFromJSON)(json['client']),
         'marginPercent': json['margin_percent'],
         'eventsWithCosts': json['events_with_costs'],
+        'costsBySection': (json['costs_by_section'].map(CostSectionEconomics_1.CostSectionEconomicsFromJSON)),
     };
 }
 function UnitEconomicsToJSON(json) {
@@ -60,5 +64,6 @@ function UnitEconomicsToJSONTyped(value, ignoreDiscriminator = false) {
         'client': (0, ClientSpending_1.ClientSpendingToJSON)(value['client']),
         'margin_percent': value['marginPercent'],
         'events_with_costs': value['eventsWithCosts'],
+        'costs_by_section': (value['costsBySection'].map(CostSectionEconomics_1.CostSectionEconomicsToJSON)),
     };
 }

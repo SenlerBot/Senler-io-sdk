@@ -63,8 +63,11 @@ export interface ResourcePackagePlanItemDto {
  */
 export declare const ResourcePackagePlanItemDtoResourceTypeEnum: {
     readonly Agent: "agent";
+    readonly Delivery: "delivery";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly LeadGroup: "lead_group";
+    readonly LeadGroupConsentDocument: "lead_group_consent_document";
     readonly KnowledgeFolder: "knowledge_folder";
     readonly KnowledgeFile: "knowledge_file";
     readonly KnowledgeTable: "knowledge_table";

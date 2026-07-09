@@ -19,6 +19,8 @@ exports.CabinetStatisticsCommunicationsResponseDtoFromJSON = CabinetStatisticsCo
 exports.CabinetStatisticsCommunicationsResponseDtoFromJSONTyped = CabinetStatisticsCommunicationsResponseDtoFromJSONTyped;
 exports.CabinetStatisticsCommunicationsResponseDtoToJSON = CabinetStatisticsCommunicationsResponseDtoToJSON;
 exports.CabinetStatisticsCommunicationsResponseDtoToJSONTyped = CabinetStatisticsCommunicationsResponseDtoToJSONTyped;
+const StatisticsOperatorResponseDetailDto_1 = require("./StatisticsOperatorResponseDetailDto");
+const StatisticsOperatorResponseBreakdownDto_1 = require("./StatisticsOperatorResponseBreakdownDto");
 const StatisticsCommunicationsChartsDto_1 = require("./StatisticsCommunicationsChartsDto");
 const StatisticsCommunicationsSummaryDto_1 = require("./StatisticsCommunicationsSummaryDto");
 /**
@@ -42,6 +44,8 @@ function instanceOfCabinetStatisticsCommunicationsResponseDto(value) {
         return false;
     if (!('charts' in value) || value['charts'] === undefined)
         return false;
+    if (!('operators' in value) || value['operators'] === undefined)
+        return false;
     return true;
 }
 function CabinetStatisticsCommunicationsResponseDtoFromJSON(json) {
@@ -57,6 +61,8 @@ function CabinetStatisticsCommunicationsResponseDtoFromJSONTyped(json, ignoreDis
         'granularity': json['granularity'],
         'summary': (0, StatisticsCommunicationsSummaryDto_1.StatisticsCommunicationsSummaryDtoFromJSON)(json['summary']),
         'charts': (0, StatisticsCommunicationsChartsDto_1.StatisticsCommunicationsChartsDtoFromJSON)(json['charts']),
+        'operators': (json['operators'].map(StatisticsOperatorResponseBreakdownDto_1.StatisticsOperatorResponseBreakdownDtoFromJSON)),
+        'operatorDetail': json['operator_detail'] == null ? undefined : (0, StatisticsOperatorResponseDetailDto_1.StatisticsOperatorResponseDetailDtoFromJSON)(json['operator_detail']),
     };
 }
 function CabinetStatisticsCommunicationsResponseDtoToJSON(json) {
@@ -72,5 +78,7 @@ function CabinetStatisticsCommunicationsResponseDtoToJSONTyped(value, ignoreDisc
         'granularity': value['granularity'],
         'summary': (0, StatisticsCommunicationsSummaryDto_1.StatisticsCommunicationsSummaryDtoToJSON)(value['summary']),
         'charts': (0, StatisticsCommunicationsChartsDto_1.StatisticsCommunicationsChartsDtoToJSON)(value['charts']),
+        'operators': (value['operators'].map(StatisticsOperatorResponseBreakdownDto_1.StatisticsOperatorResponseBreakdownDtoToJSON)),
+        'operator_detail': (0, StatisticsOperatorResponseDetailDto_1.StatisticsOperatorResponseDetailDtoToJSON)(value['operatorDetail']),
     };
 }

@@ -9,9 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EventSourceWidgetSelectedElementDto } from './EventSourceWidgetSelectedElementDto';
 import type { WidgetCustomActionCapabilityDto } from './WidgetCustomActionCapabilityDto';
-import type { EventSourceWidgetPageContextDto } from './EventSourceWidgetPageContextDto';
+import type { EventSourceWidgetContextItemDto } from './EventSourceWidgetContextItemDto';
 /**
  * EventSourceWidgetLeadDataDto.
  * @export
@@ -32,16 +31,10 @@ export interface EventSourceWidgetLeadDataDto {
     userId?: string;
     /**
      * ,
-     * @type {EventSourceWidgetPageContextDto}
+     * @type {Array<EventSourceWidgetContextItemDto>}
      * @memberof EventSourceWidgetLeadDataDto
      */
-    pageContext?: EventSourceWidgetPageContextDto;
-    /**
-     * ,
-     * @type {EventSourceWidgetSelectedElementDto}
-     * @memberof EventSourceWidgetLeadDataDto
-     */
-    selectedElement?: EventSourceWidgetSelectedElementDto;
+    contextItems?: Array<EventSourceWidgetContextItemDto>;
     /**
      * Custom actions host-, .
      * @type {Array<WidgetCustomActionCapabilityDto>}

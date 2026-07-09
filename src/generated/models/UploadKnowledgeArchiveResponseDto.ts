@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { KnowledgeArchiveImportSummaryDto } from './KnowledgeArchiveImportSummaryDto';
+import {
+    KnowledgeArchiveImportSummaryDtoFromJSON,
+    KnowledgeArchiveImportSummaryDtoFromJSONTyped,
+    KnowledgeArchiveImportSummaryDtoToJSON,
+    KnowledgeArchiveImportSummaryDtoToJSONTyped,
+} from './KnowledgeArchiveImportSummaryDto';
 import type { KnowledgeFileResponseDto } from './KnowledgeFileResponseDto';
 import {
     KnowledgeFileResponseDtoFromJSON,
@@ -46,6 +53,12 @@ export interface UploadKnowledgeArchiveResponseDto {
      * @memberof UploadKnowledgeArchiveResponseDto
      */
     files: Array<KnowledgeFileResponseDto>;
+    /**
+     * 
+     * @type {KnowledgeArchiveImportSummaryDto}
+     * @memberof UploadKnowledgeArchiveResponseDto
+     */
+    summary: KnowledgeArchiveImportSummaryDto;
 }
 
 /**
@@ -54,6 +67,7 @@ export interface UploadKnowledgeArchiveResponseDto {
 export function instanceOfUploadKnowledgeArchiveResponseDto(value: object): value is UploadKnowledgeArchiveResponseDto {
     if (!('folders' in value) || value['folders'] === undefined) return false;
     if (!('files' in value) || value['files'] === undefined) return false;
+    if (!('summary' in value) || value['summary'] === undefined) return false;
     return true;
 }
 
@@ -69,6 +83,7 @@ export function UploadKnowledgeArchiveResponseDtoFromJSONTyped(json: any, ignore
         
         'folders': ((json['folders'] as Array<any>).map(KnowledgeFolderResponseDtoFromJSON)),
         'files': ((json['files'] as Array<any>).map(KnowledgeFileResponseDtoFromJSON)),
+        'summary': KnowledgeArchiveImportSummaryDtoFromJSON(json['summary']),
     };
 }
 
@@ -85,6 +100,7 @@ export function UploadKnowledgeArchiveResponseDtoToJSONTyped(value?: UploadKnowl
         
         'folders': ((value['folders'] as Array<any>).map(KnowledgeFolderResponseDtoToJSON)),
         'files': ((value['files'] as Array<any>).map(KnowledgeFileResponseDtoToJSON)),
+        'summary': KnowledgeArchiveImportSummaryDtoToJSON(value['summary']),
     };
 }
 

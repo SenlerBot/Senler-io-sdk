@@ -49,6 +49,12 @@ export interface UpdateProjectMemberDto {
      */
     hasAccessToAllChannels?: boolean;
     /**
+     * . permission, .
+     * @type {boolean}
+     * @memberof UpdateProjectMemberDto
+     */
+    isSupportOperator?: boolean;
+    /**
      * .
      *
      * has_access_to_all_channels = false.

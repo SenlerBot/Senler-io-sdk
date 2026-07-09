@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ClientSpending } from './ClientSpending';
+import type { CostSectionEconomics } from './CostSectionEconomics';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
 /**
  * UnitEconomics.
@@ -41,6 +42,12 @@ export interface UnitEconomics {
      * @memberof UnitEconomics
      */
     eventsWithCosts: number;
+    /**
+     * Unit Economics cost-
+     * @type {Array<CostSectionEconomics>}
+     * @memberof UnitEconomics
+     */
+    costsBySection: Array<CostSectionEconomics>;
 }
 /**
  * Check if a given object implements the UnitEconomics interface.

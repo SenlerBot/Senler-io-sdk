@@ -20,6 +20,7 @@ exports.SendMessageToDialogDtoFromJSONTyped = SendMessageToDialogDtoFromJSONType
 exports.SendMessageToDialogDtoToJSON = SendMessageToDialogDtoToJSON;
 exports.SendMessageToDialogDtoToJSONTyped = SendMessageToDialogDtoToJSONTyped;
 const MessageAttachmentInputDto_1 = require("./MessageAttachmentInputDto");
+const MessageButtonDto_1 = require("./MessageButtonDto");
 /**
  * @export
  */
@@ -48,6 +49,7 @@ function SendMessageToDialogDtoFromJSONTyped(json, ignoreDiscriminator) {
         'content': json['content'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
         'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoFromJSON)),
+        'buttons': json['buttons'] == null ? undefined : (json['buttons'].map(MessageButtonDto_1.MessageButtonDtoFromJSON)),
         'replyToEventId': json['reply_to_event_id'] == null ? undefined : json['reply_to_event_id'],
     };
 }
@@ -62,6 +64,7 @@ function SendMessageToDialogDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'content': value['content'],
         'client_type': value['clientType'],
         'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoToJSON)),
+        'buttons': value['buttons'] == null ? undefined : (value['buttons'].map(MessageButtonDto_1.MessageButtonDtoToJSON)),
         'reply_to_event_id': value['replyToEventId'],
     };
 }

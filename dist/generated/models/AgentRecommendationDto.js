@@ -53,6 +53,7 @@ function AgentRecommendationDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'agentId': json['agent_id'],
         'agentName': json['agent_name'],
+        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'issues': json['issues'],
         'suggestions': json['suggestions'],
         'priority': json['priority'],
@@ -68,6 +69,7 @@ function AgentRecommendationDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'agent_id': value['agentId'],
         'agent_name': value['agentName'],
+        'avatar_url': value['avatarUrl'],
         'issues': value['issues'],
         'suggestions': value['suggestions'],
         'priority': value['priority'],

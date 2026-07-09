@@ -54,6 +54,7 @@ import { ReadyMCPServersApi } from './generated/apis/ReadyMCPServersApi';
 import { SpacesApi } from './generated/apis/SpacesApi';
 import { StatisticsApi } from './generated/apis/StatisticsApi';
 import { StorageApi } from './generated/apis/StorageApi';
+import { SupportSchedulesApi } from './generated/apis/SupportSchedulesApi';
 import { TariffsApi } from './generated/apis/TariffsApi';
 
 const DEFAULT_BASE_URL = 'https://api.senler.io';
@@ -111,6 +112,7 @@ export class AiSenlerClient {
   readonly spaces: SpacesApi;
   readonly statistics: StatisticsApi;
   readonly storage: StorageApi;
+  readonly supportSchedules: SupportSchedulesApi;
   readonly tariffs: TariffsApi;
 
   constructor(config: AiSenlerClientConfig & { fetchApi?: FetchAPI }) {
@@ -185,6 +187,7 @@ export class AiSenlerClient {
     this.spaces = new SpacesApi(configuration);
     this.statistics = new StatisticsApi(configuration);
     this.storage = new StorageApi(configuration);
+    this.supportSchedules = new SupportSchedulesApi(configuration);
     this.tariffs = new TariffsApi(configuration);
   }
 

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmLeadGroupVkAppInstallationDto, ErrorResponse, LeadGroupPublicCatalogResponseDto, LeadGroupPublicResponseDto, LeadGroupPublicVariablesDto, LeadGroupSubscribeResponseDto, LeadGroupVkAppInstallationResponseDto, LeadGroupVkAuthResponseDto, LeadGroupVkSubscribeResponseDto, ResolveLeadGroupPublicVariablesDto, StartLeadGroupVkAuthDto, SubscribeLeadGroupDto, SubscribeLeadGroupVkDto } from '../models/index';
+import type { ConfirmLeadGroupTelegramMiniAppVerificationDto, ConfirmLeadGroupVkAppInstallationByGroupDto, ConfirmLeadGroupVkAppInstallationDto, ErrorResponse, LeadGroupBotSubscriptionResponseDto, LeadGroupPublicCatalogResponseDto, LeadGroupPublicResponseDto, LeadGroupPublicVariablesDto, LeadGroupSubscribeResponseDto, LeadGroupTelegramMiniAppVerificationConfirmResponseDto, LeadGroupVkAppInstallationResponseDto, LeadGroupVkAuthResponseDto, LeadGroupVkSubscribeResponseDto, ResolveLeadGroupPublicVariablesDto, StartLeadGroupBotSubscriptionDto, StartLeadGroupVkAuthDto, SubscribeLeadGroupDto, SubscribeLeadGroupVkDto } from '../models/index';
 export interface GetProjectsGroupsRequest {
     projectPublicId: string;
     channelPublicId?: string;
@@ -29,6 +29,12 @@ export interface GetVkCallbackRequest {
     payload: string;
     deviceId: string;
     acceptLanguage?: GetVkCallbackAcceptLanguageEnum;
+}
+export interface ProjectsGroupsBotSubscriptionRequest {
+    projectPublicId: string;
+    publicId: string;
+    startLeadGroupBotSubscriptionDto: StartLeadGroupBotSubscriptionDto;
+    acceptLanguage?: ProjectsGroupsBotSubscriptionAcceptLanguageEnum;
 }
 export interface ProjectsGroupsSubscribeRequest {
     projectPublicId: string;
@@ -60,10 +66,19 @@ export interface ProjectsGroupsVkSubscribeRequest {
     subscribeLeadGroupVkDto: SubscribeLeadGroupVkDto;
     acceptLanguage?: ProjectsGroupsVkSubscribeAcceptLanguageEnum;
 }
+export interface ProjectsTelegramMiniAppVerificationConfirmRequest {
+    projectPublicId: string;
+    confirmLeadGroupTelegramMiniAppVerificationDto: ConfirmLeadGroupTelegramMiniAppVerificationDto;
+    acceptLanguage?: ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum;
+}
 export interface ProjectsVkAppInstallationConfirmRequest {
     projectPublicId: string;
     confirmLeadGroupVkAppInstallationDto: ConfirmLeadGroupVkAppInstallationDto;
     acceptLanguage?: ProjectsVkAppInstallationConfirmAcceptLanguageEnum;
+}
+export interface VkAppInstallationConfirmRequest {
+    confirmLeadGroupVkAppInstallationByGroupDto: ConfirmLeadGroupVkAppInstallationByGroupDto;
+    acceptLanguage?: VkAppInstallationConfirmAcceptLanguageEnum;
 }
 /**
  *
@@ -90,15 +105,25 @@ export declare class LeadGroupsPublicApi extends runtime.BaseAPI {
      */
     getProjectsGroups2(requestParameters: GetProjectsGroups2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupPublicResponseDto>;
     /**
-     * callback VK OAuth .
-     * Callback VK ID
+     * VK ID .
+     * VK ID
      */
     getVkCallbackRaw(requestParameters: GetVkCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>>;
     /**
-     * callback VK OAuth .
-     * Callback VK ID
+     * VK ID .
+     * VK ID
      */
     getVkCallback(requestParameters: GetVkCallbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse>;
+    /**
+     * pending payload deep-link Telegram/MAX bot.
+     * bot-
+     */
+    projectsGroupsBotSubscriptionRaw(requestParameters: ProjectsGroupsBotSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupBotSubscriptionResponseDto>>;
+    /**
+     * pending payload deep-link Telegram/MAX bot.
+     * bot-
+     */
+    projectsGroupsBotSubscription(requestParameters: ProjectsGroupsBotSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupBotSubscriptionResponseDto>;
     /**
      * .
      *
@@ -150,6 +175,16 @@ export declare class LeadGroupsPublicApi extends runtime.BaseAPI {
      */
     projectsGroupsVkSubscribe(requestParameters: ProjectsGroupsVkSubscribeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupVkSubscribeResponseDto>;
     /**
+     * Telegram initData Main Mini App named Mini App .
+     * Telegram Mini App
+     */
+    projectsTelegramMiniAppVerificationConfirmRaw(requestParameters: ProjectsTelegramMiniAppVerificationConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupTelegramMiniAppVerificationConfirmResponseDto>>;
+    /**
+     * Telegram initData Main Mini App named Mini App .
+     * Telegram Mini App
+     */
+    projectsTelegramMiniAppVerificationConfirm(requestParameters: ProjectsTelegramMiniAppVerificationConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMiniAppVerificationConfirmResponseDto>;
+    /**
      * , VK VK-.
      * VK App
      */
@@ -159,6 +194,16 @@ export declare class LeadGroupsPublicApi extends runtime.BaseAPI {
      * VK App
      */
     projectsVkAppInstallationConfirm(requestParameters: ProjectsVkAppInstallationConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupVkAppInstallationResponseDto>;
+    /**
+     * , VK install popup project/channel .
+     * VK App
+     */
+    vkAppInstallationConfirmRaw(requestParameters: VkAppInstallationConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupVkAppInstallationResponseDto>>;
+    /**
+     * , VK install popup project/channel .
+     * VK App
+     */
+    vkAppInstallationConfirm(requestParameters: VkAppInstallationConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupVkAppInstallationResponseDto>;
 }
 /**
  * @export
@@ -194,6 +239,14 @@ export declare const GetVkCallbackAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetVkCallbackAcceptLanguageEnum = typeof GetVkCallbackAcceptLanguageEnum[keyof typeof GetVkCallbackAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsGroupsBotSubscriptionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsGroupsBotSubscriptionAcceptLanguageEnum = typeof ProjectsGroupsBotSubscriptionAcceptLanguageEnum[keyof typeof ProjectsGroupsBotSubscriptionAcceptLanguageEnum];
 /**
  * @export
  */
@@ -237,8 +290,24 @@ export type ProjectsGroupsVkSubscribeAcceptLanguageEnum = typeof ProjectsGroupsV
 /**
  * @export
  */
+export declare const ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum = typeof ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum[keyof typeof ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const ProjectsVkAppInstallationConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type ProjectsVkAppInstallationConfirmAcceptLanguageEnum = typeof ProjectsVkAppInstallationConfirmAcceptLanguageEnum[keyof typeof ProjectsVkAppInstallationConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const VkAppInstallationConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type VkAppInstallationConfirmAcceptLanguageEnum = typeof VkAppInstallationConfirmAcceptLanguageEnum[keyof typeof VkAppInstallationConfirmAcceptLanguageEnum];

@@ -84,6 +84,12 @@ export interface DeliveryResponseDto {
      */
     attachments: Array<MessageAttachmentInputDto>;
     /**
+     * 
+     * @type {Date}
+     * @memberof DeliveryResponseDto
+     */
+    scheduledAt: Date | null;
+    /**
      * ,
      * @type {number}
      * @memberof DeliveryResponseDto
@@ -127,6 +133,7 @@ export interface DeliveryResponseDto {
  */
 export const DeliveryResponseDtoStatusEnum = {
     Ready: 'ready',
+    Scheduled: 'scheduled',
     Queued: 'queued',
     Collecting: 'collecting',
     Sending: 'sending',
@@ -149,6 +156,7 @@ export function instanceOfDeliveryResponseDto(value: object): value is DeliveryR
     if (!('filters' in value) || value['filters'] === undefined) return false;
     if (!('messageText' in value) || value['messageText'] === undefined) return false;
     if (!('attachments' in value) || value['attachments'] === undefined) return false;
+    if (!('scheduledAt' in value) || value['scheduledAt'] === undefined) return false;
     if (!('recipientCount' in value) || value['recipientCount'] === undefined) return false;
     if (!('lastRunId' in value) || value['lastRunId'] === undefined) return false;
     if (!('lastProcessId' in value) || value['lastProcessId'] === undefined) return false;
@@ -174,6 +182,7 @@ export function DeliveryResponseDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'filters': LeadsFilterDtoFromJSON(json['filters']),
         'messageText': json['message_text'],
         'attachments': ((json['attachments'] as Array<any>).map(MessageAttachmentInputDtoFromJSON)),
+        'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
         'recipientCount': json['recipient_count'],
         'lastRunId': json['last_run_id'],
         'lastProcessId': json['last_process_id'],
@@ -201,6 +210,7 @@ export function DeliveryResponseDtoToJSONTyped(value?: DeliveryResponseDto | nul
         'filters': LeadsFilterDtoToJSON(value['filters']),
         'message_text': value['messageText'],
         'attachments': ((value['attachments'] as Array<any>).map(MessageAttachmentInputDtoToJSON)),
+        'scheduled_at': (value['scheduledAt'] == null ? null : (value['scheduledAt'] as any).toISOString()),
         'recipient_count': value['recipientCount'],
         'last_run_id': value['lastRunId'],
         'last_process_id': value['lastProcessId'],

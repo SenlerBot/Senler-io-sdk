@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CheckLeadGroupTelegramMenuButtonDto, ConfirmS3UploadDto, CreateLeadGroupConsentDocumentDto, CreateLeadGroupDto, GetLeadGroupAssetUploadUrlDto, LeadGroupAssetUploadResponseDto, LeadGroupConsentDocumentResponseDto, LeadGroupConsentDocumentVersionsListResponseDto, LeadGroupConsentDocumentsListResponseDto, LeadGroupEventsListResponseDto, LeadGroupLinksResponseDto, LeadGroupResponseDto, LeadGroupTelegramMenuButtonListResponseDto, LeadGroupTelegramMenuButtonResponseDto, LeadGroupsListResponseDto, LeadResponseDto, S3UploadUrlResponseDto, SetLeadGroupTelegramMenuButtonDto, UpdateLeadGroupConsentDocumentDto, UpdateLeadGroupDto } from '../models/index';
+import type { CheckLeadGroupTelegramMenuButtonDto, ConfirmS3UploadDto, CreateLeadGroupConsentDocumentDto, CreateLeadGroupDto, GetLeadGroupAssetUploadUrlDto, GetLeadGroupConsentDocumentUploadUrlDto, LeadGroupAssetUploadResponseDto, LeadGroupConsentDocumentResponseDto, LeadGroupConsentDocumentUploadResponseDto, LeadGroupConsentDocumentVersionsListResponseDto, LeadGroupConsentDocumentsListResponseDto, LeadGroupConsentTemplatesListResponseDto, LeadGroupEventsListResponseDto, LeadGroupLeadConsentAcceptancesResponseDto, LeadGroupLinksResponseDto, LeadGroupResponseDto, LeadGroupTelegramMenuButtonListResponseDto, LeadGroupTelegramMenuButtonResponseDto, LeadGroupTelegramMiniAppListResponseDto, LeadGroupTelegramMiniAppResponseDto, LeadGroupTelegramMiniAppVerificationResponseDto, LeadGroupsListResponseDto, LeadResponseDto, S3UploadUrlResponseDto, SetLeadGroupTelegramMenuButtonDto, SetLeadGroupTelegramMiniAppDto, StartLeadGroupTelegramMiniAppVerificationDto, UpdateLeadGroupConsentDocumentDto, UpdateLeadGroupDto } from '../models/index';
 export interface DeleteLeadGroupsRequest {
     projectId: string;
     id: string;
@@ -22,6 +22,13 @@ export interface DeleteLeadGroupsConsentDocumentsRequest {
     documentId: string;
     xSessionId?: string;
     acceptLanguage?: DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum;
+}
+export interface DeleteLeadGroupsLeadsRequest {
+    projectId: string;
+    id: string;
+    leadId: string;
+    xSessionId?: string;
+    acceptLanguage?: DeleteLeadGroupsLeadsAcceptLanguageEnum;
 }
 export interface GetLeadGroupsRequest {
     projectId: string;
@@ -45,11 +52,23 @@ export interface GetLeadGroupsConsentDocumentsVersionsRequest {
     xSessionId?: string;
     acceptLanguage?: GetLeadGroupsConsentDocumentsVersionsAcceptLanguageEnum;
 }
+export interface GetLeadGroupsConsentTemplatesRequest {
+    projectId: string;
+    locale?: GetLeadGroupsConsentTemplatesLocaleEnum;
+    xSessionId?: string;
+    acceptLanguage?: GetLeadGroupsConsentTemplatesAcceptLanguageEnum;
+}
 export interface GetLeadGroupsEventsRequest {
     projectId: string;
     id: string;
     xSessionId?: string;
     acceptLanguage?: GetLeadGroupsEventsAcceptLanguageEnum;
+}
+export interface GetLeadGroupsLeadsConsentAcceptancesRequest {
+    projectId: string;
+    leadId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum;
 }
 export interface GetLeadGroupsLinksRequest {
     projectId: string;
@@ -68,6 +87,11 @@ export interface GetLeadGroupsTelegramMenuButtonsRequest {
     projectId: string;
     xSessionId?: string;
     acceptLanguage?: GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum;
+}
+export interface GetLeadGroupsTelegramMiniAppsRequest {
+    projectId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum;
 }
 export interface LeadGroupsRequest {
     projectId: string;
@@ -95,6 +119,25 @@ export interface LeadGroupsConsentDocumentsRequest {
     xSessionId?: string;
     acceptLanguage?: LeadGroupsConsentDocumentsAcceptLanguageEnum;
 }
+export interface LeadGroupsConsentDocumentsAssetsConfirmRequest {
+    projectId: string;
+    confirmS3UploadDto: ConfirmS3UploadDto;
+    xSessionId?: string;
+    acceptLanguage?: LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum;
+}
+export interface LeadGroupsConsentDocumentsAssetsUploadUrlRequest {
+    projectId: string;
+    getLeadGroupConsentDocumentUploadUrlDto: GetLeadGroupConsentDocumentUploadUrlDto;
+    xSessionId?: string;
+    acceptLanguage?: LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum;
+}
+export interface LeadGroupsLeadsRequest {
+    projectId: string;
+    id: string;
+    leadId: string;
+    xSessionId?: string;
+    acceptLanguage?: LeadGroupsLeadsAcceptLanguageEnum;
+}
 export interface LeadGroupsPublishRequest {
     projectId: string;
     id: string;
@@ -113,6 +156,12 @@ export interface LeadGroupsTelegramMenuButtonCheckRequest {
     xSessionId?: string;
     acceptLanguage?: LeadGroupsTelegramMenuButtonCheckAcceptLanguageEnum;
 }
+export interface LeadGroupsTelegramMiniAppVerificationRequest {
+    projectId: string;
+    startLeadGroupTelegramMiniAppVerificationDto: StartLeadGroupTelegramMiniAppVerificationDto;
+    xSessionId?: string;
+    acceptLanguage?: LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum;
+}
 export interface UpdateLeadGroupsRequest {
     projectId: string;
     id: string;
@@ -126,6 +175,12 @@ export interface UpdateLeadGroupsConsentDocumentsRequest {
     updateLeadGroupConsentDocumentDto: UpdateLeadGroupConsentDocumentDto;
     xSessionId?: string;
     acceptLanguage?: UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum;
+}
+export interface UpdateLeadGroupsTelegramMiniAppRequest {
+    projectId: string;
+    setLeadGroupTelegramMiniAppDto: SetLeadGroupTelegramMiniAppDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum;
 }
 /**
  *
@@ -151,6 +206,16 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      *
      */
     deleteLeadGroupsConsentDocuments(requestParameters: DeleteLeadGroupsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupConsentDocumentResponseDto>;
+    /**
+     * manual.
+     *
+     */
+    deleteLeadGroupsLeadsRaw(requestParameters: DeleteLeadGroupsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    /**
+     * manual.
+     *
+     */
+    deleteLeadGroupsLeads(requestParameters: DeleteLeadGroupsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
      * .
      *
@@ -192,6 +257,16 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      */
     getLeadGroupsConsentDocumentsVersions(requestParameters: GetLeadGroupsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupConsentDocumentVersionsListResponseDto>;
     /**
+     * . , .
+     *
+     */
+    getLeadGroupsConsentTemplatesRaw(requestParameters: GetLeadGroupsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupConsentTemplatesListResponseDto>>;
+    /**
+     * . , .
+     *
+     */
+    getLeadGroupsConsentTemplates(requestParameters: GetLeadGroupsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupConsentTemplatesListResponseDto>;
+    /**
      * , .
      *
      */
@@ -201,6 +276,16 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      *
      */
     getLeadGroupsEvents(requestParameters: GetLeadGroupsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupEventsListResponseDto>;
+    /**
+     * .
+     *
+     */
+    getLeadGroupsLeadsConsentAcceptancesRaw(requestParameters: GetLeadGroupsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupLeadConsentAcceptancesResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getLeadGroupsLeadsConsentAcceptances(requestParameters: GetLeadGroupsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupLeadConsentAcceptancesResponseDto>;
     /**
      * .
      *
@@ -231,6 +316,16 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      * Telegram-
      */
     getLeadGroupsTelegramMenuButtons(requestParameters: GetLeadGroupsTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMenuButtonListResponseDto>;
+    /**
+     * Main Mini App named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    getLeadGroupsTelegramMiniAppsRaw(requestParameters: GetLeadGroupsTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupTelegramMiniAppListResponseDto>>;
+    /**
+     * Main Mini App named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    getLeadGroupsTelegramMiniApps(requestParameters: GetLeadGroupsTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMiniAppListResponseDto>;
     /**
      * .
      *
@@ -272,6 +367,36 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      */
     leadGroupsConsentDocuments(requestParameters: LeadGroupsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupConsentDocumentResponseDto>;
     /**
+     * S3 .
+     * PDF-
+     */
+    leadGroupsConsentDocumentsAssetsConfirmRaw(requestParameters: LeadGroupsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupConsentDocumentUploadResponseDto>>;
+    /**
+     * S3 .
+     * PDF-
+     */
+    leadGroupsConsentDocumentsAssetsConfirm(requestParameters: LeadGroupsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupConsentDocumentUploadResponseDto>;
+    /**
+     * PDF bucket .
+     * S3- PDF-
+     */
+    leadGroupsConsentDocumentsAssetsUploadUrlRaw(requestParameters: LeadGroupsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
+    /**
+     * PDF bucket .
+     * S3- PDF-
+     */
+    leadGroupsConsentDocumentsAssetsUploadUrl(requestParameters: LeadGroupsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
+    /**
+     * manual.
+     *
+     */
+    leadGroupsLeadsRaw(requestParameters: LeadGroupsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    /**
+     * manual.
+     *
+     */
+    leadGroupsLeads(requestParameters: LeadGroupsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    /**
      * .
      *
      */
@@ -282,25 +407,35 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      */
     leadGroupsPublish(requestParameters: LeadGroupsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupResponseDto>;
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     leadGroupsTelegramMenuButtonApplyRaw(requestParameters: LeadGroupsTelegramMenuButtonApplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupTelegramMenuButtonResponseDto>>;
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     leadGroupsTelegramMenuButtonApply(requestParameters: LeadGroupsTelegramMenuButtonApplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMenuButtonResponseDto>;
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     leadGroupsTelegramMenuButtonCheckRaw(requestParameters: LeadGroupsTelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupTelegramMenuButtonResponseDto>>;
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     leadGroupsTelegramMenuButtonCheck(requestParameters: LeadGroupsTelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMenuButtonResponseDto>;
+    /**
+     * startapp token Telegram- Main Mini App named Mini App.
+     * Telegram Mini App
+     */
+    leadGroupsTelegramMiniAppVerificationRaw(requestParameters: LeadGroupsTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupTelegramMiniAppVerificationResponseDto>>;
+    /**
+     * startapp token Telegram- Main Mini App named Mini App.
+     * Telegram Mini App
+     */
+    leadGroupsTelegramMiniAppVerification(requestParameters: LeadGroupsTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMiniAppVerificationResponseDto>;
     /**
      * .
      *
@@ -321,6 +456,16 @@ export declare class LeadGroupsApi extends runtime.BaseAPI {
      *
      */
     updateLeadGroupsConsentDocuments(requestParameters: UpdateLeadGroupsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupConsentDocumentResponseDto>;
+    /**
+     * short name named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    updateLeadGroupsTelegramMiniAppRaw(requestParameters: UpdateLeadGroupsTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadGroupTelegramMiniAppResponseDto>>;
+    /**
+     * short name named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    updateLeadGroupsTelegramMiniApp(requestParameters: UpdateLeadGroupsTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadGroupTelegramMiniAppResponseDto>;
 }
 /**
  * @export
@@ -338,6 +483,14 @@ export declare const DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum = typeof DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum[keyof typeof DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteLeadGroupsLeadsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteLeadGroupsLeadsAcceptLanguageEnum = typeof DeleteLeadGroupsLeadsAcceptLanguageEnum[keyof typeof DeleteLeadGroupsLeadsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -373,11 +526,35 @@ export type GetLeadGroupsConsentDocumentsVersionsAcceptLanguageEnum = typeof Get
 /**
  * @export
  */
+export declare const GetLeadGroupsConsentTemplatesLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadGroupsConsentTemplatesLocaleEnum = typeof GetLeadGroupsConsentTemplatesLocaleEnum[keyof typeof GetLeadGroupsConsentTemplatesLocaleEnum];
+/**
+ * @export
+ */
+export declare const GetLeadGroupsConsentTemplatesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadGroupsConsentTemplatesAcceptLanguageEnum = typeof GetLeadGroupsConsentTemplatesAcceptLanguageEnum[keyof typeof GetLeadGroupsConsentTemplatesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetLeadGroupsEventsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetLeadGroupsEventsAcceptLanguageEnum = typeof GetLeadGroupsEventsAcceptLanguageEnum[keyof typeof GetLeadGroupsEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum = typeof GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum[keyof typeof GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum];
 /**
  * @export
  */
@@ -402,6 +579,14 @@ export declare const GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum = typeof GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum[keyof typeof GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum = typeof GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum[keyof typeof GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -437,6 +622,30 @@ export type LeadGroupsConsentDocumentsAcceptLanguageEnum = typeof LeadGroupsCons
 /**
  * @export
  */
+export declare const LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum = typeof LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum[keyof typeof LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = typeof LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum[keyof typeof LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadGroupsLeadsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadGroupsLeadsAcceptLanguageEnum = typeof LeadGroupsLeadsAcceptLanguageEnum[keyof typeof LeadGroupsLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const LeadGroupsPublishAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -461,6 +670,14 @@ export type LeadGroupsTelegramMenuButtonCheckAcceptLanguageEnum = typeof LeadGro
 /**
  * @export
  */
+export declare const LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum = typeof LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum[keyof typeof LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateLeadGroupsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -474,3 +691,11 @@ export declare const UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum = typeof UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum[keyof typeof UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum = typeof UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum[keyof typeof UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum];

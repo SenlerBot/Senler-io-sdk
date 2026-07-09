@@ -257,7 +257,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ZIP- 50 , .
+     * ZIP- 500 , .
      * ZIP-
      */
     async filesUploadArchiveRaw(requestParameters, initOverrides) {
@@ -323,7 +323,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UploadKnowledgeArchiveResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * ZIP- 50 , .
+     * ZIP- 500 , .
      * ZIP-
      */
     async filesUploadArchive(requestParameters, initOverrides) {

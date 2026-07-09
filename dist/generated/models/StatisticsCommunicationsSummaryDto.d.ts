@@ -71,6 +71,24 @@ export interface StatisticsCommunicationsSummaryDto {
      */
     averageFirstResponseTimeSeconds: StatisticsMetricDeltaDto;
     /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsCommunicationsSummaryDto
+     */
+    averageFirstResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsCommunicationsSummaryDto
+     */
+    averageResponseTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsCommunicationsSummaryDto
+     */
+    averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
      *
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsCommunicationsSummaryDto

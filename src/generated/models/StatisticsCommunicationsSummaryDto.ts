@@ -82,6 +82,24 @@ export interface StatisticsCommunicationsSummaryDto {
      */
     averageFirstResponseTimeSeconds: StatisticsMetricDeltaDto;
     /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsCommunicationsSummaryDto
+     */
+    averageFirstResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsCommunicationsSummaryDto
+     */
+    averageResponseTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsCommunicationsSummaryDto
+     */
+    averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
      * 
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsCommunicationsSummaryDto
@@ -102,6 +120,9 @@ export function instanceOfStatisticsCommunicationsSummaryDto(value: object): val
     if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined) return false;
     if (!('operatorAssignedDialogs' in value) || value['operatorAssignedDialogs'] === undefined) return false;
     if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined) return false;
+    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined) return false;
+    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined) return false;
+    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined) return false;
     if (!('closedDialogs' in value) || value['closedDialogs'] === undefined) return false;
     return true;
 }
@@ -125,6 +146,9 @@ export function StatisticsCommunicationsSummaryDtoFromJSONTyped(json: any, ignor
         'unansweredDialogs': StatisticsMetricDeltaDtoFromJSON(json['unanswered_dialogs']),
         'operatorAssignedDialogs': StatisticsMetricDeltaDtoFromJSON(json['operator_assigned_dialogs']),
         'averageFirstResponseTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_first_response_time_seconds']),
+        'averageFirstResponseRawTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_first_response_raw_time_seconds']),
+        'averageResponseTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_response_time_seconds']),
+        'averageResponseRawTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_response_raw_time_seconds']),
         'closedDialogs': StatisticsMetricDeltaDtoFromJSON(json['closed_dialogs']),
     };
 }
@@ -149,6 +173,9 @@ export function StatisticsCommunicationsSummaryDtoToJSONTyped(value?: Statistics
         'unanswered_dialogs': StatisticsMetricDeltaDtoToJSON(value['unansweredDialogs']),
         'operator_assigned_dialogs': StatisticsMetricDeltaDtoToJSON(value['operatorAssignedDialogs']),
         'average_first_response_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageFirstResponseTimeSeconds']),
+        'average_first_response_raw_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageFirstResponseRawTimeSeconds']),
+        'average_response_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageResponseTimeSeconds']),
+        'average_response_raw_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageResponseRawTimeSeconds']),
         'closed_dialogs': StatisticsMetricDeltaDtoToJSON(value['closedDialogs']),
     };
 }

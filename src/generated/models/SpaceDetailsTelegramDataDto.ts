@@ -38,6 +38,24 @@ export interface SpaceDetailsTelegramDataDto {
      */
     linkedChatId?: string;
     /**
+     * ID Telegram-.
+     * @type {number}
+     * @memberof SpaceDetailsTelegramDataDto
+     */
+    postMessageId?: number;
+    /**
+     * ID Telegram-.
+     * @type {string}
+     * @memberof SpaceDetailsTelegramDataDto
+     */
+    postAuthorChatId?: string;
+    /**
+     * username Telegram-.
+     * @type {string}
+     * @memberof SpaceDetailsTelegramDataDto
+     */
+    postAuthorUsername?: string;
+    /**
      * Telegram.
      * @type {string}
      * @memberof SpaceDetailsTelegramDataDto
@@ -89,6 +107,9 @@ export function SpaceDetailsTelegramDataDtoFromJSONTyped(json: any, ignoreDiscri
         'chatId': json['chat_id'] == null ? undefined : json['chat_id'],
         'threadId': json['thread_id'] == null ? undefined : json['thread_id'],
         'linkedChatId': json['linked_chat_id'] == null ? undefined : json['linked_chat_id'],
+        'postMessageId': json['post_message_id'] == null ? undefined : json['post_message_id'],
+        'postAuthorChatId': json['post_author_chat_id'] == null ? undefined : json['post_author_chat_id'],
+        'postAuthorUsername': json['post_author_username'] == null ? undefined : json['post_author_username'],
         'chatType': json['chat_type'] == null ? undefined : json['chat_type'],
         'chatPhotoBigFileId': json['chat_photo_big_file_id'] == null ? undefined : json['chat_photo_big_file_id'],
         'topicIconColor': json['topic_icon_color'] == null ? undefined : json['topic_icon_color'],
@@ -111,6 +132,9 @@ export function SpaceDetailsTelegramDataDtoToJSONTyped(value?: SpaceDetailsTeleg
         'chat_id': value['chatId'],
         'thread_id': value['threadId'],
         'linked_chat_id': value['linkedChatId'],
+        'post_message_id': value['postMessageId'],
+        'post_author_chat_id': value['postAuthorChatId'],
+        'post_author_username': value['postAuthorUsername'],
         'chat_type': value['chatType'],
         'chat_photo_big_file_id': value['chatPhotoBigFileId'],
         'topic_icon_color': value['topicIconColor'],

@@ -43,6 +43,12 @@ export interface SetLeadGroupTelegramMenuButtonDto {
      * @memberof SetLeadGroupTelegramMenuButtonDto
      */
     groupId?: string | null;
+    /**
+     * Telegram. , .
+     * @type {string}
+     * @memberof SetLeadGroupTelegramMenuButtonDto
+     */
+    buttonText?: string | null;
 }
 
 
@@ -79,6 +85,7 @@ export function SetLeadGroupTelegramMenuButtonDtoFromJSONTyped(json: any, ignore
         'enabled': json['enabled'],
         'mode': json['mode'] == null ? undefined : json['mode'],
         'groupId': json['group_id'] == null ? undefined : json['group_id'],
+        'buttonText': json['button_text'] == null ? undefined : json['button_text'],
     };
 }
 
@@ -97,6 +104,7 @@ export function SetLeadGroupTelegramMenuButtonDtoToJSONTyped(value?: SetLeadGrou
         'enabled': value['enabled'],
         'mode': value['mode'],
         'group_id': value['groupId'],
+        'button_text': value['buttonText'],
     };
 }
 

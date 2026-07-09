@@ -47,6 +47,8 @@ function instanceOfLeadGroupTelegramMenuButtonResponseDto(value) {
         return false;
     if (!('groupId' in value) || value['groupId'] === undefined)
         return false;
+    if (!('buttonText' in value) || value['buttonText'] === undefined)
+        return false;
     if (!('status' in value) || value['status'] === undefined)
         return false;
     if (!('url' in value) || value['url'] === undefined)
@@ -70,6 +72,7 @@ function LeadGroupTelegramMenuButtonResponseDtoFromJSONTyped(json, ignoreDiscrim
         'enabled': json['enabled'],
         'mode': json['mode'] == null ? undefined : json['mode'],
         'groupId': json['group_id'],
+        'buttonText': json['button_text'],
         'status': json['status'],
         'url': json['url'],
         'error': json['error'],
@@ -89,6 +92,7 @@ function LeadGroupTelegramMenuButtonResponseDtoToJSONTyped(value, ignoreDiscrimi
         'enabled': value['enabled'],
         'mode': value['mode'],
         'group_id': value['groupId'],
+        'button_text': value['buttonText'],
         'status': value['status'],
         'url': value['url'],
         'error': value['error'],

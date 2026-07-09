@@ -18,6 +18,7 @@ exports.DirectMessageDtoFromJSON = DirectMessageDtoFromJSON;
 exports.DirectMessageDtoFromJSONTyped = DirectMessageDtoFromJSONTyped;
 exports.DirectMessageDtoToJSON = DirectMessageDtoToJSON;
 exports.DirectMessageDtoToJSONTyped = DirectMessageDtoToJSONTyped;
+const MessageButtonDto_1 = require("./MessageButtonDto");
 /**
  * Check if a given object implements the DirectMessageDto interface.
  */
@@ -42,6 +43,7 @@ function DirectMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
         'externalId': json['external_id'],
         'content': json['content'],
         'subject': json['subject'] == null ? undefined : json['subject'],
+        'buttons': json['buttons'] == null ? undefined : (json['buttons'].map(MessageButtonDto_1.MessageButtonDtoFromJSON)),
     };
 }
 function DirectMessageDtoToJSON(json) {
@@ -56,5 +58,6 @@ function DirectMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'external_id': value['externalId'],
         'content': value['content'],
         'subject': value['subject'],
+        'buttons': value['buttons'] == null ? undefined : (value['buttons'].map(MessageButtonDto_1.MessageButtonDtoToJSON)),
     };
 }

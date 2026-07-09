@@ -39,6 +39,12 @@ export interface SetLeadGroupTelegramMenuButtonDto {
      * @memberof SetLeadGroupTelegramMenuButtonDto
      */
     groupId?: string | null;
+    /**
+     * Telegram. , .
+     * @type {string}
+     * @memberof SetLeadGroupTelegramMenuButtonDto
+     */
+    buttonText?: string | null;
 }
 /**
  * @export

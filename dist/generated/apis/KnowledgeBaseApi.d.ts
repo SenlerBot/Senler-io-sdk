@@ -162,12 +162,12 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     filesUpload(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * ZIP- 50 , .
+     * ZIP- 500 , .
      * ZIP-
      */
     filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>>;
     /**
-     * ZIP- 50 , .
+     * ZIP- 500 , .
      * ZIP-
      */
     filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto>;

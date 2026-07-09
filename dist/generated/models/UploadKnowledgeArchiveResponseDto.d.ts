@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { KnowledgeArchiveImportSummaryDto } from './KnowledgeArchiveImportSummaryDto';
 import type { KnowledgeFileResponseDto } from './KnowledgeFileResponseDto';
 import type { KnowledgeFolderResponseDto } from './KnowledgeFolderResponseDto';
 /**
@@ -29,6 +30,12 @@ export interface UploadKnowledgeArchiveResponseDto {
      * @memberof UploadKnowledgeArchiveResponseDto
      */
     files: Array<KnowledgeFileResponseDto>;
+    /**
+     *
+     * @type {KnowledgeArchiveImportSummaryDto}
+     * @memberof UploadKnowledgeArchiveResponseDto
+     */
+    summary: KnowledgeArchiveImportSummaryDto;
 }
 /**
  * Check if a given object implements the UploadKnowledgeArchiveResponseDto interface.

@@ -52,7 +52,7 @@ export interface StatisticsAgentBreakdownDto {
      */
     activeDialogs: number;
     /**
-     *
+     * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof StatisticsAgentBreakdownDto
      */

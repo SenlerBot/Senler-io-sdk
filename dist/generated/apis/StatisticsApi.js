@@ -74,6 +74,9 @@ class StatisticsApi extends runtime.BaseAPI {
         if (requestParameters['channelId'] != null) {
             queryParameters['channel_id'] = requestParameters['channelId'];
         }
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
+        }
         if (requestParameters['timezone'] != null) {
             queryParameters['timezone'] = requestParameters['timezone'];
         }
@@ -131,6 +134,9 @@ class StatisticsApi extends runtime.BaseAPI {
         }
         if (requestParameters['channelId'] != null) {
             queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
         }
         if (requestParameters['timezone'] != null) {
             queryParameters['timezone'] = requestParameters['timezone'];
@@ -190,6 +196,9 @@ class StatisticsApi extends runtime.BaseAPI {
         if (requestParameters['channelId'] != null) {
             queryParameters['channel_id'] = requestParameters['channelId'];
         }
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
+        }
         if (requestParameters['timezone'] != null) {
             queryParameters['timezone'] = requestParameters['timezone'];
         }
@@ -247,6 +256,9 @@ class StatisticsApi extends runtime.BaseAPI {
         }
         if (requestParameters['channelId'] != null) {
             queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
         }
         if (requestParameters['timezone'] != null) {
             queryParameters['timezone'] = requestParameters['timezone'];
@@ -311,6 +323,9 @@ class StatisticsApi extends runtime.BaseAPI {
         }
         if (requestParameters['channelId'] != null) {
             queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
         }
         if (requestParameters['timezone'] != null) {
             queryParameters['timezone'] = requestParameters['timezone'];

@@ -102,6 +102,8 @@ export declare const ResourcePackageImportProcessResultDtoStageEnum: {
     readonly Planned: "planned";
     readonly ProjectVariables: "project_variables";
     readonly LeadVariables: "lead_variables";
+    readonly LeadGroups: "lead_groups";
+    readonly Deliveries: "deliveries";
     readonly KnowledgeFolders: "knowledge_folders";
     readonly KnowledgeFiles: "knowledge_files";
     readonly KnowledgeTables: "knowledge_tables";

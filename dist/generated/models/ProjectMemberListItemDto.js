@@ -36,6 +36,8 @@ function instanceOfProjectMemberListItemDto(value) {
         return false;
     if (!('hasAccessToAllChannels' in value) || value['hasAccessToAllChannels'] === undefined)
         return false;
+    if (!('isSupportOperator' in value) || value['isSupportOperator'] === undefined)
+        return false;
     if (!('channelsCount' in value) || value['channelsCount'] === undefined)
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
@@ -62,6 +64,7 @@ function ProjectMemberListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'avatarUrl': json['avatarUrl'] == null ? undefined : json['avatarUrl'],
         'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
+        'isSupportOperator': json['isSupportOperator'],
         'channelsCount': json['channelsCount'],
         'isActive': json['isActive'],
         'createdAt': (new Date(json['createdAt'])),
@@ -86,6 +89,7 @@ function ProjectMemberListItemDtoToJSONTyped(value, ignoreDiscriminator = false)
         'avatarUrl': value['avatarUrl'],
         'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],
+        'isSupportOperator': value['isSupportOperator'],
         'channelsCount': value['channelsCount'],
         'isActive': value['isActive'],
         'createdAt': ((value['createdAt']).toISOString()),

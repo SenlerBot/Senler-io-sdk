@@ -379,7 +379,7 @@ export interface AgentResponseDto {
      */
     enableSelectiveResponse: boolean;
     /**
-     * (operator_reply_template control_processing)
+     * (suggest_operator_reply tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */

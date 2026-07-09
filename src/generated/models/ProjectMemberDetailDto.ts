@@ -80,6 +80,12 @@ export interface ProjectMemberDetailDto {
     permissions: PermissionsDto;
     /**
      * 
+     * @type {boolean}
+     * @memberof ProjectMemberDetailDto
+     */
+    isSupportOperator: boolean;
+    /**
+     * 
      * @type {UserResponseDto}
      * @memberof ProjectMemberDetailDto
      */
@@ -109,6 +115,7 @@ export function instanceOfProjectMemberDetailDto(value: object): value is Projec
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
     if (!('permissions' in value) || value['permissions'] === undefined) return false;
+    if (!('isSupportOperator' in value) || value['isSupportOperator'] === undefined) return false;
     if (!('user' in value) || value['user'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     return true;
@@ -129,6 +136,7 @@ export function ProjectMemberDetailDtoFromJSONTyped(json: any, ignoreDiscriminat
         'userId': json['user_id'],
         'role': RoleFromJSON(json['role']),
         'permissions': PermissionsDtoFromJSON(json['permissions']),
+        'isSupportOperator': json['is_support_operator'],
         'user': UserResponseDtoFromJSON(json['user']),
         'channels': json['channels'] == null ? undefined : ((json['channels'] as Array<any>).map(MemberChannelDtoFromJSON)),
         'createdAt': json['created_at'],
@@ -151,6 +159,7 @@ export function ProjectMemberDetailDtoToJSONTyped(value?: ProjectMemberDetailDto
         'user_id': value['userId'],
         'role': RoleToJSON(value['role']),
         'permissions': PermissionsDtoToJSON(value['permissions']),
+        'is_support_operator': value['isSupportOperator'],
         'user': UserResponseDtoToJSON(value['user']),
         'channels': value['channels'] == null ? undefined : ((value['channels'] as Array<any>).map(MemberChannelDtoToJSON)),
         'created_at': value['createdAt'],

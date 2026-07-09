@@ -113,6 +113,24 @@ export interface StatisticsSummaryDto {
      */
     averageFirstResponseTimeSeconds: StatisticsMetricDeltaDto;
     /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsSummaryDto
+     */
+    averageFirstResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsSummaryDto
+     */
+    averageResponseTimeSeconds: StatisticsMetricDeltaDto;
+    /**
+     * ,
+     * @type {StatisticsMetricDeltaDto}
+     * @memberof StatisticsSummaryDto
+     */
+    averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    /**
      *
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsSummaryDto

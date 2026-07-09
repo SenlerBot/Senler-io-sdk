@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { MessageButtonDto } from './MessageButtonDto';
+import {
+    MessageButtonDtoFromJSON,
+    MessageButtonDtoFromJSONTyped,
+    MessageButtonDtoToJSON,
+    MessageButtonDtoToJSONTyped,
+} from './MessageButtonDto';
+
 /**
  * DirectMessageDto.
  * @export
@@ -43,6 +51,12 @@ export interface DirectMessageDto {
      * @memberof DirectMessageDto
      */
     subject?: string;
+    /**
+     * . platform buttons, email .
+     * @type {Array<MessageButtonDto>}
+     * @memberof DirectMessageDto
+     */
+    buttons?: Array<MessageButtonDto>;
 }
 
 /**
@@ -69,6 +83,7 @@ export function DirectMessageDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'externalId': json['external_id'],
         'content': json['content'],
         'subject': json['subject'] == null ? undefined : json['subject'],
+        'buttons': json['buttons'] == null ? undefined : ((json['buttons'] as Array<any>).map(MessageButtonDtoFromJSON)),
     };
 }
 
@@ -87,6 +102,7 @@ export function DirectMessageDtoToJSONTyped(value?: DirectMessageDto | null, ign
         'external_id': value['externalId'],
         'content': value['content'],
         'subject': value['subject'],
+        'buttons': value['buttons'] == null ? undefined : ((value['buttons'] as Array<any>).map(MessageButtonDtoToJSON)),
     };
 }
 

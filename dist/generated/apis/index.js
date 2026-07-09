@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StorageApi = exports.StatisticsApi = exports.SpacesApi = exports.ReadyMCPServersApi = exports.ProjectVariablesApi = exports.ProjectsAvatarApi = exports.ProjectsApi = exports.ProcessesApi = exports.PlatformsApi = exports.OAuthApi = exports.ModelsApi = exports.MetricsDefinitionsApi = exports.MetricsConfigApi = exports.MCPServersApi = exports.MCPExternalUserCredentialsApi = exports.LeadVariablesApi = exports.LeadVariableDefinitionsApi = exports.LeadsApi = exports.LeadGroupsPublicApi = exports.LeadGroupsApi = exports.KnowledgeBaseApi = exports.FrontendVersionApi = exports.EventsApi = exports.DialogsMessagingApi = exports.DialogsManagementApi = exports.DialogsApi = exports.DeliveriesApi = exports.DataSourcesApi = exports.CountriesApi = exports.ChannelsWidgetApi = exports.ChannelsVKApi = exports.ChannelsTelegramApi = exports.ChannelsMAXApi = exports.ChannelsHistoryApi = exports.ChannelsEmailApi = exports.ChannelsDiscordApi = exports.ChannelsAvitoApi = exports.ChannelsApi = exports.BillingApi = exports.AuditApi = exports.AttachmentsApi = exports.AppsApi = exports.AppCatalogApi = exports.AnalyticsApi = exports.AgentTrainingApi = exports.AgentsAvatarApi = exports.AgentsApi = exports.AgentAssignmentRulesApi = exports.AccessInvitationsApi = exports.AccessApi = void 0;
-exports.TariffsApi = void 0;
+exports.TariffsApi = exports.SupportSchedulesApi = void 0;
 /* tslint:disable */
 /* eslint-disable */
 var AccessApi_1 = require("./AccessApi");
@@ -104,5 +104,7 @@ var StatisticsApi_1 = require("./StatisticsApi");
 Object.defineProperty(exports, "StatisticsApi", { enumerable: true, get: function () { return StatisticsApi_1.StatisticsApi; } });
 var StorageApi_1 = require("./StorageApi");
 Object.defineProperty(exports, "StorageApi", { enumerable: true, get: function () { return StorageApi_1.StorageApi; } });
+var SupportSchedulesApi_1 = require("./SupportSchedulesApi");
+Object.defineProperty(exports, "SupportSchedulesApi", { enumerable: true, get: function () { return SupportSchedulesApi_1.SupportSchedulesApi; } });
 var TariffsApi_1 = require("./TariffsApi");
 Object.defineProperty(exports, "TariffsApi", { enumerable: true, get: function () { return TariffsApi_1.TariffsApi; } });

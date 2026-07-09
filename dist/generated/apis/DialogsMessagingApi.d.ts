@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ButtonClickResponseDto, DialogButtonClickDto, DialogChatEventDto, InterveneDto, SendMessageResponseDto, SendMessageToDialogDto } from '../models/index';
+import type { ButtonClickResponseDto, DialogButtonClickDto, DialogChatEventDto, GenerateOperatorReplyDraftDto, InterveneDto, OperatorReplyDraftResponseDto, SendMessageResponseDto, SendMessageToDialogDto } from '../models/index';
 export interface ButtonClickRequest {
     dialogId: string;
     dialogButtonClickDto: DialogButtonClickDto;
@@ -22,6 +22,12 @@ export interface InterveneRequest {
     interveneDto: InterveneDto;
     xSessionId?: string;
     acceptLanguage?: InterveneAcceptLanguageEnum;
+}
+export interface OperatorReplyDraftRequest {
+    id: string;
+    generateOperatorReplyDraftDto: GenerateOperatorReplyDraftDto;
+    xSessionId?: string;
+    acceptLanguage?: OperatorReplyDraftAcceptLanguageEnum;
 }
 export interface SendRequest {
     id: string;
@@ -57,6 +63,16 @@ export declare class DialogsMessagingApi extends runtime.BaseAPI {
      * . .
      *
      */
+    operatorReplyDraftRaw(requestParameters: OperatorReplyDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OperatorReplyDraftResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    operatorReplyDraft(requestParameters: OperatorReplyDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OperatorReplyDraftResponseDto>;
+    /**
+     * . .
+     *
+     */
     sendRaw(requestParameters: SendRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendMessageResponseDto>>;
     /**
      * . .
@@ -80,6 +96,14 @@ export declare const InterveneAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type InterveneAcceptLanguageEnum = typeof InterveneAcceptLanguageEnum[keyof typeof InterveneAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const OperatorReplyDraftAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type OperatorReplyDraftAcceptLanguageEnum = typeof OperatorReplyDraftAcceptLanguageEnum[keyof typeof OperatorReplyDraftAcceptLanguageEnum];
 /**
  * @export
  */

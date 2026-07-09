@@ -36,6 +36,8 @@ function instanceOfProjectMemberDetailDto(value) {
         return false;
     if (!('permissions' in value) || value['permissions'] === undefined)
         return false;
+    if (!('isSupportOperator' in value) || value['isSupportOperator'] === undefined)
+        return false;
     if (!('user' in value) || value['user'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -55,6 +57,7 @@ function ProjectMemberDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'userId': json['user_id'],
         'role': (0, Role_1.RoleFromJSON)(json['role']),
         'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
+        'isSupportOperator': json['is_support_operator'],
         'user': (0, UserResponseDto_1.UserResponseDtoFromJSON)(json['user']),
         'channels': json['channels'] == null ? undefined : (json['channels'].map(MemberChannelDto_1.MemberChannelDtoFromJSON)),
         'createdAt': json['created_at'],
@@ -73,6 +76,7 @@ function ProjectMemberDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'user_id': value['userId'],
         'role': (0, Role_1.RoleToJSON)(value['role']),
         'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
+        'is_support_operator': value['isSupportOperator'],
         'user': (0, UserResponseDto_1.UserResponseDtoToJSON)(value['user']),
         'channels': value['channels'] == null ? undefined : (value['channels'].map(MemberChannelDto_1.MemberChannelDtoToJSON)),
         'created_at': value['createdAt'],

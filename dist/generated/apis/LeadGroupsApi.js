@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum = exports.UpdateLeadGroupsAcceptLanguageEnum = exports.LeadGroupsTelegramMenuButtonCheckAcceptLanguageEnum = exports.LeadGroupsTelegramMenuButtonApplyAcceptLanguageEnum = exports.LeadGroupsPublishAcceptLanguageEnum = exports.LeadGroupsConsentDocumentsAcceptLanguageEnum = exports.LeadGroupsAssetsUploadUrlAcceptLanguageEnum = exports.LeadGroupsAssetsConfirmAcceptLanguageEnum = exports.LeadGroupsAcceptLanguageEnum = exports.GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum = exports.GetLeadGroupsMembersAcceptLanguageEnum = exports.GetLeadGroupsLinksAcceptLanguageEnum = exports.GetLeadGroupsEventsAcceptLanguageEnum = exports.GetLeadGroupsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetLeadGroupsConsentDocumentsAcceptLanguageEnum = exports.GetLeadGroups2AcceptLanguageEnum = exports.GetLeadGroupsAcceptLanguageEnum = exports.DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum = exports.DeleteLeadGroupsAcceptLanguageEnum = exports.LeadGroupsApi = void 0;
+exports.UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum = exports.UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum = exports.UpdateLeadGroupsAcceptLanguageEnum = exports.LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum = exports.LeadGroupsTelegramMenuButtonCheckAcceptLanguageEnum = exports.LeadGroupsTelegramMenuButtonApplyAcceptLanguageEnum = exports.LeadGroupsPublishAcceptLanguageEnum = exports.LeadGroupsLeadsAcceptLanguageEnum = exports.LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.LeadGroupsConsentDocumentsAcceptLanguageEnum = exports.LeadGroupsAssetsUploadUrlAcceptLanguageEnum = exports.LeadGroupsAssetsConfirmAcceptLanguageEnum = exports.LeadGroupsAcceptLanguageEnum = exports.GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum = exports.GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum = exports.GetLeadGroupsMembersAcceptLanguageEnum = exports.GetLeadGroupsLinksAcceptLanguageEnum = exports.GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum = exports.GetLeadGroupsEventsAcceptLanguageEnum = exports.GetLeadGroupsConsentTemplatesAcceptLanguageEnum = exports.GetLeadGroupsConsentTemplatesLocaleEnum = exports.GetLeadGroupsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetLeadGroupsConsentDocumentsAcceptLanguageEnum = exports.GetLeadGroups2AcceptLanguageEnum = exports.GetLeadGroupsAcceptLanguageEnum = exports.DeleteLeadGroupsLeadsAcceptLanguageEnum = exports.DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum = exports.DeleteLeadGroupsAcceptLanguageEnum = exports.LeadGroupsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -143,6 +143,55 @@ class LeadGroupsApi extends runtime.BaseAPI {
      */
     async deleteLeadGroupsConsentDocuments(requestParameters, initOverrides) {
         const response = await this.deleteLeadGroupsConsentDocumentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * manual.
+     *
+     */
+    async deleteLeadGroupsLeadsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteLeadGroupsLeads().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteLeadGroupsLeads().');
+        }
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling deleteLeadGroupsLeads().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/{id}/leads/{leadId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * manual.
+     *
+     */
+    async deleteLeadGroupsLeads(requestParameters, initOverrides) {
+        const response = await this.deleteLeadGroupsLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -324,6 +373,52 @@ class LeadGroupsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . , .
+     *
+     */
+    async getLeadGroupsConsentTemplatesRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLeadGroupsConsentTemplates().');
+        }
+        const queryParameters = {};
+        if (requestParameters['locale'] != null) {
+            queryParameters['locale'] = requestParameters['locale'];
+        }
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/consent-templates`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupConsentTemplatesListResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , .
+     *
+     */
+    async getLeadGroupsConsentTemplates(requestParameters, initOverrides) {
+        const response = await this.getLeadGroupsConsentTemplatesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , .
      *
      */
@@ -367,6 +462,52 @@ class LeadGroupsApi extends runtime.BaseAPI {
      */
     async getLeadGroupsEvents(requestParameters, initOverrides) {
         const response = await this.getLeadGroupsEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getLeadGroupsLeadsConsentAcceptancesRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLeadGroupsLeadsConsentAcceptances().');
+        }
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling getLeadGroupsLeadsConsentAcceptances().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/leads/{leadId}/consent-acceptances`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupLeadConsentAcceptancesResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getLeadGroupsLeadsConsentAcceptances(requestParameters, initOverrides) {
+        const response = await this.getLeadGroupsLeadsConsentAcceptancesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -505,6 +646,49 @@ class LeadGroupsApi extends runtime.BaseAPI {
      */
     async getLeadGroupsTelegramMenuButtons(requestParameters, initOverrides) {
         const response = await this.getLeadGroupsTelegramMenuButtonsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Main Mini App named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    async getLeadGroupsTelegramMiniAppsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLeadGroupsTelegramMiniApps().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/telegram-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupTelegramMiniAppListResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Main Mini App named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    async getLeadGroupsTelegramMiniApps(requestParameters, initOverrides) {
+        const response = await this.getLeadGroupsTelegramMiniAppsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -706,6 +890,151 @@ class LeadGroupsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * S3 .
+     * PDF-
+     */
+    async leadGroupsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling leadGroupsConsentDocumentsAssetsConfirm().');
+        }
+        if (requestParameters['confirmS3UploadDto'] == null) {
+            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling leadGroupsConsentDocumentsAssetsConfirm().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/consent-documents/assets/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ConfirmS3UploadDtoToJSON)(requestParameters['confirmS3UploadDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupConsentDocumentUploadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * S3 .
+     * PDF-
+     */
+    async leadGroupsConsentDocumentsAssetsConfirm(requestParameters, initOverrides) {
+        const response = await this.leadGroupsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PDF bucket .
+     * S3- PDF-
+     */
+    async leadGroupsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling leadGroupsConsentDocumentsAssetsUploadUrl().');
+        }
+        if (requestParameters['getLeadGroupConsentDocumentUploadUrlDto'] == null) {
+            throw new runtime.RequiredError('getLeadGroupConsentDocumentUploadUrlDto', 'Required parameter "getLeadGroupConsentDocumentUploadUrlDto" was null or undefined when calling leadGroupsConsentDocumentsAssetsUploadUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/consent-documents/assets/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.GetLeadGroupConsentDocumentUploadUrlDtoToJSON)(requestParameters['getLeadGroupConsentDocumentUploadUrlDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PDF bucket .
+     * S3- PDF-
+     */
+    async leadGroupsConsentDocumentsAssetsUploadUrl(requestParameters, initOverrides) {
+        const response = await this.leadGroupsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * manual.
+     *
+     */
+    async leadGroupsLeadsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling leadGroupsLeads().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling leadGroupsLeads().');
+        }
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling leadGroupsLeads().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/{id}/leads/{leadId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * manual.
+     *
+     */
+    async leadGroupsLeads(requestParameters, initOverrides) {
+        const response = await this.leadGroupsLeadsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
@@ -752,7 +1081,7 @@ class LeadGroupsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     async leadGroupsTelegramMenuButtonApplyRaw(requestParameters, initOverrides) {
@@ -792,7 +1121,7 @@ class LeadGroupsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     async leadGroupsTelegramMenuButtonApply(requestParameters, initOverrides) {
@@ -800,7 +1129,7 @@ class LeadGroupsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     async leadGroupsTelegramMenuButtonCheckRaw(requestParameters, initOverrides) {
@@ -840,11 +1169,59 @@ class LeadGroupsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * menu button Telegram- RCommander .
+     * Telegram- .
      * Telegram-
      */
     async leadGroupsTelegramMenuButtonCheck(requestParameters, initOverrides) {
         const response = await this.leadGroupsTelegramMenuButtonCheckRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * startapp token Telegram- Main Mini App named Mini App.
+     * Telegram Mini App
+     */
+    async leadGroupsTelegramMiniAppVerificationRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling leadGroupsTelegramMiniAppVerification().');
+        }
+        if (requestParameters['startLeadGroupTelegramMiniAppVerificationDto'] == null) {
+            throw new runtime.RequiredError('startLeadGroupTelegramMiniAppVerificationDto', 'Required parameter "startLeadGroupTelegramMiniAppVerificationDto" was null or undefined when calling leadGroupsTelegramMiniAppVerification().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/telegram-mini-app/verification`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StartLeadGroupTelegramMiniAppVerificationDtoToJSON)(requestParameters['startLeadGroupTelegramMiniAppVerificationDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupTelegramMiniAppVerificationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * startapp token Telegram- Main Mini App named Mini App.
+     * Telegram Mini App
+     */
+    async leadGroupsTelegramMiniAppVerification(requestParameters, initOverrides) {
+        const response = await this.leadGroupsTelegramMiniAppVerificationRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -949,6 +1326,54 @@ class LeadGroupsApi extends runtime.BaseAPI {
         const response = await this.updateLeadGroupsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * short name named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    async updateLeadGroupsTelegramMiniAppRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLeadGroupsTelegramMiniApp().');
+        }
+        if (requestParameters['setLeadGroupTelegramMiniAppDto'] == null) {
+            throw new runtime.RequiredError('setLeadGroupTelegramMiniAppDto', 'Required parameter "setLeadGroupTelegramMiniAppDto" was null or undefined when calling updateLeadGroupsTelegramMiniApp().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/lead-groups/telegram-mini-app`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetLeadGroupTelegramMiniAppDtoToJSON)(requestParameters['setLeadGroupTelegramMiniAppDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupTelegramMiniAppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * short name named Mini App Telegram- .
+     * Telegram Mini App
+     */
+    async updateLeadGroupsTelegramMiniApp(requestParameters, initOverrides) {
+        const response = await this.updateLeadGroupsTelegramMiniAppRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.LeadGroupsApi = LeadGroupsApi;
 /**
@@ -962,6 +1387,13 @@ exports.DeleteLeadGroupsAcceptLanguageEnum = {
  * @export
  */
 exports.DeleteLeadGroupsConsentDocumentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeleteLeadGroupsLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -996,7 +1428,28 @@ exports.GetLeadGroupsConsentDocumentsVersionsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetLeadGroupsConsentTemplatesLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLeadGroupsConsentTemplatesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetLeadGroupsEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLeadGroupsLeadsConsentAcceptancesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1018,6 +1471,13 @@ exports.GetLeadGroupsMembersAcceptLanguageEnum = {
  * @export
  */
 exports.GetLeadGroupsTelegramMenuButtonsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLeadGroupsTelegramMiniAppsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1052,6 +1512,27 @@ exports.LeadGroupsConsentDocumentsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.LeadGroupsConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LeadGroupsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LeadGroupsLeadsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.LeadGroupsPublishAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1073,6 +1554,13 @@ exports.LeadGroupsTelegramMenuButtonCheckAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.LeadGroupsTelegramMiniAppVerificationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.UpdateLeadGroupsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1081,6 +1569,13 @@ exports.UpdateLeadGroupsAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateLeadGroupsConsentDocumentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLeadGroupsTelegramMiniAppAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -292,7 +292,7 @@ export interface UpdateAgentDto {
      */
     enableSelectiveResponse?: boolean;
     /**
-     * . enable_selective_response=true; operator_reply_template control_processing
+     * . suggest_operator_reply tool.
      * @type {boolean}
      * @memberof UpdateAgentDto
      */

@@ -28,6 +28,12 @@ export interface AgentRecommendationDto {
      */
     agentName: string;
     /**
+     * URL
+     * @type {string}
+     * @memberof AgentRecommendationDto
+     */
+    avatarUrl?: string | null;
+    /**
      *
      * @type {Array<string>}
      * @memberof AgentRecommendationDto

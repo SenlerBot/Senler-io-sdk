@@ -22,23 +22,11 @@ export interface LeadGroupRequiredConsentDto {
      */
     documentId: string;
     /**
-     * . , .
+     * . .
      * @type {number}
      * @memberof LeadGroupRequiredConsentDto
      */
     version?: number;
-    /**
-     * .
-     * @type {string}
-     * @memberof LeadGroupRequiredConsentDto
-     */
-    text: string;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof LeadGroupRequiredConsentDto
-     */
-    required?: boolean;
     /**
      * .
      * @type {number}

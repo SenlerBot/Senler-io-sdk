@@ -20,6 +20,13 @@ import {
     ClientSpendingToJSON,
     ClientSpendingToJSONTyped,
 } from './ClientSpending';
+import type { CostSectionEconomics } from './CostSectionEconomics';
+import {
+    CostSectionEconomicsFromJSON,
+    CostSectionEconomicsFromJSONTyped,
+    CostSectionEconomicsToJSON,
+    CostSectionEconomicsToJSONTyped,
+} from './CostSectionEconomics';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
 import {
     CurrencyBreakdownFromJSON,
@@ -58,6 +65,12 @@ export interface UnitEconomics {
      * @memberof UnitEconomics
      */
     eventsWithCosts: number;
+    /**
+     * Unit Economics cost-
+     * @type {Array<CostSectionEconomics>}
+     * @memberof UnitEconomics
+     */
+    costsBySection: Array<CostSectionEconomics>;
 }
 
 /**
@@ -68,6 +81,7 @@ export function instanceOfUnitEconomics(value: object): value is UnitEconomics {
     if (!('client' in value) || value['client'] === undefined) return false;
     if (!('marginPercent' in value) || value['marginPercent'] === undefined) return false;
     if (!('eventsWithCosts' in value) || value['eventsWithCosts'] === undefined) return false;
+    if (!('costsBySection' in value) || value['costsBySection'] === undefined) return false;
     return true;
 }
 
@@ -85,6 +99,7 @@ export function UnitEconomicsFromJSONTyped(json: any, ignoreDiscriminator: boole
         'client': ClientSpendingFromJSON(json['client']),
         'marginPercent': json['margin_percent'],
         'eventsWithCosts': json['events_with_costs'],
+        'costsBySection': ((json['costs_by_section'] as Array<any>).map(CostSectionEconomicsFromJSON)),
     };
 }
 
@@ -103,6 +118,7 @@ export function UnitEconomicsToJSONTyped(value?: UnitEconomics | null, ignoreDis
         'client': ClientSpendingToJSON(value['client']),
         'margin_percent': value['marginPercent'],
         'events_with_costs': value['eventsWithCosts'],
+        'costs_by_section': ((value['costsBySection'] as Array<any>).map(CostSectionEconomicsToJSON)),
     };
 }
 

@@ -19,7 +19,10 @@ import type {
   DialogButtonClickDto,
   DialogChatEventDto,
   ErrorResponse,
+  GenerateOperatorReplyDraftDto,
   InterveneDto,
+  OperatorReplyDraftErrorResponseDto,
+  OperatorReplyDraftResponseDto,
   SendMessageResponseDto,
   SendMessageToDialogDto,
 } from '../models/index';
@@ -32,8 +35,14 @@ import {
     DialogChatEventDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    GenerateOperatorReplyDraftDtoFromJSON,
+    GenerateOperatorReplyDraftDtoToJSON,
     InterveneDtoFromJSON,
     InterveneDtoToJSON,
+    OperatorReplyDraftErrorResponseDtoFromJSON,
+    OperatorReplyDraftErrorResponseDtoToJSON,
+    OperatorReplyDraftResponseDtoFromJSON,
+    OperatorReplyDraftResponseDtoToJSON,
     SendMessageResponseDtoFromJSON,
     SendMessageResponseDtoToJSON,
     SendMessageToDialogDtoFromJSON,
@@ -52,6 +61,13 @@ export interface InterveneRequest {
     interveneDto: InterveneDto;
     xSessionId?: string;
     acceptLanguage?: InterveneAcceptLanguageEnum;
+}
+
+export interface OperatorReplyDraftRequest {
+    id: string;
+    generateOperatorReplyDraftDto: GenerateOperatorReplyDraftDto;
+    xSessionId?: string;
+    acceptLanguage?: OperatorReplyDraftAcceptLanguageEnum;
 }
 
 export interface SendRequest {
@@ -202,6 +218,72 @@ export class DialogsMessagingApi extends runtime.BaseAPI {
      * . .
      * 
      */
+    async operatorReplyDraftRaw(requestParameters: OperatorReplyDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OperatorReplyDraftResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling operatorReplyDraft().'
+            );
+        }
+
+        if (requestParameters['generateOperatorReplyDraftDto'] == null) {
+            throw new runtime.RequiredError(
+                'generateOperatorReplyDraftDto',
+                'Required parameter "generateOperatorReplyDraftDto" was null or undefined when calling operatorReplyDraft().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{id}/operator-reply-draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GenerateOperatorReplyDraftDtoToJSON(requestParameters['generateOperatorReplyDraftDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => OperatorReplyDraftResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     * 
+     */
+    async operatorReplyDraft(requestParameters: OperatorReplyDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OperatorReplyDraftResponseDto> {
+        const response = await this.operatorReplyDraftRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     * 
+     */
     async sendRaw(requestParameters: SendRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendMessageResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
@@ -282,6 +364,14 @@ export const InterveneAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type InterveneAcceptLanguageEnum = typeof InterveneAcceptLanguageEnum[keyof typeof InterveneAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const OperatorReplyDraftAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type OperatorReplyDraftAcceptLanguageEnum = typeof OperatorReplyDraftAcceptLanguageEnum[keyof typeof OperatorReplyDraftAcceptLanguageEnum];
 /**
  * @export
  */

@@ -15,6 +15,7 @@ export interface GetCommunicationsRequest {
     period: GetCommunicationsPeriodEnum;
     projectId: string;
     channelId?: string;
+    operatorUserId?: string;
     timezone?: string;
     xSessionId?: string;
     acceptLanguage?: GetCommunicationsAcceptLanguageEnum;
@@ -23,6 +24,7 @@ export interface GetCostsRequest {
     period: GetCostsPeriodEnum;
     projectId: string;
     channelId?: string;
+    operatorUserId?: string;
     timezone?: string;
     xSessionId?: string;
     acceptLanguage?: GetCostsAcceptLanguageEnum;
@@ -31,6 +33,7 @@ export interface GetLeadsRequest {
     period: GetLeadsPeriodEnum;
     projectId: string;
     channelId?: string;
+    operatorUserId?: string;
     timezone?: string;
     xSessionId?: string;
     acceptLanguage?: GetLeadsAcceptLanguageEnum;
@@ -39,6 +42,7 @@ export interface GetLeadsSubscriptionEventsRequest {
     period: GetLeadsSubscriptionEventsPeriodEnum;
     projectId: string;
     channelId?: string;
+    operatorUserId?: string;
     timezone?: string;
     limit?: number;
     cursor?: string;
@@ -49,6 +53,7 @@ export interface GetOverviewRequest {
     period: GetOverviewPeriodEnum;
     projectId: string;
     channelId?: string;
+    operatorUserId?: string;
     timezone?: string;
     xSessionId?: string;
     acceptLanguage?: GetOverviewAcceptLanguageEnum;

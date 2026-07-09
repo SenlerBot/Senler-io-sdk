@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendAcceptLanguageEnum = exports.InterveneAcceptLanguageEnum = exports.ButtonClickAcceptLanguageEnum = exports.DialogsMessagingApi = void 0;
+exports.SendAcceptLanguageEnum = exports.OperatorReplyDraftAcceptLanguageEnum = exports.InterveneAcceptLanguageEnum = exports.ButtonClickAcceptLanguageEnum = exports.DialogsMessagingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -153,6 +153,54 @@ class DialogsMessagingApi extends runtime.BaseAPI {
      * . .
      *
      */
+    async operatorReplyDraftRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling operatorReplyDraft().');
+        }
+        if (requestParameters['generateOperatorReplyDraftDto'] == null) {
+            throw new runtime.RequiredError('generateOperatorReplyDraftDto', 'Required parameter "generateOperatorReplyDraftDto" was null or undefined when calling operatorReplyDraft().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{id}/operator-reply-draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.GenerateOperatorReplyDraftDtoToJSON)(requestParameters['generateOperatorReplyDraftDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.OperatorReplyDraftResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async operatorReplyDraft(requestParameters, initOverrides) {
+        const response = await this.operatorReplyDraftRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
     async sendRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling send().');
@@ -210,6 +258,13 @@ exports.ButtonClickAcceptLanguageEnum = {
  * @export
  */
 exports.InterveneAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.OperatorReplyDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

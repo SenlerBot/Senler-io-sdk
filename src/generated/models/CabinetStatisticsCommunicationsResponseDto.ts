@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatisticsOperatorResponseDetailDto } from './StatisticsOperatorResponseDetailDto';
+import {
+    StatisticsOperatorResponseDetailDtoFromJSON,
+    StatisticsOperatorResponseDetailDtoFromJSONTyped,
+    StatisticsOperatorResponseDetailDtoToJSON,
+    StatisticsOperatorResponseDetailDtoToJSONTyped,
+} from './StatisticsOperatorResponseDetailDto';
+import type { StatisticsOperatorResponseBreakdownDto } from './StatisticsOperatorResponseBreakdownDto';
+import {
+    StatisticsOperatorResponseBreakdownDtoFromJSON,
+    StatisticsOperatorResponseBreakdownDtoFromJSONTyped,
+    StatisticsOperatorResponseBreakdownDtoToJSON,
+    StatisticsOperatorResponseBreakdownDtoToJSONTyped,
+} from './StatisticsOperatorResponseBreakdownDto';
 import type { StatisticsCommunicationsChartsDto } from './StatisticsCommunicationsChartsDto';
 import {
     StatisticsCommunicationsChartsDtoFromJSON,
@@ -64,6 +78,18 @@ export interface CabinetStatisticsCommunicationsResponseDto {
      * @memberof CabinetStatisticsCommunicationsResponseDto
      */
     charts: StatisticsCommunicationsChartsDto;
+    /**
+     * 
+     * @type {Array<StatisticsOperatorResponseBreakdownDto>}
+     * @memberof CabinetStatisticsCommunicationsResponseDto
+     */
+    operators: Array<StatisticsOperatorResponseBreakdownDto>;
+    /**
+     * , operator_user_id
+     * @type {StatisticsOperatorResponseDetailDto}
+     * @memberof CabinetStatisticsCommunicationsResponseDto
+     */
+    operatorDetail?: StatisticsOperatorResponseDetailDto | null;
 }
 
 
@@ -86,6 +112,7 @@ export function instanceOfCabinetStatisticsCommunicationsResponseDto(value: obje
     if (!('granularity' in value) || value['granularity'] === undefined) return false;
     if (!('summary' in value) || value['summary'] === undefined) return false;
     if (!('charts' in value) || value['charts'] === undefined) return false;
+    if (!('operators' in value) || value['operators'] === undefined) return false;
     return true;
 }
 
@@ -104,6 +131,8 @@ export function CabinetStatisticsCommunicationsResponseDtoFromJSONTyped(json: an
         'granularity': json['granularity'],
         'summary': StatisticsCommunicationsSummaryDtoFromJSON(json['summary']),
         'charts': StatisticsCommunicationsChartsDtoFromJSON(json['charts']),
+        'operators': ((json['operators'] as Array<any>).map(StatisticsOperatorResponseBreakdownDtoFromJSON)),
+        'operatorDetail': json['operator_detail'] == null ? undefined : StatisticsOperatorResponseDetailDtoFromJSON(json['operator_detail']),
     };
 }
 
@@ -123,6 +152,8 @@ export function CabinetStatisticsCommunicationsResponseDtoToJSONTyped(value?: Ca
         'granularity': value['granularity'],
         'summary': StatisticsCommunicationsSummaryDtoToJSON(value['summary']),
         'charts': StatisticsCommunicationsChartsDtoToJSON(value['charts']),
+        'operators': ((value['operators'] as Array<any>).map(StatisticsOperatorResponseBreakdownDtoToJSON)),
+        'operator_detail': StatisticsOperatorResponseDetailDtoToJSON(value['operatorDetail']),
     };
 }
 

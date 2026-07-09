@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EventSourceWidgetSelectedElementDto } from './EventSourceWidgetSelectedElementDto';
-import {
-    EventSourceWidgetSelectedElementDtoFromJSON,
-    EventSourceWidgetSelectedElementDtoFromJSONTyped,
-    EventSourceWidgetSelectedElementDtoToJSON,
-    EventSourceWidgetSelectedElementDtoToJSONTyped,
-} from './EventSourceWidgetSelectedElementDto';
 import type { WidgetCustomActionCapabilityDto } from './WidgetCustomActionCapabilityDto';
 import {
     WidgetCustomActionCapabilityDtoFromJSON,
@@ -27,13 +20,13 @@ import {
     WidgetCustomActionCapabilityDtoToJSON,
     WidgetCustomActionCapabilityDtoToJSONTyped,
 } from './WidgetCustomActionCapabilityDto';
-import type { EventSourceWidgetPageContextDto } from './EventSourceWidgetPageContextDto';
+import type { EventSourceWidgetContextItemDto } from './EventSourceWidgetContextItemDto';
 import {
-    EventSourceWidgetPageContextDtoFromJSON,
-    EventSourceWidgetPageContextDtoFromJSONTyped,
-    EventSourceWidgetPageContextDtoToJSON,
-    EventSourceWidgetPageContextDtoToJSONTyped,
-} from './EventSourceWidgetPageContextDto';
+    EventSourceWidgetContextItemDtoFromJSON,
+    EventSourceWidgetContextItemDtoFromJSONTyped,
+    EventSourceWidgetContextItemDtoToJSON,
+    EventSourceWidgetContextItemDtoToJSONTyped,
+} from './EventSourceWidgetContextItemDto';
 
 /**
  * EventSourceWidgetLeadDataDto.
@@ -55,16 +48,10 @@ export interface EventSourceWidgetLeadDataDto {
     userId?: string;
     /**
      * ,
-     * @type {EventSourceWidgetPageContextDto}
+     * @type {Array<EventSourceWidgetContextItemDto>}
      * @memberof EventSourceWidgetLeadDataDto
      */
-    pageContext?: EventSourceWidgetPageContextDto;
-    /**
-     * ,
-     * @type {EventSourceWidgetSelectedElementDto}
-     * @memberof EventSourceWidgetLeadDataDto
-     */
-    selectedElement?: EventSourceWidgetSelectedElementDto;
+    contextItems?: Array<EventSourceWidgetContextItemDto>;
     /**
      * Custom actions host-, .
      * @type {Array<WidgetCustomActionCapabilityDto>}
@@ -110,8 +97,7 @@ export function EventSourceWidgetLeadDataDtoFromJSONTyped(json: any, ignoreDiscr
         
         'leadId': json['lead_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
-        'pageContext': json['page_context'] == null ? undefined : EventSourceWidgetPageContextDtoFromJSON(json['page_context']),
-        'selectedElement': json['selected_element'] == null ? undefined : EventSourceWidgetSelectedElementDtoFromJSON(json['selected_element']),
+        'contextItems': json['context_items'] == null ? undefined : ((json['context_items'] as Array<any>).map(EventSourceWidgetContextItemDtoFromJSON)),
         'customActions': json['custom_actions'] == null ? undefined : ((json['custom_actions'] as Array<any>).map(WidgetCustomActionCapabilityDtoFromJSON)),
         'customActionsLanguage': json['custom_actions_language'] == null ? undefined : json['custom_actions_language'],
     };
@@ -130,8 +116,7 @@ export function EventSourceWidgetLeadDataDtoToJSONTyped(value?: EventSourceWidge
         
         'lead_id': value['leadId'],
         'user_id': value['userId'],
-        'page_context': EventSourceWidgetPageContextDtoToJSON(value['pageContext']),
-        'selected_element': EventSourceWidgetSelectedElementDtoToJSON(value['selectedElement']),
+        'context_items': value['contextItems'] == null ? undefined : ((value['contextItems'] as Array<any>).map(EventSourceWidgetContextItemDtoToJSON)),
         'custom_actions': value['customActions'] == null ? undefined : ((value['customActions'] as Array<any>).map(WidgetCustomActionCapabilityDtoToJSON)),
         'custom_actions_language': value['customActionsLanguage'],
     };

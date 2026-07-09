@@ -18,6 +18,7 @@ exports.UploadKnowledgeArchiveResponseDtoFromJSON = UploadKnowledgeArchiveRespon
 exports.UploadKnowledgeArchiveResponseDtoFromJSONTyped = UploadKnowledgeArchiveResponseDtoFromJSONTyped;
 exports.UploadKnowledgeArchiveResponseDtoToJSON = UploadKnowledgeArchiveResponseDtoToJSON;
 exports.UploadKnowledgeArchiveResponseDtoToJSONTyped = UploadKnowledgeArchiveResponseDtoToJSONTyped;
+const KnowledgeArchiveImportSummaryDto_1 = require("./KnowledgeArchiveImportSummaryDto");
 const KnowledgeFileResponseDto_1 = require("./KnowledgeFileResponseDto");
 const KnowledgeFolderResponseDto_1 = require("./KnowledgeFolderResponseDto");
 /**
@@ -27,6 +28,8 @@ function instanceOfUploadKnowledgeArchiveResponseDto(value) {
     if (!('folders' in value) || value['folders'] === undefined)
         return false;
     if (!('files' in value) || value['files'] === undefined)
+        return false;
+    if (!('summary' in value) || value['summary'] === undefined)
         return false;
     return true;
 }
@@ -40,6 +43,7 @@ function UploadKnowledgeArchiveResponseDtoFromJSONTyped(json, ignoreDiscriminato
     return {
         'folders': (json['folders'].map(KnowledgeFolderResponseDto_1.KnowledgeFolderResponseDtoFromJSON)),
         'files': (json['files'].map(KnowledgeFileResponseDto_1.KnowledgeFileResponseDtoFromJSON)),
+        'summary': (0, KnowledgeArchiveImportSummaryDto_1.KnowledgeArchiveImportSummaryDtoFromJSON)(json['summary']),
     };
 }
 function UploadKnowledgeArchiveResponseDtoToJSON(json) {
@@ -52,5 +56,6 @@ function UploadKnowledgeArchiveResponseDtoToJSONTyped(value, ignoreDiscriminator
     return {
         'folders': (value['folders'].map(KnowledgeFolderResponseDto_1.KnowledgeFolderResponseDtoToJSON)),
         'files': (value['files'].map(KnowledgeFileResponseDto_1.KnowledgeFileResponseDtoToJSON)),
+        'summary': (0, KnowledgeArchiveImportSummaryDto_1.KnowledgeArchiveImportSummaryDtoToJSON)(value['summary']),
     };
 }

@@ -32,6 +32,12 @@ export interface AgentRecommendationDto {
      */
     agentName: string;
     /**
+     * URL
+     * @type {string}
+     * @memberof AgentRecommendationDto
+     */
+    avatarUrl?: string | null;
+    /**
      * 
      * @type {Array<string>}
      * @memberof AgentRecommendationDto
@@ -87,6 +93,7 @@ export function AgentRecommendationDtoFromJSONTyped(json: any, ignoreDiscriminat
         
         'agentId': json['agent_id'],
         'agentName': json['agent_name'],
+        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'issues': json['issues'],
         'suggestions': json['suggestions'],
         'priority': json['priority'],
@@ -106,6 +113,7 @@ export function AgentRecommendationDtoToJSONTyped(value?: AgentRecommendationDto
         
         'agent_id': value['agentId'],
         'agent_name': value['agentName'],
+        'avatar_url': value['avatarUrl'],
         'issues': value['issues'],
         'suggestions': value['suggestions'],
         'priority': value['priority'],

@@ -24,8 +24,6 @@ exports.LeadGroupRequiredConsentDtoToJSONTyped = LeadGroupRequiredConsentDtoToJS
 function instanceOfLeadGroupRequiredConsentDto(value) {
     if (!('documentId' in value) || value['documentId'] === undefined)
         return false;
-    if (!('text' in value) || value['text'] === undefined)
-        return false;
     return true;
 }
 function LeadGroupRequiredConsentDtoFromJSON(json) {
@@ -38,8 +36,6 @@ function LeadGroupRequiredConsentDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'documentId': json['document_id'],
         'version': json['version'] == null ? undefined : json['version'],
-        'text': json['text'],
-        'required': json['required'] == null ? undefined : json['required'],
         'sort': json['sort'] == null ? undefined : json['sort'],
     };
 }
@@ -53,8 +49,6 @@ function LeadGroupRequiredConsentDtoToJSONTyped(value, ignoreDiscriminator = fal
     return {
         'document_id': value['documentId'],
         'version': value['version'],
-        'text': value['text'],
-        'required': value['required'],
         'sort': value['sort'],
     };
 }

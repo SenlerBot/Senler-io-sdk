@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { KnowledgeFileResolvedLinkDto } from './KnowledgeFileResolvedLinkDto';
+import {
+    KnowledgeFileResolvedLinkDtoFromJSON,
+    KnowledgeFileResolvedLinkDtoFromJSONTyped,
+    KnowledgeFileResolvedLinkDtoToJSON,
+    KnowledgeFileResolvedLinkDtoToJSONTyped,
+} from './KnowledgeFileResolvedLinkDto';
+
 /**
  * KnowledgeFileResponseDto.
  * @export
@@ -134,6 +142,12 @@ export interface KnowledgeFileResponseDto {
      */
     aiMetadata: { [key: string]: any; };
     /**
+     * Markdown-
+     * @type {Array<KnowledgeFileResolvedLinkDto>}
+     * @memberof KnowledgeFileResponseDto
+     */
+    resolvedLinks?: Array<KnowledgeFileResolvedLinkDto>;
+    /**
      * 
      * @type {boolean}
      * @memberof KnowledgeFileResponseDto
@@ -246,6 +260,7 @@ export function KnowledgeFileResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'extractionError': json['extraction_error'],
         'aiContextIds': json['ai_context_ids'],
         'aiMetadata': json['ai_metadata'],
+        'resolvedLinks': json['resolved_links'] == null ? undefined : ((json['resolved_links'] as Array<any>).map(KnowledgeFileResolvedLinkDtoFromJSON)),
         'isActive': json['is_active'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -282,6 +297,7 @@ export function KnowledgeFileResponseDtoToJSONTyped(value?: KnowledgeFileRespons
         'extraction_error': value['extractionError'],
         'ai_context_ids': value['aiContextIds'],
         'ai_metadata': value['aiMetadata'],
+        'resolved_links': value['resolvedLinks'] == null ? undefined : ((value['resolvedLinks'] as Array<any>).map(KnowledgeFileResolvedLinkDtoToJSON)),
         'is_active': value['isActive'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

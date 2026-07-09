@@ -48,4 +48,5 @@ export { ReadyMCPServersApi } from './ReadyMCPServersApi';
 export { SpacesApi } from './SpacesApi';
 export { StatisticsApi } from './StatisticsApi';
 export { StorageApi } from './StorageApi';
+export { SupportSchedulesApi } from './SupportSchedulesApi';
 export { TariffsApi } from './TariffsApi';

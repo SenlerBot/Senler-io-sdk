@@ -48,7 +48,9 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     LeadVariableDefinition: 'lead_variable_definition',
     LeadGroup: 'lead_group',
     LeadGroupConsentDocument: 'lead_group_consent_document',
+    Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
+    SupportSchedule: 'support_schedule',
     Invitation: 'invitation'
 };
 /**

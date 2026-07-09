@@ -24,8 +24,11 @@ exports.ResourcePackagePlanItemDtoToJSONTyped = ResourcePackagePlanItemDtoToJSON
  */
 exports.ResourcePackagePlanItemDtoResourceTypeEnum = {
     Agent: 'agent',
+    Delivery: 'delivery',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    LeadGroup: 'lead_group',
+    LeadGroupConsentDocument: 'lead_group_consent_document',
     KnowledgeFolder: 'knowledge_folder',
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',

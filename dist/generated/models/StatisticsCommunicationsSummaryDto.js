@@ -41,6 +41,12 @@ function instanceOfStatisticsCommunicationsSummaryDto(value) {
         return false;
     if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined)
         return false;
+    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined)
+        return false;
+    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined)
+        return false;
+    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined)
+        return false;
     if (!('closedDialogs' in value) || value['closedDialogs'] === undefined)
         return false;
     return true;
@@ -62,6 +68,9 @@ function StatisticsCommunicationsSummaryDtoFromJSONTyped(json, ignoreDiscriminat
         'unansweredDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['unanswered_dialogs']),
         'operatorAssignedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['operator_assigned_dialogs']),
         'averageFirstResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_time_seconds']),
+        'averageFirstResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
+        'averageResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
+        'averageResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
         'closedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['closed_dialogs']),
     };
 }
@@ -82,6 +91,9 @@ function StatisticsCommunicationsSummaryDtoToJSONTyped(value, ignoreDiscriminato
         'unanswered_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['unansweredDialogs']),
         'operator_assigned_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['operatorAssignedDialogs']),
         'average_first_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseTimeSeconds']),
+        'average_first_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
+        'average_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
+        'average_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
         'closed_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['closedDialogs']),
     };
 }

@@ -61,6 +61,12 @@ export interface DeliveryResponseDto {
      */
     attachments: Array<MessageAttachmentInputDto>;
     /**
+     *
+     * @type {Date}
+     * @memberof DeliveryResponseDto
+     */
+    scheduledAt: Date | null;
+    /**
      * ,
      * @type {number}
      * @memberof DeliveryResponseDto
@@ -102,6 +108,7 @@ export interface DeliveryResponseDto {
  */
 export declare const DeliveryResponseDtoStatusEnum: {
     readonly Ready: "ready";
+    readonly Scheduled: "scheduled";
     readonly Queued: "queued";
     readonly Collecting: "collecting";
     readonly Sending: "sending";
