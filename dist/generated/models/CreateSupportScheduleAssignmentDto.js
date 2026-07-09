@@ -22,7 +22,9 @@ exports.CreateSupportScheduleAssignmentDtoToJSONTyped = CreateSupportScheduleAss
  * Check if a given object implements the CreateSupportScheduleAssignmentDto interface.
  */
 function instanceOfCreateSupportScheduleAssignmentDto(value) {
-    if (!('workDate' in value) || value['workDate'] === undefined)
+    if (!('startsAt' in value) || value['startsAt'] === undefined)
+        return false;
+    if (!('endsAt' in value) || value['endsAt'] === undefined)
         return false;
     if (!('projectMemberId' in value) || value['projectMemberId'] === undefined)
         return false;
@@ -36,12 +38,10 @@ function CreateSupportScheduleAssignmentDtoFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     return {
-        'workDate': json['work_date'],
+        'startsAt': (new Date(json['starts_at'])),
+        'endsAt': (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'],
         'shiftId': json['shift_id'] == null ? undefined : json['shift_id'],
-        'startMinute': json['start_minute'] == null ? undefined : json['start_minute'],
-        'endMinute': json['end_minute'] == null ? undefined : json['end_minute'],
-        'endsNextDay': json['ends_next_day'] == null ? undefined : json['ends_next_day'],
         'note': json['note'] == null ? undefined : json['note'],
     };
 }
@@ -53,12 +53,10 @@ function CreateSupportScheduleAssignmentDtoToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     return {
-        'work_date': value['workDate'],
+        'starts_at': ((value['startsAt']).toISOString()),
+        'ends_at': ((value['endsAt']).toISOString()),
         'project_member_id': value['projectMemberId'],
         'shift_id': value['shiftId'],
-        'start_minute': value['startMinute'],
-        'end_minute': value['endMinute'],
-        'ends_next_day': value['endsNextDay'],
         'note': value['note'],
     };
 }

@@ -115,12 +115,12 @@ export declare class AccessApi extends runtime.BaseAPI {
      */
     transferOwnership(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto>;
     /**
-     * . owner .
+     * . owner , .
      *
      */
     updateMembersRaw(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>>;
     /**
-     * . owner .
+     * . owner , .
      *
      */
     updateMembers(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto>;

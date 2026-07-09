@@ -15,14 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  BulkUpsertSupportScheduleAssignmentsDto,
-  CopySupportScheduleAssignmentsDto,
   CreateSupportScheduleAssignmentDto,
   CreateSupportShiftDto,
   ErrorResponse,
   SuccessResponseDto,
   SupportScheduleAssignmentDto,
-  SupportScheduleAssignmentsResponseDto,
   SupportScheduleResponseDto,
   SupportScheduleSettingsDto,
   SupportShiftDto,
@@ -31,10 +28,6 @@ import type {
   UpdateSupportShiftDto,
 } from '../models/index';
 import {
-    BulkUpsertSupportScheduleAssignmentsDtoFromJSON,
-    BulkUpsertSupportScheduleAssignmentsDtoToJSON,
-    CopySupportScheduleAssignmentsDtoFromJSON,
-    CopySupportScheduleAssignmentsDtoToJSON,
     CreateSupportScheduleAssignmentDtoFromJSON,
     CreateSupportScheduleAssignmentDtoToJSON,
     CreateSupportShiftDtoFromJSON,
@@ -45,8 +38,6 @@ import {
     SuccessResponseDtoToJSON,
     SupportScheduleAssignmentDtoFromJSON,
     SupportScheduleAssignmentDtoToJSON,
-    SupportScheduleAssignmentsResponseDtoFromJSON,
-    SupportScheduleAssignmentsResponseDtoToJSON,
     SupportScheduleResponseDtoFromJSON,
     SupportScheduleResponseDtoToJSON,
     SupportScheduleSettingsDtoFromJSON,
@@ -77,8 +68,8 @@ export interface DeleteSupportScheduleShiftsRequest {
 
 export interface GetSupportScheduleRequest {
     projectId: string;
-    dateFrom?: string;
-    dateTo?: string;
+    from?: Date;
+    to?: Date;
     xSessionId?: string;
     acceptLanguage?: GetSupportScheduleAcceptLanguageEnum;
 }
@@ -88,13 +79,6 @@ export interface SupportScheduleAssignmentsRequest {
     createSupportScheduleAssignmentDto: CreateSupportScheduleAssignmentDto;
     xSessionId?: string;
     acceptLanguage?: SupportScheduleAssignmentsAcceptLanguageEnum;
-}
-
-export interface SupportScheduleAssignmentsCopyRequest {
-    projectId: string;
-    copySupportScheduleAssignmentsDto: CopySupportScheduleAssignmentsDto;
-    xSessionId?: string;
-    acceptLanguage?: SupportScheduleAssignmentsCopyAcceptLanguageEnum;
 }
 
 export interface SupportScheduleShiftsRequest {
@@ -110,13 +94,6 @@ export interface UpdateSupportScheduleAssignmentsRequest {
     updateSupportScheduleAssignmentDto: UpdateSupportScheduleAssignmentDto;
     xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleAssignmentsAcceptLanguageEnum;
-}
-
-export interface UpdateSupportScheduleAssignmentsBulkRequest {
-    projectId: string;
-    bulkUpsertSupportScheduleAssignmentsDto: BulkUpsertSupportScheduleAssignmentsDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum;
 }
 
 export interface UpdateSupportScheduleSettingsRequest {
@@ -266,7 +243,7 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , .
+     * , , UTC- .
      * 
      */
     async getSupportScheduleRaw(requestParameters: GetSupportScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleResponseDto>> {
@@ -279,12 +256,12 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
-        if (requestParameters['dateFrom'] != null) {
-            queryParameters['date_from'] = requestParameters['dateFrom'];
+        if (requestParameters['from'] != null) {
+            queryParameters['from'] = (requestParameters['from'] as any).toISOString();
         }
 
-        if (requestParameters['dateTo'] != null) {
-            queryParameters['date_to'] = requestParameters['dateTo'];
+        if (requestParameters['to'] != null) {
+            queryParameters['to'] = (requestParameters['to'] as any).toISOString();
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -321,7 +298,7 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , .
+     * , , UTC- .
      * 
      */
     async getSupportSchedule(requestParameters: GetSupportScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleResponseDto> {
@@ -330,7 +307,7 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . shift_id .
+     * UTC-. shift_id .
      * 
      */
     async supportScheduleAssignmentsRaw(requestParameters: SupportScheduleAssignmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleAssignmentDto>> {
@@ -387,77 +364,11 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . shift_id .
+     * UTC-. shift_id .
      * 
      */
     async supportScheduleAssignments(requestParameters: SupportScheduleAssignmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentDto> {
         const response = await this.supportScheduleAssignmentsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . overwrite=true .
-     * 
-     */
-    async supportScheduleAssignmentsCopyRaw(requestParameters: SupportScheduleAssignmentsCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleAssignmentsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling supportScheduleAssignmentsCopy().'
-            );
-        }
-
-        if (requestParameters['copySupportScheduleAssignmentsDto'] == null) {
-            throw new runtime.RequiredError(
-                'copySupportScheduleAssignmentsDto',
-                'Required parameter "copySupportScheduleAssignmentsDto" was null or undefined when calling supportScheduleAssignmentsCopy().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments/copy`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CopySupportScheduleAssignmentsDtoToJSON(requestParameters['copySupportScheduleAssignmentsDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => SupportScheduleAssignmentsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . overwrite=true .
-     * 
-     */
-    async supportScheduleAssignmentsCopy(requestParameters: SupportScheduleAssignmentsCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentsResponseDto> {
-        const response = await this.supportScheduleAssignmentsCopyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -601,73 +512,7 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
-     * 
-     */
-    async updateSupportScheduleAssignmentsBulkRaw(requestParameters: UpdateSupportScheduleAssignmentsBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleAssignmentsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateSupportScheduleAssignmentsBulk().'
-            );
-        }
-
-        if (requestParameters['bulkUpsertSupportScheduleAssignmentsDto'] == null) {
-            throw new runtime.RequiredError(
-                'bulkUpsertSupportScheduleAssignmentsDto',
-                'Required parameter "bulkUpsertSupportScheduleAssignmentsDto" was null or undefined when calling updateSupportScheduleAssignmentsBulk().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments/bulk`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: BulkUpsertSupportScheduleAssignmentsDtoToJSON(requestParameters['bulkUpsertSupportScheduleAssignmentsDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => SupportScheduleAssignmentsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . .
-     * 
-     */
-    async updateSupportScheduleAssignmentsBulk(requestParameters: UpdateSupportScheduleAssignmentsBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentsResponseDto> {
-        const response = await this.updateSupportScheduleAssignmentsBulkRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * timezone .
+     * .
      * 
      */
     async updateSupportScheduleSettingsRaw(requestParameters: UpdateSupportScheduleSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleSettingsDto>> {
@@ -724,7 +569,7 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * timezone .
+     * .
      * 
      */
     async updateSupportScheduleSettings(requestParameters: UpdateSupportScheduleSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleSettingsDto> {
@@ -842,14 +687,6 @@ export type SupportScheduleAssignmentsAcceptLanguageEnum = typeof SupportSchedul
 /**
  * @export
  */
-export const SupportScheduleAssignmentsCopyAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type SupportScheduleAssignmentsCopyAcceptLanguageEnum = typeof SupportScheduleAssignmentsCopyAcceptLanguageEnum[keyof typeof SupportScheduleAssignmentsCopyAcceptLanguageEnum];
-/**
- * @export
- */
 export const SupportScheduleShiftsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -863,14 +700,6 @@ export const UpdateSupportScheduleAssignmentsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateSupportScheduleAssignmentsAcceptLanguageEnum = typeof UpdateSupportScheduleAssignmentsAcceptLanguageEnum[keyof typeof UpdateSupportScheduleAssignmentsAcceptLanguageEnum];
-/**
- * @export
- */
-export const UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum = typeof UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum[keyof typeof UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum];
 /**
  * @export
  */

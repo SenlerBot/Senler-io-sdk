@@ -25,12 +25,6 @@ export interface UpdateSupportScheduleSettingsDto {
      * @memberof UpdateSupportScheduleSettingsDto
      */
     enabled?: boolean;
-    /**
-     * IANA timezone
-     * @type {string}
-     * @memberof UpdateSupportScheduleSettingsDto
-     */
-    timezone?: string;
 }
 
 /**
@@ -51,7 +45,6 @@ export function UpdateSupportScheduleSettingsDtoFromJSONTyped(json: any, ignoreD
     return {
         
         'enabled': json['enabled'] == null ? undefined : json['enabled'],
-        'timezone': json['timezone'] == null ? undefined : json['timezone'],
     };
 }
 
@@ -67,7 +60,6 @@ export function UpdateSupportScheduleSettingsDtoToJSONTyped(value?: UpdateSuppor
     return {
         
         'enabled': value['enabled'],
-        'timezone': value['timezone'],
     };
 }
 

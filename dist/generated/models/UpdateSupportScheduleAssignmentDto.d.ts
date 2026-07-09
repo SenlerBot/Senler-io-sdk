@@ -16,11 +16,17 @@
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
-     * timezone , YYYY-MM-DD
-     * @type {string}
+     * , ISO 8601 timezone offset
+     * @type {Date}
      * @memberof UpdateSupportScheduleAssignmentDto
      */
-    workDate?: string;
+    startsAt?: Date;
+    /**
+     * , ISO 8601 timezone offset
+     * @type {Date}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    endsAt?: Date;
     /**
      * ID ,
      * @type {string}
@@ -28,29 +34,11 @@ export interface UpdateSupportScheduleAssignmentDto {
      */
     projectMemberId?: string;
     /**
-     * ID . Null
+     * ID . Null .
      * @type {string}
      * @memberof UpdateSupportScheduleAssignmentDto
      */
     shiftId?: string | null;
-    /**
-     * 00:00 timezone
-     * @type {number}
-     * @memberof UpdateSupportScheduleAssignmentDto
-     */
-    startMinute?: number | null;
-    /**
-     * 00:00 timezone . 1440 24:00
-     * @type {number}
-     * @memberof UpdateSupportScheduleAssignmentDto
-     */
-    endMinute?: number | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof UpdateSupportScheduleAssignmentDto
-     */
-    endsNextDay?: boolean;
     /**
      *
      * @type {string}

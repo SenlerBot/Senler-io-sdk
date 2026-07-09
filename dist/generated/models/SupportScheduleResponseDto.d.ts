@@ -32,7 +32,7 @@ export interface SupportScheduleResponseDto {
      */
     shifts: Array<SupportShiftDto>;
     /**
-     *
+     * ,
      * @type {Array<SupportScheduleAssignmentDto>}
      * @memberof SupportScheduleResponseDto
      */

@@ -22,13 +22,13 @@ export interface UpdateSupportShiftDto {
      */
     name?: string;
     /**
-     * 00:00 timezone
+     * 00:00
      * @type {number}
      * @memberof UpdateSupportShiftDto
      */
     startMinute?: number;
     /**
-     * 00:00 timezone . 1440 24:00
+     * 00:00 . 1440 24:00
      * @type {number}
      * @memberof UpdateSupportShiftDto
      */

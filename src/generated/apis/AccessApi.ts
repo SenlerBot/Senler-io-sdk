@@ -444,7 +444,7 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * . owner .
+     * . owner , .
      * 
      */
     async updateMembersRaw(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>> {
@@ -508,7 +508,7 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
-     * . owner .
+     * . owner , .
      * 
      */
     async updateMembers(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto> {

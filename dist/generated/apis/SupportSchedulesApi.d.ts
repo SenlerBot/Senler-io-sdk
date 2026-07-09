@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { BulkUpsertSupportScheduleAssignmentsDto, CopySupportScheduleAssignmentsDto, CreateSupportScheduleAssignmentDto, CreateSupportShiftDto, SuccessResponseDto, SupportScheduleAssignmentDto, SupportScheduleAssignmentsResponseDto, SupportScheduleResponseDto, SupportScheduleSettingsDto, SupportShiftDto, UpdateSupportScheduleAssignmentDto, UpdateSupportScheduleSettingsDto, UpdateSupportShiftDto } from '../models/index';
+import type { CreateSupportScheduleAssignmentDto, CreateSupportShiftDto, SuccessResponseDto, SupportScheduleAssignmentDto, SupportScheduleResponseDto, SupportScheduleSettingsDto, SupportShiftDto, UpdateSupportScheduleAssignmentDto, UpdateSupportScheduleSettingsDto, UpdateSupportShiftDto } from '../models/index';
 export interface DeleteSupportScheduleAssignmentsRequest {
     projectId: string;
     assignmentId: string;
@@ -25,8 +25,8 @@ export interface DeleteSupportScheduleShiftsRequest {
 }
 export interface GetSupportScheduleRequest {
     projectId: string;
-    dateFrom?: string;
-    dateTo?: string;
+    from?: Date;
+    to?: Date;
     xSessionId?: string;
     acceptLanguage?: GetSupportScheduleAcceptLanguageEnum;
 }
@@ -35,12 +35,6 @@ export interface SupportScheduleAssignmentsRequest {
     createSupportScheduleAssignmentDto: CreateSupportScheduleAssignmentDto;
     xSessionId?: string;
     acceptLanguage?: SupportScheduleAssignmentsAcceptLanguageEnum;
-}
-export interface SupportScheduleAssignmentsCopyRequest {
-    projectId: string;
-    copySupportScheduleAssignmentsDto: CopySupportScheduleAssignmentsDto;
-    xSessionId?: string;
-    acceptLanguage?: SupportScheduleAssignmentsCopyAcceptLanguageEnum;
 }
 export interface SupportScheduleShiftsRequest {
     projectId: string;
@@ -54,12 +48,6 @@ export interface UpdateSupportScheduleAssignmentsRequest {
     updateSupportScheduleAssignmentDto: UpdateSupportScheduleAssignmentDto;
     xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleAssignmentsAcceptLanguageEnum;
-}
-export interface UpdateSupportScheduleAssignmentsBulkRequest {
-    projectId: string;
-    bulkUpsertSupportScheduleAssignmentsDto: BulkUpsertSupportScheduleAssignmentsDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum;
 }
 export interface UpdateSupportScheduleSettingsRequest {
     projectId: string;
@@ -99,35 +87,25 @@ export declare class SupportSchedulesApi extends runtime.BaseAPI {
      */
     deleteSupportScheduleShifts(requestParameters: DeleteSupportScheduleShiftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * , , .
+     * , , UTC- .
      *
      */
     getSupportScheduleRaw(requestParameters: GetSupportScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleResponseDto>>;
     /**
-     * , , .
+     * , , UTC- .
      *
      */
     getSupportSchedule(requestParameters: GetSupportScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleResponseDto>;
     /**
-     * . shift_id .
+     * UTC-. shift_id .
      *
      */
     supportScheduleAssignmentsRaw(requestParameters: SupportScheduleAssignmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleAssignmentDto>>;
     /**
-     * . shift_id .
+     * UTC-. shift_id .
      *
      */
     supportScheduleAssignments(requestParameters: SupportScheduleAssignmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentDto>;
-    /**
-     * . overwrite=true .
-     *
-     */
-    supportScheduleAssignmentsCopyRaw(requestParameters: SupportScheduleAssignmentsCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleAssignmentsResponseDto>>;
-    /**
-     * . overwrite=true .
-     *
-     */
-    supportScheduleAssignmentsCopy(requestParameters: SupportScheduleAssignmentsCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentsResponseDto>;
     /**
      * . .
      *
@@ -149,22 +127,12 @@ export declare class SupportSchedulesApi extends runtime.BaseAPI {
      */
     updateSupportScheduleAssignments(requestParameters: UpdateSupportScheduleAssignmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentDto>;
     /**
-     * . .
-     *
-     */
-    updateSupportScheduleAssignmentsBulkRaw(requestParameters: UpdateSupportScheduleAssignmentsBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleAssignmentsResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    updateSupportScheduleAssignmentsBulk(requestParameters: UpdateSupportScheduleAssignmentsBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleAssignmentsResponseDto>;
-    /**
-     * timezone .
+     * .
      *
      */
     updateSupportScheduleSettingsRaw(requestParameters: UpdateSupportScheduleSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleSettingsDto>>;
     /**
-     * timezone .
+     * .
      *
      */
     updateSupportScheduleSettings(requestParameters: UpdateSupportScheduleSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleSettingsDto>;
@@ -214,14 +182,6 @@ export type SupportScheduleAssignmentsAcceptLanguageEnum = typeof SupportSchedul
 /**
  * @export
  */
-export declare const SupportScheduleAssignmentsCopyAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SupportScheduleAssignmentsCopyAcceptLanguageEnum = typeof SupportScheduleAssignmentsCopyAcceptLanguageEnum[keyof typeof SupportScheduleAssignmentsCopyAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const SupportScheduleShiftsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -235,14 +195,6 @@ export declare const UpdateSupportScheduleAssignmentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateSupportScheduleAssignmentsAcceptLanguageEnum = typeof UpdateSupportScheduleAssignmentsAcceptLanguageEnum[keyof typeof UpdateSupportScheduleAssignmentsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum = typeof UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum[keyof typeof UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum];
 /**
  * @export
  */

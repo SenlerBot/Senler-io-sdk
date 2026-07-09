@@ -38,13 +38,13 @@ export interface SupportShiftDto {
      */
     name: string;
     /**
-     * 00:00 timezone
+     * 00:00
      * @type {number}
      * @memberof SupportShiftDto
      */
     startMinute: number;
     /**
-     * 00:00 timezone
+     * 00:00
      * @type {number}
      * @memberof SupportShiftDto
      */

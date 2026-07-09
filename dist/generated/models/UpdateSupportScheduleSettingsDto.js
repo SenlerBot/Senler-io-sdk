@@ -33,7 +33,6 @@ function UpdateSupportScheduleSettingsDtoFromJSONTyped(json, ignoreDiscriminator
     }
     return {
         'enabled': json['enabled'] == null ? undefined : json['enabled'],
-        'timezone': json['timezone'] == null ? undefined : json['timezone'],
     };
 }
 function UpdateSupportScheduleSettingsDtoToJSON(json) {
@@ -45,6 +44,5 @@ function UpdateSupportScheduleSettingsDtoToJSONTyped(value, ignoreDiscriminator 
     }
     return {
         'enabled': value['enabled'],
-        'timezone': value['timezone'],
     };
 }

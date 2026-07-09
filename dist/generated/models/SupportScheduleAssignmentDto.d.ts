@@ -28,11 +28,17 @@ export interface SupportScheduleAssignmentDto {
      */
     projectId: string;
     /**
-     * timezone
-     * @type {string}
+     *
+     * @type {Date}
      * @memberof SupportScheduleAssignmentDto
      */
-    workDate: string;
+    startsAt: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof SupportScheduleAssignmentDto
+     */
+    endsAt: Date;
     /**
      * ID -
      * @type {string}
@@ -45,24 +51,6 @@ export interface SupportScheduleAssignmentDto {
      * @memberof SupportScheduleAssignmentDto
      */
     shiftId: string | null;
-    /**
-     *
-     * @type {number}
-     * @memberof SupportScheduleAssignmentDto
-     */
-    startMinute: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof SupportScheduleAssignmentDto
-     */
-    endMinute: number | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof SupportScheduleAssignmentDto
-     */
-    endsNextDay: boolean;
     /**
      *
      * @type {string}

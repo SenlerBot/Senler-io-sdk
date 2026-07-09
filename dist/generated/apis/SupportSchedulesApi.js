@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateSupportScheduleShiftsAcceptLanguageEnum = exports.UpdateSupportScheduleSettingsAcceptLanguageEnum = exports.UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum = exports.UpdateSupportScheduleAssignmentsAcceptLanguageEnum = exports.SupportScheduleShiftsAcceptLanguageEnum = exports.SupportScheduleAssignmentsCopyAcceptLanguageEnum = exports.SupportScheduleAssignmentsAcceptLanguageEnum = exports.GetSupportScheduleAcceptLanguageEnum = exports.DeleteSupportScheduleShiftsAcceptLanguageEnum = exports.DeleteSupportScheduleAssignmentsAcceptLanguageEnum = exports.SupportSchedulesApi = void 0;
+exports.UpdateSupportScheduleShiftsAcceptLanguageEnum = exports.UpdateSupportScheduleSettingsAcceptLanguageEnum = exports.UpdateSupportScheduleAssignmentsAcceptLanguageEnum = exports.SupportScheduleShiftsAcceptLanguageEnum = exports.SupportScheduleAssignmentsAcceptLanguageEnum = exports.GetSupportScheduleAcceptLanguageEnum = exports.DeleteSupportScheduleShiftsAcceptLanguageEnum = exports.DeleteSupportScheduleAssignmentsAcceptLanguageEnum = exports.SupportSchedulesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -146,7 +146,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , .
+     * , , UTC- .
      *
      */
     async getSupportScheduleRaw(requestParameters, initOverrides) {
@@ -154,11 +154,11 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSupportSchedule().');
         }
         const queryParameters = {};
-        if (requestParameters['dateFrom'] != null) {
-            queryParameters['date_from'] = requestParameters['dateFrom'];
+        if (requestParameters['from'] != null) {
+            queryParameters['from'] = requestParameters['from'].toISOString();
         }
-        if (requestParameters['dateTo'] != null) {
-            queryParameters['date_to'] = requestParameters['dateTo'];
+        if (requestParameters['to'] != null) {
+            queryParameters['to'] = requestParameters['to'].toISOString();
         }
         const headerParameters = {};
         if (requestParameters['xSessionId'] != null) {
@@ -187,7 +187,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportScheduleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , .
+     * , , UTC- .
      *
      */
     async getSupportSchedule(requestParameters, initOverrides) {
@@ -195,7 +195,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . shift_id .
+     * UTC-. shift_id .
      *
      */
     async supportScheduleAssignmentsRaw(requestParameters, initOverrides) {
@@ -235,59 +235,11 @@ class SupportSchedulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportScheduleAssignmentDtoFromJSON)(jsonValue));
     }
     /**
-     * . shift_id .
+     * UTC-. shift_id .
      *
      */
     async supportScheduleAssignments(requestParameters, initOverrides) {
         const response = await this.supportScheduleAssignmentsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * . overwrite=true .
-     *
-     */
-    async supportScheduleAssignmentsCopyRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling supportScheduleAssignmentsCopy().');
-        }
-        if (requestParameters['copySupportScheduleAssignmentsDto'] == null) {
-            throw new runtime.RequiredError('copySupportScheduleAssignmentsDto', 'Required parameter "copySupportScheduleAssignmentsDto" was null or undefined when calling supportScheduleAssignmentsCopy().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments/copy`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CopySupportScheduleAssignmentsDtoToJSON)(requestParameters['copySupportScheduleAssignmentsDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportScheduleAssignmentsResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . overwrite=true .
-     *
-     */
-    async supportScheduleAssignmentsCopy(requestParameters, initOverrides) {
-        const response = await this.supportScheduleAssignmentsCopyRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -390,55 +342,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
-     *
-     */
-    async updateSupportScheduleAssignmentsBulkRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSupportScheduleAssignmentsBulk().');
-        }
-        if (requestParameters['bulkUpsertSupportScheduleAssignmentsDto'] == null) {
-            throw new runtime.RequiredError('bulkUpsertSupportScheduleAssignmentsDto', 'Required parameter "bulkUpsertSupportScheduleAssignmentsDto" was null or undefined when calling updateSupportScheduleAssignmentsBulk().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments/bulk`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.BulkUpsertSupportScheduleAssignmentsDtoToJSON)(requestParameters['bulkUpsertSupportScheduleAssignmentsDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportScheduleAssignmentsResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . .
-     *
-     */
-    async updateSupportScheduleAssignmentsBulk(requestParameters, initOverrides) {
-        const response = await this.updateSupportScheduleAssignmentsBulkRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * timezone .
+     * .
      *
      */
     async updateSupportScheduleSettingsRaw(requestParameters, initOverrides) {
@@ -478,7 +382,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportScheduleSettingsDtoFromJSON)(jsonValue));
     }
     /**
-     * timezone .
+     * .
      *
      */
     async updateSupportScheduleSettings(requestParameters, initOverrides) {
@@ -569,13 +473,6 @@ exports.SupportScheduleAssignmentsAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.SupportScheduleAssignmentsCopyAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.SupportScheduleShiftsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -584,13 +481,6 @@ exports.SupportScheduleShiftsAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateSupportScheduleAssignmentsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateSupportScheduleAssignmentsBulkAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -20,11 +20,17 @@ import { mapValues } from '../runtime';
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
-     * timezone , YYYY-MM-DD
-     * @type {string}
+     * , ISO 8601 timezone offset
+     * @type {Date}
      * @memberof UpdateSupportScheduleAssignmentDto
      */
-    workDate?: string;
+    startsAt?: Date;
+    /**
+     * , ISO 8601 timezone offset
+     * @type {Date}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    endsAt?: Date;
     /**
      * ID ,
      * @type {string}
@@ -32,29 +38,11 @@ export interface UpdateSupportScheduleAssignmentDto {
      */
     projectMemberId?: string;
     /**
-     * ID . Null
+     * ID . Null .
      * @type {string}
      * @memberof UpdateSupportScheduleAssignmentDto
      */
     shiftId?: string | null;
-    /**
-     * 00:00 timezone
-     * @type {number}
-     * @memberof UpdateSupportScheduleAssignmentDto
-     */
-    startMinute?: number | null;
-    /**
-     * 00:00 timezone . 1440 24:00
-     * @type {number}
-     * @memberof UpdateSupportScheduleAssignmentDto
-     */
-    endMinute?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateSupportScheduleAssignmentDto
-     */
-    endsNextDay?: boolean;
     /**
      * 
      * @type {string}
@@ -80,12 +68,10 @@ export function UpdateSupportScheduleAssignmentDtoFromJSONTyped(json: any, ignor
     }
     return {
         
-        'workDate': json['work_date'] == null ? undefined : json['work_date'],
+        'startsAt': json['starts_at'] == null ? undefined : (new Date(json['starts_at'])),
+        'endsAt': json['ends_at'] == null ? undefined : (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'] == null ? undefined : json['project_member_id'],
         'shiftId': json['shift_id'] == null ? undefined : json['shift_id'],
-        'startMinute': json['start_minute'] == null ? undefined : json['start_minute'],
-        'endMinute': json['end_minute'] == null ? undefined : json['end_minute'],
-        'endsNextDay': json['ends_next_day'] == null ? undefined : json['ends_next_day'],
         'note': json['note'] == null ? undefined : json['note'],
     };
 }
@@ -101,12 +87,10 @@ export function UpdateSupportScheduleAssignmentDtoToJSONTyped(value?: UpdateSupp
 
     return {
         
-        'work_date': value['workDate'],
+        'starts_at': value['startsAt'] == null ? undefined : ((value['startsAt']).toISOString()),
+        'ends_at': value['endsAt'] == null ? undefined : ((value['endsAt']).toISOString()),
         'project_member_id': value['projectMemberId'],
         'shift_id': value['shiftId'],
-        'start_minute': value['startMinute'],
-        'end_minute': value['endMinute'],
-        'ends_next_day': value['endsNextDay'],
         'note': value['note'],
     };
 }

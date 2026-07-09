@@ -309,7 +309,7 @@ class AccessApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . owner .
+     * . owner , .
      *
      */
     async updateMembersRaw(requestParameters, initOverrides) {
@@ -352,7 +352,7 @@ class AccessApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateProjectMemberResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . owner .
+     * . owner , .
      *
      */
     async updateMembers(requestParameters, initOverrides) {

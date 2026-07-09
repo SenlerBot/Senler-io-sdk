@@ -32,11 +32,17 @@ export interface SupportScheduleAssignmentDto {
      */
     projectId: string;
     /**
-     * timezone
-     * @type {string}
+     * 
+     * @type {Date}
      * @memberof SupportScheduleAssignmentDto
      */
-    workDate: string;
+    startsAt: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof SupportScheduleAssignmentDto
+     */
+    endsAt: Date;
     /**
      * ID -
      * @type {string}
@@ -51,24 +57,6 @@ export interface SupportScheduleAssignmentDto {
     shiftId: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof SupportScheduleAssignmentDto
-     */
-    startMinute: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SupportScheduleAssignmentDto
-     */
-    endMinute: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SupportScheduleAssignmentDto
-     */
-    endsNextDay: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof SupportScheduleAssignmentDto
      */
@@ -81,12 +69,10 @@ export interface SupportScheduleAssignmentDto {
 export function instanceOfSupportScheduleAssignmentDto(value: object): value is SupportScheduleAssignmentDto {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
-    if (!('workDate' in value) || value['workDate'] === undefined) return false;
+    if (!('startsAt' in value) || value['startsAt'] === undefined) return false;
+    if (!('endsAt' in value) || value['endsAt'] === undefined) return false;
     if (!('projectMemberId' in value) || value['projectMemberId'] === undefined) return false;
     if (!('shiftId' in value) || value['shiftId'] === undefined) return false;
-    if (!('startMinute' in value) || value['startMinute'] === undefined) return false;
-    if (!('endMinute' in value) || value['endMinute'] === undefined) return false;
-    if (!('endsNextDay' in value) || value['endsNextDay'] === undefined) return false;
     return true;
 }
 
@@ -102,12 +88,10 @@ export function SupportScheduleAssignmentDtoFromJSONTyped(json: any, ignoreDiscr
         
         'id': json['id'],
         'projectId': json['project_id'],
-        'workDate': json['work_date'],
+        'startsAt': (new Date(json['starts_at'])),
+        'endsAt': (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'],
         'shiftId': json['shift_id'],
-        'startMinute': json['start_minute'],
-        'endMinute': json['end_minute'],
-        'endsNextDay': json['ends_next_day'],
         'note': json['note'] == null ? undefined : json['note'],
     };
 }
@@ -125,12 +109,10 @@ export function SupportScheduleAssignmentDtoToJSONTyped(value?: SupportScheduleA
         
         'id': value['id'],
         'project_id': value['projectId'],
-        'work_date': value['workDate'],
+        'starts_at': ((value['startsAt']).toISOString()),
+        'ends_at': ((value['endsAt']).toISOString()),
         'project_member_id': value['projectMemberId'],
         'shift_id': value['shiftId'],
-        'start_minute': value['startMinute'],
-        'end_minute': value['endMinute'],
-        'ends_next_day': value['endsNextDay'],
         'note': value['note'],
     };
 }
