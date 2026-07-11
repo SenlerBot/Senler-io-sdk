@@ -56,7 +56,7 @@ export interface SupportScheduleAssignmentDto {
      * @type {string}
      * @memberof SupportScheduleAssignmentDto
      */
-    note?: string | null;
+    note: string | null;
 }
 /**
  * Check if a given object implements the SupportScheduleAssignmentDto interface.

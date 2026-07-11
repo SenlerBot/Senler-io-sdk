@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeadGroupLinkResponseDtoKindEnum = void 0;
+exports.LeadGroupLinkResponseDtoSetupActionEnum = exports.LeadGroupLinkResponseDtoReasonEnum = exports.LeadGroupLinkResponseDtoKindEnum = void 0;
 exports.instanceOfLeadGroupLinkResponseDto = instanceOfLeadGroupLinkResponseDto;
 exports.LeadGroupLinkResponseDtoFromJSON = LeadGroupLinkResponseDtoFromJSON;
 exports.LeadGroupLinkResponseDtoFromJSONTyped = LeadGroupLinkResponseDtoFromJSONTyped;
@@ -30,6 +30,28 @@ exports.LeadGroupLinkResponseDtoKindEnum = {
     TgApp: 'tg_app',
     MaxBot: 'max_bot',
     Web: 'web'
+};
+/**
+ * @export
+ */
+exports.LeadGroupLinkResponseDtoReasonEnum = {
+    ChannelNotFound: 'channel_not_found',
+    ChannelTokenNotFound: 'channel_token_not_found',
+    ChannelTypeMismatch: 'channel_type_mismatch',
+    VkGroupIdentityMissing: 'vk_group_identity_missing',
+    VkAppConfigMissing: 'vk_app_config_missing',
+    VkAppConfirmationRequired: 'vk_app_confirmation_required',
+    TelegramBotUsernameMissing: 'telegram_bot_username_missing',
+    TelegramAppConfigMissing: 'telegram_app_config_missing',
+    MaxBotUsernameMissing: 'max_bot_username_missing',
+    UnsupportedOptionKind: 'unsupported_option_kind'
+};
+/**
+ * @export
+ */
+exports.LeadGroupLinkResponseDtoSetupActionEnum = {
+    OpenUrl: 'open_url',
+    TelegramMiniAppSettings: 'telegram_mini_app_settings'
 };
 /**
  * Check if a given object implements the LeadGroupLinkResponseDto interface.
@@ -50,6 +72,8 @@ function instanceOfLeadGroupLinkResponseDto(value) {
     if (!('reason' in value) || value['reason'] === undefined)
         return false;
     if (!('setupUrl' in value) || value['setupUrl'] === undefined)
+        return false;
+    if (!('setupAction' in value) || value['setupAction'] === undefined)
         return false;
     if (!('variants' in value) || value['variants'] === undefined)
         return false;
@@ -72,6 +96,7 @@ function LeadGroupLinkResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'url': json['url'],
         'reason': json['reason'],
         'setupUrl': json['setup_url'],
+        'setupAction': json['setup_action'],
         'variants': (json['variants'].map(LeadGroupLinkVariantDto_1.LeadGroupLinkVariantDtoFromJSON)),
     };
 }
@@ -92,6 +117,7 @@ function LeadGroupLinkResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'url': value['url'],
         'reason': value['reason'],
         'setup_url': value['setupUrl'],
+        'setup_action': value['setupAction'],
         'variants': (value['variants'].map(LeadGroupLinkVariantDto_1.LeadGroupLinkVariantDtoToJSON)),
     };
 }

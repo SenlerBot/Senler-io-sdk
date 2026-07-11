@@ -36,7 +36,6 @@ function UpdateSupportShiftDtoFromJSONTyped(json, ignoreDiscriminator) {
         'startMinute': json['start_minute'] == null ? undefined : json['start_minute'],
         'endMinute': json['end_minute'] == null ? undefined : json['end_minute'],
         'endsNextDay': json['ends_next_day'] == null ? undefined : json['ends_next_day'],
-        'color': json['color'] == null ? undefined : json['color'],
     };
 }
 function UpdateSupportShiftDtoToJSON(json) {
@@ -51,6 +50,5 @@ function UpdateSupportShiftDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'start_minute': value['startMinute'],
         'end_minute': value['endMinute'],
         'ends_next_day': value['endsNextDay'],
-        'color': value['color'],
     };
 }

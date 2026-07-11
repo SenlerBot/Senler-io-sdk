@@ -13,34 +13,20 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeadGroupVkAppInstallationResponseDtoStatusEnum = void 0;
 exports.instanceOfLeadGroupVkAppInstallationResponseDto = instanceOfLeadGroupVkAppInstallationResponseDto;
 exports.LeadGroupVkAppInstallationResponseDtoFromJSON = LeadGroupVkAppInstallationResponseDtoFromJSON;
 exports.LeadGroupVkAppInstallationResponseDtoFromJSONTyped = LeadGroupVkAppInstallationResponseDtoFromJSONTyped;
 exports.LeadGroupVkAppInstallationResponseDtoToJSON = LeadGroupVkAppInstallationResponseDtoToJSON;
 exports.LeadGroupVkAppInstallationResponseDtoToJSONTyped = LeadGroupVkAppInstallationResponseDtoToJSONTyped;
 /**
- * @export
- */
-exports.LeadGroupVkAppInstallationResponseDtoStatusEnum = {
-    NotSet: 'not_set',
-    Pending: 'pending',
-    Active: 'active',
-    Failed: 'failed'
-};
-/**
  * Check if a given object implements the LeadGroupVkAppInstallationResponseDto interface.
  */
 function instanceOfLeadGroupVkAppInstallationResponseDto(value) {
-    if (!('channelPublicId' in value) || value['channelPublicId'] === undefined)
-        return false;
-    if (!('status' in value) || value['status'] === undefined)
-        return false;
     if (!('appId' in value) || value['appId'] === undefined)
         return false;
     if (!('vkGroupId' in value) || value['vkGroupId'] === undefined)
         return false;
-    if (!('installedAt' in value) || value['installedAt'] === undefined)
+    if (!('confirmedAt' in value) || value['confirmedAt'] === undefined)
         return false;
     return true;
 }
@@ -52,11 +38,9 @@ function LeadGroupVkAppInstallationResponseDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
-        'channelPublicId': json['channel_public_id'],
-        'status': json['status'],
         'appId': json['app_id'],
         'vkGroupId': json['vk_group_id'],
-        'installedAt': (new Date(json['installed_at'])),
+        'confirmedAt': (new Date(json['confirmed_at'])),
     };
 }
 function LeadGroupVkAppInstallationResponseDtoToJSON(json) {
@@ -67,10 +51,8 @@ function LeadGroupVkAppInstallationResponseDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
-        'channel_public_id': value['channelPublicId'],
-        'status': value['status'],
         'app_id': value['appId'],
         'vk_group_id': value['vkGroupId'],
-        'installed_at': ((value['installedAt']).toISOString()),
+        'confirmed_at': ((value['confirmedAt']).toISOString()),
     };
 }

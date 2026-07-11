@@ -244,6 +244,18 @@ export interface DialogDto {
      */
     activeSupportWaitingSince?: Date;
     /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    activeSupportSlaWarningAt?: Date | null;
+    /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    activeSupportSlaBreachAt?: Date | null;
+    /**
      * 
      * @type {Date}
      * @memberof DialogDto
@@ -492,6 +504,8 @@ export function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'activeSupportCaseOpenedAt': json['active_support_case_opened_at'] == null ? undefined : (new Date(json['active_support_case_opened_at'])),
         'activeSupportFirstResponseAt': json['active_support_first_response_at'] == null ? undefined : (new Date(json['active_support_first_response_at'])),
         'activeSupportWaitingSince': json['active_support_waiting_since'] == null ? undefined : (new Date(json['active_support_waiting_since'])),
+        'activeSupportSlaWarningAt': json['active_support_sla_warning_at'] == null ? undefined : (new Date(json['active_support_sla_warning_at'])),
+        'activeSupportSlaBreachAt': json['active_support_sla_breach_at'] == null ? undefined : (new Date(json['active_support_sla_breach_at'])),
         'lastLeadMessageAt': json['last_lead_message_at'] == null ? undefined : (new Date(json['last_lead_message_at'])),
         'lastOperatorMessageAt': json['last_operator_message_at'] == null ? undefined : (new Date(json['last_operator_message_at'])),
         'startedAt': (new Date(json['started_at'])),
@@ -557,6 +571,8 @@ export function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminat
         'active_support_case_opened_at': value['activeSupportCaseOpenedAt'] == null ? undefined : ((value['activeSupportCaseOpenedAt']).toISOString()),
         'active_support_first_response_at': value['activeSupportFirstResponseAt'] == null ? undefined : ((value['activeSupportFirstResponseAt']).toISOString()),
         'active_support_waiting_since': value['activeSupportWaitingSince'] == null ? undefined : ((value['activeSupportWaitingSince']).toISOString()),
+        'active_support_sla_warning_at': value['activeSupportSlaWarningAt'] == null ? undefined : ((value['activeSupportSlaWarningAt'] as any).toISOString()),
+        'active_support_sla_breach_at': value['activeSupportSlaBreachAt'] == null ? undefined : ((value['activeSupportSlaBreachAt'] as any).toISOString()),
         'last_lead_message_at': value['lastLeadMessageAt'] == null ? undefined : ((value['lastLeadMessageAt']).toISOString()),
         'last_operator_message_at': value['lastOperatorMessageAt'] == null ? undefined : ((value['lastOperatorMessageAt']).toISOString()),
         'started_at': ((value['startedAt']).toISOString()),

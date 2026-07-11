@@ -16,18 +16,6 @@
  */
 export interface LeadGroupVkAppInstallationResponseDto {
     /**
-     * ID .
-     * @type {string}
-     * @memberof LeadGroupVkAppInstallationResponseDto
-     */
-    channelPublicId: string;
-    /**
-     * VK.
-     * @type {string}
-     * @memberof LeadGroupVkAppInstallationResponseDto
-     */
-    status: LeadGroupVkAppInstallationResponseDtoStatusEnum;
-    /**
      * VK app_id .
      * @type {string}
      * @memberof LeadGroupVkAppInstallationResponseDto
@@ -44,18 +32,8 @@ export interface LeadGroupVkAppInstallationResponseDto {
      * @type {Date}
      * @memberof LeadGroupVkAppInstallationResponseDto
      */
-    installedAt: Date;
+    confirmedAt: Date;
 }
-/**
- * @export
- */
-export declare const LeadGroupVkAppInstallationResponseDtoStatusEnum: {
-    readonly NotSet: "not_set";
-    readonly Pending: "pending";
-    readonly Active: "active";
-    readonly Failed: "failed";
-};
-export type LeadGroupVkAppInstallationResponseDtoStatusEnum = typeof LeadGroupVkAppInstallationResponseDtoStatusEnum[keyof typeof LeadGroupVkAppInstallationResponseDtoStatusEnum];
 /**
  * Check if a given object implements the LeadGroupVkAppInstallationResponseDto interface.
  */

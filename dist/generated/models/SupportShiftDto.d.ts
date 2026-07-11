@@ -53,12 +53,6 @@ export interface SupportShiftDto {
     endsNextDay: boolean;
     /**
      *
-     * @type {string}
-     * @memberof SupportShiftDto
-     */
-    color?: string | null;
-    /**
-     *
      * @type {boolean}
      * @memberof SupportShiftDto
      */

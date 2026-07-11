@@ -20,18 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface ConfirmLeadGroupVkAppInstallationDto {
     /**
-     * ID VK-, .
-     * @type {string}
-     * @memberof ConfirmLeadGroupVkAppInstallationDto
-     */
-    channelPublicId: string;
-    /**
-     * ID VK, .
-     * @type {number}
-     * @memberof ConfirmLeadGroupVkAppInstallationDto
-     */
-    vkGroupId: number;
-    /**
      * VK Mini App -.
      * @type {string}
      * @memberof ConfirmLeadGroupVkAppInstallationDto
@@ -43,8 +31,6 @@ export interface ConfirmLeadGroupVkAppInstallationDto {
  * Check if a given object implements the ConfirmLeadGroupVkAppInstallationDto interface.
  */
 export function instanceOfConfirmLeadGroupVkAppInstallationDto(value: object): value is ConfirmLeadGroupVkAppInstallationDto {
-    if (!('channelPublicId' in value) || value['channelPublicId'] === undefined) return false;
-    if (!('vkGroupId' in value) || value['vkGroupId'] === undefined) return false;
     if (!('platformPayload' in value) || value['platformPayload'] === undefined) return false;
     return true;
 }
@@ -59,8 +45,6 @@ export function ConfirmLeadGroupVkAppInstallationDtoFromJSONTyped(json: any, ign
     }
     return {
         
-        'channelPublicId': json['channel_public_id'],
-        'vkGroupId': json['vk_group_id'],
         'platformPayload': json['platform_payload'],
     };
 }
@@ -76,8 +60,6 @@ export function ConfirmLeadGroupVkAppInstallationDtoToJSONTyped(value?: ConfirmL
 
     return {
         
-        'channel_public_id': value['channelPublicId'],
-        'vk_group_id': value['vkGroupId'],
         'platform_payload': value['platformPayload'],
     };
 }

@@ -197,6 +197,18 @@ export interface DialogDto {
      */
     activeSupportWaitingSince?: Date;
     /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    activeSupportSlaWarningAt?: Date | null;
+    /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    activeSupportSlaBreachAt?: Date | null;
+    /**
      *
      * @type {Date}
      * @memberof DialogDto

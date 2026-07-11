@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DialogDetailsDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto } from '../models/index';
+import type { DialogDetailsDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto } from '../models/index';
 export interface DialogsGetByIdRequest {
     id: string;
     xSessionId?: string;
@@ -41,6 +41,7 @@ export interface GetEventsRequest {
     searchCursor?: string;
     before?: string;
     after?: string;
+    aroundEventId?: string;
     limit?: number;
     xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
@@ -61,6 +62,12 @@ export interface GetEventsReactionUsersRequest {
     emoji?: string;
     xSessionId?: string;
     acceptLanguage?: GetEventsReactionUsersAcceptLanguageEnum;
+}
+export interface GetNavigationRequest {
+    id: string;
+    maxSegments?: number;
+    xSessionId?: string;
+    acceptLanguage?: GetNavigationAcceptLanguageEnum;
 }
 /**
  *
@@ -107,12 +114,12 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto>;
     /**
-     * . before/after limit; q.
+     * . before/after limit; inclusive jump around_event_id; q.
      *
      */
     getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>>;
     /**
-     * . before/after limit; q.
+     * . before/after limit; inclusive jump around_event_id; q.
      *
      */
     getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response>;
@@ -136,6 +143,16 @@ export declare class DialogsApi extends runtime.BaseAPI {
      *
      */
     getEventsReactionUsers(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventReactionUsersResponseDto>;
+    /**
+     * summary AI-.
+     *
+     */
+    getNavigationRaw(requestParameters: GetNavigationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogNavigationResponseDto>>;
+    /**
+     * summary AI-.
+     *
+     */
+    getNavigation(requestParameters: GetNavigationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogNavigationResponseDto>;
 }
 /**
  * @export
@@ -201,3 +218,11 @@ export declare const GetEventsReactionUsersAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetEventsReactionUsersAcceptLanguageEnum = typeof GetEventsReactionUsersAcceptLanguageEnum[keyof typeof GetEventsReactionUsersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetNavigationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetNavigationAcceptLanguageEnum = typeof GetNavigationAcceptLanguageEnum[keyof typeof GetNavigationAcceptLanguageEnum];

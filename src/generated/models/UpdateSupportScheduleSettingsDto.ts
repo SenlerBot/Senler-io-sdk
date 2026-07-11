@@ -24,13 +24,14 @@ export interface UpdateSupportScheduleSettingsDto {
      * @type {boolean}
      * @memberof UpdateSupportScheduleSettingsDto
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 /**
  * Check if a given object implements the UpdateSupportScheduleSettingsDto interface.
  */
 export function instanceOfUpdateSupportScheduleSettingsDto(value: object): value is UpdateSupportScheduleSettingsDto {
+    if (!('enabled' in value) || value['enabled'] === undefined) return false;
     return true;
 }
 
@@ -44,7 +45,7 @@ export function UpdateSupportScheduleSettingsDtoFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'enabled': json['enabled'] == null ? undefined : json['enabled'],
+        'enabled': json['enabled'],
     };
 }
 

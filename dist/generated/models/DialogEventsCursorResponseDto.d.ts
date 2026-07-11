@@ -54,6 +54,24 @@ export interface DialogEventsCursorResponseDto {
      */
     prevCursor?: string;
     /**
+     * anchor items jump-around
+     * @type {number}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    anchorIndex?: number;
+    /**
+     * jump-around
+     * @type {boolean}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    hasMoreBefore?: boolean;
+    /**
+     * jump-around
+     * @type {boolean}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    hasMoreAfter?: boolean;
+    /**
      * ( )
      * @type {string}
      * @memberof DialogEventsCursorResponseDto

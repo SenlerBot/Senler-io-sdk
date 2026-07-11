@@ -26,6 +26,14 @@ function instanceOfSupportScheduleOperatorDto(value) {
         return false;
     if (!('userId' in value) || value['userId'] === undefined)
         return false;
+    if (!('email' in value) || value['email'] === undefined)
+        return false;
+    if (!('firstName' in value) || value['firstName'] === undefined)
+        return false;
+    if (!('lastName' in value) || value['lastName'] === undefined)
+        return false;
+    if (!('avatarUrl' in value) || value['avatarUrl'] === undefined)
+        return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
     return true;
@@ -40,10 +48,10 @@ function SupportScheduleOperatorDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'projectMemberId': json['project_member_id'],
         'userId': json['user_id'],
-        'email': json['email'] == null ? undefined : json['email'],
-        'firstName': json['first_name'] == null ? undefined : json['first_name'],
-        'lastName': json['last_name'] == null ? undefined : json['last_name'],
-        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'email': json['email'],
+        'firstName': json['first_name'],
+        'lastName': json['last_name'],
+        'avatarUrl': json['avatar_url'],
         'isActive': json['is_active'],
     };
 }

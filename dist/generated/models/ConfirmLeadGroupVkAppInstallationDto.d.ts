@@ -16,18 +16,6 @@
  */
 export interface ConfirmLeadGroupVkAppInstallationDto {
     /**
-     * ID VK-, .
-     * @type {string}
-     * @memberof ConfirmLeadGroupVkAppInstallationDto
-     */
-    channelPublicId: string;
-    /**
-     * ID VK, .
-     * @type {number}
-     * @memberof ConfirmLeadGroupVkAppInstallationDto
-     */
-    vkGroupId: number;
-    /**
      * VK Mini App -.
      * @type {string}
      * @memberof ConfirmLeadGroupVkAppInstallationDto

@@ -63,13 +63,19 @@ export interface LeadGroupLinkResponseDto {
      * @type {string}
      * @memberof LeadGroupLinkResponseDto
      */
-    reason: string | null;
+    reason: LeadGroupLinkResponseDtoReasonEnum | null;
     /**
      * URL
      * @type {string}
      * @memberof LeadGroupLinkResponseDto
      */
     setupUrl: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LeadGroupLinkResponseDto
+     */
+    setupAction: LeadGroupLinkResponseDtoSetupActionEnum | null;
     /**
      *
      * @type {Array<LeadGroupLinkVariantDto>}
@@ -89,6 +95,30 @@ export declare const LeadGroupLinkResponseDtoKindEnum: {
     readonly Web: "web";
 };
 export type LeadGroupLinkResponseDtoKindEnum = typeof LeadGroupLinkResponseDtoKindEnum[keyof typeof LeadGroupLinkResponseDtoKindEnum];
+/**
+ * @export
+ */
+export declare const LeadGroupLinkResponseDtoReasonEnum: {
+    readonly ChannelNotFound: "channel_not_found";
+    readonly ChannelTokenNotFound: "channel_token_not_found";
+    readonly ChannelTypeMismatch: "channel_type_mismatch";
+    readonly VkGroupIdentityMissing: "vk_group_identity_missing";
+    readonly VkAppConfigMissing: "vk_app_config_missing";
+    readonly VkAppConfirmationRequired: "vk_app_confirmation_required";
+    readonly TelegramBotUsernameMissing: "telegram_bot_username_missing";
+    readonly TelegramAppConfigMissing: "telegram_app_config_missing";
+    readonly MaxBotUsernameMissing: "max_bot_username_missing";
+    readonly UnsupportedOptionKind: "unsupported_option_kind";
+};
+export type LeadGroupLinkResponseDtoReasonEnum = typeof LeadGroupLinkResponseDtoReasonEnum[keyof typeof LeadGroupLinkResponseDtoReasonEnum];
+/**
+ * @export
+ */
+export declare const LeadGroupLinkResponseDtoSetupActionEnum: {
+    readonly OpenUrl: "open_url";
+    readonly TelegramMiniAppSettings: "telegram_mini_app_settings";
+};
+export type LeadGroupLinkResponseDtoSetupActionEnum = typeof LeadGroupLinkResponseDtoSetupActionEnum[keyof typeof LeadGroupLinkResponseDtoSetupActionEnum];
 /**
  * Check if a given object implements the LeadGroupLinkResponseDto interface.
  */

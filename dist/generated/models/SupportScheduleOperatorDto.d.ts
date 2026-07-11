@@ -32,25 +32,25 @@ export interface SupportScheduleOperatorDto {
      * @type {string}
      * @memberof SupportScheduleOperatorDto
      */
-    email?: string | null;
+    email: string | null;
     /**
      *
      * @type {string}
      * @memberof SupportScheduleOperatorDto
      */
-    firstName?: string | null;
+    firstName: string | null;
     /**
      *
      * @type {string}
      * @memberof SupportScheduleOperatorDto
      */
-    lastName?: string | null;
+    lastName: string | null;
     /**
      *
      * @type {string}
      * @memberof SupportScheduleOperatorDto
      */
-    avatarUrl?: string | null;
+    avatarUrl: string | null;
     /**
      *
      * @type {boolean}

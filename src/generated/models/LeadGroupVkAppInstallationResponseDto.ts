@@ -20,18 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface LeadGroupVkAppInstallationResponseDto {
     /**
-     * ID .
-     * @type {string}
-     * @memberof LeadGroupVkAppInstallationResponseDto
-     */
-    channelPublicId: string;
-    /**
-     * VK.
-     * @type {string}
-     * @memberof LeadGroupVkAppInstallationResponseDto
-     */
-    status: LeadGroupVkAppInstallationResponseDtoStatusEnum;
-    /**
      * VK app_id .
      * @type {string}
      * @memberof LeadGroupVkAppInstallationResponseDto
@@ -48,31 +36,16 @@ export interface LeadGroupVkAppInstallationResponseDto {
      * @type {Date}
      * @memberof LeadGroupVkAppInstallationResponseDto
      */
-    installedAt: Date;
+    confirmedAt: Date;
 }
-
-
-/**
- * @export
- */
-export const LeadGroupVkAppInstallationResponseDtoStatusEnum = {
-    NotSet: 'not_set',
-    Pending: 'pending',
-    Active: 'active',
-    Failed: 'failed'
-} as const;
-export type LeadGroupVkAppInstallationResponseDtoStatusEnum = typeof LeadGroupVkAppInstallationResponseDtoStatusEnum[keyof typeof LeadGroupVkAppInstallationResponseDtoStatusEnum];
-
 
 /**
  * Check if a given object implements the LeadGroupVkAppInstallationResponseDto interface.
  */
 export function instanceOfLeadGroupVkAppInstallationResponseDto(value: object): value is LeadGroupVkAppInstallationResponseDto {
-    if (!('channelPublicId' in value) || value['channelPublicId'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
     if (!('appId' in value) || value['appId'] === undefined) return false;
     if (!('vkGroupId' in value) || value['vkGroupId'] === undefined) return false;
-    if (!('installedAt' in value) || value['installedAt'] === undefined) return false;
+    if (!('confirmedAt' in value) || value['confirmedAt'] === undefined) return false;
     return true;
 }
 
@@ -86,11 +59,9 @@ export function LeadGroupVkAppInstallationResponseDtoFromJSONTyped(json: any, ig
     }
     return {
         
-        'channelPublicId': json['channel_public_id'],
-        'status': json['status'],
         'appId': json['app_id'],
         'vkGroupId': json['vk_group_id'],
-        'installedAt': (new Date(json['installed_at'])),
+        'confirmedAt': (new Date(json['confirmed_at'])),
     };
 }
 
@@ -105,11 +76,9 @@ export function LeadGroupVkAppInstallationResponseDtoToJSONTyped(value?: LeadGro
 
     return {
         
-        'channel_public_id': value['channelPublicId'],
-        'status': value['status'],
         'app_id': value['appId'],
         'vk_group_id': value['vkGroupId'],
-        'installed_at': ((value['installedAt']).toISOString()),
+        'confirmed_at': ((value['confirmedAt']).toISOString()),
     };
 }
 

@@ -200,6 +200,18 @@ export interface DialogDetailsDto {
      */
     activeSupportWaitingSince?: Date;
     /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    activeSupportSlaWarningAt?: Date | null;
+    /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    activeSupportSlaBreachAt?: Date | null;
+    /**
      *
      * @type {Date}
      * @memberof DialogDetailsDto

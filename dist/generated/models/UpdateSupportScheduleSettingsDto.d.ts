@@ -20,7 +20,7 @@ export interface UpdateSupportScheduleSettingsDto {
      * @type {boolean}
      * @memberof UpdateSupportScheduleSettingsDto
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 /**
  * Check if a given object implements the UpdateSupportScheduleSettingsDto interface.

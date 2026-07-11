@@ -60,7 +60,7 @@ export interface SupportScheduleAssignmentDto {
      * @type {string}
      * @memberof SupportScheduleAssignmentDto
      */
-    note?: string | null;
+    note: string | null;
 }
 
 /**
@@ -73,6 +73,7 @@ export function instanceOfSupportScheduleAssignmentDto(value: object): value is 
     if (!('endsAt' in value) || value['endsAt'] === undefined) return false;
     if (!('projectMemberId' in value) || value['projectMemberId'] === undefined) return false;
     if (!('shiftId' in value) || value['shiftId'] === undefined) return false;
+    if (!('note' in value) || value['note'] === undefined) return false;
     return true;
 }
 
@@ -92,7 +93,7 @@ export function SupportScheduleAssignmentDtoFromJSONTyped(json: any, ignoreDiscr
         'endsAt': (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'],
         'shiftId': json['shift_id'],
-        'note': json['note'] == null ? undefined : json['note'],
+        'note': json['note'],
     };
 }
 

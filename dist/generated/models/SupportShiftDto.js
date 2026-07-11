@@ -52,7 +52,6 @@ function SupportShiftDtoFromJSONTyped(json, ignoreDiscriminator) {
         'startMinute': json['start_minute'],
         'endMinute': json['end_minute'],
         'endsNextDay': json['ends_next_day'],
-        'color': json['color'] == null ? undefined : json['color'],
         'isActive': json['is_active'],
     };
 }
@@ -70,7 +69,6 @@ function SupportShiftDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'start_minute': value['startMinute'],
         'end_minute': value['endMinute'],
         'ends_next_day': value['endsNextDay'],
-        'color': value['color'],
         'is_active': value['isActive'],
     };
 }

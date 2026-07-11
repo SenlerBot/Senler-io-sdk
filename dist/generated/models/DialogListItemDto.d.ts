@@ -199,6 +199,18 @@ export interface DialogListItemDto {
      */
     activeSupportWaitingSince?: Date;
     /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogListItemDto
+     */
+    activeSupportSlaWarningAt?: Date | null;
+    /**
+     * SLA
+     * @type {Date}
+     * @memberof DialogListItemDto
+     */
+    activeSupportSlaBreachAt?: Date | null;
+    /**
      *
      * @type {Date}
      * @memberof DialogListItemDto

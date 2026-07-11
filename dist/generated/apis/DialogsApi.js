@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsApi = void 0;
+exports.GetNavigationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -233,7 +233,7 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . before/after limit; q.
+     * . before/after limit; inclusive jump around_event_id; q.
      *
      */
     async getEventsRaw(requestParameters, initOverrides) {
@@ -261,6 +261,9 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (requestParameters['after'] != null) {
             queryParameters['after'] = requestParameters['after'];
+        }
+        if (requestParameters['aroundEventId'] != null) {
+            queryParameters['around_event_id'] = requestParameters['aroundEventId'];
         }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
@@ -292,7 +295,7 @@ class DialogsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetEvents200ResponseFromJSON)(jsonValue));
     }
     /**
-     * . before/after limit; q.
+     * . before/after limit; inclusive jump around_event_id; q.
      *
      */
     async getEvents(requestParameters, initOverrides) {
@@ -409,6 +412,52 @@ class DialogsApi extends runtime.BaseAPI {
         const response = await this.getEventsReactionUsersRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * summary AI-.
+     *
+     */
+    async getNavigationRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getNavigation().');
+        }
+        const queryParameters = {};
+        if (requestParameters['maxSegments'] != null) {
+            queryParameters['max_segments'] = requestParameters['maxSegments'];
+        }
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{id}/navigation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogNavigationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * summary AI-.
+     *
+     */
+    async getNavigation(requestParameters, initOverrides) {
+        const response = await this.getNavigationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.DialogsApi = DialogsApi;
 /**
@@ -464,6 +513,13 @@ exports.GetEventsPollOptionVotersAcceptLanguageEnum = {
  * @export
  */
 exports.GetEventsReactionUsersAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetNavigationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -22,6 +22,8 @@ exports.UpdateSupportScheduleSettingsDtoToJSONTyped = UpdateSupportScheduleSetti
  * Check if a given object implements the UpdateSupportScheduleSettingsDto interface.
  */
 function instanceOfUpdateSupportScheduleSettingsDto(value) {
+    if (!('enabled' in value) || value['enabled'] === undefined)
+        return false;
     return true;
 }
 function UpdateSupportScheduleSettingsDtoFromJSON(json) {
@@ -32,7 +34,7 @@ function UpdateSupportScheduleSettingsDtoFromJSONTyped(json, ignoreDiscriminator
         return json;
     }
     return {
-        'enabled': json['enabled'] == null ? undefined : json['enabled'],
+        'enabled': json['enabled'],
     };
 }
 function UpdateSupportScheduleSettingsDtoToJSON(json) {

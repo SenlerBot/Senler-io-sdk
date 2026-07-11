@@ -214,36 +214,6 @@ export interface ChannelTokenResponseDto {
      */
     vkGroupAvatarUrl?: string;
     /**
-     * VK .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppStatus?: ChannelTokenResponseDtoVkLeadPageAppStatusEnum;
-    /**
-     * VK app_id , .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppId?: string | null;
-    /**
-     * VK .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppInstalledAt?: string | null;
-    /**
-     * VK .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppCheckedAt?: string | null;
-    /**
-     * VK.
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppError?: string | null;
-    /**
      *
      * @type {string}
      * @memberof ChannelTokenResponseDto
@@ -317,16 +287,6 @@ export declare const ChannelTokenResponseDtoDiscordGatewayStatusEnum: {
     readonly Failed: "failed";
 };
 export type ChannelTokenResponseDtoDiscordGatewayStatusEnum = typeof ChannelTokenResponseDtoDiscordGatewayStatusEnum[keyof typeof ChannelTokenResponseDtoDiscordGatewayStatusEnum];
-/**
- * @export
- */
-export declare const ChannelTokenResponseDtoVkLeadPageAppStatusEnum: {
-    readonly NotSet: "not_set";
-    readonly Pending: "pending";
-    readonly Active: "active";
-    readonly Failed: "failed";
-};
-export type ChannelTokenResponseDtoVkLeadPageAppStatusEnum = typeof ChannelTokenResponseDtoVkLeadPageAppStatusEnum[keyof typeof ChannelTokenResponseDtoVkLeadPageAppStatusEnum];
 /**
  * @export
  */

@@ -22,10 +22,6 @@ exports.ConfirmLeadGroupVkAppInstallationDtoToJSONTyped = ConfirmLeadGroupVkAppI
  * Check if a given object implements the ConfirmLeadGroupVkAppInstallationDto interface.
  */
 function instanceOfConfirmLeadGroupVkAppInstallationDto(value) {
-    if (!('channelPublicId' in value) || value['channelPublicId'] === undefined)
-        return false;
-    if (!('vkGroupId' in value) || value['vkGroupId'] === undefined)
-        return false;
     if (!('platformPayload' in value) || value['platformPayload'] === undefined)
         return false;
     return true;
@@ -38,8 +34,6 @@ function ConfirmLeadGroupVkAppInstallationDtoFromJSONTyped(json, ignoreDiscrimin
         return json;
     }
     return {
-        'channelPublicId': json['channel_public_id'],
-        'vkGroupId': json['vk_group_id'],
         'platformPayload': json['platform_payload'],
     };
 }
@@ -51,8 +45,6 @@ function ConfirmLeadGroupVkAppInstallationDtoToJSONTyped(value, ignoreDiscrimina
         return value;
     }
     return {
-        'channel_public_id': value['channelPublicId'],
-        'vk_group_id': value['vkGroupId'],
         'platform_payload': value['platformPayload'],
     };
 }

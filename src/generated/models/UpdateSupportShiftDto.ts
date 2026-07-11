@@ -43,12 +43,6 @@ export interface UpdateSupportShiftDto {
      * @memberof UpdateSupportShiftDto
      */
     endsNextDay?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupportShiftDto
-     */
-    color?: string | null;
 }
 
 /**
@@ -72,7 +66,6 @@ export function UpdateSupportShiftDtoFromJSONTyped(json: any, ignoreDiscriminato
         'startMinute': json['start_minute'] == null ? undefined : json['start_minute'],
         'endMinute': json['end_minute'] == null ? undefined : json['end_minute'],
         'endsNextDay': json['ends_next_day'] == null ? undefined : json['ends_next_day'],
-        'color': json['color'] == null ? undefined : json['color'],
     };
 }
 
@@ -91,7 +84,6 @@ export function UpdateSupportShiftDtoToJSONTyped(value?: UpdateSupportShiftDto |
         'start_minute': value['startMinute'],
         'end_minute': value['endMinute'],
         'ends_next_day': value['endsNextDay'],
-        'color': value['color'],
     };
 }
 

@@ -39,12 +39,6 @@ export interface CreateSupportShiftDto {
      * @memberof CreateSupportShiftDto
      */
     endsNextDay?: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateSupportShiftDto
-     */
-    color?: string | null;
 }
 /**
  * Check if a given object implements the CreateSupportShiftDto interface.

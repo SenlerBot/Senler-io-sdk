@@ -218,36 +218,6 @@ export interface ChannelTokenResponseDto {
      */
     vkGroupAvatarUrl?: string;
     /**
-     * VK .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppStatus?: ChannelTokenResponseDtoVkLeadPageAppStatusEnum;
-    /**
-     * VK app_id , .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppId?: string | null;
-    /**
-     * VK .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppInstalledAt?: string | null;
-    /**
-     * VK .
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppCheckedAt?: string | null;
-    /**
-     * VK.
-     * @type {string}
-     * @memberof ChannelTokenResponseDto
-     */
-    vkLeadPageAppError?: string | null;
-    /**
      * 
      * @type {string}
      * @memberof ChannelTokenResponseDto
@@ -329,17 +299,6 @@ export type ChannelTokenResponseDtoDiscordGatewayStatusEnum = typeof ChannelToke
 /**
  * @export
  */
-export const ChannelTokenResponseDtoVkLeadPageAppStatusEnum = {
-    NotSet: 'not_set',
-    Pending: 'pending',
-    Active: 'active',
-    Failed: 'failed'
-} as const;
-export type ChannelTokenResponseDtoVkLeadPageAppStatusEnum = typeof ChannelTokenResponseDtoVkLeadPageAppStatusEnum[keyof typeof ChannelTokenResponseDtoVkLeadPageAppStatusEnum];
-
-/**
- * @export
- */
 export const ChannelTokenResponseDtoWebhookStatusEnum = {
     NotSet: 'not_set',
     Pending: 'pending',
@@ -407,11 +366,6 @@ export function ChannelTokenResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
         'discordGatewayError': json['discord_gateway_error'] == null ? undefined : json['discord_gateway_error'],
         'discordGatewayBlockedUntil': json['discord_gateway_blocked_until'] == null ? undefined : json['discord_gateway_blocked_until'],
         'vkGroupAvatarUrl': json['vk_group_avatar_url'] == null ? undefined : json['vk_group_avatar_url'],
-        'vkLeadPageAppStatus': json['vk_lead_page_app_status'] == null ? undefined : json['vk_lead_page_app_status'],
-        'vkLeadPageAppId': json['vk_lead_page_app_id'] == null ? undefined : json['vk_lead_page_app_id'],
-        'vkLeadPageAppInstalledAt': json['vk_lead_page_app_installed_at'] == null ? undefined : json['vk_lead_page_app_installed_at'],
-        'vkLeadPageAppCheckedAt': json['vk_lead_page_app_checked_at'] == null ? undefined : json['vk_lead_page_app_checked_at'],
-        'vkLeadPageAppError': json['vk_lead_page_app_error'] == null ? undefined : json['vk_lead_page_app_error'],
         'webhookStatus': json['webhook_status'],
         'webhookEnabled': json['webhook_enabled'],
         'webhookError': json['webhook_error'] == null ? undefined : json['webhook_error'],
@@ -466,11 +420,6 @@ export function ChannelTokenResponseDtoToJSONTyped(value?: ChannelTokenResponseD
         'discord_gateway_error': value['discordGatewayError'],
         'discord_gateway_blocked_until': value['discordGatewayBlockedUntil'],
         'vk_group_avatar_url': value['vkGroupAvatarUrl'],
-        'vk_lead_page_app_status': value['vkLeadPageAppStatus'],
-        'vk_lead_page_app_id': value['vkLeadPageAppId'],
-        'vk_lead_page_app_installed_at': value['vkLeadPageAppInstalledAt'],
-        'vk_lead_page_app_checked_at': value['vkLeadPageAppCheckedAt'],
-        'vk_lead_page_app_error': value['vkLeadPageAppError'],
         'webhook_status': value['webhookStatus'],
         'webhook_enabled': value['webhookEnabled'],
         'webhook_error': value['webhookError'],

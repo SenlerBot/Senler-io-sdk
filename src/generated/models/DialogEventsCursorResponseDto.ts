@@ -71,6 +71,24 @@ export interface DialogEventsCursorResponseDto {
      */
     prevCursor?: string;
     /**
+     * anchor items jump-around
+     * @type {number}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    anchorIndex?: number;
+    /**
+     * jump-around
+     * @type {boolean}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    hasMoreBefore?: boolean;
+    /**
+     * jump-around
+     * @type {boolean}
+     * @memberof DialogEventsCursorResponseDto
+     */
+    hasMoreAfter?: boolean;
+    /**
      * ( )
      * @type {string}
      * @memberof DialogEventsCursorResponseDto
@@ -122,6 +140,9 @@ export function DialogEventsCursorResponseDtoFromJSONTyped(json: any, ignoreDisc
         'hasMore': json['has_more'],
         'nextCursor': json['next_cursor'] == null ? undefined : json['next_cursor'],
         'prevCursor': json['prev_cursor'] == null ? undefined : json['prev_cursor'],
+        'anchorIndex': json['anchor_index'] == null ? undefined : json['anchor_index'],
+        'hasMoreBefore': json['has_more_before'] == null ? undefined : json['has_more_before'],
+        'hasMoreAfter': json['has_more_after'] == null ? undefined : json['has_more_after'],
         'query': json['query'] == null ? undefined : json['query'],
         'queryTimeMs': json['query_time_ms'],
     };
@@ -144,6 +165,9 @@ export function DialogEventsCursorResponseDtoToJSONTyped(value?: DialogEventsCur
         'has_more': value['hasMore'],
         'next_cursor': value['nextCursor'],
         'prev_cursor': value['prevCursor'],
+        'anchor_index': value['anchorIndex'],
+        'has_more_before': value['hasMoreBefore'],
+        'has_more_after': value['hasMoreAfter'],
         'query': value['query'],
         'query_time_ms': value['queryTimeMs'],
     };

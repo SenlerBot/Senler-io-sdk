@@ -74,13 +74,19 @@ export interface LeadGroupLinkResponseDto {
      * @type {string}
      * @memberof LeadGroupLinkResponseDto
      */
-    reason: string | null;
+    reason: LeadGroupLinkResponseDtoReasonEnum | null;
     /**
      * URL
      * @type {string}
      * @memberof LeadGroupLinkResponseDto
      */
     setupUrl: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof LeadGroupLinkResponseDto
+     */
+    setupAction: LeadGroupLinkResponseDtoSetupActionEnum | null;
     /**
      * 
      * @type {Array<LeadGroupLinkVariantDto>}
@@ -103,6 +109,32 @@ export const LeadGroupLinkResponseDtoKindEnum = {
 } as const;
 export type LeadGroupLinkResponseDtoKindEnum = typeof LeadGroupLinkResponseDtoKindEnum[keyof typeof LeadGroupLinkResponseDtoKindEnum];
 
+/**
+ * @export
+ */
+export const LeadGroupLinkResponseDtoReasonEnum = {
+    ChannelNotFound: 'channel_not_found',
+    ChannelTokenNotFound: 'channel_token_not_found',
+    ChannelTypeMismatch: 'channel_type_mismatch',
+    VkGroupIdentityMissing: 'vk_group_identity_missing',
+    VkAppConfigMissing: 'vk_app_config_missing',
+    VkAppConfirmationRequired: 'vk_app_confirmation_required',
+    TelegramBotUsernameMissing: 'telegram_bot_username_missing',
+    TelegramAppConfigMissing: 'telegram_app_config_missing',
+    MaxBotUsernameMissing: 'max_bot_username_missing',
+    UnsupportedOptionKind: 'unsupported_option_kind'
+} as const;
+export type LeadGroupLinkResponseDtoReasonEnum = typeof LeadGroupLinkResponseDtoReasonEnum[keyof typeof LeadGroupLinkResponseDtoReasonEnum];
+
+/**
+ * @export
+ */
+export const LeadGroupLinkResponseDtoSetupActionEnum = {
+    OpenUrl: 'open_url',
+    TelegramMiniAppSettings: 'telegram_mini_app_settings'
+} as const;
+export type LeadGroupLinkResponseDtoSetupActionEnum = typeof LeadGroupLinkResponseDtoSetupActionEnum[keyof typeof LeadGroupLinkResponseDtoSetupActionEnum];
+
 
 /**
  * Check if a given object implements the LeadGroupLinkResponseDto interface.
@@ -116,6 +148,7 @@ export function instanceOfLeadGroupLinkResponseDto(value: object): value is Lead
     if (!('url' in value) || value['url'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
     if (!('setupUrl' in value) || value['setupUrl'] === undefined) return false;
+    if (!('setupAction' in value) || value['setupAction'] === undefined) return false;
     if (!('variants' in value) || value['variants'] === undefined) return false;
     return true;
 }
@@ -139,6 +172,7 @@ export function LeadGroupLinkResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'url': json['url'],
         'reason': json['reason'],
         'setupUrl': json['setup_url'],
+        'setupAction': json['setup_action'],
         'variants': ((json['variants'] as Array<any>).map(LeadGroupLinkVariantDtoFromJSON)),
     };
 }
@@ -163,6 +197,7 @@ export function LeadGroupLinkResponseDtoToJSONTyped(value?: LeadGroupLinkRespons
         'url': value['url'],
         'reason': value['reason'],
         'setup_url': value['setupUrl'],
+        'setup_action': value['setupAction'],
         'variants': ((value['variants'] as Array<any>).map(LeadGroupLinkVariantDtoToJSON)),
     };
 }

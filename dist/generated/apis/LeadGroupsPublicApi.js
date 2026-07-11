@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VkAppInstallationConfirmAcceptLanguageEnum = exports.ProjectsVkAppInstallationConfirmAcceptLanguageEnum = exports.ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum = exports.ProjectsGroupsVkSubscribeAcceptLanguageEnum = exports.ProjectsGroupsVkAuthAcceptLanguageEnum = exports.ProjectsGroupsVariablesAcceptLanguageEnum = exports.ProjectsGroupsUnsubscribeAcceptLanguageEnum = exports.ProjectsGroupsSubscribeAcceptLanguageEnum = exports.ProjectsGroupsBotSubscriptionAcceptLanguageEnum = exports.GetVkCallbackAcceptLanguageEnum = exports.GetProjectsGroups2AcceptLanguageEnum = exports.GetProjectsGroupsAcceptLanguageEnum = exports.GetProjectsGroupsPlatformEnum = exports.LeadGroupsPublicApi = void 0;
+exports.VkAppInstallationConfirmAcceptLanguageEnum = exports.ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum = exports.ProjectsGroupsVariablesAcceptLanguageEnum = exports.ProjectsGroupsUnsubscribeAcceptLanguageEnum = exports.ProjectsGroupsSubscribeAcceptLanguageEnum = exports.ProjectsGroupsBotSubscriptionAcceptLanguageEnum = exports.GetProjectsGroups2AcceptLanguageEnum = exports.GetProjectsGroupsAcceptLanguageEnum = exports.GetProjectsGroupsPlatformEnum = exports.LeadGroupsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -121,56 +121,6 @@ class LeadGroupsPublicApi extends runtime.BaseAPI {
      */
     async getProjectsGroups2(requestParameters, initOverrides) {
         const response = await this.getProjectsGroups2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * VK ID .
-     * VK ID
-     */
-    async getVkCallbackRaw(requestParameters, initOverrides) {
-        if (requestParameters['code'] == null) {
-            throw new runtime.RequiredError('code', 'Required parameter "code" was null or undefined when calling getVkCallback().');
-        }
-        if (requestParameters['state'] == null) {
-            throw new runtime.RequiredError('state', 'Required parameter "state" was null or undefined when calling getVkCallback().');
-        }
-        if (requestParameters['payload'] == null) {
-            throw new runtime.RequiredError('payload', 'Required parameter "payload" was null or undefined when calling getVkCallback().');
-        }
-        if (requestParameters['deviceId'] == null) {
-            throw new runtime.RequiredError('deviceId', 'Required parameter "deviceId" was null or undefined when calling getVkCallback().');
-        }
-        const queryParameters = {};
-        if (requestParameters['code'] != null) {
-            queryParameters['code'] = requestParameters['code'];
-        }
-        if (requestParameters['state'] != null) {
-            queryParameters['state'] = requestParameters['state'];
-        }
-        if (requestParameters['payload'] != null) {
-            queryParameters['payload'] = requestParameters['payload'];
-        }
-        if (requestParameters['deviceId'] != null) {
-            queryParameters['device_id'] = requestParameters['deviceId'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        const response = await this.request({
-            path: `/api/public/lead-groups/vk/callback`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ErrorResponseFromJSON)(jsonValue));
-    }
-    /**
-     * VK ID .
-     * VK ID
-     */
-    async getVkCallback(requestParameters, initOverrides) {
-        const response = await this.getVkCallbackRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -322,80 +272,6 @@ class LeadGroupsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * OAuth- URL VK ID web- VK.
-     * VK ID
-     */
-    async projectsGroupsVkAuthRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectPublicId'] == null) {
-            throw new runtime.RequiredError('projectPublicId', 'Required parameter "projectPublicId" was null or undefined when calling projectsGroupsVkAuth().');
-        }
-        if (requestParameters['publicId'] == null) {
-            throw new runtime.RequiredError('publicId', 'Required parameter "publicId" was null or undefined when calling projectsGroupsVkAuth().');
-        }
-        if (requestParameters['startLeadGroupVkAuthDto'] == null) {
-            throw new runtime.RequiredError('startLeadGroupVkAuthDto', 'Required parameter "startLeadGroupVkAuthDto" was null or undefined when calling projectsGroupsVkAuth().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        const response = await this.request({
-            path: `/api/public/lead-groups/projects/{projectPublicId}/groups/{publicId}/vk/auth`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))).replace(`{${"publicId"}}`, encodeURIComponent(String(requestParameters['publicId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.StartLeadGroupVkAuthDtoToJSON)(requestParameters['startLeadGroupVkAuthDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupVkAuthResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * OAuth- URL VK ID web- VK.
-     * VK ID
-     */
-    async projectsGroupsVkAuth(requestParameters, initOverrides) {
-        const response = await this.projectsGroupsVkAuthRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * VK ID lead-session, VK- .
-     * VK web
-     */
-    async projectsGroupsVkSubscribeRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectPublicId'] == null) {
-            throw new runtime.RequiredError('projectPublicId', 'Required parameter "projectPublicId" was null or undefined when calling projectsGroupsVkSubscribe().');
-        }
-        if (requestParameters['publicId'] == null) {
-            throw new runtime.RequiredError('publicId', 'Required parameter "publicId" was null or undefined when calling projectsGroupsVkSubscribe().');
-        }
-        if (requestParameters['subscribeLeadGroupVkDto'] == null) {
-            throw new runtime.RequiredError('subscribeLeadGroupVkDto', 'Required parameter "subscribeLeadGroupVkDto" was null or undefined when calling projectsGroupsVkSubscribe().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        const response = await this.request({
-            path: `/api/public/lead-groups/projects/{projectPublicId}/groups/{publicId}/vk/subscribe`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))).replace(`{${"publicId"}}`, encodeURIComponent(String(requestParameters['publicId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SubscribeLeadGroupVkDtoToJSON)(requestParameters['subscribeLeadGroupVkDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupVkSubscribeResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * VK ID lead-session, VK- .
-     * VK web
-     */
-    async projectsGroupsVkSubscribe(requestParameters, initOverrides) {
-        const response = await this.projectsGroupsVkSubscribeRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * Telegram initData Main Mini App named Mini App .
      * Telegram Mini App
      */
@@ -430,46 +306,12 @@ class LeadGroupsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , VK VK-.
-     * VK App
-     */
-    async projectsVkAppInstallationConfirmRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectPublicId'] == null) {
-            throw new runtime.RequiredError('projectPublicId', 'Required parameter "projectPublicId" was null or undefined when calling projectsVkAppInstallationConfirm().');
-        }
-        if (requestParameters['confirmLeadGroupVkAppInstallationDto'] == null) {
-            throw new runtime.RequiredError('confirmLeadGroupVkAppInstallationDto', 'Required parameter "confirmLeadGroupVkAppInstallationDto" was null or undefined when calling projectsVkAppInstallationConfirm().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        const response = await this.request({
-            path: `/api/public/lead-groups/projects/{projectPublicId}/vk-app-installation/confirm`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.ConfirmLeadGroupVkAppInstallationDtoToJSON)(requestParameters['confirmLeadGroupVkAppInstallationDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupVkAppInstallationResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , VK VK-.
-     * VK App
-     */
-    async projectsVkAppInstallationConfirm(requestParameters, initOverrides) {
-        const response = await this.projectsVkAppInstallationConfirmRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * , VK install popup project/channel .
+     * VK .
      * VK App
      */
     async vkAppInstallationConfirmRaw(requestParameters, initOverrides) {
-        if (requestParameters['confirmLeadGroupVkAppInstallationByGroupDto'] == null) {
-            throw new runtime.RequiredError('confirmLeadGroupVkAppInstallationByGroupDto', 'Required parameter "confirmLeadGroupVkAppInstallationByGroupDto" was null or undefined when calling vkAppInstallationConfirm().');
+        if (requestParameters['confirmLeadGroupVkAppInstallationDto'] == null) {
+            throw new runtime.RequiredError('confirmLeadGroupVkAppInstallationDto', 'Required parameter "confirmLeadGroupVkAppInstallationDto" was null or undefined when calling vkAppInstallationConfirm().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -482,12 +324,12 @@ class LeadGroupsPublicApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ConfirmLeadGroupVkAppInstallationByGroupDtoToJSON)(requestParameters['confirmLeadGroupVkAppInstallationByGroupDto']),
+            body: (0, index_1.ConfirmLeadGroupVkAppInstallationDtoToJSON)(requestParameters['confirmLeadGroupVkAppInstallationDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadGroupVkAppInstallationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , VK install popup project/channel .
+     * VK .
      * VK App
      */
     async vkAppInstallationConfirm(requestParameters, initOverrides) {
@@ -522,13 +364,6 @@ exports.GetProjectsGroups2AcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetVkCallbackAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.ProjectsGroupsBotSubscriptionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -557,28 +392,7 @@ exports.ProjectsGroupsVariablesAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.ProjectsGroupsVkAuthAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.ProjectsGroupsVkSubscribeAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.ProjectsTelegramMiniAppVerificationConfirmAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.ProjectsVkAppInstallationConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

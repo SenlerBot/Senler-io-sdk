@@ -34,6 +34,8 @@ function instanceOfSupportScheduleAssignmentDto(value) {
         return false;
     if (!('shiftId' in value) || value['shiftId'] === undefined)
         return false;
+    if (!('note' in value) || value['note'] === undefined)
+        return false;
     return true;
 }
 function SupportScheduleAssignmentDtoFromJSON(json) {
@@ -50,7 +52,7 @@ function SupportScheduleAssignmentDtoFromJSONTyped(json, ignoreDiscriminator) {
         'endsAt': (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'],
         'shiftId': json['shift_id'],
-        'note': json['note'] == null ? undefined : json['note'],
+        'note': json['note'],
     };
 }
 function SupportScheduleAssignmentDtoToJSON(json) {

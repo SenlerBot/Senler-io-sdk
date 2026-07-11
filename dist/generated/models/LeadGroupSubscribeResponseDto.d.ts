@@ -42,7 +42,6 @@ export declare const LeadGroupSubscribeResponseDtoStateEnum: {
     readonly AlreadySubscribed: "already_subscribed";
     readonly Unsubscribed: "unsubscribed";
     readonly PaymentRequired: "payment_required";
-    readonly MessagePermissionRequired: "message_permission_required";
     readonly ConsentRequired: "consent_required";
     readonly Unavailable: "unavailable";
 };

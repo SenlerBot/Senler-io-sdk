@@ -27,7 +27,6 @@ exports.LeadGroupSubscribeResponseDtoStateEnum = {
     AlreadySubscribed: 'already_subscribed',
     Unsubscribed: 'unsubscribed',
     PaymentRequired: 'payment_required',
-    MessagePermissionRequired: 'message_permission_required',
     ConsentRequired: 'consent_required',
     Unavailable: 'unavailable'
 };

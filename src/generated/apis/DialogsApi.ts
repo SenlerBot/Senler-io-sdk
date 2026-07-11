@@ -16,6 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   DialogDetailsDto,
+  DialogNavigationResponseDto,
   DirectMessageDto,
   ErrorResponse,
   EventPollOptionVotersResponseDto,
@@ -29,6 +30,8 @@ import type {
 import {
     DialogDetailsDtoFromJSON,
     DialogDetailsDtoToJSON,
+    DialogNavigationResponseDtoFromJSON,
+    DialogNavigationResponseDtoToJSON,
     DirectMessageDtoFromJSON,
     DirectMessageDtoToJSON,
     ErrorResponseFromJSON,
@@ -83,6 +86,7 @@ export interface GetEventsRequest {
     searchCursor?: string;
     before?: string;
     after?: string;
+    aroundEventId?: string;
     limit?: number;
     xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
@@ -105,6 +109,13 @@ export interface GetEventsReactionUsersRequest {
     emoji?: string;
     xSessionId?: string;
     acceptLanguage?: GetEventsReactionUsersAcceptLanguageEnum;
+}
+
+export interface GetNavigationRequest {
+    id: string;
+    maxSegments?: number;
+    xSessionId?: string;
+    acceptLanguage?: GetNavigationAcceptLanguageEnum;
 }
 
 /**
@@ -350,7 +361,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . before/after limit; q.
+     * . before/after limit; inclusive jump around_event_id; q.
      * 
      */
     async getEventsRaw(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetEvents200Response>> {
@@ -391,6 +402,10 @@ export class DialogsApi extends runtime.BaseAPI {
             queryParameters['after'] = requestParameters['after'];
         }
 
+        if (requestParameters['aroundEventId'] != null) {
+            queryParameters['around_event_id'] = requestParameters['aroundEventId'];
+        }
+
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -429,7 +444,7 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . before/after limit; q.
+     * . before/after limit; inclusive jump around_event_id; q.
      * 
      */
     async getEvents(requestParameters: GetEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetEvents200Response> {
@@ -590,6 +605,66 @@ export class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * summary AI-.
+     * 
+     */
+    async getNavigationRaw(requestParameters: GetNavigationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogNavigationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getNavigation().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['maxSegments'] != null) {
+            queryParameters['max_segments'] = requestParameters['maxSegments'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{id}/navigation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogNavigationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * summary AI-.
+     * 
+     */
+    async getNavigation(requestParameters: GetNavigationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogNavigationResponseDto> {
+        const response = await this.getNavigationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -656,3 +731,11 @@ export const GetEventsReactionUsersAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetEventsReactionUsersAcceptLanguageEnum = typeof GetEventsReactionUsersAcceptLanguageEnum[keyof typeof GetEventsReactionUsersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetNavigationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetNavigationAcceptLanguageEnum = typeof GetNavigationAcceptLanguageEnum[keyof typeof GetNavigationAcceptLanguageEnum];
