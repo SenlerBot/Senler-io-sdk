@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PaymentCheckoutDto } from './PaymentCheckoutDto';
+import {
+    PaymentCheckoutDtoFromJSON,
+    PaymentCheckoutDtoFromJSONTyped,
+    PaymentCheckoutDtoToJSON,
+    PaymentCheckoutDtoToJSONTyped,
+} from './PaymentCheckoutDto';
+
 /**
  * CreateOrderResponseDto.
  * @export
@@ -26,17 +34,17 @@ export interface CreateOrderResponseDto {
      */
     orderId: string;
     /**
-     * URL
-     * @type {string}
-     * @memberof CreateOrderResponseDto
-     */
-    paymentUrl: string;
-    /**
      * 
      * @type {string}
      * @memberof CreateOrderResponseDto
      */
     paySystemName: string;
+    /**
+     * checkout
+     * @type {PaymentCheckoutDto}
+     * @memberof CreateOrderResponseDto
+     */
+    checkout: PaymentCheckoutDto;
 }
 
 /**
@@ -44,8 +52,8 @@ export interface CreateOrderResponseDto {
  */
 export function instanceOfCreateOrderResponseDto(value: object): value is CreateOrderResponseDto {
     if (!('orderId' in value) || value['orderId'] === undefined) return false;
-    if (!('paymentUrl' in value) || value['paymentUrl'] === undefined) return false;
     if (!('paySystemName' in value) || value['paySystemName'] === undefined) return false;
+    if (!('checkout' in value) || value['checkout'] === undefined) return false;
     return true;
 }
 
@@ -60,8 +68,8 @@ export function CreateOrderResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'orderId': json['order_id'],
-        'paymentUrl': json['payment_url'],
         'paySystemName': json['pay_system_name'],
+        'checkout': PaymentCheckoutDtoFromJSON(json['checkout']),
     };
 }
 
@@ -77,8 +85,8 @@ export function CreateOrderResponseDtoToJSONTyped(value?: CreateOrderResponseDto
     return {
         
         'order_id': value['orderId'],
-        'payment_url': value['paymentUrl'],
         'pay_system_name': value['paySystemName'],
+        'checkout': PaymentCheckoutDtoToJSON(value['checkout']),
     };
 }
 

@@ -24,7 +24,10 @@ exports.OrderPaySystemResponseDtoToJSONTyped = OrderPaySystemResponseDtoToJSONTy
  */
 exports.OrderPaySystemResponseDtoProviderEnum = {
     Tbank: 'tbank',
-    Payoneer: 'payoneer'
+    Payoneer: 'payoneer',
+    Walletconnect: 'walletconnect',
+    Tonconnect: 'tonconnect',
+    Tron: 'tron'
 };
 /**
  * Check if a given object implements the OrderPaySystemResponseDto interface.

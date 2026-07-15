@@ -19,6 +19,7 @@ exports.VKChannelDataDtoFromJSON = VKChannelDataDtoFromJSON;
 exports.VKChannelDataDtoFromJSONTyped = VKChannelDataDtoFromJSONTyped;
 exports.VKChannelDataDtoToJSON = VKChannelDataDtoToJSON;
 exports.VKChannelDataDtoToJSONTyped = VKChannelDataDtoToJSONTyped;
+const VKRuntimeStatusDto_1 = require("./VKRuntimeStatusDto");
 /**
  * @export
  */
@@ -52,6 +53,7 @@ function VKChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         'webhookError': json['webhook_error'] == null ? undefined : json['webhook_error'],
         'webhookWarning': json['webhook_warning'] == null ? undefined : json['webhook_warning'],
         'webhookLastCheckedAt': json['webhook_last_checked_at'] == null ? undefined : json['webhook_last_checked_at'],
+        'runtimeStatus': json['runtime_status'] == null ? undefined : (0, VKRuntimeStatusDto_1.VKRuntimeStatusDtoFromJSON)(json['runtime_status']),
     };
 }
 function VKChannelDataDtoToJSON(json) {
@@ -72,5 +74,6 @@ function VKChannelDataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'webhook_error': value['webhookError'],
         'webhook_warning': value['webhookWarning'],
         'webhook_last_checked_at': value['webhookLastCheckedAt'],
+        'runtime_status': (0, VKRuntimeStatusDto_1.VKRuntimeStatusDtoToJSON)(value['runtimeStatus']),
     };
 }

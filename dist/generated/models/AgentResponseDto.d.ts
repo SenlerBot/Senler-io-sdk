@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
+import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { McpServerResponseDto } from './McpServerResponseDto';
 import type { McpServerListResponseDto } from './McpServerListResponseDto';
@@ -123,6 +124,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . , .
+     * @type {AgentSelectedModelSummaryDto}
+     * @memberof AgentResponseDto
+     */
+    selectedModel?: AgentSelectedModelSummaryDto | null;
     /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
@@ -309,6 +316,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     enableWebSearch: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    enableSupportScheduleContext: boolean;
     /**
      *
      * @type {boolean}

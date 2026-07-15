@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 /**
  * AgentDraftResponseDto.
@@ -102,6 +103,12 @@ export interface AgentDraftResponseDto {
      * @memberof AgentDraftResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . , .
+     * @type {AgentSelectedModelSummaryDto}
+     * @memberof AgentDraftResponseDto
+     */
+    selectedModel?: AgentSelectedModelSummaryDto | null;
     /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
@@ -282,6 +289,12 @@ export interface AgentDraftResponseDto {
      * @memberof AgentDraftResponseDto
      */
     enableWebSearch: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof AgentDraftResponseDto
+     */
+    enableSupportScheduleContext: boolean;
     /**
      *
      * @type {boolean}

@@ -21,6 +21,12 @@ export interface UpdateSupportScheduleSettingsDto {
      * @memberof UpdateSupportScheduleSettingsDto
      */
     enabled: boolean;
+    /**
+     * IANA timezone
+     * @type {string}
+     * @memberof UpdateSupportScheduleSettingsDto
+     */
+    timezone?: string;
 }
 /**
  * Check if a given object implements the UpdateSupportScheduleSettingsDto interface.

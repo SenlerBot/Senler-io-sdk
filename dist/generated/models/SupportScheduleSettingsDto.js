@@ -26,6 +26,8 @@ function instanceOfSupportScheduleSettingsDto(value) {
         return false;
     if (!('enabled' in value) || value['enabled'] === undefined)
         return false;
+    if (!('timezone' in value) || value['timezone'] === undefined)
+        return false;
     return true;
 }
 function SupportScheduleSettingsDtoFromJSON(json) {
@@ -38,6 +40,7 @@ function SupportScheduleSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'projectId': json['project_id'],
         'enabled': json['enabled'],
+        'timezone': json['timezone'],
     };
 }
 function SupportScheduleSettingsDtoToJSON(json) {
@@ -50,5 +53,6 @@ function SupportScheduleSettingsDtoToJSONTyped(value, ignoreDiscriminator = fals
     return {
         'project_id': value['projectId'],
         'enabled': value['enabled'],
+        'timezone': value['timezone'],
     };
 }

@@ -42,6 +42,8 @@ export interface GetEventsRequest {
     before?: string;
     after?: string;
     aroundEventId?: string;
+    sourceChatId?: string;
+    sourceThreadId?: string;
     limit?: number;
     xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;

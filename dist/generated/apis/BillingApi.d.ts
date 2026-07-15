@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditsBuyDto, CreditsCheckResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SuccessResponseDto, TariffBuyDto, TariffCheckResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
+import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditsBuyDto, CreditsCheckResponseDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SuccessResponseDto, TariffBuyDto, TariffCheckResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
 export interface DeleteProjectsTariffNextRequest {
     projectId: string;
     xSessionId?: string;
@@ -53,6 +53,12 @@ export interface GetProjectsOrdersRequest {
     offset?: number;
     xSessionId?: string;
     acceptLanguage?: GetProjectsOrdersAcceptLanguageEnum;
+}
+export interface GetProjectsOrdersCryptoStatusRequest {
+    projectId: string;
+    orderId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetProjectsOrdersCryptoStatusAcceptLanguageEnum;
 }
 export interface GetProjectsPaymentSettingsRequest {
     projectId: string;
@@ -102,6 +108,20 @@ export interface ProjectsOrdersRequest {
     createOrderDto: CreateOrderDto;
     xSessionId?: string;
     acceptLanguage?: ProjectsOrdersAcceptLanguageEnum;
+}
+export interface ProjectsOrdersCryptoIntentRequest {
+    projectId: string;
+    orderId: string;
+    createCryptoPaymentIntentDto: CreateCryptoPaymentIntentDto;
+    xSessionId?: string;
+    acceptLanguage?: ProjectsOrdersCryptoIntentAcceptLanguageEnum;
+}
+export interface ProjectsOrdersCryptoSubmitRequest {
+    projectId: string;
+    orderId: string;
+    submitCryptoPaymentDto: SubmitCryptoPaymentDto;
+    xSessionId?: string;
+    acceptLanguage?: ProjectsOrdersCryptoSubmitAcceptLanguageEnum;
 }
 export interface ProjectsPaymentSettingsRequest {
     projectId: string;
@@ -186,6 +206,16 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getProjectsOrders(requestParameters: GetProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OrderListResponseDto>;
     /**
+     * intent/ Order; fallback realtime.
+     * durable-
+     */
+    getProjectsOrdersCryptoStatusRaw(requestParameters: GetProjectsOrdersCryptoStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoPaymentStatusResponseDto>>;
+    /**
+     * intent/ Order; fallback realtime.
+     * durable-
+     */
+    getProjectsOrdersCryptoStatus(requestParameters: GetProjectsOrdersCryptoStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentStatusResponseDto>;
+    /**
      * : , , , . pay_system ( ).
      *
      */
@@ -246,15 +276,35 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     projectsCreditsBuy(requestParameters: ProjectsCreditsBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
     /**
-     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
+     * checkout-: redirect crypto . payment_settings (, email). pay_system_id ; payment_settings .
      *
      */
     projectsOrdersRaw(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateOrderResponseDto>>;
     /**
-     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
+     * checkout-: redirect crypto . payment_settings (, email). pay_system_id ; payment_settings .
      *
      */
     projectsOrders(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateOrderResponseDto>;
+    /**
+     * immutable intent Order. EVM payer_address; TRON .
+     * crypto intent
+     */
+    projectsOrdersCryptoIntentRaw(requestParameters: ProjectsOrdersCryptoIntentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoPaymentIntentResponseDto>>;
+    /**
+     * immutable intent Order. EVM payer_address; TRON .
+     * crypto intent
+     */
+    projectsOrdersCryptoIntent(requestParameters: ProjectsOrdersCryptoIntentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentIntentResponseDto>;
+    /**
+     * EVM- durable-. TRON- .
+     * - crypto intent
+     */
+    projectsOrdersCryptoSubmitRaw(requestParameters: ProjectsOrdersCryptoSubmitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoPaymentStatusResponseDto>>;
+    /**
+     * EVM- durable-. TRON- .
+     * - crypto intent
+     */
+    projectsOrdersCryptoSubmit(requestParameters: ProjectsOrdersCryptoSubmitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentStatusResponseDto>;
     /**
      * , , . (RU), . RU: email . : email + .
      *
@@ -357,6 +407,14 @@ export type GetProjectsOrdersAcceptLanguageEnum = typeof GetProjectsOrdersAccept
 /**
  * @export
  */
+export declare const GetProjectsOrdersCryptoStatusAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProjectsOrdersCryptoStatusAcceptLanguageEnum = typeof GetProjectsOrdersCryptoStatusAcceptLanguageEnum[keyof typeof GetProjectsOrdersCryptoStatusAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetProjectsPaymentSettingsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -448,6 +506,22 @@ export declare const ProjectsOrdersAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ProjectsOrdersAcceptLanguageEnum = typeof ProjectsOrdersAcceptLanguageEnum[keyof typeof ProjectsOrdersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsOrdersCryptoIntentAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsOrdersCryptoIntentAcceptLanguageEnum = typeof ProjectsOrdersCryptoIntentAcceptLanguageEnum[keyof typeof ProjectsOrdersCryptoIntentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsOrdersCryptoSubmitAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsOrdersCryptoSubmitAcceptLanguageEnum = typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum[keyof typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum];
 /**
  * @export
  */

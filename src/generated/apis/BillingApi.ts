@@ -17,12 +17,15 @@ import * as runtime from '../runtime';
 import type {
   AutoPurchaseResponseDto,
   BillingTransactionsResponseDto,
+  CreateCryptoPaymentIntentDto,
   CreateOrderDto,
   CreateOrderResponseDto,
   CreditTransactionDetailsResponseDto,
   CreditTransactionsResponseDto,
   CreditsBuyDto,
   CreditsCheckResponseDto,
+  CryptoPaymentIntentResponseDto,
+  CryptoPaymentStatusResponseDto,
   ErrorResponse,
   OrderListResponseDto,
   PaymentSettingsResponseDto,
@@ -30,6 +33,7 @@ import type {
   ProjectTariffsResponseDto,
   SavePaymentSettingsDto,
   SavePaymentSettingsResponseDto,
+  SubmitCryptoPaymentDto,
   SuccessResponseDto,
   TariffBuyDto,
   TariffCheckResponseDto,
@@ -41,6 +45,8 @@ import {
     AutoPurchaseResponseDtoToJSON,
     BillingTransactionsResponseDtoFromJSON,
     BillingTransactionsResponseDtoToJSON,
+    CreateCryptoPaymentIntentDtoFromJSON,
+    CreateCryptoPaymentIntentDtoToJSON,
     CreateOrderDtoFromJSON,
     CreateOrderDtoToJSON,
     CreateOrderResponseDtoFromJSON,
@@ -53,6 +59,10 @@ import {
     CreditsBuyDtoToJSON,
     CreditsCheckResponseDtoFromJSON,
     CreditsCheckResponseDtoToJSON,
+    CryptoPaymentIntentResponseDtoFromJSON,
+    CryptoPaymentIntentResponseDtoToJSON,
+    CryptoPaymentStatusResponseDtoFromJSON,
+    CryptoPaymentStatusResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     OrderListResponseDtoFromJSON,
@@ -67,6 +77,8 @@ import {
     SavePaymentSettingsDtoToJSON,
     SavePaymentSettingsResponseDtoFromJSON,
     SavePaymentSettingsResponseDtoToJSON,
+    SubmitCryptoPaymentDtoFromJSON,
+    SubmitCryptoPaymentDtoToJSON,
     SuccessResponseDtoFromJSON,
     SuccessResponseDtoToJSON,
     TariffBuyDtoFromJSON,
@@ -128,6 +140,13 @@ export interface GetProjectsOrdersRequest {
     acceptLanguage?: GetProjectsOrdersAcceptLanguageEnum;
 }
 
+export interface GetProjectsOrdersCryptoStatusRequest {
+    projectId: string;
+    orderId: string;
+    xSessionId?: string;
+    acceptLanguage?: GetProjectsOrdersCryptoStatusAcceptLanguageEnum;
+}
+
 export interface GetProjectsPaymentSettingsRequest {
     projectId: string;
     xSessionId?: string;
@@ -182,6 +201,22 @@ export interface ProjectsOrdersRequest {
     createOrderDto: CreateOrderDto;
     xSessionId?: string;
     acceptLanguage?: ProjectsOrdersAcceptLanguageEnum;
+}
+
+export interface ProjectsOrdersCryptoIntentRequest {
+    projectId: string;
+    orderId: string;
+    createCryptoPaymentIntentDto: CreateCryptoPaymentIntentDto;
+    xSessionId?: string;
+    acceptLanguage?: ProjectsOrdersCryptoIntentAcceptLanguageEnum;
+}
+
+export interface ProjectsOrdersCryptoSubmitRequest {
+    projectId: string;
+    orderId: string;
+    submitCryptoPaymentDto: SubmitCryptoPaymentDto;
+    xSessionId?: string;
+    acceptLanguage?: ProjectsOrdersCryptoSubmitAcceptLanguageEnum;
 }
 
 export interface ProjectsPaymentSettingsRequest {
@@ -606,6 +641,69 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
+     * intent/ Order; fallback realtime.
+     * durable-
+     */
+    async getProjectsOrdersCryptoStatusRaw(requestParameters: GetProjectsOrdersCryptoStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoPaymentStatusResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectsOrdersCryptoStatus().'
+            );
+        }
+
+        if (requestParameters['orderId'] == null) {
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter "orderId" was null or undefined when calling getProjectsOrdersCryptoStatus().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+        }
+
+        const response = await this.request({
+            path: `/api/billing/projects/{projectId}/orders/{orderId}/crypto/status`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"orderId"}}`, encodeURIComponent(String(requestParameters['orderId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CryptoPaymentStatusResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * intent/ Order; fallback realtime.
+     * durable-
+     */
+    async getProjectsOrdersCryptoStatus(requestParameters: GetProjectsOrdersCryptoStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentStatusResponseDto> {
+        const response = await this.getProjectsOrdersCryptoStatusRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * : , , , . pay_system ( ).
      * 
      */
@@ -1014,7 +1112,7 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
-     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
+     * checkout-: redirect crypto . payment_settings (, email). pay_system_id ; payment_settings .
      * 
      */
     async projectsOrdersRaw(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateOrderResponseDto>> {
@@ -1071,11 +1169,157 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
-     * , URL . payment_settings (, email). pay_system_id ; payment_settings .
+     * checkout-: redirect crypto . payment_settings (, email). pay_system_id ; payment_settings .
      * 
      */
     async projectsOrders(requestParameters: ProjectsOrdersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateOrderResponseDto> {
         const response = await this.projectsOrdersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * immutable intent Order. EVM payer_address; TRON .
+     * crypto intent
+     */
+    async projectsOrdersCryptoIntentRaw(requestParameters: ProjectsOrdersCryptoIntentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoPaymentIntentResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsOrdersCryptoIntent().'
+            );
+        }
+
+        if (requestParameters['orderId'] == null) {
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter "orderId" was null or undefined when calling projectsOrdersCryptoIntent().'
+            );
+        }
+
+        if (requestParameters['createCryptoPaymentIntentDto'] == null) {
+            throw new runtime.RequiredError(
+                'createCryptoPaymentIntentDto',
+                'Required parameter "createCryptoPaymentIntentDto" was null or undefined when calling projectsOrdersCryptoIntent().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_billing"]);
+        }
+
+        const response = await this.request({
+            path: `/api/billing/projects/{projectId}/orders/{orderId}/crypto/intent`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"orderId"}}`, encodeURIComponent(String(requestParameters['orderId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateCryptoPaymentIntentDtoToJSON(requestParameters['createCryptoPaymentIntentDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CryptoPaymentIntentResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * immutable intent Order. EVM payer_address; TRON .
+     * crypto intent
+     */
+    async projectsOrdersCryptoIntent(requestParameters: ProjectsOrdersCryptoIntentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentIntentResponseDto> {
+        const response = await this.projectsOrdersCryptoIntentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * EVM- durable-. TRON- .
+     * - crypto intent
+     */
+    async projectsOrdersCryptoSubmitRaw(requestParameters: ProjectsOrdersCryptoSubmitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoPaymentStatusResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsOrdersCryptoSubmit().'
+            );
+        }
+
+        if (requestParameters['orderId'] == null) {
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter "orderId" was null or undefined when calling projectsOrdersCryptoSubmit().'
+            );
+        }
+
+        if (requestParameters['submitCryptoPaymentDto'] == null) {
+            throw new runtime.RequiredError(
+                'submitCryptoPaymentDto',
+                'Required parameter "submitCryptoPaymentDto" was null or undefined when calling projectsOrdersCryptoSubmit().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_billing"]);
+        }
+
+        const response = await this.request({
+            path: `/api/billing/projects/{projectId}/orders/{orderId}/crypto/submit`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"orderId"}}`, encodeURIComponent(String(requestParameters['orderId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SubmitCryptoPaymentDtoToJSON(requestParameters['submitCryptoPaymentDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CryptoPaymentStatusResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * EVM- durable-. TRON- .
+     * - crypto intent
+     */
+    async projectsOrdersCryptoSubmit(requestParameters: ProjectsOrdersCryptoSubmitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentStatusResponseDto> {
+        const response = await this.projectsOrdersCryptoSubmitRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1350,6 +1594,14 @@ export type GetProjectsOrdersAcceptLanguageEnum = typeof GetProjectsOrdersAccept
 /**
  * @export
  */
+export const GetProjectsOrdersCryptoStatusAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetProjectsOrdersCryptoStatusAcceptLanguageEnum = typeof GetProjectsOrdersCryptoStatusAcceptLanguageEnum[keyof typeof GetProjectsOrdersCryptoStatusAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetProjectsPaymentSettingsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1441,6 +1693,22 @@ export const ProjectsOrdersAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type ProjectsOrdersAcceptLanguageEnum = typeof ProjectsOrdersAcceptLanguageEnum[keyof typeof ProjectsOrdersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectsOrdersCryptoIntentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsOrdersCryptoIntentAcceptLanguageEnum = typeof ProjectsOrdersCryptoIntentAcceptLanguageEnum[keyof typeof ProjectsOrdersCryptoIntentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectsOrdersCryptoSubmitAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsOrdersCryptoSubmitAcceptLanguageEnum = typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum[keyof typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum];
 /**
  * @export
  */

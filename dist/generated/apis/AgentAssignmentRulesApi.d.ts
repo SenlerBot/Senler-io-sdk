@@ -52,12 +52,12 @@ export interface UpdateAgentAssignmentRestoreRequest {
  */
 export declare class AgentAssignmentRulesApi extends runtime.BaseAPI {
     /**
-     * . Scope : channel_id, lead_group_id .
+     * . channel_id segment_id; , .
      *
      */
     agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
-     * . Scope : channel_id, lead_group_id .
+     * . channel_id segment_id; , .
      *
      */
     agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;

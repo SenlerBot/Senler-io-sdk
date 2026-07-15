@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
+import {
+    AgentSelectedModelSummaryDtoFromJSON,
+    AgentSelectedModelSummaryDtoFromJSONTyped,
+    AgentSelectedModelSummaryDtoToJSON,
+    AgentSelectedModelSummaryDtoToJSONTyped,
+} from './AgentSelectedModelSummaryDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import {
     KnowledgeBaseSourceBindingDtoFromJSON,
@@ -111,6 +118,12 @@ export interface AgentDraftResponseDto {
      * @memberof AgentDraftResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . , .
+     * @type {AgentSelectedModelSummaryDto}
+     * @memberof AgentDraftResponseDto
+     */
+    selectedModel?: AgentSelectedModelSummaryDto | null;
     /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
@@ -291,6 +304,12 @@ export interface AgentDraftResponseDto {
      * @memberof AgentDraftResponseDto
      */
     enableWebSearch: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof AgentDraftResponseDto
+     */
+    enableSupportScheduleContext: boolean;
     /**
      * 
      * @type {boolean}
@@ -594,6 +613,7 @@ export function instanceOfAgentDraftResponseDto(value: object): value is AgentDr
     if (!('enableQrCode' in value) || value['enableQrCode'] === undefined) return false;
     if (!('enableChart' in value) || value['enableChart'] === undefined) return false;
     if (!('enableWebSearch' in value) || value['enableWebSearch'] === undefined) return false;
+    if (!('enableSupportScheduleContext' in value) || value['enableSupportScheduleContext'] === undefined) return false;
     if (!('enableLeadBlocking' in value) || value['enableLeadBlocking'] === undefined) return false;
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
@@ -641,6 +661,7 @@ export function AgentDraftResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'projectId': json['project_id'],
         'meta': json['meta'] == null ? undefined : json['meta'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'] == null ? null : json['trigger_keywords'],
@@ -671,6 +692,7 @@ export function AgentDraftResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'enableQrCode': json['enable_qr_code'],
         'enableChart': json['enable_chart'],
         'enableWebSearch': json['enable_web_search'],
+        'enableSupportScheduleContext': json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
         'enableUserMessage': json['enable_user_message'],
@@ -719,6 +741,7 @@ export function AgentDraftResponseDtoToJSONTyped(value?: AgentDraftResponseDto |
         'project_id': value['projectId'],
         'meta': value['meta'],
         'selected_model_id': value['selectedModelId'],
+        'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
@@ -749,6 +772,7 @@ export function AgentDraftResponseDtoToJSONTyped(value?: AgentDraftResponseDto |
         'enable_qr_code': value['enableQrCode'],
         'enable_chart': value['enableChart'],
         'enable_web_search': value['enableWebSearch'],
+        'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'enable_user_message': value['enableUserMessage'],

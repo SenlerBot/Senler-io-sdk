@@ -70,6 +70,12 @@ export interface EventSourceTelegramChatDataDto {
      */
     isBot?: boolean;
     /**
+     * - : customer , context .
+     * @type {string}
+     * @memberof EventSourceTelegramChatDataDto
+     */
+    inboundActorPolicy?: EventSourceTelegramChatDataDtoInboundActorPolicyEnum;
+    /**
      * ID Telegram channel direct messages
      * @type {number}
      * @memberof EventSourceTelegramChatDataDto
@@ -86,6 +92,14 @@ export declare const EventSourceTelegramChatDataDtoChatTypeEnum: {
     readonly Channel: "channel";
 };
 export type EventSourceTelegramChatDataDtoChatTypeEnum = typeof EventSourceTelegramChatDataDtoChatTypeEnum[keyof typeof EventSourceTelegramChatDataDtoChatTypeEnum];
+/**
+ * @export
+ */
+export declare const EventSourceTelegramChatDataDtoInboundActorPolicyEnum: {
+    readonly Customer: "customer";
+    readonly Context: "context";
+};
+export type EventSourceTelegramChatDataDtoInboundActorPolicyEnum = typeof EventSourceTelegramChatDataDtoInboundActorPolicyEnum[keyof typeof EventSourceTelegramChatDataDtoInboundActorPolicyEnum];
 /**
  * Check if a given object implements the EventSourceTelegramChatDataDto interface.
  */

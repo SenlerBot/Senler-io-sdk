@@ -34,6 +34,12 @@ export interface PaySystemResponseDto {
      */
     provider: PaySystemResponseDtoProviderEnum;
     /**
+     * checkout: redirect
+     * @type {string}
+     * @memberof PaySystemResponseDto
+     */
+    checkoutType: PaySystemResponseDtoCheckoutTypeEnum;
+    /**
      * (ISO 4217)
      * @type {string}
      * @memberof PaySystemResponseDto
@@ -58,6 +64,12 @@ export interface PaySystemResponseDto {
      */
     topup: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof PaySystemResponseDto
+     */
+    supportsRefunds: boolean;
+    /**
      * payment_settings
      * @type {Array<string>}
      * @memberof PaySystemResponseDto
@@ -76,8 +88,19 @@ export interface PaySystemResponseDto {
 export declare const PaySystemResponseDtoProviderEnum: {
     readonly Tbank: "tbank";
     readonly Payoneer: "payoneer";
+    readonly Walletconnect: "walletconnect";
+    readonly Tonconnect: "tonconnect";
+    readonly Tron: "tron";
 };
 export type PaySystemResponseDtoProviderEnum = typeof PaySystemResponseDtoProviderEnum[keyof typeof PaySystemResponseDtoProviderEnum];
+/**
+ * @export
+ */
+export declare const PaySystemResponseDtoCheckoutTypeEnum: {
+    readonly Redirect: "redirect";
+    readonly Crypto: "crypto";
+};
+export type PaySystemResponseDtoCheckoutTypeEnum = typeof PaySystemResponseDtoCheckoutTypeEnum[keyof typeof PaySystemResponseDtoCheckoutTypeEnum];
 /**
  * Check if a given object implements the PaySystemResponseDto interface.
  */

@@ -37,6 +37,42 @@ export interface TokensUsedDto {
      * @memberof TokensUsedDto
      */
     totalTokens: number;
+    /**
+     * , prompt cache
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    cachedTokens?: number;
+    /**
+     * , prompt cache
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    cacheWriteTokens?: number;
+    /**
+     * Input- provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextInputTokens?: number;
+    /**
+     * Output- provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextOutputTokens?: number;
+    /**
+     * Cached- provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextCachedTokens?: number;
+    /**
+     * Cache-write provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextCacheWriteTokens?: number;
 }
 
 /**
@@ -62,6 +98,12 @@ export function TokensUsedDtoFromJSONTyped(json: any, ignoreDiscriminator: boole
         'promptTokens': json['prompt_tokens'],
         'completionTokens': json['completion_tokens'],
         'totalTokens': json['total_tokens'],
+        'cachedTokens': json['cached_tokens'] == null ? undefined : json['cached_tokens'],
+        'cacheWriteTokens': json['cache_write_tokens'] == null ? undefined : json['cache_write_tokens'],
+        'longContextInputTokens': json['long_context_input_tokens'] == null ? undefined : json['long_context_input_tokens'],
+        'longContextOutputTokens': json['long_context_output_tokens'] == null ? undefined : json['long_context_output_tokens'],
+        'longContextCachedTokens': json['long_context_cached_tokens'] == null ? undefined : json['long_context_cached_tokens'],
+        'longContextCacheWriteTokens': json['long_context_cache_write_tokens'] == null ? undefined : json['long_context_cache_write_tokens'],
     };
 }
 
@@ -79,6 +121,12 @@ export function TokensUsedDtoToJSONTyped(value?: TokensUsedDto | null, ignoreDis
         'prompt_tokens': value['promptTokens'],
         'completion_tokens': value['completionTokens'],
         'total_tokens': value['totalTokens'],
+        'cached_tokens': value['cachedTokens'],
+        'cache_write_tokens': value['cacheWriteTokens'],
+        'long_context_input_tokens': value['longContextInputTokens'],
+        'long_context_output_tokens': value['longContextOutputTokens'],
+        'long_context_cached_tokens': value['longContextCachedTokens'],
+        'long_context_cache_write_tokens': value['longContextCacheWriteTokens'],
     };
 }
 

@@ -50,7 +50,7 @@ export interface AgentAssignmentRuleResponseDto {
      * @type {string}
      * @memberof AgentAssignmentRuleResponseDto
      */
-    leadGroupId?: string | null;
+    segmentId?: string | null;
     /**
      * ID .
      *

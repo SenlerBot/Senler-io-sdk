@@ -40,6 +40,9 @@ export interface OrderPaySystemResponseDto {
 export declare const OrderPaySystemResponseDtoProviderEnum: {
     readonly Tbank: "tbank";
     readonly Payoneer: "payoneer";
+    readonly Walletconnect: "walletconnect";
+    readonly Tonconnect: "tonconnect";
+    readonly Tron: "tron";
 };
 export type OrderPaySystemResponseDtoProviderEnum = typeof OrderPaySystemResponseDtoProviderEnum[keyof typeof OrderPaySystemResponseDtoProviderEnum];
 /**

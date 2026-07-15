@@ -20,6 +20,7 @@ exports.AgentResponseDtoFromJSONTyped = AgentResponseDtoFromJSONTyped;
 exports.AgentResponseDtoToJSON = AgentResponseDtoToJSON;
 exports.AgentResponseDtoToJSONTyped = AgentResponseDtoToJSONTyped;
 const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
+const AgentSelectedModelSummaryDto_1 = require("./AgentSelectedModelSummaryDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const McpServerResponseDto_1 = require("./McpServerResponseDto");
 const McpServerListResponseDto_1 = require("./McpServerListResponseDto");
@@ -204,6 +205,8 @@ function instanceOfAgentResponseDto(value) {
         return false;
     if (!('enableWebSearch' in value) || value['enableWebSearch'] === undefined)
         return false;
+    if (!('enableSupportScheduleContext' in value) || value['enableSupportScheduleContext'] === undefined)
+        return false;
     if (!('enableLeadBlocking' in value) || value['enableLeadBlocking'] === undefined)
         return false;
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined)
@@ -271,6 +274,7 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'appOrigin': json['app_origin'] == null ? undefined : (0, AgentAppOriginDto_1.AgentAppOriginDtoFromJSON)(json['app_origin']),
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'selectedModel': json['selected_model'] == null ? undefined : (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoFromJSON)(json['selected_model']),
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'],
@@ -302,6 +306,7 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableQrCode': json['enable_qr_code'],
         'enableChart': json['enable_chart'],
         'enableWebSearch': json['enable_web_search'],
+        'enableSupportScheduleContext': json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
         'enableUserMessage': json['enable_user_message'],
@@ -349,6 +354,7 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'app_origin': (0, AgentAppOriginDto_1.AgentAppOriginDtoToJSON)(value['appOrigin']),
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
+        'selected_model': (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoToJSON)(value['selectedModel']),
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
@@ -380,6 +386,7 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'enable_qr_code': value['enableQrCode'],
         'enable_chart': value['enableChart'],
         'enable_web_search': value['enableWebSearch'],
+        'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'enable_user_message': value['enableUserMessage'],

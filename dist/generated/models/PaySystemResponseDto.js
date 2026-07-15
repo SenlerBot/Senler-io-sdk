@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaySystemResponseDtoProviderEnum = void 0;
+exports.PaySystemResponseDtoCheckoutTypeEnum = exports.PaySystemResponseDtoProviderEnum = void 0;
 exports.instanceOfPaySystemResponseDto = instanceOfPaySystemResponseDto;
 exports.PaySystemResponseDtoFromJSON = PaySystemResponseDtoFromJSON;
 exports.PaySystemResponseDtoFromJSONTyped = PaySystemResponseDtoFromJSONTyped;
@@ -24,7 +24,17 @@ exports.PaySystemResponseDtoToJSONTyped = PaySystemResponseDtoToJSONTyped;
  */
 exports.PaySystemResponseDtoProviderEnum = {
     Tbank: 'tbank',
-    Payoneer: 'payoneer'
+    Payoneer: 'payoneer',
+    Walletconnect: 'walletconnect',
+    Tonconnect: 'tonconnect',
+    Tron: 'tron'
+};
+/**
+ * @export
+ */
+exports.PaySystemResponseDtoCheckoutTypeEnum = {
+    Redirect: 'redirect',
+    Crypto: 'crypto'
 };
 /**
  * Check if a given object implements the PaySystemResponseDto interface.
@@ -36,6 +46,8 @@ function instanceOfPaySystemResponseDto(value) {
         return false;
     if (!('provider' in value) || value['provider'] === undefined)
         return false;
+    if (!('checkoutType' in value) || value['checkoutType'] === undefined)
+        return false;
     if (!('currency' in value) || value['currency'] === undefined)
         return false;
     if (!('minAmount' in value) || value['minAmount'] === undefined)
@@ -43,6 +55,8 @@ function instanceOfPaySystemResponseDto(value) {
     if (!('maxAmount' in value) || value['maxAmount'] === undefined)
         return false;
     if (!('topup' in value) || value['topup'] === undefined)
+        return false;
+    if (!('supportsRefunds' in value) || value['supportsRefunds'] === undefined)
         return false;
     if (!('requiredSettings' in value) || value['requiredSettings'] === undefined)
         return false;
@@ -61,10 +75,12 @@ function PaySystemResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'name': json['name'],
         'provider': json['provider'],
+        'checkoutType': json['checkout_type'],
         'currency': json['currency'],
         'minAmount': json['min_amount'],
         'maxAmount': json['max_amount'],
         'topup': json['topup'],
+        'supportsRefunds': json['supports_refunds'],
         'requiredSettings': json['required_settings'],
         'description': json['description'],
     };
@@ -80,10 +96,12 @@ function PaySystemResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'name': value['name'],
         'provider': value['provider'],
+        'checkout_type': value['checkoutType'],
         'currency': value['currency'],
         'min_amount': value['minAmount'],
         'max_amount': value['maxAmount'],
         'topup': value['topup'],
+        'supports_refunds': value['supportsRefunds'],
         'required_settings': value['requiredSettings'],
         'description': value['description'],
     };

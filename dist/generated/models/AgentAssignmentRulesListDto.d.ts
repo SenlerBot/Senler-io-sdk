@@ -24,7 +24,7 @@ export interface AgentAssignmentRulesListDto {
      * 2.
      * 3.
      *
-     * scope . , .
+     * . , .
      * @type {Array<AgentAssignmentRuleResponseDto>}
      * @memberof AgentAssignmentRulesListDto
      */

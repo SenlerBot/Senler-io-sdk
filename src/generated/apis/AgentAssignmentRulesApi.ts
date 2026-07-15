@@ -85,7 +85,7 @@ export interface UpdateAgentAssignmentRestoreRequest {
 export class AgentAssignmentRulesApi extends runtime.BaseAPI {
 
     /**
-     * . Scope : channel_id, lead_group_id .
+     * . channel_id segment_id; , .
      * 
      */
     async agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
@@ -142,7 +142,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Scope : channel_id, lead_group_id .
+     * . channel_id segment_id; , .
      * 
      */
     async agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {

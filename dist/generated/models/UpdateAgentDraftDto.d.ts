@@ -89,6 +89,12 @@ export interface UpdateAgentDraftDto {
      */
     selectedModelId?: string | null;
     /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    confirmModelChange?: boolean;
+    /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof UpdateAgentDraftDto
@@ -334,6 +340,12 @@ export interface UpdateAgentDraftDto {
      * @memberof UpdateAgentDraftDto
      */
     enableWebSearch?: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    enableSupportScheduleContext?: boolean;
     /**
      * (block_lead tool)
      * @type {boolean}

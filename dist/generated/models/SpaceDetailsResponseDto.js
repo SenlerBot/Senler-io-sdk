@@ -106,6 +106,8 @@ function instanceOfSpaceDetailsResponseDto(value) {
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
+    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined)
+        return false;
     if (!('discoveredFrom' in value) || value['discoveredFrom'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -151,6 +153,7 @@ function SpaceDetailsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'username': json['username'] == null ? undefined : json['username'],
         'isActive': json['is_active'],
+        'isProjectActor': json['is_project_actor'],
         'discoveredFrom': json['discovered_from'],
         'lastMessageAt': json['last_message_at'] == null ? undefined : (new Date(json['last_message_at'])),
         'externalCreatedAt': json['external_created_at'] == null ? undefined : (new Date(json['external_created_at'])),
@@ -201,6 +204,7 @@ function SpaceDetailsResponseDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'avatar_url': value['avatarUrl'],
         'username': value['username'],
         'is_active': value['isActive'],
+        'is_project_actor': value['isProjectActor'],
         'discovered_from': value['discoveredFrom'],
         'last_message_at': value['lastMessageAt'] == null ? undefined : (value['lastMessageAt'].toISOString()),
         'external_created_at': value['externalCreatedAt'] == null ? undefined : (value['externalCreatedAt'].toISOString()),

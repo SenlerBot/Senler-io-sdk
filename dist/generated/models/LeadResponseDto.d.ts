@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
-import type { LeadGroupMembershipResponseDto } from './LeadGroupMembershipResponseDto';
+import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDto';
 /**
  * LeadResponseDto.
  * @export
@@ -90,6 +90,12 @@ export interface LeadResponseDto {
      */
     isBlacklisted: boolean;
     /**
+     * Lead . , AI-.
+     * @type {boolean}
+     * @memberof LeadResponseDto
+     */
+    isProjectActor: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof LeadResponseDto
@@ -157,10 +163,10 @@ export interface LeadResponseDto {
     spaces: Array<LeadSpaceLinkResponseDto>;
     /**
      *
-     * @type {Array<LeadGroupMembershipResponseDto>}
+     * @type {Array<SegmentMembershipResponseDto>}
      * @memberof LeadResponseDto
      */
-    leadGroups: Array<LeadGroupMembershipResponseDto>;
+    segments: Array<SegmentMembershipResponseDto>;
 }
 /**
  * @export
@@ -185,6 +191,7 @@ export declare const LeadResponseDtoLeadSourceEnum: {
     readonly MessageAllow: "message_allow";
     readonly BotAdded: "bot_added";
     readonly Comment: "comment";
+    readonly Like: "like";
     readonly Manual: "manual";
     readonly Imported: "imported";
 };

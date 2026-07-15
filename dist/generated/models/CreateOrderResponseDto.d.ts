@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PaymentCheckoutDto } from './PaymentCheckoutDto';
 /**
  * CreateOrderResponseDto.
  * @export
@@ -22,17 +23,17 @@ export interface CreateOrderResponseDto {
      */
     orderId: string;
     /**
-     * URL
-     * @type {string}
-     * @memberof CreateOrderResponseDto
-     */
-    paymentUrl: string;
-    /**
      *
      * @type {string}
      * @memberof CreateOrderResponseDto
      */
     paySystemName: string;
+    /**
+     * checkout
+     * @type {PaymentCheckoutDto}
+     * @memberof CreateOrderResponseDto
+     */
+    checkout: PaymentCheckoutDto;
 }
 /**
  * Check if a given object implements the CreateOrderResponseDto interface.

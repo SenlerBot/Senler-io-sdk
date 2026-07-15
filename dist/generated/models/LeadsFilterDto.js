@@ -55,8 +55,8 @@ function LeadsFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
         'search': json['search'] == null ? undefined : json['search'],
         'spaceId': json['space_id'] == null ? undefined : json['space_id'],
         'spaceIsMember': json['space_is_member'] == null ? undefined : json['space_is_member'],
-        'leadGroupId': json['lead_group_id'] == null ? undefined : json['lead_group_id'],
-        'leadGroupIsMember': json['lead_group_is_member'] == null ? undefined : json['lead_group_is_member'],
+        'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
+        'segmentIsMember': json['segment_is_member'] == null ? undefined : json['segment_is_member'],
     };
 }
 function LeadsFilterDtoToJSON(json) {
@@ -76,7 +76,7 @@ function LeadsFilterDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'search': value['search'],
         'space_id': value['spaceId'],
         'space_is_member': value['spaceIsMember'],
-        'lead_group_id': value['leadGroupId'],
-        'lead_group_is_member': value['leadGroupIsMember'],
+        'segment_id': value['segmentId'],
+        'segment_is_member': value['segmentIsMember'],
     };
 }

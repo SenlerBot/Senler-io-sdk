@@ -31,6 +31,12 @@ export interface SupportScheduleSettingsDto {
      * @memberof SupportScheduleSettingsDto
      */
     enabled: boolean;
+    /**
+     * IANA timezone,
+     * @type {string}
+     * @memberof SupportScheduleSettingsDto
+     */
+    timezone: string;
 }
 
 /**
@@ -39,6 +45,7 @@ export interface SupportScheduleSettingsDto {
 export function instanceOfSupportScheduleSettingsDto(value: object): value is SupportScheduleSettingsDto {
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('enabled' in value) || value['enabled'] === undefined) return false;
+    if (!('timezone' in value) || value['timezone'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +61,7 @@ export function SupportScheduleSettingsDtoFromJSONTyped(json: any, ignoreDiscrim
         
         'projectId': json['project_id'],
         'enabled': json['enabled'],
+        'timezone': json['timezone'],
     };
 }
 
@@ -70,6 +78,7 @@ export function SupportScheduleSettingsDtoToJSONTyped(value?: SupportScheduleSet
         
         'project_id': value['projectId'],
         'enabled': value['enabled'],
+        'timezone': value['timezone'],
     };
 }
 

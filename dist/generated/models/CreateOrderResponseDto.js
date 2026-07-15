@@ -18,15 +18,16 @@ exports.CreateOrderResponseDtoFromJSON = CreateOrderResponseDtoFromJSON;
 exports.CreateOrderResponseDtoFromJSONTyped = CreateOrderResponseDtoFromJSONTyped;
 exports.CreateOrderResponseDtoToJSON = CreateOrderResponseDtoToJSON;
 exports.CreateOrderResponseDtoToJSONTyped = CreateOrderResponseDtoToJSONTyped;
+const PaymentCheckoutDto_1 = require("./PaymentCheckoutDto");
 /**
  * Check if a given object implements the CreateOrderResponseDto interface.
  */
 function instanceOfCreateOrderResponseDto(value) {
     if (!('orderId' in value) || value['orderId'] === undefined)
         return false;
-    if (!('paymentUrl' in value) || value['paymentUrl'] === undefined)
-        return false;
     if (!('paySystemName' in value) || value['paySystemName'] === undefined)
+        return false;
+    if (!('checkout' in value) || value['checkout'] === undefined)
         return false;
     return true;
 }
@@ -39,8 +40,8 @@ function CreateOrderResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'orderId': json['order_id'],
-        'paymentUrl': json['payment_url'],
         'paySystemName': json['pay_system_name'],
+        'checkout': (0, PaymentCheckoutDto_1.PaymentCheckoutDtoFromJSON)(json['checkout']),
     };
 }
 function CreateOrderResponseDtoToJSON(json) {
@@ -52,7 +53,7 @@ function CreateOrderResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'order_id': value['orderId'],
-        'payment_url': value['paymentUrl'],
         'pay_system_name': value['paySystemName'],
+        'checkout': (0, PaymentCheckoutDto_1.PaymentCheckoutDtoToJSON)(value['checkout']),
     };
 }

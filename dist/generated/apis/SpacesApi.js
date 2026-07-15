@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeRefreshAcceptLanguageEnum = exports.SpacesRefreshAcceptLanguageEnum = exports.SpacesGetByIdAcceptLanguageEnum = exports.GetTreeRootAcceptLanguageEnum = exports.GetTreeRootDiscoveredFromEnum = exports.GetTreeRootKindEnum = exports.GetTreeNodesAcceptLanguageEnum = exports.GetTreeNodesDiscoveredFromEnum = exports.GetTreeNodesKindEnum = exports.GetSectionsAcceptLanguageEnum = exports.GetSectionsChannelTypeEnum = exports.ChannelRefreshAcceptLanguageEnum = exports.SpacesApi = void 0;
+exports.TreeRefreshAcceptLanguageEnum = exports.SpacesUpdateProjectAffiliationAcceptLanguageEnum = exports.SpacesRefreshAcceptLanguageEnum = exports.SpacesGetByIdAcceptLanguageEnum = exports.GetTreeRootAcceptLanguageEnum = exports.GetTreeRootDiscoveredFromEnum = exports.GetTreeRootKindEnum = exports.GetTreeNodesAcceptLanguageEnum = exports.GetTreeNodesDiscoveredFromEnum = exports.GetTreeNodesKindEnum = exports.GetSectionsAcceptLanguageEnum = exports.GetSectionsChannelTypeEnum = exports.ChannelRefreshAcceptLanguageEnum = exports.SpacesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -404,6 +404,54 @@ class SpacesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . Space , AI-.
+     * Space
+     */
+    async spacesUpdateProjectAffiliationRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling spacesUpdateProjectAffiliation().');
+        }
+        if (requestParameters['updateSpaceProjectAffiliationDto'] == null) {
+            throw new runtime.RequiredError('updateSpaceProjectAffiliationDto', 'Required parameter "updateSpaceProjectAffiliationDto" was null or undefined when calling spacesUpdateProjectAffiliation().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_spaces"]);
+        }
+        const response = await this.request({
+            path: `/api/spaces/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateSpaceProjectAffiliationDtoToJSON)(requestParameters['updateSpaceProjectAffiliationDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SpaceDetailsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . Space , AI-.
+     * Space
+     */
+    async spacesUpdateProjectAffiliation(requestParameters, initOverrides) {
+        const response = await this.spacesUpdateProjectAffiliationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
      */
@@ -551,6 +599,13 @@ exports.SpacesGetByIdAcceptLanguageEnum = {
  * @export
  */
 exports.SpacesRefreshAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SpacesUpdateProjectAffiliationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

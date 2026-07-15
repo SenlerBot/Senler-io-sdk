@@ -20,6 +20,13 @@ import {
     AgentAppOriginDtoToJSON,
     AgentAppOriginDtoToJSONTyped,
 } from './AgentAppOriginDto';
+import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
+import {
+    AgentSelectedModelSummaryDtoFromJSON,
+    AgentSelectedModelSummaryDtoFromJSONTyped,
+    AgentSelectedModelSummaryDtoToJSON,
+    AgentSelectedModelSummaryDtoToJSONTyped,
+} from './AgentSelectedModelSummaryDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import {
     KnowledgeBaseSourceBindingDtoFromJSON,
@@ -150,6 +157,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . , .
+     * @type {AgentSelectedModelSummaryDto}
+     * @memberof AgentResponseDto
+     */
+    selectedModel?: AgentSelectedModelSummaryDto | null;
     /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
@@ -336,6 +349,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     enableWebSearch: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    enableSupportScheduleContext: boolean;
     /**
      * 
      * @type {boolean}
@@ -643,6 +662,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('enableQrCode' in value) || value['enableQrCode'] === undefined) return false;
     if (!('enableChart' in value) || value['enableChart'] === undefined) return false;
     if (!('enableWebSearch' in value) || value['enableWebSearch'] === undefined) return false;
+    if (!('enableSupportScheduleContext' in value) || value['enableSupportScheduleContext'] === undefined) return false;
     if (!('enableLeadBlocking' in value) || value['enableLeadBlocking'] === undefined) return false;
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
@@ -693,6 +713,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'appOrigin': json['app_origin'] == null ? undefined : AgentAppOriginDtoFromJSON(json['app_origin']),
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'],
@@ -724,6 +745,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'enableQrCode': json['enable_qr_code'],
         'enableChart': json['enable_chart'],
         'enableWebSearch': json['enable_web_search'],
+        'enableSupportScheduleContext': json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
         'enableUserMessage': json['enable_user_message'],
@@ -775,6 +797,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'app_origin': AgentAppOriginDtoToJSON(value['appOrigin']),
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
+        'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
@@ -806,6 +829,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'enable_qr_code': value['enableQrCode'],
         'enable_chart': value['enableChart'],
         'enable_web_search': value['enableWebSearch'],
+        'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'enable_user_message': value['enableUserMessage'],

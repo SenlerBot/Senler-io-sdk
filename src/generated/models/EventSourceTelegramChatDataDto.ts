@@ -74,6 +74,12 @@ export interface EventSourceTelegramChatDataDto {
      */
     isBot?: boolean;
     /**
+     * - : customer , context .
+     * @type {string}
+     * @memberof EventSourceTelegramChatDataDto
+     */
+    inboundActorPolicy?: EventSourceTelegramChatDataDtoInboundActorPolicyEnum;
+    /**
      * ID Telegram channel direct messages
      * @type {number}
      * @memberof EventSourceTelegramChatDataDto
@@ -92,6 +98,15 @@ export const EventSourceTelegramChatDataDtoChatTypeEnum = {
     Channel: 'channel'
 } as const;
 export type EventSourceTelegramChatDataDtoChatTypeEnum = typeof EventSourceTelegramChatDataDtoChatTypeEnum[keyof typeof EventSourceTelegramChatDataDtoChatTypeEnum];
+
+/**
+ * @export
+ */
+export const EventSourceTelegramChatDataDtoInboundActorPolicyEnum = {
+    Customer: 'customer',
+    Context: 'context'
+} as const;
+export type EventSourceTelegramChatDataDtoInboundActorPolicyEnum = typeof EventSourceTelegramChatDataDtoInboundActorPolicyEnum[keyof typeof EventSourceTelegramChatDataDtoInboundActorPolicyEnum];
 
 
 /**
@@ -121,6 +136,7 @@ export function EventSourceTelegramChatDataDtoFromJSONTyped(json: any, ignoreDis
         'chatType': json['chat_type'] == null ? undefined : json['chat_type'],
         'callbackId': json['callback_id'] == null ? undefined : json['callback_id'],
         'isBot': json['is_bot'] == null ? undefined : json['is_bot'],
+        'inboundActorPolicy': json['inbound_actor_policy'] == null ? undefined : json['inbound_actor_policy'],
         'directMessagesTopicId': json['direct_messages_topic_id'] == null ? undefined : json['direct_messages_topic_id'],
     };
 }
@@ -145,6 +161,7 @@ export function EventSourceTelegramChatDataDtoToJSONTyped(value?: EventSourceTel
         'chat_type': value['chatType'],
         'callback_id': value['callbackId'],
         'is_bot': value['isBot'],
+        'inbound_actor_policy': value['inboundActorPolicy'],
         'direct_messages_topic_id': value['directMessagesTopicId'],
     };
 }

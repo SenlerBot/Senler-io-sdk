@@ -280,6 +280,12 @@ export interface CreateAgentDto {
      */
     enableWebSearch?: boolean;
     /**
+     * AI-
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableSupportScheduleContext?: boolean;
+    /**
      * (block_lead tool)
      * @type {boolean}
      * @memberof CreateAgentDto
@@ -614,6 +620,7 @@ export function CreateAgentDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'enableQrCode': json['enable_qr_code'] == null ? undefined : json['enable_qr_code'],
         'enableChart': json['enable_chart'] == null ? undefined : json['enable_chart'],
         'enableWebSearch': json['enable_web_search'] == null ? undefined : json['enable_web_search'],
+        'enableSupportScheduleContext': json['enable_support_schedule_context'] == null ? undefined : json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'] == null ? undefined : json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'] == null ? undefined : json['enable_ai_response'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
@@ -688,6 +695,7 @@ export function CreateAgentDtoToJSONTyped(value?: CreateAgentDto | null, ignoreD
         'enable_qr_code': value['enableQrCode'],
         'enable_chart': value['enableChart'],
         'enable_web_search': value['enableWebSearch'],
+        'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'enable_user_message': value['enableUserMessage'],

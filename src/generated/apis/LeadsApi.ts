@@ -27,6 +27,7 @@ import type {
   SyncLeadProfileResponseDto,
   UpdateBlacklistDto,
   UpdateLeadNotesDto,
+  UpdateLeadProjectAffiliationDto,
   VerifySubscriptionAndAddDto,
   VerifySubscriptionAndAddResponseDto,
 } from '../models/index';
@@ -55,6 +56,8 @@ import {
     UpdateBlacklistDtoToJSON,
     UpdateLeadNotesDtoFromJSON,
     UpdateLeadNotesDtoToJSON,
+    UpdateLeadProjectAffiliationDtoFromJSON,
+    UpdateLeadProjectAffiliationDtoToJSON,
     VerifySubscriptionAndAddDtoFromJSON,
     VerifySubscriptionAndAddDtoToJSON,
     VerifySubscriptionAndAddResponseDtoFromJSON,
@@ -103,6 +106,13 @@ export interface UpdateNotesRequest {
     updateLeadNotesDto: UpdateLeadNotesDto;
     xSessionId?: string;
     acceptLanguage?: UpdateNotesAcceptLanguageEnum;
+}
+
+export interface UpdateProjectAffiliationRequest {
+    id: string;
+    updateLeadProjectAffiliationDto: UpdateLeadProjectAffiliationDto;
+    xSessionId?: string;
+    acceptLanguage?: UpdateProjectAffiliationAcceptLanguageEnum;
 }
 
 export interface UpdateSyncProfileRequest {
@@ -548,6 +558,72 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . Lead , AI-.
+     * Lead
+     */
+    async updateProjectAffiliationRaw(requestParameters: UpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateProjectAffiliation().'
+            );
+        }
+
+        if (requestParameters['updateLeadProjectAffiliationDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateLeadProjectAffiliationDto',
+                'Required parameter "updateLeadProjectAffiliationDto" was null or undefined when calling updateProjectAffiliation().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateLeadProjectAffiliationDtoToJSON(requestParameters['updateLeadProjectAffiliationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . Lead , AI-.
+     * Lead
+     */
+    async updateProjectAffiliation(requestParameters: UpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
+        const response = await this.updateProjectAffiliationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      * 
      */
@@ -730,6 +806,14 @@ export const UpdateNotesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateNotesAcceptLanguageEnum = typeof UpdateNotesAcceptLanguageEnum[keyof typeof UpdateNotesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateProjectAffiliationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateProjectAffiliationAcceptLanguageEnum = typeof UpdateProjectAffiliationAcceptLanguageEnum[keyof typeof UpdateProjectAffiliationAcceptLanguageEnum];
 /**
  * @export
  */

@@ -74,17 +74,17 @@ export interface LeadsFilterDto {
      */
     spaceIsMember?: boolean;
     /**
-     * lead_group ID (ObjectId, , 20 )
+     * ID (ObjectId, 20 )
      * @type {Array<string>}
      * @memberof LeadsFilterDto
      */
-    leadGroupId?: Array<string>;
+    segmentId?: Array<string>;
     /**
-     * membership : true = , false =
+     * : true = , false =
      * @type {boolean}
      * @memberof LeadsFilterDto
      */
-    leadGroupIsMember?: boolean;
+    segmentIsMember?: boolean;
 }
 
 
@@ -130,8 +130,8 @@ export function LeadsFilterDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'search': json['search'] == null ? undefined : json['search'],
         'spaceId': json['space_id'] == null ? undefined : json['space_id'],
         'spaceIsMember': json['space_is_member'] == null ? undefined : json['space_is_member'],
-        'leadGroupId': json['lead_group_id'] == null ? undefined : json['lead_group_id'],
-        'leadGroupIsMember': json['lead_group_is_member'] == null ? undefined : json['lead_group_is_member'],
+        'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
+        'segmentIsMember': json['segment_is_member'] == null ? undefined : json['segment_is_member'],
     };
 }
 
@@ -155,8 +155,8 @@ export function LeadsFilterDtoToJSONTyped(value?: LeadsFilterDto | null, ignoreD
         'search': value['search'],
         'space_id': value['spaceId'],
         'space_is_member': value['spaceIsMember'],
-        'lead_group_id': value['leadGroupId'],
-        'lead_group_is_member': value['leadGroupIsMember'],
+        'segment_id': value['segmentId'],
+        'segment_is_member': value['segmentIsMember'],
     };
 }
 

@@ -94,6 +94,12 @@ export interface UpdateAgentDto {
      */
     selectedModelId?: string | null;
     /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    confirmModelChange?: boolean;
+    /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof UpdateAgentDto
@@ -249,6 +255,12 @@ export interface UpdateAgentDto {
      * @memberof UpdateAgentDto
      */
     enableWebSearch?: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    enableSupportScheduleContext?: boolean;
     /**
      * (block_lead tool)
      * @type {boolean}
@@ -520,6 +532,7 @@ export function UpdateAgentDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : ((json['knowledge_base_sources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoFromJSON)),
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'confirmModelChange': json['confirm_model_change'] == null ? undefined : json['confirm_model_change'],
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'meta': json['meta'] == null ? undefined : json['meta'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'] == null ? undefined : json['metrics_collection_enabled'],
@@ -546,6 +559,7 @@ export function UpdateAgentDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'enableQrCode': json['enable_qr_code'] == null ? undefined : json['enable_qr_code'],
         'enableChart': json['enable_chart'] == null ? undefined : json['enable_chart'],
         'enableWebSearch': json['enable_web_search'] == null ? undefined : json['enable_web_search'],
+        'enableSupportScheduleContext': json['enable_support_schedule_context'] == null ? undefined : json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'] == null ? undefined : json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'] == null ? undefined : json['enable_ai_response'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
@@ -589,6 +603,7 @@ export function UpdateAgentDtoToJSONTyped(value?: UpdateAgentDto | null, ignoreD
         'knowledge_base_sources': value['knowledgeBaseSources'] == null ? undefined : ((value['knowledgeBaseSources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoToJSON)),
         'channel_id': value['channelId'],
         'selected_model_id': value['selectedModelId'],
+        'confirm_model_change': value['confirmModelChange'],
         'temperature': value['temperature'],
         'meta': value['meta'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
@@ -615,6 +630,7 @@ export function UpdateAgentDtoToJSONTyped(value?: UpdateAgentDto | null, ignoreD
         'enable_qr_code': value['enableQrCode'],
         'enable_chart': value['enableChart'],
         'enable_web_search': value['enableWebSearch'],
+        'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'enable_user_message': value['enableUserMessage'],

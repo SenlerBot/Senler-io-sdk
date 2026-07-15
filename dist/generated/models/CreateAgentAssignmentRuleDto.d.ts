@@ -26,7 +26,7 @@ export interface CreateAgentAssignmentRuleDto {
      * @type {string}
      * @memberof CreateAgentAssignmentRuleDto
      */
-    leadGroupId?: string | null;
+    segmentId?: string | null;
     /**
      * ID . UUID = , NULL = . ( )
      * @type {string}

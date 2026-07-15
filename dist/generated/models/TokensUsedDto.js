@@ -41,6 +41,12 @@ function TokensUsedDtoFromJSONTyped(json, ignoreDiscriminator) {
         'promptTokens': json['prompt_tokens'],
         'completionTokens': json['completion_tokens'],
         'totalTokens': json['total_tokens'],
+        'cachedTokens': json['cached_tokens'] == null ? undefined : json['cached_tokens'],
+        'cacheWriteTokens': json['cache_write_tokens'] == null ? undefined : json['cache_write_tokens'],
+        'longContextInputTokens': json['long_context_input_tokens'] == null ? undefined : json['long_context_input_tokens'],
+        'longContextOutputTokens': json['long_context_output_tokens'] == null ? undefined : json['long_context_output_tokens'],
+        'longContextCachedTokens': json['long_context_cached_tokens'] == null ? undefined : json['long_context_cached_tokens'],
+        'longContextCacheWriteTokens': json['long_context_cache_write_tokens'] == null ? undefined : json['long_context_cache_write_tokens'],
     };
 }
 function TokensUsedDtoToJSON(json) {
@@ -54,5 +60,11 @@ function TokensUsedDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'prompt_tokens': value['promptTokens'],
         'completion_tokens': value['completionTokens'],
         'total_tokens': value['totalTokens'],
+        'cached_tokens': value['cachedTokens'],
+        'cache_write_tokens': value['cacheWriteTokens'],
+        'long_context_input_tokens': value['longContextInputTokens'],
+        'long_context_output_tokens': value['longContextOutputTokens'],
+        'long_context_cached_tokens': value['longContextCachedTokens'],
+        'long_context_cache_write_tokens': value['longContextCacheWriteTokens'],
     };
 }

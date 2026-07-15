@@ -38,6 +38,12 @@ export interface PaySystemResponseDto {
      */
     provider: PaySystemResponseDtoProviderEnum;
     /**
+     * checkout: redirect
+     * @type {string}
+     * @memberof PaySystemResponseDto
+     */
+    checkoutType: PaySystemResponseDtoCheckoutTypeEnum;
+    /**
      * (ISO 4217)
      * @type {string}
      * @memberof PaySystemResponseDto
@@ -62,6 +68,12 @@ export interface PaySystemResponseDto {
      */
     topup: boolean;
     /**
+     * 
+     * @type {boolean}
+     * @memberof PaySystemResponseDto
+     */
+    supportsRefunds: boolean;
+    /**
      * payment_settings
      * @type {Array<string>}
      * @memberof PaySystemResponseDto
@@ -81,9 +93,21 @@ export interface PaySystemResponseDto {
  */
 export const PaySystemResponseDtoProviderEnum = {
     Tbank: 'tbank',
-    Payoneer: 'payoneer'
+    Payoneer: 'payoneer',
+    Walletconnect: 'walletconnect',
+    Tonconnect: 'tonconnect',
+    Tron: 'tron'
 } as const;
 export type PaySystemResponseDtoProviderEnum = typeof PaySystemResponseDtoProviderEnum[keyof typeof PaySystemResponseDtoProviderEnum];
+
+/**
+ * @export
+ */
+export const PaySystemResponseDtoCheckoutTypeEnum = {
+    Redirect: 'redirect',
+    Crypto: 'crypto'
+} as const;
+export type PaySystemResponseDtoCheckoutTypeEnum = typeof PaySystemResponseDtoCheckoutTypeEnum[keyof typeof PaySystemResponseDtoCheckoutTypeEnum];
 
 
 /**
@@ -93,10 +117,12 @@ export function instanceOfPaySystemResponseDto(value: object): value is PaySyste
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('provider' in value) || value['provider'] === undefined) return false;
+    if (!('checkoutType' in value) || value['checkoutType'] === undefined) return false;
     if (!('currency' in value) || value['currency'] === undefined) return false;
     if (!('minAmount' in value) || value['minAmount'] === undefined) return false;
     if (!('maxAmount' in value) || value['maxAmount'] === undefined) return false;
     if (!('topup' in value) || value['topup'] === undefined) return false;
+    if (!('supportsRefunds' in value) || value['supportsRefunds'] === undefined) return false;
     if (!('requiredSettings' in value) || value['requiredSettings'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
     return true;
@@ -115,10 +141,12 @@ export function PaySystemResponseDtoFromJSONTyped(json: any, ignoreDiscriminator
         'id': json['id'],
         'name': json['name'],
         'provider': json['provider'],
+        'checkoutType': json['checkout_type'],
         'currency': json['currency'],
         'minAmount': json['min_amount'],
         'maxAmount': json['max_amount'],
         'topup': json['topup'],
+        'supportsRefunds': json['supports_refunds'],
         'requiredSettings': json['required_settings'],
         'description': json['description'],
     };
@@ -138,10 +166,12 @@ export function PaySystemResponseDtoToJSONTyped(value?: PaySystemResponseDto | n
         'id': value['id'],
         'name': value['name'],
         'provider': value['provider'],
+        'checkout_type': value['checkoutType'],
         'currency': value['currency'],
         'min_amount': value['minAmount'],
         'max_amount': value['maxAmount'],
         'topup': value['topup'],
+        'supports_refunds': value['supportsRefunds'],
         'required_settings': value['requiredSettings'],
         'description': value['description'],
     };

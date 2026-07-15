@@ -33,6 +33,42 @@ export interface TokensUsedDto {
      * @memberof TokensUsedDto
      */
     totalTokens: number;
+    /**
+     * , prompt cache
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    cachedTokens?: number;
+    /**
+     * , prompt cache
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    cacheWriteTokens?: number;
+    /**
+     * Input- provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextInputTokens?: number;
+    /**
+     * Output- provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextOutputTokens?: number;
+    /**
+     * Cached- provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextCachedTokens?: number;
+    /**
+     * Cache-write provider- 272K
+     * @type {number}
+     * @memberof TokensUsedDto
+     */
+    longContextCacheWriteTokens?: number;
 }
 /**
  * Check if a given object implements the TokensUsedDto interface.

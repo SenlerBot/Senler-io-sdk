@@ -20,7 +20,7 @@ exports.LeadResponseDtoFromJSONTyped = LeadResponseDtoFromJSONTyped;
 exports.LeadResponseDtoToJSON = LeadResponseDtoToJSON;
 exports.LeadResponseDtoToJSONTyped = LeadResponseDtoToJSONTyped;
 const LeadSpaceLinkResponseDto_1 = require("./LeadSpaceLinkResponseDto");
-const LeadGroupMembershipResponseDto_1 = require("./LeadGroupMembershipResponseDto");
+const SegmentMembershipResponseDto_1 = require("./SegmentMembershipResponseDto");
 /**
  * @export
  */
@@ -43,6 +43,7 @@ exports.LeadResponseDtoLeadSourceEnum = {
     MessageAllow: 'message_allow',
     BotAdded: 'bot_added',
     Comment: 'comment',
+    Like: 'like',
     Manual: 'manual',
     Imported: 'imported'
 };
@@ -72,6 +73,8 @@ function instanceOfLeadResponseDto(value) {
         return false;
     if (!('isBlacklisted' in value) || value['isBlacklisted'] === undefined)
         return false;
+    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined)
+        return false;
     if (!('isProjectMemberIdentity' in value) || value['isProjectMemberIdentity'] === undefined)
         return false;
     if (!('leadSource' in value) || value['leadSource'] === undefined)
@@ -84,7 +87,7 @@ function instanceOfLeadResponseDto(value) {
         return false;
     if (!('spaces' in value) || value['spaces'] === undefined)
         return false;
-    if (!('leadGroups' in value) || value['leadGroups'] === undefined)
+    if (!('segments' in value) || value['segments'] === undefined)
         return false;
     return true;
 }
@@ -108,6 +111,7 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isSubscribed': json['is_subscribed'],
         'isBlocked': json['is_blocked'],
         'isBlacklisted': json['is_blacklisted'],
+        'isProjectActor': json['is_project_actor'],
         'isProjectMemberIdentity': json['is_project_member_identity'],
         'blacklistedAt': json['blacklisted_at'] == null ? undefined : (new Date(json['blacklisted_at'])),
         'blacklistReason': json['blacklist_reason'] == null ? undefined : json['blacklist_reason'],
@@ -119,7 +123,7 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'unsubscribedAt': json['unsubscribed_at'] == null ? undefined : (new Date(json['unsubscribed_at'])),
         'lastProfileSyncAt': json['last_profile_sync_at'] == null ? undefined : (new Date(json['last_profile_sync_at'])),
         'spaces': (json['spaces'].map(LeadSpaceLinkResponseDto_1.LeadSpaceLinkResponseDtoFromJSON)),
-        'leadGroups': (json['lead_groups'].map(LeadGroupMembershipResponseDto_1.LeadGroupMembershipResponseDtoFromJSON)),
+        'segments': (json['segments'].map(SegmentMembershipResponseDto_1.SegmentMembershipResponseDtoFromJSON)),
     };
 }
 function LeadResponseDtoToJSON(json) {
@@ -142,6 +146,7 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_subscribed': value['isSubscribed'],
         'is_blocked': value['isBlocked'],
         'is_blacklisted': value['isBlacklisted'],
+        'is_project_actor': value['isProjectActor'],
         'is_project_member_identity': value['isProjectMemberIdentity'],
         'blacklisted_at': value['blacklistedAt'] == null ? undefined : (value['blacklistedAt'].toISOString()),
         'blacklist_reason': value['blacklistReason'],
@@ -153,6 +158,6 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'unsubscribed_at': value['unsubscribedAt'] == null ? undefined : (value['unsubscribedAt'].toISOString()),
         'last_profile_sync_at': value['lastProfileSyncAt'] == null ? undefined : (value['lastProfileSyncAt'].toISOString()),
         'spaces': (value['spaces'].map(LeadSpaceLinkResponseDto_1.LeadSpaceLinkResponseDtoToJSON)),
-        'lead_groups': (value['leadGroups'].map(LeadGroupMembershipResponseDto_1.LeadGroupMembershipResponseDtoToJSON)),
+        'segments': (value['segments'].map(SegmentMembershipResponseDto_1.SegmentMembershipResponseDtoToJSON)),
     };
 }

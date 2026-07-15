@@ -70,17 +70,17 @@ export interface LeadsFilterDto {
      */
     spaceIsMember?: boolean;
     /**
-     * lead_group ID (ObjectId, , 20 )
+     * ID (ObjectId, 20 )
      * @type {Array<string>}
      * @memberof LeadsFilterDto
      */
-    leadGroupId?: Array<string>;
+    segmentId?: Array<string>;
     /**
-     * membership : true = , false =
+     * : true = , false =
      * @type {boolean}
      * @memberof LeadsFilterDto
      */
-    leadGroupIsMember?: boolean;
+    segmentIsMember?: boolean;
 }
 /**
  * @export

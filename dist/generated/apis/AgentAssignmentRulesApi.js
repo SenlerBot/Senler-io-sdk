@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AgentAssignmentRulesApi extends runtime.BaseAPI {
     /**
-     * . Scope : channel_id, lead_group_id .
+     * . channel_id segment_id; , .
      *
      */
     async agentAssignmentRaw(requestParameters, initOverrides) {
@@ -94,7 +94,7 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAssignmentRuleResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . Scope : channel_id, lead_group_id .
+     * . channel_id segment_id; , .
      *
      */
     async agentAssignment(requestParameters, initOverrides) {

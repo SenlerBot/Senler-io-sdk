@@ -87,6 +87,8 @@ export interface GetEventsRequest {
     before?: string;
     after?: string;
     aroundEventId?: string;
+    sourceChatId?: string;
+    sourceThreadId?: string;
     limit?: number;
     xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
@@ -404,6 +406,14 @@ export class DialogsApi extends runtime.BaseAPI {
 
         if (requestParameters['aroundEventId'] != null) {
             queryParameters['around_event_id'] = requestParameters['aroundEventId'];
+        }
+
+        if (requestParameters['sourceChatId'] != null) {
+            queryParameters['source_chat_id'] = requestParameters['sourceChatId'];
+        }
+
+        if (requestParameters['sourceThreadId'] != null) {
+            queryParameters['source_thread_id'] = requestParameters['sourceThreadId'];
         }
 
         if (requestParameters['limit'] != null) {

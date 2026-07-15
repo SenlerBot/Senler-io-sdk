@@ -269,6 +269,12 @@ export interface CreateAgentDto {
      */
     enableWebSearch?: boolean;
     /**
+     * AI-
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    enableSupportScheduleContext?: boolean;
+    /**
      * (block_lead tool)
      * @type {boolean}
      * @memberof CreateAgentDto

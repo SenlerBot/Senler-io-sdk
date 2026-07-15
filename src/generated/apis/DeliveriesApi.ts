@@ -176,8 +176,8 @@ export interface GetDeliveriesAudiencePreviewRequest {
     search?: string;
     spaceId?: Array<string>;
     spaceIsMember?: boolean;
-    leadGroupId?: Array<string>;
-    leadGroupIsMember?: boolean;
+    segmentId?: Array<string>;
+    segmentIsMember?: boolean;
     limit?: number;
     cursor?: string | null;
     xSessionId?: string;
@@ -1066,12 +1066,12 @@ export class DeliveriesApi extends runtime.BaseAPI {
             queryParameters['space_is_member'] = requestParameters['spaceIsMember'];
         }
 
-        if (requestParameters['leadGroupId'] != null) {
-            queryParameters['lead_group_id'] = requestParameters['leadGroupId'];
+        if (requestParameters['segmentId'] != null) {
+            queryParameters['segment_id'] = requestParameters['segmentId'];
         }
 
-        if (requestParameters['leadGroupIsMember'] != null) {
-            queryParameters['lead_group_is_member'] = requestParameters['leadGroupIsMember'];
+        if (requestParameters['segmentIsMember'] != null) {
+            queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
         }
 
         if (requestParameters['limit'] != null) {

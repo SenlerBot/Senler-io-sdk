@@ -100,6 +100,12 @@ export interface UpdateAgentDraftDto {
      */
     selectedModelId?: string | null;
     /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    confirmModelChange?: boolean;
+    /**
      * Temperature AI (0.0 - 2.0). null = (0.7)
      * @type {number}
      * @memberof UpdateAgentDraftDto
@@ -345,6 +351,12 @@ export interface UpdateAgentDraftDto {
      * @memberof UpdateAgentDraftDto
      */
     enableWebSearch?: boolean;
+    /**
+     * AI-
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    enableSupportScheduleContext?: boolean;
     /**
      * (block_lead tool)
      * @type {boolean}
@@ -657,6 +669,7 @@ export function UpdateAgentDraftDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'meta': json['meta'] == null ? undefined : json['meta'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'confirmModelChange': json['confirm_model_change'] == null ? undefined : json['confirm_model_change'],
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'] == null ? undefined : json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'] == null ? undefined : json['trigger_keywords'],
@@ -698,6 +711,7 @@ export function UpdateAgentDraftDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'enableQrCode': json['enable_qr_code'] == null ? undefined : json['enable_qr_code'],
         'enableChart': json['enable_chart'] == null ? undefined : json['enable_chart'],
         'enableWebSearch': json['enable_web_search'] == null ? undefined : json['enable_web_search'],
+        'enableSupportScheduleContext': json['enable_support_schedule_context'] == null ? undefined : json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'] == null ? undefined : json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'] == null ? undefined : json['enable_ai_response'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
@@ -742,6 +756,7 @@ export function UpdateAgentDraftDtoToJSONTyped(value?: UpdateAgentDraftDto | nul
         'channel_id': value['channelId'],
         'meta': value['meta'],
         'selected_model_id': value['selectedModelId'],
+        'confirm_model_change': value['confirmModelChange'],
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
@@ -783,6 +798,7 @@ export function UpdateAgentDraftDtoToJSONTyped(value?: UpdateAgentDraftDto | nul
         'enable_qr_code': value['enableQrCode'],
         'enable_chart': value['enableChart'],
         'enable_web_search': value['enableWebSearch'],
+        'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'enable_user_message': value['enableUserMessage'],

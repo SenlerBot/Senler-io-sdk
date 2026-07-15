@@ -51,7 +51,7 @@ function CreateAgentAssignmentRuleDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
-        'leadGroupId': json['lead_group_id'] == null ? undefined : json['lead_group_id'],
+        'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'role': json['role'],
@@ -67,7 +67,7 @@ function CreateAgentAssignmentRuleDtoToJSONTyped(value, ignoreDiscriminator = fa
     }
     return {
         'channel_id': value['channelId'],
-        'lead_group_id': value['leadGroupId'],
+        'segment_id': value['segmentId'],
         'agent_id': value['agentId'],
         'is_active': value['isActive'],
         'role': value['role'],

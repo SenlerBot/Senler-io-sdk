@@ -99,8 +99,8 @@ export interface GetDeliveriesAudiencePreviewRequest {
     search?: string;
     spaceId?: Array<string>;
     spaceIsMember?: boolean;
-    leadGroupId?: Array<string>;
-    leadGroupIsMember?: boolean;
+    segmentId?: Array<string>;
+    segmentIsMember?: boolean;
     limit?: number;
     cursor?: string | null;
     xSessionId?: string;

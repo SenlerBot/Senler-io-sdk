@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EventSourceTelegramChatDataDtoChatTypeEnum = void 0;
+exports.EventSourceTelegramChatDataDtoInboundActorPolicyEnum = exports.EventSourceTelegramChatDataDtoChatTypeEnum = void 0;
 exports.instanceOfEventSourceTelegramChatDataDto = instanceOfEventSourceTelegramChatDataDto;
 exports.EventSourceTelegramChatDataDtoFromJSON = EventSourceTelegramChatDataDtoFromJSON;
 exports.EventSourceTelegramChatDataDtoFromJSONTyped = EventSourceTelegramChatDataDtoFromJSONTyped;
@@ -27,6 +27,13 @@ exports.EventSourceTelegramChatDataDtoChatTypeEnum = {
     Group: 'group',
     Supergroup: 'supergroup',
     Channel: 'channel'
+};
+/**
+ * @export
+ */
+exports.EventSourceTelegramChatDataDtoInboundActorPolicyEnum = {
+    Customer: 'customer',
+    Context: 'context'
 };
 /**
  * Check if a given object implements the EventSourceTelegramChatDataDto interface.
@@ -53,6 +60,7 @@ function EventSourceTelegramChatDataDtoFromJSONTyped(json, ignoreDiscriminator) 
         'chatType': json['chat_type'] == null ? undefined : json['chat_type'],
         'callbackId': json['callback_id'] == null ? undefined : json['callback_id'],
         'isBot': json['is_bot'] == null ? undefined : json['is_bot'],
+        'inboundActorPolicy': json['inbound_actor_policy'] == null ? undefined : json['inbound_actor_policy'],
         'directMessagesTopicId': json['direct_messages_topic_id'] == null ? undefined : json['direct_messages_topic_id'],
     };
 }
@@ -73,6 +81,7 @@ function EventSourceTelegramChatDataDtoToJSONTyped(value, ignoreDiscriminator = 
         'chat_type': value['chatType'],
         'callback_id': value['callbackId'],
         'is_bot': value['isBot'],
+        'inbound_actor_policy': value['inboundActorPolicy'],
         'direct_messages_topic_id': value['directMessagesTopicId'],
     };
 }

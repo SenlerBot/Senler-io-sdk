@@ -40,6 +40,12 @@ export interface EventMessageForwardingDto {
      */
     fromUser?: string;
     /**
+     * UI AI-
+     * @type {string}
+     * @memberof EventMessageForwardingDto
+     */
+    previewText?: string;
+    /**
      *
      * @type {Date}
      * @memberof EventMessageForwardingDto

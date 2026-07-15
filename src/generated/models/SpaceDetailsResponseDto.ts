@@ -215,6 +215,12 @@ export interface SpaceDetailsResponseDto {
      */
     isActive: boolean;
     /**
+     * Space . , AI-.
+     * @type {boolean}
+     * @memberof SpaceDetailsResponseDto
+     */
+    isProjectActor: boolean;
+    /**
      * , .
      * @type {string}
      * @memberof SpaceDetailsResponseDto
@@ -397,6 +403,7 @@ export function instanceOfSpaceDetailsResponseDto(value: object): value is Space
     if (!('identityKey' in value) || value['identityKey'] === undefined) return false;
     if (!('externalId' in value) || value['externalId'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
+    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined) return false;
     if (!('discoveredFrom' in value) || value['discoveredFrom'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -439,6 +446,7 @@ export function SpaceDetailsResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'username': json['username'] == null ? undefined : json['username'],
         'isActive': json['is_active'],
+        'isProjectActor': json['is_project_actor'],
         'discoveredFrom': json['discovered_from'],
         'lastMessageAt': json['last_message_at'] == null ? undefined : (new Date(json['last_message_at'])),
         'externalCreatedAt': json['external_created_at'] == null ? undefined : (new Date(json['external_created_at'])),
@@ -493,6 +501,7 @@ export function SpaceDetailsResponseDtoToJSONTyped(value?: SpaceDetailsResponseD
         'avatar_url': value['avatarUrl'],
         'username': value['username'],
         'is_active': value['isActive'],
+        'is_project_actor': value['isProjectActor'],
         'discovered_from': value['discoveredFrom'],
         'last_message_at': value['lastMessageAt'] == null ? undefined : ((value['lastMessageAt'] as any).toISOString()),
         'external_created_at': value['externalCreatedAt'] == null ? undefined : ((value['externalCreatedAt'] as any).toISOString()),

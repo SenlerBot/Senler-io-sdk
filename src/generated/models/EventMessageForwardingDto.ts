@@ -44,6 +44,12 @@ export interface EventMessageForwardingDto {
      */
     fromUser?: string;
     /**
+     * UI AI-
+     * @type {string}
+     * @memberof EventMessageForwardingDto
+     */
+    previewText?: string;
+    /**
      * 
      * @type {Date}
      * @memberof EventMessageForwardingDto
@@ -72,6 +78,7 @@ export function EventMessageForwardingDtoFromJSONTyped(json: any, ignoreDiscrimi
         'forwardCount': json['forward_count'] == null ? undefined : json['forward_count'],
         'fromChat': json['from_chat'] == null ? undefined : json['from_chat'],
         'fromUser': json['from_user'] == null ? undefined : json['from_user'],
+        'previewText': json['preview_text'] == null ? undefined : json['preview_text'],
         'lastAt': json['last_at'] == null ? undefined : (new Date(json['last_at'])),
     };
 }
@@ -91,6 +98,7 @@ export function EventMessageForwardingDtoToJSONTyped(value?: EventMessageForward
         'forward_count': value['forwardCount'],
         'from_chat': value['fromChat'],
         'from_user': value['fromUser'],
+        'preview_text': value['previewText'],
         'last_at': value['lastAt'] == null ? undefined : ((value['lastAt']).toISOString()),
     };
 }

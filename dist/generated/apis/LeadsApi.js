@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
+exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectAffiliationAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -373,6 +373,54 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . Lead , AI-.
+     * Lead
+     */
+    async updateProjectAffiliationRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateProjectAffiliation().');
+        }
+        if (requestParameters['updateLeadProjectAffiliationDto'] == null) {
+            throw new runtime.RequiredError('updateLeadProjectAffiliationDto', 'Required parameter "updateLeadProjectAffiliationDto" was null or undefined when calling updateProjectAffiliation().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateLeadProjectAffiliationDtoToJSON)(requestParameters['updateLeadProjectAffiliationDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . Lead , AI-.
+     * Lead
+     */
+    async updateProjectAffiliation(requestParameters, initOverrides) {
+        const response = await this.updateProjectAffiliationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
@@ -513,6 +561,13 @@ exports.UpdateBlacklistAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateNotesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateProjectAffiliationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

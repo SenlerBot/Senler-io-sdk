@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { VKRuntimeStatusDto } from './VKRuntimeStatusDto';
 /**
  * VKChannelDataDto.
  * @export
@@ -75,6 +76,12 @@ export interface VKChannelDataDto {
      * @memberof VKChannelDataDto
      */
     webhookLastCheckedAt?: string;
+    /**
+     * VK-.
+     * @type {VKRuntimeStatusDto}
+     * @memberof VKChannelDataDto
+     */
+    runtimeStatus?: VKRuntimeStatusDto;
 }
 /**
  * @export

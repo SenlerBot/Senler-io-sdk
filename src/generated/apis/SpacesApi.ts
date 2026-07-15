@@ -24,6 +24,7 @@ import type {
   SpaceDetailsResponseDto,
   SpacesTreeNodesResponseDto,
   SpacesTreeRootResponseDto,
+  UpdateSpaceProjectAffiliationDto,
 } from '../models/index';
 import {
     ChannelSpaceSectionsResponseDtoFromJSON,
@@ -44,6 +45,8 @@ import {
     SpacesTreeNodesResponseDtoToJSON,
     SpacesTreeRootResponseDtoFromJSON,
     SpacesTreeRootResponseDtoToJSON,
+    UpdateSpaceProjectAffiliationDtoFromJSON,
+    UpdateSpaceProjectAffiliationDtoToJSON,
 } from '../models/index';
 
 export interface ChannelRefreshRequest {
@@ -106,6 +109,13 @@ export interface SpacesRefreshRequest {
     id: string;
     xSessionId?: string;
     acceptLanguage?: SpacesRefreshAcceptLanguageEnum;
+}
+
+export interface SpacesUpdateProjectAffiliationRequest {
+    id: string;
+    updateSpaceProjectAffiliationDto: UpdateSpaceProjectAffiliationDto;
+    xSessionId?: string;
+    acceptLanguage?: SpacesUpdateProjectAffiliationAcceptLanguageEnum;
 }
 
 export interface TreeRefreshRequest {
@@ -582,6 +592,72 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
+     * . Space , AI-.
+     * Space
+     */
+    async spacesUpdateProjectAffiliationRaw(requestParameters: SpacesUpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpaceDetailsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling spacesUpdateProjectAffiliation().'
+            );
+        }
+
+        if (requestParameters['updateSpaceProjectAffiliationDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateSpaceProjectAffiliationDto',
+                'Required parameter "updateSpaceProjectAffiliationDto" was null or undefined when calling spacesUpdateProjectAffiliation().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_spaces"]);
+        }
+
+        const response = await this.request({
+            path: `/api/spaces/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateSpaceProjectAffiliationDtoToJSON(requestParameters['updateSpaceProjectAffiliationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SpaceDetailsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . Space , AI-.
+     * Space
+     */
+    async spacesUpdateProjectAffiliation(requestParameters: SpacesUpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpaceDetailsResponseDto> {
+        const response = await this.spacesUpdateProjectAffiliationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
      */
@@ -757,6 +833,14 @@ export const SpacesRefreshAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type SpacesRefreshAcceptLanguageEnum = typeof SpacesRefreshAcceptLanguageEnum[keyof typeof SpacesRefreshAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SpacesUpdateProjectAffiliationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SpacesUpdateProjectAffiliationAcceptLanguageEnum = typeof SpacesUpdateProjectAffiliationAcceptLanguageEnum[keyof typeof SpacesUpdateProjectAffiliationAcceptLanguageEnum];
 /**
  * @export
  */

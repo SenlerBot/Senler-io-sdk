@@ -126,6 +126,12 @@ export interface SpacesTreeFlatNodeDto {
      */
     isActive: boolean;
     /**
+     * Space . , AI-.
+     * @type {boolean}
+     * @memberof SpacesTreeFlatNodeDto
+     */
+    isProjectActor: boolean;
+    /**
      * space
      * @type {Date}
      * @memberof SpacesTreeFlatNodeDto

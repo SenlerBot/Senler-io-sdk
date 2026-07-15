@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { VKRuntimeStatusDto } from './VKRuntimeStatusDto';
+import {
+    VKRuntimeStatusDtoFromJSON,
+    VKRuntimeStatusDtoFromJSONTyped,
+    VKRuntimeStatusDtoToJSON,
+    VKRuntimeStatusDtoToJSONTyped,
+} from './VKRuntimeStatusDto';
+
 /**
  * VKChannelDataDto.
  * @export
@@ -79,6 +87,12 @@ export interface VKChannelDataDto {
      * @memberof VKChannelDataDto
      */
     webhookLastCheckedAt?: string;
+    /**
+     * VK-.
+     * @type {VKRuntimeStatusDto}
+     * @memberof VKChannelDataDto
+     */
+    runtimeStatus?: VKRuntimeStatusDto;
 }
 
 
@@ -121,6 +135,7 @@ export function VKChannelDataDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'webhookError': json['webhook_error'] == null ? undefined : json['webhook_error'],
         'webhookWarning': json['webhook_warning'] == null ? undefined : json['webhook_warning'],
         'webhookLastCheckedAt': json['webhook_last_checked_at'] == null ? undefined : json['webhook_last_checked_at'],
+        'runtimeStatus': json['runtime_status'] == null ? undefined : VKRuntimeStatusDtoFromJSON(json['runtime_status']),
     };
 }
 
@@ -145,6 +160,7 @@ export function VKChannelDataDtoToJSONTyped(value?: VKChannelDataDto | null, ign
         'webhook_error': value['webhookError'],
         'webhook_warning': value['webhookWarning'],
         'webhook_last_checked_at': value['webhookLastCheckedAt'],
+        'runtime_status': VKRuntimeStatusDtoToJSON(value['runtimeStatus']),
     };
 }
 

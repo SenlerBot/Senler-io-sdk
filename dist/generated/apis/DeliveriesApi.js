@@ -668,11 +668,11 @@ class DeliveriesApi extends runtime.BaseAPI {
         if (requestParameters['spaceIsMember'] != null) {
             queryParameters['space_is_member'] = requestParameters['spaceIsMember'];
         }
-        if (requestParameters['leadGroupId'] != null) {
-            queryParameters['lead_group_id'] = requestParameters['leadGroupId'];
+        if (requestParameters['segmentId'] != null) {
+            queryParameters['segment_id'] = requestParameters['segmentId'];
         }
-        if (requestParameters['leadGroupIsMember'] != null) {
-            queryParameters['lead_group_is_member'] = requestParameters['leadGroupIsMember'];
+        if (requestParameters['segmentIsMember'] != null) {
+            queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
         }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
