@@ -178,7 +178,7 @@ export class StatisticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , .
+     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
      * 
      */
     async getCostsRaw(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsCostsResponseDto>> {
@@ -252,7 +252,7 @@ export class StatisticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , .
+     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
      * 
      */
     async getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto> {
@@ -435,7 +435,7 @@ export class StatisticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
      * 
      */
     async getOverviewRaw(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsOverviewResponseDto>> {
@@ -509,7 +509,7 @@ export class StatisticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
      * 
      */
     async getOverview(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsOverviewResponseDto> {

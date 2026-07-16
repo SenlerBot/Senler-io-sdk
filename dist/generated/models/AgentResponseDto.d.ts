@@ -335,6 +335,12 @@ export interface AgentResponseDto {
      */
     enableAiResponse: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    cancelPendingResponseOnProjectOperatorMessage: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentResponseDto

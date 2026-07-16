@@ -40,7 +40,7 @@ export interface StatisticsAgentBreakdownDto {
      */
     messagesTotal: number;
     /**
-     * AI-
+     * , AI-; AI-
      * @type {number}
      * @memberof StatisticsAgentBreakdownDto
      */

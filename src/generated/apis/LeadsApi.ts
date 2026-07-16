@@ -27,7 +27,7 @@ import type {
   SyncLeadProfileResponseDto,
   UpdateBlacklistDto,
   UpdateLeadNotesDto,
-  UpdateLeadProjectAffiliationDto,
+  UpdateLeadProjectOperatorDto,
   VerifySubscriptionAndAddDto,
   VerifySubscriptionAndAddResponseDto,
 } from '../models/index';
@@ -56,8 +56,8 @@ import {
     UpdateBlacklistDtoToJSON,
     UpdateLeadNotesDtoFromJSON,
     UpdateLeadNotesDtoToJSON,
-    UpdateLeadProjectAffiliationDtoFromJSON,
-    UpdateLeadProjectAffiliationDtoToJSON,
+    UpdateLeadProjectOperatorDtoFromJSON,
+    UpdateLeadProjectOperatorDtoToJSON,
     VerifySubscriptionAndAddDtoFromJSON,
     VerifySubscriptionAndAddDtoToJSON,
     VerifySubscriptionAndAddResponseDtoFromJSON,
@@ -108,11 +108,11 @@ export interface UpdateNotesRequest {
     acceptLanguage?: UpdateNotesAcceptLanguageEnum;
 }
 
-export interface UpdateProjectAffiliationRequest {
+export interface UpdateProjectOperatorRequest {
     id: string;
-    updateLeadProjectAffiliationDto: UpdateLeadProjectAffiliationDto;
+    updateLeadProjectOperatorDto: UpdateLeadProjectOperatorDto;
     xSessionId?: string;
-    acceptLanguage?: UpdateProjectAffiliationAcceptLanguageEnum;
+    acceptLanguage?: UpdateProjectOperatorAcceptLanguageEnum;
 }
 
 export interface UpdateSyncProfileRequest {
@@ -558,21 +558,21 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Lead , AI-.
-     * Lead
+     * .
+     * 
      */
-    async updateProjectAffiliationRaw(requestParameters: UpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
+    async updateProjectOperatorRaw(requestParameters: UpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateProjectAffiliation().'
+                'Required parameter "id" was null or undefined when calling updateProjectOperator().'
             );
         }
 
-        if (requestParameters['updateLeadProjectAffiliationDto'] == null) {
+        if (requestParameters['updateLeadProjectOperatorDto'] == null) {
             throw new runtime.RequiredError(
-                'updateLeadProjectAffiliationDto',
-                'Required parameter "updateLeadProjectAffiliationDto" was null or undefined when calling updateProjectAffiliation().'
+                'updateLeadProjectOperatorDto',
+                'Required parameter "updateLeadProjectOperatorDto" was null or undefined when calling updateProjectOperator().'
             );
         }
 
@@ -604,22 +604,22 @@ export class LeadsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/leads/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/leads/{id}/project-operator`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateLeadProjectAffiliationDtoToJSON(requestParameters['updateLeadProjectAffiliationDto']),
+            body: UpdateLeadProjectOperatorDtoToJSON(requestParameters['updateLeadProjectOperatorDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => LeadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . Lead , AI-.
-     * Lead
+     * .
+     * 
      */
-    async updateProjectAffiliation(requestParameters: UpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
-        const response = await this.updateProjectAffiliationRaw(requestParameters, initOverrides);
+    async updateProjectOperator(requestParameters: UpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
+        const response = await this.updateProjectOperatorRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -809,11 +809,11 @@ export type UpdateNotesAcceptLanguageEnum = typeof UpdateNotesAcceptLanguageEnum
 /**
  * @export
  */
-export const UpdateProjectAffiliationAcceptLanguageEnum = {
+export const UpdateProjectOperatorAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateProjectAffiliationAcceptLanguageEnum = typeof UpdateProjectAffiliationAcceptLanguageEnum[keyof typeof UpdateProjectAffiliationAcceptLanguageEnum];
+export type UpdateProjectOperatorAcceptLanguageEnum = typeof UpdateProjectOperatorAcceptLanguageEnum[keyof typeof UpdateProjectOperatorAcceptLanguageEnum];
 /**
  * @export
  */

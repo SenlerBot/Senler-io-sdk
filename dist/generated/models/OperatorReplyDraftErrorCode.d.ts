@@ -18,6 +18,7 @@ export declare const OperatorReplyDraftErrorCode: {
     readonly DialogsOperatorReplyDraftAgentNotAssigned: "dialogs.operator_reply_draft.agent_not_assigned";
     readonly DialogsOperatorReplyDraftModelIdMissing: "dialogs.operator_reply_draft.model_id_missing";
     readonly DialogsOperatorReplyDraftEmptyResponse: "dialogs.operator_reply_draft.empty_response";
+    readonly DialogsOperatorReplyDraftSourceEventInvalid: "dialogs.operator_reply_draft.source_event_invalid";
 };
 export type OperatorReplyDraftErrorCode = typeof OperatorReplyDraftErrorCode[keyof typeof OperatorReplyDraftErrorCode];
 export declare function instanceOfOperatorReplyDraftErrorCode(value: any): boolean;

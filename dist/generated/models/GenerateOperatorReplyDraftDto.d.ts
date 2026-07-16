@@ -16,6 +16,12 @@
  */
 export interface GenerateOperatorReplyDraftDto {
     /**
+     * ID , . Telegram-.
+     * @type {string}
+     * @memberof GenerateOperatorReplyDraftDto
+     */
+    sourceEventId?: string;
+    /**
      *
      * @type {string}
      * @memberof GenerateOperatorReplyDraftDto

@@ -55,6 +55,7 @@ function EventSenderDtoFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'type': json['type'],
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
+        'isProjectOperator': json['is_project_operator'] == null ? undefined : json['is_project_operator'],
         'profile': json['profile'] == null ? undefined : (0, EventSenderProfileDto_1.EventSenderProfileDtoFromJSON)(json['profile']),
     };
 }
@@ -69,6 +70,7 @@ function EventSenderDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'type': value['type'],
         'external_id': value['externalId'],
+        'is_project_operator': value['isProjectOperator'],
         'profile': (0, EventSenderProfileDto_1.EventSenderProfileDtoToJSON)(value['profile']),
     };
 }

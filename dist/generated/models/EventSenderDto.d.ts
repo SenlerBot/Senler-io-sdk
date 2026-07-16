@@ -35,6 +35,12 @@ export interface EventSenderDto {
      */
     externalId?: string;
     /**
+     *
+     * @type {boolean}
+     * @memberof EventSenderDto
+     */
+    isProjectOperator?: boolean;
+    /**
      * Read-side ,
      * @type {EventSenderProfileDto}
      * @memberof EventSenderDto

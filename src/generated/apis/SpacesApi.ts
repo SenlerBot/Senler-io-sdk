@@ -24,7 +24,7 @@ import type {
   SpaceDetailsResponseDto,
   SpacesTreeNodesResponseDto,
   SpacesTreeRootResponseDto,
-  UpdateSpaceProjectAffiliationDto,
+  UpdateSpaceProjectOperatorDto,
 } from '../models/index';
 import {
     ChannelSpaceSectionsResponseDtoFromJSON,
@@ -45,8 +45,8 @@ import {
     SpacesTreeNodesResponseDtoToJSON,
     SpacesTreeRootResponseDtoFromJSON,
     SpacesTreeRootResponseDtoToJSON,
-    UpdateSpaceProjectAffiliationDtoFromJSON,
-    UpdateSpaceProjectAffiliationDtoToJSON,
+    UpdateSpaceProjectOperatorDtoFromJSON,
+    UpdateSpaceProjectOperatorDtoToJSON,
 } from '../models/index';
 
 export interface ChannelRefreshRequest {
@@ -111,11 +111,11 @@ export interface SpacesRefreshRequest {
     acceptLanguage?: SpacesRefreshAcceptLanguageEnum;
 }
 
-export interface SpacesUpdateProjectAffiliationRequest {
+export interface SpacesUpdateProjectOperatorRequest {
     id: string;
-    updateSpaceProjectAffiliationDto: UpdateSpaceProjectAffiliationDto;
+    updateSpaceProjectOperatorDto: UpdateSpaceProjectOperatorDto;
     xSessionId?: string;
-    acceptLanguage?: SpacesUpdateProjectAffiliationAcceptLanguageEnum;
+    acceptLanguage?: SpacesUpdateProjectOperatorAcceptLanguageEnum;
 }
 
 export interface TreeRefreshRequest {
@@ -592,21 +592,21 @@ export class SpacesApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Space , AI-.
-     * Space
+     * , .
+     * 
      */
-    async spacesUpdateProjectAffiliationRaw(requestParameters: SpacesUpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpaceDetailsResponseDto>> {
+    async spacesUpdateProjectOperatorRaw(requestParameters: SpacesUpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpaceDetailsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling spacesUpdateProjectAffiliation().'
+                'Required parameter "id" was null or undefined when calling spacesUpdateProjectOperator().'
             );
         }
 
-        if (requestParameters['updateSpaceProjectAffiliationDto'] == null) {
+        if (requestParameters['updateSpaceProjectOperatorDto'] == null) {
             throw new runtime.RequiredError(
-                'updateSpaceProjectAffiliationDto',
-                'Required parameter "updateSpaceProjectAffiliationDto" was null or undefined when calling spacesUpdateProjectAffiliation().'
+                'updateSpaceProjectOperatorDto',
+                'Required parameter "updateSpaceProjectOperatorDto" was null or undefined when calling spacesUpdateProjectOperator().'
             );
         }
 
@@ -638,22 +638,22 @@ export class SpacesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/spaces/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/spaces/{id}/project-operator`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateSpaceProjectAffiliationDtoToJSON(requestParameters['updateSpaceProjectAffiliationDto']),
+            body: UpdateSpaceProjectOperatorDtoToJSON(requestParameters['updateSpaceProjectOperatorDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SpaceDetailsResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . Space , AI-.
-     * Space
+     * , .
+     * 
      */
-    async spacesUpdateProjectAffiliation(requestParameters: SpacesUpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpaceDetailsResponseDto> {
-        const response = await this.spacesUpdateProjectAffiliationRaw(requestParameters, initOverrides);
+    async spacesUpdateProjectOperator(requestParameters: SpacesUpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpaceDetailsResponseDto> {
+        const response = await this.spacesUpdateProjectOperatorRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -836,11 +836,11 @@ export type SpacesRefreshAcceptLanguageEnum = typeof SpacesRefreshAcceptLanguage
 /**
  * @export
  */
-export const SpacesUpdateProjectAffiliationAcceptLanguageEnum = {
+export const SpacesUpdateProjectOperatorAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type SpacesUpdateProjectAffiliationAcceptLanguageEnum = typeof SpacesUpdateProjectAffiliationAcceptLanguageEnum[keyof typeof SpacesUpdateProjectAffiliationAcceptLanguageEnum];
+export type SpacesUpdateProjectOperatorAcceptLanguageEnum = typeof SpacesUpdateProjectOperatorAcceptLanguageEnum[keyof typeof SpacesUpdateProjectOperatorAcceptLanguageEnum];
 /**
  * @export
  */

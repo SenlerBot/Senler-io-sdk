@@ -21,7 +21,8 @@ export const OperatorReplyDraftErrorCode = {
     DialogsOperatorReplyDraftDialogProjectMissing: 'dialogs.operator_reply_draft.dialog_project_missing',
     DialogsOperatorReplyDraftAgentNotAssigned: 'dialogs.operator_reply_draft.agent_not_assigned',
     DialogsOperatorReplyDraftModelIdMissing: 'dialogs.operator_reply_draft.model_id_missing',
-    DialogsOperatorReplyDraftEmptyResponse: 'dialogs.operator_reply_draft.empty_response'
+    DialogsOperatorReplyDraftEmptyResponse: 'dialogs.operator_reply_draft.empty_response',
+    DialogsOperatorReplyDraftSourceEventInvalid: 'dialogs.operator_reply_draft.source_event_invalid'
 } as const;
 export type OperatorReplyDraftErrorCode = typeof OperatorReplyDraftErrorCode[keyof typeof OperatorReplyDraftErrorCode];
 

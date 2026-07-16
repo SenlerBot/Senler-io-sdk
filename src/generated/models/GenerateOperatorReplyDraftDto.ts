@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GenerateOperatorReplyDraftDto {
     /**
+     * ID , . Telegram-.
+     * @type {string}
+     * @memberof GenerateOperatorReplyDraftDto
+     */
+    sourceEventId?: string;
+    /**
      * 
      * @type {string}
      * @memberof GenerateOperatorReplyDraftDto
@@ -63,6 +69,7 @@ export function GenerateOperatorReplyDraftDtoFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
+        'sourceEventId': json['source_event_id'] == null ? undefined : json['source_event_id'],
         'action': json['action'] == null ? undefined : json['action'],
         'draftText': json['draft_text'] == null ? undefined : json['draft_text'],
     };
@@ -79,6 +86,7 @@ export function GenerateOperatorReplyDraftDtoToJSONTyped(value?: GenerateOperato
 
     return {
         
+        'source_event_id': value['sourceEventId'],
         'action': value['action'],
         'draft_text': value['draftText'],
     };

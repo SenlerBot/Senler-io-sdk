@@ -162,11 +162,11 @@ export interface SpaceDetailsResponseDto {
      */
     isActive: boolean;
     /**
-     * Space . , AI-.
+     * : , .
      * @type {boolean}
      * @memberof SpaceDetailsResponseDto
      */
-    isProjectActor: boolean;
+    isProjectOperator: boolean;
     /**
      * , .
      * @type {string}

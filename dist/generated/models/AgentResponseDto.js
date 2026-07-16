@@ -211,6 +211,8 @@ function instanceOfAgentResponseDto(value) {
         return false;
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined)
         return false;
+    if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined)
+        return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined)
         return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined)
@@ -309,6 +311,7 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableSupportScheduleContext': json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
+        'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
@@ -389,6 +392,7 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
+        'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],

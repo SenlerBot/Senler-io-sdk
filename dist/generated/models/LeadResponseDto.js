@@ -73,7 +73,7 @@ function instanceOfLeadResponseDto(value) {
         return false;
     if (!('isBlacklisted' in value) || value['isBlacklisted'] === undefined)
         return false;
-    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined)
+    if (!('isProjectOperator' in value) || value['isProjectOperator'] === undefined)
         return false;
     if (!('isProjectMemberIdentity' in value) || value['isProjectMemberIdentity'] === undefined)
         return false;
@@ -111,7 +111,7 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isSubscribed': json['is_subscribed'],
         'isBlocked': json['is_blocked'],
         'isBlacklisted': json['is_blacklisted'],
-        'isProjectActor': json['is_project_actor'],
+        'isProjectOperator': json['is_project_operator'],
         'isProjectMemberIdentity': json['is_project_member_identity'],
         'blacklistedAt': json['blacklisted_at'] == null ? undefined : (new Date(json['blacklisted_at'])),
         'blacklistReason': json['blacklist_reason'] == null ? undefined : json['blacklist_reason'],
@@ -146,7 +146,7 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_subscribed': value['isSubscribed'],
         'is_blocked': value['isBlocked'],
         'is_blacklisted': value['isBlacklisted'],
-        'is_project_actor': value['isProjectActor'],
+        'is_project_operator': value['isProjectOperator'],
         'is_project_member_identity': value['isProjectMemberIdentity'],
         'blacklisted_at': value['blacklistedAt'] == null ? undefined : (value['blacklistedAt'].toISOString()),
         'blacklist_reason': value['blacklistReason'],

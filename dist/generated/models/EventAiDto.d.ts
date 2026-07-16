@@ -46,6 +46,12 @@ export interface EventAiDto {
      */
     generationTimeMs?: number;
     /**
+     * ID AI-, ,
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    responseId?: string;
+    /**
      * ID AI request-,
      * @type {string}
      * @memberof EventAiDto

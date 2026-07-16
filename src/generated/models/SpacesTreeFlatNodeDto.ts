@@ -143,11 +143,11 @@ export interface SpacesTreeFlatNodeDto {
      */
     isActive: boolean;
     /**
-     * Space . , AI-.
+     * : , .
      * @type {boolean}
      * @memberof SpacesTreeFlatNodeDto
      */
-    isProjectActor: boolean;
+    isProjectOperator: boolean;
     /**
      * space
      * @type {Date}
@@ -234,7 +234,7 @@ export function instanceOfSpacesTreeFlatNodeDto(value: object): value is SpacesT
     if (!('platformType' in value) || value['platformType'] === undefined) return false;
     if (!('externalId' in value) || value['externalId'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
-    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined) return false;
+    if (!('isProjectOperator' in value) || value['isProjectOperator'] === undefined) return false;
     if (!('hasChildren' in value) || value['hasChildren'] === undefined) return false;
     return true;
 }
@@ -267,7 +267,7 @@ export function SpacesTreeFlatNodeDtoFromJSONTyped(json: any, ignoreDiscriminato
         'externalCreatedAt': json['external_created_at'] == null ? undefined : (new Date(json['external_created_at'])),
         'externalUpdatedAt': json['external_updated_at'] == null ? undefined : (new Date(json['external_updated_at'])),
         'isActive': json['is_active'],
-        'isProjectActor': json['is_project_actor'],
+        'isProjectOperator': json['is_project_operator'],
         'lastMessageAt': json['last_message_at'] == null ? undefined : (new Date(json['last_message_at'])),
         'hasChildren': json['has_children'],
         'match': json['match'] == null ? undefined : SpaceTreeMatchMetadataDtoFromJSON(json['match']),
@@ -303,7 +303,7 @@ export function SpacesTreeFlatNodeDtoToJSONTyped(value?: SpacesTreeFlatNodeDto |
         'external_created_at': value['externalCreatedAt'] == null ? undefined : ((value['externalCreatedAt'] as any).toISOString()),
         'external_updated_at': value['externalUpdatedAt'] == null ? undefined : ((value['externalUpdatedAt'] as any).toISOString()),
         'is_active': value['isActive'],
-        'is_project_actor': value['isProjectActor'],
+        'is_project_operator': value['isProjectOperator'],
         'last_message_at': value['lastMessageAt'] == null ? undefined : ((value['lastMessageAt'] as any).toISOString()),
         'has_children': value['hasChildren'],
         'match': SpaceTreeMatchMetadataDtoToJSON(value['match']),

@@ -42,6 +42,7 @@ function GenerateOperatorReplyDraftDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'sourceEventId': json['source_event_id'] == null ? undefined : json['source_event_id'],
         'action': json['action'] == null ? undefined : json['action'],
         'draftText': json['draft_text'] == null ? undefined : json['draft_text'],
     };
@@ -54,6 +55,7 @@ function GenerateOperatorReplyDraftDtoToJSONTyped(value, ignoreDiscriminator = f
         return value;
     }
     return {
+        'source_event_id': value['sourceEventId'],
         'action': value['action'],
         'draft_text': value['draftText'],
     };

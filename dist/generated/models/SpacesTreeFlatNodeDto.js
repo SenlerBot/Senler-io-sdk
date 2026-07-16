@@ -86,7 +86,7 @@ function instanceOfSpacesTreeFlatNodeDto(value) {
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
-    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined)
+    if (!('isProjectOperator' in value) || value['isProjectOperator'] === undefined)
         return false;
     if (!('hasChildren' in value) || value['hasChildren'] === undefined)
         return false;
@@ -118,7 +118,7 @@ function SpacesTreeFlatNodeDtoFromJSONTyped(json, ignoreDiscriminator) {
         'externalCreatedAt': json['external_created_at'] == null ? undefined : (new Date(json['external_created_at'])),
         'externalUpdatedAt': json['external_updated_at'] == null ? undefined : (new Date(json['external_updated_at'])),
         'isActive': json['is_active'],
-        'isProjectActor': json['is_project_actor'],
+        'isProjectOperator': json['is_project_operator'],
         'lastMessageAt': json['last_message_at'] == null ? undefined : (new Date(json['last_message_at'])),
         'hasChildren': json['has_children'],
         'match': json['match'] == null ? undefined : (0, SpaceTreeMatchMetadataDto_1.SpaceTreeMatchMetadataDtoFromJSON)(json['match']),
@@ -150,7 +150,7 @@ function SpacesTreeFlatNodeDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'external_created_at': value['externalCreatedAt'] == null ? undefined : (value['externalCreatedAt'].toISOString()),
         'external_updated_at': value['externalUpdatedAt'] == null ? undefined : (value['externalUpdatedAt'].toISOString()),
         'is_active': value['isActive'],
-        'is_project_actor': value['isProjectActor'],
+        'is_project_operator': value['isProjectOperator'],
         'last_message_at': value['lastMessageAt'] == null ? undefined : (value['lastMessageAt'].toISOString()),
         'has_children': value['hasChildren'],
         'match': (0, SpaceTreeMatchMetadataDto_1.SpaceTreeMatchMetadataDtoToJSON)(value['match']),

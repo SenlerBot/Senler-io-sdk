@@ -29,7 +29,7 @@ export interface StatisticsCommunicationsSummaryDto {
      */
     leadMessages: StatisticsMetricDeltaDto;
     /**
-     * AI-
+     * , AI-; AI-
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsCommunicationsSummaryDto
      */

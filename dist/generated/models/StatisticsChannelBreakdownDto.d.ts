@@ -58,7 +58,7 @@ export interface StatisticsChannelBreakdownDto {
      */
     leadMessages: number;
     /**
-     * AI-
+     * , AI-; AI-
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */

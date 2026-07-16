@@ -9,6 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StatisticsDecimalCreditsMetricDeltaDto } from './StatisticsDecimalCreditsMetricDeltaDto';
+import type { StatisticsAiResponseCostsDto } from './StatisticsAiResponseCostsDto';
+import type { StatisticsCreditsMetricDeltaDto } from './StatisticsCreditsMetricDeltaDto';
 import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
 /**
  * StatisticsCostsSummaryDto.
@@ -17,23 +20,31 @@ import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
  */
 export interface StatisticsCostsSummaryDto {
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
+     * timestamp . , AI-
+     * @type {StatisticsCreditsMetricDeltaDto}
      * @memberof StatisticsCostsSummaryDto
      */
-    creditsUsed: StatisticsMetricDeltaDto;
+    creditsUsed: StatisticsCreditsMetricDeltaDto;
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
+     * AI-. average_direct_credits_per_response; deprecated average_credits_per_message average_credits_per_dialog . 1200000 / 12 = 100000
+     * @type {StatisticsAiResponseCostsDto}
      * @memberof StatisticsCostsSummaryDto
      */
-    averageCreditsPerMessage: StatisticsMetricDeltaDto;
+    aiResponseCosts: StatisticsAiResponseCostsDto;
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
+     * DEPRECATED: credits_used, message_created (, AI); AI-
+     * @type {StatisticsDecimalCreditsMetricDeltaDto}
      * @memberof StatisticsCostsSummaryDto
+     * @deprecated
      */
-    averageCreditsPerDialog: StatisticsMetricDeltaDto;
+    averageCreditsPerMessage: StatisticsDecimalCreditsMetricDeltaDto;
+    /**
+     * DEPRECATED: credits_used, ; AI-
+     * @type {StatisticsDecimalCreditsMetricDeltaDto}
+     * @memberof StatisticsCostsSummaryDto
+     * @deprecated
+     */
+    averageCreditsPerDialog: StatisticsDecimalCreditsMetricDeltaDto;
     /**
      *
      * @type {StatisticsMetricDeltaDto}

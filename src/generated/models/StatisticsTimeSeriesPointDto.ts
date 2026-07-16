@@ -44,7 +44,7 @@ export interface StatisticsTimeSeriesPointDto {
      */
     leadMessages: number;
     /**
-     * AI-
+     * , AI-, ; AI-
      * @type {number}
      * @memberof StatisticsTimeSeriesPointDto
      */

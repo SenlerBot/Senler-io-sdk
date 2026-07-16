@@ -40,6 +40,7 @@ const MCPExternalUserCredentialsApi_1 = require("./generated/apis/MCPExternalUse
 const MCPServersApi_1 = require("./generated/apis/MCPServersApi");
 const MetricsConfigApi_1 = require("./generated/apis/MetricsConfigApi");
 const MetricsDefinitionsApi_1 = require("./generated/apis/MetricsDefinitionsApi");
+const MobileAppReleasesApi_1 = require("./generated/apis/MobileAppReleasesApi");
 const ModelsApi_1 = require("./generated/apis/ModelsApi");
 const OAuthApi_1 = require("./generated/apis/OAuthApi");
 const PlatformsApi_1 = require("./generated/apis/PlatformsApi");
@@ -113,6 +114,7 @@ class AiSenlerClient {
         this.mcpServers = new MCPServersApi_1.MCPServersApi(configuration);
         this.metricsConfig = new MetricsConfigApi_1.MetricsConfigApi(configuration);
         this.metricsDefinitions = new MetricsDefinitionsApi_1.MetricsDefinitionsApi(configuration);
+        this.mobileAppReleases = new MobileAppReleasesApi_1.MobileAppReleasesApi(configuration);
         this.models = new ModelsApi_1.ModelsApi(configuration);
         this.oAuth = new OAuthApi_1.OAuthApi(configuration);
         this.platforms = new PlatformsApi_1.PlatformsApi(configuration);

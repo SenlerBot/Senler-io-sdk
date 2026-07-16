@@ -18,12 +18,17 @@ exports.StatisticsSummaryDtoFromJSON = StatisticsSummaryDtoFromJSON;
 exports.StatisticsSummaryDtoFromJSONTyped = StatisticsSummaryDtoFromJSONTyped;
 exports.StatisticsSummaryDtoToJSON = StatisticsSummaryDtoToJSON;
 exports.StatisticsSummaryDtoToJSONTyped = StatisticsSummaryDtoToJSONTyped;
+const StatisticsDecimalCreditsMetricDeltaDto_1 = require("./StatisticsDecimalCreditsMetricDeltaDto");
+const StatisticsAiResponseCostsDto_1 = require("./StatisticsAiResponseCostsDto");
+const StatisticsCreditsMetricDeltaDto_1 = require("./StatisticsCreditsMetricDeltaDto");
 const StatisticsMetricDeltaDto_1 = require("./StatisticsMetricDeltaDto");
 /**
  * Check if a given object implements the StatisticsSummaryDto interface.
  */
 function instanceOfStatisticsSummaryDto(value) {
     if (!('creditsUsed' in value) || value['creditsUsed'] === undefined)
+        return false;
+    if (!('aiResponseCosts' in value) || value['aiResponseCosts'] === undefined)
         return false;
     if (!('messagesTotal' in value) || value['messagesTotal'] === undefined)
         return false;
@@ -77,7 +82,8 @@ function StatisticsSummaryDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'creditsUsed': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['credits_used']),
+        'creditsUsed': (0, StatisticsCreditsMetricDeltaDto_1.StatisticsCreditsMetricDeltaDtoFromJSON)(json['credits_used']),
+        'aiResponseCosts': (0, StatisticsAiResponseCostsDto_1.StatisticsAiResponseCostsDtoFromJSON)(json['ai_response_costs']),
         'messagesTotal': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['messages_total']),
         'leadMessages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['lead_messages']),
         'aiMessages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['ai_messages']),
@@ -96,8 +102,8 @@ function StatisticsSummaryDtoFromJSONTyped(json, ignoreDiscriminator) {
         'averageFirstResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
         'averageResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
         'averageResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
-        'averageCreditsPerDialog': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_credits_per_dialog']),
-        'averageCreditsPerMessage': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_credits_per_message']),
+        'averageCreditsPerDialog': (0, StatisticsDecimalCreditsMetricDeltaDto_1.StatisticsDecimalCreditsMetricDeltaDtoFromJSON)(json['average_credits_per_dialog']),
+        'averageCreditsPerMessage': (0, StatisticsDecimalCreditsMetricDeltaDto_1.StatisticsDecimalCreditsMetricDeltaDtoFromJSON)(json['average_credits_per_message']),
         'tokensUsed': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['tokens_used']),
     };
 }
@@ -109,7 +115,8 @@ function StatisticsSummaryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'credits_used': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['creditsUsed']),
+        'credits_used': (0, StatisticsCreditsMetricDeltaDto_1.StatisticsCreditsMetricDeltaDtoToJSON)(value['creditsUsed']),
+        'ai_response_costs': (0, StatisticsAiResponseCostsDto_1.StatisticsAiResponseCostsDtoToJSON)(value['aiResponseCosts']),
         'messages_total': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['messagesTotal']),
         'lead_messages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['leadMessages']),
         'ai_messages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['aiMessages']),
@@ -128,8 +135,8 @@ function StatisticsSummaryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'average_first_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
         'average_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
         'average_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
-        'average_credits_per_dialog': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageCreditsPerDialog']),
-        'average_credits_per_message': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageCreditsPerMessage']),
+        'average_credits_per_dialog': (0, StatisticsDecimalCreditsMetricDeltaDto_1.StatisticsDecimalCreditsMetricDeltaDtoToJSON)(value['averageCreditsPerDialog']),
+        'average_credits_per_message': (0, StatisticsDecimalCreditsMetricDeltaDto_1.StatisticsDecimalCreditsMetricDeltaDtoToJSON)(value['averageCreditsPerMessage']),
         'tokens_used': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['tokensUsed']),
     };
 }

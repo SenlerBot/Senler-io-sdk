@@ -274,6 +274,12 @@ export interface UpdateAgentDto {
      */
     enableAiResponse?: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    cancelPendingResponseOnProjectOperatorMessage?: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof UpdateAgentDto
@@ -562,6 +568,7 @@ export function UpdateAgentDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'enableSupportScheduleContext': json['enable_support_schedule_context'] == null ? undefined : json['enable_support_schedule_context'],
         'enableLeadBlocking': json['enable_lead_blocking'] == null ? undefined : json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'] == null ? undefined : json['enable_ai_response'],
+        'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
@@ -633,6 +640,7 @@ export function UpdateAgentDtoToJSONTyped(value?: UpdateAgentDto | null, ignoreD
         'enable_support_schedule_context': value['enableSupportScheduleContext'],
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
+        'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],

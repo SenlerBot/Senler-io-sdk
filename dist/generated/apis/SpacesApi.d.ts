@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ChannelSpaceSectionsResponseDto, CreateChannelSpacesRefreshProcessDto, CreateChannelsTreeRefreshProcessDto, ProcessResponseDto, RefreshSpaceResponseDto, SpaceDetailsResponseDto, SpacesTreeNodesResponseDto, SpacesTreeRootResponseDto, UpdateSpaceProjectAffiliationDto } from '../models/index';
+import type { ChannelSpaceSectionsResponseDto, CreateChannelSpacesRefreshProcessDto, CreateChannelsTreeRefreshProcessDto, ProcessResponseDto, RefreshSpaceResponseDto, SpaceDetailsResponseDto, SpacesTreeNodesResponseDto, SpacesTreeRootResponseDto, UpdateSpaceProjectOperatorDto } from '../models/index';
 export interface ChannelRefreshRequest {
     createChannelSpacesRefreshProcessDto: CreateChannelSpacesRefreshProcessDto;
     xSessionId?: string;
@@ -67,11 +67,11 @@ export interface SpacesRefreshRequest {
     xSessionId?: string;
     acceptLanguage?: SpacesRefreshAcceptLanguageEnum;
 }
-export interface SpacesUpdateProjectAffiliationRequest {
+export interface SpacesUpdateProjectOperatorRequest {
     id: string;
-    updateSpaceProjectAffiliationDto: UpdateSpaceProjectAffiliationDto;
+    updateSpaceProjectOperatorDto: UpdateSpaceProjectOperatorDto;
     xSessionId?: string;
-    acceptLanguage?: SpacesUpdateProjectAffiliationAcceptLanguageEnum;
+    acceptLanguage?: SpacesUpdateProjectOperatorAcceptLanguageEnum;
 }
 export interface TreeRefreshRequest {
     createChannelsTreeRefreshProcessDto: CreateChannelsTreeRefreshProcessDto;
@@ -143,15 +143,15 @@ export declare class SpacesApi extends runtime.BaseAPI {
      */
     spacesRefresh(requestParameters: SpacesRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RefreshSpaceResponseDto>;
     /**
-     * . Space , AI-.
-     * Space
+     * , .
+     *
      */
-    spacesUpdateProjectAffiliationRaw(requestParameters: SpacesUpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpaceDetailsResponseDto>>;
+    spacesUpdateProjectOperatorRaw(requestParameters: SpacesUpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SpaceDetailsResponseDto>>;
     /**
-     * . Space , AI-.
-     * Space
+     * , .
+     *
      */
-    spacesUpdateProjectAffiliation(requestParameters: SpacesUpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpaceDetailsResponseDto>;
+    spacesUpdateProjectOperator(requestParameters: SpacesUpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SpaceDetailsResponseDto>;
     /**
      * root spaces. , GET /api/spaces/tree/root.
      * refresh spaces
@@ -281,11 +281,11 @@ export type SpacesRefreshAcceptLanguageEnum = typeof SpacesRefreshAcceptLanguage
 /**
  * @export
  */
-export declare const SpacesUpdateProjectAffiliationAcceptLanguageEnum: {
+export declare const SpacesUpdateProjectOperatorAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type SpacesUpdateProjectAffiliationAcceptLanguageEnum = typeof SpacesUpdateProjectAffiliationAcceptLanguageEnum[keyof typeof SpacesUpdateProjectAffiliationAcceptLanguageEnum];
+export type SpacesUpdateProjectOperatorAcceptLanguageEnum = typeof SpacesUpdateProjectOperatorAcceptLanguageEnum[keyof typeof SpacesUpdateProjectOperatorAcceptLanguageEnum];
 /**
  * @export
  */

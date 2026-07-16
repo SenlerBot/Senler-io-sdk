@@ -46,6 +46,12 @@ export interface EventSenderDto {
      */
     externalId?: string;
     /**
+     * 
+     * @type {boolean}
+     * @memberof EventSenderDto
+     */
+    isProjectOperator?: boolean;
+    /**
      * Read-side ,
      * @type {EventSenderProfileDto}
      * @memberof EventSenderDto
@@ -93,6 +99,7 @@ export function EventSenderDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'id': json['id'],
         'type': json['type'],
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
+        'isProjectOperator': json['is_project_operator'] == null ? undefined : json['is_project_operator'],
         'profile': json['profile'] == null ? undefined : EventSenderProfileDtoFromJSON(json['profile']),
     };
 }
@@ -111,6 +118,7 @@ export function EventSenderDtoToJSONTyped(value?: EventSenderDto | null, ignoreD
         'id': value['id'],
         'type': value['type'],
         'external_id': value['externalId'],
+        'is_project_operator': value['isProjectOperator'],
         'profile': EventSenderProfileDtoToJSON(value['profile']),
     };
 }

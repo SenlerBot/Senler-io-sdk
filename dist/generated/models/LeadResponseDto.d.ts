@@ -90,11 +90,11 @@ export interface LeadResponseDto {
      */
     isBlacklisted: boolean;
     /**
-     * Lead . , AI-.
+     * : .
      * @type {boolean}
      * @memberof LeadResponseDto
      */
-    isProjectActor: boolean;
+    isProjectOperator: boolean;
     /**
      *
      * @type {boolean}

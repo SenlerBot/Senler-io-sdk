@@ -107,11 +107,11 @@ export interface LeadResponseDto {
      */
     isBlacklisted: boolean;
     /**
-     * Lead . , AI-.
+     * : .
      * @type {boolean}
      * @memberof LeadResponseDto
      */
-    isProjectActor: boolean;
+    isProjectOperator: boolean;
     /**
      * 
      * @type {boolean}
@@ -239,7 +239,7 @@ export function instanceOfLeadResponseDto(value: object): value is LeadResponseD
     if (!('isSubscribed' in value) || value['isSubscribed'] === undefined) return false;
     if (!('isBlocked' in value) || value['isBlocked'] === undefined) return false;
     if (!('isBlacklisted' in value) || value['isBlacklisted'] === undefined) return false;
-    if (!('isProjectActor' in value) || value['isProjectActor'] === undefined) return false;
+    if (!('isProjectOperator' in value) || value['isProjectOperator'] === undefined) return false;
     if (!('isProjectMemberIdentity' in value) || value['isProjectMemberIdentity'] === undefined) return false;
     if (!('leadSource' in value) || value['leadSource'] === undefined) return false;
     if (!('leadType' in value) || value['leadType'] === undefined) return false;
@@ -272,7 +272,7 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'isSubscribed': json['is_subscribed'],
         'isBlocked': json['is_blocked'],
         'isBlacklisted': json['is_blacklisted'],
-        'isProjectActor': json['is_project_actor'],
+        'isProjectOperator': json['is_project_operator'],
         'isProjectMemberIdentity': json['is_project_member_identity'],
         'blacklistedAt': json['blacklisted_at'] == null ? undefined : (new Date(json['blacklisted_at'])),
         'blacklistReason': json['blacklist_reason'] == null ? undefined : json['blacklist_reason'],
@@ -311,7 +311,7 @@ export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignor
         'is_subscribed': value['isSubscribed'],
         'is_blocked': value['isBlocked'],
         'is_blacklisted': value['isBlacklisted'],
-        'is_project_actor': value['isProjectActor'],
+        'is_project_operator': value['isProjectOperator'],
         'is_project_member_identity': value['isProjectMemberIdentity'],
         'blacklisted_at': value['blacklistedAt'] == null ? undefined : ((value['blacklistedAt'] as any).toISOString()),
         'blacklist_reason': value['blacklistReason'],

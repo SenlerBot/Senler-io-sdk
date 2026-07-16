@@ -9,6 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StatisticsDecimalCreditsMetricDeltaDto } from './StatisticsDecimalCreditsMetricDeltaDto';
+import type { StatisticsAiResponseCostsDto } from './StatisticsAiResponseCostsDto';
+import type { StatisticsCreditsMetricDeltaDto } from './StatisticsCreditsMetricDeltaDto';
 import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
 /**
  * StatisticsSummaryDto.
@@ -17,11 +20,17 @@ import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
  */
 export interface StatisticsSummaryDto {
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
+     * timestamp . , AI-
+     * @type {StatisticsCreditsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    creditsUsed: StatisticsMetricDeltaDto;
+    creditsUsed: StatisticsCreditsMetricDeltaDto;
+    /**
+     * AI-. average_direct_credits_per_response; deprecated average_credits_per_message average_credits_per_dialog . 1200000 / 12 = 100000
+     * @type {StatisticsAiResponseCostsDto}
+     * @memberof StatisticsSummaryDto
+     */
+    aiResponseCosts: StatisticsAiResponseCostsDto;
     /**
      *
      * @type {StatisticsMetricDeltaDto}
@@ -35,7 +44,7 @@ export interface StatisticsSummaryDto {
      */
     leadMessages: StatisticsMetricDeltaDto;
     /**
-     * AI-
+     * , AI-; AI-
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
@@ -131,17 +140,19 @@ export interface StatisticsSummaryDto {
      */
     averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
+     * DEPRECATED: credits_used, ; AI-
+     * @type {StatisticsDecimalCreditsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
+     * @deprecated
      */
-    averageCreditsPerDialog: StatisticsMetricDeltaDto;
+    averageCreditsPerDialog: StatisticsDecimalCreditsMetricDeltaDto;
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
+     * DEPRECATED: credits_used, message_created (, AI); AI-
+     * @type {StatisticsDecimalCreditsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
+     * @deprecated
      */
-    averageCreditsPerMessage: StatisticsMetricDeltaDto;
+    averageCreditsPerMessage: StatisticsDecimalCreditsMetricDeltaDto;
     /**
      *
      * @type {StatisticsMetricDeltaDto}

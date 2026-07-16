@@ -41,6 +41,7 @@ import { MCPExternalUserCredentialsApi } from './generated/apis/MCPExternalUserC
 import { MCPServersApi } from './generated/apis/MCPServersApi';
 import { MetricsConfigApi } from './generated/apis/MetricsConfigApi';
 import { MetricsDefinitionsApi } from './generated/apis/MetricsDefinitionsApi';
+import { MobileAppReleasesApi } from './generated/apis/MobileAppReleasesApi';
 import { ModelsApi } from './generated/apis/ModelsApi';
 import { OAuthApi } from './generated/apis/OAuthApi';
 import { PlatformsApi } from './generated/apis/PlatformsApi';
@@ -99,6 +100,7 @@ export class AiSenlerClient {
   readonly mcpServers: MCPServersApi;
   readonly metricsConfig: MetricsConfigApi;
   readonly metricsDefinitions: MetricsDefinitionsApi;
+  readonly mobileAppReleases: MobileAppReleasesApi;
   readonly models: ModelsApi;
   readonly oAuth: OAuthApi;
   readonly platforms: PlatformsApi;
@@ -174,6 +176,7 @@ export class AiSenlerClient {
     this.mcpServers = new MCPServersApi(configuration);
     this.metricsConfig = new MetricsConfigApi(configuration);
     this.metricsDefinitions = new MetricsDefinitionsApi(configuration);
+    this.mobileAppReleases = new MobileAppReleasesApi(configuration);
     this.models = new ModelsApi(configuration);
     this.oAuth = new OAuthApi(configuration);
     this.platforms = new PlatformsApi(configuration);

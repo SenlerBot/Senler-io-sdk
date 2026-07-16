@@ -287,6 +287,12 @@ export interface CreateAgentDto {
      */
     enableAiResponse?: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    cancelPendingResponseOnProjectOperatorMessage?: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof CreateAgentDto

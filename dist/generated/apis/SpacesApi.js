@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeRefreshAcceptLanguageEnum = exports.SpacesUpdateProjectAffiliationAcceptLanguageEnum = exports.SpacesRefreshAcceptLanguageEnum = exports.SpacesGetByIdAcceptLanguageEnum = exports.GetTreeRootAcceptLanguageEnum = exports.GetTreeRootDiscoveredFromEnum = exports.GetTreeRootKindEnum = exports.GetTreeNodesAcceptLanguageEnum = exports.GetTreeNodesDiscoveredFromEnum = exports.GetTreeNodesKindEnum = exports.GetSectionsAcceptLanguageEnum = exports.GetSectionsChannelTypeEnum = exports.ChannelRefreshAcceptLanguageEnum = exports.SpacesApi = void 0;
+exports.TreeRefreshAcceptLanguageEnum = exports.SpacesUpdateProjectOperatorAcceptLanguageEnum = exports.SpacesRefreshAcceptLanguageEnum = exports.SpacesGetByIdAcceptLanguageEnum = exports.GetTreeRootAcceptLanguageEnum = exports.GetTreeRootDiscoveredFromEnum = exports.GetTreeRootKindEnum = exports.GetTreeNodesAcceptLanguageEnum = exports.GetTreeNodesDiscoveredFromEnum = exports.GetTreeNodesKindEnum = exports.GetSectionsAcceptLanguageEnum = exports.GetSectionsChannelTypeEnum = exports.ChannelRefreshAcceptLanguageEnum = exports.SpacesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -404,15 +404,15 @@ class SpacesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . Space , AI-.
-     * Space
+     * , .
+     *
      */
-    async spacesUpdateProjectAffiliationRaw(requestParameters, initOverrides) {
+    async spacesUpdateProjectOperatorRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling spacesUpdateProjectAffiliation().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling spacesUpdateProjectOperator().');
         }
-        if (requestParameters['updateSpaceProjectAffiliationDto'] == null) {
-            throw new runtime.RequiredError('updateSpaceProjectAffiliationDto', 'Required parameter "updateSpaceProjectAffiliationDto" was null or undefined when calling spacesUpdateProjectAffiliation().');
+        if (requestParameters['updateSpaceProjectOperatorDto'] == null) {
+            throw new runtime.RequiredError('updateSpaceProjectOperatorDto', 'Required parameter "updateSpaceProjectOperatorDto" was null or undefined when calling spacesUpdateProjectOperator().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -435,20 +435,20 @@ class SpacesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_spaces"]);
         }
         const response = await this.request({
-            path: `/api/spaces/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/spaces/{id}/project-operator`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.UpdateSpaceProjectAffiliationDtoToJSON)(requestParameters['updateSpaceProjectAffiliationDto']),
+            body: (0, index_1.UpdateSpaceProjectOperatorDtoToJSON)(requestParameters['updateSpaceProjectOperatorDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SpaceDetailsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . Space , AI-.
-     * Space
+     * , .
+     *
      */
-    async spacesUpdateProjectAffiliation(requestParameters, initOverrides) {
-        const response = await this.spacesUpdateProjectAffiliationRaw(requestParameters, initOverrides);
+    async spacesUpdateProjectOperator(requestParameters, initOverrides) {
+        const response = await this.spacesUpdateProjectOperatorRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -605,7 +605,7 @@ exports.SpacesRefreshAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.SpacesUpdateProjectAffiliationAcceptLanguageEnum = {
+exports.SpacesUpdateProjectOperatorAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

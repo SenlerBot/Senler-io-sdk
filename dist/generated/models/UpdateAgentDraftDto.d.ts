@@ -359,6 +359,12 @@ export interface UpdateAgentDraftDto {
      */
     enableAiResponse?: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    cancelPendingResponseOnProjectOperatorMessage?: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof UpdateAgentDraftDto

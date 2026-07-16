@@ -73,12 +73,12 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      */
     getCommunications(requestParameters: GetCommunicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCommunicationsResponseDto>;
     /**
-     * , , .
+     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
      *
      */
     getCostsRaw(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsCostsResponseDto>>;
     /**
-     * , , .
+     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
      *
      */
     getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto>;
@@ -103,12 +103,12 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      */
     getLeadsSubscriptionEvents(requestParameters: GetLeadsSubscriptionEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsLeadSubscriptionEventsResponseDto>;
     /**
-     * , .
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
      *
      */
     getOverviewRaw(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsOverviewResponseDto>>;
     /**
-     * , .
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
      *
      */
     getOverview(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsOverviewResponseDto>;

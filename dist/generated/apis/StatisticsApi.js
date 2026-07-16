@@ -115,7 +115,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , .
+     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
      *
      */
     async getCostsRaw(requestParameters, initOverrides) {
@@ -168,7 +168,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetStatisticsCostsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , .
+     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
      *
      */
     async getCosts(requestParameters, initOverrides) {
@@ -304,7 +304,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
      *
      */
     async getOverviewRaw(requestParameters, initOverrides) {
@@ -357,7 +357,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetStatisticsOverviewResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
      *
      */
     async getOverview(requestParameters, initOverrides) {

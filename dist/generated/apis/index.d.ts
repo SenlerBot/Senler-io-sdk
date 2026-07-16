@@ -35,6 +35,7 @@ export { MCPExternalUserCredentialsApi } from './MCPExternalUserCredentialsApi';
 export { MCPServersApi } from './MCPServersApi';
 export { MetricsConfigApi } from './MetricsConfigApi';
 export { MetricsDefinitionsApi } from './MetricsDefinitionsApi';
+export { MobileAppReleasesApi } from './MobileAppReleasesApi';
 export { ModelsApi } from './ModelsApi';
 export { OAuthApi } from './OAuthApi';
 export { PlatformsApi } from './PlatformsApi';

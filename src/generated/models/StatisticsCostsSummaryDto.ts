@@ -13,6 +13,27 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatisticsDecimalCreditsMetricDeltaDto } from './StatisticsDecimalCreditsMetricDeltaDto';
+import {
+    StatisticsDecimalCreditsMetricDeltaDtoFromJSON,
+    StatisticsDecimalCreditsMetricDeltaDtoFromJSONTyped,
+    StatisticsDecimalCreditsMetricDeltaDtoToJSON,
+    StatisticsDecimalCreditsMetricDeltaDtoToJSONTyped,
+} from './StatisticsDecimalCreditsMetricDeltaDto';
+import type { StatisticsAiResponseCostsDto } from './StatisticsAiResponseCostsDto';
+import {
+    StatisticsAiResponseCostsDtoFromJSON,
+    StatisticsAiResponseCostsDtoFromJSONTyped,
+    StatisticsAiResponseCostsDtoToJSON,
+    StatisticsAiResponseCostsDtoToJSONTyped,
+} from './StatisticsAiResponseCostsDto';
+import type { StatisticsCreditsMetricDeltaDto } from './StatisticsCreditsMetricDeltaDto';
+import {
+    StatisticsCreditsMetricDeltaDtoFromJSON,
+    StatisticsCreditsMetricDeltaDtoFromJSONTyped,
+    StatisticsCreditsMetricDeltaDtoToJSON,
+    StatisticsCreditsMetricDeltaDtoToJSONTyped,
+} from './StatisticsCreditsMetricDeltaDto';
 import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
 import {
     StatisticsMetricDeltaDtoFromJSON,
@@ -28,23 +49,31 @@ import {
  */
 export interface StatisticsCostsSummaryDto {
     /**
-     * 
-     * @type {StatisticsMetricDeltaDto}
+     * timestamp . , AI-
+     * @type {StatisticsCreditsMetricDeltaDto}
      * @memberof StatisticsCostsSummaryDto
      */
-    creditsUsed: StatisticsMetricDeltaDto;
+    creditsUsed: StatisticsCreditsMetricDeltaDto;
     /**
-     * 
-     * @type {StatisticsMetricDeltaDto}
+     * AI-. average_direct_credits_per_response; deprecated average_credits_per_message average_credits_per_dialog . 1200000 / 12 = 100000
+     * @type {StatisticsAiResponseCostsDto}
      * @memberof StatisticsCostsSummaryDto
      */
-    averageCreditsPerMessage: StatisticsMetricDeltaDto;
+    aiResponseCosts: StatisticsAiResponseCostsDto;
     /**
-     * 
-     * @type {StatisticsMetricDeltaDto}
+     * DEPRECATED: credits_used, message_created (, AI); AI-
+     * @type {StatisticsDecimalCreditsMetricDeltaDto}
      * @memberof StatisticsCostsSummaryDto
+     * @deprecated
      */
-    averageCreditsPerDialog: StatisticsMetricDeltaDto;
+    averageCreditsPerMessage: StatisticsDecimalCreditsMetricDeltaDto;
+    /**
+     * DEPRECATED: credits_used, ; AI-
+     * @type {StatisticsDecimalCreditsMetricDeltaDto}
+     * @memberof StatisticsCostsSummaryDto
+     * @deprecated
+     */
+    averageCreditsPerDialog: StatisticsDecimalCreditsMetricDeltaDto;
     /**
      * 
      * @type {StatisticsMetricDeltaDto}
@@ -58,6 +87,7 @@ export interface StatisticsCostsSummaryDto {
  */
 export function instanceOfStatisticsCostsSummaryDto(value: object): value is StatisticsCostsSummaryDto {
     if (!('creditsUsed' in value) || value['creditsUsed'] === undefined) return false;
+    if (!('aiResponseCosts' in value) || value['aiResponseCosts'] === undefined) return false;
     if (!('averageCreditsPerMessage' in value) || value['averageCreditsPerMessage'] === undefined) return false;
     if (!('averageCreditsPerDialog' in value) || value['averageCreditsPerDialog'] === undefined) return false;
     if (!('tokensUsed' in value) || value['tokensUsed'] === undefined) return false;
@@ -74,9 +104,10 @@ export function StatisticsCostsSummaryDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'creditsUsed': StatisticsMetricDeltaDtoFromJSON(json['credits_used']),
-        'averageCreditsPerMessage': StatisticsMetricDeltaDtoFromJSON(json['average_credits_per_message']),
-        'averageCreditsPerDialog': StatisticsMetricDeltaDtoFromJSON(json['average_credits_per_dialog']),
+        'creditsUsed': StatisticsCreditsMetricDeltaDtoFromJSON(json['credits_used']),
+        'aiResponseCosts': StatisticsAiResponseCostsDtoFromJSON(json['ai_response_costs']),
+        'averageCreditsPerMessage': StatisticsDecimalCreditsMetricDeltaDtoFromJSON(json['average_credits_per_message']),
+        'averageCreditsPerDialog': StatisticsDecimalCreditsMetricDeltaDtoFromJSON(json['average_credits_per_dialog']),
         'tokensUsed': StatisticsMetricDeltaDtoFromJSON(json['tokens_used']),
     };
 }
@@ -92,9 +123,10 @@ export function StatisticsCostsSummaryDtoToJSONTyped(value?: StatisticsCostsSumm
 
     return {
         
-        'credits_used': StatisticsMetricDeltaDtoToJSON(value['creditsUsed']),
-        'average_credits_per_message': StatisticsMetricDeltaDtoToJSON(value['averageCreditsPerMessage']),
-        'average_credits_per_dialog': StatisticsMetricDeltaDtoToJSON(value['averageCreditsPerDialog']),
+        'credits_used': StatisticsCreditsMetricDeltaDtoToJSON(value['creditsUsed']),
+        'ai_response_costs': StatisticsAiResponseCostsDtoToJSON(value['aiResponseCosts']),
+        'average_credits_per_message': StatisticsDecimalCreditsMetricDeltaDtoToJSON(value['averageCreditsPerMessage']),
+        'average_credits_per_dialog': StatisticsDecimalCreditsMetricDeltaDtoToJSON(value['averageCreditsPerDialog']),
         'tokens_used': StatisticsMetricDeltaDtoToJSON(value['tokensUsed']),
     };
 }

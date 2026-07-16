@@ -37,6 +37,7 @@ function EventAiDtoFromJSONTyped(json, ignoreDiscriminator) {
         'skipMetrics': json['skip_metrics'] == null ? undefined : json['skip_metrics'],
         'operatorReplySuggestion': json['operator_reply_suggestion'] == null ? undefined : json['operator_reply_suggestion'],
         'generationTimeMs': json['generation_time_ms'] == null ? undefined : json['generation_time_ms'],
+        'responseId': json['response_id'] == null ? undefined : json['response_id'],
         'requestId': json['request_id'] == null ? undefined : json['request_id'],
         'streamId': json['stream_id'] == null ? undefined : json['stream_id'],
     };
@@ -54,6 +55,7 @@ function EventAiDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'skip_metrics': value['skipMetrics'],
         'operator_reply_suggestion': value['operatorReplySuggestion'],
         'generation_time_ms': value['generationTimeMs'],
+        'response_id': value['responseId'],
         'request_id': value['requestId'],
         'stream_id': value['streamId'],
     };

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectAffiliationAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
+exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -373,15 +373,15 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . Lead , AI-.
-     * Lead
+     * .
+     *
      */
-    async updateProjectAffiliationRaw(requestParameters, initOverrides) {
+    async updateProjectOperatorRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateProjectAffiliation().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateProjectOperator().');
         }
-        if (requestParameters['updateLeadProjectAffiliationDto'] == null) {
-            throw new runtime.RequiredError('updateLeadProjectAffiliationDto', 'Required parameter "updateLeadProjectAffiliationDto" was null or undefined when calling updateProjectAffiliation().');
+        if (requestParameters['updateLeadProjectOperatorDto'] == null) {
+            throw new runtime.RequiredError('updateLeadProjectOperatorDto', 'Required parameter "updateLeadProjectOperatorDto" was null or undefined when calling updateProjectOperator().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -404,20 +404,20 @@ class LeadsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
-            path: `/api/leads/{id}/project-affiliation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/leads/{id}/project-operator`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.UpdateLeadProjectAffiliationDtoToJSON)(requestParameters['updateLeadProjectAffiliationDto']),
+            body: (0, index_1.UpdateLeadProjectOperatorDtoToJSON)(requestParameters['updateLeadProjectOperatorDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . Lead , AI-.
-     * Lead
+     * .
+     *
      */
-    async updateProjectAffiliation(requestParameters, initOverrides) {
-        const response = await this.updateProjectAffiliationRaw(requestParameters, initOverrides);
+    async updateProjectOperator(requestParameters, initOverrides) {
+        const response = await this.updateProjectOperatorRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -567,7 +567,7 @@ exports.UpdateNotesAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.UpdateProjectAffiliationAcceptLanguageEnum = {
+exports.UpdateProjectOperatorAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

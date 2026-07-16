@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateExportProcessDto, CreateImportProcessDto, CreateLeadsRefreshProcessDto, LeadResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectAffiliationDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
+import type { CreateExportProcessDto, CreateImportProcessDto, CreateLeadsRefreshProcessDto, LeadResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
     xSessionId?: string;
@@ -48,11 +48,11 @@ export interface UpdateNotesRequest {
     xSessionId?: string;
     acceptLanguage?: UpdateNotesAcceptLanguageEnum;
 }
-export interface UpdateProjectAffiliationRequest {
+export interface UpdateProjectOperatorRequest {
     id: string;
-    updateLeadProjectAffiliationDto: UpdateLeadProjectAffiliationDto;
+    updateLeadProjectOperatorDto: UpdateLeadProjectOperatorDto;
     xSessionId?: string;
-    acceptLanguage?: UpdateProjectAffiliationAcceptLanguageEnum;
+    acceptLanguage?: UpdateProjectOperatorAcceptLanguageEnum;
 }
 export interface UpdateSyncProfileRequest {
     id: string;
@@ -140,15 +140,15 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     updateNotes(requestParameters: UpdateNotesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
-     * . Lead , AI-.
-     * Lead
+     * .
+     *
      */
-    updateProjectAffiliationRaw(requestParameters: UpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    updateProjectOperatorRaw(requestParameters: UpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
     /**
-     * . Lead , AI-.
-     * Lead
+     * .
+     *
      */
-    updateProjectAffiliation(requestParameters: UpdateProjectAffiliationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    updateProjectOperator(requestParameters: UpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
      * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
@@ -229,11 +229,11 @@ export type UpdateNotesAcceptLanguageEnum = typeof UpdateNotesAcceptLanguageEnum
 /**
  * @export
  */
-export declare const UpdateProjectAffiliationAcceptLanguageEnum: {
+export declare const UpdateProjectOperatorAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateProjectAffiliationAcceptLanguageEnum = typeof UpdateProjectAffiliationAcceptLanguageEnum[keyof typeof UpdateProjectAffiliationAcceptLanguageEnum];
+export type UpdateProjectOperatorAcceptLanguageEnum = typeof UpdateProjectOperatorAcceptLanguageEnum[keyof typeof UpdateProjectOperatorAcceptLanguageEnum];
 /**
  * @export
  */

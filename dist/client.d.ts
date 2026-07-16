@@ -37,6 +37,7 @@ import { MCPExternalUserCredentialsApi } from './generated/apis/MCPExternalUserC
 import { MCPServersApi } from './generated/apis/MCPServersApi';
 import { MetricsConfigApi } from './generated/apis/MetricsConfigApi';
 import { MetricsDefinitionsApi } from './generated/apis/MetricsDefinitionsApi';
+import { MobileAppReleasesApi } from './generated/apis/MobileAppReleasesApi';
 import { ModelsApi } from './generated/apis/ModelsApi';
 import { OAuthApi } from './generated/apis/OAuthApi';
 import { PlatformsApi } from './generated/apis/PlatformsApi';
@@ -91,6 +92,7 @@ export declare class AiSenlerClient {
     readonly mcpServers: MCPServersApi;
     readonly metricsConfig: MetricsConfigApi;
     readonly metricsDefinitions: MetricsDefinitionsApi;
+    readonly mobileAppReleases: MobileAppReleasesApi;
     readonly models: ModelsApi;
     readonly oAuth: OAuthApi;
     readonly platforms: PlatformsApi;
