@@ -113,6 +113,12 @@ export interface UpdateAgentDraftDto {
      */
     triggerKeywords?: Array<string>;
     /**
+     *
+     * @type {string}
+     * @memberof UpdateAgentDraftDto
+     */
+    autostartMode?: UpdateAgentDraftDtoAutostartModeEnum;
+    /**
      * . , trigger_keywords.
      * @type {string}
      * @memberof UpdateAgentDraftDto
@@ -137,7 +143,7 @@ export interface UpdateAgentDraftDto {
      */
     autoAssignmentMode?: UpdateAgentDraftDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels
+     * ID selected_channels. ; .
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
@@ -161,13 +167,19 @@ export interface UpdateAgentDraftDto {
      */
     confirmAutoAssignmentOverwrite?: boolean;
     /**
-     * ( )
+     *
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
-    useDefaultMetrics?: boolean;
+    useDefaultEventMetrics?: boolean;
     /**
-     * ID ( when use_default_metrics = false)
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    useDefaultDiscussionMetrics?: boolean;
+    /**
+     * ID ,
      * @type {Array<string>}
      * @memberof UpdateAgentDraftDto
      */
@@ -501,6 +513,15 @@ export declare const UpdateAgentDraftDtoKnowledgeBasePermissionsEnum: {
     readonly DeleteTables: "delete_tables";
 };
 export type UpdateAgentDraftDtoKnowledgeBasePermissionsEnum = typeof UpdateAgentDraftDtoKnowledgeBasePermissionsEnum[keyof typeof UpdateAgentDraftDtoKnowledgeBasePermissionsEnum];
+/**
+ * @export
+ */
+export declare const UpdateAgentDraftDtoAutostartModeEnum: {
+    readonly Off: "off";
+    readonly Keywords: "keywords";
+    readonly AllMessages: "all_messages";
+};
+export type UpdateAgentDraftDtoAutostartModeEnum = typeof UpdateAgentDraftDtoAutostartModeEnum[keyof typeof UpdateAgentDraftDtoAutostartModeEnum];
 /**
  * @export
  */

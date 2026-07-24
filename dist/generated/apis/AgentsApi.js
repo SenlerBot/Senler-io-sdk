@@ -46,13 +46,56 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.ListAcceptLanguageEnum = exports.GetWithDraftAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DraftAcceptLanguageEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.AgentsUpdateAcceptLanguageEnum = exports.AgentsGetByIdAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.AgentsCreateAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AgentsApi = void 0;
+exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.ListAcceptLanguageEnum = exports.GetWithDraftAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DraftAcceptLanguageEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.AgentsUpdateAcceptLanguageEnum = exports.AgentsGetByIdAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.AgentsCreateAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class AgentsApi extends runtime.BaseAPI {
+    /**
+     * , . .
+     *
+     */
+    async acquisitionRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling acquisition().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/acquisition`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAcquisitionResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     *
+     */
+    async acquisition(requestParameters, initOverrides) {
+        const response = await this.acquisitionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * is_active = true . .
      *
@@ -881,6 +924,13 @@ class AgentsApi extends runtime.BaseAPI {
     }
 }
 exports.AgentsApi = AgentsApi;
+/**
+ * @export
+ */
+exports.AcquisitionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */

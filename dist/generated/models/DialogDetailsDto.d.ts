@@ -180,13 +180,13 @@ export interface DialogDetailsDto {
      * @type {string}
      * @memberof DialogDetailsDto
      */
-    activeSupportCaseId?: string;
+    activeConversationSegmentId?: string;
     /**
      *
      * @type {Date}
      * @memberof DialogDetailsDto
      */
-    activeSupportCaseOpenedAt?: Date;
+    activeConversationSegmentOpenedAt?: Date;
     /**
      *
      * @type {Date}

@@ -13,11 +13,18 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ArrayItemsSchemaDtoTypeEnum = void 0;
 exports.instanceOfArrayItemsSchemaDto = instanceOfArrayItemsSchemaDto;
 exports.ArrayItemsSchemaDtoFromJSON = ArrayItemsSchemaDtoFromJSON;
 exports.ArrayItemsSchemaDtoFromJSONTyped = ArrayItemsSchemaDtoFromJSONTyped;
 exports.ArrayItemsSchemaDtoToJSON = ArrayItemsSchemaDtoToJSON;
 exports.ArrayItemsSchemaDtoToJSONTyped = ArrayItemsSchemaDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.ArrayItemsSchemaDtoTypeEnum = {
+    String: 'string'
+};
 /**
  * Check if a given object implements the ArrayItemsSchemaDto interface.
  */
@@ -36,6 +43,7 @@ function ArrayItemsSchemaDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         '_enum': json['enum'] == null ? undefined : json['enum'],
+        'enumLabels': json['enum_labels'] == null ? undefined : json['enum_labels'],
     };
 }
 function ArrayItemsSchemaDtoToJSON(json) {
@@ -48,5 +56,6 @@ function ArrayItemsSchemaDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'type': value['type'],
         'enum': value['_enum'],
+        'enum_labels': value['enumLabels'],
     };
 }

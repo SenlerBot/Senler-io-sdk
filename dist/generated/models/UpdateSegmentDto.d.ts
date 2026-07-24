@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SegmentContactRequestDto } from './SegmentContactRequestDto';
 import type { SegmentPaymentDto } from './SegmentPaymentDto';
 import type { SegmentRequiredConsentDto } from './SegmentRequiredConsentDto';
 /**
@@ -26,54 +25,10 @@ export interface UpdateSegmentDto {
     name?: string;
     /**
      *
-     * @type {string}
-     * @memberof UpdateSegmentDto
-     */
-    description?: string | null;
-    /**
-     * , .
-     * @type {boolean}
-     * @memberof UpdateSegmentDto
-     */
-    listVisible?: boolean;
-    /**
-     * :
-     * @type {string}
-     * @memberof UpdateSegmentDto
-     */
-    channelScope?: UpdateSegmentDtoChannelScopeEnum;
-    /**
-     * UUID . channel_scope=selected.
-     * @type {Array<string>}
-     * @memberof UpdateSegmentDto
-     */
-    channelIds?: Array<string> | null;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof UpdateSegmentDto
-     */
-    autoSubscribeKeywords?: Array<string>;
-    /**
-     *
      * @type {SegmentPaymentDto}
      * @memberof UpdateSegmentDto
      */
     payment?: SegmentPaymentDto;
-    /**
-     * Page: blocks blocks_edit
-     * @type {{ [key: string]: any; }}
-     * @memberof UpdateSegmentDto
-     */
-    landingDraft?: {
-        [key: string]: any;
-    } | null;
-    /**
-     * email
-     * @type {SegmentContactRequestDto}
-     * @memberof UpdateSegmentDto
-     */
-    contactRequest?: SegmentContactRequestDto;
     /**
      * ,
      * @type {Array<SegmentRequiredConsentDto>}
@@ -81,14 +36,6 @@ export interface UpdateSegmentDto {
      */
     requiredConsents?: Array<SegmentRequiredConsentDto>;
 }
-/**
- * @export
- */
-export declare const UpdateSegmentDtoChannelScopeEnum: {
-    readonly All: "all";
-    readonly Selected: "selected";
-};
-export type UpdateSegmentDtoChannelScopeEnum = typeof UpdateSegmentDtoChannelScopeEnum[keyof typeof UpdateSegmentDtoChannelScopeEnum];
 /**
  * Check if a given object implements the UpdateSegmentDto interface.
  */

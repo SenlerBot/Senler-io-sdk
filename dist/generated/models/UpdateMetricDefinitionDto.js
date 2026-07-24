@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateMetricDefinitionDtoValueTypeEnum = void 0;
+exports.UpdateMetricDefinitionDtoDiscussionRoleEnum = exports.UpdateMetricDefinitionDtoMeasurementScopeEnum = exports.UpdateMetricDefinitionDtoValueTypeEnum = void 0;
 exports.instanceOfUpdateMetricDefinitionDto = instanceOfUpdateMetricDefinitionDto;
 exports.UpdateMetricDefinitionDtoFromJSON = UpdateMetricDefinitionDtoFromJSON;
 exports.UpdateMetricDefinitionDtoFromJSONTyped = UpdateMetricDefinitionDtoFromJSONTyped;
@@ -32,6 +32,20 @@ exports.UpdateMetricDefinitionDtoValueTypeEnum = {
     Boolean: 'boolean',
     Array: 'array',
     Object: 'object'
+};
+/**
+ * @export
+ */
+exports.UpdateMetricDefinitionDtoMeasurementScopeEnum = {
+    Event: 'event',
+    Discussion: 'discussion'
+};
+/**
+ * @export
+ */
+exports.UpdateMetricDefinitionDtoDiscussionRoleEnum = {
+    Primary: 'primary',
+    Facet: 'facet'
 };
 /**
  * Check if a given object implements the UpdateMetricDefinitionDto interface.
@@ -63,6 +77,8 @@ function UpdateMetricDefinitionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'arrayValidation': json['array_validation'] == null ? undefined : (0, ArrayValidationDto_1.ArrayValidationDtoFromJSON)(json['array_validation']),
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'isAnalyzable': json['is_analyzable'] == null ? undefined : json['is_analyzable'],
+        'measurementScope': json['measurement_scope'] == null ? undefined : json['measurement_scope'],
+        'discussionRole': json['discussion_role'] == null ? undefined : json['discussion_role'],
         'norm': json['norm'] == null ? undefined : json['norm'],
     };
 }
@@ -90,6 +106,8 @@ function UpdateMetricDefinitionDtoToJSONTyped(value, ignoreDiscriminator = false
         'array_validation': (0, ArrayValidationDto_1.ArrayValidationDtoToJSON)(value['arrayValidation']),
         'is_active': value['isActive'],
         'is_analyzable': value['isAnalyzable'],
+        'measurement_scope': value['measurementScope'],
+        'discussion_role': value['discussionRole'],
         'norm': value['norm'],
     };
 }

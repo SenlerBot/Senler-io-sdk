@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentDraftDtoLeadVarsUserRequestModeEnum = exports.UpdateAgentDraftDtoLeadVarsInstructionModeEnum = exports.UpdateAgentDraftDtoProjectVarsUserRequestModeEnum = exports.UpdateAgentDraftDtoProjectVarsInstructionModeEnum = exports.UpdateAgentDraftDtoWizardTrainingModeSelectedEnum = exports.UpdateAgentDraftDtoTrainingModeEnum = exports.UpdateAgentDraftDtoStatusEnum = exports.UpdateAgentDraftDtoCreationModeEnum = exports.UpdateAgentDraftDtoAutoAssignmentRoleEnum = exports.UpdateAgentDraftDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentDraftDtoAutoAssignmentModeEnum = exports.UpdateAgentDraftDtoKeywordDialogScopeEnum = exports.UpdateAgentDraftDtoKeywordAssignmentRoleEnum = exports.UpdateAgentDraftDtoKnowledgeBasePermissionsEnum = exports.UpdateAgentDraftDtoServerBindingModeEnum = exports.UpdateAgentDraftDtoAgentTypeEnum = void 0;
+exports.UpdateAgentDraftDtoLeadVarsUserRequestModeEnum = exports.UpdateAgentDraftDtoLeadVarsInstructionModeEnum = exports.UpdateAgentDraftDtoProjectVarsUserRequestModeEnum = exports.UpdateAgentDraftDtoProjectVarsInstructionModeEnum = exports.UpdateAgentDraftDtoWizardTrainingModeSelectedEnum = exports.UpdateAgentDraftDtoTrainingModeEnum = exports.UpdateAgentDraftDtoStatusEnum = exports.UpdateAgentDraftDtoCreationModeEnum = exports.UpdateAgentDraftDtoAutoAssignmentRoleEnum = exports.UpdateAgentDraftDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentDraftDtoAutoAssignmentModeEnum = exports.UpdateAgentDraftDtoKeywordDialogScopeEnum = exports.UpdateAgentDraftDtoKeywordAssignmentRoleEnum = exports.UpdateAgentDraftDtoAutostartModeEnum = exports.UpdateAgentDraftDtoKnowledgeBasePermissionsEnum = exports.UpdateAgentDraftDtoServerBindingModeEnum = exports.UpdateAgentDraftDtoAgentTypeEnum = void 0;
 exports.instanceOfUpdateAgentDraftDto = instanceOfUpdateAgentDraftDto;
 exports.UpdateAgentDraftDtoFromJSON = UpdateAgentDraftDtoFromJSON;
 exports.UpdateAgentDraftDtoFromJSONTyped = UpdateAgentDraftDtoFromJSONTyped;
@@ -56,6 +56,14 @@ exports.UpdateAgentDraftDtoKnowledgeBasePermissionsEnum = {
     DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
     DeleteTables: 'delete_tables'
+};
+/**
+ * @export
+ */
+exports.UpdateAgentDraftDtoAutostartModeEnum = {
+    Off: 'off',
+    Keywords: 'keywords',
+    AllMessages: 'all_messages'
 };
 /**
  * @export
@@ -189,6 +197,7 @@ function UpdateAgentDraftDtoFromJSONTyped(json, ignoreDiscriminator) {
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'] == null ? undefined : json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'] == null ? undefined : json['trigger_keywords'],
+        'autostartMode': json['autostart_mode'] == null ? undefined : json['autostart_mode'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -197,7 +206,8 @@ function UpdateAgentDraftDtoFromJSONTyped(json, ignoreDiscriminator) {
         'autoAssignmentDialogScope': json['auto_assignment_dialog_scope'] == null ? undefined : json['auto_assignment_dialog_scope'],
         'autoAssignmentRole': json['auto_assignment_role'] == null ? undefined : json['auto_assignment_role'],
         'confirmAutoAssignmentOverwrite': json['confirm_auto_assignment_overwrite'] == null ? undefined : json['confirm_auto_assignment_overwrite'],
-        'useDefaultMetrics': json['use_default_metrics'] == null ? undefined : json['use_default_metrics'],
+        'useDefaultEventMetrics': json['use_default_event_metrics'] == null ? undefined : json['use_default_event_metrics'],
+        'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'] == null ? undefined : json['use_default_discussion_metrics'],
         'enabledMetricIds': json['enabled_metric_ids'] == null ? undefined : json['enabled_metric_ids'],
         'creationMode': json['creation_mode'] == null ? undefined : json['creation_mode'],
         'status': json['status'] == null ? undefined : json['status'],
@@ -273,6 +283,7 @@ function UpdateAgentDraftDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
+        'autostart_mode': value['autostartMode'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],
@@ -281,7 +292,8 @@ function UpdateAgentDraftDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'auto_assignment_dialog_scope': value['autoAssignmentDialogScope'],
         'auto_assignment_role': value['autoAssignmentRole'],
         'confirm_auto_assignment_overwrite': value['confirmAutoAssignmentOverwrite'],
-        'use_default_metrics': value['useDefaultMetrics'],
+        'use_default_event_metrics': value['useDefaultEventMetrics'],
+        'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],
         'enabled_metric_ids': value['enabledMetricIds'],
         'creation_mode': value['creationMode'],
         'status': value['status'],

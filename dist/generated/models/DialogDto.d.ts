@@ -177,13 +177,13 @@ export interface DialogDto {
      * @type {string}
      * @memberof DialogDto
      */
-    activeSupportCaseId?: string;
+    activeConversationSegmentId?: string;
     /**
      *
      * @type {Date}
      * @memberof DialogDto
      */
-    activeSupportCaseOpenedAt?: Date;
+    activeConversationSegmentOpenedAt?: Date;
     /**
      *
      * @type {Date}

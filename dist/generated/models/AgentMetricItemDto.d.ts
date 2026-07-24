@@ -82,11 +82,11 @@ export interface AgentMetricItemDto {
      */
     changePercent: number;
     /**
-     * ( )
+     *
      * @type {number}
      * @memberof AgentMetricItemDto
      */
-    eventsCount: number;
+    observationsCount: number;
 }
 /**
  * @export

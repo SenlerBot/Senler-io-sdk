@@ -107,11 +107,29 @@ export interface CreateAgentDto {
      */
     metricsCollectionEnabled?: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    useDefaultEventMetrics?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    useDefaultDiscussionMetrics?: boolean;
+    /**
      * ( )
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
     triggerKeywords?: Array<string>;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateAgentDto
+     */
+    autostartMode?: CreateAgentDtoAutostartModeEnum;
     /**
      * . , trigger_keywords .
      * @type {string}
@@ -137,7 +155,7 @@ export interface CreateAgentDto {
      */
     autoAssignmentMode?: CreateAgentDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels
+     * ID selected_channels. .
      * @type {Array<string>}
      * @memberof CreateAgentDto
      */
@@ -429,6 +447,15 @@ export declare const CreateAgentDtoKnowledgeBasePermissionsEnum: {
     readonly DeleteTables: "delete_tables";
 };
 export type CreateAgentDtoKnowledgeBasePermissionsEnum = typeof CreateAgentDtoKnowledgeBasePermissionsEnum[keyof typeof CreateAgentDtoKnowledgeBasePermissionsEnum];
+/**
+ * @export
+ */
+export declare const CreateAgentDtoAutostartModeEnum: {
+    readonly Off: "off";
+    readonly Keywords: "keywords";
+    readonly AllMessages: "all_messages";
+};
+export type CreateAgentDtoAutostartModeEnum = typeof CreateAgentDtoAutostartModeEnum[keyof typeof CreateAgentDtoAutostartModeEnum];
 /**
  * @export
  */

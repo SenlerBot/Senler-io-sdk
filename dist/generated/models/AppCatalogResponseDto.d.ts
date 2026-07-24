@@ -53,22 +53,16 @@ export interface AppCatalogResponseDto {
     websiteUrl?: string | null;
     /**
      *
-     * @type {Array<string>}
+     * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    types: Array<string>;
+    type: AppCatalogResponseDtoTypeEnum;
     /**
      * ,
      * @type {Array<string>}
      * @memberof AppCatalogResponseDto
      */
     allowedPermissions: Array<string>;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AppCatalogResponseDto
-     */
-    allowDeveloperDialogAccess: boolean;
     /**
      *
      * @type {boolean}
@@ -82,6 +76,16 @@ export interface AppCatalogResponseDto {
      */
     createdAt: Date;
 }
+/**
+ * @export
+ */
+export declare const AppCatalogResponseDtoTypeEnum: {
+    readonly Oauth: "oauth";
+    readonly SalesFunnel: "sales_funnel";
+    readonly AgentTool: "agent_tool";
+    readonly EmbeddedPage: "embedded_page";
+};
+export type AppCatalogResponseDtoTypeEnum = typeof AppCatalogResponseDtoTypeEnum[keyof typeof AppCatalogResponseDtoTypeEnum];
 /**
  * Check if a given object implements the AppCatalogResponseDto interface.
  */

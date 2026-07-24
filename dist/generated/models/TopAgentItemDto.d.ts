@@ -72,11 +72,11 @@ export interface TopAgentItemDto {
      */
     overallStats: AgentOverallStatsDto;
     /**
-     * ( )
+     *
      * @type {number}
      * @memberof TopAgentItemDto
      */
-    eventsCount: number;
+    metricObservationsCount: number;
     /**
      * UI-
      * @type {string}

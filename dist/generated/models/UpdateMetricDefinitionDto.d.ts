@@ -118,6 +118,18 @@ export interface UpdateMetricDefinitionDto {
      */
     isAnalyzable?: boolean;
     /**
+     * : event discussion.
+     * @type {string}
+     * @memberof UpdateMetricDefinitionDto
+     */
+    measurementScope?: UpdateMetricDefinitionDtoMeasurementScopeEnum;
+    /**
+     * . discussion; event null.
+     * @type {string}
+     * @memberof UpdateMetricDefinitionDto
+     */
+    discussionRole?: UpdateMetricDefinitionDtoDiscussionRoleEnum | null;
+    /**
      * ( ) . null = .
      * @type {number}
      * @memberof UpdateMetricDefinitionDto
@@ -135,6 +147,22 @@ export declare const UpdateMetricDefinitionDtoValueTypeEnum: {
     readonly Object: "object";
 };
 export type UpdateMetricDefinitionDtoValueTypeEnum = typeof UpdateMetricDefinitionDtoValueTypeEnum[keyof typeof UpdateMetricDefinitionDtoValueTypeEnum];
+/**
+ * @export
+ */
+export declare const UpdateMetricDefinitionDtoMeasurementScopeEnum: {
+    readonly Event: "event";
+    readonly Discussion: "discussion";
+};
+export type UpdateMetricDefinitionDtoMeasurementScopeEnum = typeof UpdateMetricDefinitionDtoMeasurementScopeEnum[keyof typeof UpdateMetricDefinitionDtoMeasurementScopeEnum];
+/**
+ * @export
+ */
+export declare const UpdateMetricDefinitionDtoDiscussionRoleEnum: {
+    readonly Primary: "primary";
+    readonly Facet: "facet";
+};
+export type UpdateMetricDefinitionDtoDiscussionRoleEnum = typeof UpdateMetricDefinitionDtoDiscussionRoleEnum[keyof typeof UpdateMetricDefinitionDtoDiscussionRoleEnum];
 /**
  * Check if a given object implements the UpdateMetricDefinitionDto interface.
  */

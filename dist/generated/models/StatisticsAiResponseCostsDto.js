@@ -13,17 +13,18 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatisticsAiResponseCostsDtoDataStatusEnum = void 0;
+exports.StatisticsAiResponseCostsDtoProjectCurrencyEnum = exports.StatisticsAiResponseCostsDtoDataStatusEnum = void 0;
 exports.instanceOfStatisticsAiResponseCostsDto = instanceOfStatisticsAiResponseCostsDto;
 exports.StatisticsAiResponseCostsDtoFromJSON = StatisticsAiResponseCostsDtoFromJSON;
 exports.StatisticsAiResponseCostsDtoFromJSONTyped = StatisticsAiResponseCostsDtoFromJSONTyped;
 exports.StatisticsAiResponseCostsDtoToJSON = StatisticsAiResponseCostsDtoToJSON;
 exports.StatisticsAiResponseCostsDtoToJSONTyped = StatisticsAiResponseCostsDtoToJSONTyped;
-const StatisticsNullableRubMoneyMetricDeltaDto_1 = require("./StatisticsNullableRubMoneyMetricDeltaDto");
+const StatisticsAiResponseBreakdownDto_1 = require("./StatisticsAiResponseBreakdownDto");
+const StatisticsAiResponseToolUsageDto_1 = require("./StatisticsAiResponseToolUsageDto");
 const StatisticsNullableCreditsMetricDeltaDto_1 = require("./StatisticsNullableCreditsMetricDeltaDto");
-const StatisticsNullableUsdMoneyMetricDeltaDto_1 = require("./StatisticsNullableUsdMoneyMetricDeltaDto");
 const StatisticsNullableMetricDeltaDto_1 = require("./StatisticsNullableMetricDeltaDto");
 const StatisticsNullableDecimalCreditsMetricDeltaDto_1 = require("./StatisticsNullableDecimalCreditsMetricDeltaDto");
+const StatisticsNullableProjectMoneyMetricDeltaDto_1 = require("./StatisticsNullableProjectMoneyMetricDeltaDto");
 /**
  * @export
  */
@@ -33,26 +34,41 @@ exports.StatisticsAiResponseCostsDtoDataStatusEnum = {
     Unavailable: 'unavailable'
 };
 /**
+ * @export
+ */
+exports.StatisticsAiResponseCostsDtoProjectCurrencyEnum = {
+    Usd: 'USD',
+    Rub: 'RUB'
+};
+/**
  * Check if a given object implements the StatisticsAiResponseCostsDto interface.
  */
 function instanceOfStatisticsAiResponseCostsDto(value) {
     if (!('dataStatus' in value) || value['dataStatus'] === undefined)
         return false;
+    if (!('projectCurrency' in value) || value['projectCurrency'] === undefined)
+        return false;
     if (!('directCreditsUsed' in value) || value['directCreditsUsed'] === undefined)
         return false;
-    if (!('directCostRub' in value) || value['directCostRub'] === undefined)
+    if (!('projectCurrencyCost' in value) || value['projectCurrencyCost'] === undefined)
         return false;
-    if (!('directCostUsd' in value) || value['directCostUsd'] === undefined)
+    if (!('excludedFromProjectCurrencyCredits' in value) || value['excludedFromProjectCurrencyCredits'] === undefined)
         return false;
-    if (!('unconvertedCredits' in value) || value['unconvertedCredits'] === undefined)
+    if (!('breakdown' in value) || value['breakdown'] === undefined)
         return false;
-    if (!('completedAiResponses' in value) || value['completedAiResponses'] === undefined)
+    if (!('toolUsage' in value) || value['toolUsage'] === undefined)
         return false;
-    if (!('dialogsWithCompletedAiResponses' in value) || value['dialogsWithCompletedAiResponses'] === undefined)
+    if (!('aiResponses' in value) || value['aiResponses'] === undefined)
+        return false;
+    if (!('dialogsWithAiResponses' in value) || value['dialogsWithAiResponses'] === undefined)
         return false;
     if (!('averageDirectCreditsPerResponse' in value) || value['averageDirectCreditsPerResponse'] === undefined)
         return false;
+    if (!('averageProjectCurrencyCostPerResponse' in value) || value['averageProjectCurrencyCostPerResponse'] === undefined)
+        return false;
     if (!('averageDirectCreditsPerDialog' in value) || value['averageDirectCreditsPerDialog'] === undefined)
+        return false;
+    if (!('averageProjectCurrencyCostPerDialog' in value) || value['averageProjectCurrencyCostPerDialog'] === undefined)
         return false;
     return true;
 }
@@ -65,14 +81,18 @@ function StatisticsAiResponseCostsDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'dataStatus': json['data_status'],
+        'projectCurrency': json['project_currency'],
         'directCreditsUsed': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoFromJSON)(json['direct_credits_used']),
-        'directCostRub': (0, StatisticsNullableRubMoneyMetricDeltaDto_1.StatisticsNullableRubMoneyMetricDeltaDtoFromJSON)(json['direct_cost_rub']),
-        'directCostUsd': (0, StatisticsNullableUsdMoneyMetricDeltaDto_1.StatisticsNullableUsdMoneyMetricDeltaDtoFromJSON)(json['direct_cost_usd']),
-        'unconvertedCredits': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoFromJSON)(json['unconverted_credits']),
-        'completedAiResponses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['completed_ai_responses']),
-        'dialogsWithCompletedAiResponses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['dialogs_with_completed_ai_responses']),
+        'projectCurrencyCost': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoFromJSON)(json['project_currency_cost']),
+        'excludedFromProjectCurrencyCredits': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoFromJSON)(json['excluded_from_project_currency_credits']),
+        'breakdown': (0, StatisticsAiResponseBreakdownDto_1.StatisticsAiResponseBreakdownDtoFromJSON)(json['breakdown']),
+        'toolUsage': (0, StatisticsAiResponseToolUsageDto_1.StatisticsAiResponseToolUsageDtoFromJSON)(json['tool_usage']),
+        'aiResponses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['ai_responses']),
+        'dialogsWithAiResponses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['dialogs_with_ai_responses']),
         'averageDirectCreditsPerResponse': (0, StatisticsNullableDecimalCreditsMetricDeltaDto_1.StatisticsNullableDecimalCreditsMetricDeltaDtoFromJSON)(json['average_direct_credits_per_response']),
+        'averageProjectCurrencyCostPerResponse': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoFromJSON)(json['average_project_currency_cost_per_response']),
         'averageDirectCreditsPerDialog': (0, StatisticsNullableDecimalCreditsMetricDeltaDto_1.StatisticsNullableDecimalCreditsMetricDeltaDtoFromJSON)(json['average_direct_credits_per_dialog']),
+        'averageProjectCurrencyCostPerDialog': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoFromJSON)(json['average_project_currency_cost_per_dialog']),
     };
 }
 function StatisticsAiResponseCostsDtoToJSON(json) {
@@ -84,13 +104,17 @@ function StatisticsAiResponseCostsDtoToJSONTyped(value, ignoreDiscriminator = fa
     }
     return {
         'data_status': value['dataStatus'],
+        'project_currency': value['projectCurrency'],
         'direct_credits_used': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoToJSON)(value['directCreditsUsed']),
-        'direct_cost_rub': (0, StatisticsNullableRubMoneyMetricDeltaDto_1.StatisticsNullableRubMoneyMetricDeltaDtoToJSON)(value['directCostRub']),
-        'direct_cost_usd': (0, StatisticsNullableUsdMoneyMetricDeltaDto_1.StatisticsNullableUsdMoneyMetricDeltaDtoToJSON)(value['directCostUsd']),
-        'unconverted_credits': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoToJSON)(value['unconvertedCredits']),
-        'completed_ai_responses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['completedAiResponses']),
-        'dialogs_with_completed_ai_responses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['dialogsWithCompletedAiResponses']),
+        'project_currency_cost': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoToJSON)(value['projectCurrencyCost']),
+        'excluded_from_project_currency_credits': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoToJSON)(value['excludedFromProjectCurrencyCredits']),
+        'breakdown': (0, StatisticsAiResponseBreakdownDto_1.StatisticsAiResponseBreakdownDtoToJSON)(value['breakdown']),
+        'tool_usage': (0, StatisticsAiResponseToolUsageDto_1.StatisticsAiResponseToolUsageDtoToJSON)(value['toolUsage']),
+        'ai_responses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['aiResponses']),
+        'dialogs_with_ai_responses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['dialogsWithAiResponses']),
         'average_direct_credits_per_response': (0, StatisticsNullableDecimalCreditsMetricDeltaDto_1.StatisticsNullableDecimalCreditsMetricDeltaDtoToJSON)(value['averageDirectCreditsPerResponse']),
+        'average_project_currency_cost_per_response': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoToJSON)(value['averageProjectCurrencyCostPerResponse']),
         'average_direct_credits_per_dialog': (0, StatisticsNullableDecimalCreditsMetricDeltaDto_1.StatisticsNullableDecimalCreditsMetricDeltaDtoToJSON)(value['averageDirectCreditsPerDialog']),
+        'average_project_currency_cost_per_dialog': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoToJSON)(value['averageProjectCurrencyCostPerDialog']),
     };
 }

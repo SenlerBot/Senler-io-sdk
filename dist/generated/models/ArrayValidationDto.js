@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ArrayValidationDtoDirectionEnum = void 0;
+exports.ArrayValidationDtoAccumulationModeEnum = exports.ArrayValidationDtoDirectionEnum = exports.ArrayValidationDtoScoringModeEnum = void 0;
 exports.instanceOfArrayValidationDto = instanceOfArrayValidationDto;
 exports.ArrayValidationDtoFromJSON = ArrayValidationDtoFromJSON;
 exports.ArrayValidationDtoFromJSONTyped = ArrayValidationDtoFromJSONTyped;
@@ -22,11 +22,24 @@ exports.ArrayValidationDtoToJSONTyped = ArrayValidationDtoToJSONTyped;
 /**
  * @export
  */
+exports.ArrayValidationDtoScoringModeEnum = {
+    Count: 'count',
+    Order: 'order',
+    Weights: 'weights'
+};
+/**
+ * @export
+ */
 exports.ArrayValidationDtoDirectionEnum = {
-    FewerIsBetter: 'fewer_is_better',
-    MoreIsBetter: 'more_is_better',
     HigherIsBetter: 'higher_is_better',
     LowerIsBetter: 'lower_is_better'
+};
+/**
+ * @export
+ */
+exports.ArrayValidationDtoAccumulationModeEnum = {
+    Latest: 'latest',
+    Union: 'union'
 };
 /**
  * Check if a given object implements the ArrayValidationDto interface.
@@ -43,9 +56,12 @@ function ArrayValidationDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'itemEnum': json['itemEnum'] == null ? undefined : json['itemEnum'],
+        'itemEnumLabels': json['itemEnumLabels'] == null ? undefined : json['itemEnumLabels'],
         'itemScores': json['item_scores'] == null ? undefined : json['item_scores'],
         'maxItems': json['maxItems'] == null ? undefined : json['maxItems'],
+        'scoringMode': json['scoring_mode'] == null ? undefined : json['scoring_mode'],
         'direction': json['direction'] == null ? undefined : json['direction'],
+        'accumulationMode': json['accumulation_mode'] == null ? undefined : json['accumulation_mode'],
     };
 }
 function ArrayValidationDtoToJSON(json) {
@@ -57,8 +73,11 @@ function ArrayValidationDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'itemEnum': value['itemEnum'],
+        'itemEnumLabels': value['itemEnumLabels'],
         'item_scores': value['itemScores'],
         'maxItems': value['maxItems'],
+        'scoring_mode': value['scoringMode'],
         'direction': value['direction'],
+        'accumulation_mode': value['accumulationMode'],
     };
 }

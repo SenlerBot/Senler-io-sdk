@@ -9,10 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SegmentSettingsDto } from './SegmentSettingsDto';
-import type { SegmentSubscriptionOptionDto } from './SegmentSubscriptionOptionDto';
-import type { SegmentPublishedConsentDto } from './SegmentPublishedConsentDto';
-import type { SegmentContactRequestDto } from './SegmentContactRequestDto';
+import type { SegmentConsentSnapshotDto } from './SegmentConsentSnapshotDto';
 import type { SegmentPaymentDto } from './SegmentPaymentDto';
 /**
  * SegmentResponseDto.
@@ -39,12 +36,6 @@ export interface SegmentResponseDto {
      */
     name: string;
     /**
-     *
-     * @type {string}
-     * @memberof SegmentResponseDto
-     */
-    description: string | null;
-    /**
      * ID
      * @type {string}
      * @memberof SegmentResponseDto
@@ -57,69 +48,17 @@ export interface SegmentResponseDto {
      */
     status: SegmentResponseDtoStatusEnum;
     /**
-     * .
-     * @type {boolean}
-     * @memberof SegmentResponseDto
-     */
-    listVisible: boolean;
-    /**
-     *
+     * -
      * @type {string}
      * @memberof SegmentResponseDto
      */
-    channelScope: SegmentResponseDtoChannelScopeEnum;
-    /**
-     * UUID channel_scope=selected
-     * @type {Array<string>}
-     * @memberof SegmentResponseDto
-     */
-    channelIds: Array<string> | null;
+    agentId: string | null;
     /**
      *
-     * @type {Array<string>}
-     * @memberof SegmentResponseDto
-     */
-    autoSubscribeKeywords: Array<string>;
-    /**
-     *
-     * @type {{ [key: string]: any; }}
-     * @memberof SegmentResponseDto
-     */
-    landingDraft: {
-        [key: string]: any;
-    } | null;
-    /**
-     *
-     * @type {{ [key: string]: any; }}
-     * @memberof SegmentResponseDto
-     */
-    landingPublished: {
-        [key: string]: any;
-    } | null;
-    /**
-     *
-     * @type {SegmentSettingsDto}
-     * @memberof SegmentResponseDto
-     */
-    publishedSettings: SegmentSettingsDto | null;
-    /**
-     * ,
      * @type {boolean}
      * @memberof SegmentResponseDto
      */
-    hasUnpublishedChanges: boolean;
-    /**
-     *
-     * @type {Date}
-     * @memberof SegmentResponseDto
-     */
-    publishedAt: Date | null;
-    /**
-     *
-     * @type {Array<SegmentSubscriptionOptionDto>}
-     * @memberof SegmentResponseDto
-     */
-    subscriptionOptions: Array<SegmentSubscriptionOptionDto>;
+    isReadOnly: boolean;
     /**
      *
      * @type {SegmentPaymentDto}
@@ -127,17 +66,11 @@ export interface SegmentResponseDto {
      */
     payment: SegmentPaymentDto;
     /**
-     * email
-     * @type {SegmentContactRequestDto}
-     * @memberof SegmentResponseDto
-     */
-    contactRequest: SegmentContactRequestDto;
-    /**
      * ,
-     * @type {Array<SegmentPublishedConsentDto>}
+     * @type {Array<SegmentConsentSnapshotDto>}
      * @memberof SegmentResponseDto
      */
-    requiredConsents: Array<SegmentPublishedConsentDto>;
+    requiredConsents: Array<SegmentConsentSnapshotDto>;
     /**
      *
      * @type {Date}
@@ -162,16 +95,9 @@ export interface SegmentResponseDto {
  */
 export declare const SegmentResponseDtoStatusEnum: {
     readonly Active: "active";
+    readonly Archived: "archived";
 };
 export type SegmentResponseDtoStatusEnum = typeof SegmentResponseDtoStatusEnum[keyof typeof SegmentResponseDtoStatusEnum];
-/**
- * @export
- */
-export declare const SegmentResponseDtoChannelScopeEnum: {
-    readonly All: "all";
-    readonly Selected: "selected";
-};
-export type SegmentResponseDtoChannelScopeEnum = typeof SegmentResponseDtoChannelScopeEnum[keyof typeof SegmentResponseDtoChannelScopeEnum];
 /**
  * Check if a given object implements the SegmentResponseDto interface.
  */

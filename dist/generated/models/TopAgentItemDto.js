@@ -40,7 +40,7 @@ function instanceOfTopAgentItemDto(value) {
         return false;
     if (!('overallStats' in value) || value['overallStats'] === undefined)
         return false;
-    if (!('eventsCount' in value) || value['eventsCount'] === undefined)
+    if (!('metricObservationsCount' in value) || value['metricObservationsCount'] === undefined)
         return false;
     return true;
 }
@@ -61,7 +61,7 @@ function TopAgentItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'badMetricsCount': json['bad_metrics_count'],
         'topProblemMetrics': (json['top_problem_metrics'].map(AgentProblemMetricDto_1.AgentProblemMetricDtoFromJSON)),
         'overallStats': (0, AgentOverallStatsDto_1.AgentOverallStatsDtoFromJSON)(json['overall_stats']),
-        'eventsCount': json['events_count'],
+        'metricObservationsCount': json['metric_observations_count'],
         'statusSummary': json['status_summary'] == null ? undefined : json['status_summary'],
     };
 }
@@ -82,7 +82,7 @@ function TopAgentItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'bad_metrics_count': value['badMetricsCount'],
         'top_problem_metrics': (value['topProblemMetrics'].map(AgentProblemMetricDto_1.AgentProblemMetricDtoToJSON)),
         'overall_stats': (0, AgentOverallStatsDto_1.AgentOverallStatsDtoToJSON)(value['overallStats']),
-        'events_count': value['eventsCount'],
+        'metric_observations_count': value['metricObservationsCount'],
         'status_summary': value['statusSummary'],
     };
 }

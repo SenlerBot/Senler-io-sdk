@@ -22,11 +22,21 @@ export interface ArrayValidationDto {
      */
     itemEnum?: Array<string>;
     /**
-     * scores (0.0-1.0). score = / maxItems.
-     * @type {object}
+     *
+     * @type {{ [key: string]: string; }}
      * @memberof ArrayValidationDto
      */
-    itemScores?: object;
+    itemEnumLabels?: {
+        [key: string]: string;
+    };
+    /**
+     * 0 1. scoring_mode=weights.
+     * @type {{ [key: string]: number; }}
+     * @memberof ArrayValidationDto
+     */
+    itemScores?: {
+        [key: string]: number;
+    };
     /**
      *
      * @type {number}
@@ -34,30 +44,58 @@ export interface ArrayValidationDto {
      */
     maxItems?: number;
     /**
-     * ( is_analyzable = true).
-     *
      * :
-     * - fewer_is_better: = (objection_types, blockers)
-     * - more_is_better: = (conversion_signals, skills)
+     * - count: ;
+     * - order: itemEnum;
+     * - weights: , item_scores.
      *
-     * ( itemEnum ):
-     * - higher_is_better: =
-     * - lower_is_better: =
+     * array-.
+     * @type {string}
+     * @memberof ArrayValidationDto
+     */
+    scoringMode?: ArrayValidationDtoScoringModeEnum;
+    /**
+     * : . array-.
      * @type {string}
      * @memberof ArrayValidationDto
      */
     direction?: ArrayValidationDtoDirectionEnum;
+    /**
+     * :
+     * - union: ;
+     * - latest: .
+     *
+     * array- discussion.
+     * @type {string}
+     * @memberof ArrayValidationDto
+     */
+    accumulationMode?: ArrayValidationDtoAccumulationModeEnum;
 }
 /**
  * @export
  */
+export declare const ArrayValidationDtoScoringModeEnum: {
+    readonly Count: "count";
+    readonly Order: "order";
+    readonly Weights: "weights";
+};
+export type ArrayValidationDtoScoringModeEnum = typeof ArrayValidationDtoScoringModeEnum[keyof typeof ArrayValidationDtoScoringModeEnum];
+/**
+ * @export
+ */
 export declare const ArrayValidationDtoDirectionEnum: {
-    readonly FewerIsBetter: "fewer_is_better";
-    readonly MoreIsBetter: "more_is_better";
     readonly HigherIsBetter: "higher_is_better";
     readonly LowerIsBetter: "lower_is_better";
 };
 export type ArrayValidationDtoDirectionEnum = typeof ArrayValidationDtoDirectionEnum[keyof typeof ArrayValidationDtoDirectionEnum];
+/**
+ * @export
+ */
+export declare const ArrayValidationDtoAccumulationModeEnum: {
+    readonly Latest: "latest";
+    readonly Union: "union";
+};
+export type ArrayValidationDtoAccumulationModeEnum = typeof ArrayValidationDtoAccumulationModeEnum[keyof typeof ArrayValidationDtoAccumulationModeEnum];
 /**
  * Check if a given object implements the ArrayValidationDto interface.
  */

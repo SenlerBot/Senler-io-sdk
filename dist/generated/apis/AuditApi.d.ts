@@ -52,6 +52,8 @@ export declare const GetAuditEntityTypeEnum: {
     readonly LeadVariableDefinition: "lead_variable_definition";
     readonly Segment: "segment";
     readonly SegmentConsentDocument: "segment_consent_document";
+    readonly Landing: "landing";
+    readonly Trigger: "trigger";
     readonly Delivery: "delivery";
     readonly ProjectTariff: "project_tariff";
     readonly SupportSchedule: "support_schedule";

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetOverviewAcceptLanguageEnum = exports.GetOverviewPeriodEnum = exports.GetLeadsSubscriptionEventsAcceptLanguageEnum = exports.GetLeadsSubscriptionEventsPeriodEnum = exports.GetLeadsAcceptLanguageEnum = exports.GetLeadsPeriodEnum = exports.GetCostsAcceptLanguageEnum = exports.GetCostsPeriodEnum = exports.GetCommunicationsAcceptLanguageEnum = exports.GetCommunicationsPeriodEnum = exports.StatisticsApi = void 0;
+exports.GetOverviewAcceptLanguageEnum = exports.GetOverviewPeriodEnum = exports.GetLeadsSubscriptionEventsAcceptLanguageEnum = exports.GetLeadsSubscriptionEventsPeriodEnum = exports.GetLeadsAcceptLanguageEnum = exports.GetLeadsPeriodEnum = exports.GetCostsAiResponseToolsAcceptLanguageEnum = exports.GetCostsAiResponseToolsPeriodEnum = exports.GetCostsAcceptLanguageEnum = exports.GetCostsPeriodEnum = exports.GetCommunicationsAcceptLanguageEnum = exports.GetCommunicationsPeriodEnum = exports.StatisticsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -115,7 +115,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
+     * , , . AI- cost-; . project_currency_cost project_currency.
      *
      */
     async getCostsRaw(requestParameters, initOverrides) {
@@ -168,11 +168,75 @@ class StatisticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetStatisticsCostsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
+     * , , . AI- cost-; . project_currency_cost project_currency.
      *
      */
     async getCosts(requestParameters, initOverrides) {
         const response = await this.getCostsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , AI-. , . .
+     * AI-
+     */
+    async getCostsAiResponseToolsRaw(requestParameters, initOverrides) {
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getCostsAiResponseTools().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getCostsAiResponseTools().');
+        }
+        const queryParameters = {};
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+        const headerParameters = {};
+        if (requestParameters['xSessionId'] != null) {
+            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/statistics/costs/ai-response-tools`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetStatisticsAiResponseToolsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , AI-. , . .
+     * AI-
+     */
+    async getCostsAiResponseTools(requestParameters, initOverrides) {
+        const response = await this.getCostsAiResponseToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -304,7 +368,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response.
      *
      */
     async getOverviewRaw(requestParameters, initOverrides) {
@@ -357,7 +421,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetStatisticsOverviewResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response.
      *
      */
     async getOverview(requestParameters, initOverrides) {
@@ -395,6 +459,22 @@ exports.GetCostsPeriodEnum = {
  * @export
  */
 exports.GetCostsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetCostsAiResponseToolsPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+};
+/**
+ * @export
+ */
+exports.GetCostsAiResponseToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

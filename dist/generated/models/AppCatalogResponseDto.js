@@ -13,11 +13,21 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppCatalogResponseDtoTypeEnum = void 0;
 exports.instanceOfAppCatalogResponseDto = instanceOfAppCatalogResponseDto;
 exports.AppCatalogResponseDtoFromJSON = AppCatalogResponseDtoFromJSON;
 exports.AppCatalogResponseDtoFromJSONTyped = AppCatalogResponseDtoFromJSONTyped;
 exports.AppCatalogResponseDtoToJSON = AppCatalogResponseDtoToJSON;
 exports.AppCatalogResponseDtoToJSONTyped = AppCatalogResponseDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.AppCatalogResponseDtoTypeEnum = {
+    Oauth: 'oauth',
+    SalesFunnel: 'sales_funnel',
+    AgentTool: 'agent_tool',
+    EmbeddedPage: 'embedded_page'
+};
 /**
  * Check if a given object implements the AppCatalogResponseDto interface.
  */
@@ -28,11 +38,9 @@ function instanceOfAppCatalogResponseDto(value) {
         return false;
     if (!('description' in value) || value['description'] === undefined)
         return false;
-    if (!('types' in value) || value['types'] === undefined)
+    if (!('type' in value) || value['type'] === undefined)
         return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined)
-        return false;
-    if (!('allowDeveloperDialogAccess' in value) || value['allowDeveloperDialogAccess'] === undefined)
         return false;
     if (!('allowInstalledAgentSettingsView' in value) || value['allowInstalledAgentSettingsView'] === undefined)
         return false;
@@ -54,9 +62,8 @@ function AppCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
         'coverUrl': json['cover_url'] == null ? undefined : json['cover_url'],
         'websiteUrl': json['website_url'] == null ? undefined : json['website_url'],
-        'types': json['types'],
+        'type': json['type'],
         'allowedPermissions': json['allowed_permissions'],
-        'allowDeveloperDialogAccess': json['allow_developer_dialog_access'],
         'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
         'createdAt': (new Date(json['created_at'])),
     };
@@ -75,9 +82,8 @@ function AppCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'icon_url': value['iconUrl'],
         'cover_url': value['coverUrl'],
         'website_url': value['websiteUrl'],
-        'types': value['types'],
+        'type': value['type'],
         'allowed_permissions': value['allowedPermissions'],
-        'allow_developer_dialog_access': value['allowDeveloperDialogAccess'],
         'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],
         'created_at': ((value['createdAt']).toISOString()),
     };

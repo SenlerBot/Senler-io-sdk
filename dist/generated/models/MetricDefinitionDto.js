@@ -13,13 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MetricDefinitionDtoDirectionEnum = exports.MetricDefinitionDtoValueTypeEnum = void 0;
+exports.MetricDefinitionDtoDirectionEnum = exports.MetricDefinitionDtoDiscussionRoleEnum = exports.MetricDefinitionDtoMeasurementScopeEnum = exports.MetricDefinitionDtoValueTypeEnum = void 0;
 exports.instanceOfMetricDefinitionDto = instanceOfMetricDefinitionDto;
 exports.MetricDefinitionDtoFromJSON = MetricDefinitionDtoFromJSON;
 exports.MetricDefinitionDtoFromJSONTyped = MetricDefinitionDtoFromJSONTyped;
 exports.MetricDefinitionDtoToJSON = MetricDefinitionDtoToJSON;
 exports.MetricDefinitionDtoToJSONTyped = MetricDefinitionDtoToJSONTyped;
-const MetricDefinitionDtoValidationSchema_1 = require("./MetricDefinitionDtoValidationSchema");
+const ValidationSchemaDto_1 = require("./ValidationSchemaDto");
 /**
  * @export
  */
@@ -33,13 +33,25 @@ exports.MetricDefinitionDtoValueTypeEnum = {
 /**
  * @export
  */
+exports.MetricDefinitionDtoMeasurementScopeEnum = {
+    Event: 'event',
+    Discussion: 'discussion'
+};
+/**
+ * @export
+ */
+exports.MetricDefinitionDtoDiscussionRoleEnum = {
+    Primary: 'primary',
+    Facet: 'facet'
+};
+/**
+ * @export
+ */
 exports.MetricDefinitionDtoDirectionEnum = {
     HigherIsBetter: 'higher_is_better',
     LowerIsBetter: 'lower_is_better',
     TrueIsBetter: 'true_is_better',
-    FalseIsBetter: 'false_is_better',
-    FewerIsBetter: 'fewer_is_better',
-    MoreIsBetter: 'more_is_better'
+    FalseIsBetter: 'false_is_better'
 };
 /**
  * Check if a given object implements the MetricDefinitionDto interface.
@@ -60,6 +72,10 @@ function instanceOfMetricDefinitionDto(value) {
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
     if (!('isAnalyzable' in value) || value['isAnalyzable'] === undefined)
+        return false;
+    if (!('measurementScope' in value) || value['measurementScope'] === undefined)
+        return false;
+    if (!('discussionRole' in value) || value['discussionRole'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -88,11 +104,13 @@ function MetricDefinitionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isBuiltin': json['is_builtin'],
         'aiExtractionPrompt': json['ai_extraction_prompt'],
         'exampleValue': json['example_value'] == null ? undefined : json['example_value'],
-        'validationSchema': json['validation_schema'] == null ? undefined : (0, MetricDefinitionDtoValidationSchema_1.MetricDefinitionDtoValidationSchemaFromJSON)(json['validation_schema']),
+        'validationSchema': json['validation_schema'] == null ? undefined : (0, ValidationSchemaDto_1.ValidationSchemaDtoFromJSON)(json['validation_schema']),
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'createdBy': json['created_by'] == null ? undefined : json['created_by'],
         'isActive': json['is_active'],
         'isAnalyzable': json['is_analyzable'],
+        'measurementScope': json['measurement_scope'],
+        'discussionRole': json['discussion_role'],
         'direction': json['direction'] == null ? undefined : json['direction'],
         'norm': json['norm'] == null ? undefined : json['norm'],
         'createdAt': (new Date(json['created_at'])),
@@ -120,11 +138,13 @@ function MetricDefinitionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_builtin': value['isBuiltin'],
         'ai_extraction_prompt': value['aiExtractionPrompt'],
         'example_value': value['exampleValue'],
-        'validation_schema': (0, MetricDefinitionDtoValidationSchema_1.MetricDefinitionDtoValidationSchemaToJSON)(value['validationSchema']),
+        'validation_schema': (0, ValidationSchemaDto_1.ValidationSchemaDtoToJSON)(value['validationSchema']),
         'project_id': value['projectId'],
         'created_by': value['createdBy'],
         'is_active': value['isActive'],
         'is_analyzable': value['isAnalyzable'],
+        'measurement_scope': value['measurementScope'],
+        'discussion_role': value['discussionRole'],
         'direction': value['direction'],
         'norm': value['norm'],
         'created_at': ((value['createdAt']).toISOString()),

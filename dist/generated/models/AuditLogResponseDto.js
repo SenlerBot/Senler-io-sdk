@@ -48,6 +48,8 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     LeadVariableDefinition: 'lead_variable_definition',
     Segment: 'segment',
     SegmentConsentDocument: 'segment_consent_document',
+    Landing: 'landing',
+    Trigger: 'trigger',
     Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
     SupportSchedule: 'support_schedule',

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateMetricsAcceptLanguageEnum = exports.MetricsEnableAcceptLanguageEnum = exports.MetricsDisableAcceptLanguageEnum = exports.GetMetricsEnabled2AcceptLanguageEnum = exports.GetMetricsEnabledAcceptLanguageEnum = exports.GetMetricsCountAcceptLanguageEnum = exports.GetMetricsAcceptLanguageEnum = exports.MetricsConfigApi = void 0;
+exports.UpdateMetricsConfigAcceptLanguageEnum = exports.GetMetricsConfigAcceptLanguageEnum = exports.MetricsConfigApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,15 +54,15 @@ const index_1 = require("../models/index");
  */
 class MetricsConfigApi extends runtime.BaseAPI {
     /**
-     * .
+     * , .
      *
      */
-    async getMetricsRaw(requestParameters, initOverrides) {
+    async getMetricsConfigRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getMetrics().');
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getMetricsConfig().');
         }
         if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getMetrics().');
+            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getMetricsConfig().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -84,227 +84,34 @@ class MetricsConfigApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
         }
         const response = await this.request({
-            path: `/api/agents/{agentId}/metrics`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            path: `/api/agents/{agentId}/metrics-config`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AgentMetricsConfigResponseDtoFromJSON));
-    }
-    /**
-     * .
-     *
-     */
-    async getMetrics(requestParameters, initOverrides) {
-        const response = await this.getMetricsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async getMetricsCountRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getMetricsCount().');
-        }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getMetricsCount().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics/count`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricsCountResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async getMetricsCount(requestParameters, initOverrides) {
-        const response = await this.getMetricsCountRaw(requestParameters, initOverrides);
-        return await response.value();
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentMetricsConfigurationDtoFromJSON)(jsonValue));
     }
     /**
      * , .
-     * ,
+     *
      */
-    async getMetricsEnabledRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getMetricsEnabled().');
-        }
-        if (requestParameters['metricId'] == null) {
-            throw new runtime.RequiredError('metricId', 'Required parameter "metricId" was null or undefined when calling getMetricsEnabled().');
-        }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getMetricsEnabled().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics/{metricId}/enabled`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"metricId"}}`, encodeURIComponent(String(requestParameters['metricId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricEnabledResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , .
-     * ,
-     */
-    async getMetricsEnabled(requestParameters, initOverrides) {
-        const response = await this.getMetricsEnabledRaw(requestParameters, initOverrides);
+    async getMetricsConfig(requestParameters, initOverrides) {
+        const response = await this.getMetricsConfigRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * .
+     * . .
      *
      */
-    async getMetricsEnabled2Raw(requestParameters, initOverrides) {
+    async updateMetricsConfigRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getMetricsEnabled2().');
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateMetricsConfig().');
         }
         if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getMetricsEnabled2().');
+            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling updateMetricsConfig().');
         }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics/enabled`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AgentMetricsConfigResponseDtoFromJSON));
-    }
-    /**
-     * .
-     *
-     */
-    async getMetricsEnabled2(requestParameters, initOverrides) {
-        const response = await this.getMetricsEnabled2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async metricsDisableRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling metricsDisable().');
-        }
-        if (requestParameters['metricId'] == null) {
-            throw new runtime.RequiredError('metricId', 'Required parameter "metricId" was null or undefined when calling metricsDisable().');
-        }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling metricsDisable().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics/{metricId}/disable`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"metricId"}}`, encodeURIComponent(String(requestParameters['metricId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async metricsDisable(requestParameters, initOverrides) {
-        const response = await this.metricsDisableRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async metricsEnableRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling metricsEnable().');
-        }
-        if (requestParameters['metricId'] == null) {
-            throw new runtime.RequiredError('metricId', 'Required parameter "metricId" was null or undefined when calling metricsEnable().');
-        }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling metricsEnable().');
-        }
-        if (requestParameters['enableMetricDto'] == null) {
-            throw new runtime.RequiredError('enableMetricDto', 'Required parameter "enableMetricDto" was null or undefined when calling metricsEnable().');
+        if (requestParameters['updateAgentMetricsConfigurationDto'] == null) {
+            throw new runtime.RequiredError('updateAgentMetricsConfigurationDto', 'Required parameter "updateAgentMetricsConfigurationDto" was null or undefined when calling updateMetricsConfig().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -327,71 +134,20 @@ class MetricsConfigApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
-            path: `/api/agents/{agentId}/metrics/{metricId}/enable`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"metricId"}}`, encodeURIComponent(String(requestParameters['metricId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.EnableMetricDtoToJSON)(requestParameters['enableMetricDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentMetricsConfigResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async metricsEnable(requestParameters, initOverrides) {
-        const response = await this.metricsEnableRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async updateMetricsRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateMetrics().');
-        }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling updateMetrics().');
-        }
-        if (requestParameters['bulkUpdateMetricsDto'] == null) {
-            throw new runtime.RequiredError('bulkUpdateMetricsDto', 'Required parameter "bulkUpdateMetricsDto" was null or undefined when calling updateMetrics().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            path: `/api/agents/{agentId}/metrics-config`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.BulkUpdateMetricsDtoToJSON)(requestParameters['bulkUpdateMetricsDto']),
+            body: (0, index_1.UpdateAgentMetricsConfigurationDtoToJSON)(requestParameters['updateAgentMetricsConfigurationDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AgentMetricsConfigResponseDtoFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentMetricsConfigurationDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . .
      *
      */
-    async updateMetrics(requestParameters, initOverrides) {
-        const response = await this.updateMetricsRaw(requestParameters, initOverrides);
+    async updateMetricsConfig(requestParameters, initOverrides) {
+        const response = await this.updateMetricsConfigRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -399,49 +155,14 @@ exports.MetricsConfigApi = MetricsConfigApi;
 /**
  * @export
  */
-exports.GetMetricsAcceptLanguageEnum = {
+exports.GetMetricsConfigAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetMetricsCountAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetMetricsEnabledAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetMetricsEnabled2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.MetricsDisableAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.MetricsEnableAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateMetricsAcceptLanguageEnum = {
+exports.UpdateMetricsConfigAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

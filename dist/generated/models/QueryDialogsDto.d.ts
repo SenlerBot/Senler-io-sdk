@@ -76,11 +76,17 @@ export interface QueryDialogsDto {
      */
     leadId?: Array<string>;
     /**
-     * ID (ObjectId, , 50 )
+     * ID (ObjectId, , 100 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
      */
     dialogIds?: Array<string>;
+    /**
+     * . dialog_ids.
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    selectionRef?: string;
     /**
      * . active completed ( archived)
      * @type {string}

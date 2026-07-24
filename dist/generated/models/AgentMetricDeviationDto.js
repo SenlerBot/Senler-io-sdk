@@ -48,7 +48,7 @@ function instanceOfAgentMetricDeviationDto(value) {
         return false;
     if (!('changePercent' in value) || value['changePercent'] === undefined)
         return false;
-    if (!('eventsCount' in value) || value['eventsCount'] === undefined)
+    if (!('observationsCount' in value) || value['observationsCount'] === undefined)
         return false;
     if (!('dialogsCount' in value) || value['dialogsCount'] === undefined)
         return false;
@@ -74,7 +74,7 @@ function AgentMetricDeviationDtoFromJSONTyped(json, ignoreDiscriminator) {
         'deviationPercent': json['deviation_percent'],
         'direction': json['direction'],
         'changePercent': json['change_percent'],
-        'eventsCount': json['events_count'],
+        'observationsCount': json['observations_count'],
         'dialogsCount': json['dialogs_count'],
         'mean': json['mean'],
     };
@@ -97,7 +97,7 @@ function AgentMetricDeviationDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'deviation_percent': value['deviationPercent'],
         'direction': value['direction'],
         'change_percent': value['changePercent'],
-        'events_count': value['eventsCount'],
+        'observations_count': value['observationsCount'],
         'dialogs_count': value['dialogsCount'],
         'mean': value['mean'],
     };

@@ -128,6 +128,12 @@ export interface AgentDraftResponseDto {
      */
     triggerKeywords: Array<string> | null;
     /**
+     *
+     * @type {string}
+     * @memberof AgentDraftResponseDto
+     */
+    autostartMode: AgentDraftResponseDtoAutostartModeEnum;
+    /**
      * . null, .
      * @type {string}
      * @memberof AgentDraftResponseDto
@@ -152,7 +158,7 @@ export interface AgentDraftResponseDto {
      */
     autoAssignmentMode: AgentDraftResponseDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels
+     * ID selected_channels. , .
      * @type {Array<string>}
      * @memberof AgentDraftResponseDto
      */
@@ -174,13 +180,19 @@ export interface AgentDraftResponseDto {
      * @type {string}
      * @memberof AgentDraftResponseDto
      */
-    draftType: AgentDraftResponseDtoDraftTypeEnum;
+    kind: AgentDraftResponseDtoKindEnum;
     /**
-     * ( )
+     *
      * @type {boolean}
      * @memberof AgentDraftResponseDto
      */
-    useDefaultMetrics: boolean;
+    useDefaultEventMetrics: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftResponseDto
+     */
+    useDefaultDiscussionMetrics: boolean;
     /**
      * ID ( )
      * @type {Array<string>}
@@ -465,6 +477,15 @@ export type AgentDraftResponseDtoKnowledgeBasePermissionsEnum = typeof AgentDraf
 /**
  * @export
  */
+export declare const AgentDraftResponseDtoAutostartModeEnum: {
+    readonly Off: "off";
+    readonly Keywords: "keywords";
+    readonly AllMessages: "all_messages";
+};
+export type AgentDraftResponseDtoAutostartModeEnum = typeof AgentDraftResponseDtoAutostartModeEnum[keyof typeof AgentDraftResponseDtoAutostartModeEnum];
+/**
+ * @export
+ */
 export declare const AgentDraftResponseDtoKeywordAssignmentRoleEnum: {
     readonly Primary: "primary";
     readonly Background: "background";
@@ -508,11 +529,11 @@ export type AgentDraftResponseDtoAutoAssignmentRoleEnum = typeof AgentDraftRespo
 /**
  * @export
  */
-export declare const AgentDraftResponseDtoDraftTypeEnum: {
-    readonly Manual: "manual";
+export declare const AgentDraftResponseDtoKindEnum: {
+    readonly Draft: "draft";
     readonly Variant: "variant";
 };
-export type AgentDraftResponseDtoDraftTypeEnum = typeof AgentDraftResponseDtoDraftTypeEnum[keyof typeof AgentDraftResponseDtoDraftTypeEnum];
+export type AgentDraftResponseDtoKindEnum = typeof AgentDraftResponseDtoKindEnum[keyof typeof AgentDraftResponseDtoKindEnum];
 /**
  * @export
  */

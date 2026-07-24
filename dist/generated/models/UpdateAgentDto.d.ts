@@ -107,11 +107,29 @@ export interface UpdateAgentDto {
      */
     metricsCollectionEnabled?: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    useDefaultEventMetrics?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    useDefaultDiscussionMetrics?: boolean;
+    /**
      * ( )
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
     triggerKeywords?: Array<string>;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateAgentDto
+     */
+    autostartMode?: UpdateAgentDtoAutostartModeEnum;
     /**
      * . , trigger_keywords.
      * @type {string}
@@ -137,7 +155,7 @@ export interface UpdateAgentDto {
      */
     autoAssignmentMode?: UpdateAgentDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels
+     * ID selected_channels. .
      * @type {Array<string>}
      * @memberof UpdateAgentDto
      */
@@ -405,6 +423,15 @@ export declare const UpdateAgentDtoKnowledgeBasePermissionsEnum: {
     readonly DeleteTables: "delete_tables";
 };
 export type UpdateAgentDtoKnowledgeBasePermissionsEnum = typeof UpdateAgentDtoKnowledgeBasePermissionsEnum[keyof typeof UpdateAgentDtoKnowledgeBasePermissionsEnum];
+/**
+ * @export
+ */
+export declare const UpdateAgentDtoAutostartModeEnum: {
+    readonly Off: "off";
+    readonly Keywords: "keywords";
+    readonly AllMessages: "all_messages";
+};
+export type UpdateAgentDtoAutostartModeEnum = typeof UpdateAgentDtoAutostartModeEnum[keyof typeof UpdateAgentDtoAutostartModeEnum];
 /**
  * @export
  */

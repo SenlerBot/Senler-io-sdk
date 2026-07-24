@@ -42,6 +42,7 @@ export interface GetEventsRequest {
     before?: string;
     after?: string;
     aroundEventId?: string;
+    messagesOnly?: boolean;
     sourceChatId?: string;
     sourceThreadId?: string;
     limit?: number;

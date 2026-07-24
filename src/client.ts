@@ -9,6 +9,7 @@ import { AccessInvitationsApi } from './generated/apis/AccessInvitationsApi';
 import { AgentAssignmentRulesApi } from './generated/apis/AgentAssignmentRulesApi';
 import { AgentsApi } from './generated/apis/AgentsApi';
 import { AgentsAvatarApi } from './generated/apis/AgentsAvatarApi';
+import { AgentsLandingApi } from './generated/apis/AgentsLandingApi';
 import { AgentTrainingApi } from './generated/apis/AgentTrainingApi';
 import { AnalyticsApi } from './generated/apis/AnalyticsApi';
 import { AppCatalogApi } from './generated/apis/AppCatalogApi';
@@ -34,6 +35,10 @@ import { DialogsMessagingApi } from './generated/apis/DialogsMessagingApi';
 import { EventsApi } from './generated/apis/EventsApi';
 import { FrontendVersionApi } from './generated/apis/FrontendVersionApi';
 import { KnowledgeBaseApi } from './generated/apis/KnowledgeBaseApi';
+import { LandingPlatformSettingsApi } from './generated/apis/LandingPlatformSettingsApi';
+import { LandingsApi } from './generated/apis/LandingsApi';
+import { LandingsPublicApi } from './generated/apis/LandingsPublicApi';
+import { LandingsPublicPlatformApi } from './generated/apis/LandingsPublicPlatformApi';
 import { LeadsApi } from './generated/apis/LeadsApi';
 import { LeadVariableDefinitionsApi } from './generated/apis/LeadVariableDefinitionsApi';
 import { LeadVariablesApi } from './generated/apis/LeadVariablesApi';
@@ -51,12 +56,12 @@ import { ProjectsAvatarApi } from './generated/apis/ProjectsAvatarApi';
 import { ProjectVariablesApi } from './generated/apis/ProjectVariablesApi';
 import { ReadyMCPServersApi } from './generated/apis/ReadyMCPServersApi';
 import { SegmentsApi } from './generated/apis/SegmentsApi';
-import { SegmentsPublicApi } from './generated/apis/SegmentsPublicApi';
 import { SpacesApi } from './generated/apis/SpacesApi';
 import { StatisticsApi } from './generated/apis/StatisticsApi';
 import { StorageApi } from './generated/apis/StorageApi';
 import { SupportSchedulesApi } from './generated/apis/SupportSchedulesApi';
 import { TariffsApi } from './generated/apis/TariffsApi';
+import { TriggersApi } from './generated/apis/TriggersApi';
 
 const DEFAULT_BASE_URL = 'https://api.senler.io';
 
@@ -68,6 +73,7 @@ export class AiSenlerClient {
   readonly agentAssignmentRules: AgentAssignmentRulesApi;
   readonly agents: AgentsApi;
   readonly agentsAvatar: AgentsAvatarApi;
+  readonly agentsLanding: AgentsLandingApi;
   readonly agentTraining: AgentTrainingApi;
   readonly analytics: AnalyticsApi;
   readonly appCatalog: AppCatalogApi;
@@ -93,6 +99,10 @@ export class AiSenlerClient {
   readonly events: EventsApi;
   readonly frontendVersion: FrontendVersionApi;
   readonly knowledgeBase: KnowledgeBaseApi;
+  readonly landingPlatformSettings: LandingPlatformSettingsApi;
+  readonly landings: LandingsApi;
+  readonly landingsPublic: LandingsPublicApi;
+  readonly landingsPublicPlatform: LandingsPublicPlatformApi;
   readonly leads: LeadsApi;
   readonly leadVariableDefinitions: LeadVariableDefinitionsApi;
   readonly leadVariables: LeadVariablesApi;
@@ -110,12 +120,12 @@ export class AiSenlerClient {
   readonly projectVariables: ProjectVariablesApi;
   readonly readyMCPServers: ReadyMCPServersApi;
   readonly segments: SegmentsApi;
-  readonly segmentsPublic: SegmentsPublicApi;
   readonly spaces: SpacesApi;
   readonly statistics: StatisticsApi;
   readonly storage: StorageApi;
   readonly supportSchedules: SupportSchedulesApi;
   readonly tariffs: TariffsApi;
+  readonly triggers: TriggersApi;
 
   constructor(config: AiSenlerClientConfig & { fetchApi?: FetchAPI }) {
     this.tokenState = {
@@ -144,6 +154,7 @@ export class AiSenlerClient {
     this.agentAssignmentRules = new AgentAssignmentRulesApi(configuration);
     this.agents = new AgentsApi(configuration);
     this.agentsAvatar = new AgentsAvatarApi(configuration);
+    this.agentsLanding = new AgentsLandingApi(configuration);
     this.agentTraining = new AgentTrainingApi(configuration);
     this.analytics = new AnalyticsApi(configuration);
     this.appCatalog = new AppCatalogApi(configuration);
@@ -169,6 +180,10 @@ export class AiSenlerClient {
     this.events = new EventsApi(configuration);
     this.frontendVersion = new FrontendVersionApi(configuration);
     this.knowledgeBase = new KnowledgeBaseApi(configuration);
+    this.landingPlatformSettings = new LandingPlatformSettingsApi(configuration);
+    this.landings = new LandingsApi(configuration);
+    this.landingsPublic = new LandingsPublicApi(configuration);
+    this.landingsPublicPlatform = new LandingsPublicPlatformApi(configuration);
     this.leads = new LeadsApi(configuration);
     this.leadVariableDefinitions = new LeadVariableDefinitionsApi(configuration);
     this.leadVariables = new LeadVariablesApi(configuration);
@@ -186,12 +201,12 @@ export class AiSenlerClient {
     this.projectVariables = new ProjectVariablesApi(configuration);
     this.readyMCPServers = new ReadyMCPServersApi(configuration);
     this.segments = new SegmentsApi(configuration);
-    this.segmentsPublic = new SegmentsPublicApi(configuration);
     this.spaces = new SpacesApi(configuration);
     this.statistics = new StatisticsApi(configuration);
     this.storage = new StorageApi(configuration);
     this.supportSchedules = new SupportSchedulesApi(configuration);
     this.tariffs = new TariffsApi(configuration);
+    this.triggers = new TriggersApi(configuration);
   }
 
   /** Update the access token for all subsequent requests. */

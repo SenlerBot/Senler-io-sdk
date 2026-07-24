@@ -60,7 +60,7 @@ function instanceOfAgentMetricItemDto(value) {
         return false;
     if (!('changePercent' in value) || value['changePercent'] === undefined)
         return false;
-    if (!('eventsCount' in value) || value['eventsCount'] === undefined)
+    if (!('observationsCount' in value) || value['observationsCount'] === undefined)
         return false;
     return true;
 }
@@ -83,7 +83,7 @@ function AgentMetricItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'value': json['value'],
         'baseline': json['baseline'],
         'changePercent': json['change_percent'],
-        'eventsCount': json['events_count'],
+        'observationsCount': json['observations_count'],
     };
 }
 function AgentMetricItemDtoToJSON(json) {
@@ -105,6 +105,6 @@ function AgentMetricItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'value': value['value'],
         'baseline': value['baseline'],
         'change_percent': value['changePercent'],
-        'events_count': value['eventsCount'],
+        'observations_count': value['observationsCount'],
     };
 }

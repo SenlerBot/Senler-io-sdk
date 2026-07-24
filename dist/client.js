@@ -8,6 +8,7 @@ const AccessInvitationsApi_1 = require("./generated/apis/AccessInvitationsApi");
 const AgentAssignmentRulesApi_1 = require("./generated/apis/AgentAssignmentRulesApi");
 const AgentsApi_1 = require("./generated/apis/AgentsApi");
 const AgentsAvatarApi_1 = require("./generated/apis/AgentsAvatarApi");
+const AgentsLandingApi_1 = require("./generated/apis/AgentsLandingApi");
 const AgentTrainingApi_1 = require("./generated/apis/AgentTrainingApi");
 const AnalyticsApi_1 = require("./generated/apis/AnalyticsApi");
 const AppCatalogApi_1 = require("./generated/apis/AppCatalogApi");
@@ -33,6 +34,10 @@ const DialogsMessagingApi_1 = require("./generated/apis/DialogsMessagingApi");
 const EventsApi_1 = require("./generated/apis/EventsApi");
 const FrontendVersionApi_1 = require("./generated/apis/FrontendVersionApi");
 const KnowledgeBaseApi_1 = require("./generated/apis/KnowledgeBaseApi");
+const LandingPlatformSettingsApi_1 = require("./generated/apis/LandingPlatformSettingsApi");
+const LandingsApi_1 = require("./generated/apis/LandingsApi");
+const LandingsPublicApi_1 = require("./generated/apis/LandingsPublicApi");
+const LandingsPublicPlatformApi_1 = require("./generated/apis/LandingsPublicPlatformApi");
 const LeadsApi_1 = require("./generated/apis/LeadsApi");
 const LeadVariableDefinitionsApi_1 = require("./generated/apis/LeadVariableDefinitionsApi");
 const LeadVariablesApi_1 = require("./generated/apis/LeadVariablesApi");
@@ -50,12 +55,12 @@ const ProjectsAvatarApi_1 = require("./generated/apis/ProjectsAvatarApi");
 const ProjectVariablesApi_1 = require("./generated/apis/ProjectVariablesApi");
 const ReadyMCPServersApi_1 = require("./generated/apis/ReadyMCPServersApi");
 const SegmentsApi_1 = require("./generated/apis/SegmentsApi");
-const SegmentsPublicApi_1 = require("./generated/apis/SegmentsPublicApi");
 const SpacesApi_1 = require("./generated/apis/SpacesApi");
 const StatisticsApi_1 = require("./generated/apis/StatisticsApi");
 const StorageApi_1 = require("./generated/apis/StorageApi");
 const SupportSchedulesApi_1 = require("./generated/apis/SupportSchedulesApi");
 const TariffsApi_1 = require("./generated/apis/TariffsApi");
+const TriggersApi_1 = require("./generated/apis/TriggersApi");
 const DEFAULT_BASE_URL = 'https://api.senler.io';
 class AiSenlerClient {
     constructor(config) {
@@ -82,6 +87,7 @@ class AiSenlerClient {
         this.agentAssignmentRules = new AgentAssignmentRulesApi_1.AgentAssignmentRulesApi(configuration);
         this.agents = new AgentsApi_1.AgentsApi(configuration);
         this.agentsAvatar = new AgentsAvatarApi_1.AgentsAvatarApi(configuration);
+        this.agentsLanding = new AgentsLandingApi_1.AgentsLandingApi(configuration);
         this.agentTraining = new AgentTrainingApi_1.AgentTrainingApi(configuration);
         this.analytics = new AnalyticsApi_1.AnalyticsApi(configuration);
         this.appCatalog = new AppCatalogApi_1.AppCatalogApi(configuration);
@@ -107,6 +113,10 @@ class AiSenlerClient {
         this.events = new EventsApi_1.EventsApi(configuration);
         this.frontendVersion = new FrontendVersionApi_1.FrontendVersionApi(configuration);
         this.knowledgeBase = new KnowledgeBaseApi_1.KnowledgeBaseApi(configuration);
+        this.landingPlatformSettings = new LandingPlatformSettingsApi_1.LandingPlatformSettingsApi(configuration);
+        this.landings = new LandingsApi_1.LandingsApi(configuration);
+        this.landingsPublic = new LandingsPublicApi_1.LandingsPublicApi(configuration);
+        this.landingsPublicPlatform = new LandingsPublicPlatformApi_1.LandingsPublicPlatformApi(configuration);
         this.leads = new LeadsApi_1.LeadsApi(configuration);
         this.leadVariableDefinitions = new LeadVariableDefinitionsApi_1.LeadVariableDefinitionsApi(configuration);
         this.leadVariables = new LeadVariablesApi_1.LeadVariablesApi(configuration);
@@ -124,12 +134,12 @@ class AiSenlerClient {
         this.projectVariables = new ProjectVariablesApi_1.ProjectVariablesApi(configuration);
         this.readyMCPServers = new ReadyMCPServersApi_1.ReadyMCPServersApi(configuration);
         this.segments = new SegmentsApi_1.SegmentsApi(configuration);
-        this.segmentsPublic = new SegmentsPublicApi_1.SegmentsPublicApi(configuration);
         this.spaces = new SpacesApi_1.SpacesApi(configuration);
         this.statistics = new StatisticsApi_1.StatisticsApi(configuration);
         this.storage = new StorageApi_1.StorageApi(configuration);
         this.supportSchedules = new SupportSchedulesApi_1.SupportSchedulesApi(configuration);
         this.tariffs = new TariffsApi_1.TariffsApi(configuration);
+        this.triggers = new TriggersApi_1.TriggersApi(configuration);
     }
     /** Update the access token for all subsequent requests. */
     set accessToken(token) {

@@ -20,14 +20,29 @@ export interface ArrayItemsSchemaDto {
      * @type {string}
      * @memberof ArrayItemsSchemaDto
      */
-    type: string;
+    type: ArrayItemsSchemaDtoTypeEnum;
     /**
      *
      * @type {Array<string>}
      * @memberof ArrayItemsSchemaDto
      */
     _enum?: Array<string>;
+    /**
+     *
+     * @type {{ [key: string]: string; }}
+     * @memberof ArrayItemsSchemaDto
+     */
+    enumLabels?: {
+        [key: string]: string;
+    };
 }
+/**
+ * @export
+ */
+export declare const ArrayItemsSchemaDtoTypeEnum: {
+    readonly String: "string";
+};
+export type ArrayItemsSchemaDtoTypeEnum = typeof ArrayItemsSchemaDtoTypeEnum[keyof typeof ArrayItemsSchemaDtoTypeEnum];
 /**
  * Check if a given object implements the ArrayItemsSchemaDto interface.
  */

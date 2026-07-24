@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SegmentContactRequestDto } from './SegmentContactRequestDto';
 import type { SegmentPaymentDto } from './SegmentPaymentDto';
 import type { SegmentRequiredConsentDto } from './SegmentRequiredConsentDto';
 /**
@@ -26,54 +25,10 @@ export interface CreateSegmentDto {
     name: string;
     /**
      *
-     * @type {string}
-     * @memberof CreateSegmentDto
-     */
-    description?: string | null;
-    /**
-     * , .
-     * @type {boolean}
-     * @memberof CreateSegmentDto
-     */
-    listVisible?: boolean;
-    /**
-     * :
-     * @type {string}
-     * @memberof CreateSegmentDto
-     */
-    channelScope?: CreateSegmentDtoChannelScopeEnum;
-    /**
-     * UUID . channel_scope=selected.
-     * @type {Array<string>}
-     * @memberof CreateSegmentDto
-     */
-    channelIds?: Array<string> | null;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof CreateSegmentDto
-     */
-    autoSubscribeKeywords?: Array<string>;
-    /**
-     * Page: blocks blocks_edit
-     * @type {{ [key: string]: any; }}
-     * @memberof CreateSegmentDto
-     */
-    landingDraft?: {
-        [key: string]: any;
-    } | null;
-    /**
-     *
      * @type {SegmentPaymentDto}
      * @memberof CreateSegmentDto
      */
     payment?: SegmentPaymentDto;
-    /**
-     * email
-     * @type {SegmentContactRequestDto}
-     * @memberof CreateSegmentDto
-     */
-    contactRequest?: SegmentContactRequestDto;
     /**
      * ,
      * @type {Array<SegmentRequiredConsentDto>}
@@ -81,14 +36,6 @@ export interface CreateSegmentDto {
      */
     requiredConsents?: Array<SegmentRequiredConsentDto>;
 }
-/**
- * @export
- */
-export declare const CreateSegmentDtoChannelScopeEnum: {
-    readonly All: "all";
-    readonly Selected: "selected";
-};
-export type CreateSegmentDtoChannelScopeEnum = typeof CreateSegmentDtoChannelScopeEnum[keyof typeof CreateSegmentDtoChannelScopeEnum];
 /**
  * Check if a given object implements the CreateSegmentDto interface.
  */

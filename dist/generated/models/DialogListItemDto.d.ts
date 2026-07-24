@@ -179,13 +179,13 @@ export interface DialogListItemDto {
      * @type {string}
      * @memberof DialogListItemDto
      */
-    activeSupportCaseId?: string;
+    activeConversationSegmentId?: string;
     /**
      *
      * @type {Date}
      * @memberof DialogListItemDto
      */
-    activeSupportCaseOpenedAt?: Date;
+    activeConversationSegmentOpenedAt?: Date;
     /**
      *
      * @type {Date}

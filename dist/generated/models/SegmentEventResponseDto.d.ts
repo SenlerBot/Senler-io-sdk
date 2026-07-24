@@ -52,6 +52,30 @@ export interface SegmentEventResponseDto {
      */
     channelId: string | null;
     /**
+     * ID -
+     * @type {string}
+     * @memberof SegmentEventResponseDto
+     */
+    landingId: string | null;
+    /**
+     * ID
+     * @type {string}
+     * @memberof SegmentEventResponseDto
+     */
+    landingVersionId: string | null;
+    /**
+     * ID
+     * @type {string}
+     * @memberof SegmentEventResponseDto
+     */
+    landingActionId: string | null;
+    /**
+     * ID -
+     * @type {string}
+     * @memberof SegmentEventResponseDto
+     */
+    triggerId: string | null;
+    /**
      *
      * @type {{ [key: string]: any; }}
      * @memberof SegmentEventResponseDto

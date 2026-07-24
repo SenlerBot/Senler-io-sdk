@@ -9,7 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ImportantDiscussionAnalysisDto } from './ImportantDiscussionAnalysisDto';
 import type { AgentRecommendationDto } from './AgentRecommendationDto';
+import type { ImportantDiscussionDto } from './ImportantDiscussionDto';
 import type { GenerationCostDto } from './GenerationCostDto';
 import type { PeriodInfoDto } from './PeriodInfoDto';
 /**
@@ -48,6 +50,18 @@ export interface SummarizationResponseDto {
      * @memberof SummarizationResponseDto
      */
     problemAreas: Array<string>;
+    /**
+     *
+     * @type {ImportantDiscussionAnalysisDto}
+     * @memberof SummarizationResponseDto
+     */
+    discussionAnalysis: ImportantDiscussionAnalysisDto;
+    /**
+     *
+     * @type {Array<ImportantDiscussionDto>}
+     * @memberof SummarizationResponseDto
+     */
+    importantDiscussions: Array<ImportantDiscussionDto>;
     /**
      *
      * @type {Array<AgentRecommendationDto>}

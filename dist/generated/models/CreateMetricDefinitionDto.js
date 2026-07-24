@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateMetricDefinitionDtoValueTypeEnum = void 0;
+exports.CreateMetricDefinitionDtoDiscussionRoleEnum = exports.CreateMetricDefinitionDtoMeasurementScopeEnum = exports.CreateMetricDefinitionDtoValueTypeEnum = void 0;
 exports.instanceOfCreateMetricDefinitionDto = instanceOfCreateMetricDefinitionDto;
 exports.CreateMetricDefinitionDtoFromJSON = CreateMetricDefinitionDtoFromJSON;
 exports.CreateMetricDefinitionDtoFromJSONTyped = CreateMetricDefinitionDtoFromJSONTyped;
@@ -32,6 +32,20 @@ exports.CreateMetricDefinitionDtoValueTypeEnum = {
     Boolean: 'boolean',
     Array: 'array',
     Object: 'object'
+};
+/**
+ * @export
+ */
+exports.CreateMetricDefinitionDtoMeasurementScopeEnum = {
+    Event: 'event',
+    Discussion: 'discussion'
+};
+/**
+ * @export
+ */
+exports.CreateMetricDefinitionDtoDiscussionRoleEnum = {
+    Primary: 'primary',
+    Facet: 'facet'
 };
 /**
  * Check if a given object implements the CreateMetricDefinitionDto interface.
@@ -68,6 +82,8 @@ function CreateMetricDefinitionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'arrayValidation': json['array_validation'] == null ? undefined : (0, ArrayValidationDto_1.ArrayValidationDtoFromJSON)(json['array_validation']),
         'booleanValidation': json['boolean_validation'] == null ? undefined : (0, BooleanValidationDto_1.BooleanValidationDtoFromJSON)(json['boolean_validation']),
         'isAnalyzable': json['is_analyzable'] == null ? undefined : json['is_analyzable'],
+        'measurementScope': json['measurement_scope'] == null ? undefined : json['measurement_scope'],
+        'discussionRole': json['discussion_role'] == null ? undefined : json['discussion_role'],
         'norm': json['norm'] == null ? undefined : json['norm'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'createdBy': json['created_by'] == null ? undefined : json['created_by'],
@@ -96,6 +112,8 @@ function CreateMetricDefinitionDtoToJSONTyped(value, ignoreDiscriminator = false
         'array_validation': (0, ArrayValidationDto_1.ArrayValidationDtoToJSON)(value['arrayValidation']),
         'boolean_validation': (0, BooleanValidationDto_1.BooleanValidationDtoToJSON)(value['booleanValidation']),
         'is_analyzable': value['isAnalyzable'],
+        'measurement_scope': value['measurementScope'],
+        'discussion_role': value['discussionRole'],
         'norm': value['norm'],
         'project_id': value['projectId'],
         'created_by': value['createdBy'],

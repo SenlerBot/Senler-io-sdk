@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentDraftResponseDtoLeadVarsUserRequestModeEnum = exports.AgentDraftResponseDtoLeadVarsInstructionModeEnum = exports.AgentDraftResponseDtoProjectVarsUserRequestModeEnum = exports.AgentDraftResponseDtoProjectVarsInstructionModeEnum = exports.AgentDraftResponseDtoStatusEnum = exports.AgentDraftResponseDtoDraftTypeEnum = exports.AgentDraftResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftResponseDtoAutoAssignmentModeEnum = exports.AgentDraftResponseDtoKeywordDialogScopeEnum = exports.AgentDraftResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftResponseDtoServerBindingModeEnum = exports.AgentDraftResponseDtoAgentTypeEnum = void 0;
+exports.AgentDraftResponseDtoLeadVarsUserRequestModeEnum = exports.AgentDraftResponseDtoLeadVarsInstructionModeEnum = exports.AgentDraftResponseDtoProjectVarsUserRequestModeEnum = exports.AgentDraftResponseDtoProjectVarsInstructionModeEnum = exports.AgentDraftResponseDtoStatusEnum = exports.AgentDraftResponseDtoKindEnum = exports.AgentDraftResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftResponseDtoAutoAssignmentModeEnum = exports.AgentDraftResponseDtoKeywordDialogScopeEnum = exports.AgentDraftResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftResponseDtoAutostartModeEnum = exports.AgentDraftResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftResponseDtoServerBindingModeEnum = exports.AgentDraftResponseDtoAgentTypeEnum = void 0;
 exports.instanceOfAgentDraftResponseDto = instanceOfAgentDraftResponseDto;
 exports.AgentDraftResponseDtoFromJSON = AgentDraftResponseDtoFromJSON;
 exports.AgentDraftResponseDtoFromJSONTyped = AgentDraftResponseDtoFromJSONTyped;
@@ -61,6 +61,14 @@ exports.AgentDraftResponseDtoKnowledgeBasePermissionsEnum = {
 /**
  * @export
  */
+exports.AgentDraftResponseDtoAutostartModeEnum = {
+    Off: 'off',
+    Keywords: 'keywords',
+    AllMessages: 'all_messages'
+};
+/**
+ * @export
+ */
 exports.AgentDraftResponseDtoKeywordAssignmentRoleEnum = {
     Primary: 'primary',
     Background: 'background'
@@ -99,8 +107,8 @@ exports.AgentDraftResponseDtoAutoAssignmentRoleEnum = {
 /**
  * @export
  */
-exports.AgentDraftResponseDtoDraftTypeEnum = {
-    Manual: 'manual',
+exports.AgentDraftResponseDtoKindEnum = {
+    Draft: 'draft',
     Variant: 'variant'
 };
 /**
@@ -164,13 +172,17 @@ function instanceOfAgentDraftResponseDto(value) {
         return false;
     if (!('triggerKeywords' in value) || value['triggerKeywords'] === undefined)
         return false;
+    if (!('autostartMode' in value) || value['autostartMode'] === undefined)
+        return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined)
         return false;
     if (!('autoAssignmentRole' in value) || value['autoAssignmentRole'] === undefined)
         return false;
-    if (!('draftType' in value) || value['draftType'] === undefined)
+    if (!('kind' in value) || value['kind'] === undefined)
         return false;
-    if (!('useDefaultMetrics' in value) || value['useDefaultMetrics'] === undefined)
+    if (!('useDefaultEventMetrics' in value) || value['useDefaultEventMetrics'] === undefined)
+        return false;
+    if (!('useDefaultDiscussionMetrics' in value) || value['useDefaultDiscussionMetrics'] === undefined)
         return false;
     if (!('enabledMetricIds' in value) || value['enabledMetricIds'] === undefined)
         return false;
@@ -268,6 +280,7 @@ function AgentDraftResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'] == null ? null : json['trigger_keywords'],
+        'autostartMode': json['autostart_mode'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -275,8 +288,9 @@ function AgentDraftResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'autoAssignmentChannelIds': json['auto_assignment_channel_ids'] == null ? undefined : json['auto_assignment_channel_ids'],
         'autoAssignmentDialogScope': json['auto_assignment_dialog_scope'] == null ? undefined : json['auto_assignment_dialog_scope'],
         'autoAssignmentRole': json['auto_assignment_role'],
-        'draftType': json['draft_type'],
-        'useDefaultMetrics': json['use_default_metrics'],
+        'kind': json['kind'],
+        'useDefaultEventMetrics': json['use_default_event_metrics'],
+        'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'],
         'enabledMetricIds': json['enabled_metric_ids'] == null ? null : json['enabled_metric_ids'],
         'aiReasoning': json['ai_reasoning'] == null ? undefined : json['ai_reasoning'],
         'aiConfidenceScore': json['ai_confidence_score'] == null ? undefined : json['ai_confidence_score'],
@@ -345,6 +359,7 @@ function AgentDraftResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
+        'autostart_mode': value['autostartMode'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],
@@ -352,8 +367,9 @@ function AgentDraftResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'auto_assignment_channel_ids': value['autoAssignmentChannelIds'],
         'auto_assignment_dialog_scope': value['autoAssignmentDialogScope'],
         'auto_assignment_role': value['autoAssignmentRole'],
-        'draft_type': value['draftType'],
-        'use_default_metrics': value['useDefaultMetrics'],
+        'kind': value['kind'],
+        'use_default_event_metrics': value['useDefaultEventMetrics'],
+        'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],
         'enabled_metric_ids': value['enabledMetricIds'],
         'ai_reasoning': value['aiReasoning'],
         'ai_confidence_score': value['aiConfidenceScore'],

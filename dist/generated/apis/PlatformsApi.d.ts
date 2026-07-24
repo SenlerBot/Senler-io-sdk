@@ -19,12 +19,12 @@ export interface PlatformsListRequest {
  */
 export declare class PlatformsApi extends runtime.BaseAPI {
     /**
-     * (VK, Telegram, MAX, Widget, StreamVi)
+     *
      *
      */
     platformsListRaw(requestParameters: PlatformsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlatformsResponseDto>>;
     /**
-     * (VK, Telegram, MAX, Widget, StreamVi)
+     *
      *
      */
     platformsList(requestParameters?: PlatformsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlatformsResponseDto>;

@@ -18,11 +18,14 @@ exports.MetricOverallStatsDtoFromJSON = MetricOverallStatsDtoFromJSON;
 exports.MetricOverallStatsDtoFromJSONTyped = MetricOverallStatsDtoFromJSONTyped;
 exports.MetricOverallStatsDtoToJSON = MetricOverallStatsDtoToJSON;
 exports.MetricOverallStatsDtoToJSONTyped = MetricOverallStatsDtoToJSONTyped;
+const MetricValueDistributionItemDto_1 = require("./MetricValueDistributionItemDto");
 /**
  * Check if a given object implements the MetricOverallStatsDto interface.
  */
 function instanceOfMetricOverallStatsDto(value) {
     if (!('mean' in value) || value['mean'] === undefined)
+        return false;
+    if (!('valueDistribution' in value) || value['valueDistribution'] === undefined)
         return false;
     return true;
 }
@@ -36,6 +39,7 @@ function MetricOverallStatsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'mean': json['mean'],
         'baseline': json['baseline'] == null ? undefined : json['baseline'],
+        'valueDistribution': (json['value_distribution'].map(MetricValueDistributionItemDto_1.MetricValueDistributionItemDtoFromJSON)),
     };
 }
 function MetricOverallStatsDtoToJSON(json) {
@@ -48,5 +52,6 @@ function MetricOverallStatsDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'mean': value['mean'],
         'baseline': value['baseline'],
+        'value_distribution': (value['valueDistribution'].map(MetricValueDistributionItemDto_1.MetricValueDistributionItemDtoToJSON)),
     };
 }

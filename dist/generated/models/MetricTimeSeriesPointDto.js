@@ -30,7 +30,7 @@ function instanceOfMetricTimeSeriesPointDto(value) {
         return false;
     if (!('maxValue' in value) || value['maxValue'] === undefined)
         return false;
-    if (!('eventsCount' in value) || value['eventsCount'] === undefined)
+    if (!('observationsCount' in value) || value['observationsCount'] === undefined)
         return false;
     return true;
 }
@@ -46,7 +46,7 @@ function MetricTimeSeriesPointDtoFromJSONTyped(json, ignoreDiscriminator) {
         'avgValue': json['avg_value'],
         'minValue': json['min_value'],
         'maxValue': json['max_value'],
-        'eventsCount': json['events_count'],
+        'observationsCount': json['observations_count'],
     };
 }
 function MetricTimeSeriesPointDtoToJSON(json) {
@@ -61,6 +61,6 @@ function MetricTimeSeriesPointDtoToJSONTyped(value, ignoreDiscriminator = false)
         'avg_value': value['avgValue'],
         'min_value': value['minValue'],
         'max_value': value['maxValue'],
-        'events_count': value['eventsCount'],
+        'observations_count': value['observationsCount'],
     };
 }

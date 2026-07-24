@@ -10,7 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentAutoAssignmentPreviewResponseDto, AgentDraftResponseDto, AgentResponseDto, AgentWithDraftResponseDto, AgentsByListResponseDto, AgentsListResponseDto, CreateAgentDto, SuccessResponseDto, UpdateAgentDraftDto, UpdateAgentDto, UpdateWizardProgressDto } from '../models/index';
+import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftResponseDto, AgentResponseDto, AgentWithDraftResponseDto, AgentsByListResponseDto, AgentsListResponseDto, CreateAgentDto, SuccessResponseDto, UpdateAgentDraftDto, UpdateAgentDto, UpdateWizardProgressDto } from '../models/index';
+export interface AcquisitionRequest {
+    id: string;
+    xSessionId?: string;
+    acceptLanguage?: AcquisitionAcceptLanguageEnum;
+}
 export interface ActivateRequest {
     id: string;
     xSessionId: string;
@@ -110,6 +115,16 @@ export interface UpdateWizardProgressRequest {
  *
  */
 export declare class AgentsApi extends runtime.BaseAPI {
+    /**
+     * , . .
+     *
+     */
+    acquisitionRaw(requestParameters: AcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    acquisition(requestParameters: AcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto>;
     /**
      * is_active = true . .
      *
@@ -281,6 +296,14 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     updateWizardProgress(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const AcquisitionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AcquisitionAcceptLanguageEnum = typeof AcquisitionAcceptLanguageEnum[keyof typeof AcquisitionAcceptLanguageEnum];
 /**
  * @export
  */

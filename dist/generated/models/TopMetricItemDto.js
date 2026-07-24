@@ -19,6 +19,7 @@ exports.TopMetricItemDtoFromJSON = TopMetricItemDtoFromJSON;
 exports.TopMetricItemDtoFromJSONTyped = TopMetricItemDtoFromJSONTyped;
 exports.TopMetricItemDtoToJSON = TopMetricItemDtoToJSON;
 exports.TopMetricItemDtoToJSONTyped = TopMetricItemDtoToJSONTyped;
+const MetricValueDistributionItemDto_1 = require("./MetricValueDistributionItemDto");
 /**
  * @export
  */
@@ -60,7 +61,9 @@ function instanceOfTopMetricItemDto(value) {
         return false;
     if (!('affectedAgentsCount' in value) || value['affectedAgentsCount'] === undefined)
         return false;
-    if (!('eventsCount' in value) || value['eventsCount'] === undefined)
+    if (!('observationsCount' in value) || value['observationsCount'] === undefined)
+        return false;
+    if (!('valueDistribution' in value) || value['valueDistribution'] === undefined)
         return false;
     return true;
 }
@@ -84,7 +87,8 @@ function TopMetricItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'baseline': json['baseline'],
         'changePercent': json['change_percent'],
         'affectedAgentsCount': json['affected_agents_count'],
-        'eventsCount': json['events_count'],
+        'observationsCount': json['observations_count'],
+        'valueDistribution': (json['value_distribution'].map(MetricValueDistributionItemDto_1.MetricValueDistributionItemDtoFromJSON)),
         'problemSummary': json['problem_summary'] == null ? undefined : json['problem_summary'],
     };
 }
@@ -108,7 +112,8 @@ function TopMetricItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'baseline': value['baseline'],
         'change_percent': value['changePercent'],
         'affected_agents_count': value['affectedAgentsCount'],
-        'events_count': value['eventsCount'],
+        'observations_count': value['observationsCount'],
+        'value_distribution': (value['valueDistribution'].map(MetricValueDistributionItemDto_1.MetricValueDistributionItemDtoToJSON)),
         'problem_summary': value['problemSummary'],
     };
 }

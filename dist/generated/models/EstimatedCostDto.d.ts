@@ -16,19 +16,19 @@
  */
 export interface EstimatedCostDto {
     /**
-     * Prompt- ( )
+     * prompt- AI-
      * @type {number}
      * @memberof EstimatedCostDto
      */
     promptTokens: number;
     /**
-     * completion- ( )
+     * completion-
      * @type {number}
      * @memberof EstimatedCostDto
      */
     estimatedCompletionTokens: number;
     /**
-     * ( tool-calls), ; 1 = 10000 ; : 12.5 = 125000
+     * AI-, ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof EstimatedCostDto
      */

@@ -119,10 +119,12 @@ export interface CreateMetricDefinitionDto {
      *
      * :
      * 1. :
-     * { "itemEnum": ["", "", ""], "maxItems": 3 }
+     * { "itemEnum": ["", "", ""], "maxItems": 3, "scoring_mode": "order" }
      *
      * 2. :
-     * { "maxItems": 10 }
+     * { "maxItems": 10, "scoring_mode": "count" }
+     *
+     * array- discussion accumulation_mode: union latest.
      * @type {ArrayValidationDto}
      * @memberof CreateMetricDefinitionDto
      */
@@ -156,12 +158,24 @@ export interface CreateMetricDefinitionDto {
      */
     isAnalyzable?: boolean;
     /**
+     * . : event.
+     * @type {string}
+     * @memberof CreateMetricDefinitionDto
+     */
+    measurementScope?: CreateMetricDefinitionDtoMeasurementScopeEnum;
+    /**
+     * . measurement_scope=discussion event.
+     * @type {string}
+     * @memberof CreateMetricDefinitionDto
+     */
+    discussionRole?: CreateMetricDefinitionDtoDiscussionRoleEnum | null;
+    /**
      * ( ) .
      *
      * null = : 50% min max.
      * number: ( 60 support_resolution_time).
      * enum: 0.0-1.0 ( enum, 0.67 = 'neutral' 4- enum).
-     * array fewer/more_is_better: ( 1).
+     * array scoring_mode=count: ( 1).
      * boolean: % ( 0.8 = 80% ).
      * @type {number}
      * @memberof CreateMetricDefinitionDto
@@ -191,6 +205,22 @@ export declare const CreateMetricDefinitionDtoValueTypeEnum: {
     readonly Object: "object";
 };
 export type CreateMetricDefinitionDtoValueTypeEnum = typeof CreateMetricDefinitionDtoValueTypeEnum[keyof typeof CreateMetricDefinitionDtoValueTypeEnum];
+/**
+ * @export
+ */
+export declare const CreateMetricDefinitionDtoMeasurementScopeEnum: {
+    readonly Event: "event";
+    readonly Discussion: "discussion";
+};
+export type CreateMetricDefinitionDtoMeasurementScopeEnum = typeof CreateMetricDefinitionDtoMeasurementScopeEnum[keyof typeof CreateMetricDefinitionDtoMeasurementScopeEnum];
+/**
+ * @export
+ */
+export declare const CreateMetricDefinitionDtoDiscussionRoleEnum: {
+    readonly Primary: "primary";
+    readonly Facet: "facet";
+};
+export type CreateMetricDefinitionDtoDiscussionRoleEnum = typeof CreateMetricDefinitionDtoDiscussionRoleEnum[keyof typeof CreateMetricDefinitionDtoDiscussionRoleEnum];
 /**
  * Check if a given object implements the CreateMetricDefinitionDto interface.
  */

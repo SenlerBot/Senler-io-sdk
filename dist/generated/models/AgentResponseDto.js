@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentResponseDtoLeadVarsUserRequestModeEnum = exports.AgentResponseDtoLeadVarsInstructionModeEnum = exports.AgentResponseDtoProjectVarsUserRequestModeEnum = exports.AgentResponseDtoProjectVarsInstructionModeEnum = exports.AgentResponseDtoWizardTrainingModeSelectedEnum = exports.AgentResponseDtoStatusEnum = exports.AgentResponseDtoAutoAssignmentRoleEnum = exports.AgentResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentResponseDtoAutoAssignmentModeEnum = exports.AgentResponseDtoKeywordDialogScopeEnum = exports.AgentResponseDtoKeywordAssignmentRoleEnum = exports.AgentResponseDtoKnowledgeBasePermissionsEnum = exports.AgentResponseDtoServerBindingModeEnum = exports.AgentResponseDtoAgentTypeEnum = void 0;
+exports.AgentResponseDtoLeadVarsUserRequestModeEnum = exports.AgentResponseDtoLeadVarsInstructionModeEnum = exports.AgentResponseDtoProjectVarsUserRequestModeEnum = exports.AgentResponseDtoProjectVarsInstructionModeEnum = exports.AgentResponseDtoWizardTrainingModeSelectedEnum = exports.AgentResponseDtoStatusEnum = exports.AgentResponseDtoAutoAssignmentRoleEnum = exports.AgentResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentResponseDtoAutoAssignmentModeEnum = exports.AgentResponseDtoKeywordDialogScopeEnum = exports.AgentResponseDtoKeywordAssignmentRoleEnum = exports.AgentResponseDtoAutostartModeEnum = exports.AgentResponseDtoKnowledgeBasePermissionsEnum = exports.AgentResponseDtoServerBindingModeEnum = exports.AgentResponseDtoAgentTypeEnum = void 0;
 exports.instanceOfAgentResponseDto = instanceOfAgentResponseDto;
 exports.AgentResponseDtoFromJSON = AgentResponseDtoFromJSON;
 exports.AgentResponseDtoFromJSONTyped = AgentResponseDtoFromJSONTyped;
@@ -60,6 +60,14 @@ exports.AgentResponseDtoKnowledgeBasePermissionsEnum = {
     DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
     DeleteTables: 'delete_tables'
+};
+/**
+ * @export
+ */
+exports.AgentResponseDtoAutostartModeEnum = {
+    Off: 'off',
+    Keywords: 'keywords',
+    AllMessages: 'all_messages'
 };
 /**
  * @export
@@ -167,7 +175,13 @@ function instanceOfAgentResponseDto(value) {
         return false;
     if (!('metricsCollectionEnabled' in value) || value['metricsCollectionEnabled'] === undefined)
         return false;
+    if (!('useDefaultEventMetrics' in value) || value['useDefaultEventMetrics'] === undefined)
+        return false;
+    if (!('useDefaultDiscussionMetrics' in value) || value['useDefaultDiscussionMetrics'] === undefined)
+        return false;
     if (!('triggerKeywords' in value) || value['triggerKeywords'] === undefined)
+        return false;
+    if (!('autostartMode' in value) || value['autostartMode'] === undefined)
         return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined)
         return false;
@@ -279,7 +293,10 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'selectedModel': json['selected_model'] == null ? undefined : (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoFromJSON)(json['selected_model']),
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
+        'useDefaultEventMetrics': json['use_default_event_metrics'],
+        'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'],
         'triggerKeywords': json['trigger_keywords'],
+        'autostartMode': json['autostart_mode'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -360,7 +377,10 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'selected_model': (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoToJSON)(value['selectedModel']),
         'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
+        'use_default_event_metrics': value['useDefaultEventMetrics'],
+        'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],
         'trigger_keywords': value['triggerKeywords'],
+        'autostart_mode': value['autostartMode'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],

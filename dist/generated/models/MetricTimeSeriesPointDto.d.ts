@@ -44,7 +44,7 @@ export interface MetricTimeSeriesPointDto {
      * @type {number}
      * @memberof MetricTimeSeriesPointDto
      */
-    eventsCount: number;
+    observationsCount: number;
 }
 /**
  * Check if a given object implements the MetricTimeSeriesPointDto interface.

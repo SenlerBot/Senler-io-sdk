@@ -107,7 +107,7 @@ export interface AgentResponseDto {
         [key: string]: any;
     };
     /**
-     * proxy-
+     * ,
      * @type {AgentAppOriginDto}
      * @memberof AgentResponseDto
      */
@@ -143,11 +143,29 @@ export interface AgentResponseDto {
      */
     metricsCollectionEnabled: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    useDefaultEventMetrics: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    useDefaultDiscussionMetrics: boolean;
+    /**
      * ( )
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
     triggerKeywords: Array<string>;
+    /**
+     *
+     * @type {string}
+     * @memberof AgentResponseDto
+     */
+    autostartMode: AgentResponseDtoAutostartModeEnum;
     /**
      * . null, .
      * @type {string}
@@ -173,7 +191,7 @@ export interface AgentResponseDto {
      */
     autoAssignmentMode: AgentResponseDtoAutoAssignmentModeEnum;
     /**
-     * ID selected_channels
+     * ID selected_channels. .
      * @type {Array<string>}
      * @memberof AgentResponseDto
      */
@@ -489,6 +507,15 @@ export declare const AgentResponseDtoKnowledgeBasePermissionsEnum: {
     readonly DeleteTables: "delete_tables";
 };
 export type AgentResponseDtoKnowledgeBasePermissionsEnum = typeof AgentResponseDtoKnowledgeBasePermissionsEnum[keyof typeof AgentResponseDtoKnowledgeBasePermissionsEnum];
+/**
+ * @export
+ */
+export declare const AgentResponseDtoAutostartModeEnum: {
+    readonly Off: "off";
+    readonly Keywords: "keywords";
+    readonly AllMessages: "all_messages";
+};
+export type AgentResponseDtoAutostartModeEnum = typeof AgentResponseDtoAutostartModeEnum[keyof typeof AgentResponseDtoAutostartModeEnum];
 /**
  * @export
  */

@@ -10,175 +10,56 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentMetricsConfigResponseDto, BulkUpdateMetricsDto, EnableMetricDto, MetricEnabledResponseDto, MetricsCountResponseDto, SuccessResponseDto } from '../models/index';
-export interface GetMetricsRequest {
+import type { AgentMetricsConfigurationDto, UpdateAgentMetricsConfigurationDto } from '../models/index';
+export interface GetMetricsConfigRequest {
     agentId: string;
     xSessionId: string;
-    acceptLanguage?: GetMetricsAcceptLanguageEnum;
+    acceptLanguage?: GetMetricsConfigAcceptLanguageEnum;
 }
-export interface GetMetricsCountRequest {
+export interface UpdateMetricsConfigRequest {
     agentId: string;
     xSessionId: string;
-    acceptLanguage?: GetMetricsCountAcceptLanguageEnum;
-}
-export interface GetMetricsEnabledRequest {
-    agentId: string;
-    metricId: string;
-    xSessionId: string;
-    acceptLanguage?: GetMetricsEnabledAcceptLanguageEnum;
-}
-export interface GetMetricsEnabled2Request {
-    agentId: string;
-    xSessionId: string;
-    acceptLanguage?: GetMetricsEnabled2AcceptLanguageEnum;
-}
-export interface MetricsDisableRequest {
-    agentId: string;
-    metricId: string;
-    xSessionId: string;
-    acceptLanguage?: MetricsDisableAcceptLanguageEnum;
-}
-export interface MetricsEnableRequest {
-    agentId: string;
-    metricId: string;
-    xSessionId: string;
-    enableMetricDto: EnableMetricDto;
-    acceptLanguage?: MetricsEnableAcceptLanguageEnum;
-}
-export interface UpdateMetricsRequest {
-    agentId: string;
-    xSessionId: string;
-    bulkUpdateMetricsDto: BulkUpdateMetricsDto;
-    acceptLanguage?: UpdateMetricsAcceptLanguageEnum;
+    updateAgentMetricsConfigurationDto: UpdateAgentMetricsConfigurationDto;
+    acceptLanguage?: UpdateMetricsConfigAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class MetricsConfigApi extends runtime.BaseAPI {
     /**
-     * .
+     * , .
      *
      */
-    getMetricsRaw(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>>;
-    /**
-     * .
-     *
-     */
-    getMetrics(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getMetricsCountRaw(requestParameters: GetMetricsCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricsCountResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getMetricsCount(requestParameters: GetMetricsCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricsCountResponseDto>;
+    getMetricsConfigRaw(requestParameters: GetMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigurationDto>>;
     /**
      * , .
-     * ,
-     */
-    getMetricsEnabledRaw(requestParameters: GetMetricsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricEnabledResponseDto>>;
-    /**
-     * , .
-     * ,
-     */
-    getMetricsEnabled(requestParameters: GetMetricsEnabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricEnabledResponseDto>;
-    /**
-     * .
      *
      */
-    getMetricsEnabled2Raw(requestParameters: GetMetricsEnabled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>>;
+    getMetricsConfig(requestParameters: GetMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigurationDto>;
     /**
-     * .
+     * . .
      *
      */
-    getMetricsEnabled2(requestParameters: GetMetricsEnabled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>>;
+    updateMetricsConfigRaw(requestParameters: UpdateMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigurationDto>>;
     /**
-     * .
+     * . .
      *
      */
-    metricsDisableRaw(requestParameters: MetricsDisableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
-    /**
-     * .
-     *
-     */
-    metricsDisable(requestParameters: MetricsDisableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
-    /**
-     * .
-     *
-     */
-    metricsEnableRaw(requestParameters: MetricsEnableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigResponseDto>>;
-    /**
-     * .
-     *
-     */
-    metricsEnable(requestParameters: MetricsEnableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateMetricsRaw(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentMetricsConfigResponseDto>>>;
-    /**
-     * .
-     *
-     */
-    updateMetrics(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentMetricsConfigResponseDto>>;
+    updateMetricsConfig(requestParameters: UpdateMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigurationDto>;
 }
 /**
  * @export
  */
-export declare const GetMetricsAcceptLanguageEnum: {
+export declare const GetMetricsConfigAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetMetricsAcceptLanguageEnum = typeof GetMetricsAcceptLanguageEnum[keyof typeof GetMetricsAcceptLanguageEnum];
+export type GetMetricsConfigAcceptLanguageEnum = typeof GetMetricsConfigAcceptLanguageEnum[keyof typeof GetMetricsConfigAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetMetricsCountAcceptLanguageEnum: {
+export declare const UpdateMetricsConfigAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetMetricsCountAcceptLanguageEnum = typeof GetMetricsCountAcceptLanguageEnum[keyof typeof GetMetricsCountAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetMetricsEnabledAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetMetricsEnabledAcceptLanguageEnum = typeof GetMetricsEnabledAcceptLanguageEnum[keyof typeof GetMetricsEnabledAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetMetricsEnabled2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetMetricsEnabled2AcceptLanguageEnum = typeof GetMetricsEnabled2AcceptLanguageEnum[keyof typeof GetMetricsEnabled2AcceptLanguageEnum];
-/**
- * @export
- */
-export declare const MetricsDisableAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type MetricsDisableAcceptLanguageEnum = typeof MetricsDisableAcceptLanguageEnum[keyof typeof MetricsDisableAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const MetricsEnableAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type MetricsEnableAcceptLanguageEnum = typeof MetricsEnableAcceptLanguageEnum[keyof typeof MetricsEnableAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateMetricsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateMetricsAcceptLanguageEnum = typeof UpdateMetricsAcceptLanguageEnum[keyof typeof UpdateMetricsAcceptLanguageEnum];
+export type UpdateMetricsConfigAcceptLanguageEnum = typeof UpdateMetricsConfigAcceptLanguageEnum[keyof typeof UpdateMetricsConfigAcceptLanguageEnum];

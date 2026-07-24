@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateAgentDtoLeadVarsUserRequestModeEnum = exports.CreateAgentDtoLeadVarsInstructionModeEnum = exports.CreateAgentDtoProjectVarsUserRequestModeEnum = exports.CreateAgentDtoProjectVarsInstructionModeEnum = exports.CreateAgentDtoTrainingModeEnum = exports.CreateAgentDtoStatusEnum = exports.CreateAgentDtoCreationModeEnum = exports.CreateAgentDtoAutoAssignmentRoleEnum = exports.CreateAgentDtoAutoAssignmentDialogScopeEnum = exports.CreateAgentDtoAutoAssignmentModeEnum = exports.CreateAgentDtoKeywordDialogScopeEnum = exports.CreateAgentDtoKeywordAssignmentRoleEnum = exports.CreateAgentDtoKnowledgeBasePermissionsEnum = exports.CreateAgentDtoServerBindingModeEnum = exports.CreateAgentDtoAgentTypeEnum = void 0;
+exports.CreateAgentDtoLeadVarsUserRequestModeEnum = exports.CreateAgentDtoLeadVarsInstructionModeEnum = exports.CreateAgentDtoProjectVarsUserRequestModeEnum = exports.CreateAgentDtoProjectVarsInstructionModeEnum = exports.CreateAgentDtoTrainingModeEnum = exports.CreateAgentDtoStatusEnum = exports.CreateAgentDtoCreationModeEnum = exports.CreateAgentDtoAutoAssignmentRoleEnum = exports.CreateAgentDtoAutoAssignmentDialogScopeEnum = exports.CreateAgentDtoAutoAssignmentModeEnum = exports.CreateAgentDtoKeywordDialogScopeEnum = exports.CreateAgentDtoKeywordAssignmentRoleEnum = exports.CreateAgentDtoAutostartModeEnum = exports.CreateAgentDtoKnowledgeBasePermissionsEnum = exports.CreateAgentDtoServerBindingModeEnum = exports.CreateAgentDtoAgentTypeEnum = void 0;
 exports.instanceOfCreateAgentDto = instanceOfCreateAgentDto;
 exports.CreateAgentDtoFromJSON = CreateAgentDtoFromJSON;
 exports.CreateAgentDtoFromJSONTyped = CreateAgentDtoFromJSONTyped;
@@ -56,6 +56,14 @@ exports.CreateAgentDtoKnowledgeBasePermissionsEnum = {
     DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
     DeleteTables: 'delete_tables'
+};
+/**
+ * @export
+ */
+exports.CreateAgentDtoAutostartModeEnum = {
+    Off: 'off',
+    Keywords: 'keywords',
+    AllMessages: 'all_messages'
 };
 /**
  * @export
@@ -185,7 +193,10 @@ function CreateAgentDtoFromJSONTyped(json, ignoreDiscriminator) {
         'meta': json['meta'] == null ? undefined : json['meta'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'] == null ? undefined : json['metrics_collection_enabled'],
+        'useDefaultEventMetrics': json['use_default_event_metrics'] == null ? undefined : json['use_default_event_metrics'],
+        'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'] == null ? undefined : json['use_default_discussion_metrics'],
         'triggerKeywords': json['trigger_keywords'] == null ? undefined : json['trigger_keywords'],
+        'autostartMode': json['autostart_mode'] == null ? undefined : json['autostart_mode'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -257,7 +268,10 @@ function CreateAgentDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'meta': value['meta'],
         'is_active': value['isActive'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
+        'use_default_event_metrics': value['useDefaultEventMetrics'],
+        'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],
         'trigger_keywords': value['triggerKeywords'],
+        'autostart_mode': value['autostartMode'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],

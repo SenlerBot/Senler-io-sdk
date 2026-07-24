@@ -57,6 +57,14 @@ function instanceOfSegmentEventResponseDto(value) {
         return false;
     if (!('channelId' in value) || value['channelId'] === undefined)
         return false;
+    if (!('landingId' in value) || value['landingId'] === undefined)
+        return false;
+    if (!('landingVersionId' in value) || value['landingVersionId'] === undefined)
+        return false;
+    if (!('landingActionId' in value) || value['landingActionId'] === undefined)
+        return false;
+    if (!('triggerId' in value) || value['triggerId'] === undefined)
+        return false;
     if (!('payload' in value) || value['payload'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -77,6 +85,10 @@ function SegmentEventResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'eventType': json['event_type'],
         'source': json['source'],
         'channelId': json['channel_id'],
+        'landingId': json['landing_id'],
+        'landingVersionId': json['landing_version_id'],
+        'landingActionId': json['landing_action_id'],
+        'triggerId': json['trigger_id'],
         'payload': json['payload'],
         'createdAt': (new Date(json['created_at'])),
     };
@@ -95,6 +107,10 @@ function SegmentEventResponseDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'event_type': value['eventType'],
         'source': value['source'],
         'channel_id': value['channelId'],
+        'landing_id': value['landingId'],
+        'landing_version_id': value['landingVersionId'],
+        'landing_action_id': value['landingActionId'],
+        'trigger_id': value['triggerId'],
         'payload': value['payload'],
         'created_at': ((value['createdAt']).toISOString()),
     };

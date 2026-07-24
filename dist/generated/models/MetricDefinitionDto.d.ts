@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { MetricDefinitionDtoValidationSchema } from './MetricDefinitionDtoValidationSchema';
+import type { ValidationSchemaDto } from './ValidationSchemaDto';
 /**
  * MetricDefinitionDto.
  * @export
@@ -97,11 +97,21 @@ export interface MetricDefinitionDto {
         [key: string]: any;
     } | null;
     /**
+     * JSON Schema (read-only, ).
      *
-     * @type {MetricDefinitionDtoValidationSchema}
+     * value_type:
+     * - string: { type: "string", enum?: [...], enum_labels?: {...}, enum_scores?: {...}, maxLength?: number }
+     * - number: { type: "number", minimum?: number, maximum?: number }
+     * - integer: { type: "integer", minimum?: number, maximum?: number }
+     * - boolean: { type: "boolean" }
+     * - array: { type: "array", scoring_mode: "count"|"order"|"weights", items?: { type: "string", enum: [...], enum_labels?: {...} }, maxItems?: number, item_scores?: {...}, accumulation_mode?: "union"|"latest" }
+     * - object: { type: "object" }
+     *
+     * direction validation_schema direction.
+     * @type {ValidationSchemaDto}
      * @memberof MetricDefinitionDto
      */
-    validationSchema?: MetricDefinitionDtoValidationSchema;
+    validationSchema?: ValidationSchemaDto;
     /**
      * ID ( )
      * @type {string}
@@ -127,6 +137,18 @@ export interface MetricDefinitionDto {
      */
     isAnalyzable: boolean;
     /**
+     * :
+     * @type {string}
+     * @memberof MetricDefinitionDto
+     */
+    measurementScope: MetricDefinitionDtoMeasurementScopeEnum;
+    /**
+     * : primary , facet . event null.
+     * @type {string}
+     * @memberof MetricDefinitionDto
+     */
+    discussionRole: MetricDefinitionDtoDiscussionRoleEnum | null;
+    /**
      * ( "").
      *
      * null analyzable.
@@ -134,7 +156,7 @@ export interface MetricDefinitionDto {
      * value_type:
      * - string/number: higher_is_better, lower_is_better
      * - boolean: true_is_better, false_is_better
-     * - array: fewer_is_better, more_is_better, higher_is_better, lower_is_better
+     * - array: higher_is_better, lower_is_better; validation_schema.scoring_mode
      * @type {string}
      * @memberof MetricDefinitionDto
      */
@@ -172,13 +194,27 @@ export type MetricDefinitionDtoValueTypeEnum = typeof MetricDefinitionDtoValueTy
 /**
  * @export
  */
+export declare const MetricDefinitionDtoMeasurementScopeEnum: {
+    readonly Event: "event";
+    readonly Discussion: "discussion";
+};
+export type MetricDefinitionDtoMeasurementScopeEnum = typeof MetricDefinitionDtoMeasurementScopeEnum[keyof typeof MetricDefinitionDtoMeasurementScopeEnum];
+/**
+ * @export
+ */
+export declare const MetricDefinitionDtoDiscussionRoleEnum: {
+    readonly Primary: "primary";
+    readonly Facet: "facet";
+};
+export type MetricDefinitionDtoDiscussionRoleEnum = typeof MetricDefinitionDtoDiscussionRoleEnum[keyof typeof MetricDefinitionDtoDiscussionRoleEnum];
+/**
+ * @export
+ */
 export declare const MetricDefinitionDtoDirectionEnum: {
     readonly HigherIsBetter: "higher_is_better";
     readonly LowerIsBetter: "lower_is_better";
     readonly TrueIsBetter: "true_is_better";
     readonly FalseIsBetter: "false_is_better";
-    readonly FewerIsBetter: "fewer_is_better";
-    readonly MoreIsBetter: "more_is_better";
 };
 export type MetricDefinitionDtoDirectionEnum = typeof MetricDefinitionDtoDirectionEnum[keyof typeof MetricDefinitionDtoDirectionEnum];
 /**

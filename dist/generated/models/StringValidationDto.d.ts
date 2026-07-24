@@ -22,6 +22,14 @@ export interface StringValidationDto {
      */
     _enum?: Array<string>;
     /**
+     * enum-. enum.
+     * @type {{ [key: string]: string; }}
+     * @memberof StringValidationDto
+     */
+    enumLabels?: {
+        [key: string]: string;
+    };
+    /**
      * scores enum (0.0-1.0). .
      * @type {object}
      * @memberof StringValidationDto

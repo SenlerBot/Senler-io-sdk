@@ -25,18 +25,21 @@ exports.EventToolDtoToJSONTyped = EventToolDtoToJSONTyped;
 exports.EventToolDtoKindEnum = {
     Builtin: 'builtin',
     Capability: 'capability',
+    Hosted: 'hosted',
+    Variable: 'variable',
+    KnowledgeBase: 'knowledge_base',
     Mcp: 'mcp'
 };
 /**
  * @export
  */
 exports.EventToolDtoCategoryEnum = {
-    Ui: 'ui',
-    Media: 'media',
-    Delivery: 'delivery',
-    Control: 'control',
+    ContentCreation: 'content_creation',
+    InterfaceDelivery: 'interface_delivery',
+    AutomationControl: 'automation_control',
     Recognition: 'recognition',
-    General: 'general'
+    DataKnowledge: 'data_knowledge',
+    InternetIntegrations: 'internet_integrations'
 };
 /**
  * @export

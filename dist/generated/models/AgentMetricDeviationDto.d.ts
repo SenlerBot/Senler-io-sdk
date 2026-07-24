@@ -76,11 +76,11 @@ export interface AgentMetricDeviationDto {
      */
     changePercent: number;
     /**
-     * ( )
+     *
      * @type {number}
      * @memberof AgentMetricDeviationDto
      */
-    eventsCount: number;
+    observationsCount: number;
     /**
      *
      * @type {number}

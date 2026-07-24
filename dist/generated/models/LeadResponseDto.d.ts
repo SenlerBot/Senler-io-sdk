@@ -66,6 +66,18 @@ export interface LeadResponseDto {
      */
     avatarUrl?: string | null;
     /**
+     * Email
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    email?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    phone?: string | null;
+    /**
      *
      * @type {string}
      * @memberof LeadResponseDto

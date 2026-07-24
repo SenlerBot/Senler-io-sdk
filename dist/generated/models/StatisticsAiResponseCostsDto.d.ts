@@ -9,11 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StatisticsNullableRubMoneyMetricDeltaDto } from './StatisticsNullableRubMoneyMetricDeltaDto';
+import type { StatisticsAiResponseBreakdownDto } from './StatisticsAiResponseBreakdownDto';
+import type { StatisticsAiResponseToolUsageDto } from './StatisticsAiResponseToolUsageDto';
 import type { StatisticsNullableCreditsMetricDeltaDto } from './StatisticsNullableCreditsMetricDeltaDto';
-import type { StatisticsNullableUsdMoneyMetricDeltaDto } from './StatisticsNullableUsdMoneyMetricDeltaDto';
 import type { StatisticsNullableMetricDeltaDto } from './StatisticsNullableMetricDeltaDto';
 import type { StatisticsNullableDecimalCreditsMetricDeltaDto } from './StatisticsNullableDecimalCreditsMetricDeltaDto';
+import type { StatisticsNullableProjectMoneyMetricDeltaDto } from './StatisticsNullableProjectMoneyMetricDeltaDto';
 /**
  * StatisticsAiResponseCostsDto.
  * @export
@@ -21,59 +22,83 @@ import type { StatisticsNullableDecimalCreditsMetricDeltaDto } from './Statistic
  */
 export interface StatisticsAiResponseCostsDto {
     /**
-     * : ready realtime-capture ( ); backfilling ; unavailable . ready, , null
+     * : ready , realtime-capture ( ; ); backfilling ; unavailable . ready, , null
      * @type {string}
      * @memberof StatisticsAiResponseCostsDto
      */
     dataStatus: StatisticsAiResponseCostsDtoDataStatusEnum;
     /**
-     * AI- , /. total_credits = text_credits + tool_credits + metrics_credits + other_credits; terminal_at
+     * project_balances. project_currency_cost
+     * @type {string}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    projectCurrency: StatisticsAiResponseCostsDtoProjectCurrencyEnum;
+    /**
+     * AI- , /. cost- breakdown; terminal_at
      * @type {StatisticsNullableCreditsMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
     directCreditsUsed: StatisticsNullableCreditsMetricDeltaDto;
     /**
-     * RUB-: floor(sum(total_credits / credit_rate)); .
-     * @type {StatisticsNullableRubMoneyMetricDeltaDto}
+     * event-time : floor(sum(total_credits / credit_rate)). RUB USD
+     * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
-    directCostRub: StatisticsNullableRubMoneyMetricDeltaDto;
+    projectCurrencyCost: StatisticsNullableProjectMoneyMetricDeltaDto;
     /**
-     * USD-: floor(sum(total_credits / credit_rate)); .
-     * @type {StatisticsNullableUsdMoneyMetricDeltaDto}
-     * @memberof StatisticsAiResponseCostsDto
-     */
-    directCostUsd: StatisticsNullableUsdMoneyMetricDeltaDto;
-    /**
-     * direct_credits_used, : total_credits , credit_rate
+     * direct_credits_used, project_currency_cost: , / event-time credit_rate.
      * @type {StatisticsNullableCreditsMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
-    unconvertedCredits: StatisticsNullableCreditsMetricDeltaDto;
+    excludedFromProjectCurrencyCredits: StatisticsNullableCreditsMetricDeltaDto;
     /**
-     * AI-, , . response_id, legacy request_id ID AI-, metrics_extracted. terminal_at;
+     * . cost- ; project_currency_cost . reasoning_tokens cached_input_tokens
+     * @type {StatisticsAiResponseBreakdownDto}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    breakdown: StatisticsAiResponseBreakdownDto;
+    /**
+     * AI-
+     * @type {StatisticsAiResponseToolUsageDto}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    toolUsage: StatisticsAiResponseToolUsageDto;
+    /**
+     * AI-, , . terminal_at;
      * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
-    completedAiResponses: StatisticsNullableMetricDeltaDto;
+    aiResponses: StatisticsNullableMetricDeltaDto;
     /**
-     * dialog_id, AI-
+     * dialog_id ai_responses. AI- ,
      * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
-    dialogsWithCompletedAiResponses: StatisticsNullableMetricDeltaDto;
+    dialogsWithAiResponses: StatisticsNullableMetricDeltaDto;
     /**
-     * direct_credits_used / completed_ai_responses; text + tool + metrics + other AI-. null
+     * direct_credits_used / ai_responses. null
      * @type {StatisticsNullableDecimalCreditsMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
     averageDirectCreditsPerResponse: StatisticsNullableDecimalCreditsMetricDeltaDto;
     /**
-     * direct_credits_used / dialogs_with_completed_ai_responses; , AI-. null
+     * project_currency_cost / ai_responses, . excluded_from_project_currency_credits
+     * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    averageProjectCurrencyCostPerResponse: StatisticsNullableProjectMoneyMetricDeltaDto;
+    /**
+     * direct_credits_used / dialogs_with_ai_responses. AI- null
      * @type {StatisticsNullableDecimalCreditsMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
     averageDirectCreditsPerDialog: StatisticsNullableDecimalCreditsMetricDeltaDto;
+    /**
+     * project_currency_cost / dialogs_with_ai_responses, . excluded_from_project_currency_credits
+     * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    averageProjectCurrencyCostPerDialog: StatisticsNullableProjectMoneyMetricDeltaDto;
 }
 /**
  * @export
@@ -84,6 +109,14 @@ export declare const StatisticsAiResponseCostsDtoDataStatusEnum: {
     readonly Unavailable: "unavailable";
 };
 export type StatisticsAiResponseCostsDtoDataStatusEnum = typeof StatisticsAiResponseCostsDtoDataStatusEnum[keyof typeof StatisticsAiResponseCostsDtoDataStatusEnum];
+/**
+ * @export
+ */
+export declare const StatisticsAiResponseCostsDtoProjectCurrencyEnum: {
+    readonly Usd: "USD";
+    readonly Rub: "RUB";
+};
+export type StatisticsAiResponseCostsDtoProjectCurrencyEnum = typeof StatisticsAiResponseCostsDtoProjectCurrencyEnum[keyof typeof StatisticsAiResponseCostsDtoProjectCurrencyEnum];
 /**
  * Check if a given object implements the StatisticsAiResponseCostsDto interface.
  */

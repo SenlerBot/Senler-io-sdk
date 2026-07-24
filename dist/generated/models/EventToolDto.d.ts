@@ -90,6 +90,9 @@ export interface EventToolDto {
 export declare const EventToolDtoKindEnum: {
     readonly Builtin: "builtin";
     readonly Capability: "capability";
+    readonly Hosted: "hosted";
+    readonly Variable: "variable";
+    readonly KnowledgeBase: "knowledge_base";
     readonly Mcp: "mcp";
 };
 export type EventToolDtoKindEnum = typeof EventToolDtoKindEnum[keyof typeof EventToolDtoKindEnum];
@@ -97,12 +100,12 @@ export type EventToolDtoKindEnum = typeof EventToolDtoKindEnum[keyof typeof Even
  * @export
  */
 export declare const EventToolDtoCategoryEnum: {
-    readonly Ui: "ui";
-    readonly Media: "media";
-    readonly Delivery: "delivery";
-    readonly Control: "control";
+    readonly ContentCreation: "content_creation";
+    readonly InterfaceDelivery: "interface_delivery";
+    readonly AutomationControl: "automation_control";
     readonly Recognition: "recognition";
-    readonly General: "general";
+    readonly DataKnowledge: "data_knowledge";
+    readonly InternetIntegrations: "internet_integrations";
 };
 export type EventToolDtoCategoryEnum = typeof EventToolDtoCategoryEnum[keyof typeof EventToolDtoCategoryEnum];
 /**

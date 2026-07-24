@@ -57,6 +57,10 @@ function instanceOfPlatformMetadataDto(value) {
         return false;
     if (!('isDevelopment' in value) || value['isDevelopment'] === undefined)
         return false;
+    if (!('deliverySupported' in value) || value['deliverySupported'] === undefined)
+        return false;
+    if (!('deliveryTestSupported' in value) || value['deliveryTestSupported'] === undefined)
+        return false;
     return true;
 }
 function PlatformMetadataDtoFromJSON(json) {
@@ -77,6 +81,8 @@ function PlatformMetadataDtoFromJSONTyped(json, ignoreDiscriminator) {
         'color': json['color'],
         'isActive': json['is_active'],
         'isDevelopment': json['is_development'],
+        'deliverySupported': json['delivery_supported'],
+        'deliveryTestSupported': json['delivery_test_supported'],
     };
 }
 function PlatformMetadataDtoToJSON(json) {
@@ -97,5 +103,7 @@ function PlatformMetadataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'color': value['color'],
         'is_active': value['isActive'],
         'is_development': value['isDevelopment'],
+        'delivery_supported': value['deliverySupported'],
+        'delivery_test_supported': value['deliveryTestSupported'],
     };
 }

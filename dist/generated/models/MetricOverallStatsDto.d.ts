@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { MetricValueDistributionItemDto } from './MetricValueDistributionItemDto';
 /**
  * MetricOverallStatsDto.
  * @export
@@ -27,6 +28,12 @@ export interface MetricOverallStatsDto {
      * @memberof MetricOverallStatsDto
      */
     baseline?: number;
+    /**
+     * enum/boolean/array-
+     * @type {Array<MetricValueDistributionItemDto>}
+     * @memberof MetricOverallStatsDto
+     */
+    valueDistribution: Array<MetricValueDistributionItemDto>;
 }
 /**
  * Check if a given object implements the MetricOverallStatsDto interface.

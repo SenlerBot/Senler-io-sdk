@@ -19,7 +19,9 @@ exports.SummarizationResponseDtoFromJSON = SummarizationResponseDtoFromJSON;
 exports.SummarizationResponseDtoFromJSONTyped = SummarizationResponseDtoFromJSONTyped;
 exports.SummarizationResponseDtoToJSON = SummarizationResponseDtoToJSON;
 exports.SummarizationResponseDtoToJSONTyped = SummarizationResponseDtoToJSONTyped;
+const ImportantDiscussionAnalysisDto_1 = require("./ImportantDiscussionAnalysisDto");
 const AgentRecommendationDto_1 = require("./AgentRecommendationDto");
+const ImportantDiscussionDto_1 = require("./ImportantDiscussionDto");
 const GenerationCostDto_1 = require("./GenerationCostDto");
 const PeriodInfoDto_1 = require("./PeriodInfoDto");
 /**
@@ -42,6 +44,10 @@ function instanceOfSummarizationResponseDto(value) {
     if (!('positiveHighlights' in value) || value['positiveHighlights'] === undefined)
         return false;
     if (!('problemAreas' in value) || value['problemAreas'] === undefined)
+        return false;
+    if (!('discussionAnalysis' in value) || value['discussionAnalysis'] === undefined)
+        return false;
+    if (!('importantDiscussions' in value) || value['importantDiscussions'] === undefined)
         return false;
     if (!('agentRecommendations' in value) || value['agentRecommendations'] === undefined)
         return false;
@@ -68,6 +74,8 @@ function SummarizationResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'situationOverview': json['situation_overview'],
         'positiveHighlights': json['positive_highlights'],
         'problemAreas': json['problem_areas'],
+        'discussionAnalysis': (0, ImportantDiscussionAnalysisDto_1.ImportantDiscussionAnalysisDtoFromJSON)(json['discussion_analysis']),
+        'importantDiscussions': (json['important_discussions'].map(ImportantDiscussionDto_1.ImportantDiscussionDtoFromJSON)),
         'agentRecommendations': (json['agent_recommendations'].map(AgentRecommendationDto_1.AgentRecommendationDtoFromJSON)),
         'businessRecommendations': json['business_recommendations'],
         'generation': (0, GenerationCostDto_1.GenerationCostDtoFromJSON)(json['generation']),
@@ -89,6 +97,8 @@ function SummarizationResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'situation_overview': value['situationOverview'],
         'positive_highlights': value['positiveHighlights'],
         'problem_areas': value['problemAreas'],
+        'discussion_analysis': (0, ImportantDiscussionAnalysisDto_1.ImportantDiscussionAnalysisDtoToJSON)(value['discussionAnalysis']),
+        'important_discussions': (value['importantDiscussions'].map(ImportantDiscussionDto_1.ImportantDiscussionDtoToJSON)),
         'agent_recommendations': (value['agentRecommendations'].map(AgentRecommendationDto_1.AgentRecommendationDtoToJSON)),
         'business_recommendations': value['businessRecommendations'],
         'generation': (0, GenerationCostDto_1.GenerationCostDtoToJSON)(value['generation']),

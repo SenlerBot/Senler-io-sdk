@@ -41,6 +41,7 @@ function StringValidationDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         '_enum': json['enum'] == null ? undefined : json['enum'],
+        'enumLabels': json['enum_labels'] == null ? undefined : json['enum_labels'],
         'enumScores': json['enum_scores'] == null ? undefined : json['enum_scores'],
         'direction': json['direction'] == null ? undefined : json['direction'],
         'maxLength': json['maxLength'] == null ? undefined : json['maxLength'],
@@ -55,6 +56,7 @@ function StringValidationDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'enum': value['_enum'],
+        'enum_labels': value['enumLabels'],
         'enum_scores': value['enumScores'],
         'direction': value['direction'],
         'maxLength': value['maxLength'],

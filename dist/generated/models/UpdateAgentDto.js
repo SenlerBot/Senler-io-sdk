@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentDtoLeadVarsUserRequestModeEnum = exports.UpdateAgentDtoLeadVarsInstructionModeEnum = exports.UpdateAgentDtoProjectVarsUserRequestModeEnum = exports.UpdateAgentDtoProjectVarsInstructionModeEnum = exports.UpdateAgentDtoAutoAssignmentRoleEnum = exports.UpdateAgentDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentDtoAutoAssignmentModeEnum = exports.UpdateAgentDtoKeywordDialogScopeEnum = exports.UpdateAgentDtoKeywordAssignmentRoleEnum = exports.UpdateAgentDtoKnowledgeBasePermissionsEnum = exports.UpdateAgentDtoServerBindingModeEnum = exports.UpdateAgentDtoAgentTypeEnum = void 0;
+exports.UpdateAgentDtoLeadVarsUserRequestModeEnum = exports.UpdateAgentDtoLeadVarsInstructionModeEnum = exports.UpdateAgentDtoProjectVarsUserRequestModeEnum = exports.UpdateAgentDtoProjectVarsInstructionModeEnum = exports.UpdateAgentDtoAutoAssignmentRoleEnum = exports.UpdateAgentDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentDtoAutoAssignmentModeEnum = exports.UpdateAgentDtoKeywordDialogScopeEnum = exports.UpdateAgentDtoKeywordAssignmentRoleEnum = exports.UpdateAgentDtoAutostartModeEnum = exports.UpdateAgentDtoKnowledgeBasePermissionsEnum = exports.UpdateAgentDtoServerBindingModeEnum = exports.UpdateAgentDtoAgentTypeEnum = void 0;
 exports.instanceOfUpdateAgentDto = instanceOfUpdateAgentDto;
 exports.UpdateAgentDtoFromJSON = UpdateAgentDtoFromJSON;
 exports.UpdateAgentDtoFromJSONTyped = UpdateAgentDtoFromJSONTyped;
@@ -56,6 +56,14 @@ exports.UpdateAgentDtoKnowledgeBasePermissionsEnum = {
     DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
     DeleteTables: 'delete_tables'
+};
+/**
+ * @export
+ */
+exports.UpdateAgentDtoAutostartModeEnum = {
+    Off: 'off',
+    Keywords: 'keywords',
+    AllMessages: 'all_messages'
 };
 /**
  * @export
@@ -156,7 +164,10 @@ function UpdateAgentDtoFromJSONTyped(json, ignoreDiscriminator) {
         'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'meta': json['meta'] == null ? undefined : json['meta'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'] == null ? undefined : json['metrics_collection_enabled'],
+        'useDefaultEventMetrics': json['use_default_event_metrics'] == null ? undefined : json['use_default_event_metrics'],
+        'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'] == null ? undefined : json['use_default_discussion_metrics'],
         'triggerKeywords': json['trigger_keywords'] == null ? undefined : json['trigger_keywords'],
+        'autostartMode': json['autostart_mode'] == null ? undefined : json['autostart_mode'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -224,7 +235,10 @@ function UpdateAgentDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'temperature': value['temperature'],
         'meta': value['meta'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
+        'use_default_event_metrics': value['useDefaultEventMetrics'],
+        'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],
         'trigger_keywords': value['triggerKeywords'],
+        'autostart_mode': value['autostartMode'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],

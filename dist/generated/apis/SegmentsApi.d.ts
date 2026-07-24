@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CheckSegmentTelegramMenuButtonDto, ConfirmS3UploadDto, CreateSegmentConsentDocumentDto, CreateSegmentDto, GetSegmentAssetUploadUrlDto, GetSegmentConsentDocumentUploadUrlDto, LeadResponseDto, S3UploadUrlResponseDto, SegmentAssetUploadResponseDto, SegmentConsentDocumentResponseDto, SegmentConsentDocumentUploadResponseDto, SegmentConsentDocumentVersionsListResponseDto, SegmentConsentDocumentsListResponseDto, SegmentConsentTemplatesListResponseDto, SegmentEventsListResponseDto, SegmentLeadConsentAcceptancesResponseDto, SegmentLinksResponseDto, SegmentMaxMiniAppListResponseDto, SegmentMaxMiniAppResponseDto, SegmentMaxMiniAppVerificationResponseDto, SegmentResponseDto, SegmentTelegramMenuButtonListResponseDto, SegmentTelegramMenuButtonResponseDto, SegmentTelegramMiniAppListResponseDto, SegmentTelegramMiniAppResponseDto, SegmentTelegramMiniAppVerificationResponseDto, SegmentVkAppListResponseDto, SegmentVkAppResponseDto, SegmentsListResponseDto, SetSegmentMaxMiniAppTargetDto, SetSegmentTelegramMenuButtonDto, SetSegmentTelegramMiniAppDto, SetSegmentVkAppTargetDto, StartSegmentMaxMiniAppVerificationDto, StartSegmentTelegramMiniAppVerificationDto, UpdateSegmentConsentDocumentDto, UpdateSegmentDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateSegmentConsentDocumentDto, CreateSegmentDto, GetSegmentConsentDocumentUploadUrlDto, LeadResponseDto, S3UploadUrlResponseDto, SegmentConsentDocumentResponseDto, SegmentConsentDocumentUploadResponseDto, SegmentConsentDocumentVersionsListResponseDto, SegmentConsentDocumentsListResponseDto, SegmentConsentTemplatesListResponseDto, SegmentEventsListResponseDto, SegmentLeadConsentAcceptancesResponseDto, SegmentResponseDto, SegmentSubscriptionLinksResponseDto, SegmentsListResponseDto, UpdateSegmentConsentDocumentDto, UpdateSegmentDto } from '../models/index';
 export interface DeleteSegmentsRequest {
     projectId: string;
     id: string;
@@ -70,58 +70,23 @@ export interface GetSegmentsLeadsConsentAcceptancesRequest {
     xSessionId?: string;
     acceptLanguage?: GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum;
 }
-export interface GetSegmentsLinksRequest {
-    projectId: string;
-    id: string;
-    channelIds?: Array<string>;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsLinksAcceptLanguageEnum;
-}
-export interface GetSegmentsMaxMiniAppsRequest {
-    projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsMaxMiniAppsAcceptLanguageEnum;
-}
 export interface GetSegmentsMembersRequest {
     projectId: string;
     id: string;
     xSessionId?: string;
     acceptLanguage?: GetSegmentsMembersAcceptLanguageEnum;
 }
-export interface GetSegmentsTelegramMenuButtonsRequest {
+export interface GetSegmentsSubscriptionLinksRequest {
     projectId: string;
+    id: string;
     xSessionId?: string;
-    acceptLanguage?: GetSegmentsTelegramMenuButtonsAcceptLanguageEnum;
-}
-export interface GetSegmentsTelegramMiniAppsRequest {
-    projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsTelegramMiniAppsAcceptLanguageEnum;
-}
-export interface GetSegmentsVkAppsRequest {
-    projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsVkAppsAcceptLanguageEnum;
+    acceptLanguage?: GetSegmentsSubscriptionLinksAcceptLanguageEnum;
 }
 export interface SegmentsRequest {
     projectId: string;
     createSegmentDto: CreateSegmentDto;
     xSessionId?: string;
     acceptLanguage?: SegmentsAcceptLanguageEnum;
-}
-export interface SegmentsAssetsConfirmRequest {
-    projectId: string;
-    id: string;
-    confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsAssetsConfirmAcceptLanguageEnum;
-}
-export interface SegmentsAssetsUploadUrlRequest {
-    projectId: string;
-    id: string;
-    getSegmentAssetUploadUrlDto: GetSegmentAssetUploadUrlDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsAssetsUploadUrlAcceptLanguageEnum;
 }
 export interface SegmentsConsentDocumentsRequest {
     projectId: string;
@@ -148,48 +113,6 @@ export interface SegmentsLeadsRequest {
     xSessionId?: string;
     acceptLanguage?: SegmentsLeadsAcceptLanguageEnum;
 }
-export interface SegmentsMaxMiniAppTargetRequest {
-    projectId: string;
-    setSegmentMaxMiniAppTargetDto: SetSegmentMaxMiniAppTargetDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsMaxMiniAppTargetAcceptLanguageEnum;
-}
-export interface SegmentsMaxMiniAppVerificationRequest {
-    projectId: string;
-    startSegmentMaxMiniAppVerificationDto: StartSegmentMaxMiniAppVerificationDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsMaxMiniAppVerificationAcceptLanguageEnum;
-}
-export interface SegmentsPublishRequest {
-    projectId: string;
-    id: string;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsPublishAcceptLanguageEnum;
-}
-export interface SegmentsTelegramMenuButtonApplyRequest {
-    projectId: string;
-    setSegmentTelegramMenuButtonDto: SetSegmentTelegramMenuButtonDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsTelegramMenuButtonApplyAcceptLanguageEnum;
-}
-export interface SegmentsTelegramMenuButtonCheckRequest {
-    projectId: string;
-    checkSegmentTelegramMenuButtonDto: CheckSegmentTelegramMenuButtonDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsTelegramMenuButtonCheckAcceptLanguageEnum;
-}
-export interface SegmentsTelegramMiniAppVerificationRequest {
-    projectId: string;
-    startSegmentTelegramMiniAppVerificationDto: StartSegmentTelegramMiniAppVerificationDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsTelegramMiniAppVerificationAcceptLanguageEnum;
-}
-export interface SegmentsVkAppTargetRequest {
-    projectId: string;
-    setSegmentVkAppTargetDto: SetSegmentVkAppTargetDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsVkAppTargetAcceptLanguageEnum;
-}
 export interface UpdateSegmentsRequest {
     projectId: string;
     id: string;
@@ -203,12 +126,6 @@ export interface UpdateSegmentsConsentDocumentsRequest {
     updateSegmentConsentDocumentDto: UpdateSegmentConsentDocumentDto;
     xSessionId?: string;
     acceptLanguage?: UpdateSegmentsConsentDocumentsAcceptLanguageEnum;
-}
-export interface UpdateSegmentsTelegramMiniAppRequest {
-    projectId: string;
-    setSegmentTelegramMiniAppDto: SetSegmentTelegramMiniAppDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSegmentsTelegramMiniAppAcceptLanguageEnum;
 }
 /**
  *
@@ -245,12 +162,12 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     deleteSegmentsLeads(requestParameters: DeleteSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
-     * .
+     * . .
      *
      */
     getSegmentsRaw(requestParameters: GetSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentsListResponseDto>>;
     /**
-     * .
+     * . .
      *
      */
     getSegments(requestParameters: GetSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentsListResponseDto>;
@@ -315,26 +232,6 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     getSegmentsLeadsConsentAcceptances(requestParameters: GetSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto>;
     /**
-     * .
-     *
-     */
-    getSegmentsLinksRaw(requestParameters: GetSegmentsLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLinksResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getSegmentsLinks(requestParameters: GetSegmentsLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLinksResponseDto>;
-    /**
-     * MAX Mini App MAX- .
-     * MAX Mini App
-     */
-    getSegmentsMaxMiniAppsRaw(requestParameters: GetSegmentsMaxMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentMaxMiniAppListResponseDto>>;
-    /**
-     * MAX Mini App MAX- .
-     * MAX Mini App
-     */
-    getSegmentsMaxMiniApps(requestParameters: GetSegmentsMaxMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentMaxMiniAppListResponseDto>;
-    /**
      * , .
      *
      */
@@ -345,65 +242,25 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     getSegmentsMembers(requestParameters: GetSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadResponseDto>>;
     /**
-     * Telegram Telegram- .
-     * Telegram-
+     * . Mini App- .
+     *
      */
-    getSegmentsTelegramMenuButtonsRaw(requestParameters: GetSegmentsTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentTelegramMenuButtonListResponseDto>>;
+    getSegmentsSubscriptionLinksRaw(requestParameters: GetSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>>;
     /**
-     * Telegram Telegram- .
-     * Telegram-
+     * . Mini App- .
+     *
      */
-    getSegmentsTelegramMenuButtons(requestParameters: GetSegmentsTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentTelegramMenuButtonListResponseDto>;
+    getSegmentsSubscriptionLinks(requestParameters: GetSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto>;
     /**
-     * Mini App Mini App Telegram- .
-     * Telegram Mini App
-     */
-    getSegmentsTelegramMiniAppsRaw(requestParameters: GetSegmentsTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentTelegramMiniAppListResponseDto>>;
-    /**
-     * Mini App Mini App Telegram- .
-     * Telegram Mini App
-     */
-    getSegmentsTelegramMiniApps(requestParameters: GetSegmentsTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentTelegramMiniAppListResponseDto>;
-    /**
-     * VK App VK- .
-     * VK App
-     */
-    getSegmentsVkAppsRaw(requestParameters: GetSegmentsVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentVkAppListResponseDto>>;
-    /**
-     * VK App VK- .
-     * VK App
-     */
-    getSegmentsVkApps(requestParameters: GetSegmentsVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentVkAppListResponseDto>;
-    /**
-     * .
+     * , .
      *
      */
     segmentsRaw(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
     /**
-     * .
+     * , .
      *
      */
     segments(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
-    /**
-     * S3 Page JSON.
-     *
-     */
-    segmentsAssetsConfirmRaw(requestParameters: SegmentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentAssetUploadResponseDto>>;
-    /**
-     * S3 Page JSON.
-     *
-     */
-    segmentsAssetsConfirm(requestParameters: SegmentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentAssetUploadResponseDto>;
-    /**
-     * S3- .
-     * S3-
-     */
-    segmentsAssetsUploadUrlRaw(requestParameters: SegmentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
-    /**
-     * S3- .
-     * S3-
-     */
-    segmentsAssetsUploadUrl(requestParameters: SegmentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
     /**
      * .
      *
@@ -445,76 +302,6 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     segmentsLeads(requestParameters: SegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
-     * MAX Mini App: . .
-     * MAX Mini App
-     */
-    segmentsMaxMiniAppTargetRaw(requestParameters: SegmentsMaxMiniAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentMaxMiniAppResponseDto>>;
-    /**
-     * MAX Mini App: . .
-     * MAX Mini App
-     */
-    segmentsMaxMiniAppTarget(requestParameters: SegmentsMaxMiniAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentMaxMiniAppResponseDto>;
-    /**
-     * startapp MAX- Mini App.
-     * MAX Mini App
-     */
-    segmentsMaxMiniAppVerificationRaw(requestParameters: SegmentsMaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentMaxMiniAppVerificationResponseDto>>;
-    /**
-     * startapp MAX- Mini App.
-     * MAX Mini App
-     */
-    segmentsMaxMiniAppVerification(requestParameters: SegmentsMaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentMaxMiniAppVerificationResponseDto>;
-    /**
-     * .
-     *
-     */
-    segmentsPublishRaw(requestParameters: SegmentsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
-    /**
-     * .
-     *
-     */
-    segmentsPublish(requestParameters: SegmentsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    segmentsTelegramMenuButtonApplyRaw(requestParameters: SegmentsTelegramMenuButtonApplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentTelegramMenuButtonResponseDto>>;
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    segmentsTelegramMenuButtonApply(requestParameters: SegmentsTelegramMenuButtonApplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentTelegramMenuButtonResponseDto>;
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    segmentsTelegramMenuButtonCheckRaw(requestParameters: SegmentsTelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentTelegramMenuButtonResponseDto>>;
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    segmentsTelegramMenuButtonCheck(requestParameters: SegmentsTelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentTelegramMenuButtonResponseDto>;
-    /**
-     * startapp Telegram- Mini App Mini App .
-     * Telegram Mini App
-     */
-    segmentsTelegramMiniAppVerificationRaw(requestParameters: SegmentsTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentTelegramMiniAppVerificationResponseDto>>;
-    /**
-     * startapp Telegram- Mini App Mini App .
-     * Telegram Mini App
-     */
-    segmentsTelegramMiniAppVerification(requestParameters: SegmentsTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentTelegramMiniAppVerificationResponseDto>;
-    /**
-     * , VK App .
-     * VK App
-     */
-    segmentsVkAppTargetRaw(requestParameters: SegmentsVkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentVkAppResponseDto>>;
-    /**
-     * , VK App .
-     * VK App
-     */
-    segmentsVkAppTarget(requestParameters: SegmentsVkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentVkAppResponseDto>;
-    /**
      * .
      *
      */
@@ -534,16 +321,6 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      *
      */
     updateSegmentsConsentDocuments(requestParameters: UpdateSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
-    /**
-     * Mini App Telegram- .
-     * Telegram Mini App
-     */
-    updateSegmentsTelegramMiniAppRaw(requestParameters: UpdateSegmentsTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentTelegramMiniAppResponseDto>>;
-    /**
-     * Mini App Telegram- .
-     * Telegram Mini App
-     */
-    updateSegmentsTelegramMiniApp(requestParameters: UpdateSegmentsTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentTelegramMiniAppResponseDto>;
 }
 /**
  * @export
@@ -636,22 +413,6 @@ export type GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = typeof GetSeg
 /**
  * @export
  */
-export declare const GetSegmentsLinksAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetSegmentsLinksAcceptLanguageEnum = typeof GetSegmentsLinksAcceptLanguageEnum[keyof typeof GetSegmentsLinksAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetSegmentsMaxMiniAppsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetSegmentsMaxMiniAppsAcceptLanguageEnum = typeof GetSegmentsMaxMiniAppsAcceptLanguageEnum[keyof typeof GetSegmentsMaxMiniAppsAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const GetSegmentsMembersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -660,27 +421,11 @@ export type GetSegmentsMembersAcceptLanguageEnum = typeof GetSegmentsMembersAcce
 /**
  * @export
  */
-export declare const GetSegmentsTelegramMenuButtonsAcceptLanguageEnum: {
+export declare const GetSegmentsSubscriptionLinksAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsTelegramMenuButtonsAcceptLanguageEnum = typeof GetSegmentsTelegramMenuButtonsAcceptLanguageEnum[keyof typeof GetSegmentsTelegramMenuButtonsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetSegmentsTelegramMiniAppsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetSegmentsTelegramMiniAppsAcceptLanguageEnum = typeof GetSegmentsTelegramMiniAppsAcceptLanguageEnum[keyof typeof GetSegmentsTelegramMiniAppsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetSegmentsVkAppsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetSegmentsVkAppsAcceptLanguageEnum = typeof GetSegmentsVkAppsAcceptLanguageEnum[keyof typeof GetSegmentsVkAppsAcceptLanguageEnum];
+export type GetSegmentsSubscriptionLinksAcceptLanguageEnum = typeof GetSegmentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetSegmentsSubscriptionLinksAcceptLanguageEnum];
 /**
  * @export
  */
@@ -689,22 +434,6 @@ export declare const SegmentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type SegmentsAcceptLanguageEnum = typeof SegmentsAcceptLanguageEnum[keyof typeof SegmentsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsAssetsConfirmAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsAssetsConfirmAcceptLanguageEnum = typeof SegmentsAssetsConfirmAcceptLanguageEnum[keyof typeof SegmentsAssetsConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsAssetsUploadUrlAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsAssetsUploadUrlAcceptLanguageEnum = typeof SegmentsAssetsUploadUrlAcceptLanguageEnum[keyof typeof SegmentsAssetsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -740,62 +469,6 @@ export type SegmentsLeadsAcceptLanguageEnum = typeof SegmentsLeadsAcceptLanguage
 /**
  * @export
  */
-export declare const SegmentsMaxMiniAppTargetAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsMaxMiniAppTargetAcceptLanguageEnum = typeof SegmentsMaxMiniAppTargetAcceptLanguageEnum[keyof typeof SegmentsMaxMiniAppTargetAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsMaxMiniAppVerificationAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsMaxMiniAppVerificationAcceptLanguageEnum = typeof SegmentsMaxMiniAppVerificationAcceptLanguageEnum[keyof typeof SegmentsMaxMiniAppVerificationAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsPublishAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsPublishAcceptLanguageEnum = typeof SegmentsPublishAcceptLanguageEnum[keyof typeof SegmentsPublishAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsTelegramMenuButtonApplyAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsTelegramMenuButtonApplyAcceptLanguageEnum = typeof SegmentsTelegramMenuButtonApplyAcceptLanguageEnum[keyof typeof SegmentsTelegramMenuButtonApplyAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsTelegramMenuButtonCheckAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsTelegramMenuButtonCheckAcceptLanguageEnum = typeof SegmentsTelegramMenuButtonCheckAcceptLanguageEnum[keyof typeof SegmentsTelegramMenuButtonCheckAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsTelegramMiniAppVerificationAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsTelegramMiniAppVerificationAcceptLanguageEnum = typeof SegmentsTelegramMiniAppVerificationAcceptLanguageEnum[keyof typeof SegmentsTelegramMiniAppVerificationAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const SegmentsVkAppTargetAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type SegmentsVkAppTargetAcceptLanguageEnum = typeof SegmentsVkAppTargetAcceptLanguageEnum[keyof typeof SegmentsVkAppTargetAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const UpdateSegmentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -809,11 +482,3 @@ export declare const UpdateSegmentsConsentDocumentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateSegmentsConsentDocumentsAcceptLanguageEnum = typeof UpdateSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof UpdateSegmentsConsentDocumentsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateSegmentsTelegramMiniAppAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateSegmentsTelegramMiniAppAcceptLanguageEnum = typeof UpdateSegmentsTelegramMiniAppAcceptLanguageEnum[keyof typeof UpdateSegmentsTelegramMiniAppAcceptLanguageEnum];

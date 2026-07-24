@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class PlatformsApi extends runtime.BaseAPI {
     /**
-     * (VK, Telegram, MAX, Widget, StreamVi)
+     *
      *
      */
     async platformsListRaw(requestParameters, initOverrides) {
@@ -72,7 +72,7 @@ class PlatformsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PlatformsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (VK, Telegram, MAX, Widget, StreamVi)
+     *
      *
      */
     async platformsList(requestParameters = {}, initOverrides) {

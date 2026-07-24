@@ -13,22 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateSegmentDtoChannelScopeEnum = void 0;
 exports.instanceOfCreateSegmentDto = instanceOfCreateSegmentDto;
 exports.CreateSegmentDtoFromJSON = CreateSegmentDtoFromJSON;
 exports.CreateSegmentDtoFromJSONTyped = CreateSegmentDtoFromJSONTyped;
 exports.CreateSegmentDtoToJSON = CreateSegmentDtoToJSON;
 exports.CreateSegmentDtoToJSONTyped = CreateSegmentDtoToJSONTyped;
-const SegmentContactRequestDto_1 = require("./SegmentContactRequestDto");
 const SegmentPaymentDto_1 = require("./SegmentPaymentDto");
 const SegmentRequiredConsentDto_1 = require("./SegmentRequiredConsentDto");
-/**
- * @export
- */
-exports.CreateSegmentDtoChannelScopeEnum = {
-    All: 'all',
-    Selected: 'selected'
-};
 /**
  * Check if a given object implements the CreateSegmentDto interface.
  */
@@ -46,14 +37,7 @@ function CreateSegmentDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'name': json['name'],
-        'description': json['description'] == null ? undefined : json['description'],
-        'listVisible': json['list_visible'] == null ? undefined : json['list_visible'],
-        'channelScope': json['channel_scope'] == null ? undefined : json['channel_scope'],
-        'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
-        'autoSubscribeKeywords': json['auto_subscribe_keywords'] == null ? undefined : json['auto_subscribe_keywords'],
-        'landingDraft': json['landing_draft'] == null ? undefined : json['landing_draft'],
         'payment': json['payment'] == null ? undefined : (0, SegmentPaymentDto_1.SegmentPaymentDtoFromJSON)(json['payment']),
-        'contactRequest': json['contact_request'] == null ? undefined : (0, SegmentContactRequestDto_1.SegmentContactRequestDtoFromJSON)(json['contact_request']),
         'requiredConsents': json['required_consents'] == null ? undefined : (json['required_consents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoFromJSON)),
     };
 }
@@ -66,14 +50,7 @@ function CreateSegmentDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'name': value['name'],
-        'description': value['description'],
-        'list_visible': value['listVisible'],
-        'channel_scope': value['channelScope'],
-        'channel_ids': value['channelIds'],
-        'auto_subscribe_keywords': value['autoSubscribeKeywords'],
-        'landing_draft': value['landingDraft'],
         'payment': (0, SegmentPaymentDto_1.SegmentPaymentDtoToJSON)(value['payment']),
-        'contact_request': (0, SegmentContactRequestDto_1.SegmentContactRequestDtoToJSON)(value['contactRequest']),
         'required_consents': value['requiredConsents'] == null ? undefined : (value['requiredConsents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoToJSON)),
     };
 }

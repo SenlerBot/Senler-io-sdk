@@ -6,13 +6,15 @@ Auto-generated from OpenAPI specification.
 
 API documentation: https://dev.senler.io
 
+
 ## Installation
 
 Pin a version for reproducible installs:
 
 ```bash
-npm install github:SenlerBot/Senler-io-sdk#v0.1.8
+npm install github:SenlerBot/Senler-io-sdk#v0.1.9
 ```
+
 
 For the latest commit from `main`:
 
@@ -22,7 +24,8 @@ npm install github:SenlerBot/Senler-io-sdk
 
 ## Requirements
 
-- Node.js 18+ or another runtime with global `fetch`.
+- Node.js 18+.
+- A runtime with global `fetch`.
 - TypeScript declarations are included.
 
 ## Quick Start

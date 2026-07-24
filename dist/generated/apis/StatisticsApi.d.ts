@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CabinetStatisticsCommunicationsResponseDto, CabinetStatisticsCostsResponseDto, CabinetStatisticsLeadSubscriptionEventsResponseDto, CabinetStatisticsLeadsResponseDto, CabinetStatisticsOverviewResponseDto } from '../models/index';
+import type { CabinetStatisticsAiResponseToolsResponseDto, CabinetStatisticsCommunicationsResponseDto, CabinetStatisticsCostsResponseDto, CabinetStatisticsLeadSubscriptionEventsResponseDto, CabinetStatisticsLeadsResponseDto, CabinetStatisticsOverviewResponseDto } from '../models/index';
 export interface GetCommunicationsRequest {
     period: GetCommunicationsPeriodEnum;
     projectId: string;
@@ -28,6 +28,16 @@ export interface GetCostsRequest {
     timezone?: string;
     xSessionId?: string;
     acceptLanguage?: GetCostsAcceptLanguageEnum;
+}
+export interface GetCostsAiResponseToolsRequest {
+    period: GetCostsAiResponseToolsPeriodEnum;
+    projectId: string;
+    channelId?: string;
+    timezone?: string;
+    limit?: number;
+    offset?: number;
+    xSessionId?: string;
+    acceptLanguage?: GetCostsAiResponseToolsAcceptLanguageEnum;
 }
 export interface GetLeadsRequest {
     period: GetLeadsPeriodEnum;
@@ -73,15 +83,25 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      */
     getCommunications(requestParameters: GetCommunicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCommunicationsResponseDto>;
     /**
-     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
+     * , , . AI- cost-; . project_currency_cost project_currency.
      *
      */
     getCostsRaw(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsCostsResponseDto>>;
     /**
-     * , , . AI- summary.ai_response_costs.average_direct_credits_per_response; credits , direct_cost_rub , direct_cost_usd .
+     * , , . AI- cost-; . project_currency_cost project_currency.
      *
      */
     getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto>;
+    /**
+     * , AI-. , . .
+     * AI-
+     */
+    getCostsAiResponseToolsRaw(requestParameters: GetCostsAiResponseToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsAiResponseToolsResponseDto>>;
+    /**
+     * , AI-. , . .
+     * AI-
+     */
+    getCostsAiResponseTools(requestParameters: GetCostsAiResponseToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsAiResponseToolsResponseDto>;
     /**
      * , .
      *
@@ -103,12 +123,12 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      */
     getLeadsSubscriptionEvents(requestParameters: GetLeadsSubscriptionEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsLeadSubscriptionEventsResponseDto>;
     /**
-     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response.
      *
      */
     getOverviewRaw(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsOverviewResponseDto>>;
     /**
-     * , . AI- summary.ai_response_costs.average_direct_credits_per_response; average_credits_per_message average_credits_per_dialog deprecated.
+     * , . AI- summary.ai_response_costs.average_direct_credits_per_response.
      *
      */
     getOverview(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsOverviewResponseDto>;
@@ -149,6 +169,24 @@ export declare const GetCostsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetCostsAcceptLanguageEnum = typeof GetCostsAcceptLanguageEnum[keyof typeof GetCostsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetCostsAiResponseToolsPeriodEnum: {
+    readonly _24h: "24h";
+    readonly _7d: "7d";
+    readonly _30d: "30d";
+    readonly _90d: "90d";
+};
+export type GetCostsAiResponseToolsPeriodEnum = typeof GetCostsAiResponseToolsPeriodEnum[keyof typeof GetCostsAiResponseToolsPeriodEnum];
+/**
+ * @export
+ */
+export declare const GetCostsAiResponseToolsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetCostsAiResponseToolsAcceptLanguageEnum = typeof GetCostsAiResponseToolsAcceptLanguageEnum[keyof typeof GetCostsAiResponseToolsAcceptLanguageEnum];
 /**
  * @export
  */

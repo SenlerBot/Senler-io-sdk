@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { MetricValueDistributionItemDto } from './MetricValueDistributionItemDto';
 /**
  * TopMetricItemDto.
  * @export
@@ -88,11 +89,17 @@ export interface TopMetricItemDto {
      */
     affectedAgentsCount: number;
     /**
-     * ( )
+     *
      * @type {number}
      * @memberof TopMetricItemDto
      */
-    eventsCount: number;
+    observationsCount: number;
+    /**
+     * enum/boolean/array-
+     * @type {Array<MetricValueDistributionItemDto>}
+     * @memberof TopMetricItemDto
+     */
+    valueDistribution: Array<MetricValueDistributionItemDto>;
     /**
      * UI-
      * @type {string}

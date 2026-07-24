@@ -76,6 +76,18 @@ export interface PlatformMetadataDto {
      * @memberof PlatformMetadataDto
      */
     isDevelopment: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PlatformMetadataDto
+     */
+    deliverySupported: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PlatformMetadataDto
+     */
+    deliveryTestSupported: boolean;
 }
 /**
  * @export

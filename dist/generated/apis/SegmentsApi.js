@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateSegmentsTelegramMiniAppAcceptLanguageEnum = exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = exports.UpdateSegmentsAcceptLanguageEnum = exports.SegmentsVkAppTargetAcceptLanguageEnum = exports.SegmentsTelegramMiniAppVerificationAcceptLanguageEnum = exports.SegmentsTelegramMenuButtonCheckAcceptLanguageEnum = exports.SegmentsTelegramMenuButtonApplyAcceptLanguageEnum = exports.SegmentsPublishAcceptLanguageEnum = exports.SegmentsMaxMiniAppVerificationAcceptLanguageEnum = exports.SegmentsMaxMiniAppTargetAcceptLanguageEnum = exports.SegmentsLeadsAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.SegmentsConsentDocumentsAcceptLanguageEnum = exports.SegmentsAssetsUploadUrlAcceptLanguageEnum = exports.SegmentsAssetsConfirmAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.GetSegmentsVkAppsAcceptLanguageEnum = exports.GetSegmentsTelegramMiniAppsAcceptLanguageEnum = exports.GetSegmentsTelegramMenuButtonsAcceptLanguageEnum = exports.GetSegmentsMembersAcceptLanguageEnum = exports.GetSegmentsMaxMiniAppsAcceptLanguageEnum = exports.GetSegmentsLinksAcceptLanguageEnum = exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = exports.GetSegmentsEventsAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesLocaleEnum = exports.GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetSegmentsConsentDocumentsAcceptLanguageEnum = exports.GetSegments2AcceptLanguageEnum = exports.GetSegmentsAcceptLanguageEnum = exports.DeleteSegmentsLeadsAcceptLanguageEnum = exports.DeleteSegmentsConsentDocumentsAcceptLanguageEnum = exports.DeleteSegmentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
+exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = exports.UpdateSegmentsAcceptLanguageEnum = exports.SegmentsLeadsAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.SegmentsConsentDocumentsAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.GetSegmentsSubscriptionLinksAcceptLanguageEnum = exports.GetSegmentsMembersAcceptLanguageEnum = exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = exports.GetSegmentsEventsAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesLocaleEnum = exports.GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetSegmentsConsentDocumentsAcceptLanguageEnum = exports.GetSegments2AcceptLanguageEnum = exports.GetSegmentsAcceptLanguageEnum = exports.DeleteSegmentsLeadsAcceptLanguageEnum = exports.DeleteSegmentsConsentDocumentsAcceptLanguageEnum = exports.DeleteSegmentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -195,7 +195,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . .
      *
      */
     async getSegmentsRaw(requestParameters, initOverrides) {
@@ -230,7 +230,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentsListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . .
      *
      */
     async getSegments(requestParameters, initOverrides) {
@@ -511,98 +511,6 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
-     *
-     */
-    async getSegmentsLinksRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsLinks().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsLinks().');
-        }
-        const queryParameters = {};
-        if (requestParameters['channelIds'] != null) {
-            queryParameters['channel_ids'] = requestParameters['channelIds'];
-        }
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/links`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentLinksResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async getSegmentsLinks(requestParameters, initOverrides) {
-        const response = await this.getSegmentsLinksRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * MAX Mini App MAX- .
-     * MAX Mini App
-     */
-    async getSegmentsMaxMiniAppsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsMaxMiniApps().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/max-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentMaxMiniAppListResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * MAX Mini App MAX- .
-     * MAX Mini App
-     */
-    async getSegmentsMaxMiniApps(requestParameters, initOverrides) {
-        const response = await this.getSegmentsMaxMiniAppsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * , .
      *
      */
@@ -649,12 +557,15 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Telegram Telegram- .
-     * Telegram-
+     * . Mini App- .
+     *
      */
-    async getSegmentsTelegramMenuButtonsRaw(requestParameters, initOverrides) {
+    async getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsTelegramMenuButtons().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsSubscriptionLinks().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsSubscriptionLinks().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -676,109 +587,23 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/telegram-menu-buttons`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/projects/{projectId}/segments/{id}/subscription-links`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentTelegramMenuButtonListResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentSubscriptionLinksResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram Telegram- .
-     * Telegram-
+     * . Mini App- .
+     *
      */
-    async getSegmentsTelegramMenuButtons(requestParameters, initOverrides) {
-        const response = await this.getSegmentsTelegramMenuButtonsRaw(requestParameters, initOverrides);
+    async getSegmentsSubscriptionLinks(requestParameters, initOverrides) {
+        const response = await this.getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Mini App Mini App Telegram- .
-     * Telegram Mini App
-     */
-    async getSegmentsTelegramMiniAppsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsTelegramMiniApps().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/telegram-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentTelegramMiniAppListResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Mini App Mini App Telegram- .
-     * Telegram Mini App
-     */
-    async getSegmentsTelegramMiniApps(requestParameters, initOverrides) {
-        const response = await this.getSegmentsTelegramMiniAppsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * VK App VK- .
-     * VK App
-     */
-    async getSegmentsVkAppsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsVkApps().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/vk-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentVkAppListResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * VK App VK- .
-     * VK App
-     */
-    async getSegmentsVkApps(requestParameters, initOverrides) {
-        const response = await this.getSegmentsVkAppsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
+     * , .
      *
      */
     async segmentsRaw(requestParameters, initOverrides) {
@@ -818,113 +643,11 @@ class SegmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * , .
      *
      */
     async segments(requestParameters, initOverrides) {
         const response = await this.segmentsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * S3 Page JSON.
-     *
-     */
-    async segmentsAssetsConfirmRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsAssetsConfirm().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsAssetsConfirm().');
-        }
-        if (requestParameters['confirmS3UploadDto'] == null) {
-            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling segmentsAssetsConfirm().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/assets/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.ConfirmS3UploadDtoToJSON)(requestParameters['confirmS3UploadDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentAssetUploadResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * S3 Page JSON.
-     *
-     */
-    async segmentsAssetsConfirm(requestParameters, initOverrides) {
-        const response = await this.segmentsAssetsConfirmRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * S3- .
-     * S3-
-     */
-    async segmentsAssetsUploadUrlRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsAssetsUploadUrl().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsAssetsUploadUrl().');
-        }
-        if (requestParameters['getSegmentAssetUploadUrlDto'] == null) {
-            throw new runtime.RequiredError('getSegmentAssetUploadUrlDto', 'Required parameter "getSegmentAssetUploadUrlDto" was null or undefined when calling segmentsAssetsUploadUrl().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/assets/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.GetSegmentAssetUploadUrlDtoToJSON)(requestParameters['getSegmentAssetUploadUrlDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * S3- .
-     * S3-
-     */
-    async segmentsAssetsUploadUrl(requestParameters, initOverrides) {
-        const response = await this.segmentsAssetsUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1121,340 +844,6 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MAX Mini App: . .
-     * MAX Mini App
-     */
-    async segmentsMaxMiniAppTargetRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsMaxMiniAppTarget().');
-        }
-        if (requestParameters['setSegmentMaxMiniAppTargetDto'] == null) {
-            throw new runtime.RequiredError('setSegmentMaxMiniAppTargetDto', 'Required parameter "setSegmentMaxMiniAppTargetDto" was null or undefined when calling segmentsMaxMiniAppTarget().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/max-mini-app/target`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SetSegmentMaxMiniAppTargetDtoToJSON)(requestParameters['setSegmentMaxMiniAppTargetDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentMaxMiniAppResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * MAX Mini App: . .
-     * MAX Mini App
-     */
-    async segmentsMaxMiniAppTarget(requestParameters, initOverrides) {
-        const response = await this.segmentsMaxMiniAppTargetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * startapp MAX- Mini App.
-     * MAX Mini App
-     */
-    async segmentsMaxMiniAppVerificationRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsMaxMiniAppVerification().');
-        }
-        if (requestParameters['startSegmentMaxMiniAppVerificationDto'] == null) {
-            throw new runtime.RequiredError('startSegmentMaxMiniAppVerificationDto', 'Required parameter "startSegmentMaxMiniAppVerificationDto" was null or undefined when calling segmentsMaxMiniAppVerification().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/max-mini-app/verification`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.StartSegmentMaxMiniAppVerificationDtoToJSON)(requestParameters['startSegmentMaxMiniAppVerificationDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentMaxMiniAppVerificationResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * startapp MAX- Mini App.
-     * MAX Mini App
-     */
-    async segmentsMaxMiniAppVerification(requestParameters, initOverrides) {
-        const response = await this.segmentsMaxMiniAppVerificationRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async segmentsPublishRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsPublish().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsPublish().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/publish`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async segmentsPublish(requestParameters, initOverrides) {
-        const response = await this.segmentsPublishRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    async segmentsTelegramMenuButtonApplyRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsTelegramMenuButtonApply().');
-        }
-        if (requestParameters['setSegmentTelegramMenuButtonDto'] == null) {
-            throw new runtime.RequiredError('setSegmentTelegramMenuButtonDto', 'Required parameter "setSegmentTelegramMenuButtonDto" was null or undefined when calling segmentsTelegramMenuButtonApply().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/telegram-menu-button/apply`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SetSegmentTelegramMenuButtonDtoToJSON)(requestParameters['setSegmentTelegramMenuButtonDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    async segmentsTelegramMenuButtonApply(requestParameters, initOverrides) {
-        const response = await this.segmentsTelegramMenuButtonApplyRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    async segmentsTelegramMenuButtonCheckRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsTelegramMenuButtonCheck().');
-        }
-        if (requestParameters['checkSegmentTelegramMenuButtonDto'] == null) {
-            throw new runtime.RequiredError('checkSegmentTelegramMenuButtonDto', 'Required parameter "checkSegmentTelegramMenuButtonDto" was null or undefined when calling segmentsTelegramMenuButtonCheck().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/telegram-menu-button/check`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CheckSegmentTelegramMenuButtonDtoToJSON)(requestParameters['checkSegmentTelegramMenuButtonDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Telegram- .
-     * Telegram-
-     */
-    async segmentsTelegramMenuButtonCheck(requestParameters, initOverrides) {
-        const response = await this.segmentsTelegramMenuButtonCheckRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * startapp Telegram- Mini App Mini App .
-     * Telegram Mini App
-     */
-    async segmentsTelegramMiniAppVerificationRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsTelegramMiniAppVerification().');
-        }
-        if (requestParameters['startSegmentTelegramMiniAppVerificationDto'] == null) {
-            throw new runtime.RequiredError('startSegmentTelegramMiniAppVerificationDto', 'Required parameter "startSegmentTelegramMiniAppVerificationDto" was null or undefined when calling segmentsTelegramMiniAppVerification().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/telegram-mini-app/verification`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.StartSegmentTelegramMiniAppVerificationDtoToJSON)(requestParameters['startSegmentTelegramMiniAppVerificationDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentTelegramMiniAppVerificationResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * startapp Telegram- Mini App Mini App .
-     * Telegram Mini App
-     */
-    async segmentsTelegramMiniAppVerification(requestParameters, initOverrides) {
-        const response = await this.segmentsTelegramMiniAppVerificationRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * , VK App .
-     * VK App
-     */
-    async segmentsVkAppTargetRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsVkAppTarget().');
-        }
-        if (requestParameters['setSegmentVkAppTargetDto'] == null) {
-            throw new runtime.RequiredError('setSegmentVkAppTargetDto', 'Required parameter "setSegmentVkAppTargetDto" was null or undefined when calling segmentsVkAppTarget().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/vk-app/target`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SetSegmentVkAppTargetDtoToJSON)(requestParameters['setSegmentVkAppTargetDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentVkAppResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , VK App .
-     * VK App
-     */
-    async segmentsVkAppTarget(requestParameters, initOverrides) {
-        const response = await this.segmentsVkAppTargetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * .
      *
      */
@@ -1556,54 +945,6 @@ class SegmentsApi extends runtime.BaseAPI {
         const response = await this.updateSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
-    /**
-     * Mini App Telegram- .
-     * Telegram Mini App
-     */
-    async updateSegmentsTelegramMiniAppRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSegmentsTelegramMiniApp().');
-        }
-        if (requestParameters['setSegmentTelegramMiniAppDto'] == null) {
-            throw new runtime.RequiredError('setSegmentTelegramMiniAppDto', 'Required parameter "setSegmentTelegramMiniAppDto" was null or undefined when calling updateSegmentsTelegramMiniApp().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/telegram-mini-app`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SetSegmentTelegramMiniAppDtoToJSON)(requestParameters['setSegmentTelegramMiniAppDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentTelegramMiniAppResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Mini App Telegram- .
-     * Telegram Mini App
-     */
-    async updateSegmentsTelegramMiniApp(requestParameters, initOverrides) {
-        const response = await this.updateSegmentsTelegramMiniAppRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 }
 exports.SegmentsApi = SegmentsApi;
 /**
@@ -1686,20 +1027,6 @@ exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetSegmentsLinksAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetSegmentsMaxMiniAppsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.GetSegmentsMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1707,21 +1034,7 @@ exports.GetSegmentsMembersAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetSegmentsTelegramMenuButtonsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetSegmentsTelegramMiniAppsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetSegmentsVkAppsAcceptLanguageEnum = {
+exports.GetSegmentsSubscriptionLinksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1729,20 +1042,6 @@ exports.GetSegmentsVkAppsAcceptLanguageEnum = {
  * @export
  */
 exports.SegmentsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsAssetsConfirmAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsAssetsUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1777,55 +1076,6 @@ exports.SegmentsLeadsAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.SegmentsMaxMiniAppTargetAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsMaxMiniAppVerificationAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsPublishAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsTelegramMenuButtonApplyAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsTelegramMenuButtonCheckAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsTelegramMiniAppVerificationAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.SegmentsVkAppTargetAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.UpdateSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1834,13 +1084,6 @@ exports.UpdateSegmentsAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateSegmentsTelegramMiniAppAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

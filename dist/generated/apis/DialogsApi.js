@@ -265,6 +265,9 @@ class DialogsApi extends runtime.BaseAPI {
         if (requestParameters['aroundEventId'] != null) {
             queryParameters['around_event_id'] = requestParameters['aroundEventId'];
         }
+        if (requestParameters['messagesOnly'] != null) {
+            queryParameters['messages_only'] = requestParameters['messagesOnly'];
+        }
         if (requestParameters['sourceChatId'] != null) {
             queryParameters['source_chat_id'] = requestParameters['sourceChatId'];
         }
