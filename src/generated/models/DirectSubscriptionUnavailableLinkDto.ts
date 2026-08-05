@@ -32,7 +32,7 @@ export interface DirectSubscriptionUnavailableLinkDto {
      */
     status: DirectSubscriptionUnavailableLinkDtoStatusEnum;
     /**
-     * : channel_paused, channel_token_not_found, vk_group_identity_missing, telegram_bot_username_missing, max_bot_username_missing, subscription_form_required, segment_payment_required.
+     * : channel_paused, channel_token_not_found, vk_group_identity_missing, telegram_bot_username_missing, max_bot_username_missing, segment_payment_required.
      * @type {string}
      * @memberof DirectSubscriptionUnavailableLinkDto
      */
@@ -68,7 +68,6 @@ export const DirectSubscriptionUnavailableLinkDtoReasonEnum = {
     VkGroupIdentityMissing: 'vk_group_identity_missing',
     TelegramBotUsernameMissing: 'telegram_bot_username_missing',
     MaxBotUsernameMissing: 'max_bot_username_missing',
-    SubscriptionFormRequired: 'subscription_form_required',
     SegmentPaymentRequired: 'segment_payment_required'
 } as const;
 export type DirectSubscriptionUnavailableLinkDtoReasonEnum = typeof DirectSubscriptionUnavailableLinkDtoReasonEnum[keyof typeof DirectSubscriptionUnavailableLinkDtoReasonEnum];

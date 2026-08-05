@@ -13,11 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventTimerDtoSchedulerEnum = void 0;
 exports.instanceOfEventTimerDto = instanceOfEventTimerDto;
 exports.EventTimerDtoFromJSON = EventTimerDtoFromJSON;
 exports.EventTimerDtoFromJSONTyped = EventTimerDtoFromJSONTyped;
 exports.EventTimerDtoToJSON = EventTimerDtoToJSON;
 exports.EventTimerDtoToJSONTyped = EventTimerDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.EventTimerDtoSchedulerEnum = {
+    Redis: 'redis',
+    Postgres: 'postgres'
+};
 /**
  * Check if a given object implements the EventTimerDto interface.
  */
@@ -33,7 +41,7 @@ function EventTimerDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'scheduledAt': json['scheduled_at'] == null ? undefined : (new Date(json['scheduled_at'])),
-        'inMemory': json['in_memory'] == null ? undefined : json['in_memory'],
+        'scheduler': json['scheduler'] == null ? undefined : json['scheduler'],
         'muteDialog': json['mute_dialog'] == null ? undefined : json['mute_dialog'],
         'instruction': json['instruction'] == null ? undefined : json['instruction'],
     };
@@ -47,7 +55,7 @@ function EventTimerDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'scheduled_at': value['scheduledAt'] == null ? undefined : ((value['scheduledAt']).toISOString()),
-        'in_memory': value['inMemory'],
+        'scheduler': value['scheduler'],
         'mute_dialog': value['muteDialog'],
         'instruction': value['instruction'],
     };

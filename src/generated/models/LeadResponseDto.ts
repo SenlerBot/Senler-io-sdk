@@ -20,6 +20,13 @@ import {
     LeadSpaceLinkResponseDtoToJSON,
     LeadSpaceLinkResponseDtoToJSONTyped,
 } from './LeadSpaceLinkResponseDto';
+import type { PendingSegmentResponseDto } from './PendingSegmentResponseDto';
+import {
+    PendingSegmentResponseDtoFromJSON,
+    PendingSegmentResponseDtoFromJSONTyped,
+    PendingSegmentResponseDtoToJSON,
+    PendingSegmentResponseDtoToJSONTyped,
+} from './PendingSegmentResponseDto';
 import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDto';
 import {
     SegmentMembershipResponseDtoFromJSON,
@@ -101,11 +108,11 @@ export interface LeadResponseDto {
      */
     operatorNotes?: string | null;
     /**
-     *
+     * ; null
      * @type {boolean}
      * @memberof LeadResponseDto
      */
-    isSubscribed: boolean;
+    isSubscribed: boolean | null;
     /**
      * ()
      * @type {boolean}
@@ -196,6 +203,12 @@ export interface LeadResponseDto {
      * @memberof LeadResponseDto
      */
     segments: Array<SegmentMembershipResponseDto>;
+    /**
+     * ,
+     * @type {Array<PendingSegmentResponseDto>}
+     * @memberof LeadResponseDto
+     */
+    pendingSegments: Array<PendingSegmentResponseDto>;
 }
 
 
@@ -259,6 +272,7 @@ export function instanceOfLeadResponseDto(value: object): value is LeadResponseD
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('spaces' in value) || value['spaces'] === undefined) return false;
     if (!('segments' in value) || value['segments'] === undefined) return false;
+    if (!('pendingSegments' in value) || value['pendingSegments'] === undefined) return false;
     return true;
 }
 
@@ -299,6 +313,7 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'lastProfileSyncAt': json['last_profile_sync_at'] == null ? undefined : (new Date(json['last_profile_sync_at'])),
         'spaces': ((json['spaces'] as Array<any>).map(LeadSpaceLinkResponseDtoFromJSON)),
         'segments': ((json['segments'] as Array<any>).map(SegmentMembershipResponseDtoFromJSON)),
+        'pendingSegments': ((json['pending_segments'] as Array<any>).map(PendingSegmentResponseDtoFromJSON)),
     };
 }
 
@@ -340,5 +355,6 @@ export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignor
         'last_profile_sync_at': value['lastProfileSyncAt'] == null ? undefined : ((value['lastProfileSyncAt'] as any).toISOString()),
         'spaces': ((value['spaces'] as Array<any>).map(LeadSpaceLinkResponseDtoToJSON)),
         'segments': ((value['segments'] as Array<any>).map(SegmentMembershipResponseDtoToJSON)),
+        'pending_segments': ((value['pendingSegments'] as Array<any>).map(PendingSegmentResponseDtoToJSON)),
     };
 }

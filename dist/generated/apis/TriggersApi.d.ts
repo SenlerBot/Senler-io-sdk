@@ -14,31 +14,26 @@ import type { CreateTriggerDto, TriggerResponseDto, TriggersListResponseDto, Upd
 export interface DeleteTriggersRequest {
     projectId: string;
     triggerId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteTriggersAcceptLanguageEnum;
 }
 export interface GetTriggersRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetTriggersAcceptLanguageEnum;
 }
 export interface GetTriggers2Request {
     projectId: string;
     triggerId: string;
-    xSessionId?: string;
     acceptLanguage?: GetTriggers2AcceptLanguageEnum;
 }
 export interface TriggersRequest {
     projectId: string;
     createTriggerDto: CreateTriggerDto;
-    xSessionId?: string;
     acceptLanguage?: TriggersAcceptLanguageEnum;
 }
 export interface UpdateTriggersRequest {
     projectId: string;
     triggerId: string;
     updateTriggerDto: UpdateTriggerDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateTriggersAcceptLanguageEnum;
 }
 /**

@@ -11,6 +11,7 @@
  */
 import type { ChannelTokenResponseDto } from './ChannelTokenResponseDto';
 import type { ChannelResponseDto } from './ChannelResponseDto';
+import type { SyncChannelFieldResultDto } from './SyncChannelFieldResultDto';
 /**
  * SyncChannelResponseDto.
  * @export
@@ -30,11 +31,11 @@ export interface SyncChannelResponseDto {
      */
     token: ChannelTokenResponseDto;
     /**
-     * , . Best-effort , avatar , .
-     * @type {object}
+     *
+     * @type {Array<SyncChannelFieldResultDto>}
      * @memberof SyncChannelResponseDto
      */
-    syncedFields: object;
+    fieldResults: Array<SyncChannelFieldResultDto>;
 }
 /**
  * Check if a given object implements the SyncChannelResponseDto interface.

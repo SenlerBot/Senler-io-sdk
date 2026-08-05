@@ -20,6 +20,7 @@ exports.WidgetThemeDtoFromJSONTyped = WidgetThemeDtoFromJSONTyped;
 exports.WidgetThemeDtoToJSON = WidgetThemeDtoToJSON;
 exports.WidgetThemeDtoToJSONTyped = WidgetThemeDtoToJSONTyped;
 const WidgetLocalizedTextDto_1 = require("./WidgetLocalizedTextDto");
+const WidgetLocalizedButtonsDto_1 = require("./WidgetLocalizedButtonsDto");
 const ButtonSettingsDto_1 = require("./ButtonSettingsDto");
 /**
  * @export
@@ -57,6 +58,7 @@ function WidgetThemeDtoFromJSONTyped(json, ignoreDiscriminator) {
         'position': json['position'] == null ? undefined : json['position'],
         'welcomeMessage': json['welcome_message'] == null ? undefined : (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoFromJSON)(json['welcome_message']),
         'emptyStateMessage': json['empty_state_message'] == null ? undefined : (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoFromJSON)(json['empty_state_message']),
+        'welcomeButtons': json['welcome_buttons'] == null ? undefined : (0, WidgetLocalizedButtonsDto_1.WidgetLocalizedButtonsDtoFromJSON)(json['welcome_buttons']),
         'button': json['button'] == null ? undefined : (0, ButtonSettingsDto_1.ButtonSettingsDtoFromJSON)(json['button']),
         'width': json['width'] == null ? undefined : json['width'],
         'height': json['height'] == null ? undefined : json['height'],
@@ -78,6 +80,7 @@ function WidgetThemeDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'position': value['position'],
         'welcome_message': (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoToJSON)(value['welcomeMessage']),
         'empty_state_message': (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoToJSON)(value['emptyStateMessage']),
+        'welcome_buttons': (0, WidgetLocalizedButtonsDto_1.WidgetLocalizedButtonsDtoToJSON)(value['welcomeButtons']),
         'button': (0, ButtonSettingsDto_1.ButtonSettingsDtoToJSON)(value['button']),
         'width': value['width'],
         'height': value['height'],

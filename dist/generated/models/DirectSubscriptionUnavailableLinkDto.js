@@ -43,7 +43,6 @@ exports.DirectSubscriptionUnavailableLinkDtoReasonEnum = {
     VkGroupIdentityMissing: 'vk_group_identity_missing',
     TelegramBotUsernameMissing: 'telegram_bot_username_missing',
     MaxBotUsernameMissing: 'max_bot_username_missing',
-    SubscriptionFormRequired: 'subscription_form_required',
     SegmentPaymentRequired: 'segment_payment_required'
 };
 /**

@@ -10,12 +10,11 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AttachmentDownloadUrlResponseDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
+import type { AttachmentDownloadUrlResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
 export interface ConfirmRequest {
     confirmUploadDto: ConfirmUploadDto;
     dialogId?: string;
     channelId?: any;
-    xSessionId?: string;
     acceptLanguage?: ConfirmAcceptLanguageEnum;
 }
 export interface GetDownloadRequest {
@@ -25,33 +24,33 @@ export interface GetDownloadRequest {
 export interface GetDownloadUrlRequest {
     attachmentId: string;
     dialogId: string;
-    xSessionId?: string;
     acceptLanguage?: GetDownloadUrlAcceptLanguageEnum;
 }
 export interface GetSendToSelfRecipientsRequest {
     attachmentId: string;
     dialogId: string;
-    xSessionId?: string;
     acceptLanguage?: GetSendToSelfRecipientsAcceptLanguageEnum;
 }
 export interface SendToSelfRequest {
     attachmentId: string;
     dialogId: string;
     attachmentSendToSelfRequestDto: AttachmentSendToSelfRequestDto;
-    xSessionId?: string;
     acceptLanguage?: SendToSelfAcceptLanguageEnum;
 }
 export interface SendToSelfRecipientLinkRequest {
     attachmentId: string;
     dialogId: string;
-    xSessionId?: string;
     acceptLanguage?: SendToSelfRecipientLinkAcceptLanguageEnum;
+}
+export interface SendToSelfRecipientVkConfirmRequest {
+    attachmentId: string;
+    dialogId: string;
+    acceptLanguage?: SendToSelfRecipientVkConfirmAcceptLanguageEnum;
 }
 export interface UploadUrlRequest {
     getUploadUrlDto: GetUploadUrlDto;
     channelId?: string;
     dialogId?: string;
-    xSessionId?: string;
     acceptLanguage?: UploadUrlAcceptLanguageEnum;
 }
 /**
@@ -109,15 +108,25 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      */
     sendToSelf(requestParameters: SendToSelfRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfResponseDto>;
     /**
-     * . read-like ; Telegram-.
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     sendToSelfRecipientLinkRaw(requestParameters: SendToSelfRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentSendToSelfRecipientLinkResponseDto>>;
     /**
-     * . read-like ; Telegram-.
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     sendToSelfRecipientLink(requestParameters: SendToSelfRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientLinkResponseDto>;
+    /**
+     * VK, .
+     * VK-
+     */
+    sendToSelfRecipientVkConfirmRaw(requestParameters: SendToSelfRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentSendToSelfRecipientDto>>;
+    /**
+     * VK, .
+     * VK-
+     */
+    sendToSelfRecipientVkConfirm(requestParameters: SendToSelfRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientDto>;
     /**
      * S3- . channelId dialogId, confirm.
      * S3-
@@ -177,6 +186,14 @@ export declare const SendToSelfRecipientLinkAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type SendToSelfRecipientLinkAcceptLanguageEnum = typeof SendToSelfRecipientLinkAcceptLanguageEnum[keyof typeof SendToSelfRecipientLinkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SendToSelfRecipientVkConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SendToSelfRecipientVkConfirmAcceptLanguageEnum = typeof SendToSelfRecipientVkConfirmAcceptLanguageEnum[keyof typeof SendToSelfRecipientVkConfirmAcceptLanguageEnum];
 /**
  * @export
  */

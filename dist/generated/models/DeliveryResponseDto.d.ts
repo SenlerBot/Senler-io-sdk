@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
 import type { LeadsFilterDto } from './LeadsFilterDto';
 import type { DeliveryRunResponseDto } from './DeliveryRunResponseDto';
+import type { DeliveryAttachmentResponseDto } from './DeliveryAttachmentResponseDto';
 /**
  * DeliveryResponseDto.
  * @export
@@ -56,10 +56,10 @@ export interface DeliveryResponseDto {
     messageText: string;
     /**
      *
-     * @type {Array<MessageAttachmentInputDto>}
+     * @type {Array<DeliveryAttachmentResponseDto>}
      * @memberof DeliveryResponseDto
      */
-    attachments: Array<MessageAttachmentInputDto>;
+    attachments: Array<DeliveryAttachmentResponseDto>;
     /**
      *
      * @type {Date}

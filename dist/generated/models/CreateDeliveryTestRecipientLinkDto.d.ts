@@ -16,7 +16,7 @@
  */
 export interface CreateDeliveryTestRecipientLinkDto {
     /**
-     * UUID Telegram-,
+     * UUID VK, Telegram MAX ,
      * @type {string}
      * @memberof CreateDeliveryTestRecipientLinkDto
      */

@@ -132,6 +132,7 @@ export declare const SegmentLeadConsentAcceptanceResponseDtoSourceEnum: {
     readonly MaxApp: "max_app";
     readonly Web: "web";
     readonly Manual: "manual";
+    readonly AutoAssignment: "auto_assignment";
 };
 export type SegmentLeadConsentAcceptanceResponseDtoSourceEnum = typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum[keyof typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum];
 /**

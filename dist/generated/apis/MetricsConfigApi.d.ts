@@ -13,12 +13,10 @@ import * as runtime from '../runtime';
 import type { AgentMetricsConfigurationDto, UpdateAgentMetricsConfigurationDto } from '../models/index';
 export interface GetMetricsConfigRequest {
     agentId: string;
-    xSessionId: string;
     acceptLanguage?: GetMetricsConfigAcceptLanguageEnum;
 }
 export interface UpdateMetricsConfigRequest {
     agentId: string;
-    xSessionId: string;
     updateAgentMetricsConfigurationDto: UpdateAgentMetricsConfigurationDto;
     acceptLanguage?: UpdateMetricsConfigAcceptLanguageEnum;
 }

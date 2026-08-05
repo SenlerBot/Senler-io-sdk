@@ -58,17 +58,11 @@ export interface StorageFileItemDto {
      */
     mediaCategory: StorageFileItemDtoMediaCategoryEnum;
     /**
-     * URL
+     * URL , storage
      * @type {string}
      * @memberof StorageFileItemDto
      */
-    storageUrl?: string;
-    /**
-     * storage
-     * @type {string}
-     * @memberof StorageFileItemDto
-     */
-    storagePath?: string;
+    contentUrl?: string;
     /**
      *
      * @type {string}
@@ -183,6 +177,7 @@ export type StorageFileItemDtoPlatformTypeEnum = typeof StorageFileItemDtoPlatfo
 export declare const StorageFileItemDtoStorageSourceEnum: {
     readonly Channel: "channel";
     readonly Dialog: "dialog";
+    readonly Delivery: "delivery";
     readonly KnowledgeBase: "knowledge_base";
     readonly Agent: "agent";
     readonly Web: "web";
@@ -195,6 +190,7 @@ export type StorageFileItemDtoStorageSourceEnum = typeof StorageFileItemDtoStora
  */
 export declare const StorageFileItemDtoOwnerTypeEnum: {
     readonly DialogAttachment: "dialog_attachment";
+    readonly DeliveryAttachment: "delivery_attachment";
     readonly KnowledgeFile: "knowledge_file";
     readonly KnowledgeDocumentAsset: "knowledge_document_asset";
     readonly KnowledgeTableAsset: "knowledge_table_asset";

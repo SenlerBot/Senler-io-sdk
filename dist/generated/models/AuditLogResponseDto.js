@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuditLogResponseDtoActionEnum = exports.AuditLogResponseDtoEntityTypeEnum = exports.AuditLogResponseDtoActorTypeEnum = void 0;
+exports.AuditLogResponseDtoEventTypeEnum = exports.AuditLogResponseDtoActionEnum = exports.AuditLogResponseDtoEntityTypeEnum = exports.AuditLogResponseDtoDelegatedActorTypeEnum = exports.AuditLogResponseDtoActorTypeEnum = void 0;
 exports.instanceOfAuditLogResponseDto = instanceOfAuditLogResponseDto;
 exports.AuditLogResponseDtoFromJSON = AuditLogResponseDtoFromJSON;
 exports.AuditLogResponseDtoFromJSONTyped = AuditLogResponseDtoFromJSONTyped;
@@ -35,6 +35,17 @@ exports.AuditLogResponseDtoActorTypeEnum = {
 /**
  * @export
  */
+exports.AuditLogResponseDtoDelegatedActorTypeEnum = {
+    User: 'user',
+    Admin: 'admin',
+    System: 'system',
+    ApiKey: 'api_key',
+    App: 'app',
+    Agent: 'agent'
+};
+/**
+ * @export
+ */
 exports.AuditLogResponseDtoEntityTypeEnum = {
     Project: 'project',
     Agent: 'agent',
@@ -43,7 +54,9 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     McpServer: 'mcp_server',
     McpServerList: 'mcp_server_list',
     DataSource: 'data_source',
-    KnowledgeBase: 'knowledge_base',
+    KnowledgeFolder: 'knowledge_folder',
+    KnowledgeFile: 'knowledge_file',
+    KnowledgeTable: 'knowledge_table',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
     Segment: 'segment',
@@ -53,7 +66,13 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
     SupportSchedule: 'support_schedule',
-    Invitation: 'invitation'
+    Invitation: 'invitation',
+    ApiKey: 'api_key',
+    MetricDefinition: 'metric_definition',
+    AppInstallation: 'app_installation',
+    PaymentSettings: 'payment_settings',
+    Space: 'space',
+    SummarizationSettings: 'summarization_settings'
 };
 /**
  * @export
@@ -62,7 +81,47 @@ exports.AuditLogResponseDtoActionEnum = {
     Created: 'created',
     Updated: 'updated',
     Deleted: 'deleted',
+    Restored: 'restored',
     Transferred: 'transferred'
+};
+/**
+ * @export
+ */
+exports.AuditLogResponseDtoEventTypeEnum = {
+    LandingBlockCreated: 'landing.block_created',
+    LandingBlockUpdated: 'landing.block_updated',
+    LandingBlockMoved: 'landing.block_moved',
+    LandingBlockDeleted: 'landing.block_deleted',
+    LandingPublished: 'landing.published',
+    LandingPublicationRestored: 'landing.publication_restored',
+    DeliveryScheduled: 'delivery.scheduled',
+    DeliveryUnscheduled: 'delivery.unscheduled',
+    InvitationSent: 'invitation.sent',
+    InvitationAccepted: 'invitation.accepted',
+    InvitationCancelled: 'invitation.cancelled',
+    InvitationDeclined: 'invitation.declined',
+    KnowledgeFileUploaded: 'knowledge.file_uploaded',
+    KnowledgeFileReplaced: 'knowledge.file_replaced',
+    KnowledgeArchiveImported: 'knowledge.archive_imported',
+    KnowledgeTableImported: 'knowledge.table_imported',
+    SupportScheduleUpdated: 'support_schedule.updated',
+    SupportScheduleShiftCreated: 'support_schedule.shift_created',
+    SupportScheduleShiftUpdated: 'support_schedule.shift_updated',
+    SupportScheduleShiftDeleted: 'support_schedule.shift_deleted',
+    SupportScheduleAssignmentCreated: 'support_schedule.assignment_created',
+    SupportScheduleAssignmentUpdated: 'support_schedule.assignment_updated',
+    SupportScheduleAssignmentDeleted: 'support_schedule.assignment_deleted',
+    AppInstallationSetupStepSubmitted: 'app_installation.setup_step_submitted',
+    AppInstallationSetupStepSkipped: 'app_installation.setup_step_skipped',
+    ChannelCredentialsConnected: 'channel.credentials_connected',
+    ChannelCredentialsDisconnected: 'channel.credentials_disconnected',
+    ChannelIncomingNotificationsEnabled: 'channel.incoming_notifications_enabled',
+    ChannelIncomingNotificationsDisabled: 'channel.incoming_notifications_disabled',
+    McpServerCredentialsConnected: 'mcp_server.credentials_connected',
+    McpServerCredentialsDisconnected: 'mcp_server.credentials_disconnected',
+    ChannelWidgetSecretRegenerated: 'channel.widget_secret_regenerated',
+    ChannelWebhookSecretRegenerated: 'channel.webhook_secret_regenerated',
+    KnowledgeTableContentUpdated: 'knowledge_table.content_updated'
 };
 /**
  * Check if a given object implements the AuditLogResponseDto interface.
@@ -100,10 +159,15 @@ function AuditLogResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'],
         'actor': (0, AuditActorDto_1.AuditActorDtoFromJSON)(json['actor']),
         'actorType': json['actor_type'],
+        'delegatedActor': json['delegated_actor'] == null ? undefined : (0, AuditActorDto_1.AuditActorDtoFromJSON)(json['delegated_actor']),
+        'delegatedActorType': json['delegated_actor_type'] == null ? undefined : json['delegated_actor_type'],
         'entityType': json['entity_type'],
         'entityId': json['entity_id'],
         'entityName': json['entity_name'] == null ? undefined : json['entity_name'],
         'action': json['action'],
+        'eventType': json['event_type'] == null ? undefined : json['event_type'],
+        'eventData': json['event_data'] == null ? undefined : json['event_data'],
+        'eventSummary': json['event_summary'] == null ? undefined : json['event_summary'],
         'changes': (json['changes'].map(AuditChangeDto_1.AuditChangeDtoFromJSON)),
         'createdAt': (new Date(json['created_at'])),
     };
@@ -120,10 +184,15 @@ function AuditLogResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'actor': (0, AuditActorDto_1.AuditActorDtoToJSON)(value['actor']),
         'actor_type': value['actorType'],
+        'delegated_actor': (0, AuditActorDto_1.AuditActorDtoToJSON)(value['delegatedActor']),
+        'delegated_actor_type': value['delegatedActorType'],
         'entity_type': value['entityType'],
         'entity_id': value['entityId'],
         'entity_name': value['entityName'],
         'action': value['action'],
+        'event_type': value['eventType'],
+        'event_data': value['eventData'],
+        'event_summary': value['eventSummary'],
         'changes': (value['changes'].map(AuditChangeDto_1.AuditChangeDtoToJSON)),
         'created_at': ((value['createdAt']).toISOString()),
     };

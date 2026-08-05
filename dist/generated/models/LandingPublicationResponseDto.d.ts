@@ -35,12 +35,6 @@ export interface LandingPublicationResponseDto {
     number: number;
     /**
      *
-     * @type {boolean}
-     * @memberof LandingPublicationResponseDto
-     */
-    isPinned: boolean;
-    /**
-     *
      * @type {Date}
      * @memberof LandingPublicationResponseDto
      */

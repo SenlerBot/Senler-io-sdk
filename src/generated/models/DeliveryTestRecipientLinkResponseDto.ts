@@ -20,18 +20,41 @@ import { mapValues } from '../runtime';
  */
 export interface DeliveryTestRecipientLinkResponseDto {
     /**
-     * Telegram-
+     *
      * @type {string}
      * @memberof DeliveryTestRecipientLinkResponseDto
      */
-    startUrl: string;
+    kind: DeliveryTestRecipientLinkResponseDtoKindEnum;
+    /**
+     * Deep-link Telegram MAX
+     * @type {string}
+     * @memberof DeliveryTestRecipientLinkResponseDto
+     */
+    startUrl?: string;
+    /**
+     * ID VK AllowMessagesFromCommunity
+     * @type {number}
+     * @memberof DeliveryTestRecipientLinkResponseDto
+     */
+    vkGroupId?: number;
 }
+
+
+/**
+ * @export
+ */
+export const DeliveryTestRecipientLinkResponseDtoKindEnum = {
+    ExternalStart: 'external_start',
+    VkConsent: 'vk_consent'
+} as const;
+export type DeliveryTestRecipientLinkResponseDtoKindEnum = typeof DeliveryTestRecipientLinkResponseDtoKindEnum[keyof typeof DeliveryTestRecipientLinkResponseDtoKindEnum];
+
 
 /**
  * Check if a given object implements the DeliveryTestRecipientLinkResponseDto interface.
  */
 export function instanceOfDeliveryTestRecipientLinkResponseDto(value: object): value is DeliveryTestRecipientLinkResponseDto {
-    if (!('startUrl' in value) || value['startUrl'] === undefined) return false;
+    if (!('kind' in value) || value['kind'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +68,9 @@ export function DeliveryTestRecipientLinkResponseDtoFromJSONTyped(json: any, ign
     }
     return {
 
-        'startUrl': json['start_url'],
+        'kind': json['kind'],
+        'startUrl': json['start_url'] == null ? undefined : json['start_url'],
+        'vkGroupId': json['vk_group_id'] == null ? undefined : json['vk_group_id'],
     };
 }
 
@@ -60,6 +85,8 @@ export function DeliveryTestRecipientLinkResponseDtoToJSONTyped(value?: Delivery
 
     return {
 
+        'kind': value['kind'],
         'start_url': value['startUrl'],
+        'vk_group_id': value['vkGroupId'],
     };
 }

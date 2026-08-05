@@ -45,7 +45,6 @@ import {
 
 export interface GetDialogSlaSettingsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetDialogSlaSettingsAcceptLanguageEnum;
 }
 
@@ -56,21 +55,18 @@ export interface GetMeRequest {
 export interface UpdateRequest {
     projectId: string;
     updateProjectDto: UpdateProjectDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAcceptLanguageEnum;
 }
 
 export interface UpdateDialogSlaSettingsRequest {
     projectId: string;
     updateDialogSlaSettingsDto: UpdateDialogSlaSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDialogSlaSettingsAcceptLanguageEnum;
 }
 
 export interface UpdateDialogSlaSettingsEnabledRequest {
     projectId: string;
     setDialogSlaEnabledDto: SetDialogSlaEnabledDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDialogSlaSettingsEnabledAcceptLanguageEnum;
 }
 
@@ -78,7 +74,6 @@ export interface UpdateDialogSlaSettingsPrioritiesRequest {
     projectId: string;
     priority: UpdateDialogSlaSettingsPrioritiesPriorityEnum;
     updateDialogSlaPriorityThresholdDto: UpdateDialogSlaPriorityThresholdDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum;
 }
 
@@ -102,10 +97,6 @@ export class ProjectsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -213,10 +204,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -279,10 +266,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -344,10 +327,6 @@ export class ProjectsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -417,10 +396,6 @@ export class ProjectsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

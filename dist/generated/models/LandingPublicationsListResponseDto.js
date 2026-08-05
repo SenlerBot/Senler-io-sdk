@@ -19,11 +19,14 @@ exports.LandingPublicationsListResponseDtoFromJSONTyped = LandingPublicationsLis
 exports.LandingPublicationsListResponseDtoToJSON = LandingPublicationsListResponseDtoToJSON;
 exports.LandingPublicationsListResponseDtoToJSONTyped = LandingPublicationsListResponseDtoToJSONTyped;
 const LandingPublicationResponseDto_1 = require("./LandingPublicationResponseDto");
+const LandingReadySolutionVersionResponseDto_1 = require("./LandingReadySolutionVersionResponseDto");
 /**
  * Check if a given object implements the LandingPublicationsListResponseDto interface.
  */
 function instanceOfLandingPublicationsListResponseDto(value) {
     if (!('versions' in value) || value['versions'] === undefined)
+        return false;
+    if (!('readySolutionVersions' in value) || value['readySolutionVersions'] === undefined)
         return false;
     return true;
 }
@@ -36,6 +39,7 @@ function LandingPublicationsListResponseDtoFromJSONTyped(json, ignoreDiscriminat
     }
     return {
         'versions': (json['versions'].map(LandingPublicationResponseDto_1.LandingPublicationResponseDtoFromJSON)),
+        'readySolutionVersions': (json['ready_solution_versions'].map(LandingReadySolutionVersionResponseDto_1.LandingReadySolutionVersionResponseDtoFromJSON)),
     };
 }
 function LandingPublicationsListResponseDtoToJSON(json) {
@@ -47,5 +51,6 @@ function LandingPublicationsListResponseDtoToJSONTyped(value, ignoreDiscriminato
     }
     return {
         'versions': (value['versions'].map(LandingPublicationResponseDto_1.LandingPublicationResponseDtoToJSON)),
+        'ready_solution_versions': (value['readySolutionVersions'].map(LandingReadySolutionVersionResponseDto_1.LandingReadySolutionVersionResponseDtoToJSON)),
     };
 }

@@ -13,12 +13,10 @@ import * as runtime from '../runtime';
 import type { ExternalUserMcpCredentialStatusDto, RevokeExternalUserMcpCredentialDto, RevokeMcpCredentialResponseDto, UpsertExternalUserMcpCredentialDto } from '../models/index';
 export interface McpExternalUserCredentialsCreateRequest {
     upsertExternalUserMcpCredentialDto: UpsertExternalUserMcpCredentialDto;
-    xSessionId?: string;
     acceptLanguage?: McpExternalUserCredentialsCreateAcceptLanguageEnum;
 }
 export interface RevokeRequest {
     revokeExternalUserMcpCredentialDto: RevokeExternalUserMcpCredentialDto;
-    xSessionId?: string;
     acceptLanguage?: RevokeAcceptLanguageEnum;
 }
 /**

@@ -20,6 +20,13 @@ import {
     AttachmentGenerationDtoToJSON,
     AttachmentGenerationDtoToJSONTyped,
 } from './AttachmentGenerationDto';
+import type { EventAttachmentLinkDto } from './EventAttachmentLinkDto';
+import {
+    EventAttachmentLinkDtoFromJSON,
+    EventAttachmentLinkDtoFromJSONTyped,
+    EventAttachmentLinkDtoToJSON,
+    EventAttachmentLinkDtoToJSONTyped,
+} from './EventAttachmentLinkDto';
 import type { AttachmentFlagsDto } from './AttachmentFlagsDto';
 import {
     AttachmentFlagsDtoFromJSON,
@@ -68,13 +75,13 @@ export interface EventAttachmentCabinetDto {
      */
     type: EventAttachmentCabinetDtoTypeEnum;
     /**
-     * URL storage. storage.
+     * URL . storage_path source_url.
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
-    storageUrl?: string;
+    contentUrl?: string;
     /**
-     * preview URL , storage_url .
+     * URL . content_url.
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
@@ -96,7 +103,7 @@ export interface EventAttachmentCabinetDto {
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
-    unavailableReason?: EventAttachmentCabinetDtoUnavailableReasonEnum;
+    errorCode?: EventAttachmentCabinetDtoErrorCodeEnum;
     /**
      *
      * @type {string}
@@ -134,12 +141,6 @@ export interface EventAttachmentCabinetDto {
      */
     durationSeconds?: number;
     /**
-     * URL
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    thumbnailUrl?: string;
-    /**
      *
      * @type {AttachmentFlagsDto}
      * @memberof EventAttachmentCabinetDto
@@ -152,23 +153,11 @@ export interface EventAttachmentCabinetDto {
      */
     createdAt?: Date;
     /**
-     * storage
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    uploadStatus?: EventAttachmentCabinetDtoUploadStatusEnum;
-    /**
      *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
-    uploadStage?: EventAttachmentCabinetDtoUploadStageEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    uploadError?: string;
+    status?: EventAttachmentCabinetDtoStatusEnum;
     /**
      *
      * @type {string}
@@ -212,12 +201,6 @@ export interface EventAttachmentCabinetDto {
      */
     platformType?: EventAttachmentCabinetDtoPlatformTypeEnum;
     /**
-     * ID . API.
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    platformFileId?: string;
-    /**
      * non-file attachment
      * @type {EventAttachmentContactDto}
      * @memberof EventAttachmentCabinetDto
@@ -229,6 +212,12 @@ export interface EventAttachmentCabinetDto {
      * @memberof EventAttachmentCabinetDto
      */
     location?: EventAttachmentLocationDto;
+    /**
+     * non-file attachment
+     * @type {EventAttachmentLinkDto}
+     * @memberof EventAttachmentCabinetDto
+     */
+    link?: EventAttachmentLinkDto;
     /**
      *
      * @type {Date}
@@ -249,7 +238,8 @@ export const EventAttachmentCabinetDtoTypeEnum = {
     Document: 'document',
     Sticker: 'sticker',
     Contact: 'contact',
-    Location: 'location'
+    Location: 'location',
+    Link: 'link'
 } as const;
 export type EventAttachmentCabinetDtoTypeEnum = typeof EventAttachmentCabinetDtoTypeEnum[keyof typeof EventAttachmentCabinetDtoTypeEnum];
 
@@ -267,34 +257,26 @@ export type EventAttachmentCabinetDtoActionsEnum = typeof EventAttachmentCabinet
 /**
  * @export
  */
-export const EventAttachmentCabinetDtoUnavailableReasonEnum = {
+export const EventAttachmentCabinetDtoErrorCodeEnum = {
     ProjectUploadLimitExceeded: 'project_upload_limit_exceeded',
     TelegramBotApiDownloadLimit: 'telegram_bot_api_download_limit',
     UploadFailed: 'upload_failed',
     SourceUnavailable: 'source_unavailable'
 } as const;
-export type EventAttachmentCabinetDtoUnavailableReasonEnum = typeof EventAttachmentCabinetDtoUnavailableReasonEnum[keyof typeof EventAttachmentCabinetDtoUnavailableReasonEnum];
+export type EventAttachmentCabinetDtoErrorCodeEnum = typeof EventAttachmentCabinetDtoErrorCodeEnum[keyof typeof EventAttachmentCabinetDtoErrorCodeEnum];
 
 /**
  * @export
  */
-export const EventAttachmentCabinetDtoUploadStatusEnum = {
+export const EventAttachmentCabinetDtoStatusEnum = {
     Pending: 'pending',
+    Fetching: 'fetching',
     Uploading: 'uploading',
     Ready: 'ready',
     QuotaPending: 'quota_pending',
     Failed: 'failed'
 } as const;
-export type EventAttachmentCabinetDtoUploadStatusEnum = typeof EventAttachmentCabinetDtoUploadStatusEnum[keyof typeof EventAttachmentCabinetDtoUploadStatusEnum];
-
-/**
- * @export
- */
-export const EventAttachmentCabinetDtoUploadStageEnum = {
-    PlatformFetch: 'platform_fetch',
-    StorageUpload: 'storage_upload'
-} as const;
-export type EventAttachmentCabinetDtoUploadStageEnum = typeof EventAttachmentCabinetDtoUploadStageEnum[keyof typeof EventAttachmentCabinetDtoUploadStageEnum];
+export type EventAttachmentCabinetDtoStatusEnum = typeof EventAttachmentCabinetDtoStatusEnum[keyof typeof EventAttachmentCabinetDtoStatusEnum];
 
 /**
  * @export
@@ -367,23 +349,20 @@ export function EventAttachmentCabinetDtoFromJSONTyped(json: any, ignoreDiscrimi
 
         'id': json['id'],
         'type': json['type'],
-        'storageUrl': json['storage_url'] == null ? undefined : json['storage_url'],
+        'contentUrl': json['content_url'] == null ? undefined : json['content_url'],
         'previewUrl': json['preview_url'] == null ? undefined : json['preview_url'],
         'externalUrl': json['external_url'] == null ? undefined : json['external_url'],
         'actions': json['actions'] == null ? undefined : json['actions'],
-        'unavailableReason': json['unavailable_reason'] == null ? undefined : json['unavailable_reason'],
+        'errorCode': json['error_code'] == null ? undefined : json['error_code'],
         'fileName': json['file_name'] == null ? undefined : json['file_name'],
         'fileSize': json['file_size'] == null ? undefined : json['file_size'],
         'mimeType': json['mime_type'] == null ? undefined : json['mime_type'],
         'width': json['width'] == null ? undefined : json['width'],
         'height': json['height'] == null ? undefined : json['height'],
         'durationSeconds': json['duration_seconds'] == null ? undefined : json['duration_seconds'],
-        'thumbnailUrl': json['thumbnail_url'] == null ? undefined : json['thumbnail_url'],
         'flags': json['flags'] == null ? undefined : AttachmentFlagsDtoFromJSON(json['flags']),
         'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
-        'uploadStatus': json['upload_status'] == null ? undefined : json['upload_status'],
-        'uploadStage': json['upload_stage'] == null ? undefined : json['upload_stage'],
-        'uploadError': json['upload_error'] == null ? undefined : json['upload_error'],
+        'status': json['status'] == null ? undefined : json['status'],
         'recognitionStatus': json['recognition_status'] == null ? undefined : json['recognition_status'],
         'recognition': json['recognition'] == null ? undefined : AttachmentRecognitionCabinetDtoFromJSON(json['recognition']),
         'generation': json['generation'] == null ? undefined : AttachmentGenerationDtoFromJSON(json['generation']),
@@ -391,9 +370,9 @@ export function EventAttachmentCabinetDtoFromJSONTyped(json: any, ignoreDiscrimi
         'deliveryStage': json['delivery_stage'] == null ? undefined : json['delivery_stage'],
         'deliveryError': json['delivery_error'] == null ? undefined : json['delivery_error'],
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
-        'platformFileId': json['platform_file_id'] == null ? undefined : json['platform_file_id'],
         'contact': json['contact'] == null ? undefined : EventAttachmentContactDtoFromJSON(json['contact']),
         'location': json['location'] == null ? undefined : EventAttachmentLocationDtoFromJSON(json['location']),
+        'link': json['link'] == null ? undefined : EventAttachmentLinkDtoFromJSON(json['link']),
         'uploadedAt': json['uploaded_at'] == null ? undefined : (new Date(json['uploaded_at'])),
     };
 }
@@ -411,23 +390,20 @@ export function EventAttachmentCabinetDtoToJSONTyped(value?: EventAttachmentCabi
 
         'id': value['id'],
         'type': value['type'],
-        'storage_url': value['storageUrl'],
+        'content_url': value['contentUrl'],
         'preview_url': value['previewUrl'],
         'external_url': value['externalUrl'],
         'actions': value['actions'],
-        'unavailable_reason': value['unavailableReason'],
+        'error_code': value['errorCode'],
         'file_name': value['fileName'],
         'file_size': value['fileSize'],
         'mime_type': value['mimeType'],
         'width': value['width'],
         'height': value['height'],
         'duration_seconds': value['durationSeconds'],
-        'thumbnail_url': value['thumbnailUrl'],
         'flags': AttachmentFlagsDtoToJSON(value['flags']),
         'created_at': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
-        'upload_status': value['uploadStatus'],
-        'upload_stage': value['uploadStage'],
-        'upload_error': value['uploadError'],
+        'status': value['status'],
         'recognition_status': value['recognitionStatus'],
         'recognition': AttachmentRecognitionCabinetDtoToJSON(value['recognition']),
         'generation': AttachmentGenerationDtoToJSON(value['generation']),
@@ -435,9 +411,9 @@ export function EventAttachmentCabinetDtoToJSONTyped(value?: EventAttachmentCabi
         'delivery_stage': value['deliveryStage'],
         'delivery_error': value['deliveryError'],
         'platform_type': value['platformType'],
-        'platform_file_id': value['platformFileId'],
         'contact': EventAttachmentContactDtoToJSON(value['contact']),
         'location': EventAttachmentLocationDtoToJSON(value['location']),
+        'link': EventAttachmentLinkDtoToJSON(value['link']),
         'uploaded_at': value['uploadedAt'] == null ? undefined : ((value['uploadedAt']).toISOString()),
     };
 }

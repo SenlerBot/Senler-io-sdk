@@ -34,6 +34,13 @@ import {
     StatisticsUsageChartDtoToJSON,
     StatisticsUsageChartDtoToJSONTyped,
 } from './StatisticsUsageChartDto';
+import type { StatisticsSegmentMembershipBreakdownDto } from './StatisticsSegmentMembershipBreakdownDto';
+import {
+    StatisticsSegmentMembershipBreakdownDtoFromJSON,
+    StatisticsSegmentMembershipBreakdownDtoFromJSONTyped,
+    StatisticsSegmentMembershipBreakdownDtoToJSON,
+    StatisticsSegmentMembershipBreakdownDtoToJSONTyped,
+} from './StatisticsSegmentMembershipBreakdownDto';
 
 /**
  * CabinetStatisticsLeadsResponseDto.
@@ -77,6 +84,12 @@ export interface CabinetStatisticsLeadsResponseDto {
      * @memberof CabinetStatisticsLeadsResponseDto
      */
     charts: StatisticsUsageChartDto;
+    /**
+     *
+     * @type {Array<StatisticsSegmentMembershipBreakdownDto>}
+     * @memberof CabinetStatisticsLeadsResponseDto
+     */
+    segmentMemberships: Array<StatisticsSegmentMembershipBreakdownDto>;
 }
 
 
@@ -100,6 +113,7 @@ export function instanceOfCabinetStatisticsLeadsResponseDto(value: object): valu
     if (!('summary' in value) || value['summary'] === undefined) return false;
     if (!('leadBase' in value) || value['leadBase'] === undefined) return false;
     if (!('charts' in value) || value['charts'] === undefined) return false;
+    if (!('segmentMemberships' in value) || value['segmentMemberships'] === undefined) return false;
     return true;
 }
 
@@ -119,6 +133,7 @@ export function CabinetStatisticsLeadsResponseDtoFromJSONTyped(json: any, ignore
         'summary': StatisticsLeadsSummaryDtoFromJSON(json['summary']),
         'leadBase': StatisticsLeadBaseDtoFromJSON(json['lead_base']),
         'charts': StatisticsUsageChartDtoFromJSON(json['charts']),
+        'segmentMemberships': ((json['segment_memberships'] as Array<any>).map(StatisticsSegmentMembershipBreakdownDtoFromJSON)),
     };
 }
 
@@ -139,5 +154,6 @@ export function CabinetStatisticsLeadsResponseDtoToJSONTyped(value?: CabinetStat
         'summary': StatisticsLeadsSummaryDtoToJSON(value['summary']),
         'lead_base': StatisticsLeadBaseDtoToJSON(value['leadBase']),
         'charts': StatisticsUsageChartDtoToJSON(value['charts']),
+        'segment_memberships': ((value['segmentMemberships'] as Array<any>).map(StatisticsSegmentMembershipBreakdownDtoToJSON)),
     };
 }

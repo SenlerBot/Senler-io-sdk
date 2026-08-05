@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
+import type { MessageAttachmentReferenceDto } from './MessageAttachmentReferenceDto';
 import type { LeadsFilterDto } from './LeadsFilterDto';
 /**
  * UpdateDeliveryDto.
@@ -36,11 +36,11 @@ export interface UpdateDeliveryDto {
      */
     messageText?: string;
     /**
-     * upload-url/confirm
-     * @type {Array<MessageAttachmentInputDto>}
+     * ID
+     * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof UpdateDeliveryDto
      */
-    attachments?: Array<MessageAttachmentInputDto>;
+    attachments?: Array<MessageAttachmentReferenceDto>;
 }
 /**
  * Check if a given object implements the UpdateDeliveryDto interface.

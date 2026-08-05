@@ -38,6 +38,7 @@ function EventButtonDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'text': json['text'],
+        'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
         'action': (0, EventButtonDtoAction_1.EventButtonDtoActionFromJSON)(json['action']),
         'row': json['row'] == null ? undefined : json['row'],
     };
@@ -51,6 +52,7 @@ function EventButtonDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'text': value['text'],
+        'button_instance_id': value['buttonInstanceId'],
         'action': (0, EventButtonDtoAction_1.EventButtonDtoActionToJSON)(value['action']),
         'row': value['row'],
     };

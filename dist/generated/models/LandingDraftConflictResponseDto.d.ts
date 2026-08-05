@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingDraftConflictErrorDto } from './LandingDraftConflictErrorDto';
 /**
  * LandingDraftConflictResponseDto.
  * @export
@@ -17,32 +18,11 @@
 export interface LandingDraftConflictResponseDto {
     /**
      *
-     * @type {string}
+     * @type {LandingDraftConflictErrorDto}
      * @memberof LandingDraftConflictResponseDto
      */
-    code: LandingDraftConflictResponseDtoCodeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof LandingDraftConflictResponseDto
-     */
-    message: string;
+    error: LandingDraftConflictErrorDto;
 }
-/**
- * @export
- */
-export declare const LandingDraftConflictResponseDtoCodeEnum: {
-    readonly LandingBlockRevisionStale: "landing_block_revision_stale";
-    readonly LandingBlockLimitReached: "landing_block_limit_reached";
-    readonly LandingOrderRevisionStale: "landing_order_revision_stale";
-    readonly LandingSettingsRevisionStale: "landing_settings_revision_stale";
-    readonly LandingDraftFingerprintStale: "landing_draft_fingerprint_stale";
-    readonly LandingMutationScopeBusy: "landing_mutation_scope_busy";
-    readonly LandingMutationLeaseLost: "landing_mutation_lease_lost";
-    readonly LandingPublicationBarrierActive: "landing_publication_barrier_active";
-    readonly LandingPublicationStateStale: "landing_publication_state_stale";
-};
-export type LandingDraftConflictResponseDtoCodeEnum = typeof LandingDraftConflictResponseDtoCodeEnum[keyof typeof LandingDraftConflictResponseDtoCodeEnum];
 /**
  * Check if a given object implements the LandingDraftConflictResponseDto interface.
  */

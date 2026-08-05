@@ -63,6 +63,24 @@ export interface KnowledgeBaseSearchHitDto {
      * @memberof KnowledgeBaseSearchHitDto
      */
     matchedFields?: Array<string>;
+    /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeBaseSearchHitDto
+     */
+    appId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeBaseSearchHitDto
+     */
+    documentationLocale?: string | null;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof KnowledgeBaseSearchHitDto
+     */
+    documentationPageId?: string | null;
 }
 /**
  * @export

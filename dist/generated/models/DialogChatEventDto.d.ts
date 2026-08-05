@@ -321,6 +321,7 @@ export declare const DialogChatEventDtoTargetTypeEnum: {
     readonly Message: "message";
     readonly Interaction: "interaction";
     readonly Lead: "lead";
+    readonly Segment: "segment";
     readonly Dialog: "dialog";
     readonly Chat: "chat";
     readonly Post: "post";
@@ -358,6 +359,7 @@ export declare const DialogChatEventDtoActionTypeEnum: {
     readonly LeadMerged: "lead_merged";
     readonly LeadSubscribed: "lead_subscribed";
     readonly LeadUnsubscribed: "lead_unsubscribed";
+    readonly SegmentSubscribed: "segment_subscribed";
     readonly LeadBlocked: "lead_blocked";
     readonly LeadUnblocked: "lead_unblocked";
     readonly LeadBlacklisted: "lead_blacklisted";
@@ -374,6 +376,7 @@ export declare const DialogChatEventDtoActionTypeEnum: {
     readonly BroadcastStarted: "broadcast_started";
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
+    readonly AiResponseStarted: "ai_response_started";
     readonly ToolStarted: "tool_started";
     readonly ReasoningRecorded: "reasoning_recorded";
     readonly ImageGenerated: "image_generated";

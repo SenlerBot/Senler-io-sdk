@@ -19,6 +19,7 @@ exports.LandingSubscribeActionInputDtoFromJSON = LandingSubscribeActionInputDtoF
 exports.LandingSubscribeActionInputDtoFromJSONTyped = LandingSubscribeActionInputDtoFromJSONTyped;
 exports.LandingSubscribeActionInputDtoToJSON = LandingSubscribeActionInputDtoToJSON;
 exports.LandingSubscribeActionInputDtoToJSONTyped = LandingSubscribeActionInputDtoToJSONTyped;
+const LandingChannelSelectionInputDto_1 = require("./LandingChannelSelectionInputDto");
 const LandingContactCaptureDto_1 = require("./LandingContactCaptureDto");
 /**
  * @export
@@ -34,7 +35,7 @@ function instanceOfLandingSubscribeActionInputDto(value) {
         return false;
     if (!('segmentId' in value) || value['segmentId'] === undefined)
         return false;
-    if (!('channelIds' in value) || value['channelIds'] === undefined)
+    if (!('channelSelection' in value) || value['channelSelection'] === undefined)
         return false;
     if (!('contactCapture' in value) || value['contactCapture'] === undefined)
         return false;
@@ -48,10 +49,9 @@ function LandingSubscribeActionInputDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
-        'id': json['id'] == null ? undefined : json['id'],
         'type': json['type'],
         'segmentId': json['segment_id'],
-        'channelIds': json['channel_ids'],
+        'channelSelection': (0, LandingChannelSelectionInputDto_1.LandingChannelSelectionInputDtoFromJSON)(json['channel_selection']),
         'contactCapture': (0, LandingContactCaptureDto_1.LandingContactCaptureDtoFromJSON)(json['contact_capture']),
     };
 }
@@ -63,10 +63,9 @@ function LandingSubscribeActionInputDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
-        'id': value['id'],
         'type': value['type'],
         'segment_id': value['segmentId'],
-        'channel_ids': value['channelIds'],
+        'channel_selection': (0, LandingChannelSelectionInputDto_1.LandingChannelSelectionInputDtoToJSON)(value['channelSelection']),
         'contact_capture': (0, LandingContactCaptureDto_1.LandingContactCaptureDtoToJSON)(value['contactCapture']),
     };
 }

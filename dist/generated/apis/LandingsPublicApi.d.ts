@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { LandingLaunchContextResponseDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
+import type { LandingAcquisitionIdentityDto, LandingLaunchContextResponseDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
 export interface GetLandingsLaunchRequest {
     token: string;
     acceptLanguage?: GetLandingsLaunchAcceptLanguageEnum;
@@ -29,6 +29,11 @@ export interface LandingsLaunchSubscribeRequest {
     token: string;
     landingSubscriptionRequestDto: LandingSubscriptionRequestDto;
     acceptLanguage?: LandingsLaunchSubscribeAcceptLanguageEnum;
+}
+export interface LandingsLaunchSubscriptionStatusRequest {
+    token: string;
+    landingAcquisitionIdentityDto: LandingAcquisitionIdentityDto;
+    acceptLanguage?: LandingsLaunchSubscriptionStatusAcceptLanguageEnum;
 }
 export interface LandingsLaunchUnsubscribeRequest {
     token: string;
@@ -88,6 +93,16 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      * .
      *
      */
+    landingsLaunchSubscriptionStatusRaw(requestParameters: LandingsLaunchSubscriptionStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSubscriptionStatusResponseDto>>;
+    /**
+     * .
+     *
+     */
+    landingsLaunchSubscriptionStatus(requestParameters: LandingsLaunchSubscriptionStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSubscriptionStatusResponseDto>;
+    /**
+     * .
+     *
+     */
     landingsLaunchUnsubscribeRaw(requestParameters: LandingsLaunchUnsubscribeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSubscriptionResponseDto>>;
     /**
      * .
@@ -137,6 +152,14 @@ export declare const LandingsLaunchSubscribeAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsLaunchSubscribeAcceptLanguageEnum = typeof LandingsLaunchSubscribeAcceptLanguageEnum[keyof typeof LandingsLaunchSubscribeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsLaunchSubscriptionStatusAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsLaunchSubscriptionStatusAcceptLanguageEnum = typeof LandingsLaunchSubscriptionStatusAcceptLanguageEnum[keyof typeof LandingsLaunchSubscriptionStatusAcceptLanguageEnum];
 /**
  * @export
  */

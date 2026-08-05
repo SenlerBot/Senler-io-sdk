@@ -63,9 +63,6 @@ class EventsApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -178,9 +175,6 @@ class EventsApi extends runtime.BaseAPI {
             queryParameters['sort_order'] = requestParameters['sortOrder'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -230,9 +224,6 @@ class EventsApi extends runtime.BaseAPI {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -279,9 +270,6 @@ class EventsApi extends runtime.BaseAPI {
             queryParameters['period'] = requestParameters['period'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -328,9 +316,6 @@ class EventsApi extends runtime.BaseAPI {
             queryParameters['period'] = requestParameters['period'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -377,9 +362,6 @@ class EventsApi extends runtime.BaseAPI {
             queryParameters['period'] = requestParameters['period'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -460,6 +442,7 @@ exports.EventsListActionTypeEnum = {
     LeadMerged: 'lead_merged',
     LeadSubscribed: 'lead_subscribed',
     LeadUnsubscribed: 'lead_unsubscribed',
+    SegmentSubscribed: 'segment_subscribed',
     LeadBlocked: 'lead_blocked',
     LeadUnblocked: 'lead_unblocked',
     LeadBlacklisted: 'lead_blacklisted',
@@ -476,6 +459,7 @@ exports.EventsListActionTypeEnum = {
     BroadcastStarted: 'broadcast_started',
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
+    AiResponseStarted: 'ai_response_started',
     ToolStarted: 'tool_started',
     ToolCompleted: 'tool_completed',
     ToolFailed: 'tool_failed',
@@ -487,11 +471,13 @@ exports.EventsListActionTypeEnum = {
     SpeechRecognized: 'speech_recognized',
     ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
+    AiProviderCallCompleted: 'ai_provider_call_completed',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',
     TimerScheduled: 'timer_scheduled',
-    TimerTriggered: 'timer_triggered'
+    TimerTriggered: 'timer_triggered',
+    AppEventReceived: 'app_event_received'
 };
 /**
  * @export
@@ -500,6 +486,7 @@ exports.EventsListTargetTypeEnum = {
     Message: 'message',
     Interaction: 'interaction',
     Lead: 'lead',
+    Segment: 'segment',
     Dialog: 'dialog',
     Chat: 'chat',
     Post: 'post',

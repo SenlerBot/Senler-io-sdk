@@ -24,6 +24,7 @@ exports.KnowledgeTableResponseDtoToJSONTyped = KnowledgeTableResponseDtoToJSONTy
  */
 exports.KnowledgeTableResponseDtoOwnerTypeEnum = {
     Project: 'project',
+    App: 'app',
     McpServerTemplate: 'mcp_server_template',
     Admin: 'admin'
 };
@@ -36,6 +37,10 @@ function instanceOfKnowledgeTableResponseDto(value) {
     if (!('ownerType' in value) || value['ownerType'] === undefined)
         return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined)
+        return false;
+    if (!('appId' in value) || value['appId'] === undefined)
+        return false;
+    if (!('documentationLocale' in value) || value['documentationLocale'] === undefined)
         return false;
     if (!('folderId' in value) || value['folderId'] === undefined)
         return false;
@@ -69,6 +74,8 @@ function KnowledgeTableResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'ownerType': json['owner_type'],
         'ownerId': json['owner_id'],
+        'appId': json['app_id'],
+        'documentationLocale': json['documentation_locale'],
         'folderId': json['folder_id'],
         'name': json['name'],
         'workbookSnapshot': json['workbook_snapshot'],
@@ -92,6 +99,8 @@ function KnowledgeTableResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'project_id': value['projectId'],
         'owner_type': value['ownerType'],
         'owner_id': value['ownerId'],
+        'app_id': value['appId'],
+        'documentation_locale': value['documentationLocale'],
         'folder_id': value['folderId'],
         'name': value['name'],
         'workbook_snapshot': value['workbookSnapshot'],

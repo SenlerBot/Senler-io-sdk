@@ -63,7 +63,99 @@ export interface EventAiDto {
      * @memberof EventAiDto
      */
     streamId?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    modelId?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerId?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerBindingId?: string;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerResponseId?: string;
+    /**
+     * AI-
+     * @type {number}
+     * @memberof EventAiDto
+     */
+    providerCallIndex?: number;
+    /**
+     * AI-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    responseStatus?: EventAiDtoResponseStatusEnum;
+    /**
+     * AI-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    activityPhase?: EventAiDtoActivityPhaseEnum;
+    /**
+     * AI-
+     * @type {Date}
+     * @memberof EventAiDto
+     */
+    responseStartedAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof EventAiDto
+     */
+    activityUpdatedAt?: Date;
+    /**
+     * AI-
+     * @type {Date}
+     * @memberof EventAiDto
+     */
+    responseTerminalAt?: Date;
+    /**
+     * ID AI-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    terminalEventId?: string;
 }
+/**
+ * @export
+ */
+export declare const EventAiDtoResponseStatusEnum: {
+    readonly Running: "running";
+    readonly Completed: "completed";
+    readonly Failed: "failed";
+    readonly Cancelled: "cancelled";
+};
+export type EventAiDtoResponseStatusEnum = typeof EventAiDtoResponseStatusEnum[keyof typeof EventAiDtoResponseStatusEnum];
+/**
+ * @export
+ */
+export declare const EventAiDtoActivityPhaseEnum: {
+    readonly Thinking: "thinking";
+    readonly SearchingPublicInformation: "searching_public_information";
+    readonly UsingExternalTool: "using_external_tool";
+    readonly AnalyzingAttachment: "analyzing_attachment";
+    readonly GeneratingImage: "generating_image";
+    readonly GeneratingAudio: "generating_audio";
+    readonly CreatingResult: "creating_result";
+    readonly PreparingAttachment: "preparing_attachment";
+    readonly ActingOnPage: "acting_on_page";
+    readonly Finalizing: "finalizing";
+};
+export type EventAiDtoActivityPhaseEnum = typeof EventAiDtoActivityPhaseEnum[keyof typeof EventAiDtoActivityPhaseEnum];
 /**
  * Check if a given object implements the EventAiDto interface.
  */

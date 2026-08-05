@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingChannelSelectionResponseDto } from './LandingChannelSelectionResponseDto';
+import {
+    LandingChannelSelectionResponseDtoFromJSON,
+    LandingChannelSelectionResponseDtoFromJSONTyped,
+    LandingChannelSelectionResponseDtoToJSON,
+    LandingChannelSelectionResponseDtoToJSONTyped,
+} from './LandingChannelSelectionResponseDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 import {
     LandingContactCaptureDtoFromJSON,
@@ -46,11 +53,11 @@ export interface LandingSubscribeActionResponseDto {
      */
     segmentId: string;
     /**
-     * ID
-     * @type {Array<string>}
+     *
+     * @type {LandingChannelSelectionResponseDto}
      * @memberof LandingSubscribeActionResponseDto
      */
-    channelIds: Array<string>;
+    channelSelection: LandingChannelSelectionResponseDto;
     /**
      *
      * @type {LandingContactCaptureDto}
@@ -76,7 +83,7 @@ export function instanceOfLandingSubscribeActionResponseDto(value: object): valu
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('segmentId' in value) || value['segmentId'] === undefined) return false;
-    if (!('channelIds' in value) || value['channelIds'] === undefined) return false;
+    if (!('channelSelection' in value) || value['channelSelection'] === undefined) return false;
     if (!('contactCapture' in value) || value['contactCapture'] === undefined) return false;
     return true;
 }
@@ -94,7 +101,7 @@ export function LandingSubscribeActionResponseDtoFromJSONTyped(json: any, ignore
         'id': json['id'],
         'type': json['type'],
         'segmentId': json['segment_id'],
-        'channelIds': json['channel_ids'],
+        'channelSelection': LandingChannelSelectionResponseDtoFromJSON(json['channel_selection']),
         'contactCapture': LandingContactCaptureDtoFromJSON(json['contact_capture']),
     };
 }
@@ -113,7 +120,7 @@ export function LandingSubscribeActionResponseDtoToJSONTyped(value?: LandingSubs
         'id': value['id'],
         'type': value['type'],
         'segment_id': value['segmentId'],
-        'channel_ids': value['channelIds'],
+        'channel_selection': LandingChannelSelectionResponseDtoToJSON(value['channelSelection']),
         'contact_capture': LandingContactCaptureDtoToJSON(value['contactCapture']),
     };
 }

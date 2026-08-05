@@ -13,23 +13,19 @@ import * as runtime from '../runtime';
 import type { DialogDetailsDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto } from '../models/index';
 export interface DialogsGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DialogsGetByIdAcceptLanguageEnum;
 }
 export interface DialogsListRequest {
     queryDialogsDto: QueryDialogsDto;
-    xSessionId?: string;
     acceptLanguage?: DialogsListAcceptLanguageEnum;
 }
 export interface DirectMessageRequest {
     directMessageDto: DirectMessageDto;
-    xSessionId?: string;
     acceptLanguage?: DirectMessageAcceptLanguageEnum;
 }
 export interface EventsPollSnapshotRefreshRequest {
     id: string;
     eventId: string;
-    xSessionId?: string;
     acceptLanguage?: EventsPollSnapshotRefreshAcceptLanguageEnum;
 }
 export interface GetEventsRequest {
@@ -46,7 +42,6 @@ export interface GetEventsRequest {
     sourceChatId?: string;
     sourceThreadId?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
 }
 export interface GetEventsPollOptionVotersRequest {
@@ -55,7 +50,6 @@ export interface GetEventsPollOptionVotersRequest {
     optionId: string;
     offset?: number;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetEventsPollOptionVotersAcceptLanguageEnum;
 }
 export interface GetEventsReactionUsersRequest {
@@ -63,13 +57,11 @@ export interface GetEventsReactionUsersRequest {
     eventId: string;
     reactionId?: string;
     emoji?: string;
-    xSessionId?: string;
     acceptLanguage?: GetEventsReactionUsersAcceptLanguageEnum;
 }
 export interface GetNavigationRequest {
     id: string;
     maxSegments?: number;
-    xSessionId?: string;
     acceptLanguage?: GetNavigationAcceptLanguageEnum;
 }
 /**

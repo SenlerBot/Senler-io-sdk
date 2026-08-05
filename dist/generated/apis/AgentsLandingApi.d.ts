@@ -10,84 +10,78 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateAgentLandingBlockDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockContentMutationResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPublicationResponseDto, LandingPublicationsListResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, SetLandingPublicationPinnedDto, UpdateAgentLandingBlockDto, UpdateLandingDraftDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateAgentLandingBlockDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockContentMutationResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateAgentLandingBlockDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface AgentsLandingAssetsConfirmRequest {
     projectId: string;
     agentId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
     acceptLanguage?: AgentsLandingAssetsConfirmAcceptLanguageEnum;
 }
 export interface AgentsLandingAssetsUploadUrlRequest {
     projectId: string;
     agentId: string;
     getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: AgentsLandingAssetsUploadUrlAcceptLanguageEnum;
 }
 export interface AgentsLandingBlocksRequest {
     projectId: string;
     agentId: string;
+    xLandingEditorSessionId: string;
     createAgentLandingBlockDto: CreateAgentLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: AgentsLandingBlocksAcceptLanguageEnum;
 }
 export interface AgentsLandingBlocksMoveRequest {
     projectId: string;
     agentId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: AgentsLandingBlocksMoveAcceptLanguageEnum;
 }
 export interface DeleteAgentsLandingBlocksRequest {
     projectId: string;
     agentId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: DeleteAgentsLandingBlocksAcceptLanguageEnum;
 }
 export interface GetAgentsLandingRequest {
     projectId: string;
     agentId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentsLandingAcceptLanguageEnum;
 }
 export interface GetAgentsLandingPublicationsRequest {
     projectId: string;
     agentId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentsLandingPublicationsAcceptLanguageEnum;
 }
 export interface GetAgentsLandingShareLinksRequest {
     projectId: string;
     agentId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentsLandingShareLinksAcceptLanguageEnum;
 }
 export interface UpdateAgentsLandingBlocksRequest {
     projectId: string;
     agentId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     updateAgentLandingBlockDto: UpdateAgentLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentsLandingBlocksAcceptLanguageEnum;
 }
 export interface UpdateAgentsLandingDraftRequest {
     projectId: string;
     agentId: string;
+    xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentsLandingDraftAcceptLanguageEnum;
 }
-export interface UpdateAgentsLandingPublicationsPinRequest {
+export interface UpdateAgentsLandingRealtimeFocusRequest {
     projectId: string;
     agentId: string;
-    publicationId: string;
-    setLandingPublicationPinnedDto: SetLandingPublicationPinnedDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateAgentsLandingPublicationsPinAcceptLanguageEnum;
+    xLandingEditorSessionId: string;
+    updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
+    acceptLanguage?: UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum;
 }
 /**
  *
@@ -197,12 +191,12 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      * .
      *
      */
-    updateAgentsLandingPublicationsPinRaw(requestParameters: UpdateAgentsLandingPublicationsPinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationResponseDto>>;
+    updateAgentsLandingRealtimeFocusRaw(requestParameters: UpdateAgentsLandingRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingRealtimeFocusResponseDto>>;
     /**
      * .
      *
      */
-    updateAgentsLandingPublicationsPin(requestParameters: UpdateAgentsLandingPublicationsPinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationResponseDto>;
+    updateAgentsLandingRealtimeFocus(requestParameters: UpdateAgentsLandingRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingRealtimeFocusResponseDto>;
 }
 /**
  * @export
@@ -287,8 +281,8 @@ export type UpdateAgentsLandingDraftAcceptLanguageEnum = typeof UpdateAgentsLand
 /**
  * @export
  */
-export declare const UpdateAgentsLandingPublicationsPinAcceptLanguageEnum: {
+export declare const UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAgentsLandingPublicationsPinAcceptLanguageEnum = typeof UpdateAgentsLandingPublicationsPinAcceptLanguageEnum[keyof typeof UpdateAgentsLandingPublicationsPinAcceptLanguageEnum];
+export type UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum = typeof UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum[keyof typeof UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum];

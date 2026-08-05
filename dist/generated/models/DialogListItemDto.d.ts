@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AiResponseActivityDto } from './AiResponseActivityDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
 import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
 import type { DialogDisplayInfoDto } from './DialogDisplayInfoDto';
@@ -348,6 +349,12 @@ export interface DialogListItemDto {
      * @memberof DialogListItemDto
      */
     currentTyping?: Array<DialogCurrentTypingDto>;
+    /**
+     * AI-
+     * @type {AiResponseActivityDto}
+     * @memberof DialogListItemDto
+     */
+    currentAiActivity?: AiResponseActivityDto;
     /**
      *
      * @type {DialogSearchResultDto}

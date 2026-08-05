@@ -40,6 +40,18 @@ export interface KnowledgeTableResponseDto {
      */
     ownerId: string;
     /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeTableResponseDto
+     */
+    appId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeTableResponseDto
+     */
+    documentationLocale: string | null;
+    /**
      * UUID
      * @type {string}
      * @memberof KnowledgeTableResponseDto
@@ -99,6 +111,7 @@ export interface KnowledgeTableResponseDto {
  */
 export declare const KnowledgeTableResponseDtoOwnerTypeEnum: {
     readonly Project: "project";
+    readonly App: "app";
     readonly McpServerTemplate: "mcp_server_template";
     readonly Admin: "admin";
 };

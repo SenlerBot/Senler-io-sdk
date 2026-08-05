@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { CustomerCostEstimateDto } from './CustomerCostEstimateDto';
 import type { LocalizedTextDto } from './LocalizedTextDto';
 import type { CreditTransactionDtoDetailsByModelValue } from './CreditTransactionDtoDetailsByModelValue';
 import type { CreditTransactionDtoDetailsByAgentValue } from './CreditTransactionDtoDetailsByAgentValue';
@@ -61,17 +62,11 @@ export interface CreditTransactionDto {
      */
     purchasedCreditsAfter: number;
     /**
-     * , (/); : 1.25 = 125
-     * @type {number}
+     * . , .
+     * @type {CustomerCostEstimateDto}
      * @memberof CreditTransactionDto
      */
-    monetaryEquivalent: number;
-    /**
-     *
-     * @type {string}
-     * @memberof CreditTransactionDto
-     */
-    currency: CreditTransactionDtoCurrencyEnum;
+    customerCostEstimate: CustomerCostEstimateDto;
     /**
      * ( usage)
      * @type {Date}
@@ -143,14 +138,6 @@ export declare const CreditTransactionDtoTypeEnum: {
     readonly Adjustment: "adjustment";
 };
 export type CreditTransactionDtoTypeEnum = typeof CreditTransactionDtoTypeEnum[keyof typeof CreditTransactionDtoTypeEnum];
-/**
- * @export
- */
-export declare const CreditTransactionDtoCurrencyEnum: {
-    readonly Usd: "USD";
-    readonly Rub: "RUB";
-};
-export type CreditTransactionDtoCurrencyEnum = typeof CreditTransactionDtoCurrencyEnum[keyof typeof CreditTransactionDtoCurrencyEnum];
 /**
  * Check if a given object implements the CreditTransactionDto interface.
  */

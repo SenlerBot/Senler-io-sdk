@@ -13,50 +13,41 @@ import * as runtime from '../runtime';
 import type { BindWebsiteDto, CreateDataSourceDto, DataSourceResponseDto, UpdateDataSourceDto, ValidateDataSourceResultDto } from '../models/index';
 export interface BindWebsiteRequest {
     projectId: string;
-    xSessionId: string;
     bindWebsiteDto: BindWebsiteDto;
     acceptLanguage?: BindWebsiteAcceptLanguageEnum;
 }
 export interface DataSourcesCreateRequest {
     projectId: string;
-    xSessionId: string;
     createDataSourceDto: CreateDataSourceDto;
     acceptLanguage?: DataSourcesCreateAcceptLanguageEnum;
 }
 export interface DataSourcesDeactivateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesDeactivateAcceptLanguageEnum;
 }
 export interface DataSourcesGetByIdRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesGetByIdAcceptLanguageEnum;
 }
 export interface DataSourcesListRequest {
     projectId: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesListAcceptLanguageEnum;
 }
 export interface DataSourcesUpdateRequest {
     id: string;
-    xSessionId: string;
     updateDataSourceDto: UpdateDataSourceDto;
     acceptLanguage?: DataSourcesUpdateAcceptLanguageEnum;
 }
 export interface DataSourcesUpdateRestoreRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesUpdateRestoreAcceptLanguageEnum;
 }
 export interface GetActiveForTrainingRequest {
     projectId: string;
-    xSessionId: string;
     acceptLanguage?: GetActiveForTrainingAcceptLanguageEnum;
 }
 export interface ValidateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: ValidateAcceptLanguageEnum;
 }
 /**

@@ -22,11 +22,11 @@ export interface SegmentRequiredConsentDto {
      */
     documentId: string;
     /**
-     * . .
+     * , .
      * @type {number}
      * @memberof SegmentRequiredConsentDto
      */
-    version?: number;
+    version: number;
     /**
      * .
      * @type {number}

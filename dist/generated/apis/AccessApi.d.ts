@@ -14,24 +14,20 @@ import type { GetMemberChannelsResponseDto, GetProjectMemberResponseDto, Project
 export interface DeleteMembersRequest {
     projectId: string;
     memberId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteMembersAcceptLanguageEnum;
 }
 export interface GetMembersRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetMembersAcceptLanguageEnum;
 }
 export interface GetMembers2Request {
     projectId: string;
     memberId: string;
-    xSessionId?: string;
     acceptLanguage?: GetMembers2AcceptLanguageEnum;
 }
 export interface GetMembersChannelsRequest {
     projectId: string;
     memberId: string;
-    xSessionId?: string;
     acceptLanguage?: GetMembersChannelsAcceptLanguageEnum;
 }
 export interface GetRolePresetsRequest {
@@ -40,14 +36,12 @@ export interface GetRolePresetsRequest {
 export interface TransferOwnershipRequest {
     projectId: string;
     transferOwnershipDto: TransferOwnershipDto;
-    xSessionId?: string;
     acceptLanguage?: TransferOwnershipAcceptLanguageEnum;
 }
 export interface UpdateMembersRequest {
     projectId: string;
     memberId: string;
     updateProjectMemberDto: UpdateProjectMemberDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateMembersAcceptLanguageEnum;
 }
 /**

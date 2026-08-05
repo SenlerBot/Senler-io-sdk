@@ -64,9 +64,6 @@ class SpacesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -117,9 +114,6 @@ class SpacesApi extends runtime.BaseAPI {
             queryParameters['channel_type'] = requestParameters['channelType'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -202,9 +196,6 @@ class SpacesApi extends runtime.BaseAPI {
             queryParameters['channel_id'] = requestParameters['channelId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -284,9 +275,6 @@ class SpacesApi extends runtime.BaseAPI {
             queryParameters['limit'] = requestParameters['limit'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -327,9 +315,6 @@ class SpacesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -370,9 +355,6 @@ class SpacesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -417,9 +399,6 @@ class SpacesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -462,9 +441,6 @@ class SpacesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

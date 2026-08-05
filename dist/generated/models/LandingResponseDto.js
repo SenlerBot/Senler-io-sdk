@@ -41,6 +41,8 @@ function instanceOfLandingResponseDto(value) {
         return false;
     if (!('status' in value) || value['status'] === undefined)
         return false;
+    if (!('agentId' in value) || value['agentId'] === undefined)
+        return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined)
         return false;
     if (!('draftVersionId' in value) || value['draftVersionId'] === undefined)
@@ -52,6 +54,8 @@ function instanceOfLandingResponseDto(value) {
     if (!('published' in value) || value['published'] === undefined)
         return false;
     if (!('webUrl' in value) || value['webUrl'] === undefined)
+        return false;
+    if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined)
         return false;
     return true;
 }
@@ -68,12 +72,14 @@ function LandingResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'publicId': json['public_id'],
         'status': json['status'],
+        'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'draftVersionId': json['draft_version_id'],
         'publishedVersionId': json['published_version_id'],
         'draft': (0, LandingVersionResponseDto_1.LandingVersionResponseDtoFromJSON)(json['draft']),
         'published': (0, LandingVersionResponseDto_1.LandingVersionResponseDtoFromJSON)(json['published']),
         'webUrl': json['web_url'],
+        'hasUnpublishedChanges': json['has_unpublished_changes'],
     };
 }
 function LandingResponseDtoToJSON(json) {
@@ -89,11 +95,13 @@ function LandingResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'public_id': value['publicId'],
         'status': value['status'],
+        'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'draft_version_id': value['draftVersionId'],
         'published_version_id': value['publishedVersionId'],
         'draft': (0, LandingVersionResponseDto_1.LandingVersionResponseDtoToJSON)(value['draft']),
         'published': (0, LandingVersionResponseDto_1.LandingVersionResponseDtoToJSON)(value['published']),
         'web_url': value['webUrl'],
+        'has_unpublished_changes': value['hasUnpublishedChanges'],
     };
 }

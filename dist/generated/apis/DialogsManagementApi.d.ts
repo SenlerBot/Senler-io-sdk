@@ -14,91 +14,75 @@ import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogDto, Dialo
 export interface DeleteAgentRequest {
     id: string;
     role: DeleteAgentRoleEnum;
-    xSessionId?: string;
     acceptLanguage?: DeleteAgentAcceptLanguageEnum;
 }
 export interface DeleteEventsRequest {
     dialogId: string;
     eventId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteEventsAcceptLanguageEnum;
 }
 export interface DeleteOperatorAssignmentRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteOperatorAssignmentAcceptLanguageEnum;
 }
 export interface GetParticipantsRequest {
     dialogId: string;
-    xSessionId?: string;
     acceptLanguage?: GetParticipantsAcceptLanguageEnum;
 }
 export interface UpdateAgentRequest {
     id: string;
     assignAgentToDialogDto: AssignAgentToDialogDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentAcceptLanguageEnum;
 }
 export interface UpdateArchiveRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateArchiveAcceptLanguageEnum;
 }
 export interface UpdateAutoAssignDisabledRequest {
     id: string;
     setAutoAssignDisabledDto: SetAutoAssignDisabledDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAutoAssignDisabledAcceptLanguageEnum;
 }
 export interface UpdateEventsRequest {
     dialogId: string;
     eventId: string;
     editMessageDto: EditMessageDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateEventsAcceptLanguageEnum;
 }
 export interface UpdateEventsSpamRequest {
     dialogId: string;
     eventId: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateEventsSpamAcceptLanguageEnum;
 }
 export interface UpdateNotSpamRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateNotSpamAcceptLanguageEnum;
 }
 export interface UpdateOperatorAssignmentMeRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateOperatorAssignmentMeAcceptLanguageEnum;
 }
 export interface UpdateOperatorResponseRequest {
     id: string;
     status: UpdateOperatorResponseStatusEnum;
-    xSessionId?: string;
     acceptLanguage?: UpdateOperatorResponseAcceptLanguageEnum;
 }
 export interface UpdateOperatorResponseAnsweredRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateOperatorResponseAnsweredAcceptLanguageEnum;
 }
 export interface UpdatePriorityRequest {
     id: string;
     setDialogPriorityDto: SetDialogPriorityDto;
-    xSessionId?: string;
     acceptLanguage?: UpdatePriorityAcceptLanguageEnum;
 }
 export interface UpdateSoundMuteRequest {
     id: string;
     setSoundMuteDto: SetSoundMuteDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSoundMuteAcceptLanguageEnum;
 }
 export interface UpdateUnarchiveRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateUnarchiveAcceptLanguageEnum;
 }
 /**

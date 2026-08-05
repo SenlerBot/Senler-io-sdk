@@ -67,6 +67,24 @@ export interface KnowledgeBaseSearchHitDto {
      * @memberof KnowledgeBaseSearchHitDto
      */
     matchedFields?: Array<string>;
+    /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeBaseSearchHitDto
+     */
+    appId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeBaseSearchHitDto
+     */
+    documentationLocale?: string | null;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof KnowledgeBaseSearchHitDto
+     */
+    documentationPageId?: string | null;
 }
 
 
@@ -111,6 +129,9 @@ export function KnowledgeBaseSearchHitDtoFromJSONTyped(json: any, ignoreDiscrimi
         'snippet': json['snippet'] == null ? undefined : json['snippet'],
         'score': json['score'] == null ? undefined : json['score'],
         'matchedFields': json['matched_fields'] == null ? undefined : json['matched_fields'],
+        'appId': json['app_id'] == null ? undefined : json['app_id'],
+        'documentationLocale': json['documentation_locale'] == null ? undefined : json['documentation_locale'],
+        'documentationPageId': json['documentation_page_id'] == null ? undefined : json['documentation_page_id'],
     };
 }
 
@@ -133,5 +154,8 @@ export function KnowledgeBaseSearchHitDtoToJSONTyped(value?: KnowledgeBaseSearch
         'snippet': value['snippet'],
         'score': value['score'],
         'matched_fields': value['matchedFields'],
+        'app_id': value['appId'],
+        'documentation_locale': value['documentationLocale'],
+        'documentation_page_id': value['documentationPageId'],
     };
 }

@@ -22,17 +22,11 @@ export interface ConfirmUploadResponseDto {
      */
     fileId: string;
     /**
-     * URL S3
+     * URL (S3 CDN)
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     url: string;
-    /**
-     * S3 ( )
-     * @type {string}
-     * @memberof ConfirmUploadResponseDto
-     */
-    storagePath: string;
     /**
      *
      * @type {string}

@@ -23,12 +23,6 @@ export interface UpdateAgentDto {
      */
     name?: string;
     /**
-     *
-     * @type {string}
-     * @memberof UpdateAgentDto
-     */
-    instruction?: string;
-    /**
      * URL
      * @type {string}
      * @memberof UpdateAgentDto
@@ -299,11 +293,23 @@ export interface UpdateAgentDto {
      */
     enableStreaming?: boolean;
     /**
+     * AI
+     * @type {string}
+     * @memberof UpdateAgentDto
+     */
+    widgetAiProgressMode?: UpdateAgentDtoWidgetAiProgressModeEnum;
+    /**
      * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof UpdateAgentDto
      */
     enablePreliminaryResponse?: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof UpdateAgentDto
+     */
+    respondOnSegmentSubscription?: boolean;
     /**
      * AI-. true ,
      * @type {boolean}
@@ -475,6 +481,15 @@ export declare const UpdateAgentDtoAutoAssignmentRoleEnum: {
     readonly Background: "background";
 };
 export type UpdateAgentDtoAutoAssignmentRoleEnum = typeof UpdateAgentDtoAutoAssignmentRoleEnum[keyof typeof UpdateAgentDtoAutoAssignmentRoleEnum];
+/**
+ * @export
+ */
+export declare const UpdateAgentDtoWidgetAiProgressModeEnum: {
+    readonly SafeProgress: "safe_progress";
+    readonly Typing: "typing";
+    readonly Hidden: "hidden";
+};
+export type UpdateAgentDtoWidgetAiProgressModeEnum = typeof UpdateAgentDtoWidgetAiProgressModeEnum[keyof typeof UpdateAgentDtoWidgetAiProgressModeEnum];
 /**
  * @export
  */

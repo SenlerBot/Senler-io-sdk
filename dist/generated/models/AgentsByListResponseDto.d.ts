@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AgentResponseDto } from './AgentResponseDto';
+import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
 /**
  * AgentsByListResponseDto.
  * @export
@@ -18,10 +18,10 @@ import type { AgentResponseDto } from './AgentResponseDto';
 export interface AgentsByListResponseDto {
     /**
      * , MCP
-     * @type {Array<AgentResponseDto>}
+     * @type {Array<AgentSettingsResponseDto>}
      * @memberof AgentsByListResponseDto
      */
-    agents: Array<AgentResponseDto>;
+    agents: Array<AgentSettingsResponseDto>;
 }
 /**
  * Check if a given object implements the AgentsByListResponseDto interface.

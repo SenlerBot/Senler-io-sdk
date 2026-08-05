@@ -12,6 +12,7 @@
 import type { StatisticsLeadsSummaryDto } from './StatisticsLeadsSummaryDto';
 import type { StatisticsLeadBaseDto } from './StatisticsLeadBaseDto';
 import type { StatisticsUsageChartDto } from './StatisticsUsageChartDto';
+import type { StatisticsSegmentMembershipBreakdownDto } from './StatisticsSegmentMembershipBreakdownDto';
 /**
  * CabinetStatisticsLeadsResponseDto.
  * @export
@@ -54,6 +55,12 @@ export interface CabinetStatisticsLeadsResponseDto {
      * @memberof CabinetStatisticsLeadsResponseDto
      */
     charts: StatisticsUsageChartDto;
+    /**
+     *
+     * @type {Array<StatisticsSegmentMembershipBreakdownDto>}
+     * @memberof CabinetStatisticsLeadsResponseDto
+     */
+    segmentMemberships: Array<StatisticsSegmentMembershipBreakdownDto>;
 }
 /**
  * @export

@@ -14,7 +14,6 @@ import type { CentrifugoSubscriptionDto, ErrorResponse, ListProcessesResponseDto
 export interface DeleteProcessesRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteProcessesAcceptLanguageEnum;
 }
 export interface GetProcessesRequest {
@@ -23,30 +22,25 @@ export interface GetProcessesRequest {
     status?: GetProcessesStatusEnum;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesAcceptLanguageEnum;
 }
 export interface GetProcesses2Request {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcesses2AcceptLanguageEnum;
 }
 export interface GetProcessesDownloadRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesDownloadAcceptLanguageEnum;
 }
 export interface GetProcessesRealtimeTokenRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesRealtimeTokenAcceptLanguageEnum;
 }
 export interface GetProcessesResultRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesResultAcceptLanguageEnum;
 }
 /**

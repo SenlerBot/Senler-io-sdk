@@ -371,11 +371,23 @@ export interface AgentResponseDto {
      */
     enableStreaming: boolean;
     /**
+     * AI
+     * @type {string}
+     * @memberof AgentResponseDto
+     */
+    widgetAiProgressMode: AgentResponseDtoWidgetAiProgressModeEnum;
+    /**
      * (send_preliminary_response tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enablePreliminaryResponse: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    respondOnSegmentSubscription: boolean;
     /**
      * AI-
      * @type {boolean}
@@ -579,6 +591,15 @@ export declare const AgentResponseDtoWizardTrainingModeSelectedEnum: {
     readonly Deep: "deep";
 };
 export type AgentResponseDtoWizardTrainingModeSelectedEnum = typeof AgentResponseDtoWizardTrainingModeSelectedEnum[keyof typeof AgentResponseDtoWizardTrainingModeSelectedEnum];
+/**
+ * @export
+ */
+export declare const AgentResponseDtoWidgetAiProgressModeEnum: {
+    readonly SafeProgress: "safe_progress";
+    readonly Typing: "typing";
+    readonly Hidden: "hidden";
+};
+export type AgentResponseDtoWidgetAiProgressModeEnum = typeof AgentResponseDtoWidgetAiProgressModeEnum[keyof typeof AgentResponseDtoWidgetAiProgressModeEnum];
 /**
  * @export
  */

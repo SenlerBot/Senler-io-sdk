@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UploadUrlAcceptLanguageEnum = exports.SendToSelfRecipientLinkAcceptLanguageEnum = exports.SendToSelfAcceptLanguageEnum = exports.GetSendToSelfRecipientsAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
+exports.UploadUrlAcceptLanguageEnum = exports.SendToSelfRecipientVkConfirmAcceptLanguageEnum = exports.SendToSelfRecipientLinkAcceptLanguageEnum = exports.SendToSelfAcceptLanguageEnum = exports.GetSendToSelfRecipientsAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -70,9 +70,6 @@ class AttachmentsApi extends runtime.BaseAPI {
         }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -149,9 +146,6 @@ class AttachmentsApi extends runtime.BaseAPI {
             queryParameters['dialogId'] = requestParameters['dialogId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -198,9 +192,6 @@ class AttachmentsApi extends runtime.BaseAPI {
             queryParameters['dialogId'] = requestParameters['dialogId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -251,9 +242,6 @@ class AttachmentsApi extends runtime.BaseAPI {
         }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -286,7 +274,7 @@ class AttachmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . read-like ; Telegram-.
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     async sendToSelfRecipientLinkRaw(requestParameters, initOverrides) {
@@ -301,9 +289,6 @@ class AttachmentsApi extends runtime.BaseAPI {
             queryParameters['dialogId'] = requestParameters['dialogId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -327,11 +312,57 @@ class AttachmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentSendToSelfRecipientLinkResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . read-like ; Telegram-.
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     async sendToSelfRecipientLink(requestParameters, initOverrides) {
         const response = await this.sendToSelfRecipientLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * VK, .
+     * VK-
+     */
+    async sendToSelfRecipientVkConfirmRaw(requestParameters, initOverrides) {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError('attachmentId', 'Required parameter "attachmentId" was null or undefined when calling sendToSelfRecipientVkConfirm().');
+        }
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling sendToSelfRecipientVkConfirm().');
+        }
+        const queryParameters = {};
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/send-to-self-recipient-vk-confirm`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentSendToSelfRecipientDtoFromJSON)(jsonValue));
+    }
+    /**
+     * VK, .
+     * VK-
+     */
+    async sendToSelfRecipientVkConfirm(requestParameters, initOverrides) {
+        const response = await this.sendToSelfRecipientVkConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -351,9 +382,6 @@ class AttachmentsApi extends runtime.BaseAPI {
         }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -426,6 +454,13 @@ exports.SendToSelfAcceptLanguageEnum = {
  * @export
  */
 exports.SendToSelfRecipientLinkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SendToSelfRecipientVkConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

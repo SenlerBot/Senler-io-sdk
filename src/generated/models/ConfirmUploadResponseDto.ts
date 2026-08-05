@@ -26,17 +26,11 @@ export interface ConfirmUploadResponseDto {
      */
     fileId: string;
     /**
-     * URL S3
+     * URL (S3 CDN)
      * @type {string}
      * @memberof ConfirmUploadResponseDto
      */
     url: string;
-    /**
-     * S3 ( )
-     * @type {string}
-     * @memberof ConfirmUploadResponseDto
-     */
-    storagePath: string;
     /**
      *
      * @type {string}
@@ -69,7 +63,6 @@ export interface ConfirmUploadResponseDto {
 export function instanceOfConfirmUploadResponseDto(value: object): value is ConfirmUploadResponseDto {
     if (!('fileId' in value) || value['fileId'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
-    if (!('storagePath' in value) || value['storagePath'] === undefined) return false;
     if (!('fileName' in value) || value['fileName'] === undefined) return false;
     if (!('fileType' in value) || value['fileType'] === undefined) return false;
     if (!('fileSize' in value) || value['fileSize'] === undefined) return false;
@@ -88,7 +81,6 @@ export function ConfirmUploadResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
 
         'fileId': json['fileId'],
         'url': json['url'],
-        'storagePath': json['storagePath'],
         'fileName': json['fileName'],
         'fileType': json['fileType'],
         'fileSize': json['fileSize'],
@@ -109,7 +101,6 @@ export function ConfirmUploadResponseDtoToJSONTyped(value?: ConfirmUploadRespons
 
         'fileId': value['fileId'],
         'url': value['url'],
-        'storagePath': value['storagePath'],
         'fileName': value['fileName'],
         'fileType': value['fileType'],
         'fileSize': value['fileSize'],

@@ -13,34 +13,28 @@ import * as runtime from '../runtime';
 import type { BindMaxTokenDto, ChannelTokenResponseDto, CheckWebhookStatusResultDto, CreateMaxChannelDto, CreateMaxChannelResponseDto, SetupWebhookDto, SetupWebhookResultDto, ValidateMaxTokenResultDto } from '../models/index';
 export interface MaxRequest {
     createMaxChannelDto: CreateMaxChannelDto;
-    xSessionId?: string;
     acceptLanguage?: MaxAcceptLanguageEnum;
 }
 export interface TokensMaxBindRequest {
     channelId: string;
     bindMaxTokenDto: BindMaxTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxBindAcceptLanguageEnum;
 }
 export interface TokensMaxCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxCheckWebhookStatusAcceptLanguageEnum;
 }
 export interface TokensMaxRefreshAvatarRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxRefreshAvatarAcceptLanguageEnum;
 }
 export interface TokensMaxValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxValidateAcceptLanguageEnum;
 }
 export interface TokensMaxWebhookSetupRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxWebhookSetupAcceptLanguageEnum;
 }
 /**

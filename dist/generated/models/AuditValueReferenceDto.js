@@ -27,9 +27,23 @@ exports.AuditValueReferenceDtoEntityTypeEnum = {
     Agent: 'agent',
     App: 'app',
     Channel: 'channel',
+    CreditPackage: 'credit_package',
+    DataSource: 'data_source',
+    KnowledgeFolder: 'knowledge_folder',
+    KnowledgeFile: 'knowledge_file',
+    KnowledgeTable: 'knowledge_table',
+    KnowledgeSource: 'knowledge_source',
+    Landing: 'landing',
     McpServer: 'mcp_server',
     McpServerList: 'mcp_server_list',
+    Metric: 'metric',
+    PaySystem: 'pay_system',
     Project: 'project',
+    ProjectMember: 'project_member',
+    Segment: 'segment',
+    SupportShift: 'support_shift',
+    Tariff: 'tariff',
+    Trigger: 'trigger',
     User: 'user'
 };
 /**

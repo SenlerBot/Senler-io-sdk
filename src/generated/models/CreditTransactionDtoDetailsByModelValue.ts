@@ -32,12 +32,6 @@ export interface CreditTransactionDtoDetailsByModelValue {
      */
     credits?: number;
     /**
-     * , (/); : 1.25 = 125
-     * @type {number}
-     * @memberof CreditTransactionDtoDetailsByModelValue
-     */
-    cost?: number;
-    /**
      * tokens.
      * @type {number}
      * @memberof CreditTransactionDtoDetailsByModelValue
@@ -64,7 +58,6 @@ export function CreditTransactionDtoDetailsByModelValueFromJSONTyped(json: any, 
 
         'usageEvents': json['usage_events'] == null ? undefined : json['usage_events'],
         'credits': json['credits'] == null ? undefined : json['credits'],
-        'cost': json['cost'] == null ? undefined : json['cost'],
         'tokens': json['tokens'] == null ? undefined : json['tokens'],
     };
 }
@@ -82,7 +75,6 @@ export function CreditTransactionDtoDetailsByModelValueToJSONTyped(value?: Credi
 
         'usage_events': value['usageEvents'],
         'credits': value['credits'],
-        'cost': value['cost'],
         'tokens': value['tokens'],
     };
 }

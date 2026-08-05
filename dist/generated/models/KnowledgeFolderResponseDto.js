@@ -24,6 +24,7 @@ exports.KnowledgeFolderResponseDtoToJSONTyped = KnowledgeFolderResponseDtoToJSON
  */
 exports.KnowledgeFolderResponseDtoOwnerTypeEnum = {
     Project: 'project',
+    App: 'app',
     McpServerTemplate: 'mcp_server_template',
     Admin: 'admin'
 };
@@ -47,6 +48,8 @@ function instanceOfKnowledgeFolderResponseDto(value) {
     if (!('ownerId' in value) || value['ownerId'] === undefined)
         return false;
     if (!('name' in value) || value['name'] === undefined)
+        return false;
+    if (!('documentationSortOrder' in value) || value['documentationSortOrder'] === undefined)
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
@@ -72,8 +75,10 @@ function KnowledgeFolderResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'ownerType': json['owner_type'],
         'ownerId': json['owner_id'],
+        'appId': json['app_id'] == null ? undefined : json['app_id'],
         'parentFolderId': json['parent_folder_id'] == null ? undefined : json['parent_folder_id'],
         'name': json['name'],
+        'documentationSortOrder': json['documentation_sort_order'],
         'isActive': json['is_active'],
         'extractionStatus': json['extraction_status'],
         'extractionProgressPercent': json['extraction_progress_percent'],
@@ -93,8 +98,10 @@ function KnowledgeFolderResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         'project_id': value['projectId'],
         'owner_type': value['ownerType'],
         'owner_id': value['ownerId'],
+        'app_id': value['appId'],
         'parent_folder_id': value['parentFolderId'],
         'name': value['name'],
+        'documentation_sort_order': value['documentationSortOrder'],
         'is_active': value['isActive'],
         'extraction_status': value['extractionStatus'],
         'extraction_progress_percent': value['extractionProgressPercent'],

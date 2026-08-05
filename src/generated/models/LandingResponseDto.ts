@@ -58,6 +58,12 @@ export interface LandingResponseDto {
      */
     status: LandingResponseDtoStatusEnum;
     /**
+     * -
+     * @type {string}
+     * @memberof LandingResponseDto
+     */
+    agentId: string | null;
+    /**
      *
      * @type {boolean}
      * @memberof LandingResponseDto
@@ -93,6 +99,12 @@ export interface LandingResponseDto {
      * @memberof LandingResponseDto
      */
     webUrl: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LandingResponseDto
+     */
+    hasUnpublishedChanges: boolean;
 }
 
 
@@ -115,12 +127,14 @@ export function instanceOfLandingResponseDto(value: object): value is LandingRes
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('publicId' in value) || value['publicId'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('agentId' in value) || value['agentId'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('draftVersionId' in value) || value['draftVersionId'] === undefined) return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined) return false;
     if (!('draft' in value) || value['draft'] === undefined) return false;
     if (!('published' in value) || value['published'] === undefined) return false;
     if (!('webUrl' in value) || value['webUrl'] === undefined) return false;
+    if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined) return false;
     return true;
 }
 
@@ -139,12 +153,14 @@ export function LandingResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'name': json['name'],
         'publicId': json['public_id'],
         'status': json['status'],
+        'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'draftVersionId': json['draft_version_id'],
         'publishedVersionId': json['published_version_id'],
         'draft': LandingVersionResponseDtoFromJSON(json['draft']),
         'published': LandingVersionResponseDtoFromJSON(json['published']),
         'webUrl': json['web_url'],
+        'hasUnpublishedChanges': json['has_unpublished_changes'],
     };
 }
 
@@ -164,11 +180,13 @@ export function LandingResponseDtoToJSONTyped(value?: LandingResponseDto | null,
         'name': value['name'],
         'public_id': value['publicId'],
         'status': value['status'],
+        'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'draft_version_id': value['draftVersionId'],
         'published_version_id': value['publishedVersionId'],
         'draft': LandingVersionResponseDtoToJSON(value['draft']),
         'published': LandingVersionResponseDtoToJSON(value['published']),
         'web_url': value['webUrl'],
+        'has_unpublished_changes': value['hasUnpublishedChanges'],
     };
 }

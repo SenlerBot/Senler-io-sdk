@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingDraftConflictErrorDto } from './LandingDraftConflictErrorDto';
+import {
+    LandingDraftConflictErrorDtoFromJSON,
+    LandingDraftConflictErrorDtoFromJSONTyped,
+    LandingDraftConflictErrorDtoToJSON,
+    LandingDraftConflictErrorDtoToJSONTyped,
+} from './LandingDraftConflictErrorDto';
+
 /**
  * LandingDraftConflictResponseDto.
  * @export
@@ -21,42 +29,17 @@ import { mapValues } from '../runtime';
 export interface LandingDraftConflictResponseDto {
     /**
      *
-     * @type {string}
+     * @type {LandingDraftConflictErrorDto}
      * @memberof LandingDraftConflictResponseDto
      */
-    code: LandingDraftConflictResponseDtoCodeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof LandingDraftConflictResponseDto
-     */
-    message: string;
+    error: LandingDraftConflictErrorDto;
 }
-
-
-/**
- * @export
- */
-export const LandingDraftConflictResponseDtoCodeEnum = {
-    LandingBlockRevisionStale: 'landing_block_revision_stale',
-    LandingBlockLimitReached: 'landing_block_limit_reached',
-    LandingOrderRevisionStale: 'landing_order_revision_stale',
-    LandingSettingsRevisionStale: 'landing_settings_revision_stale',
-    LandingDraftFingerprintStale: 'landing_draft_fingerprint_stale',
-    LandingMutationScopeBusy: 'landing_mutation_scope_busy',
-    LandingMutationLeaseLost: 'landing_mutation_lease_lost',
-    LandingPublicationBarrierActive: 'landing_publication_barrier_active',
-    LandingPublicationStateStale: 'landing_publication_state_stale'
-} as const;
-export type LandingDraftConflictResponseDtoCodeEnum = typeof LandingDraftConflictResponseDtoCodeEnum[keyof typeof LandingDraftConflictResponseDtoCodeEnum];
-
 
 /**
  * Check if a given object implements the LandingDraftConflictResponseDto interface.
  */
 export function instanceOfLandingDraftConflictResponseDto(value: object): value is LandingDraftConflictResponseDto {
-    if (!('code' in value) || value['code'] === undefined) return false;
-    if (!('message' in value) || value['message'] === undefined) return false;
+    if (!('error' in value) || value['error'] === undefined) return false;
     return true;
 }
 
@@ -70,8 +53,7 @@ export function LandingDraftConflictResponseDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
-        'code': json['code'],
-        'message': json['message'],
+        'error': LandingDraftConflictErrorDtoFromJSON(json['error']),
     };
 }
 
@@ -86,7 +68,6 @@ export function LandingDraftConflictResponseDtoToJSONTyped(value?: LandingDraftC
 
     return {
 
-        'code': value['code'],
-        'message': value['message'],
+        'error': LandingDraftConflictErrorDtoToJSON(value['error']),
     };
 }

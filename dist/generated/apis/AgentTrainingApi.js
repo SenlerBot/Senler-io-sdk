@@ -61,14 +61,8 @@ class AgentTrainingApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getTrainingRealtimeToken().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getTrainingRealtimeToken().');
-        }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -107,14 +101,8 @@ class AgentTrainingApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getTrainingStatus().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getTrainingStatus().');
-        }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -153,14 +141,8 @@ class AgentTrainingApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling trainingCancel().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling trainingCancel().');
-        }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -198,18 +180,12 @@ class AgentTrainingApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling trainingPreview().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling trainingPreview().');
-        }
         if (requestParameters['trainingPreviewDto'] == null) {
             throw new runtime.RequiredError('trainingPreviewDto', 'Required parameter "trainingPreviewDto" was null or undefined when calling trainingPreview().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -249,18 +225,12 @@ class AgentTrainingApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling trainingSelect().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling trainingSelect().');
-        }
         if (requestParameters['selectVariantDto'] == null) {
             throw new runtime.RequiredError('selectVariantDto', 'Required parameter "selectVariantDto" was null or undefined when calling trainingSelect().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -300,18 +270,12 @@ class AgentTrainingApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling trainingStart().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling trainingStart().');
-        }
         if (requestParameters['startTrainingDto'] == null) {
             throw new runtime.RequiredError('startTrainingDto', 'Required parameter "startTrainingDto" was null or undefined when calling trainingStart().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

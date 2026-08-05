@@ -52,7 +52,6 @@ export interface GetProjectCatalogRequest {
     featuredOnly?: boolean;
     page?: number;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectCatalogAcceptLanguageEnum;
 }
 
@@ -195,10 +194,6 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

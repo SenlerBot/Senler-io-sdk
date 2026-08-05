@@ -13,13 +13,11 @@ import * as runtime from '../runtime';
 import type { CreateEmailChannelDto, EmailChannelResponseDto, UpdateEmailChannelDto } from '../models/index';
 export interface ChannelsEmailCreateRequest {
     createEmailChannelDto: CreateEmailChannelDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsEmailCreateAcceptLanguageEnum;
 }
 export interface ChannelsEmailUpdateRequest {
     id: string;
     updateEmailChannelDto: UpdateEmailChannelDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsEmailUpdateAcceptLanguageEnum;
 }
 /**

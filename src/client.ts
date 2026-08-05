@@ -1,17 +1,19 @@
 import { Configuration } from './generated/runtime';
-import type { FetchAPI } from './generated/runtime';
-import { createAuthMiddleware } from './auth';
-import type { TokenState } from './auth';
-import type { AiSenlerClientConfig } from './types';
-
-import { AccessApi } from './generated/apis/AccessApi';
+  import type { FetchAPI } from './generated/runtime';
+  import { createAuthMiddleware } from './auth';
+  import type { TokenState } from './auth';
+  import type { AiSenlerClientConfig } from './types';
+  
+  import { AccessApi } from './generated/apis/AccessApi';
 import { AccessInvitationsApi } from './generated/apis/AccessInvitationsApi';
 import { AgentAssignmentRulesApi } from './generated/apis/AgentAssignmentRulesApi';
 import { AgentsApi } from './generated/apis/AgentsApi';
+import { AgentsAcquisitionApi } from './generated/apis/AgentsAcquisitionApi';
 import { AgentsAvatarApi } from './generated/apis/AgentsAvatarApi';
 import { AgentsLandingApi } from './generated/apis/AgentsLandingApi';
 import { AgentTrainingApi } from './generated/apis/AgentTrainingApi';
 import { AnalyticsApi } from './generated/apis/AnalyticsApi';
+import { AppAgentEventsApi } from './generated/apis/AppAgentEventsApi';
 import { AppCatalogApi } from './generated/apis/AppCatalogApi';
 import { AppsApi } from './generated/apis/AppsApi';
 import { AttachmentsApi } from './generated/apis/AttachmentsApi';
@@ -54,6 +56,7 @@ import { ProcessesApi } from './generated/apis/ProcessesApi';
 import { ProjectsApi } from './generated/apis/ProjectsApi';
 import { ProjectsAvatarApi } from './generated/apis/ProjectsAvatarApi';
 import { ProjectVariablesApi } from './generated/apis/ProjectVariablesApi';
+import { PublicDocumentationApi } from './generated/apis/PublicDocumentationApi';
 import { ReadyMCPServersApi } from './generated/apis/ReadyMCPServersApi';
 import { SegmentsApi } from './generated/apis/SegmentsApi';
 import { SpacesApi } from './generated/apis/SpacesApi';
@@ -62,20 +65,22 @@ import { StorageApi } from './generated/apis/StorageApi';
 import { SupportSchedulesApi } from './generated/apis/SupportSchedulesApi';
 import { TariffsApi } from './generated/apis/TariffsApi';
 import { TriggersApi } from './generated/apis/TriggersApi';
-
-const DEFAULT_BASE_URL = 'https://api.senler.io';
-
-export class AiSenlerClient {
-  private readonly tokenState: TokenState;
-
-  readonly access: AccessApi;
+  
+  const DEFAULT_BASE_URL = 'https://api.senler.io';
+  
+  export class AiSenlerClient {
+    private readonly tokenState: TokenState;
+  
+    readonly access: AccessApi;
   readonly accessInvitations: AccessInvitationsApi;
   readonly agentAssignmentRules: AgentAssignmentRulesApi;
   readonly agents: AgentsApi;
+  readonly agentsAcquisition: AgentsAcquisitionApi;
   readonly agentsAvatar: AgentsAvatarApi;
   readonly agentsLanding: AgentsLandingApi;
   readonly agentTraining: AgentTrainingApi;
   readonly analytics: AnalyticsApi;
+  readonly appAgentEvents: AppAgentEventsApi;
   readonly appCatalog: AppCatalogApi;
   readonly apps: AppsApi;
   readonly attachments: AttachmentsApi;
@@ -118,6 +123,7 @@ export class AiSenlerClient {
   readonly projects: ProjectsApi;
   readonly projectsAvatar: ProjectsAvatarApi;
   readonly projectVariables: ProjectVariablesApi;
+  readonly publicDocumentation: PublicDocumentationApi;
   readonly readyMCPServers: ReadyMCPServersApi;
   readonly segments: SegmentsApi;
   readonly spaces: SpacesApi;
@@ -126,37 +132,39 @@ export class AiSenlerClient {
   readonly supportSchedules: SupportSchedulesApi;
   readonly tariffs: TariffsApi;
   readonly triggers: TriggersApi;
-
-  constructor(config: AiSenlerClientConfig & { fetchApi?: FetchAPI }) {
-    this.tokenState = {
-      accessToken: config.accessToken,
-      refreshToken: config.refreshToken,
-      clientId: config.clientId,
-    };
-
-    const basePath = (config.baseUrl ?? DEFAULT_BASE_URL).replace(/\/+$/, '');
-
-    const configuration = new Configuration({
-      basePath,
-      fetchApi: config.fetchApi,
-      middleware: [
-        createAuthMiddleware({
-          tokenState: this.tokenState,
-          basePath,
-          fetchApi: config.fetchApi,
-          onTokenRefreshed: config.onTokenRefreshed,
-        }),
-      ],
-    });
-
-    this.access = new AccessApi(configuration);
+  
+    constructor(config: AiSenlerClientConfig & { fetchApi?: FetchAPI }) {
+      this.tokenState = {
+        accessToken: config.accessToken,
+        refreshToken: config.refreshToken,
+        clientId: config.clientId,
+      };
+  
+      const basePath = (config.baseUrl ?? DEFAULT_BASE_URL).replace(/\/+$/, '');
+  
+      const configuration = new Configuration({
+        basePath,
+        fetchApi: config.fetchApi,
+        middleware: [
+          createAuthMiddleware({
+            tokenState: this.tokenState,
+            basePath,
+            fetchApi: config.fetchApi,
+            onTokenRefreshed: config.onTokenRefreshed,
+          }),
+        ],
+      });
+  
+      this.access = new AccessApi(configuration);
     this.accessInvitations = new AccessInvitationsApi(configuration);
     this.agentAssignmentRules = new AgentAssignmentRulesApi(configuration);
     this.agents = new AgentsApi(configuration);
+    this.agentsAcquisition = new AgentsAcquisitionApi(configuration);
     this.agentsAvatar = new AgentsAvatarApi(configuration);
     this.agentsLanding = new AgentsLandingApi(configuration);
     this.agentTraining = new AgentTrainingApi(configuration);
     this.analytics = new AnalyticsApi(configuration);
+    this.appAgentEvents = new AppAgentEventsApi(configuration);
     this.appCatalog = new AppCatalogApi(configuration);
     this.apps = new AppsApi(configuration);
     this.attachments = new AttachmentsApi(configuration);
@@ -199,6 +207,7 @@ export class AiSenlerClient {
     this.projects = new ProjectsApi(configuration);
     this.projectsAvatar = new ProjectsAvatarApi(configuration);
     this.projectVariables = new ProjectVariablesApi(configuration);
+    this.publicDocumentation = new PublicDocumentationApi(configuration);
     this.readyMCPServers = new ReadyMCPServersApi(configuration);
     this.segments = new SegmentsApi(configuration);
     this.spaces = new SpacesApi(configuration);
@@ -207,23 +216,24 @@ export class AiSenlerClient {
     this.supportSchedules = new SupportSchedulesApi(configuration);
     this.tariffs = new TariffsApi(configuration);
     this.triggers = new TriggersApi(configuration);
+    }
+  
+    /** Update the access token for all subsequent requests. */
+    set accessToken(token: string) {
+      this.tokenState.accessToken = token;
+    }
+  
+    get accessToken(): string {
+      return this.tokenState.accessToken;
+    }
+  
+    /** Update the refresh token. */
+    set refreshToken(token: string | undefined) {
+      this.tokenState.refreshToken = token;
+    }
+  
+    get refreshToken(): string | undefined {
+      return this.tokenState.refreshToken;
+    }
   }
-
-  /** Update the access token for all subsequent requests. */
-  set accessToken(token: string) {
-    this.tokenState.accessToken = token;
-  }
-
-  get accessToken(): string {
-    return this.tokenState.accessToken;
-  }
-
-  /** Update the refresh token. */
-  set refreshToken(token: string | undefined) {
-    this.tokenState.refreshToken = token;
-  }
-
-  get refreshToken(): string | undefined {
-    return this.tokenState.refreshToken;
-  }
-}
+  

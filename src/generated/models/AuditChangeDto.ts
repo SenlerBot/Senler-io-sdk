@@ -40,11 +40,35 @@ export interface AuditChangeDto {
      */
     fieldLabel: string;
     /**
+     *
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    valueKind: AuditChangeDtoValueKindEnum;
+    /**
+     * old/new
+     * @type {{ [key: string]: any; }}
+     * @memberof AuditChangeDto
+     */
+    summaryData?: { [key: string]: any; };
+    /**
+     *
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    changeSummary?: string | null;
+    /**
      * ( ). , . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AuditChangeDto
      */
     oldValue?: { [key: string]: any; } | null;
+    /**
+     * old_value
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    oldValueDisplay?: string | null;
     /**
      * old_value,
      * @type {AuditValueReferenceDto}
@@ -58,6 +82,12 @@ export interface AuditChangeDto {
      */
     newValue?: { [key: string]: any; } | null;
     /**
+     * new_value
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    newValueDisplay?: string | null;
+    /**
      * new_value,
      * @type {AuditValueReferenceDto}
      * @memberof AuditChangeDto
@@ -69,6 +99,12 @@ export interface AuditChangeDto {
      * @memberof AuditChangeDto
      */
     added?: Array<{ [key: string]: any; }>;
+    /**
+     * added
+     * @type {Array<string>}
+     * @memberof AuditChangeDto
+     */
+    addedDisplay?: Array<string>;
     /**
      * added,
      * @type {Array<AuditValueReferenceDto>}
@@ -82,6 +118,12 @@ export interface AuditChangeDto {
      */
     removed?: Array<{ [key: string]: any; }>;
     /**
+     * removed
+     * @type {Array<string>}
+     * @memberof AuditChangeDto
+     */
+    removedDisplay?: Array<string>;
+    /**
      * removed,
      * @type {Array<AuditValueReferenceDto>}
      * @memberof AuditChangeDto
@@ -89,12 +131,35 @@ export interface AuditChangeDto {
     removedRefs?: Array<AuditValueReferenceDto>;
 }
 
+
+/**
+ * @export
+ */
+export const AuditChangeDtoValueKindEnum = {
+    Text: 'text',
+    LongText: 'long_text',
+    Boolean: 'boolean',
+    Number: 'number',
+    Enum: 'enum',
+    Date: 'date',
+    DateTime: 'date_time',
+    Money: 'money',
+    Bytes: 'bytes',
+    Minutes: 'minutes',
+    Reference: 'reference',
+    Url: 'url',
+    Json: 'json'
+} as const;
+export type AuditChangeDtoValueKindEnum = typeof AuditChangeDtoValueKindEnum[keyof typeof AuditChangeDtoValueKindEnum];
+
+
 /**
  * Check if a given object implements the AuditChangeDto interface.
  */
 export function instanceOfAuditChangeDto(value: object): value is AuditChangeDto {
     if (!('field' in value) || value['field'] === undefined) return false;
     if (!('fieldLabel' in value) || value['fieldLabel'] === undefined) return false;
+    if (!('valueKind' in value) || value['valueKind'] === undefined) return false;
     return true;
 }
 
@@ -110,13 +175,20 @@ export function AuditChangeDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
 
         'field': json['field'],
         'fieldLabel': json['field_label'],
+        'valueKind': json['value_kind'],
+        'summaryData': json['summary_data'] == null ? undefined : json['summary_data'],
+        'changeSummary': json['change_summary'] == null ? undefined : json['change_summary'],
         'oldValue': json['old_value'] == null ? undefined : json['old_value'],
+        'oldValueDisplay': json['old_value_display'] == null ? undefined : json['old_value_display'],
         'oldValueRef': json['old_value_ref'] == null ? undefined : AuditValueReferenceDtoFromJSON(json['old_value_ref']),
         'newValue': json['new_value'] == null ? undefined : json['new_value'],
+        'newValueDisplay': json['new_value_display'] == null ? undefined : json['new_value_display'],
         'newValueRef': json['new_value_ref'] == null ? undefined : AuditValueReferenceDtoFromJSON(json['new_value_ref']),
         'added': json['added'] == null ? undefined : json['added'],
+        'addedDisplay': json['added_display'] == null ? undefined : json['added_display'],
         'addedRefs': json['added_refs'] == null ? undefined : ((json['added_refs'] as Array<any>).map(AuditValueReferenceDtoFromJSON)),
         'removed': json['removed'] == null ? undefined : json['removed'],
+        'removedDisplay': json['removed_display'] == null ? undefined : json['removed_display'],
         'removedRefs': json['removed_refs'] == null ? undefined : ((json['removed_refs'] as Array<any>).map(AuditValueReferenceDtoFromJSON)),
     };
 }
@@ -134,13 +206,20 @@ export function AuditChangeDtoToJSONTyped(value?: AuditChangeDto | null, ignoreD
 
         'field': value['field'],
         'field_label': value['fieldLabel'],
+        'value_kind': value['valueKind'],
+        'summary_data': value['summaryData'],
+        'change_summary': value['changeSummary'],
         'old_value': value['oldValue'],
+        'old_value_display': value['oldValueDisplay'],
         'old_value_ref': AuditValueReferenceDtoToJSON(value['oldValueRef']),
         'new_value': value['newValue'],
+        'new_value_display': value['newValueDisplay'],
         'new_value_ref': AuditValueReferenceDtoToJSON(value['newValueRef']),
         'added': value['added'],
+        'added_display': value['addedDisplay'],
         'added_refs': value['addedRefs'] == null ? undefined : ((value['addedRefs'] as Array<any>).map(AuditValueReferenceDtoToJSON)),
         'removed': value['removed'],
+        'removed_display': value['removedDisplay'],
         'removed_refs': value['removedRefs'] == null ? undefined : ((value['removedRefs'] as Array<any>).map(AuditValueReferenceDtoToJSON)),
     };
 }

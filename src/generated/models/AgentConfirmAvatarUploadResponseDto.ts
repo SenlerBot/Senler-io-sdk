@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AgentResponseDto } from './AgentResponseDto';
+import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
 import {
-    AgentResponseDtoFromJSON,
-    AgentResponseDtoFromJSONTyped,
-    AgentResponseDtoToJSON,
-    AgentResponseDtoToJSONTyped,
-} from './AgentResponseDto';
+    AgentSettingsResponseDtoFromJSON,
+    AgentSettingsResponseDtoFromJSONTyped,
+    AgentSettingsResponseDtoToJSON,
+    AgentSettingsResponseDtoToJSONTyped,
+} from './AgentSettingsResponseDto';
 
 /**
  * AgentConfirmAvatarUploadResponseDto.
@@ -29,10 +29,10 @@ import {
 export interface AgentConfirmAvatarUploadResponseDto {
     /**
      * avatar_url
-     * @type {AgentResponseDto}
+     * @type {AgentSettingsResponseDto}
      * @memberof AgentConfirmAvatarUploadResponseDto
      */
-    agent: AgentResponseDto;
+    agent: AgentSettingsResponseDto;
 }
 
 /**
@@ -53,7 +53,7 @@ export function AgentConfirmAvatarUploadResponseDtoFromJSONTyped(json: any, igno
     }
     return {
 
-        'agent': AgentResponseDtoFromJSON(json['agent']),
+        'agent': AgentSettingsResponseDtoFromJSON(json['agent']),
     };
 }
 
@@ -68,6 +68,6 @@ export function AgentConfirmAvatarUploadResponseDtoToJSONTyped(value?: AgentConf
 
     return {
 
-        'agent': AgentResponseDtoToJSON(value['agent']),
+        'agent': AgentSettingsResponseDtoToJSON(value['agent']),
     };
 }

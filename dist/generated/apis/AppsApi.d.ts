@@ -17,8 +17,6 @@ export interface AppsCreateRequest {
     acceptLanguage?: AppsCreateAcceptLanguageEnum;
     clientId?: string;
     clientSecret?: string;
-    projectId?: string;
-    scope?: string;
     refreshToken?: string;
     code?: string;
     redirectUri?: string;
@@ -28,12 +26,12 @@ export interface AppsCreateRequest {
  */
 export declare class AppsApi extends runtime.BaseAPI {
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). grant_type=client_credentials project_id. OAuth client credentials Authorization: Basic .
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
     appsCreateRaw(requestParameters: AppsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TokenResponseDto>>;
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). grant_type=client_credentials project_id. OAuth client credentials Authorization: Basic .
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
     appsCreate(requestParameters: AppsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TokenResponseDto>;
@@ -42,7 +40,6 @@ export declare class AppsApi extends runtime.BaseAPI {
  * @export
  */
 export declare const AppsCreateGrantTypeEnum: {
-    readonly ClientCredentials: "client_credentials";
     readonly RefreshToken: "refresh_token";
     readonly AuthorizationCode: "authorization_code";
 };

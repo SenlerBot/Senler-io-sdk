@@ -23,12 +23,6 @@ export interface UpdateAgentDraftDto {
      */
     name?: string;
     /**
-     *
-     * @type {string}
-     * @memberof UpdateAgentDraftDto
-     */
-    instruction?: string;
-    /**
      * URL
      * @type {string}
      * @memberof UpdateAgentDraftDto
@@ -389,11 +383,23 @@ export interface UpdateAgentDraftDto {
      */
     enableStreaming?: boolean;
     /**
+     * AI
+     * @type {string}
+     * @memberof UpdateAgentDraftDto
+     */
+    widgetAiProgressMode?: UpdateAgentDraftDtoWidgetAiProgressModeEnum;
+    /**
      * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof UpdateAgentDraftDto
      */
     enablePreliminaryResponse?: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof UpdateAgentDraftDto
+     */
+    respondOnSegmentSubscription?: boolean;
     /**
      * AI-. true ,
      * @type {boolean}
@@ -601,6 +607,15 @@ export declare const UpdateAgentDraftDtoWizardTrainingModeSelectedEnum: {
     readonly Deep: "deep";
 };
 export type UpdateAgentDraftDtoWizardTrainingModeSelectedEnum = typeof UpdateAgentDraftDtoWizardTrainingModeSelectedEnum[keyof typeof UpdateAgentDraftDtoWizardTrainingModeSelectedEnum];
+/**
+ * @export
+ */
+export declare const UpdateAgentDraftDtoWidgetAiProgressModeEnum: {
+    readonly SafeProgress: "safe_progress";
+    readonly Typing: "typing";
+    readonly Hidden: "hidden";
+};
+export type UpdateAgentDraftDtoWidgetAiProgressModeEnum = typeof UpdateAgentDraftDtoWidgetAiProgressModeEnum[keyof typeof UpdateAgentDraftDtoWidgetAiProgressModeEnum];
 /**
  * @export
  */

@@ -19,6 +19,7 @@ exports.LandingSubscribeActionResponseDtoFromJSON = LandingSubscribeActionRespon
 exports.LandingSubscribeActionResponseDtoFromJSONTyped = LandingSubscribeActionResponseDtoFromJSONTyped;
 exports.LandingSubscribeActionResponseDtoToJSON = LandingSubscribeActionResponseDtoToJSON;
 exports.LandingSubscribeActionResponseDtoToJSONTyped = LandingSubscribeActionResponseDtoToJSONTyped;
+const LandingChannelSelectionResponseDto_1 = require("./LandingChannelSelectionResponseDto");
 const LandingContactCaptureDto_1 = require("./LandingContactCaptureDto");
 /**
  * @export
@@ -36,7 +37,7 @@ function instanceOfLandingSubscribeActionResponseDto(value) {
         return false;
     if (!('segmentId' in value) || value['segmentId'] === undefined)
         return false;
-    if (!('channelIds' in value) || value['channelIds'] === undefined)
+    if (!('channelSelection' in value) || value['channelSelection'] === undefined)
         return false;
     if (!('contactCapture' in value) || value['contactCapture'] === undefined)
         return false;
@@ -53,7 +54,7 @@ function LandingSubscribeActionResponseDtoFromJSONTyped(json, ignoreDiscriminato
         'id': json['id'],
         'type': json['type'],
         'segmentId': json['segment_id'],
-        'channelIds': json['channel_ids'],
+        'channelSelection': (0, LandingChannelSelectionResponseDto_1.LandingChannelSelectionResponseDtoFromJSON)(json['channel_selection']),
         'contactCapture': (0, LandingContactCaptureDto_1.LandingContactCaptureDtoFromJSON)(json['contact_capture']),
     };
 }
@@ -68,7 +69,7 @@ function LandingSubscribeActionResponseDtoToJSONTyped(value, ignoreDiscriminator
         'id': value['id'],
         'type': value['type'],
         'segment_id': value['segmentId'],
-        'channel_ids': value['channelIds'],
+        'channel_selection': (0, LandingChannelSelectionResponseDto_1.LandingChannelSelectionResponseDtoToJSON)(value['channelSelection']),
         'contact_capture': (0, LandingContactCaptureDto_1.LandingContactCaptureDtoToJSON)(value['contactCapture']),
     };
 }

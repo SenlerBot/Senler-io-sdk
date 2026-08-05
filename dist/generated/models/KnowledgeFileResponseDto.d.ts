@@ -41,6 +41,30 @@ export interface KnowledgeFileResponseDto {
      */
     ownerId: string;
     /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    appId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    documentationLocale: string | null;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    documentationPageId: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof KnowledgeFileResponseDto
+     */
+    documentationSortOrder: number | null;
+    /**
      * UUID
      * @type {string}
      * @memberof KnowledgeFileResponseDto
@@ -162,6 +186,7 @@ export interface KnowledgeFileResponseDto {
  */
 export declare const KnowledgeFileResponseDtoOwnerTypeEnum: {
     readonly Project: "project";
+    readonly App: "app";
     readonly McpServerTemplate: "mcp_server_template";
     readonly Admin: "admin";
 };

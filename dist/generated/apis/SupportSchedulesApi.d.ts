@@ -14,52 +14,44 @@ import type { CreateSupportScheduleAssignmentDto, CreateSupportShiftDto, Success
 export interface DeleteSupportScheduleAssignmentsRequest {
     projectId: string;
     assignmentId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteSupportScheduleAssignmentsAcceptLanguageEnum;
 }
 export interface DeleteSupportScheduleShiftsRequest {
     projectId: string;
     shiftId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteSupportScheduleShiftsAcceptLanguageEnum;
 }
 export interface GetSupportScheduleRequest {
     projectId: string;
     from?: Date;
     to?: Date;
-    xSessionId?: string;
     acceptLanguage?: GetSupportScheduleAcceptLanguageEnum;
 }
 export interface SupportScheduleAssignmentsRequest {
     projectId: string;
     createSupportScheduleAssignmentDto: CreateSupportScheduleAssignmentDto;
-    xSessionId?: string;
     acceptLanguage?: SupportScheduleAssignmentsAcceptLanguageEnum;
 }
 export interface SupportScheduleShiftsRequest {
     projectId: string;
     createSupportShiftDto: CreateSupportShiftDto;
-    xSessionId?: string;
     acceptLanguage?: SupportScheduleShiftsAcceptLanguageEnum;
 }
 export interface UpdateSupportScheduleAssignmentsRequest {
     projectId: string;
     assignmentId: string;
     updateSupportScheduleAssignmentDto: UpdateSupportScheduleAssignmentDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleAssignmentsAcceptLanguageEnum;
 }
 export interface UpdateSupportScheduleSettingsRequest {
     projectId: string;
     updateSupportScheduleSettingsDto: UpdateSupportScheduleSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleSettingsAcceptLanguageEnum;
 }
 export interface UpdateSupportScheduleShiftsRequest {
     projectId: string;
     shiftId: string;
     updateSupportShiftDto: UpdateSupportShiftDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleShiftsAcceptLanguageEnum;
 }
 /**

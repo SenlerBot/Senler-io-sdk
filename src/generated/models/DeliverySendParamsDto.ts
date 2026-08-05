@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
-import {
-    MessageAttachmentInputDtoFromJSON,
-    MessageAttachmentInputDtoFromJSONTyped,
-    MessageAttachmentInputDtoToJSON,
-    MessageAttachmentInputDtoToJSONTyped,
-} from './MessageAttachmentInputDto';
-
 /**
  * DeliverySendParamsDto.
  * @export
@@ -47,10 +39,10 @@ export interface DeliverySendParamsDto {
     messageText: string;
     /**
      *
-     * @type {Array<MessageAttachmentInputDto>}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof DeliverySendParamsDto
      */
-    attachments?: Array<MessageAttachmentInputDto>;
+    attachments?: Array<{ [key: string]: any; }>;
     /**
      * UUID , . Null API key/admin .
      * @type {string}
@@ -82,7 +74,7 @@ export function DeliverySendParamsDtoFromJSONTyped(json: any, ignoreDiscriminato
         'deliveryId': json['delivery_id'],
         'deliveryRunId': json['delivery_run_id'],
         'messageText': json['message_text'],
-        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentInputDtoFromJSON)),
+        'attachments': json['attachments'] == null ? undefined : json['attachments'],
         'actorUserId': json['actor_user_id'] == null ? undefined : json['actor_user_id'],
     };
 }
@@ -101,7 +93,7 @@ export function DeliverySendParamsDtoToJSONTyped(value?: DeliverySendParamsDto |
         'delivery_id': value['deliveryId'],
         'delivery_run_id': value['deliveryRunId'],
         'message_text': value['messageText'],
-        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentInputDtoToJSON)),
+        'attachments': value['attachments'],
         'actor_user_id': value['actorUserId'],
     };
 }

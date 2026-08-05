@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AppDescriptionDto } from './AppDescriptionDto';
+import type { AppEmbeddedPageSettingsResponseDto } from './AppEmbeddedPageSettingsResponseDto';
 /**
  * AppCatalogResponseDto.
  * @export
@@ -29,10 +31,10 @@ export interface AppCatalogResponseDto {
     name: string;
     /**
      *
-     * @type {string}
+     * @type {AppDescriptionDto}
      * @memberof AppCatalogResponseDto
      */
-    description: string;
+    description: AppDescriptionDto;
     /**
      * URL
      * @type {string}
@@ -52,11 +54,29 @@ export interface AppCatalogResponseDto {
      */
     websiteUrl?: string | null;
     /**
+     * URL Markdown-
+     * @type {string}
+     * @memberof AppCatalogResponseDto
+     */
+    documentationUrl?: string | null;
+    /**
      *
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
     type: AppCatalogResponseDtoTypeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AppCatalogResponseDto
+     */
+    hasTools: boolean;
+    /**
+     *
+     * @type {AppEmbeddedPageSettingsResponseDto}
+     * @memberof AppCatalogResponseDto
+     */
+    embeddedPage?: AppEmbeddedPageSettingsResponseDto | null;
     /**
      * ,
      * @type {Array<string>}
@@ -83,7 +103,6 @@ export declare const AppCatalogResponseDtoTypeEnum: {
     readonly Oauth: "oauth";
     readonly SalesFunnel: "sales_funnel";
     readonly AgentTool: "agent_tool";
-    readonly EmbeddedPage: "embedded_page";
 };
 export type AppCatalogResponseDtoTypeEnum = typeof AppCatalogResponseDtoTypeEnum[keyof typeof AppCatalogResponseDtoTypeEnum];
 /**

@@ -17,16 +17,23 @@ import * as runtime from '../runtime';
 import type {
   AgentAcquisitionResponseDto,
   AgentAutoAssignmentPreviewResponseDto,
-  AgentDraftResponseDto,
-  AgentResponseDto,
-  AgentWithDraftResponseDto,
+  AgentDraftSettingsResponseDto,
+  AgentDraftSettingsStateResponseDto,
+  AgentInstalledAppEventsGroupDto,
+  AgentInstalledAppToolsGroupDto,
+  AgentInstructionResponseDto,
+  AgentSettingsListResponseDto,
+  AgentSettingsResponseDto,
   AgentsByListResponseDto,
-  AgentsListResponseDto,
   CreateAgentDto,
   ErrorResponse,
+  PatchAgentInstructionDto,
+  PatchAgentInstructionResponseDto,
   SuccessResponseDto,
   UpdateAgentDraftDto,
   UpdateAgentDto,
+  UpdateAgentInstalledAppEventsDto,
+  UpdateAgentInstalledAppToolsDto,
   UpdateWizardProgressDto,
 } from '../models/index';
 import {
@@ -34,82 +41,87 @@ import {
     AgentAcquisitionResponseDtoToJSON,
     AgentAutoAssignmentPreviewResponseDtoFromJSON,
     AgentAutoAssignmentPreviewResponseDtoToJSON,
-    AgentDraftResponseDtoFromJSON,
-    AgentDraftResponseDtoToJSON,
-    AgentResponseDtoFromJSON,
-    AgentResponseDtoToJSON,
-    AgentWithDraftResponseDtoFromJSON,
-    AgentWithDraftResponseDtoToJSON,
+    AgentDraftSettingsResponseDtoFromJSON,
+    AgentDraftSettingsResponseDtoToJSON,
+    AgentDraftSettingsStateResponseDtoFromJSON,
+    AgentDraftSettingsStateResponseDtoToJSON,
+    AgentInstalledAppEventsGroupDtoFromJSON,
+    AgentInstalledAppEventsGroupDtoToJSON,
+    AgentInstalledAppToolsGroupDtoFromJSON,
+    AgentInstalledAppToolsGroupDtoToJSON,
+    AgentInstructionResponseDtoFromJSON,
+    AgentInstructionResponseDtoToJSON,
+    AgentSettingsListResponseDtoFromJSON,
+    AgentSettingsListResponseDtoToJSON,
+    AgentSettingsResponseDtoFromJSON,
+    AgentSettingsResponseDtoToJSON,
     AgentsByListResponseDtoFromJSON,
     AgentsByListResponseDtoToJSON,
-    AgentsListResponseDtoFromJSON,
-    AgentsListResponseDtoToJSON,
     CreateAgentDtoFromJSON,
     CreateAgentDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    PatchAgentInstructionDtoFromJSON,
+    PatchAgentInstructionDtoToJSON,
+    PatchAgentInstructionResponseDtoFromJSON,
+    PatchAgentInstructionResponseDtoToJSON,
     SuccessResponseDtoFromJSON,
     SuccessResponseDtoToJSON,
     UpdateAgentDraftDtoFromJSON,
     UpdateAgentDraftDtoToJSON,
     UpdateAgentDtoFromJSON,
     UpdateAgentDtoToJSON,
+    UpdateAgentInstalledAppEventsDtoFromJSON,
+    UpdateAgentInstalledAppEventsDtoToJSON,
+    UpdateAgentInstalledAppToolsDtoFromJSON,
+    UpdateAgentInstalledAppToolsDtoToJSON,
     UpdateWizardProgressDtoFromJSON,
     UpdateWizardProgressDtoToJSON,
 } from '../models/index';
 
 export interface AcquisitionRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: AcquisitionAcceptLanguageEnum;
 }
 
 export interface ActivateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: ActivateAcceptLanguageEnum;
 }
 
 export interface AgentsCreateRequest {
-    xSessionId: string;
     createAgentDto: CreateAgentDto;
     acceptLanguage?: AgentsCreateAcceptLanguageEnum;
 }
 
 export interface AgentsDeactivateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: AgentsDeactivateAcceptLanguageEnum;
 }
 
 export interface AgentsGetByIdRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: AgentsGetByIdAcceptLanguageEnum;
 }
 
 export interface AgentsUpdateRequest {
     id: string;
-    xSessionId: string;
     updateAgentDto: UpdateAgentDto;
     acceptLanguage?: AgentsUpdateAcceptLanguageEnum;
 }
 
 export interface Deactivate2Request {
     id: string;
-    xSessionId: string;
     acceptLanguage?: Deactivate2AcceptLanguageEnum;
 }
 
 export interface DeleteDraftRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DeleteDraftAcceptLanguageEnum;
 }
 
 export interface DraftRequest {
     id: string;
-    xSessionId: string;
     updateAgentDraftDto: UpdateAgentDraftDto;
     acceptLanguage?: DraftAcceptLanguageEnum;
 }
@@ -117,7 +129,6 @@ export interface DraftRequest {
 export interface GetAutoAssignmentPreviewRequest {
     id: string;
     autoAssignmentMode: GetAutoAssignmentPreviewAutoAssignmentModeEnum;
-    xSessionId: string;
     autoAssignmentChannelIds?: Array<string> | null;
     autoAssignmentDialogScope?: GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
     autoAssignmentRole?: GetAutoAssignmentPreviewAutoAssignmentRoleEnum;
@@ -126,25 +137,36 @@ export interface GetAutoAssignmentPreviewRequest {
 
 export interface GetByListRequest {
     listId: string;
-    xSessionId: string;
     acceptLanguage?: GetByListAcceptLanguageEnum;
 }
 
 export interface GetDraftRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetDraftAcceptLanguageEnum;
 }
 
-export interface GetWithDraftRequest {
+export interface GetDraftInstructionRequest {
     id: string;
-    xSessionId: string;
-    acceptLanguage?: GetWithDraftAcceptLanguageEnum;
+    acceptLanguage?: GetDraftInstructionAcceptLanguageEnum;
+}
+
+export interface GetInstalledAppEventsRequest {
+    id: string;
+    acceptLanguage?: GetInstalledAppEventsAcceptLanguageEnum;
+}
+
+export interface GetInstalledAppToolsRequest {
+    id: string;
+    acceptLanguage?: GetInstalledAppToolsAcceptLanguageEnum;
+}
+
+export interface GetInstructionRequest {
+    id: string;
+    acceptLanguage?: GetInstructionAcceptLanguageEnum;
 }
 
 export interface ListRequest {
     projectId: string;
-    xSessionId: string;
     limit?: number;
     offset?: number;
     acceptLanguage?: ListAcceptLanguageEnum;
@@ -152,26 +174,46 @@ export interface ListRequest {
 
 export interface PublishRequest {
     id: string;
-    xSessionId: string;
     updateAgentDraftDto: UpdateAgentDraftDto;
     acceptLanguage?: PublishAcceptLanguageEnum;
 }
 
 export interface RevertRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: RevertAcceptLanguageEnum;
+}
+
+export interface UpdateDraftInstructionRequest {
+    id: string;
+    patchAgentInstructionDto: PatchAgentInstructionDto;
+    acceptLanguage?: UpdateDraftInstructionAcceptLanguageEnum;
+}
+
+export interface UpdateInstalledAppEventsRequest {
+    id: string;
+    updateAgentInstalledAppEventsDto: UpdateAgentInstalledAppEventsDto;
+    acceptLanguage?: UpdateInstalledAppEventsAcceptLanguageEnum;
+}
+
+export interface UpdateInstalledAppToolsRequest {
+    id: string;
+    updateAgentInstalledAppToolsDto: UpdateAgentInstalledAppToolsDto;
+    acceptLanguage?: UpdateInstalledAppToolsAcceptLanguageEnum;
+}
+
+export interface UpdateInstructionRequest {
+    id: string;
+    patchAgentInstructionDto: PatchAgentInstructionDto;
+    acceptLanguage?: UpdateInstructionAcceptLanguageEnum;
 }
 
 export interface UpdateRestoreRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: UpdateRestoreAcceptLanguageEnum;
 }
 
 export interface UpdateWizardProgressRequest {
     id: string;
-    xSessionId: string;
     updateWizardProgressDto: UpdateWizardProgressDto;
     acceptLanguage?: UpdateWizardProgressAcceptLanguageEnum;
 }
@@ -196,10 +238,6 @@ export class AgentsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -241,7 +279,7 @@ export class AgentsApi extends runtime.BaseAPI {
      * is_active = true . .
      *
      */
-    async activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
+    async activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -249,20 +287,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling activate().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -288,14 +315,14 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * is_active = true . .
      *
      */
-    async activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.activateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -304,14 +331,7 @@ export class AgentsApi extends runtime.BaseAPI {
      * . can_manage_agents.
      *
      */
-    async agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling agentsCreate().'
-            );
-        }
-
+    async agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['createAgentDto'] == null) {
             throw new runtime.RequiredError(
                 'createAgentDto',
@@ -324,10 +344,6 @@ export class AgentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -354,14 +370,14 @@ export class AgentsApi extends runtime.BaseAPI {
             body: CreateAgentDtoToJSON(requestParameters['createAgentDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * . can_manage_agents.
      *
      */
-    async agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.agentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -378,20 +394,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling agentsDeactivate().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -432,7 +437,7 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      * ID
      */
-    async agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
+    async agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -440,20 +445,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling agentsGetById().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -479,14 +473,14 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * ID
      */
-    async agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -495,18 +489,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async agentsUpdateRaw(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
+    async agentsUpdateRaw(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
                 'Required parameter "id" was null or undefined when calling agentsUpdate().'
-            );
-        }
-
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling agentsUpdate().'
             );
         }
 
@@ -522,10 +509,6 @@ export class AgentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -552,14 +535,14 @@ export class AgentsApi extends runtime.BaseAPI {
             body: UpdateAgentDtoToJSON(requestParameters['updateAgentDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      *
      */
-    async agentsUpdate(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async agentsUpdate(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.agentsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -568,7 +551,7 @@ export class AgentsApi extends runtime.BaseAPI {
      * is_active = false . .
      *
      */
-    async deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
+    async deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -576,20 +559,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling deactivate2().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -615,14 +587,14 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * is_active = false . .
      *
      */
-    async deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.deactivate2Raw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -639,20 +611,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling deleteDraft().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -693,18 +654,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * . \" \".
      * ( )
      */
-    async draftRaw(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>> {
+    async draftRaw(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
                 'Required parameter "id" was null or undefined when calling draft().'
-            );
-        }
-
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling draft().'
             );
         }
 
@@ -720,10 +674,6 @@ export class AgentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -750,14 +700,14 @@ export class AgentsApi extends runtime.BaseAPI {
             body: UpdateAgentDraftDtoToJSON(requestParameters['updateAgentDraftDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * . \" \".
      * ( )
      */
-    async draft(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto> {
+    async draft(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
         const response = await this.draftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -781,13 +731,6 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getAutoAssignmentPreview().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['autoAssignmentMode'] != null) {
@@ -807,10 +750,6 @@ export class AgentsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -860,20 +799,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getByList().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -915,7 +843,7 @@ export class AgentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>> {
+    async getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsStateResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -923,20 +851,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getDraft().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -962,44 +879,33 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsStateResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * , .
      *
      */
-    async getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto> {
+    async getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsStateResponseDto> {
         const response = await this.getDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * ( ).
+     * . , null.
      *
      */
-    async getWithDraftRaw(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentWithDraftResponseDto>> {
+    async getDraftInstructionRaw(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getWithDraft().'
-            );
-        }
-
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getWithDraft().'
+                'Required parameter "id" was null or undefined when calling getDraftInstruction().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1019,21 +925,177 @@ export class AgentsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/agents/{id}/with-draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/agents/{id}/draft/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentWithDraftResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentInstructionResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * ( ).
+     * . , null.
      *
      */
-    async getWithDraft(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentWithDraftResponseDto> {
-        const response = await this.getWithDraftRaw(requestParameters, initOverrides);
+    async getDraftInstruction(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto> {
+        const response = await this.getDraftInstructionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * ,
+     */
+    async getInstalledAppEventsRaw(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getInstalledAppEvents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/installed-app-events`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AgentInstalledAppEventsGroupDtoFromJSON));
+    }
+
+    /**
+     * .
+     * ,
+     */
+    async getInstalledAppEvents(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>> {
+        const response = await this.getInstalledAppEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getInstalledAppToolsRaw(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getInstalledAppTools().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/installed-app-tools`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AgentInstalledAppToolsGroupDtoFromJSON));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getInstalledAppTools(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>> {
+        const response = await this.getInstalledAppToolsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getInstructionRaw(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getInstruction().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentInstructionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getInstruction(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto> {
+        const response = await this.getInstructionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1041,18 +1103,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsListResponseDto>> {
+    async listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
                 'Required parameter "projectId" was null or undefined when calling list().'
-            );
-        }
-
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling list().'
             );
         }
 
@@ -1071,10 +1126,6 @@ export class AgentsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1100,14 +1151,14 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentsListResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsListResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * . .
      *
      */
-    async list(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsListResponseDto> {
+    async list(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto> {
         const response = await this.listRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1116,18 +1167,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * , . .
      *
      */
-    async publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
+    async publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
                 'Required parameter "id" was null or undefined when calling publish().'
-            );
-        }
-
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling publish().'
             );
         }
 
@@ -1143,10 +1187,6 @@ export class AgentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1173,14 +1213,14 @@ export class AgentsApi extends runtime.BaseAPI {
             body: UpdateAgentDraftDtoToJSON(requestParameters['updateAgentDraftDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * , . .
      *
      */
-    async publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.publishRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1189,7 +1229,7 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>> {
+    async revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -1197,20 +1237,9 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling revert().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1236,34 +1265,34 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      *
      */
-    async revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto> {
+    async revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
         const response = await this.revertRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . can_manage_agents.
+     * . , .
      *
      */
-    async updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>> {
+    async updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateRestore().'
+                'Required parameter "id" was null or undefined when calling updateDraftInstruction().'
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
+        if (requestParameters['patchAgentInstructionDto'] == null) {
             throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling updateRestore().'
+                'patchAgentInstructionDto',
+                'Required parameter "patchAgentInstructionDto" was null or undefined when calling updateDraftInstruction().'
             );
         }
 
@@ -1271,9 +1300,246 @@ export class AgentsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PatchAgentInstructionDtoToJSON(requestParameters['patchAgentInstructionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PatchAgentInstructionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , .
+     *
+     */
+    async updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
+        const response = await this.updateDraftInstructionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     * ,
+     */
+    async updateInstalledAppEventsRaw(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateInstalledAppEvents().'
+            );
+        }
+
+        if (requestParameters['updateAgentInstalledAppEventsDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAgentInstalledAppEventsDto',
+                'Required parameter "updateAgentInstalledAppEventsDto" was null or undefined when calling updateInstalledAppEvents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/installed-app-events`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAgentInstalledAppEventsDtoToJSON(requestParameters['updateAgentInstalledAppEventsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AgentInstalledAppEventsGroupDtoFromJSON));
+    }
+
+    /**
+     * , .
+     * ,
+     */
+    async updateInstalledAppEvents(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>> {
+        const response = await this.updateInstalledAppEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     *
+     */
+    async updateInstalledAppToolsRaw(requestParameters: UpdateInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateInstalledAppTools().'
+            );
+        }
+
+        if (requestParameters['updateAgentInstalledAppToolsDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAgentInstalledAppToolsDto',
+                'Required parameter "updateAgentInstalledAppToolsDto" was null or undefined when calling updateInstalledAppTools().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/installed-app-tools`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAgentInstalledAppToolsDtoToJSON(requestParameters['updateAgentInstalledAppToolsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AgentInstalledAppToolsGroupDtoFromJSON));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async updateInstalledAppTools(requestParameters: UpdateInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>> {
+        const response = await this.updateInstalledAppToolsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , .
+     *
+     */
+    async updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateInstruction().'
+            );
+        }
+
+        if (requestParameters['patchAgentInstructionDto'] == null) {
+            throw new runtime.RequiredError(
+                'patchAgentInstructionDto',
+                'Required parameter "patchAgentInstructionDto" was null or undefined when calling updateInstruction().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PatchAgentInstructionDtoToJSON(requestParameters['patchAgentInstructionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PatchAgentInstructionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , .
+     *
+     */
+    async updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
+        const response = await this.updateInstructionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateRestore().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1299,14 +1565,14 @@ export class AgentsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * . can_manage_agents.
      *
      */
-    async updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto> {
+    async updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.updateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1323,13 +1589,6 @@ export class AgentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling updateWizardProgress().'
-            );
-        }
-
         if (requestParameters['updateWizardProgressDto'] == null) {
             throw new runtime.RequiredError(
                 'updateWizardProgressDto',
@@ -1342,10 +1601,6 @@ export class AgentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1511,11 +1766,35 @@ export type GetDraftAcceptLanguageEnum = typeof GetDraftAcceptLanguageEnum[keyof
 /**
  * @export
  */
-export const GetWithDraftAcceptLanguageEnum = {
+export const GetDraftInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetWithDraftAcceptLanguageEnum = typeof GetWithDraftAcceptLanguageEnum[keyof typeof GetWithDraftAcceptLanguageEnum];
+export type GetDraftInstructionAcceptLanguageEnum = typeof GetDraftInstructionAcceptLanguageEnum[keyof typeof GetDraftInstructionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetInstalledAppEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetInstalledAppEventsAcceptLanguageEnum = typeof GetInstalledAppEventsAcceptLanguageEnum[keyof typeof GetInstalledAppEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetInstalledAppToolsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetInstalledAppToolsAcceptLanguageEnum = typeof GetInstalledAppToolsAcceptLanguageEnum[keyof typeof GetInstalledAppToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetInstructionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1540,6 +1819,38 @@ export const RevertAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type RevertAcceptLanguageEnum = typeof RevertAcceptLanguageEnum[keyof typeof RevertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateDraftInstructionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateDraftInstructionAcceptLanguageEnum = typeof UpdateDraftInstructionAcceptLanguageEnum[keyof typeof UpdateDraftInstructionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateInstalledAppEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateInstalledAppEventsAcceptLanguageEnum = typeof UpdateInstalledAppEventsAcceptLanguageEnum[keyof typeof UpdateInstalledAppEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateInstalledAppToolsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateInstalledAppToolsAcceptLanguageEnum = typeof UpdateInstalledAppToolsAcceptLanguageEnum[keyof typeof UpdateInstalledAppToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateInstructionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateInstructionAcceptLanguageEnum = typeof UpdateInstructionAcceptLanguageEnum[keyof typeof UpdateInstructionAcceptLanguageEnum];
 /**
  * @export
  */

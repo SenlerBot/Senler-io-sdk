@@ -10,122 +10,114 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateSegmentConsentDocumentDto, CreateSegmentDto, GetSegmentConsentDocumentUploadUrlDto, LeadResponseDto, S3UploadUrlResponseDto, SegmentConsentDocumentResponseDto, SegmentConsentDocumentUploadResponseDto, SegmentConsentDocumentVersionsListResponseDto, SegmentConsentDocumentsListResponseDto, SegmentConsentTemplatesListResponseDto, SegmentEventsListResponseDto, SegmentLeadConsentAcceptancesResponseDto, SegmentResponseDto, SegmentSubscriptionLinksResponseDto, SegmentsListResponseDto, UpdateSegmentConsentDocumentDto, UpdateSegmentDto } from '../models/index';
-export interface DeleteSegmentsRequest {
+import type { ConfirmS3UploadDto, CreateSegmentConsentDocumentDto, CreateSegmentDto, GetSegmentConsentDocumentUploadUrlDto, LeadResponseDto, S3UploadUrlResponseDto, SegmentConsentDocumentResponseDto, SegmentConsentDocumentUploadResponseDto, SegmentConsentDocumentVersionsListResponseDto, SegmentConsentDocumentsListResponseDto, SegmentConsentTemplatesListResponseDto, SegmentLeadConsentAcceptancesResponseDto, SegmentMembershipEventsListResponseDto, SegmentReferencesListResponseDto, SegmentResponseDto, SegmentSubscriptionLinksResponseDto, SegmentsListResponseDto, UpdateSegmentConsentDocumentDto, UpdateSegmentDto } from '../models/index';
+export interface DeleteProjectsSegmentsRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: DeleteSegmentsAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSegmentsAcceptLanguageEnum;
 }
-export interface DeleteSegmentsConsentDocumentsRequest {
+export interface DeleteProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
     documentId: string;
-    xSessionId?: string;
-    acceptLanguage?: DeleteSegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
-export interface DeleteSegmentsLeadsRequest {
+export interface DeleteProjectsSegmentsLeadsRequest {
     projectId: string;
     id: string;
     leadId: string;
-    xSessionId?: string;
-    acceptLanguage?: DeleteSegmentsLeadsAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSegmentsLeadsAcceptLanguageEnum;
 }
-export interface GetSegmentsRequest {
+export interface GetProjectsSegmentsRequest {
     projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsAcceptLanguageEnum;
 }
-export interface GetSegments2Request {
+export interface GetProjectsSegments2Request {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegments2AcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegments2AcceptLanguageEnum;
 }
-export interface GetSegmentsConsentDocumentsRequest {
+export interface GetProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
-export interface GetSegmentsConsentDocumentsVersionsRequest {
+export interface GetProjectsSegmentsConsentDocumentsVersionsRequest {
     projectId: string;
     documentId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum;
 }
-export interface GetSegmentsConsentTemplatesRequest {
+export interface GetProjectsSegmentsConsentTemplatesRequest {
     projectId: string;
-    locale?: GetSegmentsConsentTemplatesLocaleEnum;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsConsentTemplatesAcceptLanguageEnum;
+    locale?: GetProjectsSegmentsConsentTemplatesLocaleEnum;
+    acceptLanguage?: GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum;
 }
-export interface GetSegmentsEventsRequest {
-    projectId: string;
-    id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsEventsAcceptLanguageEnum;
-}
-export interface GetSegmentsLeadsConsentAcceptancesRequest {
+export interface GetProjectsSegmentsLeadsConsentAcceptancesRequest {
     projectId: string;
     leadId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum;
 }
-export interface GetSegmentsMembersRequest {
+export interface GetProjectsSegmentsMembersRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsMembersAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsMembersAcceptLanguageEnum;
 }
-export interface GetSegmentsSubscriptionLinksRequest {
+export interface GetProjectsSegmentsMembershipEventsRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsSubscriptionLinksAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsMembershipEventsAcceptLanguageEnum;
 }
-export interface SegmentsRequest {
+export interface GetProjectsSegmentsReferencesRequest {
+    projectId: string;
+    ids: Array<string>;
+    acceptLanguage?: GetProjectsSegmentsReferencesAcceptLanguageEnum;
+}
+export interface GetProjectsSegmentsSubscriptionLinksRequest {
+    projectId: string;
+    id: string;
+    acceptLanguage?: GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum;
+}
+export interface GetPublicSegmentsConsentsRequest {
+    segmentPublicId: string;
+    documentId: string;
+    version: number;
+    acceptLanguage?: GetPublicSegmentsConsentsAcceptLanguageEnum;
+}
+export interface ProjectsSegmentsRequest {
     projectId: string;
     createSegmentDto: CreateSegmentDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsAcceptLanguageEnum;
 }
-export interface SegmentsConsentDocumentsRequest {
+export interface ProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
     createSegmentConsentDocumentDto: CreateSegmentConsentDocumentDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
-export interface SegmentsConsentDocumentsAssetsConfirmRequest {
+export interface ProjectsSegmentsConsentDocumentsAssetsConfirmRequest {
     projectId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum;
 }
-export interface SegmentsConsentDocumentsAssetsUploadUrlRequest {
+export interface ProjectsSegmentsConsentDocumentsAssetsUploadUrlRequest {
     projectId: string;
     getSegmentConsentDocumentUploadUrlDto: GetSegmentConsentDocumentUploadUrlDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum;
 }
-export interface SegmentsLeadsRequest {
+export interface ProjectsSegmentsLeadsRequest {
     projectId: string;
     id: string;
     leadId: string;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsLeadsAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsLeadsAcceptLanguageEnum;
 }
-export interface UpdateSegmentsRequest {
+export interface UpdateProjectsSegmentsRequest {
     projectId: string;
     id: string;
     updateSegmentDto: UpdateSegmentDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSegmentsAcceptLanguageEnum;
+    acceptLanguage?: UpdateProjectsSegmentsAcceptLanguageEnum;
 }
-export interface UpdateSegmentsConsentDocumentsRequest {
+export interface UpdateProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
     documentId: string;
     updateSegmentConsentDocumentDto: UpdateSegmentConsentDocumentDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
 /**
  *
@@ -135,350 +127,386 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      * deleted_at .
      *
      */
-    deleteSegmentsRaw(requestParameters: DeleteSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
+    deleteProjectsSegmentsRaw(requestParameters: DeleteProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
     /**
      * deleted_at .
      *
      */
-    deleteSegments(requestParameters: DeleteSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
+    deleteProjectsSegments(requestParameters: DeleteProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
     /**
      * . .
      *
      */
-    deleteSegmentsConsentDocumentsRaw(requestParameters: DeleteSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
+    deleteProjectsSegmentsConsentDocumentsRaw(requestParameters: DeleteProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
     /**
      * . .
      *
      */
-    deleteSegmentsConsentDocuments(requestParameters: DeleteSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
+    deleteProjectsSegmentsConsentDocuments(requestParameters: DeleteProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
     /**
      * manual.
      *
      */
-    deleteSegmentsLeadsRaw(requestParameters: DeleteSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    deleteProjectsSegmentsLeadsRaw(requestParameters: DeleteProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
     /**
      * manual.
      *
      */
-    deleteSegmentsLeads(requestParameters: DeleteSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    deleteProjectsSegmentsLeads(requestParameters: DeleteProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
      * . .
      *
      */
-    getSegmentsRaw(requestParameters: GetSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentsListResponseDto>>;
+    getProjectsSegmentsRaw(requestParameters: GetProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentsListResponseDto>>;
     /**
      * . .
      *
      */
-    getSegments(requestParameters: GetSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentsListResponseDto>;
+    getProjectsSegments(requestParameters: GetProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentsListResponseDto>;
     /**
      * .
      *
      */
-    getSegments2Raw(requestParameters: GetSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
+    getProjectsSegments2Raw(requestParameters: GetProjectsSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
     /**
      * .
      *
      */
-    getSegments2(requestParameters: GetSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
+    getProjectsSegments2(requestParameters: GetProjectsSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
     /**
      * .
      *
      */
-    getSegmentsConsentDocumentsRaw(requestParameters: GetSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentsListResponseDto>>;
+    getProjectsSegmentsConsentDocumentsRaw(requestParameters: GetProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentsListResponseDto>>;
     /**
      * .
      *
      */
-    getSegmentsConsentDocuments(requestParameters: GetSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentsListResponseDto>;
+    getProjectsSegmentsConsentDocuments(requestParameters: GetProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentsListResponseDto>;
     /**
      * .
      *
      */
-    getSegmentsConsentDocumentsVersionsRaw(requestParameters: GetSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentVersionsListResponseDto>>;
+    getProjectsSegmentsConsentDocumentsVersionsRaw(requestParameters: GetProjectsSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentVersionsListResponseDto>>;
     /**
      * .
      *
      */
-    getSegmentsConsentDocumentsVersions(requestParameters: GetSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentVersionsListResponseDto>;
+    getProjectsSegmentsConsentDocumentsVersions(requestParameters: GetProjectsSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentVersionsListResponseDto>;
     /**
      * . , .
      *
      */
-    getSegmentsConsentTemplatesRaw(requestParameters: GetSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentTemplatesListResponseDto>>;
+    getProjectsSegmentsConsentTemplatesRaw(requestParameters: GetProjectsSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentTemplatesListResponseDto>>;
     /**
      * . , .
      *
      */
-    getSegmentsConsentTemplates(requestParameters: GetSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentTemplatesListResponseDto>;
-    /**
-     * , .
-     *
-     */
-    getSegmentsEventsRaw(requestParameters: GetSegmentsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentEventsListResponseDto>>;
-    /**
-     * , .
-     *
-     */
-    getSegmentsEvents(requestParameters: GetSegmentsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentEventsListResponseDto>;
+    getProjectsSegmentsConsentTemplates(requestParameters: GetProjectsSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentTemplatesListResponseDto>;
     /**
      * .
      *
      */
-    getSegmentsLeadsConsentAcceptancesRaw(requestParameters: GetSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLeadConsentAcceptancesResponseDto>>;
+    getProjectsSegmentsLeadsConsentAcceptancesRaw(requestParameters: GetProjectsSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLeadConsentAcceptancesResponseDto>>;
     /**
      * .
      *
      */
-    getSegmentsLeadsConsentAcceptances(requestParameters: GetSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto>;
+    getProjectsSegmentsLeadsConsentAcceptances(requestParameters: GetProjectsSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto>;
     /**
      * , .
      *
      */
-    getSegmentsMembersRaw(requestParameters: GetSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadResponseDto>>>;
+    getProjectsSegmentsMembersRaw(requestParameters: GetProjectsSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadResponseDto>>>;
     /**
      * , .
      *
      */
-    getSegmentsMembers(requestParameters: GetSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadResponseDto>>;
+    getProjectsSegmentsMembers(requestParameters: GetProjectsSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getProjectsSegmentsMembershipEventsRaw(requestParameters: GetProjectsSegmentsMembershipEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentMembershipEventsListResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getProjectsSegmentsMembershipEvents(requestParameters: GetProjectsSegmentsMembershipEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentMembershipEventsListResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getProjectsSegmentsReferencesRaw(requestParameters: GetProjectsSegmentsReferencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentReferencesListResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getProjectsSegmentsReferences(requestParameters: GetProjectsSegmentsReferencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentReferencesListResponseDto>;
     /**
      * . Mini App- .
      *
      */
-    getSegmentsSubscriptionLinksRaw(requestParameters: GetSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>>;
+    getProjectsSegmentsSubscriptionLinksRaw(requestParameters: GetProjectsSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>>;
     /**
      * . Mini App- .
      *
      */
-    getSegmentsSubscriptionLinks(requestParameters: GetSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto>;
+    getProjectsSegmentsSubscriptionLinks(requestParameters: GetProjectsSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto>;
+    /**
+     * .
+     *
+     */
+    getPublicSegmentsConsentsRaw(requestParameters: GetPublicSegmentsConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    /**
+     * .
+     *
+     */
+    getPublicSegmentsConsents(requestParameters: GetPublicSegmentsConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
     /**
      * , .
      *
      */
-    segmentsRaw(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
+    projectsSegmentsRaw(requestParameters: ProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
     /**
      * , .
      *
      */
-    segments(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
+    projectsSegments(requestParameters: ProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
     /**
      * .
      *
      */
-    segmentsConsentDocumentsRaw(requestParameters: SegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
+    projectsSegmentsConsentDocumentsRaw(requestParameters: ProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
     /**
      * .
      *
      */
-    segmentsConsentDocuments(requestParameters: SegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
+    projectsSegmentsConsentDocuments(requestParameters: ProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
     /**
      * S3 .
      * PDF-
      */
-    segmentsConsentDocumentsAssetsConfirmRaw(requestParameters: SegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentUploadResponseDto>>;
+    projectsSegmentsConsentDocumentsAssetsConfirmRaw(requestParameters: ProjectsSegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentUploadResponseDto>>;
     /**
      * S3 .
      * PDF-
      */
-    segmentsConsentDocumentsAssetsConfirm(requestParameters: SegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentUploadResponseDto>;
+    projectsSegmentsConsentDocumentsAssetsConfirm(requestParameters: ProjectsSegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentUploadResponseDto>;
     /**
      * PDF S3- .
      * S3- PDF-
      */
-    segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters: SegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
+    projectsSegmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters: ProjectsSegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
     /**
      * PDF S3- .
      * S3- PDF-
      */
-    segmentsConsentDocumentsAssetsUploadUrl(requestParameters: SegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
+    projectsSegmentsConsentDocumentsAssetsUploadUrl(requestParameters: ProjectsSegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
     /**
      * manual.
      *
      */
-    segmentsLeadsRaw(requestParameters: SegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    projectsSegmentsLeadsRaw(requestParameters: ProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
     /**
      * manual.
      *
      */
-    segmentsLeads(requestParameters: SegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    projectsSegmentsLeads(requestParameters: ProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
      * .
      *
      */
-    updateSegmentsRaw(requestParameters: UpdateSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
+    updateProjectsSegmentsRaw(requestParameters: UpdateProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
     /**
      * .
      *
      */
-    updateSegments(requestParameters: UpdateSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
+    updateProjectsSegments(requestParameters: UpdateProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;
     /**
      * .
      *
      */
-    updateSegmentsConsentDocumentsRaw(requestParameters: UpdateSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
+    updateProjectsSegmentsConsentDocumentsRaw(requestParameters: UpdateProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
     /**
      * .
      *
      */
-    updateSegmentsConsentDocuments(requestParameters: UpdateSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
+    updateProjectsSegmentsConsentDocuments(requestParameters: UpdateProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteSegmentsAcceptLanguageEnum: {
+export declare const DeleteProjectsSegmentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteSegmentsAcceptLanguageEnum = typeof DeleteSegmentsAcceptLanguageEnum[keyof typeof DeleteSegmentsAcceptLanguageEnum];
+export type DeleteProjectsSegmentsAcceptLanguageEnum = typeof DeleteProjectsSegmentsAcceptLanguageEnum[keyof typeof DeleteProjectsSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeleteSegmentsConsentDocumentsAcceptLanguageEnum: {
+export declare const DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteSegmentsConsentDocumentsAcceptLanguageEnum = typeof DeleteSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof DeleteSegmentsConsentDocumentsAcceptLanguageEnum];
+export type DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeleteSegmentsLeadsAcceptLanguageEnum: {
+export declare const DeleteProjectsSegmentsLeadsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteSegmentsLeadsAcceptLanguageEnum = typeof DeleteSegmentsLeadsAcceptLanguageEnum[keyof typeof DeleteSegmentsLeadsAcceptLanguageEnum];
+export type DeleteProjectsSegmentsLeadsAcceptLanguageEnum = typeof DeleteProjectsSegmentsLeadsAcceptLanguageEnum[keyof typeof DeleteProjectsSegmentsLeadsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsAcceptLanguageEnum = typeof GetSegmentsAcceptLanguageEnum[keyof typeof GetSegmentsAcceptLanguageEnum];
+export type GetProjectsSegmentsAcceptLanguageEnum = typeof GetProjectsSegmentsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegments2AcceptLanguageEnum: {
+export declare const GetProjectsSegments2AcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegments2AcceptLanguageEnum = typeof GetSegments2AcceptLanguageEnum[keyof typeof GetSegments2AcceptLanguageEnum];
+export type GetProjectsSegments2AcceptLanguageEnum = typeof GetProjectsSegments2AcceptLanguageEnum[keyof typeof GetProjectsSegments2AcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsConsentDocumentsAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsConsentDocumentsAcceptLanguageEnum = typeof GetSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof GetSegmentsConsentDocumentsAcceptLanguageEnum];
+export type GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = typeof GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum[keyof typeof GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum];
+export type GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum = typeof GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsConsentTemplatesLocaleEnum: {
+export declare const GetProjectsSegmentsConsentTemplatesLocaleEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsConsentTemplatesLocaleEnum = typeof GetSegmentsConsentTemplatesLocaleEnum[keyof typeof GetSegmentsConsentTemplatesLocaleEnum];
+export type GetProjectsSegmentsConsentTemplatesLocaleEnum = typeof GetProjectsSegmentsConsentTemplatesLocaleEnum[keyof typeof GetProjectsSegmentsConsentTemplatesLocaleEnum];
 /**
  * @export
  */
-export declare const GetSegmentsConsentTemplatesAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsConsentTemplatesAcceptLanguageEnum = typeof GetSegmentsConsentTemplatesAcceptLanguageEnum[keyof typeof GetSegmentsConsentTemplatesAcceptLanguageEnum];
+export type GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum = typeof GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum[keyof typeof GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsEventsAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsEventsAcceptLanguageEnum = typeof GetSegmentsEventsAcceptLanguageEnum[keyof typeof GetSegmentsEventsAcceptLanguageEnum];
+export type GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = typeof GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum[keyof typeof GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsMembersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = typeof GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum[keyof typeof GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum];
+export type GetProjectsSegmentsMembersAcceptLanguageEnum = typeof GetProjectsSegmentsMembersAcceptLanguageEnum[keyof typeof GetProjectsSegmentsMembersAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsMembersAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsMembershipEventsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsMembersAcceptLanguageEnum = typeof GetSegmentsMembersAcceptLanguageEnum[keyof typeof GetSegmentsMembersAcceptLanguageEnum];
+export type GetProjectsSegmentsMembershipEventsAcceptLanguageEnum = typeof GetProjectsSegmentsMembershipEventsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsMembershipEventsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetSegmentsSubscriptionLinksAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsReferencesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetSegmentsSubscriptionLinksAcceptLanguageEnum = typeof GetSegmentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetSegmentsSubscriptionLinksAcceptLanguageEnum];
+export type GetProjectsSegmentsReferencesAcceptLanguageEnum = typeof GetProjectsSegmentsReferencesAcceptLanguageEnum[keyof typeof GetProjectsSegmentsReferencesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const SegmentsAcceptLanguageEnum: {
+export declare const GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type SegmentsAcceptLanguageEnum = typeof SegmentsAcceptLanguageEnum[keyof typeof SegmentsAcceptLanguageEnum];
+export type GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum = typeof GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const SegmentsConsentDocumentsAcceptLanguageEnum: {
+export declare const GetPublicSegmentsConsentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type SegmentsConsentDocumentsAcceptLanguageEnum = typeof SegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof SegmentsConsentDocumentsAcceptLanguageEnum];
+export type GetPublicSegmentsConsentsAcceptLanguageEnum = typeof GetPublicSegmentsConsentsAcceptLanguageEnum[keyof typeof GetPublicSegmentsConsentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum: {
+export declare const ProjectsSegmentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = typeof SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum[keyof typeof SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum];
+export type ProjectsSegmentsAcceptLanguageEnum = typeof ProjectsSegmentsAcceptLanguageEnum[keyof typeof ProjectsSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum: {
+export declare const ProjectsSegmentsConsentDocumentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = typeof SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum[keyof typeof SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum];
+export type ProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof ProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof ProjectsSegmentsConsentDocumentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const SegmentsLeadsAcceptLanguageEnum: {
+export declare const ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type SegmentsLeadsAcceptLanguageEnum = typeof SegmentsLeadsAcceptLanguageEnum[keyof typeof SegmentsLeadsAcceptLanguageEnum];
+export type ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = typeof ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum[keyof typeof ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateSegmentsAcceptLanguageEnum: {
+export declare const ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateSegmentsAcceptLanguageEnum = typeof UpdateSegmentsAcceptLanguageEnum[keyof typeof UpdateSegmentsAcceptLanguageEnum];
+export type ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = typeof ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum[keyof typeof ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateSegmentsConsentDocumentsAcceptLanguageEnum: {
+export declare const ProjectsSegmentsLeadsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateSegmentsConsentDocumentsAcceptLanguageEnum = typeof UpdateSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof UpdateSegmentsConsentDocumentsAcceptLanguageEnum];
+export type ProjectsSegmentsLeadsAcceptLanguageEnum = typeof ProjectsSegmentsLeadsAcceptLanguageEnum[keyof typeof ProjectsSegmentsLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateProjectsSegmentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateProjectsSegmentsAcceptLanguageEnum = typeof UpdateProjectsSegmentsAcceptLanguageEnum[keyof typeof UpdateProjectsSegmentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum];

@@ -10,81 +10,75 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
+import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
 export interface DeleteDeliveriesRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteDeliveriesAcceptLanguageEnum;
 }
 export interface DeleteDeliveriesScheduleRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteDeliveriesScheduleAcceptLanguageEnum;
 }
 export interface DeliveriesRequest {
     projectId: string;
     createDeliveryDto: CreateDeliveryDto;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesAcceptLanguageEnum;
 }
 export interface DeliveriesAttachmentsConfirmRequest {
     projectId: string;
     confirmUploadDto: ConfirmUploadDto;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesAttachmentsConfirmAcceptLanguageEnum;
 }
 export interface DeliveriesAttachmentsUploadUrlRequest {
     projectId: string;
     getUploadUrlDto: GetUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesAttachmentsUploadUrlAcceptLanguageEnum;
 }
 export interface DeliveriesCancelRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesCancelAcceptLanguageEnum;
 }
 export interface DeliveriesCopyRequest {
     projectId: string;
     id: string;
     copyDeliveryDto: CopyDeliveryDto;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesCopyAcceptLanguageEnum;
 }
 export interface DeliveriesStartRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesStartAcceptLanguageEnum;
 }
 export interface DeliveriesTestRequest {
     projectId: string;
     id: string;
     testDeliveryDto: TestDeliveryDto;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesTestAcceptLanguageEnum;
 }
 export interface DeliveriesTestRecipientLinkRequest {
     projectId: string;
     id: string;
     createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
-    xSessionId?: string;
     acceptLanguage?: DeliveriesTestRecipientLinkAcceptLanguageEnum;
+}
+export interface DeliveriesTestRecipientVkConfirmRequest {
+    projectId: string;
+    id: string;
+    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
+    acceptLanguage?: DeliveriesTestRecipientVkConfirmAcceptLanguageEnum;
 }
 export interface GetDeliveriesRequest {
     projectId: string;
     tab?: GetDeliveriesTabEnum;
     search?: string;
-    xSessionId?: string;
     acceptLanguage?: GetDeliveriesAcceptLanguageEnum;
 }
 export interface GetDeliveries2Request {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetDeliveries2AcceptLanguageEnum;
 }
 export interface GetDeliveriesAudiencePreviewRequest {
@@ -101,30 +95,27 @@ export interface GetDeliveriesAudiencePreviewRequest {
     spaceIsMember?: boolean;
     segmentId?: Array<string>;
     segmentIsMember?: boolean;
+    pendingSegmentId?: Array<string>;
     limit?: number;
     cursor?: string | null;
-    xSessionId?: string;
     acceptLanguage?: GetDeliveriesAudiencePreviewAcceptLanguageEnum;
 }
 export interface GetDeliveriesTestRecipientsRequest {
     projectId: string;
     id: string;
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: GetDeliveriesTestRecipientsAcceptLanguageEnum;
 }
 export interface UpdateDeliveriesRequest {
     projectId: string;
     id: string;
     updateDeliveryDto: UpdateDeliveryDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDeliveriesAcceptLanguageEnum;
 }
 export interface UpdateDeliveriesScheduleRequest {
     projectId: string;
     id: string;
     scheduleDeliveryDto: ScheduleDeliveryDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDeliveriesScheduleAcceptLanguageEnum;
 }
 /**
@@ -222,15 +213,25 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      */
     deliveriesTest(requestParameters: DeliveriesTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestDeliveryResponseDto>;
     /**
-     * Telegram deep-link, .
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     deliveriesTestRecipientLinkRaw(requestParameters: DeliveriesTestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientLinkResponseDto>>;
     /**
-     * Telegram deep-link, .
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     deliveriesTestRecipientLink(requestParameters: DeliveriesTestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientLinkResponseDto>;
+    /**
+     * VK .
+     * VK-
+     */
+    deliveriesTestRecipientVkConfirmRaw(requestParameters: DeliveriesTestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientDto>>;
+    /**
+     * VK .
+     * VK-
+     */
+    deliveriesTestRecipientVkConfirm(requestParameters: DeliveriesTestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientDto>;
     /**
      * : , , .
      *
@@ -372,6 +373,14 @@ export declare const DeliveriesTestRecipientLinkAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeliveriesTestRecipientLinkAcceptLanguageEnum = typeof DeliveriesTestRecipientLinkAcceptLanguageEnum[keyof typeof DeliveriesTestRecipientLinkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeliveriesTestRecipientVkConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = typeof DeliveriesTestRecipientVkConfirmAcceptLanguageEnum[keyof typeof DeliveriesTestRecipientVkConfirmAcceptLanguageEnum];
 /**
  * @export
  */

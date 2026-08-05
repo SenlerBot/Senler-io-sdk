@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface CreateDeliveryTestRecipientLinkDto {
     /**
-     * UUID Telegram-,
+     * UUID VK, Telegram MAX ,
      * @type {string}
      * @memberof CreateDeliveryTestRecipientLinkDto
      */

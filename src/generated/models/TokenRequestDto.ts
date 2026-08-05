@@ -38,18 +38,6 @@ export interface TokenRequestDto {
      */
     clientSecret?: string;
     /**
-     * ID grant_type=client_credentials. grant_type=authorization_code.
-     * @type {string}
-     * @memberof TokenRequestDto
-     */
-    projectId?: string;
-    /**
-     * . , .
-     * @type {string}
-     * @memberof TokenRequestDto
-     */
-    scope?: string;
-    /**
      * grant_type=refresh_token
      * @type {string}
      * @memberof TokenRequestDto
@@ -74,7 +62,6 @@ export interface TokenRequestDto {
  * @export
  */
 export const TokenRequestDtoGrantTypeEnum = {
-    ClientCredentials: 'client_credentials',
     RefreshToken: 'refresh_token',
     AuthorizationCode: 'authorization_code'
 } as const;
@@ -102,8 +89,6 @@ export function TokenRequestDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'grantType': json['grant_type'],
         'clientId': json['client_id'] == null ? undefined : json['client_id'],
         'clientSecret': json['client_secret'] == null ? undefined : json['client_secret'],
-        'projectId': json['project_id'] == null ? undefined : json['project_id'],
-        'scope': json['scope'] == null ? undefined : json['scope'],
         'refreshToken': json['refresh_token'] == null ? undefined : json['refresh_token'],
         'code': json['code'] == null ? undefined : json['code'],
         'redirectUri': json['redirect_uri'] == null ? undefined : json['redirect_uri'],
@@ -124,8 +109,6 @@ export function TokenRequestDtoToJSONTyped(value?: TokenRequestDto | null, ignor
         'grant_type': value['grantType'],
         'client_id': value['clientId'],
         'client_secret': value['clientSecret'],
-        'project_id': value['projectId'],
-        'scope': value['scope'],
         'refresh_token': value['refreshToken'],
         'code': value['code'],
         'redirect_uri': value['redirectUri'],

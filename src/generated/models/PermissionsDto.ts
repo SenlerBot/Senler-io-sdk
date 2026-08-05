@@ -78,6 +78,12 @@ export interface PermissionsDto {
      * @type {boolean}
      * @memberof PermissionsDto
      */
+    canManageAgentEvents: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
     canViewDialogs: boolean;
     /**
      *
@@ -292,6 +298,7 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canDeleteChannels' in value) || value['canDeleteChannels'] === undefined) return false;
     if (!('canViewAgents' in value) || value['canViewAgents'] === undefined) return false;
     if (!('canManageAgents' in value) || value['canManageAgents'] === undefined) return false;
+    if (!('canManageAgentEvents' in value) || value['canManageAgentEvents'] === undefined) return false;
     if (!('canViewDialogs' in value) || value['canViewDialogs'] === undefined) return false;
     if (!('canManageDialogs' in value) || value['canManageDialogs'] === undefined) return false;
     if (!('canViewSpaces' in value) || value['canViewSpaces'] === undefined) return false;
@@ -348,6 +355,7 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canDeleteChannels': json['can_delete_channels'],
         'canViewAgents': json['can_view_agents'],
         'canManageAgents': json['can_manage_agents'],
+        'canManageAgentEvents': json['can_manage_agent_events'],
         'canViewDialogs': json['can_view_dialogs'],
         'canManageDialogs': json['can_manage_dialogs'],
         'canViewSpaces': json['can_view_spaces'],
@@ -405,6 +413,7 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_delete_channels': value['canDeleteChannels'],
         'can_view_agents': value['canViewAgents'],
         'can_manage_agents': value['canManageAgents'],
+        'can_manage_agent_events': value['canManageAgentEvents'],
         'can_view_dialogs': value['canViewDialogs'],
         'can_manage_dialogs': value['canManageDialogs'],
         'can_view_spaces': value['canViewSpaces'],

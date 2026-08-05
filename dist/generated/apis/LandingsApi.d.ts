@@ -10,131 +10,122 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateLandingBlockDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockContentMutationResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationResponseDto, LandingPublicationsListResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, SetLandingPublicationPinnedDto, UpdateLandingBlockDto, UpdateLandingDraftDto, UpdateLandingDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateLandingBlockDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockContentMutationResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingBlockDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface DeleteLandingsRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteLandingsAcceptLanguageEnum;
 }
 export interface DeleteLandingsBlocksRequest {
     projectId: string;
     landingId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: DeleteLandingsBlocksAcceptLanguageEnum;
 }
 export interface GetLandingsRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    automatic?: boolean;
     search?: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
 }
 export interface GetLandings2Request {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandings2AcceptLanguageEnum;
 }
 export interface GetLandingsPublicationsRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPublicationsAcceptLanguageEnum;
 }
 export interface GetLandingsShareLinksRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsShareLinksAcceptLanguageEnum;
 }
 export interface LandingsRequest {
     projectId: string;
     createLandingDto: CreateLandingDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsAcceptLanguageEnum;
 }
 export interface LandingsAssetsConfirmRequest {
     projectId: string;
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsAssetsConfirmAcceptLanguageEnum;
 }
 export interface LandingsAssetsUploadUrlRequest {
     projectId: string;
     landingId: string;
     getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsAssetsUploadUrlAcceptLanguageEnum;
 }
 export interface LandingsBlocksRequest {
     projectId: string;
     landingId: string;
+    xLandingEditorSessionId: string;
     createLandingBlockDto: CreateLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsBlocksAcceptLanguageEnum;
 }
 export interface LandingsBlocksMoveRequest {
     projectId: string;
     landingId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsBlocksMoveAcceptLanguageEnum;
 }
 export interface LandingsDuplicateRequest {
     projectId: string;
     landingId: string;
     duplicateLandingDto: DuplicateLandingDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsDuplicateAcceptLanguageEnum;
 }
 export interface LandingsPublicationsRestoreRequest {
     projectId: string;
     landingId: string;
     publicationId: string;
-    xSessionId?: string;
+    xLandingEditorSessionId: string;
     acceptLanguage?: LandingsPublicationsRestoreAcceptLanguageEnum;
 }
 export interface LandingsPublishRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
+    xLandingEditorSessionId: string;
     acceptLanguage?: LandingsPublishAcceptLanguageEnum;
 }
 export interface UpdateLandingsRequest {
     projectId: string;
     landingId: string;
+    xLandingEditorSessionId: string;
     updateLandingDto: UpdateLandingDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsAcceptLanguageEnum;
 }
 export interface UpdateLandingsBlocksRequest {
     projectId: string;
     landingId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     updateLandingBlockDto: UpdateLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsBlocksAcceptLanguageEnum;
 }
 export interface UpdateLandingsDraftRequest {
     projectId: string;
     landingId: string;
+    xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsDraftAcceptLanguageEnum;
 }
-export interface UpdateLandingsPublicationsPinRequest {
+export interface UpdateLandingsRealtimeFocusRequest {
     projectId: string;
     landingId: string;
-    publicationId: string;
-    setLandingPublicationPinnedDto: SetLandingPublicationPinnedDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateLandingsPublicationsPinAcceptLanguageEnum;
+    xLandingEditorSessionId: string;
+    updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
+    acceptLanguage?: UpdateLandingsRealtimeFocusAcceptLanguageEnum;
 }
 /**
  *
@@ -314,12 +305,12 @@ export declare class LandingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    updateLandingsPublicationsPinRaw(requestParameters: UpdateLandingsPublicationsPinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationResponseDto>>;
+    updateLandingsRealtimeFocusRaw(requestParameters: UpdateLandingsRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingRealtimeFocusResponseDto>>;
     /**
      * .
      *
      */
-    updateLandingsPublicationsPin(requestParameters: UpdateLandingsPublicationsPinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationResponseDto>;
+    updateLandingsRealtimeFocus(requestParameters: UpdateLandingsRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingRealtimeFocusResponseDto>;
 }
 /**
  * @export
@@ -460,8 +451,8 @@ export type UpdateLandingsDraftAcceptLanguageEnum = typeof UpdateLandingsDraftAc
 /**
  * @export
  */
-export declare const UpdateLandingsPublicationsPinAcceptLanguageEnum: {
+export declare const UpdateLandingsRealtimeFocusAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateLandingsPublicationsPinAcceptLanguageEnum = typeof UpdateLandingsPublicationsPinAcceptLanguageEnum[keyof typeof UpdateLandingsPublicationsPinAcceptLanguageEnum];
+export type UpdateLandingsRealtimeFocusAcceptLanguageEnum = typeof UpdateLandingsRealtimeFocusAcceptLanguageEnum[keyof typeof UpdateLandingsRealtimeFocusAcceptLanguageEnum];

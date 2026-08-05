@@ -85,6 +85,12 @@ export interface LeadsFilterDto {
      * @memberof LeadsFilterDto
      */
     segmentIsMember?: boolean;
+    /**
+     * ,
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    pendingSegmentId?: Array<string>;
 }
 
 
@@ -132,6 +138,7 @@ export function LeadsFilterDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'spaceIsMember': json['space_is_member'] == null ? undefined : json['space_is_member'],
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
         'segmentIsMember': json['segment_is_member'] == null ? undefined : json['segment_is_member'],
+        'pendingSegmentId': json['pending_segment_id'] == null ? undefined : json['pending_segment_id'],
     };
 }
 
@@ -157,5 +164,6 @@ export function LeadsFilterDtoToJSONTyped(value?: LeadsFilterDto | null, ignoreD
         'space_is_member': value['spaceIsMember'],
         'segment_id': value['segmentId'],
         'segment_is_member': value['segmentIsMember'],
+        'pending_segment_id': value['pendingSegmentId'],
     };
 }

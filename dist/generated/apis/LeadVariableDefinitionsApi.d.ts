@@ -14,13 +14,11 @@ import type { CreateLeadVariableDefinitionDto, Deactivate200Response, LeadVariab
 export interface LeadVariableDefinitionsCreateRequest {
     projectId: string;
     createLeadVariableDefinitionDto: CreateLeadVariableDefinitionDto;
-    xSessionId?: string;
     acceptLanguage?: LeadVariableDefinitionsCreateAcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsDeactivateRequest {
     projectId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: LeadVariableDefinitionsDeactivateAcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsGetByIdRequest {
@@ -28,20 +26,17 @@ export interface LeadVariableDefinitionsGetByIdRequest {
     search?: string;
     limit?: number;
     page?: number;
-    xSessionId?: string;
     acceptLanguage?: LeadVariableDefinitionsGetByIdAcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsGetById2Request {
     projectId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: LeadVariableDefinitionsGetById2AcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsUpdateRequest {
     projectId: string;
     name: string;
     updateLeadVariableDefinitionDto: UpdateLeadVariableDefinitionDto;
-    xSessionId?: string;
     acceptLanguage?: LeadVariableDefinitionsUpdateAcceptLanguageEnum;
 }
 /**

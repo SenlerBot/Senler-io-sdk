@@ -18,7 +18,6 @@ exports.DeliverySendParamsDtoFromJSON = DeliverySendParamsDtoFromJSON;
 exports.DeliverySendParamsDtoFromJSONTyped = DeliverySendParamsDtoFromJSONTyped;
 exports.DeliverySendParamsDtoToJSON = DeliverySendParamsDtoToJSON;
 exports.DeliverySendParamsDtoToJSONTyped = DeliverySendParamsDtoToJSONTyped;
-const MessageAttachmentInputDto_1 = require("./MessageAttachmentInputDto");
 /**
  * Check if a given object implements the DeliverySendParamsDto interface.
  */
@@ -42,7 +41,7 @@ function DeliverySendParamsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'deliveryId': json['delivery_id'],
         'deliveryRunId': json['delivery_run_id'],
         'messageText': json['message_text'],
-        'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoFromJSON)),
+        'attachments': json['attachments'] == null ? undefined : json['attachments'],
         'actorUserId': json['actor_user_id'] == null ? undefined : json['actor_user_id'],
     };
 }
@@ -57,7 +56,7 @@ function DeliverySendParamsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'delivery_id': value['deliveryId'],
         'delivery_run_id': value['deliveryRunId'],
         'message_text': value['messageText'],
-        'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoToJSON)),
+        'attachments': value['attachments'],
         'actor_user_id': value['actorUserId'],
     };
 }

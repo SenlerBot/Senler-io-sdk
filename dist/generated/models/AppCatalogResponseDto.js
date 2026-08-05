@@ -19,14 +19,15 @@ exports.AppCatalogResponseDtoFromJSON = AppCatalogResponseDtoFromJSON;
 exports.AppCatalogResponseDtoFromJSONTyped = AppCatalogResponseDtoFromJSONTyped;
 exports.AppCatalogResponseDtoToJSON = AppCatalogResponseDtoToJSON;
 exports.AppCatalogResponseDtoToJSONTyped = AppCatalogResponseDtoToJSONTyped;
+const AppDescriptionDto_1 = require("./AppDescriptionDto");
+const AppEmbeddedPageSettingsResponseDto_1 = require("./AppEmbeddedPageSettingsResponseDto");
 /**
  * @export
  */
 exports.AppCatalogResponseDtoTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool',
-    EmbeddedPage: 'embedded_page'
+    AgentTool: 'agent_tool'
 };
 /**
  * Check if a given object implements the AppCatalogResponseDto interface.
@@ -39,6 +40,8 @@ function instanceOfAppCatalogResponseDto(value) {
     if (!('description' in value) || value['description'] === undefined)
         return false;
     if (!('type' in value) || value['type'] === undefined)
+        return false;
+    if (!('hasTools' in value) || value['hasTools'] === undefined)
         return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined)
         return false;
@@ -58,11 +61,14 @@ function AppCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'name': json['name'],
-        'description': json['description'],
+        'description': (0, AppDescriptionDto_1.AppDescriptionDtoFromJSON)(json['description']),
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
         'coverUrl': json['cover_url'] == null ? undefined : json['cover_url'],
         'websiteUrl': json['website_url'] == null ? undefined : json['website_url'],
+        'documentationUrl': json['documentation_url'] == null ? undefined : json['documentation_url'],
         'type': json['type'],
+        'hasTools': json['has_tools'],
+        'embeddedPage': json['embedded_page'] == null ? undefined : (0, AppEmbeddedPageSettingsResponseDto_1.AppEmbeddedPageSettingsResponseDtoFromJSON)(json['embedded_page']),
         'allowedPermissions': json['allowed_permissions'],
         'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
         'createdAt': (new Date(json['created_at'])),
@@ -78,11 +84,14 @@ function AppCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'id': value['id'],
         'name': value['name'],
-        'description': value['description'],
+        'description': (0, AppDescriptionDto_1.AppDescriptionDtoToJSON)(value['description']),
         'icon_url': value['iconUrl'],
         'cover_url': value['coverUrl'],
         'website_url': value['websiteUrl'],
+        'documentation_url': value['documentationUrl'],
         'type': value['type'],
+        'has_tools': value['hasTools'],
+        'embedded_page': (0, AppEmbeddedPageSettingsResponseDto_1.AppEmbeddedPageSettingsResponseDtoToJSON)(value['embeddedPage']),
         'allowed_permissions': value['allowedPermissions'],
         'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],
         'created_at': ((value['createdAt']).toISOString()),

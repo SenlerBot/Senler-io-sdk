@@ -66,65 +66,55 @@ import {
 
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
-    xSessionId?: string;
     acceptLanguage?: ExportAcceptLanguageEnum;
 }
 
 export interface ImportRequest {
     createImportProcessDto: CreateImportProcessDto;
-    xSessionId?: string;
     acceptLanguage?: ImportAcceptLanguageEnum;
 }
 
 export interface LeadsGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: LeadsGetByIdAcceptLanguageEnum;
 }
 
 export interface RefreshRequest {
     createLeadsRefreshProcessDto: CreateLeadsRefreshProcessDto;
-    xSessionId?: string;
     acceptLanguage?: RefreshAcceptLanguageEnum;
 }
 
 export interface SearchRequest {
     searchLeadsDto: SearchLeadsDto;
-    xSessionId?: string;
     acceptLanguage?: SearchAcceptLanguageEnum;
 }
 
 export interface UpdateBlacklistRequest {
     id: string;
     updateBlacklistDto: UpdateBlacklistDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateBlacklistAcceptLanguageEnum;
 }
 
 export interface UpdateNotesRequest {
     id: string;
     updateLeadNotesDto: UpdateLeadNotesDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateNotesAcceptLanguageEnum;
 }
 
 export interface UpdateProjectOperatorRequest {
     id: string;
     updateLeadProjectOperatorDto: UpdateLeadProjectOperatorDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateProjectOperatorAcceptLanguageEnum;
 }
 
 export interface UpdateSyncProfileRequest {
     id: string;
     syncLeadProfileDto: SyncLeadProfileDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSyncProfileAcceptLanguageEnum;
 }
 
 export interface VerifySubscriptionRequest {
     verifySubscriptionAndAddDto: VerifySubscriptionAndAddDto;
-    xSessionId?: string;
     acceptLanguage?: VerifySubscriptionAcceptLanguageEnum;
 }
 
@@ -150,10 +140,6 @@ export class LeadsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -210,10 +196,6 @@ export class LeadsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -266,10 +248,6 @@ export class LeadsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -325,10 +303,6 @@ export class LeadsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -383,10 +357,6 @@ export class LeadsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -450,10 +420,6 @@ export class LeadsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -515,10 +481,6 @@ export class LeadsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -582,10 +544,6 @@ export class LeadsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -648,10 +606,6 @@ export class LeadsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -706,10 +660,6 @@ export class LeadsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

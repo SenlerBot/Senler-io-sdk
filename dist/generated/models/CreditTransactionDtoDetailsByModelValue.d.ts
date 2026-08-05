@@ -28,12 +28,6 @@ export interface CreditTransactionDtoDetailsByModelValue {
      */
     credits?: number;
     /**
-     * , (/); : 1.25 = 125
-     * @type {number}
-     * @memberof CreditTransactionDtoDetailsByModelValue
-     */
-    cost?: number;
-    /**
      * tokens.
      * @type {number}
      * @memberof CreditTransactionDtoDetailsByModelValue

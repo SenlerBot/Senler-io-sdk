@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
+import type { MessageAttachmentReferenceDto } from './MessageAttachmentReferenceDto';
 import type { MessageButtonDto } from './MessageButtonDto';
 /**
  * SendMessageToDialogDto.
@@ -30,12 +30,19 @@ export interface SendMessageToDialogDto {
      */
     clientType?: SendMessageToDialogDtoClientTypeEnum;
     /**
-     * S3 (. 10, 50 MB ).
+     * . .
+     * @type {string}
+     * @memberof SendMessageToDialogDto
+     */
+    idempotencyKey?: string;
+    /**
+     * (. 10).
      *
      * :
      * 1. S3- .
      * 2. .
      * 3. .
+     * 4. fileId confirm.
      *
      * :
      * ```typescript
@@ -43,21 +50,15 @@ export interface SendMessageToDialogDto {
      * const confirm = await confirmUpload(uploadId, { dialogId });
      * await sendMessage({
      * content: '',
-     * attachments: [{
-     * storage_url: confirm.url,
-     * storage_path: confirm.storagePath,
-     * file_name: confirm.fileName,
-     * mime_type: confirm.fileType,
-     * file_size: confirm.fileSize,
-     * }],
+     * attachments: [{ id: confirm.fileId }],
      * });
      * ```
      *
-     * . MessageAttachmentInputDto
-     * @type {Array<MessageAttachmentInputDto>}
+     * ID.
+     * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof SendMessageToDialogDto
      */
-    attachments?: Array<MessageAttachmentInputDto>;
+    attachments?: Array<MessageAttachmentReferenceDto>;
     /**
      * .
      * @type {Array<MessageButtonDto>}

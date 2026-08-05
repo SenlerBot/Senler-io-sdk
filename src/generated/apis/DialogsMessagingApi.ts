@@ -52,28 +52,24 @@ import {
 export interface ButtonClickRequest {
     dialogId: string;
     dialogButtonClickDto: DialogButtonClickDto;
-    xSessionId?: string;
     acceptLanguage?: ButtonClickAcceptLanguageEnum;
 }
 
 export interface InterveneRequest {
     dialogId: string;
     interveneDto: InterveneDto;
-    xSessionId?: string;
     acceptLanguage?: InterveneAcceptLanguageEnum;
 }
 
 export interface OperatorReplyDraftRequest {
     id: string;
     generateOperatorReplyDraftDto: GenerateOperatorReplyDraftDto;
-    xSessionId?: string;
     acceptLanguage?: OperatorReplyDraftAcceptLanguageEnum;
 }
 
 export interface SendRequest {
     id: string;
     sendMessageToDialogDto: SendMessageToDialogDto;
-    xSessionId?: string;
     acceptLanguage?: SendAcceptLanguageEnum;
 }
 
@@ -83,7 +79,7 @@ export interface SendRequest {
 export class DialogsMessagingApi extends runtime.BaseAPI {
 
     /**
-     * AI-. callback_data .
+     * , AI-.
      *
      */
     async buttonClickRaw(requestParameters: ButtonClickRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ButtonClickResponseDto>> {
@@ -106,10 +102,6 @@ export class DialogsMessagingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -140,7 +132,7 @@ export class DialogsMessagingApi extends runtime.BaseAPI {
     }
 
     /**
-     * AI-. callback_data .
+     * , AI-.
      *
      */
     async buttonClick(requestParameters: ButtonClickRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ButtonClickResponseDto> {
@@ -172,10 +164,6 @@ export class DialogsMessagingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -239,10 +227,6 @@ export class DialogsMessagingApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -304,10 +288,6 @@ export class DialogsMessagingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

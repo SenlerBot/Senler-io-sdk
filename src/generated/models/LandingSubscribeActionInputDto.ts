@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingChannelSelectionInputDto } from './LandingChannelSelectionInputDto';
+import {
+    LandingChannelSelectionInputDtoFromJSON,
+    LandingChannelSelectionInputDtoFromJSONTyped,
+    LandingChannelSelectionInputDtoToJSON,
+    LandingChannelSelectionInputDtoToJSONTyped,
+} from './LandingChannelSelectionInputDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 import {
     LandingContactCaptureDtoFromJSON,
@@ -28,12 +35,6 @@ import {
  */
 export interface LandingSubscribeActionInputDto {
     /**
-     * UUID . , .
-     * @type {string}
-     * @memberof LandingSubscribeActionInputDto
-     */
-    id?: string;
-    /**
      *
      * @type {string}
      * @memberof LandingSubscribeActionInputDto
@@ -46,11 +47,11 @@ export interface LandingSubscribeActionInputDto {
      */
     segmentId: string;
     /**
-     * . .
-     * @type {Array<string>}
+     *
+     * @type {LandingChannelSelectionInputDto}
      * @memberof LandingSubscribeActionInputDto
      */
-    channelIds: Array<string>;
+    channelSelection: LandingChannelSelectionInputDto;
     /**
      * ,
      * @type {LandingContactCaptureDto}
@@ -75,7 +76,7 @@ export type LandingSubscribeActionInputDtoTypeEnum = typeof LandingSubscribeActi
 export function instanceOfLandingSubscribeActionInputDto(value: object): value is LandingSubscribeActionInputDto {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('segmentId' in value) || value['segmentId'] === undefined) return false;
-    if (!('channelIds' in value) || value['channelIds'] === undefined) return false;
+    if (!('channelSelection' in value) || value['channelSelection'] === undefined) return false;
     if (!('contactCapture' in value) || value['contactCapture'] === undefined) return false;
     return true;
 }
@@ -90,10 +91,9 @@ export function LandingSubscribeActionInputDtoFromJSONTyped(json: any, ignoreDis
     }
     return {
 
-        'id': json['id'] == null ? undefined : json['id'],
         'type': json['type'],
         'segmentId': json['segment_id'],
-        'channelIds': json['channel_ids'],
+        'channelSelection': LandingChannelSelectionInputDtoFromJSON(json['channel_selection']),
         'contactCapture': LandingContactCaptureDtoFromJSON(json['contact_capture']),
     };
 }
@@ -109,10 +109,9 @@ export function LandingSubscribeActionInputDtoToJSONTyped(value?: LandingSubscri
 
     return {
 
-        'id': value['id'],
         'type': value['type'],
         'segment_id': value['segmentId'],
-        'channel_ids': value['channelIds'],
+        'channel_selection': LandingChannelSelectionInputDtoToJSON(value['channelSelection']),
         'contact_capture': LandingContactCaptureDtoToJSON(value['contactCapture']),
     };
 }

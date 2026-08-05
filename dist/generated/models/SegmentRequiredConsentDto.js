@@ -24,6 +24,8 @@ exports.SegmentRequiredConsentDtoToJSONTyped = SegmentRequiredConsentDtoToJSONTy
 function instanceOfSegmentRequiredConsentDto(value) {
     if (!('documentId' in value) || value['documentId'] === undefined)
         return false;
+    if (!('version' in value) || value['version'] === undefined)
+        return false;
     return true;
 }
 function SegmentRequiredConsentDtoFromJSON(json) {
@@ -35,7 +37,7 @@ function SegmentRequiredConsentDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'documentId': json['document_id'],
-        'version': json['version'] == null ? undefined : json['version'],
+        'version': json['version'],
         'sort': json['sort'] == null ? undefined : json['sort'],
     };
 }

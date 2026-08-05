@@ -13,13 +13,14 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreditTransactionDtoCurrencyEnum = exports.CreditTransactionDtoTypeEnum = void 0;
+exports.CreditTransactionDtoTypeEnum = void 0;
 exports.instanceOfCreditTransactionDto = instanceOfCreditTransactionDto;
 exports.CreditTransactionDtoFromJSON = CreditTransactionDtoFromJSON;
 exports.CreditTransactionDtoFromJSONTyped = CreditTransactionDtoFromJSONTyped;
 exports.CreditTransactionDtoToJSON = CreditTransactionDtoToJSON;
 exports.CreditTransactionDtoToJSONTyped = CreditTransactionDtoToJSONTyped;
 const runtime_1 = require("../runtime");
+const CustomerCostEstimateDto_1 = require("./CustomerCostEstimateDto");
 const LocalizedTextDto_1 = require("./LocalizedTextDto");
 const CreditTransactionDtoDetailsByModelValue_1 = require("./CreditTransactionDtoDetailsByModelValue");
 const CreditTransactionDtoDetailsByAgentValue_1 = require("./CreditTransactionDtoDetailsByAgentValue");
@@ -33,13 +34,6 @@ exports.CreditTransactionDtoTypeEnum = {
     AutoPurchase: 'auto_purchase',
     Expiration: 'expiration',
     Adjustment: 'adjustment'
-};
-/**
- * @export
- */
-exports.CreditTransactionDtoCurrencyEnum = {
-    Usd: 'USD',
-    Rub: 'RUB'
 };
 /**
  * Check if a given object implements the CreditTransactionDto interface.
@@ -59,9 +53,7 @@ function instanceOfCreditTransactionDto(value) {
         return false;
     if (!('purchasedCreditsAfter' in value) || value['purchasedCreditsAfter'] === undefined)
         return false;
-    if (!('monetaryEquivalent' in value) || value['monetaryEquivalent'] === undefined)
-        return false;
-    if (!('currency' in value) || value['currency'] === undefined)
+    if (!('customerCostEstimate' in value) || value['customerCostEstimate'] === undefined)
         return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined)
         return false;
@@ -86,8 +78,7 @@ function CreditTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'tariffCreditsAfter': json['tariff_credits_after'],
         'purchasedCreditsBefore': json['purchased_credits_before'],
         'purchasedCreditsAfter': json['purchased_credits_after'],
-        'monetaryEquivalent': json['monetary_equivalent'],
-        'currency': json['currency'],
+        'customerCostEstimate': (0, CustomerCostEstimateDto_1.CustomerCostEstimateDtoFromJSON)(json['customer_cost_estimate']),
         'periodStart': (json['period_start'] == null ? null : new Date(json['period_start'])),
         'periodEnd': (json['period_end'] == null ? null : new Date(json['period_end'])),
         'usageEventsCount': json['usage_events_count'] == null ? undefined : json['usage_events_count'],
@@ -114,8 +105,7 @@ function CreditTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'tariff_credits_after': value['tariffCreditsAfter'],
         'purchased_credits_before': value['purchasedCreditsBefore'],
         'purchased_credits_after': value['purchasedCreditsAfter'],
-        'monetary_equivalent': value['monetaryEquivalent'],
-        'currency': value['currency'],
+        'customer_cost_estimate': (0, CustomerCostEstimateDto_1.CustomerCostEstimateDtoToJSON)(value['customerCostEstimate']),
         'period_start': (value['periodStart'] == null ? null : value['periodStart'].toISOString()),
         'period_end': (value['periodEnd'] == null ? null : value['periodEnd'].toISOString()),
         'usage_events_count': value['usageEventsCount'],

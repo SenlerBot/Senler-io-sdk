@@ -55,14 +55,12 @@ import {
 export interface DeleteSupportScheduleAssignmentsRequest {
     projectId: string;
     assignmentId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteSupportScheduleAssignmentsAcceptLanguageEnum;
 }
 
 export interface DeleteSupportScheduleShiftsRequest {
     projectId: string;
     shiftId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteSupportScheduleShiftsAcceptLanguageEnum;
 }
 
@@ -70,21 +68,18 @@ export interface GetSupportScheduleRequest {
     projectId: string;
     from?: Date;
     to?: Date;
-    xSessionId?: string;
     acceptLanguage?: GetSupportScheduleAcceptLanguageEnum;
 }
 
 export interface SupportScheduleAssignmentsRequest {
     projectId: string;
     createSupportScheduleAssignmentDto: CreateSupportScheduleAssignmentDto;
-    xSessionId?: string;
     acceptLanguage?: SupportScheduleAssignmentsAcceptLanguageEnum;
 }
 
 export interface SupportScheduleShiftsRequest {
     projectId: string;
     createSupportShiftDto: CreateSupportShiftDto;
-    xSessionId?: string;
     acceptLanguage?: SupportScheduleShiftsAcceptLanguageEnum;
 }
 
@@ -92,14 +87,12 @@ export interface UpdateSupportScheduleAssignmentsRequest {
     projectId: string;
     assignmentId: string;
     updateSupportScheduleAssignmentDto: UpdateSupportScheduleAssignmentDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleAssignmentsAcceptLanguageEnum;
 }
 
 export interface UpdateSupportScheduleSettingsRequest {
     projectId: string;
     updateSupportScheduleSettingsDto: UpdateSupportScheduleSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleSettingsAcceptLanguageEnum;
 }
 
@@ -107,7 +100,6 @@ export interface UpdateSupportScheduleShiftsRequest {
     projectId: string;
     shiftId: string;
     updateSupportShiftDto: UpdateSupportShiftDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSupportScheduleShiftsAcceptLanguageEnum;
 }
 
@@ -138,10 +130,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -202,10 +190,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -265,10 +249,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -331,10 +311,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -396,10 +372,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -470,10 +442,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -535,10 +503,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -608,10 +572,6 @@ export class SupportSchedulesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

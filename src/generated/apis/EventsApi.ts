@@ -42,7 +42,6 @@ import {
 
 export interface EventsGetByIdRequest {
     eventId: string;
-    xSessionId?: string;
     acceptLanguage?: EventsGetByIdAcceptLanguageEnum;
 }
 
@@ -71,35 +70,30 @@ export interface EventsListRequest {
     after?: string;
     sortBy?: EventsListSortByEnum;
     sortOrder?: EventsListSortOrderEnum;
-    xSessionId?: string;
     acceptLanguage?: EventsListAcceptLanguageEnum;
 }
 
 export interface GetAnalyticsRequest {
     period: GetAnalyticsPeriodEnum;
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAnalyticsAcceptLanguageEnum;
 }
 
 export interface GetMarketingQuickMetricsRequest {
     projectId: string;
     period?: GetMarketingQuickMetricsPeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMarketingQuickMetricsAcceptLanguageEnum;
 }
 
 export interface GetMarketingTrafficChannelsRequest {
     projectId: string;
     period?: GetMarketingTrafficChannelsPeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMarketingTrafficChannelsAcceptLanguageEnum;
 }
 
 export interface GetMarketingTrafficSourcesRequest {
     projectId: string;
     period?: GetMarketingTrafficSourcesPeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMarketingTrafficSourcesAcceptLanguageEnum;
 }
 
@@ -123,10 +117,6 @@ export class EventsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -276,10 +266,6 @@ export class EventsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -347,10 +333,6 @@ export class EventsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -410,10 +392,6 @@ export class EventsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -475,10 +453,6 @@ export class EventsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -538,10 +512,6 @@ export class EventsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -631,6 +601,7 @@ export const EventsListActionTypeEnum = {
     LeadMerged: 'lead_merged',
     LeadSubscribed: 'lead_subscribed',
     LeadUnsubscribed: 'lead_unsubscribed',
+    SegmentSubscribed: 'segment_subscribed',
     LeadBlocked: 'lead_blocked',
     LeadUnblocked: 'lead_unblocked',
     LeadBlacklisted: 'lead_blacklisted',
@@ -647,6 +618,7 @@ export const EventsListActionTypeEnum = {
     BroadcastStarted: 'broadcast_started',
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
+    AiResponseStarted: 'ai_response_started',
     ToolStarted: 'tool_started',
     ToolCompleted: 'tool_completed',
     ToolFailed: 'tool_failed',
@@ -658,11 +630,13 @@ export const EventsListActionTypeEnum = {
     SpeechRecognized: 'speech_recognized',
     ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
+    AiProviderCallCompleted: 'ai_provider_call_completed',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',
     TimerScheduled: 'timer_scheduled',
-    TimerTriggered: 'timer_triggered'
+    TimerTriggered: 'timer_triggered',
+    AppEventReceived: 'app_event_received'
 } as const;
 export type EventsListActionTypeEnum = typeof EventsListActionTypeEnum[keyof typeof EventsListActionTypeEnum];
 /**
@@ -672,6 +646,7 @@ export const EventsListTargetTypeEnum = {
     Message: 'message',
     Interaction: 'interaction',
     Lead: 'lead',
+    Segment: 'segment',
     Dialog: 'dialog',
     Chat: 'chat',
     Post: 'post',

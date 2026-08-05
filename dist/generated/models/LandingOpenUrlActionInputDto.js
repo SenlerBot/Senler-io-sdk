@@ -43,7 +43,6 @@ function LandingOpenUrlActionInputDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'id': json['id'] == null ? undefined : json['id'],
         'type': json['type'],
         'url': json['url'],
     };
@@ -56,7 +55,6 @@ function LandingOpenUrlActionInputDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
-        'id': value['id'],
         'type': value['type'],
         'url': value['url'],
     };

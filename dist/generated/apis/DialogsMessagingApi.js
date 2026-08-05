@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class DialogsMessagingApi extends runtime.BaseAPI {
     /**
-     * AI-. callback_data .
+     * , AI-.
      *
      */
     async buttonClickRaw(requestParameters, initOverrides) {
@@ -67,9 +67,6 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -94,7 +91,7 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ButtonClickResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * AI-. callback_data .
+     * , AI-.
      *
      */
     async buttonClick(requestParameters, initOverrides) {
@@ -115,9 +112,6 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -163,9 +157,6 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -211,9 +202,6 @@ class DialogsMessagingApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

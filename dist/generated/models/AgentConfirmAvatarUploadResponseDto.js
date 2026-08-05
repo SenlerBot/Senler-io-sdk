@@ -18,7 +18,7 @@ exports.AgentConfirmAvatarUploadResponseDtoFromJSON = AgentConfirmAvatarUploadRe
 exports.AgentConfirmAvatarUploadResponseDtoFromJSONTyped = AgentConfirmAvatarUploadResponseDtoFromJSONTyped;
 exports.AgentConfirmAvatarUploadResponseDtoToJSON = AgentConfirmAvatarUploadResponseDtoToJSON;
 exports.AgentConfirmAvatarUploadResponseDtoToJSONTyped = AgentConfirmAvatarUploadResponseDtoToJSONTyped;
-const AgentResponseDto_1 = require("./AgentResponseDto");
+const AgentSettingsResponseDto_1 = require("./AgentSettingsResponseDto");
 /**
  * Check if a given object implements the AgentConfirmAvatarUploadResponseDto interface.
  */
@@ -35,7 +35,7 @@ function AgentConfirmAvatarUploadResponseDtoFromJSONTyped(json, ignoreDiscrimina
         return json;
     }
     return {
-        'agent': (0, AgentResponseDto_1.AgentResponseDtoFromJSON)(json['agent']),
+        'agent': (0, AgentSettingsResponseDto_1.AgentSettingsResponseDtoFromJSON)(json['agent']),
     };
 }
 function AgentConfirmAvatarUploadResponseDtoToJSON(json) {
@@ -46,6 +46,6 @@ function AgentConfirmAvatarUploadResponseDtoToJSONTyped(value, ignoreDiscriminat
         return value;
     }
     return {
-        'agent': (0, AgentResponseDto_1.AgentResponseDtoToJSON)(value['agent']),
+        'agent': (0, AgentSettingsResponseDto_1.AgentSettingsResponseDtoToJSON)(value['agent']),
     };
 }

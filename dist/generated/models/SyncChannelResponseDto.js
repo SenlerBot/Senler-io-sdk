@@ -20,6 +20,7 @@ exports.SyncChannelResponseDtoToJSON = SyncChannelResponseDtoToJSON;
 exports.SyncChannelResponseDtoToJSONTyped = SyncChannelResponseDtoToJSONTyped;
 const ChannelTokenResponseDto_1 = require("./ChannelTokenResponseDto");
 const ChannelResponseDto_1 = require("./ChannelResponseDto");
+const SyncChannelFieldResultDto_1 = require("./SyncChannelFieldResultDto");
 /**
  * Check if a given object implements the SyncChannelResponseDto interface.
  */
@@ -28,7 +29,7 @@ function instanceOfSyncChannelResponseDto(value) {
         return false;
     if (!('token' in value) || value['token'] === undefined)
         return false;
-    if (!('syncedFields' in value) || value['syncedFields'] === undefined)
+    if (!('fieldResults' in value) || value['fieldResults'] === undefined)
         return false;
     return true;
 }
@@ -42,7 +43,7 @@ function SyncChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'channel': (0, ChannelResponseDto_1.ChannelResponseDtoFromJSON)(json['channel']),
         'token': (0, ChannelTokenResponseDto_1.ChannelTokenResponseDtoFromJSON)(json['token']),
-        'syncedFields': json['synced_fields'],
+        'fieldResults': (json['field_results'].map(SyncChannelFieldResultDto_1.SyncChannelFieldResultDtoFromJSON)),
     };
 }
 function SyncChannelResponseDtoToJSON(json) {
@@ -55,6 +56,6 @@ function SyncChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'channel': (0, ChannelResponseDto_1.ChannelResponseDtoToJSON)(value['channel']),
         'token': (0, ChannelTokenResponseDto_1.ChannelTokenResponseDtoToJSON)(value['token']),
-        'synced_fields': value['syncedFields'],
+        'field_results': (value['fieldResults'].map(SyncChannelFieldResultDto_1.SyncChannelFieldResultDtoToJSON)),
     };
 }

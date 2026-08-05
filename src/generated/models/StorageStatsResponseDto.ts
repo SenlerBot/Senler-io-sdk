@@ -62,7 +62,7 @@ export interface StorageStatsResponseDto {
      */
     totalFiles: number;
     /**
-     * (file_size + thumbnail_size)
+     * (file_size + preview_size)
      * @type {number}
      * @memberof StorageStatsResponseDto
      */

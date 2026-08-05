@@ -16,17 +16,11 @@
  */
 export interface DialogButtonClickDto {
     /**
-     * , .
+     * .
      * @type {string}
      * @memberof DialogButtonClickDto
      */
-    callbackData: string;
-    /**
-     * (, AI )
-     * @type {string}
-     * @memberof DialogButtonClickDto
-     */
-    buttonText?: string;
+    buttonInstanceId: string;
 }
 /**
  * Check if a given object implements the DialogButtonClickDto interface.

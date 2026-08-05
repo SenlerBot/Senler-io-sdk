@@ -30,7 +30,8 @@ exports.CostSectionEconomicsSectionEnum = {
     ImageGeneration: 'image_generation',
     AudioGeneration: 'audio_generation',
     SpeechRecognition: 'speech_recognition',
-    MetricsExtraction: 'metrics_extraction'
+    MetricsExtraction: 'metrics_extraction',
+    HostedTool: 'hosted_tool'
 };
 /**
  * Check if a given object implements the CostSectionEconomics interface.

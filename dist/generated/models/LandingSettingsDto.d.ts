@@ -21,6 +21,12 @@ export interface LandingSettingsDto {
      * @memberof LandingSettingsDto
      */
     listVisible: boolean;
+    /**
+     * HEX-
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    backgroundColor: string;
 }
 /**
  * Check if a given object implements the LandingSettingsDto interface.

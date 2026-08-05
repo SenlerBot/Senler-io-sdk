@@ -323,11 +323,23 @@ export interface CreateAgentDto {
      */
     enableStreaming?: boolean;
     /**
+     * AI
+     * @type {string}
+     * @memberof CreateAgentDto
+     */
+    widgetAiProgressMode?: CreateAgentDtoWidgetAiProgressModeEnum;
+    /**
      * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enablePreliminaryResponse?: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    respondOnSegmentSubscription?: boolean;
     /**
      * AI-. true ,
      * @type {boolean}
@@ -527,6 +539,15 @@ export declare const CreateAgentDtoTrainingModeEnum: {
     readonly Deep: "deep";
 };
 export type CreateAgentDtoTrainingModeEnum = typeof CreateAgentDtoTrainingModeEnum[keyof typeof CreateAgentDtoTrainingModeEnum];
+/**
+ * @export
+ */
+export declare const CreateAgentDtoWidgetAiProgressModeEnum: {
+    readonly SafeProgress: "safe_progress";
+    readonly Typing: "typing";
+    readonly Hidden: "hidden";
+};
+export type CreateAgentDtoWidgetAiProgressModeEnum = typeof CreateAgentDtoWidgetAiProgressModeEnum[keyof typeof CreateAgentDtoWidgetAiProgressModeEnum];
 /**
  * @export
  */

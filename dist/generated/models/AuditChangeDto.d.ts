@@ -29,6 +29,26 @@ export interface AuditChangeDto {
      */
     fieldLabel: string;
     /**
+     *
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    valueKind: AuditChangeDtoValueKindEnum;
+    /**
+     * old/new
+     * @type {{ [key: string]: any; }}
+     * @memberof AuditChangeDto
+     */
+    summaryData?: {
+        [key: string]: any;
+    };
+    /**
+     *
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    changeSummary?: string | null;
+    /**
      * ( ). , . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AuditChangeDto
@@ -36,6 +56,12 @@ export interface AuditChangeDto {
     oldValue?: {
         [key: string]: any;
     } | null;
+    /**
+     * old_value
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    oldValueDisplay?: string | null;
     /**
      * old_value,
      * @type {AuditValueReferenceDto}
@@ -51,6 +77,12 @@ export interface AuditChangeDto {
         [key: string]: any;
     } | null;
     /**
+     * new_value
+     * @type {string}
+     * @memberof AuditChangeDto
+     */
+    newValueDisplay?: string | null;
+    /**
      * new_value,
      * @type {AuditValueReferenceDto}
      * @memberof AuditChangeDto
@@ -64,6 +96,12 @@ export interface AuditChangeDto {
     added?: Array<{
         [key: string]: any;
     }>;
+    /**
+     * added
+     * @type {Array<string>}
+     * @memberof AuditChangeDto
+     */
+    addedDisplay?: Array<string>;
     /**
      * added,
      * @type {Array<AuditValueReferenceDto>}
@@ -79,12 +117,37 @@ export interface AuditChangeDto {
         [key: string]: any;
     }>;
     /**
+     * removed
+     * @type {Array<string>}
+     * @memberof AuditChangeDto
+     */
+    removedDisplay?: Array<string>;
+    /**
      * removed,
      * @type {Array<AuditValueReferenceDto>}
      * @memberof AuditChangeDto
      */
     removedRefs?: Array<AuditValueReferenceDto>;
 }
+/**
+ * @export
+ */
+export declare const AuditChangeDtoValueKindEnum: {
+    readonly Text: "text";
+    readonly LongText: "long_text";
+    readonly Boolean: "boolean";
+    readonly Number: "number";
+    readonly Enum: "enum";
+    readonly Date: "date";
+    readonly DateTime: "date_time";
+    readonly Money: "money";
+    readonly Bytes: "bytes";
+    readonly Minutes: "minutes";
+    readonly Reference: "reference";
+    readonly Url: "url";
+    readonly Json: "json";
+};
+export type AuditChangeDtoValueKindEnum = typeof AuditChangeDtoValueKindEnum[keyof typeof AuditChangeDtoValueKindEnum];
 /**
  * Check if a given object implements the AuditChangeDto interface.
  */

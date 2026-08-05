@@ -62,7 +62,7 @@ export interface StatisticsAiResponseToolDto {
      */
     credits: number;
     /**
-     * credits event-time ; RUB USD, (/); : 1.25 = 125
+     * credits event-time credit_rate; , (/); : 1.25 = 125
      * @type {number}
      * @memberof StatisticsAiResponseToolDto
      */

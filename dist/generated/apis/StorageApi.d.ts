@@ -14,12 +14,10 @@ import type { StorageFileDeleteResponseDto, StorageFilesListResponseDto, Storage
 export interface DeleteFilesRequest {
     projectId: string;
     fileId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteFilesAcceptLanguageEnum;
 }
 export interface DeleteOrphanedRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteOrphanedAcceptLanguageEnum;
 }
 export interface GetFilesRequest {
@@ -30,12 +28,10 @@ export interface GetFilesRequest {
     dialogId?: string;
     limit?: number;
     skip?: number;
-    xSessionId?: string;
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
 export interface GetStatsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetStatsAcceptLanguageEnum;
 }
 /**
@@ -130,6 +126,7 @@ export type GetFilesCategoryEnum = typeof GetFilesCategoryEnum[keyof typeof GetF
 export declare const GetFilesSourceEnum: {
     readonly Channel: "channel";
     readonly Dialog: "dialog";
+    readonly Delivery: "delivery";
     readonly KnowledgeBase: "knowledge_base";
     readonly Agent: "agent";
     readonly Web: "web";

@@ -37,14 +37,12 @@ import {
 export interface AvatarConfirmRequest {
     projectId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
     acceptLanguage?: AvatarConfirmAcceptLanguageEnum;
 }
 
 export interface AvatarUploadUrlRequest {
     projectId: string;
     getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: AvatarUploadUrlAcceptLanguageEnum;
 }
 
@@ -77,10 +75,6 @@ export class ProjectsAvatarApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -143,10 +137,6 @@ export class ProjectsAvatarApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

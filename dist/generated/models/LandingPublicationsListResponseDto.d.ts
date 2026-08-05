@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LandingPublicationResponseDto } from './LandingPublicationResponseDto';
+import type { LandingReadySolutionVersionResponseDto } from './LandingReadySolutionVersionResponseDto';
 /**
  * LandingPublicationsListResponseDto.
  * @export
@@ -22,6 +23,12 @@ export interface LandingPublicationsListResponseDto {
      * @memberof LandingPublicationsListResponseDto
      */
     versions: Array<LandingPublicationResponseDto>;
+    /**
+     * ,
+     * @type {Array<LandingReadySolutionVersionResponseDto>}
+     * @memberof LandingPublicationsListResponseDto
+     */
+    readySolutionVersions: Array<LandingReadySolutionVersionResponseDto>;
 }
 /**
  * Check if a given object implements the LandingPublicationsListResponseDto interface.

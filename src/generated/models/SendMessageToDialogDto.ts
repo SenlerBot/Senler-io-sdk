@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
+import type { MessageAttachmentReferenceDto } from './MessageAttachmentReferenceDto';
 import {
-    MessageAttachmentInputDtoFromJSON,
-    MessageAttachmentInputDtoFromJSONTyped,
-    MessageAttachmentInputDtoToJSON,
-    MessageAttachmentInputDtoToJSONTyped,
-} from './MessageAttachmentInputDto';
+    MessageAttachmentReferenceDtoFromJSON,
+    MessageAttachmentReferenceDtoFromJSONTyped,
+    MessageAttachmentReferenceDtoToJSON,
+    MessageAttachmentReferenceDtoToJSONTyped,
+} from './MessageAttachmentReferenceDto';
 import type { MessageButtonDto } from './MessageButtonDto';
 import {
     MessageButtonDtoFromJSON,
@@ -47,12 +47,19 @@ export interface SendMessageToDialogDto {
      */
     clientType?: SendMessageToDialogDtoClientTypeEnum;
     /**
-     * S3 (. 10, 50 MB ).
+     * . .
+     * @type {string}
+     * @memberof SendMessageToDialogDto
+     */
+    idempotencyKey?: string;
+    /**
+     * (. 10).
      *
      * :
      * 1. S3- .
      * 2. .
      * 3. .
+     * 4. fileId confirm.
      *
      * :
      * ```typescript
@@ -60,21 +67,15 @@ export interface SendMessageToDialogDto {
      * const confirm = await confirmUpload(uploadId, { dialogId });
      * await sendMessage({
      * content: '',
-     * attachments: [{
-     * storage_url: confirm.url,
-     * storage_path: confirm.storagePath,
-     * file_name: confirm.fileName,
-     * mime_type: confirm.fileType,
-     * file_size: confirm.fileSize,
-     * }],
+     * attachments: [{ id: confirm.fileId }],
      * });
      * ```
      *
-     * . MessageAttachmentInputDto
-     * @type {Array<MessageAttachmentInputDto>}
+     * ID.
+     * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof SendMessageToDialogDto
      */
-    attachments?: Array<MessageAttachmentInputDto>;
+    attachments?: Array<MessageAttachmentReferenceDto>;
     /**
      * .
      * @type {Array<MessageButtonDto>}
@@ -122,7 +123,8 @@ export function SendMessageToDialogDtoFromJSONTyped(json: any, ignoreDiscriminat
 
         'content': json['content'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
-        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentInputDtoFromJSON)),
+        'idempotencyKey': json['idempotency_key'] == null ? undefined : json['idempotency_key'],
+        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoFromJSON)),
         'buttons': json['buttons'] == null ? undefined : ((json['buttons'] as Array<any>).map(MessageButtonDtoFromJSON)),
         'replyToEventId': json['reply_to_event_id'] == null ? undefined : json['reply_to_event_id'],
     };
@@ -141,7 +143,8 @@ export function SendMessageToDialogDtoToJSONTyped(value?: SendMessageToDialogDto
 
         'content': value['content'],
         'client_type': value['clientType'],
-        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentInputDtoToJSON)),
+        'idempotency_key': value['idempotencyKey'],
+        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoToJSON)),
         'buttons': value['buttons'] == null ? undefined : ((value['buttons'] as Array<any>).map(MessageButtonDtoToJSON)),
         'reply_to_event_id': value['replyToEventId'],
     };

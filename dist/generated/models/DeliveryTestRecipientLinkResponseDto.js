@@ -13,16 +13,24 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeliveryTestRecipientLinkResponseDtoKindEnum = void 0;
 exports.instanceOfDeliveryTestRecipientLinkResponseDto = instanceOfDeliveryTestRecipientLinkResponseDto;
 exports.DeliveryTestRecipientLinkResponseDtoFromJSON = DeliveryTestRecipientLinkResponseDtoFromJSON;
 exports.DeliveryTestRecipientLinkResponseDtoFromJSONTyped = DeliveryTestRecipientLinkResponseDtoFromJSONTyped;
 exports.DeliveryTestRecipientLinkResponseDtoToJSON = DeliveryTestRecipientLinkResponseDtoToJSON;
 exports.DeliveryTestRecipientLinkResponseDtoToJSONTyped = DeliveryTestRecipientLinkResponseDtoToJSONTyped;
 /**
+ * @export
+ */
+exports.DeliveryTestRecipientLinkResponseDtoKindEnum = {
+    ExternalStart: 'external_start',
+    VkConsent: 'vk_consent'
+};
+/**
  * Check if a given object implements the DeliveryTestRecipientLinkResponseDto interface.
  */
 function instanceOfDeliveryTestRecipientLinkResponseDto(value) {
-    if (!('startUrl' in value) || value['startUrl'] === undefined)
+    if (!('kind' in value) || value['kind'] === undefined)
         return false;
     return true;
 }
@@ -34,7 +42,9 @@ function DeliveryTestRecipientLinkResponseDtoFromJSONTyped(json, ignoreDiscrimin
         return json;
     }
     return {
-        'startUrl': json['start_url'],
+        'kind': json['kind'],
+        'startUrl': json['start_url'] == null ? undefined : json['start_url'],
+        'vkGroupId': json['vk_group_id'] == null ? undefined : json['vk_group_id'],
     };
 }
 function DeliveryTestRecipientLinkResponseDtoToJSON(json) {
@@ -45,6 +55,8 @@ function DeliveryTestRecipientLinkResponseDtoToJSONTyped(value, ignoreDiscrimina
         return value;
     }
     return {
+        'kind': value['kind'],
         'start_url': value['startUrl'],
+        'vk_group_id': value['vkGroupId'],
     };
 }

@@ -24,7 +24,7 @@ export interface StatisticsAiResponseCostComponentDto {
      */
     credits: StatisticsNullableCreditsMetricDeltaDto;
     /**
-     * event-time ; RUB USD. cost- , project_currency_cost
+     * event-time credit_rate; . billing credit-usage-summary. cost-
      * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
      * @memberof StatisticsAiResponseCostComponentDto
      */

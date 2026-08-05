@@ -34,6 +34,12 @@ export interface EventButtonDto {
      */
     text: string;
     /**
+     * .
+     * @type {string}
+     * @memberof EventButtonDto
+     */
+    buttonInstanceId?: string;
+    /**
      *
      * @type {EventButtonDtoAction}
      * @memberof EventButtonDto
@@ -67,6 +73,7 @@ export function EventButtonDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
 
         'text': json['text'],
+        'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
         'action': EventButtonDtoActionFromJSON(json['action']),
         'row': json['row'] == null ? undefined : json['row'],
     };
@@ -84,6 +91,7 @@ export function EventButtonDtoToJSONTyped(value?: EventButtonDto | null, ignoreD
     return {
 
         'text': value['text'],
+        'button_instance_id': value['buttonInstanceId'],
         'action': EventButtonDtoActionToJSON(value['action']),
         'row': value['row'],
     };

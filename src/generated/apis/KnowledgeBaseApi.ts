@@ -63,26 +63,22 @@ import {
 
 export interface DeleteFoldersRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteFoldersAcceptLanguageEnum;
 }
 
 export interface DeleteTablesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteTablesAcceptLanguageEnum;
 }
 
 export interface FilesRequest {
     createKnowledgeFileDto: CreateKnowledgeFileDto;
-    xSessionId?: string;
     acceptLanguage?: FilesAcceptLanguageEnum;
 }
 
 export interface FilesUploadRequest {
     projectId: string;
     file: Blob;
-    xSessionId?: string;
     acceptLanguage?: FilesUploadAcceptLanguageEnum;
     folderId?: string | null;
     title?: string;
@@ -91,7 +87,6 @@ export interface FilesUploadRequest {
 export interface FilesUploadArchiveRequest {
     projectId: string;
     file: Blob;
-    xSessionId?: string;
     acceptLanguage?: FilesUploadArchiveAcceptLanguageEnum;
     folderId?: string | null;
     duplicateResolution?: FilesUploadArchiveDuplicateResolutionEnum;
@@ -99,14 +94,12 @@ export interface FilesUploadArchiveRequest {
 
 export interface FoldersRequest {
     createKnowledgeFolderDto: CreateKnowledgeFolderDto;
-    xSessionId?: string;
     acceptLanguage?: FoldersAcceptLanguageEnum;
 }
 
 export interface GetResourcesRequest {
     projectId: string;
     parentFolderId?: string | null;
-    xSessionId?: string;
     acceptLanguage?: GetResourcesAcceptLanguageEnum;
 }
 
@@ -115,7 +108,6 @@ export interface GetResourcesResolveRequest {
     folderIds?: Array<string>;
     fileIds?: Array<string>;
     tableIds?: Array<string>;
-    xSessionId?: string;
     acceptLanguage?: GetResourcesResolveAcceptLanguageEnum;
 }
 
@@ -126,38 +118,32 @@ export interface GetSearchRequest {
     resourceType?: GetSearchResourceTypeEnum;
     limit?: number;
     page?: number;
-    xSessionId?: string;
     acceptLanguage?: GetSearchAcceptLanguageEnum;
 }
 
 export interface GetTablesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetTablesAcceptLanguageEnum;
 }
 
 export interface KnowledgeBaseDeleteFilesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: KnowledgeBaseDeleteFilesAcceptLanguageEnum;
 }
 
 export interface KnowledgeBaseGetFilesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: KnowledgeBaseGetFilesAcceptLanguageEnum;
 }
 
 export interface TablesRequest {
     createKnowledgeTableDto: CreateKnowledgeTableDto;
-    xSessionId?: string;
     acceptLanguage?: TablesAcceptLanguageEnum;
 }
 
 export interface TablesUploadRequest {
     projectId: string;
     file: Blob;
-    xSessionId?: string;
     acceptLanguage?: TablesUploadAcceptLanguageEnum;
     folderId?: string | null;
     name?: string;
@@ -166,21 +152,18 @@ export interface TablesUploadRequest {
 export interface UpdateFilesRequest {
     id: string;
     updateKnowledgeFileDto: UpdateKnowledgeFileDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateFilesAcceptLanguageEnum;
 }
 
 export interface UpdateFoldersRequest {
     id: string;
     updateKnowledgeFolderDto: UpdateKnowledgeFolderDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateFoldersAcceptLanguageEnum;
 }
 
 export interface UpdateTablesRequest {
     id: string;
     updateKnowledgeTableDto: UpdateKnowledgeTableDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateTablesAcceptLanguageEnum;
 }
 
@@ -204,10 +187,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -259,10 +238,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -316,10 +291,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -380,10 +351,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -477,10 +444,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -568,10 +531,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -632,10 +591,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -704,10 +659,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -792,10 +743,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -847,10 +794,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -904,10 +847,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -958,10 +897,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1016,10 +951,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1080,10 +1011,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1179,10 +1106,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1245,10 +1168,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1310,10 +1229,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

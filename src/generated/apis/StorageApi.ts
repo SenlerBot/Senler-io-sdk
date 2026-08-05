@@ -37,13 +37,11 @@ import {
 export interface DeleteFilesRequest {
     projectId: string;
     fileId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteFilesAcceptLanguageEnum;
 }
 
 export interface DeleteOrphanedRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteOrphanedAcceptLanguageEnum;
 }
 
@@ -55,13 +53,11 @@ export interface GetFilesRequest {
     dialogId?: string;
     limit?: number;
     skip?: number;
-    xSessionId?: string;
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
 
 export interface GetStatsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetStatsAcceptLanguageEnum;
 }
 
@@ -92,10 +88,6 @@ export class StorageApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -148,10 +140,6 @@ export class StorageApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -229,10 +217,6 @@ export class StorageApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -284,10 +268,6 @@ export class StorageApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -374,6 +354,7 @@ export type GetFilesCategoryEnum = typeof GetFilesCategoryEnum[keyof typeof GetF
 export const GetFilesSourceEnum = {
     Channel: 'channel',
     Dialog: 'dialog',
+    Delivery: 'delivery',
     KnowledgeBase: 'knowledge_base',
     Agent: 'agent',
     Web: 'web',

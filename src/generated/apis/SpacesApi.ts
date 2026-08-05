@@ -51,14 +51,12 @@ import {
 
 export interface ChannelRefreshRequest {
     createChannelSpacesRefreshProcessDto: CreateChannelSpacesRefreshProcessDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelRefreshAcceptLanguageEnum;
 }
 
 export interface GetSectionsRequest {
     channelId: string;
     channelType: GetSectionsChannelTypeEnum;
-    xSessionId?: string;
     acceptLanguage?: GetSectionsAcceptLanguageEnum;
 }
 
@@ -77,7 +75,6 @@ export interface GetTreeNodesRequest {
     parentSpaceId?: string;
     cursor?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetTreeNodesAcceptLanguageEnum;
 }
 
@@ -95,32 +92,27 @@ export interface GetTreeRootRequest {
     lastObservedAtTo?: Date;
     cursor?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetTreeRootAcceptLanguageEnum;
 }
 
 export interface SpacesGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: SpacesGetByIdAcceptLanguageEnum;
 }
 
 export interface SpacesRefreshRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: SpacesRefreshAcceptLanguageEnum;
 }
 
 export interface SpacesUpdateProjectOperatorRequest {
     id: string;
     updateSpaceProjectOperatorDto: UpdateSpaceProjectOperatorDto;
-    xSessionId?: string;
     acceptLanguage?: SpacesUpdateProjectOperatorAcceptLanguageEnum;
 }
 
 export interface TreeRefreshRequest {
     createChannelsTreeRefreshProcessDto: CreateChannelsTreeRefreshProcessDto;
-    xSessionId?: string;
     acceptLanguage?: TreeRefreshAcceptLanguageEnum;
 }
 
@@ -146,10 +138,6 @@ export class SpacesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -218,10 +206,6 @@ export class SpacesApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -331,10 +315,6 @@ export class SpacesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -439,10 +419,6 @@ export class SpacesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -495,10 +471,6 @@ export class SpacesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -550,10 +522,6 @@ export class SpacesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -616,10 +584,6 @@ export class SpacesApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -674,10 +638,6 @@ export class SpacesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

@@ -32,12 +32,6 @@ export interface CreditTransactionDtoDetailsByAgentValue {
      */
     credits?: number;
     /**
-     * , (/); : 1.25 = 125
-     * @type {number}
-     * @memberof CreditTransactionDtoDetailsByAgentValue
-     */
-    cost?: number;
-    /**
      * tokens.
      * @type {number}
      * @memberof CreditTransactionDtoDetailsByAgentValue
@@ -76,7 +70,6 @@ export function CreditTransactionDtoDetailsByAgentValueFromJSONTyped(json: any, 
 
         'usageEvents': json['usage_events'] == null ? undefined : json['usage_events'],
         'credits': json['credits'] == null ? undefined : json['credits'],
-        'cost': json['cost'] == null ? undefined : json['cost'],
         'tokens': json['tokens'] == null ? undefined : json['tokens'],
         'type': json['type'] == null ? undefined : json['type'],
         'isNoAgent': json['is_no_agent'] == null ? undefined : json['is_no_agent'],
@@ -96,7 +89,6 @@ export function CreditTransactionDtoDetailsByAgentValueToJSONTyped(value?: Credi
 
         'usage_events': value['usageEvents'],
         'credits': value['credits'],
-        'cost': value['cost'],
         'tokens': value['tokens'],
         'type': value['type'],
         'is_no_agent': value['isNoAgent'],

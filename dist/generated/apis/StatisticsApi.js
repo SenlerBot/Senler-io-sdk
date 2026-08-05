@@ -81,9 +81,6 @@ class StatisticsApi extends runtime.BaseAPI {
             queryParameters['timezone'] = requestParameters['timezone'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -115,7 +112,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , . AI- cost-; . project_currency_cost project_currency.
+     * , , . AI- cost-; . project_currency_cost event-time credit_rate, . GET /api/billing/projects/:projectId/credit-usage-summary.
      *
      */
     async getCostsRaw(requestParameters, initOverrides) {
@@ -142,9 +139,6 @@ class StatisticsApi extends runtime.BaseAPI {
             queryParameters['timezone'] = requestParameters['timezone'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -168,7 +162,7 @@ class StatisticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetStatisticsCostsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , . AI- cost-; . project_currency_cost project_currency.
+     * , , . AI- cost-; . project_currency_cost event-time credit_rate, . GET /api/billing/projects/:projectId/credit-usage-summary.
      *
      */
     async getCosts(requestParameters, initOverrides) {
@@ -206,9 +200,6 @@ class StatisticsApi extends runtime.BaseAPI {
             queryParameters['offset'] = requestParameters['offset'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -267,9 +258,6 @@ class StatisticsApi extends runtime.BaseAPI {
             queryParameters['timezone'] = requestParameters['timezone'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -334,9 +322,6 @@ class StatisticsApi extends runtime.BaseAPI {
             queryParameters['cursor'] = requestParameters['cursor'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -395,9 +380,6 @@ class StatisticsApi extends runtime.BaseAPI {
             queryParameters['timezone'] = requestParameters['timezone'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

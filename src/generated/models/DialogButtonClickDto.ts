@@ -20,24 +20,18 @@ import { mapValues } from '../runtime';
  */
 export interface DialogButtonClickDto {
     /**
-     * , .
+     * .
      * @type {string}
      * @memberof DialogButtonClickDto
      */
-    callbackData: string;
-    /**
-     * (, AI )
-     * @type {string}
-     * @memberof DialogButtonClickDto
-     */
-    buttonText?: string;
+    buttonInstanceId: string;
 }
 
 /**
  * Check if a given object implements the DialogButtonClickDto interface.
  */
 export function instanceOfDialogButtonClickDto(value: object): value is DialogButtonClickDto {
-    if (!('callbackData' in value) || value['callbackData'] === undefined) return false;
+    if (!('buttonInstanceId' in value) || value['buttonInstanceId'] === undefined) return false;
     return true;
 }
 
@@ -51,8 +45,7 @@ export function DialogButtonClickDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
-        'callbackData': json['callback_data'],
-        'buttonText': json['button_text'] == null ? undefined : json['button_text'],
+        'buttonInstanceId': json['button_instance_id'],
     };
 }
 
@@ -67,7 +60,6 @@ export function DialogButtonClickDtoToJSONTyped(value?: DialogButtonClickDto | n
 
     return {
 
-        'callback_data': value['callbackData'],
-        'button_text': value['buttonText'],
+        'button_instance_id': value['buttonInstanceId'],
     };
 }

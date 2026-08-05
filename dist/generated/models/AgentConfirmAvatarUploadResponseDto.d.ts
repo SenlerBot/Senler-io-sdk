@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AgentResponseDto } from './AgentResponseDto';
+import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
 /**
  * AgentConfirmAvatarUploadResponseDto.
  * @export
@@ -18,10 +18,10 @@ import type { AgentResponseDto } from './AgentResponseDto';
 export interface AgentConfirmAvatarUploadResponseDto {
     /**
      * avatar_url
-     * @type {AgentResponseDto}
+     * @type {AgentSettingsResponseDto}
      * @memberof AgentConfirmAvatarUploadResponseDto
      */
-    agent: AgentResponseDto;
+    agent: AgentSettingsResponseDto;
 }
 /**
  * Check if a given object implements the AgentConfirmAvatarUploadResponseDto interface.

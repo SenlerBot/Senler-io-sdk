@@ -10,58 +10,48 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftResponseDto, AgentResponseDto, AgentWithDraftResponseDto, AgentsByListResponseDto, AgentsListResponseDto, CreateAgentDto, SuccessResponseDto, UpdateAgentDraftDto, UpdateAgentDto, UpdateWizardProgressDto } from '../models/index';
+import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentsByListResponseDto, CreateAgentDto, PatchAgentInstructionDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentDraftDto, UpdateAgentDto, UpdateAgentInstalledAppEventsDto, UpdateAgentInstalledAppToolsDto, UpdateWizardProgressDto } from '../models/index';
 export interface AcquisitionRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: AcquisitionAcceptLanguageEnum;
 }
 export interface ActivateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: ActivateAcceptLanguageEnum;
 }
 export interface AgentsCreateRequest {
-    xSessionId: string;
     createAgentDto: CreateAgentDto;
     acceptLanguage?: AgentsCreateAcceptLanguageEnum;
 }
 export interface AgentsDeactivateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: AgentsDeactivateAcceptLanguageEnum;
 }
 export interface AgentsGetByIdRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: AgentsGetByIdAcceptLanguageEnum;
 }
 export interface AgentsUpdateRequest {
     id: string;
-    xSessionId: string;
     updateAgentDto: UpdateAgentDto;
     acceptLanguage?: AgentsUpdateAcceptLanguageEnum;
 }
 export interface Deactivate2Request {
     id: string;
-    xSessionId: string;
     acceptLanguage?: Deactivate2AcceptLanguageEnum;
 }
 export interface DeleteDraftRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DeleteDraftAcceptLanguageEnum;
 }
 export interface DraftRequest {
     id: string;
-    xSessionId: string;
     updateAgentDraftDto: UpdateAgentDraftDto;
     acceptLanguage?: DraftAcceptLanguageEnum;
 }
 export interface GetAutoAssignmentPreviewRequest {
     id: string;
     autoAssignmentMode: GetAutoAssignmentPreviewAutoAssignmentModeEnum;
-    xSessionId: string;
     autoAssignmentChannelIds?: Array<string> | null;
     autoAssignmentDialogScope?: GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
     autoAssignmentRole?: GetAutoAssignmentPreviewAutoAssignmentRoleEnum;
@@ -69,45 +59,69 @@ export interface GetAutoAssignmentPreviewRequest {
 }
 export interface GetByListRequest {
     listId: string;
-    xSessionId: string;
     acceptLanguage?: GetByListAcceptLanguageEnum;
 }
 export interface GetDraftRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetDraftAcceptLanguageEnum;
 }
-export interface GetWithDraftRequest {
+export interface GetDraftInstructionRequest {
     id: string;
-    xSessionId: string;
-    acceptLanguage?: GetWithDraftAcceptLanguageEnum;
+    acceptLanguage?: GetDraftInstructionAcceptLanguageEnum;
+}
+export interface GetInstalledAppEventsRequest {
+    id: string;
+    acceptLanguage?: GetInstalledAppEventsAcceptLanguageEnum;
+}
+export interface GetInstalledAppToolsRequest {
+    id: string;
+    acceptLanguage?: GetInstalledAppToolsAcceptLanguageEnum;
+}
+export interface GetInstructionRequest {
+    id: string;
+    acceptLanguage?: GetInstructionAcceptLanguageEnum;
 }
 export interface ListRequest {
     projectId: string;
-    xSessionId: string;
     limit?: number;
     offset?: number;
     acceptLanguage?: ListAcceptLanguageEnum;
 }
 export interface PublishRequest {
     id: string;
-    xSessionId: string;
     updateAgentDraftDto: UpdateAgentDraftDto;
     acceptLanguage?: PublishAcceptLanguageEnum;
 }
 export interface RevertRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: RevertAcceptLanguageEnum;
+}
+export interface UpdateDraftInstructionRequest {
+    id: string;
+    patchAgentInstructionDto: PatchAgentInstructionDto;
+    acceptLanguage?: UpdateDraftInstructionAcceptLanguageEnum;
+}
+export interface UpdateInstalledAppEventsRequest {
+    id: string;
+    updateAgentInstalledAppEventsDto: UpdateAgentInstalledAppEventsDto;
+    acceptLanguage?: UpdateInstalledAppEventsAcceptLanguageEnum;
+}
+export interface UpdateInstalledAppToolsRequest {
+    id: string;
+    updateAgentInstalledAppToolsDto: UpdateAgentInstalledAppToolsDto;
+    acceptLanguage?: UpdateInstalledAppToolsAcceptLanguageEnum;
+}
+export interface UpdateInstructionRequest {
+    id: string;
+    patchAgentInstructionDto: PatchAgentInstructionDto;
+    acceptLanguage?: UpdateInstructionAcceptLanguageEnum;
 }
 export interface UpdateRestoreRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: UpdateRestoreAcceptLanguageEnum;
 }
 export interface UpdateWizardProgressRequest {
     id: string;
-    xSessionId: string;
     updateWizardProgressDto: UpdateWizardProgressDto;
     acceptLanguage?: UpdateWizardProgressAcceptLanguageEnum;
 }
@@ -129,22 +143,22 @@ export declare class AgentsApi extends runtime.BaseAPI {
      * is_active = true . .
      *
      */
-    activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
+    activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * is_active = true . .
      *
      */
-    activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * . can_manage_agents.
      *
      */
-    agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
+    agentsCreateRaw(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * . can_manage_agents.
      *
      */
-    agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    agentsCreate(requestParameters: AgentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * . can_manage_agents.
      *
@@ -159,32 +173,32 @@ export declare class AgentsApi extends runtime.BaseAPI {
      * .
      * ID
      */
-    agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
+    agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * .
      * ID
      */
-    agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * .
      *
      */
-    agentsUpdateRaw(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
+    agentsUpdateRaw(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * .
      *
      */
-    agentsUpdate(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    agentsUpdate(requestParameters: AgentsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * is_active = false . .
      *
      */
-    deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
+    deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * is_active = false . .
      *
      */
-    deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * .
      *
@@ -199,12 +213,12 @@ export declare class AgentsApi extends runtime.BaseAPI {
      * . \" \".
      * ( )
      */
-    draftRaw(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>>;
+    draftRaw(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
     /**
      * . \" \".
      * ( )
      */
-    draft(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
+    draft(requestParameters: DraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
      * /, .
      *
@@ -229,62 +243,132 @@ export declare class AgentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>>;
+    getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsStateResponseDto>>;
     /**
      * , .
      *
      */
-    getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
+    getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsStateResponseDto>;
     /**
-     * ( ).
+     * . , null.
      *
      */
-    getWithDraftRaw(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentWithDraftResponseDto>>;
+    getDraftInstructionRaw(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>>;
     /**
-     * ( ).
+     * . , null.
      *
      */
-    getWithDraft(requestParameters: GetWithDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentWithDraftResponseDto>;
+    getDraftInstruction(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
     /**
-     * . .
-     *
+     * .
+     * ,
      */
-    listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsListResponseDto>>;
+    getInstalledAppEventsRaw(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>>;
     /**
-     * . .
-     *
+     * .
+     * ,
      */
-    list(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsListResponseDto>;
-    /**
-     * , . .
-     *
-     */
-    publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
-    /**
-     * , . .
-     *
-     */
-    publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    getInstalledAppEvents(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
     /**
      * .
      *
      */
-    revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftResponseDto>>;
+    getInstalledAppToolsRaw(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>>;
     /**
      * .
      *
      */
-    revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftResponseDto>;
+    getInstalledAppTools(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>>;
+    /**
+     * .
+     *
+     */
+    getInstructionRaw(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getInstruction(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
+    /**
+     * . .
+     *
+     */
+    listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsListResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    list(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto>;
+    /**
+     * , . .
+     *
+     */
+    publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    /**
+     * .
+     *
+     */
+    revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
+    /**
+     * .
+     *
+     */
+    revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
+    /**
+     * . , .
+     *
+     */
+    updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
+    /**
+     * . , .
+     *
+     */
+    updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
+    /**
+     * , .
+     * ,
+     */
+    updateInstalledAppEventsRaw(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>>;
+    /**
+     * , .
+     * ,
+     */
+    updateInstalledAppEvents(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
+    /**
+     * , .
+     *
+     */
+    updateInstalledAppToolsRaw(requestParameters: UpdateInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>>;
+    /**
+     * , .
+     *
+     */
+    updateInstalledAppTools(requestParameters: UpdateInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>>;
+    /**
+     * . , .
+     *
+     */
+    updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
+    /**
+     * . , .
+     *
+     */
+    updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
     /**
      * . can_manage_agents.
      *
      */
-    updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
+    updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * . can_manage_agents.
      *
      */
-    updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
+    updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * .
      *
@@ -421,11 +505,35 @@ export type GetDraftAcceptLanguageEnum = typeof GetDraftAcceptLanguageEnum[keyof
 /**
  * @export
  */
-export declare const GetWithDraftAcceptLanguageEnum: {
+export declare const GetDraftInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetWithDraftAcceptLanguageEnum = typeof GetWithDraftAcceptLanguageEnum[keyof typeof GetWithDraftAcceptLanguageEnum];
+export type GetDraftInstructionAcceptLanguageEnum = typeof GetDraftInstructionAcceptLanguageEnum[keyof typeof GetDraftInstructionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledAppEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalledAppEventsAcceptLanguageEnum = typeof GetInstalledAppEventsAcceptLanguageEnum[keyof typeof GetInstalledAppEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledAppToolsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalledAppToolsAcceptLanguageEnum = typeof GetInstalledAppToolsAcceptLanguageEnum[keyof typeof GetInstalledAppToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstructionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];
 /**
  * @export
  */
@@ -450,6 +558,38 @@ export declare const RevertAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type RevertAcceptLanguageEnum = typeof RevertAcceptLanguageEnum[keyof typeof RevertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDraftInstructionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDraftInstructionAcceptLanguageEnum = typeof UpdateDraftInstructionAcceptLanguageEnum[keyof typeof UpdateDraftInstructionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateInstalledAppEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateInstalledAppEventsAcceptLanguageEnum = typeof UpdateInstalledAppEventsAcceptLanguageEnum[keyof typeof UpdateInstalledAppEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateInstalledAppToolsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateInstalledAppToolsAcceptLanguageEnum = typeof UpdateInstalledAppToolsAcceptLanguageEnum[keyof typeof UpdateInstalledAppToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateInstructionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateInstructionAcceptLanguageEnum = typeof UpdateInstructionAcceptLanguageEnum[keyof typeof UpdateInstructionAcceptLanguageEnum];
 /**
  * @export
  */

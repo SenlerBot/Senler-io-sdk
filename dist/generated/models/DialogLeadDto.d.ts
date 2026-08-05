@@ -58,11 +58,11 @@ export interface DialogLeadDto {
      */
     externalUserId: string;
     /**
-     *
+     * ; null
      * @type {boolean}
      * @memberof DialogLeadDto
      */
-    isSubscribed: boolean;
+    isSubscribed: boolean | null;
 }
 /**
  * Check if a given object implements the DialogLeadDto interface.

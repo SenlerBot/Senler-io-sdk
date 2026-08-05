@@ -75,74 +75,63 @@ import {
 
 export interface GetLandingsPlatformMaxMiniAppsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum;
 }
 
 export interface GetLandingsPlatformTelegramMenuButtonsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum;
 }
 
 export interface GetLandingsPlatformTelegramMiniAppsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum;
 }
 
 export interface GetLandingsPlatformVkAppsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformVkAppsAcceptLanguageEnum;
 }
 
 export interface LandingsPlatformMaxMiniAppTargetRequest {
     projectId: string;
     setLandingMaxMiniAppTargetDto: SetLandingMaxMiniAppTargetDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum;
 }
 
 export interface LandingsPlatformMaxMiniAppVerificationRequest {
     projectId: string;
     startLandingMaxMiniAppVerificationDto: StartLandingMaxMiniAppVerificationDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum;
 }
 
 export interface LandingsPlatformTelegramMenuButtonApplyRequest {
     projectId: string;
     setLandingTelegramMenuButtonDto: SetLandingTelegramMenuButtonDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum;
 }
 
 export interface LandingsPlatformTelegramMenuButtonCheckRequest {
     projectId: string;
     checkLandingTelegramMenuButtonDto: CheckLandingTelegramMenuButtonDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum;
 }
 
 export interface LandingsPlatformTelegramMiniAppVerificationRequest {
     projectId: string;
     startLandingTelegramMiniAppVerificationDto: StartLandingTelegramMiniAppVerificationDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum;
 }
 
 export interface LandingsPlatformVkAppTargetRequest {
     projectId: string;
     setLandingVkAppTargetDto: SetLandingVkAppTargetDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformVkAppTargetAcceptLanguageEnum;
 }
 
 export interface UpdateLandingsPlatformTelegramMiniAppRequest {
     projectId: string;
     setLandingTelegramMiniAppDto: SetLandingTelegramMiniAppDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum;
 }
 
@@ -166,10 +155,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -223,10 +208,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -279,10 +260,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -334,10 +311,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -399,10 +372,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -466,10 +435,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -531,10 +496,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -598,10 +559,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -663,10 +620,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -730,10 +683,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -795,10 +744,6 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

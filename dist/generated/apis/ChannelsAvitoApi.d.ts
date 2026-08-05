@@ -13,13 +13,11 @@ import * as runtime from '../runtime';
 import type { CheckWebhookStatusResultDto, SetupWebhookDto, SetupWebhookResultDto } from '../models/index';
 export interface TokensAvitoCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensAvitoCheckWebhookStatusAcceptLanguageEnum;
 }
 export interface TokensAvitoWebhookSetupRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensAvitoWebhookSetupAcceptLanguageEnum;
 }
 /**

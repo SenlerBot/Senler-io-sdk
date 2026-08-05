@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
+import type { MessageAttachmentReferenceDto } from './MessageAttachmentReferenceDto';
 import {
-    MessageAttachmentInputDtoFromJSON,
-    MessageAttachmentInputDtoFromJSONTyped,
-    MessageAttachmentInputDtoToJSON,
-    MessageAttachmentInputDtoToJSONTyped,
-} from './MessageAttachmentInputDto';
+    MessageAttachmentReferenceDtoFromJSON,
+    MessageAttachmentReferenceDtoFromJSONTyped,
+    MessageAttachmentReferenceDtoToJSON,
+    MessageAttachmentReferenceDtoToJSONTyped,
+} from './MessageAttachmentReferenceDto';
 import type { LeadsFilterDto } from './LeadsFilterDto';
 import {
     LeadsFilterDtoFromJSON,
@@ -53,11 +53,11 @@ export interface UpdateDeliveryDto {
      */
     messageText?: string;
     /**
-     * upload-url/confirm
-     * @type {Array<MessageAttachmentInputDto>}
+     * ID
+     * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof UpdateDeliveryDto
      */
-    attachments?: Array<MessageAttachmentInputDto>;
+    attachments?: Array<MessageAttachmentReferenceDto>;
 }
 
 /**
@@ -80,7 +80,7 @@ export function UpdateDeliveryDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'name': json['name'] == null ? undefined : json['name'],
         'filters': json['filters'] == null ? undefined : LeadsFilterDtoFromJSON(json['filters']),
         'messageText': json['message_text'] == null ? undefined : json['message_text'],
-        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentInputDtoFromJSON)),
+        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoFromJSON)),
     };
 }
 
@@ -98,6 +98,6 @@ export function UpdateDeliveryDtoToJSONTyped(value?: UpdateDeliveryDto | null, i
         'name': value['name'],
         'filters': LeadsFilterDtoToJSON(value['filters']),
         'message_text': value['messageText'],
-        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentInputDtoToJSON)),
+        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoToJSON)),
     };
 }

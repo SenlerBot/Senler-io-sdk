@@ -10,21 +10,18 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditsBuyDto, CreditsCheckResponseDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SuccessResponseDto, TariffBuyDto, TariffCheckResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
+import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditUsageSummaryDto, CreditsBuyDto, CreditsCheckResponseDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SuccessResponseDto, TariffBuyDto, TariffCheckResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
 export interface DeleteProjectsTariffNextRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteProjectsTariffNextAcceptLanguageEnum;
 }
 export interface GetCreditTransactionsDetailsRequest {
     transactionId: string;
     groupBy?: GetCreditTransactionsDetailsGroupByEnum;
-    xSessionId?: string;
     acceptLanguage?: GetCreditTransactionsDetailsAcceptLanguageEnum;
 }
 export interface GetProjectsBalanceRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsBalanceAcceptLanguageEnum;
 }
 export interface GetProjectsCreditTransactionsRequest {
@@ -35,14 +32,18 @@ export interface GetProjectsCreditTransactionsRequest {
     dateTo?: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsCreditTransactionsAcceptLanguageEnum;
+}
+export interface GetProjectsCreditUsageSummaryRequest {
+    projectId: string;
+    dateFrom: string;
+    dateTo: string;
+    acceptLanguage?: GetProjectsCreditUsageSummaryAcceptLanguageEnum;
 }
 export interface GetProjectsCreditsCheckRequest {
     projectId: string;
     packageId: string;
     useBalance?: boolean;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsCreditsCheckAcceptLanguageEnum;
 }
 export interface GetProjectsOrdersRequest {
@@ -51,18 +52,15 @@ export interface GetProjectsOrdersRequest {
     status?: Array<string>;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsOrdersAcceptLanguageEnum;
 }
 export interface GetProjectsOrdersCryptoStatusRequest {
     projectId: string;
     orderId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsOrdersCryptoStatusAcceptLanguageEnum;
 }
 export interface GetProjectsPaymentSettingsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsPaymentSettingsAcceptLanguageEnum;
 }
 export interface GetProjectsTariffCheckRequest {
@@ -70,12 +68,10 @@ export interface GetProjectsTariffCheckRequest {
     tariffId: string;
     period: GetProjectsTariffCheckPeriodEnum;
     useBalance?: boolean;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsTariffCheckAcceptLanguageEnum;
 }
 export interface GetProjectsTariffsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsTariffsAcceptLanguageEnum;
 }
 export interface GetProjectsTransactionsRequest {
@@ -87,58 +83,49 @@ export interface GetProjectsTransactionsRequest {
     dateTo?: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsTransactionsAcceptLanguageEnum;
 }
 export interface GetTransactionsDetailsRequest {
     transactionId: string;
     groupBy?: GetTransactionsDetailsGroupByEnum;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetTransactionsDetailsAcceptLanguageEnum;
 }
 export interface ProjectsCreditsBuyRequest {
     projectId: string;
     creditsBuyDto: CreditsBuyDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsCreditsBuyAcceptLanguageEnum;
 }
 export interface ProjectsOrdersRequest {
     projectId: string;
     createOrderDto: CreateOrderDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsOrdersAcceptLanguageEnum;
 }
 export interface ProjectsOrdersCryptoIntentRequest {
     projectId: string;
     orderId: string;
     createCryptoPaymentIntentDto: CreateCryptoPaymentIntentDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsOrdersCryptoIntentAcceptLanguageEnum;
 }
 export interface ProjectsOrdersCryptoSubmitRequest {
     projectId: string;
     orderId: string;
     submitCryptoPaymentDto: SubmitCryptoPaymentDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsOrdersCryptoSubmitAcceptLanguageEnum;
 }
 export interface ProjectsPaymentSettingsRequest {
     projectId: string;
     savePaymentSettingsDto: SavePaymentSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsPaymentSettingsAcceptLanguageEnum;
 }
 export interface ProjectsTariffBuyRequest {
     projectId: string;
     tariffBuyDto: TariffBuyDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsTariffBuyAcceptLanguageEnum;
 }
 export interface UpdateProjectsAutoPurchaseRequest {
     projectId: string;
     updateAutoPurchaseDto: UpdateAutoPurchaseDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateProjectsAutoPurchaseAcceptLanguageEnum;
 }
 /**
@@ -185,6 +172,16 @@ export declare class BillingApi extends runtime.BaseAPI {
      *
      */
     getProjectsCreditTransactions(requestParameters: GetProjectsCreditTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditTransactionsResponseDto>;
+    /**
+     * . ; .
+     *
+     */
+    getProjectsCreditUsageSummaryRaw(requestParameters: GetProjectsCreditUsageSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditUsageSummaryDto>>;
+    /**
+     * . ; .
+     *
+     */
+    getProjectsCreditUsageSummary(requestParameters: GetProjectsCreditUsageSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditUsageSummaryDto>;
     /**
      * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
      *
@@ -388,6 +385,14 @@ export declare const GetProjectsCreditTransactionsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetProjectsCreditTransactionsAcceptLanguageEnum = typeof GetProjectsCreditTransactionsAcceptLanguageEnum[keyof typeof GetProjectsCreditTransactionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetProjectsCreditUsageSummaryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProjectsCreditUsageSummaryAcceptLanguageEnum = typeof GetProjectsCreditUsageSummaryAcceptLanguageEnum[keyof typeof GetProjectsCreditUsageSummaryAcceptLanguageEnum];
 /**
  * @export
  */

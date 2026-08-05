@@ -91,6 +91,7 @@ export declare const DialogLastMessageDtoActionTypeEnum: {
     readonly LeadMerged: "lead_merged";
     readonly LeadSubscribed: "lead_subscribed";
     readonly LeadUnsubscribed: "lead_unsubscribed";
+    readonly SegmentSubscribed: "segment_subscribed";
     readonly LeadBlocked: "lead_blocked";
     readonly LeadUnblocked: "lead_unblocked";
     readonly LeadBlacklisted: "lead_blacklisted";
@@ -107,6 +108,7 @@ export declare const DialogLastMessageDtoActionTypeEnum: {
     readonly BroadcastStarted: "broadcast_started";
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
+    readonly AiResponseStarted: "ai_response_started";
     readonly ToolStarted: "tool_started";
     readonly ToolCompleted: "tool_completed";
     readonly ToolFailed: "tool_failed";
@@ -118,11 +120,13 @@ export declare const DialogLastMessageDtoActionTypeEnum: {
     readonly SpeechRecognized: "speech_recognized";
     readonly ImageAnalyzed: "image_analyzed";
     readonly AiActionExecuted: "ai_action_executed";
+    readonly AiProviderCallCompleted: "ai_provider_call_completed";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";
     readonly TimerScheduled: "timer_scheduled";
     readonly TimerTriggered: "timer_triggered";
+    readonly AppEventReceived: "app_event_received";
 };
 export type DialogLastMessageDtoActionTypeEnum = typeof DialogLastMessageDtoActionTypeEnum[keyof typeof DialogLastMessageDtoActionTypeEnum];
 /**

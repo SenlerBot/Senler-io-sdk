@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AppDescriptionDto } from './AppDescriptionDto';
+import {
+    AppDescriptionDtoFromJSON,
+    AppDescriptionDtoFromJSONTyped,
+    AppDescriptionDtoToJSON,
+    AppDescriptionDtoToJSONTyped,
+} from './AppDescriptionDto';
+import type { AppEmbeddedPageSettingsResponseDto } from './AppEmbeddedPageSettingsResponseDto';
+import {
+    AppEmbeddedPageSettingsResponseDtoFromJSON,
+    AppEmbeddedPageSettingsResponseDtoFromJSONTyped,
+    AppEmbeddedPageSettingsResponseDtoToJSON,
+    AppEmbeddedPageSettingsResponseDtoToJSONTyped,
+} from './AppEmbeddedPageSettingsResponseDto';
+
 /**
  * AppCatalogResponseDto.
  * @export
@@ -33,10 +48,10 @@ export interface AppCatalogResponseDto {
     name: string;
     /**
      *
-     * @type {string}
+     * @type {AppDescriptionDto}
      * @memberof AppCatalogResponseDto
      */
-    description: string;
+    description: AppDescriptionDto;
     /**
      * URL
      * @type {string}
@@ -56,11 +71,29 @@ export interface AppCatalogResponseDto {
      */
     websiteUrl?: string | null;
     /**
+     * URL Markdown-
+     * @type {string}
+     * @memberof AppCatalogResponseDto
+     */
+    documentationUrl?: string | null;
+    /**
      *
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
     type: AppCatalogResponseDtoTypeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AppCatalogResponseDto
+     */
+    hasTools: boolean;
+    /**
+     *
+     * @type {AppEmbeddedPageSettingsResponseDto}
+     * @memberof AppCatalogResponseDto
+     */
+    embeddedPage?: AppEmbeddedPageSettingsResponseDto | null;
     /**
      * ,
      * @type {Array<string>}
@@ -88,8 +121,7 @@ export interface AppCatalogResponseDto {
 export const AppCatalogResponseDtoTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool',
-    EmbeddedPage: 'embedded_page'
+    AgentTool: 'agent_tool'
 } as const;
 export type AppCatalogResponseDtoTypeEnum = typeof AppCatalogResponseDtoTypeEnum[keyof typeof AppCatalogResponseDtoTypeEnum];
 
@@ -102,6 +134,7 @@ export function instanceOfAppCatalogResponseDto(value: object): value is AppCata
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('hasTools' in value) || value['hasTools'] === undefined) return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined) return false;
     if (!('allowInstalledAgentSettingsView' in value) || value['allowInstalledAgentSettingsView'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -120,11 +153,14 @@ export function AppCatalogResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
 
         'id': json['id'],
         'name': json['name'],
-        'description': json['description'],
+        'description': AppDescriptionDtoFromJSON(json['description']),
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
         'coverUrl': json['cover_url'] == null ? undefined : json['cover_url'],
         'websiteUrl': json['website_url'] == null ? undefined : json['website_url'],
+        'documentationUrl': json['documentation_url'] == null ? undefined : json['documentation_url'],
         'type': json['type'],
+        'hasTools': json['has_tools'],
+        'embeddedPage': json['embedded_page'] == null ? undefined : AppEmbeddedPageSettingsResponseDtoFromJSON(json['embedded_page']),
         'allowedPermissions': json['allowed_permissions'],
         'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
         'createdAt': (new Date(json['created_at'])),
@@ -144,11 +180,14 @@ export function AppCatalogResponseDtoToJSONTyped(value?: AppCatalogResponseDto |
 
         'id': value['id'],
         'name': value['name'],
-        'description': value['description'],
+        'description': AppDescriptionDtoToJSON(value['description']),
         'icon_url': value['iconUrl'],
         'cover_url': value['coverUrl'],
         'website_url': value['websiteUrl'],
+        'documentation_url': value['documentationUrl'],
         'type': value['type'],
+        'has_tools': value['hasTools'],
+        'embedded_page': AppEmbeddedPageSettingsResponseDtoToJSON(value['embeddedPage']),
         'allowed_permissions': value['allowedPermissions'],
         'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],
         'created_at': ((value['createdAt']).toISOString()),

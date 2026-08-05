@@ -24,6 +24,8 @@ exports.LandingSettingsDtoToJSONTyped = LandingSettingsDtoToJSONTyped;
 function instanceOfLandingSettingsDto(value) {
     if (!('listVisible' in value) || value['listVisible'] === undefined)
         return false;
+    if (!('backgroundColor' in value) || value['backgroundColor'] === undefined)
+        return false;
     return true;
 }
 function LandingSettingsDtoFromJSON(json) {
@@ -35,6 +37,7 @@ function LandingSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'listVisible': json['list_visible'],
+        'backgroundColor': json['background_color'],
     };
 }
 function LandingSettingsDtoToJSON(json) {
@@ -46,5 +49,6 @@ function LandingSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'list_visible': value['listVisible'],
+        'background_color': value['backgroundColor'],
     };
 }

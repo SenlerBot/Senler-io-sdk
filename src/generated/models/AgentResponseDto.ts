@@ -404,11 +404,23 @@ export interface AgentResponseDto {
      */
     enableStreaming: boolean;
     /**
+     * AI
+     * @type {string}
+     * @memberof AgentResponseDto
+     */
+    widgetAiProgressMode: AgentResponseDtoWidgetAiProgressModeEnum;
+    /**
      * (send_preliminary_response tool)
      * @type {boolean}
      * @memberof AgentResponseDto
      */
     enablePreliminaryResponse: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    respondOnSegmentSubscription: boolean;
     /**
      * AI-
      * @type {boolean}
@@ -628,6 +640,16 @@ export type AgentResponseDtoWizardTrainingModeSelectedEnum = typeof AgentRespons
 /**
  * @export
  */
+export const AgentResponseDtoWidgetAiProgressModeEnum = {
+    SafeProgress: 'safe_progress',
+    Typing: 'typing',
+    Hidden: 'hidden'
+} as const;
+export type AgentResponseDtoWidgetAiProgressModeEnum = typeof AgentResponseDtoWidgetAiProgressModeEnum[keyof typeof AgentResponseDtoWidgetAiProgressModeEnum];
+
+/**
+ * @export
+ */
 export const AgentResponseDtoProjectVarsInstructionModeEnum = {
     None: 'none',
     Read: 'read',
@@ -705,7 +727,9 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
+    if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined) return false;
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined) return false;
+    if (!('respondOnSegmentSubscription' in value) || value['respondOnSegmentSubscription'] === undefined) return false;
     if (!('enableMessageReactionsContext' in value) || value['enableMessageReactionsContext'] === undefined) return false;
     if (!('enableSelectiveResponse' in value) || value['enableSelectiveResponse'] === undefined) return false;
     if (!('enableOperatorReplySuggestions' in value) || value['enableOperatorReplySuggestions'] === undefined) return false;
@@ -792,7 +816,9 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
+        'widgetAiProgressMode': json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
+        'respondOnSegmentSubscription': json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'],
         'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'],
@@ -880,7 +906,9 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
+        'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
         'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],

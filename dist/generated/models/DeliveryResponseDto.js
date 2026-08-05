@@ -19,9 +19,9 @@ exports.DeliveryResponseDtoFromJSON = DeliveryResponseDtoFromJSON;
 exports.DeliveryResponseDtoFromJSONTyped = DeliveryResponseDtoFromJSONTyped;
 exports.DeliveryResponseDtoToJSON = DeliveryResponseDtoToJSON;
 exports.DeliveryResponseDtoToJSONTyped = DeliveryResponseDtoToJSONTyped;
-const MessageAttachmentInputDto_1 = require("./MessageAttachmentInputDto");
 const LeadsFilterDto_1 = require("./LeadsFilterDto");
 const DeliveryRunResponseDto_1 = require("./DeliveryRunResponseDto");
+const DeliveryAttachmentResponseDto_1 = require("./DeliveryAttachmentResponseDto");
 /**
  * @export
  */
@@ -82,7 +82,7 @@ function DeliveryResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'messageText': json['message_text'],
-        'attachments': (json['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoFromJSON)),
+        'attachments': (json['attachments'].map(DeliveryAttachmentResponseDto_1.DeliveryAttachmentResponseDtoFromJSON)),
         'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
         'recipientCount': json['recipient_count'],
         'lastRunId': json['last_run_id'],
@@ -106,7 +106,7 @@ function DeliveryResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'status': value['status'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'message_text': value['messageText'],
-        'attachments': (value['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoToJSON)),
+        'attachments': (value['attachments'].map(DeliveryAttachmentResponseDto_1.DeliveryAttachmentResponseDtoToJSON)),
         'scheduled_at': (value['scheduledAt'] == null ? null : value['scheduledAt'].toISOString()),
         'recipient_count': value['recipientCount'],
         'last_run_id': value['lastRunId'],

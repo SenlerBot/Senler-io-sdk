@@ -13,6 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AuditChangeDtoValueKindEnum = void 0;
 exports.instanceOfAuditChangeDto = instanceOfAuditChangeDto;
 exports.AuditChangeDtoFromJSON = AuditChangeDtoFromJSON;
 exports.AuditChangeDtoFromJSONTyped = AuditChangeDtoFromJSONTyped;
@@ -20,12 +21,32 @@ exports.AuditChangeDtoToJSON = AuditChangeDtoToJSON;
 exports.AuditChangeDtoToJSONTyped = AuditChangeDtoToJSONTyped;
 const AuditValueReferenceDto_1 = require("./AuditValueReferenceDto");
 /**
+ * @export
+ */
+exports.AuditChangeDtoValueKindEnum = {
+    Text: 'text',
+    LongText: 'long_text',
+    Boolean: 'boolean',
+    Number: 'number',
+    Enum: 'enum',
+    Date: 'date',
+    DateTime: 'date_time',
+    Money: 'money',
+    Bytes: 'bytes',
+    Minutes: 'minutes',
+    Reference: 'reference',
+    Url: 'url',
+    Json: 'json'
+};
+/**
  * Check if a given object implements the AuditChangeDto interface.
  */
 function instanceOfAuditChangeDto(value) {
     if (!('field' in value) || value['field'] === undefined)
         return false;
     if (!('fieldLabel' in value) || value['fieldLabel'] === undefined)
+        return false;
+    if (!('valueKind' in value) || value['valueKind'] === undefined)
         return false;
     return true;
 }
@@ -39,13 +60,20 @@ function AuditChangeDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'field': json['field'],
         'fieldLabel': json['field_label'],
+        'valueKind': json['value_kind'],
+        'summaryData': json['summary_data'] == null ? undefined : json['summary_data'],
+        'changeSummary': json['change_summary'] == null ? undefined : json['change_summary'],
         'oldValue': json['old_value'] == null ? undefined : json['old_value'],
+        'oldValueDisplay': json['old_value_display'] == null ? undefined : json['old_value_display'],
         'oldValueRef': json['old_value_ref'] == null ? undefined : (0, AuditValueReferenceDto_1.AuditValueReferenceDtoFromJSON)(json['old_value_ref']),
         'newValue': json['new_value'] == null ? undefined : json['new_value'],
+        'newValueDisplay': json['new_value_display'] == null ? undefined : json['new_value_display'],
         'newValueRef': json['new_value_ref'] == null ? undefined : (0, AuditValueReferenceDto_1.AuditValueReferenceDtoFromJSON)(json['new_value_ref']),
         'added': json['added'] == null ? undefined : json['added'],
+        'addedDisplay': json['added_display'] == null ? undefined : json['added_display'],
         'addedRefs': json['added_refs'] == null ? undefined : (json['added_refs'].map(AuditValueReferenceDto_1.AuditValueReferenceDtoFromJSON)),
         'removed': json['removed'] == null ? undefined : json['removed'],
+        'removedDisplay': json['removed_display'] == null ? undefined : json['removed_display'],
         'removedRefs': json['removed_refs'] == null ? undefined : (json['removed_refs'].map(AuditValueReferenceDto_1.AuditValueReferenceDtoFromJSON)),
     };
 }
@@ -59,13 +87,20 @@ function AuditChangeDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'field': value['field'],
         'field_label': value['fieldLabel'],
+        'value_kind': value['valueKind'],
+        'summary_data': value['summaryData'],
+        'change_summary': value['changeSummary'],
         'old_value': value['oldValue'],
+        'old_value_display': value['oldValueDisplay'],
         'old_value_ref': (0, AuditValueReferenceDto_1.AuditValueReferenceDtoToJSON)(value['oldValueRef']),
         'new_value': value['newValue'],
+        'new_value_display': value['newValueDisplay'],
         'new_value_ref': (0, AuditValueReferenceDto_1.AuditValueReferenceDtoToJSON)(value['newValueRef']),
         'added': value['added'],
+        'added_display': value['addedDisplay'],
         'added_refs': value['addedRefs'] == null ? undefined : (value['addedRefs'].map(AuditValueReferenceDto_1.AuditValueReferenceDtoToJSON)),
         'removed': value['removed'],
+        'removed_display': value['removedDisplay'],
         'removed_refs': value['removedRefs'] == null ? undefined : (value['removedRefs'].map(AuditValueReferenceDto_1.AuditValueReferenceDtoToJSON)),
     };
 }

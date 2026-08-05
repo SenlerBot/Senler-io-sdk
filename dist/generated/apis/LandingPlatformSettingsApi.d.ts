@@ -13,64 +13,53 @@ import * as runtime from '../runtime';
 import type { CheckLandingTelegramMenuButtonDto, LandingMaxMiniAppListResponseDto, LandingMaxMiniAppResponseDto, LandingMaxMiniAppVerificationResponseDto, LandingTelegramMenuButtonListResponseDto, LandingTelegramMenuButtonResponseDto, LandingTelegramMiniAppListResponseDto, LandingTelegramMiniAppResponseDto, LandingTelegramMiniAppVerificationResponseDto, LandingVkAppListResponseDto, LandingVkAppResponseDto, SetLandingMaxMiniAppTargetDto, SetLandingTelegramMenuButtonDto, SetLandingTelegramMiniAppDto, SetLandingVkAppTargetDto, StartLandingMaxMiniAppVerificationDto, StartLandingTelegramMiniAppVerificationDto } from '../models/index';
 export interface GetLandingsPlatformMaxMiniAppsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum;
 }
 export interface GetLandingsPlatformTelegramMenuButtonsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum;
 }
 export interface GetLandingsPlatformTelegramMiniAppsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum;
 }
 export interface GetLandingsPlatformVkAppsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPlatformVkAppsAcceptLanguageEnum;
 }
 export interface LandingsPlatformMaxMiniAppTargetRequest {
     projectId: string;
     setLandingMaxMiniAppTargetDto: SetLandingMaxMiniAppTargetDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum;
 }
 export interface LandingsPlatformMaxMiniAppVerificationRequest {
     projectId: string;
     startLandingMaxMiniAppVerificationDto: StartLandingMaxMiniAppVerificationDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum;
 }
 export interface LandingsPlatformTelegramMenuButtonApplyRequest {
     projectId: string;
     setLandingTelegramMenuButtonDto: SetLandingTelegramMenuButtonDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum;
 }
 export interface LandingsPlatformTelegramMenuButtonCheckRequest {
     projectId: string;
     checkLandingTelegramMenuButtonDto: CheckLandingTelegramMenuButtonDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum;
 }
 export interface LandingsPlatformTelegramMiniAppVerificationRequest {
     projectId: string;
     startLandingTelegramMiniAppVerificationDto: StartLandingTelegramMiniAppVerificationDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum;
 }
 export interface LandingsPlatformVkAppTargetRequest {
     projectId: string;
     setLandingVkAppTargetDto: SetLandingVkAppTargetDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsPlatformVkAppTargetAcceptLanguageEnum;
 }
 export interface UpdateLandingsPlatformTelegramMiniAppRequest {
     projectId: string;
     setLandingTelegramMiniAppDto: SetLandingTelegramMiniAppDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum;
 }
 /**

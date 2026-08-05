@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AttachmentGenerationDto } from './AttachmentGenerationDto';
+import type { EventAttachmentLinkDto } from './EventAttachmentLinkDto';
 import type { AttachmentFlagsDto } from './AttachmentFlagsDto';
 import type { EventAttachmentContactDto } from './EventAttachmentContactDto';
 import type { AttachmentRecognitionCabinetDto } from './AttachmentRecognitionCabinetDto';
@@ -33,13 +34,13 @@ export interface EventAttachmentCabinetDto {
      */
     type: EventAttachmentCabinetDtoTypeEnum;
     /**
-     * URL storage. storage.
+     * URL . storage_path source_url.
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
-    storageUrl?: string;
+    contentUrl?: string;
     /**
-     * preview URL , storage_url .
+     * URL . content_url.
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
@@ -61,7 +62,7 @@ export interface EventAttachmentCabinetDto {
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
-    unavailableReason?: EventAttachmentCabinetDtoUnavailableReasonEnum;
+    errorCode?: EventAttachmentCabinetDtoErrorCodeEnum;
     /**
      *
      * @type {string}
@@ -99,12 +100,6 @@ export interface EventAttachmentCabinetDto {
      */
     durationSeconds?: number;
     /**
-     * URL
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    thumbnailUrl?: string;
-    /**
      *
      * @type {AttachmentFlagsDto}
      * @memberof EventAttachmentCabinetDto
@@ -117,23 +112,11 @@ export interface EventAttachmentCabinetDto {
      */
     createdAt?: Date;
     /**
-     * storage
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    uploadStatus?: EventAttachmentCabinetDtoUploadStatusEnum;
-    /**
      *
      * @type {string}
      * @memberof EventAttachmentCabinetDto
      */
-    uploadStage?: EventAttachmentCabinetDtoUploadStageEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    uploadError?: string;
+    status?: EventAttachmentCabinetDtoStatusEnum;
     /**
      *
      * @type {string}
@@ -177,12 +160,6 @@ export interface EventAttachmentCabinetDto {
      */
     platformType?: EventAttachmentCabinetDtoPlatformTypeEnum;
     /**
-     * ID . API.
-     * @type {string}
-     * @memberof EventAttachmentCabinetDto
-     */
-    platformFileId?: string;
-    /**
      * non-file attachment
      * @type {EventAttachmentContactDto}
      * @memberof EventAttachmentCabinetDto
@@ -194,6 +171,12 @@ export interface EventAttachmentCabinetDto {
      * @memberof EventAttachmentCabinetDto
      */
     location?: EventAttachmentLocationDto;
+    /**
+     * non-file attachment
+     * @type {EventAttachmentLinkDto}
+     * @memberof EventAttachmentCabinetDto
+     */
+    link?: EventAttachmentLinkDto;
     /**
      *
      * @type {Date}
@@ -213,6 +196,7 @@ export declare const EventAttachmentCabinetDtoTypeEnum: {
     readonly Sticker: "sticker";
     readonly Contact: "contact";
     readonly Location: "location";
+    readonly Link: "link";
 };
 export type EventAttachmentCabinetDtoTypeEnum = typeof EventAttachmentCabinetDtoTypeEnum[keyof typeof EventAttachmentCabinetDtoTypeEnum];
 /**
@@ -228,32 +212,25 @@ export type EventAttachmentCabinetDtoActionsEnum = typeof EventAttachmentCabinet
 /**
  * @export
  */
-export declare const EventAttachmentCabinetDtoUnavailableReasonEnum: {
+export declare const EventAttachmentCabinetDtoErrorCodeEnum: {
     readonly ProjectUploadLimitExceeded: "project_upload_limit_exceeded";
     readonly TelegramBotApiDownloadLimit: "telegram_bot_api_download_limit";
     readonly UploadFailed: "upload_failed";
     readonly SourceUnavailable: "source_unavailable";
 };
-export type EventAttachmentCabinetDtoUnavailableReasonEnum = typeof EventAttachmentCabinetDtoUnavailableReasonEnum[keyof typeof EventAttachmentCabinetDtoUnavailableReasonEnum];
+export type EventAttachmentCabinetDtoErrorCodeEnum = typeof EventAttachmentCabinetDtoErrorCodeEnum[keyof typeof EventAttachmentCabinetDtoErrorCodeEnum];
 /**
  * @export
  */
-export declare const EventAttachmentCabinetDtoUploadStatusEnum: {
+export declare const EventAttachmentCabinetDtoStatusEnum: {
     readonly Pending: "pending";
+    readonly Fetching: "fetching";
     readonly Uploading: "uploading";
     readonly Ready: "ready";
     readonly QuotaPending: "quota_pending";
     readonly Failed: "failed";
 };
-export type EventAttachmentCabinetDtoUploadStatusEnum = typeof EventAttachmentCabinetDtoUploadStatusEnum[keyof typeof EventAttachmentCabinetDtoUploadStatusEnum];
-/**
- * @export
- */
-export declare const EventAttachmentCabinetDtoUploadStageEnum: {
-    readonly PlatformFetch: "platform_fetch";
-    readonly StorageUpload: "storage_upload";
-};
-export type EventAttachmentCabinetDtoUploadStageEnum = typeof EventAttachmentCabinetDtoUploadStageEnum[keyof typeof EventAttachmentCabinetDtoUploadStageEnum];
+export type EventAttachmentCabinetDtoStatusEnum = typeof EventAttachmentCabinetDtoStatusEnum[keyof typeof EventAttachmentCabinetDtoStatusEnum];
 /**
  * @export
  */

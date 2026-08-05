@@ -54,26 +54,22 @@ import {
 
 export interface DialogsGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DialogsGetByIdAcceptLanguageEnum;
 }
 
 export interface DialogsListRequest {
     queryDialogsDto: QueryDialogsDto;
-    xSessionId?: string;
     acceptLanguage?: DialogsListAcceptLanguageEnum;
 }
 
 export interface DirectMessageRequest {
     directMessageDto: DirectMessageDto;
-    xSessionId?: string;
     acceptLanguage?: DirectMessageAcceptLanguageEnum;
 }
 
 export interface EventsPollSnapshotRefreshRequest {
     id: string;
     eventId: string;
-    xSessionId?: string;
     acceptLanguage?: EventsPollSnapshotRefreshAcceptLanguageEnum;
 }
 
@@ -91,7 +87,6 @@ export interface GetEventsRequest {
     sourceChatId?: string;
     sourceThreadId?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
 }
 
@@ -101,7 +96,6 @@ export interface GetEventsPollOptionVotersRequest {
     optionId: string;
     offset?: number;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetEventsPollOptionVotersAcceptLanguageEnum;
 }
 
@@ -110,14 +104,12 @@ export interface GetEventsReactionUsersRequest {
     eventId: string;
     reactionId?: string;
     emoji?: string;
-    xSessionId?: string;
     acceptLanguage?: GetEventsReactionUsersAcceptLanguageEnum;
 }
 
 export interface GetNavigationRequest {
     id: string;
     maxSegments?: number;
-    xSessionId?: string;
     acceptLanguage?: GetNavigationAcceptLanguageEnum;
 }
 
@@ -141,10 +133,6 @@ export class DialogsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -200,10 +188,6 @@ export class DialogsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -258,10 +242,6 @@ export class DialogsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -322,10 +302,6 @@ export class DialogsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -427,10 +403,6 @@ export class DialogsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -509,10 +481,6 @@ export class DialogsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -580,10 +548,6 @@ export class DialogsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -639,10 +603,6 @@ export class DialogsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

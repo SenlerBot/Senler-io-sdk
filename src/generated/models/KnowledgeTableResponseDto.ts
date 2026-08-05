@@ -44,6 +44,18 @@ export interface KnowledgeTableResponseDto {
      */
     ownerId: string;
     /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeTableResponseDto
+     */
+    appId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeTableResponseDto
+     */
+    documentationLocale: string | null;
+    /**
      * UUID
      * @type {string}
      * @memberof KnowledgeTableResponseDto
@@ -105,6 +117,7 @@ export interface KnowledgeTableResponseDto {
  */
 export const KnowledgeTableResponseDtoOwnerTypeEnum = {
     Project: 'project',
+    App: 'app',
     McpServerTemplate: 'mcp_server_template',
     Admin: 'admin'
 } as const;
@@ -118,6 +131,8 @@ export function instanceOfKnowledgeTableResponseDto(value: object): value is Kno
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerType' in value) || value['ownerType'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('appId' in value) || value['appId'] === undefined) return false;
+    if (!('documentationLocale' in value) || value['documentationLocale'] === undefined) return false;
     if (!('folderId' in value) || value['folderId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('workbookSnapshot' in value) || value['workbookSnapshot'] === undefined) return false;
@@ -144,6 +159,8 @@ export function KnowledgeTableResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'ownerType': json['owner_type'],
         'ownerId': json['owner_id'],
+        'appId': json['app_id'],
+        'documentationLocale': json['documentation_locale'],
         'folderId': json['folder_id'],
         'name': json['name'],
         'workbookSnapshot': json['workbook_snapshot'],
@@ -171,6 +188,8 @@ export function KnowledgeTableResponseDtoToJSONTyped(value?: KnowledgeTableRespo
         'project_id': value['projectId'],
         'owner_type': value['ownerType'],
         'owner_id': value['ownerId'],
+        'app_id': value['appId'],
+        'documentation_locale': value['documentationLocale'],
         'folder_id': value['folderId'],
         'name': value['name'],
         'workbook_snapshot': value['workbookSnapshot'],

@@ -18,7 +18,7 @@ exports.AgentsByListResponseDtoFromJSON = AgentsByListResponseDtoFromJSON;
 exports.AgentsByListResponseDtoFromJSONTyped = AgentsByListResponseDtoFromJSONTyped;
 exports.AgentsByListResponseDtoToJSON = AgentsByListResponseDtoToJSON;
 exports.AgentsByListResponseDtoToJSONTyped = AgentsByListResponseDtoToJSONTyped;
-const AgentResponseDto_1 = require("./AgentResponseDto");
+const AgentSettingsResponseDto_1 = require("./AgentSettingsResponseDto");
 /**
  * Check if a given object implements the AgentsByListResponseDto interface.
  */
@@ -35,7 +35,7 @@ function AgentsByListResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'agents': (json['agents'].map(AgentResponseDto_1.AgentResponseDtoFromJSON)),
+        'agents': (json['agents'].map(AgentSettingsResponseDto_1.AgentSettingsResponseDtoFromJSON)),
     };
 }
 function AgentsByListResponseDtoToJSON(json) {
@@ -46,6 +46,6 @@ function AgentsByListResponseDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
-        'agents': (value['agents'].map(AgentResponseDto_1.AgentResponseDtoToJSON)),
+        'agents': (value['agents'].map(AgentSettingsResponseDto_1.AgentSettingsResponseDtoToJSON)),
     };
 }

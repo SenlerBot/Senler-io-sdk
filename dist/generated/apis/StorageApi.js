@@ -66,9 +66,6 @@ class StorageApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -109,9 +106,6 @@ class StorageApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -170,9 +164,6 @@ class StorageApi extends runtime.BaseAPI {
             queryParameters['skip'] = requestParameters['skip'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -213,9 +204,6 @@ class StorageApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -291,6 +279,7 @@ exports.GetFilesCategoryEnum = {
 exports.GetFilesSourceEnum = {
     Channel: 'channel',
     Dialog: 'dialog',
+    Delivery: 'delivery',
     KnowledgeBase: 'knowledge_base',
     Agent: 'agent',
     Web: 'web',

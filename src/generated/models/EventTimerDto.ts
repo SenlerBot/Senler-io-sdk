@@ -26,11 +26,11 @@ export interface EventTimerDto {
      */
     scheduledAt?: Date;
     /**
-     * in-memory
-     * @type {boolean}
+     * ,
+     * @type {string}
      * @memberof EventTimerDto
      */
-    inMemory?: boolean;
+    scheduler?: EventTimerDtoSchedulerEnum;
     /**
      *
      * @type {boolean}
@@ -44,6 +44,17 @@ export interface EventTimerDto {
      */
     instruction?: string;
 }
+
+
+/**
+ * @export
+ */
+export const EventTimerDtoSchedulerEnum = {
+    Redis: 'redis',
+    Postgres: 'postgres'
+} as const;
+export type EventTimerDtoSchedulerEnum = typeof EventTimerDtoSchedulerEnum[keyof typeof EventTimerDtoSchedulerEnum];
+
 
 /**
  * Check if a given object implements the EventTimerDto interface.
@@ -63,7 +74,7 @@ export function EventTimerDtoFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
 
         'scheduledAt': json['scheduled_at'] == null ? undefined : (new Date(json['scheduled_at'])),
-        'inMemory': json['in_memory'] == null ? undefined : json['in_memory'],
+        'scheduler': json['scheduler'] == null ? undefined : json['scheduler'],
         'muteDialog': json['mute_dialog'] == null ? undefined : json['mute_dialog'],
         'instruction': json['instruction'] == null ? undefined : json['instruction'],
     };
@@ -81,7 +92,7 @@ export function EventTimerDtoToJSONTyped(value?: EventTimerDto | null, ignoreDis
     return {
 
         'scheduled_at': value['scheduledAt'] == null ? undefined : ((value['scheduledAt']).toISOString()),
-        'in_memory': value['inMemory'],
+        'scheduler': value['scheduler'],
         'mute_dialog': value['muteDialog'],
         'instruction': value['instruction'],
     };

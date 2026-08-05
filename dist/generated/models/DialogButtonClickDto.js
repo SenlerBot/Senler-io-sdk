@@ -22,7 +22,7 @@ exports.DialogButtonClickDtoToJSONTyped = DialogButtonClickDtoToJSONTyped;
  * Check if a given object implements the DialogButtonClickDto interface.
  */
 function instanceOfDialogButtonClickDto(value) {
-    if (!('callbackData' in value) || value['callbackData'] === undefined)
+    if (!('buttonInstanceId' in value) || value['buttonInstanceId'] === undefined)
         return false;
     return true;
 }
@@ -34,8 +34,7 @@ function DialogButtonClickDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'callbackData': json['callback_data'],
-        'buttonText': json['button_text'] == null ? undefined : json['button_text'],
+        'buttonInstanceId': json['button_instance_id'],
     };
 }
 function DialogButtonClickDtoToJSON(json) {
@@ -46,7 +45,6 @@ function DialogButtonClickDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'callback_data': value['callbackData'],
-        'button_text': value['buttonText'],
+        'button_instance_id': value['buttonInstanceId'],
     };
 }

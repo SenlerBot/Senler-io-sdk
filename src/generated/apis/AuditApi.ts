@@ -32,7 +32,6 @@ export interface GetAuditRequest {
     actorId?: string;
     before?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetAuditAcceptLanguageEnum;
 }
 
@@ -42,7 +41,7 @@ export interface GetAuditRequest {
 export class AuditApi extends runtime.BaseAPI {
 
     /**
-     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` cursor (created_at ) - `limit` - (1-100, default 50)
+     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
     async getAuditRaw(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditLogListResponseDto>> {
@@ -77,10 +76,6 @@ export class AuditApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -109,7 +104,7 @@ export class AuditApi extends runtime.BaseAPI {
     }
 
     /**
-     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` cursor (created_at ) - `limit` - (1-100, default 50)
+     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
     async getAudit(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto> {
@@ -130,7 +125,9 @@ export const GetAuditEntityTypeEnum = {
     McpServer: 'mcp_server',
     McpServerList: 'mcp_server_list',
     DataSource: 'data_source',
-    KnowledgeBase: 'knowledge_base',
+    KnowledgeFolder: 'knowledge_folder',
+    KnowledgeFile: 'knowledge_file',
+    KnowledgeTable: 'knowledge_table',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
     Segment: 'segment',
@@ -140,7 +137,13 @@ export const GetAuditEntityTypeEnum = {
     Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
     SupportSchedule: 'support_schedule',
-    Invitation: 'invitation'
+    Invitation: 'invitation',
+    ApiKey: 'api_key',
+    MetricDefinition: 'metric_definition',
+    AppInstallation: 'app_installation',
+    PaymentSettings: 'payment_settings',
+    Space: 'space',
+    SummarizationSettings: 'summarization_settings'
 } as const;
 export type GetAuditEntityTypeEnum = typeof GetAuditEntityTypeEnum[keyof typeof GetAuditEntityTypeEnum];
 /**

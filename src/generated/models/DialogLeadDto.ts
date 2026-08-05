@@ -62,11 +62,11 @@ export interface DialogLeadDto {
      */
     externalUserId: string;
     /**
-     *
+     * ; null
      * @type {boolean}
      * @memberof DialogLeadDto
      */
-    isSubscribed: boolean;
+    isSubscribed: boolean | null;
 }
 
 /**

@@ -13,33 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingDraftConflictResponseDtoCodeEnum = void 0;
 exports.instanceOfLandingDraftConflictResponseDto = instanceOfLandingDraftConflictResponseDto;
 exports.LandingDraftConflictResponseDtoFromJSON = LandingDraftConflictResponseDtoFromJSON;
 exports.LandingDraftConflictResponseDtoFromJSONTyped = LandingDraftConflictResponseDtoFromJSONTyped;
 exports.LandingDraftConflictResponseDtoToJSON = LandingDraftConflictResponseDtoToJSON;
 exports.LandingDraftConflictResponseDtoToJSONTyped = LandingDraftConflictResponseDtoToJSONTyped;
-/**
- * @export
- */
-exports.LandingDraftConflictResponseDtoCodeEnum = {
-    LandingBlockRevisionStale: 'landing_block_revision_stale',
-    LandingBlockLimitReached: 'landing_block_limit_reached',
-    LandingOrderRevisionStale: 'landing_order_revision_stale',
-    LandingSettingsRevisionStale: 'landing_settings_revision_stale',
-    LandingDraftFingerprintStale: 'landing_draft_fingerprint_stale',
-    LandingMutationScopeBusy: 'landing_mutation_scope_busy',
-    LandingMutationLeaseLost: 'landing_mutation_lease_lost',
-    LandingPublicationBarrierActive: 'landing_publication_barrier_active',
-    LandingPublicationStateStale: 'landing_publication_state_stale'
-};
+const LandingDraftConflictErrorDto_1 = require("./LandingDraftConflictErrorDto");
 /**
  * Check if a given object implements the LandingDraftConflictResponseDto interface.
  */
 function instanceOfLandingDraftConflictResponseDto(value) {
-    if (!('code' in value) || value['code'] === undefined)
-        return false;
-    if (!('message' in value) || value['message'] === undefined)
+    if (!('error' in value) || value['error'] === undefined)
         return false;
     return true;
 }
@@ -51,8 +35,7 @@ function LandingDraftConflictResponseDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
-        'code': json['code'],
-        'message': json['message'],
+        'error': (0, LandingDraftConflictErrorDto_1.LandingDraftConflictErrorDtoFromJSON)(json['error']),
     };
 }
 function LandingDraftConflictResponseDtoToJSON(json) {
@@ -63,7 +46,6 @@ function LandingDraftConflictResponseDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
-        'code': value['code'],
-        'message': value['message'],
+        'error': (0, LandingDraftConflictErrorDto_1.LandingDraftConflictErrorDtoToJSON)(value['error']),
     };
 }

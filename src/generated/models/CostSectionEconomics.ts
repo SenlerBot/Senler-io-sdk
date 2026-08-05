@@ -70,7 +70,8 @@ export const CostSectionEconomicsSectionEnum = {
     ImageGeneration: 'image_generation',
     AudioGeneration: 'audio_generation',
     SpeechRecognition: 'speech_recognition',
-    MetricsExtraction: 'metrics_extraction'
+    MetricsExtraction: 'metrics_extraction',
+    HostedTool: 'hosted_tool'
 } as const;
 export type CostSectionEconomicsSectionEnum = typeof CostSectionEconomicsSectionEnum[keyof typeof CostSectionEconomicsSectionEnum];
 

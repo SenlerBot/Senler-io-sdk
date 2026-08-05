@@ -142,9 +142,6 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

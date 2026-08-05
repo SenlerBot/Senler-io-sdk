@@ -40,7 +40,6 @@ import {
 export interface DeleteProcessesRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteProcessesAcceptLanguageEnum;
 }
 
@@ -50,34 +49,29 @@ export interface GetProcessesRequest {
     status?: GetProcessesStatusEnum;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesAcceptLanguageEnum;
 }
 
 export interface GetProcesses2Request {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcesses2AcceptLanguageEnum;
 }
 
 export interface GetProcessesDownloadRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesDownloadAcceptLanguageEnum;
 }
 
 export interface GetProcessesRealtimeTokenRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesRealtimeTokenAcceptLanguageEnum;
 }
 
 export interface GetProcessesResultRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetProcessesResultAcceptLanguageEnum;
 }
 
@@ -108,10 +102,6 @@ export class ProcessesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -181,10 +171,6 @@ export class ProcessesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -243,10 +229,6 @@ export class ProcessesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -307,10 +289,6 @@ export class ProcessesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -362,10 +340,6 @@ export class ProcessesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -425,10 +399,6 @@ export class ProcessesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

@@ -13,18 +13,15 @@ import * as runtime from '../runtime';
 import type { BindDiscordTokenDto, ChannelTokenResponseDto, CreateDiscordChannelDto, CreateDiscordChannelResponseDto, ValidateDiscordTokenResultDto } from '../models/index';
 export interface DiscordRequest {
     createDiscordChannelDto: CreateDiscordChannelDto;
-    xSessionId?: string;
     acceptLanguage?: DiscordAcceptLanguageEnum;
 }
 export interface TokensDiscordBindRequest {
     channelId: string;
     bindDiscordTokenDto: BindDiscordTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensDiscordBindAcceptLanguageEnum;
 }
 export interface TokensDiscordValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensDiscordValidateAcceptLanguageEnum;
 }
 /**

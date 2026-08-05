@@ -38,14 +38,12 @@ export interface DeleteVariablesRequest {
     projectId: string;
     leadId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteVariablesAcceptLanguageEnum;
 }
 
 export interface GetVariablesRequest {
     projectId: string;
     leadId: string;
-    xSessionId?: string;
     acceptLanguage?: GetVariablesAcceptLanguageEnum;
 }
 
@@ -53,7 +51,6 @@ export interface GetVariables2Request {
     projectId: string;
     leadId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: GetVariables2AcceptLanguageEnum;
 }
 
@@ -62,7 +59,6 @@ export interface UpdateVariablesRequest {
     leadId: string;
     name: string;
     setLeadVariableValueDto: SetLeadVariableValueDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateVariablesAcceptLanguageEnum;
 }
 
@@ -100,10 +96,6 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -163,10 +155,6 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -233,10 +221,6 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -312,10 +296,6 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

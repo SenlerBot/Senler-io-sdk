@@ -18,7 +18,7 @@ exports.UpdateDeliveryDtoFromJSON = UpdateDeliveryDtoFromJSON;
 exports.UpdateDeliveryDtoFromJSONTyped = UpdateDeliveryDtoFromJSONTyped;
 exports.UpdateDeliveryDtoToJSON = UpdateDeliveryDtoToJSON;
 exports.UpdateDeliveryDtoToJSONTyped = UpdateDeliveryDtoToJSONTyped;
-const MessageAttachmentInputDto_1 = require("./MessageAttachmentInputDto");
+const MessageAttachmentReferenceDto_1 = require("./MessageAttachmentReferenceDto");
 const LeadsFilterDto_1 = require("./LeadsFilterDto");
 /**
  * Check if a given object implements the UpdateDeliveryDto interface.
@@ -37,7 +37,7 @@ function UpdateDeliveryDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'] == null ? undefined : json['name'],
         'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'messageText': json['message_text'] == null ? undefined : json['message_text'],
-        'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoFromJSON)),
+        'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoFromJSON)),
     };
 }
 function UpdateDeliveryDtoToJSON(json) {
@@ -51,6 +51,6 @@ function UpdateDeliveryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'message_text': value['messageText'],
-        'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoToJSON)),
+        'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoToJSON)),
     };
 }

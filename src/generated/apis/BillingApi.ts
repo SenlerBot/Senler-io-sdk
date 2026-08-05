@@ -22,6 +22,7 @@ import type {
   CreateOrderResponseDto,
   CreditTransactionDetailsResponseDto,
   CreditTransactionsResponseDto,
+  CreditUsageSummaryDto,
   CreditsBuyDto,
   CreditsCheckResponseDto,
   CryptoPaymentIntentResponseDto,
@@ -55,6 +56,8 @@ import {
     CreditTransactionDetailsResponseDtoToJSON,
     CreditTransactionsResponseDtoFromJSON,
     CreditTransactionsResponseDtoToJSON,
+    CreditUsageSummaryDtoFromJSON,
+    CreditUsageSummaryDtoToJSON,
     CreditsBuyDtoFromJSON,
     CreditsBuyDtoToJSON,
     CreditsCheckResponseDtoFromJSON,
@@ -93,20 +96,17 @@ import {
 
 export interface DeleteProjectsTariffNextRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteProjectsTariffNextAcceptLanguageEnum;
 }
 
 export interface GetCreditTransactionsDetailsRequest {
     transactionId: string;
     groupBy?: GetCreditTransactionsDetailsGroupByEnum;
-    xSessionId?: string;
     acceptLanguage?: GetCreditTransactionsDetailsAcceptLanguageEnum;
 }
 
 export interface GetProjectsBalanceRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsBalanceAcceptLanguageEnum;
 }
 
@@ -118,15 +118,20 @@ export interface GetProjectsCreditTransactionsRequest {
     dateTo?: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsCreditTransactionsAcceptLanguageEnum;
+}
+
+export interface GetProjectsCreditUsageSummaryRequest {
+    projectId: string;
+    dateFrom: string;
+    dateTo: string;
+    acceptLanguage?: GetProjectsCreditUsageSummaryAcceptLanguageEnum;
 }
 
 export interface GetProjectsCreditsCheckRequest {
     projectId: string;
     packageId: string;
     useBalance?: boolean;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsCreditsCheckAcceptLanguageEnum;
 }
 
@@ -136,20 +141,17 @@ export interface GetProjectsOrdersRequest {
     status?: Array<string>;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsOrdersAcceptLanguageEnum;
 }
 
 export interface GetProjectsOrdersCryptoStatusRequest {
     projectId: string;
     orderId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsOrdersCryptoStatusAcceptLanguageEnum;
 }
 
 export interface GetProjectsPaymentSettingsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsPaymentSettingsAcceptLanguageEnum;
 }
 
@@ -158,13 +160,11 @@ export interface GetProjectsTariffCheckRequest {
     tariffId: string;
     period: GetProjectsTariffCheckPeriodEnum;
     useBalance?: boolean;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsTariffCheckAcceptLanguageEnum;
 }
 
 export interface GetProjectsTariffsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsTariffsAcceptLanguageEnum;
 }
 
@@ -177,7 +177,6 @@ export interface GetProjectsTransactionsRequest {
     dateTo?: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectsTransactionsAcceptLanguageEnum;
 }
 
@@ -185,21 +184,18 @@ export interface GetTransactionsDetailsRequest {
     transactionId: string;
     groupBy?: GetTransactionsDetailsGroupByEnum;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetTransactionsDetailsAcceptLanguageEnum;
 }
 
 export interface ProjectsCreditsBuyRequest {
     projectId: string;
     creditsBuyDto: CreditsBuyDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsCreditsBuyAcceptLanguageEnum;
 }
 
 export interface ProjectsOrdersRequest {
     projectId: string;
     createOrderDto: CreateOrderDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsOrdersAcceptLanguageEnum;
 }
 
@@ -207,7 +203,6 @@ export interface ProjectsOrdersCryptoIntentRequest {
     projectId: string;
     orderId: string;
     createCryptoPaymentIntentDto: CreateCryptoPaymentIntentDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsOrdersCryptoIntentAcceptLanguageEnum;
 }
 
@@ -215,28 +210,24 @@ export interface ProjectsOrdersCryptoSubmitRequest {
     projectId: string;
     orderId: string;
     submitCryptoPaymentDto: SubmitCryptoPaymentDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsOrdersCryptoSubmitAcceptLanguageEnum;
 }
 
 export interface ProjectsPaymentSettingsRequest {
     projectId: string;
     savePaymentSettingsDto: SavePaymentSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsPaymentSettingsAcceptLanguageEnum;
 }
 
 export interface ProjectsTariffBuyRequest {
     projectId: string;
     tariffBuyDto: TariffBuyDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectsTariffBuyAcceptLanguageEnum;
 }
 
 export interface UpdateProjectsAutoPurchaseRequest {
     projectId: string;
     updateAutoPurchaseDto: UpdateAutoPurchaseDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateProjectsAutoPurchaseAcceptLanguageEnum;
 }
 
@@ -260,10 +251,6 @@ export class BillingApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -321,10 +308,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -376,10 +359,6 @@ export class BillingApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -457,10 +436,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -498,6 +473,80 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
+     * . ; .
+     *
+     */
+    async getProjectsCreditUsageSummaryRaw(requestParameters: GetProjectsCreditUsageSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditUsageSummaryDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectsCreditUsageSummary().'
+            );
+        }
+
+        if (requestParameters['dateFrom'] == null) {
+            throw new runtime.RequiredError(
+                'dateFrom',
+                'Required parameter "dateFrom" was null or undefined when calling getProjectsCreditUsageSummary().'
+            );
+        }
+
+        if (requestParameters['dateTo'] == null) {
+            throw new runtime.RequiredError(
+                'dateTo',
+                'Required parameter "dateTo" was null or undefined when calling getProjectsCreditUsageSummary().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['dateFrom'] != null) {
+            queryParameters['date_from'] = requestParameters['dateFrom'];
+        }
+
+        if (requestParameters['dateTo'] != null) {
+            queryParameters['date_to'] = requestParameters['dateTo'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+        }
+
+        const response = await this.request({
+            path: `/api/billing/projects/{projectId}/credit-usage-summary`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreditUsageSummaryDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async getProjectsCreditUsageSummary(requestParameters: GetProjectsCreditUsageSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditUsageSummaryDto> {
+        const response = await this.getProjectsCreditUsageSummaryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
      *
      */
@@ -527,10 +576,6 @@ export class BillingApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -600,10 +645,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -663,10 +704,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -718,10 +755,6 @@ export class BillingApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -801,10 +834,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -856,10 +885,6 @@ export class BillingApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -941,10 +966,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1004,10 +1025,6 @@ export class BillingApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1070,10 +1087,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1135,10 +1148,6 @@ export class BillingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1209,10 +1218,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1282,10 +1287,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1347,10 +1348,6 @@ export class BillingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1414,10 +1411,6 @@ export class BillingApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1479,10 +1472,6 @@ export class BillingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1575,6 +1564,14 @@ export const GetProjectsCreditTransactionsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetProjectsCreditTransactionsAcceptLanguageEnum = typeof GetProjectsCreditTransactionsAcceptLanguageEnum[keyof typeof GetProjectsCreditTransactionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetProjectsCreditUsageSummaryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetProjectsCreditUsageSummaryAcceptLanguageEnum = typeof GetProjectsCreditUsageSummaryAcceptLanguageEnum[keyof typeof GetProjectsCreditUsageSummaryAcceptLanguageEnum];
 /**
  * @export
  */

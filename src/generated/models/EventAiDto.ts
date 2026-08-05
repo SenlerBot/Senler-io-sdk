@@ -67,7 +67,103 @@ export interface EventAiDto {
      * @memberof EventAiDto
      */
     streamId?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    modelId?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerId?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerBindingId?: string;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerResponseId?: string;
+    /**
+     * AI-
+     * @type {number}
+     * @memberof EventAiDto
+     */
+    providerCallIndex?: number;
+    /**
+     * AI-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    responseStatus?: EventAiDtoResponseStatusEnum;
+    /**
+     * AI-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    activityPhase?: EventAiDtoActivityPhaseEnum;
+    /**
+     * AI-
+     * @type {Date}
+     * @memberof EventAiDto
+     */
+    responseStartedAt?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof EventAiDto
+     */
+    activityUpdatedAt?: Date;
+    /**
+     * AI-
+     * @type {Date}
+     * @memberof EventAiDto
+     */
+    responseTerminalAt?: Date;
+    /**
+     * ID AI-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    terminalEventId?: string;
 }
+
+
+/**
+ * @export
+ */
+export const EventAiDtoResponseStatusEnum = {
+    Running: 'running',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
+} as const;
+export type EventAiDtoResponseStatusEnum = typeof EventAiDtoResponseStatusEnum[keyof typeof EventAiDtoResponseStatusEnum];
+
+/**
+ * @export
+ */
+export const EventAiDtoActivityPhaseEnum = {
+    Thinking: 'thinking',
+    SearchingPublicInformation: 'searching_public_information',
+    UsingExternalTool: 'using_external_tool',
+    AnalyzingAttachment: 'analyzing_attachment',
+    GeneratingImage: 'generating_image',
+    GeneratingAudio: 'generating_audio',
+    CreatingResult: 'creating_result',
+    PreparingAttachment: 'preparing_attachment',
+    ActingOnPage: 'acting_on_page',
+    Finalizing: 'finalizing'
+} as const;
+export type EventAiDtoActivityPhaseEnum = typeof EventAiDtoActivityPhaseEnum[keyof typeof EventAiDtoActivityPhaseEnum];
+
 
 /**
  * Check if a given object implements the EventAiDto interface.
@@ -94,6 +190,17 @@ export function EventAiDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'responseId': json['response_id'] == null ? undefined : json['response_id'],
         'requestId': json['request_id'] == null ? undefined : json['request_id'],
         'streamId': json['stream_id'] == null ? undefined : json['stream_id'],
+        'modelId': json['model_id'] == null ? undefined : json['model_id'],
+        'providerId': json['provider_id'] == null ? undefined : json['provider_id'],
+        'providerBindingId': json['provider_binding_id'] == null ? undefined : json['provider_binding_id'],
+        'providerResponseId': json['provider_response_id'] == null ? undefined : json['provider_response_id'],
+        'providerCallIndex': json['provider_call_index'] == null ? undefined : json['provider_call_index'],
+        'responseStatus': json['response_status'] == null ? undefined : json['response_status'],
+        'activityPhase': json['activity_phase'] == null ? undefined : json['activity_phase'],
+        'responseStartedAt': json['response_started_at'] == null ? undefined : (new Date(json['response_started_at'])),
+        'activityUpdatedAt': json['activity_updated_at'] == null ? undefined : (new Date(json['activity_updated_at'])),
+        'responseTerminalAt': json['response_terminal_at'] == null ? undefined : (new Date(json['response_terminal_at'])),
+        'terminalEventId': json['terminal_event_id'] == null ? undefined : json['terminal_event_id'],
     };
 }
 
@@ -116,5 +223,16 @@ export function EventAiDtoToJSONTyped(value?: EventAiDto | null, ignoreDiscrimin
         'response_id': value['responseId'],
         'request_id': value['requestId'],
         'stream_id': value['streamId'],
+        'model_id': value['modelId'],
+        'provider_id': value['providerId'],
+        'provider_binding_id': value['providerBindingId'],
+        'provider_response_id': value['providerResponseId'],
+        'provider_call_index': value['providerCallIndex'],
+        'response_status': value['responseStatus'],
+        'activity_phase': value['activityPhase'],
+        'response_started_at': value['responseStartedAt'] == null ? undefined : ((value['responseStartedAt']).toISOString()),
+        'activity_updated_at': value['activityUpdatedAt'] == null ? undefined : ((value['activityUpdatedAt']).toISOString()),
+        'response_terminal_at': value['responseTerminalAt'] == null ? undefined : ((value['responseTerminalAt']).toISOString()),
+        'terminal_event_id': value['terminalEventId'],
     };
 }

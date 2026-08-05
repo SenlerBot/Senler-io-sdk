@@ -30,13 +30,11 @@ import {
 
 export interface GetMetricsConfigRequest {
     agentId: string;
-    xSessionId: string;
     acceptLanguage?: GetMetricsConfigAcceptLanguageEnum;
 }
 
 export interface UpdateMetricsConfigRequest {
     agentId: string;
-    xSessionId: string;
     updateAgentMetricsConfigurationDto: UpdateAgentMetricsConfigurationDto;
     acceptLanguage?: UpdateMetricsConfigAcceptLanguageEnum;
 }
@@ -58,20 +56,9 @@ export class MetricsConfigApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getMetricsConfig().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -121,13 +108,6 @@ export class MetricsConfigApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling updateMetricsConfig().'
-            );
-        }
-
         if (requestParameters['updateAgentMetricsConfigurationDto'] == null) {
             throw new runtime.RequiredError(
                 'updateAgentMetricsConfigurationDto',
@@ -140,10 +120,6 @@ export class MetricsConfigApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

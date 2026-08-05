@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AgentResponseDto } from './AgentResponseDto';
+import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
 import {
-    AgentResponseDtoFromJSON,
-    AgentResponseDtoFromJSONTyped,
-    AgentResponseDtoToJSON,
-    AgentResponseDtoToJSONTyped,
-} from './AgentResponseDto';
+    AgentSettingsResponseDtoFromJSON,
+    AgentSettingsResponseDtoFromJSONTyped,
+    AgentSettingsResponseDtoToJSON,
+    AgentSettingsResponseDtoToJSONTyped,
+} from './AgentSettingsResponseDto';
 
 /**
  * AgentsByListResponseDto.
@@ -29,10 +29,10 @@ import {
 export interface AgentsByListResponseDto {
     /**
      * , MCP
-     * @type {Array<AgentResponseDto>}
+     * @type {Array<AgentSettingsResponseDto>}
      * @memberof AgentsByListResponseDto
      */
-    agents: Array<AgentResponseDto>;
+    agents: Array<AgentSettingsResponseDto>;
 }
 
 /**
@@ -53,7 +53,7 @@ export function AgentsByListResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
-        'agents': ((json['agents'] as Array<any>).map(AgentResponseDtoFromJSON)),
+        'agents': ((json['agents'] as Array<any>).map(AgentSettingsResponseDtoFromJSON)),
     };
 }
 
@@ -68,6 +68,6 @@ export function AgentsByListResponseDtoToJSONTyped(value?: AgentsByListResponseD
 
     return {
 
-        'agents': ((value['agents'] as Array<any>).map(AgentResponseDtoToJSON)),
+        'agents': ((value['agents'] as Array<any>).map(AgentSettingsResponseDtoToJSON)),
     };
 }

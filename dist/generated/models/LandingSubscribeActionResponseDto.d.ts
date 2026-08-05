@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingChannelSelectionResponseDto } from './LandingChannelSelectionResponseDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 /**
  * LandingSubscribeActionResponseDto.
@@ -35,11 +36,11 @@ export interface LandingSubscribeActionResponseDto {
      */
     segmentId: string;
     /**
-     * ID
-     * @type {Array<string>}
+     *
+     * @type {LandingChannelSelectionResponseDto}
      * @memberof LandingSubscribeActionResponseDto
      */
-    channelIds: Array<string>;
+    channelSelection: LandingChannelSelectionResponseDto;
     /**
      *
      * @type {LandingContactCaptureDto}

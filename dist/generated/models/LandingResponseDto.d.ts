@@ -47,6 +47,12 @@ export interface LandingResponseDto {
      */
     status: LandingResponseDtoStatusEnum;
     /**
+     * -
+     * @type {string}
+     * @memberof LandingResponseDto
+     */
+    agentId: string | null;
+    /**
      *
      * @type {boolean}
      * @memberof LandingResponseDto
@@ -82,6 +88,12 @@ export interface LandingResponseDto {
      * @memberof LandingResponseDto
      */
     webUrl: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LandingResponseDto
+     */
+    hasUnpublishedChanges: boolean;
 }
 /**
  * @export

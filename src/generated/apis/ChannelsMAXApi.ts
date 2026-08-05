@@ -48,39 +48,33 @@ import {
 
 export interface MaxRequest {
     createMaxChannelDto: CreateMaxChannelDto;
-    xSessionId?: string;
     acceptLanguage?: MaxAcceptLanguageEnum;
 }
 
 export interface TokensMaxBindRequest {
     channelId: string;
     bindMaxTokenDto: BindMaxTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxBindAcceptLanguageEnum;
 }
 
 export interface TokensMaxCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxCheckWebhookStatusAcceptLanguageEnum;
 }
 
 export interface TokensMaxRefreshAvatarRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxRefreshAvatarAcceptLanguageEnum;
 }
 
 export interface TokensMaxValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxValidateAcceptLanguageEnum;
 }
 
 export interface TokensMaxWebhookSetupRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensMaxWebhookSetupAcceptLanguageEnum;
 }
 
@@ -106,10 +100,6 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -173,10 +163,6 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -230,10 +216,6 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -286,10 +268,6 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -341,10 +319,6 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -406,10 +380,6 @@ export class ChannelsMAXApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

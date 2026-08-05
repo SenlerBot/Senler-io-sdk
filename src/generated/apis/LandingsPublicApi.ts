@@ -16,11 +16,13 @@
 import * as runtime from '../runtime';
 import type {
   ErrorResponse,
+  LandingAcquisitionIdentityDto,
   LandingLaunchContextResponseDto,
   LandingPublicCatalogResponseDto,
   LandingPublicResponseDto,
   LandingSubscriptionRequestDto,
   LandingSubscriptionResponseDto,
+  LandingSubscriptionStatusResponseDto,
   LandingUnsubscriptionRequestDto,
   LandingVariablesDto,
   ResolveLandingVariablesRequestDto,
@@ -28,6 +30,8 @@ import type {
 import {
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    LandingAcquisitionIdentityDtoFromJSON,
+    LandingAcquisitionIdentityDtoToJSON,
     LandingLaunchContextResponseDtoFromJSON,
     LandingLaunchContextResponseDtoToJSON,
     LandingPublicCatalogResponseDtoFromJSON,
@@ -38,6 +42,8 @@ import {
     LandingSubscriptionRequestDtoToJSON,
     LandingSubscriptionResponseDtoFromJSON,
     LandingSubscriptionResponseDtoToJSON,
+    LandingSubscriptionStatusResponseDtoFromJSON,
+    LandingSubscriptionStatusResponseDtoToJSON,
     LandingUnsubscriptionRequestDtoFromJSON,
     LandingUnsubscriptionRequestDtoToJSON,
     LandingVariablesDtoFromJSON,
@@ -67,6 +73,12 @@ export interface LandingsLaunchSubscribeRequest {
     token: string;
     landingSubscriptionRequestDto: LandingSubscriptionRequestDto;
     acceptLanguage?: LandingsLaunchSubscribeAcceptLanguageEnum;
+}
+
+export interface LandingsLaunchSubscriptionStatusRequest {
+    token: string;
+    landingAcquisitionIdentityDto: LandingAcquisitionIdentityDto;
+    acceptLanguage?: LandingsLaunchSubscriptionStatusAcceptLanguageEnum;
 }
 
 export interface LandingsLaunchUnsubscribeRequest {
@@ -267,6 +279,55 @@ export class LandingsPublicApi extends runtime.BaseAPI {
      * .
      *
      */
+    async landingsLaunchSubscriptionStatusRaw(requestParameters: LandingsLaunchSubscriptionStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSubscriptionStatusResponseDto>> {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError(
+                'token',
+                'Required parameter "token" was null or undefined when calling landingsLaunchSubscriptionStatus().'
+            );
+        }
+
+        if (requestParameters['landingAcquisitionIdentityDto'] == null) {
+            throw new runtime.RequiredError(
+                'landingAcquisitionIdentityDto',
+                'Required parameter "landingAcquisitionIdentityDto" was null or undefined when calling landingsLaunchSubscriptionStatus().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/launch/{token}/subscription-status`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LandingAcquisitionIdentityDtoToJSON(requestParameters['landingAcquisitionIdentityDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingSubscriptionStatusResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async landingsLaunchSubscriptionStatus(requestParameters: LandingsLaunchSubscriptionStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSubscriptionStatusResponseDto> {
+        const response = await this.landingsLaunchSubscriptionStatusRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
     async landingsLaunchUnsubscribeRaw(requestParameters: LandingsLaunchUnsubscribeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSubscriptionResponseDto>> {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError(
@@ -395,6 +456,14 @@ export const LandingsLaunchSubscribeAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LandingsLaunchSubscribeAcceptLanguageEnum = typeof LandingsLaunchSubscribeAcceptLanguageEnum[keyof typeof LandingsLaunchSubscribeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingsLaunchSubscriptionStatusAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingsLaunchSubscriptionStatusAcceptLanguageEnum = typeof LandingsLaunchSubscriptionStatusAcceptLanguageEnum[keyof typeof LandingsLaunchSubscriptionStatusAcceptLanguageEnum];
 /**
  * @export
  */

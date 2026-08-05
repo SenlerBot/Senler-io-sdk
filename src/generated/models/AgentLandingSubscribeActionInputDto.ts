@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingChannelSelectionInputDto } from './LandingChannelSelectionInputDto';
+import {
+    LandingChannelSelectionInputDtoFromJSON,
+    LandingChannelSelectionInputDtoFromJSONTyped,
+    LandingChannelSelectionInputDtoToJSON,
+    LandingChannelSelectionInputDtoToJSONTyped,
+} from './LandingChannelSelectionInputDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 import {
     LandingContactCaptureDtoFromJSON,
@@ -28,23 +35,17 @@ import {
  */
 export interface AgentLandingSubscribeActionInputDto {
     /**
-     * UUID . , .
-     * @type {string}
-     * @memberof AgentLandingSubscribeActionInputDto
-     */
-    id?: string;
-    /**
      *
      * @type {string}
      * @memberof AgentLandingSubscribeActionInputDto
      */
     type: AgentLandingSubscribeActionInputDtoTypeEnum;
     /**
-     * . .
-     * @type {Array<string>}
+     *
+     * @type {LandingChannelSelectionInputDto}
      * @memberof AgentLandingSubscribeActionInputDto
      */
-    channelIds: Array<string>;
+    channelSelection: LandingChannelSelectionInputDto;
     /**
      * ,
      * @type {LandingContactCaptureDto}
@@ -68,7 +69,7 @@ export type AgentLandingSubscribeActionInputDtoTypeEnum = typeof AgentLandingSub
  */
 export function instanceOfAgentLandingSubscribeActionInputDto(value: object): value is AgentLandingSubscribeActionInputDto {
     if (!('type' in value) || value['type'] === undefined) return false;
-    if (!('channelIds' in value) || value['channelIds'] === undefined) return false;
+    if (!('channelSelection' in value) || value['channelSelection'] === undefined) return false;
     if (!('contactCapture' in value) || value['contactCapture'] === undefined) return false;
     return true;
 }
@@ -83,9 +84,8 @@ export function AgentLandingSubscribeActionInputDtoFromJSONTyped(json: any, igno
     }
     return {
 
-        'id': json['id'] == null ? undefined : json['id'],
         'type': json['type'],
-        'channelIds': json['channel_ids'],
+        'channelSelection': LandingChannelSelectionInputDtoFromJSON(json['channel_selection']),
         'contactCapture': LandingContactCaptureDtoFromJSON(json['contact_capture']),
     };
 }
@@ -101,9 +101,8 @@ export function AgentLandingSubscribeActionInputDtoToJSONTyped(value?: AgentLand
 
     return {
 
-        'id': value['id'],
         'type': value['type'],
-        'channel_ids': value['channelIds'],
+        'channel_selection': LandingChannelSelectionInputDtoToJSON(value['channelSelection']),
         'contact_capture': LandingContactCaptureDtoToJSON(value['contactCapture']),
     };
 }

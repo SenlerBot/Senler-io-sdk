@@ -67,12 +67,6 @@ export interface LandingVersionResponseDto {
     settingsRevision: number;
     /**
      *
-     * @type {boolean}
-     * @memberof LandingVersionResponseDto
-     */
-    isPinned: boolean;
-    /**
-     *
      * @type {Date}
      * @memberof LandingVersionResponseDto
      */

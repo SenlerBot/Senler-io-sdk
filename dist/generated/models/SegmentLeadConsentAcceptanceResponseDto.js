@@ -30,7 +30,8 @@ exports.SegmentLeadConsentAcceptanceResponseDtoSourceEnum = {
     MaxBot: 'max_bot',
     MaxApp: 'max_app',
     Web: 'web',
-    Manual: 'manual'
+    Manual: 'manual',
+    AutoAssignment: 'auto_assignment'
 };
 /**
  * Check if a given object implements the SegmentLeadConsentAcceptanceResponseDto interface.

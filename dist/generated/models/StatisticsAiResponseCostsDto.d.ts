@@ -40,7 +40,7 @@ export interface StatisticsAiResponseCostsDto {
      */
     directCreditsUsed: StatisticsNullableCreditsMetricDeltaDto;
     /**
-     * event-time : floor(sum(total_credits / credit_rate)). RUB USD
+     * : floor(sum(total_credits / event-time credit_rate)). ; billing credit-usage-summary
      * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
@@ -82,7 +82,7 @@ export interface StatisticsAiResponseCostsDto {
      */
     averageDirectCreditsPerResponse: StatisticsNullableDecimalCreditsMetricDeltaDto;
     /**
-     * project_currency_cost / ai_responses, . excluded_from_project_currency_credits
+     * project_currency_cost / ai_responses.
      * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */
@@ -94,7 +94,7 @@ export interface StatisticsAiResponseCostsDto {
      */
     averageDirectCreditsPerDialog: StatisticsNullableDecimalCreditsMetricDeltaDto;
     /**
-     * project_currency_cost / dialogs_with_ai_responses, . excluded_from_project_currency_credits
+     * project_currency_cost / dialogs_with_ai_responses.
      * @type {StatisticsNullableProjectMoneyMetricDeltaDto}
      * @memberof StatisticsAiResponseCostsDto
      */

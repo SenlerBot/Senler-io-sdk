@@ -91,135 +91,114 @@ import {
 export interface AvatarFromUrlRequest {
     id: string;
     uploadAvatarFromUrlDto: UploadAvatarFromUrlDto;
-    xSessionId?: string;
     acceptLanguage?: AvatarFromUrlAcceptLanguageEnum;
 }
 
 export interface ChannelsAvatarConfirmRequest {
     id: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsAvatarConfirmAcceptLanguageEnum;
 }
 
 export interface ChannelsAvatarUploadUrlRequest {
     id: string;
     getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsAvatarUploadUrlAcceptLanguageEnum;
 }
 
 export interface ChannelsDeactivateRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: ChannelsDeactivateAcceptLanguageEnum;
 }
 
 export interface ChannelsGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: ChannelsGetByIdAcceptLanguageEnum;
 }
 
 export interface ChannelsListRequest {
     projectId: string;
     type?: Array<ChannelsListTypeEnum>;
-    xSessionId?: string;
     acceptLanguage?: ChannelsListAcceptLanguageEnum;
 }
 
 export interface ChannelsUpdateRequest {
     id: string;
     updateChannelDto: UpdateChannelDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsUpdateAcceptLanguageEnum;
 }
 
 export interface DeleteSenlerRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteSenlerAcceptLanguageEnum;
 }
 
 export interface DeleteTokensRequest {
     id: string;
     platform: DeleteTokensPlatformEnum;
-    xSessionId?: string;
     acceptLanguage?: DeleteTokensAcceptLanguageEnum;
 }
 
 export interface GetAccessRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetAccessAcceptLanguageEnum;
 }
 
 export interface GetMigrationBackfillEstimateRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetMigrationBackfillEstimateAcceptLanguageEnum;
 }
 
 export interface GetSenlerStatusRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetSenlerStatusAcceptLanguageEnum;
 }
 
 export interface GetTokensRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetTokensAcceptLanguageEnum;
 }
 
 export interface GetWidgetCodeRequest {
     id: string;
     identityVerification?: boolean;
-    xSessionId?: string;
     acceptLanguage?: GetWidgetCodeAcceptLanguageEnum;
 }
 
 export interface MigrationBackfillStartRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: MigrationBackfillStartAcceptLanguageEnum;
 }
 
 export interface MigrationEstimateRequest {
     id: string;
     migrationEstimateDto: MigrationEstimateDto;
-    xSessionId?: string;
     acceptLanguage?: MigrationEstimateAcceptLanguageEnum;
 }
 
 export interface MigrationFinishNowRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: MigrationFinishNowAcceptLanguageEnum;
 }
 
 export interface MigrationStartRequest {
     id: string;
     startMigrationDto: StartMigrationDto;
-    xSessionId?: string;
     acceptLanguage?: MigrationStartAcceptLanguageEnum;
 }
 
 export interface PauseRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: PauseAcceptLanguageEnum;
 }
 
 export interface RegenerateSecretRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: RegenerateSecretAcceptLanguageEnum;
 }
 
 export interface TokensSyncRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: TokensSyncAcceptLanguageEnum;
 }
 
@@ -252,10 +231,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -319,10 +294,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -385,10 +356,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -442,10 +409,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -497,10 +460,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -561,10 +520,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -627,10 +582,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -683,10 +634,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -747,10 +694,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -802,10 +745,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -859,10 +798,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -915,10 +850,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -970,10 +901,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1031,10 +958,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1086,10 +1009,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1152,10 +1071,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1208,10 +1123,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1274,10 +1185,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1331,10 +1238,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1387,10 +1290,6 @@ export class ChannelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1442,10 +1341,6 @@ export class ChannelsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

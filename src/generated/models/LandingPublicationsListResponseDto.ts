@@ -20,6 +20,13 @@ import {
     LandingPublicationResponseDtoToJSON,
     LandingPublicationResponseDtoToJSONTyped,
 } from './LandingPublicationResponseDto';
+import type { LandingReadySolutionVersionResponseDto } from './LandingReadySolutionVersionResponseDto';
+import {
+    LandingReadySolutionVersionResponseDtoFromJSON,
+    LandingReadySolutionVersionResponseDtoFromJSONTyped,
+    LandingReadySolutionVersionResponseDtoToJSON,
+    LandingReadySolutionVersionResponseDtoToJSONTyped,
+} from './LandingReadySolutionVersionResponseDto';
 
 /**
  * LandingPublicationsListResponseDto.
@@ -33,6 +40,12 @@ export interface LandingPublicationsListResponseDto {
      * @memberof LandingPublicationsListResponseDto
      */
     versions: Array<LandingPublicationResponseDto>;
+    /**
+     * ,
+     * @type {Array<LandingReadySolutionVersionResponseDto>}
+     * @memberof LandingPublicationsListResponseDto
+     */
+    readySolutionVersions: Array<LandingReadySolutionVersionResponseDto>;
 }
 
 /**
@@ -40,6 +53,7 @@ export interface LandingPublicationsListResponseDto {
  */
 export function instanceOfLandingPublicationsListResponseDto(value: object): value is LandingPublicationsListResponseDto {
     if (!('versions' in value) || value['versions'] === undefined) return false;
+    if (!('readySolutionVersions' in value) || value['readySolutionVersions'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +68,7 @@ export function LandingPublicationsListResponseDtoFromJSONTyped(json: any, ignor
     return {
 
         'versions': ((json['versions'] as Array<any>).map(LandingPublicationResponseDtoFromJSON)),
+        'readySolutionVersions': ((json['ready_solution_versions'] as Array<any>).map(LandingReadySolutionVersionResponseDtoFromJSON)),
     };
 }
 
@@ -69,5 +84,6 @@ export function LandingPublicationsListResponseDtoToJSONTyped(value?: LandingPub
     return {
 
         'versions': ((value['versions'] as Array<any>).map(LandingPublicationResponseDtoToJSON)),
+        'ready_solution_versions': ((value['readySolutionVersions'] as Array<any>).map(LandingReadySolutionVersionResponseDtoToJSON)),
     };
 }

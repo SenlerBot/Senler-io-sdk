@@ -13,34 +13,28 @@ import * as runtime from '../runtime';
 import type { AgentResponseDto, CentrifugoSubscriptionDto, SelectVariantDto, StartTrainingDto, StartTrainingResponseDto, TrainingPreviewDto, TrainingPreviewResponseDto, TrainingStatusResponseDto } from '../models/index';
 export interface GetTrainingRealtimeTokenRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetTrainingRealtimeTokenAcceptLanguageEnum;
 }
 export interface GetTrainingStatusRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetTrainingStatusAcceptLanguageEnum;
 }
 export interface TrainingCancelRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: TrainingCancelAcceptLanguageEnum;
 }
 export interface TrainingPreviewRequest {
     id: string;
-    xSessionId: string;
     trainingPreviewDto: TrainingPreviewDto;
     acceptLanguage?: TrainingPreviewAcceptLanguageEnum;
 }
 export interface TrainingSelectRequest {
     id: string;
-    xSessionId: string;
     selectVariantDto: SelectVariantDto;
     acceptLanguage?: TrainingSelectAcceptLanguageEnum;
 }
 export interface TrainingStartRequest {
     id: string;
-    xSessionId: string;
     startTrainingDto: StartTrainingDto;
     acceptLanguage?: TrainingStartAcceptLanguageEnum;
 }

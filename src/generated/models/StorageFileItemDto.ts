@@ -62,17 +62,11 @@ export interface StorageFileItemDto {
      */
     mediaCategory: StorageFileItemDtoMediaCategoryEnum;
     /**
-     * URL
+     * URL , storage
      * @type {string}
      * @memberof StorageFileItemDto
      */
-    storageUrl?: string;
-    /**
-     * storage
-     * @type {string}
-     * @memberof StorageFileItemDto
-     */
-    storagePath?: string;
+    contentUrl?: string;
     /**
      *
      * @type {string}
@@ -192,6 +186,7 @@ export type StorageFileItemDtoPlatformTypeEnum = typeof StorageFileItemDtoPlatfo
 export const StorageFileItemDtoStorageSourceEnum = {
     Channel: 'channel',
     Dialog: 'dialog',
+    Delivery: 'delivery',
     KnowledgeBase: 'knowledge_base',
     Agent: 'agent',
     Web: 'web',
@@ -205,6 +200,7 @@ export type StorageFileItemDtoStorageSourceEnum = typeof StorageFileItemDtoStora
  */
 export const StorageFileItemDtoOwnerTypeEnum = {
     DialogAttachment: 'dialog_attachment',
+    DeliveryAttachment: 'delivery_attachment',
     KnowledgeFile: 'knowledge_file',
     KnowledgeDocumentAsset: 'knowledge_document_asset',
     KnowledgeTableAsset: 'knowledge_table_asset',
@@ -247,8 +243,7 @@ export function StorageFileItemDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'fileSizeFormatted': json['file_size_formatted'],
         'mimeType': json['mime_type'],
         'mediaCategory': json['media_category'],
-        'storageUrl': json['storage_url'] == null ? undefined : json['storage_url'],
-        'storagePath': json['storage_path'] == null ? undefined : json['storage_path'],
+        'contentUrl': json['content_url'] == null ? undefined : json['content_url'],
         'status': json['status'],
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
         'storageSource': json['storage_source'] == null ? undefined : json['storage_source'],
@@ -281,8 +276,7 @@ export function StorageFileItemDtoToJSONTyped(value?: StorageFileItemDto | null,
         'file_size_formatted': value['fileSizeFormatted'],
         'mime_type': value['mimeType'],
         'media_category': value['mediaCategory'],
-        'storage_url': value['storageUrl'],
-        'storage_path': value['storagePath'],
+        'content_url': value['contentUrl'],
         'status': value['status'],
         'platform_type': value['platformType'],
         'storage_source': value['storageSource'],

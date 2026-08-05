@@ -65,7 +65,6 @@ export interface GetAgentsTopMetricsRequest {
     agentType?: GetAgentsTopMetricsAgentTypeEnum;
     channelId?: string;
     metricType?: GetAgentsTopMetricsMetricTypeEnum;
-    xSessionId?: string;
     acceptLanguage?: GetAgentsTopMetricsAcceptLanguageEnum;
 }
 
@@ -86,7 +85,6 @@ export interface GetMetricsLogRequest {
     sortOrder?: GetMetricsLogSortOrderEnum;
     page?: number;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetMetricsLogAcceptLanguageEnum;
 }
 
@@ -100,20 +98,17 @@ export interface GetMetricsTopAgentsRequest {
     agentType?: GetMetricsTopAgentsAgentTypeEnum;
     channelId?: string;
     metricType?: GetMetricsTopAgentsMetricTypeEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMetricsTopAgentsAcceptLanguageEnum;
 }
 
 export interface GetSummarizeRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetSummarizeAcceptLanguageEnum;
 }
 
 export interface GetSummarizeEstimateRequest {
     projectId: string;
     period?: GetSummarizeEstimatePeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetSummarizeEstimateAcceptLanguageEnum;
 }
 
@@ -121,19 +116,16 @@ export interface GetSummarizeHistoryRequest {
     projectId: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetSummarizeHistoryAcceptLanguageEnum;
 }
 
 export interface GetSummarizeLatestRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetSummarizeLatestAcceptLanguageEnum;
 }
 
 export interface GetSummarizeSettingsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetSummarizeSettingsAcceptLanguageEnum;
 }
 
@@ -147,7 +139,6 @@ export interface GetTopAgentsRequest {
     channelId?: string;
     metricType?: GetTopAgentsMetricTypeEnum;
     top?: GetTopAgentsTopEnum;
-    xSessionId?: string;
     acceptLanguage?: GetTopAgentsAcceptLanguageEnum;
 }
 
@@ -161,19 +152,16 @@ export interface GetTopMetricsRequest {
     channelId?: string;
     metricType?: GetTopMetricsMetricTypeEnum;
     top?: GetTopMetricsTopEnum;
-    xSessionId?: string;
     acceptLanguage?: GetTopMetricsAcceptLanguageEnum;
 }
 
 export interface SummarizeRequest {
     generateSummarizationRequestDto: GenerateSummarizationRequestDto;
-    xSessionId?: string;
     acceptLanguage?: SummarizeAcceptLanguageEnum;
 }
 
 export interface UpdateSummarizeSettingsRequest {
     updateSummarizationSettingsRequestDto: UpdateSummarizationSettingsRequestDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSummarizeSettingsAcceptLanguageEnum;
 }
 
@@ -236,10 +224,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -371,10 +355,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -466,10 +446,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -521,10 +497,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -585,10 +557,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -654,10 +622,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -714,10 +678,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -773,10 +733,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -866,10 +822,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -958,10 +910,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1015,10 +963,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1074,10 +1018,6 @@ export class AnalyticsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

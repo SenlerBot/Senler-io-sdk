@@ -20,6 +20,13 @@ import {
     WidgetLocalizedTextDtoToJSON,
     WidgetLocalizedTextDtoToJSONTyped,
 } from './WidgetLocalizedTextDto';
+import type { WidgetLocalizedButtonsDto } from './WidgetLocalizedButtonsDto';
+import {
+    WidgetLocalizedButtonsDtoFromJSON,
+    WidgetLocalizedButtonsDtoFromJSONTyped,
+    WidgetLocalizedButtonsDtoToJSON,
+    WidgetLocalizedButtonsDtoToJSONTyped,
+} from './WidgetLocalizedButtonsDto';
 import type { ButtonSettingsDto } from './ButtonSettingsDto';
 import {
     ButtonSettingsDtoFromJSON,
@@ -64,6 +71,12 @@ export interface WidgetThemeDto {
      * @memberof WidgetThemeDto
      */
     emptyStateMessage?: WidgetLocalizedTextDto;
+    /**
+     * .
+     * @type {WidgetLocalizedButtonsDto}
+     * @memberof WidgetThemeDto
+     */
+    welcomeButtons?: WidgetLocalizedButtonsDto;
     /**
      * ( )
      * @type {ButtonSettingsDto}
@@ -147,6 +160,7 @@ export function WidgetThemeDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'position': json['position'] == null ? undefined : json['position'],
         'welcomeMessage': json['welcome_message'] == null ? undefined : WidgetLocalizedTextDtoFromJSON(json['welcome_message']),
         'emptyStateMessage': json['empty_state_message'] == null ? undefined : WidgetLocalizedTextDtoFromJSON(json['empty_state_message']),
+        'welcomeButtons': json['welcome_buttons'] == null ? undefined : WidgetLocalizedButtonsDtoFromJSON(json['welcome_buttons']),
         'button': json['button'] == null ? undefined : ButtonSettingsDtoFromJSON(json['button']),
         'width': json['width'] == null ? undefined : json['width'],
         'height': json['height'] == null ? undefined : json['height'],
@@ -172,6 +186,7 @@ export function WidgetThemeDtoToJSONTyped(value?: WidgetThemeDto | null, ignoreD
         'position': value['position'],
         'welcome_message': WidgetLocalizedTextDtoToJSON(value['welcomeMessage']),
         'empty_state_message': WidgetLocalizedTextDtoToJSON(value['emptyStateMessage']),
+        'welcome_buttons': WidgetLocalizedButtonsDtoToJSON(value['welcomeButtons']),
         'button': ButtonSettingsDtoToJSON(value['button']),
         'width': value['width'],
         'height': value['height'],

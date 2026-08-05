@@ -40,6 +40,7 @@ export declare const DialogMessageAttachmentDtoTypeEnum: {
     readonly Sticker: "sticker";
     readonly Contact: "contact";
     readonly Location: "location";
+    readonly Link: "link";
 };
 export type DialogMessageAttachmentDtoTypeEnum = typeof DialogMessageAttachmentDtoTypeEnum[keyof typeof DialogMessageAttachmentDtoTypeEnum];
 /**

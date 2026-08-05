@@ -60,7 +60,6 @@ export declare const AppCatalogListTypeEnum: {
     readonly Oauth: "oauth";
     readonly SalesFunnel: "sales_funnel";
     readonly AgentTool: "agent_tool";
-    readonly EmbeddedPage: "embedded_page";
 };
 export type AppCatalogListTypeEnum = typeof AppCatalogListTypeEnum[keyof typeof AppCatalogListTypeEnum];
 /**

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { WidgetLocalizedTextDto } from './WidgetLocalizedTextDto';
+import type { WidgetLocalizedButtonsDto } from './WidgetLocalizedButtonsDto';
 import type { ButtonSettingsDto } from './ButtonSettingsDto';
 /**
  * WidgetThemeDto.
@@ -47,6 +48,12 @@ export interface WidgetThemeDto {
      * @memberof WidgetThemeDto
      */
     emptyStateMessage?: WidgetLocalizedTextDto;
+    /**
+     * .
+     * @type {WidgetLocalizedButtonsDto}
+     * @memberof WidgetThemeDto
+     */
+    welcomeButtons?: WidgetLocalizedButtonsDto;
     /**
      * ( )
      * @type {ButtonSettingsDto}

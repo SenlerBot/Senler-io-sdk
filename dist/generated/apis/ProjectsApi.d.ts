@@ -13,7 +13,6 @@ import * as runtime from '../runtime';
 import type { DialogSlaSettingsDto, ProjectDetailsResponseDto, SetDialogSlaEnabledDto, UpdateDialogSlaPriorityThresholdDto, UpdateDialogSlaSettingsDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
 export interface GetDialogSlaSettingsRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetDialogSlaSettingsAcceptLanguageEnum;
 }
 export interface GetMeRequest {
@@ -22,26 +21,22 @@ export interface GetMeRequest {
 export interface UpdateRequest {
     projectId: string;
     updateProjectDto: UpdateProjectDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAcceptLanguageEnum;
 }
 export interface UpdateDialogSlaSettingsRequest {
     projectId: string;
     updateDialogSlaSettingsDto: UpdateDialogSlaSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDialogSlaSettingsAcceptLanguageEnum;
 }
 export interface UpdateDialogSlaSettingsEnabledRequest {
     projectId: string;
     setDialogSlaEnabledDto: SetDialogSlaEnabledDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDialogSlaSettingsEnabledAcceptLanguageEnum;
 }
 export interface UpdateDialogSlaSettingsPrioritiesRequest {
     projectId: string;
     priority: UpdateDialogSlaSettingsPrioritiesPriorityEnum;
     updateDialogSlaPriorityThresholdDto: UpdateDialogSlaPriorityThresholdDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum;
 }
 /**

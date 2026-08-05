@@ -58,8 +58,6 @@ function instanceOfLandingVersionResponseDto(value) {
         return false;
     if (!('settingsRevision' in value) || value['settingsRevision'] === undefined)
         return false;
-    if (!('isPinned' in value) || value['isPinned'] === undefined)
-        return false;
     if (!('publishedAt' in value) || value['publishedAt'] === undefined)
         return false;
     if (!('deleteAfter' in value) || value['deleteAfter'] === undefined)
@@ -84,7 +82,6 @@ function LandingVersionResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'settings': (0, LandingSettingsDto_1.LandingSettingsDtoFromJSON)(json['settings']),
         'orderRevision': json['order_revision'],
         'settingsRevision': json['settings_revision'],
-        'isPinned': json['is_pinned'],
         'publishedAt': (json['published_at'] == null ? null : new Date(json['published_at'])),
         'deleteAfter': (json['delete_after'] == null ? null : new Date(json['delete_after'])),
         'blocks': (json['blocks'].map(LandingBlockResponseDto_1.LandingBlockResponseDtoFromJSON)),
@@ -106,7 +103,6 @@ function LandingVersionResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'settings': (0, LandingSettingsDto_1.LandingSettingsDtoToJSON)(value['settings']),
         'order_revision': value['orderRevision'],
         'settings_revision': value['settingsRevision'],
-        'is_pinned': value['isPinned'],
         'published_at': (value['publishedAt'] == null ? null : value['publishedAt'].toISOString()),
         'delete_after': (value['deleteAfter'] == null ? null : value['deleteAfter'].toISOString()),
         'blocks': (value['blocks'].map(LandingBlockResponseDto_1.LandingBlockResponseDtoToJSON)),

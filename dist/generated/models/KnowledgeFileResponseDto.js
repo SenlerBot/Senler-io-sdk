@@ -25,6 +25,7 @@ const KnowledgeFileResolvedLinkDto_1 = require("./KnowledgeFileResolvedLinkDto")
  */
 exports.KnowledgeFileResponseDtoOwnerTypeEnum = {
     Project: 'project',
+    App: 'app',
     McpServerTemplate: 'mcp_server_template',
     Admin: 'admin'
 };
@@ -57,6 +58,14 @@ function instanceOfKnowledgeFileResponseDto(value) {
     if (!('ownerType' in value) || value['ownerType'] === undefined)
         return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined)
+        return false;
+    if (!('appId' in value) || value['appId'] === undefined)
+        return false;
+    if (!('documentationLocale' in value) || value['documentationLocale'] === undefined)
+        return false;
+    if (!('documentationPageId' in value) || value['documentationPageId'] === undefined)
+        return false;
+    if (!('documentationSortOrder' in value) || value['documentationSortOrder'] === undefined)
         return false;
     if (!('folderId' in value) || value['folderId'] === undefined)
         return false;
@@ -108,6 +117,10 @@ function KnowledgeFileResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'ownerType': json['owner_type'],
         'ownerId': json['owner_id'],
+        'appId': json['app_id'],
+        'documentationLocale': json['documentation_locale'],
+        'documentationPageId': json['documentation_page_id'],
+        'documentationSortOrder': json['documentation_sort_order'],
         'folderId': json['folder_id'],
         'title': json['title'],
         'fileKind': json['file_kind'],
@@ -141,6 +154,10 @@ function KnowledgeFileResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'project_id': value['projectId'],
         'owner_type': value['ownerType'],
         'owner_id': value['ownerId'],
+        'app_id': value['appId'],
+        'documentation_locale': value['documentationLocale'],
+        'documentation_page_id': value['documentationPageId'],
+        'documentation_sort_order': value['documentationSortOrder'],
         'folder_id': value['folderId'],
         'title': value['title'],
         'file_kind': value['fileKind'],

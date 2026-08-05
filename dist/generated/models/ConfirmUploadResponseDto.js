@@ -26,8 +26,6 @@ function instanceOfConfirmUploadResponseDto(value) {
         return false;
     if (!('url' in value) || value['url'] === undefined)
         return false;
-    if (!('storagePath' in value) || value['storagePath'] === undefined)
-        return false;
     if (!('fileName' in value) || value['fileName'] === undefined)
         return false;
     if (!('fileType' in value) || value['fileType'] === undefined)
@@ -46,7 +44,6 @@ function ConfirmUploadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'fileId': json['fileId'],
         'url': json['url'],
-        'storagePath': json['storagePath'],
         'fileName': json['fileName'],
         'fileType': json['fileType'],
         'fileSize': json['fileSize'],
@@ -63,7 +60,6 @@ function ConfirmUploadResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
     return {
         'fileId': value['fileId'],
         'url': value['url'],
-        'storagePath': value['storagePath'],
         'fileName': value['fileName'],
         'fileType': value['fileType'],
         'fileSize': value['fileSize'],

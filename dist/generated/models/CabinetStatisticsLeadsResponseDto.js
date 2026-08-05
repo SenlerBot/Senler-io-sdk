@@ -22,6 +22,7 @@ exports.CabinetStatisticsLeadsResponseDtoToJSONTyped = CabinetStatisticsLeadsRes
 const StatisticsLeadsSummaryDto_1 = require("./StatisticsLeadsSummaryDto");
 const StatisticsLeadBaseDto_1 = require("./StatisticsLeadBaseDto");
 const StatisticsUsageChartDto_1 = require("./StatisticsUsageChartDto");
+const StatisticsSegmentMembershipBreakdownDto_1 = require("./StatisticsSegmentMembershipBreakdownDto");
 /**
  * @export
  */
@@ -45,6 +46,8 @@ function instanceOfCabinetStatisticsLeadsResponseDto(value) {
         return false;
     if (!('charts' in value) || value['charts'] === undefined)
         return false;
+    if (!('segmentMemberships' in value) || value['segmentMemberships'] === undefined)
+        return false;
     return true;
 }
 function CabinetStatisticsLeadsResponseDtoFromJSON(json) {
@@ -61,6 +64,7 @@ function CabinetStatisticsLeadsResponseDtoFromJSONTyped(json, ignoreDiscriminato
         'summary': (0, StatisticsLeadsSummaryDto_1.StatisticsLeadsSummaryDtoFromJSON)(json['summary']),
         'leadBase': (0, StatisticsLeadBaseDto_1.StatisticsLeadBaseDtoFromJSON)(json['lead_base']),
         'charts': (0, StatisticsUsageChartDto_1.StatisticsUsageChartDtoFromJSON)(json['charts']),
+        'segmentMemberships': (json['segment_memberships'].map(StatisticsSegmentMembershipBreakdownDto_1.StatisticsSegmentMembershipBreakdownDtoFromJSON)),
     };
 }
 function CabinetStatisticsLeadsResponseDtoToJSON(json) {
@@ -77,5 +81,6 @@ function CabinetStatisticsLeadsResponseDtoToJSONTyped(value, ignoreDiscriminator
         'summary': (0, StatisticsLeadsSummaryDto_1.StatisticsLeadsSummaryDtoToJSON)(value['summary']),
         'lead_base': (0, StatisticsLeadBaseDto_1.StatisticsLeadBaseDtoToJSON)(value['leadBase']),
         'charts': (0, StatisticsUsageChartDto_1.StatisticsUsageChartDtoToJSON)(value['charts']),
+        'segment_memberships': (value['segmentMemberships'].map(StatisticsSegmentMembershipBreakdownDto_1.StatisticsSegmentMembershipBreakdownDtoToJSON)),
     };
 }

@@ -28,17 +28,17 @@ import type {
   LandingBlockOrderMutationResponseDto,
   LandingDraftConflictResponseDto,
   LandingListResponseDto,
-  LandingPublicationResponseDto,
   LandingPublicationsListResponseDto,
+  LandingRealtimeFocusResponseDto,
   LandingResponseDto,
   LandingShareLinksResponseDto,
   LandingSummaryResponseDto,
   MoveLandingBlockDto,
   S3UploadUrlResponseDto,
-  SetLandingPublicationPinnedDto,
   UpdateLandingBlockDto,
   UpdateLandingDraftDto,
   UpdateLandingDto,
+  UpdateLandingRealtimeFocusDto,
 } from '../models/index';
 import {
     ConfirmS3UploadDtoFromJSON,
@@ -67,10 +67,10 @@ import {
     LandingDraftConflictResponseDtoToJSON,
     LandingListResponseDtoFromJSON,
     LandingListResponseDtoToJSON,
-    LandingPublicationResponseDtoFromJSON,
-    LandingPublicationResponseDtoToJSON,
     LandingPublicationsListResponseDtoFromJSON,
     LandingPublicationsListResponseDtoToJSON,
+    LandingRealtimeFocusResponseDtoFromJSON,
+    LandingRealtimeFocusResponseDtoToJSON,
     LandingResponseDtoFromJSON,
     LandingResponseDtoToJSON,
     LandingShareLinksResponseDtoFromJSON,
@@ -81,20 +81,19 @@ import {
     MoveLandingBlockDtoToJSON,
     S3UploadUrlResponseDtoFromJSON,
     S3UploadUrlResponseDtoToJSON,
-    SetLandingPublicationPinnedDtoFromJSON,
-    SetLandingPublicationPinnedDtoToJSON,
     UpdateLandingBlockDtoFromJSON,
     UpdateLandingBlockDtoToJSON,
     UpdateLandingDraftDtoFromJSON,
     UpdateLandingDraftDtoToJSON,
     UpdateLandingDtoFromJSON,
     UpdateLandingDtoToJSON,
+    UpdateLandingRealtimeFocusDtoFromJSON,
+    UpdateLandingRealtimeFocusDtoToJSON,
 } from '../models/index';
 
 export interface DeleteLandingsRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteLandingsAcceptLanguageEnum;
 }
 
@@ -102,8 +101,8 @@ export interface DeleteLandingsBlocksRequest {
     projectId: string;
     landingId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: DeleteLandingsBlocksAcceptLanguageEnum;
 }
 
@@ -111,36 +110,32 @@ export interface GetLandingsRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    automatic?: boolean;
     search?: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
 }
 
 export interface GetLandings2Request {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandings2AcceptLanguageEnum;
 }
 
 export interface GetLandingsPublicationsRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsPublicationsAcceptLanguageEnum;
 }
 
 export interface GetLandingsShareLinksRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
     acceptLanguage?: GetLandingsShareLinksAcceptLanguageEnum;
 }
 
 export interface LandingsRequest {
     projectId: string;
     createLandingDto: CreateLandingDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsAcceptLanguageEnum;
 }
 
@@ -148,7 +143,6 @@ export interface LandingsAssetsConfirmRequest {
     projectId: string;
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsAssetsConfirmAcceptLanguageEnum;
 }
 
@@ -156,15 +150,14 @@ export interface LandingsAssetsUploadUrlRequest {
     projectId: string;
     landingId: string;
     getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsAssetsUploadUrlAcceptLanguageEnum;
 }
 
 export interface LandingsBlocksRequest {
     projectId: string;
     landingId: string;
+    xLandingEditorSessionId: string;
     createLandingBlockDto: CreateLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsBlocksAcceptLanguageEnum;
 }
 
@@ -172,8 +165,8 @@ export interface LandingsBlocksMoveRequest {
     projectId: string;
     landingId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsBlocksMoveAcceptLanguageEnum;
 }
 
@@ -181,7 +174,6 @@ export interface LandingsDuplicateRequest {
     projectId: string;
     landingId: string;
     duplicateLandingDto: DuplicateLandingDto;
-    xSessionId?: string;
     acceptLanguage?: LandingsDuplicateAcceptLanguageEnum;
 }
 
@@ -189,22 +181,22 @@ export interface LandingsPublicationsRestoreRequest {
     projectId: string;
     landingId: string;
     publicationId: string;
-    xSessionId?: string;
+    xLandingEditorSessionId: string;
     acceptLanguage?: LandingsPublicationsRestoreAcceptLanguageEnum;
 }
 
 export interface LandingsPublishRequest {
     projectId: string;
     landingId: string;
-    xSessionId?: string;
+    xLandingEditorSessionId: string;
     acceptLanguage?: LandingsPublishAcceptLanguageEnum;
 }
 
 export interface UpdateLandingsRequest {
     projectId: string;
     landingId: string;
+    xLandingEditorSessionId: string;
     updateLandingDto: UpdateLandingDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsAcceptLanguageEnum;
 }
 
@@ -212,26 +204,25 @@ export interface UpdateLandingsBlocksRequest {
     projectId: string;
     landingId: string;
     blockId: string;
+    xLandingEditorSessionId: string;
     updateLandingBlockDto: UpdateLandingBlockDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsBlocksAcceptLanguageEnum;
 }
 
 export interface UpdateLandingsDraftRequest {
     projectId: string;
     landingId: string;
+    xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateLandingsDraftAcceptLanguageEnum;
 }
 
-export interface UpdateLandingsPublicationsPinRequest {
+export interface UpdateLandingsRealtimeFocusRequest {
     projectId: string;
     landingId: string;
-    publicationId: string;
-    setLandingPublicationPinnedDto: SetLandingPublicationPinnedDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateLandingsPublicationsPinAcceptLanguageEnum;
+    xLandingEditorSessionId: string;
+    updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
+    acceptLanguage?: UpdateLandingsRealtimeFocusAcceptLanguageEnum;
 }
 
 /**
@@ -261,10 +252,6 @@ export class LandingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -328,6 +315,13 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteLandingsBlocks().'
+            );
+        }
+
         if (requestParameters['deleteLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'deleteLandingBlockDto',
@@ -341,8 +335,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -404,15 +398,15 @@ export class LandingsApi extends runtime.BaseAPI {
             queryParameters['offset'] = requestParameters['offset'];
         }
 
+        if (requestParameters['automatic'] != null) {
+            queryParameters['automatic'] = requestParameters['automatic'];
+        }
+
         if (requestParameters['search'] != null) {
             queryParameters['search'] = requestParameters['search'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -473,10 +467,6 @@ export class LandingsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -536,10 +526,6 @@ export class LandingsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -598,10 +584,6 @@ export class LandingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -663,10 +645,6 @@ export class LandingsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -737,10 +715,6 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -810,10 +784,6 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -870,6 +840,13 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocks().'
+            );
+        }
+
         if (requestParameters['createLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'createLandingBlockDto',
@@ -883,8 +860,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -950,6 +927,13 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksMove().'
+            );
+        }
+
         if (requestParameters['moveLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'moveLandingBlockDto',
@@ -963,8 +947,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1036,10 +1020,6 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1103,12 +1083,19 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsPublicationsRestore().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1166,12 +1153,19 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsPublish().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1229,6 +1223,13 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandings().'
+            );
+        }
+
         if (requestParameters['updateLandingDto'] == null) {
             throw new runtime.RequiredError(
                 'updateLandingDto',
@@ -1242,8 +1243,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1309,6 +1310,13 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocks().'
+            );
+        }
+
         if (requestParameters['updateLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'updateLandingBlockDto',
@@ -1322,8 +1330,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1382,6 +1390,13 @@ export class LandingsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsDraft().'
+            );
+        }
+
         if (requestParameters['updateLandingDraftDto'] == null) {
             throw new runtime.RequiredError(
                 'updateLandingDraftDto',
@@ -1395,8 +1410,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1440,32 +1455,32 @@ export class LandingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPublicationsPinRaw(requestParameters: UpdateLandingsPublicationsPinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationResponseDto>> {
+    async updateLandingsRealtimeFocusRaw(requestParameters: UpdateLandingsRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingRealtimeFocusResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPublicationsPin().'
+                'Required parameter "projectId" was null or undefined when calling updateLandingsRealtimeFocus().'
             );
         }
 
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError(
                 'landingId',
-                'Required parameter "landingId" was null or undefined when calling updateLandingsPublicationsPin().'
+                'Required parameter "landingId" was null or undefined when calling updateLandingsRealtimeFocus().'
             );
         }
 
-        if (requestParameters['publicationId'] == null) {
+        if (requestParameters['xLandingEditorSessionId'] == null) {
             throw new runtime.RequiredError(
-                'publicationId',
-                'Required parameter "publicationId" was null or undefined when calling updateLandingsPublicationsPin().'
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsRealtimeFocus().'
             );
         }
 
-        if (requestParameters['setLandingPublicationPinnedDto'] == null) {
+        if (requestParameters['updateLandingRealtimeFocusDto'] == null) {
             throw new runtime.RequiredError(
-                'setLandingPublicationPinnedDto',
-                'Required parameter "setLandingPublicationPinnedDto" was null or undefined when calling updateLandingsPublicationsPin().'
+                'updateLandingRealtimeFocusDto',
+                'Required parameter "updateLandingRealtimeFocusDto" was null or undefined when calling updateLandingsRealtimeFocus().'
             );
         }
 
@@ -1475,8 +1490,8 @@ export class LandingsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1497,22 +1512,22 @@ export class LandingsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{landingId}/publications/{publicationId}/pin`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))).replace(`{${"publicationId"}}`, encodeURIComponent(String(requestParameters['publicationId']))),
-            method: 'PATCH',
+            path: `/api/projects/{projectId}/landings/{landingId}/realtime/focus`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: SetLandingPublicationPinnedDtoToJSON(requestParameters['setLandingPublicationPinnedDto']),
+            body: UpdateLandingRealtimeFocusDtoToJSON(requestParameters['updateLandingRealtimeFocusDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPublicationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingRealtimeFocusResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      *
      */
-    async updateLandingsPublicationsPin(requestParameters: UpdateLandingsPublicationsPinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationResponseDto> {
-        const response = await this.updateLandingsPublicationsPinRaw(requestParameters, initOverrides);
+    async updateLandingsRealtimeFocus(requestParameters: UpdateLandingsRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingRealtimeFocusResponseDto> {
+        const response = await this.updateLandingsRealtimeFocusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1657,8 +1672,8 @@ export type UpdateLandingsDraftAcceptLanguageEnum = typeof UpdateLandingsDraftAc
 /**
  * @export
  */
-export const UpdateLandingsPublicationsPinAcceptLanguageEnum = {
+export const UpdateLandingsRealtimeFocusAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPublicationsPinAcceptLanguageEnum = typeof UpdateLandingsPublicationsPinAcceptLanguageEnum[keyof typeof UpdateLandingsPublicationsPinAcceptLanguageEnum];
+export type UpdateLandingsRealtimeFocusAcceptLanguageEnum = typeof UpdateLandingsRealtimeFocusAcceptLanguageEnum[keyof typeof UpdateLandingsRealtimeFocusAcceptLanguageEnum];

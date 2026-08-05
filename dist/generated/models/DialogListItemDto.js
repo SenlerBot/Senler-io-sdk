@@ -19,6 +19,7 @@ exports.DialogListItemDtoFromJSON = DialogListItemDtoFromJSON;
 exports.DialogListItemDtoFromJSONTyped = DialogListItemDtoFromJSONTyped;
 exports.DialogListItemDtoToJSON = DialogListItemDtoToJSON;
 exports.DialogListItemDtoToJSONTyped = DialogListItemDtoToJSONTyped;
+const AiResponseActivityDto_1 = require("./AiResponseActivityDto");
 const DialogDtoReplyTarget_1 = require("./DialogDtoReplyTarget");
 const DialogDtoDialogAgentsInner_1 = require("./DialogDtoDialogAgentsInner");
 const DialogDisplayInfoDto_1 = require("./DialogDisplayInfoDto");
@@ -170,6 +171,7 @@ function DialogListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'operatorAssignment': json['operator_assignment'] == null ? undefined : (0, DialogOperatorAssignmentDto_1.DialogOperatorAssignmentDtoFromJSON)(json['operator_assignment']),
         'isSoundMuted': json['is_sound_muted'],
         'currentTyping': json['current_typing'] == null ? undefined : (json['current_typing'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoFromJSON)),
+        'currentAiActivity': json['current_ai_activity'] == null ? undefined : (0, AiResponseActivityDto_1.AiResponseActivityDtoFromJSON)(json['current_ai_activity']),
         'search': json['search'] == null ? undefined : (0, DialogSearchResultDto_1.DialogSearchResultDtoFromJSON)(json['search']),
     };
 }
@@ -235,6 +237,7 @@ function DialogListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'operator_assignment': (0, DialogOperatorAssignmentDto_1.DialogOperatorAssignmentDtoToJSON)(value['operatorAssignment']),
         'is_sound_muted': value['isSoundMuted'],
         'current_typing': value['currentTyping'] == null ? undefined : (value['currentTyping'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoToJSON)),
+        'current_ai_activity': (0, AiResponseActivityDto_1.AiResponseActivityDtoToJSON)(value['currentAiActivity']),
         'search': (0, DialogSearchResultDto_1.DialogSearchResultDtoToJSON)(value['search']),
     };
 }

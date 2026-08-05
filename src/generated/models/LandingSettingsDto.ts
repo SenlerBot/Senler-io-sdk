@@ -25,6 +25,12 @@ export interface LandingSettingsDto {
      * @memberof LandingSettingsDto
      */
     listVisible: boolean;
+    /**
+     * HEX-
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    backgroundColor: string;
 }
 
 /**
@@ -32,6 +38,7 @@ export interface LandingSettingsDto {
  */
 export function instanceOfLandingSettingsDto(value: object): value is LandingSettingsDto {
     if (!('listVisible' in value) || value['listVisible'] === undefined) return false;
+    if (!('backgroundColor' in value) || value['backgroundColor'] === undefined) return false;
     return true;
 }
 
@@ -46,6 +53,7 @@ export function LandingSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
 
         'listVisible': json['list_visible'],
+        'backgroundColor': json['background_color'],
     };
 }
 
@@ -61,5 +69,6 @@ export function LandingSettingsDtoToJSONTyped(value?: LandingSettingsDto | null,
     return {
 
         'list_visible': value['listVisible'],
+        'background_color': value['backgroundColor'],
     };
 }

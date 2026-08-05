@@ -19,6 +19,7 @@ exports.DialogDetailsDtoFromJSON = DialogDetailsDtoFromJSON;
 exports.DialogDetailsDtoFromJSONTyped = DialogDetailsDtoFromJSONTyped;
 exports.DialogDetailsDtoToJSON = DialogDetailsDtoToJSON;
 exports.DialogDetailsDtoToJSONTyped = DialogDetailsDtoToJSONTyped;
+const AiResponseActivityDto_1 = require("./AiResponseActivityDto");
 const DialogLeadDto_1 = require("./DialogLeadDto");
 const DialogDtoReplyTarget_1 = require("./DialogDtoReplyTarget");
 const DialogDtoDialogAgentsInner_1 = require("./DialogDtoDialogAgentsInner");
@@ -173,6 +174,7 @@ function DialogDetailsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'lead': json['lead'] == null ? undefined : (0, DialogLeadDto_1.DialogLeadDtoFromJSON)(json['lead']),
         'channel': json['channel'] == null ? undefined : (0, DialogChannelInfoDto_1.DialogChannelInfoDtoFromJSON)(json['channel']),
         'currentTyping': json['current_typing'] == null ? undefined : (json['current_typing'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoFromJSON)),
+        'currentAiActivity': json['current_ai_activity'] == null ? undefined : (0, AiResponseActivityDto_1.AiResponseActivityDtoFromJSON)(json['current_ai_activity']),
     };
 }
 function DialogDetailsDtoToJSON(json) {
@@ -239,5 +241,6 @@ function DialogDetailsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'lead': (0, DialogLeadDto_1.DialogLeadDtoToJSON)(value['lead']),
         'channel': (0, DialogChannelInfoDto_1.DialogChannelInfoDtoToJSON)(value['channel']),
         'current_typing': value['currentTyping'] == null ? undefined : (value['currentTyping'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoToJSON)),
+        'current_ai_activity': (0, AiResponseActivityDto_1.AiResponseActivityDtoToJSON)(value['currentAiActivity']),
     };
 }

@@ -18,7 +18,6 @@ export interface GetAuditRequest {
     actorId?: string;
     before?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetAuditAcceptLanguageEnum;
 }
 /**
@@ -26,12 +25,12 @@ export interface GetAuditRequest {
  */
 export declare class AuditApi extends runtime.BaseAPI {
     /**
-     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` cursor (created_at ) - `limit` - (1-100, default 50)
+     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
     getAuditRaw(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditLogListResponseDto>>;
     /**
-     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` cursor (created_at ) - `limit` - (1-100, default 50)
+     * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
     getAudit(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto>;
@@ -47,7 +46,9 @@ export declare const GetAuditEntityTypeEnum: {
     readonly McpServer: "mcp_server";
     readonly McpServerList: "mcp_server_list";
     readonly DataSource: "data_source";
-    readonly KnowledgeBase: "knowledge_base";
+    readonly KnowledgeFolder: "knowledge_folder";
+    readonly KnowledgeFile: "knowledge_file";
+    readonly KnowledgeTable: "knowledge_table";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
     readonly Segment: "segment";
@@ -58,6 +59,12 @@ export declare const GetAuditEntityTypeEnum: {
     readonly ProjectTariff: "project_tariff";
     readonly SupportSchedule: "support_schedule";
     readonly Invitation: "invitation";
+    readonly ApiKey: "api_key";
+    readonly MetricDefinition: "metric_definition";
+    readonly AppInstallation: "app_installation";
+    readonly PaymentSettings: "payment_settings";
+    readonly Space: "space";
+    readonly SummarizationSettings: "summarization_settings";
 };
 export type GetAuditEntityTypeEnum = typeof GetAuditEntityTypeEnum[keyof typeof GetAuditEntityTypeEnum];
 /**

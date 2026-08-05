@@ -19,7 +19,7 @@ exports.SendMessageToDialogDtoFromJSON = SendMessageToDialogDtoFromJSON;
 exports.SendMessageToDialogDtoFromJSONTyped = SendMessageToDialogDtoFromJSONTyped;
 exports.SendMessageToDialogDtoToJSON = SendMessageToDialogDtoToJSON;
 exports.SendMessageToDialogDtoToJSONTyped = SendMessageToDialogDtoToJSONTyped;
-const MessageAttachmentInputDto_1 = require("./MessageAttachmentInputDto");
+const MessageAttachmentReferenceDto_1 = require("./MessageAttachmentReferenceDto");
 const MessageButtonDto_1 = require("./MessageButtonDto");
 /**
  * @export
@@ -48,7 +48,8 @@ function SendMessageToDialogDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'content': json['content'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
-        'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoFromJSON)),
+        'idempotencyKey': json['idempotency_key'] == null ? undefined : json['idempotency_key'],
+        'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoFromJSON)),
         'buttons': json['buttons'] == null ? undefined : (json['buttons'].map(MessageButtonDto_1.MessageButtonDtoFromJSON)),
         'replyToEventId': json['reply_to_event_id'] == null ? undefined : json['reply_to_event_id'],
     };
@@ -63,7 +64,8 @@ function SendMessageToDialogDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'content': value['content'],
         'client_type': value['clientType'],
-        'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentInputDto_1.MessageAttachmentInputDtoToJSON)),
+        'idempotency_key': value['idempotencyKey'],
+        'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoToJSON)),
         'buttons': value['buttons'] == null ? undefined : (value['buttons'].map(MessageButtonDto_1.MessageButtonDtoToJSON)),
         'reply_to_event_id': value['replyToEventId'],
     };

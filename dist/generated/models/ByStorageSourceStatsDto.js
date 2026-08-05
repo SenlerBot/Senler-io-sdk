@@ -35,6 +35,7 @@ function ByStorageSourceStatsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'channel': json['channel'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['channel']),
         'dialog': json['dialog'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['dialog']),
+        'delivery': json['delivery'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['delivery']),
         'knowledgeBase': json['knowledge_base'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['knowledge_base']),
         'agent': json['agent'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['agent']),
         'web': json['web'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['web']),
@@ -52,6 +53,7 @@ function ByStorageSourceStatsDtoToJSONTyped(value, ignoreDiscriminator = false) 
     return {
         'channel': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['channel']),
         'dialog': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['dialog']),
+        'delivery': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['delivery']),
         'knowledge_base': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['knowledgeBase']),
         'agent': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['agent']),
         'web': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['web']),

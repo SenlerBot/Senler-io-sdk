@@ -39,58 +39,49 @@ import {
 
 export interface BindWebsiteRequest {
     projectId: string;
-    xSessionId: string;
     bindWebsiteDto: BindWebsiteDto;
     acceptLanguage?: BindWebsiteAcceptLanguageEnum;
 }
 
 export interface DataSourcesCreateRequest {
     projectId: string;
-    xSessionId: string;
     createDataSourceDto: CreateDataSourceDto;
     acceptLanguage?: DataSourcesCreateAcceptLanguageEnum;
 }
 
 export interface DataSourcesDeactivateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesDeactivateAcceptLanguageEnum;
 }
 
 export interface DataSourcesGetByIdRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesGetByIdAcceptLanguageEnum;
 }
 
 export interface DataSourcesListRequest {
     projectId: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesListAcceptLanguageEnum;
 }
 
 export interface DataSourcesUpdateRequest {
     id: string;
-    xSessionId: string;
     updateDataSourceDto: UpdateDataSourceDto;
     acceptLanguage?: DataSourcesUpdateAcceptLanguageEnum;
 }
 
 export interface DataSourcesUpdateRestoreRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: DataSourcesUpdateRestoreAcceptLanguageEnum;
 }
 
 export interface GetActiveForTrainingRequest {
     projectId: string;
-    xSessionId: string;
     acceptLanguage?: GetActiveForTrainingAcceptLanguageEnum;
 }
 
 export interface ValidateRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: ValidateAcceptLanguageEnum;
 }
 
@@ -111,13 +102,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling bindWebsite().'
-            );
-        }
-
         if (requestParameters['bindWebsiteDto'] == null) {
             throw new runtime.RequiredError(
                 'bindWebsiteDto',
@@ -134,10 +118,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -188,13 +168,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling dataSourcesCreate().'
-            );
-        }
-
         if (requestParameters['createDataSourceDto'] == null) {
             throw new runtime.RequiredError(
                 'createDataSourceDto',
@@ -211,10 +184,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -265,20 +234,9 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling dataSourcesDeactivate().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -327,20 +285,9 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling dataSourcesGetById().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -390,13 +337,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling dataSourcesList().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -404,10 +344,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -457,13 +393,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling dataSourcesUpdate().'
-            );
-        }
-
         if (requestParameters['updateDataSourceDto'] == null) {
             throw new runtime.RequiredError(
                 'updateDataSourceDto',
@@ -476,10 +405,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -530,20 +455,9 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling dataSourcesUpdateRestore().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -593,13 +507,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getActiveForTraining().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -607,10 +514,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -660,20 +563,9 @@ export class DataSourcesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling validate().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

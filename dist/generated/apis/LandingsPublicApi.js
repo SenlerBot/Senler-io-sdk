@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.GetProjectsLandings2AcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.GetProjectsLandings2AcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -184,6 +184,40 @@ class LandingsPublicApi extends runtime.BaseAPI {
      * .
      *
      */
+    async landingsLaunchSubscriptionStatusRaw(requestParameters, initOverrides) {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchSubscriptionStatus().');
+        }
+        if (requestParameters['landingAcquisitionIdentityDto'] == null) {
+            throw new runtime.RequiredError('landingAcquisitionIdentityDto', 'Required parameter "landingAcquisitionIdentityDto" was null or undefined when calling landingsLaunchSubscriptionStatus().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/launch/{token}/subscription-status`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LandingAcquisitionIdentityDtoToJSON)(requestParameters['landingAcquisitionIdentityDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingSubscriptionStatusResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async landingsLaunchSubscriptionStatus(requestParameters, initOverrides) {
+        const response = await this.landingsLaunchSubscriptionStatusRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
     async landingsLaunchUnsubscribeRaw(requestParameters, initOverrides) {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchUnsubscribe().');
@@ -275,6 +309,13 @@ exports.GetProjectsLandings2AcceptLanguageEnum = {
  * @export
  */
 exports.LandingsLaunchSubscribeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

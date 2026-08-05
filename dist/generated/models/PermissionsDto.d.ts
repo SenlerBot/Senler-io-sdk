@@ -74,6 +74,12 @@ export interface PermissionsDto {
      * @type {boolean}
      * @memberof PermissionsDto
      */
+    canManageAgentEvents: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
     canViewDialogs: boolean;
     /**
      *

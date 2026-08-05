@@ -26,11 +26,11 @@ export interface SegmentRequiredConsentDto {
      */
     documentId: string;
     /**
-     * . .
+     * , .
      * @type {number}
      * @memberof SegmentRequiredConsentDto
      */
-    version?: number;
+    version: number;
     /**
      * .
      * @type {number}
@@ -44,6 +44,7 @@ export interface SegmentRequiredConsentDto {
  */
 export function instanceOfSegmentRequiredConsentDto(value: object): value is SegmentRequiredConsentDto {
     if (!('documentId' in value) || value['documentId'] === undefined) return false;
+    if (!('version' in value) || value['version'] === undefined) return false;
     return true;
 }
 
@@ -58,7 +59,7 @@ export function SegmentRequiredConsentDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'documentId': json['document_id'],
-        'version': json['version'] == null ? undefined : json['version'],
+        'version': json['version'],
         'sort': json['sort'] == null ? undefined : json['sort'],
     };
 }

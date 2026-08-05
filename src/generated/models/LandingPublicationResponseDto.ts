@@ -39,12 +39,6 @@ export interface LandingPublicationResponseDto {
     number: number;
     /**
      *
-     * @type {boolean}
-     * @memberof LandingPublicationResponseDto
-     */
-    isPinned: boolean;
-    /**
-     *
      * @type {Date}
      * @memberof LandingPublicationResponseDto
      */
@@ -64,7 +58,6 @@ export function instanceOfLandingPublicationResponseDto(value: object): value is
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('number' in value) || value['number'] === undefined) return false;
-    if (!('isPinned' in value) || value['isPinned'] === undefined) return false;
     if (!('publishedAt' in value) || value['publishedAt'] === undefined) return false;
     if (!('deleteAfter' in value) || value['deleteAfter'] === undefined) return false;
     return true;
@@ -83,7 +76,6 @@ export function LandingPublicationResponseDtoFromJSONTyped(json: any, ignoreDisc
         'id': json['id'],
         'name': json['name'],
         'number': json['number'],
-        'isPinned': json['is_pinned'],
         'publishedAt': (json['published_at'] == null ? null : new Date(json['published_at'])),
         'deleteAfter': (json['delete_after'] == null ? null : new Date(json['delete_after'])),
     };
@@ -103,7 +95,6 @@ export function LandingPublicationResponseDtoToJSONTyped(value?: LandingPublicat
         'id': value['id'],
         'name': value['name'],
         'number': value['number'],
-        'is_pinned': value['isPinned'],
         'published_at': (value['publishedAt'] == null ? null : (value['publishedAt'] as any).toISOString()),
         'delete_after': (value['deleteAfter'] == null ? null : (value['deleteAfter'] as any).toISOString()),
     };

@@ -40,6 +40,8 @@ function instanceOfLandingSummaryResponseDto(value) {
         return false;
     if (!('status' in value) || value['status'] === undefined)
         return false;
+    if (!('agentId' in value) || value['agentId'] === undefined)
+        return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined)
         return false;
     if (!('draftVersionId' in value) || value['draftVersionId'] === undefined)
@@ -61,6 +63,7 @@ function LandingSummaryResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'publicId': json['public_id'],
         'status': json['status'],
+        'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'draftVersionId': json['draft_version_id'],
         'publishedVersionId': json['published_version_id'],
@@ -79,6 +82,7 @@ function LandingSummaryResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'name': value['name'],
         'public_id': value['publicId'],
         'status': value['status'],
+        'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'draft_version_id': value['draftVersionId'],
         'published_version_id': value['publishedVersionId'],

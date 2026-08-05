@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateAgentDtoLeadVarsUserRequestModeEnum = exports.CreateAgentDtoLeadVarsInstructionModeEnum = exports.CreateAgentDtoProjectVarsUserRequestModeEnum = exports.CreateAgentDtoProjectVarsInstructionModeEnum = exports.CreateAgentDtoTrainingModeEnum = exports.CreateAgentDtoStatusEnum = exports.CreateAgentDtoCreationModeEnum = exports.CreateAgentDtoAutoAssignmentRoleEnum = exports.CreateAgentDtoAutoAssignmentDialogScopeEnum = exports.CreateAgentDtoAutoAssignmentModeEnum = exports.CreateAgentDtoKeywordDialogScopeEnum = exports.CreateAgentDtoKeywordAssignmentRoleEnum = exports.CreateAgentDtoAutostartModeEnum = exports.CreateAgentDtoKnowledgeBasePermissionsEnum = exports.CreateAgentDtoServerBindingModeEnum = exports.CreateAgentDtoAgentTypeEnum = void 0;
+exports.CreateAgentDtoLeadVarsUserRequestModeEnum = exports.CreateAgentDtoLeadVarsInstructionModeEnum = exports.CreateAgentDtoProjectVarsUserRequestModeEnum = exports.CreateAgentDtoProjectVarsInstructionModeEnum = exports.CreateAgentDtoWidgetAiProgressModeEnum = exports.CreateAgentDtoTrainingModeEnum = exports.CreateAgentDtoStatusEnum = exports.CreateAgentDtoCreationModeEnum = exports.CreateAgentDtoAutoAssignmentRoleEnum = exports.CreateAgentDtoAutoAssignmentDialogScopeEnum = exports.CreateAgentDtoAutoAssignmentModeEnum = exports.CreateAgentDtoKeywordDialogScopeEnum = exports.CreateAgentDtoKeywordAssignmentRoleEnum = exports.CreateAgentDtoAutostartModeEnum = exports.CreateAgentDtoKnowledgeBasePermissionsEnum = exports.CreateAgentDtoServerBindingModeEnum = exports.CreateAgentDtoAgentTypeEnum = void 0;
 exports.instanceOfCreateAgentDto = instanceOfCreateAgentDto;
 exports.CreateAgentDtoFromJSON = CreateAgentDtoFromJSON;
 exports.CreateAgentDtoFromJSONTyped = CreateAgentDtoFromJSONTyped;
@@ -131,6 +131,14 @@ exports.CreateAgentDtoTrainingModeEnum = {
 /**
  * @export
  */
+exports.CreateAgentDtoWidgetAiProgressModeEnum = {
+    SafeProgress: 'safe_progress',
+    Typing: 'typing',
+    Hidden: 'hidden'
+};
+/**
+ * @export
+ */
 exports.CreateAgentDtoProjectVarsInstructionModeEnum = {
     None: 'none',
     Read: 'read',
@@ -229,7 +237,9 @@ function CreateAgentDtoFromJSONTyped(json, ignoreDiscriminator) {
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
+        'widgetAiProgressMode': json['widget_ai_progress_mode'] == null ? undefined : json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
+        'respondOnSegmentSubscription': json['respond_on_segment_subscription'] == null ? undefined : json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'] == null ? undefined : json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'] == null ? undefined : json['enable_selective_response'],
         'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'] == null ? undefined : json['enable_operator_reply_suggestions'],
@@ -304,7 +314,9 @@ function CreateAgentDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
+        'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
         'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],

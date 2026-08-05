@@ -40,27 +40,23 @@ import {
 export interface AgentAssignmentRequest {
     projectId: string;
     createAgentAssignmentRuleDto: CreateAgentAssignmentRuleDto;
-    xSessionId?: string;
     acceptLanguage?: AgentAssignmentAcceptLanguageEnum;
 }
 
 export interface DeleteAgentAssignmentRequest {
     projectId: string;
     ruleId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteAgentAssignmentAcceptLanguageEnum;
 }
 
 export interface GetAgentAssignmentRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentAssignmentAcceptLanguageEnum;
 }
 
 export interface GetAgentAssignment2Request {
     projectId: string;
     ruleId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentAssignment2AcceptLanguageEnum;
 }
 
@@ -68,14 +64,12 @@ export interface UpdateAgentAssignmentRequest {
     projectId: string;
     ruleId: string;
     updateAgentAssignmentRuleDto: UpdateAgentAssignmentRuleDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentAssignmentAcceptLanguageEnum;
 }
 
 export interface UpdateAgentAssignmentRestoreRequest {
     projectId: string;
     ruleId: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentAssignmentRestoreAcceptLanguageEnum;
 }
 
@@ -108,10 +102,6 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -173,10 +163,6 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -228,10 +214,6 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -291,10 +273,6 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -364,10 +342,6 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -427,10 +401,6 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

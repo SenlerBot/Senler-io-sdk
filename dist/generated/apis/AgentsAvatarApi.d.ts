@@ -14,13 +14,11 @@ import type { AgentConfirmAvatarUploadResponseDto, ConfirmS3UploadDto, GetAvatar
 export interface AgentsAvatarAvatarConfirmRequest {
     agentId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
     acceptLanguage?: AgentsAvatarAvatarConfirmAcceptLanguageEnum;
 }
 export interface AgentsAvatarAvatarUploadUrlRequest {
     agentId: string;
     getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
-    xSessionId?: string;
     acceptLanguage?: AgentsAvatarAvatarUploadUrlAcceptLanguageEnum;
 }
 /**

@@ -31,8 +31,6 @@ export interface AppsCreateRequest {
     acceptLanguage?: AppsCreateAcceptLanguageEnum;
     clientId?: string;
     clientSecret?: string;
-    projectId?: string;
-    scope?: string;
     refreshToken?: string;
     code?: string;
     redirectUri?: string;
@@ -44,7 +42,7 @@ export interface AppsCreateRequest {
 export class AppsApi extends runtime.BaseAPI {
 
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). grant_type=client_credentials project_id. OAuth client credentials Authorization: Basic .
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
     async appsCreateRaw(requestParameters: AppsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TokenResponseDto>> {
@@ -94,14 +92,6 @@ export class AppsApi extends runtime.BaseAPI {
             formParams.append('client_secret', requestParameters['clientSecret'] as any);
         }
 
-        if (requestParameters['projectId'] != null) {
-            formParams.append('project_id', requestParameters['projectId'] as any);
-        }
-
-        if (requestParameters['scope'] != null) {
-            formParams.append('scope', requestParameters['scope'] as any);
-        }
-
         if (requestParameters['refreshToken'] != null) {
             formParams.append('refresh_token', requestParameters['refreshToken'] as any);
         }
@@ -126,7 +116,7 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). grant_type=client_credentials project_id. OAuth client credentials Authorization: Basic .
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
     async appsCreate(requestParameters: AppsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TokenResponseDto> {
@@ -140,7 +130,6 @@ export class AppsApi extends runtime.BaseAPI {
  * @export
  */
 export const AppsCreateGrantTypeEnum = {
-    ClientCredentials: 'client_credentials',
     RefreshToken: 'refresh_token',
     AuthorizationCode: 'authorization_code'
 } as const;

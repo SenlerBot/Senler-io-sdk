@@ -43,32 +43,27 @@ import {
 export interface TokensVkBindRequest {
     channelId: string;
     bindVKTokenDto: BindVKTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensVkBindAcceptLanguageEnum;
 }
 
 export interface TokensVkCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensVkCheckWebhookStatusAcceptLanguageEnum;
 }
 
 export interface TokensVkRefreshAvatarRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensVkRefreshAvatarAcceptLanguageEnum;
 }
 
 export interface TokensVkValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensVkValidateAcceptLanguageEnum;
 }
 
 export interface TokensVkWebhookRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensVkWebhookAcceptLanguageEnum;
 }
 
@@ -101,10 +96,6 @@ export class ChannelsVKApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -159,10 +150,6 @@ export class ChannelsVKApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -215,10 +202,6 @@ export class ChannelsVKApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -270,10 +253,6 @@ export class ChannelsVKApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -335,10 +314,6 @@ export class ChannelsVKApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

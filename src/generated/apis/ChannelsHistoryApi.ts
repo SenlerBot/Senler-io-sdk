@@ -32,14 +32,12 @@ export interface ChannelsHistoryScanRequest {
     projectId: string;
     channelId: string;
     channelHistoryScanDto: ChannelHistoryScanDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsHistoryScanAcceptLanguageEnum;
 }
 
 export interface GetChannelsHistoryScanRequest {
     projectId: string;
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: GetChannelsHistoryScanAcceptLanguageEnum;
 }
 
@@ -79,10 +77,6 @@ export class ChannelsHistoryApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -143,10 +137,6 @@ export class ChannelsHistoryApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

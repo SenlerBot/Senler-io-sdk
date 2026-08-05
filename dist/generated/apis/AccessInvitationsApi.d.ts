@@ -14,19 +14,16 @@ import type { CreateInvitationDto, InvitationCreatedResponseDto, InvitationListI
 export interface AccessInvitationsCreateRequest {
     projectId: string;
     createInvitationDto: CreateInvitationDto;
-    xSessionId?: string;
     acceptLanguage?: AccessInvitationsCreateAcceptLanguageEnum;
 }
 export interface AccessInvitationsDeactivateRequest {
     projectId: string;
     invitationId: string;
-    xSessionId?: string;
     acceptLanguage?: AccessInvitationsDeactivateAcceptLanguageEnum;
 }
 export interface AccessInvitationsGetByIdRequest {
     projectId: string;
     status?: InvitationStatus;
-    xSessionId?: string;
     acceptLanguage?: AccessInvitationsGetByIdAcceptLanguageEnum;
 }
 /**

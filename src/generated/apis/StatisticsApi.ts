@@ -46,7 +46,6 @@ export interface GetCommunicationsRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetCommunicationsAcceptLanguageEnum;
 }
 
@@ -56,7 +55,6 @@ export interface GetCostsRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetCostsAcceptLanguageEnum;
 }
 
@@ -67,7 +65,6 @@ export interface GetCostsAiResponseToolsRequest {
     timezone?: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetCostsAiResponseToolsAcceptLanguageEnum;
 }
 
@@ -77,7 +74,6 @@ export interface GetLeadsRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetLeadsAcceptLanguageEnum;
 }
 
@@ -89,7 +85,6 @@ export interface GetLeadsSubscriptionEventsRequest {
     timezone?: string;
     limit?: number;
     cursor?: string;
-    xSessionId?: string;
     acceptLanguage?: GetLeadsSubscriptionEventsAcceptLanguageEnum;
 }
 
@@ -99,7 +94,6 @@ export interface GetOverviewRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetOverviewAcceptLanguageEnum;
 }
 
@@ -151,10 +145,6 @@ export class StatisticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -192,7 +182,7 @@ export class StatisticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , . AI- cost-; . project_currency_cost project_currency.
+     * , , . AI- cost-; . project_currency_cost event-time credit_rate, . GET /api/billing/projects/:projectId/credit-usage-summary.
      *
      */
     async getCostsRaw(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsCostsResponseDto>> {
@@ -234,10 +224,6 @@ export class StatisticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -266,7 +252,7 @@ export class StatisticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , . AI- cost-; . project_currency_cost project_currency.
+     * , , . AI- cost-; . project_currency_cost event-time credit_rate, . GET /api/billing/projects/:projectId/credit-usage-summary.
      *
      */
     async getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto> {
@@ -320,10 +306,6 @@ export class StatisticsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -403,10 +385,6 @@ export class StatisticsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -495,10 +473,6 @@ export class StatisticsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -577,10 +551,6 @@ export class StatisticsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

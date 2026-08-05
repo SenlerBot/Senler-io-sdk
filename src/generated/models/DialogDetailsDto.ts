@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AiResponseActivityDto } from './AiResponseActivityDto';
+import {
+    AiResponseActivityDtoFromJSON,
+    AiResponseActivityDtoFromJSONTyped,
+    AiResponseActivityDtoToJSON,
+    AiResponseActivityDtoToJSONTyped,
+} from './AiResponseActivityDto';
 import type { DialogLeadDto } from './DialogLeadDto';
 import {
     DialogLeadDtoFromJSON,
@@ -426,6 +433,12 @@ export interface DialogDetailsDto {
      * @memberof DialogDetailsDto
      */
     currentTyping?: Array<DialogCurrentTypingDto>;
+    /**
+     * AI-
+     * @type {AiResponseActivityDto}
+     * @memberof DialogDetailsDto
+     */
+    currentAiActivity?: AiResponseActivityDto;
 }
 
 
@@ -570,6 +583,7 @@ export function DialogDetailsDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'lead': json['lead'] == null ? undefined : DialogLeadDtoFromJSON(json['lead']),
         'channel': json['channel'] == null ? undefined : DialogChannelInfoDtoFromJSON(json['channel']),
         'currentTyping': json['current_typing'] == null ? undefined : ((json['current_typing'] as Array<any>).map(DialogCurrentTypingDtoFromJSON)),
+        'currentAiActivity': json['current_ai_activity'] == null ? undefined : AiResponseActivityDtoFromJSON(json['current_ai_activity']),
     };
 }
 
@@ -640,5 +654,6 @@ export function DialogDetailsDtoToJSONTyped(value?: DialogDetailsDto | null, ign
         'lead': DialogLeadDtoToJSON(value['lead']),
         'channel': DialogChannelInfoDtoToJSON(value['channel']),
         'current_typing': value['currentTyping'] == null ? undefined : ((value['currentTyping'] as Array<any>).map(DialogCurrentTypingDtoToJSON)),
+        'current_ai_activity': AiResponseActivityDtoToJSON(value['currentAiActivity']),
     };
 }

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
+import type { PendingSegmentResponseDto } from './PendingSegmentResponseDto';
 import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDto';
 /**
  * LeadResponseDto.
@@ -84,11 +85,11 @@ export interface LeadResponseDto {
      */
     operatorNotes?: string | null;
     /**
-     *
+     * ; null
      * @type {boolean}
      * @memberof LeadResponseDto
      */
-    isSubscribed: boolean;
+    isSubscribed: boolean | null;
     /**
      * ()
      * @type {boolean}
@@ -179,6 +180,12 @@ export interface LeadResponseDto {
      * @memberof LeadResponseDto
      */
     segments: Array<SegmentMembershipResponseDto>;
+    /**
+     * ,
+     * @type {Array<PendingSegmentResponseDto>}
+     * @memberof LeadResponseDto
+     */
+    pendingSegments: Array<PendingSegmentResponseDto>;
 }
 /**
  * @export

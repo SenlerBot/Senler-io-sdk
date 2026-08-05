@@ -50,6 +50,12 @@ export interface LandingSummaryResponseDto {
      */
     status: LandingSummaryResponseDtoStatusEnum;
     /**
+     * -
+     * @type {string}
+     * @memberof LandingSummaryResponseDto
+     */
+    agentId: string | null;
+    /**
      *
      * @type {boolean}
      * @memberof LandingSummaryResponseDto
@@ -89,6 +95,7 @@ export function instanceOfLandingSummaryResponseDto(value: object): value is Lan
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('publicId' in value) || value['publicId'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('agentId' in value) || value['agentId'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('draftVersionId' in value) || value['draftVersionId'] === undefined) return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined) return false;
@@ -110,6 +117,7 @@ export function LandingSummaryResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'name': json['name'],
         'publicId': json['public_id'],
         'status': json['status'],
+        'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'draftVersionId': json['draft_version_id'],
         'publishedVersionId': json['published_version_id'],
@@ -132,6 +140,7 @@ export function LandingSummaryResponseDtoToJSONTyped(value?: LandingSummaryRespo
         'name': value['name'],
         'public_id': value['publicId'],
         'status': value['status'],
+        'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'draft_version_id': value['draftVersionId'],
         'published_version_id': value['publishedVersionId'],

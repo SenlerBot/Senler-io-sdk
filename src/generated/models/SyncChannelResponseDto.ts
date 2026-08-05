@@ -27,6 +27,13 @@ import {
     ChannelResponseDtoToJSON,
     ChannelResponseDtoToJSONTyped,
 } from './ChannelResponseDto';
+import type { SyncChannelFieldResultDto } from './SyncChannelFieldResultDto';
+import {
+    SyncChannelFieldResultDtoFromJSON,
+    SyncChannelFieldResultDtoFromJSONTyped,
+    SyncChannelFieldResultDtoToJSON,
+    SyncChannelFieldResultDtoToJSONTyped,
+} from './SyncChannelFieldResultDto';
 
 /**
  * SyncChannelResponseDto.
@@ -47,11 +54,11 @@ export interface SyncChannelResponseDto {
      */
     token: ChannelTokenResponseDto;
     /**
-     * , . Best-effort , avatar , .
-     * @type {object}
+     *
+     * @type {Array<SyncChannelFieldResultDto>}
      * @memberof SyncChannelResponseDto
      */
-    syncedFields: object;
+    fieldResults: Array<SyncChannelFieldResultDto>;
 }
 
 /**
@@ -60,7 +67,7 @@ export interface SyncChannelResponseDto {
 export function instanceOfSyncChannelResponseDto(value: object): value is SyncChannelResponseDto {
     if (!('channel' in value) || value['channel'] === undefined) return false;
     if (!('token' in value) || value['token'] === undefined) return false;
-    if (!('syncedFields' in value) || value['syncedFields'] === undefined) return false;
+    if (!('fieldResults' in value) || value['fieldResults'] === undefined) return false;
     return true;
 }
 
@@ -76,7 +83,7 @@ export function SyncChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
 
         'channel': ChannelResponseDtoFromJSON(json['channel']),
         'token': ChannelTokenResponseDtoFromJSON(json['token']),
-        'syncedFields': json['synced_fields'],
+        'fieldResults': ((json['field_results'] as Array<any>).map(SyncChannelFieldResultDtoFromJSON)),
     };
 }
 
@@ -93,6 +100,6 @@ export function SyncChannelResponseDtoToJSONTyped(value?: SyncChannelResponseDto
 
         'channel': ChannelResponseDtoToJSON(value['channel']),
         'token': ChannelTokenResponseDtoToJSON(value['token']),
-        'synced_fields': value['syncedFields'],
+        'field_results': ((value['fieldResults'] as Array<any>).map(SyncChannelFieldResultDtoToJSON)),
     };
 }

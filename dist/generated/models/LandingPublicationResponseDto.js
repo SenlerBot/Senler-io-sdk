@@ -28,8 +28,6 @@ function instanceOfLandingPublicationResponseDto(value) {
         return false;
     if (!('number' in value) || value['number'] === undefined)
         return false;
-    if (!('isPinned' in value) || value['isPinned'] === undefined)
-        return false;
     if (!('publishedAt' in value) || value['publishedAt'] === undefined)
         return false;
     if (!('deleteAfter' in value) || value['deleteAfter'] === undefined)
@@ -47,7 +45,6 @@ function LandingPublicationResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'name': json['name'],
         'number': json['number'],
-        'isPinned': json['is_pinned'],
         'publishedAt': (json['published_at'] == null ? null : new Date(json['published_at'])),
         'deleteAfter': (json['delete_after'] == null ? null : new Date(json['delete_after'])),
     };
@@ -63,7 +60,6 @@ function LandingPublicationResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'id': value['id'],
         'name': value['name'],
         'number': value['number'],
-        'is_pinned': value['isPinned'],
         'published_at': (value['publishedAt'] == null ? null : value['publishedAt'].toISOString()),
         'delete_after': (value['deleteAfter'] == null ? null : value['deleteAfter'].toISOString()),
     };

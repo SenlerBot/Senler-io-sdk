@@ -14,18 +14,15 @@ import type { CreateWidgetChannelDto, CreateWidgetChannelResponseDto, PreviewWid
 export interface UpdateWidgetSettingsRequest {
     id: string;
     updateWidgetSettingsDto: UpdateWidgetSettingsDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateWidgetSettingsAcceptLanguageEnum;
 }
 export interface WidgetRequest {
     createWidgetChannelDto: CreateWidgetChannelDto;
-    xSessionId?: string;
     acceptLanguage?: WidgetAcceptLanguageEnum;
 }
 export interface WidgetCodePreviewRequest {
     id: string;
     previewWidgetCodeDto: PreviewWidgetCodeDto;
-    xSessionId?: string;
     acceptLanguage?: WidgetCodePreviewAcceptLanguageEnum;
 }
 /**

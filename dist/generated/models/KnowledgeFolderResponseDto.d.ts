@@ -40,6 +40,12 @@ export interface KnowledgeFolderResponseDto {
      */
     ownerId: string;
     /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeFolderResponseDto
+     */
+    appId?: string | null;
+    /**
      * UUID
      * @type {string}
      * @memberof KnowledgeFolderResponseDto
@@ -51,6 +57,12 @@ export interface KnowledgeFolderResponseDto {
      * @memberof KnowledgeFolderResponseDto
      */
     name: string;
+    /**
+     *
+     * @type {number}
+     * @memberof KnowledgeFolderResponseDto
+     */
+    documentationSortOrder: number | null;
     /**
      *
      * @type {boolean}
@@ -87,6 +99,7 @@ export interface KnowledgeFolderResponseDto {
  */
 export declare const KnowledgeFolderResponseDtoOwnerTypeEnum: {
     readonly Project: "project";
+    readonly App: "app";
     readonly McpServerTemplate: "mcp_server_template";
     readonly Admin: "admin";
 };

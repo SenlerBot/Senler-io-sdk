@@ -14,28 +14,23 @@ import type { BindVKTokenDto, ChannelTokenResponseDto, CheckWebhookStatusResultD
 export interface TokensVkBindRequest {
     channelId: string;
     bindVKTokenDto: BindVKTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensVkBindAcceptLanguageEnum;
 }
 export interface TokensVkCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensVkCheckWebhookStatusAcceptLanguageEnum;
 }
 export interface TokensVkRefreshAvatarRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensVkRefreshAvatarAcceptLanguageEnum;
 }
 export interface TokensVkValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensVkValidateAcceptLanguageEnum;
 }
 export interface TokensVkWebhookRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensVkWebhookAcceptLanguageEnum;
 }
 /**

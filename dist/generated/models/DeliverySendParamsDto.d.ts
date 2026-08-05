@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
 /**
  * DeliverySendParamsDto.
  * @export
@@ -36,10 +35,12 @@ export interface DeliverySendParamsDto {
     messageText: string;
     /**
      *
-     * @type {Array<MessageAttachmentInputDto>}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof DeliverySendParamsDto
      */
-    attachments?: Array<MessageAttachmentInputDto>;
+    attachments?: Array<{
+        [key: string]: any;
+    }>;
     /**
      * UUID , . Null API key/admin .
      * @type {string}

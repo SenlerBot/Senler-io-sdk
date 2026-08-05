@@ -15,20 +15,17 @@ export interface DeleteVariablesRequest {
     projectId: string;
     leadId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteVariablesAcceptLanguageEnum;
 }
 export interface GetVariablesRequest {
     projectId: string;
     leadId: string;
-    xSessionId?: string;
     acceptLanguage?: GetVariablesAcceptLanguageEnum;
 }
 export interface GetVariables2Request {
     projectId: string;
     leadId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: GetVariables2AcceptLanguageEnum;
 }
 export interface UpdateVariablesRequest {
@@ -36,7 +33,6 @@ export interface UpdateVariablesRequest {
     leadId: string;
     name: string;
     setLeadVariableValueDto: SetLeadVariableValueDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateVariablesAcceptLanguageEnum;
 }
 /**

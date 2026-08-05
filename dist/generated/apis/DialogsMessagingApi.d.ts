@@ -14,25 +14,21 @@ import type { ButtonClickResponseDto, DialogButtonClickDto, DialogChatEventDto, 
 export interface ButtonClickRequest {
     dialogId: string;
     dialogButtonClickDto: DialogButtonClickDto;
-    xSessionId?: string;
     acceptLanguage?: ButtonClickAcceptLanguageEnum;
 }
 export interface InterveneRequest {
     dialogId: string;
     interveneDto: InterveneDto;
-    xSessionId?: string;
     acceptLanguage?: InterveneAcceptLanguageEnum;
 }
 export interface OperatorReplyDraftRequest {
     id: string;
     generateOperatorReplyDraftDto: GenerateOperatorReplyDraftDto;
-    xSessionId?: string;
     acceptLanguage?: OperatorReplyDraftAcceptLanguageEnum;
 }
 export interface SendRequest {
     id: string;
     sendMessageToDialogDto: SendMessageToDialogDto;
-    xSessionId?: string;
     acceptLanguage?: SendAcceptLanguageEnum;
 }
 /**
@@ -40,12 +36,12 @@ export interface SendRequest {
  */
 export declare class DialogsMessagingApi extends runtime.BaseAPI {
     /**
-     * AI-. callback_data .
+     * , AI-.
      *
      */
     buttonClickRaw(requestParameters: ButtonClickRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ButtonClickResponseDto>>;
     /**
-     * AI-. callback_data .
+     * , AI-.
      *
      */
     buttonClick(requestParameters: ButtonClickRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ButtonClickResponseDto>;

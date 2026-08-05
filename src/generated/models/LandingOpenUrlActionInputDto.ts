@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface LandingOpenUrlActionInputDto {
     /**
-     * UUID . , .
-     * @type {string}
-     * @memberof LandingOpenUrlActionInputDto
-     */
-    id?: string;
-    /**
      * URL
      * @type {string}
      * @memberof LandingOpenUrlActionInputDto
@@ -68,7 +62,6 @@ export function LandingOpenUrlActionInputDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
-        'id': json['id'] == null ? undefined : json['id'],
         'type': json['type'],
         'url': json['url'],
     };
@@ -85,7 +78,6 @@ export function LandingOpenUrlActionInputDtoToJSONTyped(value?: LandingOpenUrlAc
 
     return {
 
-        'id': value['id'],
         'type': value['type'],
         'url': value['url'],
     };

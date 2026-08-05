@@ -39,20 +39,17 @@ import {
 
 export interface DiscordRequest {
     createDiscordChannelDto: CreateDiscordChannelDto;
-    xSessionId?: string;
     acceptLanguage?: DiscordAcceptLanguageEnum;
 }
 
 export interface TokensDiscordBindRequest {
     channelId: string;
     bindDiscordTokenDto: BindDiscordTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensDiscordBindAcceptLanguageEnum;
 }
 
 export interface TokensDiscordValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensDiscordValidateAcceptLanguageEnum;
 }
 
@@ -78,10 +75,6 @@ export class ChannelsDiscordApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -145,10 +138,6 @@ export class ChannelsDiscordApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -201,10 +190,6 @@ export class ChannelsDiscordApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

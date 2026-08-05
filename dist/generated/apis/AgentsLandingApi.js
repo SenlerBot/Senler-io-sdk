@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentsLandingPublicationsPinAcceptLanguageEnum = exports.UpdateAgentsLandingDraftAcceptLanguageEnum = exports.UpdateAgentsLandingBlocksAcceptLanguageEnum = exports.GetAgentsLandingShareLinksAcceptLanguageEnum = exports.GetAgentsLandingPublicationsAcceptLanguageEnum = exports.GetAgentsLandingAcceptLanguageEnum = exports.DeleteAgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingBlocksMoveAcceptLanguageEnum = exports.AgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingAssetsUploadUrlAcceptLanguageEnum = exports.AgentsLandingAssetsConfirmAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
+exports.UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateAgentsLandingDraftAcceptLanguageEnum = exports.UpdateAgentsLandingBlocksAcceptLanguageEnum = exports.GetAgentsLandingShareLinksAcceptLanguageEnum = exports.GetAgentsLandingPublicationsAcceptLanguageEnum = exports.GetAgentsLandingAcceptLanguageEnum = exports.DeleteAgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingBlocksMoveAcceptLanguageEnum = exports.AgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingAssetsUploadUrlAcceptLanguageEnum = exports.AgentsLandingAssetsConfirmAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -70,9 +70,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -121,9 +118,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -166,14 +160,17 @@ class AgentsLandingApi extends runtime.BaseAPI {
         if (requestParameters['agentId'] == null) {
             throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling agentsLandingBlocks().');
         }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling agentsLandingBlocks().');
+        }
         if (requestParameters['createAgentLandingBlockDto'] == null) {
             throw new runtime.RequiredError('createAgentLandingBlockDto', 'Required parameter "createAgentLandingBlockDto" was null or undefined when calling agentsLandingBlocks().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -220,14 +217,17 @@ class AgentsLandingApi extends runtime.BaseAPI {
         if (requestParameters['blockId'] == null) {
             throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling agentsLandingBlocksMove().');
         }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling agentsLandingBlocksMove().');
+        }
         if (requestParameters['moveLandingBlockDto'] == null) {
             throw new runtime.RequiredError('moveLandingBlockDto', 'Required parameter "moveLandingBlockDto" was null or undefined when calling agentsLandingBlocksMove().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -274,14 +274,17 @@ class AgentsLandingApi extends runtime.BaseAPI {
         if (requestParameters['blockId'] == null) {
             throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling deleteAgentsLandingBlocks().');
         }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteAgentsLandingBlocks().');
+        }
         if (requestParameters['deleteLandingBlockDto'] == null) {
             throw new runtime.RequiredError('deleteLandingBlockDto', 'Required parameter "deleteLandingBlockDto" was null or undefined when calling deleteAgentsLandingBlocks().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -327,9 +330,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -373,9 +373,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -419,9 +416,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -466,14 +460,17 @@ class AgentsLandingApi extends runtime.BaseAPI {
         if (requestParameters['blockId'] == null) {
             throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateAgentsLandingBlocks().');
         }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateAgentsLandingBlocks().');
+        }
         if (requestParameters['updateAgentLandingBlockDto'] == null) {
             throw new runtime.RequiredError('updateAgentLandingBlockDto', 'Required parameter "updateAgentLandingBlockDto" was null or undefined when calling updateAgentsLandingBlocks().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -517,14 +514,17 @@ class AgentsLandingApi extends runtime.BaseAPI {
         if (requestParameters['agentId'] == null) {
             throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateAgentsLandingDraft().');
         }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateAgentsLandingDraft().');
+        }
         if (requestParameters['updateLandingDraftDto'] == null) {
             throw new runtime.RequiredError('updateLandingDraftDto', 'Required parameter "updateLandingDraftDto" was null or undefined when calling updateAgentsLandingDraft().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -561,24 +561,24 @@ class AgentsLandingApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateAgentsLandingPublicationsPinRaw(requestParameters, initOverrides) {
+    async updateAgentsLandingRealtimeFocusRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateAgentsLandingPublicationsPin().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateAgentsLandingRealtimeFocus().');
         }
         if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateAgentsLandingPublicationsPin().');
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateAgentsLandingRealtimeFocus().');
         }
-        if (requestParameters['publicationId'] == null) {
-            throw new runtime.RequiredError('publicationId', 'Required parameter "publicationId" was null or undefined when calling updateAgentsLandingPublicationsPin().');
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateAgentsLandingRealtimeFocus().');
         }
-        if (requestParameters['setLandingPublicationPinnedDto'] == null) {
-            throw new runtime.RequiredError('setLandingPublicationPinnedDto', 'Required parameter "setLandingPublicationPinnedDto" was null or undefined when calling updateAgentsLandingPublicationsPin().');
+        if (requestParameters['updateLandingRealtimeFocusDto'] == null) {
+            throw new runtime.RequiredError('updateLandingRealtimeFocusDto', 'Required parameter "updateLandingRealtimeFocusDto" was null or undefined when calling updateAgentsLandingRealtimeFocus().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -595,20 +595,20 @@ class AgentsLandingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/agents/{agentId}/landing/publications/{publicationId}/pin`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"publicationId"}}`, encodeURIComponent(String(requestParameters['publicationId']))),
-            method: 'PATCH',
+            path: `/api/projects/{projectId}/agents/{agentId}/landing/realtime/focus`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.SetLandingPublicationPinnedDtoToJSON)(requestParameters['setLandingPublicationPinnedDto']),
+            body: (0, index_1.UpdateLandingRealtimeFocusDtoToJSON)(requestParameters['updateLandingRealtimeFocusDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPublicationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingRealtimeFocusResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
      *
      */
-    async updateAgentsLandingPublicationsPin(requestParameters, initOverrides) {
-        const response = await this.updateAgentsLandingPublicationsPinRaw(requestParameters, initOverrides);
+    async updateAgentsLandingRealtimeFocus(requestParameters, initOverrides) {
+        const response = await this.updateAgentsLandingRealtimeFocusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -686,7 +686,7 @@ exports.UpdateAgentsLandingDraftAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.UpdateAgentsLandingPublicationsPinAcceptLanguageEnum = {
+exports.UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

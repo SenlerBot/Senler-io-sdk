@@ -52,6 +52,7 @@ export declare const CostSectionEconomicsSectionEnum: {
     readonly AudioGeneration: "audio_generation";
     readonly SpeechRecognition: "speech_recognition";
     readonly MetricsExtraction: "metrics_extraction";
+    readonly HostedTool: "hosted_tool";
 };
 export type CostSectionEconomicsSectionEnum = typeof CostSectionEconomicsSectionEnum[keyof typeof CostSectionEconomicsSectionEnum];
 /**

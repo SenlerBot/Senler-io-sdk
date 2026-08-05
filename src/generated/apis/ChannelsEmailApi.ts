@@ -33,14 +33,12 @@ import {
 
 export interface ChannelsEmailCreateRequest {
     createEmailChannelDto: CreateEmailChannelDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsEmailCreateAcceptLanguageEnum;
 }
 
 export interface ChannelsEmailUpdateRequest {
     id: string;
     updateEmailChannelDto: UpdateEmailChannelDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsEmailUpdateAcceptLanguageEnum;
 }
 
@@ -66,10 +64,6 @@ export class ChannelsEmailApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -132,10 +126,6 @@ export class ChannelsEmailApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

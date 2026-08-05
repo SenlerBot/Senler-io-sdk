@@ -13,56 +13,46 @@ import * as runtime from '../runtime';
 import type { CreateExportProcessDto, CreateImportProcessDto, CreateLeadsRefreshProcessDto, LeadResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
-    xSessionId?: string;
     acceptLanguage?: ExportAcceptLanguageEnum;
 }
 export interface ImportRequest {
     createImportProcessDto: CreateImportProcessDto;
-    xSessionId?: string;
     acceptLanguage?: ImportAcceptLanguageEnum;
 }
 export interface LeadsGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: LeadsGetByIdAcceptLanguageEnum;
 }
 export interface RefreshRequest {
     createLeadsRefreshProcessDto: CreateLeadsRefreshProcessDto;
-    xSessionId?: string;
     acceptLanguage?: RefreshAcceptLanguageEnum;
 }
 export interface SearchRequest {
     searchLeadsDto: SearchLeadsDto;
-    xSessionId?: string;
     acceptLanguage?: SearchAcceptLanguageEnum;
 }
 export interface UpdateBlacklistRequest {
     id: string;
     updateBlacklistDto: UpdateBlacklistDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateBlacklistAcceptLanguageEnum;
 }
 export interface UpdateNotesRequest {
     id: string;
     updateLeadNotesDto: UpdateLeadNotesDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateNotesAcceptLanguageEnum;
 }
 export interface UpdateProjectOperatorRequest {
     id: string;
     updateLeadProjectOperatorDto: UpdateLeadProjectOperatorDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateProjectOperatorAcceptLanguageEnum;
 }
 export interface UpdateSyncProfileRequest {
     id: string;
     syncLeadProfileDto: SyncLeadProfileDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateSyncProfileAcceptLanguageEnum;
 }
 export interface VerifySubscriptionRequest {
     verifySubscriptionAndAddDto: VerifySubscriptionAndAddDto;
-    xSessionId?: string;
     acceptLanguage?: VerifySubscriptionAcceptLanguageEnum;
 }
 /**

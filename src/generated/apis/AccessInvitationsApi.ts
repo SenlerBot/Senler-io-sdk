@@ -40,21 +40,18 @@ import {
 export interface AccessInvitationsCreateRequest {
     projectId: string;
     createInvitationDto: CreateInvitationDto;
-    xSessionId?: string;
     acceptLanguage?: AccessInvitationsCreateAcceptLanguageEnum;
 }
 
 export interface AccessInvitationsDeactivateRequest {
     projectId: string;
     invitationId: string;
-    xSessionId?: string;
     acceptLanguage?: AccessInvitationsDeactivateAcceptLanguageEnum;
 }
 
 export interface AccessInvitationsGetByIdRequest {
     projectId: string;
     status?: InvitationStatus;
-    xSessionId?: string;
     acceptLanguage?: AccessInvitationsGetByIdAcceptLanguageEnum;
 }
 
@@ -87,10 +84,6 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -152,10 +145,6 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -211,10 +200,6 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

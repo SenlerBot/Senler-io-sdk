@@ -30,7 +30,8 @@ exports.DialogMessageAttachmentDtoTypeEnum = {
     Document: 'document',
     Sticker: 'sticker',
     Contact: 'contact',
-    Location: 'location'
+    Location: 'location',
+    Link: 'link'
 };
 /**
  * Check if a given object implements the DialogMessageAttachmentDto interface.

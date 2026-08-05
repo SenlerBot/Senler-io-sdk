@@ -26,7 +26,7 @@ export interface ChannelHistoryScanDto {
      */
     depthDays?: number;
     /**
-     * scope : chat/thread/mailbox/etc.
+     * : chat/thread/etc.
      * @type {Array<string>}
      * @memberof ChannelHistoryScanDto
      */

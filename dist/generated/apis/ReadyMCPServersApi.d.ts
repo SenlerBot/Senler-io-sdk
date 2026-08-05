@@ -27,7 +27,6 @@ export interface GetProjectCatalogRequest {
     featuredOnly?: boolean;
     page?: number;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetProjectCatalogAcceptLanguageEnum;
 }
 export interface ReadyMcpServersGetByIdRequest {

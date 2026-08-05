@@ -45,7 +45,8 @@ export const DialogMessageAttachmentDtoTypeEnum = {
     Document: 'document',
     Sticker: 'sticker',
     Contact: 'contact',
-    Location: 'location'
+    Location: 'location',
+    Link: 'link'
 } as const;
 export type DialogMessageAttachmentDtoTypeEnum = typeof DialogMessageAttachmentDtoTypeEnum[keyof typeof DialogMessageAttachmentDtoTypeEnum];
 

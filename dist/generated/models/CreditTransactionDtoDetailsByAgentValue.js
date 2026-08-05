@@ -34,7 +34,6 @@ function CreditTransactionDtoDetailsByAgentValueFromJSONTyped(json, ignoreDiscri
     return {
         'usageEvents': json['usage_events'] == null ? undefined : json['usage_events'],
         'credits': json['credits'] == null ? undefined : json['credits'],
-        'cost': json['cost'] == null ? undefined : json['cost'],
         'tokens': json['tokens'] == null ? undefined : json['tokens'],
         'type': json['type'] == null ? undefined : json['type'],
         'isNoAgent': json['is_no_agent'] == null ? undefined : json['is_no_agent'],
@@ -50,7 +49,6 @@ function CreditTransactionDtoDetailsByAgentValueToJSONTyped(value, ignoreDiscrim
     return {
         'usage_events': value['usageEvents'],
         'credits': value['credits'],
-        'cost': value['cost'],
         'tokens': value['tokens'],
         'type': value['type'],
         'is_no_agent': value['isNoAgent'],

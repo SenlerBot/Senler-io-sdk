@@ -13,7 +13,6 @@ import * as runtime from '../runtime';
 import type { AnalyticsResponseDto, CabinetEventDetailDto, EventsList200Response, QuickMetricsResponseDto, TrafficChannelsResponseDto, TrafficSourcesResponseDto } from '../models/index';
 export interface EventsGetByIdRequest {
     eventId: string;
-    xSessionId?: string;
     acceptLanguage?: EventsGetByIdAcceptLanguageEnum;
 }
 export interface EventsListRequest {
@@ -41,31 +40,26 @@ export interface EventsListRequest {
     after?: string;
     sortBy?: EventsListSortByEnum;
     sortOrder?: EventsListSortOrderEnum;
-    xSessionId?: string;
     acceptLanguage?: EventsListAcceptLanguageEnum;
 }
 export interface GetAnalyticsRequest {
     period: GetAnalyticsPeriodEnum;
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAnalyticsAcceptLanguageEnum;
 }
 export interface GetMarketingQuickMetricsRequest {
     projectId: string;
     period?: GetMarketingQuickMetricsPeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMarketingQuickMetricsAcceptLanguageEnum;
 }
 export interface GetMarketingTrafficChannelsRequest {
     projectId: string;
     period?: GetMarketingTrafficChannelsPeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMarketingTrafficChannelsAcceptLanguageEnum;
 }
 export interface GetMarketingTrafficSourcesRequest {
     projectId: string;
     period?: GetMarketingTrafficSourcesPeriodEnum;
-    xSessionId?: string;
     acceptLanguage?: GetMarketingTrafficSourcesAcceptLanguageEnum;
 }
 /**
@@ -183,6 +177,7 @@ export declare const EventsListActionTypeEnum: {
     readonly LeadMerged: "lead_merged";
     readonly LeadSubscribed: "lead_subscribed";
     readonly LeadUnsubscribed: "lead_unsubscribed";
+    readonly SegmentSubscribed: "segment_subscribed";
     readonly LeadBlocked: "lead_blocked";
     readonly LeadUnblocked: "lead_unblocked";
     readonly LeadBlacklisted: "lead_blacklisted";
@@ -199,6 +194,7 @@ export declare const EventsListActionTypeEnum: {
     readonly BroadcastStarted: "broadcast_started";
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
+    readonly AiResponseStarted: "ai_response_started";
     readonly ToolStarted: "tool_started";
     readonly ToolCompleted: "tool_completed";
     readonly ToolFailed: "tool_failed";
@@ -210,11 +206,13 @@ export declare const EventsListActionTypeEnum: {
     readonly SpeechRecognized: "speech_recognized";
     readonly ImageAnalyzed: "image_analyzed";
     readonly AiActionExecuted: "ai_action_executed";
+    readonly AiProviderCallCompleted: "ai_provider_call_completed";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";
     readonly TimerScheduled: "timer_scheduled";
     readonly TimerTriggered: "timer_triggered";
+    readonly AppEventReceived: "app_event_received";
 };
 export type EventsListActionTypeEnum = typeof EventsListActionTypeEnum[keyof typeof EventsListActionTypeEnum];
 /**
@@ -224,6 +222,7 @@ export declare const EventsListTargetTypeEnum: {
     readonly Message: "message";
     readonly Interaction: "interaction";
     readonly Lead: "lead";
+    readonly Segment: "segment";
     readonly Dialog: "dialog";
     readonly Chat: "chat";
     readonly Post: "post";

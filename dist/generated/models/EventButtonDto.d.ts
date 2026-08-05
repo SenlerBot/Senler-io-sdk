@@ -23,6 +23,12 @@ export interface EventButtonDto {
      */
     text: string;
     /**
+     * .
+     * @type {string}
+     * @memberof EventButtonDto
+     */
+    buttonInstanceId?: string;
+    /**
      *
      * @type {EventButtonDtoAction}
      * @memberof EventButtonDto

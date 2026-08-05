@@ -13,13 +13,11 @@ import * as runtime from '../runtime';
 import type { ChannelSpaceSectionsResponseDto, CreateChannelSpacesRefreshProcessDto, CreateChannelsTreeRefreshProcessDto, ProcessResponseDto, RefreshSpaceResponseDto, SpaceDetailsResponseDto, SpacesTreeNodesResponseDto, SpacesTreeRootResponseDto, UpdateSpaceProjectOperatorDto } from '../models/index';
 export interface ChannelRefreshRequest {
     createChannelSpacesRefreshProcessDto: CreateChannelSpacesRefreshProcessDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelRefreshAcceptLanguageEnum;
 }
 export interface GetSectionsRequest {
     channelId: string;
     channelType: GetSectionsChannelTypeEnum;
-    xSessionId?: string;
     acceptLanguage?: GetSectionsAcceptLanguageEnum;
 }
 export interface GetTreeNodesRequest {
@@ -37,7 +35,6 @@ export interface GetTreeNodesRequest {
     parentSpaceId?: string;
     cursor?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetTreeNodesAcceptLanguageEnum;
 }
 export interface GetTreeRootRequest {
@@ -54,28 +51,23 @@ export interface GetTreeRootRequest {
     lastObservedAtTo?: Date;
     cursor?: string;
     limit?: number;
-    xSessionId?: string;
     acceptLanguage?: GetTreeRootAcceptLanguageEnum;
 }
 export interface SpacesGetByIdRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: SpacesGetByIdAcceptLanguageEnum;
 }
 export interface SpacesRefreshRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: SpacesRefreshAcceptLanguageEnum;
 }
 export interface SpacesUpdateProjectOperatorRequest {
     id: string;
     updateSpaceProjectOperatorDto: UpdateSpaceProjectOperatorDto;
-    xSessionId?: string;
     acceptLanguage?: SpacesUpdateProjectOperatorAcceptLanguageEnum;
 }
 export interface TreeRefreshRequest {
     createChannelsTreeRefreshProcessDto: CreateChannelsTreeRefreshProcessDto;
-    xSessionId?: string;
     acceptLanguage?: TreeRefreshAcceptLanguageEnum;
 }
 /**

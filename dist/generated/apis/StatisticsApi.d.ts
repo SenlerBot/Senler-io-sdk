@@ -17,7 +17,6 @@ export interface GetCommunicationsRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetCommunicationsAcceptLanguageEnum;
 }
 export interface GetCostsRequest {
@@ -26,7 +25,6 @@ export interface GetCostsRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetCostsAcceptLanguageEnum;
 }
 export interface GetCostsAiResponseToolsRequest {
@@ -36,7 +34,6 @@ export interface GetCostsAiResponseToolsRequest {
     timezone?: string;
     limit?: number;
     offset?: number;
-    xSessionId?: string;
     acceptLanguage?: GetCostsAiResponseToolsAcceptLanguageEnum;
 }
 export interface GetLeadsRequest {
@@ -45,7 +42,6 @@ export interface GetLeadsRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetLeadsAcceptLanguageEnum;
 }
 export interface GetLeadsSubscriptionEventsRequest {
@@ -56,7 +52,6 @@ export interface GetLeadsSubscriptionEventsRequest {
     timezone?: string;
     limit?: number;
     cursor?: string;
-    xSessionId?: string;
     acceptLanguage?: GetLeadsSubscriptionEventsAcceptLanguageEnum;
 }
 export interface GetOverviewRequest {
@@ -65,7 +60,6 @@ export interface GetOverviewRequest {
     channelId?: string;
     operatorUserId?: string;
     timezone?: string;
-    xSessionId?: string;
     acceptLanguage?: GetOverviewAcceptLanguageEnum;
 }
 /**
@@ -83,12 +77,12 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      */
     getCommunications(requestParameters: GetCommunicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCommunicationsResponseDto>;
     /**
-     * , , . AI- cost-; . project_currency_cost project_currency.
+     * , , . AI- cost-; . project_currency_cost event-time credit_rate, . GET /api/billing/projects/:projectId/credit-usage-summary.
      *
      */
     getCostsRaw(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetStatisticsCostsResponseDto>>;
     /**
-     * , , . AI- cost-; . project_currency_cost project_currency.
+     * , , . AI- cost-; . project_currency_cost event-time credit_rate, . GET /api/billing/projects/:projectId/credit-usage-summary.
      *
      */
     getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto>;

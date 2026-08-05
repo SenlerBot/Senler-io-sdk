@@ -37,27 +37,23 @@ import {
 export interface DeleteTriggersRequest {
     projectId: string;
     triggerId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteTriggersAcceptLanguageEnum;
 }
 
 export interface GetTriggersRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetTriggersAcceptLanguageEnum;
 }
 
 export interface GetTriggers2Request {
     projectId: string;
     triggerId: string;
-    xSessionId?: string;
     acceptLanguage?: GetTriggers2AcceptLanguageEnum;
 }
 
 export interface TriggersRequest {
     projectId: string;
     createTriggerDto: CreateTriggerDto;
-    xSessionId?: string;
     acceptLanguage?: TriggersAcceptLanguageEnum;
 }
 
@@ -65,7 +61,6 @@ export interface UpdateTriggersRequest {
     projectId: string;
     triggerId: string;
     updateTriggerDto: UpdateTriggerDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateTriggersAcceptLanguageEnum;
 }
 
@@ -96,10 +91,6 @@ export class TriggersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -152,10 +143,6 @@ export class TriggersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -215,10 +202,6 @@ export class TriggersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -280,10 +263,6 @@ export class TriggersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -353,10 +332,6 @@ export class TriggersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

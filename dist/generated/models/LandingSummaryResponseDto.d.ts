@@ -46,6 +46,12 @@ export interface LandingSummaryResponseDto {
      */
     status: LandingSummaryResponseDtoStatusEnum;
     /**
+     * -
+     * @type {string}
+     * @memberof LandingSummaryResponseDto
+     */
+    agentId: string | null;
+    /**
      *
      * @type {boolean}
      * @memberof LandingSummaryResponseDto

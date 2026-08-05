@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDeliveriesScheduleAcceptLanguageEnum = exports.UpdateDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewChannelTypeEnum = exports.GetDeliveries2AcceptLanguageEnum = exports.GetDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTabEnum = exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = exports.DeliveriesTestAcceptLanguageEnum = exports.DeliveriesStartAcceptLanguageEnum = exports.DeliveriesCopyAcceptLanguageEnum = exports.DeliveriesCancelAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeliveriesAcceptLanguageEnum = exports.DeleteDeliveriesScheduleAcceptLanguageEnum = exports.DeleteDeliveriesAcceptLanguageEnum = exports.DeliveriesApi = void 0;
+exports.UpdateDeliveriesScheduleAcceptLanguageEnum = exports.UpdateDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewChannelTypeEnum = exports.GetDeliveries2AcceptLanguageEnum = exports.GetDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTabEnum = exports.DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = exports.DeliveriesTestAcceptLanguageEnum = exports.DeliveriesStartAcceptLanguageEnum = exports.DeliveriesCopyAcceptLanguageEnum = exports.DeliveriesCancelAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeliveriesAcceptLanguageEnum = exports.DeleteDeliveriesScheduleAcceptLanguageEnum = exports.DeleteDeliveriesAcceptLanguageEnum = exports.DeliveriesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -66,9 +66,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -112,9 +109,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -159,9 +153,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -207,9 +198,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -255,9 +243,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -302,9 +287,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -352,9 +334,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -399,9 +378,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -449,9 +425,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -484,7 +457,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Telegram deep-link, .
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     async deliveriesTestRecipientLinkRaw(requestParameters, initOverrides) {
@@ -500,9 +473,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -527,11 +497,59 @@ class DeliveriesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryTestRecipientLinkResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * Telegram deep-link, .
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
      *
      */
     async deliveriesTestRecipientLink(requestParameters, initOverrides) {
         const response = await this.deliveriesTestRecipientLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * VK .
+     * VK-
+     */
+    async deliveriesTestRecipientVkConfirmRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deliveriesTestRecipientVkConfirm().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deliveriesTestRecipientVkConfirm().');
+        }
+        if (requestParameters['createDeliveryTestRecipientLinkDto'] == null) {
+            throw new runtime.RequiredError('createDeliveryTestRecipientLinkDto', 'Required parameter "createDeliveryTestRecipientLinkDto" was null or undefined when calling deliveriesTestRecipientVkConfirm().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/test-recipient-vk-confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateDeliveryTestRecipientLinkDtoToJSON)(requestParameters['createDeliveryTestRecipientLinkDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryTestRecipientDtoFromJSON)(jsonValue));
+    }
+    /**
+     * VK .
+     * VK-
+     */
+    async deliveriesTestRecipientVkConfirm(requestParameters, initOverrides) {
+        const response = await this.deliveriesTestRecipientVkConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -550,9 +568,6 @@ class DeliveriesApi extends runtime.BaseAPI {
             queryParameters['search'] = requestParameters['search'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -596,9 +611,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -674,6 +686,9 @@ class DeliveriesApi extends runtime.BaseAPI {
         if (requestParameters['segmentIsMember'] != null) {
             queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
         }
+        if (requestParameters['pendingSegmentId'] != null) {
+            queryParameters['pending_segment_id'] = requestParameters['pendingSegmentId'];
+        }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -681,9 +696,6 @@ class DeliveriesApi extends runtime.BaseAPI {
             queryParameters['cursor'] = requestParameters['cursor'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -733,9 +745,6 @@ class DeliveriesApi extends runtime.BaseAPI {
             queryParameters['channel_id'] = requestParameters['channelId'];
         }
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -783,9 +792,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -834,9 +840,6 @@ class DeliveriesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -937,6 +940,13 @@ exports.DeliveriesTestAcceptLanguageEnum = {
  * @export
  */
 exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -42,6 +42,18 @@ export interface AuditLogResponseDto {
      */
     actorType: AuditLogResponseDtoActorTypeEnum;
     /**
+     * , . MCP- -.
+     * @type {AuditActorDto}
+     * @memberof AuditLogResponseDto
+     */
+    delegatedActor?: AuditActorDto | null;
+    /**
+     * . null .
+     * @type {string}
+     * @memberof AuditLogResponseDto
+     */
+    delegatedActorType?: AuditLogResponseDtoDelegatedActorTypeEnum | null;
+    /**
      *
      * @type {string}
      * @memberof AuditLogResponseDto
@@ -65,6 +77,26 @@ export interface AuditLogResponseDto {
      * @memberof AuditLogResponseDto
      */
     action: AuditLogResponseDtoActionEnum;
+    /**
+     * , diff
+     * @type {string}
+     * @memberof AuditLogResponseDto
+     */
+    eventType?: AuditLogResponseDtoEventTypeEnum | null;
+    /**
+     * payload
+     * @type {{ [key: string]: any; }}
+     * @memberof AuditLogResponseDto
+     */
+    eventData?: {
+        [key: string]: any;
+    } | null;
+    /**
+     * . , ; entity_name.
+     * @type {string}
+     * @memberof AuditLogResponseDto
+     */
+    eventSummary?: string | null;
     /**
      *
      * @type {Array<AuditChangeDto>}
@@ -93,6 +125,18 @@ export type AuditLogResponseDtoActorTypeEnum = typeof AuditLogResponseDtoActorTy
 /**
  * @export
  */
+export declare const AuditLogResponseDtoDelegatedActorTypeEnum: {
+    readonly User: "user";
+    readonly Admin: "admin";
+    readonly System: "system";
+    readonly ApiKey: "api_key";
+    readonly App: "app";
+    readonly Agent: "agent";
+};
+export type AuditLogResponseDtoDelegatedActorTypeEnum = typeof AuditLogResponseDtoDelegatedActorTypeEnum[keyof typeof AuditLogResponseDtoDelegatedActorTypeEnum];
+/**
+ * @export
+ */
 export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly Project: "project";
     readonly Agent: "agent";
@@ -101,7 +145,9 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly McpServer: "mcp_server";
     readonly McpServerList: "mcp_server_list";
     readonly DataSource: "data_source";
-    readonly KnowledgeBase: "knowledge_base";
+    readonly KnowledgeFolder: "knowledge_folder";
+    readonly KnowledgeFile: "knowledge_file";
+    readonly KnowledgeTable: "knowledge_table";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
     readonly Segment: "segment";
@@ -112,6 +158,12 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly ProjectTariff: "project_tariff";
     readonly SupportSchedule: "support_schedule";
     readonly Invitation: "invitation";
+    readonly ApiKey: "api_key";
+    readonly MetricDefinition: "metric_definition";
+    readonly AppInstallation: "app_installation";
+    readonly PaymentSettings: "payment_settings";
+    readonly Space: "space";
+    readonly SummarizationSettings: "summarization_settings";
 };
 export type AuditLogResponseDtoEntityTypeEnum = typeof AuditLogResponseDtoEntityTypeEnum[keyof typeof AuditLogResponseDtoEntityTypeEnum];
 /**
@@ -121,9 +173,50 @@ export declare const AuditLogResponseDtoActionEnum: {
     readonly Created: "created";
     readonly Updated: "updated";
     readonly Deleted: "deleted";
+    readonly Restored: "restored";
     readonly Transferred: "transferred";
 };
 export type AuditLogResponseDtoActionEnum = typeof AuditLogResponseDtoActionEnum[keyof typeof AuditLogResponseDtoActionEnum];
+/**
+ * @export
+ */
+export declare const AuditLogResponseDtoEventTypeEnum: {
+    readonly LandingBlockCreated: "landing.block_created";
+    readonly LandingBlockUpdated: "landing.block_updated";
+    readonly LandingBlockMoved: "landing.block_moved";
+    readonly LandingBlockDeleted: "landing.block_deleted";
+    readonly LandingPublished: "landing.published";
+    readonly LandingPublicationRestored: "landing.publication_restored";
+    readonly DeliveryScheduled: "delivery.scheduled";
+    readonly DeliveryUnscheduled: "delivery.unscheduled";
+    readonly InvitationSent: "invitation.sent";
+    readonly InvitationAccepted: "invitation.accepted";
+    readonly InvitationCancelled: "invitation.cancelled";
+    readonly InvitationDeclined: "invitation.declined";
+    readonly KnowledgeFileUploaded: "knowledge.file_uploaded";
+    readonly KnowledgeFileReplaced: "knowledge.file_replaced";
+    readonly KnowledgeArchiveImported: "knowledge.archive_imported";
+    readonly KnowledgeTableImported: "knowledge.table_imported";
+    readonly SupportScheduleUpdated: "support_schedule.updated";
+    readonly SupportScheduleShiftCreated: "support_schedule.shift_created";
+    readonly SupportScheduleShiftUpdated: "support_schedule.shift_updated";
+    readonly SupportScheduleShiftDeleted: "support_schedule.shift_deleted";
+    readonly SupportScheduleAssignmentCreated: "support_schedule.assignment_created";
+    readonly SupportScheduleAssignmentUpdated: "support_schedule.assignment_updated";
+    readonly SupportScheduleAssignmentDeleted: "support_schedule.assignment_deleted";
+    readonly AppInstallationSetupStepSubmitted: "app_installation.setup_step_submitted";
+    readonly AppInstallationSetupStepSkipped: "app_installation.setup_step_skipped";
+    readonly ChannelCredentialsConnected: "channel.credentials_connected";
+    readonly ChannelCredentialsDisconnected: "channel.credentials_disconnected";
+    readonly ChannelIncomingNotificationsEnabled: "channel.incoming_notifications_enabled";
+    readonly ChannelIncomingNotificationsDisabled: "channel.incoming_notifications_disabled";
+    readonly McpServerCredentialsConnected: "mcp_server.credentials_connected";
+    readonly McpServerCredentialsDisconnected: "mcp_server.credentials_disconnected";
+    readonly ChannelWidgetSecretRegenerated: "channel.widget_secret_regenerated";
+    readonly ChannelWebhookSecretRegenerated: "channel.webhook_secret_regenerated";
+    readonly KnowledgeTableContentUpdated: "knowledge_table.content_updated";
+};
+export type AuditLogResponseDtoEventTypeEnum = typeof AuditLogResponseDtoEventTypeEnum[keyof typeof AuditLogResponseDtoEventTypeEnum];
 /**
  * Check if a given object implements the AuditLogResponseDto interface.
  */

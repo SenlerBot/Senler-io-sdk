@@ -15,13 +15,11 @@ export interface ChannelsHistoryScanRequest {
     projectId: string;
     channelId: string;
     channelHistoryScanDto: ChannelHistoryScanDto;
-    xSessionId?: string;
     acceptLanguage?: ChannelsHistoryScanAcceptLanguageEnum;
 }
 export interface GetChannelsHistoryScanRequest {
     projectId: string;
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: GetChannelsHistoryScanAcceptLanguageEnum;
 }
 /**

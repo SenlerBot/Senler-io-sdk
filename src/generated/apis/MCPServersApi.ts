@@ -82,7 +82,6 @@ import {
 export interface CustomOauthStartRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     startCustomMcpOAuthDto: StartCustomMcpOAuthDto;
     acceptLanguage?: CustomOauthStartAcceptLanguageEnum;
 }
@@ -90,7 +89,6 @@ export interface CustomOauthStartRequest {
 export interface DeleteListsRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: DeleteListsAcceptLanguageEnum;
 }
 
@@ -98,14 +96,12 @@ export interface DeleteListsServersRequest {
     projectId: string;
     listId: string;
     serverId: string;
-    xSessionId: string;
     acceptLanguage?: DeleteListsServersAcceptLanguageEnum;
 }
 
 export interface DeleteProjectCredentialRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: DeleteProjectCredentialAcceptLanguageEnum;
 }
 
@@ -120,13 +116,11 @@ export interface GetCustomOauthCallbackRequest {
 export interface GetCustomOauthStatusRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetCustomOauthStatusAcceptLanguageEnum;
 }
 
 export interface GetExportRequest {
     projectId: string;
-    xSessionId: string;
     acceptLanguage?: GetExportAcceptLanguageEnum;
 }
 
@@ -134,7 +128,6 @@ export interface GetKnowledgeBaseSearchRequest {
     projectId: string;
     mcpServerId: string;
     query: string;
-    xSessionId: string;
     page?: number;
     limit?: number;
     acceptLanguage?: GetKnowledgeBaseSearchAcceptLanguageEnum;
@@ -142,7 +135,6 @@ export interface GetKnowledgeBaseSearchRequest {
 
 export interface GetListsRequest {
     projectId: string;
-    xSessionId: string;
     limit?: number;
     offset?: number;
     acceptLanguage?: GetListsAcceptLanguageEnum;
@@ -151,20 +143,17 @@ export interface GetListsRequest {
 export interface GetLists2Request {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetLists2AcceptLanguageEnum;
 }
 
 export interface GetProjectCredentialStatusRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetProjectCredentialStatusAcceptLanguageEnum;
 }
 
 export interface ListsRequest {
     projectId: string;
-    xSessionId: string;
     createMcpServerListDto: CreateMcpServerListDto;
     acceptLanguage?: ListsAcceptLanguageEnum;
 }
@@ -173,13 +162,11 @@ export interface ListsServersRequest {
     projectId: string;
     listId: string;
     serverId: string;
-    xSessionId: string;
     acceptLanguage?: ListsServersAcceptLanguageEnum;
 }
 
 export interface McpServersCreateRequest {
     projectId: string;
-    xSessionId: string;
     createServerBodyDto: CreateServerBodyDto;
     acceptLanguage?: McpServersCreateAcceptLanguageEnum;
 }
@@ -187,26 +174,22 @@ export interface McpServersCreateRequest {
 export interface McpServersDeactivateRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: McpServersDeactivateAcceptLanguageEnum;
 }
 
 export interface McpServersGetByIdRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: McpServersGetByIdAcceptLanguageEnum;
 }
 
 export interface McpServersImportRequest {
-    xSessionId: string;
     importServersUserDto: ImportServersUserDto;
     acceptLanguage?: McpServersImportAcceptLanguageEnum;
 }
 
 export interface McpServersListRequest {
     projectId: string;
-    xSessionId: string;
     page?: number;
     limit?: number;
     mcpServerListId?: string;
@@ -218,7 +201,6 @@ export interface McpServersListRequest {
 export interface McpServersUpdateRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     updateServerBodyDto: UpdateServerBodyDto;
     acceptLanguage?: McpServersUpdateAcceptLanguageEnum;
 }
@@ -226,7 +208,6 @@ export interface McpServersUpdateRequest {
 export interface ProjectCredentialManualRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     upsertProjectCredentialDto: UpsertProjectCredentialDto;
     acceptLanguage?: ProjectCredentialManualAcceptLanguageEnum;
 }
@@ -234,7 +215,6 @@ export interface ProjectCredentialManualRequest {
 export interface ProjectCredentialOauthStartRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     startCustomMcpOAuthDto: StartCustomMcpOAuthDto;
     acceptLanguage?: ProjectCredentialOauthStartAcceptLanguageEnum;
 }
@@ -242,14 +222,12 @@ export interface ProjectCredentialOauthStartRequest {
 export interface ProjectCredentialValidateRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: ProjectCredentialValidateAcceptLanguageEnum;
 }
 
 export interface UpdateListsRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     updateMcpServerListDto: UpdateMcpServerListDto;
     acceptLanguage?: UpdateListsAcceptLanguageEnum;
 }
@@ -257,7 +235,6 @@ export interface UpdateListsRequest {
 export interface UpdateListsRestoreRequest {
     projectId: string;
     id: string;
-    xSessionId: string;
     acceptLanguage?: UpdateListsRestoreAcceptLanguageEnum;
 }
 
@@ -285,13 +262,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling customOauthStart().'
-            );
-        }
-
         if (requestParameters['startCustomMcpOAuthDto'] == null) {
             throw new runtime.RequiredError(
                 'startCustomMcpOAuthDto',
@@ -308,10 +278,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -369,20 +335,9 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling deleteLists().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -445,20 +400,9 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling deleteListsServers().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -515,13 +459,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling deleteProjectCredential().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -529,10 +466,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -641,13 +574,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getCustomOauthStatus().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -655,10 +581,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -708,13 +630,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getExport().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -722,10 +637,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -789,13 +700,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getKnowledgeBaseSearch().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -819,10 +723,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -872,13 +772,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getLists().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['limit'] != null) {
@@ -890,10 +783,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -950,20 +839,9 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getLists2().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1020,13 +898,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getProjectCredentialStatus().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -1034,10 +905,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1087,13 +954,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling lists().'
-            );
-        }
-
         if (requestParameters['createMcpServerListDto'] == null) {
             throw new runtime.RequiredError(
                 'createMcpServerListDto',
@@ -1106,10 +966,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1174,20 +1030,9 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling listsServers().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1237,13 +1082,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersCreate().'
-            );
-        }
-
         if (requestParameters['createServerBodyDto'] == null) {
             throw new runtime.RequiredError(
                 'createServerBodyDto',
@@ -1260,10 +1098,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1321,13 +1155,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersDeactivate().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -1335,10 +1162,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1394,13 +1217,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersGetById().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -1408,10 +1224,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1454,13 +1266,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async mcpServersImportRaw(requestParameters: McpServersImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ImportServersResponseDto>> {
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersImport().'
-            );
-        }
-
         if (requestParameters['importServersUserDto'] == null) {
             throw new runtime.RequiredError(
                 'importServersUserDto',
@@ -1473,10 +1278,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1527,13 +1328,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersList().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['page'] != null) {
@@ -1561,10 +1355,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1621,13 +1411,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling mcpServersUpdate().'
-            );
-        }
-
         if (requestParameters['updateServerBodyDto'] == null) {
             throw new runtime.RequiredError(
                 'updateServerBodyDto',
@@ -1644,10 +1427,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1705,13 +1484,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling projectCredentialManual().'
-            );
-        }
-
         if (requestParameters['upsertProjectCredentialDto'] == null) {
             throw new runtime.RequiredError(
                 'upsertProjectCredentialDto',
@@ -1728,10 +1500,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1789,13 +1557,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling projectCredentialOauthStart().'
-            );
-        }
-
         if (requestParameters['startCustomMcpOAuthDto'] == null) {
             throw new runtime.RequiredError(
                 'startCustomMcpOAuthDto',
@@ -1812,10 +1573,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1873,13 +1630,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling projectCredentialValidate().'
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters['projectId'] != null) {
@@ -1887,10 +1637,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1947,13 +1693,6 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling updateLists().'
-            );
-        }
-
         if (requestParameters['updateMcpServerListDto'] == null) {
             throw new runtime.RequiredError(
                 'updateMcpServerListDto',
@@ -1966,10 +1705,6 @@ export class MCPServersApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -2027,20 +1762,9 @@ export class MCPServersApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling updateListsRestore().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

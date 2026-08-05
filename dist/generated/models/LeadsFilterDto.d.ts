@@ -81,6 +81,12 @@ export interface LeadsFilterDto {
      * @memberof LeadsFilterDto
      */
     segmentIsMember?: boolean;
+    /**
+     * ,
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    pendingSegmentId?: Array<string>;
 }
 /**
  * @export

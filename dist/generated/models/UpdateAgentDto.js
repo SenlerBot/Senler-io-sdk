@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentDtoLeadVarsUserRequestModeEnum = exports.UpdateAgentDtoLeadVarsInstructionModeEnum = exports.UpdateAgentDtoProjectVarsUserRequestModeEnum = exports.UpdateAgentDtoProjectVarsInstructionModeEnum = exports.UpdateAgentDtoAutoAssignmentRoleEnum = exports.UpdateAgentDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentDtoAutoAssignmentModeEnum = exports.UpdateAgentDtoKeywordDialogScopeEnum = exports.UpdateAgentDtoKeywordAssignmentRoleEnum = exports.UpdateAgentDtoAutostartModeEnum = exports.UpdateAgentDtoKnowledgeBasePermissionsEnum = exports.UpdateAgentDtoServerBindingModeEnum = exports.UpdateAgentDtoAgentTypeEnum = void 0;
+exports.UpdateAgentDtoLeadVarsUserRequestModeEnum = exports.UpdateAgentDtoLeadVarsInstructionModeEnum = exports.UpdateAgentDtoProjectVarsUserRequestModeEnum = exports.UpdateAgentDtoProjectVarsInstructionModeEnum = exports.UpdateAgentDtoWidgetAiProgressModeEnum = exports.UpdateAgentDtoAutoAssignmentRoleEnum = exports.UpdateAgentDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentDtoAutoAssignmentModeEnum = exports.UpdateAgentDtoKeywordDialogScopeEnum = exports.UpdateAgentDtoKeywordAssignmentRoleEnum = exports.UpdateAgentDtoAutostartModeEnum = exports.UpdateAgentDtoKnowledgeBasePermissionsEnum = exports.UpdateAgentDtoServerBindingModeEnum = exports.UpdateAgentDtoAgentTypeEnum = void 0;
 exports.instanceOfUpdateAgentDto = instanceOfUpdateAgentDto;
 exports.UpdateAgentDtoFromJSON = UpdateAgentDtoFromJSON;
 exports.UpdateAgentDtoFromJSONTyped = UpdateAgentDtoFromJSONTyped;
@@ -106,6 +106,14 @@ exports.UpdateAgentDtoAutoAssignmentRoleEnum = {
 /**
  * @export
  */
+exports.UpdateAgentDtoWidgetAiProgressModeEnum = {
+    SafeProgress: 'safe_progress',
+    Typing: 'typing',
+    Hidden: 'hidden'
+};
+/**
+ * @export
+ */
 exports.UpdateAgentDtoProjectVarsInstructionModeEnum = {
     None: 'none',
     Read: 'read',
@@ -150,7 +158,6 @@ function UpdateAgentDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'name': json['name'] == null ? undefined : json['name'],
-        'instruction': json['instruction'] == null ? undefined : json['instruction'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'agentType': json['agent_type'] == null ? undefined : json['agent_type'],
         'serverBindingMode': json['server_binding_mode'] == null ? undefined : json['server_binding_mode'],
@@ -196,7 +203,9 @@ function UpdateAgentDtoFromJSONTyped(json, ignoreDiscriminator) {
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
+        'widgetAiProgressMode': json['widget_ai_progress_mode'] == null ? undefined : json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
+        'respondOnSegmentSubscription': json['respond_on_segment_subscription'] == null ? undefined : json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'] == null ? undefined : json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'] == null ? undefined : json['enable_selective_response'],
         'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'] == null ? undefined : json['enable_operator_reply_suggestions'],
@@ -221,7 +230,6 @@ function UpdateAgentDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'name': value['name'],
-        'instruction': value['instruction'],
         'avatar_url': value['avatarUrl'],
         'agent_type': value['agentType'],
         'server_binding_mode': value['serverBindingMode'],
@@ -267,7 +275,9 @@ function UpdateAgentDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
+        'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
         'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],

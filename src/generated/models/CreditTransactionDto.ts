@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { CustomerCostEstimateDto } from './CustomerCostEstimateDto';
+import {
+    CustomerCostEstimateDtoFromJSON,
+    CustomerCostEstimateDtoFromJSONTyped,
+    CustomerCostEstimateDtoToJSON,
+    CustomerCostEstimateDtoToJSONTyped,
+} from './CustomerCostEstimateDto';
 import type { LocalizedTextDto } from './LocalizedTextDto';
 import {
     LocalizedTextDtoFromJSON,
@@ -84,17 +91,11 @@ export interface CreditTransactionDto {
      */
     purchasedCreditsAfter: number;
     /**
-     * , (/); : 1.25 = 125
-     * @type {number}
+     * . , .
+     * @type {CustomerCostEstimateDto}
      * @memberof CreditTransactionDto
      */
-    monetaryEquivalent: number;
-    /**
-     *
-     * @type {string}
-     * @memberof CreditTransactionDto
-     */
-    currency: CreditTransactionDtoCurrencyEnum;
+    customerCostEstimate: CustomerCostEstimateDto;
     /**
      * ( usage)
      * @type {Date}
@@ -165,15 +166,6 @@ export const CreditTransactionDtoTypeEnum = {
 } as const;
 export type CreditTransactionDtoTypeEnum = typeof CreditTransactionDtoTypeEnum[keyof typeof CreditTransactionDtoTypeEnum];
 
-/**
- * @export
- */
-export const CreditTransactionDtoCurrencyEnum = {
-    Usd: 'USD',
-    Rub: 'RUB'
-} as const;
-export type CreditTransactionDtoCurrencyEnum = typeof CreditTransactionDtoCurrencyEnum[keyof typeof CreditTransactionDtoCurrencyEnum];
-
 
 /**
  * Check if a given object implements the CreditTransactionDto interface.
@@ -186,8 +178,7 @@ export function instanceOfCreditTransactionDto(value: object): value is CreditTr
     if (!('tariffCreditsAfter' in value) || value['tariffCreditsAfter'] === undefined) return false;
     if (!('purchasedCreditsBefore' in value) || value['purchasedCreditsBefore'] === undefined) return false;
     if (!('purchasedCreditsAfter' in value) || value['purchasedCreditsAfter'] === undefined) return false;
-    if (!('monetaryEquivalent' in value) || value['monetaryEquivalent'] === undefined) return false;
-    if (!('currency' in value) || value['currency'] === undefined) return false;
+    if (!('customerCostEstimate' in value) || value['customerCostEstimate'] === undefined) return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined) return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -211,8 +202,7 @@ export function CreditTransactionDtoFromJSONTyped(json: any, ignoreDiscriminator
         'tariffCreditsAfter': json['tariff_credits_after'],
         'purchasedCreditsBefore': json['purchased_credits_before'],
         'purchasedCreditsAfter': json['purchased_credits_after'],
-        'monetaryEquivalent': json['monetary_equivalent'],
-        'currency': json['currency'],
+        'customerCostEstimate': CustomerCostEstimateDtoFromJSON(json['customer_cost_estimate']),
         'periodStart': (json['period_start'] == null ? null : new Date(json['period_start'])),
         'periodEnd': (json['period_end'] == null ? null : new Date(json['period_end'])),
         'usageEventsCount': json['usage_events_count'] == null ? undefined : json['usage_events_count'],
@@ -243,8 +233,7 @@ export function CreditTransactionDtoToJSONTyped(value?: CreditTransactionDto | n
         'tariff_credits_after': value['tariffCreditsAfter'],
         'purchased_credits_before': value['purchasedCreditsBefore'],
         'purchased_credits_after': value['purchasedCreditsAfter'],
-        'monetary_equivalent': value['monetaryEquivalent'],
-        'currency': value['currency'],
+        'customer_cost_estimate': CustomerCostEstimateDtoToJSON(value['customerCostEstimate']),
         'period_start': (value['periodStart'] == null ? null : (value['periodStart'] as any).toISOString()),
         'period_end': (value['periodEnd'] == null ? null : (value['periodEnd'] as any).toISOString()),
         'usage_events_count': value['usageEventsCount'],

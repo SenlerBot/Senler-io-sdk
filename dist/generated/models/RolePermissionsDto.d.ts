@@ -70,6 +70,12 @@ export interface RolePermissionsDto {
      */
     canManageAgents: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageAgentEvents: boolean;
+    /**
      * ( )
      * @type {boolean}
      * @memberof RolePermissionsDto

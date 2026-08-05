@@ -13,34 +13,28 @@ import * as runtime from '../runtime';
 import type { BindTelegramTokenDto, ChannelTokenResponseDto, CheckWebhookStatusResultDto, CreateTelegramChannelDto, CreateTelegramChannelResponseDto, SetupWebhookDto, SetupWebhookResultDto, ValidateTelegramTokenResultDto } from '../models/index';
 export interface TelegramRequest {
     createTelegramChannelDto: CreateTelegramChannelDto;
-    xSessionId?: string;
     acceptLanguage?: TelegramAcceptLanguageEnum;
 }
 export interface TokensTelegramBindRequest {
     channelId: string;
     bindTelegramTokenDto: BindTelegramTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramBindAcceptLanguageEnum;
 }
 export interface TokensTelegramCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramCheckWebhookStatusAcceptLanguageEnum;
 }
 export interface TokensTelegramRefreshAvatarRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramRefreshAvatarAcceptLanguageEnum;
 }
 export interface TokensTelegramValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramValidateAcceptLanguageEnum;
 }
 export interface TokensTelegramWebhookRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramWebhookAcceptLanguageEnum;
 }
 /**

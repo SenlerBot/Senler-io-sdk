@@ -24,14 +24,37 @@ export interface AttachmentSendToSelfRecipientLinkResponseDto {
      * @type {string}
      * @memberof AttachmentSendToSelfRecipientLinkResponseDto
      */
-    startUrl: string;
+    kind: AttachmentSendToSelfRecipientLinkResponseDtoKindEnum;
+    /**
+     * Deep-link Telegram MAX
+     * @type {string}
+     * @memberof AttachmentSendToSelfRecipientLinkResponseDto
+     */
+    startUrl?: string;
+    /**
+     * ID VK AllowMessagesFromCommunity
+     * @type {number}
+     * @memberof AttachmentSendToSelfRecipientLinkResponseDto
+     */
+    vkGroupId?: number;
 }
+
+
+/**
+ * @export
+ */
+export const AttachmentSendToSelfRecipientLinkResponseDtoKindEnum = {
+    ExternalStart: 'external_start',
+    VkConsent: 'vk_consent'
+} as const;
+export type AttachmentSendToSelfRecipientLinkResponseDtoKindEnum = typeof AttachmentSendToSelfRecipientLinkResponseDtoKindEnum[keyof typeof AttachmentSendToSelfRecipientLinkResponseDtoKindEnum];
+
 
 /**
  * Check if a given object implements the AttachmentSendToSelfRecipientLinkResponseDto interface.
  */
 export function instanceOfAttachmentSendToSelfRecipientLinkResponseDto(value: object): value is AttachmentSendToSelfRecipientLinkResponseDto {
-    if (!('startUrl' in value) || value['startUrl'] === undefined) return false;
+    if (!('kind' in value) || value['kind'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +68,9 @@ export function AttachmentSendToSelfRecipientLinkResponseDtoFromJSONTyped(json: 
     }
     return {
 
-        'startUrl': json['start_url'],
+        'kind': json['kind'],
+        'startUrl': json['start_url'] == null ? undefined : json['start_url'],
+        'vkGroupId': json['vk_group_id'] == null ? undefined : json['vk_group_id'],
     };
 }
 
@@ -60,6 +85,8 @@ export function AttachmentSendToSelfRecipientLinkResponseDtoToJSONTyped(value?: 
 
     return {
 
+        'kind': value['kind'],
         'start_url': value['startUrl'],
+        'vk_group_id': value['vkGroupId'],
     };
 }

@@ -14,37 +14,31 @@ import type { AgentAssignmentRuleResponseDto, AgentAssignmentRulesListDto, Creat
 export interface AgentAssignmentRequest {
     projectId: string;
     createAgentAssignmentRuleDto: CreateAgentAssignmentRuleDto;
-    xSessionId?: string;
     acceptLanguage?: AgentAssignmentAcceptLanguageEnum;
 }
 export interface DeleteAgentAssignmentRequest {
     projectId: string;
     ruleId: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteAgentAssignmentAcceptLanguageEnum;
 }
 export interface GetAgentAssignmentRequest {
     projectId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentAssignmentAcceptLanguageEnum;
 }
 export interface GetAgentAssignment2Request {
     projectId: string;
     ruleId: string;
-    xSessionId?: string;
     acceptLanguage?: GetAgentAssignment2AcceptLanguageEnum;
 }
 export interface UpdateAgentAssignmentRequest {
     projectId: string;
     ruleId: string;
     updateAgentAssignmentRuleDto: UpdateAgentAssignmentRuleDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentAssignmentAcceptLanguageEnum;
 }
 export interface UpdateAgentAssignmentRestoreRequest {
     projectId: string;
     ruleId: string;
-    xSessionId?: string;
     acceptLanguage?: UpdateAgentAssignmentRestoreAcceptLanguageEnum;
 }
 /**

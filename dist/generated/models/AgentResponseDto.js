@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentResponseDtoLeadVarsUserRequestModeEnum = exports.AgentResponseDtoLeadVarsInstructionModeEnum = exports.AgentResponseDtoProjectVarsUserRequestModeEnum = exports.AgentResponseDtoProjectVarsInstructionModeEnum = exports.AgentResponseDtoWizardTrainingModeSelectedEnum = exports.AgentResponseDtoStatusEnum = exports.AgentResponseDtoAutoAssignmentRoleEnum = exports.AgentResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentResponseDtoAutoAssignmentModeEnum = exports.AgentResponseDtoKeywordDialogScopeEnum = exports.AgentResponseDtoKeywordAssignmentRoleEnum = exports.AgentResponseDtoAutostartModeEnum = exports.AgentResponseDtoKnowledgeBasePermissionsEnum = exports.AgentResponseDtoServerBindingModeEnum = exports.AgentResponseDtoAgentTypeEnum = void 0;
+exports.AgentResponseDtoLeadVarsUserRequestModeEnum = exports.AgentResponseDtoLeadVarsInstructionModeEnum = exports.AgentResponseDtoProjectVarsUserRequestModeEnum = exports.AgentResponseDtoProjectVarsInstructionModeEnum = exports.AgentResponseDtoWidgetAiProgressModeEnum = exports.AgentResponseDtoWizardTrainingModeSelectedEnum = exports.AgentResponseDtoStatusEnum = exports.AgentResponseDtoAutoAssignmentRoleEnum = exports.AgentResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentResponseDtoAutoAssignmentModeEnum = exports.AgentResponseDtoKeywordDialogScopeEnum = exports.AgentResponseDtoKeywordAssignmentRoleEnum = exports.AgentResponseDtoAutostartModeEnum = exports.AgentResponseDtoKnowledgeBasePermissionsEnum = exports.AgentResponseDtoServerBindingModeEnum = exports.AgentResponseDtoAgentTypeEnum = void 0;
 exports.instanceOfAgentResponseDto = instanceOfAgentResponseDto;
 exports.AgentResponseDtoFromJSON = AgentResponseDtoFromJSON;
 exports.AgentResponseDtoFromJSONTyped = AgentResponseDtoFromJSONTyped;
@@ -128,6 +128,14 @@ exports.AgentResponseDtoWizardTrainingModeSelectedEnum = {
 /**
  * @export
  */
+exports.AgentResponseDtoWidgetAiProgressModeEnum = {
+    SafeProgress: 'safe_progress',
+    Typing: 'typing',
+    Hidden: 'hidden'
+};
+/**
+ * @export
+ */
 exports.AgentResponseDtoProjectVarsInstructionModeEnum = {
     None: 'none',
     Read: 'read',
@@ -231,7 +239,11 @@ function instanceOfAgentResponseDto(value) {
         return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined)
         return false;
+    if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined)
+        return false;
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined)
+        return false;
+    if (!('respondOnSegmentSubscription' in value) || value['respondOnSegmentSubscription'] === undefined)
         return false;
     if (!('enableMessageReactionsContext' in value) || value['enableMessageReactionsContext'] === undefined)
         return false;
@@ -331,7 +343,9 @@ function AgentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
+        'widgetAiProgressMode': json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
+        'respondOnSegmentSubscription': json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'],
         'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'],
@@ -415,7 +429,9 @@ function AgentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
+        'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
         'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],

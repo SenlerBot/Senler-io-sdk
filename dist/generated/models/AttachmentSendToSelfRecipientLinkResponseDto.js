@@ -13,16 +13,24 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AttachmentSendToSelfRecipientLinkResponseDtoKindEnum = void 0;
 exports.instanceOfAttachmentSendToSelfRecipientLinkResponseDto = instanceOfAttachmentSendToSelfRecipientLinkResponseDto;
 exports.AttachmentSendToSelfRecipientLinkResponseDtoFromJSON = AttachmentSendToSelfRecipientLinkResponseDtoFromJSON;
 exports.AttachmentSendToSelfRecipientLinkResponseDtoFromJSONTyped = AttachmentSendToSelfRecipientLinkResponseDtoFromJSONTyped;
 exports.AttachmentSendToSelfRecipientLinkResponseDtoToJSON = AttachmentSendToSelfRecipientLinkResponseDtoToJSON;
 exports.AttachmentSendToSelfRecipientLinkResponseDtoToJSONTyped = AttachmentSendToSelfRecipientLinkResponseDtoToJSONTyped;
 /**
+ * @export
+ */
+exports.AttachmentSendToSelfRecipientLinkResponseDtoKindEnum = {
+    ExternalStart: 'external_start',
+    VkConsent: 'vk_consent'
+};
+/**
  * Check if a given object implements the AttachmentSendToSelfRecipientLinkResponseDto interface.
  */
 function instanceOfAttachmentSendToSelfRecipientLinkResponseDto(value) {
-    if (!('startUrl' in value) || value['startUrl'] === undefined)
+    if (!('kind' in value) || value['kind'] === undefined)
         return false;
     return true;
 }
@@ -34,7 +42,9 @@ function AttachmentSendToSelfRecipientLinkResponseDtoFromJSONTyped(json, ignoreD
         return json;
     }
     return {
-        'startUrl': json['start_url'],
+        'kind': json['kind'],
+        'startUrl': json['start_url'] == null ? undefined : json['start_url'],
+        'vkGroupId': json['vk_group_id'] == null ? undefined : json['vk_group_id'],
     };
 }
 function AttachmentSendToSelfRecipientLinkResponseDtoToJSON(json) {
@@ -45,6 +55,8 @@ function AttachmentSendToSelfRecipientLinkResponseDtoToJSONTyped(value, ignoreDi
         return value;
     }
     return {
+        'kind': value['kind'],
         'start_url': value['startUrl'],
+        'vk_group_id': value['vkGroupId'],
     };
 }

@@ -52,6 +52,30 @@ export interface KnowledgeFileResponseDto {
      */
     ownerId: string;
     /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    appId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    documentationLocale: string | null;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    documentationPageId: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof KnowledgeFileResponseDto
+     */
+    documentationSortOrder: number | null;
+    /**
      * UUID
      * @type {string}
      * @memberof KnowledgeFileResponseDto
@@ -173,6 +197,7 @@ export interface KnowledgeFileResponseDto {
  */
 export const KnowledgeFileResponseDtoOwnerTypeEnum = {
     Project: 'project',
+    App: 'app',
     McpServerTemplate: 'mcp_server_template',
     Admin: 'admin'
 } as const;
@@ -210,6 +235,10 @@ export function instanceOfKnowledgeFileResponseDto(value: object): value is Know
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerType' in value) || value['ownerType'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('appId' in value) || value['appId'] === undefined) return false;
+    if (!('documentationLocale' in value) || value['documentationLocale'] === undefined) return false;
+    if (!('documentationPageId' in value) || value['documentationPageId'] === undefined) return false;
+    if (!('documentationSortOrder' in value) || value['documentationSortOrder'] === undefined) return false;
     if (!('folderId' in value) || value['folderId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('fileKind' in value) || value['fileKind'] === undefined) return false;
@@ -245,6 +274,10 @@ export function KnowledgeFileResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'ownerType': json['owner_type'],
         'ownerId': json['owner_id'],
+        'appId': json['app_id'],
+        'documentationLocale': json['documentation_locale'],
+        'documentationPageId': json['documentation_page_id'],
+        'documentationSortOrder': json['documentation_sort_order'],
         'folderId': json['folder_id'],
         'title': json['title'],
         'fileKind': json['file_kind'],
@@ -282,6 +315,10 @@ export function KnowledgeFileResponseDtoToJSONTyped(value?: KnowledgeFileRespons
         'project_id': value['projectId'],
         'owner_type': value['ownerType'],
         'owner_id': value['ownerId'],
+        'app_id': value['appId'],
+        'documentation_locale': value['documentationLocale'],
+        'documentation_page_id': value['documentationPageId'],
+        'documentation_sort_order': value['documentationSortOrder'],
         'folder_id': value['folderId'],
         'title': value['title'],
         'file_kind': value['fileKind'],

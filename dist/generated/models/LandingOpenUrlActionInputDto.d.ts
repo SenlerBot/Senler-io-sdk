@@ -16,12 +16,6 @@
  */
 export interface LandingOpenUrlActionInputDto {
     /**
-     * UUID . , .
-     * @type {string}
-     * @memberof LandingOpenUrlActionInputDto
-     */
-    id?: string;
-    /**
      * URL
      * @type {string}
      * @memberof LandingOpenUrlActionInputDto

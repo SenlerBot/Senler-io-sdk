@@ -334,11 +334,23 @@ export interface CreateAgentDto {
      */
     enableStreaming?: boolean;
     /**
+     * AI
+     * @type {string}
+     * @memberof CreateAgentDto
+     */
+    widgetAiProgressMode?: CreateAgentDtoWidgetAiProgressModeEnum;
+    /**
      * . true send_preliminary_response tool
      * @type {boolean}
      * @memberof CreateAgentDto
      */
     enablePreliminaryResponse?: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof CreateAgentDto
+     */
+    respondOnSegmentSubscription?: boolean;
     /**
      * AI-. true ,
      * @type {boolean}
@@ -555,6 +567,16 @@ export type CreateAgentDtoTrainingModeEnum = typeof CreateAgentDtoTrainingModeEn
 /**
  * @export
  */
+export const CreateAgentDtoWidgetAiProgressModeEnum = {
+    SafeProgress: 'safe_progress',
+    Typing: 'typing',
+    Hidden: 'hidden'
+} as const;
+export type CreateAgentDtoWidgetAiProgressModeEnum = typeof CreateAgentDtoWidgetAiProgressModeEnum[keyof typeof CreateAgentDtoWidgetAiProgressModeEnum];
+
+/**
+ * @export
+ */
 export const CreateAgentDtoProjectVarsInstructionModeEnum = {
     None: 'none',
     Read: 'read',
@@ -663,7 +685,9 @@ export function CreateAgentDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
+        'widgetAiProgressMode': json['widget_ai_progress_mode'] == null ? undefined : json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
+        'respondOnSegmentSubscription': json['respond_on_segment_subscription'] == null ? undefined : json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'] == null ? undefined : json['enable_message_reactions_context'],
         'enableSelectiveResponse': json['enable_selective_response'] == null ? undefined : json['enable_selective_response'],
         'enableOperatorReplySuggestions': json['enable_operator_reply_suggestions'] == null ? undefined : json['enable_operator_reply_suggestions'],
@@ -742,7 +766,9 @@ export function CreateAgentDtoToJSONTyped(value?: CreateAgentDto | null, ignoreD
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
+        'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
         'enable_selective_response': value['enableSelectiveResponse'],
         'enable_operator_reply_suggestions': value['enableOperatorReplySuggestions'],

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AiResponseActivityDto } from './AiResponseActivityDto';
+import {
+    AiResponseActivityDtoFromJSON,
+    AiResponseActivityDtoFromJSONTyped,
+    AiResponseActivityDtoToJSON,
+    AiResponseActivityDtoToJSONTyped,
+} from './AiResponseActivityDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
 import {
     DialogDtoReplyTargetFromJSON,
@@ -408,6 +415,12 @@ export interface DialogListItemDto {
      */
     currentTyping?: Array<DialogCurrentTypingDto>;
     /**
+     * AI-
+     * @type {AiResponseActivityDto}
+     * @memberof DialogListItemDto
+     */
+    currentAiActivity?: AiResponseActivityDto;
+    /**
      *
      * @type {DialogSearchResultDto}
      * @memberof DialogListItemDto
@@ -555,6 +568,7 @@ export function DialogListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'operatorAssignment': json['operator_assignment'] == null ? undefined : DialogOperatorAssignmentDtoFromJSON(json['operator_assignment']),
         'isSoundMuted': json['is_sound_muted'],
         'currentTyping': json['current_typing'] == null ? undefined : ((json['current_typing'] as Array<any>).map(DialogCurrentTypingDtoFromJSON)),
+        'currentAiActivity': json['current_ai_activity'] == null ? undefined : AiResponseActivityDtoFromJSON(json['current_ai_activity']),
         'search': json['search'] == null ? undefined : DialogSearchResultDtoFromJSON(json['search']),
     };
 }
@@ -624,6 +638,7 @@ export function DialogListItemDtoToJSONTyped(value?: DialogListItemDto | null, i
         'operator_assignment': DialogOperatorAssignmentDtoToJSON(value['operatorAssignment']),
         'is_sound_muted': value['isSoundMuted'],
         'current_typing': value['currentTyping'] == null ? undefined : ((value['currentTyping'] as Array<any>).map(DialogCurrentTypingDtoToJSON)),
+        'current_ai_activity': AiResponseActivityDtoToJSON(value['currentAiActivity']),
         'search': DialogSearchResultDtoToJSON(value['search']),
     };
 }

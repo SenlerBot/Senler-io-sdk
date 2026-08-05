@@ -84,12 +84,6 @@ export interface LandingVersionResponseDto {
     settingsRevision: number;
     /**
      *
-     * @type {boolean}
-     * @memberof LandingVersionResponseDto
-     */
-    isPinned: boolean;
-    /**
-     *
      * @type {Date}
      * @memberof LandingVersionResponseDto
      */
@@ -143,7 +137,6 @@ export function instanceOfLandingVersionResponseDto(value: object): value is Lan
     if (!('settings' in value) || value['settings'] === undefined) return false;
     if (!('orderRevision' in value) || value['orderRevision'] === undefined) return false;
     if (!('settingsRevision' in value) || value['settingsRevision'] === undefined) return false;
-    if (!('isPinned' in value) || value['isPinned'] === undefined) return false;
     if (!('publishedAt' in value) || value['publishedAt'] === undefined) return false;
     if (!('deleteAfter' in value) || value['deleteAfter'] === undefined) return false;
     if (!('blocks' in value) || value['blocks'] === undefined) return false;
@@ -168,7 +161,6 @@ export function LandingVersionResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'settings': LandingSettingsDtoFromJSON(json['settings']),
         'orderRevision': json['order_revision'],
         'settingsRevision': json['settings_revision'],
-        'isPinned': json['is_pinned'],
         'publishedAt': (json['published_at'] == null ? null : new Date(json['published_at'])),
         'deleteAfter': (json['delete_after'] == null ? null : new Date(json['delete_after'])),
         'blocks': ((json['blocks'] as Array<any>).map(LandingBlockResponseDtoFromJSON)),
@@ -194,7 +186,6 @@ export function LandingVersionResponseDtoToJSONTyped(value?: LandingVersionRespo
         'settings': LandingSettingsDtoToJSON(value['settings']),
         'order_revision': value['orderRevision'],
         'settings_revision': value['settingsRevision'],
-        'is_pinned': value['isPinned'],
         'published_at': (value['publishedAt'] == null ? null : (value['publishedAt'] as any).toISOString()),
         'delete_after': (value['deleteAfter'] == null ? null : (value['deleteAfter'] as any).toISOString()),
         'blocks': ((value['blocks'] as Array<any>).map(LandingBlockResponseDtoToJSON)),

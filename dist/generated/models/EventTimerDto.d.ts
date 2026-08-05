@@ -22,11 +22,11 @@ export interface EventTimerDto {
      */
     scheduledAt?: Date;
     /**
-     * in-memory
-     * @type {boolean}
+     * ,
+     * @type {string}
      * @memberof EventTimerDto
      */
-    inMemory?: boolean;
+    scheduler?: EventTimerDtoSchedulerEnum;
     /**
      *
      * @type {boolean}
@@ -40,6 +40,14 @@ export interface EventTimerDto {
      */
     instruction?: string;
 }
+/**
+ * @export
+ */
+export declare const EventTimerDtoSchedulerEnum: {
+    readonly Redis: "redis";
+    readonly Postgres: "postgres";
+};
+export type EventTimerDtoSchedulerEnum = typeof EventTimerDtoSchedulerEnum[keyof typeof EventTimerDtoSchedulerEnum];
 /**
  * Check if a given object implements the EventTimerDto interface.
  */

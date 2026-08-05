@@ -48,39 +48,33 @@ import {
 
 export interface GetTrainingRealtimeTokenRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetTrainingRealtimeTokenAcceptLanguageEnum;
 }
 
 export interface GetTrainingStatusRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: GetTrainingStatusAcceptLanguageEnum;
 }
 
 export interface TrainingCancelRequest {
     id: string;
-    xSessionId: string;
     acceptLanguage?: TrainingCancelAcceptLanguageEnum;
 }
 
 export interface TrainingPreviewRequest {
     id: string;
-    xSessionId: string;
     trainingPreviewDto: TrainingPreviewDto;
     acceptLanguage?: TrainingPreviewAcceptLanguageEnum;
 }
 
 export interface TrainingSelectRequest {
     id: string;
-    xSessionId: string;
     selectVariantDto: SelectVariantDto;
     acceptLanguage?: TrainingSelectAcceptLanguageEnum;
 }
 
 export interface TrainingStartRequest {
     id: string;
-    xSessionId: string;
     startTrainingDto: StartTrainingDto;
     acceptLanguage?: TrainingStartAcceptLanguageEnum;
 }
@@ -102,20 +96,9 @@ export class AgentTrainingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getTrainingRealtimeToken().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -165,20 +148,9 @@ export class AgentTrainingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling getTrainingStatus().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -228,20 +200,9 @@ export class AgentTrainingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling trainingCancel().'
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -290,13 +251,6 @@ export class AgentTrainingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling trainingPreview().'
-            );
-        }
-
         if (requestParameters['trainingPreviewDto'] == null) {
             throw new runtime.RequiredError(
                 'trainingPreviewDto',
@@ -309,10 +263,6 @@ export class AgentTrainingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -363,13 +313,6 @@ export class AgentTrainingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling trainingSelect().'
-            );
-        }
-
         if (requestParameters['selectVariantDto'] == null) {
             throw new runtime.RequiredError(
                 'selectVariantDto',
@@ -382,10 +325,6 @@ export class AgentTrainingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -436,13 +375,6 @@ export class AgentTrainingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xSessionId',
-                'Required parameter "xSessionId" was null or undefined when calling trainingStart().'
-            );
-        }
-
         if (requestParameters['startTrainingDto'] == null) {
             throw new runtime.RequiredError(
                 'startTrainingDto',
@@ -455,10 +387,6 @@ export class AgentTrainingApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

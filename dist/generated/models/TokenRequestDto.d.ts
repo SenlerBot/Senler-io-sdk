@@ -34,18 +34,6 @@ export interface TokenRequestDto {
      */
     clientSecret?: string;
     /**
-     * ID grant_type=client_credentials. grant_type=authorization_code.
-     * @type {string}
-     * @memberof TokenRequestDto
-     */
-    projectId?: string;
-    /**
-     * . , .
-     * @type {string}
-     * @memberof TokenRequestDto
-     */
-    scope?: string;
-    /**
      * grant_type=refresh_token
      * @type {string}
      * @memberof TokenRequestDto
@@ -68,7 +56,6 @@ export interface TokenRequestDto {
  * @export
  */
 export declare const TokenRequestDtoGrantTypeEnum: {
-    readonly ClientCredentials: "client_credentials";
     readonly RefreshToken: "refresh_token";
     readonly AuthorizationCode: "authorization_code";
 };

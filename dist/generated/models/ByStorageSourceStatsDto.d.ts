@@ -33,6 +33,12 @@ export interface ByStorageSourceStatsDto {
      * @type {CategoryStatsDto}
      * @memberof ByStorageSourceStatsDto
      */
+    delivery?: CategoryStatsDto;
+    /**
+     *
+     * @type {CategoryStatsDto}
+     * @memberof ByStorageSourceStatsDto
+     */
     knowledgeBase?: CategoryStatsDto;
     /**
      * AI

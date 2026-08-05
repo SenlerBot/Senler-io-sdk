@@ -20,8 +20,28 @@ export interface AttachmentSendToSelfRecipientLinkResponseDto {
      * @type {string}
      * @memberof AttachmentSendToSelfRecipientLinkResponseDto
      */
-    startUrl: string;
+    kind: AttachmentSendToSelfRecipientLinkResponseDtoKindEnum;
+    /**
+     * Deep-link Telegram MAX
+     * @type {string}
+     * @memberof AttachmentSendToSelfRecipientLinkResponseDto
+     */
+    startUrl?: string;
+    /**
+     * ID VK AllowMessagesFromCommunity
+     * @type {number}
+     * @memberof AttachmentSendToSelfRecipientLinkResponseDto
+     */
+    vkGroupId?: number;
 }
+/**
+ * @export
+ */
+export declare const AttachmentSendToSelfRecipientLinkResponseDtoKindEnum: {
+    readonly ExternalStart: "external_start";
+    readonly VkConsent: "vk_consent";
+};
+export type AttachmentSendToSelfRecipientLinkResponseDtoKindEnum = typeof AttachmentSendToSelfRecipientLinkResponseDtoKindEnum[keyof typeof AttachmentSendToSelfRecipientLinkResponseDtoKindEnum];
 /**
  * Check if a given object implements the AttachmentSendToSelfRecipientLinkResponseDto interface.
  */

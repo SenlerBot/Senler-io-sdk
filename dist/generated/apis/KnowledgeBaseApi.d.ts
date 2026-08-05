@@ -13,23 +13,19 @@ import * as runtime from '../runtime';
 import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
 export interface DeleteFoldersRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteFoldersAcceptLanguageEnum;
 }
 export interface DeleteTablesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: DeleteTablesAcceptLanguageEnum;
 }
 export interface FilesRequest {
     createKnowledgeFileDto: CreateKnowledgeFileDto;
-    xSessionId?: string;
     acceptLanguage?: FilesAcceptLanguageEnum;
 }
 export interface FilesUploadRequest {
     projectId: string;
     file: Blob;
-    xSessionId?: string;
     acceptLanguage?: FilesUploadAcceptLanguageEnum;
     folderId?: string | null;
     title?: string;
@@ -37,20 +33,17 @@ export interface FilesUploadRequest {
 export interface FilesUploadArchiveRequest {
     projectId: string;
     file: Blob;
-    xSessionId?: string;
     acceptLanguage?: FilesUploadArchiveAcceptLanguageEnum;
     folderId?: string | null;
     duplicateResolution?: FilesUploadArchiveDuplicateResolutionEnum;
 }
 export interface FoldersRequest {
     createKnowledgeFolderDto: CreateKnowledgeFolderDto;
-    xSessionId?: string;
     acceptLanguage?: FoldersAcceptLanguageEnum;
 }
 export interface GetResourcesRequest {
     projectId: string;
     parentFolderId?: string | null;
-    xSessionId?: string;
     acceptLanguage?: GetResourcesAcceptLanguageEnum;
 }
 export interface GetResourcesResolveRequest {
@@ -58,7 +51,6 @@ export interface GetResourcesResolveRequest {
     folderIds?: Array<string>;
     fileIds?: Array<string>;
     tableIds?: Array<string>;
-    xSessionId?: string;
     acceptLanguage?: GetResourcesResolveAcceptLanguageEnum;
 }
 export interface GetSearchRequest {
@@ -68,33 +60,27 @@ export interface GetSearchRequest {
     resourceType?: GetSearchResourceTypeEnum;
     limit?: number;
     page?: number;
-    xSessionId?: string;
     acceptLanguage?: GetSearchAcceptLanguageEnum;
 }
 export interface GetTablesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: GetTablesAcceptLanguageEnum;
 }
 export interface KnowledgeBaseDeleteFilesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: KnowledgeBaseDeleteFilesAcceptLanguageEnum;
 }
 export interface KnowledgeBaseGetFilesRequest {
     id: string;
-    xSessionId?: string;
     acceptLanguage?: KnowledgeBaseGetFilesAcceptLanguageEnum;
 }
 export interface TablesRequest {
     createKnowledgeTableDto: CreateKnowledgeTableDto;
-    xSessionId?: string;
     acceptLanguage?: TablesAcceptLanguageEnum;
 }
 export interface TablesUploadRequest {
     projectId: string;
     file: Blob;
-    xSessionId?: string;
     acceptLanguage?: TablesUploadAcceptLanguageEnum;
     folderId?: string | null;
     name?: string;
@@ -102,19 +88,16 @@ export interface TablesUploadRequest {
 export interface UpdateFilesRequest {
     id: string;
     updateKnowledgeFileDto: UpdateKnowledgeFileDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateFilesAcceptLanguageEnum;
 }
 export interface UpdateFoldersRequest {
     id: string;
     updateKnowledgeFolderDto: UpdateKnowledgeFolderDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateFoldersAcceptLanguageEnum;
 }
 export interface UpdateTablesRequest {
     id: string;
     updateKnowledgeTableDto: UpdateKnowledgeTableDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateTablesAcceptLanguageEnum;
 }
 /**

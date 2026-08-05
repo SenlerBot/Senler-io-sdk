@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { MessageAttachmentInputDto } from './MessageAttachmentInputDto';
-import {
-    MessageAttachmentInputDtoFromJSON,
-    MessageAttachmentInputDtoFromJSONTyped,
-    MessageAttachmentInputDtoToJSON,
-    MessageAttachmentInputDtoToJSONTyped,
-} from './MessageAttachmentInputDto';
 import type { LeadsFilterDto } from './LeadsFilterDto';
 import {
     LeadsFilterDtoFromJSON,
@@ -34,6 +27,13 @@ import {
     DeliveryRunResponseDtoToJSON,
     DeliveryRunResponseDtoToJSONTyped,
 } from './DeliveryRunResponseDto';
+import type { DeliveryAttachmentResponseDto } from './DeliveryAttachmentResponseDto';
+import {
+    DeliveryAttachmentResponseDtoFromJSON,
+    DeliveryAttachmentResponseDtoFromJSONTyped,
+    DeliveryAttachmentResponseDtoToJSON,
+    DeliveryAttachmentResponseDtoToJSONTyped,
+} from './DeliveryAttachmentResponseDto';
 
 /**
  * DeliveryResponseDto.
@@ -79,10 +79,10 @@ export interface DeliveryResponseDto {
     messageText: string;
     /**
      *
-     * @type {Array<MessageAttachmentInputDto>}
+     * @type {Array<DeliveryAttachmentResponseDto>}
      * @memberof DeliveryResponseDto
      */
-    attachments: Array<MessageAttachmentInputDto>;
+    attachments: Array<DeliveryAttachmentResponseDto>;
     /**
      *
      * @type {Date}
@@ -181,7 +181,7 @@ export function DeliveryResponseDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'status': json['status'],
         'filters': LeadsFilterDtoFromJSON(json['filters']),
         'messageText': json['message_text'],
-        'attachments': ((json['attachments'] as Array<any>).map(MessageAttachmentInputDtoFromJSON)),
+        'attachments': ((json['attachments'] as Array<any>).map(DeliveryAttachmentResponseDtoFromJSON)),
         'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
         'recipientCount': json['recipient_count'],
         'lastRunId': json['last_run_id'],
@@ -209,7 +209,7 @@ export function DeliveryResponseDtoToJSONTyped(value?: DeliveryResponseDto | nul
         'status': value['status'],
         'filters': LeadsFilterDtoToJSON(value['filters']),
         'message_text': value['messageText'],
-        'attachments': ((value['attachments'] as Array<any>).map(MessageAttachmentInputDtoToJSON)),
+        'attachments': ((value['attachments'] as Array<any>).map(DeliveryAttachmentResponseDtoToJSON)),
         'scheduled_at': (value['scheduledAt'] == null ? null : (value['scheduledAt'] as any).toISOString()),
         'recipient_count': value['recipientCount'],
         'last_run_id': value['lastRunId'],

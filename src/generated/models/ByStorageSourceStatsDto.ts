@@ -44,6 +44,12 @@ export interface ByStorageSourceStatsDto {
      * @type {CategoryStatsDto}
      * @memberof ByStorageSourceStatsDto
      */
+    delivery?: CategoryStatsDto;
+    /**
+     *
+     * @type {CategoryStatsDto}
+     * @memberof ByStorageSourceStatsDto
+     */
     knowledgeBase?: CategoryStatsDto;
     /**
      * AI
@@ -90,6 +96,7 @@ export function ByStorageSourceStatsDtoFromJSONTyped(json: any, ignoreDiscrimina
 
         'channel': json['channel'] == null ? undefined : CategoryStatsDtoFromJSON(json['channel']),
         'dialog': json['dialog'] == null ? undefined : CategoryStatsDtoFromJSON(json['dialog']),
+        'delivery': json['delivery'] == null ? undefined : CategoryStatsDtoFromJSON(json['delivery']),
         'knowledgeBase': json['knowledge_base'] == null ? undefined : CategoryStatsDtoFromJSON(json['knowledge_base']),
         'agent': json['agent'] == null ? undefined : CategoryStatsDtoFromJSON(json['agent']),
         'web': json['web'] == null ? undefined : CategoryStatsDtoFromJSON(json['web']),
@@ -111,6 +118,7 @@ export function ByStorageSourceStatsDtoToJSONTyped(value?: ByStorageSourceStatsD
 
         'channel': CategoryStatsDtoToJSON(value['channel']),
         'dialog': CategoryStatsDtoToJSON(value['dialog']),
+        'delivery': CategoryStatsDtoToJSON(value['delivery']),
         'knowledge_base': CategoryStatsDtoToJSON(value['knowledgeBase']),
         'agent': CategoryStatsDtoToJSON(value['agent']),
         'web': CategoryStatsDtoToJSON(value['web']),

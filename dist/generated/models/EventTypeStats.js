@@ -49,6 +49,7 @@ exports.EventTypeStatsActionTypeEnum = {
     LeadMerged: 'lead_merged',
     LeadSubscribed: 'lead_subscribed',
     LeadUnsubscribed: 'lead_unsubscribed',
+    SegmentSubscribed: 'segment_subscribed',
     LeadBlocked: 'lead_blocked',
     LeadUnblocked: 'lead_unblocked',
     LeadBlacklisted: 'lead_blacklisted',
@@ -65,6 +66,7 @@ exports.EventTypeStatsActionTypeEnum = {
     BroadcastStarted: 'broadcast_started',
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
+    AiResponseStarted: 'ai_response_started',
     ToolStarted: 'tool_started',
     ToolCompleted: 'tool_completed',
     ToolFailed: 'tool_failed',
@@ -76,11 +78,13 @@ exports.EventTypeStatsActionTypeEnum = {
     SpeechRecognized: 'speech_recognized',
     ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
+    AiProviderCallCompleted: 'ai_provider_call_completed',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',
     TimerScheduled: 'timer_scheduled',
-    TimerTriggered: 'timer_triggered'
+    TimerTriggered: 'timer_triggered',
+    AppEventReceived: 'app_event_received'
 };
 /**
  * Check if a given object implements the EventTypeStats interface.

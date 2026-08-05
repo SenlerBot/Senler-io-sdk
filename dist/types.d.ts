@@ -1,8 +1,7 @@
 interface BaseClientConfig {
     /**
      * API access token (Bearer).
-     * Obtained via POST /api/apps/oauth/token with grant_type=client_credentials
-     * or through the OAuth authorization_code flow.
+     * Obtained through the OAuth authorization_code flow.
      */
     accessToken: string;
     /**

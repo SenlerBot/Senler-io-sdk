@@ -48,39 +48,33 @@ import {
 
 export interface TelegramRequest {
     createTelegramChannelDto: CreateTelegramChannelDto;
-    xSessionId?: string;
     acceptLanguage?: TelegramAcceptLanguageEnum;
 }
 
 export interface TokensTelegramBindRequest {
     channelId: string;
     bindTelegramTokenDto: BindTelegramTokenDto;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramBindAcceptLanguageEnum;
 }
 
 export interface TokensTelegramCheckWebhookStatusRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramCheckWebhookStatusAcceptLanguageEnum;
 }
 
 export interface TokensTelegramRefreshAvatarRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramRefreshAvatarAcceptLanguageEnum;
 }
 
 export interface TokensTelegramValidateRequest {
     channelId: string;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramValidateAcceptLanguageEnum;
 }
 
 export interface TokensTelegramWebhookRequest {
     channelId: string;
     setupWebhookDto: SetupWebhookDto;
-    xSessionId?: string;
     acceptLanguage?: TokensTelegramWebhookAcceptLanguageEnum;
 }
 
@@ -106,10 +100,6 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -173,10 +163,6 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -230,10 +216,6 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -286,10 +268,6 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -341,10 +319,6 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -406,10 +380,6 @@ export class ChannelsTelegramApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);

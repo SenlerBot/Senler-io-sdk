@@ -14,7 +14,6 @@ import type { CreateProjectVariableDto, Deactivate200Response, ProjectVariableLi
 export interface DeactivateRequest {
     projectId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: DeactivateAcceptLanguageEnum;
 }
 export interface GetByIdRequest {
@@ -22,33 +21,28 @@ export interface GetByIdRequest {
     search?: string;
     limit?: number;
     page?: number;
-    xSessionId?: string;
     acceptLanguage?: GetByIdAcceptLanguageEnum;
 }
 export interface GetById2Request {
     projectId: string;
     name: string;
-    xSessionId?: string;
     acceptLanguage?: GetById2AcceptLanguageEnum;
 }
 export interface ProjectVariablesCreateRequest {
     projectId: string;
     createProjectVariableDto: CreateProjectVariableDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectVariablesCreateAcceptLanguageEnum;
 }
 export interface ProjectVariablesUpdateRequest {
     projectId: string;
     name: string;
     updateProjectVariableDto: UpdateProjectVariableDto;
-    xSessionId?: string;
     acceptLanguage?: ProjectVariablesUpdateAcceptLanguageEnum;
 }
 export interface UpdateValueRequest {
     projectId: string;
     name: string;
     setVariableValueDto: SetVariableValueDto;
-    xSessionId?: string;
     acceptLanguage?: UpdateValueAcceptLanguageEnum;
 }
 /**

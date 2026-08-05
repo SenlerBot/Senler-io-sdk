@@ -61,14 +61,8 @@ class MetricsConfigApi extends runtime.BaseAPI {
         if (requestParameters['agentId'] == null) {
             throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getMetricsConfig().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling getMetricsConfig().');
-        }
         const queryParameters = {};
         const headerParameters = {};
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -107,18 +101,12 @@ class MetricsConfigApi extends runtime.BaseAPI {
         if (requestParameters['agentId'] == null) {
             throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateMetricsConfig().');
         }
-        if (requestParameters['xSessionId'] == null) {
-            throw new runtime.RequiredError('xSessionId', 'Required parameter "xSessionId" was null or undefined when calling updateMetricsConfig().');
-        }
         if (requestParameters['updateAgentMetricsConfigurationDto'] == null) {
             throw new runtime.RequiredError('updateAgentMetricsConfigurationDto', 'Required parameter "updateAgentMetricsConfigurationDto" was null or undefined when calling updateMetricsConfig().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

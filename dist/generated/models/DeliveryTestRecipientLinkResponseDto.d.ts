@@ -16,12 +16,32 @@
  */
 export interface DeliveryTestRecipientLinkResponseDto {
     /**
-     * Telegram-
+     *
      * @type {string}
      * @memberof DeliveryTestRecipientLinkResponseDto
      */
-    startUrl: string;
+    kind: DeliveryTestRecipientLinkResponseDtoKindEnum;
+    /**
+     * Deep-link Telegram MAX
+     * @type {string}
+     * @memberof DeliveryTestRecipientLinkResponseDto
+     */
+    startUrl?: string;
+    /**
+     * ID VK AllowMessagesFromCommunity
+     * @type {number}
+     * @memberof DeliveryTestRecipientLinkResponseDto
+     */
+    vkGroupId?: number;
 }
+/**
+ * @export
+ */
+export declare const DeliveryTestRecipientLinkResponseDtoKindEnum: {
+    readonly ExternalStart: "external_start";
+    readonly VkConsent: "vk_consent";
+};
+export type DeliveryTestRecipientLinkResponseDtoKindEnum = typeof DeliveryTestRecipientLinkResponseDtoKindEnum[keyof typeof DeliveryTestRecipientLinkResponseDtoKindEnum];
 /**
  * Check if a given object implements the DeliveryTestRecipientLinkResponseDto interface.
  */

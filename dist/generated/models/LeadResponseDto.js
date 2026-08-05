@@ -20,6 +20,7 @@ exports.LeadResponseDtoFromJSONTyped = LeadResponseDtoFromJSONTyped;
 exports.LeadResponseDtoToJSON = LeadResponseDtoToJSON;
 exports.LeadResponseDtoToJSONTyped = LeadResponseDtoToJSONTyped;
 const LeadSpaceLinkResponseDto_1 = require("./LeadSpaceLinkResponseDto");
+const PendingSegmentResponseDto_1 = require("./PendingSegmentResponseDto");
 const SegmentMembershipResponseDto_1 = require("./SegmentMembershipResponseDto");
 /**
  * @export
@@ -89,6 +90,8 @@ function instanceOfLeadResponseDto(value) {
         return false;
     if (!('segments' in value) || value['segments'] === undefined)
         return false;
+    if (!('pendingSegments' in value) || value['pendingSegments'] === undefined)
+        return false;
     return true;
 }
 function LeadResponseDtoFromJSON(json) {
@@ -126,6 +129,7 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'lastProfileSyncAt': json['last_profile_sync_at'] == null ? undefined : (new Date(json['last_profile_sync_at'])),
         'spaces': (json['spaces'].map(LeadSpaceLinkResponseDto_1.LeadSpaceLinkResponseDtoFromJSON)),
         'segments': (json['segments'].map(SegmentMembershipResponseDto_1.SegmentMembershipResponseDtoFromJSON)),
+        'pendingSegments': (json['pending_segments'].map(PendingSegmentResponseDto_1.PendingSegmentResponseDtoFromJSON)),
     };
 }
 function LeadResponseDtoToJSON(json) {
@@ -163,5 +167,6 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'last_profile_sync_at': value['lastProfileSyncAt'] == null ? undefined : (value['lastProfileSyncAt'].toISOString()),
         'spaces': (value['spaces'].map(LeadSpaceLinkResponseDto_1.LeadSpaceLinkResponseDtoToJSON)),
         'segments': (value['segments'].map(SegmentMembershipResponseDto_1.SegmentMembershipResponseDtoToJSON)),
+        'pending_segments': (value['pendingSegments'].map(PendingSegmentResponseDto_1.PendingSegmentResponseDtoToJSON)),
     };
 }

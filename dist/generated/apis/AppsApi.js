@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AppsApi extends runtime.BaseAPI {
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). grant_type=client_credentials project_id. OAuth client credentials Authorization: Basic .
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
     async appsCreateRaw(requestParameters, initOverrides) {
@@ -92,12 +92,6 @@ class AppsApi extends runtime.BaseAPI {
         if (requestParameters['clientSecret'] != null) {
             formParams.append('client_secret', requestParameters['clientSecret']);
         }
-        if (requestParameters['projectId'] != null) {
-            formParams.append('project_id', requestParameters['projectId']);
-        }
-        if (requestParameters['scope'] != null) {
-            formParams.append('scope', requestParameters['scope']);
-        }
         if (requestParameters['refreshToken'] != null) {
             formParams.append('refresh_token', requestParameters['refreshToken']);
         }
@@ -117,7 +111,7 @@ class AppsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TokenResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). grant_type=client_credentials project_id. OAuth client credentials Authorization: Basic .
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
     async appsCreate(requestParameters, initOverrides) {
@@ -130,7 +124,6 @@ exports.AppsApi = AppsApi;
  * @export
  */
 exports.AppsCreateGrantTypeEnum = {
-    ClientCredentials: 'client_credentials',
     RefreshToken: 'refresh_token',
     AuthorizationCode: 'authorization_code'
 };

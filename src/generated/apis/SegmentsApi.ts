@@ -27,8 +27,9 @@ import type {
   SegmentConsentDocumentVersionsListResponseDto,
   SegmentConsentDocumentsListResponseDto,
   SegmentConsentTemplatesListResponseDto,
-  SegmentEventsListResponseDto,
   SegmentLeadConsentAcceptancesResponseDto,
+  SegmentMembershipEventsListResponseDto,
+  SegmentReferencesListResponseDto,
   SegmentResponseDto,
   SegmentSubscriptionLinksResponseDto,
   SegmentsListResponseDto,
@@ -60,10 +61,12 @@ import {
     SegmentConsentDocumentsListResponseDtoToJSON,
     SegmentConsentTemplatesListResponseDtoFromJSON,
     SegmentConsentTemplatesListResponseDtoToJSON,
-    SegmentEventsListResponseDtoFromJSON,
-    SegmentEventsListResponseDtoToJSON,
     SegmentLeadConsentAcceptancesResponseDtoFromJSON,
     SegmentLeadConsentAcceptancesResponseDtoToJSON,
+    SegmentMembershipEventsListResponseDtoFromJSON,
+    SegmentMembershipEventsListResponseDtoToJSON,
+    SegmentReferencesListResponseDtoFromJSON,
+    SegmentReferencesListResponseDtoToJSON,
     SegmentResponseDtoFromJSON,
     SegmentResponseDtoToJSON,
     SegmentSubscriptionLinksResponseDtoFromJSON,
@@ -76,139 +79,133 @@ import {
     UpdateSegmentDtoToJSON,
 } from '../models/index';
 
-export interface DeleteSegmentsRequest {
+export interface DeleteProjectsSegmentsRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: DeleteSegmentsAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSegmentsAcceptLanguageEnum;
 }
 
-export interface DeleteSegmentsConsentDocumentsRequest {
+export interface DeleteProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
     documentId: string;
-    xSessionId?: string;
-    acceptLanguage?: DeleteSegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
 
-export interface DeleteSegmentsLeadsRequest {
+export interface DeleteProjectsSegmentsLeadsRequest {
     projectId: string;
     id: string;
     leadId: string;
-    xSessionId?: string;
-    acceptLanguage?: DeleteSegmentsLeadsAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSegmentsLeadsAcceptLanguageEnum;
 }
 
-export interface GetSegmentsRequest {
+export interface GetProjectsSegmentsRequest {
     projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsAcceptLanguageEnum;
 }
 
-export interface GetSegments2Request {
+export interface GetProjectsSegments2Request {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegments2AcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegments2AcceptLanguageEnum;
 }
 
-export interface GetSegmentsConsentDocumentsRequest {
+export interface GetProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
 
-export interface GetSegmentsConsentDocumentsVersionsRequest {
+export interface GetProjectsSegmentsConsentDocumentsVersionsRequest {
     projectId: string;
     documentId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum;
 }
 
-export interface GetSegmentsConsentTemplatesRequest {
+export interface GetProjectsSegmentsConsentTemplatesRequest {
     projectId: string;
-    locale?: GetSegmentsConsentTemplatesLocaleEnum;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsConsentTemplatesAcceptLanguageEnum;
+    locale?: GetProjectsSegmentsConsentTemplatesLocaleEnum;
+    acceptLanguage?: GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum;
 }
 
-export interface GetSegmentsEventsRequest {
-    projectId: string;
-    id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsEventsAcceptLanguageEnum;
-}
-
-export interface GetSegmentsLeadsConsentAcceptancesRequest {
+export interface GetProjectsSegmentsLeadsConsentAcceptancesRequest {
     projectId: string;
     leadId: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum;
 }
 
-export interface GetSegmentsMembersRequest {
+export interface GetProjectsSegmentsMembersRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsMembersAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsMembersAcceptLanguageEnum;
 }
 
-export interface GetSegmentsSubscriptionLinksRequest {
+export interface GetProjectsSegmentsMembershipEventsRequest {
     projectId: string;
     id: string;
-    xSessionId?: string;
-    acceptLanguage?: GetSegmentsSubscriptionLinksAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSegmentsMembershipEventsAcceptLanguageEnum;
 }
 
-export interface SegmentsRequest {
+export interface GetProjectsSegmentsReferencesRequest {
+    projectId: string;
+    ids: Array<string>;
+    acceptLanguage?: GetProjectsSegmentsReferencesAcceptLanguageEnum;
+}
+
+export interface GetProjectsSegmentsSubscriptionLinksRequest {
+    projectId: string;
+    id: string;
+    acceptLanguage?: GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum;
+}
+
+export interface GetPublicSegmentsConsentsRequest {
+    segmentPublicId: string;
+    documentId: string;
+    version: number;
+    acceptLanguage?: GetPublicSegmentsConsentsAcceptLanguageEnum;
+}
+
+export interface ProjectsSegmentsRequest {
     projectId: string;
     createSegmentDto: CreateSegmentDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsAcceptLanguageEnum;
 }
 
-export interface SegmentsConsentDocumentsRequest {
+export interface ProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
     createSegmentConsentDocumentDto: CreateSegmentConsentDocumentDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
 
-export interface SegmentsConsentDocumentsAssetsConfirmRequest {
+export interface ProjectsSegmentsConsentDocumentsAssetsConfirmRequest {
     projectId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum;
 }
 
-export interface SegmentsConsentDocumentsAssetsUploadUrlRequest {
+export interface ProjectsSegmentsConsentDocumentsAssetsUploadUrlRequest {
     projectId: string;
     getSegmentConsentDocumentUploadUrlDto: GetSegmentConsentDocumentUploadUrlDto;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum;
 }
 
-export interface SegmentsLeadsRequest {
+export interface ProjectsSegmentsLeadsRequest {
     projectId: string;
     id: string;
     leadId: string;
-    xSessionId?: string;
-    acceptLanguage?: SegmentsLeadsAcceptLanguageEnum;
+    acceptLanguage?: ProjectsSegmentsLeadsAcceptLanguageEnum;
 }
 
-export interface UpdateSegmentsRequest {
+export interface UpdateProjectsSegmentsRequest {
     projectId: string;
     id: string;
     updateSegmentDto: UpdateSegmentDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSegmentsAcceptLanguageEnum;
+    acceptLanguage?: UpdateProjectsSegmentsAcceptLanguageEnum;
 }
 
-export interface UpdateSegmentsConsentDocumentsRequest {
+export interface UpdateProjectsSegmentsConsentDocumentsRequest {
     projectId: string;
     documentId: string;
     updateSegmentConsentDocumentDto: UpdateSegmentConsentDocumentDto;
-    xSessionId?: string;
-    acceptLanguage?: UpdateSegmentsConsentDocumentsAcceptLanguageEnum;
+    acceptLanguage?: UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum;
 }
 
 /**
@@ -220,28 +217,24 @@ export class SegmentsApi extends runtime.BaseAPI {
      * deleted_at .
      *
      */
-    async deleteSegmentsRaw(requestParameters: DeleteSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
+    async deleteProjectsSegmentsRaw(requestParameters: DeleteProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteSegments().'
+                'Required parameter "projectId" was null or undefined when calling deleteProjectsSegments().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling deleteSegments().'
+                'Required parameter "id" was null or undefined when calling deleteProjectsSegments().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -274,8 +267,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * deleted_at .
      *
      */
-    async deleteSegments(requestParameters: DeleteSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
-        const response = await this.deleteSegmentsRaw(requestParameters, initOverrides);
+    async deleteProjectsSegments(requestParameters: DeleteProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
+        const response = await this.deleteProjectsSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -283,28 +276,24 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async deleteSegmentsConsentDocumentsRaw(requestParameters: DeleteSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>> {
+    async deleteProjectsSegmentsConsentDocumentsRaw(requestParameters: DeleteProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteSegmentsConsentDocuments().'
+                'Required parameter "projectId" was null or undefined when calling deleteProjectsSegmentsConsentDocuments().'
             );
         }
 
         if (requestParameters['documentId'] == null) {
             throw new runtime.RequiredError(
                 'documentId',
-                'Required parameter "documentId" was null or undefined when calling deleteSegmentsConsentDocuments().'
+                'Required parameter "documentId" was null or undefined when calling deleteProjectsSegmentsConsentDocuments().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -337,8 +326,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async deleteSegmentsConsentDocuments(requestParameters: DeleteSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto> {
-        const response = await this.deleteSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async deleteProjectsSegmentsConsentDocuments(requestParameters: DeleteProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto> {
+        const response = await this.deleteProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -346,35 +335,31 @@ export class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async deleteSegmentsLeadsRaw(requestParameters: DeleteSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
+    async deleteProjectsSegmentsLeadsRaw(requestParameters: DeleteProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteSegmentsLeads().'
+                'Required parameter "projectId" was null or undefined when calling deleteProjectsSegmentsLeads().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling deleteSegmentsLeads().'
+                'Required parameter "id" was null or undefined when calling deleteProjectsSegmentsLeads().'
             );
         }
 
         if (requestParameters['leadId'] == null) {
             throw new runtime.RequiredError(
                 'leadId',
-                'Required parameter "leadId" was null or undefined when calling deleteSegmentsLeads().'
+                'Required parameter "leadId" was null or undefined when calling deleteProjectsSegmentsLeads().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -407,8 +392,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async deleteSegmentsLeads(requestParameters: DeleteSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
-        const response = await this.deleteSegmentsLeadsRaw(requestParameters, initOverrides);
+    async deleteProjectsSegmentsLeads(requestParameters: DeleteProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
+        const response = await this.deleteProjectsSegmentsLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -416,21 +401,17 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async getSegmentsRaw(requestParameters: GetSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentsListResponseDto>> {
+    async getProjectsSegmentsRaw(requestParameters: GetProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegments().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegments().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -463,8 +444,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async getSegments(requestParameters: GetSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentsListResponseDto> {
-        const response = await this.getSegmentsRaw(requestParameters, initOverrides);
+    async getProjectsSegments(requestParameters: GetProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentsListResponseDto> {
+        const response = await this.getProjectsSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -472,28 +453,24 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegments2Raw(requestParameters: GetSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
+    async getProjectsSegments2Raw(requestParameters: GetProjectsSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegments2().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegments2().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getSegments2().'
+                'Required parameter "id" was null or undefined when calling getProjectsSegments2().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -526,8 +503,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegments2(requestParameters: GetSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
-        const response = await this.getSegments2Raw(requestParameters, initOverrides);
+    async getProjectsSegments2(requestParameters: GetProjectsSegments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
+        const response = await this.getProjectsSegments2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -535,21 +512,17 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsConsentDocumentsRaw(requestParameters: GetSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentsListResponseDto>> {
+    async getProjectsSegmentsConsentDocumentsRaw(requestParameters: GetProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsConsentDocuments().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsConsentDocuments().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -582,8 +555,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsConsentDocuments(requestParameters: GetSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentsListResponseDto> {
-        const response = await this.getSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async getProjectsSegmentsConsentDocuments(requestParameters: GetProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentsListResponseDto> {
+        const response = await this.getProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -591,28 +564,24 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsConsentDocumentsVersionsRaw(requestParameters: GetSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentVersionsListResponseDto>> {
+    async getProjectsSegmentsConsentDocumentsVersionsRaw(requestParameters: GetProjectsSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentVersionsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsConsentDocumentsVersions().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsConsentDocumentsVersions().'
             );
         }
 
         if (requestParameters['documentId'] == null) {
             throw new runtime.RequiredError(
                 'documentId',
-                'Required parameter "documentId" was null or undefined when calling getSegmentsConsentDocumentsVersions().'
+                'Required parameter "documentId" was null or undefined when calling getProjectsSegmentsConsentDocumentsVersions().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -645,8 +614,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsConsentDocumentsVersions(requestParameters: GetSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentVersionsListResponseDto> {
-        const response = await this.getSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides);
+    async getProjectsSegmentsConsentDocumentsVersions(requestParameters: GetProjectsSegmentsConsentDocumentsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentVersionsListResponseDto> {
+        const response = await this.getProjectsSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -654,11 +623,11 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . , .
      *
      */
-    async getSegmentsConsentTemplatesRaw(requestParameters: GetSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentTemplatesListResponseDto>> {
+    async getProjectsSegmentsConsentTemplatesRaw(requestParameters: GetProjectsSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentTemplatesListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsConsentTemplates().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsConsentTemplates().'
             );
         }
 
@@ -669,10 +638,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -705,71 +670,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . , .
      *
      */
-    async getSegmentsConsentTemplates(requestParameters: GetSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentTemplatesListResponseDto> {
-        const response = await this.getSegmentsConsentTemplatesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , .
-     *
-     */
-    async getSegmentsEventsRaw(requestParameters: GetSegmentsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentEventsListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsEvents().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling getSegmentsEvents().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/events`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => SegmentEventsListResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , .
-     *
-     */
-    async getSegmentsEvents(requestParameters: GetSegmentsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentEventsListResponseDto> {
-        const response = await this.getSegmentsEventsRaw(requestParameters, initOverrides);
+    async getProjectsSegmentsConsentTemplates(requestParameters: GetProjectsSegmentsConsentTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentTemplatesListResponseDto> {
+        const response = await this.getProjectsSegmentsConsentTemplatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -777,28 +679,24 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsLeadsConsentAcceptancesRaw(requestParameters: GetSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLeadConsentAcceptancesResponseDto>> {
+    async getProjectsSegmentsLeadsConsentAcceptancesRaw(requestParameters: GetProjectsSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLeadConsentAcceptancesResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsLeadsConsentAcceptances().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsLeadsConsentAcceptances().'
             );
         }
 
         if (requestParameters['leadId'] == null) {
             throw new runtime.RequiredError(
                 'leadId',
-                'Required parameter "leadId" was null or undefined when calling getSegmentsLeadsConsentAcceptances().'
+                'Required parameter "leadId" was null or undefined when calling getProjectsSegmentsLeadsConsentAcceptances().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -831,8 +729,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsLeadsConsentAcceptances(requestParameters: GetSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto> {
-        const response = await this.getSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides);
+    async getProjectsSegmentsLeadsConsentAcceptances(requestParameters: GetProjectsSegmentsLeadsConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto> {
+        const response = await this.getProjectsSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -840,28 +738,24 @@ export class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getSegmentsMembersRaw(requestParameters: GetSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadResponseDto>>> {
+    async getProjectsSegmentsMembersRaw(requestParameters: GetProjectsSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadResponseDto>>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsMembers().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsMembers().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getSegmentsMembers().'
+                'Required parameter "id" was null or undefined when calling getProjectsSegmentsMembers().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -894,27 +788,27 @@ export class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getSegmentsMembers(requestParameters: GetSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadResponseDto>> {
-        const response = await this.getSegmentsMembersRaw(requestParameters, initOverrides);
+    async getProjectsSegmentsMembers(requestParameters: GetProjectsSegmentsMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadResponseDto>> {
+        const response = await this.getProjectsSegmentsMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . Mini App- .
+     * .
      *
      */
-    async getSegmentsSubscriptionLinksRaw(requestParameters: GetSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>> {
+    async getProjectsSegmentsMembershipEventsRaw(requestParameters: GetProjectsSegmentsMembershipEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentMembershipEventsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getSegmentsSubscriptionLinks().'
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsMembershipEvents().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getSegmentsSubscriptionLinks().'
+                'Required parameter "id" was null or undefined when calling getProjectsSegmentsMembershipEvents().'
             );
         }
 
@@ -922,9 +816,127 @@ export class SegmentsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/segments/{id}/membership-events`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SegmentMembershipEventsListResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getProjectsSegmentsMembershipEvents(requestParameters: GetProjectsSegmentsMembershipEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentMembershipEventsListResponseDto> {
+        const response = await this.getProjectsSegmentsMembershipEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getProjectsSegmentsReferencesRaw(requestParameters: GetProjectsSegmentsReferencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentReferencesListResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsReferences().'
+            );
+        }
+
+        if (requestParameters['ids'] == null) {
+            throw new runtime.RequiredError(
+                'ids',
+                'Required parameter "ids" was null or undefined when calling getProjectsSegmentsReferences().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/segments/references`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SegmentReferencesListResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getProjectsSegmentsReferences(requestParameters: GetProjectsSegmentsReferencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentReferencesListResponseDto> {
+        const response = await this.getProjectsSegmentsReferencesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . Mini App- .
+     *
+     */
+    async getProjectsSegmentsSubscriptionLinksRaw(requestParameters: GetProjectsSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsSubscriptionLinks().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getProjectsSegmentsSubscriptionLinks().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -957,8 +969,65 @@ export class SegmentsApi extends runtime.BaseAPI {
      * . Mini App- .
      *
      */
-    async getSegmentsSubscriptionLinks(requestParameters: GetSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto> {
-        const response = await this.getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides);
+    async getProjectsSegmentsSubscriptionLinks(requestParameters: GetProjectsSegmentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto> {
+        const response = await this.getProjectsSegmentsSubscriptionLinksRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getPublicSegmentsConsentsRaw(requestParameters: GetPublicSegmentsConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters['segmentPublicId'] == null) {
+            throw new runtime.RequiredError(
+                'segmentPublicId',
+                'Required parameter "segmentPublicId" was null or undefined when calling getPublicSegmentsConsents().'
+            );
+        }
+
+        if (requestParameters['documentId'] == null) {
+            throw new runtime.RequiredError(
+                'documentId',
+                'Required parameter "documentId" was null or undefined when calling getPublicSegmentsConsents().'
+            );
+        }
+
+        if (requestParameters['version'] == null) {
+            throw new runtime.RequiredError(
+                'version',
+                'Required parameter "version" was null or undefined when calling getPublicSegmentsConsents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/segments/{segmentPublicId}/consents/{documentId}/{version}`.replace(`{${"segmentPublicId"}}`, encodeURIComponent(String(requestParameters['segmentPublicId']))).replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))).replace(`{${"version"}}`, encodeURIComponent(String(requestParameters['version']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<string>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * .
+     *
+     */
+    async getPublicSegmentsConsents(requestParameters: GetPublicSegmentsConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.getPublicSegmentsConsentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -966,18 +1035,18 @@ export class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async segmentsRaw(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
+    async projectsSegmentsRaw(requestParameters: ProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling segments().'
+                'Required parameter "projectId" was null or undefined when calling projectsSegments().'
             );
         }
 
         if (requestParameters['createSegmentDto'] == null) {
             throw new runtime.RequiredError(
                 'createSegmentDto',
-                'Required parameter "createSegmentDto" was null or undefined when calling segments().'
+                'Required parameter "createSegmentDto" was null or undefined when calling projectsSegments().'
             );
         }
 
@@ -986,10 +1055,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1023,8 +1088,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async segments(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
-        const response = await this.segmentsRaw(requestParameters, initOverrides);
+    async projectsSegments(requestParameters: ProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
+        const response = await this.projectsSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1032,18 +1097,18 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async segmentsConsentDocumentsRaw(requestParameters: SegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>> {
+    async projectsSegmentsConsentDocumentsRaw(requestParameters: ProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling segmentsConsentDocuments().'
+                'Required parameter "projectId" was null or undefined when calling projectsSegmentsConsentDocuments().'
             );
         }
 
         if (requestParameters['createSegmentConsentDocumentDto'] == null) {
             throw new runtime.RequiredError(
                 'createSegmentConsentDocumentDto',
-                'Required parameter "createSegmentConsentDocumentDto" was null or undefined when calling segmentsConsentDocuments().'
+                'Required parameter "createSegmentConsentDocumentDto" was null or undefined when calling projectsSegmentsConsentDocuments().'
             );
         }
 
@@ -1052,10 +1117,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1089,8 +1150,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async segmentsConsentDocuments(requestParameters: SegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto> {
-        const response = await this.segmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async projectsSegmentsConsentDocuments(requestParameters: ProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto> {
+        const response = await this.projectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1098,18 +1159,18 @@ export class SegmentsApi extends runtime.BaseAPI {
      * S3 .
      * PDF-
      */
-    async segmentsConsentDocumentsAssetsConfirmRaw(requestParameters: SegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentUploadResponseDto>> {
+    async projectsSegmentsConsentDocumentsAssetsConfirmRaw(requestParameters: ProjectsSegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentUploadResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling segmentsConsentDocumentsAssetsConfirm().'
+                'Required parameter "projectId" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsConfirm().'
             );
         }
 
         if (requestParameters['confirmS3UploadDto'] == null) {
             throw new runtime.RequiredError(
                 'confirmS3UploadDto',
-                'Required parameter "confirmS3UploadDto" was null or undefined when calling segmentsConsentDocumentsAssetsConfirm().'
+                'Required parameter "confirmS3UploadDto" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsConfirm().'
             );
         }
 
@@ -1118,10 +1179,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1155,8 +1212,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * S3 .
      * PDF-
      */
-    async segmentsConsentDocumentsAssetsConfirm(requestParameters: SegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentUploadResponseDto> {
-        const response = await this.segmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
+    async projectsSegmentsConsentDocumentsAssetsConfirm(requestParameters: ProjectsSegmentsConsentDocumentsAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentUploadResponseDto> {
+        const response = await this.projectsSegmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1164,18 +1221,18 @@ export class SegmentsApi extends runtime.BaseAPI {
      * PDF S3- .
      * S3- PDF-
      */
-    async segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters: SegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>> {
+    async projectsSegmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters: ProjectsSegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling segmentsConsentDocumentsAssetsUploadUrl().'
+                'Required parameter "projectId" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsUploadUrl().'
             );
         }
 
         if (requestParameters['getSegmentConsentDocumentUploadUrlDto'] == null) {
             throw new runtime.RequiredError(
                 'getSegmentConsentDocumentUploadUrlDto',
-                'Required parameter "getSegmentConsentDocumentUploadUrlDto" was null or undefined when calling segmentsConsentDocumentsAssetsUploadUrl().'
+                'Required parameter "getSegmentConsentDocumentUploadUrlDto" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsUploadUrl().'
             );
         }
 
@@ -1184,10 +1241,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1221,8 +1274,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * PDF S3- .
      * S3- PDF-
      */
-    async segmentsConsentDocumentsAssetsUploadUrl(requestParameters: SegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {
-        const response = await this.segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
+    async projectsSegmentsConsentDocumentsAssetsUploadUrl(requestParameters: ProjectsSegmentsConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {
+        const response = await this.projectsSegmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1230,35 +1283,31 @@ export class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async segmentsLeadsRaw(requestParameters: SegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
+    async projectsSegmentsLeadsRaw(requestParameters: ProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling segmentsLeads().'
+                'Required parameter "projectId" was null or undefined when calling projectsSegmentsLeads().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling segmentsLeads().'
+                'Required parameter "id" was null or undefined when calling projectsSegmentsLeads().'
             );
         }
 
         if (requestParameters['leadId'] == null) {
             throw new runtime.RequiredError(
                 'leadId',
-                'Required parameter "leadId" was null or undefined when calling segmentsLeads().'
+                'Required parameter "leadId" was null or undefined when calling projectsSegmentsLeads().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1291,8 +1340,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async segmentsLeads(requestParameters: SegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
-        const response = await this.segmentsLeadsRaw(requestParameters, initOverrides);
+    async projectsSegmentsLeads(requestParameters: ProjectsSegmentsLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto> {
+        const response = await this.projectsSegmentsLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1300,25 +1349,25 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateSegmentsRaw(requestParameters: UpdateSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
+    async updateProjectsSegmentsRaw(requestParameters: UpdateProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateSegments().'
+                'Required parameter "projectId" was null or undefined when calling updateProjectsSegments().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateSegments().'
+                'Required parameter "id" was null or undefined when calling updateProjectsSegments().'
             );
         }
 
         if (requestParameters['updateSegmentDto'] == null) {
             throw new runtime.RequiredError(
                 'updateSegmentDto',
-                'Required parameter "updateSegmentDto" was null or undefined when calling updateSegments().'
+                'Required parameter "updateSegmentDto" was null or undefined when calling updateProjectsSegments().'
             );
         }
 
@@ -1327,10 +1376,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1364,8 +1409,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateSegments(requestParameters: UpdateSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
-        const response = await this.updateSegmentsRaw(requestParameters, initOverrides);
+    async updateProjectsSegments(requestParameters: UpdateProjectsSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {
+        const response = await this.updateProjectsSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1373,25 +1418,25 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateSegmentsConsentDocumentsRaw(requestParameters: UpdateSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>> {
+    async updateProjectsSegmentsConsentDocumentsRaw(requestParameters: UpdateProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateSegmentsConsentDocuments().'
+                'Required parameter "projectId" was null or undefined when calling updateProjectsSegmentsConsentDocuments().'
             );
         }
 
         if (requestParameters['documentId'] == null) {
             throw new runtime.RequiredError(
                 'documentId',
-                'Required parameter "documentId" was null or undefined when calling updateSegmentsConsentDocuments().'
+                'Required parameter "documentId" was null or undefined when calling updateProjectsSegmentsConsentDocuments().'
             );
         }
 
         if (requestParameters['updateSegmentConsentDocumentDto'] == null) {
             throw new runtime.RequiredError(
                 'updateSegmentConsentDocumentDto',
-                'Required parameter "updateSegmentConsentDocumentDto" was null or undefined when calling updateSegmentsConsentDocuments().'
+                'Required parameter "updateSegmentConsentDocumentDto" was null or undefined when calling updateProjectsSegmentsConsentDocuments().'
             );
         }
 
@@ -1400,10 +1445,6 @@ export class SegmentsApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xSessionId'] != null) {
-            headerParameters['X-Session-Id'] = String(requestParameters['xSessionId']);
-        }
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1437,8 +1478,8 @@ export class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateSegmentsConsentDocuments(requestParameters: UpdateSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto> {
-        const response = await this.updateSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async updateProjectsSegmentsConsentDocuments(requestParameters: UpdateProjectsSegmentsConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto> {
+        const response = await this.updateProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1447,160 +1488,176 @@ export class SegmentsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const DeleteSegmentsAcceptLanguageEnum = {
+export const DeleteProjectsSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteSegmentsAcceptLanguageEnum = typeof DeleteSegmentsAcceptLanguageEnum[keyof typeof DeleteSegmentsAcceptLanguageEnum];
+export type DeleteProjectsSegmentsAcceptLanguageEnum = typeof DeleteProjectsSegmentsAcceptLanguageEnum[keyof typeof DeleteProjectsSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeleteSegmentsConsentDocumentsAcceptLanguageEnum = {
+export const DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteSegmentsConsentDocumentsAcceptLanguageEnum = typeof DeleteSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof DeleteSegmentsConsentDocumentsAcceptLanguageEnum];
+export type DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeleteSegmentsLeadsAcceptLanguageEnum = {
+export const DeleteProjectsSegmentsLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteSegmentsLeadsAcceptLanguageEnum = typeof DeleteSegmentsLeadsAcceptLanguageEnum[keyof typeof DeleteSegmentsLeadsAcceptLanguageEnum];
+export type DeleteProjectsSegmentsLeadsAcceptLanguageEnum = typeof DeleteProjectsSegmentsLeadsAcceptLanguageEnum[keyof typeof DeleteProjectsSegmentsLeadsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsAcceptLanguageEnum = {
+export const GetProjectsSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsAcceptLanguageEnum = typeof GetSegmentsAcceptLanguageEnum[keyof typeof GetSegmentsAcceptLanguageEnum];
+export type GetProjectsSegmentsAcceptLanguageEnum = typeof GetProjectsSegmentsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegments2AcceptLanguageEnum = {
+export const GetProjectsSegments2AcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegments2AcceptLanguageEnum = typeof GetSegments2AcceptLanguageEnum[keyof typeof GetSegments2AcceptLanguageEnum];
+export type GetProjectsSegments2AcceptLanguageEnum = typeof GetProjectsSegments2AcceptLanguageEnum[keyof typeof GetProjectsSegments2AcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsConsentDocumentsAcceptLanguageEnum = {
+export const GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsConsentDocumentsAcceptLanguageEnum = typeof GetSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof GetSegmentsConsentDocumentsAcceptLanguageEnum];
+export type GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = {
+export const GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = typeof GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum[keyof typeof GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum];
+export type GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum = typeof GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsConsentTemplatesLocaleEnum = {
+export const GetProjectsSegmentsConsentTemplatesLocaleEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsConsentTemplatesLocaleEnum = typeof GetSegmentsConsentTemplatesLocaleEnum[keyof typeof GetSegmentsConsentTemplatesLocaleEnum];
+export type GetProjectsSegmentsConsentTemplatesLocaleEnum = typeof GetProjectsSegmentsConsentTemplatesLocaleEnum[keyof typeof GetProjectsSegmentsConsentTemplatesLocaleEnum];
 /**
  * @export
  */
-export const GetSegmentsConsentTemplatesAcceptLanguageEnum = {
+export const GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsConsentTemplatesAcceptLanguageEnum = typeof GetSegmentsConsentTemplatesAcceptLanguageEnum[keyof typeof GetSegmentsConsentTemplatesAcceptLanguageEnum];
+export type GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum = typeof GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum[keyof typeof GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsEventsAcceptLanguageEnum = {
+export const GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsEventsAcceptLanguageEnum = typeof GetSegmentsEventsAcceptLanguageEnum[keyof typeof GetSegmentsEventsAcceptLanguageEnum];
+export type GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = typeof GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum[keyof typeof GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = {
+export const GetProjectsSegmentsMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = typeof GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum[keyof typeof GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum];
+export type GetProjectsSegmentsMembersAcceptLanguageEnum = typeof GetProjectsSegmentsMembersAcceptLanguageEnum[keyof typeof GetProjectsSegmentsMembersAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsMembersAcceptLanguageEnum = {
+export const GetProjectsSegmentsMembershipEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsMembersAcceptLanguageEnum = typeof GetSegmentsMembersAcceptLanguageEnum[keyof typeof GetSegmentsMembersAcceptLanguageEnum];
+export type GetProjectsSegmentsMembershipEventsAcceptLanguageEnum = typeof GetProjectsSegmentsMembershipEventsAcceptLanguageEnum[keyof typeof GetProjectsSegmentsMembershipEventsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetSegmentsSubscriptionLinksAcceptLanguageEnum = {
+export const GetProjectsSegmentsReferencesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetSegmentsSubscriptionLinksAcceptLanguageEnum = typeof GetSegmentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetSegmentsSubscriptionLinksAcceptLanguageEnum];
+export type GetProjectsSegmentsReferencesAcceptLanguageEnum = typeof GetProjectsSegmentsReferencesAcceptLanguageEnum[keyof typeof GetProjectsSegmentsReferencesAcceptLanguageEnum];
 /**
  * @export
  */
-export const SegmentsAcceptLanguageEnum = {
+export const GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type SegmentsAcceptLanguageEnum = typeof SegmentsAcceptLanguageEnum[keyof typeof SegmentsAcceptLanguageEnum];
+export type GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum = typeof GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum];
 /**
  * @export
  */
-export const SegmentsConsentDocumentsAcceptLanguageEnum = {
+export const GetPublicSegmentsConsentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type SegmentsConsentDocumentsAcceptLanguageEnum = typeof SegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof SegmentsConsentDocumentsAcceptLanguageEnum];
+export type GetPublicSegmentsConsentsAcceptLanguageEnum = typeof GetPublicSegmentsConsentsAcceptLanguageEnum[keyof typeof GetPublicSegmentsConsentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
+export const ProjectsSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = typeof SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum[keyof typeof SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum];
+export type ProjectsSegmentsAcceptLanguageEnum = typeof ProjectsSegmentsAcceptLanguageEnum[keyof typeof ProjectsSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
+export const ProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = typeof SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum[keyof typeof SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum];
+export type ProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof ProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof ProjectsSegmentsConsentDocumentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const SegmentsLeadsAcceptLanguageEnum = {
+export const ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type SegmentsLeadsAcceptLanguageEnum = typeof SegmentsLeadsAcceptLanguageEnum[keyof typeof SegmentsLeadsAcceptLanguageEnum];
+export type ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = typeof ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum[keyof typeof ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateSegmentsAcceptLanguageEnum = {
+export const ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateSegmentsAcceptLanguageEnum = typeof UpdateSegmentsAcceptLanguageEnum[keyof typeof UpdateSegmentsAcceptLanguageEnum];
+export type ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = typeof ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum[keyof typeof ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateSegmentsConsentDocumentsAcceptLanguageEnum = {
+export const ProjectsSegmentsLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateSegmentsConsentDocumentsAcceptLanguageEnum = typeof UpdateSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof UpdateSegmentsConsentDocumentsAcceptLanguageEnum];
+export type ProjectsSegmentsLeadsAcceptLanguageEnum = typeof ProjectsSegmentsLeadsAcceptLanguageEnum[keyof typeof ProjectsSegmentsLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateProjectsSegmentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateProjectsSegmentsAcceptLanguageEnum = typeof UpdateProjectsSegmentsAcceptLanguageEnum[keyof typeof UpdateProjectsSegmentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum = typeof UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum[keyof typeof UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum];

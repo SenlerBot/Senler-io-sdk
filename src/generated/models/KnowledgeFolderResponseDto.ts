@@ -44,6 +44,12 @@ export interface KnowledgeFolderResponseDto {
      */
     ownerId: string;
     /**
+     * ID -
+     * @type {string}
+     * @memberof KnowledgeFolderResponseDto
+     */
+    appId?: string | null;
+    /**
      * UUID
      * @type {string}
      * @memberof KnowledgeFolderResponseDto
@@ -55,6 +61,12 @@ export interface KnowledgeFolderResponseDto {
      * @memberof KnowledgeFolderResponseDto
      */
     name: string;
+    /**
+     *
+     * @type {number}
+     * @memberof KnowledgeFolderResponseDto
+     */
+    documentationSortOrder: number | null;
     /**
      *
      * @type {boolean}
@@ -93,6 +105,7 @@ export interface KnowledgeFolderResponseDto {
  */
 export const KnowledgeFolderResponseDtoOwnerTypeEnum = {
     Project: 'project',
+    App: 'app',
     McpServerTemplate: 'mcp_server_template',
     Admin: 'admin'
 } as const;
@@ -118,6 +131,7 @@ export function instanceOfKnowledgeFolderResponseDto(value: object): value is Kn
     if (!('ownerType' in value) || value['ownerType'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('documentationSortOrder' in value) || value['documentationSortOrder'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
     if (!('extractionStatus' in value) || value['extractionStatus'] === undefined) return false;
     if (!('extractionProgressPercent' in value) || value['extractionProgressPercent'] === undefined) return false;
@@ -140,8 +154,10 @@ export function KnowledgeFolderResponseDtoFromJSONTyped(json: any, ignoreDiscrim
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'ownerType': json['owner_type'],
         'ownerId': json['owner_id'],
+        'appId': json['app_id'] == null ? undefined : json['app_id'],
         'parentFolderId': json['parent_folder_id'] == null ? undefined : json['parent_folder_id'],
         'name': json['name'],
+        'documentationSortOrder': json['documentation_sort_order'],
         'isActive': json['is_active'],
         'extractionStatus': json['extraction_status'],
         'extractionProgressPercent': json['extraction_progress_percent'],
@@ -165,8 +181,10 @@ export function KnowledgeFolderResponseDtoToJSONTyped(value?: KnowledgeFolderRes
         'project_id': value['projectId'],
         'owner_type': value['ownerType'],
         'owner_id': value['ownerId'],
+        'app_id': value['appId'],
         'parent_folder_id': value['parentFolderId'],
         'name': value['name'],
+        'documentation_sort_order': value['documentationSortOrder'],
         'is_active': value['isActive'],
         'extraction_status': value['extractionStatus'],
         'extraction_progress_percent': value['extractionProgressPercent'],
