@@ -65,8 +65,6 @@ export interface TrainingProgressDetailDto {
 export declare const TrainingProgressDetailDtoStatusCodeEnum: {
     readonly WebsiteAiPlanning: "website_ai_planning";
     readonly WebsiteAiPlanSelected: "website_ai_plan_selected";
-    readonly WebsiteLocalDiscovery: "website_local_discovery";
-    readonly WebsiteLocalDiscoveryProgress: "website_local_discovery_progress";
     readonly WebsiteSaving: "website_saving";
     readonly GenerationPreparing: "generation_preparing";
     readonly GenerationWaiting: "generation_waiting";

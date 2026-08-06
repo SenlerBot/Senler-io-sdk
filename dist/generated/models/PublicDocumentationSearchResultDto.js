@@ -33,11 +33,19 @@ exports.PublicDocumentationSearchResultDtoSourceEnum = {
 function instanceOfPublicDocumentationSearchResultDto(value) {
     if (!('source' in value) || value['source'] === undefined)
         return false;
+    if (!('locale' in value) || value['locale'] === undefined)
+        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('snippet' in value) || value['snippet'] === undefined)
         return false;
     if (!('resourceType' in value) || value['resourceType'] === undefined)
+        return false;
+    if (!('fileKind' in value) || value['fileKind'] === undefined)
+        return false;
+    if (!('app' in value) || value['app'] === undefined)
+        return false;
+    if (!('url' in value) || value['url'] === undefined)
         return false;
     return true;
 }
@@ -50,13 +58,13 @@ function PublicDocumentationSearchResultDtoFromJSONTyped(json, ignoreDiscriminat
     }
     return {
         'source': json['source'],
-        'locale': json['locale'] == null ? undefined : json['locale'],
+        'locale': json['locale'],
         'title': json['title'],
         'snippet': json['snippet'],
         'resourceType': json['resource_type'],
-        'fileKind': json['file_kind'] == null ? undefined : json['file_kind'],
-        'app': json['app'] == null ? undefined : (0, PublicDocumentationAppDto_1.PublicDocumentationAppDtoFromJSON)(json['app']),
-        'url': json['url'] == null ? undefined : json['url'],
+        'fileKind': json['file_kind'],
+        'app': (0, PublicDocumentationAppDto_1.PublicDocumentationAppDtoFromJSON)(json['app']),
+        'url': json['url'],
     };
 }
 function PublicDocumentationSearchResultDtoToJSON(json) {

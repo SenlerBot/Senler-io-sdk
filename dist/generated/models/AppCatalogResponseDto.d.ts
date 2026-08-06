@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AppDescriptionDto } from './AppDescriptionDto';
+import type { AppDocumentationPublicUrlsDto } from './AppDocumentationPublicUrlsDto';
 import type { AppEmbeddedPageSettingsResponseDto } from './AppEmbeddedPageSettingsResponseDto';
 /**
  * AppCatalogResponseDto.
@@ -40,25 +41,25 @@ export interface AppCatalogResponseDto {
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    iconUrl?: string | null;
+    iconUrl: string | null;
     /**
      * URL 706x398.
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    coverUrl?: string | null;
+    coverUrl: string | null;
     /**
      * URL
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    websiteUrl?: string | null;
+    websiteUrl: string | null;
     /**
      * URL Markdown-
-     * @type {string}
+     * @type {AppDocumentationPublicUrlsDto}
      * @memberof AppCatalogResponseDto
      */
-    documentationUrl?: string | null;
+    documentationUrls: AppDocumentationPublicUrlsDto | null;
     /**
      *
      * @type {string}
@@ -76,7 +77,7 @@ export interface AppCatalogResponseDto {
      * @type {AppEmbeddedPageSettingsResponseDto}
      * @memberof AppCatalogResponseDto
      */
-    embeddedPage?: AppEmbeddedPageSettingsResponseDto | null;
+    embeddedPage: AppEmbeddedPageSettingsResponseDto | null;
     /**
      * ,
      * @type {Array<string>}

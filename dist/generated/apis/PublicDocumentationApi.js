@@ -80,7 +80,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * slug, ID.
+     * slug, ID; ID.
      *
      */
     async getApps2Raw(requestParameters, initOverrides) {
@@ -101,7 +101,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicDocumentationAppMetadataDtoFromJSON)(jsonValue));
     }
     /**
-     * slug, ID.
+     * slug, ID; ID.
      *
      */
     async getApps2(requestParameters, initOverrides) {
@@ -176,7 +176,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * ; app ID .
      * Senler
      */
     async publicDocumentationGetSearchRaw(requestParameters, initOverrides) {
@@ -215,7 +215,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicDocumentationSearchResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * ; app ID .
      * Senler
      */
     async publicDocumentationGetSearch(requestParameters, initOverrides) {

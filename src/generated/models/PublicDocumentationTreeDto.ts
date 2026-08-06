@@ -51,7 +51,7 @@ export interface PublicDocumentationTreeDto {
      * @type {string}
      * @memberof PublicDocumentationTreeDto
      */
-    firstFileId?: string | null;
+    firstFileId: string | null;
 }
 
 /**
@@ -60,6 +60,7 @@ export interface PublicDocumentationTreeDto {
 export function instanceOfPublicDocumentationTreeDto(value: object): value is PublicDocumentationTreeDto {
     if (!('pages' in value) || value['pages'] === undefined) return false;
     if (!('folders' in value) || value['folders'] === undefined) return false;
+    if (!('firstFileId' in value) || value['firstFileId'] === undefined) return false;
     return true;
 }
 
@@ -75,7 +76,7 @@ export function PublicDocumentationTreeDtoFromJSONTyped(json: any, ignoreDiscrim
 
         'pages': ((json['pages'] as Array<any>).map(PublicDocumentationPageTreeItemDtoFromJSON)),
         'folders': ((json['folders'] as Array<any>).map(PublicDocumentationFolderTreeItemDtoFromJSON)),
-        'firstFileId': json['first_file_id'] == null ? undefined : json['first_file_id'],
+        'firstFileId': json['first_file_id'],
     };
 }
 

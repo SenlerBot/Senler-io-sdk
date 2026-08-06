@@ -36,13 +36,13 @@ export interface PublicDocumentationResolvedLinkDto {
      * @type {string}
      * @memberof PublicDocumentationResolvedLinkDto
      */
-    url?: string | null;
+    url: string | null;
     /**
      * UUID
      * @type {string}
      * @memberof PublicDocumentationResolvedLinkDto
      */
-    targetFileId?: string | null;
+    targetFileId: string | null;
 }
 
 
@@ -64,6 +64,8 @@ export type PublicDocumentationResolvedLinkDtoKindEnum = typeof PublicDocumentat
 export function instanceOfPublicDocumentationResolvedLinkDto(value: object): value is PublicDocumentationResolvedLinkDto {
     if (!('href' in value) || value['href'] === undefined) return false;
     if (!('kind' in value) || value['kind'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('targetFileId' in value) || value['targetFileId'] === undefined) return false;
     return true;
 }
 
@@ -79,8 +81,8 @@ export function PublicDocumentationResolvedLinkDtoFromJSONTyped(json: any, ignor
 
         'href': json['href'],
         'kind': json['kind'],
-        'url': json['url'] == null ? undefined : json['url'],
-        'targetFileId': json['target_file_id'] == null ? undefined : json['target_file_id'],
+        'url': json['url'],
+        'targetFileId': json['target_file_id'],
     };
 }
 

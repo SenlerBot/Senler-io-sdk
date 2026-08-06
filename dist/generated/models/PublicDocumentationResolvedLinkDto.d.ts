@@ -32,13 +32,13 @@ export interface PublicDocumentationResolvedLinkDto {
      * @type {string}
      * @memberof PublicDocumentationResolvedLinkDto
      */
-    url?: string | null;
+    url: string | null;
     /**
      * UUID
      * @type {string}
      * @memberof PublicDocumentationResolvedLinkDto
      */
-    targetFileId?: string | null;
+    targetFileId: string | null;
 }
 /**
  * @export

@@ -107,7 +107,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * slug, ID.
+     * slug, ID; ID.
      *
      */
     async getApps2Raw(requestParameters: GetApps2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationAppMetadataDto>> {
@@ -137,7 +137,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * slug, ID.
+     * slug, ID; ID.
      *
      */
     async getApps2(requestParameters: GetApps2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationAppMetadataDto> {
@@ -245,7 +245,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * ; app ID .
      * Senler
      */
     async publicDocumentationGetSearchRaw(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationSearchResponseDto>> {
@@ -299,7 +299,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * ; app ID .
      * Senler
      */
     async publicDocumentationGetSearch(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationSearchResponseDto> {

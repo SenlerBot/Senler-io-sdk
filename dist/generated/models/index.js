@@ -67,6 +67,7 @@ __exportStar(require("./AppAgentEventResponseDto"), exports);
 __exportStar(require("./AppAgentEventTargetDto"), exports);
 __exportStar(require("./AppCatalogResponseDto"), exports);
 __exportStar(require("./AppDescriptionDto"), exports);
+__exportStar(require("./AppDocumentationPublicUrlsDto"), exports);
 __exportStar(require("./AppEmbeddedPageSettingsResponseDto"), exports);
 __exportStar(require("./AppliedFiltersDto"), exports);
 __exportStar(require("./ArrayItemsSchemaDto"), exports);

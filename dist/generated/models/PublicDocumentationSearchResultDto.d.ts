@@ -27,7 +27,7 @@ export interface PublicDocumentationSearchResultDto {
      * @type {string}
      * @memberof PublicDocumentationSearchResultDto
      */
-    locale?: string | null;
+    locale: string | null;
     /**
      *
      * @type {string}
@@ -51,19 +51,19 @@ export interface PublicDocumentationSearchResultDto {
      * @type {string}
      * @memberof PublicDocumentationSearchResultDto
      */
-    fileKind?: string | null;
+    fileKind: string | null;
     /**
      *
      * @type {PublicDocumentationAppDto}
      * @memberof PublicDocumentationSearchResultDto
      */
-    app?: PublicDocumentationAppDto | null;
+    app: PublicDocumentationAppDto | null;
     /**
      * URL
      * @type {string}
      * @memberof PublicDocumentationSearchResultDto
      */
-    url?: string | null;
+    url: string | null;
 }
 /**
  * @export

@@ -40,6 +40,18 @@ export interface EventSourceTelegramTopicDataDto {
      */
     messageId?: string;
     /**
+     * ID Telegram-
+     * @type {string}
+     * @memberof EventSourceTelegramTopicDataDto
+     */
+    mediaGroupId?: string;
+    /**
+     * Telegram-
+     * @type {string}
+     * @memberof EventSourceTelegramTopicDataDto
+     */
+    mediaGroupStatus?: EventSourceTelegramTopicDataDtoMediaGroupStatusEnum;
+    /**
      * ID -
      * @type {string}
      * @memberof EventSourceTelegramTopicDataDto
@@ -82,6 +94,14 @@ export interface EventSourceTelegramTopicDataDto {
      */
     threadId: number;
 }
+/**
+ * @export
+ */
+export declare const EventSourceTelegramTopicDataDtoMediaGroupStatusEnum: {
+    readonly Collecting: "collecting";
+    readonly Complete: "complete";
+};
+export type EventSourceTelegramTopicDataDtoMediaGroupStatusEnum = typeof EventSourceTelegramTopicDataDtoMediaGroupStatusEnum[keyof typeof EventSourceTelegramTopicDataDtoMediaGroupStatusEnum];
 /**
  * @export
  */

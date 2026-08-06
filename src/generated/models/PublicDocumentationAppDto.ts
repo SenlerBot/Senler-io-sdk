@@ -34,7 +34,7 @@ export interface PublicDocumentationAppDto {
      */
     id: string;
     /**
-     * slug
+     *
      * @type {string}
      * @memberof PublicDocumentationAppDto
      */
@@ -62,7 +62,7 @@ export interface PublicDocumentationAppDto {
      * @type {string}
      * @memberof PublicDocumentationAppDto
      */
-    iconUrl?: string | null;
+    iconUrl: string | null;
     /**
      * Markdown-
      * @type {Array<string>}
@@ -92,6 +92,7 @@ export function instanceOfPublicDocumentationAppDto(value: object): value is Pub
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined) return false;
     if (!('locales' in value) || value['locales'] === undefined) return false;
     return true;
 }
@@ -111,7 +112,7 @@ export function PublicDocumentationAppDtoFromJSONTyped(json: any, ignoreDiscrimi
         'name': json['name'],
         'type': json['type'],
         'description': AppDescriptionDtoFromJSON(json['description']),
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'iconUrl': json['icon_url'],
         'locales': json['locales'],
     };
 }

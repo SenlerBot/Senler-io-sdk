@@ -38,7 +38,7 @@ export interface PublicDocumentationSearchResultDto {
      * @type {string}
      * @memberof PublicDocumentationSearchResultDto
      */
-    locale?: string | null;
+    locale: string | null;
     /**
      *
      * @type {string}
@@ -62,19 +62,19 @@ export interface PublicDocumentationSearchResultDto {
      * @type {string}
      * @memberof PublicDocumentationSearchResultDto
      */
-    fileKind?: string | null;
+    fileKind: string | null;
     /**
      *
      * @type {PublicDocumentationAppDto}
      * @memberof PublicDocumentationSearchResultDto
      */
-    app?: PublicDocumentationAppDto | null;
+    app: PublicDocumentationAppDto | null;
     /**
      * URL
      * @type {string}
      * @memberof PublicDocumentationSearchResultDto
      */
-    url?: string | null;
+    url: string | null;
 }
 
 
@@ -93,9 +93,13 @@ export type PublicDocumentationSearchResultDtoSourceEnum = typeof PublicDocument
  */
 export function instanceOfPublicDocumentationSearchResultDto(value: object): value is PublicDocumentationSearchResultDto {
     if (!('source' in value) || value['source'] === undefined) return false;
+    if (!('locale' in value) || value['locale'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('snippet' in value) || value['snippet'] === undefined) return false;
     if (!('resourceType' in value) || value['resourceType'] === undefined) return false;
+    if (!('fileKind' in value) || value['fileKind'] === undefined) return false;
+    if (!('app' in value) || value['app'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 
@@ -110,13 +114,13 @@ export function PublicDocumentationSearchResultDtoFromJSONTyped(json: any, ignor
     return {
 
         'source': json['source'],
-        'locale': json['locale'] == null ? undefined : json['locale'],
+        'locale': json['locale'],
         'title': json['title'],
         'snippet': json['snippet'],
         'resourceType': json['resource_type'],
-        'fileKind': json['file_kind'] == null ? undefined : json['file_kind'],
-        'app': json['app'] == null ? undefined : PublicDocumentationAppDtoFromJSON(json['app']),
-        'url': json['url'] == null ? undefined : json['url'],
+        'fileKind': json['file_kind'],
+        'app': PublicDocumentationAppDtoFromJSON(json['app']),
+        'url': json['url'],
     };
 }
 

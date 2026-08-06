@@ -44,6 +44,18 @@ export interface EventSourceTelegramChatDataDto {
      */
     messageId?: string;
     /**
+     * ID Telegram-
+     * @type {string}
+     * @memberof EventSourceTelegramChatDataDto
+     */
+    mediaGroupId?: string;
+    /**
+     * Telegram-
+     * @type {string}
+     * @memberof EventSourceTelegramChatDataDto
+     */
+    mediaGroupStatus?: EventSourceTelegramChatDataDtoMediaGroupStatusEnum;
+    /**
      * ID -
      * @type {string}
      * @memberof EventSourceTelegramChatDataDto
@@ -91,6 +103,15 @@ export interface EventSourceTelegramChatDataDto {
 /**
  * @export
  */
+export const EventSourceTelegramChatDataDtoMediaGroupStatusEnum = {
+    Collecting: 'collecting',
+    Complete: 'complete'
+} as const;
+export type EventSourceTelegramChatDataDtoMediaGroupStatusEnum = typeof EventSourceTelegramChatDataDtoMediaGroupStatusEnum[keyof typeof EventSourceTelegramChatDataDtoMediaGroupStatusEnum];
+
+/**
+ * @export
+ */
 export const EventSourceTelegramChatDataDtoChatTypeEnum = {
     Private: 'private',
     Group: 'group',
@@ -131,6 +152,8 @@ export function EventSourceTelegramChatDataDtoFromJSONTyped(json: any, ignoreDis
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'fromId': json['from_id'] == null ? undefined : json['from_id'],
         'messageId': json['message_id'] == null ? undefined : json['message_id'],
+        'mediaGroupId': json['media_group_id'] == null ? undefined : json['media_group_id'],
+        'mediaGroupStatus': json['media_group_status'] == null ? undefined : json['media_group_status'],
         'replyToMessageId': json['reply_to_message_id'] == null ? undefined : json['reply_to_message_id'],
         'linkedChatId': json['linked_chat_id'] == null ? undefined : json['linked_chat_id'],
         'chatType': json['chat_type'] == null ? undefined : json['chat_type'],
@@ -156,6 +179,8 @@ export function EventSourceTelegramChatDataDtoToJSONTyped(value?: EventSourceTel
         'user_id': value['userId'],
         'from_id': value['fromId'],
         'message_id': value['messageId'],
+        'media_group_id': value['mediaGroupId'],
+        'media_group_status': value['mediaGroupStatus'],
         'reply_to_message_id': value['replyToMessageId'],
         'linked_chat_id': value['linkedChatId'],
         'chat_type': value['chatType'],

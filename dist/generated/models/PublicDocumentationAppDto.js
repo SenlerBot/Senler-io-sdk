@@ -42,6 +42,8 @@ function instanceOfPublicDocumentationAppDto(value) {
         return false;
     if (!('description' in value) || value['description'] === undefined)
         return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined)
+        return false;
     if (!('locales' in value) || value['locales'] === undefined)
         return false;
     return true;
@@ -59,7 +61,7 @@ function PublicDocumentationAppDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'type': json['type'],
         'description': (0, AppDescriptionDto_1.AppDescriptionDtoFromJSON)(json['description']),
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'iconUrl': json['icon_url'],
         'locales': json['locales'],
     };
 }

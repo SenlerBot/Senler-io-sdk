@@ -20,6 +20,13 @@ import {
     AppDescriptionDtoToJSON,
     AppDescriptionDtoToJSONTyped,
 } from './AppDescriptionDto';
+import type { AppDocumentationPublicUrlsDto } from './AppDocumentationPublicUrlsDto';
+import {
+    AppDocumentationPublicUrlsDtoFromJSON,
+    AppDocumentationPublicUrlsDtoFromJSONTyped,
+    AppDocumentationPublicUrlsDtoToJSON,
+    AppDocumentationPublicUrlsDtoToJSONTyped,
+} from './AppDocumentationPublicUrlsDto';
 import type { AppEmbeddedPageSettingsResponseDto } from './AppEmbeddedPageSettingsResponseDto';
 import {
     AppEmbeddedPageSettingsResponseDtoFromJSON,
@@ -57,25 +64,25 @@ export interface AppCatalogResponseDto {
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    iconUrl?: string | null;
+    iconUrl: string | null;
     /**
      * URL 706x398.
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    coverUrl?: string | null;
+    coverUrl: string | null;
     /**
      * URL
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
-    websiteUrl?: string | null;
+    websiteUrl: string | null;
     /**
      * URL Markdown-
-     * @type {string}
+     * @type {AppDocumentationPublicUrlsDto}
      * @memberof AppCatalogResponseDto
      */
-    documentationUrl?: string | null;
+    documentationUrls: AppDocumentationPublicUrlsDto | null;
     /**
      *
      * @type {string}
@@ -93,7 +100,7 @@ export interface AppCatalogResponseDto {
      * @type {AppEmbeddedPageSettingsResponseDto}
      * @memberof AppCatalogResponseDto
      */
-    embeddedPage?: AppEmbeddedPageSettingsResponseDto | null;
+    embeddedPage: AppEmbeddedPageSettingsResponseDto | null;
     /**
      * ,
      * @type {Array<string>}
@@ -133,8 +140,13 @@ export function instanceOfAppCatalogResponseDto(value: object): value is AppCata
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined) return false;
+    if (!('coverUrl' in value) || value['coverUrl'] === undefined) return false;
+    if (!('websiteUrl' in value) || value['websiteUrl'] === undefined) return false;
+    if (!('documentationUrls' in value) || value['documentationUrls'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('hasTools' in value) || value['hasTools'] === undefined) return false;
+    if (!('embeddedPage' in value) || value['embeddedPage'] === undefined) return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined) return false;
     if (!('allowInstalledAgentSettingsView' in value) || value['allowInstalledAgentSettingsView'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -154,13 +166,13 @@ export function AppCatalogResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'id': json['id'],
         'name': json['name'],
         'description': AppDescriptionDtoFromJSON(json['description']),
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
-        'coverUrl': json['cover_url'] == null ? undefined : json['cover_url'],
-        'websiteUrl': json['website_url'] == null ? undefined : json['website_url'],
-        'documentationUrl': json['documentation_url'] == null ? undefined : json['documentation_url'],
+        'iconUrl': json['icon_url'],
+        'coverUrl': json['cover_url'],
+        'websiteUrl': json['website_url'],
+        'documentationUrls': AppDocumentationPublicUrlsDtoFromJSON(json['documentation_urls']),
         'type': json['type'],
         'hasTools': json['has_tools'],
-        'embeddedPage': json['embedded_page'] == null ? undefined : AppEmbeddedPageSettingsResponseDtoFromJSON(json['embedded_page']),
+        'embeddedPage': AppEmbeddedPageSettingsResponseDtoFromJSON(json['embedded_page']),
         'allowedPermissions': json['allowed_permissions'],
         'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
         'createdAt': (new Date(json['created_at'])),
@@ -184,7 +196,7 @@ export function AppCatalogResponseDtoToJSONTyped(value?: AppCatalogResponseDto |
         'icon_url': value['iconUrl'],
         'cover_url': value['coverUrl'],
         'website_url': value['websiteUrl'],
-        'documentation_url': value['documentationUrl'],
+        'documentation_urls': AppDocumentationPublicUrlsDtoToJSON(value['documentationUrls']),
         'type': value['type'],
         'has_tools': value['hasTools'],
         'embedded_page': AppEmbeddedPageSettingsResponseDtoToJSON(value['embeddedPage']),

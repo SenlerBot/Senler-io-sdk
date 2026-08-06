@@ -49,6 +49,7 @@ export * from './AppAgentEventResponseDto';
 export * from './AppAgentEventTargetDto';
 export * from './AppCatalogResponseDto';
 export * from './AppDescriptionDto';
+export * from './AppDocumentationPublicUrlsDto';
 export * from './AppEmbeddedPageSettingsResponseDto';
 export * from './AppliedFiltersDto';
 export * from './ArrayItemsSchemaDto';

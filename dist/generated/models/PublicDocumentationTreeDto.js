@@ -28,6 +28,8 @@ function instanceOfPublicDocumentationTreeDto(value) {
         return false;
     if (!('folders' in value) || value['folders'] === undefined)
         return false;
+    if (!('firstFileId' in value) || value['firstFileId'] === undefined)
+        return false;
     return true;
 }
 function PublicDocumentationTreeDtoFromJSON(json) {
@@ -40,7 +42,7 @@ function PublicDocumentationTreeDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'pages': (json['pages'].map(PublicDocumentationPageTreeItemDto_1.PublicDocumentationPageTreeItemDtoFromJSON)),
         'folders': (json['folders'].map(PublicDocumentationFolderTreeItemDto_1.PublicDocumentationFolderTreeItemDtoFromJSON)),
-        'firstFileId': json['first_file_id'] == null ? undefined : json['first_file_id'],
+        'firstFileId': json['first_file_id'],
     };
 }
 function PublicDocumentationTreeDtoToJSON(json) {

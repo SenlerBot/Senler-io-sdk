@@ -34,7 +34,7 @@ export interface PublicDocumentationAppMetadataDto {
      */
     id: string;
     /**
-     * slug
+     *
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
@@ -62,7 +62,7 @@ export interface PublicDocumentationAppMetadataDto {
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
-    iconUrl?: string | null;
+    iconUrl: string | null;
     /**
      * Markdown-
      * @type {Array<string>}
@@ -74,7 +74,7 @@ export interface PublicDocumentationAppMetadataDto {
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
-    redirectedFrom?: string | null;
+    redirectedFrom: string | null;
 }
 
 
@@ -98,7 +98,9 @@ export function instanceOfPublicDocumentationAppMetadataDto(value: object): valu
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined) return false;
     if (!('locales' in value) || value['locales'] === undefined) return false;
+    if (!('redirectedFrom' in value) || value['redirectedFrom'] === undefined) return false;
     return true;
 }
 
@@ -117,9 +119,9 @@ export function PublicDocumentationAppMetadataDtoFromJSONTyped(json: any, ignore
         'name': json['name'],
         'type': json['type'],
         'description': AppDescriptionDtoFromJSON(json['description']),
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'iconUrl': json['icon_url'],
         'locales': json['locales'],
-        'redirectedFrom': json['redirected_from'] == null ? undefined : json['redirected_from'],
+        'redirectedFrom': json['redirected_from'],
     };
 }
 

@@ -23,7 +23,7 @@ export interface PublicDocumentationAppDto {
      */
     id: string;
     /**
-     * slug
+     *
      * @type {string}
      * @memberof PublicDocumentationAppDto
      */
@@ -51,7 +51,7 @@ export interface PublicDocumentationAppDto {
      * @type {string}
      * @memberof PublicDocumentationAppDto
      */
-    iconUrl?: string | null;
+    iconUrl: string | null;
     /**
      * Markdown-
      * @type {Array<string>}

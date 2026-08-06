@@ -32,8 +32,6 @@ function TrainingTaskStatusParamsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'processed': json['processed'] == null ? undefined : json['processed'],
-        'total': json['total'] == null ? undefined : json['total'],
         'pages': json['pages'] == null ? undefined : json['pages'],
     };
 }
@@ -45,8 +43,6 @@ function TrainingTaskStatusParamsDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
-        'processed': value['processed'],
-        'total': value['total'],
         'pages': value['pages'],
     };
 }

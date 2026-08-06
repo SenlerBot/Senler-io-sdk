@@ -78,8 +78,6 @@ export interface TrainingProgressDetailDto {
 export const TrainingProgressDetailDtoStatusCodeEnum = {
     WebsiteAiPlanning: 'website_ai_planning',
     WebsiteAiPlanSelected: 'website_ai_plan_selected',
-    WebsiteLocalDiscovery: 'website_local_discovery',
-    WebsiteLocalDiscoveryProgress: 'website_local_discovery_progress',
     WebsiteSaving: 'website_saving',
     GenerationPreparing: 'generation_preparing',
     GenerationWaiting: 'generation_waiting',

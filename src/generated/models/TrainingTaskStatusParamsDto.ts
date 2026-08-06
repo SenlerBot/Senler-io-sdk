@@ -24,18 +24,6 @@ export interface TrainingTaskStatusParamsDto {
      * @type {number}
      * @memberof TrainingTaskStatusParamsDto
      */
-    processed?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TrainingTaskStatusParamsDto
-     */
-    total?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TrainingTaskStatusParamsDto
-     */
     pages?: number;
 }
 
@@ -56,8 +44,6 @@ export function TrainingTaskStatusParamsDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
-        'processed': json['processed'] == null ? undefined : json['processed'],
-        'total': json['total'] == null ? undefined : json['total'],
         'pages': json['pages'] == null ? undefined : json['pages'],
     };
 }
@@ -73,8 +59,6 @@ export function TrainingTaskStatusParamsDtoToJSONTyped(value?: TrainingTaskStatu
 
     return {
 
-        'processed': value['processed'],
-        'total': value['total'],
         'pages': value['pages'],
     };
 }

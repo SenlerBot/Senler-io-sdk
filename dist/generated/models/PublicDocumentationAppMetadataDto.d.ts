@@ -23,7 +23,7 @@ export interface PublicDocumentationAppMetadataDto {
      */
     id: string;
     /**
-     * slug
+     *
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
@@ -51,7 +51,7 @@ export interface PublicDocumentationAppMetadataDto {
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
-    iconUrl?: string | null;
+    iconUrl: string | null;
     /**
      * Markdown-
      * @type {Array<string>}
@@ -63,7 +63,7 @@ export interface PublicDocumentationAppMetadataDto {
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
-    redirectedFrom?: string | null;
+    redirectedFrom: string | null;
 }
 /**
  * @export

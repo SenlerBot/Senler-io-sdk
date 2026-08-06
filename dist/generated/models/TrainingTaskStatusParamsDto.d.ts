@@ -20,18 +20,6 @@ export interface TrainingTaskStatusParamsDto {
      * @type {number}
      * @memberof TrainingTaskStatusParamsDto
      */
-    processed?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TrainingTaskStatusParamsDto
-     */
-    total?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TrainingTaskStatusParamsDto
-     */
     pages?: number;
 }
 /**

@@ -42,7 +42,11 @@ function instanceOfPublicDocumentationAppMetadataDto(value) {
         return false;
     if (!('description' in value) || value['description'] === undefined)
         return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined)
+        return false;
     if (!('locales' in value) || value['locales'] === undefined)
+        return false;
+    if (!('redirectedFrom' in value) || value['redirectedFrom'] === undefined)
         return false;
     return true;
 }
@@ -59,9 +63,9 @@ function PublicDocumentationAppMetadataDtoFromJSONTyped(json, ignoreDiscriminato
         'name': json['name'],
         'type': json['type'],
         'description': (0, AppDescriptionDto_1.AppDescriptionDtoFromJSON)(json['description']),
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'iconUrl': json['icon_url'],
         'locales': json['locales'],
-        'redirectedFrom': json['redirected_from'] == null ? undefined : json['redirected_from'],
+        'redirectedFrom': json['redirected_from'],
     };
 }
 function PublicDocumentationAppMetadataDtoToJSON(json) {

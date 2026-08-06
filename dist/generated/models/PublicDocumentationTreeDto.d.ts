@@ -34,7 +34,7 @@ export interface PublicDocumentationTreeDto {
      * @type {string}
      * @memberof PublicDocumentationTreeDto
      */
-    firstFileId?: string | null;
+    firstFileId: string | null;
 }
 /**
  * Check if a given object implements the PublicDocumentationTreeDto interface.
