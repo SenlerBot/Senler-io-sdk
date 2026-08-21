@@ -157,6 +157,18 @@ export interface KnowledgeFileResponseDto {
         [key: string]: any;
     };
     /**
+     * AI- ,
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    aiImageContext: string;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    imageRecognitionStatus: string | null;
+    /**
      * Markdown-
      * @type {Array<KnowledgeFileResolvedLinkDto>}
      * @memberof KnowledgeFileResponseDto

@@ -22,19 +22,19 @@ export interface ActualEconomics {
      * @type {CurrencyBreakdown}
      * @memberof ActualEconomics
      */
-    expenses: CurrencyBreakdown;
+    payments: CurrencyBreakdown;
+    /**
+     *
+     * @type {CurrencyBreakdown}
+     * @memberof ActualEconomics
+     */
+    refunds: CurrencyBreakdown;
     /**
      * ( )
      * @type {CurrencyBreakdown}
      * @memberof ActualEconomics
      */
-    revenue: CurrencyBreakdown;
-    /**
-     * (revenue.total_rub - expenses.total_rub), (/); : 1.25 = 125
-     * @type {number}
-     * @memberof ActualEconomics
-     */
-    profitRub: number;
+    netReceipts: CurrencyBreakdown;
     /**
      * RUB- ()
      * @type {BalancesByCurrency}

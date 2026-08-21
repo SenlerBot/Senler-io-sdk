@@ -28,6 +28,12 @@ export interface ProjectUsageStats {
      */
     projectName?: string;
     /**
+     * URL
+     * @type {string}
+     * @memberof ProjectUsageStats
+     */
+    projectAvatarUrl?: string | null;
+    /**
      *
      * @type {number}
      * @memberof ProjectUsageStats

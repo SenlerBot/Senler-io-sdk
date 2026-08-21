@@ -9,7 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingCatalogLaunchTargetDto } from './LandingCatalogLaunchTargetDto';
+import type { LandingBannerGridLaunchTargetDto } from './LandingBannerGridLaunchTargetDto';
+import type { LandingIconListLaunchTargetDto } from './LandingIconListLaunchTargetDto';
+import type { LandingListLaunchTargetDto } from './LandingListLaunchTargetDto';
 import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDto';
 /**
  * @type LandingVkAppResponseDtoTarget
@@ -17,10 +19,14 @@ import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDt
  * @export
  */
 export type LandingVkAppResponseDtoTarget = {
-    mode: 'catalog';
-} & LandingCatalogLaunchTargetDto | {
+    mode: 'banner_grid';
+} & LandingBannerGridLaunchTargetDto | {
+    mode: 'icon_list';
+} & LandingIconListLaunchTargetDto | {
     mode: 'landing';
-} & LandingSingleLaunchTargetDto;
+} & LandingSingleLaunchTargetDto | {
+    mode: 'list';
+} & LandingListLaunchTargetDto;
 export declare function LandingVkAppResponseDtoTargetFromJSON(json: any): LandingVkAppResponseDtoTarget;
 export declare function LandingVkAppResponseDtoTargetFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingVkAppResponseDtoTarget;
 export declare function LandingVkAppResponseDtoTargetToJSON(json: any): any;

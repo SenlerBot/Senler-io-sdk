@@ -18,10 +18,10 @@ import type { LandingTelegramMenuButtonEnabledResponseDtoTarget } from './Landin
 export interface LandingTelegramMenuButtonEnabledResponseDto {
     /**
      *
-     * @type {number}
+     * @type {boolean}
      * @memberof LandingTelegramMenuButtonEnabledResponseDto
      */
-    enabled: LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum | null;
+    enabled: boolean;
     /**
      *
      * @type {LandingTelegramMenuButtonEnabledResponseDtoTarget}
@@ -35,11 +35,6 @@ export interface LandingTelegramMenuButtonEnabledResponseDto {
      */
     buttonText: string;
 }
-/**
- * @export
- */
-export declare const LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum: {};
-export type LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum = typeof LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum[keyof typeof LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum];
 /**
  * Check if a given object implements the LandingTelegramMenuButtonEnabledResponseDto interface.
  */

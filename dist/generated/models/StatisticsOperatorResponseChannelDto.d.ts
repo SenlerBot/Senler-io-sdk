@@ -58,7 +58,7 @@ export interface StatisticsOperatorResponseChannelDto {
      */
     p50ResponseTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseChannelDto
      */
@@ -76,7 +76,7 @@ export interface StatisticsOperatorResponseChannelDto {
      */
     p50ResponseRawTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseChannelDto
      */
@@ -140,6 +140,7 @@ export declare const StatisticsOperatorResponseChannelDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type StatisticsOperatorResponseChannelDtoPlatformTypeEnum = typeof StatisticsOperatorResponseChannelDtoPlatformTypeEnum[keyof typeof StatisticsOperatorResponseChannelDtoPlatformTypeEnum];
 /**

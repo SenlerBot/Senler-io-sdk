@@ -320,6 +320,12 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     cancelPendingResponseOnProjectOperatorMessage: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    cancelPendingResponseOnAutomationMessage: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -393,40 +399,34 @@ export interface AgentDraftSettingsStateResponseDto {
     enableDetachFromDialog: boolean;
     /**
      *
-     * @type {boolean}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    useProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AgentDraftSettingsStateResponseDto
-     */
-    useLeadVariables: boolean;
+    variableBindings: Array<{
+        [key: string]: any;
+    }>;
     /**
      *
      * @type {string}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    projectVarsInstructionMode: AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum;
+    variablesAccessMode: AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum;
     /**
-     *
-     * @type {string}
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    projectVarsUserRequestMode: AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum;
+    segmentAccessPolicy: {
+        [key: string]: any;
+    };
     /**
-     *
-     * @type {string}
+     * recipient messaging tools (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    leadVarsInstructionMode: AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof AgentDraftSettingsStateResponseDto
-     */
-    leadVarsUserRequestMode: AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum;
+    recipientMessagingPolicy: {
+        [key: string]: any;
+    };
     /**
      *
      * @type {Date}
@@ -463,8 +463,9 @@ export type AgentDraftSettingsStateResponseDtoAgentTypeEnum = typeof AgentDraftS
  * @export
  */
 export declare const AgentDraftSettingsStateResponseDtoServerBindingModeEnum: {
-    readonly List: "list";
-    readonly Direct: "direct";
+    readonly ProviderDirect: "provider_direct";
+    readonly SenlerDirect: "senler_direct";
+    readonly SenlerList: "senler_list";
     readonly None: "none";
 };
 export type AgentDraftSettingsStateResponseDtoServerBindingModeEnum = typeof AgentDraftSettingsStateResponseDtoServerBindingModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoServerBindingModeEnum];
@@ -472,18 +473,23 @@ export type AgentDraftSettingsStateResponseDtoServerBindingModeEnum = typeof Age
  * @export
  */
 export declare const AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum: {
-    readonly GetData: "get_data";
-    readonly EditContent: "edit_content";
-    readonly AddTableRows: "add_table_rows";
+    readonly ReadDocuments: "read_documents";
     readonly CreateDocuments: "create_documents";
-    readonly UploadFiles: "upload_files";
+    readonly UploadDocuments: "upload_documents";
+    readonly EditDocuments: "edit_documents";
+    readonly DeleteDocuments: "delete_documents";
+    readonly ReadTables: "read_tables";
     readonly CreateTables: "create_tables";
-    readonly CreateSheets: "create_sheets";
     readonly ImportCsvXlsx: "import_csv_xlsx";
+    readonly AddTableRows: "add_table_rows";
+    readonly EditTables: "edit_tables";
+    readonly CreateSheets: "create_sheets";
     readonly DeleteRows: "delete_rows";
-    readonly DeleteFiles: "delete_files";
     readonly DeleteSheets: "delete_sheets";
     readonly DeleteTables: "delete_tables";
+    readonly ReadImages: "read_images";
+    readonly UploadImages: "upload_images";
+    readonly DeleteImages: "delete_images";
 };
 export type AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = typeof AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum[keyof typeof AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum];
 /**
@@ -568,39 +574,12 @@ export type AgentDraftSettingsStateResponseDtoWidgetAiProgressModeEnum = typeof 
 /**
  * @export
  */
-export declare const AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum: {
+export declare const AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum: {
     readonly None: "none";
     readonly Read: "read";
     readonly ReadWrite: "read_write";
 };
-export type AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum = typeof AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum];
-/**
- * @export
- */
-export declare const AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum: {
-    readonly None: "none";
-    readonly Read: "read";
-    readonly ReadWrite: "read_write";
-};
-export type AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum = typeof AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum];
-/**
- * @export
- */
-export declare const AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum: {
-    readonly None: "none";
-    readonly Read: "read";
-    readonly ReadWrite: "read_write";
-};
-export type AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum = typeof AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum];
-/**
- * @export
- */
-export declare const AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum: {
-    readonly None: "none";
-    readonly Read: "read";
-    readonly ReadWrite: "read_write";
-};
-export type AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum = typeof AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum];
+export type AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = typeof AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum];
 /**
  * Check if a given object implements the AgentDraftSettingsStateResponseDto interface.
  */

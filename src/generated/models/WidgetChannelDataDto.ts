@@ -20,6 +20,13 @@ import {
     WidgetFeaturesDtoToJSON,
     WidgetFeaturesDtoToJSONTyped,
 } from './WidgetFeaturesDto';
+import type { WidgetExternalAiSettingsDto } from './WidgetExternalAiSettingsDto';
+import {
+    WidgetExternalAiSettingsDtoFromJSON,
+    WidgetExternalAiSettingsDtoFromJSONTyped,
+    WidgetExternalAiSettingsDtoToJSON,
+    WidgetExternalAiSettingsDtoToJSONTyped,
+} from './WidgetExternalAiSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 import {
     WidgetThemeDtoFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface WidgetChannelDataDto
  */
 export interface WidgetChannelDataDto {
+    /**
+     * MCP
+     * @type {WidgetExternalAiSettingsDto}
+     * @memberof WidgetChannelDataDto
+     */
+    externalAi?: WidgetExternalAiSettingsDto;
     /**
      * CORS
      * @type {Array<string>}
@@ -125,6 +138,7 @@ export function WidgetChannelDataDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
+        'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'theme': json['theme'] == null ? undefined : WidgetThemeDtoFromJSON(json['theme']),
         'features': json['features'] == null ? undefined : WidgetFeaturesDtoFromJSON(json['features']),
@@ -146,6 +160,7 @@ export function WidgetChannelDataDtoToJSONTyped(value?: WidgetChannelDataDto | n
 
     return {
 
+        'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),
         'allowed_domains': value['allowedDomains'],
         'theme': WidgetThemeDtoToJSON(value['theme']),
         'features': WidgetFeaturesDtoToJSON(value['features']),

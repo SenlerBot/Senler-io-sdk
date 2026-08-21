@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChannelsEmailUpdateAcceptLanguageEnum = exports.ChannelsEmailCreateAcceptLanguageEnum = exports.ChannelsEmailApi = void 0;
+exports.GetProvidersAcceptLanguageEnum = exports.ChannelsEmailUpdateAcceptLanguageEnum = exports.ChannelsEmailCreateAcceptLanguageEnum = exports.ChannelsEmailApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -140,6 +140,32 @@ class ChannelsEmailApi extends runtime.BaseAPI {
         const response = await this.channelsEmailUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * email- IMAP/SMTP
+     * email-
+     */
+    async getProvidersRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/channels/email/providers`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EmailProviderListResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * email- IMAP/SMTP
+     * email-
+     */
+    async getProviders(requestParameters = {}, initOverrides) {
+        const response = await this.getProvidersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.ChannelsEmailApi = ChannelsEmailApi;
 /**
@@ -153,6 +179,13 @@ exports.ChannelsEmailCreateAcceptLanguageEnum = {
  * @export
  */
 exports.ChannelsEmailUpdateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetProvidersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

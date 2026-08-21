@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Role } from './Role';
 import type { InvitationStatus } from './InvitationStatus';
+import type { ProjectRole } from './ProjectRole';
 import type { InvitationInviterDto } from './InvitationInviterDto';
 /**
  * InvitationListItemDto.
@@ -44,10 +44,10 @@ export interface InvitationListItemDto {
     email?: string;
     /**
      * ,
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof InvitationListItemDto
      */
-    role: Role;
+    role: ProjectRole;
     /**
      *
      * @type {InvitationStatus}

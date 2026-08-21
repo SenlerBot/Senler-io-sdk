@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { UsagePurposeEconomics } from './UsagePurposeEconomics';
+import {
+    UsagePurposeEconomicsFromJSON,
+    UsagePurposeEconomicsFromJSONTyped,
+    UsagePurposeEconomicsToJSON,
+    UsagePurposeEconomicsToJSONTyped,
+} from './UsagePurposeEconomics';
 import type { ClientSpending } from './ClientSpending';
 import {
     ClientSpendingFromJSON,
@@ -54,11 +61,23 @@ export interface UnitEconomics {
      */
     client: ClientSpending;
     /**
-     * % = (client.total_rub - provider.total_rub) / client.total_rub * 100
+     *
+     * @type {CurrencyBreakdown}
+     * @memberof UnitEconomics
+     */
+    usageRevenue: CurrencyBreakdown;
+    /**
+     * % = (usage_revenue.total_rub - provider.total_rub) / usage_revenue.total_rub * 100
      * @type {number}
      * @memberof UnitEconomics
      */
     marginPercent: number;
+    /**
+     * RUB: , (/); : 1.25 = 125
+     * @type {number}
+     * @memberof UnitEconomics
+     */
+    usageMarginRub: number;
     /**
      * costs
      * @type {number}
@@ -71,6 +90,12 @@ export interface UnitEconomics {
      * @memberof UnitEconomics
      */
     costsBySection: Array<CostSectionEconomics>;
+    /**
+     *
+     * @type {Array<UsagePurposeEconomics>}
+     * @memberof UnitEconomics
+     */
+    costsByPurpose: Array<UsagePurposeEconomics>;
 }
 
 /**
@@ -79,9 +104,12 @@ export interface UnitEconomics {
 export function instanceOfUnitEconomics(value: object): value is UnitEconomics {
     if (!('provider' in value) || value['provider'] === undefined) return false;
     if (!('client' in value) || value['client'] === undefined) return false;
+    if (!('usageRevenue' in value) || value['usageRevenue'] === undefined) return false;
     if (!('marginPercent' in value) || value['marginPercent'] === undefined) return false;
+    if (!('usageMarginRub' in value) || value['usageMarginRub'] === undefined) return false;
     if (!('eventsWithCosts' in value) || value['eventsWithCosts'] === undefined) return false;
     if (!('costsBySection' in value) || value['costsBySection'] === undefined) return false;
+    if (!('costsByPurpose' in value) || value['costsByPurpose'] === undefined) return false;
     return true;
 }
 
@@ -97,9 +125,12 @@ export function UnitEconomicsFromJSONTyped(json: any, ignoreDiscriminator: boole
 
         'provider': CurrencyBreakdownFromJSON(json['provider']),
         'client': ClientSpendingFromJSON(json['client']),
+        'usageRevenue': CurrencyBreakdownFromJSON(json['usage_revenue']),
         'marginPercent': json['margin_percent'],
+        'usageMarginRub': json['usage_margin_rub'],
         'eventsWithCosts': json['events_with_costs'],
         'costsBySection': ((json['costs_by_section'] as Array<any>).map(CostSectionEconomicsFromJSON)),
+        'costsByPurpose': ((json['costs_by_purpose'] as Array<any>).map(UsagePurposeEconomicsFromJSON)),
     };
 }
 
@@ -116,8 +147,11 @@ export function UnitEconomicsToJSONTyped(value?: UnitEconomics | null, ignoreDis
 
         'provider': CurrencyBreakdownToJSON(value['provider']),
         'client': ClientSpendingToJSON(value['client']),
+        'usage_revenue': CurrencyBreakdownToJSON(value['usageRevenue']),
         'margin_percent': value['marginPercent'],
+        'usage_margin_rub': value['usageMarginRub'],
         'events_with_costs': value['eventsWithCosts'],
         'costs_by_section': ((value['costsBySection'] as Array<any>).map(CostSectionEconomicsToJSON)),
+        'costs_by_purpose': ((value['costsByPurpose'] as Array<any>).map(UsagePurposeEconomicsToJSON)),
     };
 }

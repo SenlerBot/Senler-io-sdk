@@ -48,6 +48,7 @@ export declare const DialogDisplayInfoDtoSourceTypeEnum: {
     readonly GroupChat: "group_chat";
     readonly Agent: "agent";
     readonly Comment: "comment";
+    readonly Automation: "automation";
 };
 export type DialogDisplayInfoDtoSourceTypeEnum = typeof DialogDisplayInfoDtoSourceTypeEnum[keyof typeof DialogDisplayInfoDtoSourceTypeEnum];
 /**
@@ -64,6 +65,7 @@ export declare const DialogDisplayInfoDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type DialogDisplayInfoDtoPlatformTypeEnum = typeof DialogDisplayInfoDtoPlatformTypeEnum[keyof typeof DialogDisplayInfoDtoPlatformTypeEnum];
 /**

@@ -71,6 +71,12 @@ export interface DeliveryRunResponseDto {
     errorMessage: string | null;
     /**
      *
+     * @type {string}
+     * @memberof DeliveryRunResponseDto
+     */
+    pauseReason: string | null;
+    /**
+     *
      * @type {Date}
      * @memberof DeliveryRunResponseDto
      */
@@ -86,6 +92,12 @@ export interface DeliveryRunResponseDto {
      * @type {Date}
      * @memberof DeliveryRunResponseDto
      */
+    pausedAt: Date | null;
+    /**
+     *
+     * @type {Date}
+     * @memberof DeliveryRunResponseDto
+     */
     createdAt: Date;
 }
 /**
@@ -95,6 +107,7 @@ export declare const DeliveryRunResponseDtoStatusEnum: {
     readonly Queued: "queued";
     readonly Collecting: "collecting";
     readonly Sending: "sending";
+    readonly PausedDailyLimit: "paused_daily_limit";
     readonly Completed: "completed";
     readonly Failed: "failed";
     readonly Cancelled: "cancelled";

@@ -13,11 +13,24 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LeadVariableValueResponseDtoTypeEnum = void 0;
 exports.instanceOfLeadVariableValueResponseDto = instanceOfLeadVariableValueResponseDto;
 exports.LeadVariableValueResponseDtoFromJSON = LeadVariableValueResponseDtoFromJSON;
 exports.LeadVariableValueResponseDtoFromJSONTyped = LeadVariableValueResponseDtoFromJSONTyped;
 exports.LeadVariableValueResponseDtoToJSON = LeadVariableValueResponseDtoToJSON;
 exports.LeadVariableValueResponseDtoToJSONTyped = LeadVariableValueResponseDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.LeadVariableValueResponseDtoTypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean',
+    Json: 'json',
+    Date: 'date',
+    Array: 'array',
+    Object: 'object'
+};
 /**
  * Check if a given object implements the LeadVariableValueResponseDto interface.
  */
@@ -25,6 +38,8 @@ function instanceOfLeadVariableValueResponseDto(value) {
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('type' in value) || value['type'] === undefined)
+        return false;
+    if (!('isSet' in value) || value['isSet'] === undefined)
         return false;
     if (!('value' in value) || value['value'] === undefined)
         return false;
@@ -40,6 +55,7 @@ function LeadVariableValueResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'name': json['name'],
         'type': json['type'],
+        'isSet': json['is_set'],
         'value': json['value'],
         'description': json['description'] == null ? undefined : json['description'],
         'agentInstruction': json['agent_instruction'] == null ? undefined : json['agent_instruction'],
@@ -55,6 +71,7 @@ function LeadVariableValueResponseDtoToJSONTyped(value, ignoreDiscriminator = fa
     return {
         'name': value['name'],
         'type': value['type'],
+        'is_set': value['isSet'],
         'value': value['value'],
         'description': value['description'],
         'agent_instruction': value['agentInstruction'],

@@ -52,6 +52,12 @@ export interface LandingVkAppResponseDto {
      */
     target: LandingVkAppResponseDtoTarget;
     /**
+     * list.
+     * @type {boolean}
+     * @memberof LandingVkAppResponseDto
+     */
+    openSingleLanding?: boolean;
+    /**
      * VK App .
      * @type {string}
      * @memberof LandingVkAppResponseDto
@@ -105,6 +111,7 @@ export function LandingVkAppResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
         'status': json['status'],
         'confirmedAt': (json['confirmed_at'] == null ? null : new Date(json['confirmed_at'])),
         'target': LandingVkAppResponseDtoTargetFromJSON(json['target']),
+        'openSingleLanding': json['open_single_landing'] == null ? undefined : json['open_single_landing'],
         'setupUrl': json['setup_url'],
         'launchUrl': json['launch_url'],
     };
@@ -125,6 +132,7 @@ export function LandingVkAppResponseDtoToJSONTyped(value?: LandingVkAppResponseD
         'status': value['status'],
         'confirmed_at': (value['confirmedAt'] == null ? null : (value['confirmedAt'] as any).toISOString()),
         'target': LandingVkAppResponseDtoTargetToJSON(value['target']),
+        'open_single_landing': value['openSingleLanding'],
         'setup_url': value['setupUrl'],
         'launch_url': value['launchUrl'],
     };

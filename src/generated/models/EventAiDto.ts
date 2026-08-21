@@ -98,6 +98,12 @@ export interface EventAiDto {
      */
     providerCallIndex?: number;
     /**
+     * AI
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    usagePurpose?: EventAiDtoUsagePurposeEnum;
+    /**
      * AI-
      * @type {string}
      * @memberof EventAiDto
@@ -135,6 +141,18 @@ export interface EventAiDto {
     terminalEventId?: string;
 }
 
+
+/**
+ * @export
+ */
+export const EventAiDtoUsagePurposeEnum = {
+    DialogOperatorReply: 'dialog_operator_reply',
+    KnowledgeImageDescription: 'knowledge_image_description',
+    AgentSetup: 'agent_setup',
+    AnalyticsInsightSummary: 'analytics_insight_summary',
+    ResponseMetricsExtraction: 'response_metrics_extraction'
+} as const;
+export type EventAiDtoUsagePurposeEnum = typeof EventAiDtoUsagePurposeEnum[keyof typeof EventAiDtoUsagePurposeEnum];
 
 /**
  * @export
@@ -195,6 +213,7 @@ export function EventAiDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'providerBindingId': json['provider_binding_id'] == null ? undefined : json['provider_binding_id'],
         'providerResponseId': json['provider_response_id'] == null ? undefined : json['provider_response_id'],
         'providerCallIndex': json['provider_call_index'] == null ? undefined : json['provider_call_index'],
+        'usagePurpose': json['usage_purpose'] == null ? undefined : json['usage_purpose'],
         'responseStatus': json['response_status'] == null ? undefined : json['response_status'],
         'activityPhase': json['activity_phase'] == null ? undefined : json['activity_phase'],
         'responseStartedAt': json['response_started_at'] == null ? undefined : (new Date(json['response_started_at'])),
@@ -228,6 +247,7 @@ export function EventAiDtoToJSONTyped(value?: EventAiDto | null, ignoreDiscrimin
         'provider_binding_id': value['providerBindingId'],
         'provider_response_id': value['providerResponseId'],
         'provider_call_index': value['providerCallIndex'],
+        'usage_purpose': value['usagePurpose'],
         'response_status': value['responseStatus'],
         'activity_phase': value['activityPhase'],
         'response_started_at': value['responseStartedAt'] == null ? undefined : ((value['responseStartedAt']).toISOString()),

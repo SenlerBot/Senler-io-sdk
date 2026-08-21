@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum = exports.UpdateProjectsSegmentsAcceptLanguageEnum = exports.ProjectsSegmentsLeadsAcceptLanguageEnum = exports.ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.ProjectsSegmentsConsentDocumentsAcceptLanguageEnum = exports.ProjectsSegmentsAcceptLanguageEnum = exports.GetPublicSegmentsConsentsAcceptLanguageEnum = exports.GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum = exports.GetProjectsSegmentsReferencesAcceptLanguageEnum = exports.GetProjectsSegmentsMembershipEventsAcceptLanguageEnum = exports.GetProjectsSegmentsMembersAcceptLanguageEnum = exports.GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = exports.GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum = exports.GetProjectsSegmentsConsentTemplatesLocaleEnum = exports.GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum = exports.GetProjectsSegments2AcceptLanguageEnum = exports.GetProjectsSegmentsAcceptLanguageEnum = exports.DeleteProjectsSegmentsLeadsAcceptLanguageEnum = exports.DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum = exports.DeleteProjectsSegmentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
+exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = exports.UpdateSegmentsAcceptLanguageEnum = exports.SegmentsLeadsAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.SegmentsConsentDocumentsAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.GetSegmentsSubscriptionLinksAcceptLanguageEnum = exports.GetSegmentsReferencesAcceptLanguageEnum = exports.GetSegmentsMembershipEventsAcceptLanguageEnum = exports.GetSegmentsMembersAcceptLanguageEnum = exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesLocaleEnum = exports.GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetSegmentsConsentDocumentsAcceptLanguageEnum = exports.GetSegments2AcceptLanguageEnum = exports.GetSegmentsAcceptLanguageEnum = exports.DeleteSegmentsLeadsAcceptLanguageEnum = exports.DeleteSegmentsConsentDocumentsAcceptLanguageEnum = exports.DeleteSegmentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,12 +57,12 @@ class SegmentsApi extends runtime.BaseAPI {
      * deleted_at .
      *
      */
-    async deleteProjectsSegmentsRaw(requestParameters, initOverrides) {
+    async deleteSegmentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteProjectsSegments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteSegments().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteProjectsSegments().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteSegments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -92,20 +92,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * deleted_at .
      *
      */
-    async deleteProjectsSegments(requestParameters, initOverrides) {
-        const response = await this.deleteProjectsSegmentsRaw(requestParameters, initOverrides);
+    async deleteSegments(requestParameters, initOverrides) {
+        const response = await this.deleteSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . .
      *
      */
-    async deleteProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
+    async deleteSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteProjectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteSegmentsConsentDocuments().');
         }
         if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling deleteProjectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling deleteSegmentsConsentDocuments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -135,23 +135,23 @@ class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async deleteProjectsSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.deleteProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async deleteSegmentsConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.deleteSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * manual.
      *
      */
-    async deleteProjectsSegmentsLeadsRaw(requestParameters, initOverrides) {
+    async deleteSegmentsLeadsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteProjectsSegmentsLeads().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteSegmentsLeads().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteProjectsSegmentsLeads().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteSegmentsLeads().');
         }
         if (requestParameters['leadId'] == null) {
-            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling deleteProjectsSegmentsLeads().');
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling deleteSegmentsLeads().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -181,17 +181,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async deleteProjectsSegmentsLeads(requestParameters, initOverrides) {
-        const response = await this.deleteProjectsSegmentsLeadsRaw(requestParameters, initOverrides);
+    async deleteSegmentsLeads(requestParameters, initOverrides) {
+        const response = await this.deleteSegmentsLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . .
      *
      */
-    async getProjectsSegmentsRaw(requestParameters, initOverrides) {
+    async getSegmentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -207,7 +207,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -221,20 +221,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async getProjectsSegments(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsRaw(requestParameters, initOverrides);
+    async getSegments(requestParameters, initOverrides) {
+        const response = await this.getSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getProjectsSegments2Raw(requestParameters, initOverrides) {
+    async getSegments2Raw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegments2().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegments2().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProjectsSegments2().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegments2().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -250,7 +250,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -264,17 +264,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getProjectsSegments2(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegments2Raw(requestParameters, initOverrides);
+    async getSegments2(requestParameters, initOverrides) {
+        const response = await this.getSegments2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
+    async getSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsConsentDocuments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -290,7 +290,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/consent-documents`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -304,20 +304,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getProjectsSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async getSegmentsConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.getSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getProjectsSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides) {
+    async getSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsConsentDocumentsVersions().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsConsentDocumentsVersions().');
         }
         if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getProjectsSegmentsConsentDocumentsVersions().');
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getSegmentsConsentDocumentsVersions().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -333,7 +333,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/consent-documents/{documentId}/versions`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
@@ -347,17 +347,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getProjectsSegmentsConsentDocumentsVersions(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides);
+    async getSegmentsConsentDocumentsVersions(requestParameters, initOverrides) {
+        const response = await this.getSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . , .
      *
      */
-    async getProjectsSegmentsConsentTemplatesRaw(requestParameters, initOverrides) {
+    async getSegmentsConsentTemplatesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsConsentTemplates().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsConsentTemplates().');
         }
         const queryParameters = {};
         if (requestParameters['locale'] != null) {
@@ -376,7 +376,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/consent-templates`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -390,20 +390,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * . , .
      *
      */
-    async getProjectsSegmentsConsentTemplates(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsConsentTemplatesRaw(requestParameters, initOverrides);
+    async getSegmentsConsentTemplates(requestParameters, initOverrides) {
+        const response = await this.getSegmentsConsentTemplatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getProjectsSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides) {
+    async getSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsLeadsConsentAcceptances().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsLeadsConsentAcceptances().');
         }
         if (requestParameters['leadId'] == null) {
-            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling getProjectsSegmentsLeadsConsentAcceptances().');
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling getSegmentsLeadsConsentAcceptances().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -419,7 +419,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/leads/{leadId}/consent-acceptances`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
@@ -433,20 +433,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getProjectsSegmentsLeadsConsentAcceptances(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides);
+    async getSegmentsLeadsConsentAcceptances(requestParameters, initOverrides) {
+        const response = await this.getSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      *
      */
-    async getProjectsSegmentsMembersRaw(requestParameters, initOverrides) {
+    async getSegmentsMembersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsMembers().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsMembers().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProjectsSegmentsMembers().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsMembers().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -462,7 +462,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/{id}/members`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -476,20 +476,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getProjectsSegmentsMembers(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsMembersRaw(requestParameters, initOverrides);
+    async getSegmentsMembers(requestParameters, initOverrides) {
+        const response = await this.getSegmentsMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getProjectsSegmentsMembershipEventsRaw(requestParameters, initOverrides) {
+    async getSegmentsMembershipEventsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsMembershipEvents().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsMembershipEvents().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProjectsSegmentsMembershipEvents().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsMembershipEvents().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -505,7 +505,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/{id}/membership-events`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -519,20 +519,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getProjectsSegmentsMembershipEvents(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsMembershipEventsRaw(requestParameters, initOverrides);
+    async getSegmentsMembershipEvents(requestParameters, initOverrides) {
+        const response = await this.getSegmentsMembershipEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      *
      */
-    async getProjectsSegmentsReferencesRaw(requestParameters, initOverrides) {
+    async getSegmentsReferencesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsReferences().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsReferences().');
         }
         if (requestParameters['ids'] == null) {
-            throw new runtime.RequiredError('ids', 'Required parameter "ids" was null or undefined when calling getProjectsSegmentsReferences().');
+            throw new runtime.RequiredError('ids', 'Required parameter "ids" was null or undefined when calling getSegmentsReferences().');
         }
         const queryParameters = {};
         if (requestParameters['ids'] != null) {
@@ -551,7 +551,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/references`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -565,20 +565,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getProjectsSegmentsReferences(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsReferencesRaw(requestParameters, initOverrides);
+    async getSegmentsReferences(requestParameters, initOverrides) {
+        const response = await this.getSegmentsReferencesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . Mini App- .
      *
      */
-    async getProjectsSegmentsSubscriptionLinksRaw(requestParameters, initOverrides) {
+    async getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSegmentsSubscriptionLinks().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsSubscriptionLinks().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProjectsSegmentsSubscriptionLinks().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsSubscriptionLinks().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -594,7 +594,7 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/segments/{id}/subscription-links`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -608,60 +608,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * . Mini App- .
      *
      */
-    async getProjectsSegmentsSubscriptionLinks(requestParameters, initOverrides) {
-        const response = await this.getProjectsSegmentsSubscriptionLinksRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async getPublicSegmentsConsentsRaw(requestParameters, initOverrides) {
-        if (requestParameters['segmentPublicId'] == null) {
-            throw new runtime.RequiredError('segmentPublicId', 'Required parameter "segmentPublicId" was null or undefined when calling getPublicSegmentsConsents().');
-        }
-        if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getPublicSegmentsConsents().');
-        }
-        if (requestParameters['version'] == null) {
-            throw new runtime.RequiredError('version', 'Required parameter "version" was null or undefined when calling getPublicSegmentsConsents().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        const response = await this.request({
-            path: `/api/public/segments/{segmentPublicId}/consents/{documentId}/{version}`.replace(`{${"segmentPublicId"}}`, encodeURIComponent(String(requestParameters['segmentPublicId']))).replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))).replace(`{${"version"}}`, encodeURIComponent(String(requestParameters['version']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
-    }
-    /**
-     * .
-     *
-     */
-    async getPublicSegmentsConsents(requestParameters, initOverrides) {
-        const response = await this.getPublicSegmentsConsentsRaw(requestParameters, initOverrides);
+    async getSegmentsSubscriptionLinks(requestParameters, initOverrides) {
+        const response = await this.getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      *
      */
-    async projectsSegmentsRaw(requestParameters, initOverrides) {
+    async segmentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsSegments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segments().');
         }
         if (requestParameters['createSegmentDto'] == null) {
-            throw new runtime.RequiredError('createSegmentDto', 'Required parameter "createSegmentDto" was null or undefined when calling projectsSegments().');
+            throw new runtime.RequiredError('createSegmentDto', 'Required parameter "createSegmentDto" was null or undefined when calling segments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -693,20 +653,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async projectsSegments(requestParameters, initOverrides) {
-        const response = await this.projectsSegmentsRaw(requestParameters, initOverrides);
+    async segments(requestParameters, initOverrides) {
+        const response = await this.segmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async projectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
+    async segmentsConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsConsentDocuments().');
         }
         if (requestParameters['createSegmentConsentDocumentDto'] == null) {
-            throw new runtime.RequiredError('createSegmentConsentDocumentDto', 'Required parameter "createSegmentConsentDocumentDto" was null or undefined when calling projectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('createSegmentConsentDocumentDto', 'Required parameter "createSegmentConsentDocumentDto" was null or undefined when calling segmentsConsentDocuments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -738,20 +698,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async projectsSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.projectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async segmentsConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.segmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * S3 .
      * PDF-
      */
-    async projectsSegmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides) {
+    async segmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsConfirm().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsConsentDocumentsAssetsConfirm().');
         }
         if (requestParameters['confirmS3UploadDto'] == null) {
-            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsConfirm().');
+            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling segmentsConsentDocumentsAssetsConfirm().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -783,20 +743,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * S3 .
      * PDF-
      */
-    async projectsSegmentsConsentDocumentsAssetsConfirm(requestParameters, initOverrides) {
-        const response = await this.projectsSegmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
+    async segmentsConsentDocumentsAssetsConfirm(requestParameters, initOverrides) {
+        const response = await this.segmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * PDF S3- .
      * S3- PDF-
      */
-    async projectsSegmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides) {
+    async segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsUploadUrl().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsConsentDocumentsAssetsUploadUrl().');
         }
         if (requestParameters['getSegmentConsentDocumentUploadUrlDto'] == null) {
-            throw new runtime.RequiredError('getSegmentConsentDocumentUploadUrlDto', 'Required parameter "getSegmentConsentDocumentUploadUrlDto" was null or undefined when calling projectsSegmentsConsentDocumentsAssetsUploadUrl().');
+            throw new runtime.RequiredError('getSegmentConsentDocumentUploadUrlDto', 'Required parameter "getSegmentConsentDocumentUploadUrlDto" was null or undefined when calling segmentsConsentDocumentsAssetsUploadUrl().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -828,23 +788,23 @@ class SegmentsApi extends runtime.BaseAPI {
      * PDF S3- .
      * S3- PDF-
      */
-    async projectsSegmentsConsentDocumentsAssetsUploadUrl(requestParameters, initOverrides) {
-        const response = await this.projectsSegmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
+    async segmentsConsentDocumentsAssetsUploadUrl(requestParameters, initOverrides) {
+        const response = await this.segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * manual.
      *
      */
-    async projectsSegmentsLeadsRaw(requestParameters, initOverrides) {
+    async segmentsLeadsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsSegmentsLeads().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsLeads().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling projectsSegmentsLeads().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsLeads().');
         }
         if (requestParameters['leadId'] == null) {
-            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling projectsSegmentsLeads().');
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling segmentsLeads().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -874,23 +834,23 @@ class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async projectsSegmentsLeads(requestParameters, initOverrides) {
-        const response = await this.projectsSegmentsLeadsRaw(requestParameters, initOverrides);
+    async segmentsLeads(requestParameters, initOverrides) {
+        const response = await this.segmentsLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async updateProjectsSegmentsRaw(requestParameters, initOverrides) {
+    async updateSegmentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateProjectsSegments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSegments().');
         }
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateProjectsSegments().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateSegments().');
         }
         if (requestParameters['updateSegmentDto'] == null) {
-            throw new runtime.RequiredError('updateSegmentDto', 'Required parameter "updateSegmentDto" was null or undefined when calling updateProjectsSegments().');
+            throw new runtime.RequiredError('updateSegmentDto', 'Required parameter "updateSegmentDto" was null or undefined when calling updateSegments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -922,23 +882,23 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateProjectsSegments(requestParameters, initOverrides) {
-        const response = await this.updateProjectsSegmentsRaw(requestParameters, initOverrides);
+    async updateSegments(requestParameters, initOverrides) {
+        const response = await this.updateSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async updateProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
+    async updateSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateProjectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSegmentsConsentDocuments().');
         }
         if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling updateProjectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling updateSegmentsConsentDocuments().');
         }
         if (requestParameters['updateSegmentConsentDocumentDto'] == null) {
-            throw new runtime.RequiredError('updateSegmentConsentDocumentDto', 'Required parameter "updateSegmentConsentDocumentDto" was null or undefined when calling updateProjectsSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('updateSegmentConsentDocumentDto', 'Required parameter "updateSegmentConsentDocumentDto" was null or undefined when calling updateSegmentsConsentDocuments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -970,8 +930,8 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateProjectsSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.updateProjectsSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async updateSegmentsConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.updateSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -979,154 +939,147 @@ exports.SegmentsApi = SegmentsApi;
 /**
  * @export
  */
-exports.DeleteProjectsSegmentsAcceptLanguageEnum = {
+exports.DeleteSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.DeleteProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.DeleteSegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.DeleteProjectsSegmentsLeadsAcceptLanguageEnum = {
+exports.DeleteSegmentsLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsAcceptLanguageEnum = {
+exports.GetSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegments2AcceptLanguageEnum = {
+exports.GetSegments2AcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.GetSegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsConsentDocumentsVersionsAcceptLanguageEnum = {
+exports.GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsConsentTemplatesLocaleEnum = {
+exports.GetSegmentsConsentTemplatesLocaleEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsConsentTemplatesAcceptLanguageEnum = {
+exports.GetSegmentsConsentTemplatesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = {
+exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsMembersAcceptLanguageEnum = {
+exports.GetSegmentsMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsMembershipEventsAcceptLanguageEnum = {
+exports.GetSegmentsMembershipEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsReferencesAcceptLanguageEnum = {
+exports.GetSegmentsReferencesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProjectsSegmentsSubscriptionLinksAcceptLanguageEnum = {
+exports.GetSegmentsSubscriptionLinksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetPublicSegmentsConsentsAcceptLanguageEnum = {
+exports.SegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ProjectsSegmentsAcceptLanguageEnum = {
+exports.SegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ProjectsSegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
+exports.SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ProjectsSegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
+exports.SegmentsLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ProjectsSegmentsLeadsAcceptLanguageEnum = {
+exports.UpdateSegmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateProjectsSegmentsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateProjectsSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

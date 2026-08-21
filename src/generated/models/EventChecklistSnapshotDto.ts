@@ -97,7 +97,8 @@ export const EventChecklistSnapshotDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type EventChecklistSnapshotDtoPlatformTypeEnum = typeof EventChecklistSnapshotDtoPlatformTypeEnum[keyof typeof EventChecklistSnapshotDtoPlatformTypeEnum];
 

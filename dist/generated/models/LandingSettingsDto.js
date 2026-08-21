@@ -26,6 +26,10 @@ function instanceOfLandingSettingsDto(value) {
         return false;
     if (!('backgroundColor' in value) || value['backgroundColor'] === undefined)
         return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined)
+        return false;
+    if (!('bannerUrl' in value) || value['bannerUrl'] === undefined)
+        return false;
     return true;
 }
 function LandingSettingsDtoFromJSON(json) {
@@ -38,6 +42,8 @@ function LandingSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'listVisible': json['list_visible'],
         'backgroundColor': json['background_color'],
+        'iconUrl': json['icon_url'],
+        'bannerUrl': json['banner_url'],
     };
 }
 function LandingSettingsDtoToJSON(json) {
@@ -50,5 +56,7 @@ function LandingSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'list_visible': value['listVisible'],
         'background_color': value['backgroundColor'],
+        'icon_url': value['iconUrl'],
+        'banner_url': value['bannerUrl'],
     };
 }

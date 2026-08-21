@@ -32,6 +32,12 @@ export interface LeadVariableDefinitionResponseDto {
      * @type {string}
      * @memberof LeadVariableDefinitionResponseDto
      */
+    id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof LeadVariableDefinitionResponseDto
+     */
     projectId: string;
     /**
      * ID (null = )
@@ -103,6 +109,7 @@ export type LeadVariableDefinitionResponseDtoTypeEnum = typeof LeadVariableDefin
  * Check if a given object implements the LeadVariableDefinitionResponseDto interface.
  */
 export function instanceOfLeadVariableDefinitionResponseDto(value: object): value is LeadVariableDefinitionResponseDto {
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('appId' in value) || value['appId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
@@ -122,6 +129,7 @@ export function LeadVariableDefinitionResponseDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'id': json['id'],
         'projectId': json['project_id'],
         'appId': json['app_id'],
         'name': json['name'],
@@ -145,6 +153,7 @@ export function LeadVariableDefinitionResponseDtoToJSONTyped(value?: LeadVariabl
 
     return {
 
+        'id': value['id'],
         'project_id': value['projectId'],
         'app_id': value['appId'],
         'name': value['name'],

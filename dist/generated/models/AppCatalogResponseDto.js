@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppCatalogResponseDtoTypeEnum = void 0;
+exports.AppCatalogResponseDtoAutomationTypesEnum = exports.AppCatalogResponseDtoTypeEnum = void 0;
 exports.instanceOfAppCatalogResponseDto = instanceOfAppCatalogResponseDto;
 exports.AppCatalogResponseDtoFromJSON = AppCatalogResponseDtoFromJSON;
 exports.AppCatalogResponseDtoFromJSONTyped = AppCatalogResponseDtoFromJSONTyped;
@@ -28,7 +28,14 @@ const AppEmbeddedPageSettingsResponseDto_1 = require("./AppEmbeddedPageSettingsR
 exports.AppCatalogResponseDtoTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool'
+    Plugin: 'plugin'
+};
+/**
+ * @export
+ */
+exports.AppCatalogResponseDtoAutomationTypesEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
 };
 /**
  * Check if a given object implements the AppCatalogResponseDto interface.
@@ -51,6 +58,8 @@ function instanceOfAppCatalogResponseDto(value) {
     if (!('type' in value) || value['type'] === undefined)
         return false;
     if (!('hasTools' in value) || value['hasTools'] === undefined)
+        return false;
+    if (!('automationTypes' in value) || value['automationTypes'] === undefined)
         return false;
     if (!('embeddedPage' in value) || value['embeddedPage'] === undefined)
         return false;
@@ -79,6 +88,7 @@ function AppCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'documentationUrls': (0, AppDocumentationPublicUrlsDto_1.AppDocumentationPublicUrlsDtoFromJSON)(json['documentation_urls']),
         'type': json['type'],
         'hasTools': json['has_tools'],
+        'automationTypes': json['automation_types'],
         'embeddedPage': (0, AppEmbeddedPageSettingsResponseDto_1.AppEmbeddedPageSettingsResponseDtoFromJSON)(json['embedded_page']),
         'allowedPermissions': json['allowed_permissions'],
         'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
@@ -102,6 +112,7 @@ function AppCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'documentation_urls': (0, AppDocumentationPublicUrlsDto_1.AppDocumentationPublicUrlsDtoToJSON)(value['documentationUrls']),
         'type': value['type'],
         'has_tools': value['hasTools'],
+        'automation_types': value['automationTypes'],
         'embedded_page': (0, AppEmbeddedPageSettingsResponseDto_1.AppEmbeddedPageSettingsResponseDtoToJSON)(value['embeddedPage']),
         'allowed_permissions': value['allowedPermissions'],
         'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],

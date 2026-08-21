@@ -22,6 +22,12 @@ export interface CreateOAuthLoginContinuationRequestDto {
      */
     clientId: string;
     /**
+     * OAuth-. authorization code flow.
+     * @type {string}
+     * @memberof CreateOAuthLoginContinuationRequestDto
+     */
+    responseType: CreateOAuthLoginContinuationRequestDtoResponseTypeEnum;
+    /**
      * URL , OAuth-
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
@@ -45,7 +51,28 @@ export interface CreateOAuthLoginContinuationRequestDto {
      * @memberof CreateOAuthLoginContinuationRequestDto
      */
     projectId?: string;
+    /**
+     * OAuth-. , project.
+     * @type {string}
+     * @memberof CreateOAuthLoginContinuationRequestDto
+     */
+    subject?: CreateOAuthLoginContinuationRequestDtoSubjectEnum;
 }
+/**
+ * @export
+ */
+export declare const CreateOAuthLoginContinuationRequestDtoResponseTypeEnum: {
+    readonly Code: "code";
+};
+export type CreateOAuthLoginContinuationRequestDtoResponseTypeEnum = typeof CreateOAuthLoginContinuationRequestDtoResponseTypeEnum[keyof typeof CreateOAuthLoginContinuationRequestDtoResponseTypeEnum];
+/**
+ * @export
+ */
+export declare const CreateOAuthLoginContinuationRequestDtoSubjectEnum: {
+    readonly Project: "project";
+    readonly User: "user";
+};
+export type CreateOAuthLoginContinuationRequestDtoSubjectEnum = typeof CreateOAuthLoginContinuationRequestDtoSubjectEnum[keyof typeof CreateOAuthLoginContinuationRequestDtoSubjectEnum];
 /**
  * Check if a given object implements the CreateOAuthLoginContinuationRequestDto interface.
  */

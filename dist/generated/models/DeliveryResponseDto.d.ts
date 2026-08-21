@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsFilterDto } from './LeadsFilterDto';
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 import type { DeliveryRunResponseDto } from './DeliveryRunResponseDto';
 import type { DeliveryAttachmentResponseDto } from './DeliveryAttachmentResponseDto';
 /**
@@ -44,10 +44,10 @@ export interface DeliveryResponseDto {
     status: DeliveryResponseDtoStatusEnum;
     /**
      *
-     * @type {LeadsFilterDto}
+     * @type {DeliveryAudienceFilterDto}
      * @memberof DeliveryResponseDto
      */
-    filters: LeadsFilterDto;
+    filters: DeliveryAudienceFilterDto;
     /**
      *
      * @type {string}
@@ -112,6 +112,7 @@ export declare const DeliveryResponseDtoStatusEnum: {
     readonly Queued: "queued";
     readonly Collecting: "collecting";
     readonly Sending: "sending";
+    readonly PausedDailyLimit: "paused_daily_limit";
     readonly Completed: "completed";
     readonly Failed: "failed";
     readonly Cancelled: "cancelled";

@@ -132,6 +132,7 @@ export declare const GetFilesSourceEnum: {
     readonly Web: "web";
     readonly Temp: "temp";
     readonly System: "system";
+    readonly Automation: "automation";
 };
 export type GetFilesSourceEnum = typeof GetFilesSourceEnum[keyof typeof GetFilesSourceEnum];
 /**

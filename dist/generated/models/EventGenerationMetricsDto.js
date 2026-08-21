@@ -45,6 +45,7 @@ function EventGenerationMetricsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'items': json['items'] == null ? undefined : (json['items'].map(EventMetricDto_1.EventMetricDtoFromJSON)),
         'status': json['status'] == null ? undefined : json['status'],
+        'analysisAgentId': json['analysis_agent_id'] == null ? undefined : json['analysis_agent_id'],
     };
 }
 function EventGenerationMetricsDtoToJSON(json) {
@@ -57,5 +58,6 @@ function EventGenerationMetricsDtoToJSONTyped(value, ignoreDiscriminator = false
     return {
         'items': value['items'] == null ? undefined : (value['items'].map(EventMetricDto_1.EventMetricDtoToJSON)),
         'status': value['status'],
+        'analysis_agent_id': value['analysisAgentId'],
     };
 }

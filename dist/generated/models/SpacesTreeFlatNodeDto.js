@@ -66,7 +66,8 @@ exports.SpacesTreeFlatNodeDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 };
 /**
  * Check if a given object implements the SpacesTreeFlatNodeDto interface.

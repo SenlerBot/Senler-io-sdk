@@ -58,6 +58,36 @@ export interface ProjectBalanceInfoDto {
      */
     totalBalance: number;
     /**
+     * Europe/Moscow
+     * @type {Date}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesQuotaDate: Date;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesSentToday: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesReservedToday: number;
+    /**
+     * :
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesUsedToday: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesRemainingToday: number;
+    /**
      * (null )
      * @type {TariffSubscriptionDto}
      * @memberof ProjectBalanceInfoDto
@@ -127,6 +157,11 @@ export function instanceOfProjectBalanceInfoDto(value: object): value is Project
     if (!('bonusBalance' in value) || value['bonusBalance'] === undefined) return false;
     if (!('profitBalance' in value) || value['profitBalance'] === undefined) return false;
     if (!('totalBalance' in value) || value['totalBalance'] === undefined) return false;
+    if (!('mailingMessagesQuotaDate' in value) || value['mailingMessagesQuotaDate'] === undefined) return false;
+    if (!('mailingMessagesSentToday' in value) || value['mailingMessagesSentToday'] === undefined) return false;
+    if (!('mailingMessagesReservedToday' in value) || value['mailingMessagesReservedToday'] === undefined) return false;
+    if (!('mailingMessagesUsedToday' in value) || value['mailingMessagesUsedToday'] === undefined) return false;
+    if (!('mailingMessagesRemainingToday' in value) || value['mailingMessagesRemainingToday'] === undefined) return false;
     if (!('tariffCreditsTotal' in value) || value['tariffCreditsTotal'] === undefined) return false;
     if (!('tariffCreditsUsed' in value) || value['tariffCreditsUsed'] === undefined) return false;
     if (!('tariffCreditsRemaining' in value) || value['tariffCreditsRemaining'] === undefined) return false;
@@ -152,6 +187,11 @@ export function ProjectBalanceInfoDtoFromJSONTyped(json: any, ignoreDiscriminato
         'bonusBalance': json['bonus_balance'],
         'profitBalance': json['profit_balance'],
         'totalBalance': json['total_balance'],
+        'mailingMessagesQuotaDate': (new Date(json['mailing_messages_quota_date'])),
+        'mailingMessagesSentToday': json['mailing_messages_sent_today'],
+        'mailingMessagesReservedToday': json['mailing_messages_reserved_today'],
+        'mailingMessagesUsedToday': json['mailing_messages_used_today'],
+        'mailingMessagesRemainingToday': json['mailing_messages_remaining_today'],
         'tariff': json['tariff'] == null ? undefined : TariffSubscriptionDtoFromJSON(json['tariff']),
         'tariffCreditsTotal': json['tariff_credits_total'],
         'tariffCreditsUsed': json['tariff_credits_used'],
@@ -179,6 +219,11 @@ export function ProjectBalanceInfoDtoToJSONTyped(value?: ProjectBalanceInfoDto |
         'bonus_balance': value['bonusBalance'],
         'profit_balance': value['profitBalance'],
         'total_balance': value['totalBalance'],
+        'mailing_messages_quota_date': ((value['mailingMessagesQuotaDate']).toISOString().substring(0,10)),
+        'mailing_messages_sent_today': value['mailingMessagesSentToday'],
+        'mailing_messages_reserved_today': value['mailingMessagesReservedToday'],
+        'mailing_messages_used_today': value['mailingMessagesUsedToday'],
+        'mailing_messages_remaining_today': value['mailingMessagesRemainingToday'],
         'tariff': TariffSubscriptionDtoToJSON(value['tariff']),
         'tariff_credits_total': value['tariffCreditsTotal'],
         'tariff_credits_used': value['tariffCreditsUsed'],

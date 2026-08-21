@@ -15,69 +15,330 @@
 
 import * as runtime from '../runtime';
 import type {
-  CreateProjectVariableDto,
-  Deactivate200Response,
+  ArrayVariableValueDto,
+  BooleanVariableValueDto,
+  CreateArrayVariableDto,
+  CreateBooleanVariableDto,
+  CreateDateVariableDto,
+  CreateJsonArrayVariableDto,
+  CreateJsonBooleanVariableDto,
+  CreateJsonNullVariableDto,
+  CreateJsonNumberVariableDto,
+  CreateJsonObjectVariableDto,
+  CreateJsonStringVariableDto,
+  CreateNumberVariableDto,
+  CreateObjectVariableDto,
+  CreateStringVariableDto,
+  DateVariableValueDto,
+  DeleteVariables200Response,
   ErrorResponse,
+  NumberVariableValueDto,
+  ObjectVariableValueDto,
   ProjectVariableListResponseDto,
   ProjectVariableResponseDto,
-  SetVariableValueDto,
-  UpdateProjectVariableDto,
+  StringVariableValueDto,
+  UpdateVariableMetadataDto,
+  VariableSchemaValueDto,
 } from '../models/index';
 import {
-    CreateProjectVariableDtoFromJSON,
-    CreateProjectVariableDtoToJSON,
-    Deactivate200ResponseFromJSON,
-    Deactivate200ResponseToJSON,
+    ArrayVariableValueDtoFromJSON,
+    ArrayVariableValueDtoToJSON,
+    BooleanVariableValueDtoFromJSON,
+    BooleanVariableValueDtoToJSON,
+    CreateArrayVariableDtoFromJSON,
+    CreateArrayVariableDtoToJSON,
+    CreateBooleanVariableDtoFromJSON,
+    CreateBooleanVariableDtoToJSON,
+    CreateDateVariableDtoFromJSON,
+    CreateDateVariableDtoToJSON,
+    CreateJsonArrayVariableDtoFromJSON,
+    CreateJsonArrayVariableDtoToJSON,
+    CreateJsonBooleanVariableDtoFromJSON,
+    CreateJsonBooleanVariableDtoToJSON,
+    CreateJsonNullVariableDtoFromJSON,
+    CreateJsonNullVariableDtoToJSON,
+    CreateJsonNumberVariableDtoFromJSON,
+    CreateJsonNumberVariableDtoToJSON,
+    CreateJsonObjectVariableDtoFromJSON,
+    CreateJsonObjectVariableDtoToJSON,
+    CreateJsonStringVariableDtoFromJSON,
+    CreateJsonStringVariableDtoToJSON,
+    CreateNumberVariableDtoFromJSON,
+    CreateNumberVariableDtoToJSON,
+    CreateObjectVariableDtoFromJSON,
+    CreateObjectVariableDtoToJSON,
+    CreateStringVariableDtoFromJSON,
+    CreateStringVariableDtoToJSON,
+    DateVariableValueDtoFromJSON,
+    DateVariableValueDtoToJSON,
+    DeleteVariables200ResponseFromJSON,
+    DeleteVariables200ResponseToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    NumberVariableValueDtoFromJSON,
+    NumberVariableValueDtoToJSON,
+    ObjectVariableValueDtoFromJSON,
+    ObjectVariableValueDtoToJSON,
     ProjectVariableListResponseDtoFromJSON,
     ProjectVariableListResponseDtoToJSON,
     ProjectVariableResponseDtoFromJSON,
     ProjectVariableResponseDtoToJSON,
-    SetVariableValueDtoFromJSON,
-    SetVariableValueDtoToJSON,
-    UpdateProjectVariableDtoFromJSON,
-    UpdateProjectVariableDtoToJSON,
+    StringVariableValueDtoFromJSON,
+    StringVariableValueDtoToJSON,
+    UpdateVariableMetadataDtoFromJSON,
+    UpdateVariableMetadataDtoToJSON,
+    VariableSchemaValueDtoFromJSON,
+    VariableSchemaValueDtoToJSON,
 } from '../models/index';
 
-export interface DeactivateRequest {
+export interface DeleteVariablesRequest {
     projectId: string;
     name: string;
-    acceptLanguage?: DeactivateAcceptLanguageEnum;
+    acceptLanguage?: DeleteVariablesAcceptLanguageEnum;
 }
 
-export interface GetByIdRequest {
+export interface GetVariablesRequest {
     projectId: string;
     search?: string;
     limit?: number;
     page?: number;
-    acceptLanguage?: GetByIdAcceptLanguageEnum;
+    acceptLanguage?: GetVariablesAcceptLanguageEnum;
 }
 
-export interface GetById2Request {
+export interface GetVariables2Request {
     projectId: string;
     name: string;
-    acceptLanguage?: GetById2AcceptLanguageEnum;
+    acceptLanguage?: GetVariables2AcceptLanguageEnum;
 }
 
-export interface ProjectVariablesCreateRequest {
+export interface GetVariablesByIdsRequest {
     projectId: string;
-    createProjectVariableDto: CreateProjectVariableDto;
-    acceptLanguage?: ProjectVariablesCreateAcceptLanguageEnum;
+    ids: Array<string>;
+    acceptLanguage?: GetVariablesByIdsAcceptLanguageEnum;
 }
 
-export interface ProjectVariablesUpdateRequest {
-    projectId: string;
-    name: string;
-    updateProjectVariableDto: UpdateProjectVariableDto;
-    acceptLanguage?: ProjectVariablesUpdateAcceptLanguageEnum;
-}
-
-export interface UpdateValueRequest {
+export interface UpdateVariablesArraySchemaRequest {
     projectId: string;
     name: string;
-    setVariableValueDto: SetVariableValueDto;
-    acceptLanguage?: UpdateValueAcceptLanguageEnum;
+    variableSchemaValueDto: VariableSchemaValueDto;
+    acceptLanguage?: UpdateVariablesArraySchemaAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesMetadataRequest {
+    projectId: string;
+    name: string;
+    updateVariableMetadataDto: UpdateVariableMetadataDto;
+    acceptLanguage?: UpdateVariablesMetadataAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesObjectSchemaRequest {
+    projectId: string;
+    name: string;
+    variableSchemaValueDto: VariableSchemaValueDto;
+    acceptLanguage?: UpdateVariablesObjectSchemaAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeArrayRequest {
+    projectId: string;
+    name: string;
+    arrayVariableValueDto: ArrayVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeArrayAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeBooleanRequest {
+    projectId: string;
+    name: string;
+    booleanVariableValueDto: BooleanVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeBooleanAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeDateRequest {
+    projectId: string;
+    name: string;
+    dateVariableValueDto: DateVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeDateAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeJsonArrayRequest {
+    projectId: string;
+    name: string;
+    arrayVariableValueDto: ArrayVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeJsonArrayAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeJsonBooleanRequest {
+    projectId: string;
+    name: string;
+    booleanVariableValueDto: BooleanVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeJsonBooleanAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeJsonNullRequest {
+    projectId: string;
+    name: string;
+    acceptLanguage?: UpdateVariablesTypeJsonNullAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeJsonNumberRequest {
+    projectId: string;
+    name: string;
+    numberVariableValueDto: NumberVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeJsonNumberAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeJsonObjectRequest {
+    projectId: string;
+    name: string;
+    objectVariableValueDto: ObjectVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeJsonObjectAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeJsonStringRequest {
+    projectId: string;
+    name: string;
+    stringVariableValueDto: StringVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeJsonStringAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeNumberRequest {
+    projectId: string;
+    name: string;
+    numberVariableValueDto: NumberVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeNumberAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeObjectRequest {
+    projectId: string;
+    name: string;
+    objectVariableValueDto: ObjectVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeObjectAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesTypeStringRequest {
+    projectId: string;
+    name: string;
+    stringVariableValueDto: StringVariableValueDto;
+    acceptLanguage?: UpdateVariablesTypeStringAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueArrayRequest {
+    projectId: string;
+    name: string;
+    arrayVariableValueDto: ArrayVariableValueDto;
+    acceptLanguage?: UpdateVariablesValueArrayAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueBooleanRequest {
+    projectId: string;
+    name: string;
+    booleanVariableValueDto: BooleanVariableValueDto;
+    acceptLanguage?: UpdateVariablesValueBooleanAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueDateRequest {
+    projectId: string;
+    name: string;
+    dateVariableValueDto: DateVariableValueDto;
+    acceptLanguage?: UpdateVariablesValueDateAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueNullRequest {
+    projectId: string;
+    name: string;
+    acceptLanguage?: UpdateVariablesValueNullAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueNumberRequest {
+    projectId: string;
+    name: string;
+    numberVariableValueDto: NumberVariableValueDto;
+    acceptLanguage?: UpdateVariablesValueNumberAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueObjectRequest {
+    projectId: string;
+    name: string;
+    objectVariableValueDto: ObjectVariableValueDto;
+    acceptLanguage?: UpdateVariablesValueObjectAcceptLanguageEnum;
+}
+
+export interface UpdateVariablesValueStringRequest {
+    projectId: string;
+    name: string;
+    stringVariableValueDto: StringVariableValueDto;
+    acceptLanguage?: UpdateVariablesValueStringAcceptLanguageEnum;
+}
+
+export interface VariablesArrayRequest {
+    projectId: string;
+    createArrayVariableDto: CreateArrayVariableDto;
+    acceptLanguage?: VariablesArrayAcceptLanguageEnum;
+}
+
+export interface VariablesBooleanRequest {
+    projectId: string;
+    createBooleanVariableDto: CreateBooleanVariableDto;
+    acceptLanguage?: VariablesBooleanAcceptLanguageEnum;
+}
+
+export interface VariablesDateRequest {
+    projectId: string;
+    createDateVariableDto: CreateDateVariableDto;
+    acceptLanguage?: VariablesDateAcceptLanguageEnum;
+}
+
+export interface VariablesJsonArrayRequest {
+    projectId: string;
+    createJsonArrayVariableDto: CreateJsonArrayVariableDto;
+    acceptLanguage?: VariablesJsonArrayAcceptLanguageEnum;
+}
+
+export interface VariablesJsonBooleanRequest {
+    projectId: string;
+    createJsonBooleanVariableDto: CreateJsonBooleanVariableDto;
+    acceptLanguage?: VariablesJsonBooleanAcceptLanguageEnum;
+}
+
+export interface VariablesJsonNullRequest {
+    projectId: string;
+    createJsonNullVariableDto: CreateJsonNullVariableDto;
+    acceptLanguage?: VariablesJsonNullAcceptLanguageEnum;
+}
+
+export interface VariablesJsonNumberRequest {
+    projectId: string;
+    createJsonNumberVariableDto: CreateJsonNumberVariableDto;
+    acceptLanguage?: VariablesJsonNumberAcceptLanguageEnum;
+}
+
+export interface VariablesJsonObjectRequest {
+    projectId: string;
+    createJsonObjectVariableDto: CreateJsonObjectVariableDto;
+    acceptLanguage?: VariablesJsonObjectAcceptLanguageEnum;
+}
+
+export interface VariablesJsonStringRequest {
+    projectId: string;
+    createJsonStringVariableDto: CreateJsonStringVariableDto;
+    acceptLanguage?: VariablesJsonStringAcceptLanguageEnum;
+}
+
+export interface VariablesNumberRequest {
+    projectId: string;
+    createNumberVariableDto: CreateNumberVariableDto;
+    acceptLanguage?: VariablesNumberAcceptLanguageEnum;
+}
+
+export interface VariablesObjectRequest {
+    projectId: string;
+    createObjectVariableDto: CreateObjectVariableDto;
+    acceptLanguage?: VariablesObjectAcceptLanguageEnum;
+}
+
+export interface VariablesStringRequest {
+    projectId: string;
+    createStringVariableDto: CreateStringVariableDto;
+    acceptLanguage?: VariablesStringAcceptLanguageEnum;
 }
 
 /**
@@ -89,18 +350,18 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    async deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
+    async deleteVariablesRaw(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteVariables200Response>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling deactivate().'
+                'Required parameter "projectId" was null or undefined when calling deleteVariables().'
             );
         }
 
         if (requestParameters['name'] == null) {
             throw new runtime.RequiredError(
                 'name',
-                'Required parameter "name" was null or undefined when calling deactivate().'
+                'Required parameter "name" was null or undefined when calling deleteVariables().'
             );
         }
 
@@ -126,21 +387,21 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/project-variables/{projectId}/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            path: `/api/projects/{projectId}/variables/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => Deactivate200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteVariables200ResponseFromJSON(jsonValue));
     }
 
     /**
      *
      *
      */
-    async deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
-        const response = await this.deactivateRaw(requestParameters, initOverrides);
+    async deleteVariables(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteVariables200Response> {
+        const response = await this.deleteVariablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -148,11 +409,11 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    async getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableListResponseDto>> {
+    async getVariablesRaw(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getById().'
+                'Required parameter "projectId" was null or undefined when calling getVariables().'
             );
         }
 
@@ -186,11 +447,11 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_project_variables"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
-            path: `/api/project-variables/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/projects/{projectId}/variables`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -203,8 +464,8 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    async getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableListResponseDto> {
-        const response = await this.getByIdRaw(requestParameters, initOverrides);
+    async getVariables(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableListResponseDto> {
+        const response = await this.getVariablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -212,18 +473,18 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    async getById2Raw(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+    async getVariables2Raw(requestParameters: GetVariables2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getById2().'
+                'Required parameter "projectId" was null or undefined when calling getVariables2().'
             );
         }
 
         if (requestParameters['name'] == null) {
             throw new runtime.RequiredError(
                 'name',
-                'Required parameter "name" was null or undefined when calling getById2().'
+                'Required parameter "name" was null or undefined when calling getVariables2().'
             );
         }
 
@@ -245,11 +506,11 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_project_variables"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
-            path: `/api/project-variables/{projectId}/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            path: `/api/projects/{projectId}/variables/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -262,27 +523,97 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    async getById2(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
-        const response = await this.getById2Raw(requestParameters, initOverrides);
+    async getVariables2(requestParameters: GetVariables2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.getVariables2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     *
-     *
+     * ID
+     * ID
      */
-    async projectVariablesCreateRaw(requestParameters: ProjectVariablesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+    async getVariablesByIdsRaw(requestParameters: GetVariablesByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectVariableResponseDto>>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling projectVariablesCreate().'
+                'Required parameter "projectId" was null or undefined when calling getVariablesByIds().'
             );
         }
 
-        if (requestParameters['createProjectVariableDto'] == null) {
+        if (requestParameters['ids'] == null) {
             throw new runtime.RequiredError(
-                'createProjectVariableDto',
-                'Required parameter "createProjectVariableDto" was null or undefined when calling projectVariablesCreate().'
+                'ids',
+                'Required parameter "ids" was null or undefined when calling getVariablesByIds().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/by-ids`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectVariableResponseDtoFromJSON));
+    }
+
+    /**
+     * ID
+     * ID
+     */
+    async getVariablesByIds(requestParameters: GetVariablesByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectVariableResponseDto>> {
+        const response = await this.getVariablesByIdsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesArraySchemaRaw(requestParameters: UpdateVariablesArraySchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesArraySchema().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesArraySchema().'
+            );
+        }
+
+        if (requestParameters['variableSchemaValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'variableSchemaValueDto',
+                'Required parameter "variableSchemaValueDto" was null or undefined when calling updateVariablesArraySchema().'
             );
         }
 
@@ -310,48 +641,1532 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/project-variables/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/projects/{projectId}/variables/{name}/array-schema`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: VariableSchemaValueDtoToJSON(requestParameters['variableSchemaValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesArraySchema(requestParameters: UpdateVariablesArraySchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesArraySchemaRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesMetadataRaw(requestParameters: UpdateVariablesMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesMetadata().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesMetadata().'
+            );
+        }
+
+        if (requestParameters['updateVariableMetadataDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateVariableMetadataDto',
+                'Required parameter "updateVariableMetadataDto" was null or undefined when calling updateVariablesMetadata().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/metadata`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateVariableMetadataDtoToJSON(requestParameters['updateVariableMetadataDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesMetadata(requestParameters: UpdateVariablesMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesMetadataRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesObjectSchemaRaw(requestParameters: UpdateVariablesObjectSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesObjectSchema().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesObjectSchema().'
+            );
+        }
+
+        if (requestParameters['variableSchemaValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'variableSchemaValueDto',
+                'Required parameter "variableSchemaValueDto" was null or undefined when calling updateVariablesObjectSchema().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/object-schema`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: VariableSchemaValueDtoToJSON(requestParameters['variableSchemaValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesObjectSchema(requestParameters: UpdateVariablesObjectSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesObjectSchemaRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * array
+     */
+    async updateVariablesTypeArrayRaw(requestParameters: UpdateVariablesTypeArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeArray().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeArray().'
+            );
+        }
+
+        if (requestParameters['arrayVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'arrayVariableValueDto',
+                'Required parameter "arrayVariableValueDto" was null or undefined when calling updateVariablesTypeArray().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/array`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ArrayVariableValueDtoToJSON(requestParameters['arrayVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * array
+     */
+    async updateVariablesTypeArray(requestParameters: UpdateVariablesTypeArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeArrayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * boolean
+     */
+    async updateVariablesTypeBooleanRaw(requestParameters: UpdateVariablesTypeBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeBoolean().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeBoolean().'
+            );
+        }
+
+        if (requestParameters['booleanVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'booleanVariableValueDto',
+                'Required parameter "booleanVariableValueDto" was null or undefined when calling updateVariablesTypeBoolean().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/boolean`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BooleanVariableValueDtoToJSON(requestParameters['booleanVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * boolean
+     */
+    async updateVariablesTypeBoolean(requestParameters: UpdateVariablesTypeBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * date
+     */
+    async updateVariablesTypeDateRaw(requestParameters: UpdateVariablesTypeDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeDate().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeDate().'
+            );
+        }
+
+        if (requestParameters['dateVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'dateVariableValueDto',
+                'Required parameter "dateVariableValueDto" was null or undefined when calling updateVariablesTypeDate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/date`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DateVariableValueDtoToJSON(requestParameters['dateVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * date
+     */
+    async updateVariablesTypeDate(requestParameters: UpdateVariablesTypeDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeDateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON- .
+     * json -
+     */
+    async updateVariablesTypeJsonArrayRaw(requestParameters: UpdateVariablesTypeJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeJsonArray().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeJsonArray().'
+            );
+        }
+
+        if (requestParameters['arrayVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'arrayVariableValueDto',
+                'Required parameter "arrayVariableValueDto" was null or undefined when calling updateVariablesTypeJsonArray().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/json/array`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ArrayVariableValueDtoToJSON(requestParameters['arrayVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON- .
+     * json -
+     */
+    async updateVariablesTypeJsonArray(requestParameters: UpdateVariablesTypeJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeJsonArrayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON- .
+     * json
+     */
+    async updateVariablesTypeJsonBooleanRaw(requestParameters: UpdateVariablesTypeJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeJsonBoolean().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeJsonBoolean().'
+            );
+        }
+
+        if (requestParameters['booleanVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'booleanVariableValueDto',
+                'Required parameter "booleanVariableValueDto" was null or undefined when calling updateVariablesTypeJsonBoolean().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/json/boolean`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BooleanVariableValueDtoToJSON(requestParameters['booleanVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON- .
+     * json
+     */
+    async updateVariablesTypeJsonBoolean(requestParameters: UpdateVariablesTypeJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeJsonBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON- null.
+     * json null
+     */
+    async updateVariablesTypeJsonNullRaw(requestParameters: UpdateVariablesTypeJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeJsonNull().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeJsonNull().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/json/null`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON- null.
+     * json null
+     */
+    async updateVariablesTypeJsonNull(requestParameters: UpdateVariablesTypeJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeJsonNullRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON- .
+     * json
+     */
+    async updateVariablesTypeJsonNumberRaw(requestParameters: UpdateVariablesTypeJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeJsonNumber().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeJsonNumber().'
+            );
+        }
+
+        if (requestParameters['numberVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'numberVariableValueDto',
+                'Required parameter "numberVariableValueDto" was null or undefined when calling updateVariablesTypeJsonNumber().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/json/number`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: NumberVariableValueDtoToJSON(requestParameters['numberVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON- .
+     * json
+     */
+    async updateVariablesTypeJsonNumber(requestParameters: UpdateVariablesTypeJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeJsonNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON- .
+     * json -
+     */
+    async updateVariablesTypeJsonObjectRaw(requestParameters: UpdateVariablesTypeJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeJsonObject().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeJsonObject().'
+            );
+        }
+
+        if (requestParameters['objectVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'objectVariableValueDto',
+                'Required parameter "objectVariableValueDto" was null or undefined when calling updateVariablesTypeJsonObject().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/json/object`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ObjectVariableValueDtoToJSON(requestParameters['objectVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON- .
+     * json -
+     */
+    async updateVariablesTypeJsonObject(requestParameters: UpdateVariablesTypeJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeJsonObjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON- .
+     * json
+     */
+    async updateVariablesTypeJsonStringRaw(requestParameters: UpdateVariablesTypeJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeJsonString().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeJsonString().'
+            );
+        }
+
+        if (requestParameters['stringVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'stringVariableValueDto',
+                'Required parameter "stringVariableValueDto" was null or undefined when calling updateVariablesTypeJsonString().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/json/string`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StringVariableValueDtoToJSON(requestParameters['stringVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON- .
+     * json
+     */
+    async updateVariablesTypeJsonString(requestParameters: UpdateVariablesTypeJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeJsonStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * number
+     */
+    async updateVariablesTypeNumberRaw(requestParameters: UpdateVariablesTypeNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeNumber().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeNumber().'
+            );
+        }
+
+        if (requestParameters['numberVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'numberVariableValueDto',
+                'Required parameter "numberVariableValueDto" was null or undefined when calling updateVariablesTypeNumber().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/number`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: NumberVariableValueDtoToJSON(requestParameters['numberVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * number
+     */
+    async updateVariablesTypeNumber(requestParameters: UpdateVariablesTypeNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * object
+     */
+    async updateVariablesTypeObjectRaw(requestParameters: UpdateVariablesTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeObject().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeObject().'
+            );
+        }
+
+        if (requestParameters['objectVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'objectVariableValueDto',
+                'Required parameter "objectVariableValueDto" was null or undefined when calling updateVariablesTypeObject().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/object`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ObjectVariableValueDtoToJSON(requestParameters['objectVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * object
+     */
+    async updateVariablesTypeObject(requestParameters: UpdateVariablesTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeObjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * string
+     */
+    async updateVariablesTypeStringRaw(requestParameters: UpdateVariablesTypeStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesTypeString().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesTypeString().'
+            );
+        }
+
+        if (requestParameters['stringVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'stringVariableValueDto',
+                'Required parameter "stringVariableValueDto" was null or undefined when calling updateVariablesTypeString().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/type/string`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StringVariableValueDtoToJSON(requestParameters['stringVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * string
+     */
+    async updateVariablesTypeString(requestParameters: UpdateVariablesTypeStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesTypeStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesValueArrayRaw(requestParameters: UpdateVariablesValueArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueArray().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueArray().'
+            );
+        }
+
+        if (requestParameters['arrayVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'arrayVariableValueDto',
+                'Required parameter "arrayVariableValueDto" was null or undefined when calling updateVariablesValueArray().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/array`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ArrayVariableValueDtoToJSON(requestParameters['arrayVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesValueArray(requestParameters: UpdateVariablesValueArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueArrayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueBooleanRaw(requestParameters: UpdateVariablesValueBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueBoolean().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueBoolean().'
+            );
+        }
+
+        if (requestParameters['booleanVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'booleanVariableValueDto',
+                'Required parameter "booleanVariableValueDto" was null or undefined when calling updateVariablesValueBoolean().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/boolean`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BooleanVariableValueDtoToJSON(requestParameters['booleanVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueBoolean(requestParameters: UpdateVariablesValueBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueDateRaw(requestParameters: UpdateVariablesValueDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueDate().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueDate().'
+            );
+        }
+
+        if (requestParameters['dateVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'dateVariableValueDto',
+                'Required parameter "dateVariableValueDto" was null or undefined when calling updateVariablesValueDate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/date`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DateVariableValueDtoToJSON(requestParameters['dateVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueDate(requestParameters: UpdateVariablesValueDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueDateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * null
+     */
+    async updateVariablesValueNullRaw(requestParameters: UpdateVariablesValueNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueNull().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueNull().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/null`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * null
+     */
+    async updateVariablesValueNull(requestParameters: UpdateVariablesValueNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueNullRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueNumberRaw(requestParameters: UpdateVariablesValueNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueNumber().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueNumber().'
+            );
+        }
+
+        if (requestParameters['numberVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'numberVariableValueDto',
+                'Required parameter "numberVariableValueDto" was null or undefined when calling updateVariablesValueNumber().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/number`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: NumberVariableValueDtoToJSON(requestParameters['numberVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueNumber(requestParameters: UpdateVariablesValueNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesValueObjectRaw(requestParameters: UpdateVariablesValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueObject().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueObject().'
+            );
+        }
+
+        if (requestParameters['objectVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'objectVariableValueDto',
+                'Required parameter "objectVariableValueDto" was null or undefined when calling updateVariablesValueObject().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/object`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ObjectVariableValueDtoToJSON(requestParameters['objectVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * -
+     */
+    async updateVariablesValueObject(requestParameters: UpdateVariablesValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueObjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueStringRaw(requestParameters: UpdateVariablesValueStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateVariablesValueString().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateVariablesValueString().'
+            );
+        }
+
+        if (requestParameters['stringVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'stringVariableValueDto',
+                'Required parameter "stringVariableValueDto" was null or undefined when calling updateVariablesValueString().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/{name}/value/string`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StringVariableValueDtoToJSON(requestParameters['stringVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateVariablesValueString(requestParameters: UpdateVariablesValueStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.updateVariablesValueStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * -
+     */
+    async variablesArrayRaw(requestParameters: VariablesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesArray().'
+            );
+        }
+
+        if (requestParameters['createArrayVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createArrayVariableDto',
+                'Required parameter "createArrayVariableDto" was null or undefined when calling variablesArray().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/array`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateProjectVariableDtoToJSON(requestParameters['createProjectVariableDto']),
+            body: CreateArrayVariableDtoToJSON(requestParameters['createArrayVariableDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     *
-     *
+     * .
+     * -
      */
-    async projectVariablesCreate(requestParameters: ProjectVariablesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
-        const response = await this.projectVariablesCreateRaw(requestParameters, initOverrides);
+    async variablesArray(requestParameters: VariablesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesArrayRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * (, , , )
+     * .
      *
      */
-    async projectVariablesUpdateRaw(requestParameters: ProjectVariablesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+    async variablesBooleanRaw(requestParameters: VariablesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling projectVariablesUpdate().'
+                'Required parameter "projectId" was null or undefined when calling variablesBoolean().'
             );
         }
 
-        if (requestParameters['name'] == null) {
+        if (requestParameters['createBooleanVariableDto'] == null) {
             throw new runtime.RequiredError(
-                'name',
-                'Required parameter "name" was null or undefined when calling projectVariablesUpdate().'
-            );
-        }
-
-        if (requestParameters['updateProjectVariableDto'] == null) {
-            throw new runtime.RequiredError(
-                'updateProjectVariableDto',
-                'Required parameter "updateProjectVariableDto" was null or undefined when calling projectVariablesUpdate().'
+                'createBooleanVariableDto',
+                'Required parameter "createBooleanVariableDto" was null or undefined when calling variablesBoolean().'
             );
         }
 
@@ -379,48 +2194,41 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/project-variables/{projectId}/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
-            method: 'PATCH',
+            path: `/api/projects/{projectId}/variables/boolean`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateProjectVariableDtoToJSON(requestParameters['updateProjectVariableDto']),
+            body: CreateBooleanVariableDtoToJSON(requestParameters['createBooleanVariableDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * (, , , )
+     * .
      *
      */
-    async projectVariablesUpdate(requestParameters: ProjectVariablesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
-        const response = await this.projectVariablesUpdateRaw(requestParameters, initOverrides);
+    async variablesBoolean(requestParameters: VariablesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesBooleanRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * ( )
+     * .
      *
      */
-    async updateValueRaw(requestParameters: UpdateValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+    async variablesDateRaw(requestParameters: VariablesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateValue().'
+                'Required parameter "projectId" was null or undefined when calling variablesDate().'
             );
         }
 
-        if (requestParameters['name'] == null) {
+        if (requestParameters['createDateVariableDto'] == null) {
             throw new runtime.RequiredError(
-                'name',
-                'Required parameter "name" was null or undefined when calling updateValue().'
-            );
-        }
-
-        if (requestParameters['setVariableValueDto'] == null) {
-            throw new runtime.RequiredError(
-                'setVariableValueDto',
-                'Required parameter "setVariableValueDto" was null or undefined when calling updateValue().'
+                'createDateVariableDto',
+                'Required parameter "createDateVariableDto" was null or undefined when calling variablesDate().'
             );
         }
 
@@ -448,22 +2256,580 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/project-variables/{projectId}/{name}/value`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
-            method: 'PATCH',
+            path: `/api/projects/{projectId}/variables/date`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: SetVariableValueDtoToJSON(requestParameters['setVariableValueDto']),
+            body: CreateDateVariableDtoToJSON(requestParameters['createDateVariableDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * ( )
+     * .
      *
      */
-    async updateValue(requestParameters: UpdateValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
-        const response = await this.updateValueRaw(requestParameters, initOverrides);
+    async variablesDate(requestParameters: VariablesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesDateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * json, JSON-.
+     * JSON- -
+     */
+    async variablesJsonArrayRaw(requestParameters: VariablesJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesJsonArray().'
+            );
+        }
+
+        if (requestParameters['createJsonArrayVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createJsonArrayVariableDto',
+                'Required parameter "createJsonArrayVariableDto" was null or undefined when calling variablesJsonArray().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/json/array`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateJsonArrayVariableDtoToJSON(requestParameters['createJsonArrayVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * json, JSON-.
+     * JSON- -
+     */
+    async variablesJsonArray(requestParameters: VariablesJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesJsonArrayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * json, boolean.
+     * JSON-
+     */
+    async variablesJsonBooleanRaw(requestParameters: VariablesJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesJsonBoolean().'
+            );
+        }
+
+        if (requestParameters['createJsonBooleanVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createJsonBooleanVariableDto',
+                'Required parameter "createJsonBooleanVariableDto" was null or undefined when calling variablesJsonBoolean().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/json/boolean`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateJsonBooleanVariableDtoToJSON(requestParameters['createJsonBooleanVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * json, boolean.
+     * JSON-
+     */
+    async variablesJsonBoolean(requestParameters: VariablesJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesJsonBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * null value.
+     * JSON- null
+     */
+    async variablesJsonNullRaw(requestParameters: VariablesJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesJsonNull().'
+            );
+        }
+
+        if (requestParameters['createJsonNullVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createJsonNullVariableDto',
+                'Required parameter "createJsonNullVariableDto" was null or undefined when calling variablesJsonNull().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/json/null`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateJsonNullVariableDtoToJSON(requestParameters['createJsonNullVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * null value.
+     * JSON- null
+     */
+    async variablesJsonNull(requestParameters: VariablesJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesJsonNullRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * json, .
+     * JSON-
+     */
+    async variablesJsonNumberRaw(requestParameters: VariablesJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesJsonNumber().'
+            );
+        }
+
+        if (requestParameters['createJsonNumberVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createJsonNumberVariableDto',
+                'Required parameter "createJsonNumberVariableDto" was null or undefined when calling variablesJsonNumber().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/json/number`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateJsonNumberVariableDtoToJSON(requestParameters['createJsonNumberVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * json, .
+     * JSON-
+     */
+    async variablesJsonNumber(requestParameters: VariablesJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesJsonNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * json, JSON-.
+     * JSON- -
+     */
+    async variablesJsonObjectRaw(requestParameters: VariablesJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesJsonObject().'
+            );
+        }
+
+        if (requestParameters['createJsonObjectVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createJsonObjectVariableDto',
+                'Required parameter "createJsonObjectVariableDto" was null or undefined when calling variablesJsonObject().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/json/object`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateJsonObjectVariableDtoToJSON(requestParameters['createJsonObjectVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * json, JSON-.
+     * JSON- -
+     */
+    async variablesJsonObject(requestParameters: VariablesJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesJsonObjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * json, .
+     * JSON-
+     */
+    async variablesJsonStringRaw(requestParameters: VariablesJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesJsonString().'
+            );
+        }
+
+        if (requestParameters['createJsonStringVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createJsonStringVariableDto',
+                'Required parameter "createJsonStringVariableDto" was null or undefined when calling variablesJsonString().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/json/string`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateJsonStringVariableDtoToJSON(requestParameters['createJsonStringVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * json, .
+     * JSON-
+     */
+    async variablesJsonString(requestParameters: VariablesJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesJsonStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async variablesNumberRaw(requestParameters: VariablesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesNumber().'
+            );
+        }
+
+        if (requestParameters['createNumberVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createNumberVariableDto',
+                'Required parameter "createNumberVariableDto" was null or undefined when calling variablesNumber().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/number`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateNumberVariableDtoToJSON(requestParameters['createNumberVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async variablesNumber(requestParameters: VariablesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * -
+     */
+    async variablesObjectRaw(requestParameters: VariablesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesObject().'
+            );
+        }
+
+        if (requestParameters['createObjectVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createObjectVariableDto',
+                'Required parameter "createObjectVariableDto" was null or undefined when calling variablesObject().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/object`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateObjectVariableDtoToJSON(requestParameters['createObjectVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * -
+     */
+    async variablesObject(requestParameters: VariablesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesObjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async variablesStringRaw(requestParameters: VariablesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling variablesString().'
+            );
+        }
+
+        if (requestParameters['createStringVariableDto'] == null) {
+            throw new runtime.RequiredError(
+                'createStringVariableDto',
+                'Required parameter "createStringVariableDto" was null or undefined when calling variablesString().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/variables/string`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateStringVariableDtoToJSON(requestParameters['createStringVariableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariableResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async variablesString(requestParameters: VariablesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto> {
+        const response = await this.variablesStringRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -472,48 +2838,304 @@ export class ProjectVariablesApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const DeactivateAcceptLanguageEnum = {
+export const DeleteVariablesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeactivateAcceptLanguageEnum = typeof DeactivateAcceptLanguageEnum[keyof typeof DeactivateAcceptLanguageEnum];
+export type DeleteVariablesAcceptLanguageEnum = typeof DeleteVariablesAcceptLanguageEnum[keyof typeof DeleteVariablesAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetByIdAcceptLanguageEnum = {
+export const GetVariablesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetByIdAcceptLanguageEnum = typeof GetByIdAcceptLanguageEnum[keyof typeof GetByIdAcceptLanguageEnum];
+export type GetVariablesAcceptLanguageEnum = typeof GetVariablesAcceptLanguageEnum[keyof typeof GetVariablesAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetById2AcceptLanguageEnum = {
+export const GetVariables2AcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetById2AcceptLanguageEnum = typeof GetById2AcceptLanguageEnum[keyof typeof GetById2AcceptLanguageEnum];
+export type GetVariables2AcceptLanguageEnum = typeof GetVariables2AcceptLanguageEnum[keyof typeof GetVariables2AcceptLanguageEnum];
 /**
  * @export
  */
-export const ProjectVariablesCreateAcceptLanguageEnum = {
+export const GetVariablesByIdsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type ProjectVariablesCreateAcceptLanguageEnum = typeof ProjectVariablesCreateAcceptLanguageEnum[keyof typeof ProjectVariablesCreateAcceptLanguageEnum];
+export type GetVariablesByIdsAcceptLanguageEnum = typeof GetVariablesByIdsAcceptLanguageEnum[keyof typeof GetVariablesByIdsAcceptLanguageEnum];
 /**
  * @export
  */
-export const ProjectVariablesUpdateAcceptLanguageEnum = {
+export const UpdateVariablesArraySchemaAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type ProjectVariablesUpdateAcceptLanguageEnum = typeof ProjectVariablesUpdateAcceptLanguageEnum[keyof typeof ProjectVariablesUpdateAcceptLanguageEnum];
+export type UpdateVariablesArraySchemaAcceptLanguageEnum = typeof UpdateVariablesArraySchemaAcceptLanguageEnum[keyof typeof UpdateVariablesArraySchemaAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateValueAcceptLanguageEnum = {
+export const UpdateVariablesMetadataAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateValueAcceptLanguageEnum = typeof UpdateValueAcceptLanguageEnum[keyof typeof UpdateValueAcceptLanguageEnum];
+export type UpdateVariablesMetadataAcceptLanguageEnum = typeof UpdateVariablesMetadataAcceptLanguageEnum[keyof typeof UpdateVariablesMetadataAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesObjectSchemaAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesObjectSchemaAcceptLanguageEnum = typeof UpdateVariablesObjectSchemaAcceptLanguageEnum[keyof typeof UpdateVariablesObjectSchemaAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeArrayAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeArrayAcceptLanguageEnum = typeof UpdateVariablesTypeArrayAcceptLanguageEnum[keyof typeof UpdateVariablesTypeArrayAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeBooleanAcceptLanguageEnum = typeof UpdateVariablesTypeBooleanAcceptLanguageEnum[keyof typeof UpdateVariablesTypeBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeDateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeDateAcceptLanguageEnum = typeof UpdateVariablesTypeDateAcceptLanguageEnum[keyof typeof UpdateVariablesTypeDateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeJsonArrayAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeJsonArrayAcceptLanguageEnum = typeof UpdateVariablesTypeJsonArrayAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonArrayAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeJsonBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeJsonBooleanAcceptLanguageEnum = typeof UpdateVariablesTypeJsonBooleanAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeJsonNullAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeJsonNullAcceptLanguageEnum = typeof UpdateVariablesTypeJsonNullAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonNullAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeJsonNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeJsonNumberAcceptLanguageEnum = typeof UpdateVariablesTypeJsonNumberAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeJsonObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeJsonObjectAcceptLanguageEnum = typeof UpdateVariablesTypeJsonObjectAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeJsonStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeJsonStringAcceptLanguageEnum = typeof UpdateVariablesTypeJsonStringAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeNumberAcceptLanguageEnum = typeof UpdateVariablesTypeNumberAcceptLanguageEnum[keyof typeof UpdateVariablesTypeNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeObjectAcceptLanguageEnum = typeof UpdateVariablesTypeObjectAcceptLanguageEnum[keyof typeof UpdateVariablesTypeObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesTypeStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesTypeStringAcceptLanguageEnum = typeof UpdateVariablesTypeStringAcceptLanguageEnum[keyof typeof UpdateVariablesTypeStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueArrayAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueArrayAcceptLanguageEnum = typeof UpdateVariablesValueArrayAcceptLanguageEnum[keyof typeof UpdateVariablesValueArrayAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueBooleanAcceptLanguageEnum = typeof UpdateVariablesValueBooleanAcceptLanguageEnum[keyof typeof UpdateVariablesValueBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueDateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueDateAcceptLanguageEnum = typeof UpdateVariablesValueDateAcceptLanguageEnum[keyof typeof UpdateVariablesValueDateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueNullAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueNullAcceptLanguageEnum = typeof UpdateVariablesValueNullAcceptLanguageEnum[keyof typeof UpdateVariablesValueNullAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueNumberAcceptLanguageEnum = typeof UpdateVariablesValueNumberAcceptLanguageEnum[keyof typeof UpdateVariablesValueNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueObjectAcceptLanguageEnum = typeof UpdateVariablesValueObjectAcceptLanguageEnum[keyof typeof UpdateVariablesValueObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVariablesValueStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVariablesValueStringAcceptLanguageEnum = typeof UpdateVariablesValueStringAcceptLanguageEnum[keyof typeof UpdateVariablesValueStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesArrayAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesArrayAcceptLanguageEnum = typeof VariablesArrayAcceptLanguageEnum[keyof typeof VariablesArrayAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesBooleanAcceptLanguageEnum = typeof VariablesBooleanAcceptLanguageEnum[keyof typeof VariablesBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesDateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesDateAcceptLanguageEnum = typeof VariablesDateAcceptLanguageEnum[keyof typeof VariablesDateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesJsonArrayAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesJsonArrayAcceptLanguageEnum = typeof VariablesJsonArrayAcceptLanguageEnum[keyof typeof VariablesJsonArrayAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesJsonBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesJsonBooleanAcceptLanguageEnum = typeof VariablesJsonBooleanAcceptLanguageEnum[keyof typeof VariablesJsonBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesJsonNullAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesJsonNullAcceptLanguageEnum = typeof VariablesJsonNullAcceptLanguageEnum[keyof typeof VariablesJsonNullAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesJsonNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesJsonNumberAcceptLanguageEnum = typeof VariablesJsonNumberAcceptLanguageEnum[keyof typeof VariablesJsonNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesJsonObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesJsonObjectAcceptLanguageEnum = typeof VariablesJsonObjectAcceptLanguageEnum[keyof typeof VariablesJsonObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesJsonStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesJsonStringAcceptLanguageEnum = typeof VariablesJsonStringAcceptLanguageEnum[keyof typeof VariablesJsonStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesNumberAcceptLanguageEnum = typeof VariablesNumberAcceptLanguageEnum[keyof typeof VariablesNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesObjectAcceptLanguageEnum = typeof VariablesObjectAcceptLanguageEnum[keyof typeof VariablesObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VariablesStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VariablesStringAcceptLanguageEnum = typeof VariablesStringAcceptLanguageEnum[keyof typeof VariablesStringAcceptLanguageEnum];

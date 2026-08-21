@@ -28,24 +28,134 @@ export interface SpaceDetailsAvitoDataDto {
      */
     accountUserId?: string;
     /**
+     * ID Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    itemOwnerUserId?: string | null;
+    /**
      * Avito.
      * @type {string}
      * @memberof SpaceDetailsAvitoDataDto
      */
-    priceString?: string;
+    priceString?: string | null;
+    /**
+     * , (/); : 1.25 = 125
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    priceKopecks?: number | null;
+    /**
+     * .
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    currency?: SpaceDetailsAvitoDataDtoCurrencyEnum | null;
     /**
      * ID Avito.
      * @type {number}
      * @memberof SpaceDetailsAvitoDataDto
      */
-    statusId?: number;
+    statusId?: number | null;
     /**
      * Avito.
      * @type {string}
      * @memberof SpaceDetailsAvitoDataDto
      */
-    locationTitle?: string;
+    status?: string | null;
+    /**
+     * Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    locationTitle?: string | null;
+    /**
+     * Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    address?: string | null;
+    /**
+     * ID Avito.
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    categoryId?: number | null;
+    /**
+     * Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    categoryName?: string | null;
+    /**
+     * .
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    imageCount?: number | null;
+    /**
+     * ID Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    autoloadItemId?: string | null;
+    /**
+     * .
+     * @type {Date}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    publicationStartedAt?: Date | null;
+    /**
+     * .
+     * @type {Date}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    publicationFinishedAt?: Date | null;
+    /**
+     * Avito-.
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    schemaVersion?: number;
+    /**
+     * , .
+     * @type {Array<string>}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    sources?: Array<SpaceDetailsAvitoDataDtoSourcesEnum>;
+    /**
+     * .
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    completeness?: SpaceDetailsAvitoDataDtoCompletenessEnum;
 }
+/**
+ * @export
+ */
+export declare const SpaceDetailsAvitoDataDtoCurrencyEnum: {
+    readonly Rub: "RUB";
+};
+export type SpaceDetailsAvitoDataDtoCurrencyEnum = typeof SpaceDetailsAvitoDataDtoCurrencyEnum[keyof typeof SpaceDetailsAvitoDataDtoCurrencyEnum];
+/**
+ * @export
+ */
+export declare const SpaceDetailsAvitoDataDtoSourcesEnum: {
+    readonly Webhook: "webhook";
+    readonly Messenger: "messenger";
+    readonly ItemApi: "item_api";
+    readonly AccountItemApi: "account_item_api";
+};
+export type SpaceDetailsAvitoDataDtoSourcesEnum = typeof SpaceDetailsAvitoDataDtoSourcesEnum[keyof typeof SpaceDetailsAvitoDataDtoSourcesEnum];
+/**
+ * @export
+ */
+export declare const SpaceDetailsAvitoDataDtoCompletenessEnum: {
+    readonly Identity: "identity";
+    readonly Messenger: "messenger";
+    readonly Item: "item";
+};
+export type SpaceDetailsAvitoDataDtoCompletenessEnum = typeof SpaceDetailsAvitoDataDtoCompletenessEnum[keyof typeof SpaceDetailsAvitoDataDtoCompletenessEnum];
 /**
  * Check if a given object implements the SpaceDetailsAvitoDataDto interface.
  */

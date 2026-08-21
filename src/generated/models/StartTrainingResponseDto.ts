@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingMode } from './TrainingMode';
+import {
+    TrainingModeFromJSON,
+    TrainingModeFromJSONTyped,
+    TrainingModeToJSON,
+    TrainingModeToJSONTyped,
+} from './TrainingMode';
+import type { AgentStatus } from './AgentStatus';
+import {
+    AgentStatusFromJSON,
+    AgentStatusFromJSONTyped,
+    AgentStatusToJSON,
+    AgentStatusToJSONTyped,
+} from './AgentStatus';
+
 /**
  * StartTrainingResponseDto.
  * @export
@@ -27,10 +42,10 @@ export interface StartTrainingResponseDto {
     agentId: string;
     /**
      *
-     * @type {string}
+     * @type {AgentStatus}
      * @memberof StartTrainingResponseDto
      */
-    status: string;
+    status: AgentStatus;
     /**
      *
      * @type {number}
@@ -39,34 +54,30 @@ export interface StartTrainingResponseDto {
     tasksCreated: number;
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof StartTrainingResponseDto
      */
-    mode: StartTrainingResponseDtoModeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof StartTrainingResponseDto
-     */
-    estimatedTime: string;
+    mode: TrainingMode;
     /**
      * ID
      * @type {Array<string>}
      * @memberof StartTrainingResponseDto
      */
     taskIds: Array<string>;
+    /**
+     * ID
+     * @type {string}
+     * @memberof StartTrainingResponseDto
+     */
+    trainingRunId: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof StartTrainingResponseDto
+     */
+    billingExempt: boolean;
 }
 
-
-/**
- * @export
- */
-export const StartTrainingResponseDtoModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-} as const;
-export type StartTrainingResponseDtoModeEnum = typeof StartTrainingResponseDtoModeEnum[keyof typeof StartTrainingResponseDtoModeEnum];
 
 
 /**
@@ -77,8 +88,9 @@ export function instanceOfStartTrainingResponseDto(value: object): value is Star
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('tasksCreated' in value) || value['tasksCreated'] === undefined) return false;
     if (!('mode' in value) || value['mode'] === undefined) return false;
-    if (!('estimatedTime' in value) || value['estimatedTime'] === undefined) return false;
     if (!('taskIds' in value) || value['taskIds'] === undefined) return false;
+    if (!('trainingRunId' in value) || value['trainingRunId'] === undefined) return false;
+    if (!('billingExempt' in value) || value['billingExempt'] === undefined) return false;
     return true;
 }
 
@@ -93,11 +105,12 @@ export function StartTrainingResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
     return {
 
         'agentId': json['agentId'],
-        'status': json['status'],
+        'status': AgentStatusFromJSON(json['status']),
         'tasksCreated': json['tasksCreated'],
-        'mode': json['mode'],
-        'estimatedTime': json['estimatedTime'],
+        'mode': TrainingModeFromJSON(json['mode']),
         'taskIds': json['taskIds'],
+        'trainingRunId': json['trainingRunId'],
+        'billingExempt': json['billingExempt'],
     };
 }
 
@@ -113,10 +126,11 @@ export function StartTrainingResponseDtoToJSONTyped(value?: StartTrainingRespons
     return {
 
         'agentId': value['agentId'],
-        'status': value['status'],
+        'status': AgentStatusToJSON(value['status']),
         'tasksCreated': value['tasksCreated'],
-        'mode': value['mode'],
-        'estimatedTime': value['estimatedTime'],
+        'mode': TrainingModeToJSON(value['mode']),
         'taskIds': value['taskIds'],
+        'trainingRunId': value['trainingRunId'],
+        'billingExempt': value['billingExempt'],
     };
 }

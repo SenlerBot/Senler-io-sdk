@@ -39,6 +39,18 @@ export interface LandingPublicCatalogItemDto {
      * @memberof LandingPublicCatalogItemDto
      */
     webUrl: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPublicCatalogItemDto
+     */
+    iconUrl: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPublicCatalogItemDto
+     */
+    bannerUrl: string | null;
 }
 /**
  * Check if a given object implements the LandingPublicCatalogItemDto interface.

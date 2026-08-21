@@ -20,13 +20,6 @@ import {
     LandingAvailablePublicSubscriptionCapabilityDtoChannelsInnerToJSON,
     LandingAvailablePublicSubscriptionCapabilityDtoChannelsInnerToJSONTyped,
 } from './LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner';
-import type { LandingPublicPaymentDto } from './LandingPublicPaymentDto';
-import {
-    LandingPublicPaymentDtoFromJSON,
-    LandingPublicPaymentDtoFromJSONTyped,
-    LandingPublicPaymentDtoToJSON,
-    LandingPublicPaymentDtoToJSONTyped,
-} from './LandingPublicPaymentDto';
 import type { SegmentConsentSnapshotDto } from './SegmentConsentSnapshotDto';
 import {
     SegmentConsentSnapshotDtoFromJSON,
@@ -53,12 +46,6 @@ export interface LandingAvailablePublicSubscriptionCapabilityDto {
      * @memberof LandingAvailablePublicSubscriptionCapabilityDto
      */
     launchToken: string;
-    /**
-     *
-     * @type {LandingPublicPaymentDto}
-     * @memberof LandingAvailablePublicSubscriptionCapabilityDto
-     */
-    payment: LandingPublicPaymentDto;
     /**
      *
      * @type {Array<SegmentConsentSnapshotDto>}
@@ -89,7 +76,6 @@ export type LandingAvailablePublicSubscriptionCapabilityDtoStatusEnum = typeof L
 export function instanceOfLandingAvailablePublicSubscriptionCapabilityDto(value: object): value is LandingAvailablePublicSubscriptionCapabilityDto {
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('launchToken' in value) || value['launchToken'] === undefined) return false;
-    if (!('payment' in value) || value['payment'] === undefined) return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined) return false;
     if (!('channels' in value) || value['channels'] === undefined) return false;
     return true;
@@ -107,7 +93,6 @@ export function LandingAvailablePublicSubscriptionCapabilityDtoFromJSONTyped(jso
 
         'status': json['status'],
         'launchToken': json['launch_token'],
-        'payment': LandingPublicPaymentDtoFromJSON(json['payment']),
         'requiredConsents': ((json['required_consents'] as Array<any>).map(SegmentConsentSnapshotDtoFromJSON)),
         'channels': ((json['channels'] as Array<any>).map(LandingAvailablePublicSubscriptionCapabilityDtoChannelsInnerFromJSON)),
     };
@@ -126,7 +111,6 @@ export function LandingAvailablePublicSubscriptionCapabilityDtoToJSONTyped(value
 
         'status': value['status'],
         'launch_token': value['launchToken'],
-        'payment': LandingPublicPaymentDtoToJSON(value['payment']),
         'required_consents': ((value['requiredConsents'] as Array<any>).map(SegmentConsentSnapshotDtoToJSON)),
         'channels': ((value['channels'] as Array<any>).map(LandingAvailablePublicSubscriptionCapabilityDtoChannelsInnerToJSON)),
     };

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDeliveriesScheduleAcceptLanguageEnum = exports.UpdateDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewChannelTypeEnum = exports.GetDeliveries2AcceptLanguageEnum = exports.GetDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTabEnum = exports.DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = exports.DeliveriesTestAcceptLanguageEnum = exports.DeliveriesStartAcceptLanguageEnum = exports.DeliveriesCopyAcceptLanguageEnum = exports.DeliveriesCancelAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeliveriesAcceptLanguageEnum = exports.DeleteDeliveriesScheduleAcceptLanguageEnum = exports.DeleteDeliveriesAcceptLanguageEnum = exports.DeliveriesApi = void 0;
+exports.UpdateDeliveriesScheduleAcceptLanguageEnum = exports.UpdateDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTestRecipientsAcceptLanguageEnum = exports.GetDeliveriesStartPreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = exports.GetDeliveriesAudiencePreviewChannelTypeEnum = exports.GetDeliveries2AcceptLanguageEnum = exports.GetDeliveriesAcceptLanguageEnum = exports.GetDeliveriesTabEnum = exports.DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = exports.DeliveriesTestRecipientLinkAcceptLanguageEnum = exports.DeliveriesTestAcceptLanguageEnum = exports.DeliveriesStartAcceptLanguageEnum = exports.DeliveriesCopyAcceptLanguageEnum = exports.DeliveriesCancelAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeliveriesAcceptLanguageEnum = exports.DeleteDeliveriesScheduleAcceptLanguageEnum = exports.DeleteDeliveriesAcceptLanguageEnum = exports.DeliveriesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -580,7 +580,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/deliveries`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -623,7 +623,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/deliveries/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -662,32 +662,11 @@ class DeliveriesApi extends runtime.BaseAPI {
         if (requestParameters['channelType'] != null) {
             queryParameters['channel_type'] = requestParameters['channelType'];
         }
-        if (requestParameters['isSubscribed'] != null) {
-            queryParameters['is_subscribed'] = requestParameters['isSubscribed'];
-        }
-        if (requestParameters['isBlacklisted'] != null) {
-            queryParameters['is_blacklisted'] = requestParameters['isBlacklisted'];
-        }
-        if (requestParameters['isBlocked'] != null) {
-            queryParameters['is_blocked'] = requestParameters['isBlocked'];
-        }
-        if (requestParameters['search'] != null) {
-            queryParameters['search'] = requestParameters['search'];
-        }
-        if (requestParameters['spaceId'] != null) {
-            queryParameters['space_id'] = requestParameters['spaceId'];
-        }
-        if (requestParameters['spaceIsMember'] != null) {
-            queryParameters['space_is_member'] = requestParameters['spaceIsMember'];
-        }
         if (requestParameters['segmentId'] != null) {
             queryParameters['segment_id'] = requestParameters['segmentId'];
         }
         if (requestParameters['segmentIsMember'] != null) {
             queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
-        }
-        if (requestParameters['pendingSegmentId'] != null) {
-            queryParameters['pending_segment_id'] = requestParameters['pendingSegmentId'];
         }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
@@ -708,7 +687,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/deliveries/{id}/audience-preview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -724,6 +703,49 @@ class DeliveriesApi extends runtime.BaseAPI {
      */
     async getDeliveriesAudiencePreview(requestParameters, initOverrides) {
         const response = await this.getDeliveriesAudiencePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getDeliveriesStartPreviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDeliveriesStartPreview().');
+        }
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getDeliveriesStartPreview().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/start-preview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryStartPreviewResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getDeliveriesStartPreview(requestParameters, initOverrides) {
+        const response = await this.getDeliveriesStartPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -757,7 +779,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/deliveries/{id}/test-recipients`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -990,6 +1012,13 @@ exports.GetDeliveriesAudiencePreviewChannelTypeEnum = {
  * @export
  */
 exports.GetDeliveriesAudiencePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDeliveriesStartPreviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

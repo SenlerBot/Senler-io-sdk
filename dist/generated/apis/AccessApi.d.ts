@@ -11,19 +11,25 @@
  */
 import * as runtime from '../runtime';
 import type { GetMemberChannelsResponseDto, GetProjectMemberResponseDto, ProjectMemberListItemDto, RolePresetsResponseDto, SuccessResponseDto, TransferOwnershipDto, TransferOwnershipResponseDto, UpdateProjectMemberDto, UpdateProjectMemberResponseDto } from '../models/index';
-export interface DeleteMembersRequest {
+export interface AccessDeleteMembersRequest {
     projectId: string;
     memberId: string;
-    acceptLanguage?: DeleteMembersAcceptLanguageEnum;
+    acceptLanguage?: AccessDeleteMembersAcceptLanguageEnum;
 }
-export interface GetMembersRequest {
+export interface AccessGetMembersRequest {
     projectId: string;
-    acceptLanguage?: GetMembersAcceptLanguageEnum;
+    acceptLanguage?: AccessGetMembersAcceptLanguageEnum;
 }
-export interface GetMembers2Request {
+export interface AccessGetMembers2Request {
     projectId: string;
     memberId: string;
-    acceptLanguage?: GetMembers2AcceptLanguageEnum;
+    acceptLanguage?: AccessGetMembers2AcceptLanguageEnum;
+}
+export interface AccessUpdateMembersRequest {
+    projectId: string;
+    memberId: string;
+    updateProjectMemberDto: UpdateProjectMemberDto;
+    acceptLanguage?: AccessUpdateMembersAcceptLanguageEnum;
 }
 export interface GetMembersChannelsRequest {
     projectId: string;
@@ -38,12 +44,6 @@ export interface TransferOwnershipRequest {
     transferOwnershipDto: TransferOwnershipDto;
     acceptLanguage?: TransferOwnershipAcceptLanguageEnum;
 }
-export interface UpdateMembersRequest {
-    projectId: string;
-    memberId: string;
-    updateProjectMemberDto: UpdateProjectMemberDto;
-    acceptLanguage?: UpdateMembersAcceptLanguageEnum;
-}
 /**
  *
  */
@@ -52,32 +52,42 @@ export declare class AccessApi extends runtime.BaseAPI {
      * (is_active = false). owner\' .
      *
      */
-    deleteMembersRaw(requestParameters: DeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    accessDeleteMembersRaw(requestParameters: AccessDeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
      * (is_active = false). owner\' .
      *
      */
-    deleteMembers(requestParameters: DeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
+    accessDeleteMembers(requestParameters: AccessDeleteMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
      *
      *
      */
-    getMembersRaw(requestParameters: GetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectMemberListItemDto>>>;
+    accessGetMembersRaw(requestParameters: AccessGetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectMemberListItemDto>>>;
     /**
      *
      *
      */
-    getMembers(requestParameters: GetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectMemberListItemDto>>;
-    /**
-     * ,
-     *
-     */
-    getMembers2Raw(requestParameters: GetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectMemberResponseDto>>;
+    accessGetMembers(requestParameters: AccessGetMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectMemberListItemDto>>;
     /**
      * ,
      *
      */
-    getMembers2(requestParameters: GetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectMemberResponseDto>;
+    accessGetMembers2Raw(requestParameters: AccessGetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectMemberResponseDto>>;
+    /**
+     * ,
+     *
+     */
+    accessGetMembers2(requestParameters: AccessGetMembers2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectMemberResponseDto>;
+    /**
+     * . owner , .
+     *
+     */
+    accessUpdateMembersRaw(requestParameters: AccessUpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>>;
+    /**
+     * . owner , .
+     *
+     */
+    accessUpdateMembers(requestParameters: AccessUpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto>;
     /**
      * , .  USE CASE: .  (owner, admin member).
      *
@@ -108,41 +118,39 @@ export declare class AccessApi extends runtime.BaseAPI {
      *
      */
     transferOwnership(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto>;
-    /**
-     * . owner , .
-     *
-     */
-    updateMembersRaw(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>>;
-    /**
-     * . owner , .
-     *
-     */
-    updateMembers(requestParameters: UpdateMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteMembersAcceptLanguageEnum: {
+export declare const AccessDeleteMembersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteMembersAcceptLanguageEnum = typeof DeleteMembersAcceptLanguageEnum[keyof typeof DeleteMembersAcceptLanguageEnum];
+export type AccessDeleteMembersAcceptLanguageEnum = typeof AccessDeleteMembersAcceptLanguageEnum[keyof typeof AccessDeleteMembersAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetMembersAcceptLanguageEnum: {
+export declare const AccessGetMembersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetMembersAcceptLanguageEnum = typeof GetMembersAcceptLanguageEnum[keyof typeof GetMembersAcceptLanguageEnum];
+export type AccessGetMembersAcceptLanguageEnum = typeof AccessGetMembersAcceptLanguageEnum[keyof typeof AccessGetMembersAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetMembers2AcceptLanguageEnum: {
+export declare const AccessGetMembers2AcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetMembers2AcceptLanguageEnum = typeof GetMembers2AcceptLanguageEnum[keyof typeof GetMembers2AcceptLanguageEnum];
+export type AccessGetMembers2AcceptLanguageEnum = typeof AccessGetMembers2AcceptLanguageEnum[keyof typeof AccessGetMembers2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AccessUpdateMembersAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AccessUpdateMembersAcceptLanguageEnum = typeof AccessUpdateMembersAcceptLanguageEnum[keyof typeof AccessUpdateMembersAcceptLanguageEnum];
 /**
  * @export
  */
@@ -167,11 +175,3 @@ export declare const TransferOwnershipAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TransferOwnershipAcceptLanguageEnum = typeof TransferOwnershipAcceptLanguageEnum[keyof typeof TransferOwnershipAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateMembersAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateMembersAcceptLanguageEnum = typeof UpdateMembersAcceptLanguageEnum[keyof typeof UpdateMembersAcceptLanguageEnum];

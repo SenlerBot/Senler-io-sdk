@@ -60,12 +60,6 @@ export interface UpdateServerBodyDto {
      */
     isActive?: boolean;
     /**
-     * ,
-     * @type {string}
-     * @memberof UpdateServerBodyDto
-     */
-    descriptionPrepend?: string;
-    /**
      * MCP
      * @type {{ [key: string]: any; }}
      * @memberof UpdateServerBodyDto
@@ -79,6 +73,18 @@ export interface UpdateServerBodyDto {
      * @memberof UpdateServerBodyDto
      */
     authMode?: UpdateServerBodyDtoAuthModeEnum;
+    /**
+     * Senler
+     * @type {boolean}
+     * @memberof UpdateServerBodyDto
+     */
+    senlerDynamicToolLoadingEnabled?: boolean;
+    /**
+     * Senler
+     * @type {string}
+     * @memberof UpdateServerBodyDto
+     */
+    senlerToolSearchLanguage?: UpdateServerBodyDtoSenlerToolSearchLanguageEnum;
     /**
      *
      * @type {CreateServerBodyDtoMeta}
@@ -104,6 +110,14 @@ export declare const UpdateServerBodyDtoAuthModeEnum: {
     readonly Lead: "lead";
 };
 export type UpdateServerBodyDtoAuthModeEnum = typeof UpdateServerBodyDtoAuthModeEnum[keyof typeof UpdateServerBodyDtoAuthModeEnum];
+/**
+ * @export
+ */
+export declare const UpdateServerBodyDtoSenlerToolSearchLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateServerBodyDtoSenlerToolSearchLanguageEnum = typeof UpdateServerBodyDtoSenlerToolSearchLanguageEnum[keyof typeof UpdateServerBodyDtoSenlerToolSearchLanguageEnum];
 /**
  * Check if a given object implements the UpdateServerBodyDto interface.
  */

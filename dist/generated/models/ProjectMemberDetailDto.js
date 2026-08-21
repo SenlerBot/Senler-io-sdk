@@ -18,10 +18,10 @@ exports.ProjectMemberDetailDtoFromJSON = ProjectMemberDetailDtoFromJSON;
 exports.ProjectMemberDetailDtoFromJSONTyped = ProjectMemberDetailDtoFromJSONTyped;
 exports.ProjectMemberDetailDtoToJSON = ProjectMemberDetailDtoToJSON;
 exports.ProjectMemberDetailDtoToJSONTyped = ProjectMemberDetailDtoToJSONTyped;
-const Role_1 = require("./Role");
 const UserResponseDto_1 = require("./UserResponseDto");
 const MemberChannelDto_1 = require("./MemberChannelDto");
 const PermissionsDto_1 = require("./PermissionsDto");
+const ProjectRole_1 = require("./ProjectRole");
 /**
  * Check if a given object implements the ProjectMemberDetailDto interface.
  */
@@ -55,7 +55,7 @@ function ProjectMemberDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'projectId': json['project_id'],
         'userId': json['user_id'],
-        'role': (0, Role_1.RoleFromJSON)(json['role']),
+        'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
         'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
         'isSupportOperator': json['is_support_operator'],
         'user': (0, UserResponseDto_1.UserResponseDtoFromJSON)(json['user']),
@@ -74,7 +74,7 @@ function ProjectMemberDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'project_id': value['projectId'],
         'user_id': value['userId'],
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
         'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
         'is_support_operator': value['isSupportOperator'],
         'user': (0, UserResponseDto_1.UserResponseDtoToJSON)(value['user']),

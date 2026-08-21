@@ -26,25 +26,7 @@ export interface CreateServerBodyDtoMeta {
      * @memberof CreateServerBodyDtoMeta
      */
     tags?: Array<string>;
-    /**
-     * MCP
-     * @type {string}
-     * @memberof CreateServerBodyDtoMeta
-     */
-    healthStatus?: CreateServerBodyDtoMetaHealthStatusEnum;
 }
-
-
-/**
- * @export
- */
-export const CreateServerBodyDtoMetaHealthStatusEnum = {
-    Healthy: 'healthy',
-    Unhealthy: 'unhealthy',
-    Unknown: 'unknown'
-} as const;
-export type CreateServerBodyDtoMetaHealthStatusEnum = typeof CreateServerBodyDtoMetaHealthStatusEnum[keyof typeof CreateServerBodyDtoMetaHealthStatusEnum];
-
 
 /**
  * Check if a given object implements the CreateServerBodyDtoMeta interface.
@@ -65,7 +47,6 @@ export function CreateServerBodyDtoMetaFromJSONTyped(json: any, ignoreDiscrimina
 
             ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
-        'healthStatus': json['health_status'] == null ? undefined : json['health_status'],
     };
 }
 
@@ -82,6 +63,5 @@ export function CreateServerBodyDtoMetaToJSONTyped(value?: CreateServerBodyDtoMe
 
             ...value,
         'tags': value['tags'],
-        'health_status': value['healthStatus'],
     };
 }

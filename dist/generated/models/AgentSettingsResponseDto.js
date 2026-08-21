@@ -13,14 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentSettingsResponseDtoLeadVarsUserRequestModeEnum = exports.AgentSettingsResponseDtoLeadVarsInstructionModeEnum = exports.AgentSettingsResponseDtoProjectVarsUserRequestModeEnum = exports.AgentSettingsResponseDtoProjectVarsInstructionModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoWizardTrainingModeSelectedEnum = exports.AgentSettingsResponseDtoStatusEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = void 0;
+exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = void 0;
 exports.instanceOfAgentSettingsResponseDto = instanceOfAgentSettingsResponseDto;
 exports.AgentSettingsResponseDtoFromJSON = AgentSettingsResponseDtoFromJSON;
 exports.AgentSettingsResponseDtoFromJSONTyped = AgentSettingsResponseDtoFromJSONTyped;
 exports.AgentSettingsResponseDtoToJSON = AgentSettingsResponseDtoToJSON;
 exports.AgentSettingsResponseDtoToJSONTyped = AgentSettingsResponseDtoToJSONTyped;
+const TrainingMode_1 = require("./TrainingMode");
+const AgentStatus_1 = require("./AgentStatus");
 const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
 const AgentSelectedModelSummaryDto_1 = require("./AgentSelectedModelSummaryDto");
+const WizardStep_1 = require("./WizardStep");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const McpServerResponseDto_1 = require("./McpServerResponseDto");
 const McpServerListResponseDto_1 = require("./McpServerListResponseDto");
@@ -40,26 +43,32 @@ exports.AgentSettingsResponseDtoAgentTypeEnum = {
  * @export
  */
 exports.AgentSettingsResponseDtoServerBindingModeEnum = {
-    List: 'list',
-    Direct: 'direct',
+    ProviderDirect: 'provider_direct',
+    SenlerDirect: 'senler_direct',
+    SenlerList: 'senler_list',
     None: 'none'
 };
 /**
  * @export
  */
 exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = {
-    GetData: 'get_data',
-    EditContent: 'edit_content',
-    AddTableRows: 'add_table_rows',
+    ReadDocuments: 'read_documents',
     CreateDocuments: 'create_documents',
-    UploadFiles: 'upload_files',
+    UploadDocuments: 'upload_documents',
+    EditDocuments: 'edit_documents',
+    DeleteDocuments: 'delete_documents',
+    ReadTables: 'read_tables',
     CreateTables: 'create_tables',
-    CreateSheets: 'create_sheets',
     ImportCsvXlsx: 'import_csv_xlsx',
+    AddTableRows: 'add_table_rows',
+    EditTables: 'edit_tables',
+    CreateSheets: 'create_sheets',
     DeleteRows: 'delete_rows',
-    DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
-    DeleteTables: 'delete_tables'
+    DeleteTables: 'delete_tables',
+    ReadImages: 'read_images',
+    UploadImages: 'upload_images',
+    DeleteImages: 'delete_images'
 };
 /**
  * @export
@@ -110,24 +119,6 @@ exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = {
 /**
  * @export
  */
-exports.AgentSettingsResponseDtoStatusEnum = {
-    Draft: 'draft',
-    Training: 'training',
-    Ready: 'ready',
-    Active: 'active',
-    Inactive: 'inactive'
-};
-/**
- * @export
- */
-exports.AgentSettingsResponseDtoWizardTrainingModeSelectedEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-};
-/**
- * @export
- */
 exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
     Typing: 'typing',
@@ -136,31 +127,7 @@ exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = {
 /**
  * @export
  */
-exports.AgentSettingsResponseDtoProjectVarsInstructionModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-};
-/**
- * @export
- */
-exports.AgentSettingsResponseDtoProjectVarsUserRequestModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-};
-/**
- * @export
- */
-exports.AgentSettingsResponseDtoLeadVarsInstructionModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-};
-/**
- * @export
- */
-exports.AgentSettingsResponseDtoLeadVarsUserRequestModeEnum = {
+exports.AgentSettingsResponseDtoVariablesAccessModeEnum = {
     None: 'none',
     Read: 'read',
     ReadWrite: 'read_write'
@@ -235,6 +202,8 @@ function instanceOfAgentSettingsResponseDto(value) {
         return false;
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined)
         return false;
+    if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined)
+        return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined)
         return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined)
@@ -259,17 +228,13 @@ function instanceOfAgentSettingsResponseDto(value) {
         return false;
     if (!('enableDetachFromDialog' in value) || value['enableDetachFromDialog'] === undefined)
         return false;
-    if (!('useProjectVariables' in value) || value['useProjectVariables'] === undefined)
+    if (!('variableBindings' in value) || value['variableBindings'] === undefined)
         return false;
-    if (!('useLeadVariables' in value) || value['useLeadVariables'] === undefined)
+    if (!('variablesAccessMode' in value) || value['variablesAccessMode'] === undefined)
         return false;
-    if (!('projectVarsInstructionMode' in value) || value['projectVarsInstructionMode'] === undefined)
+    if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined)
         return false;
-    if (!('projectVarsUserRequestMode' in value) || value['projectVarsUserRequestMode'] === undefined)
-        return false;
-    if (!('leadVarsInstructionMode' in value) || value['leadVarsInstructionMode'] === undefined)
-        return false;
-    if (!('leadVarsUserRequestMode' in value) || value['leadVarsUserRequestMode'] === undefined)
+    if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -315,9 +280,10 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'autoAssignmentChannelIds': json['auto_assignment_channel_ids'] == null ? undefined : json['auto_assignment_channel_ids'],
         'autoAssignmentDialogScope': json['auto_assignment_dialog_scope'] == null ? undefined : json['auto_assignment_dialog_scope'],
         'autoAssignmentRole': json['auto_assignment_role'],
-        'status': json['status'],
-        'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : json['wizard_current_step'],
-        'wizardTrainingModeSelected': json['wizard_training_mode_selected'],
+        'status': (0, AgentStatus_1.AgentStatusFromJSON)(json['status']),
+        'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : (0, WizardStep_1.WizardStepFromJSON)(json['wizard_current_step']),
+        'wizardUpdatedAt': json['wizard_updated_at'] == null ? undefined : (new Date(json['wizard_updated_at'])),
+        'wizardTrainingModeSelected': (0, TrainingMode_1.TrainingModeFromJSON)(json['wizard_training_mode_selected']),
         'wizardWebsiteSourceIds': json['wizard_website_source_ids'],
         'wizardChannelIds': json['wizard_channel_ids'],
         'wizardHistoryDepthDays': json['wizard_history_depth_days'],
@@ -340,6 +306,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
+        'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
@@ -352,12 +319,10 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableSkipMetrics': json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'],
         'enableDetachFromDialog': json['enable_detach_from_dialog'],
-        'useProjectVariables': json['use_project_variables'],
-        'useLeadVariables': json['use_lead_variables'],
-        'projectVarsInstructionMode': json['project_vars_instruction_mode'],
-        'projectVarsUserRequestMode': json['project_vars_user_request_mode'],
-        'leadVarsInstructionMode': json['lead_vars_instruction_mode'],
-        'leadVarsUserRequestMode': json['lead_vars_user_request_mode'],
+        'variableBindings': json['variable_bindings'],
+        'variablesAccessMode': json['variables_access_mode'],
+        'segmentAccessPolicy': json['segment_access_policy'],
+        'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -400,9 +365,10 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'auto_assignment_channel_ids': value['autoAssignmentChannelIds'],
         'auto_assignment_dialog_scope': value['autoAssignmentDialogScope'],
         'auto_assignment_role': value['autoAssignmentRole'],
-        'status': value['status'],
-        'wizard_current_step': value['wizardCurrentStep'],
-        'wizard_training_mode_selected': value['wizardTrainingModeSelected'],
+        'status': (0, AgentStatus_1.AgentStatusToJSON)(value['status']),
+        'wizard_current_step': (0, WizardStep_1.WizardStepToJSON)(value['wizardCurrentStep']),
+        'wizard_updated_at': value['wizardUpdatedAt'] == null ? undefined : (value['wizardUpdatedAt'].toISOString()),
+        'wizard_training_mode_selected': (0, TrainingMode_1.TrainingModeToJSON)(value['wizardTrainingModeSelected']),
         'wizard_website_source_ids': value['wizardWebsiteSourceIds'],
         'wizard_channel_ids': value['wizardChannelIds'],
         'wizard_history_depth_days': value['wizardHistoryDepthDays'],
@@ -425,6 +391,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
+        'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
@@ -437,12 +404,10 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
-        'use_project_variables': value['useProjectVariables'],
-        'use_lead_variables': value['useLeadVariables'],
-        'project_vars_instruction_mode': value['projectVarsInstructionMode'],
-        'project_vars_user_request_mode': value['projectVarsUserRequestMode'],
-        'lead_vars_instruction_mode': value['leadVarsInstructionMode'],
-        'lead_vars_user_request_mode': value['leadVarsUserRequestMode'],
+        'variable_bindings': value['variableBindings'],
+        'variables_access_mode': value['variablesAccessMode'],
+        'segment_access_policy': value['segmentAccessPolicy'],
+        'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

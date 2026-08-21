@@ -13,16 +13,32 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CreateOAuthLoginContinuationRequestDtoSubjectEnum = exports.CreateOAuthLoginContinuationRequestDtoResponseTypeEnum = void 0;
 exports.instanceOfCreateOAuthLoginContinuationRequestDto = instanceOfCreateOAuthLoginContinuationRequestDto;
 exports.CreateOAuthLoginContinuationRequestDtoFromJSON = CreateOAuthLoginContinuationRequestDtoFromJSON;
 exports.CreateOAuthLoginContinuationRequestDtoFromJSONTyped = CreateOAuthLoginContinuationRequestDtoFromJSONTyped;
 exports.CreateOAuthLoginContinuationRequestDtoToJSON = CreateOAuthLoginContinuationRequestDtoToJSON;
 exports.CreateOAuthLoginContinuationRequestDtoToJSONTyped = CreateOAuthLoginContinuationRequestDtoToJSONTyped;
 /**
+ * @export
+ */
+exports.CreateOAuthLoginContinuationRequestDtoResponseTypeEnum = {
+    Code: 'code'
+};
+/**
+ * @export
+ */
+exports.CreateOAuthLoginContinuationRequestDtoSubjectEnum = {
+    Project: 'project',
+    User: 'user'
+};
+/**
  * Check if a given object implements the CreateOAuthLoginContinuationRequestDto interface.
  */
 function instanceOfCreateOAuthLoginContinuationRequestDto(value) {
     if (!('clientId' in value) || value['clientId'] === undefined)
+        return false;
+    if (!('responseType' in value) || value['responseType'] === undefined)
         return false;
     if (!('redirectUri' in value) || value['redirectUri'] === undefined)
         return false;
@@ -37,10 +53,12 @@ function CreateOAuthLoginContinuationRequestDtoFromJSONTyped(json, ignoreDiscrim
     }
     return {
         'clientId': json['client_id'],
+        'responseType': json['response_type'],
         'redirectUri': json['redirect_uri'],
         'scope': json['scope'] == null ? undefined : json['scope'],
         'state': json['state'] == null ? undefined : json['state'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
+        'subject': json['subject'] == null ? undefined : json['subject'],
     };
 }
 function CreateOAuthLoginContinuationRequestDtoToJSON(json) {
@@ -52,9 +70,11 @@ function CreateOAuthLoginContinuationRequestDtoToJSONTyped(value, ignoreDiscrimi
     }
     return {
         'client_id': value['clientId'],
+        'response_type': value['responseType'],
         'redirect_uri': value['redirectUri'],
         'scope': value['scope'],
         'state': value['state'],
         'project_id': value['projectId'],
+        'subject': value['subject'],
     };
 }

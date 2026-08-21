@@ -32,6 +32,12 @@ export interface ProjectVariableResponseDto {
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
+    id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ProjectVariableResponseDto
+     */
     projectId: string;
     /**
      * ID (null = )
@@ -109,6 +115,7 @@ export type ProjectVariableResponseDtoTypeEnum = typeof ProjectVariableResponseD
  * Check if a given object implements the ProjectVariableResponseDto interface.
  */
 export function instanceOfProjectVariableResponseDto(value: object): value is ProjectVariableResponseDto {
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('appId' in value) || value['appId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
@@ -129,6 +136,7 @@ export function ProjectVariableResponseDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'id': json['id'],
         'projectId': json['project_id'],
         'appId': json['app_id'],
         'name': json['name'],
@@ -153,6 +161,7 @@ export function ProjectVariableResponseDtoToJSONTyped(value?: ProjectVariableRes
 
     return {
 
+        'id': value['id'],
         'project_id': value['projectId'],
         'app_id': value['appId'],
         'name': value['name'],

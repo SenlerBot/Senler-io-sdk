@@ -22,22 +22,7 @@ export interface McpServerResponseDtoMeta {
      * @memberof McpServerResponseDtoMeta
      */
     tags?: Array<string>;
-    /**
-     * MCP
-     * @type {string}
-     * @memberof McpServerResponseDtoMeta
-     */
-    healthStatus?: McpServerResponseDtoMetaHealthStatusEnum;
 }
-/**
- * @export
- */
-export declare const McpServerResponseDtoMetaHealthStatusEnum: {
-    readonly Healthy: "healthy";
-    readonly Unhealthy: "unhealthy";
-    readonly Unknown: "unknown";
-};
-export type McpServerResponseDtoMetaHealthStatusEnum = typeof McpServerResponseDtoMetaHealthStatusEnum[keyof typeof McpServerResponseDtoMetaHealthStatusEnum];
 /**
  * Check if a given object implements the McpServerResponseDtoMeta interface.
  */

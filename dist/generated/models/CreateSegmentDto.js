@@ -18,7 +18,6 @@ exports.CreateSegmentDtoFromJSON = CreateSegmentDtoFromJSON;
 exports.CreateSegmentDtoFromJSONTyped = CreateSegmentDtoFromJSONTyped;
 exports.CreateSegmentDtoToJSON = CreateSegmentDtoToJSON;
 exports.CreateSegmentDtoToJSONTyped = CreateSegmentDtoToJSONTyped;
-const SegmentPaymentDto_1 = require("./SegmentPaymentDto");
 const SegmentRequiredConsentDto_1 = require("./SegmentRequiredConsentDto");
 /**
  * Check if a given object implements the CreateSegmentDto interface.
@@ -37,8 +36,8 @@ function CreateSegmentDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'name': json['name'],
-        'payment': json['payment'] == null ? undefined : (0, SegmentPaymentDto_1.SegmentPaymentDtoFromJSON)(json['payment']),
         'requiredConsents': json['required_consents'] == null ? undefined : (json['required_consents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'] == null ? undefined : json['consent_prompt_text'],
     };
 }
 function CreateSegmentDtoToJSON(json) {
@@ -50,7 +49,7 @@ function CreateSegmentDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'name': value['name'],
-        'payment': (0, SegmentPaymentDto_1.SegmentPaymentDtoToJSON)(value['payment']),
         'required_consents': value['requiredConsents'] == null ? undefined : (value['requiredConsents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
     };
 }

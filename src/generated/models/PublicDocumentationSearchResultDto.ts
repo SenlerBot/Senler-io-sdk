@@ -75,6 +75,12 @@ export interface PublicDocumentationSearchResultDto {
      * @memberof PublicDocumentationSearchResultDto
      */
     url: string | null;
+    /**
+     * Markdown
+     * @type {string}
+     * @memberof PublicDocumentationSearchResultDto
+     */
+    documentRef: string | null;
 }
 
 
@@ -100,6 +106,7 @@ export function instanceOfPublicDocumentationSearchResultDto(value: object): val
     if (!('fileKind' in value) || value['fileKind'] === undefined) return false;
     if (!('app' in value) || value['app'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('documentRef' in value) || value['documentRef'] === undefined) return false;
     return true;
 }
 
@@ -121,6 +128,7 @@ export function PublicDocumentationSearchResultDtoFromJSONTyped(json: any, ignor
         'fileKind': json['file_kind'],
         'app': PublicDocumentationAppDtoFromJSON(json['app']),
         'url': json['url'],
+        'documentRef': json['document_ref'],
     };
 }
 
@@ -143,5 +151,6 @@ export function PublicDocumentationSearchResultDtoToJSONTyped(value?: PublicDocu
         'file_kind': value['fileKind'],
         'app': PublicDocumentationAppDtoToJSON(value['app']),
         'url': value['url'],
+        'document_ref': value['documentRef'],
     };
 }

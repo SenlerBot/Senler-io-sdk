@@ -54,6 +54,12 @@ export interface KnowledgeArchiveImportSummaryDto {
      */
     rootFolderName: string;
     /**
+     * UUID
+     * @type {string}
+     * @memberof KnowledgeArchiveImportSummaryDto
+     */
+    rootFolderId: string | null;
+    /**
      *
      * @type {string}
      * @memberof KnowledgeArchiveImportSummaryDto
@@ -97,6 +103,7 @@ export type KnowledgeArchiveImportSummaryDtoDuplicateResolutionEnum = typeof Kno
 export function instanceOfKnowledgeArchiveImportSummaryDto(value: object): value is KnowledgeArchiveImportSummaryDto {
     if (!('archiveFileName' in value) || value['archiveFileName'] === undefined) return false;
     if (!('rootFolderName' in value) || value['rootFolderName'] === undefined) return false;
+    if (!('rootFolderId' in value) || value['rootFolderId'] === undefined) return false;
     if (!('duplicateResolution' in value) || value['duplicateResolution'] === undefined) return false;
     if (!('folders' in value) || value['folders'] === undefined) return false;
     if (!('files' in value) || value['files'] === undefined) return false;
@@ -116,6 +123,7 @@ export function KnowledgeArchiveImportSummaryDtoFromJSONTyped(json: any, ignoreD
 
         'archiveFileName': json['archive_file_name'],
         'rootFolderName': json['root_folder_name'],
+        'rootFolderId': json['root_folder_id'],
         'duplicateResolution': json['duplicate_resolution'],
         'folders': KnowledgeArchiveImportFoldersSummaryDtoFromJSON(json['folders']),
         'files': KnowledgeArchiveImportFilesSummaryDtoFromJSON(json['files']),
@@ -136,6 +144,7 @@ export function KnowledgeArchiveImportSummaryDtoToJSONTyped(value?: KnowledgeArc
 
         'archive_file_name': value['archiveFileName'],
         'root_folder_name': value['rootFolderName'],
+        'root_folder_id': value['rootFolderId'],
         'duplicate_resolution': value['duplicateResolution'],
         'folders': KnowledgeArchiveImportFoldersSummaryDtoToJSON(value['folders']),
         'files': KnowledgeArchiveImportFilesSummaryDtoToJSON(value['files']),

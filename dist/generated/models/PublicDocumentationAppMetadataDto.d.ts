@@ -35,7 +35,7 @@ export interface PublicDocumentationAppMetadataDto {
      */
     name: string;
     /**
-     *
+     * : oauth , sales_funnel , plugin
      * @type {string}
      * @memberof PublicDocumentationAppMetadataDto
      */
@@ -71,7 +71,7 @@ export interface PublicDocumentationAppMetadataDto {
 export declare const PublicDocumentationAppMetadataDtoTypeEnum: {
     readonly Oauth: "oauth";
     readonly SalesFunnel: "sales_funnel";
-    readonly AgentTool: "agent_tool";
+    readonly Plugin: "plugin";
 };
 export type PublicDocumentationAppMetadataDtoTypeEnum = typeof PublicDocumentationAppMetadataDtoTypeEnum[keyof typeof PublicDocumentationAppMetadataDtoTypeEnum];
 /**

@@ -39,19 +39,19 @@ export interface ActualEconomics {
      * @type {CurrencyBreakdown}
      * @memberof ActualEconomics
      */
-    expenses: CurrencyBreakdown;
+    payments: CurrencyBreakdown;
+    /**
+     *
+     * @type {CurrencyBreakdown}
+     * @memberof ActualEconomics
+     */
+    refunds: CurrencyBreakdown;
     /**
      * ( )
      * @type {CurrencyBreakdown}
      * @memberof ActualEconomics
      */
-    revenue: CurrencyBreakdown;
-    /**
-     * (revenue.total_rub - expenses.total_rub), (/); : 1.25 = 125
-     * @type {number}
-     * @memberof ActualEconomics
-     */
-    profitRub: number;
+    netReceipts: CurrencyBreakdown;
     /**
      * RUB- ()
      * @type {BalancesByCurrency}
@@ -70,9 +70,9 @@ export interface ActualEconomics {
  * Check if a given object implements the ActualEconomics interface.
  */
 export function instanceOfActualEconomics(value: object): value is ActualEconomics {
-    if (!('expenses' in value) || value['expenses'] === undefined) return false;
-    if (!('revenue' in value) || value['revenue'] === undefined) return false;
-    if (!('profitRub' in value) || value['profitRub'] === undefined) return false;
+    if (!('payments' in value) || value['payments'] === undefined) return false;
+    if (!('refunds' in value) || value['refunds'] === undefined) return false;
+    if (!('netReceipts' in value) || value['netReceipts'] === undefined) return false;
     if (!('balancesRub' in value) || value['balancesRub'] === undefined) return false;
     if (!('balancesUsd' in value) || value['balancesUsd'] === undefined) return false;
     return true;
@@ -88,9 +88,9 @@ export function ActualEconomicsFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
 
-        'expenses': CurrencyBreakdownFromJSON(json['expenses']),
-        'revenue': CurrencyBreakdownFromJSON(json['revenue']),
-        'profitRub': json['profit_rub'],
+        'payments': CurrencyBreakdownFromJSON(json['payments']),
+        'refunds': CurrencyBreakdownFromJSON(json['refunds']),
+        'netReceipts': CurrencyBreakdownFromJSON(json['net_receipts']),
         'balancesRub': BalancesByCurrencyFromJSON(json['balances_rub']),
         'balancesUsd': BalancesByCurrencyFromJSON(json['balances_usd']),
     };
@@ -107,9 +107,9 @@ export function ActualEconomicsToJSONTyped(value?: ActualEconomics | null, ignor
 
     return {
 
-        'expenses': CurrencyBreakdownToJSON(value['expenses']),
-        'revenue': CurrencyBreakdownToJSON(value['revenue']),
-        'profit_rub': value['profitRub'],
+        'payments': CurrencyBreakdownToJSON(value['payments']),
+        'refunds': CurrencyBreakdownToJSON(value['refunds']),
+        'net_receipts': CurrencyBreakdownToJSON(value['netReceipts']),
         'balances_rub': BalancesByCurrencyToJSON(value['balancesRub']),
         'balances_usd': BalancesByCurrencyToJSON(value['balancesUsd']),
     };

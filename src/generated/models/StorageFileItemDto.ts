@@ -176,7 +176,8 @@ export const StorageFileItemDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type StorageFileItemDtoPlatformTypeEnum = typeof StorageFileItemDtoPlatformTypeEnum[keyof typeof StorageFileItemDtoPlatformTypeEnum];
 
@@ -191,7 +192,8 @@ export const StorageFileItemDtoStorageSourceEnum = {
     Agent: 'agent',
     Web: 'web',
     Temp: 'temp',
-    System: 'system'
+    System: 'system',
+    Automation: 'automation'
 } as const;
 export type StorageFileItemDtoStorageSourceEnum = typeof StorageFileItemDtoStorageSourceEnum[keyof typeof StorageFileItemDtoStorageSourceEnum];
 
@@ -205,7 +207,8 @@ export const StorageFileItemDtoOwnerTypeEnum = {
     KnowledgeDocumentAsset: 'knowledge_document_asset',
     KnowledgeTableAsset: 'knowledge_table_asset',
     AgentGeneratedFile: 'agent_generated_file',
-    SystemFile: 'system_file'
+    SystemFile: 'system_file',
+    AutomationAttachment: 'automation_attachment'
 } as const;
 export type StorageFileItemDtoOwnerTypeEnum = typeof StorageFileItemDtoOwnerTypeEnum[keyof typeof StorageFileItemDtoOwnerTypeEnum];
 

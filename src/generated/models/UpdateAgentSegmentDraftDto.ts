@@ -46,6 +46,12 @@ export interface UpdateAgentSegmentDraftDto {
      */
     requiredConsents: Array<SegmentRequiredConsentDto>;
     /**
+     * .
+     * @type {string}
+     * @memberof UpdateAgentSegmentDraftDto
+     */
+    consentPromptText: string | null;
+    /**
      * null, .
      * @type {string}
      * @memberof UpdateAgentSegmentDraftDto
@@ -71,6 +77,7 @@ export function instanceOfUpdateAgentSegmentDraftDto(value: object): value is Up
     if (!('expectedVersionId' in value) || value['expectedVersionId'] === undefined) return false;
     if (!('expectedRevision' in value) || value['expectedRevision'] === undefined) return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined) return false;
+    if (!('consentPromptText' in value) || value['consentPromptText'] === undefined) return false;
     if (!('subscriptionAssignmentRole' in value) || value['subscriptionAssignmentRole'] === undefined) return false;
     return true;
 }
@@ -88,6 +95,7 @@ export function UpdateAgentSegmentDraftDtoFromJSONTyped(json: any, ignoreDiscrim
         'expectedVersionId': json['expected_version_id'],
         'expectedRevision': json['expected_revision'],
         'requiredConsents': ((json['required_consents'] as Array<any>).map(SegmentRequiredConsentDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'],
         'subscriptionAssignmentRole': json['subscription_assignment_role'],
     };
 }
@@ -106,6 +114,7 @@ export function UpdateAgentSegmentDraftDtoToJSONTyped(value?: UpdateAgentSegment
         'expected_version_id': value['expectedVersionId'],
         'expected_revision': value['expectedRevision'],
         'required_consents': ((value['requiredConsents'] as Array<any>).map(SegmentRequiredConsentDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
         'subscription_assignment_role': value['subscriptionAssignmentRole'],
     };
 }

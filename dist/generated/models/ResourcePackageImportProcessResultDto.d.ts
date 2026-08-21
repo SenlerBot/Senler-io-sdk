@@ -109,6 +109,7 @@ export declare const ResourcePackageImportProcessResultDtoStageEnum: {
     readonly KnowledgeTables: "knowledge_tables";
     readonly KnowledgeReindex: "knowledge_reindex";
     readonly Agents: "agents";
+    readonly Automations: "automations";
     readonly Relations: "relations";
     readonly Finished: "finished";
 };

@@ -76,6 +76,12 @@ export interface ByPlatformTypeStatsDto {
      * @memberof ByPlatformTypeStatsDto
      */
     ai?: CategoryStatsDto;
+    /**
+     *
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    automation?: CategoryStatsDto;
 }
 /**
  * Check if a given object implements the ByPlatformTypeStatsDto interface.

@@ -73,6 +73,7 @@ function EventToolDtoFromJSONTyped(json, ignoreDiscriminator) {
         'executedAt': json['executed_at'] == null ? undefined : (new Date(json['executed_at'])),
         'completedAt': json['completed_at'] == null ? undefined : (new Date(json['completed_at'])),
         'failedAt': json['failed_at'] == null ? undefined : (new Date(json['failed_at'])),
+        'errorCode': json['error_code'] == null ? undefined : json['error_code'],
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
     };
 }
@@ -94,6 +95,7 @@ function EventToolDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'executed_at': value['executedAt'] == null ? undefined : ((value['executedAt']).toISOString()),
         'completed_at': value['completedAt'] == null ? undefined : ((value['completedAt']).toISOString()),
         'failed_at': value['failedAt'] == null ? undefined : ((value['failedAt']).toISOString()),
+        'error_code': value['errorCode'],
         'error_message': value['errorMessage'],
     };
 }

@@ -138,7 +138,7 @@ export class LandingsPublicApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * channel_public_id . channel_public_id .
      *
      */
     async getProjectsLandingsRaw(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicCatalogResponseDto>> {
@@ -172,7 +172,7 @@ export class LandingsPublicApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * channel_public_id . channel_public_id .
      *
      */
     async getProjectsLandings(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicCatalogResponseDto> {

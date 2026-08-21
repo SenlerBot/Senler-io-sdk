@@ -26,6 +26,12 @@ export interface PublicDocumentationPageTreeItemDto {
      * @type {string}
      * @memberof PublicDocumentationPageTreeItemDto
      */
+    slug: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicDocumentationPageTreeItemDto
+     */
     title: string;
     /**
      *

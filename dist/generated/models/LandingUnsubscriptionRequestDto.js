@@ -50,6 +50,12 @@ function LandingUnsubscriptionRequestDtoFromJSONTyped(json, ignoreDiscriminator)
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
+        'trafficMarkPublicId': json['traffic_mark_public_id'] == null ? undefined : json['traffic_mark_public_id'],
+        'utmSource': json['utm_source'] == null ? undefined : json['utm_source'],
+        'utmMedium': json['utm_medium'] == null ? undefined : json['utm_medium'],
+        'utmCampaign': json['utm_campaign'] == null ? undefined : json['utm_campaign'],
+        'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
+        'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
     };
 }
 function LandingUnsubscriptionRequestDtoToJSON(json) {
@@ -63,5 +69,11 @@ function LandingUnsubscriptionRequestDtoToJSONTyped(value, ignoreDiscriminator =
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],
+        'traffic_mark_public_id': value['trafficMarkPublicId'],
+        'utm_source': value['utmSource'],
+        'utm_medium': value['utmMedium'],
+        'utm_campaign': value['utmCampaign'],
+        'utm_content': value['utmContent'],
+        'utm_term': value['utmTerm'],
     };
 }

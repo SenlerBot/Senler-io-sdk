@@ -154,6 +154,7 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly SegmentConsentDocument: "segment_consent_document";
     readonly Landing: "landing";
     readonly Trigger: "trigger";
+    readonly Automation: "automation";
     readonly Delivery: "delivery";
     readonly ProjectTariff: "project_tariff";
     readonly SupportSchedule: "support_schedule";
@@ -164,6 +165,7 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly PaymentSettings: "payment_settings";
     readonly Space: "space";
     readonly SummarizationSettings: "summarization_settings";
+    readonly TrafficMark: "traffic_mark";
 };
 export type AuditLogResponseDtoEntityTypeEnum = typeof AuditLogResponseDtoEntityTypeEnum[keyof typeof AuditLogResponseDtoEntityTypeEnum];
 /**
@@ -187,6 +189,10 @@ export declare const AuditLogResponseDtoEventTypeEnum: {
     readonly LandingBlockDeleted: "landing.block_deleted";
     readonly LandingPublished: "landing.published";
     readonly LandingPublicationRestored: "landing.publication_restored";
+    readonly AutomationDraftChanged: "automation.draft_changed";
+    readonly AutomationPublished: "automation.published";
+    readonly AutomationVersionRestored: "automation.version_restored";
+    readonly AutomationStatusChanged: "automation.status_changed";
     readonly DeliveryScheduled: "delivery.scheduled";
     readonly DeliveryUnscheduled: "delivery.unscheduled";
     readonly InvitationSent: "invitation.sent";

@@ -41,6 +41,7 @@ function ByStorageSourceStatsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'web': json['web'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['web']),
         'temp': json['temp'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['temp']),
         'system': json['system'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['system']),
+        'automation': json['automation'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['automation']),
     };
 }
 function ByStorageSourceStatsDtoToJSON(json) {
@@ -59,5 +60,6 @@ function ByStorageSourceStatsDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'web': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['web']),
         'temp': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['temp']),
         'system': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['system']),
+        'automation': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['automation']),
     };
 }

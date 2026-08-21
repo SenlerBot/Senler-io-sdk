@@ -28,6 +28,8 @@ exports.ActionPerformerDtoTypeEnum = {
     Admin: 'admin',
     Assistant: 'assistant',
     System: 'system',
+    Segment: 'segment',
+    Automation: 'automation',
     ExternalOperator: 'external_operator',
     Channel: 'channel',
     ExternalChannel: 'external_channel',

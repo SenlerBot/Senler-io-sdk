@@ -24,11 +24,11 @@ const CurrencyBreakdown_1 = require("./CurrencyBreakdown");
  * Check if a given object implements the ActualEconomics interface.
  */
 function instanceOfActualEconomics(value) {
-    if (!('expenses' in value) || value['expenses'] === undefined)
+    if (!('payments' in value) || value['payments'] === undefined)
         return false;
-    if (!('revenue' in value) || value['revenue'] === undefined)
+    if (!('refunds' in value) || value['refunds'] === undefined)
         return false;
-    if (!('profitRub' in value) || value['profitRub'] === undefined)
+    if (!('netReceipts' in value) || value['netReceipts'] === undefined)
         return false;
     if (!('balancesRub' in value) || value['balancesRub'] === undefined)
         return false;
@@ -44,9 +44,9 @@ function ActualEconomicsFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'expenses': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['expenses']),
-        'revenue': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['revenue']),
-        'profitRub': json['profit_rub'],
+        'payments': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['payments']),
+        'refunds': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['refunds']),
+        'netReceipts': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['net_receipts']),
         'balancesRub': (0, BalancesByCurrency_1.BalancesByCurrencyFromJSON)(json['balances_rub']),
         'balancesUsd': (0, BalancesByCurrency_1.BalancesByCurrencyFromJSON)(json['balances_usd']),
     };
@@ -59,9 +59,9 @@ function ActualEconomicsToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'expenses': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['expenses']),
-        'revenue': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['revenue']),
-        'profit_rub': value['profitRub'],
+        'payments': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['payments']),
+        'refunds': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['refunds']),
+        'net_receipts': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['netReceipts']),
         'balances_rub': (0, BalancesByCurrency_1.BalancesByCurrencyToJSON)(value['balancesRub']),
         'balances_usd': (0, BalancesByCurrency_1.BalancesByCurrencyToJSON)(value['balancesUsd']),
     };

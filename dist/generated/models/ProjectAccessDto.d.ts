@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Role } from './Role';
 import type { PermissionsDto } from './PermissionsDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
 import type { ProjectAccessSource } from './ProjectAccessSource';
+import type { ProjectRole } from './ProjectRole';
 /**
  * ProjectAccessDto.
  * @export
@@ -21,10 +21,10 @@ import type { ProjectAccessSource } from './ProjectAccessSource';
 export interface ProjectAccessDto {
     /**
      * project_members. null API key, OAuth, admin microservice-, project_members.
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ProjectAccessDto
      */
-    role: Role | null;
+    role: ProjectRole | null;
     /**
      *
      * @type {ProjectAccessSource}

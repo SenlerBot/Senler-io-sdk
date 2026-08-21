@@ -13,20 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.McpServerResponseDtoMetaHealthStatusEnum = void 0;
 exports.instanceOfMcpServerResponseDtoMeta = instanceOfMcpServerResponseDtoMeta;
 exports.McpServerResponseDtoMetaFromJSON = McpServerResponseDtoMetaFromJSON;
 exports.McpServerResponseDtoMetaFromJSONTyped = McpServerResponseDtoMetaFromJSONTyped;
 exports.McpServerResponseDtoMetaToJSON = McpServerResponseDtoMetaToJSON;
 exports.McpServerResponseDtoMetaToJSONTyped = McpServerResponseDtoMetaToJSONTyped;
-/**
- * @export
- */
-exports.McpServerResponseDtoMetaHealthStatusEnum = {
-    Healthy: 'healthy',
-    Unhealthy: 'unhealthy',
-    Unknown: 'unknown'
-};
 /**
  * Check if a given object implements the McpServerResponseDtoMeta interface.
  */
@@ -43,7 +34,6 @@ function McpServerResponseDtoMetaFromJSONTyped(json, ignoreDiscriminator) {
     return {
         ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
-        'healthStatus': json['health_status'] == null ? undefined : json['health_status'],
     };
 }
 function McpServerResponseDtoMetaToJSON(json) {
@@ -56,6 +46,5 @@ function McpServerResponseDtoMetaToJSONTyped(value, ignoreDiscriminator = false)
     return {
         ...value,
         'tags': value['tags'],
-        'health_status': value['healthStatus'],
     };
 }

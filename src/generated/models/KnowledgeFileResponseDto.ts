@@ -166,6 +166,18 @@ export interface KnowledgeFileResponseDto {
      */
     aiMetadata: { [key: string]: any; };
     /**
+     * AI- ,
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    aiImageContext: string;
+    /**
+     *
+     * @type {string}
+     * @memberof KnowledgeFileResponseDto
+     */
+    imageRecognitionStatus: string | null;
+    /**
      * Markdown-
      * @type {Array<KnowledgeFileResolvedLinkDto>}
      * @memberof KnowledgeFileResponseDto
@@ -254,6 +266,8 @@ export function instanceOfKnowledgeFileResponseDto(value: object): value is Know
     if (!('extractionError' in value) || value['extractionError'] === undefined) return false;
     if (!('aiContextIds' in value) || value['aiContextIds'] === undefined) return false;
     if (!('aiMetadata' in value) || value['aiMetadata'] === undefined) return false;
+    if (!('aiImageContext' in value) || value['aiImageContext'] === undefined) return false;
+    if (!('imageRecognitionStatus' in value) || value['imageRecognitionStatus'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -293,6 +307,8 @@ export function KnowledgeFileResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'extractionError': json['extraction_error'],
         'aiContextIds': json['ai_context_ids'],
         'aiMetadata': json['ai_metadata'],
+        'aiImageContext': json['ai_image_context'],
+        'imageRecognitionStatus': json['image_recognition_status'],
         'resolvedLinks': json['resolved_links'] == null ? undefined : ((json['resolved_links'] as Array<any>).map(KnowledgeFileResolvedLinkDtoFromJSON)),
         'isActive': json['is_active'],
         'createdAt': (new Date(json['created_at'])),
@@ -334,6 +350,8 @@ export function KnowledgeFileResponseDtoToJSONTyped(value?: KnowledgeFileRespons
         'extraction_error': value['extractionError'],
         'ai_context_ids': value['aiContextIds'],
         'ai_metadata': value['aiMetadata'],
+        'ai_image_context': value['aiImageContext'],
+        'image_recognition_status': value['imageRecognitionStatus'],
         'resolved_links': value['resolvedLinks'] == null ? undefined : ((value['resolvedLinks'] as Array<any>).map(KnowledgeFileResolvedLinkDtoToJSON)),
         'is_active': value['isActive'],
         'created_at': ((value['createdAt']).toISOString()),

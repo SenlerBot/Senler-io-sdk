@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingMode } from './TrainingMode';
 /**
  * TrainingPreviewDto.
  * @export
@@ -17,10 +18,10 @@
 export interface TrainingPreviewDto {
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof TrainingPreviewDto
      */
-    mode: TrainingPreviewDtoModeEnum;
+    mode: TrainingMode;
     /**
      * ID website sources
      * @type {Array<string>}
@@ -45,16 +46,13 @@ export interface TrainingPreviewDto {
      * @memberof TrainingPreviewDto
      */
     scanChannelHistory?: boolean;
+    /**
+     * . ., ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof TrainingPreviewDto
+     */
+    acceptedMaxCredits?: number;
 }
-/**
- * @export
- */
-export declare const TrainingPreviewDtoModeEnum: {
-    readonly Fast: "fast";
-    readonly Medium: "medium";
-    readonly Deep: "deep";
-};
-export type TrainingPreviewDtoModeEnum = typeof TrainingPreviewDtoModeEnum[keyof typeof TrainingPreviewDtoModeEnum];
 /**
  * Check if a given object implements the TrainingPreviewDto interface.
  */

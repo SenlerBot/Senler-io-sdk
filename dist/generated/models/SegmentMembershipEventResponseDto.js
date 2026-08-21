@@ -38,7 +38,9 @@ exports.SegmentMembershipEventResponseDtoSourceEnum = {
     MaxApp: 'max_app',
     Web: 'web',
     Manual: 'manual',
-    AutoAssignment: 'auto_assignment'
+    AutoAssignment: 'auto_assignment',
+    Automation: 'automation',
+    AiAgent: 'ai_agent'
 };
 /**
  * @export
@@ -49,7 +51,9 @@ exports.SegmentMembershipEventResponseDtoReasonEnum = {
     Keyword: 'keyword',
     AllMessages: 'all_messages',
     Manual: 'manual',
-    ChannelAccessRevoked: 'channel_access_revoked'
+    ChannelAccessRevoked: 'channel_access_revoked',
+    Automation: 'automation',
+    AiAgent: 'ai_agent'
 };
 /**
  * Check if a given object implements the SegmentMembershipEventResponseDto interface.

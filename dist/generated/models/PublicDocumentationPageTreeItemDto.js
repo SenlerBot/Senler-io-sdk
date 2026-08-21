@@ -24,6 +24,8 @@ exports.PublicDocumentationPageTreeItemDtoToJSONTyped = PublicDocumentationPageT
 function instanceOfPublicDocumentationPageTreeItemDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
+    if (!('slug' in value) || value['slug'] === undefined)
+        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('sortOrder' in value) || value['sortOrder'] === undefined)
@@ -39,6 +41,7 @@ function PublicDocumentationPageTreeItemDtoFromJSONTyped(json, ignoreDiscriminat
     }
     return {
         'id': json['id'],
+        'slug': json['slug'],
         'title': json['title'],
         'sortOrder': json['sort_order'],
     };
@@ -52,6 +55,7 @@ function PublicDocumentationPageTreeItemDtoToJSONTyped(value, ignoreDiscriminato
     }
     return {
         'id': value['id'],
+        'slug': value['slug'],
         'title': value['title'],
         'sort_order': value['sortOrder'],
     };

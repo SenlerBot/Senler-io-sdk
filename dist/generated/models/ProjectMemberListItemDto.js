@@ -18,8 +18,8 @@ exports.ProjectMemberListItemDtoFromJSON = ProjectMemberListItemDtoFromJSON;
 exports.ProjectMemberListItemDtoFromJSONTyped = ProjectMemberListItemDtoFromJSONTyped;
 exports.ProjectMemberListItemDtoToJSON = ProjectMemberListItemDtoToJSON;
 exports.ProjectMemberListItemDtoToJSONTyped = ProjectMemberListItemDtoToJSONTyped;
-const Role_1 = require("./Role");
 const PermissionsDto_1 = require("./PermissionsDto");
+const ProjectRole_1 = require("./ProjectRole");
 /**
  * Check if a given object implements the ProjectMemberListItemDto interface.
  */
@@ -57,7 +57,7 @@ function ProjectMemberListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'userId': json['userId'],
         'projectId': json['projectId'],
-        'role': (0, Role_1.RoleFromJSON)(json['role']),
+        'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
         'email': json['email'] == null ? undefined : json['email'],
         'firstName': json['firstName'] == null ? undefined : json['firstName'],
         'lastName': json['lastName'] == null ? undefined : json['lastName'],
@@ -82,7 +82,7 @@ function ProjectMemberListItemDtoToJSONTyped(value, ignoreDiscriminator = false)
         'id': value['id'],
         'userId': value['userId'],
         'projectId': value['projectId'],
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
         'email': value['email'],
         'firstName': value['firstName'],
         'lastName': value['lastName'],

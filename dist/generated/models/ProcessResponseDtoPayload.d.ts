@@ -17,13 +17,14 @@ import type { DeliverySendPayloadDto } from './DeliverySendPayloadDto';
 import type { ExportLeadsPayloadDto } from './ExportLeadsPayloadDto';
 import type { ImportLeadsPayloadDto } from './ImportLeadsPayloadDto';
 import type { LeadsRefreshPayloadDto } from './LeadsRefreshPayloadDto';
+import type { LeadsSegmentOperationPayloadDto } from './LeadsSegmentOperationPayloadDto';
 import type { ResourcePackageImportPayloadDto } from './ResourcePackageImportPayloadDto';
 /**
  * @type ProcessResponseDtoPayload
  *
  * @export
  */
-export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | ResourcePackageImportPayloadDto;
+export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | LeadsSegmentOperationPayloadDto | ResourcePackageImportPayloadDto;
 export declare function ProcessResponseDtoPayloadFromJSON(json: any): ProcessResponseDtoPayload;
 export declare function ProcessResponseDtoPayloadFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProcessResponseDtoPayload;
 export declare function ProcessResponseDtoPayloadToJSON(json: any): any;

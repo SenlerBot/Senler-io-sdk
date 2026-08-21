@@ -194,7 +194,8 @@ export const StatisticsChannelBreakdownDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type StatisticsChannelBreakdownDtoPlatformTypeEnum = typeof StatisticsChannelBreakdownDtoPlatformTypeEnum[keyof typeof StatisticsChannelBreakdownDtoPlatformTypeEnum];
 

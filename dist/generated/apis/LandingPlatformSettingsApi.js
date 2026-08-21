@@ -46,13 +46,56 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum = exports.LandingsPlatformVkAppTargetAcceptLanguageEnum = exports.LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum = exports.LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum = exports.LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum = exports.LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum = exports.LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum = exports.GetLandingsPlatformVkAppsAcceptLanguageEnum = exports.GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum = exports.GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum = exports.GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum = exports.LandingPlatformSettingsApi = void 0;
+exports.UpdateLandingsPlatformWebAcceptLanguageEnum = exports.UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum = exports.UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum = exports.UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum = exports.UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum = exports.UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum = exports.LandingsPlatformVkAppTargetAcceptLanguageEnum = exports.LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum = exports.LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum = exports.LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum = exports.LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum = exports.GetLandingsPlatformWebAcceptLanguageEnum = exports.GetLandingsPlatformVkAppsAcceptLanguageEnum = exports.GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum = exports.GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum = exports.GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum = exports.DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum = exports.LandingPlatformSettingsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class LandingPlatformSettingsApi extends runtime.BaseAPI {
+    /**
+     * .
+     * Telegram
+     */
+    async deleteLandingsPlatformTelegramMenuButtonRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteLandingsPlatformTelegramMenuButton().');
+        }
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling deleteLandingsPlatformTelegramMenuButton().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * Telegram
+     */
+    async deleteLandingsPlatformTelegramMenuButton(requestParameters, initOverrides) {
+        const response = await this.deleteLandingsPlatformTelegramMenuButtonRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * MAX Mini App .
      * MAX Mini App
@@ -75,7 +118,7 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/landings/platform/max-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -115,7 +158,7 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/landings/platform/telegram-menu-buttons`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -155,7 +198,7 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/landings/platform/telegram-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -195,7 +238,7 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/landings/platform/vk-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -211,6 +254,46 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
      */
     async getLandingsPlatformVkApps(requestParameters, initOverrides) {
         const response = await this.getLandingsPlatformVkAppsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * - .
+     * -
+     */
+    async getLandingsPlatformWebRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLandingsPlatformWeb().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/web`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingWebSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * - .
+     * -
+     */
+    async getLandingsPlatformWeb(requestParameters, initOverrides) {
+        const response = await this.getLandingsPlatformWebRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -304,51 +387,6 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Telegram-, .
-     * Telegram-
-     */
-    async landingsPlatformTelegramMenuButtonApplyRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsPlatformTelegramMenuButtonApply().');
-        }
-        if (requestParameters['setLandingTelegramMenuButtonDto'] == null) {
-            throw new runtime.RequiredError('setLandingTelegramMenuButtonDto', 'Required parameter "setLandingTelegramMenuButtonDto" was null or undefined when calling landingsPlatformTelegramMenuButtonApply().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/apply`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SetLandingTelegramMenuButtonDtoToJSON)(requestParameters['setLandingTelegramMenuButtonDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Telegram-, .
-     * Telegram-
-     */
-    async landingsPlatformTelegramMenuButtonApply(requestParameters, initOverrides) {
-        const response = await this.landingsPlatformTelegramMenuButtonApplyRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * Telegram- .
      * Telegram-
      */
@@ -439,7 +477,7 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * VK- : .
+     * VK- .
      * VK App
      */
     async landingsPlatformVkAppTargetRaw(requestParameters, initOverrides) {
@@ -476,11 +514,206 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingVkAppResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * VK- : .
+     * VK- .
      * VK App
      */
     async landingsPlatformVkAppTarget(requestParameters, initOverrides) {
         const response = await this.landingsPlatformVkAppTargetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonBannerGridRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonBannerGrid().');
+        }
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonBannerGrid().');
+        }
+        if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
+            throw new runtime.RequiredError('typedTelegramMenuButtonTextDto', 'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonBannerGrid().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/banner-grid`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TypedTelegramMenuButtonTextDtoToJSON)(requestParameters['typedTelegramMenuButtonTextDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonBannerGrid(requestParameters, initOverrides) {
+        const response = await this.updateLandingsPlatformTelegramMenuButtonBannerGridRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonIconListRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonIconList().');
+        }
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonIconList().');
+        }
+        if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
+            throw new runtime.RequiredError('typedTelegramMenuButtonTextDto', 'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonIconList().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/icon-list`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TypedTelegramMenuButtonTextDtoToJSON)(requestParameters['typedTelegramMenuButtonTextDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonIconList(requestParameters, initOverrides) {
+        const response = await this.updateLandingsPlatformTelegramMenuButtonIconListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonLandingRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().');
+        }
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().');
+        }
+        if (requestParameters['landingId'] == null) {
+            throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().');
+        }
+        if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
+            throw new runtime.RequiredError('typedTelegramMenuButtonTextDto', 'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/landing/{landingId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TypedTelegramMenuButtonTextDtoToJSON)(requestParameters['typedTelegramMenuButtonTextDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonLanding(requestParameters, initOverrides) {
+        const response = await this.updateLandingsPlatformTelegramMenuButtonLandingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonListRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonList().');
+        }
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonList().');
+        }
+        if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
+            throw new runtime.RequiredError('typedTelegramMenuButtonTextDto', 'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonList().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/list`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TypedTelegramMenuButtonTextDtoToJSON)(requestParameters['typedTelegramMenuButtonTextDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingTelegramMenuButtonResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateLandingsPlatformTelegramMenuButtonList(requestParameters, initOverrides) {
+        const response = await this.updateLandingsPlatformTelegramMenuButtonListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -528,8 +761,60 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         const response = await this.updateLandingsPlatformTelegramMiniAppRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * .
+     * -
+     */
+    async updateLandingsPlatformWebRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformWeb().');
+        }
+        if (requestParameters['setLandingWebSettingsDto'] == null) {
+            throw new runtime.RequiredError('setLandingWebSettingsDto', 'Required parameter "setLandingWebSettingsDto" was null or undefined when calling updateLandingsPlatformWeb().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/landings/platform/web`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetLandingWebSettingsDtoToJSON)(requestParameters['setLandingWebSettingsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingWebSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * -
+     */
+    async updateLandingsPlatformWeb(requestParameters, initOverrides) {
+        const response = await this.updateLandingsPlatformWebRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.LandingPlatformSettingsApi = LandingPlatformSettingsApi;
+/**
+ * @export
+ */
+exports.DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */
@@ -561,6 +846,13 @@ exports.GetLandingsPlatformVkAppsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetLandingsPlatformWebAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -569,13 +861,6 @@ exports.LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum = {
  * @export
  */
 exports.LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -603,7 +888,42 @@ exports.LandingsPlatformVkAppTargetAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLandingsPlatformWebAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

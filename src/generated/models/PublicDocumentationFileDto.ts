@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicDocumentationContextRefDto } from './PublicDocumentationContextRefDto';
+import {
+    PublicDocumentationContextRefDtoFromJSON,
+    PublicDocumentationContextRefDtoFromJSONTyped,
+    PublicDocumentationContextRefDtoToJSON,
+    PublicDocumentationContextRefDtoToJSONTyped,
+} from './PublicDocumentationContextRefDto';
 import type { PublicDocumentationResolvedLinkDto } from './PublicDocumentationResolvedLinkDto';
 import {
     PublicDocumentationResolvedLinkDtoFromJSON,
@@ -33,6 +40,18 @@ export interface PublicDocumentationFileDto {
      * @memberof PublicDocumentationFileDto
      */
     id: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicDocumentationFileDto
+     */
+    slug: string;
+    /**
+     * UUID , slug
+     * @type {string}
+     * @memberof PublicDocumentationFileDto
+     */
+    redirectedFrom: string | null;
     /**
      * UUID
      * @type {string}
@@ -64,6 +83,12 @@ export interface PublicDocumentationFileDto {
      */
     content: string;
     /**
+     * , Markdown
+     * @type {Array<PublicDocumentationContextRefDto>}
+     * @memberof PublicDocumentationFileDto
+     */
+    contextRefs: Array<PublicDocumentationContextRefDto>;
+    /**
      *
      * @type {Array<PublicDocumentationResolvedLinkDto>}
      * @memberof PublicDocumentationFileDto
@@ -87,11 +112,14 @@ export type PublicDocumentationFileDtoLocaleEnum = typeof PublicDocumentationFil
  */
 export function instanceOfPublicDocumentationFileDto(value: object): value is PublicDocumentationFileDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('slug' in value) || value['slug'] === undefined) return false;
+    if (!('redirectedFrom' in value) || value['redirectedFrom'] === undefined) return false;
     if (!('fileId' in value) || value['fileId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('locale' in value) || value['locale'] === undefined) return false;
     if (!('availableLocales' in value) || value['availableLocales'] === undefined) return false;
     if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('contextRefs' in value) || value['contextRefs'] === undefined) return false;
     if (!('resolvedLinks' in value) || value['resolvedLinks'] === undefined) return false;
     return true;
 }
@@ -107,11 +135,14 @@ export function PublicDocumentationFileDtoFromJSONTyped(json: any, ignoreDiscrim
     return {
 
         'id': json['id'],
+        'slug': json['slug'],
+        'redirectedFrom': json['redirected_from'],
         'fileId': json['file_id'],
         'title': json['title'],
         'locale': json['locale'],
         'availableLocales': json['available_locales'],
         'content': json['content'],
+        'contextRefs': ((json['context_refs'] as Array<any>).map(PublicDocumentationContextRefDtoFromJSON)),
         'resolvedLinks': ((json['resolved_links'] as Array<any>).map(PublicDocumentationResolvedLinkDtoFromJSON)),
     };
 }
@@ -128,11 +159,14 @@ export function PublicDocumentationFileDtoToJSONTyped(value?: PublicDocumentatio
     return {
 
         'id': value['id'],
+        'slug': value['slug'],
+        'redirected_from': value['redirectedFrom'],
         'file_id': value['fileId'],
         'title': value['title'],
         'locale': value['locale'],
         'available_locales': value['availableLocales'],
         'content': value['content'],
+        'context_refs': ((value['contextRefs'] as Array<any>).map(PublicDocumentationContextRefDtoToJSON)),
         'resolved_links': ((value['resolvedLinks'] as Array<any>).map(PublicDocumentationResolvedLinkDtoToJSON)),
     };
 }

@@ -22,22 +22,7 @@ export interface CreateServerBodyDtoMeta {
      * @memberof CreateServerBodyDtoMeta
      */
     tags?: Array<string>;
-    /**
-     * MCP
-     * @type {string}
-     * @memberof CreateServerBodyDtoMeta
-     */
-    healthStatus?: CreateServerBodyDtoMetaHealthStatusEnum;
 }
-/**
- * @export
- */
-export declare const CreateServerBodyDtoMetaHealthStatusEnum: {
-    readonly Healthy: "healthy";
-    readonly Unhealthy: "unhealthy";
-    readonly Unknown: "unknown";
-};
-export type CreateServerBodyDtoMetaHealthStatusEnum = typeof CreateServerBodyDtoMetaHealthStatusEnum[keyof typeof CreateServerBodyDtoMetaHealthStatusEnum];
 /**
  * Check if a given object implements the CreateServerBodyDtoMeta interface.
  */

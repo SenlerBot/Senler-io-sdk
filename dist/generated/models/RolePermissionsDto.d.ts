@@ -112,6 +112,36 @@ export interface RolePermissionsDto {
      */
     canManageLeads: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewTrafficMarks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageTrafficMarks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewAutomations: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageAutomations: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canRunAutomations: boolean;
+    /**
      * MCP
      * @type {boolean}
      * @memberof RolePermissionsDto

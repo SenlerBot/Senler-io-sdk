@@ -176,7 +176,7 @@ class StorageApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_storage"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/storage/{projectId}/files`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -216,7 +216,7 @@ class StorageApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_storage"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/storage/{projectId}/stats`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -284,7 +284,8 @@ exports.GetFilesSourceEnum = {
     Agent: 'agent',
     Web: 'web',
     Temp: 'temp',
-    System: 'system'
+    System: 'system',
+    Automation: 'automation'
 };
 /**
  * @export

@@ -19,6 +19,7 @@ import type {
   PublicDocumentationAppDto,
   PublicDocumentationAppMetadataDto,
   PublicDocumentationFileDto,
+  PublicDocumentationPageDto,
   PublicDocumentationSearchResponseDto,
   PublicDocumentationTreeDto,
 } from '../models/index';
@@ -31,6 +32,8 @@ import {
     PublicDocumentationAppMetadataDtoToJSON,
     PublicDocumentationFileDtoFromJSON,
     PublicDocumentationFileDtoToJSON,
+    PublicDocumentationPageDtoFromJSON,
+    PublicDocumentationPageDtoToJSON,
     PublicDocumentationSearchResponseDtoFromJSON,
     PublicDocumentationSearchResponseDtoToJSON,
     PublicDocumentationTreeDtoFromJSON,
@@ -57,6 +60,11 @@ export interface GetAppsTreeRequest {
     slug: string;
     locale: string;
     acceptLanguage?: GetAppsTreeAcceptLanguageEnum;
+}
+
+export interface GetPageRequest {
+    documentRef: string;
+    acceptLanguage?: GetPageAcceptLanguageEnum;
 }
 
 export interface PublicDocumentationGetSearchRequest {
@@ -245,6 +253,49 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Markdown, document_ref .
+     *
+     */
+    async getPageRaw(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationPageDto>> {
+        if (requestParameters['documentRef'] == null) {
+            throw new runtime.RequiredError(
+                'documentRef',
+                'Required parameter "documentRef" was null or undefined when calling getPage().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['documentRef'] != null) {
+            queryParameters['document_ref'] = requestParameters['documentRef'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/documentation/page`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicDocumentationPageDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * Markdown, document_ref .
+     *
+     */
+    async getPage(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationPageDto> {
+        const response = await this.getPageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * ; app ID .
      * Senler
      */
@@ -341,6 +392,14 @@ export const GetAppsTreeAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetAppsTreeAcceptLanguageEnum = typeof GetAppsTreeAcceptLanguageEnum[keyof typeof GetAppsTreeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetPageAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetPageAcceptLanguageEnum = typeof GetPageAcceptLanguageEnum[keyof typeof GetPageAcceptLanguageEnum];
 /**
  * @export
  */

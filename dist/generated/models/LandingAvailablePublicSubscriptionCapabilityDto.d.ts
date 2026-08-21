@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 import type { LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner } from './LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner';
-import type { LandingPublicPaymentDto } from './LandingPublicPaymentDto';
 import type { SegmentConsentSnapshotDto } from './SegmentConsentSnapshotDto';
 /**
  * LandingAvailablePublicSubscriptionCapabilityDto.
@@ -30,12 +29,6 @@ export interface LandingAvailablePublicSubscriptionCapabilityDto {
      * @memberof LandingAvailablePublicSubscriptionCapabilityDto
      */
     launchToken: string;
-    /**
-     *
-     * @type {LandingPublicPaymentDto}
-     * @memberof LandingAvailablePublicSubscriptionCapabilityDto
-     */
-    payment: LandingPublicPaymentDto;
     /**
      *
      * @type {Array<SegmentConsentSnapshotDto>}

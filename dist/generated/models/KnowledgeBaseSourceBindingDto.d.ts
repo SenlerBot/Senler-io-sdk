@@ -47,18 +47,23 @@ export type KnowledgeBaseSourceBindingDtoSourceTypeEnum = typeof KnowledgeBaseSo
  * @export
  */
 export declare const KnowledgeBaseSourceBindingDtoPermissionsEnum: {
-    readonly GetData: "get_data";
-    readonly EditContent: "edit_content";
-    readonly AddTableRows: "add_table_rows";
+    readonly ReadDocuments: "read_documents";
     readonly CreateDocuments: "create_documents";
-    readonly UploadFiles: "upload_files";
+    readonly UploadDocuments: "upload_documents";
+    readonly EditDocuments: "edit_documents";
+    readonly DeleteDocuments: "delete_documents";
+    readonly ReadTables: "read_tables";
     readonly CreateTables: "create_tables";
-    readonly CreateSheets: "create_sheets";
     readonly ImportCsvXlsx: "import_csv_xlsx";
+    readonly AddTableRows: "add_table_rows";
+    readonly EditTables: "edit_tables";
+    readonly CreateSheets: "create_sheets";
     readonly DeleteRows: "delete_rows";
-    readonly DeleteFiles: "delete_files";
     readonly DeleteSheets: "delete_sheets";
     readonly DeleteTables: "delete_tables";
+    readonly ReadImages: "read_images";
+    readonly UploadImages: "upload_images";
+    readonly DeleteImages: "delete_images";
 };
 export type KnowledgeBaseSourceBindingDtoPermissionsEnum = typeof KnowledgeBaseSourceBindingDtoPermissionsEnum[keyof typeof KnowledgeBaseSourceBindingDtoPermissionsEnum];
 /**

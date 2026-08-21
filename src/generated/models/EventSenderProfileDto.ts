@@ -89,7 +89,8 @@ export const EventSenderProfileDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type EventSenderProfileDtoPlatformTypeEnum = typeof EventSenderProfileDtoPlatformTypeEnum[keyof typeof EventSenderProfileDtoPlatformTypeEnum];
 

@@ -46,13 +46,150 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadArchiveDuplicateResolutionEnum = exports.FilesUploadArchiveAcceptLanguageEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
+exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadArchiveImageRecognitionModeEnum = exports.FilesUploadArchiveDuplicateResolutionEnum = exports.FilesUploadArchiveLocaleEnum = exports.FilesUploadArchiveAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class KnowledgeBaseApi extends runtime.BaseAPI {
+    /**
+     * , HTTP-.
+     * ZIP-
+     */
+    async archiveImportsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling archiveImports().');
+        }
+        if (requestParameters['idempotencyKey'] == null) {
+            throw new runtime.RequiredError('idempotencyKey', 'Required parameter "idempotencyKey" was null or undefined when calling archiveImports().');
+        }
+        if (requestParameters['projectId2'] == null) {
+            throw new runtime.RequiredError('projectId2', 'Required parameter "projectId2" was null or undefined when calling archiveImports().');
+        }
+        if (requestParameters['file'] == null) {
+            throw new runtime.RequiredError('file', 'Required parameter "file" was null or undefined when calling archiveImports().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['idempotencyKey'] != null) {
+            headerParameters['Idempotency-Key'] = String(requestParameters['idempotencyKey']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const consumes = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['projectId2'] != null) {
+            formParams.append('project_id', requestParameters['projectId2']);
+        }
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale']);
+        }
+        if (requestParameters['folderId'] != null) {
+            formParams.append('folder_id', requestParameters['folderId']);
+        }
+        if (requestParameters['duplicateResolution'] != null) {
+            formParams.append('duplicate_resolution', requestParameters['duplicateResolution']);
+        }
+        if (requestParameters['imageRecognitionMode'] != null) {
+            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode']);
+        }
+        if (requestParameters['file'] != null) {
+            formParams.append('file', requestParameters['file']);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchiveImportOperationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , HTTP-.
+     * ZIP-
+     */
+    async archiveImports(requestParameters, initOverrides) {
+        const response = await this.archiveImportsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ZIP .
+     * ,
+     */
+    async deleteArchiveImportsRaw(requestParameters, initOverrides) {
+        if (requestParameters['operationId'] == null) {
+            throw new runtime.RequiredError('operationId', 'Required parameter "operationId" was null or undefined when calling deleteArchiveImports().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteArchiveImports().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/{operationId}`.replace(`{${"operationId"}}`, encodeURIComponent(String(requestParameters['operationId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * ZIP .
+     * ,
+     */
+    async deleteArchiveImports(requestParameters, initOverrides) {
+        await this.deleteArchiveImportsRaw(requestParameters, initOverrides);
+    }
     /**
      * .
      *
@@ -174,6 +311,74 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * ZIP .
+     *
+     */
+    async filesRecognitionEstimateRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling filesRecognitionEstimate().');
+        }
+        if (requestParameters['file'] == null) {
+            throw new runtime.RequiredError('file', 'Required parameter "file" was null or undefined when calling filesRecognitionEstimate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const consumes = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['projectId'] != null) {
+            formParams.append('project_id', requestParameters['projectId']);
+        }
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale']);
+        }
+        if (requestParameters['file'] != null) {
+            formParams.append('file', requestParameters['file']);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/files/recognition-estimate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeImageRecognitionEstimateResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ZIP .
+     *
+     */
+    async filesRecognitionEstimate(requestParameters, initOverrides) {
+        const response = await this.filesRecognitionEstimateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , .
      *
      */
@@ -224,6 +429,12 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         if (requestParameters['title'] != null) {
             formParams.append('title', requestParameters['title']);
         }
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale']);
+        }
+        if (requestParameters['imageRecognitionMode'] != null) {
+            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode']);
+        }
         if (requestParameters['file'] != null) {
             formParams.append('file', requestParameters['file']);
         }
@@ -247,6 +458,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
      * ZIP- 500 , .
      * ZIP-
+     * @deprecated
      */
     async filesUploadArchiveRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -289,11 +501,17 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         if (requestParameters['projectId'] != null) {
             formParams.append('project_id', requestParameters['projectId']);
         }
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale']);
+        }
         if (requestParameters['folderId'] != null) {
             formParams.append('folder_id', requestParameters['folderId']);
         }
         if (requestParameters['duplicateResolution'] != null) {
             formParams.append('duplicate_resolution', requestParameters['duplicateResolution']);
+        }
+        if (requestParameters['imageRecognitionMode'] != null) {
+            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode']);
         }
         if (requestParameters['file'] != null) {
             formParams.append('file', requestParameters['file']);
@@ -310,6 +528,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
      * ZIP- 500 , .
      * ZIP-
+     * @deprecated
      */
     async filesUploadArchive(requestParameters, initOverrides) {
         const response = await this.filesUploadArchiveRaw(requestParameters, initOverrides);
@@ -358,6 +577,280 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * ID , .
+     * ZIP-
+     */
+    async getArchiveImportsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getArchiveImports().');
+        }
+        if (requestParameters['idempotencyKey'] == null) {
+            throw new runtime.RequiredError('idempotencyKey', 'Required parameter "idempotencyKey" was null or undefined when calling getArchiveImports().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        if (requestParameters['idempotencyKey'] != null) {
+            queryParameters['idempotency_key'] = requestParameters['idempotencyKey'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchiveImportOperationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ID , .
+     * ZIP-
+     */
+    async getArchiveImports(requestParameters, initOverrides) {
+        const response = await this.getArchiveImportsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . include_result=true.
+     * ZIP-
+     */
+    async getArchiveImports2Raw(requestParameters, initOverrides) {
+        if (requestParameters['operationId'] == null) {
+            throw new runtime.RequiredError('operationId', 'Required parameter "operationId" was null or undefined when calling getArchiveImports2().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getArchiveImports2().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/{operationId}`.replace(`{${"operationId"}}`, encodeURIComponent(String(requestParameters['operationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchiveImportOperationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . include_result=true.
+     * ZIP-
+     */
+    async getArchiveImports2(requestParameters, initOverrides) {
+        const response = await this.getArchiveImports2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getArchiveImportsContentRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getArchiveImportsContent().');
+        }
+        if (requestParameters['archiveSha256'] == null) {
+            throw new runtime.RequiredError('archiveSha256', 'Required parameter "archiveSha256" was null or undefined when calling getArchiveImportsContent().');
+        }
+        if (requestParameters['duplicateResolution'] == null) {
+            throw new runtime.RequiredError('duplicateResolution', 'Required parameter "duplicateResolution" was null or undefined when calling getArchiveImportsContent().');
+        }
+        if (requestParameters['locale'] == null) {
+            throw new runtime.RequiredError('locale', 'Required parameter "locale" was null or undefined when calling getArchiveImportsContent().');
+        }
+        if (requestParameters['imageRecognitionMode'] == null) {
+            throw new runtime.RequiredError('imageRecognitionMode', 'Required parameter "imageRecognitionMode" was null or undefined when calling getArchiveImportsContent().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        if (requestParameters['archiveSha256'] != null) {
+            queryParameters['archive_sha256'] = requestParameters['archiveSha256'];
+        }
+        if (requestParameters['folderId'] != null) {
+            queryParameters['folder_id'] = requestParameters['folderId'];
+        }
+        if (requestParameters['duplicateResolution'] != null) {
+            queryParameters['duplicate_resolution'] = requestParameters['duplicateResolution'];
+        }
+        if (requestParameters['locale'] != null) {
+            queryParameters['locale'] = requestParameters['locale'];
+        }
+        if (requestParameters['imageRecognitionMode'] != null) {
+            queryParameters['image_recognition_mode'] = requestParameters['imageRecognitionMode'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/content`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchiveImportOperationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getArchiveImportsContent(requestParameters, initOverrides) {
+        const response = await this.getArchiveImportsContentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * NDJSON .
+     *
+     */
+    async getImageContextsExportRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getImageContextsExport().');
+        }
+        if (requestParameters['rootFolderId'] == null) {
+            throw new runtime.RequiredError('rootFolderId', 'Required parameter "rootFolderId" was null or undefined when calling getImageContextsExport().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['rootFolderId'] != null) {
+            queryParameters['root_folder_id'] = requestParameters['rootFolderId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/image-contexts/export`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * NDJSON .
+     *
+     */
+    async getImageContextsExport(requestParameters, initOverrides) {
+        const response = await this.getImageContextsExportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , AI-.
+     *
+     */
+    async getImageRecognitionRunsRaw(requestParameters, initOverrides) {
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError('runId', 'Required parameter "runId" was null or undefined when calling getImageRecognitionRuns().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getImageRecognitionRuns().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/image-recognition/runs/{runId}`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeImageRecognitionRunResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , AI-.
+     *
+     */
+    async getImageRecognitionRuns(requestParameters, initOverrides) {
+        const response = await this.getImageRecognitionRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , .
      *
      */
@@ -385,7 +878,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/knowledge-base/resources`,
@@ -437,7 +930,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/knowledge-base/resources/resolve`,
@@ -498,7 +991,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/knowledge-base/search`,
@@ -538,7 +1031,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/knowledge-base/tables/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -617,7 +1110,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/knowledge-base/files/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -746,6 +1239,60 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async tablesUpload(requestParameters, initOverrides) {
         const response = await this.tablesUploadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ZIP, .
+     *
+     */
+    async updateArchiveImportsResolutionRaw(requestParameters, initOverrides) {
+        if (requestParameters['operationId'] == null) {
+            throw new runtime.RequiredError('operationId', 'Required parameter "operationId" was null or undefined when calling updateArchiveImportsResolution().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateArchiveImportsResolution().');
+        }
+        if (requestParameters['resolveKnowledgeArchiveImportConflictDto'] == null) {
+            throw new runtime.RequiredError('resolveKnowledgeArchiveImportConflictDto', 'Required parameter "resolveKnowledgeArchiveImportConflictDto" was null or undefined when calling updateArchiveImportsResolution().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/{operationId}/resolution`.replace(`{${"operationId"}}`, encodeURIComponent(String(requestParameters['operationId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ResolveKnowledgeArchiveImportConflictDtoToJSON)(requestParameters['resolveKnowledgeArchiveImportConflictDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchiveImportOperationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ZIP, .
+     *
+     */
+    async updateArchiveImportsResolution(requestParameters, initOverrides) {
+        const response = await this.updateArchiveImportsResolutionRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -888,6 +1435,44 @@ exports.KnowledgeBaseApi = KnowledgeBaseApi;
 /**
  * @export
  */
+exports.ArchiveImportsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ArchiveImportsLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ArchiveImportsDuplicateResolutionEnum = {
+    Ask: 'ask',
+    Replace: 'replace',
+    Rename: 'rename'
+};
+/**
+ * @export
+ */
+exports.ArchiveImportsImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+};
+/**
+ * @export
+ */
+exports.DeleteArchiveImportsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.DeleteFoldersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -909,6 +1494,20 @@ exports.FilesAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.FilesRecognitionEstimateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.FilesRecognitionEstimateLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.FilesUploadAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -916,7 +1515,30 @@ exports.FilesUploadAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.FilesUploadLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.FilesUploadImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+};
+/**
+ * @export
+ */
 exports.FilesUploadArchiveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.FilesUploadArchiveLocaleEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -931,7 +1553,75 @@ exports.FilesUploadArchiveDuplicateResolutionEnum = {
 /**
  * @export
  */
+exports.FilesUploadArchiveImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+};
+/**
+ * @export
+ */
 exports.FoldersAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetArchiveImportsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetArchiveImports2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetArchiveImportsContentDuplicateResolutionEnum = {
+    Ask: 'ask',
+    Replace: 'replace',
+    Rename: 'rename'
+};
+/**
+ * @export
+ */
+exports.GetArchiveImportsContentLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetArchiveImportsContentImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+};
+/**
+ * @export
+ */
+exports.GetArchiveImportsContentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetImageContextsExportAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetImageRecognitionRunsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -996,6 +1686,13 @@ exports.TablesAcceptLanguageEnum = {
  * @export
  */
 exports.TablesUploadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

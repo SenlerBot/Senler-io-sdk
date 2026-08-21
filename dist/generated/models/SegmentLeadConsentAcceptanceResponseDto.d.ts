@@ -133,6 +133,8 @@ export declare const SegmentLeadConsentAcceptanceResponseDtoSourceEnum: {
     readonly Web: "web";
     readonly Manual: "manual";
     readonly AutoAssignment: "auto_assignment";
+    readonly Automation: "automation";
+    readonly AiAgent: "ai_agent";
 };
 export type SegmentLeadConsentAcceptanceResponseDtoSourceEnum = typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum[keyof typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum];
 /**

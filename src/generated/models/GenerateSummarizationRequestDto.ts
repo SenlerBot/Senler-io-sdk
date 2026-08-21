@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GenerateSummarizationRequestDto {
     /**
+     * ID
+     * @type {string}
+     * @memberof GenerateSummarizationRequestDto
+     */
+    operationId: string;
+    /**
      * ID (UUID)
      * @type {string}
      * @memberof GenerateSummarizationRequestDto
@@ -56,6 +62,7 @@ export type GenerateSummarizationRequestDtoPeriodEnum = typeof GenerateSummariza
  * Check if a given object implements the GenerateSummarizationRequestDto interface.
  */
 export function instanceOfGenerateSummarizationRequestDto(value: object): value is GenerateSummarizationRequestDto {
+    if (!('operationId' in value) || value['operationId'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('modelId' in value) || value['modelId'] === undefined) return false;
     return true;
@@ -71,6 +78,7 @@ export function GenerateSummarizationRequestDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
+        'operationId': json['operation_id'],
         'projectId': json['project_id'],
         'period': json['period'] == null ? undefined : json['period'],
         'modelId': json['model_id'],
@@ -88,6 +96,7 @@ export function GenerateSummarizationRequestDtoToJSONTyped(value?: GenerateSumma
 
     return {
 
+        'operation_id': value['operationId'],
         'project_id': value['projectId'],
         'period': value['period'],
         'model_id': value['modelId'],

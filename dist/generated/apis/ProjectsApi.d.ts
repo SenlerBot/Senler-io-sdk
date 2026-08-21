@@ -10,13 +10,20 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DialogSlaSettingsDto, ProjectDetailsResponseDto, SetDialogSlaEnabledDto, UpdateDialogSlaPriorityThresholdDto, UpdateDialogSlaSettingsDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
+import type { DialogSlaSettingsDto, GetProjectsListDataDto, ProjectDetailsResponseDto, SetDialogSlaEnabledDto, UpdateDialogSlaPriorityThresholdDto, UpdateDialogSlaSettingsDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
 export interface GetDialogSlaSettingsRequest {
     projectId: string;
     acceptLanguage?: GetDialogSlaSettingsAcceptLanguageEnum;
 }
 export interface GetMeRequest {
     acceptLanguage?: GetMeAcceptLanguageEnum;
+}
+export interface ListRequest {
+    limit?: number;
+    offset?: number;
+    isActive?: boolean;
+    source?: ListSourceEnum;
+    acceptLanguage?: ListAcceptLanguageEnum;
 }
 export interface UpdateRequest {
     projectId: string;
@@ -63,6 +70,16 @@ export declare class ProjectsApi extends runtime.BaseAPI {
      *
      */
     getMe(requestParameters?: GetMeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectDetailsResponseDto>;
+    /**
+     * . ( owner member)
+     *
+     */
+    listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectsListDataDto>>;
+    /**
+     * . ( owner member)
+     *
+     */
+    list(requestParameters?: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectsListDataDto>;
     /**
      * .
      *
@@ -120,6 +137,22 @@ export declare const GetMeAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetMeAcceptLanguageEnum = typeof GetMeAcceptLanguageEnum[keyof typeof GetMeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ListSourceEnum: {
+    readonly Manual: "manual";
+    readonly Streamvi: "streamvi";
+};
+export type ListSourceEnum = typeof ListSourceEnum[keyof typeof ListSourceEnum];
+/**
+ * @export
+ */
+export declare const ListAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ListAcceptLanguageEnum = typeof ListAcceptLanguageEnum[keyof typeof ListAcceptLanguageEnum];
 /**
  * @export
  */

@@ -13,20 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StartTrainingResponseDtoModeEnum = void 0;
 exports.instanceOfStartTrainingResponseDto = instanceOfStartTrainingResponseDto;
 exports.StartTrainingResponseDtoFromJSON = StartTrainingResponseDtoFromJSON;
 exports.StartTrainingResponseDtoFromJSONTyped = StartTrainingResponseDtoFromJSONTyped;
 exports.StartTrainingResponseDtoToJSON = StartTrainingResponseDtoToJSON;
 exports.StartTrainingResponseDtoToJSONTyped = StartTrainingResponseDtoToJSONTyped;
-/**
- * @export
- */
-exports.StartTrainingResponseDtoModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-};
+const TrainingMode_1 = require("./TrainingMode");
+const AgentStatus_1 = require("./AgentStatus");
 /**
  * Check if a given object implements the StartTrainingResponseDto interface.
  */
@@ -39,9 +32,11 @@ function instanceOfStartTrainingResponseDto(value) {
         return false;
     if (!('mode' in value) || value['mode'] === undefined)
         return false;
-    if (!('estimatedTime' in value) || value['estimatedTime'] === undefined)
-        return false;
     if (!('taskIds' in value) || value['taskIds'] === undefined)
+        return false;
+    if (!('trainingRunId' in value) || value['trainingRunId'] === undefined)
+        return false;
+    if (!('billingExempt' in value) || value['billingExempt'] === undefined)
         return false;
     return true;
 }
@@ -54,11 +49,12 @@ function StartTrainingResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'agentId': json['agentId'],
-        'status': json['status'],
+        'status': (0, AgentStatus_1.AgentStatusFromJSON)(json['status']),
         'tasksCreated': json['tasksCreated'],
-        'mode': json['mode'],
-        'estimatedTime': json['estimatedTime'],
+        'mode': (0, TrainingMode_1.TrainingModeFromJSON)(json['mode']),
         'taskIds': json['taskIds'],
+        'trainingRunId': json['trainingRunId'],
+        'billingExempt': json['billingExempt'],
     };
 }
 function StartTrainingResponseDtoToJSON(json) {
@@ -70,10 +66,11 @@ function StartTrainingResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
     }
     return {
         'agentId': value['agentId'],
-        'status': value['status'],
+        'status': (0, AgentStatus_1.AgentStatusToJSON)(value['status']),
         'tasksCreated': value['tasksCreated'],
-        'mode': value['mode'],
-        'estimatedTime': value['estimatedTime'],
+        'mode': (0, TrainingMode_1.TrainingModeToJSON)(value['mode']),
         'taskIds': value['taskIds'],
+        'trainingRunId': value['trainingRunId'],
+        'billingExempt': value['billingExempt'],
     };
 }

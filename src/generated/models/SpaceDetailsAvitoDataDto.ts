@@ -32,24 +32,139 @@ export interface SpaceDetailsAvitoDataDto {
      */
     accountUserId?: string;
     /**
+     * ID Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    itemOwnerUserId?: string | null;
+    /**
      * Avito.
      * @type {string}
      * @memberof SpaceDetailsAvitoDataDto
      */
-    priceString?: string;
+    priceString?: string | null;
+    /**
+     * , (/); : 1.25 = 125
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    priceKopecks?: number | null;
+    /**
+     * .
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    currency?: SpaceDetailsAvitoDataDtoCurrencyEnum | null;
     /**
      * ID Avito.
      * @type {number}
      * @memberof SpaceDetailsAvitoDataDto
      */
-    statusId?: number;
+    statusId?: number | null;
     /**
      * Avito.
      * @type {string}
      * @memberof SpaceDetailsAvitoDataDto
      */
-    locationTitle?: string;
+    status?: string | null;
+    /**
+     * Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    locationTitle?: string | null;
+    /**
+     * Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    address?: string | null;
+    /**
+     * ID Avito.
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    categoryId?: number | null;
+    /**
+     * Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    categoryName?: string | null;
+    /**
+     * .
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    imageCount?: number | null;
+    /**
+     * ID Avito.
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    autoloadItemId?: string | null;
+    /**
+     * .
+     * @type {Date}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    publicationStartedAt?: Date | null;
+    /**
+     * .
+     * @type {Date}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    publicationFinishedAt?: Date | null;
+    /**
+     * Avito-.
+     * @type {number}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    schemaVersion?: number;
+    /**
+     * , .
+     * @type {Array<string>}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    sources?: Array<SpaceDetailsAvitoDataDtoSourcesEnum>;
+    /**
+     * .
+     * @type {string}
+     * @memberof SpaceDetailsAvitoDataDto
+     */
+    completeness?: SpaceDetailsAvitoDataDtoCompletenessEnum;
 }
+
+
+/**
+ * @export
+ */
+export const SpaceDetailsAvitoDataDtoCurrencyEnum = {
+    Rub: 'RUB'
+} as const;
+export type SpaceDetailsAvitoDataDtoCurrencyEnum = typeof SpaceDetailsAvitoDataDtoCurrencyEnum[keyof typeof SpaceDetailsAvitoDataDtoCurrencyEnum];
+
+/**
+ * @export
+ */
+export const SpaceDetailsAvitoDataDtoSourcesEnum = {
+    Webhook: 'webhook',
+    Messenger: 'messenger',
+    ItemApi: 'item_api',
+    AccountItemApi: 'account_item_api'
+} as const;
+export type SpaceDetailsAvitoDataDtoSourcesEnum = typeof SpaceDetailsAvitoDataDtoSourcesEnum[keyof typeof SpaceDetailsAvitoDataDtoSourcesEnum];
+
+/**
+ * @export
+ */
+export const SpaceDetailsAvitoDataDtoCompletenessEnum = {
+    Identity: 'identity',
+    Messenger: 'messenger',
+    Item: 'item'
+} as const;
+export type SpaceDetailsAvitoDataDtoCompletenessEnum = typeof SpaceDetailsAvitoDataDtoCompletenessEnum[keyof typeof SpaceDetailsAvitoDataDtoCompletenessEnum];
+
 
 /**
  * Check if a given object implements the SpaceDetailsAvitoDataDto interface.
@@ -70,9 +185,23 @@ export function SpaceDetailsAvitoDataDtoFromJSONTyped(json: any, ignoreDiscrimin
 
         'itemId': json['item_id'] == null ? undefined : json['item_id'],
         'accountUserId': json['account_user_id'] == null ? undefined : json['account_user_id'],
+        'itemOwnerUserId': json['item_owner_user_id'] == null ? undefined : json['item_owner_user_id'],
         'priceString': json['price_string'] == null ? undefined : json['price_string'],
+        'priceKopecks': json['price_kopecks'] == null ? undefined : json['price_kopecks'],
+        'currency': json['currency'] == null ? undefined : json['currency'],
         'statusId': json['status_id'] == null ? undefined : json['status_id'],
+        'status': json['status'] == null ? undefined : json['status'],
         'locationTitle': json['location_title'] == null ? undefined : json['location_title'],
+        'address': json['address'] == null ? undefined : json['address'],
+        'categoryId': json['category_id'] == null ? undefined : json['category_id'],
+        'categoryName': json['category_name'] == null ? undefined : json['category_name'],
+        'imageCount': json['image_count'] == null ? undefined : json['image_count'],
+        'autoloadItemId': json['autoload_item_id'] == null ? undefined : json['autoload_item_id'],
+        'publicationStartedAt': json['publication_started_at'] == null ? undefined : (new Date(json['publication_started_at'])),
+        'publicationFinishedAt': json['publication_finished_at'] == null ? undefined : (new Date(json['publication_finished_at'])),
+        'schemaVersion': json['schema_version'] == null ? undefined : json['schema_version'],
+        'sources': json['sources'] == null ? undefined : json['sources'],
+        'completeness': json['completeness'] == null ? undefined : json['completeness'],
     };
 }
 
@@ -89,8 +218,22 @@ export function SpaceDetailsAvitoDataDtoToJSONTyped(value?: SpaceDetailsAvitoDat
 
         'item_id': value['itemId'],
         'account_user_id': value['accountUserId'],
+        'item_owner_user_id': value['itemOwnerUserId'],
         'price_string': value['priceString'],
+        'price_kopecks': value['priceKopecks'],
+        'currency': value['currency'],
         'status_id': value['statusId'],
+        'status': value['status'],
         'location_title': value['locationTitle'],
+        'address': value['address'],
+        'category_id': value['categoryId'],
+        'category_name': value['categoryName'],
+        'image_count': value['imageCount'],
+        'autoload_item_id': value['autoloadItemId'],
+        'publication_started_at': value['publicationStartedAt'] == null ? undefined : ((value['publicationStartedAt'] as any).toISOString()),
+        'publication_finished_at': value['publicationFinishedAt'] == null ? undefined : ((value['publicationFinishedAt'] as any).toISOString()),
+        'schema_version': value['schemaVersion'],
+        'sources': value['sources'],
+        'completeness': value['completeness'],
     };
 }

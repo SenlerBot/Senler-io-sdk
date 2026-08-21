@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateServerBodyDtoAuthModeEnum = exports.UpdateServerBodyDtoCustomAuthModeEnum = void 0;
+exports.UpdateServerBodyDtoSenlerToolSearchLanguageEnum = exports.UpdateServerBodyDtoAuthModeEnum = exports.UpdateServerBodyDtoCustomAuthModeEnum = void 0;
 exports.instanceOfUpdateServerBodyDto = instanceOfUpdateServerBodyDto;
 exports.UpdateServerBodyDtoFromJSON = UpdateServerBodyDtoFromJSON;
 exports.UpdateServerBodyDtoFromJSONTyped = UpdateServerBodyDtoFromJSONTyped;
@@ -38,6 +38,13 @@ exports.UpdateServerBodyDtoAuthModeEnum = {
     Lead: 'lead'
 };
 /**
+ * @export
+ */
+exports.UpdateServerBodyDtoSenlerToolSearchLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
  * Check if a given object implements the UpdateServerBodyDto interface.
  */
 function instanceOfUpdateServerBodyDto(value) {
@@ -58,9 +65,10 @@ function UpdateServerBodyDtoFromJSONTyped(json, ignoreDiscriminator) {
         'url': json['url'] == null ? undefined : json['url'],
         'description': json['description'] == null ? undefined : json['description'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
-        'descriptionPrepend': json['description_prepend'] == null ? undefined : json['description_prepend'],
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'authMode': json['auth_mode'] == null ? undefined : json['auth_mode'],
+        'senlerDynamicToolLoadingEnabled': json['senler_dynamic_tool_loading_enabled'] == null ? undefined : json['senler_dynamic_tool_loading_enabled'],
+        'senlerToolSearchLanguage': json['senler_tool_search_language'] == null ? undefined : json['senler_tool_search_language'],
         'meta': json['meta'] == null ? undefined : (0, CreateServerBodyDtoMeta_1.CreateServerBodyDtoMetaFromJSON)(json['meta']),
     };
 }
@@ -79,9 +87,10 @@ function UpdateServerBodyDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'url': value['url'],
         'description': value['description'],
         'is_active': value['isActive'],
-        'description_prepend': value['descriptionPrepend'],
         'custom_query_params': value['customQueryParams'],
         'auth_mode': value['authMode'],
+        'senler_dynamic_tool_loading_enabled': value['senlerDynamicToolLoadingEnabled'],
+        'senler_tool_search_language': value['senlerToolSearchLanguage'],
         'meta': (0, CreateServerBodyDtoMeta_1.CreateServerBodyDtoMetaToJSON)(value['meta']),
     };
 }

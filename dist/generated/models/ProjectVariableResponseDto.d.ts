@@ -21,6 +21,12 @@ export interface ProjectVariableResponseDto {
      * @type {string}
      * @memberof ProjectVariableResponseDto
      */
+    id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof ProjectVariableResponseDto
+     */
     projectId: string;
     /**
      * ID (null = )

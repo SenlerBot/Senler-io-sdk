@@ -53,7 +53,8 @@ export const DialogDisplayInfoDtoSourceTypeEnum = {
     Lead: 'lead',
     GroupChat: 'group_chat',
     Agent: 'agent',
-    Comment: 'comment'
+    Comment: 'comment',
+    Automation: 'automation'
 } as const;
 export type DialogDisplayInfoDtoSourceTypeEnum = typeof DialogDisplayInfoDtoSourceTypeEnum[keyof typeof DialogDisplayInfoDtoSourceTypeEnum];
 
@@ -70,7 +71,8 @@ export const DialogDisplayInfoDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type DialogDisplayInfoDtoPlatformTypeEnum = typeof DialogDisplayInfoDtoPlatformTypeEnum[keyof typeof DialogDisplayInfoDtoPlatformTypeEnum];
 

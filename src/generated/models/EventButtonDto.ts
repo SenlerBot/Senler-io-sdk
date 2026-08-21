@@ -40,11 +40,23 @@ export interface EventButtonDto {
      */
     buttonInstanceId?: string;
     /**
+     * .
+     * @type {boolean}
+     * @memberof EventButtonDto
+     */
+    isRepeatable?: boolean;
+    /**
      *
      * @type {EventButtonDtoAction}
      * @memberof EventButtonDto
      */
     action: EventButtonDtoAction;
+    /**
+     * .
+     * @type {string}
+     * @memberof EventButtonDto
+     */
+    appearance?: EventButtonDtoAppearanceEnum;
     /**
      * ( )
      * @type {number}
@@ -52,6 +64,19 @@ export interface EventButtonDto {
      */
     row?: number;
 }
+
+
+/**
+ * @export
+ */
+export const EventButtonDtoAppearanceEnum = {
+    Neutral: 'neutral',
+    Primary: 'primary',
+    Positive: 'positive',
+    Negative: 'negative'
+} as const;
+export type EventButtonDtoAppearanceEnum = typeof EventButtonDtoAppearanceEnum[keyof typeof EventButtonDtoAppearanceEnum];
+
 
 /**
  * Check if a given object implements the EventButtonDto interface.
@@ -74,7 +99,9 @@ export function EventButtonDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
 
         'text': json['text'],
         'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
+        'isRepeatable': json['is_repeatable'] == null ? undefined : json['is_repeatable'],
         'action': EventButtonDtoActionFromJSON(json['action']),
+        'appearance': json['appearance'] == null ? undefined : json['appearance'],
         'row': json['row'] == null ? undefined : json['row'],
     };
 }
@@ -92,7 +119,9 @@ export function EventButtonDtoToJSONTyped(value?: EventButtonDto | null, ignoreD
 
         'text': value['text'],
         'button_instance_id': value['buttonInstanceId'],
+        'is_repeatable': value['isRepeatable'],
         'action': EventButtonDtoActionToJSON(value['action']),
+        'appearance': value['appearance'],
         'row': value['row'],
     };
 }

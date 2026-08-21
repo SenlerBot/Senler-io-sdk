@@ -26,25 +26,7 @@ export interface McpServerResponseDtoMeta {
      * @memberof McpServerResponseDtoMeta
      */
     tags?: Array<string>;
-    /**
-     * MCP
-     * @type {string}
-     * @memberof McpServerResponseDtoMeta
-     */
-    healthStatus?: McpServerResponseDtoMetaHealthStatusEnum;
 }
-
-
-/**
- * @export
- */
-export const McpServerResponseDtoMetaHealthStatusEnum = {
-    Healthy: 'healthy',
-    Unhealthy: 'unhealthy',
-    Unknown: 'unknown'
-} as const;
-export type McpServerResponseDtoMetaHealthStatusEnum = typeof McpServerResponseDtoMetaHealthStatusEnum[keyof typeof McpServerResponseDtoMetaHealthStatusEnum];
-
 
 /**
  * Check if a given object implements the McpServerResponseDtoMeta interface.
@@ -65,7 +47,6 @@ export function McpServerResponseDtoMetaFromJSONTyped(json: any, ignoreDiscrimin
 
             ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
-        'healthStatus': json['health_status'] == null ? undefined : json['health_status'],
     };
 }
 
@@ -82,6 +63,5 @@ export function McpServerResponseDtoMetaToJSONTyped(value?: McpServerResponseDto
 
             ...value,
         'tags': value['tags'],
-        'health_status': value['healthStatus'],
     };
 }

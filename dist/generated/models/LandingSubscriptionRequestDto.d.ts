@@ -36,6 +36,42 @@ export interface LandingSubscriptionRequestDto {
      */
     platformPayload: string;
     /**
+     * ID , .
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    trafficMarkPublicId?: string;
+    /**
+     * (utm_source).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmSource?: string;
+    /**
+     * (utm_medium).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmMedium?: string;
+    /**
+     * (utm_campaign).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmCampaign?: string;
+    /**
+     * (utm_content).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmContent?: string;
+    /**
+     * (utm_term).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmTerm?: string;
+    /**
      * , .
      * @type {Array<AcceptedSegmentConsentDto>}
      * @memberof LandingSubscriptionRequestDto

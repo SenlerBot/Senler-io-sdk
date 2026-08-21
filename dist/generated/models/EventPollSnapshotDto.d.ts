@@ -157,6 +157,7 @@ export declare const EventPollSnapshotDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type EventPollSnapshotDtoPlatformTypeEnum = typeof EventPollSnapshotDtoPlatformTypeEnum[keyof typeof EventPollSnapshotDtoPlatformTypeEnum];
 /**

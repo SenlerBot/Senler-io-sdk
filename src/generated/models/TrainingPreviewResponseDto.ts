@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingModeOptionDto } from './TrainingModeOptionDto';
+import {
+    TrainingModeOptionDtoFromJSON,
+    TrainingModeOptionDtoFromJSONTyped,
+    TrainingModeOptionDtoToJSON,
+    TrainingModeOptionDtoToJSONTyped,
+} from './TrainingModeOptionDto';
+import type { TrainingBillingPreviewDto } from './TrainingBillingPreviewDto';
+import {
+    TrainingBillingPreviewDtoFromJSON,
+    TrainingBillingPreviewDtoFromJSONTyped,
+    TrainingBillingPreviewDtoToJSON,
+    TrainingBillingPreviewDtoToJSONTyped,
+} from './TrainingBillingPreviewDto';
 import type { TrainingPreviewEstimateDto } from './TrainingPreviewEstimateDto';
 import {
     TrainingPreviewEstimateDtoFromJSON,
@@ -41,6 +55,12 @@ import {
  * @interface TrainingPreviewResponseDto
  */
 export interface TrainingPreviewResponseDto {
+    /**
+     *
+     * @type {Array<TrainingModeOptionDto>}
+     * @memberof TrainingPreviewResponseDto
+     */
+    modeOptions: Array<TrainingModeOptionDto>;
     /**
      *
      * @type {number}
@@ -90,6 +110,12 @@ export interface TrainingPreviewResponseDto {
      */
     estimate: TrainingPreviewEstimateDto;
     /**
+     *
+     * @type {TrainingBillingPreviewDto}
+     * @memberof TrainingPreviewResponseDto
+     */
+    billing: TrainingBillingPreviewDto;
+    /**
      * UI
      * @type {Array<string>}
      * @memberof TrainingPreviewResponseDto
@@ -101,6 +127,7 @@ export interface TrainingPreviewResponseDto {
  * Check if a given object implements the TrainingPreviewResponseDto interface.
  */
 export function instanceOfTrainingPreviewResponseDto(value: object): value is TrainingPreviewResponseDto {
+    if (!('modeOptions' in value) || value['modeOptions'] === undefined) return false;
     if (!('requestedHistoryDepthDays' in value) || value['requestedHistoryDepthDays'] === undefined) return false;
     if (!('maxHistoryDepthDays' in value) || value['maxHistoryDepthDays'] === undefined) return false;
     if (!('historyScanAvailable' in value) || value['historyScanAvailable'] === undefined) return false;
@@ -108,6 +135,7 @@ export function instanceOfTrainingPreviewResponseDto(value: object): value is Tr
     if (!('dataVolume' in value) || value['dataVolume'] === undefined) return false;
     if (!('channels' in value) || value['channels'] === undefined) return false;
     if (!('estimate' in value) || value['estimate'] === undefined) return false;
+    if (!('billing' in value) || value['billing'] === undefined) return false;
     if (!('warnings' in value) || value['warnings'] === undefined) return false;
     return true;
 }
@@ -122,6 +150,7 @@ export function TrainingPreviewResponseDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'modeOptions': ((json['mode_options'] as Array<any>).map(TrainingModeOptionDtoFromJSON)),
         'requestedHistoryDepthDays': json['requested_history_depth_days'],
         'maxHistoryDepthDays': json['max_history_depth_days'],
         'historyScanAvailable': json['history_scan_available'],
@@ -130,6 +159,7 @@ export function TrainingPreviewResponseDtoFromJSONTyped(json: any, ignoreDiscrim
         'dataVolume': TrainingDataVolumeEstimateDtoFromJSON(json['data_volume']),
         'channels': ((json['channels'] as Array<any>).map(TrainingChannelHistoryPreviewDtoFromJSON)),
         'estimate': TrainingPreviewEstimateDtoFromJSON(json['estimate']),
+        'billing': TrainingBillingPreviewDtoFromJSON(json['billing']),
         'warnings': json['warnings'],
     };
 }
@@ -145,6 +175,7 @@ export function TrainingPreviewResponseDtoToJSONTyped(value?: TrainingPreviewRes
 
     return {
 
+        'mode_options': ((value['modeOptions'] as Array<any>).map(TrainingModeOptionDtoToJSON)),
         'requested_history_depth_days': value['requestedHistoryDepthDays'],
         'max_history_depth_days': value['maxHistoryDepthDays'],
         'history_scan_available': value['historyScanAvailable'],
@@ -153,6 +184,7 @@ export function TrainingPreviewResponseDtoToJSONTyped(value?: TrainingPreviewRes
         'data_volume': TrainingDataVolumeEstimateDtoToJSON(value['dataVolume']),
         'channels': ((value['channels'] as Array<any>).map(TrainingChannelHistoryPreviewDtoToJSON)),
         'estimate': TrainingPreviewEstimateDtoToJSON(value['estimate']),
+        'billing': TrainingBillingPreviewDtoToJSON(value['billing']),
         'warnings': value['warnings'],
     };
 }

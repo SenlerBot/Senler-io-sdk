@@ -134,6 +134,7 @@ export const GetAuditEntityTypeEnum = {
     SegmentConsentDocument: 'segment_consent_document',
     Landing: 'landing',
     Trigger: 'trigger',
+    Automation: 'automation',
     Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
     SupportSchedule: 'support_schedule',
@@ -143,7 +144,8 @@ export const GetAuditEntityTypeEnum = {
     AppInstallation: 'app_installation',
     PaymentSettings: 'payment_settings',
     Space: 'space',
-    SummarizationSettings: 'summarization_settings'
+    SummarizationSettings: 'summarization_settings',
+    TrafficMark: 'traffic_mark'
 } as const;
 export type GetAuditEntityTypeEnum = typeof GetAuditEntityTypeEnum[keyof typeof GetAuditEntityTypeEnum];
 /**

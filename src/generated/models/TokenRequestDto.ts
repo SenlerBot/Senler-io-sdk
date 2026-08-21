@@ -26,13 +26,13 @@ export interface TokenRequestDto {
      */
     grantType: TokenRequestDtoGrantTypeEnum;
     /**
-     * ID OAuth-. HTTP Basic.
+     * ID OAuth- authorization_code refresh_token. HTTP Basic.
      * @type {string}
      * @memberof TokenRequestDto
      */
     clientId?: string;
     /**
-     * OAuth-. HTTP Basic.
+     * confidential OAuth- authorization_code refresh_token. HTTP Basic.
      * @type {string}
      * @memberof TokenRequestDto
      */
@@ -50,7 +50,7 @@ export interface TokenRequestDto {
      */
     code?: string;
     /**
-     * URL grant_type=authorization_code. , redirect_uri.
+     * URL grant_type=authorization_code. redirect_uri.
      * @type {string}
      * @memberof TokenRequestDto
      */

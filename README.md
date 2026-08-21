@@ -58,6 +58,7 @@ API documentation: https://dev.senler.io
     accessToken: 'access_token',
     refreshToken: 'refresh_token',
     clientId: 'your_client_id',
+    clientSecret: 'your_client_secret',
     onTokenRefreshed: (newAccess, newRefresh) => {
       // Persist the new tokens in your storage
       db.saveTokens(newAccess, newRefresh);
@@ -67,7 +68,7 @@ API documentation: https://dev.senler.io
   // SDK automatically refreshes the token on 401 and retries the request
   ```
   
-  Auto-refresh is enabled only when both `refreshToken` and `clientId` are provided.
+  Auto-refresh is enabled only when `refreshToken`, `clientId`, and `clientSecret` are provided. Keep `clientSecret` in server-side code only.
   
   ## Update Token Manually
   

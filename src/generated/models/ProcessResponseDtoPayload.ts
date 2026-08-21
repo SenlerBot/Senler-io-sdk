@@ -68,6 +68,13 @@ import {
     LeadsRefreshPayloadDtoFromJSONTyped,
     LeadsRefreshPayloadDtoToJSON,
 } from './LeadsRefreshPayloadDto';
+import type { LeadsSegmentOperationPayloadDto } from './LeadsSegmentOperationPayloadDto';
+import {
+    instanceOfLeadsSegmentOperationPayloadDto,
+    LeadsSegmentOperationPayloadDtoFromJSON,
+    LeadsSegmentOperationPayloadDtoFromJSONTyped,
+    LeadsSegmentOperationPayloadDtoToJSON,
+} from './LeadsSegmentOperationPayloadDto';
 import type { ResourcePackageImportPayloadDto } from './ResourcePackageImportPayloadDto';
 import {
     instanceOfResourcePackageImportPayloadDto,
@@ -81,7 +88,7 @@ import {
  *
  * @export
  */
-export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | ResourcePackageImportPayloadDto;
+export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | LeadsSegmentOperationPayloadDto | ResourcePackageImportPayloadDto;
 
 export function ProcessResponseDtoPayloadFromJSON(json: any): ProcessResponseDtoPayload {
     return ProcessResponseDtoPayloadFromJSONTyped(json, false);
@@ -114,6 +121,9 @@ export function ProcessResponseDtoPayloadFromJSONTyped(json: any, ignoreDiscrimi
     }
     if (instanceOfLeadsRefreshPayloadDto(json)) {
         return LeadsRefreshPayloadDtoFromJSONTyped(json, true);
+    }
+    if (instanceOfLeadsSegmentOperationPayloadDto(json)) {
+        return LeadsSegmentOperationPayloadDtoFromJSONTyped(json, true);
     }
     if (instanceOfResourcePackageImportPayloadDto(json)) {
         return ResourcePackageImportPayloadDtoFromJSONTyped(json, true);
@@ -154,6 +164,9 @@ export function ProcessResponseDtoPayloadToJSONTyped(value?: ProcessResponseDtoP
     }
     if (instanceOfLeadsRefreshPayloadDto(value)) {
         return LeadsRefreshPayloadDtoToJSON(value as LeadsRefreshPayloadDto);
+    }
+    if (instanceOfLeadsSegmentOperationPayloadDto(value)) {
+        return LeadsSegmentOperationPayloadDtoToJSON(value as LeadsSegmentOperationPayloadDto);
     }
     if (instanceOfResourcePackageImportPayloadDto(value)) {
         return ResourcePackageImportPayloadDtoToJSON(value as ResourcePackageImportPayloadDto);

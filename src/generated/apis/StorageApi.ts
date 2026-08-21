@@ -231,7 +231,7 @@ export class StorageApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_storage"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -283,7 +283,7 @@ export class StorageApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_storage"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -359,7 +359,8 @@ export const GetFilesSourceEnum = {
     Agent: 'agent',
     Web: 'web',
     Temp: 'temp',
-    System: 'system'
+    System: 'system',
+    Automation: 'automation'
 } as const;
 export type GetFilesSourceEnum = typeof GetFilesSourceEnum[keyof typeof GetFilesSourceEnum];
 /**

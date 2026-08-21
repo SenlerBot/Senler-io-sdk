@@ -160,12 +160,12 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateAutoAssignDisabled(requestParameters: UpdateAutoAssignDisabledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/segment/automation/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     updateEventsRaw(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditMessageResponseDto>>;
     /**
-     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/segment/automation/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     updateEvents(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditMessageResponseDto>;

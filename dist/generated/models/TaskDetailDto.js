@@ -13,12 +13,21 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TaskDetailDtoStatusEnum = void 0;
+exports.TaskDetailDtoStatusEnum = exports.TaskDetailDtoTypeEnum = void 0;
 exports.instanceOfTaskDetailDto = instanceOfTaskDetailDto;
 exports.TaskDetailDtoFromJSON = TaskDetailDtoFromJSON;
 exports.TaskDetailDtoFromJSONTyped = TaskDetailDtoFromJSONTyped;
 exports.TaskDetailDtoToJSON = TaskDetailDtoToJSON;
 exports.TaskDetailDtoToJSONTyped = TaskDetailDtoToJSONTyped;
+const TrainingWebsitePageSummaryDto_1 = require("./TrainingWebsitePageSummaryDto");
+/**
+ * @export
+ */
+exports.TaskDetailDtoTypeEnum = {
+    WebsiteParse: 'website_parse',
+    ChannelHistoryScan: 'channel_history_scan',
+    AgentVariantsGenerate: 'agent_variants_generate'
+};
 /**
  * @export
  */
@@ -44,7 +53,7 @@ function instanceOfTaskDetailDto(value) {
         return false;
     if (!('progress' in value) || value['progress'] === undefined)
         return false;
-    if (!('itemsProgress' in value) || value['itemsProgress'] === undefined)
+    if (!('itemsProcessed' in value) || value['itemsProcessed'] === undefined)
         return false;
     return true;
 }
@@ -61,7 +70,9 @@ function TaskDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'sourceName': json['sourceName'],
         'status': json['status'],
         'progress': json['progress'],
-        'itemsProgress': json['itemsProgress'],
+        'itemsProcessed': json['itemsProcessed'],
+        'itemsTotal': json['itemsTotal'] == null ? undefined : json['itemsTotal'],
+        'websitePages': json['websitePages'] == null ? undefined : (json['websitePages'].map(TrainingWebsitePageSummaryDto_1.TrainingWebsitePageSummaryDtoFromJSON)),
         'error': json['error'] == null ? undefined : json['error'],
         'createdAt': json['createdAt'] == null ? undefined : json['createdAt'],
         'completedAt': json['completedAt'] == null ? undefined : json['completedAt'],
@@ -80,7 +91,9 @@ function TaskDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'sourceName': value['sourceName'],
         'status': value['status'],
         'progress': value['progress'],
-        'itemsProgress': value['itemsProgress'],
+        'itemsProcessed': value['itemsProcessed'],
+        'itemsTotal': value['itemsTotal'],
+        'websitePages': value['websitePages'] == null ? undefined : (value['websitePages'].map(TrainingWebsitePageSummaryDto_1.TrainingWebsitePageSummaryDtoToJSON)),
         'error': value['error'],
         'createdAt': value['createdAt'],
         'completedAt': value['completedAt'],

@@ -84,7 +84,7 @@ export interface AppCatalogResponseDto {
      */
     documentationUrls: AppDocumentationPublicUrlsDto | null;
     /**
-     *
+     * : oauth , sales_funnel , plugin
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
@@ -95,6 +95,12 @@ export interface AppCatalogResponseDto {
      * @memberof AppCatalogResponseDto
      */
     hasTools: boolean;
+    /**
+     * ,
+     * @type {Array<string>}
+     * @memberof AppCatalogResponseDto
+     */
+    automationTypes: Array<AppCatalogResponseDtoAutomationTypesEnum>;
     /**
      *
      * @type {AppEmbeddedPageSettingsResponseDto}
@@ -128,9 +134,18 @@ export interface AppCatalogResponseDto {
 export const AppCatalogResponseDtoTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool'
+    Plugin: 'plugin'
 } as const;
 export type AppCatalogResponseDtoTypeEnum = typeof AppCatalogResponseDtoTypeEnum[keyof typeof AppCatalogResponseDtoTypeEnum];
+
+/**
+ * @export
+ */
+export const AppCatalogResponseDtoAutomationTypesEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
+} as const;
+export type AppCatalogResponseDtoAutomationTypesEnum = typeof AppCatalogResponseDtoAutomationTypesEnum[keyof typeof AppCatalogResponseDtoAutomationTypesEnum];
 
 
 /**
@@ -146,6 +161,7 @@ export function instanceOfAppCatalogResponseDto(value: object): value is AppCata
     if (!('documentationUrls' in value) || value['documentationUrls'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('hasTools' in value) || value['hasTools'] === undefined) return false;
+    if (!('automationTypes' in value) || value['automationTypes'] === undefined) return false;
     if (!('embeddedPage' in value) || value['embeddedPage'] === undefined) return false;
     if (!('allowedPermissions' in value) || value['allowedPermissions'] === undefined) return false;
     if (!('allowInstalledAgentSettingsView' in value) || value['allowInstalledAgentSettingsView'] === undefined) return false;
@@ -172,6 +188,7 @@ export function AppCatalogResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'documentationUrls': AppDocumentationPublicUrlsDtoFromJSON(json['documentation_urls']),
         'type': json['type'],
         'hasTools': json['has_tools'],
+        'automationTypes': json['automation_types'],
         'embeddedPage': AppEmbeddedPageSettingsResponseDtoFromJSON(json['embedded_page']),
         'allowedPermissions': json['allowed_permissions'],
         'allowInstalledAgentSettingsView': json['allow_installed_agent_settings_view'],
@@ -199,6 +216,7 @@ export function AppCatalogResponseDtoToJSONTyped(value?: AppCatalogResponseDto |
         'documentation_urls': AppDocumentationPublicUrlsDtoToJSON(value['documentationUrls']),
         'type': value['type'],
         'has_tools': value['hasTools'],
+        'automation_types': value['automationTypes'],
         'embedded_page': AppEmbeddedPageSettingsResponseDtoToJSON(value['embeddedPage']),
         'allowed_permissions': value['allowedPermissions'],
         'allow_installed_agent_settings_view': value['allowInstalledAgentSettingsView'],

@@ -55,7 +55,8 @@ exports.StorageFileItemDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 };
 /**
  * @export
@@ -68,7 +69,8 @@ exports.StorageFileItemDtoStorageSourceEnum = {
     Agent: 'agent',
     Web: 'web',
     Temp: 'temp',
-    System: 'system'
+    System: 'system',
+    Automation: 'automation'
 };
 /**
  * @export
@@ -80,7 +82,8 @@ exports.StorageFileItemDtoOwnerTypeEnum = {
     KnowledgeDocumentAsset: 'knowledge_document_asset',
     KnowledgeTableAsset: 'knowledge_table_asset',
     AgentGeneratedFile: 'agent_generated_file',
-    SystemFile: 'system_file'
+    SystemFile: 'system_file',
+    AutomationAttachment: 'automation_attachment'
 };
 /**
  * Check if a given object implements the StorageFileItemDto interface.

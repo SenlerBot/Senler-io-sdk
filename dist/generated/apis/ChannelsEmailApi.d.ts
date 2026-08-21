@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateEmailChannelDto, EmailChannelResponseDto, UpdateEmailChannelDto } from '../models/index';
+import type { CreateEmailChannelDto, EmailChannelResponseDto, EmailProviderListResponseDto, UpdateEmailChannelDto } from '../models/index';
 export interface ChannelsEmailCreateRequest {
     createEmailChannelDto: CreateEmailChannelDto;
     acceptLanguage?: ChannelsEmailCreateAcceptLanguageEnum;
@@ -19,6 +19,9 @@ export interface ChannelsEmailUpdateRequest {
     id: string;
     updateEmailChannelDto: UpdateEmailChannelDto;
     acceptLanguage?: ChannelsEmailUpdateAcceptLanguageEnum;
+}
+export interface GetProvidersRequest {
+    acceptLanguage?: GetProvidersAcceptLanguageEnum;
 }
 /**
  *
@@ -44,6 +47,16 @@ export declare class ChannelsEmailApi extends runtime.BaseAPI {
      * Email
      */
     channelsEmailUpdate(requestParameters: ChannelsEmailUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailChannelResponseDto>;
+    /**
+     * email- IMAP/SMTP
+     * email-
+     */
+    getProvidersRaw(requestParameters: GetProvidersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailProviderListResponseDto>>;
+    /**
+     * email- IMAP/SMTP
+     * email-
+     */
+    getProviders(requestParameters?: GetProvidersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailProviderListResponseDto>;
 }
 /**
  * @export
@@ -61,3 +74,11 @@ export declare const ChannelsEmailUpdateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ChannelsEmailUpdateAcceptLanguageEnum = typeof ChannelsEmailUpdateAcceptLanguageEnum[keyof typeof ChannelsEmailUpdateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetProvidersAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProvidersAcceptLanguageEnum = typeof GetProvidersAcceptLanguageEnum[keyof typeof GetProvidersAcceptLanguageEnum];

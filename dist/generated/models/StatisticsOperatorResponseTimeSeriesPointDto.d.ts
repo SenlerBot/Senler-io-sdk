@@ -58,7 +58,7 @@ export interface StatisticsOperatorResponseTimeSeriesPointDto {
      */
     p50ResponseTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseTimeSeriesPointDto
      */
@@ -76,7 +76,7 @@ export interface StatisticsOperatorResponseTimeSeriesPointDto {
      */
     p50ResponseRawTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseTimeSeriesPointDto
      */

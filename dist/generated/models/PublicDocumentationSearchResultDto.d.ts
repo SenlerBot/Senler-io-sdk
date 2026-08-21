@@ -64,6 +64,12 @@ export interface PublicDocumentationSearchResultDto {
      * @memberof PublicDocumentationSearchResultDto
      */
     url: string | null;
+    /**
+     * Markdown
+     * @type {string}
+     * @memberof PublicDocumentationSearchResultDto
+     */
+    documentRef: string | null;
 }
 /**
  * @export

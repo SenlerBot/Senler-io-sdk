@@ -462,7 +462,8 @@ export const DialogChatEventDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type DialogChatEventDtoPlatformTypeEnum = typeof DialogChatEventDtoPlatformTypeEnum[keyof typeof DialogChatEventDtoPlatformTypeEnum];
 

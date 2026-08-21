@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.McpServerResponseDtoProjectCredentialValidationStatusEnum = exports.McpServerResponseDtoProjectConnectedAuthMethodEnum = exports.McpServerResponseDtoAuthModeEnum = exports.McpServerResponseDtoCustomAuthModeEnum = void 0;
+exports.McpServerResponseDtoProjectCredentialValidationStatusEnum = exports.McpServerResponseDtoProjectConnectedAuthMethodEnum = exports.McpServerResponseDtoSenlerToolSearchLanguageEnum = exports.McpServerResponseDtoAuthModeEnum = exports.McpServerResponseDtoCustomAuthModeEnum = void 0;
 exports.instanceOfMcpServerResponseDto = instanceOfMcpServerResponseDto;
 exports.McpServerResponseDtoFromJSON = McpServerResponseDtoFromJSON;
 exports.McpServerResponseDtoFromJSONTyped = McpServerResponseDtoFromJSONTyped;
@@ -37,6 +37,13 @@ exports.McpServerResponseDtoCustomAuthModeEnum = {
 exports.McpServerResponseDtoAuthModeEnum = {
     Project: 'project',
     Lead: 'lead'
+};
+/**
+ * @export
+ */
+exports.McpServerResponseDtoSenlerToolSearchLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
 };
 /**
  * @export
@@ -67,6 +74,8 @@ function instanceOfMcpServerResponseDto(value) {
         return false;
     if (!('authMode' in value) || value['authMode'] === undefined)
         return false;
+    if (!('senlerDynamicToolLoadingEnabled' in value) || value['senlerDynamicToolLoadingEnabled'] === undefined)
+        return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
@@ -95,6 +104,8 @@ function McpServerResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'customAuthMode': json['custom_auth_mode'] == null ? undefined : json['custom_auth_mode'],
         'isInstalled': json['is_installed'],
         'authMode': json['auth_mode'],
+        'senlerDynamicToolLoadingEnabled': json['senler_dynamic_tool_loading_enabled'],
+        'senlerToolSearchLanguage': json['senler_tool_search_language'] == null ? undefined : json['senler_tool_search_language'],
         'projectConnectedAuthMethod': json['project_connected_auth_method'] == null ? undefined : json['project_connected_auth_method'],
         'supportsProjectManualCredential': json['supports_project_manual_credential'] == null ? undefined : json['supports_project_manual_credential'],
         'manualAuthHeaders': json['manual_auth_headers'] == null ? undefined : (json['manual_auth_headers'].map(McpServerTemplateManualAuthHeaderDto_1.McpServerTemplateManualAuthHeaderDtoFromJSON)),
@@ -133,6 +144,8 @@ function McpServerResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'custom_auth_mode': value['customAuthMode'],
         'is_installed': value['isInstalled'],
         'auth_mode': value['authMode'],
+        'senler_dynamic_tool_loading_enabled': value['senlerDynamicToolLoadingEnabled'],
+        'senler_tool_search_language': value['senlerToolSearchLanguage'],
         'project_connected_auth_method': value['projectConnectedAuthMethod'],
         'supports_project_manual_credential': value['supportsProjectManualCredential'],
         'manual_auth_headers': value['manualAuthHeaders'] == null ? undefined : (value['manualAuthHeaders'].map(McpServerTemplateManualAuthHeaderDto_1.McpServerTemplateManualAuthHeaderDtoToJSON)),

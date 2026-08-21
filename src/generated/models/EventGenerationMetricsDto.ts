@@ -39,6 +39,12 @@ export interface EventGenerationMetricsDto {
      * @memberof EventGenerationMetricsDto
      */
     status?: EventGenerationMetricsDtoStatusEnum;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof EventGenerationMetricsDto
+     */
+    analysisAgentId?: string;
 }
 
 
@@ -73,6 +79,7 @@ export function EventGenerationMetricsDtoFromJSONTyped(json: any, ignoreDiscrimi
 
         'items': json['items'] == null ? undefined : ((json['items'] as Array<any>).map(EventMetricDtoFromJSON)),
         'status': json['status'] == null ? undefined : json['status'],
+        'analysisAgentId': json['analysis_agent_id'] == null ? undefined : json['analysis_agent_id'],
     };
 }
 
@@ -89,5 +96,6 @@ export function EventGenerationMetricsDtoToJSONTyped(value?: EventGenerationMetr
 
         'items': value['items'] == null ? undefined : ((value['items'] as Array<any>).map(EventMetricDtoToJSON)),
         'status': value['status'],
+        'analysis_agent_id': value['analysisAgentId'],
     };
 }

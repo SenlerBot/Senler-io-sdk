@@ -133,12 +133,12 @@ export interface UpdateProjectsAutoPurchaseRequest {
  */
 export declare class BillingApi extends runtime.BaseAPI {
     /**
-     * downgrade. . ( ).
+     * downgrade. ; .
      *
      */
     deleteProjectsTariffNextRaw(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * downgrade. . ( ).
+     * downgrade. ; .
      *
      */
     deleteProjectsTariffNext(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;

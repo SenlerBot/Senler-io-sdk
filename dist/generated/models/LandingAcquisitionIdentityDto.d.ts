@@ -33,6 +33,42 @@ export interface LandingAcquisitionIdentityDto {
      * @memberof LandingAcquisitionIdentityDto
      */
     platformPayload: string;
+    /**
+     * ID , .
+     * @type {string}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    trafficMarkPublicId?: string;
+    /**
+     * (utm_source).
+     * @type {string}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    utmSource?: string;
+    /**
+     * (utm_medium).
+     * @type {string}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    utmMedium?: string;
+    /**
+     * (utm_campaign).
+     * @type {string}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    utmCampaign?: string;
+    /**
+     * (utm_content).
+     * @type {string}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    utmContent?: string;
+    /**
+     * (utm_term).
+     * @type {string}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    utmTerm?: string;
 }
 /**
  * @export

@@ -41,6 +41,12 @@ export interface AgentSegmentDraftResponseDto {
      */
     requiredConsents: Array<SegmentConsentSnapshotDto>;
     /**
+     * .
+     * @type {string}
+     * @memberof AgentSegmentDraftResponseDto
+     */
+    consentPromptText: string | null;
+    /**
      * null, .
      * @type {string}
      * @memberof AgentSegmentDraftResponseDto

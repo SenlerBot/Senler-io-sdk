@@ -188,6 +188,7 @@ export declare const StatisticsChannelBreakdownDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type StatisticsChannelBreakdownDtoPlatformTypeEnum = typeof StatisticsChannelBreakdownDtoPlatformTypeEnum[keyof typeof StatisticsChannelBreakdownDtoPlatformTypeEnum];
 /**

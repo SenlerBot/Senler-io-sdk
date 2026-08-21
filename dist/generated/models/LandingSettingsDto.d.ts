@@ -27,6 +27,18 @@ export interface LandingSettingsDto {
      * @memberof LandingSettingsDto
      */
     backgroundColor: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    iconUrl: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    bannerUrl: string | null;
 }
 /**
  * Check if a given object implements the LandingSettingsDto interface.

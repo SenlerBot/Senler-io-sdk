@@ -30,6 +30,12 @@ export interface PublicDocumentationPageTreeItemDto {
      * @type {string}
      * @memberof PublicDocumentationPageTreeItemDto
      */
+    slug: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicDocumentationPageTreeItemDto
+     */
     title: string;
     /**
      *
@@ -44,6 +50,7 @@ export interface PublicDocumentationPageTreeItemDto {
  */
 export function instanceOfPublicDocumentationPageTreeItemDto(value: object): value is PublicDocumentationPageTreeItemDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('slug' in value) || value['slug'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('sortOrder' in value) || value['sortOrder'] === undefined) return false;
     return true;
@@ -60,6 +67,7 @@ export function PublicDocumentationPageTreeItemDtoFromJSONTyped(json: any, ignor
     return {
 
         'id': json['id'],
+        'slug': json['slug'],
         'title': json['title'],
         'sortOrder': json['sort_order'],
     };
@@ -77,6 +85,7 @@ export function PublicDocumentationPageTreeItemDtoToJSONTyped(value?: PublicDocu
     return {
 
         'id': value['id'],
+        'slug': value['slug'],
         'title': value['title'],
         'sort_order': value['sortOrder'],
     };

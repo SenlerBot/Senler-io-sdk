@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { PublicDocumentationAppDto, PublicDocumentationAppMetadataDto, PublicDocumentationFileDto, PublicDocumentationSearchResponseDto, PublicDocumentationTreeDto } from '../models/index';
+import type { PublicDocumentationAppDto, PublicDocumentationAppMetadataDto, PublicDocumentationFileDto, PublicDocumentationPageDto, PublicDocumentationSearchResponseDto, PublicDocumentationTreeDto } from '../models/index';
 export interface GetAppsRequest {
     acceptLanguage?: GetAppsAcceptLanguageEnum;
 }
@@ -28,6 +28,10 @@ export interface GetAppsTreeRequest {
     slug: string;
     locale: string;
     acceptLanguage?: GetAppsTreeAcceptLanguageEnum;
+}
+export interface GetPageRequest {
+    documentRef: string;
+    acceptLanguage?: GetPageAcceptLanguageEnum;
 }
 export interface PublicDocumentationGetSearchRequest {
     query: string;
@@ -83,6 +87,16 @@ export declare class PublicDocumentationApi extends runtime.BaseAPI {
      */
     getAppsTree(requestParameters: GetAppsTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationTreeDto>;
     /**
+     * Markdown, document_ref .
+     *
+     */
+    getPageRaw(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationPageDto>>;
+    /**
+     * Markdown, document_ref .
+     *
+     */
+    getPage(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationPageDto>;
+    /**
      * ; app ID .
      * Senler
      */
@@ -125,6 +139,14 @@ export declare const GetAppsTreeAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAppsTreeAcceptLanguageEnum = typeof GetAppsTreeAcceptLanguageEnum[keyof typeof GetAppsTreeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetPageAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetPageAcceptLanguageEnum = typeof GetPageAcceptLanguageEnum[keyof typeof GetPageAcceptLanguageEnum];
 /**
  * @export
  */

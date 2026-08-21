@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { SegmentPaymentDto } from './SegmentPaymentDto';
-import {
-    SegmentPaymentDtoFromJSON,
-    SegmentPaymentDtoFromJSONTyped,
-    SegmentPaymentDtoToJSON,
-    SegmentPaymentDtoToJSONTyped,
-} from './SegmentPaymentDto';
 import type { SegmentRequiredConsentDto } from './SegmentRequiredConsentDto';
 import {
     SegmentRequiredConsentDtoFromJSON,
@@ -41,17 +34,17 @@ export interface CreateSegmentDto {
      */
     name: string;
     /**
-     *
-     * @type {SegmentPaymentDto}
-     * @memberof CreateSegmentDto
-     */
-    payment?: SegmentPaymentDto;
-    /**
      * ,
      * @type {Array<SegmentRequiredConsentDto>}
      * @memberof CreateSegmentDto
      */
     requiredConsents?: Array<SegmentRequiredConsentDto>;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateSegmentDto
+     */
+    consentPromptText?: string | null;
 }
 
 /**
@@ -73,8 +66,8 @@ export function CreateSegmentDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
 
         'name': json['name'],
-        'payment': json['payment'] == null ? undefined : SegmentPaymentDtoFromJSON(json['payment']),
         'requiredConsents': json['required_consents'] == null ? undefined : ((json['required_consents'] as Array<any>).map(SegmentRequiredConsentDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'] == null ? undefined : json['consent_prompt_text'],
     };
 }
 
@@ -90,7 +83,7 @@ export function CreateSegmentDtoToJSONTyped(value?: CreateSegmentDto | null, ign
     return {
 
         'name': value['name'],
-        'payment': SegmentPaymentDtoToJSON(value['payment']),
         'required_consents': value['requiredConsents'] == null ? undefined : ((value['requiredConsents'] as Array<any>).map(SegmentRequiredConsentDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
     };
 }

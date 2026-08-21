@@ -75,7 +75,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/agents/{id}/training/realtime-token`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -115,7 +115,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/agents/{id}/training/status`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),

@@ -97,6 +97,10 @@ function instanceOfKnowledgeFileResponseDto(value) {
         return false;
     if (!('aiMetadata' in value) || value['aiMetadata'] === undefined)
         return false;
+    if (!('aiImageContext' in value) || value['aiImageContext'] === undefined)
+        return false;
+    if (!('imageRecognitionStatus' in value) || value['imageRecognitionStatus'] === undefined)
+        return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -136,6 +140,8 @@ function KnowledgeFileResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'extractionError': json['extraction_error'],
         'aiContextIds': json['ai_context_ids'],
         'aiMetadata': json['ai_metadata'],
+        'aiImageContext': json['ai_image_context'],
+        'imageRecognitionStatus': json['image_recognition_status'],
         'resolvedLinks': json['resolved_links'] == null ? undefined : (json['resolved_links'].map(KnowledgeFileResolvedLinkDto_1.KnowledgeFileResolvedLinkDtoFromJSON)),
         'isActive': json['is_active'],
         'createdAt': (new Date(json['created_at'])),
@@ -173,6 +179,8 @@ function KnowledgeFileResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'extraction_error': value['extractionError'],
         'ai_context_ids': value['aiContextIds'],
         'ai_metadata': value['aiMetadata'],
+        'ai_image_context': value['aiImageContext'],
+        'image_recognition_status': value['imageRecognitionStatus'],
         'resolved_links': value['resolvedLinks'] == null ? undefined : (value['resolvedLinks'].map(KnowledgeFileResolvedLinkDto_1.KnowledgeFileResolvedLinkDtoToJSON)),
         'is_active': value['isActive'],
         'created_at': ((value['createdAt']).toISOString()),

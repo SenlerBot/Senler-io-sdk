@@ -22,19 +22,19 @@ export interface StatisticsAiResponseToolDto {
      */
     name: string;
     /**
-     * ; null, legacy-
+     * ; null,
      * @type {string}
      * @memberof StatisticsAiResponseToolDto
      */
     kind: StatisticsAiResponseToolDtoKindEnum | null;
     /**
-     * ; null legacy-
+     * ; null
      * @type {string}
      * @memberof StatisticsAiResponseToolDto
      */
     category: StatisticsAiResponseToolDtoCategoryEnum | null;
     /**
-     * ID MCP- call_connected_mcp_tool; null legacy identity
+     * ID MCP-; null MCP-
      * @type {string}
      * @memberof StatisticsAiResponseToolDto
      */

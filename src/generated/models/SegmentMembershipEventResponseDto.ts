@@ -121,7 +121,9 @@ export const SegmentMembershipEventResponseDtoSourceEnum = {
     MaxApp: 'max_app',
     Web: 'web',
     Manual: 'manual',
-    AutoAssignment: 'auto_assignment'
+    AutoAssignment: 'auto_assignment',
+    Automation: 'automation',
+    AiAgent: 'ai_agent'
 } as const;
 export type SegmentMembershipEventResponseDtoSourceEnum = typeof SegmentMembershipEventResponseDtoSourceEnum[keyof typeof SegmentMembershipEventResponseDtoSourceEnum];
 
@@ -134,7 +136,9 @@ export const SegmentMembershipEventResponseDtoReasonEnum = {
     Keyword: 'keyword',
     AllMessages: 'all_messages',
     Manual: 'manual',
-    ChannelAccessRevoked: 'channel_access_revoked'
+    ChannelAccessRevoked: 'channel_access_revoked',
+    Automation: 'automation',
+    AiAgent: 'ai_agent'
 } as const;
 export type SegmentMembershipEventResponseDtoReasonEnum = typeof SegmentMembershipEventResponseDtoReasonEnum[keyof typeof SegmentMembershipEventResponseDtoReasonEnum];
 

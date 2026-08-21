@@ -43,6 +43,7 @@ function ByPlatformTypeStatsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'email': json['email'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['email']),
         'web': json['web'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['web']),
         'ai': json['ai'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['ai']),
+        'automation': json['automation'] == null ? undefined : (0, CategoryStatsDto_1.CategoryStatsDtoFromJSON)(json['automation']),
     };
 }
 function ByPlatformTypeStatsDtoToJSON(json) {
@@ -63,5 +64,6 @@ function ByPlatformTypeStatsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'email': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['email']),
         'web': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['web']),
         'ai': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['ai']),
+        'automation': (0, CategoryStatsDto_1.CategoryStatsDtoToJSON)(value['automation']),
     };
 }

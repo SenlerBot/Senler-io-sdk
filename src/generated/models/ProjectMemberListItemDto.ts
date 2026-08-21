@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
-import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
 import type { PermissionsDto } from './PermissionsDto';
 import {
     PermissionsDtoFromJSON,
@@ -27,6 +20,13 @@ import {
     PermissionsDtoToJSON,
     PermissionsDtoToJSONTyped,
 } from './PermissionsDto';
+import type { ProjectRole } from './ProjectRole';
+import {
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 
 /**
  * ProjectMemberListItemDto.
@@ -54,10 +54,10 @@ export interface ProjectMemberListItemDto {
     projectId: string;
     /**
      *
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ProjectMemberListItemDto
      */
-    role: Role;
+    role: ProjectRole;
     /**
      * Email
      * @type {string}
@@ -158,7 +158,7 @@ export function ProjectMemberListItemDtoFromJSONTyped(json: any, ignoreDiscrimin
         'id': json['id'],
         'userId': json['userId'],
         'projectId': json['projectId'],
-        'role': RoleFromJSON(json['role']),
+        'role': ProjectRoleFromJSON(json['role']),
         'email': json['email'] == null ? undefined : json['email'],
         'firstName': json['firstName'] == null ? undefined : json['firstName'],
         'lastName': json['lastName'] == null ? undefined : json['lastName'],
@@ -187,7 +187,7 @@ export function ProjectMemberListItemDtoToJSONTyped(value?: ProjectMemberListIte
         'id': value['id'],
         'userId': value['userId'],
         'projectId': value['projectId'],
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
         'email': value['email'],
         'firstName': value['firstName'],
         'lastName': value['lastName'],

@@ -73,6 +73,7 @@ export declare const SpaceDetailsAncestorDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type SpaceDetailsAncestorDtoPlatformTypeEnum = typeof SpaceDetailsAncestorDtoPlatformTypeEnum[keyof typeof SpaceDetailsAncestorDtoPlatformTypeEnum];
 /**

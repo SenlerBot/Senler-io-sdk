@@ -284,6 +284,7 @@ export declare const SpaceDetailsResponseDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type SpaceDetailsResponseDtoPlatformTypeEnum = typeof SpaceDetailsResponseDtoPlatformTypeEnum[keyof typeof SpaceDetailsResponseDtoPlatformTypeEnum];
 /**

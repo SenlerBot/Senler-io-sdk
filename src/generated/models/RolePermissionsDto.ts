@@ -116,6 +116,36 @@ export interface RolePermissionsDto {
      */
     canManageLeads: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewTrafficMarks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageTrafficMarks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewAutomations: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageAutomations: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canRunAutomations: boolean;
+    /**
      * MCP
      * @type {boolean}
      * @memberof RolePermissionsDto
@@ -311,6 +341,11 @@ export function instanceOfRolePermissionsDto(value: object): value is RolePermis
     if (!('canManageSpaces' in value) || value['canManageSpaces'] === undefined) return false;
     if (!('canViewLeads' in value) || value['canViewLeads'] === undefined) return false;
     if (!('canManageLeads' in value) || value['canManageLeads'] === undefined) return false;
+    if (!('canViewTrafficMarks' in value) || value['canViewTrafficMarks'] === undefined) return false;
+    if (!('canManageTrafficMarks' in value) || value['canManageTrafficMarks'] === undefined) return false;
+    if (!('canViewAutomations' in value) || value['canViewAutomations'] === undefined) return false;
+    if (!('canManageAutomations' in value) || value['canManageAutomations'] === undefined) return false;
+    if (!('canRunAutomations' in value) || value['canRunAutomations'] === undefined) return false;
     if (!('canManageMcpServers' in value) || value['canManageMcpServers'] === undefined) return false;
     if (!('canViewMcpServers' in value) || value['canViewMcpServers'] === undefined) return false;
     if (!('canViewDataSources' in value) || value['canViewDataSources'] === undefined) return false;
@@ -369,6 +404,11 @@ export function RolePermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'canManageSpaces': json['can_manage_spaces'],
         'canViewLeads': json['can_view_leads'],
         'canManageLeads': json['can_manage_leads'],
+        'canViewTrafficMarks': json['can_view_traffic_marks'],
+        'canManageTrafficMarks': json['can_manage_traffic_marks'],
+        'canViewAutomations': json['can_view_automations'],
+        'canManageAutomations': json['can_manage_automations'],
+        'canRunAutomations': json['can_run_automations'],
         'canManageMcpServers': json['can_manage_mcp_servers'],
         'canViewMcpServers': json['can_view_mcp_servers'],
         'canViewDataSources': json['can_view_data_sources'],
@@ -428,6 +468,11 @@ export function RolePermissionsDtoToJSONTyped(value?: RolePermissionsDto | null,
         'can_manage_spaces': value['canManageSpaces'],
         'can_view_leads': value['canViewLeads'],
         'can_manage_leads': value['canManageLeads'],
+        'can_view_traffic_marks': value['canViewTrafficMarks'],
+        'can_manage_traffic_marks': value['canManageTrafficMarks'],
+        'can_view_automations': value['canViewAutomations'],
+        'can_manage_automations': value['canManageAutomations'],
+        'can_run_automations': value['canRunAutomations'],
         'can_manage_mcp_servers': value['canManageMcpServers'],
         'can_view_mcp_servers': value['canViewMcpServers'],
         'can_view_data_sources': value['canViewDataSources'],

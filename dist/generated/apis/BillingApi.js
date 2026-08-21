@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class BillingApi extends runtime.BaseAPI {
     /**
-     * downgrade. . ( ).
+     * downgrade. ; .
      *
      */
     async deleteProjectsTariffNextRaw(requestParameters, initOverrides) {
@@ -86,7 +86,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * downgrade. . ( ).
+     * downgrade. ; .
      *
      */
     async deleteProjectsTariffNext(requestParameters, initOverrides) {
@@ -118,7 +118,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/credit-transactions/{transactionId}/details`.replace(`{${"transactionId"}}`, encodeURIComponent(String(requestParameters['transactionId']))),
@@ -158,7 +158,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/balance`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -216,7 +216,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/credit-transactions`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -268,7 +268,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/credit-usage-summary`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -317,7 +317,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/credits-check`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -369,7 +369,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/orders`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -412,7 +412,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/orders/{orderId}/crypto/status`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"orderId"}}`, encodeURIComponent(String(requestParameters['orderId']))),
@@ -452,7 +452,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/payment-settings`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -507,7 +507,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/tariff-check`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -547,7 +547,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/tariffs`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -608,7 +608,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/projects/{projectId}/transactions`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -654,7 +654,7 @@ class BillingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_billing"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/billing/transactions/{transactionId}/details`.replace(`{${"transactionId"}}`, encodeURIComponent(String(requestParameters['transactionId']))),

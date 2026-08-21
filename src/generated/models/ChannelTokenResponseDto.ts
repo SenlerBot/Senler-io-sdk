@@ -44,6 +44,24 @@ export interface ChannelTokenResponseDto {
      */
     isValid: boolean;
     /**
+     * credentials
+     * @type {number}
+     * @memberof ChannelTokenResponseDto
+     */
+    tokenVersion: number;
+    /**
+     * credentials
+     * @type {number}
+     * @memberof ChannelTokenResponseDto
+     */
+    currentTokenVersion: number;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof ChannelTokenResponseDto
+     */
+    tokenUpdateRecommended: boolean;
+    /**
      * : null , senler Senler OAuth
      * @type {string}
      * @memberof ChannelTokenResponseDto
@@ -316,6 +334,9 @@ export function instanceOfChannelTokenResponseDto(value: object): value is Chann
     if (!('channelId' in value) || value['channelId'] === undefined) return false;
     if (!('channelType' in value) || value['channelType'] === undefined) return false;
     if (!('isValid' in value) || value['isValid'] === undefined) return false;
+    if (!('tokenVersion' in value) || value['tokenVersion'] === undefined) return false;
+    if (!('currentTokenVersion' in value) || value['currentTokenVersion'] === undefined) return false;
+    if (!('tokenUpdateRecommended' in value) || value['tokenUpdateRecommended'] === undefined) return false;
     if (!('webhookStatus' in value) || value['webhookStatus'] === undefined) return false;
     if (!('webhookEnabled' in value) || value['webhookEnabled'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -337,6 +358,9 @@ export function ChannelTokenResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
         'isValid': json['is_valid'],
+        'tokenVersion': json['token_version'],
+        'currentTokenVersion': json['current_token_version'],
+        'tokenUpdateRecommended': json['token_update_recommended'],
         'tokenSource': json['token_source'] == null ? undefined : json['token_source'],
         'lastCheckedAt': json['last_checked_at'] == null ? undefined : json['last_checked_at'],
         'validationError': json['validation_error'] == null ? undefined : json['validation_error'],
@@ -391,6 +415,9 @@ export function ChannelTokenResponseDtoToJSONTyped(value?: ChannelTokenResponseD
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],
         'is_valid': value['isValid'],
+        'token_version': value['tokenVersion'],
+        'current_token_version': value['currentTokenVersion'],
+        'token_update_recommended': value['tokenUpdateRecommended'],
         'token_source': value['tokenSource'],
         'last_checked_at': value['lastCheckedAt'],
         'validation_error': value['validationError'],

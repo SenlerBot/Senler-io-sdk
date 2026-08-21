@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
-import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
 import type { ChannelRoleDto } from './ChannelRoleDto';
 import {
     ChannelRoleDtoFromJSON,
@@ -27,6 +20,13 @@ import {
     ChannelRoleDtoToJSON,
     ChannelRoleDtoToJSONTyped,
 } from './ChannelRoleDto';
+import type { ProjectRole } from './ProjectRole';
+import {
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 
 /**
  * UpdateProjectMemberDto.
@@ -42,10 +42,10 @@ export interface UpdateProjectMemberDto {
      * - admin: ,
      * - member: ,
      * - viewer: ,
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof UpdateProjectMemberDto
      */
-    role?: Role;
+    role?: ProjectRole;
     /**
      * ( ).
      *
@@ -117,7 +117,7 @@ export function UpdateProjectMemberDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
-        'role': json['role'] == null ? undefined : RoleFromJSON(json['role']),
+        'role': json['role'] == null ? undefined : ProjectRoleFromJSON(json['role']),
         'hasAccessToAllChannels': json['has_access_to_all_channels'] == null ? undefined : json['has_access_to_all_channels'],
         'isSupportOperator': json['is_support_operator'] == null ? undefined : json['is_support_operator'],
         'channelRoles': json['channel_roles'] == null ? undefined : ((json['channel_roles'] as Array<any>).map(ChannelRoleDtoFromJSON)),
@@ -135,7 +135,7 @@ export function UpdateProjectMemberDtoToJSONTyped(value?: UpdateProjectMemberDto
 
     return {
 
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
         'has_access_to_all_channels': value['hasAccessToAllChannels'],
         'is_support_operator': value['isSupportOperator'],
         'channel_roles': value['channelRoles'] == null ? undefined : ((value['channelRoles'] as Array<any>).map(ChannelRoleDtoToJSON)),

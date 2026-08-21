@@ -46,6 +46,12 @@ export interface LandingPublicResponseDto {
      * @type {string}
      * @memberof LandingPublicResponseDto
      */
+    language: LandingPublicResponseDtoLanguageEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPublicResponseDto
+     */
     name: string;
     /**
      * ID
@@ -85,10 +91,22 @@ export interface LandingPublicResponseDto {
     variables: LandingVariablesDto;
 }
 
+
+/**
+ * @export
+ */
+export const LandingPublicResponseDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingPublicResponseDtoLanguageEnum = typeof LandingPublicResponseDtoLanguageEnum[keyof typeof LandingPublicResponseDtoLanguageEnum];
+
+
 /**
  * Check if a given object implements the LandingPublicResponseDto interface.
  */
 export function instanceOfLandingPublicResponseDto(value: object): value is LandingPublicResponseDto {
+    if (!('language' in value) || value['language'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('publicId' in value) || value['publicId'] === undefined) return false;
     if (!('projectPublicId' in value) || value['projectPublicId'] === undefined) return false;
@@ -109,6 +127,7 @@ export function LandingPublicResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'language': json['language'],
         'name': json['name'],
         'publicId': json['public_id'],
         'projectPublicId': json['project_public_id'],
@@ -130,6 +149,7 @@ export function LandingPublicResponseDtoToJSONTyped(value?: LandingPublicRespons
 
     return {
 
+        'language': value['language'],
         'name': value['name'],
         'public_id': value['publicId'],
         'project_public_id': value['projectPublicId'],

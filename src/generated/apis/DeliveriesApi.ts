@@ -22,6 +22,7 @@ import type {
   CreateDeliveryTestRecipientLinkDto,
   DeliveryAudiencePreviewResponseDto,
   DeliveryResponseDto,
+  DeliveryStartPreviewResponseDto,
   DeliveryTestRecipientDto,
   DeliveryTestRecipientLinkResponseDto,
   DeliveryTestRecipientsResponseDto,
@@ -51,6 +52,8 @@ import {
     DeliveryAudiencePreviewResponseDtoToJSON,
     DeliveryResponseDtoFromJSON,
     DeliveryResponseDtoToJSON,
+    DeliveryStartPreviewResponseDtoFromJSON,
+    DeliveryStartPreviewResponseDtoToJSON,
     DeliveryTestRecipientDtoFromJSON,
     DeliveryTestRecipientDtoToJSON,
     DeliveryTestRecipientLinkResponseDtoFromJSON,
@@ -168,18 +171,17 @@ export interface GetDeliveriesAudiencePreviewRequest {
     leadIds?: Array<string>;
     channelIds?: Array<string>;
     channelType?: GetDeliveriesAudiencePreviewChannelTypeEnum;
-    isSubscribed?: boolean;
-    isBlacklisted?: boolean;
-    isBlocked?: boolean;
-    search?: string;
-    spaceId?: Array<string>;
-    spaceIsMember?: boolean;
     segmentId?: Array<string>;
     segmentIsMember?: boolean;
-    pendingSegmentId?: Array<string>;
     limit?: number;
     cursor?: string | null;
     acceptLanguage?: GetDeliveriesAudiencePreviewAcceptLanguageEnum;
+}
+
+export interface GetDeliveriesStartPreviewRequest {
+    projectId: string;
+    id: string;
+    acceptLanguage?: GetDeliveriesStartPreviewAcceptLanguageEnum;
 }
 
 export interface GetDeliveriesTestRecipientsRequest {
@@ -944,7 +946,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -1003,7 +1005,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -1058,40 +1060,12 @@ export class DeliveriesApi extends runtime.BaseAPI {
             queryParameters['channel_type'] = requestParameters['channelType'];
         }
 
-        if (requestParameters['isSubscribed'] != null) {
-            queryParameters['is_subscribed'] = requestParameters['isSubscribed'];
-        }
-
-        if (requestParameters['isBlacklisted'] != null) {
-            queryParameters['is_blacklisted'] = requestParameters['isBlacklisted'];
-        }
-
-        if (requestParameters['isBlocked'] != null) {
-            queryParameters['is_blocked'] = requestParameters['isBlocked'];
-        }
-
-        if (requestParameters['search'] != null) {
-            queryParameters['search'] = requestParameters['search'];
-        }
-
-        if (requestParameters['spaceId'] != null) {
-            queryParameters['space_id'] = requestParameters['spaceId'];
-        }
-
-        if (requestParameters['spaceIsMember'] != null) {
-            queryParameters['space_is_member'] = requestParameters['spaceIsMember'];
-        }
-
         if (requestParameters['segmentId'] != null) {
             queryParameters['segment_id'] = requestParameters['segmentId'];
         }
 
         if (requestParameters['segmentIsMember'] != null) {
             queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
-        }
-
-        if (requestParameters['pendingSegmentId'] != null) {
-            queryParameters['pending_segment_id'] = requestParameters['pendingSegmentId'];
         }
 
         if (requestParameters['limit'] != null) {
@@ -1118,7 +1092,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -1137,6 +1111,65 @@ export class DeliveriesApi extends runtime.BaseAPI {
      */
     async getDeliveriesAudiencePreview(requestParameters: GetDeliveriesAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto> {
         const response = await this.getDeliveriesAudiencePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getDeliveriesStartPreviewRaw(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryStartPreviewResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getDeliveriesStartPreview().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getDeliveriesStartPreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}/deliveries/{id}/start-preview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryStartPreviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getDeliveriesStartPreview(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryStartPreviewResponseDto> {
+        const response = await this.getDeliveriesStartPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1188,7 +1221,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -1486,6 +1519,14 @@ export const GetDeliveriesAudiencePreviewAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetDeliveriesAudiencePreviewAcceptLanguageEnum = typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum[keyof typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetDeliveriesStartPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetDeliveriesStartPreviewAcceptLanguageEnum = typeof GetDeliveriesStartPreviewAcceptLanguageEnum[keyof typeof GetDeliveriesStartPreviewAcceptLanguageEnum];
 /**
  * @export
  */

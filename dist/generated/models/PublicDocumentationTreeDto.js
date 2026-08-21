@@ -30,6 +30,8 @@ function instanceOfPublicDocumentationTreeDto(value) {
         return false;
     if (!('firstFileId' in value) || value['firstFileId'] === undefined)
         return false;
+    if (!('firstPageSlug' in value) || value['firstPageSlug'] === undefined)
+        return false;
     return true;
 }
 function PublicDocumentationTreeDtoFromJSON(json) {
@@ -43,6 +45,7 @@ function PublicDocumentationTreeDtoFromJSONTyped(json, ignoreDiscriminator) {
         'pages': (json['pages'].map(PublicDocumentationPageTreeItemDto_1.PublicDocumentationPageTreeItemDtoFromJSON)),
         'folders': (json['folders'].map(PublicDocumentationFolderTreeItemDto_1.PublicDocumentationFolderTreeItemDtoFromJSON)),
         'firstFileId': json['first_file_id'],
+        'firstPageSlug': json['first_page_slug'],
     };
 }
 function PublicDocumentationTreeDtoToJSON(json) {
@@ -56,5 +59,6 @@ function PublicDocumentationTreeDtoToJSONTyped(value, ignoreDiscriminator = fals
         'pages': (value['pages'].map(PublicDocumentationPageTreeItemDto_1.PublicDocumentationPageTreeItemDtoToJSON)),
         'folders': (value['folders'].map(PublicDocumentationFolderTreeItemDto_1.PublicDocumentationFolderTreeItemDtoToJSON)),
         'first_file_id': value['firstFileId'],
+        'first_page_slug': value['firstPageSlug'],
     };
 }

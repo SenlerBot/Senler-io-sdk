@@ -82,6 +82,12 @@ export interface EventToolDto {
      * @type {string}
      * @memberof EventToolDto
      */
+    errorCode?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EventToolDto
+     */
     errorMessage?: string;
 }
 /**

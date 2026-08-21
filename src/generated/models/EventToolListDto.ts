@@ -73,6 +73,12 @@ export interface EventToolListDto {
      * @memberof EventToolListDto
      */
     errorMessage?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EventToolListDto
+     */
+    errorCode?: string;
 }
 
 
@@ -139,6 +145,7 @@ export function EventToolListDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'completedAt': json['completed_at'] == null ? undefined : (new Date(json['completed_at'])),
         'failedAt': json['failed_at'] == null ? undefined : (new Date(json['failed_at'])),
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
+        'errorCode': json['error_code'] == null ? undefined : json['error_code'],
     };
 }
 
@@ -162,5 +169,6 @@ export function EventToolListDtoToJSONTyped(value?: EventToolListDto | null, ign
         'completed_at': value['completedAt'] == null ? undefined : ((value['completedAt']).toISOString()),
         'failed_at': value['failedAt'] == null ? undefined : ((value['failedAt']).toISOString()),
         'error_message': value['errorMessage'],
+        'error_code': value['errorCode'],
     };
 }

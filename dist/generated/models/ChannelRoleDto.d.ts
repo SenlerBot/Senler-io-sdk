@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Role } from './Role';
+import type { ProjectRole } from './ProjectRole';
 /**
  * ChannelRoleDto.
  * @export
@@ -24,10 +24,10 @@ export interface ChannelRoleDto {
     channelId: string;
     /**
      * . , , , .
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ChannelRoleDto
      */
-    role: Role;
+    role: ProjectRole;
 }
 /**
  * Check if a given object implements the ChannelRoleDto interface.

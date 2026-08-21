@@ -274,6 +274,7 @@ export declare const EventAttachmentCabinetDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type EventAttachmentCabinetDtoPlatformTypeEnum = typeof EventAttachmentCabinetDtoPlatformTypeEnum[keyof typeof EventAttachmentCabinetDtoPlatformTypeEnum];
 /**

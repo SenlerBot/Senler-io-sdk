@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicDocumentationGetSearchAcceptLanguageEnum = exports.PublicDocumentationGetSearchAudienceEnum = exports.PublicDocumentationGetSearchScopeEnum = exports.PublicDocumentationGetSearchLocaleEnum = exports.GetAppsTreeAcceptLanguageEnum = exports.GetAppsFilesAcceptLanguageEnum = exports.GetApps2AcceptLanguageEnum = exports.GetAppsAcceptLanguageEnum = exports.PublicDocumentationApi = void 0;
+exports.PublicDocumentationGetSearchAcceptLanguageEnum = exports.PublicDocumentationGetSearchAudienceEnum = exports.PublicDocumentationGetSearchScopeEnum = exports.PublicDocumentationGetSearchLocaleEnum = exports.GetPageAcceptLanguageEnum = exports.GetAppsTreeAcceptLanguageEnum = exports.GetAppsFilesAcceptLanguageEnum = exports.GetApps2AcceptLanguageEnum = exports.GetAppsAcceptLanguageEnum = exports.PublicDocumentationApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -176,6 +176,38 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Markdown, document_ref .
+     *
+     */
+    async getPageRaw(requestParameters, initOverrides) {
+        if (requestParameters['documentRef'] == null) {
+            throw new runtime.RequiredError('documentRef', 'Required parameter "documentRef" was null or undefined when calling getPage().');
+        }
+        const queryParameters = {};
+        if (requestParameters['documentRef'] != null) {
+            queryParameters['document_ref'] = requestParameters['documentRef'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/documentation/page`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicDocumentationPageDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Markdown, document_ref .
+     *
+     */
+    async getPage(requestParameters, initOverrides) {
+        const response = await this.getPageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * ; app ID .
      * Senler
      */
@@ -249,6 +281,13 @@ exports.GetAppsFilesAcceptLanguageEnum = {
  * @export
  */
 exports.GetAppsTreeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetPageAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -87,6 +87,12 @@ export interface ByPlatformTypeStatsDto {
      * @memberof ByPlatformTypeStatsDto
      */
     ai?: CategoryStatsDto;
+    /**
+     *
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    automation?: CategoryStatsDto;
 }
 
 /**
@@ -116,6 +122,7 @@ export function ByPlatformTypeStatsDtoFromJSONTyped(json: any, ignoreDiscriminat
         'email': json['email'] == null ? undefined : CategoryStatsDtoFromJSON(json['email']),
         'web': json['web'] == null ? undefined : CategoryStatsDtoFromJSON(json['web']),
         'ai': json['ai'] == null ? undefined : CategoryStatsDtoFromJSON(json['ai']),
+        'automation': json['automation'] == null ? undefined : CategoryStatsDtoFromJSON(json['automation']),
     };
 }
 
@@ -140,5 +147,6 @@ export function ByPlatformTypeStatsDtoToJSONTyped(value?: ByPlatformTypeStatsDto
         'email': CategoryStatsDtoToJSON(value['email']),
         'web': CategoryStatsDtoToJSON(value['web']),
         'ai': CategoryStatsDtoToJSON(value['ai']),
+        'automation': CategoryStatsDtoToJSON(value['automation']),
     };
 }

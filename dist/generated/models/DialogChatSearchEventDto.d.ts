@@ -319,6 +319,7 @@ export declare const DialogChatSearchEventDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type DialogChatSearchEventDtoPlatformTypeEnum = typeof DialogChatSearchEventDtoPlatformTypeEnum[keyof typeof DialogChatSearchEventDtoPlatformTypeEnum];
 /**

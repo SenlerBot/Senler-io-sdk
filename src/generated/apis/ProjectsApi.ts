@@ -17,6 +17,7 @@ import * as runtime from '../runtime';
 import type {
   DialogSlaSettingsDto,
   ErrorResponse,
+  GetProjectsListDataDto,
   ProjectDetailsResponseDto,
   SetDialogSlaEnabledDto,
   UpdateDialogSlaPriorityThresholdDto,
@@ -29,6 +30,8 @@ import {
     DialogSlaSettingsDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    GetProjectsListDataDtoFromJSON,
+    GetProjectsListDataDtoToJSON,
     ProjectDetailsResponseDtoFromJSON,
     ProjectDetailsResponseDtoToJSON,
     SetDialogSlaEnabledDtoFromJSON,
@@ -50,6 +53,14 @@ export interface GetDialogSlaSettingsRequest {
 
 export interface GetMeRequest {
     acceptLanguage?: GetMeAcceptLanguageEnum;
+}
+
+export interface ListRequest {
+    limit?: number;
+    offset?: number;
+    isActive?: boolean;
+    source?: ListSourceEnum;
+    acceptLanguage?: ListAcceptLanguageEnum;
 }
 
 export interface UpdateRequest {
@@ -112,7 +123,7 @@ export class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_projects"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -157,7 +168,7 @@ export class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_projects"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -176,6 +187,59 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async getMe(requestParameters: GetMeRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectDetailsResponseDto> {
         const response = await this.getMeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . ( owner member)
+     *
+     */
+    async listRaw(requestParameters: ListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectsListDataDto>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        if (requestParameters['isActive'] != null) {
+            queryParameters['is_active'] = requestParameters['isActive'];
+        }
+
+        if (requestParameters['source'] != null) {
+            queryParameters['source'] = requestParameters['source'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/projects`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProjectsListDataDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ( owner member)
+     *
+     */
+    async list(requestParameters: ListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectsListDataDto> {
+        const response = await this.listRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -452,6 +516,22 @@ export const GetMeAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetMeAcceptLanguageEnum = typeof GetMeAcceptLanguageEnum[keyof typeof GetMeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ListSourceEnum = {
+    Manual: 'manual',
+    Streamvi: 'streamvi'
+} as const;
+export type ListSourceEnum = typeof ListSourceEnum[keyof typeof ListSourceEnum];
+/**
+ * @export
+ */
+export const ListAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ListAcceptLanguageEnum = typeof ListAcceptLanguageEnum[keyof typeof ListAcceptLanguageEnum];
 /**
  * @export
  */

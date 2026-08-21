@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { UsagePurposeEconomics } from './UsagePurposeEconomics';
 import type { ClientSpending } from './ClientSpending';
 import type { CostSectionEconomics } from './CostSectionEconomics';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
@@ -31,11 +32,23 @@ export interface UnitEconomics {
      */
     client: ClientSpending;
     /**
-     * % = (client.total_rub - provider.total_rub) / client.total_rub * 100
+     *
+     * @type {CurrencyBreakdown}
+     * @memberof UnitEconomics
+     */
+    usageRevenue: CurrencyBreakdown;
+    /**
+     * % = (usage_revenue.total_rub - provider.total_rub) / usage_revenue.total_rub * 100
      * @type {number}
      * @memberof UnitEconomics
      */
     marginPercent: number;
+    /**
+     * RUB: , (/); : 1.25 = 125
+     * @type {number}
+     * @memberof UnitEconomics
+     */
+    usageMarginRub: number;
     /**
      * costs
      * @type {number}
@@ -48,6 +61,12 @@ export interface UnitEconomics {
      * @memberof UnitEconomics
      */
     costsBySection: Array<CostSectionEconomics>;
+    /**
+     *
+     * @type {Array<UsagePurposeEconomics>}
+     * @memberof UnitEconomics
+     */
+    costsByPurpose: Array<UsagePurposeEconomics>;
 }
 /**
  * Check if a given object implements the UnitEconomics interface.

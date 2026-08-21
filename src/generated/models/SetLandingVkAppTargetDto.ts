@@ -39,6 +39,12 @@ export interface SetLandingVkAppTargetDto {
      * @memberof SetLandingVkAppTargetDto
      */
     target: LandingVkAppResponseDtoTarget;
+    /**
+     * list .
+     * @type {boolean}
+     * @memberof SetLandingVkAppTargetDto
+     */
+    openSingleLanding?: boolean;
 }
 
 /**
@@ -62,6 +68,7 @@ export function SetLandingVkAppTargetDtoFromJSONTyped(json: any, ignoreDiscrimin
 
         'channelId': json['channel_id'],
         'target': LandingVkAppResponseDtoTargetFromJSON(json['target']),
+        'openSingleLanding': json['open_single_landing'] == null ? undefined : json['open_single_landing'],
     };
 }
 
@@ -78,5 +85,6 @@ export function SetLandingVkAppTargetDtoToJSONTyped(value?: SetLandingVkAppTarge
 
         'channel_id': value['channelId'],
         'target': LandingVkAppResponseDtoTargetToJSON(value['target']),
+        'open_single_landing': value['openSingleLanding'],
     };
 }

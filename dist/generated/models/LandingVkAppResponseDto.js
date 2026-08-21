@@ -59,6 +59,7 @@ function LandingVkAppResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'],
         'confirmedAt': (json['confirmed_at'] == null ? null : new Date(json['confirmed_at'])),
         'target': (0, LandingVkAppResponseDtoTarget_1.LandingVkAppResponseDtoTargetFromJSON)(json['target']),
+        'openSingleLanding': json['open_single_landing'] == null ? undefined : json['open_single_landing'],
         'setupUrl': json['setup_url'],
         'launchUrl': json['launch_url'],
     };
@@ -75,6 +76,7 @@ function LandingVkAppResponseDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'status': value['status'],
         'confirmed_at': (value['confirmedAt'] == null ? null : value['confirmedAt'].toISOString()),
         'target': (0, LandingVkAppResponseDtoTarget_1.LandingVkAppResponseDtoTargetToJSON)(value['target']),
+        'open_single_landing': value['openSingleLanding'],
         'setup_url': value['setupUrl'],
         'launch_url': value['launchUrl'],
     };

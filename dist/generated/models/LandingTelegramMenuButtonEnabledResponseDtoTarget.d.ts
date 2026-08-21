@@ -9,7 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingCatalogLaunchTargetDto } from './LandingCatalogLaunchTargetDto';
+import type { LandingBannerGridLaunchTargetDto } from './LandingBannerGridLaunchTargetDto';
+import type { LandingIconListLaunchTargetDto } from './LandingIconListLaunchTargetDto';
+import type { LandingListLaunchTargetDto } from './LandingListLaunchTargetDto';
 import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDto';
 /**
  * @type LandingTelegramMenuButtonEnabledResponseDtoTarget
@@ -17,10 +19,14 @@ import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDt
  * @export
  */
 export type LandingTelegramMenuButtonEnabledResponseDtoTarget = {
-    mode: 'catalog';
-} & LandingCatalogLaunchTargetDto | {
+    mode: 'banner_grid';
+} & LandingBannerGridLaunchTargetDto | {
+    mode: 'icon_list';
+} & LandingIconListLaunchTargetDto | {
     mode: 'landing';
-} & LandingSingleLaunchTargetDto;
+} & LandingSingleLaunchTargetDto | {
+    mode: 'list';
+} & LandingListLaunchTargetDto;
 export declare function LandingTelegramMenuButtonEnabledResponseDtoTargetFromJSON(json: any): LandingTelegramMenuButtonEnabledResponseDtoTarget;
 export declare function LandingTelegramMenuButtonEnabledResponseDtoTargetFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingTelegramMenuButtonEnabledResponseDtoTarget;
 export declare function LandingTelegramMenuButtonEnabledResponseDtoTargetToJSON(json: any): any;

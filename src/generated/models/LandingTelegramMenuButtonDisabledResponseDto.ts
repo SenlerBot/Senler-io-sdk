@@ -21,20 +21,11 @@ import { mapValues } from '../runtime';
 export interface LandingTelegramMenuButtonDisabledResponseDto {
     /**
      *
-     * @type {number}
+     * @type {boolean}
      * @memberof LandingTelegramMenuButtonDisabledResponseDto
      */
-    enabled: LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum | null;
+    enabled: boolean;
 }
-
-
-/**
- * @export
- */
-export const LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum = {
-} as const;
-export type LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum = typeof LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum[keyof typeof LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum];
-
 
 /**
  * Check if a given object implements the LandingTelegramMenuButtonDisabledResponseDto interface.

@@ -37,6 +37,8 @@ function instanceOfUpdateAgentSegmentDraftDto(value) {
         return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined)
         return false;
+    if (!('consentPromptText' in value) || value['consentPromptText'] === undefined)
+        return false;
     if (!('subscriptionAssignmentRole' in value) || value['subscriptionAssignmentRole'] === undefined)
         return false;
     return true;
@@ -52,6 +54,7 @@ function UpdateAgentSegmentDraftDtoFromJSONTyped(json, ignoreDiscriminator) {
         'expectedVersionId': json['expected_version_id'],
         'expectedRevision': json['expected_revision'],
         'requiredConsents': (json['required_consents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'],
         'subscriptionAssignmentRole': json['subscription_assignment_role'],
     };
 }
@@ -66,6 +69,7 @@ function UpdateAgentSegmentDraftDtoToJSONTyped(value, ignoreDiscriminator = fals
         'expected_version_id': value['expectedVersionId'],
         'expected_revision': value['expectedRevision'],
         'required_consents': (value['requiredConsents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
         'subscription_assignment_role': value['subscriptionAssignmentRole'],
     };
 }

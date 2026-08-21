@@ -52,6 +52,48 @@ export interface LeadsFilterDto {
      */
     isBlocked?: boolean;
     /**
+     *
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    leadSource?: Array<LeadsFilterDtoLeadSourceEnum>;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    createdAtFrom?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    createdAtTo?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    updatedAtFrom?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    updatedAtTo?: Date;
+    /**
+     * email
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    hasEmail?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    hasPhone?: boolean;
+    /**
      * /username/ID
      * @type {string}
      * @memberof LeadsFilterDto
@@ -102,6 +144,20 @@ export declare const LeadsFilterDtoChannelTypeEnum: {
     readonly Avito: "avito";
 };
 export type LeadsFilterDtoChannelTypeEnum = typeof LeadsFilterDtoChannelTypeEnum[keyof typeof LeadsFilterDtoChannelTypeEnum];
+/**
+ * @export
+ */
+export declare const LeadsFilterDtoLeadSourceEnum: {
+    readonly GroupJoin: "group_join";
+    readonly Message: "message";
+    readonly MessageAllow: "message_allow";
+    readonly BotAdded: "bot_added";
+    readonly Comment: "comment";
+    readonly Like: "like";
+    readonly Manual: "manual";
+    readonly Imported: "imported";
+};
+export type LeadsFilterDtoLeadSourceEnum = typeof LeadsFilterDtoLeadSourceEnum[keyof typeof LeadsFilterDtoLeadSourceEnum];
 /**
  * Check if a given object implements the LeadsFilterDto interface.
  */

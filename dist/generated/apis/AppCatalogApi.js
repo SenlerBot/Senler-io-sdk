@@ -129,7 +129,7 @@ exports.AppCatalogGetByIdAcceptLanguageEnum = {
 exports.AppCatalogListTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool'
+    Plugin: 'plugin'
 };
 /**
  * @export

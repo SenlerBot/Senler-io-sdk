@@ -26,7 +26,6 @@ exports.LandingSubscriptionResponseDtoStateEnum = {
     Subscribed: 'subscribed',
     AlreadySubscribed: 'already_subscribed',
     Unsubscribed: 'unsubscribed',
-    PaymentRequired: 'payment_required',
     ConsentRequired: 'consent_required',
     Unavailable: 'unavailable'
 };

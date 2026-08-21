@@ -23,6 +23,12 @@ export interface LandingPublicResponseDto {
      * @type {string}
      * @memberof LandingPublicResponseDto
      */
+    language: LandingPublicResponseDtoLanguageEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPublicResponseDto
+     */
     name: string;
     /**
      * ID
@@ -61,6 +67,14 @@ export interface LandingPublicResponseDto {
      */
     variables: LandingVariablesDto;
 }
+/**
+ * @export
+ */
+export declare const LandingPublicResponseDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingPublicResponseDtoLanguageEnum = typeof LandingPublicResponseDtoLanguageEnum[keyof typeof LandingPublicResponseDtoLanguageEnum];
 /**
  * Check if a given object implements the LandingPublicResponseDto interface.
  */

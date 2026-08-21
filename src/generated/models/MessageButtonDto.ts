@@ -40,12 +40,37 @@ export interface MessageButtonDto {
      */
     action: MessageButtonDtoAction;
     /**
+     * . .
+     * @type {string}
+     * @memberof MessageButtonDto
+     */
+    appearance?: MessageButtonDtoAppearanceEnum;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof MessageButtonDto
+     */
+    isRepeatable?: boolean;
+    /**
      * ( 1). row .
      * @type {number}
      * @memberof MessageButtonDto
      */
     row?: number;
 }
+
+
+/**
+ * @export
+ */
+export const MessageButtonDtoAppearanceEnum = {
+    Neutral: 'neutral',
+    Primary: 'primary',
+    Positive: 'positive',
+    Negative: 'negative'
+} as const;
+export type MessageButtonDtoAppearanceEnum = typeof MessageButtonDtoAppearanceEnum[keyof typeof MessageButtonDtoAppearanceEnum];
+
 
 /**
  * Check if a given object implements the MessageButtonDto interface.
@@ -68,6 +93,8 @@ export function MessageButtonDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
 
         'text': json['text'],
         'action': MessageButtonDtoActionFromJSON(json['action']),
+        'appearance': json['appearance'] == null ? undefined : json['appearance'],
+        'isRepeatable': json['is_repeatable'] == null ? undefined : json['is_repeatable'],
         'row': json['row'] == null ? undefined : json['row'],
     };
 }
@@ -85,6 +112,8 @@ export function MessageButtonDtoToJSONTyped(value?: MessageButtonDto | null, ign
 
         'text': value['text'],
         'action': MessageButtonDtoActionToJSON(value['action']),
+        'appearance': value['appearance'],
+        'is_repeatable': value['isRepeatable'],
         'row': value['row'],
     };
 }

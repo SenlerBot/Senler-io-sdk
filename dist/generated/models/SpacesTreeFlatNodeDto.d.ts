@@ -198,6 +198,7 @@ export declare const SpacesTreeFlatNodeDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type SpacesTreeFlatNodeDtoPlatformTypeEnum = typeof SpacesTreeFlatNodeDtoPlatformTypeEnum[keyof typeof SpacesTreeFlatNodeDtoPlatformTypeEnum];
 /**

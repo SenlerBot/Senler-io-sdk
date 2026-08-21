@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
-import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
 import type { InvitationStatus } from './InvitationStatus';
 import {
     InvitationStatusFromJSON,
@@ -27,6 +20,13 @@ import {
     InvitationStatusToJSON,
     InvitationStatusToJSONTyped,
 } from './InvitationStatus';
+import type { ProjectRole } from './ProjectRole';
+import {
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 import type { InvitationInviterDto } from './InvitationInviterDto';
 import {
     InvitationInviterDtoFromJSON,
@@ -67,10 +67,10 @@ export interface InvitationListItemDto {
     email?: string;
     /**
      * ,
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof InvitationListItemDto
      */
-    role: Role;
+    role: ProjectRole;
     /**
      *
      * @type {InvitationStatus}
@@ -151,7 +151,7 @@ export function InvitationListItemDtoFromJSONTyped(json: any, ignoreDiscriminato
         'projectId': json['project_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
-        'role': RoleFromJSON(json['role']),
+        'role': ProjectRoleFromJSON(json['role']),
         'status': InvitationStatusFromJSON(json['status']),
         'expiresAt': json['expires_at'],
         'createdAt': json['created_at'],
@@ -178,7 +178,7 @@ export function InvitationListItemDtoToJSONTyped(value?: InvitationListItemDto |
         'project_id': value['projectId'],
         'user_id': value['userId'],
         'email': value['email'],
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
         'status': InvitationStatusToJSON(value['status']),
         'expires_at': value['expiresAt'],
         'created_at': value['createdAt'],

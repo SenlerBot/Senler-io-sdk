@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingPublicCatalogResponseDtoTargetModeEnum = void 0;
+exports.LandingPublicCatalogResponseDtoTargetModeEnum = exports.LandingPublicCatalogResponseDtoLanguageEnum = void 0;
 exports.instanceOfLandingPublicCatalogResponseDto = instanceOfLandingPublicCatalogResponseDto;
 exports.LandingPublicCatalogResponseDtoFromJSON = LandingPublicCatalogResponseDtoFromJSON;
 exports.LandingPublicCatalogResponseDtoFromJSONTyped = LandingPublicCatalogResponseDtoFromJSONTyped;
@@ -23,14 +23,25 @@ const LandingPublicCatalogItemDto_1 = require("./LandingPublicCatalogItemDto");
 /**
  * @export
  */
+exports.LandingPublicCatalogResponseDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.LandingPublicCatalogResponseDtoTargetModeEnum = {
-    Catalog: 'catalog',
+    List: 'list',
+    IconList: 'icon_list',
+    BannerGrid: 'banner_grid',
     Landing: 'landing'
 };
 /**
  * Check if a given object implements the LandingPublicCatalogResponseDto interface.
  */
 function instanceOfLandingPublicCatalogResponseDto(value) {
+    if (!('language' in value) || value['language'] === undefined)
+        return false;
     if (!('targetMode' in value) || value['targetMode'] === undefined)
         return false;
     if (!('targetLandingPublicId' in value) || value['targetLandingPublicId'] === undefined)
@@ -47,6 +58,7 @@ function LandingPublicCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
+        'language': json['language'],
         'targetMode': json['target_mode'],
         'targetLandingPublicId': json['target_landing_public_id'],
         'landings': (json['landings'].map(LandingPublicCatalogItemDto_1.LandingPublicCatalogItemDtoFromJSON)),
@@ -60,6 +72,7 @@ function LandingPublicCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
+        'language': value['language'],
         'target_mode': value['targetMode'],
         'target_landing_public_id': value['targetLandingPublicId'],
         'landings': (value['landings'].map(LandingPublicCatalogItemDto_1.LandingPublicCatalogItemDtoToJSON)),

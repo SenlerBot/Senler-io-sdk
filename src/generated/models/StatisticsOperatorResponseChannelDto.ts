@@ -62,7 +62,7 @@ export interface StatisticsOperatorResponseChannelDto {
      */
     p50ResponseTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseChannelDto
      */
@@ -80,7 +80,7 @@ export interface StatisticsOperatorResponseChannelDto {
      */
     p50ResponseRawTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseChannelDto
      */
@@ -146,7 +146,8 @@ export const StatisticsOperatorResponseChannelDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type StatisticsOperatorResponseChannelDtoPlatformTypeEnum = typeof StatisticsOperatorResponseChannelDtoPlatformTypeEnum[keyof typeof StatisticsOperatorResponseChannelDtoPlatformTypeEnum];
 

@@ -77,12 +77,6 @@ export interface UpdateServerBodyDto {
      */
     isActive?: boolean;
     /**
-     * ,
-     * @type {string}
-     * @memberof UpdateServerBodyDto
-     */
-    descriptionPrepend?: string;
-    /**
      * MCP
      * @type {{ [key: string]: any; }}
      * @memberof UpdateServerBodyDto
@@ -94,6 +88,18 @@ export interface UpdateServerBodyDto {
      * @memberof UpdateServerBodyDto
      */
     authMode?: UpdateServerBodyDtoAuthModeEnum;
+    /**
+     * Senler
+     * @type {boolean}
+     * @memberof UpdateServerBodyDto
+     */
+    senlerDynamicToolLoadingEnabled?: boolean;
+    /**
+     * Senler
+     * @type {string}
+     * @memberof UpdateServerBodyDto
+     */
+    senlerToolSearchLanguage?: UpdateServerBodyDtoSenlerToolSearchLanguageEnum;
     /**
      *
      * @type {CreateServerBodyDtoMeta}
@@ -123,6 +129,15 @@ export const UpdateServerBodyDtoAuthModeEnum = {
 } as const;
 export type UpdateServerBodyDtoAuthModeEnum = typeof UpdateServerBodyDtoAuthModeEnum[keyof typeof UpdateServerBodyDtoAuthModeEnum];
 
+/**
+ * @export
+ */
+export const UpdateServerBodyDtoSenlerToolSearchLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateServerBodyDtoSenlerToolSearchLanguageEnum = typeof UpdateServerBodyDtoSenlerToolSearchLanguageEnum[keyof typeof UpdateServerBodyDtoSenlerToolSearchLanguageEnum];
+
 
 /**
  * Check if a given object implements the UpdateServerBodyDto interface.
@@ -148,9 +163,10 @@ export function UpdateServerBodyDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'url': json['url'] == null ? undefined : json['url'],
         'description': json['description'] == null ? undefined : json['description'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
-        'descriptionPrepend': json['description_prepend'] == null ? undefined : json['description_prepend'],
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'authMode': json['auth_mode'] == null ? undefined : json['auth_mode'],
+        'senlerDynamicToolLoadingEnabled': json['senler_dynamic_tool_loading_enabled'] == null ? undefined : json['senler_dynamic_tool_loading_enabled'],
+        'senlerToolSearchLanguage': json['senler_tool_search_language'] == null ? undefined : json['senler_tool_search_language'],
         'meta': json['meta'] == null ? undefined : CreateServerBodyDtoMetaFromJSON(json['meta']),
     };
 }
@@ -173,9 +189,10 @@ export function UpdateServerBodyDtoToJSONTyped(value?: UpdateServerBodyDto | nul
         'url': value['url'],
         'description': value['description'],
         'is_active': value['isActive'],
-        'description_prepend': value['descriptionPrepend'],
         'custom_query_params': value['customQueryParams'],
         'auth_mode': value['authMode'],
+        'senler_dynamic_tool_loading_enabled': value['senlerDynamicToolLoadingEnabled'],
+        'senler_tool_search_language': value['senlerToolSearchLanguage'],
         'meta': CreateServerBodyDtoMetaToJSON(value['meta']),
     };
 }

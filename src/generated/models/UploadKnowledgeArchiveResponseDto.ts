@@ -27,6 +27,20 @@ import {
     KnowledgeFileResponseDtoToJSON,
     KnowledgeFileResponseDtoToJSONTyped,
 } from './KnowledgeFileResponseDto';
+import type { KnowledgeImageRecognitionRunResponseDto } from './KnowledgeImageRecognitionRunResponseDto';
+import {
+    KnowledgeImageRecognitionRunResponseDtoFromJSON,
+    KnowledgeImageRecognitionRunResponseDtoFromJSONTyped,
+    KnowledgeImageRecognitionRunResponseDtoToJSON,
+    KnowledgeImageRecognitionRunResponseDtoToJSONTyped,
+} from './KnowledgeImageRecognitionRunResponseDto';
+import type { KnowledgeImageContextsImportSummaryDto } from './KnowledgeImageContextsImportSummaryDto';
+import {
+    KnowledgeImageContextsImportSummaryDtoFromJSON,
+    KnowledgeImageContextsImportSummaryDtoFromJSONTyped,
+    KnowledgeImageContextsImportSummaryDtoToJSON,
+    KnowledgeImageContextsImportSummaryDtoToJSONTyped,
+} from './KnowledgeImageContextsImportSummaryDto';
 import type { KnowledgeFolderResponseDto } from './KnowledgeFolderResponseDto';
 import {
     KnowledgeFolderResponseDtoFromJSON,
@@ -59,6 +73,18 @@ export interface UploadKnowledgeArchiveResponseDto {
      * @memberof UploadKnowledgeArchiveResponseDto
      */
     summary: KnowledgeArchiveImportSummaryDto;
+    /**
+     * ; null, AI
+     * @type {KnowledgeImageRecognitionRunResponseDto}
+     * @memberof UploadKnowledgeArchiveResponseDto
+     */
+    recognitionRun: KnowledgeImageRecognitionRunResponseDto | null;
+    /**
+     *
+     * @type {KnowledgeImageContextsImportSummaryDto}
+     * @memberof UploadKnowledgeArchiveResponseDto
+     */
+    imageContexts: KnowledgeImageContextsImportSummaryDto;
 }
 
 /**
@@ -68,6 +94,8 @@ export function instanceOfUploadKnowledgeArchiveResponseDto(value: object): valu
     if (!('folders' in value) || value['folders'] === undefined) return false;
     if (!('files' in value) || value['files'] === undefined) return false;
     if (!('summary' in value) || value['summary'] === undefined) return false;
+    if (!('recognitionRun' in value) || value['recognitionRun'] === undefined) return false;
+    if (!('imageContexts' in value) || value['imageContexts'] === undefined) return false;
     return true;
 }
 
@@ -84,6 +112,8 @@ export function UploadKnowledgeArchiveResponseDtoFromJSONTyped(json: any, ignore
         'folders': ((json['folders'] as Array<any>).map(KnowledgeFolderResponseDtoFromJSON)),
         'files': ((json['files'] as Array<any>).map(KnowledgeFileResponseDtoFromJSON)),
         'summary': KnowledgeArchiveImportSummaryDtoFromJSON(json['summary']),
+        'recognitionRun': KnowledgeImageRecognitionRunResponseDtoFromJSON(json['recognition_run']),
+        'imageContexts': KnowledgeImageContextsImportSummaryDtoFromJSON(json['image_contexts']),
     };
 }
 
@@ -101,5 +131,7 @@ export function UploadKnowledgeArchiveResponseDtoToJSONTyped(value?: UploadKnowl
         'folders': ((value['folders'] as Array<any>).map(KnowledgeFolderResponseDtoToJSON)),
         'files': ((value['files'] as Array<any>).map(KnowledgeFileResponseDtoToJSON)),
         'summary': KnowledgeArchiveImportSummaryDtoToJSON(value['summary']),
+        'recognition_run': KnowledgeImageRecognitionRunResponseDtoToJSON(value['recognitionRun']),
+        'image_contexts': KnowledgeImageContextsImportSummaryDtoToJSON(value['imageContexts']),
     };
 }

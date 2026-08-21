@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicDocumentationContextRefDto } from './PublicDocumentationContextRefDto';
 import type { PublicDocumentationResolvedLinkDto } from './PublicDocumentationResolvedLinkDto';
 /**
  * PublicDocumentationFileDto.
@@ -22,6 +23,18 @@ export interface PublicDocumentationFileDto {
      * @memberof PublicDocumentationFileDto
      */
     id: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicDocumentationFileDto
+     */
+    slug: string;
+    /**
+     * UUID , slug
+     * @type {string}
+     * @memberof PublicDocumentationFileDto
+     */
+    redirectedFrom: string | null;
     /**
      * UUID
      * @type {string}
@@ -52,6 +65,12 @@ export interface PublicDocumentationFileDto {
      * @memberof PublicDocumentationFileDto
      */
     content: string;
+    /**
+     * , Markdown
+     * @type {Array<PublicDocumentationContextRefDto>}
+     * @memberof PublicDocumentationFileDto
+     */
+    contextRefs: Array<PublicDocumentationContextRefDto>;
     /**
      *
      * @type {Array<PublicDocumentationResolvedLinkDto>}

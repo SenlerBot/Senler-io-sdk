@@ -52,6 +52,12 @@ export interface PublicDocumentationTreeDto {
      * @memberof PublicDocumentationTreeDto
      */
     firstFileId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicDocumentationTreeDto
+     */
+    firstPageSlug: string | null;
 }
 
 /**
@@ -61,6 +67,7 @@ export function instanceOfPublicDocumentationTreeDto(value: object): value is Pu
     if (!('pages' in value) || value['pages'] === undefined) return false;
     if (!('folders' in value) || value['folders'] === undefined) return false;
     if (!('firstFileId' in value) || value['firstFileId'] === undefined) return false;
+    if (!('firstPageSlug' in value) || value['firstPageSlug'] === undefined) return false;
     return true;
 }
 
@@ -77,6 +84,7 @@ export function PublicDocumentationTreeDtoFromJSONTyped(json: any, ignoreDiscrim
         'pages': ((json['pages'] as Array<any>).map(PublicDocumentationPageTreeItemDtoFromJSON)),
         'folders': ((json['folders'] as Array<any>).map(PublicDocumentationFolderTreeItemDtoFromJSON)),
         'firstFileId': json['first_file_id'],
+        'firstPageSlug': json['first_page_slug'],
     };
 }
 
@@ -94,5 +102,6 @@ export function PublicDocumentationTreeDtoToJSONTyped(value?: PublicDocumentatio
         'pages': ((value['pages'] as Array<any>).map(PublicDocumentationPageTreeItemDtoToJSON)),
         'folders': ((value['folders'] as Array<any>).map(PublicDocumentationFolderTreeItemDtoToJSON)),
         'first_file_id': value['firstFileId'],
+        'first_page_slug': value['firstPageSlug'],
     };
 }

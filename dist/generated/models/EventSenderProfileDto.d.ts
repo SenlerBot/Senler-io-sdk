@@ -84,6 +84,7 @@ export declare const EventSenderProfileDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type EventSenderProfileDtoPlatformTypeEnum = typeof EventSenderProfileDtoPlatformTypeEnum[keyof typeof EventSenderProfileDtoPlatformTypeEnum];
 /**

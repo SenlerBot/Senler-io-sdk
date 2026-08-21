@@ -13,12 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MessageButtonDtoAppearanceEnum = void 0;
 exports.instanceOfMessageButtonDto = instanceOfMessageButtonDto;
 exports.MessageButtonDtoFromJSON = MessageButtonDtoFromJSON;
 exports.MessageButtonDtoFromJSONTyped = MessageButtonDtoFromJSONTyped;
 exports.MessageButtonDtoToJSON = MessageButtonDtoToJSON;
 exports.MessageButtonDtoToJSONTyped = MessageButtonDtoToJSONTyped;
 const MessageButtonDtoAction_1 = require("./MessageButtonDtoAction");
+/**
+ * @export
+ */
+exports.MessageButtonDtoAppearanceEnum = {
+    Neutral: 'neutral',
+    Primary: 'primary',
+    Positive: 'positive',
+    Negative: 'negative'
+};
 /**
  * Check if a given object implements the MessageButtonDto interface.
  */
@@ -39,6 +49,8 @@ function MessageButtonDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'text': json['text'],
         'action': (0, MessageButtonDtoAction_1.MessageButtonDtoActionFromJSON)(json['action']),
+        'appearance': json['appearance'] == null ? undefined : json['appearance'],
+        'isRepeatable': json['is_repeatable'] == null ? undefined : json['is_repeatable'],
         'row': json['row'] == null ? undefined : json['row'],
     };
 }
@@ -52,6 +64,8 @@ function MessageButtonDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'text': value['text'],
         'action': (0, MessageButtonDtoAction_1.MessageButtonDtoActionToJSON)(value['action']),
+        'appearance': value['appearance'],
+        'is_repeatable': value['isRepeatable'],
         'row': value['row'],
     };
 }

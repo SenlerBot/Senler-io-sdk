@@ -54,6 +54,7 @@ export declare const PlatformStatsPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type PlatformStatsPlatformTypeEnum = typeof PlatformStatsPlatformTypeEnum[keyof typeof PlatformStatsPlatformTypeEnum];
 /**

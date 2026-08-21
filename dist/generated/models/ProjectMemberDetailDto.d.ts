@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Role } from './Role';
 import type { UserResponseDto } from './UserResponseDto';
 import type { MemberChannelDto } from './MemberChannelDto';
 import type { PermissionsDto } from './PermissionsDto';
+import type { ProjectRole } from './ProjectRole';
 /**
  * ProjectMemberDetailDto.
  * @export
@@ -39,10 +39,10 @@ export interface ProjectMemberDetailDto {
     userId: string;
     /**
      *
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ProjectMemberDetailDto
      */
-    role: Role;
+    role: ProjectRole;
     /**
      *
      * @type {PermissionsDto}

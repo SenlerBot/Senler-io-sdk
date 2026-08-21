@@ -169,6 +169,7 @@ export declare const StorageFileItemDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type StorageFileItemDtoPlatformTypeEnum = typeof StorageFileItemDtoPlatformTypeEnum[keyof typeof StorageFileItemDtoPlatformTypeEnum];
 /**
@@ -183,6 +184,7 @@ export declare const StorageFileItemDtoStorageSourceEnum: {
     readonly Web: "web";
     readonly Temp: "temp";
     readonly System: "system";
+    readonly Automation: "automation";
 };
 export type StorageFileItemDtoStorageSourceEnum = typeof StorageFileItemDtoStorageSourceEnum[keyof typeof StorageFileItemDtoStorageSourceEnum];
 /**
@@ -196,6 +198,7 @@ export declare const StorageFileItemDtoOwnerTypeEnum: {
     readonly KnowledgeTableAsset: "knowledge_table_asset";
     readonly AgentGeneratedFile: "agent_generated_file";
     readonly SystemFile: "system_file";
+    readonly AutomationAttachment: "automation_attachment";
 };
 export type StorageFileItemDtoOwnerTypeEnum = typeof StorageFileItemDtoOwnerTypeEnum[keyof typeof StorageFileItemDtoOwnerTypeEnum];
 /**

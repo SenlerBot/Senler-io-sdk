@@ -13,24 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrainingStatusResponseDtoModeEnum = void 0;
 exports.instanceOfTrainingStatusResponseDto = instanceOfTrainingStatusResponseDto;
 exports.TrainingStatusResponseDtoFromJSON = TrainingStatusResponseDtoFromJSON;
 exports.TrainingStatusResponseDtoFromJSONTyped = TrainingStatusResponseDtoFromJSONTyped;
 exports.TrainingStatusResponseDtoToJSON = TrainingStatusResponseDtoToJSON;
 exports.TrainingStatusResponseDtoToJSONTyped = TrainingStatusResponseDtoToJSONTyped;
+const TrainingMode_1 = require("./TrainingMode");
 const TasksStatsDto_1 = require("./TasksStatsDto");
+const TrainingConfigurationSnapshotDto_1 = require("./TrainingConfigurationSnapshotDto");
+const AgentStatus_1 = require("./AgentStatus");
+const TrainingRunBillingSummaryDto_1 = require("./TrainingRunBillingSummaryDto");
 const TaskDetailDto_1 = require("./TaskDetailDto");
 const TrainingProgressDetailDto_1 = require("./TrainingProgressDetailDto");
 const AgentVariantDto_1 = require("./AgentVariantDto");
-/**
- * @export
- */
-exports.TrainingStatusResponseDtoModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-};
 /**
  * Check if a given object implements the TrainingStatusResponseDto interface.
  */
@@ -58,15 +53,17 @@ function TrainingStatusResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'agentId': json['agentId'],
-        'agentStatus': json['agentStatus'],
-        'mode': json['mode'],
+        'agentStatus': (0, AgentStatus_1.AgentStatusFromJSON)(json['agentStatus']),
+        'mode': (0, TrainingMode_1.TrainingModeFromJSON)(json['mode']),
         'overallProgress': json['overallProgress'],
         'tasksStats': (0, TasksStatsDto_1.TasksStatsDtoFromJSON)(json['tasksStats']),
         'tasks': (json['tasks'].map(TaskDetailDto_1.TaskDetailDtoFromJSON)),
+        '_configuration': json['configuration'] == null ? undefined : (0, TrainingConfigurationSnapshotDto_1.TrainingConfigurationSnapshotDtoFromJSON)(json['configuration']),
         'generatedVariants': json['generatedVariants'] == null ? undefined : (json['generatedVariants'].map(AgentVariantDto_1.AgentVariantDtoFromJSON)),
         'trainingStartedAt': json['trainingStartedAt'] == null ? undefined : json['trainingStartedAt'],
         'trainingCompletedAt': json['trainingCompletedAt'] == null ? undefined : json['trainingCompletedAt'],
         'estimatedCompletion': json['estimatedCompletion'] == null ? undefined : json['estimatedCompletion'],
+        'billing': json['billing'] == null ? undefined : (0, TrainingRunBillingSummaryDto_1.TrainingRunBillingSummaryDtoFromJSON)(json['billing']),
         'trainingProgress': json['training_progress'] == null ? undefined : (0, TrainingProgressDetailDto_1.TrainingProgressDetailDtoFromJSON)(json['training_progress']),
     };
 }
@@ -79,15 +76,17 @@ function TrainingStatusResponseDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'agentId': value['agentId'],
-        'agentStatus': value['agentStatus'],
-        'mode': value['mode'],
+        'agentStatus': (0, AgentStatus_1.AgentStatusToJSON)(value['agentStatus']),
+        'mode': (0, TrainingMode_1.TrainingModeToJSON)(value['mode']),
         'overallProgress': value['overallProgress'],
         'tasksStats': (0, TasksStatsDto_1.TasksStatsDtoToJSON)(value['tasksStats']),
         'tasks': (value['tasks'].map(TaskDetailDto_1.TaskDetailDtoToJSON)),
+        'configuration': (0, TrainingConfigurationSnapshotDto_1.TrainingConfigurationSnapshotDtoToJSON)(value['_configuration']),
         'generatedVariants': value['generatedVariants'] == null ? undefined : (value['generatedVariants'].map(AgentVariantDto_1.AgentVariantDtoToJSON)),
         'trainingStartedAt': value['trainingStartedAt'],
         'trainingCompletedAt': value['trainingCompletedAt'],
         'estimatedCompletion': value['estimatedCompletion'],
+        'billing': (0, TrainingRunBillingSummaryDto_1.TrainingRunBillingSummaryDtoToJSON)(value['billing']),
         'training_progress': (0, TrainingProgressDetailDto_1.TrainingProgressDetailDtoToJSON)(value['trainingProgress']),
     };
 }

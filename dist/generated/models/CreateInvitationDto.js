@@ -18,7 +18,7 @@ exports.CreateInvitationDtoFromJSON = CreateInvitationDtoFromJSON;
 exports.CreateInvitationDtoFromJSONTyped = CreateInvitationDtoFromJSONTyped;
 exports.CreateInvitationDtoToJSON = CreateInvitationDtoToJSON;
 exports.CreateInvitationDtoToJSONTyped = CreateInvitationDtoToJSONTyped;
-const Role_1 = require("./Role");
+const ProjectRole_1 = require("./ProjectRole");
 /**
  * Check if a given object implements the CreateInvitationDto interface.
  */
@@ -37,7 +37,7 @@ function CreateInvitationDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
-        'role': (0, Role_1.RoleFromJSON)(json['role']),
+        'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
     };
 }
 function CreateInvitationDtoToJSON(json) {
@@ -50,6 +50,6 @@ function CreateInvitationDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'user_id': value['userId'],
         'email': value['email'],
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
     };
 }

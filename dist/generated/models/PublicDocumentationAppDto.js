@@ -26,7 +26,7 @@ const AppDescriptionDto_1 = require("./AppDescriptionDto");
 exports.PublicDocumentationAppDtoTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool'
+    Plugin: 'plugin'
 };
 /**
  * Check if a given object implements the PublicDocumentationAppDto interface.

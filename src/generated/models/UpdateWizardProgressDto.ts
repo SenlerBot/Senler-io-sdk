@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingMode } from './TrainingMode';
+import {
+    TrainingModeFromJSON,
+    TrainingModeFromJSONTyped,
+    TrainingModeToJSON,
+    TrainingModeToJSONTyped,
+} from './TrainingMode';
+import type { WizardStep } from './WizardStep';
+import {
+    WizardStepFromJSON,
+    WizardStepFromJSONTyped,
+    WizardStepToJSON,
+    WizardStepToJSONTyped,
+} from './WizardStep';
+
 /**
  * UpdateWizardProgressDto.
  * @export
@@ -21,10 +36,10 @@ import { mapValues } from '../runtime';
 export interface UpdateWizardProgressDto {
     /**
      *
-     * @type {string}
+     * @type {WizardStep}
      * @memberof UpdateWizardProgressDto
      */
-    currentStep: UpdateWizardProgressDtoCurrentStepEnum;
+    currentStep: WizardStep;
     /**
      * ID website sources (UUID data_sources)
      * @type {Array<string>}
@@ -51,34 +66,12 @@ export interface UpdateWizardProgressDto {
     scanChannelHistory?: boolean;
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof UpdateWizardProgressDto
      */
-    trainingMode?: UpdateWizardProgressDtoTrainingModeEnum;
+    trainingMode?: TrainingMode;
 }
 
-
-/**
- * @export
- */
-export const UpdateWizardProgressDtoCurrentStepEnum = {
-    SourcesSelection: 'sources_selection',
-    TrainingConfig: 'training_config',
-    InProgress: 'in_progress',
-    VariantSelection: 'variant_selection',
-    Completed: 'completed'
-} as const;
-export type UpdateWizardProgressDtoCurrentStepEnum = typeof UpdateWizardProgressDtoCurrentStepEnum[keyof typeof UpdateWizardProgressDtoCurrentStepEnum];
-
-/**
- * @export
- */
-export const UpdateWizardProgressDtoTrainingModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-} as const;
-export type UpdateWizardProgressDtoTrainingModeEnum = typeof UpdateWizardProgressDtoTrainingModeEnum[keyof typeof UpdateWizardProgressDtoTrainingModeEnum];
 
 
 /**
@@ -99,12 +92,12 @@ export function UpdateWizardProgressDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
-        'currentStep': json['current_step'],
+        'currentStep': WizardStepFromJSON(json['current_step']),
         'websiteSourceIds': json['website_source_ids'] == null ? undefined : json['website_source_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'historyDepthDays': json['history_depth_days'] == null ? undefined : json['history_depth_days'],
         'scanChannelHistory': json['scan_channel_history'] == null ? undefined : json['scan_channel_history'],
-        'trainingMode': json['training_mode'] == null ? undefined : json['training_mode'],
+        'trainingMode': json['training_mode'] == null ? undefined : TrainingModeFromJSON(json['training_mode']),
     };
 }
 
@@ -119,11 +112,11 @@ export function UpdateWizardProgressDtoToJSONTyped(value?: UpdateWizardProgressD
 
     return {
 
-        'current_step': value['currentStep'],
+        'current_step': WizardStepToJSON(value['currentStep']),
         'website_source_ids': value['websiteSourceIds'],
         'channel_ids': value['channelIds'],
         'history_depth_days': value['historyDepthDays'],
         'scan_channel_history': value['scanChannelHistory'],
-        'training_mode': value['trainingMode'],
+        'training_mode': TrainingModeToJSON(value['trainingMode']),
     };
 }

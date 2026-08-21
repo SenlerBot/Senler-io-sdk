@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 import type { SegmentConsentSnapshotDto } from './SegmentConsentSnapshotDto';
-import type { SegmentPaymentDto } from './SegmentPaymentDto';
 /**
  * SegmentResponseDto.
  * @export
@@ -60,17 +59,17 @@ export interface SegmentResponseDto {
      */
     isReadOnly: boolean;
     /**
-     *
-     * @type {SegmentPaymentDto}
-     * @memberof SegmentResponseDto
-     */
-    payment: SegmentPaymentDto;
-    /**
      * ,
      * @type {Array<SegmentConsentSnapshotDto>}
      * @memberof SegmentResponseDto
      */
     requiredConsents: Array<SegmentConsentSnapshotDto>;
+    /**
+     *
+     * @type {string}
+     * @memberof SegmentResponseDto
+     */
+    consentPromptText: string | null;
     /**
      *
      * @type {Date}

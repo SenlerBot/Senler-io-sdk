@@ -110,6 +110,7 @@ export declare const ProcessResponseDtoTypeEnum: {
     readonly LeadsExport: "leads_export";
     readonly LeadsImport: "leads_import";
     readonly LeadsRefresh: "leads_refresh";
+    readonly LeadsSegmentOperation: "leads_segment_operation";
     readonly ChannelMigration: "channel_migration";
     readonly ChannelMigrationBackfill: "channel_migration_backfill";
     readonly ChannelsTreeRefresh: "channels_tree_refresh";

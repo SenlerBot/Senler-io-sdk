@@ -28,12 +28,6 @@ import {
  */
 export interface UpdateLeadVariableDefinitionDto {
     /**
-     * . ; path- name.
-     * @type {string}
-     * @memberof UpdateLeadVariableDefinitionDto
-     */
-    newName?: string;
-    /**
      *
      * @type {string}
      * @memberof UpdateLeadVariableDefinitionDto
@@ -92,7 +86,6 @@ export function UpdateLeadVariableDefinitionDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
-        'newName': json['new_name'] == null ? undefined : json['new_name'],
         'type': json['type'] == null ? undefined : json['type'],
         'description': json['description'] == null ? undefined : json['description'],
         'agentInstruction': json['agent_instruction'] == null ? undefined : json['agent_instruction'],
@@ -111,7 +104,6 @@ export function UpdateLeadVariableDefinitionDtoToJSONTyped(value?: UpdateLeadVar
 
     return {
 
-        'new_name': value['newName'],
         'type': value['type'],
         'description': value['description'],
         'agent_instruction': value['agentInstruction'],

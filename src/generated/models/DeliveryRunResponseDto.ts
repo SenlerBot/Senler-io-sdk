@@ -75,6 +75,12 @@ export interface DeliveryRunResponseDto {
     errorMessage: string | null;
     /**
      *
+     * @type {string}
+     * @memberof DeliveryRunResponseDto
+     */
+    pauseReason: string | null;
+    /**
+     *
      * @type {Date}
      * @memberof DeliveryRunResponseDto
      */
@@ -85,6 +91,12 @@ export interface DeliveryRunResponseDto {
      * @memberof DeliveryRunResponseDto
      */
     completedAt: Date | null;
+    /**
+     *
+     * @type {Date}
+     * @memberof DeliveryRunResponseDto
+     */
+    pausedAt: Date | null;
     /**
      *
      * @type {Date}
@@ -101,6 +113,7 @@ export const DeliveryRunResponseDtoStatusEnum = {
     Queued: 'queued',
     Collecting: 'collecting',
     Sending: 'sending',
+    PausedDailyLimit: 'paused_daily_limit',
     Completed: 'completed',
     Failed: 'failed',
     Cancelled: 'cancelled'
@@ -121,8 +134,10 @@ export function instanceOfDeliveryRunResponseDto(value: object): value is Delive
     if (!('failedCount' in value) || value['failedCount'] === undefined) return false;
     if (!('skippedCount' in value) || value['skippedCount'] === undefined) return false;
     if (!('errorMessage' in value) || value['errorMessage'] === undefined) return false;
+    if (!('pauseReason' in value) || value['pauseReason'] === undefined) return false;
     if (!('startedAt' in value) || value['startedAt'] === undefined) return false;
     if (!('completedAt' in value) || value['completedAt'] === undefined) return false;
+    if (!('pausedAt' in value) || value['pausedAt'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     return true;
 }
@@ -146,8 +161,10 @@ export function DeliveryRunResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
         'failedCount': json['failed_count'],
         'skippedCount': json['skipped_count'],
         'errorMessage': json['error_message'],
+        'pauseReason': json['pause_reason'],
         'startedAt': (json['started_at'] == null ? null : new Date(json['started_at'])),
         'completedAt': (json['completed_at'] == null ? null : new Date(json['completed_at'])),
+        'pausedAt': (json['paused_at'] == null ? null : new Date(json['paused_at'])),
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -172,8 +189,10 @@ export function DeliveryRunResponseDtoToJSONTyped(value?: DeliveryRunResponseDto
         'failed_count': value['failedCount'],
         'skipped_count': value['skippedCount'],
         'error_message': value['errorMessage'],
+        'pause_reason': value['pauseReason'],
         'started_at': (value['startedAt'] == null ? null : (value['startedAt'] as any).toISOString()),
         'completed_at': (value['completedAt'] == null ? null : (value['completedAt'] as any).toISOString()),
+        'paused_at': (value['pausedAt'] == null ? null : (value['pausedAt'] as any).toISOString()),
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

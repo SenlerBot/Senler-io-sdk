@@ -41,6 +41,12 @@ export interface LandingVkAppResponseDto {
      */
     target: LandingVkAppResponseDtoTarget;
     /**
+     * list.
+     * @type {boolean}
+     * @memberof LandingVkAppResponseDto
+     */
+    openSingleLanding?: boolean;
+    /**
      * VK App .
      * @type {string}
      * @memberof LandingVkAppResponseDto

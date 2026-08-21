@@ -42,6 +42,7 @@ function DeliverySendProcessResultDtoFromJSONTyped(json, ignoreDiscriminator) {
         'sent': json['sent'],
         'skipped': json['skipped'],
         'failed': json['failed'],
+        'pausedDailyLimit': json['paused_daily_limit'] == null ? undefined : json['paused_daily_limit'],
         'deliveryErrors': json['delivery_errors'] == null ? undefined : (json['delivery_errors'].map(DeliverySendErrorDto_1.DeliverySendErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
@@ -57,6 +58,7 @@ function DeliverySendProcessResultDtoToJSONTyped(value, ignoreDiscriminator = fa
         'sent': value['sent'],
         'skipped': value['skipped'],
         'failed': value['failed'],
+        'paused_daily_limit': value['pausedDailyLimit'],
         'delivery_errors': value['deliveryErrors'] == null ? undefined : (value['deliveryErrors'].map(DeliverySendErrorDto_1.DeliverySendErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };

@@ -25,6 +25,7 @@ const DeliverySendPayloadDto_1 = require("./DeliverySendPayloadDto");
 const ExportLeadsPayloadDto_1 = require("./ExportLeadsPayloadDto");
 const ImportLeadsPayloadDto_1 = require("./ImportLeadsPayloadDto");
 const LeadsRefreshPayloadDto_1 = require("./LeadsRefreshPayloadDto");
+const LeadsSegmentOperationPayloadDto_1 = require("./LeadsSegmentOperationPayloadDto");
 const ResourcePackageImportPayloadDto_1 = require("./ResourcePackageImportPayloadDto");
 function ProcessResponseDtoPayloadFromJSON(json) {
     return ProcessResponseDtoPayloadFromJSONTyped(json, false);
@@ -56,6 +57,9 @@ function ProcessResponseDtoPayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     if ((0, LeadsRefreshPayloadDto_1.instanceOfLeadsRefreshPayloadDto)(json)) {
         return (0, LeadsRefreshPayloadDto_1.LeadsRefreshPayloadDtoFromJSONTyped)(json, true);
+    }
+    if ((0, LeadsSegmentOperationPayloadDto_1.instanceOfLeadsSegmentOperationPayloadDto)(json)) {
+        return (0, LeadsSegmentOperationPayloadDto_1.LeadsSegmentOperationPayloadDtoFromJSONTyped)(json, true);
     }
     if ((0, ResourcePackageImportPayloadDto_1.instanceOfResourcePackageImportPayloadDto)(json)) {
         return (0, ResourcePackageImportPayloadDto_1.ResourcePackageImportPayloadDtoFromJSONTyped)(json, true);
@@ -92,6 +96,9 @@ function ProcessResponseDtoPayloadToJSONTyped(value, ignoreDiscriminator = false
     }
     if ((0, LeadsRefreshPayloadDto_1.instanceOfLeadsRefreshPayloadDto)(value)) {
         return (0, LeadsRefreshPayloadDto_1.LeadsRefreshPayloadDtoToJSON)(value);
+    }
+    if ((0, LeadsSegmentOperationPayloadDto_1.instanceOfLeadsSegmentOperationPayloadDto)(value)) {
+        return (0, LeadsSegmentOperationPayloadDto_1.LeadsSegmentOperationPayloadDtoToJSON)(value);
     }
     if ((0, ResourcePackageImportPayloadDto_1.instanceOfResourcePackageImportPayloadDto)(value)) {
         return (0, ResourcePackageImportPayloadDto_1.ResourcePackageImportPayloadDtoToJSON)(value);

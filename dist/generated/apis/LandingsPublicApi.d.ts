@@ -60,12 +60,12 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      */
     getLandingsLaunch(requestParameters: GetLandingsLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingLaunchContextResponseDto>;
     /**
-     * , .
+     * channel_public_id . channel_public_id .
      *
      */
     getProjectsLandingsRaw(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicCatalogResponseDto>>;
     /**
-     * , .
+     * channel_public_id . channel_public_id .
      *
      */
     getProjectsLandings(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicCatalogResponseDto>;

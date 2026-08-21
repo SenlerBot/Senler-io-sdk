@@ -61,6 +61,7 @@ export const ProcessResultResponseDtoTypeEnum = {
     LeadsExport: 'leads_export',
     LeadsImport: 'leads_import',
     LeadsRefresh: 'leads_refresh',
+    LeadsSegmentOperation: 'leads_segment_operation',
     ChannelMigration: 'channel_migration',
     ChannelMigrationBackfill: 'channel_migration_backfill',
     ChannelsTreeRefresh: 'channels_tree_refresh',

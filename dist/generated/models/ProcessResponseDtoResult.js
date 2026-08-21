@@ -25,6 +25,7 @@ const DeliverySendProcessResultDto_1 = require("./DeliverySendProcessResultDto")
 const ExportProcessResultDto_1 = require("./ExportProcessResultDto");
 const ImportProcessResultDto_1 = require("./ImportProcessResultDto");
 const LeadsRefreshProcessResultDto_1 = require("./LeadsRefreshProcessResultDto");
+const LeadsSegmentOperationProcessResultDto_1 = require("./LeadsSegmentOperationProcessResultDto");
 const ResourcePackageImportProcessResultDto_1 = require("./ResourcePackageImportProcessResultDto");
 function ProcessResponseDtoResultFromJSON(json) {
     return ProcessResponseDtoResultFromJSONTyped(json, false);
@@ -56,6 +57,9 @@ function ProcessResponseDtoResultFromJSONTyped(json, ignoreDiscriminator) {
     }
     if ((0, LeadsRefreshProcessResultDto_1.instanceOfLeadsRefreshProcessResultDto)(json)) {
         return (0, LeadsRefreshProcessResultDto_1.LeadsRefreshProcessResultDtoFromJSONTyped)(json, true);
+    }
+    if ((0, LeadsSegmentOperationProcessResultDto_1.instanceOfLeadsSegmentOperationProcessResultDto)(json)) {
+        return (0, LeadsSegmentOperationProcessResultDto_1.LeadsSegmentOperationProcessResultDtoFromJSONTyped)(json, true);
     }
     if ((0, ResourcePackageImportProcessResultDto_1.instanceOfResourcePackageImportProcessResultDto)(json)) {
         return (0, ResourcePackageImportProcessResultDto_1.ResourcePackageImportProcessResultDtoFromJSONTyped)(json, true);
@@ -92,6 +96,9 @@ function ProcessResponseDtoResultToJSONTyped(value, ignoreDiscriminator = false)
     }
     if ((0, LeadsRefreshProcessResultDto_1.instanceOfLeadsRefreshProcessResultDto)(value)) {
         return (0, LeadsRefreshProcessResultDto_1.LeadsRefreshProcessResultDtoToJSON)(value);
+    }
+    if ((0, LeadsSegmentOperationProcessResultDto_1.instanceOfLeadsSegmentOperationProcessResultDto)(value)) {
+        return (0, LeadsSegmentOperationProcessResultDto_1.LeadsSegmentOperationProcessResultDtoToJSON)(value);
     }
     if ((0, ResourcePackageImportProcessResultDto_1.instanceOfResourcePackageImportProcessResultDto)(value)) {
         return (0, ResourcePackageImportProcessResultDto_1.ResourcePackageImportProcessResultDtoToJSON)(value);

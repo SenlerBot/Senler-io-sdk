@@ -56,7 +56,8 @@ exports.DialogChatEventDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 };
 /**
  * @export

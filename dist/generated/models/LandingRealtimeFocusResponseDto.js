@@ -13,16 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingRealtimeFocusResponseDtoAcknowledgedEnum = void 0;
 exports.instanceOfLandingRealtimeFocusResponseDto = instanceOfLandingRealtimeFocusResponseDto;
 exports.LandingRealtimeFocusResponseDtoFromJSON = LandingRealtimeFocusResponseDtoFromJSON;
 exports.LandingRealtimeFocusResponseDtoFromJSONTyped = LandingRealtimeFocusResponseDtoFromJSONTyped;
 exports.LandingRealtimeFocusResponseDtoToJSON = LandingRealtimeFocusResponseDtoToJSON;
 exports.LandingRealtimeFocusResponseDtoToJSONTyped = LandingRealtimeFocusResponseDtoToJSONTyped;
-/**
- * @export
- */
-exports.LandingRealtimeFocusResponseDtoAcknowledgedEnum = {};
 /**
  * Check if a given object implements the LandingRealtimeFocusResponseDto interface.
  */

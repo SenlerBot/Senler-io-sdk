@@ -9,8 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingMode } from './TrainingMode';
+import type { AgentStatus } from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
+import type { WizardStep } from './WizardStep';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { McpServerResponseDto } from './McpServerResponseDto';
 import type { McpServerListResponseDto } from './McpServerListResponseDto';
@@ -210,22 +213,28 @@ export interface AgentResponseDto {
     autoAssignmentRole: AgentResponseDtoAutoAssignmentRoleEnum;
     /**
      *
-     * @type {string}
+     * @type {AgentStatus}
      * @memberof AgentResponseDto
      */
-    status: AgentResponseDtoStatusEnum | null;
+    status: AgentStatus | null;
     /**
      *
-     * @type {string}
+     * @type {WizardStep}
      * @memberof AgentResponseDto
      */
-    wizardCurrentStep?: string | null;
+    wizardCurrentStep?: WizardStep | null;
     /**
      *
-     * @type {string}
+     * @type {Date}
      * @memberof AgentResponseDto
      */
-    wizardTrainingModeSelected: AgentResponseDtoWizardTrainingModeSelectedEnum | null;
+    wizardUpdatedAt?: Date | null;
+    /**
+     *
+     * @type {TrainingMode}
+     * @memberof AgentResponseDto
+     */
+    wizardTrainingModeSelected: TrainingMode | null;
     /**
      * ID
      * @type {Array<string>}
@@ -359,6 +368,12 @@ export interface AgentResponseDto {
      */
     cancelPendingResponseOnProjectOperatorMessage: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    cancelPendingResponseOnAutomationMessage: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentResponseDto
@@ -432,40 +447,34 @@ export interface AgentResponseDto {
     enableDetachFromDialog: boolean;
     /**
      *
-     * @type {boolean}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof AgentResponseDto
      */
-    useProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AgentResponseDto
-     */
-    useLeadVariables: boolean;
+    variableBindings: Array<{
+        [key: string]: any;
+    }>;
     /**
      *
      * @type {string}
      * @memberof AgentResponseDto
      */
-    projectVarsInstructionMode: AgentResponseDtoProjectVarsInstructionModeEnum;
+    variablesAccessMode: AgentResponseDtoVariablesAccessModeEnum;
     /**
-     *
-     * @type {string}
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentResponseDto
      */
-    projectVarsUserRequestMode: AgentResponseDtoProjectVarsUserRequestModeEnum;
+    segmentAccessPolicy: {
+        [key: string]: any;
+    };
     /**
-     *
-     * @type {string}
+     * recipient messaging tools (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentResponseDto
      */
-    leadVarsInstructionMode: AgentResponseDtoLeadVarsInstructionModeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof AgentResponseDto
-     */
-    leadVarsUserRequestMode: AgentResponseDtoLeadVarsUserRequestModeEnum;
+    recipientMessagingPolicy: {
+        [key: string]: any;
+    };
     /**
      *
      * @type {Date}
@@ -496,8 +505,9 @@ export type AgentResponseDtoAgentTypeEnum = typeof AgentResponseDtoAgentTypeEnum
  * @export
  */
 export declare const AgentResponseDtoServerBindingModeEnum: {
-    readonly List: "list";
-    readonly Direct: "direct";
+    readonly ProviderDirect: "provider_direct";
+    readonly SenlerDirect: "senler_direct";
+    readonly SenlerList: "senler_list";
     readonly None: "none";
 };
 export type AgentResponseDtoServerBindingModeEnum = typeof AgentResponseDtoServerBindingModeEnum[keyof typeof AgentResponseDtoServerBindingModeEnum];
@@ -505,18 +515,23 @@ export type AgentResponseDtoServerBindingModeEnum = typeof AgentResponseDtoServe
  * @export
  */
 export declare const AgentResponseDtoKnowledgeBasePermissionsEnum: {
-    readonly GetData: "get_data";
-    readonly EditContent: "edit_content";
-    readonly AddTableRows: "add_table_rows";
+    readonly ReadDocuments: "read_documents";
     readonly CreateDocuments: "create_documents";
-    readonly UploadFiles: "upload_files";
+    readonly UploadDocuments: "upload_documents";
+    readonly EditDocuments: "edit_documents";
+    readonly DeleteDocuments: "delete_documents";
+    readonly ReadTables: "read_tables";
     readonly CreateTables: "create_tables";
-    readonly CreateSheets: "create_sheets";
     readonly ImportCsvXlsx: "import_csv_xlsx";
+    readonly AddTableRows: "add_table_rows";
+    readonly EditTables: "edit_tables";
+    readonly CreateSheets: "create_sheets";
     readonly DeleteRows: "delete_rows";
-    readonly DeleteFiles: "delete_files";
     readonly DeleteSheets: "delete_sheets";
     readonly DeleteTables: "delete_tables";
+    readonly ReadImages: "read_images";
+    readonly UploadImages: "upload_images";
+    readonly DeleteImages: "delete_images";
 };
 export type AgentResponseDtoKnowledgeBasePermissionsEnum = typeof AgentResponseDtoKnowledgeBasePermissionsEnum[keyof typeof AgentResponseDtoKnowledgeBasePermissionsEnum];
 /**
@@ -574,26 +589,6 @@ export type AgentResponseDtoAutoAssignmentRoleEnum = typeof AgentResponseDtoAuto
 /**
  * @export
  */
-export declare const AgentResponseDtoStatusEnum: {
-    readonly Draft: "draft";
-    readonly Training: "training";
-    readonly Ready: "ready";
-    readonly Active: "active";
-    readonly Inactive: "inactive";
-};
-export type AgentResponseDtoStatusEnum = typeof AgentResponseDtoStatusEnum[keyof typeof AgentResponseDtoStatusEnum];
-/**
- * @export
- */
-export declare const AgentResponseDtoWizardTrainingModeSelectedEnum: {
-    readonly Fast: "fast";
-    readonly Medium: "medium";
-    readonly Deep: "deep";
-};
-export type AgentResponseDtoWizardTrainingModeSelectedEnum = typeof AgentResponseDtoWizardTrainingModeSelectedEnum[keyof typeof AgentResponseDtoWizardTrainingModeSelectedEnum];
-/**
- * @export
- */
 export declare const AgentResponseDtoWidgetAiProgressModeEnum: {
     readonly SafeProgress: "safe_progress";
     readonly Typing: "typing";
@@ -603,39 +598,12 @@ export type AgentResponseDtoWidgetAiProgressModeEnum = typeof AgentResponseDtoWi
 /**
  * @export
  */
-export declare const AgentResponseDtoProjectVarsInstructionModeEnum: {
+export declare const AgentResponseDtoVariablesAccessModeEnum: {
     readonly None: "none";
     readonly Read: "read";
     readonly ReadWrite: "read_write";
 };
-export type AgentResponseDtoProjectVarsInstructionModeEnum = typeof AgentResponseDtoProjectVarsInstructionModeEnum[keyof typeof AgentResponseDtoProjectVarsInstructionModeEnum];
-/**
- * @export
- */
-export declare const AgentResponseDtoProjectVarsUserRequestModeEnum: {
-    readonly None: "none";
-    readonly Read: "read";
-    readonly ReadWrite: "read_write";
-};
-export type AgentResponseDtoProjectVarsUserRequestModeEnum = typeof AgentResponseDtoProjectVarsUserRequestModeEnum[keyof typeof AgentResponseDtoProjectVarsUserRequestModeEnum];
-/**
- * @export
- */
-export declare const AgentResponseDtoLeadVarsInstructionModeEnum: {
-    readonly None: "none";
-    readonly Read: "read";
-    readonly ReadWrite: "read_write";
-};
-export type AgentResponseDtoLeadVarsInstructionModeEnum = typeof AgentResponseDtoLeadVarsInstructionModeEnum[keyof typeof AgentResponseDtoLeadVarsInstructionModeEnum];
-/**
- * @export
- */
-export declare const AgentResponseDtoLeadVarsUserRequestModeEnum: {
-    readonly None: "none";
-    readonly Read: "read";
-    readonly ReadWrite: "read_write";
-};
-export type AgentResponseDtoLeadVarsUserRequestModeEnum = typeof AgentResponseDtoLeadVarsUserRequestModeEnum[keyof typeof AgentResponseDtoLeadVarsUserRequestModeEnum];
+export type AgentResponseDtoVariablesAccessModeEnum = typeof AgentResponseDtoVariablesAccessModeEnum[keyof typeof AgentResponseDtoVariablesAccessModeEnum];
 /**
  * Check if a given object implements the AgentResponseDto interface.
  */

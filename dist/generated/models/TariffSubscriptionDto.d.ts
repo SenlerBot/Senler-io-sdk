@@ -53,6 +53,18 @@ export interface TariffSubscriptionDto {
     storageLimitBytes: number;
     /**
      *
+     * @type {number}
+     * @memberof TariffSubscriptionDto
+     */
+    mailingMessagesPerDay: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TariffSubscriptionDto
+     */
+    automationStepsPerSecond: number;
+    /**
+     *
      * @type {string}
      * @memberof TariffSubscriptionDto
      */

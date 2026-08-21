@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
-import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
 import type { PermissionsDto } from './PermissionsDto';
 import {
     PermissionsDtoFromJSON,
@@ -41,6 +34,13 @@ import {
     ProjectAccessSourceToJSON,
     ProjectAccessSourceToJSONTyped,
 } from './ProjectAccessSource';
+import type { ProjectRole } from './ProjectRole';
+import {
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 
 /**
  * ProjectAccessDto.
@@ -50,10 +50,10 @@ import {
 export interface ProjectAccessDto {
     /**
      * project_members. null API key, OAuth, admin microservice-, project_members.
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ProjectAccessDto
      */
-    role: Role | null;
+    role: ProjectRole | null;
     /**
      *
      * @type {ProjectAccessSource}
@@ -111,7 +111,7 @@ export function ProjectAccessDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
 
-        'role': RoleFromJSON(json['role']),
+        'role': ProjectRoleFromJSON(json['role']),
         'source': ProjectAccessSourceFromJSON(json['source']),
         'permissions': PermissionsDtoFromJSON(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
@@ -131,7 +131,7 @@ export function ProjectAccessDtoToJSONTyped(value?: ProjectAccessDto | null, ign
 
     return {
 
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
         'source': ProjectAccessSourceToJSON(value['source']),
         'permissions': PermissionsDtoToJSON(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],

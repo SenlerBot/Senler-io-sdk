@@ -64,6 +64,12 @@ export interface ByStorageSourceStatsDto {
      * @memberof ByStorageSourceStatsDto
      */
     system?: CategoryStatsDto;
+    /**
+     *
+     * @type {CategoryStatsDto}
+     * @memberof ByStorageSourceStatsDto
+     */
+    automation?: CategoryStatsDto;
 }
 /**
  * Check if a given object implements the ByStorageSourceStatsDto interface.

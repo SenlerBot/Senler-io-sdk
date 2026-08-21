@@ -312,6 +312,7 @@ export declare const CabinetEventDetailDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type CabinetEventDetailDtoPlatformTypeEnum = typeof CabinetEventDetailDtoPlatformTypeEnum[keyof typeof CabinetEventDetailDtoPlatformTypeEnum];
 /**
@@ -362,6 +363,8 @@ export declare const CabinetEventDetailDtoActionTypeEnum: {
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
     readonly AiResponseStarted: "ai_response_started";
+    readonly AgentInvoked: "agent_invoked";
+    readonly AiResponseCancelled: "ai_response_cancelled";
     readonly ToolStarted: "tool_started";
     readonly ToolCompleted: "tool_completed";
     readonly ToolFailed: "tool_failed";
@@ -374,6 +377,7 @@ export declare const CabinetEventDetailDtoActionTypeEnum: {
     readonly ImageAnalyzed: "image_analyzed";
     readonly AiActionExecuted: "ai_action_executed";
     readonly AiProviderCallCompleted: "ai_provider_call_completed";
+    readonly AnalyticsUsageCharged: "analytics_usage_charged";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";

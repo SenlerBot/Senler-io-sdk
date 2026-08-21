@@ -12,13 +12,27 @@
  * Do not edit the class manually.
  */
 
-import type { LandingCatalogLaunchTargetDto } from './LandingCatalogLaunchTargetDto';
+import type { LandingBannerGridLaunchTargetDto } from './LandingBannerGridLaunchTargetDto';
 import {
-    instanceOfLandingCatalogLaunchTargetDto,
-    LandingCatalogLaunchTargetDtoFromJSON,
-    LandingCatalogLaunchTargetDtoFromJSONTyped,
-    LandingCatalogLaunchTargetDtoToJSON,
-} from './LandingCatalogLaunchTargetDto';
+    instanceOfLandingBannerGridLaunchTargetDto,
+    LandingBannerGridLaunchTargetDtoFromJSON,
+    LandingBannerGridLaunchTargetDtoFromJSONTyped,
+    LandingBannerGridLaunchTargetDtoToJSON,
+} from './LandingBannerGridLaunchTargetDto';
+import type { LandingIconListLaunchTargetDto } from './LandingIconListLaunchTargetDto';
+import {
+    instanceOfLandingIconListLaunchTargetDto,
+    LandingIconListLaunchTargetDtoFromJSON,
+    LandingIconListLaunchTargetDtoFromJSONTyped,
+    LandingIconListLaunchTargetDtoToJSON,
+} from './LandingIconListLaunchTargetDto';
+import type { LandingListLaunchTargetDto } from './LandingListLaunchTargetDto';
+import {
+    instanceOfLandingListLaunchTargetDto,
+    LandingListLaunchTargetDtoFromJSON,
+    LandingListLaunchTargetDtoFromJSONTyped,
+    LandingListLaunchTargetDtoToJSON,
+} from './LandingListLaunchTargetDto';
 import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDto';
 import {
     instanceOfLandingSingleLaunchTargetDto,
@@ -32,7 +46,7 @@ import {
  *
  * @export
  */
-export type LandingTelegramMenuButtonEnabledResponseDtoTarget = { mode: 'catalog' } & LandingCatalogLaunchTargetDto | { mode: 'landing' } & LandingSingleLaunchTargetDto;
+export type LandingTelegramMenuButtonEnabledResponseDtoTarget = { mode: 'banner_grid' } & LandingBannerGridLaunchTargetDto | { mode: 'icon_list' } & LandingIconListLaunchTargetDto | { mode: 'landing' } & LandingSingleLaunchTargetDto | { mode: 'list' } & LandingListLaunchTargetDto;
 
 export function LandingTelegramMenuButtonEnabledResponseDtoTargetFromJSON(json: any): LandingTelegramMenuButtonEnabledResponseDtoTarget {
     return LandingTelegramMenuButtonEnabledResponseDtoTargetFromJSONTyped(json, false);
@@ -43,10 +57,14 @@ export function LandingTelegramMenuButtonEnabledResponseDtoTargetFromJSONTyped(j
         return json;
     }
     switch (json['mode']) {
-        case 'catalog':
-            return Object.assign({}, LandingCatalogLaunchTargetDtoFromJSONTyped(json, true), { mode: 'catalog' } as const);
+        case 'banner_grid':
+            return Object.assign({}, LandingBannerGridLaunchTargetDtoFromJSONTyped(json, true), { mode: 'banner_grid' } as const);
+        case 'icon_list':
+            return Object.assign({}, LandingIconListLaunchTargetDtoFromJSONTyped(json, true), { mode: 'icon_list' } as const);
         case 'landing':
             return Object.assign({}, LandingSingleLaunchTargetDtoFromJSONTyped(json, true), { mode: 'landing' } as const);
+        case 'list':
+            return Object.assign({}, LandingListLaunchTargetDtoFromJSONTyped(json, true), { mode: 'list' } as const);
         default:
             throw new Error(`No variant of LandingTelegramMenuButtonEnabledResponseDtoTarget exists with 'mode=${json['mode']}'`);
     }
@@ -61,10 +79,14 @@ export function LandingTelegramMenuButtonEnabledResponseDtoTargetToJSONTyped(val
         return value;
     }
     switch (value['mode']) {
-        case 'catalog':
-            return Object.assign({}, LandingCatalogLaunchTargetDtoToJSON(value), { mode: 'catalog' } as const);
+        case 'banner_grid':
+            return Object.assign({}, LandingBannerGridLaunchTargetDtoToJSON(value), { mode: 'banner_grid' } as const);
+        case 'icon_list':
+            return Object.assign({}, LandingIconListLaunchTargetDtoToJSON(value), { mode: 'icon_list' } as const);
         case 'landing':
             return Object.assign({}, LandingSingleLaunchTargetDtoToJSON(value), { mode: 'landing' } as const);
+        case 'list':
+            return Object.assign({}, LandingListLaunchTargetDtoToJSON(value), { mode: 'list' } as const);
         default:
             throw new Error(`No variant of LandingTelegramMenuButtonEnabledResponseDtoTarget exists with 'mode=${value['mode']}'`);
     }

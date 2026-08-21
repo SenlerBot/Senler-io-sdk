@@ -40,6 +40,24 @@ export interface ChannelTokenResponseDto {
      */
     isValid: boolean;
     /**
+     * credentials
+     * @type {number}
+     * @memberof ChannelTokenResponseDto
+     */
+    tokenVersion: number;
+    /**
+     * credentials
+     * @type {number}
+     * @memberof ChannelTokenResponseDto
+     */
+    currentTokenVersion: number;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof ChannelTokenResponseDto
+     */
+    tokenUpdateRecommended: boolean;
+    /**
      * : null , senler Senler OAuth
      * @type {string}
      * @memberof ChannelTokenResponseDto

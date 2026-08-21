@@ -85,6 +85,7 @@ export declare const EventChecklistSnapshotDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type EventChecklistSnapshotDtoPlatformTypeEnum = typeof EventChecklistSnapshotDtoPlatformTypeEnum[keyof typeof EventChecklistSnapshotDtoPlatformTypeEnum];
 /**

@@ -117,6 +117,8 @@ export declare const SegmentMembershipEventResponseDtoSourceEnum: {
     readonly Web: "web";
     readonly Manual: "manual";
     readonly AutoAssignment: "auto_assignment";
+    readonly Automation: "automation";
+    readonly AiAgent: "ai_agent";
 };
 export type SegmentMembershipEventResponseDtoSourceEnum = typeof SegmentMembershipEventResponseDtoSourceEnum[keyof typeof SegmentMembershipEventResponseDtoSourceEnum];
 /**
@@ -129,6 +131,8 @@ export declare const SegmentMembershipEventResponseDtoReasonEnum: {
     readonly AllMessages: "all_messages";
     readonly Manual: "manual";
     readonly ChannelAccessRevoked: "channel_access_revoked";
+    readonly Automation: "automation";
+    readonly AiAgent: "ai_agent";
 };
 export type SegmentMembershipEventResponseDtoReasonEnum = typeof SegmentMembershipEventResponseDtoReasonEnum[keyof typeof SegmentMembershipEventResponseDtoReasonEnum];
 /**

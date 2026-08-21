@@ -121,6 +121,7 @@ export const ResourcePackageImportProcessResultDtoStageEnum = {
     KnowledgeTables: 'knowledge_tables',
     KnowledgeReindex: 'knowledge_reindex',
     Agents: 'agents',
+    Automations: 'automations',
     Relations: 'relations',
     Finished: 'finished'
 } as const;

@@ -83,12 +83,6 @@ export interface CreateServerDto {
      */
     mcpServerTemplateId?: string;
     /**
-     * ,
-     * @type {string}
-     * @memberof CreateServerDto
-     */
-    descriptionPrepend?: string;
-    /**
      * MCP
      * @type {{ [key: string]: any; }}
      * @memberof CreateServerDto
@@ -100,6 +94,18 @@ export interface CreateServerDto {
      * @memberof CreateServerDto
      */
     authMode?: CreateServerDtoAuthModeEnum;
+    /**
+     * Senler
+     * @type {boolean}
+     * @memberof CreateServerDto
+     */
+    senlerDynamicToolLoadingEnabled?: boolean;
+    /**
+     * Senler
+     * @type {string}
+     * @memberof CreateServerDto
+     */
+    senlerToolSearchLanguage?: CreateServerDtoSenlerToolSearchLanguageEnum;
     /**
      * UUID . .
      * @type {string}
@@ -135,6 +141,15 @@ export const CreateServerDtoAuthModeEnum = {
 } as const;
 export type CreateServerDtoAuthModeEnum = typeof CreateServerDtoAuthModeEnum[keyof typeof CreateServerDtoAuthModeEnum];
 
+/**
+ * @export
+ */
+export const CreateServerDtoSenlerToolSearchLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type CreateServerDtoSenlerToolSearchLanguageEnum = typeof CreateServerDtoSenlerToolSearchLanguageEnum[keyof typeof CreateServerDtoSenlerToolSearchLanguageEnum];
+
 
 /**
  * Check if a given object implements the CreateServerDto interface.
@@ -162,9 +177,10 @@ export function CreateServerDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'description': json['description'] == null ? undefined : json['description'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'mcpServerTemplateId': json['mcp_server_template_id'] == null ? undefined : json['mcp_server_template_id'],
-        'descriptionPrepend': json['description_prepend'] == null ? undefined : json['description_prepend'],
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'authMode': json['auth_mode'] == null ? undefined : json['auth_mode'],
+        'senlerDynamicToolLoadingEnabled': json['senler_dynamic_tool_loading_enabled'] == null ? undefined : json['senler_dynamic_tool_loading_enabled'],
+        'senlerToolSearchLanguage': json['senler_tool_search_language'] == null ? undefined : json['senler_tool_search_language'],
         'projectId': json['project_id'],
         'meta': json['meta'] == null ? undefined : CreateServerBodyDtoMetaFromJSON(json['meta']),
     };
@@ -189,9 +205,10 @@ export function CreateServerDtoToJSONTyped(value?: CreateServerDto | null, ignor
         'description': value['description'],
         'is_active': value['isActive'],
         'mcp_server_template_id': value['mcpServerTemplateId'],
-        'description_prepend': value['descriptionPrepend'],
         'custom_query_params': value['customQueryParams'],
         'auth_mode': value['authMode'],
+        'senler_dynamic_tool_loading_enabled': value['senlerDynamicToolLoadingEnabled'],
+        'senler_tool_search_language': value['senlerToolSearchLanguage'],
         'project_id': value['projectId'],
         'meta': CreateServerBodyDtoMetaToJSON(value['meta']),
     };

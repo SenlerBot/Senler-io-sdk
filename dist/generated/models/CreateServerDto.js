@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateServerDtoAuthModeEnum = exports.CreateServerDtoCustomAuthModeEnum = void 0;
+exports.CreateServerDtoSenlerToolSearchLanguageEnum = exports.CreateServerDtoAuthModeEnum = exports.CreateServerDtoCustomAuthModeEnum = void 0;
 exports.instanceOfCreateServerDto = instanceOfCreateServerDto;
 exports.CreateServerDtoFromJSON = CreateServerDtoFromJSON;
 exports.CreateServerDtoFromJSONTyped = CreateServerDtoFromJSONTyped;
@@ -36,6 +36,13 @@ exports.CreateServerDtoCustomAuthModeEnum = {
 exports.CreateServerDtoAuthModeEnum = {
     Project: 'project',
     Lead: 'lead'
+};
+/**
+ * @export
+ */
+exports.CreateServerDtoSenlerToolSearchLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
 };
 /**
  * Check if a given object implements the CreateServerDto interface.
@@ -61,9 +68,10 @@ function CreateServerDtoFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'mcpServerTemplateId': json['mcp_server_template_id'] == null ? undefined : json['mcp_server_template_id'],
-        'descriptionPrepend': json['description_prepend'] == null ? undefined : json['description_prepend'],
         'customQueryParams': json['custom_query_params'] == null ? undefined : json['custom_query_params'],
         'authMode': json['auth_mode'] == null ? undefined : json['auth_mode'],
+        'senlerDynamicToolLoadingEnabled': json['senler_dynamic_tool_loading_enabled'] == null ? undefined : json['senler_dynamic_tool_loading_enabled'],
+        'senlerToolSearchLanguage': json['senler_tool_search_language'] == null ? undefined : json['senler_tool_search_language'],
         'projectId': json['project_id'],
         'meta': json['meta'] == null ? undefined : (0, CreateServerBodyDtoMeta_1.CreateServerBodyDtoMetaFromJSON)(json['meta']),
     };
@@ -84,9 +92,10 @@ function CreateServerDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'description': value['description'],
         'is_active': value['isActive'],
         'mcp_server_template_id': value['mcpServerTemplateId'],
-        'description_prepend': value['descriptionPrepend'],
         'custom_query_params': value['customQueryParams'],
         'auth_mode': value['authMode'],
+        'senler_dynamic_tool_loading_enabled': value['senlerDynamicToolLoadingEnabled'],
+        'senler_tool_search_language': value['senlerToolSearchLanguage'],
         'project_id': value['projectId'],
         'meta': (0, CreateServerBodyDtoMeta_1.CreateServerBodyDtoMetaToJSON)(value['meta']),
     };

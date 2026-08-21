@@ -39,6 +39,8 @@ function instanceOfAgentSegmentDraftResponseDto(value) {
         return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined)
         return false;
+    if (!('consentPromptText' in value) || value['consentPromptText'] === undefined)
+        return false;
     if (!('subscriptionAssignmentRole' in value) || value['subscriptionAssignmentRole'] === undefined)
         return false;
     if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined)
@@ -57,6 +59,7 @@ function AgentSegmentDraftResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'versionId': json['version_id'],
         'revision': json['revision'],
         'requiredConsents': (json['required_consents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'],
         'subscriptionAssignmentRole': json['subscription_assignment_role'],
         'hasUnpublishedChanges': json['has_unpublished_changes'],
     };
@@ -73,6 +76,7 @@ function AgentSegmentDraftResponseDtoToJSONTyped(value, ignoreDiscriminator = fa
         'version_id': value['versionId'],
         'revision': value['revision'],
         'required_consents': (value['requiredConsents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
         'subscription_assignment_role': value['subscriptionAssignmentRole'],
         'has_unpublished_changes': value['hasUnpublishedChanges'],
     };

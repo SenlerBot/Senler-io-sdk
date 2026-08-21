@@ -31,6 +31,12 @@ export interface KnowledgeArchiveImportSummaryDto {
      */
     rootFolderName: string;
     /**
+     * UUID
+     * @type {string}
+     * @memberof KnowledgeArchiveImportSummaryDto
+     */
+    rootFolderId: string | null;
+    /**
      *
      * @type {string}
      * @memberof KnowledgeArchiveImportSummaryDto

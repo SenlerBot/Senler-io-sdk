@@ -63,6 +63,7 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     SegmentConsentDocument: 'segment_consent_document',
     Landing: 'landing',
     Trigger: 'trigger',
+    Automation: 'automation',
     Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
     SupportSchedule: 'support_schedule',
@@ -72,7 +73,8 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     AppInstallation: 'app_installation',
     PaymentSettings: 'payment_settings',
     Space: 'space',
-    SummarizationSettings: 'summarization_settings'
+    SummarizationSettings: 'summarization_settings',
+    TrafficMark: 'traffic_mark'
 };
 /**
  * @export
@@ -94,6 +96,10 @@ exports.AuditLogResponseDtoEventTypeEnum = {
     LandingBlockDeleted: 'landing.block_deleted',
     LandingPublished: 'landing.published',
     LandingPublicationRestored: 'landing.publication_restored',
+    AutomationDraftChanged: 'automation.draft_changed',
+    AutomationPublished: 'automation.published',
+    AutomationVersionRestored: 'automation.version_restored',
+    AutomationStatusChanged: 'automation.status_changed',
     DeliveryScheduled: 'delivery.scheduled',
     DeliveryUnscheduled: 'delivery.unscheduled',
     InvitationSent: 'invitation.sent',

@@ -17,16 +17,11 @@
 export interface LandingRealtimeFocusResponseDto {
     /**
      * .
-     * @type {number}
+     * @type {boolean}
      * @memberof LandingRealtimeFocusResponseDto
      */
-    acknowledged: LandingRealtimeFocusResponseDtoAcknowledgedEnum | null;
+    acknowledged: boolean;
 }
-/**
- * @export
- */
-export declare const LandingRealtimeFocusResponseDtoAcknowledgedEnum: {};
-export type LandingRealtimeFocusResponseDtoAcknowledgedEnum = typeof LandingRealtimeFocusResponseDtoAcknowledgedEnum[keyof typeof LandingRealtimeFocusResponseDtoAcknowledgedEnum];
 /**
  * Check if a given object implements the LandingRealtimeFocusResponseDto interface.
  */

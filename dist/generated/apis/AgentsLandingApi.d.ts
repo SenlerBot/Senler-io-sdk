@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateAgentLandingBlockDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockContentMutationResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateAgentLandingBlockDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface AgentsLandingAssetsConfirmRequest {
     projectId: string;
     agentId: string;
@@ -22,13 +22,6 @@ export interface AgentsLandingAssetsUploadUrlRequest {
     agentId: string;
     getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
     acceptLanguage?: AgentsLandingAssetsUploadUrlAcceptLanguageEnum;
-}
-export interface AgentsLandingBlocksRequest {
-    projectId: string;
-    agentId: string;
-    xLandingEditorSessionId: string;
-    createAgentLandingBlockDto: CreateAgentLandingBlockDto;
-    acceptLanguage?: AgentsLandingBlocksAcceptLanguageEnum;
 }
 export interface AgentsLandingBlocksMoveRequest {
     projectId: string;
@@ -60,14 +53,6 @@ export interface GetAgentsLandingShareLinksRequest {
     projectId: string;
     agentId: string;
     acceptLanguage?: GetAgentsLandingShareLinksAcceptLanguageEnum;
-}
-export interface UpdateAgentsLandingBlocksRequest {
-    projectId: string;
-    agentId: string;
-    blockId: string;
-    xLandingEditorSessionId: string;
-    updateAgentLandingBlockDto: UpdateAgentLandingBlockDto;
-    acceptLanguage?: UpdateAgentsLandingBlocksAcceptLanguageEnum;
 }
 export interface UpdateAgentsLandingDraftRequest {
     projectId: string;
@@ -107,16 +92,6 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      *
      */
     agentsLandingAssetsUploadUrl(requestParameters: AgentsLandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
-    /**
-     * .
-     *
-     */
-    agentsLandingBlocksRaw(requestParameters: AgentsLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
-    /**
-     * .
-     *
-     */
-    agentsLandingBlocks(requestParameters: AgentsLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
     /**
      * .
      *
@@ -168,16 +143,6 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     getAgentsLandingShareLinks(requestParameters: GetAgentsLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
     /**
-     * optimistic locking.
-     *
-     */
-    updateAgentsLandingBlocksRaw(requestParameters: UpdateAgentsLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
-    /**
-     * optimistic locking.
-     *
-     */
-    updateAgentsLandingBlocks(requestParameters: UpdateAgentsLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
-    /**
      * .
      *
      */
@@ -214,14 +179,6 @@ export declare const AgentsLandingAssetsUploadUrlAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AgentsLandingAssetsUploadUrlAcceptLanguageEnum = typeof AgentsLandingAssetsUploadUrlAcceptLanguageEnum[keyof typeof AgentsLandingAssetsUploadUrlAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AgentsLandingBlocksAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AgentsLandingBlocksAcceptLanguageEnum = typeof AgentsLandingBlocksAcceptLanguageEnum[keyof typeof AgentsLandingBlocksAcceptLanguageEnum];
 /**
  * @export
  */
@@ -262,14 +219,6 @@ export declare const GetAgentsLandingShareLinksAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAgentsLandingShareLinksAcceptLanguageEnum = typeof GetAgentsLandingShareLinksAcceptLanguageEnum[keyof typeof GetAgentsLandingShareLinksAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateAgentsLandingBlocksAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateAgentsLandingBlocksAcceptLanguageEnum = typeof UpdateAgentsLandingBlocksAcceptLanguageEnum[keyof typeof UpdateAgentsLandingBlocksAcceptLanguageEnum];
 /**
  * @export
  */

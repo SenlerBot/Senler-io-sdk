@@ -136,7 +136,9 @@ export const SegmentLeadConsentAcceptanceResponseDtoSourceEnum = {
     MaxApp: 'max_app',
     Web: 'web',
     Manual: 'manual',
-    AutoAssignment: 'auto_assignment'
+    AutoAssignment: 'auto_assignment',
+    Automation: 'automation',
+    AiAgent: 'ai_agent'
 } as const;
 export type SegmentLeadConsentAcceptanceResponseDtoSourceEnum = typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum[keyof typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum];
 

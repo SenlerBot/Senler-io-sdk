@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { MessageAttachmentReferenceDto } from './MessageAttachmentReferenceDto';
-import type { LeadsFilterDto } from './LeadsFilterDto';
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 /**
  * UpdateDeliveryDto.
  * @export
@@ -24,11 +24,11 @@ export interface UpdateDeliveryDto {
      */
     name?: string;
     /**
-     * . , .
-     * @type {LeadsFilterDto}
+     * .
+     * @type {DeliveryAudienceFilterDto}
      * @memberof UpdateDeliveryDto
      */
-    filters?: LeadsFilterDto;
+    filters?: DeliveryAudienceFilterDto;
     /**
      * . .
      * @type {string}

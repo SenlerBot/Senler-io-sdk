@@ -75,7 +75,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -116,7 +116,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/list`,
@@ -202,7 +202,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/{id}/events/{eventId}/poll-snapshot/refresh`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
@@ -278,7 +278,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/{id}/events`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -333,7 +333,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/{id}/events/{eventId}/poll-option-voters`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
@@ -382,7 +382,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/{id}/events/{eventId}/reaction-users`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
@@ -425,7 +425,7 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/dialogs/{id}/navigation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),

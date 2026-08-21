@@ -20,6 +20,7 @@ exports.WidgetChannelDataDtoFromJSONTyped = WidgetChannelDataDtoFromJSONTyped;
 exports.WidgetChannelDataDtoToJSON = WidgetChannelDataDtoToJSON;
 exports.WidgetChannelDataDtoToJSONTyped = WidgetChannelDataDtoToJSONTyped;
 const WidgetFeaturesDto_1 = require("./WidgetFeaturesDto");
+const WidgetExternalAiSettingsDto_1 = require("./WidgetExternalAiSettingsDto");
 const WidgetThemeDto_1 = require("./WidgetThemeDto");
 /**
  * @export
@@ -57,6 +58,7 @@ function WidgetChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'externalAi': json['external_ai'] == null ? undefined : (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoFromJSON)(json['external_ai']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'theme': json['theme'] == null ? undefined : (0, WidgetThemeDto_1.WidgetThemeDtoFromJSON)(json['theme']),
         'features': json['features'] == null ? undefined : (0, WidgetFeaturesDto_1.WidgetFeaturesDtoFromJSON)(json['features']),
@@ -74,6 +76,7 @@ function WidgetChannelDataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'external_ai': (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoToJSON)(value['externalAi']),
         'allowed_domains': value['allowedDomains'],
         'theme': (0, WidgetThemeDto_1.WidgetThemeDtoToJSON)(value['theme']),
         'features': (0, WidgetFeaturesDto_1.WidgetFeaturesDtoToJSON)(value['features']),

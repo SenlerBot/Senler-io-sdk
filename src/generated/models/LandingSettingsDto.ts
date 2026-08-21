@@ -31,6 +31,18 @@ export interface LandingSettingsDto {
      * @memberof LandingSettingsDto
      */
     backgroundColor: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    iconUrl: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    bannerUrl: string | null;
 }
 
 /**
@@ -39,6 +51,8 @@ export interface LandingSettingsDto {
 export function instanceOfLandingSettingsDto(value: object): value is LandingSettingsDto {
     if (!('listVisible' in value) || value['listVisible'] === undefined) return false;
     if (!('backgroundColor' in value) || value['backgroundColor'] === undefined) return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined) return false;
+    if (!('bannerUrl' in value) || value['bannerUrl'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +68,8 @@ export function LandingSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
 
         'listVisible': json['list_visible'],
         'backgroundColor': json['background_color'],
+        'iconUrl': json['icon_url'],
+        'bannerUrl': json['banner_url'],
     };
 }
 
@@ -70,5 +86,7 @@ export function LandingSettingsDtoToJSONTyped(value?: LandingSettingsDto | null,
 
         'list_visible': value['listVisible'],
         'background_color': value['backgroundColor'],
+        'icon_url': value['iconUrl'],
+        'banner_url': value['bannerUrl'],
     };
 }

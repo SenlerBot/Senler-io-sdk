@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingModeOptionDto } from './TrainingModeOptionDto';
+import type { TrainingBillingPreviewDto } from './TrainingBillingPreviewDto';
 import type { TrainingPreviewEstimateDto } from './TrainingPreviewEstimateDto';
 import type { TrainingChannelHistoryPreviewDto } from './TrainingChannelHistoryPreviewDto';
 import type { TrainingDataVolumeEstimateDto } from './TrainingDataVolumeEstimateDto';
@@ -18,6 +20,12 @@ import type { TrainingDataVolumeEstimateDto } from './TrainingDataVolumeEstimate
  * @interface TrainingPreviewResponseDto
  */
 export interface TrainingPreviewResponseDto {
+    /**
+     *
+     * @type {Array<TrainingModeOptionDto>}
+     * @memberof TrainingPreviewResponseDto
+     */
+    modeOptions: Array<TrainingModeOptionDto>;
     /**
      *
      * @type {number}
@@ -66,6 +74,12 @@ export interface TrainingPreviewResponseDto {
      * @memberof TrainingPreviewResponseDto
      */
     estimate: TrainingPreviewEstimateDto;
+    /**
+     *
+     * @type {TrainingBillingPreviewDto}
+     * @memberof TrainingPreviewResponseDto
+     */
+    billing: TrainingBillingPreviewDto;
     /**
      * UI
      * @type {Array<string>}

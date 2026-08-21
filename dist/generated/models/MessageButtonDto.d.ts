@@ -29,12 +29,34 @@ export interface MessageButtonDto {
      */
     action: MessageButtonDtoAction;
     /**
+     * . .
+     * @type {string}
+     * @memberof MessageButtonDto
+     */
+    appearance?: MessageButtonDtoAppearanceEnum;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof MessageButtonDto
+     */
+    isRepeatable?: boolean;
+    /**
      * ( 1). row .
      * @type {number}
      * @memberof MessageButtonDto
      */
     row?: number;
 }
+/**
+ * @export
+ */
+export declare const MessageButtonDtoAppearanceEnum: {
+    readonly Neutral: "neutral";
+    readonly Primary: "primary";
+    readonly Positive: "positive";
+    readonly Negative: "negative";
+};
+export type MessageButtonDtoAppearanceEnum = typeof MessageButtonDtoAppearanceEnum[keyof typeof MessageButtonDtoAppearanceEnum];
 /**
  * Check if a given object implements the MessageButtonDto interface.
  */

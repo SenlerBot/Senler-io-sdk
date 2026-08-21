@@ -46,6 +46,7 @@ function AgentUsageStatsFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'agentId': json['agent_id'],
         'agentName': json['agent_name'] == null ? undefined : json['agent_name'],
+        'agentAvatarUrl': json['agent_avatar_url'] == null ? undefined : json['agent_avatar_url'],
         'eventsCount': json['events_count'],
         'dialogsCount': json['dialogs_count'],
         'providerCost': json['provider_cost'],
@@ -63,6 +64,7 @@ function AgentUsageStatsToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'agent_id': value['agentId'],
         'agent_name': value['agentName'],
+        'agent_avatar_url': value['agentAvatarUrl'],
         'events_count': value['eventsCount'],
         'dialogs_count': value['dialogsCount'],
         'provider_cost': value['providerCost'],

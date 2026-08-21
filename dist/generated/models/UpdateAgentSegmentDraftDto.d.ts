@@ -35,6 +35,12 @@ export interface UpdateAgentSegmentDraftDto {
      */
     requiredConsents: Array<SegmentRequiredConsentDto>;
     /**
+     * .
+     * @type {string}
+     * @memberof UpdateAgentSegmentDraftDto
+     */
+    consentPromptText: string | null;
+    /**
      * null, .
      * @type {string}
      * @memberof UpdateAgentSegmentDraftDto

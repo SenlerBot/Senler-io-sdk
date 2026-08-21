@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeadsFilterDtoChannelTypeEnum = void 0;
+exports.LeadsFilterDtoLeadSourceEnum = exports.LeadsFilterDtoChannelTypeEnum = void 0;
 exports.instanceOfLeadsFilterDto = instanceOfLeadsFilterDto;
 exports.LeadsFilterDtoFromJSON = LeadsFilterDtoFromJSON;
 exports.LeadsFilterDtoFromJSONTyped = LeadsFilterDtoFromJSONTyped;
@@ -31,6 +31,19 @@ exports.LeadsFilterDtoChannelTypeEnum = {
     Streamvi: 'streamvi',
     Email: 'email',
     Avito: 'avito'
+};
+/**
+ * @export
+ */
+exports.LeadsFilterDtoLeadSourceEnum = {
+    GroupJoin: 'group_join',
+    Message: 'message',
+    MessageAllow: 'message_allow',
+    BotAdded: 'bot_added',
+    Comment: 'comment',
+    Like: 'like',
+    Manual: 'manual',
+    Imported: 'imported'
 };
 /**
  * Check if a given object implements the LeadsFilterDto interface.
@@ -52,6 +65,13 @@ function LeadsFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isSubscribed': json['is_subscribed'] == null ? undefined : json['is_subscribed'],
         'isBlacklisted': json['is_blacklisted'] == null ? undefined : json['is_blacklisted'],
         'isBlocked': json['is_blocked'] == null ? undefined : json['is_blocked'],
+        'leadSource': json['lead_source'] == null ? undefined : json['lead_source'],
+        'createdAtFrom': json['created_at_from'] == null ? undefined : (new Date(json['created_at_from'])),
+        'createdAtTo': json['created_at_to'] == null ? undefined : (new Date(json['created_at_to'])),
+        'updatedAtFrom': json['updated_at_from'] == null ? undefined : (new Date(json['updated_at_from'])),
+        'updatedAtTo': json['updated_at_to'] == null ? undefined : (new Date(json['updated_at_to'])),
+        'hasEmail': json['has_email'] == null ? undefined : json['has_email'],
+        'hasPhone': json['has_phone'] == null ? undefined : json['has_phone'],
         'search': json['search'] == null ? undefined : json['search'],
         'spaceId': json['space_id'] == null ? undefined : json['space_id'],
         'spaceIsMember': json['space_is_member'] == null ? undefined : json['space_is_member'],
@@ -74,6 +94,13 @@ function LeadsFilterDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_subscribed': value['isSubscribed'],
         'is_blacklisted': value['isBlacklisted'],
         'is_blocked': value['isBlocked'],
+        'lead_source': value['leadSource'],
+        'created_at_from': value['createdAtFrom'] == null ? undefined : ((value['createdAtFrom']).toISOString()),
+        'created_at_to': value['createdAtTo'] == null ? undefined : ((value['createdAtTo']).toISOString()),
+        'updated_at_from': value['updatedAtFrom'] == null ? undefined : ((value['updatedAtFrom']).toISOString()),
+        'updated_at_to': value['updatedAtTo'] == null ? undefined : ((value['updatedAtTo']).toISOString()),
+        'has_email': value['hasEmail'],
+        'has_phone': value['hasPhone'],
         'search': value['search'],
         'space_id': value['spaceId'],
         'space_is_member': value['spaceIsMember'],

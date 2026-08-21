@@ -136,7 +136,7 @@ export type AppCatalogGetByIdAcceptLanguageEnum = typeof AppCatalogGetByIdAccept
 export const AppCatalogListTypeEnum = {
     Oauth: 'oauth',
     SalesFunnel: 'sales_funnel',
-    AgentTool: 'agent_tool'
+    Plugin: 'plugin'
 } as const;
 export type AppCatalogListTypeEnum = typeof AppCatalogListTypeEnum[keyof typeof AppCatalogListTypeEnum];
 /**

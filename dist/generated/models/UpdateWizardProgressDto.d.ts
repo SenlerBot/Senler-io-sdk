@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingMode } from './TrainingMode';
+import type { WizardStep } from './WizardStep';
 /**
  * UpdateWizardProgressDto.
  * @export
@@ -17,10 +19,10 @@
 export interface UpdateWizardProgressDto {
     /**
      *
-     * @type {string}
+     * @type {WizardStep}
      * @memberof UpdateWizardProgressDto
      */
-    currentStep: UpdateWizardProgressDtoCurrentStepEnum;
+    currentStep: WizardStep;
     /**
      * ID website sources (UUID data_sources)
      * @type {Array<string>}
@@ -47,31 +49,11 @@ export interface UpdateWizardProgressDto {
     scanChannelHistory?: boolean;
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof UpdateWizardProgressDto
      */
-    trainingMode?: UpdateWizardProgressDtoTrainingModeEnum;
+    trainingMode?: TrainingMode;
 }
-/**
- * @export
- */
-export declare const UpdateWizardProgressDtoCurrentStepEnum: {
-    readonly SourcesSelection: "sources_selection";
-    readonly TrainingConfig: "training_config";
-    readonly InProgress: "in_progress";
-    readonly VariantSelection: "variant_selection";
-    readonly Completed: "completed";
-};
-export type UpdateWizardProgressDtoCurrentStepEnum = typeof UpdateWizardProgressDtoCurrentStepEnum[keyof typeof UpdateWizardProgressDtoCurrentStepEnum];
-/**
- * @export
- */
-export declare const UpdateWizardProgressDtoTrainingModeEnum: {
-    readonly Fast: "fast";
-    readonly Medium: "medium";
-    readonly Deep: "deep";
-};
-export type UpdateWizardProgressDtoTrainingModeEnum = typeof UpdateWizardProgressDtoTrainingModeEnum[keyof typeof UpdateWizardProgressDtoTrainingModeEnum];
 /**
  * Check if a given object implements the UpdateWizardProgressDto interface.
  */

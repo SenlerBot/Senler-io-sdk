@@ -94,6 +94,12 @@ export interface EventAiDto {
      */
     providerCallIndex?: number;
     /**
+     * AI
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    usagePurpose?: EventAiDtoUsagePurposeEnum;
+    /**
      * AI-
      * @type {string}
      * @memberof EventAiDto
@@ -130,6 +136,17 @@ export interface EventAiDto {
      */
     terminalEventId?: string;
 }
+/**
+ * @export
+ */
+export declare const EventAiDtoUsagePurposeEnum: {
+    readonly DialogOperatorReply: "dialog_operator_reply";
+    readonly KnowledgeImageDescription: "knowledge_image_description";
+    readonly AgentSetup: "agent_setup";
+    readonly AnalyticsInsightSummary: "analytics_insight_summary";
+    readonly ResponseMetricsExtraction: "response_metrics_extraction";
+};
+export type EventAiDtoUsagePurposeEnum = typeof EventAiDtoUsagePurposeEnum[keyof typeof EventAiDtoUsagePurposeEnum];
 /**
  * @export
  */

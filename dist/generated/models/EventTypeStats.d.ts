@@ -82,6 +82,8 @@ export declare const EventTypeStatsActionTypeEnum: {
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
     readonly AiResponseStarted: "ai_response_started";
+    readonly AgentInvoked: "agent_invoked";
+    readonly AiResponseCancelled: "ai_response_cancelled";
     readonly ToolStarted: "tool_started";
     readonly ToolCompleted: "tool_completed";
     readonly ToolFailed: "tool_failed";
@@ -94,6 +96,7 @@ export declare const EventTypeStatsActionTypeEnum: {
     readonly ImageAnalyzed: "image_analyzed";
     readonly AiActionExecuted: "ai_action_executed";
     readonly AiProviderCallCompleted: "ai_provider_call_completed";
+    readonly AnalyticsUsageCharged: "analytics_usage_charged";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";

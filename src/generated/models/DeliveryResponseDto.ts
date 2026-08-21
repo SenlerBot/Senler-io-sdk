@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LeadsFilterDto } from './LeadsFilterDto';
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 import {
-    LeadsFilterDtoFromJSON,
-    LeadsFilterDtoFromJSONTyped,
-    LeadsFilterDtoToJSON,
-    LeadsFilterDtoToJSONTyped,
-} from './LeadsFilterDto';
+    DeliveryAudienceFilterDtoFromJSON,
+    DeliveryAudienceFilterDtoFromJSONTyped,
+    DeliveryAudienceFilterDtoToJSON,
+    DeliveryAudienceFilterDtoToJSONTyped,
+} from './DeliveryAudienceFilterDto';
 import type { DeliveryRunResponseDto } from './DeliveryRunResponseDto';
 import {
     DeliveryRunResponseDtoFromJSON,
@@ -67,10 +67,10 @@ export interface DeliveryResponseDto {
     status: DeliveryResponseDtoStatusEnum;
     /**
      *
-     * @type {LeadsFilterDto}
+     * @type {DeliveryAudienceFilterDto}
      * @memberof DeliveryResponseDto
      */
-    filters: LeadsFilterDto;
+    filters: DeliveryAudienceFilterDto;
     /**
      *
      * @type {string}
@@ -137,6 +137,7 @@ export const DeliveryResponseDtoStatusEnum = {
     Queued: 'queued',
     Collecting: 'collecting',
     Sending: 'sending',
+    PausedDailyLimit: 'paused_daily_limit',
     Completed: 'completed',
     Failed: 'failed',
     Cancelled: 'cancelled',
@@ -179,7 +180,7 @@ export function DeliveryResponseDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'projectId': json['project_id'],
         'name': json['name'],
         'status': json['status'],
-        'filters': LeadsFilterDtoFromJSON(json['filters']),
+        'filters': DeliveryAudienceFilterDtoFromJSON(json['filters']),
         'messageText': json['message_text'],
         'attachments': ((json['attachments'] as Array<any>).map(DeliveryAttachmentResponseDtoFromJSON)),
         'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
@@ -207,7 +208,7 @@ export function DeliveryResponseDtoToJSONTyped(value?: DeliveryResponseDto | nul
         'project_id': value['projectId'],
         'name': value['name'],
         'status': value['status'],
-        'filters': LeadsFilterDtoToJSON(value['filters']),
+        'filters': DeliveryAudienceFilterDtoToJSON(value['filters']),
         'message_text': value['messageText'],
         'attachments': ((value['attachments'] as Array<any>).map(DeliveryAttachmentResponseDtoToJSON)),
         'scheduled_at': (value['scheduledAt'] == null ? null : (value['scheduledAt'] as any).toISOString()),

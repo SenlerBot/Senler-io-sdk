@@ -18,8 +18,8 @@ exports.InvitationListItemDtoFromJSON = InvitationListItemDtoFromJSON;
 exports.InvitationListItemDtoFromJSONTyped = InvitationListItemDtoFromJSONTyped;
 exports.InvitationListItemDtoToJSON = InvitationListItemDtoToJSON;
 exports.InvitationListItemDtoToJSONTyped = InvitationListItemDtoToJSONTyped;
-const Role_1 = require("./Role");
 const InvitationStatus_1 = require("./InvitationStatus");
+const ProjectRole_1 = require("./ProjectRole");
 const InvitationInviterDto_1 = require("./InvitationInviterDto");
 /**
  * Check if a given object implements the InvitationListItemDto interface.
@@ -53,7 +53,7 @@ function InvitationListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
-        'role': (0, Role_1.RoleFromJSON)(json['role']),
+        'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
         'status': (0, InvitationStatus_1.InvitationStatusFromJSON)(json['status']),
         'expiresAt': json['expires_at'],
         'createdAt': json['created_at'],
@@ -76,7 +76,7 @@ function InvitationListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'user_id': value['userId'],
         'email': value['email'],
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
         'status': (0, InvitationStatus_1.InvitationStatusToJSON)(value['status']),
         'expires_at': value['expiresAt'],
         'created_at': value['createdAt'],

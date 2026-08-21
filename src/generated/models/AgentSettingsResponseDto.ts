@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingMode } from './TrainingMode';
+import {
+    TrainingModeFromJSON,
+    TrainingModeFromJSONTyped,
+    TrainingModeToJSON,
+    TrainingModeToJSONTyped,
+} from './TrainingMode';
+import type { AgentStatus } from './AgentStatus';
+import {
+    AgentStatusFromJSON,
+    AgentStatusFromJSONTyped,
+    AgentStatusToJSON,
+    AgentStatusToJSONTyped,
+} from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import {
     AgentAppOriginDtoFromJSON,
@@ -27,6 +41,13 @@ import {
     AgentSelectedModelSummaryDtoToJSON,
     AgentSelectedModelSummaryDtoToJSONTyped,
 } from './AgentSelectedModelSummaryDto';
+import type { WizardStep } from './WizardStep';
+import {
+    WizardStepFromJSON,
+    WizardStepFromJSONTyped,
+    WizardStepToJSON,
+    WizardStepToJSONTyped,
+} from './WizardStep';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import {
     KnowledgeBaseSourceBindingDtoFromJSON,
@@ -237,22 +258,28 @@ export interface AgentSettingsResponseDto {
     autoAssignmentRole: AgentSettingsResponseDtoAutoAssignmentRoleEnum;
     /**
      *
-     * @type {string}
+     * @type {AgentStatus}
      * @memberof AgentSettingsResponseDto
      */
-    status: AgentSettingsResponseDtoStatusEnum | null;
+    status: AgentStatus | null;
     /**
      *
-     * @type {string}
+     * @type {WizardStep}
      * @memberof AgentSettingsResponseDto
      */
-    wizardCurrentStep?: string | null;
+    wizardCurrentStep?: WizardStep | null;
     /**
      *
-     * @type {string}
+     * @type {Date}
      * @memberof AgentSettingsResponseDto
      */
-    wizardTrainingModeSelected: AgentSettingsResponseDtoWizardTrainingModeSelectedEnum | null;
+    wizardUpdatedAt?: Date | null;
+    /**
+     *
+     * @type {TrainingMode}
+     * @memberof AgentSettingsResponseDto
+     */
+    wizardTrainingModeSelected: TrainingMode | null;
     /**
      * ID
      * @type {Array<string>}
@@ -386,6 +413,12 @@ export interface AgentSettingsResponseDto {
      */
     cancelPendingResponseOnProjectOperatorMessage: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    cancelPendingResponseOnAutomationMessage: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
@@ -459,40 +492,28 @@ export interface AgentSettingsResponseDto {
     enableDetachFromDialog: boolean;
     /**
      *
-     * @type {boolean}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof AgentSettingsResponseDto
      */
-    useProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AgentSettingsResponseDto
-     */
-    useLeadVariables: boolean;
+    variableBindings: Array<{ [key: string]: any; }>;
     /**
      *
      * @type {string}
      * @memberof AgentSettingsResponseDto
      */
-    projectVarsInstructionMode: AgentSettingsResponseDtoProjectVarsInstructionModeEnum;
+    variablesAccessMode: AgentSettingsResponseDtoVariablesAccessModeEnum;
     /**
-     *
-     * @type {string}
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentSettingsResponseDto
      */
-    projectVarsUserRequestMode: AgentSettingsResponseDtoProjectVarsUserRequestModeEnum;
+    segmentAccessPolicy: { [key: string]: any; };
     /**
-     *
-     * @type {string}
+     * recipient messaging tools (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentSettingsResponseDto
      */
-    leadVarsInstructionMode: AgentSettingsResponseDtoLeadVarsInstructionModeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof AgentSettingsResponseDto
-     */
-    leadVarsUserRequestMode: AgentSettingsResponseDtoLeadVarsUserRequestModeEnum;
+    recipientMessagingPolicy: { [key: string]: any; };
     /**
      *
      * @type {Date}
@@ -526,8 +547,9 @@ export type AgentSettingsResponseDtoAgentTypeEnum = typeof AgentSettingsResponse
  * @export
  */
 export const AgentSettingsResponseDtoServerBindingModeEnum = {
-    List: 'list',
-    Direct: 'direct',
+    ProviderDirect: 'provider_direct',
+    SenlerDirect: 'senler_direct',
+    SenlerList: 'senler_list',
     None: 'none'
 } as const;
 export type AgentSettingsResponseDtoServerBindingModeEnum = typeof AgentSettingsResponseDtoServerBindingModeEnum[keyof typeof AgentSettingsResponseDtoServerBindingModeEnum];
@@ -536,18 +558,23 @@ export type AgentSettingsResponseDtoServerBindingModeEnum = typeof AgentSettings
  * @export
  */
 export const AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = {
-    GetData: 'get_data',
-    EditContent: 'edit_content',
-    AddTableRows: 'add_table_rows',
+    ReadDocuments: 'read_documents',
     CreateDocuments: 'create_documents',
-    UploadFiles: 'upload_files',
+    UploadDocuments: 'upload_documents',
+    EditDocuments: 'edit_documents',
+    DeleteDocuments: 'delete_documents',
+    ReadTables: 'read_tables',
     CreateTables: 'create_tables',
-    CreateSheets: 'create_sheets',
     ImportCsvXlsx: 'import_csv_xlsx',
+    AddTableRows: 'add_table_rows',
+    EditTables: 'edit_tables',
+    CreateSheets: 'create_sheets',
     DeleteRows: 'delete_rows',
-    DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
-    DeleteTables: 'delete_tables'
+    DeleteTables: 'delete_tables',
+    ReadImages: 'read_images',
+    UploadImages: 'upload_images',
+    DeleteImages: 'delete_images'
 } as const;
 export type AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = typeof AgentSettingsResponseDtoKnowledgeBasePermissionsEnum[keyof typeof AgentSettingsResponseDtoKnowledgeBasePermissionsEnum];
 
@@ -612,28 +639,6 @@ export type AgentSettingsResponseDtoAutoAssignmentRoleEnum = typeof AgentSetting
 /**
  * @export
  */
-export const AgentSettingsResponseDtoStatusEnum = {
-    Draft: 'draft',
-    Training: 'training',
-    Ready: 'ready',
-    Active: 'active',
-    Inactive: 'inactive'
-} as const;
-export type AgentSettingsResponseDtoStatusEnum = typeof AgentSettingsResponseDtoStatusEnum[keyof typeof AgentSettingsResponseDtoStatusEnum];
-
-/**
- * @export
- */
-export const AgentSettingsResponseDtoWizardTrainingModeSelectedEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-} as const;
-export type AgentSettingsResponseDtoWizardTrainingModeSelectedEnum = typeof AgentSettingsResponseDtoWizardTrainingModeSelectedEnum[keyof typeof AgentSettingsResponseDtoWizardTrainingModeSelectedEnum];
-
-/**
- * @export
- */
 export const AgentSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
     Typing: 'typing',
@@ -644,42 +649,12 @@ export type AgentSettingsResponseDtoWidgetAiProgressModeEnum = typeof AgentSetti
 /**
  * @export
  */
-export const AgentSettingsResponseDtoProjectVarsInstructionModeEnum = {
+export const AgentSettingsResponseDtoVariablesAccessModeEnum = {
     None: 'none',
     Read: 'read',
     ReadWrite: 'read_write'
 } as const;
-export type AgentSettingsResponseDtoProjectVarsInstructionModeEnum = typeof AgentSettingsResponseDtoProjectVarsInstructionModeEnum[keyof typeof AgentSettingsResponseDtoProjectVarsInstructionModeEnum];
-
-/**
- * @export
- */
-export const AgentSettingsResponseDtoProjectVarsUserRequestModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-} as const;
-export type AgentSettingsResponseDtoProjectVarsUserRequestModeEnum = typeof AgentSettingsResponseDtoProjectVarsUserRequestModeEnum[keyof typeof AgentSettingsResponseDtoProjectVarsUserRequestModeEnum];
-
-/**
- * @export
- */
-export const AgentSettingsResponseDtoLeadVarsInstructionModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-} as const;
-export type AgentSettingsResponseDtoLeadVarsInstructionModeEnum = typeof AgentSettingsResponseDtoLeadVarsInstructionModeEnum[keyof typeof AgentSettingsResponseDtoLeadVarsInstructionModeEnum];
-
-/**
- * @export
- */
-export const AgentSettingsResponseDtoLeadVarsUserRequestModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-} as const;
-export type AgentSettingsResponseDtoLeadVarsUserRequestModeEnum = typeof AgentSettingsResponseDtoLeadVarsUserRequestModeEnum[keyof typeof AgentSettingsResponseDtoLeadVarsUserRequestModeEnum];
+export type AgentSettingsResponseDtoVariablesAccessModeEnum = typeof AgentSettingsResponseDtoVariablesAccessModeEnum[keyof typeof AgentSettingsResponseDtoVariablesAccessModeEnum];
 
 
 /**
@@ -719,6 +694,7 @@ export function instanceOfAgentSettingsResponseDto(value: object): value is Agen
     if (!('enableLeadBlocking' in value) || value['enableLeadBlocking'] === undefined) return false;
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined) return false;
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined) return false;
+    if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
     if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined) return false;
@@ -731,12 +707,10 @@ export function instanceOfAgentSettingsResponseDto(value: object): value is Agen
     if (!('enableSkipMetrics' in value) || value['enableSkipMetrics'] === undefined) return false;
     if (!('enableMuteDialog' in value) || value['enableMuteDialog'] === undefined) return false;
     if (!('enableDetachFromDialog' in value) || value['enableDetachFromDialog'] === undefined) return false;
-    if (!('useProjectVariables' in value) || value['useProjectVariables'] === undefined) return false;
-    if (!('useLeadVariables' in value) || value['useLeadVariables'] === undefined) return false;
-    if (!('projectVarsInstructionMode' in value) || value['projectVarsInstructionMode'] === undefined) return false;
-    if (!('projectVarsUserRequestMode' in value) || value['projectVarsUserRequestMode'] === undefined) return false;
-    if (!('leadVarsInstructionMode' in value) || value['leadVarsInstructionMode'] === undefined) return false;
-    if (!('leadVarsUserRequestMode' in value) || value['leadVarsUserRequestMode'] === undefined) return false;
+    if (!('variableBindings' in value) || value['variableBindings'] === undefined) return false;
+    if (!('variablesAccessMode' in value) || value['variablesAccessMode'] === undefined) return false;
+    if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined) return false;
+    if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
@@ -782,9 +756,10 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'autoAssignmentChannelIds': json['auto_assignment_channel_ids'] == null ? undefined : json['auto_assignment_channel_ids'],
         'autoAssignmentDialogScope': json['auto_assignment_dialog_scope'] == null ? undefined : json['auto_assignment_dialog_scope'],
         'autoAssignmentRole': json['auto_assignment_role'],
-        'status': json['status'],
-        'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : json['wizard_current_step'],
-        'wizardTrainingModeSelected': json['wizard_training_mode_selected'],
+        'status': AgentStatusFromJSON(json['status']),
+        'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : WizardStepFromJSON(json['wizard_current_step']),
+        'wizardUpdatedAt': json['wizard_updated_at'] == null ? undefined : (new Date(json['wizard_updated_at'])),
+        'wizardTrainingModeSelected': TrainingModeFromJSON(json['wizard_training_mode_selected']),
         'wizardWebsiteSourceIds': json['wizard_website_source_ids'],
         'wizardChannelIds': json['wizard_channel_ids'],
         'wizardHistoryDepthDays': json['wizard_history_depth_days'],
@@ -807,6 +782,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
+        'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
@@ -819,12 +795,10 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'enableSkipMetrics': json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'],
         'enableDetachFromDialog': json['enable_detach_from_dialog'],
-        'useProjectVariables': json['use_project_variables'],
-        'useLeadVariables': json['use_lead_variables'],
-        'projectVarsInstructionMode': json['project_vars_instruction_mode'],
-        'projectVarsUserRequestMode': json['project_vars_user_request_mode'],
-        'leadVarsInstructionMode': json['lead_vars_instruction_mode'],
-        'leadVarsUserRequestMode': json['lead_vars_user_request_mode'],
+        'variableBindings': json['variable_bindings'],
+        'variablesAccessMode': json['variables_access_mode'],
+        'segmentAccessPolicy': json['segment_access_policy'],
+        'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -871,9 +845,10 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'auto_assignment_channel_ids': value['autoAssignmentChannelIds'],
         'auto_assignment_dialog_scope': value['autoAssignmentDialogScope'],
         'auto_assignment_role': value['autoAssignmentRole'],
-        'status': value['status'],
-        'wizard_current_step': value['wizardCurrentStep'],
-        'wizard_training_mode_selected': value['wizardTrainingModeSelected'],
+        'status': AgentStatusToJSON(value['status']),
+        'wizard_current_step': WizardStepToJSON(value['wizardCurrentStep']),
+        'wizard_updated_at': value['wizardUpdatedAt'] == null ? undefined : ((value['wizardUpdatedAt'] as any).toISOString()),
+        'wizard_training_mode_selected': TrainingModeToJSON(value['wizardTrainingModeSelected']),
         'wizard_website_source_ids': value['wizardWebsiteSourceIds'],
         'wizard_channel_ids': value['wizardChannelIds'],
         'wizard_history_depth_days': value['wizardHistoryDepthDays'],
@@ -896,6 +871,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
+        'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
@@ -908,12 +884,10 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
-        'use_project_variables': value['useProjectVariables'],
-        'use_lead_variables': value['useLeadVariables'],
-        'project_vars_instruction_mode': value['projectVarsInstructionMode'],
-        'project_vars_user_request_mode': value['projectVarsUserRequestMode'],
-        'lead_vars_instruction_mode': value['leadVarsInstructionMode'],
-        'lead_vars_user_request_mode': value['leadVarsUserRequestMode'],
+        'variable_bindings': value['variableBindings'],
+        'variables_access_mode': value['variablesAccessMode'],
+        'segment_access_policy': value['segmentAccessPolicy'],
+        'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

@@ -28,6 +28,12 @@ import {
  */
 export interface LandingPublicCatalogResponseDto {
     /**
+     *
+     * @type {string}
+     * @memberof LandingPublicCatalogResponseDto
+     */
+    language: LandingPublicCatalogResponseDtoLanguageEnum;
+    /**
      * .
      * @type {string}
      * @memberof LandingPublicCatalogResponseDto
@@ -51,8 +57,19 @@ export interface LandingPublicCatalogResponseDto {
 /**
  * @export
  */
+export const LandingPublicCatalogResponseDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingPublicCatalogResponseDtoLanguageEnum = typeof LandingPublicCatalogResponseDtoLanguageEnum[keyof typeof LandingPublicCatalogResponseDtoLanguageEnum];
+
+/**
+ * @export
+ */
 export const LandingPublicCatalogResponseDtoTargetModeEnum = {
-    Catalog: 'catalog',
+    List: 'list',
+    IconList: 'icon_list',
+    BannerGrid: 'banner_grid',
     Landing: 'landing'
 } as const;
 export type LandingPublicCatalogResponseDtoTargetModeEnum = typeof LandingPublicCatalogResponseDtoTargetModeEnum[keyof typeof LandingPublicCatalogResponseDtoTargetModeEnum];
@@ -62,6 +79,7 @@ export type LandingPublicCatalogResponseDtoTargetModeEnum = typeof LandingPublic
  * Check if a given object implements the LandingPublicCatalogResponseDto interface.
  */
 export function instanceOfLandingPublicCatalogResponseDto(value: object): value is LandingPublicCatalogResponseDto {
+    if (!('language' in value) || value['language'] === undefined) return false;
     if (!('targetMode' in value) || value['targetMode'] === undefined) return false;
     if (!('targetLandingPublicId' in value) || value['targetLandingPublicId'] === undefined) return false;
     if (!('landings' in value) || value['landings'] === undefined) return false;
@@ -78,6 +96,7 @@ export function LandingPublicCatalogResponseDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
+        'language': json['language'],
         'targetMode': json['target_mode'],
         'targetLandingPublicId': json['target_landing_public_id'],
         'landings': ((json['landings'] as Array<any>).map(LandingPublicCatalogItemDtoFromJSON)),
@@ -95,6 +114,7 @@ export function LandingPublicCatalogResponseDtoToJSONTyped(value?: LandingPublic
 
     return {
 
+        'language': value['language'],
         'target_mode': value['targetMode'],
         'target_landing_public_id': value['targetLandingPublicId'],
         'landings': ((value['landings'] as Array<any>).map(LandingPublicCatalogItemDtoToJSON)),

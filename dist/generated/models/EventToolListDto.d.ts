@@ -69,6 +69,12 @@ export interface EventToolListDto {
      * @memberof EventToolListDto
      */
     errorMessage?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EventToolListDto
+     */
+    errorCode?: string;
 }
 /**
  * @export

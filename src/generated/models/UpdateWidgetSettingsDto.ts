@@ -20,6 +20,13 @@ import {
     WidgetFeaturesDtoToJSON,
     WidgetFeaturesDtoToJSONTyped,
 } from './WidgetFeaturesDto';
+import type { WidgetExternalAiSettingsDto } from './WidgetExternalAiSettingsDto';
+import {
+    WidgetExternalAiSettingsDtoFromJSON,
+    WidgetExternalAiSettingsDtoFromJSONTyped,
+    WidgetExternalAiSettingsDtoToJSON,
+    WidgetExternalAiSettingsDtoToJSONTyped,
+} from './WidgetExternalAiSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 import {
     WidgetThemeDtoFromJSON,
@@ -70,6 +77,12 @@ export interface UpdateWidgetSettingsDto {
      * @memberof UpdateWidgetSettingsDto
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
+    /**
+     * MCP
+     * @type {WidgetExternalAiSettingsDto}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    externalAi?: WidgetExternalAiSettingsDto;
     /**
      * : local ( JS ) remote ( /init)
      * @type {string}
@@ -143,6 +156,7 @@ export function UpdateWidgetSettingsDtoFromJSONTyped(json: any, ignoreDiscrimina
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
         'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'name': json['name'] == null ? undefined : json['name'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -166,6 +180,7 @@ export function UpdateWidgetSettingsDtoToJSONTyped(value?: UpdateWidgetSettingsD
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),
         'config_source': value['configSource'],
         'name': value['name'],
         'avatar_url': value['avatarUrl'],

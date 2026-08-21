@@ -10,7 +10,24 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
+import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
+export interface ArchiveImportsRequest {
+    projectId: string;
+    idempotencyKey: string;
+    projectId2: string;
+    file: Blob;
+    acceptLanguage?: ArchiveImportsAcceptLanguageEnum;
+    locale?: ArchiveImportsLocaleEnum;
+    folderId?: string | null;
+    duplicateResolution?: ArchiveImportsDuplicateResolutionEnum;
+    imageRecognitionMode?: ArchiveImportsImageRecognitionModeEnum;
+}
+export interface DeleteArchiveImportsRequest {
+    operationId: string;
+    projectId: string;
+    includeResult?: boolean;
+    acceptLanguage?: DeleteArchiveImportsAcceptLanguageEnum;
+}
 export interface DeleteFoldersRequest {
     id: string;
     acceptLanguage?: DeleteFoldersAcceptLanguageEnum;
@@ -23,23 +40,65 @@ export interface FilesRequest {
     createKnowledgeFileDto: CreateKnowledgeFileDto;
     acceptLanguage?: FilesAcceptLanguageEnum;
 }
+export interface FilesRecognitionEstimateRequest {
+    projectId: string;
+    file: Blob;
+    acceptLanguage?: FilesRecognitionEstimateAcceptLanguageEnum;
+    locale?: FilesRecognitionEstimateLocaleEnum;
+}
 export interface FilesUploadRequest {
     projectId: string;
     file: Blob;
     acceptLanguage?: FilesUploadAcceptLanguageEnum;
     folderId?: string | null;
     title?: string;
+    locale?: FilesUploadLocaleEnum;
+    imageRecognitionMode?: FilesUploadImageRecognitionModeEnum;
 }
 export interface FilesUploadArchiveRequest {
     projectId: string;
     file: Blob;
     acceptLanguage?: FilesUploadArchiveAcceptLanguageEnum;
+    locale?: FilesUploadArchiveLocaleEnum;
     folderId?: string | null;
     duplicateResolution?: FilesUploadArchiveDuplicateResolutionEnum;
+    imageRecognitionMode?: FilesUploadArchiveImageRecognitionModeEnum;
 }
 export interface FoldersRequest {
     createKnowledgeFolderDto: CreateKnowledgeFolderDto;
     acceptLanguage?: FoldersAcceptLanguageEnum;
+}
+export interface GetArchiveImportsRequest {
+    projectId: string;
+    idempotencyKey: string;
+    includeResult?: boolean;
+    acceptLanguage?: GetArchiveImportsAcceptLanguageEnum;
+}
+export interface GetArchiveImports2Request {
+    operationId: string;
+    projectId: string;
+    includeResult?: boolean;
+    acceptLanguage?: GetArchiveImports2AcceptLanguageEnum;
+}
+export interface GetArchiveImportsContentRequest {
+    projectId: string;
+    archiveSha256: string;
+    duplicateResolution: GetArchiveImportsContentDuplicateResolutionEnum;
+    locale: GetArchiveImportsContentLocaleEnum;
+    imageRecognitionMode: GetArchiveImportsContentImageRecognitionModeEnum;
+    includeResult?: boolean;
+    folderId?: string;
+    acceptLanguage?: GetArchiveImportsContentAcceptLanguageEnum;
+}
+export interface GetImageContextsExportRequest {
+    projectId: string;
+    rootFolderId: string;
+    acceptLanguage?: GetImageContextsExportAcceptLanguageEnum;
+}
+export interface GetImageRecognitionRunsRequest {
+    runId: string;
+    projectId: string;
+    acceptLanguage?: GetImageRecognitionRunsAcceptLanguageEnum;
 }
 export interface GetResourcesRequest {
     projectId: string;
@@ -85,6 +144,13 @@ export interface TablesUploadRequest {
     folderId?: string | null;
     name?: string;
 }
+export interface UpdateArchiveImportsResolutionRequest {
+    operationId: string;
+    projectId: string;
+    resolveKnowledgeArchiveImportConflictDto: ResolveKnowledgeArchiveImportConflictDto;
+    includeResult?: boolean;
+    acceptLanguage?: UpdateArchiveImportsResolutionAcceptLanguageEnum;
+}
 export interface UpdateFilesRequest {
     id: string;
     updateKnowledgeFileDto: UpdateKnowledgeFileDto;
@@ -104,6 +170,26 @@ export interface UpdateTablesRequest {
  *
  */
 export declare class KnowledgeBaseApi extends runtime.BaseAPI {
+    /**
+     * , HTTP-.
+     * ZIP-
+     */
+    archiveImportsRaw(requestParameters: ArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>>;
+    /**
+     * , HTTP-.
+     * ZIP-
+     */
+    archiveImports(requestParameters: ArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
+     * ZIP .
+     * ,
+     */
+    deleteArchiveImportsRaw(requestParameters: DeleteArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * ZIP .
+     * ,
+     */
+    deleteArchiveImports(requestParameters: DeleteArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * .
      *
@@ -135,6 +221,16 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     files(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
+     * ZIP .
+     *
+     */
+    filesRecognitionEstimateRaw(requestParameters: FilesRecognitionEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeImageRecognitionEstimateResponseDto>>;
+    /**
+     * ZIP .
+     *
+     */
+    filesRecognitionEstimate(requestParameters: FilesRecognitionEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeImageRecognitionEstimateResponseDto>;
+    /**
      * , .
      *
      */
@@ -147,11 +243,13 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
      * ZIP- 500 , .
      * ZIP-
+     * @deprecated
      */
     filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>>;
     /**
      * ZIP- 500 , .
      * ZIP-
+     * @deprecated
      */
     filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto>;
     /**
@@ -164,6 +262,56 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      *
      */
     folders(requestParameters: FoldersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFolderResponseDto>;
+    /**
+     * ID , .
+     * ZIP-
+     */
+    getArchiveImportsRaw(requestParameters: GetArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>>;
+    /**
+     * ID , .
+     * ZIP-
+     */
+    getArchiveImports(requestParameters: GetArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
+     * , . include_result=true.
+     * ZIP-
+     */
+    getArchiveImports2Raw(requestParameters: GetArchiveImports2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>>;
+    /**
+     * , . include_result=true.
+     * ZIP-
+     */
+    getArchiveImports2(requestParameters: GetArchiveImports2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
+     * .
+     *
+     */
+    getArchiveImportsContentRaw(requestParameters: GetArchiveImportsContentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getArchiveImportsContent(requestParameters: GetArchiveImportsContentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
+     * NDJSON .
+     *
+     */
+    getImageContextsExportRaw(requestParameters: GetImageContextsExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    /**
+     * NDJSON .
+     *
+     */
+    getImageContextsExport(requestParameters: GetImageContextsExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    /**
+     * , AI-.
+     *
+     */
+    getImageRecognitionRunsRaw(requestParameters: GetImageRecognitionRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeImageRecognitionRunResponseDto>>;
+    /**
+     * , AI-.
+     *
+     */
+    getImageRecognitionRuns(requestParameters: GetImageRecognitionRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeImageRecognitionRunResponseDto>;
     /**
      * , .
      *
@@ -245,6 +393,16 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     tablesUpload(requestParameters: TablesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
     /**
+     * ZIP, .
+     *
+     */
+    updateArchiveImportsResolutionRaw(requestParameters: UpdateArchiveImportsResolutionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>>;
+    /**
+     * ZIP, .
+     *
+     */
+    updateArchiveImportsResolution(requestParameters: UpdateArchiveImportsResolutionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
      * , , .
      *
      */
@@ -278,6 +436,49 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export declare const ArchiveImportsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ArchiveImportsAcceptLanguageEnum = typeof ArchiveImportsAcceptLanguageEnum[keyof typeof ArchiveImportsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ArchiveImportsLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ArchiveImportsLocaleEnum = typeof ArchiveImportsLocaleEnum[keyof typeof ArchiveImportsLocaleEnum];
+/**
+ * @export
+ */
+export declare const ArchiveImportsDuplicateResolutionEnum: {
+    readonly Ask: "ask";
+    readonly Replace: "replace";
+    readonly Rename: "rename";
+};
+export type ArchiveImportsDuplicateResolutionEnum = typeof ArchiveImportsDuplicateResolutionEnum[keyof typeof ArchiveImportsDuplicateResolutionEnum];
+/**
+ * @export
+ */
+export declare const ArchiveImportsImageRecognitionModeEnum: {
+    readonly None: "none";
+    readonly WithoutMarkdownDescription: "without_markdown_description";
+    readonly Unrecognized: "unrecognized";
+    readonly All: "all";
+};
+export type ArchiveImportsImageRecognitionModeEnum = typeof ArchiveImportsImageRecognitionModeEnum[keyof typeof ArchiveImportsImageRecognitionModeEnum];
+/**
+ * @export
+ */
+export declare const DeleteArchiveImportsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteArchiveImportsAcceptLanguageEnum = typeof DeleteArchiveImportsAcceptLanguageEnum[keyof typeof DeleteArchiveImportsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const DeleteFoldersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -302,6 +503,22 @@ export type FilesAcceptLanguageEnum = typeof FilesAcceptLanguageEnum[keyof typeo
 /**
  * @export
  */
+export declare const FilesRecognitionEstimateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FilesRecognitionEstimateAcceptLanguageEnum = typeof FilesRecognitionEstimateAcceptLanguageEnum[keyof typeof FilesRecognitionEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const FilesRecognitionEstimateLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FilesRecognitionEstimateLocaleEnum = typeof FilesRecognitionEstimateLocaleEnum[keyof typeof FilesRecognitionEstimateLocaleEnum];
+/**
+ * @export
+ */
 export declare const FilesUploadAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -310,11 +527,37 @@ export type FilesUploadAcceptLanguageEnum = typeof FilesUploadAcceptLanguageEnum
 /**
  * @export
  */
+export declare const FilesUploadLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FilesUploadLocaleEnum = typeof FilesUploadLocaleEnum[keyof typeof FilesUploadLocaleEnum];
+/**
+ * @export
+ */
+export declare const FilesUploadImageRecognitionModeEnum: {
+    readonly None: "none";
+    readonly WithoutMarkdownDescription: "without_markdown_description";
+    readonly Unrecognized: "unrecognized";
+    readonly All: "all";
+};
+export type FilesUploadImageRecognitionModeEnum = typeof FilesUploadImageRecognitionModeEnum[keyof typeof FilesUploadImageRecognitionModeEnum];
+/**
+ * @export
+ */
 export declare const FilesUploadArchiveAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type FilesUploadArchiveAcceptLanguageEnum = typeof FilesUploadArchiveAcceptLanguageEnum[keyof typeof FilesUploadArchiveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const FilesUploadArchiveLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FilesUploadArchiveLocaleEnum = typeof FilesUploadArchiveLocaleEnum[keyof typeof FilesUploadArchiveLocaleEnum];
 /**
  * @export
  */
@@ -327,11 +570,88 @@ export type FilesUploadArchiveDuplicateResolutionEnum = typeof FilesUploadArchiv
 /**
  * @export
  */
+export declare const FilesUploadArchiveImageRecognitionModeEnum: {
+    readonly None: "none";
+    readonly WithoutMarkdownDescription: "without_markdown_description";
+    readonly Unrecognized: "unrecognized";
+    readonly All: "all";
+};
+export type FilesUploadArchiveImageRecognitionModeEnum = typeof FilesUploadArchiveImageRecognitionModeEnum[keyof typeof FilesUploadArchiveImageRecognitionModeEnum];
+/**
+ * @export
+ */
 export declare const FoldersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type FoldersAcceptLanguageEnum = typeof FoldersAcceptLanguageEnum[keyof typeof FoldersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetArchiveImportsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetArchiveImportsAcceptLanguageEnum = typeof GetArchiveImportsAcceptLanguageEnum[keyof typeof GetArchiveImportsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetArchiveImports2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetArchiveImports2AcceptLanguageEnum = typeof GetArchiveImports2AcceptLanguageEnum[keyof typeof GetArchiveImports2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetArchiveImportsContentDuplicateResolutionEnum: {
+    readonly Ask: "ask";
+    readonly Replace: "replace";
+    readonly Rename: "rename";
+};
+export type GetArchiveImportsContentDuplicateResolutionEnum = typeof GetArchiveImportsContentDuplicateResolutionEnum[keyof typeof GetArchiveImportsContentDuplicateResolutionEnum];
+/**
+ * @export
+ */
+export declare const GetArchiveImportsContentLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetArchiveImportsContentLocaleEnum = typeof GetArchiveImportsContentLocaleEnum[keyof typeof GetArchiveImportsContentLocaleEnum];
+/**
+ * @export
+ */
+export declare const GetArchiveImportsContentImageRecognitionModeEnum: {
+    readonly None: "none";
+    readonly WithoutMarkdownDescription: "without_markdown_description";
+    readonly Unrecognized: "unrecognized";
+    readonly All: "all";
+};
+export type GetArchiveImportsContentImageRecognitionModeEnum = typeof GetArchiveImportsContentImageRecognitionModeEnum[keyof typeof GetArchiveImportsContentImageRecognitionModeEnum];
+/**
+ * @export
+ */
+export declare const GetArchiveImportsContentAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetArchiveImportsContentAcceptLanguageEnum = typeof GetArchiveImportsContentAcceptLanguageEnum[keyof typeof GetArchiveImportsContentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetImageContextsExportAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetImageContextsExportAcceptLanguageEnum = typeof GetImageContextsExportAcceptLanguageEnum[keyof typeof GetImageContextsExportAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetImageRecognitionRunsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetImageRecognitionRunsAcceptLanguageEnum = typeof GetImageRecognitionRunsAcceptLanguageEnum[keyof typeof GetImageRecognitionRunsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -405,6 +725,14 @@ export declare const TablesUploadAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TablesUploadAcceptLanguageEnum = typeof TablesUploadAcceptLanguageEnum[keyof typeof TablesUploadAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateArchiveImportsResolutionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateArchiveImportsResolutionAcceptLanguageEnum = typeof UpdateArchiveImportsResolutionAcceptLanguageEnum[keyof typeof UpdateArchiveImportsResolutionAcceptLanguageEnum];
 /**
  * @export
  */

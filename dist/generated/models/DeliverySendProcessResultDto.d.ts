@@ -35,6 +35,12 @@ export interface DeliverySendProcessResultDto {
      */
     failed: number;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof DeliverySendProcessResultDto
+     */
+    pausedDailyLimit?: boolean;
+    /**
      *
      * @type {Array<DeliverySendErrorDto>}
      * @memberof DeliverySendProcessResultDto

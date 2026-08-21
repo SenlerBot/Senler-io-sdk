@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingWebsitePageSummaryDto } from './TrainingWebsitePageSummaryDto';
+import {
+    TrainingWebsitePageSummaryDtoFromJSON,
+    TrainingWebsitePageSummaryDtoFromJSONTyped,
+    TrainingWebsitePageSummaryDtoToJSON,
+    TrainingWebsitePageSummaryDtoToJSONTyped,
+} from './TrainingWebsitePageSummaryDto';
+
 /**
  * TaskDetailDto.
  * @export
@@ -30,7 +38,7 @@ export interface TaskDetailDto {
      * @type {string}
      * @memberof TaskDetailDto
      */
-    type: string;
+    type: TaskDetailDtoTypeEnum;
     /**
      *
      * @type {string}
@@ -50,11 +58,23 @@ export interface TaskDetailDto {
      */
     progress: number;
     /**
-     * /
-     * @type {string}
+     *
+     * @type {number}
      * @memberof TaskDetailDto
      */
-    itemsProgress: string;
+    itemsProcessed: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TaskDetailDto
+     */
+    itemsTotal?: number;
+    /**
+     * ,
+     * @type {Array<TrainingWebsitePageSummaryDto>}
+     * @memberof TaskDetailDto
+     */
+    websitePages?: Array<TrainingWebsitePageSummaryDto>;
     /**
      *
      * @type {string}
@@ -79,6 +99,16 @@ export interface TaskDetailDto {
 /**
  * @export
  */
+export const TaskDetailDtoTypeEnum = {
+    WebsiteParse: 'website_parse',
+    ChannelHistoryScan: 'channel_history_scan',
+    AgentVariantsGenerate: 'agent_variants_generate'
+} as const;
+export type TaskDetailDtoTypeEnum = typeof TaskDetailDtoTypeEnum[keyof typeof TaskDetailDtoTypeEnum];
+
+/**
+ * @export
+ */
 export const TaskDetailDtoStatusEnum = {
     Pending: 'pending',
     Queued: 'queued',
@@ -99,7 +129,7 @@ export function instanceOfTaskDetailDto(value: object): value is TaskDetailDto {
     if (!('sourceName' in value) || value['sourceName'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('progress' in value) || value['progress'] === undefined) return false;
-    if (!('itemsProgress' in value) || value['itemsProgress'] === undefined) return false;
+    if (!('itemsProcessed' in value) || value['itemsProcessed'] === undefined) return false;
     return true;
 }
 
@@ -118,7 +148,9 @@ export function TaskDetailDtoFromJSONTyped(json: any, ignoreDiscriminator: boole
         'sourceName': json['sourceName'],
         'status': json['status'],
         'progress': json['progress'],
-        'itemsProgress': json['itemsProgress'],
+        'itemsProcessed': json['itemsProcessed'],
+        'itemsTotal': json['itemsTotal'] == null ? undefined : json['itemsTotal'],
+        'websitePages': json['websitePages'] == null ? undefined : ((json['websitePages'] as Array<any>).map(TrainingWebsitePageSummaryDtoFromJSON)),
         'error': json['error'] == null ? undefined : json['error'],
         'createdAt': json['createdAt'] == null ? undefined : json['createdAt'],
         'completedAt': json['completedAt'] == null ? undefined : json['completedAt'],
@@ -141,7 +173,9 @@ export function TaskDetailDtoToJSONTyped(value?: TaskDetailDto | null, ignoreDis
         'sourceName': value['sourceName'],
         'status': value['status'],
         'progress': value['progress'],
-        'itemsProgress': value['itemsProgress'],
+        'itemsProcessed': value['itemsProcessed'],
+        'itemsTotal': value['itemsTotal'],
+        'websitePages': value['websitePages'] == null ? undefined : ((value['websitePages'] as Array<any>).map(TrainingWebsitePageSummaryDtoToJSON)),
         'error': value['error'],
         'createdAt': value['createdAt'],
         'completedAt': value['completedAt'],

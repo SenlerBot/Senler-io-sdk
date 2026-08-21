@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateMembersAcceptLanguageEnum = exports.TransferOwnershipAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.GetMembers2AcceptLanguageEnum = exports.GetMembersAcceptLanguageEnum = exports.DeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
+exports.TransferOwnershipAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,12 +57,12 @@ class AccessApi extends runtime.BaseAPI {
      * (is_active = false). owner\' .
      *
      */
-    async deleteMembersRaw(requestParameters, initOverrides) {
+    async accessDeleteMembersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteMembers().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessDeleteMembers().');
         }
         if (requestParameters['memberId'] == null) {
-            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling deleteMembers().');
+            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling accessDeleteMembers().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -92,17 +92,17 @@ class AccessApi extends runtime.BaseAPI {
      * (is_active = false). owner\' .
      *
      */
-    async deleteMembers(requestParameters, initOverrides) {
-        const response = await this.deleteMembersRaw(requestParameters, initOverrides);
+    async accessDeleteMembers(requestParameters, initOverrides) {
+        const response = await this.accessDeleteMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      *
      *
      */
-    async getMembersRaw(requestParameters, initOverrides) {
+    async accessGetMembersRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getMembers().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessGetMembers().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -118,7 +118,7 @@ class AccessApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_access"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/access/members/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -132,20 +132,20 @@ class AccessApi extends runtime.BaseAPI {
      *
      *
      */
-    async getMembers(requestParameters, initOverrides) {
-        const response = await this.getMembersRaw(requestParameters, initOverrides);
+    async accessGetMembers(requestParameters, initOverrides) {
+        const response = await this.accessGetMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * ,
      *
      */
-    async getMembers2Raw(requestParameters, initOverrides) {
+    async accessGetMembers2Raw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getMembers2().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessGetMembers2().');
         }
         if (requestParameters['memberId'] == null) {
-            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling getMembers2().');
+            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling accessGetMembers2().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -161,7 +161,7 @@ class AccessApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_access"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
@@ -175,8 +175,56 @@ class AccessApi extends runtime.BaseAPI {
      * ,
      *
      */
-    async getMembers2(requestParameters, initOverrides) {
-        const response = await this.getMembers2Raw(requestParameters, initOverrides);
+    async accessGetMembers2(requestParameters, initOverrides) {
+        const response = await this.accessGetMembers2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . owner , .
+     *
+     */
+    async accessUpdateMembersRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessUpdateMembers().');
+        }
+        if (requestParameters['memberId'] == null) {
+            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling accessUpdateMembers().');
+        }
+        if (requestParameters['updateProjectMemberDto'] == null) {
+            throw new runtime.RequiredError('updateProjectMemberDto', 'Required parameter "updateProjectMemberDto" was null or undefined when calling accessUpdateMembers().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
+        }
+        const response = await this.request({
+            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateProjectMemberDtoToJSON)(requestParameters['updateProjectMemberDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateProjectMemberResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . owner , .
+     *
+     */
+    async accessUpdateMembers(requestParameters, initOverrides) {
+        const response = await this.accessUpdateMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -204,7 +252,7 @@ class AccessApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_access"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/access/members/{projectId}/{memberId}/channels`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
@@ -293,74 +341,33 @@ class AccessApi extends runtime.BaseAPI {
         const response = await this.transferOwnershipRaw(requestParameters, initOverrides);
         return await response.value();
     }
-    /**
-     * . owner , .
-     *
-     */
-    async updateMembersRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateMembers().');
-        }
-        if (requestParameters['memberId'] == null) {
-            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling updateMembers().');
-        }
-        if (requestParameters['updateProjectMemberDto'] == null) {
-            throw new runtime.RequiredError('updateProjectMemberDto', 'Required parameter "updateProjectMemberDto" was null or undefined when calling updateMembers().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-        const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.UpdateProjectMemberDtoToJSON)(requestParameters['updateProjectMemberDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateProjectMemberResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . owner , .
-     *
-     */
-    async updateMembers(requestParameters, initOverrides) {
-        const response = await this.updateMembersRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 }
 exports.AccessApi = AccessApi;
 /**
  * @export
  */
-exports.DeleteMembersAcceptLanguageEnum = {
+exports.AccessDeleteMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetMembersAcceptLanguageEnum = {
+exports.AccessGetMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetMembers2AcceptLanguageEnum = {
+exports.AccessGetMembers2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AccessUpdateMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -382,13 +389,6 @@ exports.GetRolePresetsAcceptLanguageEnum = {
  * @export
  */
 exports.TransferOwnershipAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

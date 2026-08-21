@@ -30,6 +30,10 @@ function instanceOfLandingPublicCatalogItemDto(value) {
         return false;
     if (!('webUrl' in value) || value['webUrl'] === undefined)
         return false;
+    if (!('iconUrl' in value) || value['iconUrl'] === undefined)
+        return false;
+    if (!('bannerUrl' in value) || value['bannerUrl'] === undefined)
+        return false;
     return true;
 }
 function LandingPublicCatalogItemDtoFromJSON(json) {
@@ -44,6 +48,8 @@ function LandingPublicCatalogItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'publicId': json['public_id'],
         'projectPublicId': json['project_public_id'],
         'webUrl': json['web_url'],
+        'iconUrl': json['icon_url'],
+        'bannerUrl': json['banner_url'],
     };
 }
 function LandingPublicCatalogItemDtoToJSON(json) {
@@ -58,5 +64,7 @@ function LandingPublicCatalogItemDtoToJSONTyped(value, ignoreDiscriminator = fal
         'public_id': value['publicId'],
         'project_public_id': value['projectPublicId'],
         'web_url': value['webUrl'],
+        'icon_url': value['iconUrl'],
+        'banner_url': value['bannerUrl'],
     };
 }

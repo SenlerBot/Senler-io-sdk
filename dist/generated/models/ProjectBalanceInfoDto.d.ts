@@ -47,6 +47,36 @@ export interface ProjectBalanceInfoDto {
      */
     totalBalance: number;
     /**
+     * Europe/Moscow
+     * @type {Date}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesQuotaDate: Date;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesSentToday: number;
+    /**
+     * ,
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesReservedToday: number;
+    /**
+     * :
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesUsedToday: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectBalanceInfoDto
+     */
+    mailingMessagesRemainingToday: number;
+    /**
      * (null )
      * @type {TariffSubscriptionDto}
      * @memberof ProjectBalanceInfoDto

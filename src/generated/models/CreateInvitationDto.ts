@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
+import type { ProjectRole } from './ProjectRole';
 import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 
 /**
  * CreateInvitationDto.
@@ -41,10 +41,10 @@ export interface CreateInvitationDto {
     email?: string;
     /**
      * ,
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof CreateInvitationDto
      */
-    role: Role;
+    role: ProjectRole;
 }
 
 
@@ -69,7 +69,7 @@ export function CreateInvitationDtoFromJSONTyped(json: any, ignoreDiscriminator:
 
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
-        'role': RoleFromJSON(json['role']),
+        'role': ProjectRoleFromJSON(json['role']),
     };
 }
 
@@ -86,6 +86,6 @@ export function CreateInvitationDtoToJSONTyped(value?: CreateInvitationDto | nul
 
         'user_id': value['userId'],
         'email': value['email'],
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
     };
 }

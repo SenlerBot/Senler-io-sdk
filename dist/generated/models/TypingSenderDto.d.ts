@@ -61,6 +61,8 @@ export declare const TypingSenderDtoTypeEnum: {
     readonly Admin: "admin";
     readonly Assistant: "assistant";
     readonly System: "system";
+    readonly Segment: "segment";
+    readonly Automation: "automation";
     readonly ExternalOperator: "external_operator";
     readonly Channel: "channel";
     readonly ExternalChannel: "external_channel";

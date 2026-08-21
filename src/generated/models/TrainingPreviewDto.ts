@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingMode } from './TrainingMode';
+import {
+    TrainingModeFromJSON,
+    TrainingModeFromJSONTyped,
+    TrainingModeToJSON,
+    TrainingModeToJSONTyped,
+} from './TrainingMode';
+
 /**
  * TrainingPreviewDto.
  * @export
@@ -21,10 +29,10 @@ import { mapValues } from '../runtime';
 export interface TrainingPreviewDto {
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof TrainingPreviewDto
      */
-    mode: TrainingPreviewDtoModeEnum;
+    mode: TrainingMode;
     /**
      * ID website sources
      * @type {Array<string>}
@@ -49,18 +57,14 @@ export interface TrainingPreviewDto {
      * @memberof TrainingPreviewDto
      */
     scanChannelHistory?: boolean;
+    /**
+     * . ., ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof TrainingPreviewDto
+     */
+    acceptedMaxCredits?: number;
 }
 
-
-/**
- * @export
- */
-export const TrainingPreviewDtoModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-} as const;
-export type TrainingPreviewDtoModeEnum = typeof TrainingPreviewDtoModeEnum[keyof typeof TrainingPreviewDtoModeEnum];
 
 
 /**
@@ -81,11 +85,12 @@ export function TrainingPreviewDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
-        'mode': json['mode'],
+        'mode': TrainingModeFromJSON(json['mode']),
         'websiteSourceIds': json['website_source_ids'] == null ? undefined : json['website_source_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'historyDepthDays': json['history_depth_days'] == null ? undefined : json['history_depth_days'],
         'scanChannelHistory': json['scan_channel_history'] == null ? undefined : json['scan_channel_history'],
+        'acceptedMaxCredits': json['accepted_max_credits'] == null ? undefined : json['accepted_max_credits'],
     };
 }
 
@@ -100,10 +105,11 @@ export function TrainingPreviewDtoToJSONTyped(value?: TrainingPreviewDto | null,
 
     return {
 
-        'mode': value['mode'],
+        'mode': TrainingModeToJSON(value['mode']),
         'website_source_ids': value['websiteSourceIds'],
         'channel_ids': value['channelIds'],
         'history_depth_days': value['historyDepthDays'],
         'scan_channel_history': value['scanChannelHistory'],
+        'accepted_max_credits': value['acceptedMaxCredits'],
     };
 }

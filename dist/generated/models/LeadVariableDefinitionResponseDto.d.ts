@@ -21,6 +21,12 @@ export interface LeadVariableDefinitionResponseDto {
      * @type {string}
      * @memberof LeadVariableDefinitionResponseDto
      */
+    id: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof LeadVariableDefinitionResponseDto
+     */
     projectId: string;
     /**
      * ID (null = )

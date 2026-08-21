@@ -32,6 +32,8 @@ exports.GenerateSummarizationRequestDtoPeriodEnum = {
  * Check if a given object implements the GenerateSummarizationRequestDto interface.
  */
 function instanceOfGenerateSummarizationRequestDto(value) {
+    if (!('operationId' in value) || value['operationId'] === undefined)
+        return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
         return false;
     if (!('modelId' in value) || value['modelId'] === undefined)
@@ -46,6 +48,7 @@ function GenerateSummarizationRequestDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
+        'operationId': json['operation_id'],
         'projectId': json['project_id'],
         'period': json['period'] == null ? undefined : json['period'],
         'modelId': json['model_id'],
@@ -59,6 +62,7 @@ function GenerateSummarizationRequestDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
+        'operation_id': value['operationId'],
         'project_id': value['projectId'],
         'period': value['period'],
         'model_id': value['modelId'],

@@ -9,7 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingCatalogLaunchTargetDto } from './LandingCatalogLaunchTargetDto';
+import type { LandingBannerGridLaunchTargetDto } from './LandingBannerGridLaunchTargetDto';
+import type { LandingIconListLaunchTargetDto } from './LandingIconListLaunchTargetDto';
+import type { LandingListLaunchTargetDto } from './LandingListLaunchTargetDto';
 import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDto';
 /**
  * @type LandingMaxMiniAppResponseDtoTarget
@@ -17,10 +19,14 @@ import type { LandingSingleLaunchTargetDto } from './LandingSingleLaunchTargetDt
  * @export
  */
 export type LandingMaxMiniAppResponseDtoTarget = {
-    mode: 'catalog';
-} & LandingCatalogLaunchTargetDto | {
+    mode: 'banner_grid';
+} & LandingBannerGridLaunchTargetDto | {
+    mode: 'icon_list';
+} & LandingIconListLaunchTargetDto | {
     mode: 'landing';
-} & LandingSingleLaunchTargetDto;
+} & LandingSingleLaunchTargetDto | {
+    mode: 'list';
+} & LandingListLaunchTargetDto;
 export declare function LandingMaxMiniAppResponseDtoTargetFromJSON(json: any): LandingMaxMiniAppResponseDtoTarget;
 export declare function LandingMaxMiniAppResponseDtoTargetFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingMaxMiniAppResponseDtoTarget;
 export declare function LandingMaxMiniAppResponseDtoTargetToJSON(json: any): any;

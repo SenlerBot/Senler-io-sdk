@@ -32,6 +32,12 @@ export interface AgentUsageStats {
      */
     agentName?: string;
     /**
+     * URL
+     * @type {string}
+     * @memberof AgentUsageStats
+     */
+    agentAvatarUrl?: string | null;
+    /**
      *
      * @type {number}
      * @memberof AgentUsageStats
@@ -88,6 +94,7 @@ export function AgentUsageStatsFromJSONTyped(json: any, ignoreDiscriminator: boo
 
         'agentId': json['agent_id'],
         'agentName': json['agent_name'] == null ? undefined : json['agent_name'],
+        'agentAvatarUrl': json['agent_avatar_url'] == null ? undefined : json['agent_avatar_url'],
         'eventsCount': json['events_count'],
         'dialogsCount': json['dialogs_count'],
         'providerCost': json['provider_cost'],
@@ -109,6 +116,7 @@ export function AgentUsageStatsToJSONTyped(value?: AgentUsageStats | null, ignor
 
         'agent_id': value['agentId'],
         'agent_name': value['agentName'],
+        'agent_avatar_url': value['agentAvatarUrl'],
         'events_count': value['eventsCount'],
         'dialogs_count': value['dialogsCount'],
         'provider_cost': value['providerCost'],

@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Role } from './Role';
+import type { ProjectRole } from './ProjectRole';
 /**
  * CreateInvitationDto.
  * @export
@@ -30,10 +30,10 @@ export interface CreateInvitationDto {
     email?: string;
     /**
      * ,
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof CreateInvitationDto
      */
-    role: Role;
+    role: ProjectRole;
 }
 /**
  * Check if a given object implements the CreateInvitationDto interface.

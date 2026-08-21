@@ -75,6 +75,12 @@ export interface ByStorageSourceStatsDto {
      * @memberof ByStorageSourceStatsDto
      */
     system?: CategoryStatsDto;
+    /**
+     *
+     * @type {CategoryStatsDto}
+     * @memberof ByStorageSourceStatsDto
+     */
+    automation?: CategoryStatsDto;
 }
 
 /**
@@ -102,6 +108,7 @@ export function ByStorageSourceStatsDtoFromJSONTyped(json: any, ignoreDiscrimina
         'web': json['web'] == null ? undefined : CategoryStatsDtoFromJSON(json['web']),
         'temp': json['temp'] == null ? undefined : CategoryStatsDtoFromJSON(json['temp']),
         'system': json['system'] == null ? undefined : CategoryStatsDtoFromJSON(json['system']),
+        'automation': json['automation'] == null ? undefined : CategoryStatsDtoFromJSON(json['automation']),
     };
 }
 
@@ -124,5 +131,6 @@ export function ByStorageSourceStatsDtoToJSONTyped(value?: ByStorageSourceStatsD
         'web': CategoryStatsDtoToJSON(value['web']),
         'temp': CategoryStatsDtoToJSON(value['temp']),
         'system': CategoryStatsDtoToJSON(value['system']),
+        'automation': CategoryStatsDtoToJSON(value['automation']),
     };
 }

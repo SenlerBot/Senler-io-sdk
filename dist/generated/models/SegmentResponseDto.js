@@ -20,7 +20,6 @@ exports.SegmentResponseDtoFromJSONTyped = SegmentResponseDtoFromJSONTyped;
 exports.SegmentResponseDtoToJSON = SegmentResponseDtoToJSON;
 exports.SegmentResponseDtoToJSONTyped = SegmentResponseDtoToJSONTyped;
 const SegmentConsentSnapshotDto_1 = require("./SegmentConsentSnapshotDto");
-const SegmentPaymentDto_1 = require("./SegmentPaymentDto");
 /**
  * @export
  */
@@ -46,9 +45,9 @@ function instanceOfSegmentResponseDto(value) {
         return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined)
         return false;
-    if (!('payment' in value) || value['payment'] === undefined)
-        return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined)
+        return false;
+    if (!('consentPromptText' in value) || value['consentPromptText'] === undefined)
         return false;
     if (!('deletedAt' in value) || value['deletedAt'] === undefined)
         return false;
@@ -73,8 +72,8 @@ function SegmentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'],
         'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
-        'payment': (0, SegmentPaymentDto_1.SegmentPaymentDtoFromJSON)(json['payment']),
         'requiredConsents': (json['required_consents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'],
         'deletedAt': (json['deleted_at'] == null ? null : new Date(json['deleted_at'])),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -95,8 +94,8 @@ function SegmentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'status': value['status'],
         'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
-        'payment': (0, SegmentPaymentDto_1.SegmentPaymentDtoToJSON)(value['payment']),
         'required_consents': (value['requiredConsents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
         'deleted_at': (value['deletedAt'] == null ? null : value['deletedAt'].toISOString()),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

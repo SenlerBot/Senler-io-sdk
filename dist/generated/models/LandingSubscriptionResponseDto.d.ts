@@ -29,7 +29,6 @@ export declare const LandingSubscriptionResponseDtoStateEnum: {
     readonly Subscribed: "subscribed";
     readonly AlreadySubscribed: "already_subscribed";
     readonly Unsubscribed: "unsubscribed";
-    readonly PaymentRequired: "payment_required";
     readonly ConsentRequired: "consent_required";
     readonly Unavailable: "unavailable";
 };

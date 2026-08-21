@@ -57,6 +57,18 @@ export interface TariffSubscriptionDto {
     storageLimitBytes: number;
     /**
      *
+     * @type {number}
+     * @memberof TariffSubscriptionDto
+     */
+    mailingMessagesPerDay: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TariffSubscriptionDto
+     */
+    automationStepsPerSecond: number;
+    /**
+     *
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
@@ -131,6 +143,8 @@ export function instanceOfTariffSubscriptionDto(value: object): value is TariffS
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
     if (!('isUnlimited' in value) || value['isUnlimited'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
+    if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
+    if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('period' in value) || value['period'] === undefined) return false;
     if (!('dateStart' in value) || value['dateStart'] === undefined) return false;
@@ -156,6 +170,8 @@ export function TariffSubscriptionDtoFromJSONTyped(json: any, ignoreDiscriminato
         'isFree': json['is_free'],
         'isUnlimited': json['is_unlimited'],
         'storageLimitBytes': json['storage_limit_bytes'],
+        'mailingMessagesPerDay': json['mailing_messages_per_day'],
+        'automationStepsPerSecond': json['automation_steps_per_second'],
         'status': json['status'],
         'period': json['period'],
         'dateStart': (new Date(json['date_start'])),
@@ -183,6 +199,8 @@ export function TariffSubscriptionDtoToJSONTyped(value?: TariffSubscriptionDto |
         'is_free': value['isFree'],
         'is_unlimited': value['isUnlimited'],
         'storage_limit_bytes': value['storageLimitBytes'],
+        'mailing_messages_per_day': value['mailingMessagesPerDay'],
+        'automation_steps_per_second': value['automationStepsPerSecond'],
         'status': value['status'],
         'period': value['period'],
         'date_start': ((value['dateStart']).toISOString()),

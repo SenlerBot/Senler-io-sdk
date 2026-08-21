@@ -63,6 +63,18 @@ export interface ProjectTariffItemDto {
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
+    mailingMessagesPerDay: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectTariffItemDto
+     */
+    automationStepsPerSecond: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectTariffItemDto
+     */
     storageLimitBytes: number;
     /**
      *

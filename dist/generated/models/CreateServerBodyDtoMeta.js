@@ -13,20 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateServerBodyDtoMetaHealthStatusEnum = void 0;
 exports.instanceOfCreateServerBodyDtoMeta = instanceOfCreateServerBodyDtoMeta;
 exports.CreateServerBodyDtoMetaFromJSON = CreateServerBodyDtoMetaFromJSON;
 exports.CreateServerBodyDtoMetaFromJSONTyped = CreateServerBodyDtoMetaFromJSONTyped;
 exports.CreateServerBodyDtoMetaToJSON = CreateServerBodyDtoMetaToJSON;
 exports.CreateServerBodyDtoMetaToJSONTyped = CreateServerBodyDtoMetaToJSONTyped;
-/**
- * @export
- */
-exports.CreateServerBodyDtoMetaHealthStatusEnum = {
-    Healthy: 'healthy',
-    Unhealthy: 'unhealthy',
-    Unknown: 'unknown'
-};
 /**
  * Check if a given object implements the CreateServerBodyDtoMeta interface.
  */
@@ -43,7 +34,6 @@ function CreateServerBodyDtoMetaFromJSONTyped(json, ignoreDiscriminator) {
     return {
         ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
-        'healthStatus': json['health_status'] == null ? undefined : json['health_status'],
     };
 }
 function CreateServerBodyDtoMetaToJSON(json) {
@@ -56,6 +46,5 @@ function CreateServerBodyDtoMetaToJSONTyped(value, ignoreDiscriminator = false) 
     return {
         ...value,
         'tags': value['tags'],
-        'health_status': value['healthStatus'],
     };
 }

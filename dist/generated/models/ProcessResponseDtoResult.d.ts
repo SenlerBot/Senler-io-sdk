@@ -17,13 +17,14 @@ import type { DeliverySendProcessResultDto } from './DeliverySendProcessResultDt
 import type { ExportProcessResultDto } from './ExportProcessResultDto';
 import type { ImportProcessResultDto } from './ImportProcessResultDto';
 import type { LeadsRefreshProcessResultDto } from './LeadsRefreshProcessResultDto';
+import type { LeadsSegmentOperationProcessResultDto } from './LeadsSegmentOperationProcessResultDto';
 import type { ResourcePackageImportProcessResultDto } from './ResourcePackageImportProcessResultDto';
 /**
  * @type ProcessResponseDtoResult
  *
  * @export
  */
-export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | ResourcePackageImportProcessResultDto;
+export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | LeadsSegmentOperationProcessResultDto | ResourcePackageImportProcessResultDto;
 export declare function ProcessResponseDtoResultFromJSON(json: any): ProcessResponseDtoResult;
 export declare function ProcessResponseDtoResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProcessResponseDtoResult;
 export declare function ProcessResponseDtoResultToJSON(json: any): any;

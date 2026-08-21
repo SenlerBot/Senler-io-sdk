@@ -11,6 +11,11 @@
  */
 import * as runtime from '../runtime';
 import type { AnalyticsResponseDto, CabinetEventDetailDto, EventsList200Response, QuickMetricsResponseDto, TrafficChannelsResponseDto, TrafficSourcesResponseDto } from '../models/index';
+export interface EventsGetAnalyticsRequest {
+    period: EventsGetAnalyticsPeriodEnum;
+    projectId: string;
+    acceptLanguage?: EventsGetAnalyticsAcceptLanguageEnum;
+}
 export interface EventsGetByIdRequest {
     eventId: string;
     acceptLanguage?: EventsGetByIdAcceptLanguageEnum;
@@ -42,11 +47,6 @@ export interface EventsListRequest {
     sortOrder?: EventsListSortOrderEnum;
     acceptLanguage?: EventsListAcceptLanguageEnum;
 }
-export interface GetAnalyticsRequest {
-    period: GetAnalyticsPeriodEnum;
-    projectId: string;
-    acceptLanguage?: GetAnalyticsAcceptLanguageEnum;
-}
 export interface GetMarketingQuickMetricsRequest {
     projectId: string;
     period?: GetMarketingQuickMetricsPeriodEnum;
@@ -67,6 +67,16 @@ export interface GetMarketingTrafficSourcesRequest {
  */
 export declare class EventsApi extends runtime.BaseAPI {
     /**
+     * . .
+     *
+     */
+    eventsGetAnalyticsRaw(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    eventsGetAnalytics(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto>;
+    /**
      * .
      * ID
      */
@@ -86,16 +96,6 @@ export declare class EventsApi extends runtime.BaseAPI {
      *
      */
     eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response>;
-    /**
-     * . .
-     *
-     */
-    getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto>;
     /**
      * .
      *
@@ -127,6 +127,24 @@ export declare class EventsApi extends runtime.BaseAPI {
      */
     getMarketingTrafficSources(requestParameters: GetMarketingTrafficSourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficSourcesResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const EventsGetAnalyticsPeriodEnum: {
+    readonly _24h: "24h";
+    readonly _7d: "7d";
+    readonly _30d: "30d";
+    readonly _90d: "90d";
+};
+export type EventsGetAnalyticsPeriodEnum = typeof EventsGetAnalyticsPeriodEnum[keyof typeof EventsGetAnalyticsPeriodEnum];
+/**
+ * @export
+ */
+export declare const EventsGetAnalyticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type EventsGetAnalyticsAcceptLanguageEnum = typeof EventsGetAnalyticsAcceptLanguageEnum[keyof typeof EventsGetAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -195,6 +213,8 @@ export declare const EventsListActionTypeEnum: {
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
     readonly AiResponseStarted: "ai_response_started";
+    readonly AgentInvoked: "agent_invoked";
+    readonly AiResponseCancelled: "ai_response_cancelled";
     readonly ToolStarted: "tool_started";
     readonly ToolCompleted: "tool_completed";
     readonly ToolFailed: "tool_failed";
@@ -207,6 +227,7 @@ export declare const EventsListActionTypeEnum: {
     readonly ImageAnalyzed: "image_analyzed";
     readonly AiActionExecuted: "ai_action_executed";
     readonly AiProviderCallCompleted: "ai_provider_call_completed";
+    readonly AnalyticsUsageCharged: "analytics_usage_charged";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";
@@ -260,24 +281,6 @@ export declare const EventsListAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type EventsListAcceptLanguageEnum = typeof EventsListAcceptLanguageEnum[keyof typeof EventsListAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetAnalyticsPeriodEnum: {
-    readonly _24h: "24h";
-    readonly _7d: "7d";
-    readonly _30d: "30d";
-    readonly _90d: "90d";
-};
-export type GetAnalyticsPeriodEnum = typeof GetAnalyticsPeriodEnum[keyof typeof GetAnalyticsPeriodEnum];
-/**
- * @export
- */
-export declare const GetAnalyticsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetAnalyticsAcceptLanguageEnum = typeof GetAnalyticsAcceptLanguageEnum[keyof typeof GetAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */

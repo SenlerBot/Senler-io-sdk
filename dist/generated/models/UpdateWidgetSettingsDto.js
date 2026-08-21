@@ -20,6 +20,7 @@ exports.UpdateWidgetSettingsDtoFromJSONTyped = UpdateWidgetSettingsDtoFromJSONTy
 exports.UpdateWidgetSettingsDtoToJSON = UpdateWidgetSettingsDtoToJSON;
 exports.UpdateWidgetSettingsDtoToJSONTyped = UpdateWidgetSettingsDtoToJSONTyped;
 const WidgetFeaturesDto_1 = require("./WidgetFeaturesDto");
+const WidgetExternalAiSettingsDto_1 = require("./WidgetExternalAiSettingsDto");
 const WidgetThemeDto_1 = require("./WidgetThemeDto");
 /**
  * @export
@@ -63,6 +64,7 @@ function UpdateWidgetSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'externalAi': json['external_ai'] == null ? undefined : (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoFromJSON)(json['external_ai']),
         'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'name': json['name'] == null ? undefined : json['name'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -82,6 +84,7 @@ function UpdateWidgetSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'external_ai': (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoToJSON)(value['externalAi']),
         'config_source': value['configSource'],
         'name': value['name'],
         'avatar_url': value['avatarUrl'],

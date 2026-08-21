@@ -18,7 +18,7 @@ exports.DeliverySendPayloadDtoFromJSON = DeliverySendPayloadDtoFromJSON;
 exports.DeliverySendPayloadDtoFromJSONTyped = DeliverySendPayloadDtoFromJSONTyped;
 exports.DeliverySendPayloadDtoToJSON = DeliverySendPayloadDtoToJSON;
 exports.DeliverySendPayloadDtoToJSONTyped = DeliverySendPayloadDtoToJSONTyped;
-const LeadsFilterDto_1 = require("./LeadsFilterDto");
+const DeliveryAudienceFilterDto_1 = require("./DeliveryAudienceFilterDto");
 const DeliverySendParamsDto_1 = require("./DeliverySendParamsDto");
 /**
  * Check if a given object implements the DeliverySendPayloadDto interface.
@@ -39,7 +39,7 @@ function DeliverySendPayloadDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
+        'filters': json['filters'] == null ? undefined : (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoFromJSON)(json['filters']),
         'params': (0, DeliverySendParamsDto_1.DeliverySendParamsDtoFromJSON)(json['params']),
     };
 }
@@ -52,7 +52,7 @@ function DeliverySendPayloadDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'project_id': value['projectId'],
-        'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
+        'filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoToJSON)(value['filters']),
         'params': (0, DeliverySendParamsDto_1.DeliverySendParamsDtoToJSON)(value['params']),
     };
 }

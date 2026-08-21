@@ -39,6 +39,7 @@ function SetLandingVkAppTargetDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'channelId': json['channel_id'],
         'target': (0, LandingVkAppResponseDtoTarget_1.LandingVkAppResponseDtoTargetFromJSON)(json['target']),
+        'openSingleLanding': json['open_single_landing'] == null ? undefined : json['open_single_landing'],
     };
 }
 function SetLandingVkAppTargetDtoToJSON(json) {
@@ -51,5 +52,6 @@ function SetLandingVkAppTargetDtoToJSONTyped(value, ignoreDiscriminator = false)
     return {
         'channel_id': value['channelId'],
         'target': (0, LandingVkAppResponseDtoTarget_1.LandingVkAppResponseDtoTargetToJSON)(value['target']),
+        'open_single_landing': value['openSingleLanding'],
     };
 }

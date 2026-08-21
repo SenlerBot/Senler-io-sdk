@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateExportProcessDto, CreateImportProcessDto, CreateLeadsRefreshProcessDto, LeadResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
+import type { CountLeadsByVariableResponseDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
     acceptLanguage?: ExportAcceptLanguageEnum;
@@ -18,6 +18,96 @@ export interface ExportRequest {
 export interface ImportRequest {
     createImportProcessDto: CreateImportProcessDto;
     acceptLanguage?: ImportAcceptLanguageEnum;
+}
+export interface AgentOperationRequest {
+    createLeadsAgentOperationProcessDto: CreateLeadsAgentOperationProcessDto;
+    acceptLanguage?: AgentOperationAcceptLanguageEnum;
+}
+export interface AutomationOperationRequest {
+    createLeadsAutomationOperationProcessDto: CreateLeadsAutomationOperationProcessDto;
+    acceptLanguage?: AutomationOperationAcceptLanguageEnum;
+}
+export interface ByVariableExportEqualsBooleanRequest {
+    exportVariableLeadsByBooleanDto: ExportVariableLeadsByBooleanDto;
+    acceptLanguage?: ByVariableExportEqualsBooleanAcceptLanguageEnum;
+}
+export interface ByVariableExportEqualsNullRequest {
+    exportVariableLeadsDto: ExportVariableLeadsDto;
+    acceptLanguage?: ByVariableExportEqualsNullAcceptLanguageEnum;
+}
+export interface ByVariableExportEqualsNumberRequest {
+    exportVariableLeadsByNumberDto: ExportVariableLeadsByNumberDto;
+    acceptLanguage?: ByVariableExportEqualsNumberAcceptLanguageEnum;
+}
+export interface ByVariableExportEqualsStringRequest {
+    exportVariableLeadsByStringDto: ExportVariableLeadsByStringDto;
+    acceptLanguage?: ByVariableExportEqualsStringAcceptLanguageEnum;
+}
+export interface ByVariableExportExistsRequest {
+    exportVariableLeadsDto: ExportVariableLeadsDto;
+    acceptLanguage?: ByVariableExportExistsAcceptLanguageEnum;
+}
+export interface ByVariableSearchEqualsBooleanRequest {
+    searchVariableLeadsByBooleanDto: SearchVariableLeadsByBooleanDto;
+    acceptLanguage?: ByVariableSearchEqualsBooleanAcceptLanguageEnum;
+}
+export interface ByVariableSearchEqualsNullRequest {
+    searchVariableLeadsDto: SearchVariableLeadsDto;
+    acceptLanguage?: ByVariableSearchEqualsNullAcceptLanguageEnum;
+}
+export interface ByVariableSearchEqualsNumberRequest {
+    searchVariableLeadsByNumberDto: SearchVariableLeadsByNumberDto;
+    acceptLanguage?: ByVariableSearchEqualsNumberAcceptLanguageEnum;
+}
+export interface ByVariableSearchEqualsStringRequest {
+    searchVariableLeadsByStringDto: SearchVariableLeadsByStringDto;
+    acceptLanguage?: ByVariableSearchEqualsStringAcceptLanguageEnum;
+}
+export interface ByVariableSearchExistsRequest {
+    searchVariableLeadsDto: SearchVariableLeadsDto;
+    acceptLanguage?: ByVariableSearchExistsAcceptLanguageEnum;
+}
+export interface ExportByDeliveryRequest {
+    exportLeadsByDeliveryDto: ExportLeadsByDeliveryDto;
+    acceptLanguage?: ExportByDeliveryAcceptLanguageEnum;
+}
+export interface GetByVariableCountEqualsBooleanRequest {
+    projectId: string;
+    variableName: string;
+    value: boolean;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountEqualsBooleanAcceptLanguageEnum;
+}
+export interface GetByVariableCountEqualsNullRequest {
+    projectId: string;
+    variableName: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountEqualsNullAcceptLanguageEnum;
+}
+export interface GetByVariableCountEqualsNumberRequest {
+    projectId: string;
+    variableName: string;
+    value: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountEqualsNumberAcceptLanguageEnum;
+}
+export interface GetByVariableCountEqualsStringRequest {
+    projectId: string;
+    variableName: string;
+    value: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountEqualsStringAcceptLanguageEnum;
+}
+export interface GetByVariableCountExistsRequest {
+    projectId: string;
+    variableName: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountExistsAcceptLanguageEnum;
 }
 export interface LeadsGetByIdRequest {
     id: string;
@@ -30,6 +120,18 @@ export interface RefreshRequest {
 export interface SearchRequest {
     searchLeadsDto: SearchLeadsDto;
     acceptLanguage?: SearchAcceptLanguageEnum;
+}
+export interface SearchByAutomationRequest {
+    searchLeadsByAutomationDto: SearchLeadsByAutomationDto;
+    acceptLanguage?: SearchByAutomationAcceptLanguageEnum;
+}
+export interface SearchByDeliveryRequest {
+    searchLeadsByDeliveryDto: SearchLeadsByDeliveryDto;
+    acceptLanguage?: SearchByDeliveryAcceptLanguageEnum;
+}
+export interface SegmentOperationRequest {
+    createLeadsSegmentOperationProcessDto: CreateLeadsSegmentOperationProcessDto;
+    acceptLanguage?: SegmentOperationAcceptLanguageEnum;
 }
 export interface UpdateBlacklistRequest {
     id: string;
@@ -80,6 +182,186 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     _import(requestParameters: ImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
+     * , . .
+     *
+     */
+    agentOperationRaw(requestParameters: AgentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    agentOperation(requestParameters: AgentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    automationOperationRaw(requestParameters: AutomationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    automationOperation(requestParameters: AutomationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableExportEqualsBooleanRaw(requestParameters: ByVariableExportEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableExportEqualsBoolean(requestParameters: ByVariableExportEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     * null
+     */
+    byVariableExportEqualsNullRaw(requestParameters: ByVariableExportEqualsNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     * null
+     */
+    byVariableExportEqualsNull(requestParameters: ByVariableExportEqualsNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableExportEqualsNumberRaw(requestParameters: ByVariableExportEqualsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableExportEqualsNumber(requestParameters: ByVariableExportEqualsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableExportEqualsStringRaw(requestParameters: ByVariableExportEqualsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableExportEqualsString(requestParameters: ByVariableExportEqualsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    byVariableExportExistsRaw(requestParameters: ByVariableExportExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    byVariableExportExists(requestParameters: ByVariableExportExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableSearchEqualsBooleanRaw(requestParameters: ByVariableSearchEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableSearchEqualsBoolean(requestParameters: ByVariableSearchEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     * , null
+     */
+    byVariableSearchEqualsNullRaw(requestParameters: ByVariableSearchEqualsNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     * , null
+     */
+    byVariableSearchEqualsNull(requestParameters: ByVariableSearchEqualsNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableSearchEqualsNumberRaw(requestParameters: ByVariableSearchEqualsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableSearchEqualsNumber(requestParameters: ByVariableSearchEqualsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableSearchEqualsStringRaw(requestParameters: ByVariableSearchEqualsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableSearchEqualsString(requestParameters: ByVariableSearchEqualsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    byVariableSearchExistsRaw(requestParameters: ByVariableSearchExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    byVariableSearchExists(requestParameters: ByVariableSearchExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    exportByDeliveryRaw(requestParameters: ExportByDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    exportByDelivery(requestParameters: ExportByDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountEqualsBooleanRaw(requestParameters: GetByVariableCountEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountEqualsBoolean(requestParameters: GetByVariableCountEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , null.
+     * , null
+     */
+    getByVariableCountEqualsNullRaw(requestParameters: GetByVariableCountEqualsNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , null.
+     * , null
+     */
+    getByVariableCountEqualsNull(requestParameters: GetByVariableCountEqualsNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountEqualsNumberRaw(requestParameters: GetByVariableCountEqualsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountEqualsNumber(requestParameters: GetByVariableCountEqualsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountEqualsStringRaw(requestParameters: GetByVariableCountEqualsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountEqualsString(requestParameters: GetByVariableCountEqualsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * . .
+     * ,
+     */
+    getByVariableCountExistsRaw(requestParameters: GetByVariableCountExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * . .
+     * ,
+     */
+    getByVariableCountExists(requestParameters: GetByVariableCountExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
      * .
      * ID
      */
@@ -109,6 +391,36 @@ export declare class LeadsApi extends runtime.BaseAPI {
      *
      */
     search(requestParameters: SearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadsListResponseDto>;
+    /**
+     * , . .
+     *
+     */
+    searchByAutomationRaw(requestParameters: SearchByAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByAutomationResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    searchByAutomation(requestParameters: SearchByAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByAutomationResponseDto>;
+    /**
+     * . .
+     *
+     */
+    searchByDeliveryRaw(requestParameters: SearchByDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByDeliveryResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    searchByDelivery(requestParameters: SearchByDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByDeliveryResponseDto>;
+    /**
+     * , filters. ; .
+     *
+     */
+    segmentOperationRaw(requestParameters: SegmentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * , filters. ; .
+     *
+     */
+    segmentOperation(requestParameters: SegmentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
      * .
      *
@@ -179,6 +491,150 @@ export type ImportAcceptLanguageEnum = typeof ImportAcceptLanguageEnum[keyof typ
 /**
  * @export
  */
+export declare const AgentOperationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AgentOperationAcceptLanguageEnum = typeof AgentOperationAcceptLanguageEnum[keyof typeof AgentOperationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AutomationOperationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationOperationAcceptLanguageEnum = typeof AutomationOperationAcceptLanguageEnum[keyof typeof AutomationOperationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportEqualsBooleanAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportEqualsBooleanAcceptLanguageEnum = typeof ByVariableExportEqualsBooleanAcceptLanguageEnum[keyof typeof ByVariableExportEqualsBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportEqualsNullAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportEqualsNullAcceptLanguageEnum = typeof ByVariableExportEqualsNullAcceptLanguageEnum[keyof typeof ByVariableExportEqualsNullAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportEqualsNumberAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportEqualsNumberAcceptLanguageEnum = typeof ByVariableExportEqualsNumberAcceptLanguageEnum[keyof typeof ByVariableExportEqualsNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportEqualsStringAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportEqualsStringAcceptLanguageEnum = typeof ByVariableExportEqualsStringAcceptLanguageEnum[keyof typeof ByVariableExportEqualsStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportExistsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportExistsAcceptLanguageEnum = typeof ByVariableExportExistsAcceptLanguageEnum[keyof typeof ByVariableExportExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchEqualsBooleanAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchEqualsBooleanAcceptLanguageEnum = typeof ByVariableSearchEqualsBooleanAcceptLanguageEnum[keyof typeof ByVariableSearchEqualsBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchEqualsNullAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchEqualsNullAcceptLanguageEnum = typeof ByVariableSearchEqualsNullAcceptLanguageEnum[keyof typeof ByVariableSearchEqualsNullAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchEqualsNumberAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchEqualsNumberAcceptLanguageEnum = typeof ByVariableSearchEqualsNumberAcceptLanguageEnum[keyof typeof ByVariableSearchEqualsNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchEqualsStringAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchEqualsStringAcceptLanguageEnum = typeof ByVariableSearchEqualsStringAcceptLanguageEnum[keyof typeof ByVariableSearchEqualsStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchExistsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchExistsAcceptLanguageEnum = typeof ByVariableSearchExistsAcceptLanguageEnum[keyof typeof ByVariableSearchExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ExportByDeliveryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ExportByDeliveryAcceptLanguageEnum = typeof ExportByDeliveryAcceptLanguageEnum[keyof typeof ExportByDeliveryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountEqualsBooleanAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountEqualsBooleanAcceptLanguageEnum = typeof GetByVariableCountEqualsBooleanAcceptLanguageEnum[keyof typeof GetByVariableCountEqualsBooleanAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountEqualsNullAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountEqualsNullAcceptLanguageEnum = typeof GetByVariableCountEqualsNullAcceptLanguageEnum[keyof typeof GetByVariableCountEqualsNullAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountEqualsNumberAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountEqualsNumberAcceptLanguageEnum = typeof GetByVariableCountEqualsNumberAcceptLanguageEnum[keyof typeof GetByVariableCountEqualsNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountEqualsStringAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountEqualsStringAcceptLanguageEnum = typeof GetByVariableCountEqualsStringAcceptLanguageEnum[keyof typeof GetByVariableCountEqualsStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountExistsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountExistsAcceptLanguageEnum = typeof GetByVariableCountExistsAcceptLanguageEnum[keyof typeof GetByVariableCountExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const LeadsGetByIdAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -200,6 +656,30 @@ export declare const SearchAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type SearchAcceptLanguageEnum = typeof SearchAcceptLanguageEnum[keyof typeof SearchAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SearchByAutomationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SearchByAutomationAcceptLanguageEnum = typeof SearchByAutomationAcceptLanguageEnum[keyof typeof SearchByAutomationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SearchByDeliveryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SearchByDeliveryAcceptLanguageEnum = typeof SearchByDeliveryAcceptLanguageEnum[keyof typeof SearchByDeliveryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SegmentOperationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SegmentOperationAcceptLanguageEnum = typeof SegmentOperationAcceptLanguageEnum[keyof typeof SegmentOperationAcceptLanguageEnum];
 /**
  * @export
  */

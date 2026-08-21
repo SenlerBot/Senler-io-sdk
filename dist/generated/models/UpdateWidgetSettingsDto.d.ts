@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { WidgetFeaturesDto } from './WidgetFeaturesDto';
+import type { WidgetExternalAiSettingsDto } from './WidgetExternalAiSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
  * UpdateWidgetSettingsDto.
@@ -53,6 +54,12 @@ export interface UpdateWidgetSettingsDto {
      * @memberof UpdateWidgetSettingsDto
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
+    /**
+     * MCP
+     * @type {WidgetExternalAiSettingsDto}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    externalAi?: WidgetExternalAiSettingsDto;
     /**
      * : local ( JS ) remote ( /init)
      * @type {string}

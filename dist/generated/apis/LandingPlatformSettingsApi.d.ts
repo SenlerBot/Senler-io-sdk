@@ -10,7 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CheckLandingTelegramMenuButtonDto, LandingMaxMiniAppListResponseDto, LandingMaxMiniAppResponseDto, LandingMaxMiniAppVerificationResponseDto, LandingTelegramMenuButtonListResponseDto, LandingTelegramMenuButtonResponseDto, LandingTelegramMiniAppListResponseDto, LandingTelegramMiniAppResponseDto, LandingTelegramMiniAppVerificationResponseDto, LandingVkAppListResponseDto, LandingVkAppResponseDto, SetLandingMaxMiniAppTargetDto, SetLandingTelegramMenuButtonDto, SetLandingTelegramMiniAppDto, SetLandingVkAppTargetDto, StartLandingMaxMiniAppVerificationDto, StartLandingTelegramMiniAppVerificationDto } from '../models/index';
+import type { CheckLandingTelegramMenuButtonDto, LandingMaxMiniAppListResponseDto, LandingMaxMiniAppResponseDto, LandingMaxMiniAppVerificationResponseDto, LandingTelegramMenuButtonListResponseDto, LandingTelegramMenuButtonResponseDto, LandingTelegramMiniAppListResponseDto, LandingTelegramMiniAppResponseDto, LandingTelegramMiniAppVerificationResponseDto, LandingVkAppListResponseDto, LandingVkAppResponseDto, LandingWebSettingsResponseDto, SetLandingMaxMiniAppTargetDto, SetLandingTelegramMiniAppDto, SetLandingVkAppTargetDto, SetLandingWebSettingsDto, StartLandingMaxMiniAppVerificationDto, StartLandingTelegramMiniAppVerificationDto, TypedTelegramMenuButtonTextDto } from '../models/index';
+export interface DeleteLandingsPlatformTelegramMenuButtonRequest {
+    projectId: string;
+    channelId: string;
+    acceptLanguage?: DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum;
+}
 export interface GetLandingsPlatformMaxMiniAppsRequest {
     projectId: string;
     acceptLanguage?: GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum;
@@ -27,6 +32,10 @@ export interface GetLandingsPlatformVkAppsRequest {
     projectId: string;
     acceptLanguage?: GetLandingsPlatformVkAppsAcceptLanguageEnum;
 }
+export interface GetLandingsPlatformWebRequest {
+    projectId: string;
+    acceptLanguage?: GetLandingsPlatformWebAcceptLanguageEnum;
+}
 export interface LandingsPlatformMaxMiniAppTargetRequest {
     projectId: string;
     setLandingMaxMiniAppTargetDto: SetLandingMaxMiniAppTargetDto;
@@ -36,11 +45,6 @@ export interface LandingsPlatformMaxMiniAppVerificationRequest {
     projectId: string;
     startLandingMaxMiniAppVerificationDto: StartLandingMaxMiniAppVerificationDto;
     acceptLanguage?: LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum;
-}
-export interface LandingsPlatformTelegramMenuButtonApplyRequest {
-    projectId: string;
-    setLandingTelegramMenuButtonDto: SetLandingTelegramMenuButtonDto;
-    acceptLanguage?: LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum;
 }
 export interface LandingsPlatformTelegramMenuButtonCheckRequest {
     projectId: string;
@@ -57,15 +61,55 @@ export interface LandingsPlatformVkAppTargetRequest {
     setLandingVkAppTargetDto: SetLandingVkAppTargetDto;
     acceptLanguage?: LandingsPlatformVkAppTargetAcceptLanguageEnum;
 }
+export interface UpdateLandingsPlatformTelegramMenuButtonBannerGridRequest {
+    projectId: string;
+    channelId: string;
+    typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
+    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum;
+}
+export interface UpdateLandingsPlatformTelegramMenuButtonIconListRequest {
+    projectId: string;
+    channelId: string;
+    typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
+    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum;
+}
+export interface UpdateLandingsPlatformTelegramMenuButtonLandingRequest {
+    projectId: string;
+    channelId: string;
+    landingId: string;
+    typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
+    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum;
+}
+export interface UpdateLandingsPlatformTelegramMenuButtonListRequest {
+    projectId: string;
+    channelId: string;
+    typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
+    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum;
+}
 export interface UpdateLandingsPlatformTelegramMiniAppRequest {
     projectId: string;
     setLandingTelegramMiniAppDto: SetLandingTelegramMiniAppDto;
     acceptLanguage?: UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum;
 }
+export interface UpdateLandingsPlatformWebRequest {
+    projectId: string;
+    setLandingWebSettingsDto: SetLandingWebSettingsDto;
+    acceptLanguage?: UpdateLandingsPlatformWebAcceptLanguageEnum;
+}
 /**
  *
  */
 export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
+    /**
+     * .
+     * Telegram
+     */
+    deleteLandingsPlatformTelegramMenuButtonRaw(requestParameters: DeleteLandingsPlatformTelegramMenuButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>>;
+    /**
+     * .
+     * Telegram
+     */
+    deleteLandingsPlatformTelegramMenuButton(requestParameters: DeleteLandingsPlatformTelegramMenuButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto>;
     /**
      * MAX Mini App .
      * MAX Mini App
@@ -107,6 +151,16 @@ export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
      */
     getLandingsPlatformVkApps(requestParameters: GetLandingsPlatformVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVkAppListResponseDto>;
     /**
+     * - .
+     * -
+     */
+    getLandingsPlatformWebRaw(requestParameters: GetLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingWebSettingsResponseDto>>;
+    /**
+     * - .
+     * -
+     */
+    getLandingsPlatformWeb(requestParameters: GetLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto>;
+    /**
      * MAX- Mini App : .
      * MAX Mini App
      */
@@ -126,16 +180,6 @@ export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX Mini App
      */
     landingsPlatformMaxMiniAppVerification(requestParameters: LandingsPlatformMaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppVerificationResponseDto>;
-    /**
-     * Telegram-, .
-     * Telegram-
-     */
-    landingsPlatformTelegramMenuButtonApplyRaw(requestParameters: LandingsPlatformTelegramMenuButtonApplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>>;
-    /**
-     * Telegram-, .
-     * Telegram-
-     */
-    landingsPlatformTelegramMenuButtonApply(requestParameters: LandingsPlatformTelegramMenuButtonApplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto>;
     /**
      * Telegram- .
      * Telegram-
@@ -157,15 +201,55 @@ export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
      */
     landingsPlatformTelegramMiniAppVerification(requestParameters: LandingsPlatformTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppVerificationResponseDto>;
     /**
-     * VK- : .
+     * VK- .
      * VK App
      */
     landingsPlatformVkAppTargetRaw(requestParameters: LandingsPlatformVkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingVkAppResponseDto>>;
     /**
-     * VK- : .
+     * VK- .
      * VK App
      */
     landingsPlatformVkAppTarget(requestParameters: LandingsPlatformVkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVkAppResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonBannerGridRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonBannerGridRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonBannerGrid(requestParameters: UpdateLandingsPlatformTelegramMenuButtonBannerGridRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonIconListRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonIconListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonIconList(requestParameters: UpdateLandingsPlatformTelegramMenuButtonIconListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonLandingRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonLanding(requestParameters: UpdateLandingsPlatformTelegramMenuButtonLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonListRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateLandingsPlatformTelegramMenuButtonList(requestParameters: UpdateLandingsPlatformTelegramMenuButtonListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto>;
     /**
      * Telegram Mini App .
      * Telegram Mini App
@@ -176,7 +260,25 @@ export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App
      */
     updateLandingsPlatformTelegramMiniApp(requestParameters: UpdateLandingsPlatformTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppResponseDto>;
+    /**
+     * .
+     * -
+     */
+    updateLandingsPlatformWebRaw(requestParameters: UpdateLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingWebSettingsResponseDto>>;
+    /**
+     * .
+     * -
+     */
+    updateLandingsPlatformWeb(requestParameters: UpdateLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum = typeof DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum[keyof typeof DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum];
 /**
  * @export
  */
@@ -212,6 +314,14 @@ export type GetLandingsPlatformVkAppsAcceptLanguageEnum = typeof GetLandingsPlat
 /**
  * @export
  */
+export declare const GetLandingsPlatformWebAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingsPlatformWebAcceptLanguageEnum = typeof GetLandingsPlatformWebAcceptLanguageEnum[keyof typeof GetLandingsPlatformWebAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -225,14 +335,6 @@ export declare const LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum = typeof LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum[keyof typeof LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum = typeof LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum[keyof typeof LandingsPlatformTelegramMenuButtonApplyAcceptLanguageEnum];
 /**
  * @export
  */
@@ -260,8 +362,48 @@ export type LandingsPlatformVkAppTargetAcceptLanguageEnum = typeof LandingsPlatf
 /**
  * @export
  */
+export declare const UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingsPlatformWebAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingsPlatformWebAcceptLanguageEnum = typeof UpdateLandingsPlatformWebAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformWebAcceptLanguageEnum];

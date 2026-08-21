@@ -28,6 +28,12 @@ export interface AgentUsageStats {
      */
     agentName?: string;
     /**
+     * URL
+     * @type {string}
+     * @memberof AgentUsageStats
+     */
+    agentAvatarUrl?: string | null;
+    /**
      *
      * @type {number}
      * @memberof AgentUsageStats

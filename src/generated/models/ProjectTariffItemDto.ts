@@ -74,6 +74,18 @@ export interface ProjectTariffItemDto {
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
+    mailingMessagesPerDay: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectTariffItemDto
+     */
+    automationStepsPerSecond: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ProjectTariffItemDto
+     */
     storageLimitBytes: number;
     /**
      *
@@ -157,6 +169,8 @@ export function instanceOfProjectTariffItemDto(value: object): value is ProjectT
     if (!('nameRu' in value) || value['nameRu'] === undefined) return false;
     if (!('nameEn' in value) || value['nameEn'] === undefined) return false;
     if (!('creditsPerMonth' in value) || value['creditsPerMonth'] === undefined) return false;
+    if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
+    if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
     if (!('isUnlimited' in value) || value['isUnlimited'] === undefined) return false;
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
@@ -187,6 +201,8 @@ export function ProjectTariffItemDtoFromJSONTyped(json: any, ignoreDiscriminator
         'descriptionEn': json['description_en'] == null ? undefined : json['description_en'],
         'creditsPerMonth': json['credits_per_month'],
         'approxMessages': json['approx_messages'] == null ? undefined : json['approx_messages'],
+        'mailingMessagesPerDay': json['mailing_messages_per_day'],
+        'automationStepsPerSecond': json['automation_steps_per_second'],
         'storageLimitBytes': json['storage_limit_bytes'],
         'isUnlimited': json['is_unlimited'],
         'isFree': json['is_free'],
@@ -219,6 +235,8 @@ export function ProjectTariffItemDtoToJSONTyped(value?: ProjectTariffItemDto | n
         'description_en': value['descriptionEn'],
         'credits_per_month': value['creditsPerMonth'],
         'approx_messages': value['approxMessages'],
+        'mailing_messages_per_day': value['mailingMessagesPerDay'],
+        'automation_steps_per_second': value['automationStepsPerSecond'],
         'storage_limit_bytes': value['storageLimitBytes'],
         'is_unlimited': value['isUnlimited'],
         'is_free': value['isFree'],

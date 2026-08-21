@@ -18,7 +18,7 @@ exports.ChannelRoleDtoFromJSON = ChannelRoleDtoFromJSON;
 exports.ChannelRoleDtoFromJSONTyped = ChannelRoleDtoFromJSONTyped;
 exports.ChannelRoleDtoToJSON = ChannelRoleDtoToJSON;
 exports.ChannelRoleDtoToJSONTyped = ChannelRoleDtoToJSONTyped;
-const Role_1 = require("./Role");
+const ProjectRole_1 = require("./ProjectRole");
 /**
  * Check if a given object implements the ChannelRoleDto interface.
  */
@@ -38,7 +38,7 @@ function ChannelRoleDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'channelId': json['channel_id'],
-        'role': (0, Role_1.RoleFromJSON)(json['role']),
+        'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
     };
 }
 function ChannelRoleDtoToJSON(json) {
@@ -50,6 +50,6 @@ function ChannelRoleDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'channel_id': value['channelId'],
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
     };
 }

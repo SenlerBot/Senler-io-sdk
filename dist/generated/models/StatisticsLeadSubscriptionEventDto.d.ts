@@ -118,6 +118,7 @@ export declare const StatisticsLeadSubscriptionEventDtoPlatformTypeEnum: {
     readonly Avito: "avito";
     readonly Web: "web";
     readonly Ai: "ai";
+    readonly Automation: "automation";
 };
 export type StatisticsLeadSubscriptionEventDtoPlatformTypeEnum = typeof StatisticsLeadSubscriptionEventDtoPlatformTypeEnum[keyof typeof StatisticsLeadSubscriptionEventDtoPlatformTypeEnum];
 /**

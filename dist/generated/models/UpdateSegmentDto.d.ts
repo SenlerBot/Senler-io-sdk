@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SegmentPaymentDto } from './SegmentPaymentDto';
 import type { SegmentRequiredConsentDto } from './SegmentRequiredConsentDto';
 /**
  * UpdateSegmentDto.
@@ -24,17 +23,17 @@ export interface UpdateSegmentDto {
      */
     name?: string;
     /**
-     *
-     * @type {SegmentPaymentDto}
-     * @memberof UpdateSegmentDto
-     */
-    payment?: SegmentPaymentDto;
-    /**
      * ,
      * @type {Array<SegmentRequiredConsentDto>}
      * @memberof UpdateSegmentDto
      */
     requiredConsents?: Array<SegmentRequiredConsentDto>;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateSegmentDto
+     */
+    consentPromptText?: string | null;
 }
 /**
  * Check if a given object implements the UpdateSegmentDto interface.

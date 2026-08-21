@@ -13,16 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum = void 0;
 exports.instanceOfLandingTelegramMenuButtonDisabledResponseDto = instanceOfLandingTelegramMenuButtonDisabledResponseDto;
 exports.LandingTelegramMenuButtonDisabledResponseDtoFromJSON = LandingTelegramMenuButtonDisabledResponseDtoFromJSON;
 exports.LandingTelegramMenuButtonDisabledResponseDtoFromJSONTyped = LandingTelegramMenuButtonDisabledResponseDtoFromJSONTyped;
 exports.LandingTelegramMenuButtonDisabledResponseDtoToJSON = LandingTelegramMenuButtonDisabledResponseDtoToJSON;
 exports.LandingTelegramMenuButtonDisabledResponseDtoToJSONTyped = LandingTelegramMenuButtonDisabledResponseDtoToJSONTyped;
-/**
- * @export
- */
-exports.LandingTelegramMenuButtonDisabledResponseDtoEnabledEnum = {};
 /**
  * Check if a given object implements the LandingTelegramMenuButtonDisabledResponseDto interface.
  */

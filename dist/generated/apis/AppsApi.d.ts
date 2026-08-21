@@ -10,45 +10,571 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { TokenResponseDto } from '../models/index';
-export interface AppsCreateRequest {
-    grantType: AppsCreateGrantTypeEnum;
+import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, GetAppAutomationStepIconUploadUrlDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SetAppCatalogVisibilityDto, UpdateAppDto, UpdateAppOAuthRedirectUrisDto, UserAppOAuthAccessPolicyDto } from '../models/index';
+export interface AgentEventsRequest {
+    appId: string;
+    appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
+    acceptLanguage?: AgentEventsAcceptLanguageEnum;
+}
+export interface AppsGetByIdRequest {
+    id: string;
+    acceptLanguage?: AppsGetByIdAcceptLanguageEnum;
+}
+export interface AppsListRequest {
+    acceptLanguage?: AppsListAcceptLanguageEnum;
+}
+export interface AppsUpdateRequest {
+    id: string;
+    updateAppDto: UpdateAppDto;
+    acceptLanguage?: AppsUpdateAcceptLanguageEnum;
+}
+export interface AutomationStepsRequest {
+    appId: string;
+    appAutomationStepDefinitionDto: AppAutomationStepDefinitionDto;
+    acceptLanguage?: AutomationStepsAcceptLanguageEnum;
+}
+export interface AutomationStepsIconUploadUrlRequest {
+    appId: string;
+    getAppAutomationStepIconUploadUrlDto: GetAppAutomationStepIconUploadUrlDto;
+    acceptLanguage?: AutomationStepsIconUploadUrlAcceptLanguageEnum;
+}
+export interface DeleteAgentEventsRequest {
+    appId: string;
+    eventId: string;
+    acceptLanguage?: DeleteAgentEventsAcceptLanguageEnum;
+}
+export interface DeleteAutomationStepsRequest {
+    appId: string;
+    stepId: string;
+    acceptLanguage?: DeleteAutomationStepsAcceptLanguageEnum;
+}
+export interface DeleteToolsRequest {
+    appId: string;
+    toolId: string;
+    acceptLanguage?: DeleteToolsAcceptLanguageEnum;
+}
+export interface GetAutomationStepsRequest {
+    appId: string;
+    acceptLanguage?: GetAutomationStepsAcceptLanguageEnum;
+}
+export interface GetEmbeddedPageTestRequest {
+    id: string;
+    projectId: string;
+    acceptLanguage?: GetEmbeddedPageTestAcceptLanguageEnum;
+}
+export interface OauthTokenRequest {
+    grantType: OauthTokenGrantTypeEnum;
     authorization?: string;
-    acceptLanguage?: AppsCreateAcceptLanguageEnum;
+    acceptLanguage?: OauthTokenAcceptLanguageEnum;
     clientId?: string;
     clientSecret?: string;
     refreshToken?: string;
     code?: string;
     redirectUri?: string;
 }
+export interface ProvisionRequest {
+    createAppDto: CreateAppDto;
+    acceptLanguage?: ProvisionAcceptLanguageEnum;
+}
+export interface SourceProjectRequest {
+    id: string;
+    acceptLanguage?: SourceProjectAcceptLanguageEnum;
+}
+export interface SubmitForModerationRequest {
+    id: string;
+    acceptLanguage?: SubmitForModerationAcceptLanguageEnum;
+}
+export interface ToolsRequest {
+    appId: string;
+    appManualToolDefinitionDto: AppManualToolDefinitionDto;
+    acceptLanguage?: ToolsAcceptLanguageEnum;
+}
+export interface UpdateAgentEventsRequest {
+    appId: string;
+    eventId: string;
+    appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
+    acceptLanguage?: UpdateAgentEventsAcceptLanguageEnum;
+}
+export interface UpdateAutomationStepsRequest {
+    appId: string;
+    stepId: string;
+    appAutomationStepDefinitionDto: AppAutomationStepDefinitionDto;
+    acceptLanguage?: UpdateAutomationStepsAcceptLanguageEnum;
+}
+export interface UpdateAutomationStepsStatusRequest {
+    appId: string;
+    stepId: string;
+    appAutomationStepStatusDto: AppAutomationStepStatusDto;
+    acceptLanguage?: UpdateAutomationStepsStatusAcceptLanguageEnum;
+}
+export interface UpdateCatalogVisibilityRequest {
+    id: string;
+    setAppCatalogVisibilityDto: SetAppCatalogVisibilityDto;
+    acceptLanguage?: UpdateCatalogVisibilityAcceptLanguageEnum;
+}
+export interface UpdateOauthAccessProjectRequest {
+    id: string;
+    projectAppOAuthAccessPolicyDto: ProjectAppOAuthAccessPolicyDto;
+    acceptLanguage?: UpdateOauthAccessProjectAcceptLanguageEnum;
+}
+export interface UpdateOauthAccessUserRequest {
+    id: string;
+    userAppOAuthAccessPolicyDto: UserAppOAuthAccessPolicyDto;
+    acceptLanguage?: UpdateOauthAccessUserAcceptLanguageEnum;
+}
+export interface UpdateOauthRedirectUrisRequest {
+    id: string;
+    updateAppOAuthRedirectUrisDto: UpdateAppOAuthRedirectUrisDto;
+    acceptLanguage?: UpdateOauthRedirectUrisAcceptLanguageEnum;
+}
+export interface UpdateToolsRequest {
+    appId: string;
+    toolId: string;
+    appManualToolDefinitionDto: AppManualToolDefinitionDto;
+    acceptLanguage?: UpdateToolsAcceptLanguageEnum;
+}
 /**
  *
  */
 export declare class AppsApi extends runtime.BaseAPI {
     /**
-     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
-     * access token
+     * , .
+     *
      */
-    appsCreateRaw(requestParameters: AppsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TokenResponseDto>>;
+    agentEventsRaw(requestParameters: AgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAgentEventResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    agentEvents(requestParameters: AgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAgentEventResponseDto>;
+    /**
+     * .
+     *
+     */
+    appsGetByIdRaw(requestParameters: AppsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * .
+     *
+     */
+    appsGetById(requestParameters: AppsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * .
+     *
+     */
+    appsListRaw(requestParameters: AppsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppListItemResponseDto>>>;
+    /**
+     * .
+     *
+     */
+    appsList(requestParameters?: AppsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppListItemResponseDto>>;
+    /**
+     * .
+     *
+     */
+    appsUpdateRaw(requestParameters: AppsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * .
+     *
+     */
+    appsUpdate(requestParameters: AppsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * , .
+     *
+     */
+    automationStepsRaw(requestParameters: AutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    automationSteps(requestParameters: AutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepResponseDto>;
+    /**
+     * S3- .
+     *
+     */
+    automationStepsIconUploadUrlRaw(requestParameters: AutomationStepsIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepIconUploadUrlResponseDto>>;
+    /**
+     * S3- .
+     *
+     */
+    automationStepsIconUploadUrl(requestParameters: AutomationStepsIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepIconUploadUrlResponseDto>;
+    /**
+     * .
+     *
+     */
+    deleteAgentEventsRaw(requestParameters: DeleteAgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * .
+     *
+     */
+    deleteAgentEvents(requestParameters: DeleteAgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * .
+     *
+     */
+    deleteAutomationStepsRaw(requestParameters: DeleteAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * .
+     *
+     */
+    deleteAutomationSteps(requestParameters: DeleteAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * .
+     *
+     */
+    deleteToolsRaw(requestParameters: DeleteToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * .
+     *
+     */
+    deleteTools(requestParameters: DeleteToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * , .
+     *
+     */
+    getAutomationStepsRaw(requestParameters: GetAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepsResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getAutomationSteps(requestParameters: GetAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepsResponseDto>;
+    /**
+     * .
+     *
+     */
+    getEmbeddedPageTestRaw(requestParameters: GetEmbeddedPageTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppEmbeddedPageTestLaunchResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getEmbeddedPageTest(requestParameters: GetEmbeddedPageTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppEmbeddedPageTestLaunchResponseDto>;
     /**
      * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
-    appsCreate(requestParameters: AppsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TokenResponseDto>;
+    oauthTokenRaw(requestParameters: OauthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OauthToken200Response>>;
+    /**
+     * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
+     * access token
+     */
+    oauthToken(requestParameters: OauthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OauthToken200Response>;
+    /**
+     * client_secret. scope can_create_apps.
+     * OAuth
+     */
+    provisionRaw(requestParameters: ProvisionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppProvisionResponseDto>>;
+    /**
+     * client_secret. scope can_create_apps.
+     * OAuth
+     */
+    provision(requestParameters: ProvisionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppProvisionResponseDto>;
+    /**
+     * - .
+     *
+     */
+    sourceProjectRaw(requestParameters: SourceProjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * - .
+     *
+     */
+    sourceProject(requestParameters: SourceProjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * .
+     *
+     */
+    submitForModerationRaw(requestParameters: SubmitForModerationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * .
+     *
+     */
+    submitForModeration(requestParameters: SubmitForModerationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * .
+     *
+     */
+    toolsRaw(requestParameters: ToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppManualToolResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tools(requestParameters: ToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppManualToolResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateAgentEventsRaw(requestParameters: UpdateAgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAgentEventResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateAgentEvents(requestParameters: UpdateAgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAgentEventResponseDto>;
+    /**
+     * . .
+     *
+     */
+    updateAutomationStepsRaw(requestParameters: UpdateAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    updateAutomationSteps(requestParameters: UpdateAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepResponseDto>;
+    /**
+     * . , .
+     *
+     */
+    updateAutomationStepsStatusRaw(requestParameters: UpdateAutomationStepsStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepResponseDto>>;
+    /**
+     * . , .
+     *
+     */
+    updateAutomationStepsStatus(requestParameters: UpdateAutomationStepsStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateCatalogVisibilityRaw(requestParameters: UpdateCatalogVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateCatalogVisibility(requestParameters: UpdateCatalogVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    updateOauthAccessProjectRaw(requestParameters: UpdateOauthAccessProjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    updateOauthAccessProject(requestParameters: UpdateOauthAccessProjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    updateOauthAccessUserRaw(requestParameters: UpdateOauthAccessUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    updateOauthAccessUser(requestParameters: UpdateOauthAccessUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * OAuth redirect URI.
+     * OAuth redirect URI
+     */
+    updateOauthRedirectUrisRaw(requestParameters: UpdateOauthRedirectUrisRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * OAuth redirect URI.
+     * OAuth redirect URI
+     */
+    updateOauthRedirectUris(requestParameters: UpdateOauthRedirectUrisRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateToolsRaw(requestParameters: UpdateToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppManualToolResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateTools(requestParameters: UpdateToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppManualToolResponseDto>;
 }
 /**
  * @export
  */
-export declare const AppsCreateGrantTypeEnum: {
-    readonly RefreshToken: "refresh_token";
-    readonly AuthorizationCode: "authorization_code";
-};
-export type AppsCreateGrantTypeEnum = typeof AppsCreateGrantTypeEnum[keyof typeof AppsCreateGrantTypeEnum];
-/**
- * @export
- */
-export declare const AppsCreateAcceptLanguageEnum: {
+export declare const AgentEventsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AppsCreateAcceptLanguageEnum = typeof AppsCreateAcceptLanguageEnum[keyof typeof AppsCreateAcceptLanguageEnum];
+export type AgentEventsAcceptLanguageEnum = typeof AgentEventsAcceptLanguageEnum[keyof typeof AgentEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AppsGetByIdAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AppsGetByIdAcceptLanguageEnum = typeof AppsGetByIdAcceptLanguageEnum[keyof typeof AppsGetByIdAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AppsListAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AppsListAcceptLanguageEnum = typeof AppsListAcceptLanguageEnum[keyof typeof AppsListAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AppsUpdateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AppsUpdateAcceptLanguageEnum = typeof AppsUpdateAcceptLanguageEnum[keyof typeof AppsUpdateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AutomationStepsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationStepsAcceptLanguageEnum = typeof AutomationStepsAcceptLanguageEnum[keyof typeof AutomationStepsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AutomationStepsIconUploadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationStepsIconUploadUrlAcceptLanguageEnum = typeof AutomationStepsIconUploadUrlAcceptLanguageEnum[keyof typeof AutomationStepsIconUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteAgentEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteAgentEventsAcceptLanguageEnum = typeof DeleteAgentEventsAcceptLanguageEnum[keyof typeof DeleteAgentEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteAutomationStepsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteAutomationStepsAcceptLanguageEnum = typeof DeleteAutomationStepsAcceptLanguageEnum[keyof typeof DeleteAutomationStepsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteToolsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteToolsAcceptLanguageEnum = typeof DeleteToolsAcceptLanguageEnum[keyof typeof DeleteToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAutomationStepsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAutomationStepsAcceptLanguageEnum = typeof GetAutomationStepsAcceptLanguageEnum[keyof typeof GetAutomationStepsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetEmbeddedPageTestAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetEmbeddedPageTestAcceptLanguageEnum = typeof GetEmbeddedPageTestAcceptLanguageEnum[keyof typeof GetEmbeddedPageTestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const OauthTokenGrantTypeEnum: {
+    readonly RefreshToken: "refresh_token";
+    readonly AuthorizationCode: "authorization_code";
+};
+export type OauthTokenGrantTypeEnum = typeof OauthTokenGrantTypeEnum[keyof typeof OauthTokenGrantTypeEnum];
+/**
+ * @export
+ */
+export declare const OauthTokenAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type OauthTokenAcceptLanguageEnum = typeof OauthTokenAcceptLanguageEnum[keyof typeof OauthTokenAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProvisionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProvisionAcceptLanguageEnum = typeof ProvisionAcceptLanguageEnum[keyof typeof ProvisionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SourceProjectAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SourceProjectAcceptLanguageEnum = typeof SourceProjectAcceptLanguageEnum[keyof typeof SourceProjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SubmitForModerationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SubmitForModerationAcceptLanguageEnum = typeof SubmitForModerationAcceptLanguageEnum[keyof typeof SubmitForModerationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ToolsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ToolsAcceptLanguageEnum = typeof ToolsAcceptLanguageEnum[keyof typeof ToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateAgentEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateAgentEventsAcceptLanguageEnum = typeof UpdateAgentEventsAcceptLanguageEnum[keyof typeof UpdateAgentEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateAutomationStepsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateAutomationStepsAcceptLanguageEnum = typeof UpdateAutomationStepsAcceptLanguageEnum[keyof typeof UpdateAutomationStepsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateAutomationStepsStatusAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateAutomationStepsStatusAcceptLanguageEnum = typeof UpdateAutomationStepsStatusAcceptLanguageEnum[keyof typeof UpdateAutomationStepsStatusAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateCatalogVisibilityAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateCatalogVisibilityAcceptLanguageEnum = typeof UpdateCatalogVisibilityAcceptLanguageEnum[keyof typeof UpdateCatalogVisibilityAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateOauthAccessProjectAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateOauthAccessProjectAcceptLanguageEnum = typeof UpdateOauthAccessProjectAcceptLanguageEnum[keyof typeof UpdateOauthAccessProjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateOauthAccessUserAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateOauthAccessUserAcceptLanguageEnum = typeof UpdateOauthAccessUserAcceptLanguageEnum[keyof typeof UpdateOauthAccessUserAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateOauthRedirectUrisAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateOauthRedirectUrisAcceptLanguageEnum = typeof UpdateOauthRedirectUrisAcceptLanguageEnum[keyof typeof UpdateOauthRedirectUrisAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateToolsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateToolsAcceptLanguageEnum = typeof UpdateToolsAcceptLanguageEnum[keyof typeof UpdateToolsAcceptLanguageEnum];

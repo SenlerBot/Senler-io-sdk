@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsFilterDto } from './LeadsFilterDto';
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 import type { DeliverySendParamsDto } from './DeliverySendParamsDto';
 /**
  * DeliverySendPayloadDto.
@@ -24,11 +24,11 @@ export interface DeliverySendPayloadDto {
      */
     projectId: string;
     /**
-     * ,
-     * @type {LeadsFilterDto}
+     *
+     * @type {DeliveryAudienceFilterDto}
      * @memberof DeliverySendPayloadDto
      */
-    filters?: LeadsFilterDto;
+    filters?: DeliveryAudienceFilterDto;
     /**
      *
      * @type {DeliverySendParamsDto}

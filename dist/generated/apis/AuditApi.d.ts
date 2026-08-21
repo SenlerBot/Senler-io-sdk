@@ -55,6 +55,7 @@ export declare const GetAuditEntityTypeEnum: {
     readonly SegmentConsentDocument: "segment_consent_document";
     readonly Landing: "landing";
     readonly Trigger: "trigger";
+    readonly Automation: "automation";
     readonly Delivery: "delivery";
     readonly ProjectTariff: "project_tariff";
     readonly SupportSchedule: "support_schedule";
@@ -65,6 +66,7 @@ export declare const GetAuditEntityTypeEnum: {
     readonly PaymentSettings: "payment_settings";
     readonly Space: "space";
     readonly SummarizationSettings: "summarization_settings";
+    readonly TrafficMark: "traffic_mark";
 };
 export type GetAuditEntityTypeEnum = typeof GetAuditEntityTypeEnum[keyof typeof GetAuditEntityTypeEnum];
 /**

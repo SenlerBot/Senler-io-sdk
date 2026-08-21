@@ -30,7 +30,13 @@ export interface LeadVariableValueResponseDto {
      * @type {string}
      * @memberof LeadVariableValueResponseDto
      */
-    type: string;
+    type: LeadVariableValueResponseDtoTypeEnum;
+    /**
+     * ; null
+     * @type {boolean}
+     * @memberof LeadVariableValueResponseDto
+     */
+    isSet: boolean;
     /**
      *  (mixed type)
      * @type {{ [key: string]: any; }}
@@ -51,12 +57,29 @@ export interface LeadVariableValueResponseDto {
     agentInstruction?: string;
 }
 
+
+/**
+ * @export
+ */
+export const LeadVariableValueResponseDtoTypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean',
+    Json: 'json',
+    Date: 'date',
+    Array: 'array',
+    Object: 'object'
+} as const;
+export type LeadVariableValueResponseDtoTypeEnum = typeof LeadVariableValueResponseDtoTypeEnum[keyof typeof LeadVariableValueResponseDtoTypeEnum];
+
+
 /**
  * Check if a given object implements the LeadVariableValueResponseDto interface.
  */
 export function instanceOfLeadVariableValueResponseDto(value: object): value is LeadVariableValueResponseDto {
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('isSet' in value) || value['isSet'] === undefined) return false;
     if (!('value' in value) || value['value'] === undefined) return false;
     return true;
 }
@@ -73,6 +96,7 @@ export function LeadVariableValueResponseDtoFromJSONTyped(json: any, ignoreDiscr
 
         'name': json['name'],
         'type': json['type'],
+        'isSet': json['is_set'],
         'value': json['value'],
         'description': json['description'] == null ? undefined : json['description'],
         'agentInstruction': json['agent_instruction'] == null ? undefined : json['agent_instruction'],
@@ -92,6 +116,7 @@ export function LeadVariableValueResponseDtoToJSONTyped(value?: LeadVariableValu
 
         'name': value['name'],
         'type': value['type'],
+        'is_set': value['isSet'],
         'value': value['value'],
         'description': value['description'],
         'agent_instruction': value['agentInstruction'],

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateAgentsLandingDraftAcceptLanguageEnum = exports.UpdateAgentsLandingBlocksAcceptLanguageEnum = exports.GetAgentsLandingShareLinksAcceptLanguageEnum = exports.GetAgentsLandingPublicationsAcceptLanguageEnum = exports.GetAgentsLandingAcceptLanguageEnum = exports.DeleteAgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingBlocksMoveAcceptLanguageEnum = exports.AgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingAssetsUploadUrlAcceptLanguageEnum = exports.AgentsLandingAssetsConfirmAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
+exports.UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateAgentsLandingDraftAcceptLanguageEnum = exports.GetAgentsLandingShareLinksAcceptLanguageEnum = exports.GetAgentsLandingPublicationsAcceptLanguageEnum = exports.GetAgentsLandingAcceptLanguageEnum = exports.DeleteAgentsLandingBlocksAcceptLanguageEnum = exports.AgentsLandingBlocksMoveAcceptLanguageEnum = exports.AgentsLandingAssetsUploadUrlAcceptLanguageEnum = exports.AgentsLandingAssetsConfirmAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -147,60 +147,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
      */
     async agentsLandingAssetsUploadUrl(requestParameters, initOverrides) {
         const response = await this.agentsLandingAssetsUploadUrlRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async agentsLandingBlocksRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling agentsLandingBlocks().');
-        }
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling agentsLandingBlocks().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling agentsLandingBlocks().');
-        }
-        if (requestParameters['createAgentLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createAgentLandingBlockDto', 'Required parameter "createAgentLandingBlockDto" was null or undefined when calling agentsLandingBlocks().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xLandingEditorSessionId'] != null) {
-            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/agents/{agentId}/landing/blocks`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateAgentLandingBlockDtoToJSON)(requestParameters['createAgentLandingBlockDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async agentsLandingBlocks(requestParameters, initOverrides) {
-        const response = await this.agentsLandingBlocksRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -342,7 +288,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/agents/{agentId}/landing`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
@@ -385,7 +331,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/agents/{agentId}/landing/publications`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
@@ -428,7 +374,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/agents/{agentId}/landing/share-links`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
@@ -444,63 +390,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
      */
     async getAgentsLandingShareLinks(requestParameters, initOverrides) {
         const response = await this.getAgentsLandingShareLinksRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * optimistic locking.
-     *
-     */
-    async updateAgentsLandingBlocksRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateAgentsLandingBlocks().');
-        }
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateAgentsLandingBlocks().');
-        }
-        if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateAgentsLandingBlocks().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateAgentsLandingBlocks().');
-        }
-        if (requestParameters['updateAgentLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateAgentLandingBlockDto', 'Required parameter "updateAgentLandingBlockDto" was null or undefined when calling updateAgentsLandingBlocks().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xLandingEditorSessionId'] != null) {
-            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/agents/{agentId}/landing/blocks/{blockId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.UpdateAgentLandingBlockDtoToJSON)(requestParameters['updateAgentLandingBlockDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * optimistic locking.
-     *
-     */
-    async updateAgentsLandingBlocks(requestParameters, initOverrides) {
-        const response = await this.updateAgentsLandingBlocksRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -630,13 +519,6 @@ exports.AgentsLandingAssetsUploadUrlAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.AgentsLandingBlocksAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.AgentsLandingBlocksMoveAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -666,13 +548,6 @@ exports.GetAgentsLandingPublicationsAcceptLanguageEnum = {
  * @export
  */
 exports.GetAgentsLandingShareLinksAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateAgentsLandingBlocksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

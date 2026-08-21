@@ -26,7 +26,8 @@ exports.DialogDisplayInfoDtoSourceTypeEnum = {
     Lead: 'lead',
     GroupChat: 'group_chat',
     Agent: 'agent',
-    Comment: 'comment'
+    Comment: 'comment',
+    Automation: 'automation'
 };
 /**
  * @export
@@ -41,7 +42,8 @@ exports.DialogDisplayInfoDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 };
 /**
  * Check if a given object implements the DialogDisplayInfoDto interface.

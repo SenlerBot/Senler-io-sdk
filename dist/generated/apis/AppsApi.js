@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppsCreateAcceptLanguageEnum = exports.AppsCreateGrantTypeEnum = exports.AppsApi = void 0;
+exports.UpdateToolsAcceptLanguageEnum = exports.UpdateOauthRedirectUrisAcceptLanguageEnum = exports.UpdateOauthAccessUserAcceptLanguageEnum = exports.UpdateOauthAccessProjectAcceptLanguageEnum = exports.UpdateCatalogVisibilityAcceptLanguageEnum = exports.UpdateAutomationStepsStatusAcceptLanguageEnum = exports.UpdateAutomationStepsAcceptLanguageEnum = exports.UpdateAgentEventsAcceptLanguageEnum = exports.ToolsAcceptLanguageEnum = exports.SubmitForModerationAcceptLanguageEnum = exports.SourceProjectAcceptLanguageEnum = exports.ProvisionAcceptLanguageEnum = exports.OauthTokenAcceptLanguageEnum = exports.OauthTokenGrantTypeEnum = exports.GetEmbeddedPageTestAcceptLanguageEnum = exports.GetAutomationStepsAcceptLanguageEnum = exports.DeleteToolsAcceptLanguageEnum = exports.DeleteAutomationStepsAcceptLanguageEnum = exports.DeleteAgentEventsAcceptLanguageEnum = exports.AutomationStepsIconUploadUrlAcceptLanguageEnum = exports.AutomationStepsAcceptLanguageEnum = exports.AppsUpdateAcceptLanguageEnum = exports.AppsListAcceptLanguageEnum = exports.AppsGetByIdAcceptLanguageEnum = exports.AgentEventsAcceptLanguageEnum = exports.AppsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,12 +54,404 @@ const index_1 = require("../models/index");
  */
 class AppsApi extends runtime.BaseAPI {
     /**
+     * , .
+     *
+     */
+    async agentEventsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling agentEvents().');
+        }
+        if (requestParameters['appAgentEventDefinitionDto'] == null) {
+            throw new runtime.RequiredError('appAgentEventDefinitionDto', 'Required parameter "appAgentEventDefinitionDto" was null or undefined when calling agentEvents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/agent-events`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppAgentEventDefinitionDtoToJSON)(requestParameters['appAgentEventDefinitionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAgentEventResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async agentEvents(requestParameters, initOverrides) {
+        const response = await this.agentEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async appsGetByIdRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling appsGetById().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async appsGetById(requestParameters, initOverrides) {
+        const response = await this.appsGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async appsListRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/apps`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.AppListItemResponseDtoFromJSON));
+    }
+    /**
+     * .
+     *
+     */
+    async appsList(requestParameters = {}, initOverrides) {
+        const response = await this.appsListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async appsUpdateRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling appsUpdate().');
+        }
+        if (requestParameters['updateAppDto'] == null) {
+            throw new runtime.RequiredError('updateAppDto', 'Required parameter "updateAppDto" was null or undefined when calling appsUpdate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAppDtoToJSON)(requestParameters['updateAppDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async appsUpdate(requestParameters, initOverrides) {
+        const response = await this.appsUpdateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async automationStepsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling automationSteps().');
+        }
+        if (requestParameters['appAutomationStepDefinitionDto'] == null) {
+            throw new runtime.RequiredError('appAutomationStepDefinitionDto', 'Required parameter "appAutomationStepDefinitionDto" was null or undefined when calling automationSteps().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppAutomationStepDefinitionDtoToJSON)(requestParameters['appAutomationStepDefinitionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAutomationStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async automationSteps(requestParameters, initOverrides) {
+        const response = await this.automationStepsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * S3- .
+     *
+     */
+    async automationStepsIconUploadUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling automationStepsIconUploadUrl().');
+        }
+        if (requestParameters['getAppAutomationStepIconUploadUrlDto'] == null) {
+            throw new runtime.RequiredError('getAppAutomationStepIconUploadUrlDto', 'Required parameter "getAppAutomationStepIconUploadUrlDto" was null or undefined when calling automationStepsIconUploadUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps/icon/upload-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.GetAppAutomationStepIconUploadUrlDtoToJSON)(requestParameters['getAppAutomationStepIconUploadUrlDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAutomationStepIconUploadUrlResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * S3- .
+     *
+     */
+    async automationStepsIconUploadUrl(requestParameters, initOverrides) {
+        const response = await this.automationStepsIconUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async deleteAgentEventsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteAgentEvents().');
+        }
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError('eventId', 'Required parameter "eventId" was null or undefined when calling deleteAgentEvents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/agent-events/{eventId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteAgentEvents(requestParameters, initOverrides) {
+        await this.deleteAgentEventsRaw(requestParameters, initOverrides);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteAutomationStepsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteAutomationSteps().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling deleteAutomationSteps().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps/{stepId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteAutomationSteps(requestParameters, initOverrides) {
+        await this.deleteAutomationStepsRaw(requestParameters, initOverrides);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteToolsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteTools().');
+        }
+        if (requestParameters['toolId'] == null) {
+            throw new runtime.RequiredError('toolId', 'Required parameter "toolId" was null or undefined when calling deleteTools().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/tools/{toolId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"toolId"}}`, encodeURIComponent(String(requestParameters['toolId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteTools(requestParameters, initOverrides) {
+        await this.deleteToolsRaw(requestParameters, initOverrides);
+    }
+    /**
+     * , .
+     *
+     */
+    async getAutomationStepsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getAutomationSteps().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAutomationStepsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getAutomationSteps(requestParameters, initOverrides) {
+        const response = await this.getAutomationStepsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getEmbeddedPageTestRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getEmbeddedPageTest().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getEmbeddedPageTest().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/embedded-page/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppEmbeddedPageTestLaunchResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getEmbeddedPageTest(requestParameters, initOverrides) {
+        const response = await this.getEmbeddedPageTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
-    async appsCreateRaw(requestParameters, initOverrides) {
+    async oauthTokenRaw(requestParameters, initOverrides) {
         if (requestParameters['grantType'] == null) {
-            throw new runtime.RequiredError('grantType', 'Required parameter "grantType" was null or undefined when calling appsCreate().');
+            throw new runtime.RequiredError('grantType', 'Required parameter "grantType" was null or undefined when calling oauthToken().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -108,14 +500,469 @@ class AppsApi extends runtime.BaseAPI {
             query: queryParameters,
             body: formParams,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TokenResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.OauthToken200ResponseFromJSON)(jsonValue));
     }
     /**
      * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
      */
-    async appsCreate(requestParameters, initOverrides) {
-        const response = await this.appsCreateRaw(requestParameters, initOverrides);
+    async oauthToken(requestParameters, initOverrides) {
+        const response = await this.oauthTokenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * client_secret. scope can_create_apps.
+     * OAuth
+     */
+    async provisionRaw(requestParameters, initOverrides) {
+        if (requestParameters['createAppDto'] == null) {
+            throw new runtime.RequiredError('createAppDto', 'Required parameter "createAppDto" was null or undefined when calling provision().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_create_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/provision`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateAppDtoToJSON)(requestParameters['createAppDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppProvisionResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * client_secret. scope can_create_apps.
+     * OAuth
+     */
+    async provision(requestParameters, initOverrides) {
+        const response = await this.provisionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * - .
+     *
+     */
+    async sourceProjectRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling sourceProject().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/source-project`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * - .
+     *
+     */
+    async sourceProject(requestParameters, initOverrides) {
+        const response = await this.sourceProjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async submitForModerationRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling submitForModeration().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_catalog"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/submit-for-moderation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async submitForModeration(requestParameters, initOverrides) {
+        const response = await this.submitForModerationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async toolsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling tools().');
+        }
+        if (requestParameters['appManualToolDefinitionDto'] == null) {
+            throw new runtime.RequiredError('appManualToolDefinitionDto', 'Required parameter "appManualToolDefinitionDto" was null or undefined when calling tools().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/tools`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppManualToolDefinitionDtoToJSON)(requestParameters['appManualToolDefinitionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppManualToolResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async tools(requestParameters, initOverrides) {
+        const response = await this.toolsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateAgentEventsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateAgentEvents().');
+        }
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError('eventId', 'Required parameter "eventId" was null or undefined when calling updateAgentEvents().');
+        }
+        if (requestParameters['appAgentEventDefinitionDto'] == null) {
+            throw new runtime.RequiredError('appAgentEventDefinitionDto', 'Required parameter "appAgentEventDefinitionDto" was null or undefined when calling updateAgentEvents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/agent-events/{eventId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppAgentEventDefinitionDtoToJSON)(requestParameters['appAgentEventDefinitionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAgentEventResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateAgentEvents(requestParameters, initOverrides) {
+        const response = await this.updateAgentEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async updateAutomationStepsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateAutomationSteps().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling updateAutomationSteps().');
+        }
+        if (requestParameters['appAutomationStepDefinitionDto'] == null) {
+            throw new runtime.RequiredError('appAutomationStepDefinitionDto', 'Required parameter "appAutomationStepDefinitionDto" was null or undefined when calling updateAutomationSteps().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps/{stepId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppAutomationStepDefinitionDtoToJSON)(requestParameters['appAutomationStepDefinitionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAutomationStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async updateAutomationSteps(requestParameters, initOverrides) {
+        const response = await this.updateAutomationStepsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , .
+     *
+     */
+    async updateAutomationStepsStatusRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateAutomationStepsStatus().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling updateAutomationStepsStatus().');
+        }
+        if (requestParameters['appAutomationStepStatusDto'] == null) {
+            throw new runtime.RequiredError('appAutomationStepStatusDto', 'Required parameter "appAutomationStepStatusDto" was null or undefined when calling updateAutomationStepsStatus().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps/{stepId}/status`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppAutomationStepStatusDtoToJSON)(requestParameters['appAutomationStepStatusDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppAutomationStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , .
+     *
+     */
+    async updateAutomationStepsStatus(requestParameters, initOverrides) {
+        const response = await this.updateAutomationStepsStatusRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateCatalogVisibilityRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateCatalogVisibility().');
+        }
+        if (requestParameters['setAppCatalogVisibilityDto'] == null) {
+            throw new runtime.RequiredError('setAppCatalogVisibilityDto', 'Required parameter "setAppCatalogVisibilityDto" was null or undefined when calling updateCatalogVisibility().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_catalog"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/catalog-visibility`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetAppCatalogVisibilityDtoToJSON)(requestParameters['setAppCatalogVisibilityDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateCatalogVisibility(requestParameters, initOverrides) {
+        const response = await this.updateCatalogVisibilityRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    async updateOauthAccessProjectRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateOauthAccessProject().');
+        }
+        if (requestParameters['projectAppOAuthAccessPolicyDto'] == null) {
+            throw new runtime.RequiredError('projectAppOAuthAccessPolicyDto', 'Required parameter "projectAppOAuthAccessPolicyDto" was null or undefined when calling updateOauthAccessProject().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_oauth"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/oauth-access/project`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ProjectAppOAuthAccessPolicyDtoToJSON)(requestParameters['projectAppOAuthAccessPolicyDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    async updateOauthAccessProject(requestParameters, initOverrides) {
+        const response = await this.updateOauthAccessProjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    async updateOauthAccessUserRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateOauthAccessUser().');
+        }
+        if (requestParameters['userAppOAuthAccessPolicyDto'] == null) {
+            throw new runtime.RequiredError('userAppOAuthAccessPolicyDto', 'Required parameter "userAppOAuthAccessPolicyDto" was null or undefined when calling updateOauthAccessUser().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_oauth"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/oauth-access/user`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UserAppOAuthAccessPolicyDtoToJSON)(requestParameters['userAppOAuthAccessPolicyDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * OAuth- .
+     * OAuth-
+     */
+    async updateOauthAccessUser(requestParameters, initOverrides) {
+        const response = await this.updateOauthAccessUserRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * OAuth redirect URI.
+     * OAuth redirect URI
+     */
+    async updateOauthRedirectUrisRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateOauthRedirectUris().');
+        }
+        if (requestParameters['updateAppOAuthRedirectUrisDto'] == null) {
+            throw new runtime.RequiredError('updateAppOAuthRedirectUrisDto', 'Required parameter "updateAppOAuthRedirectUrisDto" was null or undefined when calling updateOauthRedirectUris().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_oauth"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/oauth-redirect-uris`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAppOAuthRedirectUrisDtoToJSON)(requestParameters['updateAppOAuthRedirectUrisDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * OAuth redirect URI.
+     * OAuth redirect URI
+     */
+    async updateOauthRedirectUris(requestParameters, initOverrides) {
+        const response = await this.updateOauthRedirectUrisRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateToolsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateTools().');
+        }
+        if (requestParameters['toolId'] == null) {
+            throw new runtime.RequiredError('toolId', 'Required parameter "toolId" was null or undefined when calling updateTools().');
+        }
+        if (requestParameters['appManualToolDefinitionDto'] == null) {
+            throw new runtime.RequiredError('appManualToolDefinitionDto', 'Required parameter "appManualToolDefinitionDto" was null or undefined when calling updateTools().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/tools/{toolId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"toolId"}}`, encodeURIComponent(String(requestParameters['toolId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AppManualToolDefinitionDtoToJSON)(requestParameters['appManualToolDefinitionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppManualToolResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateTools(requestParameters, initOverrides) {
+        const response = await this.updateToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -123,14 +970,175 @@ exports.AppsApi = AppsApi;
 /**
  * @export
  */
-exports.AppsCreateGrantTypeEnum = {
+exports.AgentEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AppsGetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AppsListAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AppsUpdateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AutomationStepsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AutomationStepsIconUploadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeleteAgentEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeleteAutomationStepsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeleteToolsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAutomationStepsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetEmbeddedPageTestAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.OauthTokenGrantTypeEnum = {
     RefreshToken: 'refresh_token',
     AuthorizationCode: 'authorization_code'
 };
 /**
  * @export
  */
-exports.AppsCreateAcceptLanguageEnum = {
+exports.OauthTokenAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProvisionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SourceProjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SubmitForModerationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ToolsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateAgentEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateAutomationStepsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateAutomationStepsStatusAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateCatalogVisibilityAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateOauthAccessProjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateOauthAccessUserAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateOauthRedirectUrisAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

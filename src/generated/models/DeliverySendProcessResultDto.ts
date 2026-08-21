@@ -46,6 +46,12 @@ export interface DeliverySendProcessResultDto {
      */
     failed: number;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof DeliverySendProcessResultDto
+     */
+    pausedDailyLimit?: boolean;
+    /**
      *
      * @type {Array<DeliverySendErrorDto>}
      * @memberof DeliverySendProcessResultDto
@@ -82,6 +88,7 @@ export function DeliverySendProcessResultDtoFromJSONTyped(json: any, ignoreDiscr
         'sent': json['sent'],
         'skipped': json['skipped'],
         'failed': json['failed'],
+        'pausedDailyLimit': json['paused_daily_limit'] == null ? undefined : json['paused_daily_limit'],
         'deliveryErrors': json['delivery_errors'] == null ? undefined : ((json['delivery_errors'] as Array<any>).map(DeliverySendErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
@@ -101,6 +108,7 @@ export function DeliverySendProcessResultDtoToJSONTyped(value?: DeliverySendProc
         'sent': value['sent'],
         'skipped': value['skipped'],
         'failed': value['failed'],
+        'paused_daily_limit': value['pausedDailyLimit'],
         'delivery_errors': value['deliveryErrors'] == null ? undefined : ((value['deliveryErrors'] as Array<any>).map(DeliverySendErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };

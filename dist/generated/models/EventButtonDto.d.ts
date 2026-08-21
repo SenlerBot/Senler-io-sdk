@@ -29,11 +29,23 @@ export interface EventButtonDto {
      */
     buttonInstanceId?: string;
     /**
+     * .
+     * @type {boolean}
+     * @memberof EventButtonDto
+     */
+    isRepeatable?: boolean;
+    /**
      *
      * @type {EventButtonDtoAction}
      * @memberof EventButtonDto
      */
     action: EventButtonDtoAction;
+    /**
+     * .
+     * @type {string}
+     * @memberof EventButtonDto
+     */
+    appearance?: EventButtonDtoAppearanceEnum;
     /**
      * ( )
      * @type {number}
@@ -41,6 +53,16 @@ export interface EventButtonDto {
      */
     row?: number;
 }
+/**
+ * @export
+ */
+export declare const EventButtonDtoAppearanceEnum: {
+    readonly Neutral: "neutral";
+    readonly Primary: "primary";
+    readonly Positive: "positive";
+    readonly Negative: "negative";
+};
+export type EventButtonDtoAppearanceEnum = typeof EventButtonDtoAppearanceEnum[keyof typeof EventButtonDtoAppearanceEnum];
 /**
  * Check if a given object implements the EventButtonDto interface.
  */

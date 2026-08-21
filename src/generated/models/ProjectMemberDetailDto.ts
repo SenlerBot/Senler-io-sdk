@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
-import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
 import type { UserResponseDto } from './UserResponseDto';
 import {
     UserResponseDtoFromJSON,
@@ -41,6 +34,13 @@ import {
     PermissionsDtoToJSON,
     PermissionsDtoToJSONTyped,
 } from './PermissionsDto';
+import type { ProjectRole } from './ProjectRole';
+import {
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 
 /**
  * ProjectMemberDetailDto.
@@ -68,10 +68,10 @@ export interface ProjectMemberDetailDto {
     userId: string;
     /**
      *
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ProjectMemberDetailDto
      */
-    role: Role;
+    role: ProjectRole;
     /**
      *
      * @type {PermissionsDto}
@@ -134,7 +134,7 @@ export function ProjectMemberDetailDtoFromJSONTyped(json: any, ignoreDiscriminat
         'id': json['id'],
         'projectId': json['project_id'],
         'userId': json['user_id'],
-        'role': RoleFromJSON(json['role']),
+        'role': ProjectRoleFromJSON(json['role']),
         'permissions': PermissionsDtoFromJSON(json['permissions']),
         'isSupportOperator': json['is_support_operator'],
         'user': UserResponseDtoFromJSON(json['user']),
@@ -157,7 +157,7 @@ export function ProjectMemberDetailDtoToJSONTyped(value?: ProjectMemberDetailDto
         'id': value['id'],
         'project_id': value['projectId'],
         'user_id': value['userId'],
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
         'permissions': PermissionsDtoToJSON(value['permissions']),
         'is_support_operator': value['isSupportOperator'],
         'user': UserResponseDtoToJSON(value['user']),

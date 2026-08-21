@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Role } from './Role';
+import type { ProjectRole } from './ProjectRole';
 import {
-    RoleFromJSON,
-    RoleFromJSONTyped,
-    RoleToJSON,
-    RoleToJSONTyped,
-} from './Role';
+    ProjectRoleFromJSON,
+    ProjectRoleFromJSONTyped,
+    ProjectRoleToJSON,
+    ProjectRoleToJSONTyped,
+} from './ProjectRole';
 
 /**
  * ChannelRoleDto.
@@ -35,10 +35,10 @@ export interface ChannelRoleDto {
     channelId: string;
     /**
      * . , , , .
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof ChannelRoleDto
      */
-    role: Role;
+    role: ProjectRole;
 }
 
 
@@ -63,7 +63,7 @@ export function ChannelRoleDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
 
         'channelId': json['channel_id'],
-        'role': RoleFromJSON(json['role']),
+        'role': ProjectRoleFromJSON(json['role']),
     };
 }
 
@@ -79,6 +79,6 @@ export function ChannelRoleDtoToJSONTyped(value?: ChannelRoleDto | null, ignoreD
     return {
 
         'channel_id': value['channelId'],
-        'role': RoleToJSON(value['role']),
+        'role': ProjectRoleToJSON(value['role']),
     };
 }

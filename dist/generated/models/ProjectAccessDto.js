@@ -18,10 +18,10 @@ exports.ProjectAccessDtoFromJSON = ProjectAccessDtoFromJSON;
 exports.ProjectAccessDtoFromJSONTyped = ProjectAccessDtoFromJSONTyped;
 exports.ProjectAccessDtoToJSON = ProjectAccessDtoToJSON;
 exports.ProjectAccessDtoToJSONTyped = ProjectAccessDtoToJSONTyped;
-const Role_1 = require("./Role");
 const PermissionsDto_1 = require("./PermissionsDto");
 const ChannelAccessDto_1 = require("./ChannelAccessDto");
 const ProjectAccessSource_1 = require("./ProjectAccessSource");
+const ProjectRole_1 = require("./ProjectRole");
 /**
  * Check if a given object implements the ProjectAccessDto interface.
  */
@@ -48,7 +48,7 @@ function ProjectAccessDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'role': (0, Role_1.RoleFromJSON)(json['role']),
+        'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
         'source': (0, ProjectAccessSource_1.ProjectAccessSourceFromJSON)(json['source']),
         'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
@@ -64,7 +64,7 @@ function ProjectAccessDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
         'source': (0, ProjectAccessSource_1.ProjectAccessSourceToJSON)(value['source']),
         'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],

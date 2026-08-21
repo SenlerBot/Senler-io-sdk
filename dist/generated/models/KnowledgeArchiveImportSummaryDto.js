@@ -38,6 +38,8 @@ function instanceOfKnowledgeArchiveImportSummaryDto(value) {
         return false;
     if (!('rootFolderName' in value) || value['rootFolderName'] === undefined)
         return false;
+    if (!('rootFolderId' in value) || value['rootFolderId'] === undefined)
+        return false;
     if (!('duplicateResolution' in value) || value['duplicateResolution'] === undefined)
         return false;
     if (!('folders' in value) || value['folders'] === undefined)
@@ -58,6 +60,7 @@ function KnowledgeArchiveImportSummaryDtoFromJSONTyped(json, ignoreDiscriminator
     return {
         'archiveFileName': json['archive_file_name'],
         'rootFolderName': json['root_folder_name'],
+        'rootFolderId': json['root_folder_id'],
         'duplicateResolution': json['duplicate_resolution'],
         'folders': (0, KnowledgeArchiveImportFoldersSummaryDto_1.KnowledgeArchiveImportFoldersSummaryDtoFromJSON)(json['folders']),
         'files': (0, KnowledgeArchiveImportFilesSummaryDto_1.KnowledgeArchiveImportFilesSummaryDtoFromJSON)(json['files']),
@@ -74,6 +77,7 @@ function KnowledgeArchiveImportSummaryDtoToJSONTyped(value, ignoreDiscriminator 
     return {
         'archive_file_name': value['archiveFileName'],
         'root_folder_name': value['rootFolderName'],
+        'root_folder_id': value['rootFolderId'],
         'duplicate_resolution': value['duplicateResolution'],
         'folders': (0, KnowledgeArchiveImportFoldersSummaryDto_1.KnowledgeArchiveImportFoldersSummaryDtoToJSON)(value['folders']),
         'files': (0, KnowledgeArchiveImportFilesSummaryDto_1.KnowledgeArchiveImportFilesSummaryDtoToJSON)(value['files']),

@@ -17,7 +17,9 @@ exports.LandingVkAppResponseDtoTargetFromJSON = LandingVkAppResponseDtoTargetFro
 exports.LandingVkAppResponseDtoTargetFromJSONTyped = LandingVkAppResponseDtoTargetFromJSONTyped;
 exports.LandingVkAppResponseDtoTargetToJSON = LandingVkAppResponseDtoTargetToJSON;
 exports.LandingVkAppResponseDtoTargetToJSONTyped = LandingVkAppResponseDtoTargetToJSONTyped;
-const LandingCatalogLaunchTargetDto_1 = require("./LandingCatalogLaunchTargetDto");
+const LandingBannerGridLaunchTargetDto_1 = require("./LandingBannerGridLaunchTargetDto");
+const LandingIconListLaunchTargetDto_1 = require("./LandingIconListLaunchTargetDto");
+const LandingListLaunchTargetDto_1 = require("./LandingListLaunchTargetDto");
 const LandingSingleLaunchTargetDto_1 = require("./LandingSingleLaunchTargetDto");
 function LandingVkAppResponseDtoTargetFromJSON(json) {
     return LandingVkAppResponseDtoTargetFromJSONTyped(json, false);
@@ -27,10 +29,14 @@ function LandingVkAppResponseDtoTargetFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     switch (json['mode']) {
-        case 'catalog':
-            return Object.assign({}, (0, LandingCatalogLaunchTargetDto_1.LandingCatalogLaunchTargetDtoFromJSONTyped)(json, true), { mode: 'catalog' });
+        case 'banner_grid':
+            return Object.assign({}, (0, LandingBannerGridLaunchTargetDto_1.LandingBannerGridLaunchTargetDtoFromJSONTyped)(json, true), { mode: 'banner_grid' });
+        case 'icon_list':
+            return Object.assign({}, (0, LandingIconListLaunchTargetDto_1.LandingIconListLaunchTargetDtoFromJSONTyped)(json, true), { mode: 'icon_list' });
         case 'landing':
             return Object.assign({}, (0, LandingSingleLaunchTargetDto_1.LandingSingleLaunchTargetDtoFromJSONTyped)(json, true), { mode: 'landing' });
+        case 'list':
+            return Object.assign({}, (0, LandingListLaunchTargetDto_1.LandingListLaunchTargetDtoFromJSONTyped)(json, true), { mode: 'list' });
         default:
             throw new Error(`No variant of LandingVkAppResponseDtoTarget exists with 'mode=${json['mode']}'`);
     }
@@ -43,10 +49,14 @@ function LandingVkAppResponseDtoTargetToJSONTyped(value, ignoreDiscriminator = f
         return value;
     }
     switch (value['mode']) {
-        case 'catalog':
-            return Object.assign({}, (0, LandingCatalogLaunchTargetDto_1.LandingCatalogLaunchTargetDtoToJSON)(value), { mode: 'catalog' });
+        case 'banner_grid':
+            return Object.assign({}, (0, LandingBannerGridLaunchTargetDto_1.LandingBannerGridLaunchTargetDtoToJSON)(value), { mode: 'banner_grid' });
+        case 'icon_list':
+            return Object.assign({}, (0, LandingIconListLaunchTargetDto_1.LandingIconListLaunchTargetDtoToJSON)(value), { mode: 'icon_list' });
         case 'landing':
             return Object.assign({}, (0, LandingSingleLaunchTargetDto_1.LandingSingleLaunchTargetDtoToJSON)(value), { mode: 'landing' });
+        case 'list':
+            return Object.assign({}, (0, LandingListLaunchTargetDto_1.LandingListLaunchTargetDtoToJSON)(value), { mode: 'list' });
         default:
             throw new Error(`No variant of LandingVkAppResponseDtoTarget exists with 'mode=${value['mode']}'`);
     }

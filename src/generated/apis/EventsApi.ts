@@ -40,6 +40,12 @@ import {
     TrafficSourcesResponseDtoToJSON,
 } from '../models/index';
 
+export interface EventsGetAnalyticsRequest {
+    period: EventsGetAnalyticsPeriodEnum;
+    projectId: string;
+    acceptLanguage?: EventsGetAnalyticsAcceptLanguageEnum;
+}
+
 export interface EventsGetByIdRequest {
     eventId: string;
     acceptLanguage?: EventsGetByIdAcceptLanguageEnum;
@@ -73,12 +79,6 @@ export interface EventsListRequest {
     acceptLanguage?: EventsListAcceptLanguageEnum;
 }
 
-export interface GetAnalyticsRequest {
-    period: GetAnalyticsPeriodEnum;
-    projectId: string;
-    acceptLanguage?: GetAnalyticsAcceptLanguageEnum;
-}
-
 export interface GetMarketingQuickMetricsRequest {
     projectId: string;
     period?: GetMarketingQuickMetricsPeriodEnum;
@@ -101,6 +101,73 @@ export interface GetMarketingTrafficSourcesRequest {
  *
  */
 export class EventsApi extends runtime.BaseAPI {
+
+    /**
+     * . .
+     *
+     */
+    async eventsGetAnalyticsRaw(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling eventsGetAnalytics().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling eventsGetAnalytics().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/events/analytics`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async eventsGetAnalytics(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {
+        const response = await this.eventsGetAnalyticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * .
@@ -132,7 +199,7 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -280,7 +347,7 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -299,73 +366,6 @@ export class EventsApi extends runtime.BaseAPI {
      */
     async eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response> {
         const response = await this.eventsListRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . .
-     *
-     */
-    async getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
-        if (requestParameters['period'] == null) {
-            throw new runtime.RequiredError(
-                'period',
-                'Required parameter "period" was null or undefined when calling getAnalytics().'
-            );
-        }
-
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAnalytics().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['period'] != null) {
-            queryParameters['period'] = requestParameters['period'];
-        }
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
-        }
-
-        const response = await this.request({
-            path: `/api/events/analytics`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . .
-     *
-     */
-    async getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {
-        const response = await this.getAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -407,7 +407,7 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -467,7 +467,7 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -527,7 +527,7 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -551,6 +551,24 @@ export class EventsApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const EventsGetAnalyticsPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+} as const;
+export type EventsGetAnalyticsPeriodEnum = typeof EventsGetAnalyticsPeriodEnum[keyof typeof EventsGetAnalyticsPeriodEnum];
+/**
+ * @export
+ */
+export const EventsGetAnalyticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type EventsGetAnalyticsAcceptLanguageEnum = typeof EventsGetAnalyticsAcceptLanguageEnum[keyof typeof EventsGetAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -619,6 +637,8 @@ export const EventsListActionTypeEnum = {
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
     AiResponseStarted: 'ai_response_started',
+    AgentInvoked: 'agent_invoked',
+    AiResponseCancelled: 'ai_response_cancelled',
     ToolStarted: 'tool_started',
     ToolCompleted: 'tool_completed',
     ToolFailed: 'tool_failed',
@@ -631,6 +651,7 @@ export const EventsListActionTypeEnum = {
     ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
     AiProviderCallCompleted: 'ai_provider_call_completed',
+    AnalyticsUsageCharged: 'analytics_usage_charged',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',
@@ -684,24 +705,6 @@ export const EventsListAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type EventsListAcceptLanguageEnum = typeof EventsListAcceptLanguageEnum[keyof typeof EventsListAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetAnalyticsPeriodEnum = {
-    _24h: '24h',
-    _7d: '7d',
-    _30d: '30d',
-    _90d: '90d'
-} as const;
-export type GetAnalyticsPeriodEnum = typeof GetAnalyticsPeriodEnum[keyof typeof GetAnalyticsPeriodEnum];
-/**
- * @export
- */
-export const GetAnalyticsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetAnalyticsAcceptLanguageEnum = typeof GetAnalyticsAcceptLanguageEnum[keyof typeof GetAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */

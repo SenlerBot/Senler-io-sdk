@@ -28,6 +28,12 @@ export interface EventGenerationMetricsDto {
      * @memberof EventGenerationMetricsDto
      */
     status?: EventGenerationMetricsDtoStatusEnum;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof EventGenerationMetricsDto
+     */
+    analysisAgentId?: string;
 }
 /**
  * @export

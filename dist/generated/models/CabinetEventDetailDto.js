@@ -56,7 +56,8 @@ exports.CabinetEventDetailDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 };
 /**
  * @export
@@ -106,6 +107,8 @@ exports.CabinetEventDetailDtoActionTypeEnum = {
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
     AiResponseStarted: 'ai_response_started',
+    AgentInvoked: 'agent_invoked',
+    AiResponseCancelled: 'ai_response_cancelled',
     ToolStarted: 'tool_started',
     ToolCompleted: 'tool_completed',
     ToolFailed: 'tool_failed',
@@ -118,6 +121,7 @@ exports.CabinetEventDetailDtoActionTypeEnum = {
     ImageAnalyzed: 'image_analyzed',
     AiActionExecuted: 'ai_action_executed',
     AiProviderCallCompleted: 'ai_provider_call_completed',
+    AnalyticsUsageCharged: 'analytics_usage_charged',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',

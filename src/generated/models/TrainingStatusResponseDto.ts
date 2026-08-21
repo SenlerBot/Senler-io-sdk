@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TrainingMode } from './TrainingMode';
+import {
+    TrainingModeFromJSON,
+    TrainingModeFromJSONTyped,
+    TrainingModeToJSON,
+    TrainingModeToJSONTyped,
+} from './TrainingMode';
 import type { TasksStatsDto } from './TasksStatsDto';
 import {
     TasksStatsDtoFromJSON,
@@ -20,6 +27,27 @@ import {
     TasksStatsDtoToJSON,
     TasksStatsDtoToJSONTyped,
 } from './TasksStatsDto';
+import type { TrainingConfigurationSnapshotDto } from './TrainingConfigurationSnapshotDto';
+import {
+    TrainingConfigurationSnapshotDtoFromJSON,
+    TrainingConfigurationSnapshotDtoFromJSONTyped,
+    TrainingConfigurationSnapshotDtoToJSON,
+    TrainingConfigurationSnapshotDtoToJSONTyped,
+} from './TrainingConfigurationSnapshotDto';
+import type { AgentStatus } from './AgentStatus';
+import {
+    AgentStatusFromJSON,
+    AgentStatusFromJSONTyped,
+    AgentStatusToJSON,
+    AgentStatusToJSONTyped,
+} from './AgentStatus';
+import type { TrainingRunBillingSummaryDto } from './TrainingRunBillingSummaryDto';
+import {
+    TrainingRunBillingSummaryDtoFromJSON,
+    TrainingRunBillingSummaryDtoFromJSONTyped,
+    TrainingRunBillingSummaryDtoToJSON,
+    TrainingRunBillingSummaryDtoToJSONTyped,
+} from './TrainingRunBillingSummaryDto';
 import type { TaskDetailDto } from './TaskDetailDto';
 import {
     TaskDetailDtoFromJSON,
@@ -56,16 +84,16 @@ export interface TrainingStatusResponseDto {
     agentId: string;
     /**
      *
-     * @type {string}
+     * @type {AgentStatus}
      * @memberof TrainingStatusResponseDto
      */
-    agentStatus: string;
+    agentStatus: AgentStatus;
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof TrainingStatusResponseDto
      */
-    mode: TrainingStatusResponseDtoModeEnum;
+    mode: TrainingMode;
     /**
      * (0-100)
      * @type {number}
@@ -84,6 +112,12 @@ export interface TrainingStatusResponseDto {
      * @memberof TrainingStatusResponseDto
      */
     tasks: Array<TaskDetailDto>;
+    /**
+     *
+     * @type {TrainingConfigurationSnapshotDto}
+     * @memberof TrainingStatusResponseDto
+     */
+    _configuration?: TrainingConfigurationSnapshotDto;
     /**
      *
      * @type {Array<AgentVariantDto>}
@@ -110,22 +144,18 @@ export interface TrainingStatusResponseDto {
     estimatedCompletion?: string;
     /**
      *
+     * @type {TrainingRunBillingSummaryDto}
+     * @memberof TrainingStatusResponseDto
+     */
+    billing?: TrainingRunBillingSummaryDto;
+    /**
+     *
      * @type {TrainingProgressDetailDto}
      * @memberof TrainingStatusResponseDto
      */
     trainingProgress?: TrainingProgressDetailDto;
 }
 
-
-/**
- * @export
- */
-export const TrainingStatusResponseDtoModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-} as const;
-export type TrainingStatusResponseDtoModeEnum = typeof TrainingStatusResponseDtoModeEnum[keyof typeof TrainingStatusResponseDtoModeEnum];
 
 
 /**
@@ -152,15 +182,17 @@ export function TrainingStatusResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'agentId': json['agentId'],
-        'agentStatus': json['agentStatus'],
-        'mode': json['mode'],
+        'agentStatus': AgentStatusFromJSON(json['agentStatus']),
+        'mode': TrainingModeFromJSON(json['mode']),
         'overallProgress': json['overallProgress'],
         'tasksStats': TasksStatsDtoFromJSON(json['tasksStats']),
         'tasks': ((json['tasks'] as Array<any>).map(TaskDetailDtoFromJSON)),
+        '_configuration': json['configuration'] == null ? undefined : TrainingConfigurationSnapshotDtoFromJSON(json['configuration']),
         'generatedVariants': json['generatedVariants'] == null ? undefined : ((json['generatedVariants'] as Array<any>).map(AgentVariantDtoFromJSON)),
         'trainingStartedAt': json['trainingStartedAt'] == null ? undefined : json['trainingStartedAt'],
         'trainingCompletedAt': json['trainingCompletedAt'] == null ? undefined : json['trainingCompletedAt'],
         'estimatedCompletion': json['estimatedCompletion'] == null ? undefined : json['estimatedCompletion'],
+        'billing': json['billing'] == null ? undefined : TrainingRunBillingSummaryDtoFromJSON(json['billing']),
         'trainingProgress': json['training_progress'] == null ? undefined : TrainingProgressDetailDtoFromJSON(json['training_progress']),
     };
 }
@@ -177,15 +209,17 @@ export function TrainingStatusResponseDtoToJSONTyped(value?: TrainingStatusRespo
     return {
 
         'agentId': value['agentId'],
-        'agentStatus': value['agentStatus'],
-        'mode': value['mode'],
+        'agentStatus': AgentStatusToJSON(value['agentStatus']),
+        'mode': TrainingModeToJSON(value['mode']),
         'overallProgress': value['overallProgress'],
         'tasksStats': TasksStatsDtoToJSON(value['tasksStats']),
         'tasks': ((value['tasks'] as Array<any>).map(TaskDetailDtoToJSON)),
+        'configuration': TrainingConfigurationSnapshotDtoToJSON(value['_configuration']),
         'generatedVariants': value['generatedVariants'] == null ? undefined : ((value['generatedVariants'] as Array<any>).map(AgentVariantDtoToJSON)),
         'trainingStartedAt': value['trainingStartedAt'],
         'trainingCompletedAt': value['trainingCompletedAt'],
         'estimatedCompletion': value['estimatedCompletion'],
+        'billing': TrainingRunBillingSummaryDtoToJSON(value['billing']),
         'training_progress': TrainingProgressDetailDtoToJSON(value['trainingProgress']),
     };
 }

@@ -17,6 +17,7 @@ import * as runtime from '../runtime';
 import type {
   CreateEmailChannelDto,
   EmailChannelResponseDto,
+  EmailProviderListResponseDto,
   ErrorResponse,
   UpdateEmailChannelDto,
 } from '../models/index';
@@ -25,6 +26,8 @@ import {
     CreateEmailChannelDtoToJSON,
     EmailChannelResponseDtoFromJSON,
     EmailChannelResponseDtoToJSON,
+    EmailProviderListResponseDtoFromJSON,
+    EmailProviderListResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     UpdateEmailChannelDtoFromJSON,
@@ -40,6 +43,10 @@ export interface ChannelsEmailUpdateRequest {
     id: string;
     updateEmailChannelDto: UpdateEmailChannelDto;
     acceptLanguage?: ChannelsEmailUpdateAcceptLanguageEnum;
+}
+
+export interface GetProvidersRequest {
+    acceptLanguage?: GetProvidersAcceptLanguageEnum;
 }
 
 /**
@@ -164,6 +171,38 @@ export class ChannelsEmailApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * email- IMAP/SMTP
+     * email-
+     */
+    async getProvidersRaw(requestParameters: GetProvidersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailProviderListResponseDto>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/channels/email/providers`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EmailProviderListResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * email- IMAP/SMTP
+     * email-
+     */
+    async getProviders(requestParameters: GetProvidersRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailProviderListResponseDto> {
+        const response = await this.getProvidersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -182,3 +221,11 @@ export const ChannelsEmailUpdateAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type ChannelsEmailUpdateAcceptLanguageEnum = typeof ChannelsEmailUpdateAcceptLanguageEnum[keyof typeof ChannelsEmailUpdateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetProvidersAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetProvidersAcceptLanguageEnum = typeof GetProvidersAcceptLanguageEnum[keyof typeof GetProvidersAcceptLanguageEnum];

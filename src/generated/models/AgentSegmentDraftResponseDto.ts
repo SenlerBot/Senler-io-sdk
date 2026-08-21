@@ -52,6 +52,12 @@ export interface AgentSegmentDraftResponseDto {
      */
     requiredConsents: Array<SegmentConsentSnapshotDto>;
     /**
+     * .
+     * @type {string}
+     * @memberof AgentSegmentDraftResponseDto
+     */
+    consentPromptText: string | null;
+    /**
      * null, .
      * @type {string}
      * @memberof AgentSegmentDraftResponseDto
@@ -84,6 +90,7 @@ export function instanceOfAgentSegmentDraftResponseDto(value: object): value is 
     if (!('versionId' in value) || value['versionId'] === undefined) return false;
     if (!('revision' in value) || value['revision'] === undefined) return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined) return false;
+    if (!('consentPromptText' in value) || value['consentPromptText'] === undefined) return false;
     if (!('subscriptionAssignmentRole' in value) || value['subscriptionAssignmentRole'] === undefined) return false;
     if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined) return false;
     return true;
@@ -103,6 +110,7 @@ export function AgentSegmentDraftResponseDtoFromJSONTyped(json: any, ignoreDiscr
         'versionId': json['version_id'],
         'revision': json['revision'],
         'requiredConsents': ((json['required_consents'] as Array<any>).map(SegmentConsentSnapshotDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'],
         'subscriptionAssignmentRole': json['subscription_assignment_role'],
         'hasUnpublishedChanges': json['has_unpublished_changes'],
     };
@@ -123,6 +131,7 @@ export function AgentSegmentDraftResponseDtoToJSONTyped(value?: AgentSegmentDraf
         'version_id': value['versionId'],
         'revision': value['revision'],
         'required_consents': ((value['requiredConsents'] as Array<any>).map(SegmentConsentSnapshotDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
         'subscription_assignment_role': value['subscriptionAssignmentRole'],
         'has_unpublished_changes': value['hasUnpublishedChanges'],
     };

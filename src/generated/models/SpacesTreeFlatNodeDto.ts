@@ -218,7 +218,8 @@ export const SpacesTreeFlatNodeDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type SpacesTreeFlatNodeDtoPlatformTypeEnum = typeof SpacesTreeFlatNodeDtoPlatformTypeEnum[keyof typeof SpacesTreeFlatNodeDtoPlatformTypeEnum];
 

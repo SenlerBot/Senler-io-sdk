@@ -18,8 +18,8 @@ exports.UpdateProjectMemberDtoFromJSON = UpdateProjectMemberDtoFromJSON;
 exports.UpdateProjectMemberDtoFromJSONTyped = UpdateProjectMemberDtoFromJSONTyped;
 exports.UpdateProjectMemberDtoToJSON = UpdateProjectMemberDtoToJSON;
 exports.UpdateProjectMemberDtoToJSONTyped = UpdateProjectMemberDtoToJSONTyped;
-const Role_1 = require("./Role");
 const ChannelRoleDto_1 = require("./ChannelRoleDto");
+const ProjectRole_1 = require("./ProjectRole");
 /**
  * Check if a given object implements the UpdateProjectMemberDto interface.
  */
@@ -34,7 +34,7 @@ function UpdateProjectMemberDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'role': json['role'] == null ? undefined : (0, Role_1.RoleFromJSON)(json['role']),
+        'role': json['role'] == null ? undefined : (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
         'hasAccessToAllChannels': json['has_access_to_all_channels'] == null ? undefined : json['has_access_to_all_channels'],
         'isSupportOperator': json['is_support_operator'] == null ? undefined : json['is_support_operator'],
         'channelRoles': json['channel_roles'] == null ? undefined : (json['channel_roles'].map(ChannelRoleDto_1.ChannelRoleDtoFromJSON)),
@@ -48,7 +48,7 @@ function UpdateProjectMemberDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'role': (0, Role_1.RoleToJSON)(value['role']),
+        'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
         'has_access_to_all_channels': value['hasAccessToAllChannels'],
         'is_support_operator': value['isSupportOperator'],
         'channel_roles': value['channelRoles'] == null ? undefined : (value['channelRoles'].map(ChannelRoleDto_1.ChannelRoleDtoToJSON)),

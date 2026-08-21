@@ -348,7 +348,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -547,7 +547,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/segment/automation/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     async updateEventsRaw(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditMessageResponseDto>> {
@@ -607,7 +607,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/user/admin/external_operator/channel - - - Centrifugo
+     * .  ** :** - **Telegram**: ( ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**:  **:** - sender.type: assistant/system/segment/automation/user/admin/external_operator/channel - - - Centrifugo
      *
      */
     async updateEvents(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditMessageResponseDto> {

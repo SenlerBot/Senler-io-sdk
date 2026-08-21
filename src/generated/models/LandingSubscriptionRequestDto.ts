@@ -53,6 +53,42 @@ export interface LandingSubscriptionRequestDto {
      */
     platformPayload: string;
     /**
+     * ID , .
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    trafficMarkPublicId?: string;
+    /**
+     * (utm_source).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmSource?: string;
+    /**
+     * (utm_medium).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmMedium?: string;
+    /**
+     * (utm_campaign).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmCampaign?: string;
+    /**
+     * (utm_content).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmContent?: string;
+    /**
+     * (utm_term).
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    utmTerm?: string;
+    /**
      * , .
      * @type {Array<AcceptedSegmentConsentDto>}
      * @memberof LandingSubscriptionRequestDto
@@ -101,6 +137,12 @@ export function LandingSubscriptionRequestDtoFromJSONTyped(json: any, ignoreDisc
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
+        'trafficMarkPublicId': json['traffic_mark_public_id'] == null ? undefined : json['traffic_mark_public_id'],
+        'utmSource': json['utm_source'] == null ? undefined : json['utm_source'],
+        'utmMedium': json['utm_medium'] == null ? undefined : json['utm_medium'],
+        'utmCampaign': json['utm_campaign'] == null ? undefined : json['utm_campaign'],
+        'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
+        'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
         'acceptedConsents': json['accepted_consents'] == null ? undefined : ((json['accepted_consents'] as Array<any>).map(AcceptedSegmentConsentDtoFromJSON)),
         'contact': json['contact'] == null ? undefined : LandingContactDtoFromJSON(json['contact']),
     };
@@ -120,6 +162,12 @@ export function LandingSubscriptionRequestDtoToJSONTyped(value?: LandingSubscrip
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],
+        'traffic_mark_public_id': value['trafficMarkPublicId'],
+        'utm_source': value['utmSource'],
+        'utm_medium': value['utmMedium'],
+        'utm_campaign': value['utmCampaign'],
+        'utm_content': value['utmContent'],
+        'utm_term': value['utmTerm'],
         'accepted_consents': value['acceptedConsents'] == null ? undefined : ((value['acceptedConsents'] as Array<any>).map(AcceptedSegmentConsentDtoToJSON)),
         'contact': LandingContactDtoToJSON(value['contact']),
     };

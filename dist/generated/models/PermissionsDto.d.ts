@@ -112,6 +112,36 @@ export interface PermissionsDto {
      */
     canManageLeads: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewTrafficMarks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageTrafficMarks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewAutomations: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageAutomations: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canRunAutomations: boolean;
+    /**
      * MCP
      * @type {boolean}
      * @memberof PermissionsDto

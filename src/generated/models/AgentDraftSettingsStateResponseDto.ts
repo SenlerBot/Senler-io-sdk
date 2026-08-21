@@ -335,6 +335,12 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     cancelPendingResponseOnProjectOperatorMessage: boolean;
     /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    cancelPendingResponseOnAutomationMessage: boolean;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -408,40 +414,28 @@ export interface AgentDraftSettingsStateResponseDto {
     enableDetachFromDialog: boolean;
     /**
      *
-     * @type {boolean}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    useProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AgentDraftSettingsStateResponseDto
-     */
-    useLeadVariables: boolean;
+    variableBindings: Array<{ [key: string]: any; }>;
     /**
      *
      * @type {string}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    projectVarsInstructionMode: AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum;
+    variablesAccessMode: AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum;
     /**
-     *
-     * @type {string}
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    projectVarsUserRequestMode: AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum;
+    segmentAccessPolicy: { [key: string]: any; };
     /**
-     *
-     * @type {string}
+     * recipient messaging tools (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    leadVarsInstructionMode: AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof AgentDraftSettingsStateResponseDto
-     */
-    leadVarsUserRequestMode: AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum;
+    recipientMessagingPolicy: { [key: string]: any; };
     /**
      *
      * @type {Date}
@@ -481,8 +475,9 @@ export type AgentDraftSettingsStateResponseDtoAgentTypeEnum = typeof AgentDraftS
  * @export
  */
 export const AgentDraftSettingsStateResponseDtoServerBindingModeEnum = {
-    List: 'list',
-    Direct: 'direct',
+    ProviderDirect: 'provider_direct',
+    SenlerDirect: 'senler_direct',
+    SenlerList: 'senler_list',
     None: 'none'
 } as const;
 export type AgentDraftSettingsStateResponseDtoServerBindingModeEnum = typeof AgentDraftSettingsStateResponseDtoServerBindingModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoServerBindingModeEnum];
@@ -491,18 +486,23 @@ export type AgentDraftSettingsStateResponseDtoServerBindingModeEnum = typeof Age
  * @export
  */
 export const AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = {
-    GetData: 'get_data',
-    EditContent: 'edit_content',
-    AddTableRows: 'add_table_rows',
+    ReadDocuments: 'read_documents',
     CreateDocuments: 'create_documents',
-    UploadFiles: 'upload_files',
+    UploadDocuments: 'upload_documents',
+    EditDocuments: 'edit_documents',
+    DeleteDocuments: 'delete_documents',
+    ReadTables: 'read_tables',
     CreateTables: 'create_tables',
-    CreateSheets: 'create_sheets',
     ImportCsvXlsx: 'import_csv_xlsx',
+    AddTableRows: 'add_table_rows',
+    EditTables: 'edit_tables',
+    CreateSheets: 'create_sheets',
     DeleteRows: 'delete_rows',
-    DeleteFiles: 'delete_files',
     DeleteSheets: 'delete_sheets',
-    DeleteTables: 'delete_tables'
+    DeleteTables: 'delete_tables',
+    ReadImages: 'read_images',
+    UploadImages: 'upload_images',
+    DeleteImages: 'delete_images'
 } as const;
 export type AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = typeof AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum[keyof typeof AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum];
 
@@ -597,42 +597,12 @@ export type AgentDraftSettingsStateResponseDtoWidgetAiProgressModeEnum = typeof 
 /**
  * @export
  */
-export const AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum = {
+export const AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = {
     None: 'none',
     Read: 'read',
     ReadWrite: 'read_write'
 } as const;
-export type AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum = typeof AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoProjectVarsInstructionModeEnum];
-
-/**
- * @export
- */
-export const AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-} as const;
-export type AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum = typeof AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoProjectVarsUserRequestModeEnum];
-
-/**
- * @export
- */
-export const AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-} as const;
-export type AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum = typeof AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoLeadVarsInstructionModeEnum];
-
-/**
- * @export
- */
-export const AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum = {
-    None: 'none',
-    Read: 'read',
-    ReadWrite: 'read_write'
-} as const;
-export type AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum = typeof AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoLeadVarsUserRequestModeEnum];
+export type AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = typeof AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum];
 
 
 /**
@@ -669,6 +639,7 @@ export function instanceOfAgentDraftSettingsStateResponseDto(value: object): val
     if (!('enableLeadBlocking' in value) || value['enableLeadBlocking'] === undefined) return false;
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined) return false;
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined) return false;
+    if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
     if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined) return false;
@@ -681,12 +652,10 @@ export function instanceOfAgentDraftSettingsStateResponseDto(value: object): val
     if (!('enableSkipMetrics' in value) || value['enableSkipMetrics'] === undefined) return false;
     if (!('enableMuteDialog' in value) || value['enableMuteDialog'] === undefined) return false;
     if (!('enableDetachFromDialog' in value) || value['enableDetachFromDialog'] === undefined) return false;
-    if (!('useProjectVariables' in value) || value['useProjectVariables'] === undefined) return false;
-    if (!('useLeadVariables' in value) || value['useLeadVariables'] === undefined) return false;
-    if (!('projectVarsInstructionMode' in value) || value['projectVarsInstructionMode'] === undefined) return false;
-    if (!('projectVarsUserRequestMode' in value) || value['projectVarsUserRequestMode'] === undefined) return false;
-    if (!('leadVarsInstructionMode' in value) || value['leadVarsInstructionMode'] === undefined) return false;
-    if (!('leadVarsUserRequestMode' in value) || value['leadVarsUserRequestMode'] === undefined) return false;
+    if (!('variableBindings' in value) || value['variableBindings'] === undefined) return false;
+    if (!('variablesAccessMode' in value) || value['variablesAccessMode'] === undefined) return false;
+    if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined) return false;
+    if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined) return false;
@@ -753,6 +722,7 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
         'enableLeadBlocking': json['enable_lead_blocking'],
         'enableAiResponse': json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
+        'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
@@ -765,12 +735,10 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
         'enableSkipMetrics': json['enable_skip_metrics'],
         'enableMuteDialog': json['enable_mute_dialog'],
         'enableDetachFromDialog': json['enable_detach_from_dialog'],
-        'useProjectVariables': json['use_project_variables'],
-        'useLeadVariables': json['use_lead_variables'],
-        'projectVarsInstructionMode': json['project_vars_instruction_mode'],
-        'projectVarsUserRequestMode': json['project_vars_user_request_mode'],
-        'leadVarsInstructionMode': json['lead_vars_instruction_mode'],
-        'leadVarsUserRequestMode': json['lead_vars_user_request_mode'],
+        'variableBindings': json['variable_bindings'],
+        'variablesAccessMode': json['variables_access_mode'],
+        'segmentAccessPolicy': json['segment_access_policy'],
+        'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'hasUnpublishedChanges': json['has_unpublished_changes'],
@@ -838,6 +806,7 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
         'enable_lead_blocking': value['enableLeadBlocking'],
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
+        'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
@@ -850,12 +819,10 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
         'enable_skip_metrics': value['enableSkipMetrics'],
         'enable_mute_dialog': value['enableMuteDialog'],
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
-        'use_project_variables': value['useProjectVariables'],
-        'use_lead_variables': value['useLeadVariables'],
-        'project_vars_instruction_mode': value['projectVarsInstructionMode'],
-        'project_vars_user_request_mode': value['projectVarsUserRequestMode'],
-        'lead_vars_instruction_mode': value['leadVarsInstructionMode'],
-        'lead_vars_user_request_mode': value['leadVarsUserRequestMode'],
+        'variable_bindings': value['variableBindings'],
+        'variables_access_mode': value['variablesAccessMode'],
+        'segment_access_policy': value['segmentAccessPolicy'],
+        'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'has_unpublished_changes': value['hasUnpublishedChanges'],

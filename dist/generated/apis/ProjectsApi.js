@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = exports.UpdateDialogSlaSettingsPrioritiesPriorityEnum = exports.UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = exports.UpdateDialogSlaSettingsAcceptLanguageEnum = exports.UpdateAcceptLanguageEnum = exports.GetMeAcceptLanguageEnum = exports.GetDialogSlaSettingsAcceptLanguageEnum = exports.ProjectsApi = void 0;
+exports.UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = exports.UpdateDialogSlaSettingsPrioritiesPriorityEnum = exports.UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = exports.UpdateDialogSlaSettingsAcceptLanguageEnum = exports.UpdateAcceptLanguageEnum = exports.ListAcceptLanguageEnum = exports.ListSourceEnum = exports.GetMeAcceptLanguageEnum = exports.GetDialogSlaSettingsAcceptLanguageEnum = exports.ProjectsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -75,7 +75,7 @@ class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_projects"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/{projectId}/dialog-sla-settings`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
@@ -112,7 +112,7 @@ class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_projects"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/projects/me`,
@@ -128,6 +128,48 @@ class ProjectsApi extends runtime.BaseAPI {
      */
     async getMe(requestParameters = {}, initOverrides) {
         const response = await this.getMeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . ( owner member)
+     *
+     */
+    async listRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+        if (requestParameters['isActive'] != null) {
+            queryParameters['is_active'] = requestParameters['isActive'];
+        }
+        if (requestParameters['source'] != null) {
+            queryParameters['source'] = requestParameters['source'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/projects`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetProjectsListDataDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . ( owner member)
+     *
+     */
+    async list(requestParameters = {}, initOverrides) {
+        const response = await this.listRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -326,6 +368,20 @@ exports.GetDialogSlaSettingsAcceptLanguageEnum = {
  * @export
  */
 exports.GetMeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ListSourceEnum = {
+    Manual: 'manual',
+    Streamvi: 'streamvi'
+};
+/**
+ * @export
+ */
+exports.ListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

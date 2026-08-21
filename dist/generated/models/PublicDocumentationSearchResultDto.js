@@ -47,6 +47,8 @@ function instanceOfPublicDocumentationSearchResultDto(value) {
         return false;
     if (!('url' in value) || value['url'] === undefined)
         return false;
+    if (!('documentRef' in value) || value['documentRef'] === undefined)
+        return false;
     return true;
 }
 function PublicDocumentationSearchResultDtoFromJSON(json) {
@@ -65,6 +67,7 @@ function PublicDocumentationSearchResultDtoFromJSONTyped(json, ignoreDiscriminat
         'fileKind': json['file_kind'],
         'app': (0, PublicDocumentationAppDto_1.PublicDocumentationAppDtoFromJSON)(json['app']),
         'url': json['url'],
+        'documentRef': json['document_ref'],
     };
 }
 function PublicDocumentationSearchResultDtoToJSON(json) {
@@ -83,5 +86,6 @@ function PublicDocumentationSearchResultDtoToJSONTyped(value, ignoreDiscriminato
         'file_kind': value['fileKind'],
         'app': (0, PublicDocumentationAppDto_1.PublicDocumentationAppDtoToJSON)(value['app']),
         'url': value['url'],
+        'document_ref': value['documentRef'],
     };
 }

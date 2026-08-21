@@ -62,7 +62,7 @@ export interface StatisticsOperatorResponseDistributionDto {
      */
     p50ResponseTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseDistributionDto
      */
@@ -80,7 +80,7 @@ export interface StatisticsOperatorResponseDistributionDto {
      */
     p50ResponseRawTimeSeconds: number;
     /**
-     * 90- ,
+     * 90- : 90%
      * @type {number}
      * @memberof StatisticsOperatorResponseDistributionDto
      */

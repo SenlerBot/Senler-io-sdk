@@ -62,6 +62,18 @@ export interface TariffResponseDto {
      * @type {number}
      * @memberof TariffResponseDto
      */
+    mailingMessagesPerDay: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TariffResponseDto
+     */
+    automationStepsPerSecond: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TariffResponseDto
+     */
     storageLimitBytes: number;
     /**
      *

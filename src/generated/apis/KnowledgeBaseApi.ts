@@ -19,11 +19,15 @@ import type {
   CreateKnowledgeFolderDto,
   CreateKnowledgeTableDto,
   ErrorResponse,
+  KnowledgeArchiveImportOperationResponseDto,
   KnowledgeFileResponseDto,
   KnowledgeFolderResponseDto,
+  KnowledgeImageRecognitionEstimateResponseDto,
+  KnowledgeImageRecognitionRunResponseDto,
   KnowledgeResourcesResponseDto,
   KnowledgeTableResponseDto,
   PaginatedKnowledgeBaseSearchResponseDto,
+  ResolveKnowledgeArchiveImportConflictDto,
   UpdateKnowledgeFileDto,
   UpdateKnowledgeFolderDto,
   UpdateKnowledgeTableDto,
@@ -39,16 +43,24 @@ import {
     CreateKnowledgeTableDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    KnowledgeArchiveImportOperationResponseDtoFromJSON,
+    KnowledgeArchiveImportOperationResponseDtoToJSON,
     KnowledgeFileResponseDtoFromJSON,
     KnowledgeFileResponseDtoToJSON,
     KnowledgeFolderResponseDtoFromJSON,
     KnowledgeFolderResponseDtoToJSON,
+    KnowledgeImageRecognitionEstimateResponseDtoFromJSON,
+    KnowledgeImageRecognitionEstimateResponseDtoToJSON,
+    KnowledgeImageRecognitionRunResponseDtoFromJSON,
+    KnowledgeImageRecognitionRunResponseDtoToJSON,
     KnowledgeResourcesResponseDtoFromJSON,
     KnowledgeResourcesResponseDtoToJSON,
     KnowledgeTableResponseDtoFromJSON,
     KnowledgeTableResponseDtoToJSON,
     PaginatedKnowledgeBaseSearchResponseDtoFromJSON,
     PaginatedKnowledgeBaseSearchResponseDtoToJSON,
+    ResolveKnowledgeArchiveImportConflictDtoFromJSON,
+    ResolveKnowledgeArchiveImportConflictDtoToJSON,
     UpdateKnowledgeFileDtoFromJSON,
     UpdateKnowledgeFileDtoToJSON,
     UpdateKnowledgeFolderDtoFromJSON,
@@ -60,6 +72,25 @@ import {
     UploadKnowledgeArchiveResponseDtoFromJSON,
     UploadKnowledgeArchiveResponseDtoToJSON,
 } from '../models/index';
+
+export interface ArchiveImportsRequest {
+    projectId: string;
+    idempotencyKey: string;
+    projectId2: string;
+    file: Blob;
+    acceptLanguage?: ArchiveImportsAcceptLanguageEnum;
+    locale?: ArchiveImportsLocaleEnum;
+    folderId?: string | null;
+    duplicateResolution?: ArchiveImportsDuplicateResolutionEnum;
+    imageRecognitionMode?: ArchiveImportsImageRecognitionModeEnum;
+}
+
+export interface DeleteArchiveImportsRequest {
+    operationId: string;
+    projectId: string;
+    includeResult?: boolean;
+    acceptLanguage?: DeleteArchiveImportsAcceptLanguageEnum;
+}
 
 export interface DeleteFoldersRequest {
     id: string;
@@ -76,25 +107,73 @@ export interface FilesRequest {
     acceptLanguage?: FilesAcceptLanguageEnum;
 }
 
+export interface FilesRecognitionEstimateRequest {
+    projectId: string;
+    file: Blob;
+    acceptLanguage?: FilesRecognitionEstimateAcceptLanguageEnum;
+    locale?: FilesRecognitionEstimateLocaleEnum;
+}
+
 export interface FilesUploadRequest {
     projectId: string;
     file: Blob;
     acceptLanguage?: FilesUploadAcceptLanguageEnum;
     folderId?: string | null;
     title?: string;
+    locale?: FilesUploadLocaleEnum;
+    imageRecognitionMode?: FilesUploadImageRecognitionModeEnum;
 }
 
 export interface FilesUploadArchiveRequest {
     projectId: string;
     file: Blob;
     acceptLanguage?: FilesUploadArchiveAcceptLanguageEnum;
+    locale?: FilesUploadArchiveLocaleEnum;
     folderId?: string | null;
     duplicateResolution?: FilesUploadArchiveDuplicateResolutionEnum;
+    imageRecognitionMode?: FilesUploadArchiveImageRecognitionModeEnum;
 }
 
 export interface FoldersRequest {
     createKnowledgeFolderDto: CreateKnowledgeFolderDto;
     acceptLanguage?: FoldersAcceptLanguageEnum;
+}
+
+export interface GetArchiveImportsRequest {
+    projectId: string;
+    idempotencyKey: string;
+    includeResult?: boolean;
+    acceptLanguage?: GetArchiveImportsAcceptLanguageEnum;
+}
+
+export interface GetArchiveImports2Request {
+    operationId: string;
+    projectId: string;
+    includeResult?: boolean;
+    acceptLanguage?: GetArchiveImports2AcceptLanguageEnum;
+}
+
+export interface GetArchiveImportsContentRequest {
+    projectId: string;
+    archiveSha256: string;
+    duplicateResolution: GetArchiveImportsContentDuplicateResolutionEnum;
+    locale: GetArchiveImportsContentLocaleEnum;
+    imageRecognitionMode: GetArchiveImportsContentImageRecognitionModeEnum;
+    includeResult?: boolean;
+    folderId?: string;
+    acceptLanguage?: GetArchiveImportsContentAcceptLanguageEnum;
+}
+
+export interface GetImageContextsExportRequest {
+    projectId: string;
+    rootFolderId: string;
+    acceptLanguage?: GetImageContextsExportAcceptLanguageEnum;
+}
+
+export interface GetImageRecognitionRunsRequest {
+    runId: string;
+    projectId: string;
+    acceptLanguage?: GetImageRecognitionRunsAcceptLanguageEnum;
 }
 
 export interface GetResourcesRequest {
@@ -149,6 +228,14 @@ export interface TablesUploadRequest {
     name?: string;
 }
 
+export interface UpdateArchiveImportsResolutionRequest {
+    operationId: string;
+    projectId: string;
+    resolveKnowledgeArchiveImportConflictDto: ResolveKnowledgeArchiveImportConflictDto;
+    includeResult?: boolean;
+    acceptLanguage?: UpdateArchiveImportsResolutionAcceptLanguageEnum;
+}
+
 export interface UpdateFilesRequest {
     id: string;
     updateKnowledgeFileDto: UpdateKnowledgeFileDto;
@@ -171,6 +258,194 @@ export interface UpdateTablesRequest {
  *
  */
 export class KnowledgeBaseApi extends runtime.BaseAPI {
+
+    /**
+     * , HTTP-.
+     * ZIP-
+     */
+    async archiveImportsRaw(requestParameters: ArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling archiveImports().'
+            );
+        }
+
+        if (requestParameters['idempotencyKey'] == null) {
+            throw new runtime.RequiredError(
+                'idempotencyKey',
+                'Required parameter "idempotencyKey" was null or undefined when calling archiveImports().'
+            );
+        }
+
+        if (requestParameters['projectId2'] == null) {
+            throw new runtime.RequiredError(
+                'projectId2',
+                'Required parameter "projectId2" was null or undefined when calling archiveImports().'
+            );
+        }
+
+        if (requestParameters['file'] == null) {
+            throw new runtime.RequiredError(
+                'file',
+                'Required parameter "file" was null or undefined when calling archiveImports().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['idempotencyKey'] != null) {
+            headerParameters['Idempotency-Key'] = String(requestParameters['idempotencyKey']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['projectId2'] != null) {
+            formParams.append('project_id', requestParameters['projectId2'] as any);
+        }
+
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale'] as any);
+        }
+
+        if (requestParameters['folderId'] != null) {
+            formParams.append('folder_id', requestParameters['folderId'] as any);
+        }
+
+        if (requestParameters['duplicateResolution'] != null) {
+            formParams.append('duplicate_resolution', requestParameters['duplicateResolution'] as any);
+        }
+
+        if (requestParameters['imageRecognitionMode'] != null) {
+            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode'] as any);
+        }
+
+        if (requestParameters['file'] != null) {
+            formParams.append('file', requestParameters['file'] as any);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchiveImportOperationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , HTTP-.
+     * ZIP-
+     */
+    async archiveImports(requestParameters: ArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
+        const response = await this.archiveImportsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ZIP .
+     * ,
+     */
+    async deleteArchiveImportsRaw(requestParameters: DeleteArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['operationId'] == null) {
+            throw new runtime.RequiredError(
+                'operationId',
+                'Required parameter "operationId" was null or undefined when calling deleteArchiveImports().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling deleteArchiveImports().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/{operationId}`.replace(`{${"operationId"}}`, encodeURIComponent(String(requestParameters['operationId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * ZIP .
+     * ,
+     */
+    async deleteArchiveImports(requestParameters: DeleteArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteArchiveImportsRaw(requestParameters, initOverrides);
+    }
 
     /**
      * .
@@ -330,6 +605,94 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
+     * ZIP .
+     *
+     */
+    async filesRecognitionEstimateRaw(requestParameters: FilesRecognitionEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeImageRecognitionEstimateResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling filesRecognitionEstimate().'
+            );
+        }
+
+        if (requestParameters['file'] == null) {
+            throw new runtime.RequiredError(
+                'file',
+                'Required parameter "file" was null or undefined when calling filesRecognitionEstimate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['projectId'] != null) {
+            formParams.append('project_id', requestParameters['projectId'] as any);
+        }
+
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale'] as any);
+        }
+
+        if (requestParameters['file'] != null) {
+            formParams.append('file', requestParameters['file'] as any);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/files/recognition-estimate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeImageRecognitionEstimateResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ZIP .
+     *
+     */
+    async filesRecognitionEstimate(requestParameters: FilesRecognitionEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeImageRecognitionEstimateResponseDto> {
+        const response = await this.filesRecognitionEstimateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      *
      */
@@ -397,6 +760,14 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
             formParams.append('title', requestParameters['title'] as any);
         }
 
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale'] as any);
+        }
+
+        if (requestParameters['imageRecognitionMode'] != null) {
+            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode'] as any);
+        }
+
         if (requestParameters['file'] != null) {
             formParams.append('file', requestParameters['file'] as any);
         }
@@ -424,6 +795,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
      * ZIP- 500 , .
      * ZIP-
+     * @deprecated
      */
     async filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>> {
         if (requestParameters['projectId'] == null) {
@@ -481,12 +853,20 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
             formParams.append('project_id', requestParameters['projectId'] as any);
         }
 
+        if (requestParameters['locale'] != null) {
+            formParams.append('locale', requestParameters['locale'] as any);
+        }
+
         if (requestParameters['folderId'] != null) {
             formParams.append('folder_id', requestParameters['folderId'] as any);
         }
 
         if (requestParameters['duplicateResolution'] != null) {
             formParams.append('duplicate_resolution', requestParameters['duplicateResolution'] as any);
+        }
+
+        if (requestParameters['imageRecognitionMode'] != null) {
+            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode'] as any);
         }
 
         if (requestParameters['file'] != null) {
@@ -507,6 +887,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     /**
      * ZIP- 500 , .
      * ZIP-
+     * @deprecated
      */
     async filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto> {
         const response = await this.filesUploadArchiveRaw(requestParameters, initOverrides);
@@ -569,6 +950,386 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
+     * ID , .
+     * ZIP-
+     */
+    async getArchiveImportsRaw(requestParameters: GetArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getArchiveImports().'
+            );
+        }
+
+        if (requestParameters['idempotencyKey'] == null) {
+            throw new runtime.RequiredError(
+                'idempotencyKey',
+                'Required parameter "idempotencyKey" was null or undefined when calling getArchiveImports().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+
+        if (requestParameters['idempotencyKey'] != null) {
+            queryParameters['idempotency_key'] = requestParameters['idempotencyKey'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchiveImportOperationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ID , .
+     * ZIP-
+     */
+    async getArchiveImports(requestParameters: GetArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
+        const response = await this.getArchiveImportsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . include_result=true.
+     * ZIP-
+     */
+    async getArchiveImports2Raw(requestParameters: GetArchiveImports2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>> {
+        if (requestParameters['operationId'] == null) {
+            throw new runtime.RequiredError(
+                'operationId',
+                'Required parameter "operationId" was null or undefined when calling getArchiveImports2().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getArchiveImports2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/{operationId}`.replace(`{${"operationId"}}`, encodeURIComponent(String(requestParameters['operationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchiveImportOperationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . include_result=true.
+     * ZIP-
+     */
+    async getArchiveImports2(requestParameters: GetArchiveImports2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
+        const response = await this.getArchiveImports2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getArchiveImportsContentRaw(requestParameters: GetArchiveImportsContentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getArchiveImportsContent().'
+            );
+        }
+
+        if (requestParameters['archiveSha256'] == null) {
+            throw new runtime.RequiredError(
+                'archiveSha256',
+                'Required parameter "archiveSha256" was null or undefined when calling getArchiveImportsContent().'
+            );
+        }
+
+        if (requestParameters['duplicateResolution'] == null) {
+            throw new runtime.RequiredError(
+                'duplicateResolution',
+                'Required parameter "duplicateResolution" was null or undefined when calling getArchiveImportsContent().'
+            );
+        }
+
+        if (requestParameters['locale'] == null) {
+            throw new runtime.RequiredError(
+                'locale',
+                'Required parameter "locale" was null or undefined when calling getArchiveImportsContent().'
+            );
+        }
+
+        if (requestParameters['imageRecognitionMode'] == null) {
+            throw new runtime.RequiredError(
+                'imageRecognitionMode',
+                'Required parameter "imageRecognitionMode" was null or undefined when calling getArchiveImportsContent().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+
+        if (requestParameters['archiveSha256'] != null) {
+            queryParameters['archive_sha256'] = requestParameters['archiveSha256'];
+        }
+
+        if (requestParameters['folderId'] != null) {
+            queryParameters['folder_id'] = requestParameters['folderId'];
+        }
+
+        if (requestParameters['duplicateResolution'] != null) {
+            queryParameters['duplicate_resolution'] = requestParameters['duplicateResolution'];
+        }
+
+        if (requestParameters['locale'] != null) {
+            queryParameters['locale'] = requestParameters['locale'];
+        }
+
+        if (requestParameters['imageRecognitionMode'] != null) {
+            queryParameters['image_recognition_mode'] = requestParameters['imageRecognitionMode'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/content`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchiveImportOperationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getArchiveImportsContent(requestParameters: GetArchiveImportsContentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
+        const response = await this.getArchiveImportsContentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * NDJSON .
+     *
+     */
+    async getImageContextsExportRaw(requestParameters: GetImageContextsExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getImageContextsExport().'
+            );
+        }
+
+        if (requestParameters['rootFolderId'] == null) {
+            throw new runtime.RequiredError(
+                'rootFolderId',
+                'Required parameter "rootFolderId" was null or undefined when calling getImageContextsExport().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['rootFolderId'] != null) {
+            queryParameters['root_folder_id'] = requestParameters['rootFolderId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/image-contexts/export`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<string>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * NDJSON .
+     *
+     */
+    async getImageContextsExport(requestParameters: GetImageContextsExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.getImageContextsExportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , AI-.
+     *
+     */
+    async getImageRecognitionRunsRaw(requestParameters: GetImageRecognitionRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeImageRecognitionRunResponseDto>> {
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError(
+                'runId',
+                'Required parameter "runId" was null or undefined when calling getImageRecognitionRuns().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getImageRecognitionRuns().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/image-recognition/runs/{runId}`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeImageRecognitionRunResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , AI-.
+     *
+     */
+    async getImageRecognitionRuns(requestParameters: GetImageRecognitionRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeImageRecognitionRunResponseDto> {
+        const response = await this.getImageRecognitionRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      *
      */
@@ -606,7 +1367,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -674,7 +1435,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -757,7 +1518,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -809,7 +1570,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -912,7 +1673,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_knowledge_base"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -1078,6 +1839,83 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async tablesUpload(requestParameters: TablesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.tablesUploadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ZIP, .
+     *
+     */
+    async updateArchiveImportsResolutionRaw(requestParameters: UpdateArchiveImportsResolutionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchiveImportOperationResponseDto>> {
+        if (requestParameters['operationId'] == null) {
+            throw new runtime.RequiredError(
+                'operationId',
+                'Required parameter "operationId" was null or undefined when calling updateArchiveImportsResolution().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateArchiveImportsResolution().'
+            );
+        }
+
+        if (requestParameters['resolveKnowledgeArchiveImportConflictDto'] == null) {
+            throw new runtime.RequiredError(
+                'resolveKnowledgeArchiveImportConflictDto',
+                'Required parameter "resolveKnowledgeArchiveImportConflictDto" was null or undefined when calling updateArchiveImportsResolution().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-imports/{operationId}/resolution`.replace(`{${"operationId"}}`, encodeURIComponent(String(requestParameters['operationId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ResolveKnowledgeArchiveImportConflictDtoToJSON(requestParameters['resolveKnowledgeArchiveImportConflictDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchiveImportOperationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ZIP, .
+     *
+     */
+    async updateArchiveImportsResolution(requestParameters: UpdateArchiveImportsResolutionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
+        const response = await this.updateArchiveImportsResolutionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1272,6 +2110,49 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export const ArchiveImportsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ArchiveImportsAcceptLanguageEnum = typeof ArchiveImportsAcceptLanguageEnum[keyof typeof ArchiveImportsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ArchiveImportsLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ArchiveImportsLocaleEnum = typeof ArchiveImportsLocaleEnum[keyof typeof ArchiveImportsLocaleEnum];
+/**
+ * @export
+ */
+export const ArchiveImportsDuplicateResolutionEnum = {
+    Ask: 'ask',
+    Replace: 'replace',
+    Rename: 'rename'
+} as const;
+export type ArchiveImportsDuplicateResolutionEnum = typeof ArchiveImportsDuplicateResolutionEnum[keyof typeof ArchiveImportsDuplicateResolutionEnum];
+/**
+ * @export
+ */
+export const ArchiveImportsImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+} as const;
+export type ArchiveImportsImageRecognitionModeEnum = typeof ArchiveImportsImageRecognitionModeEnum[keyof typeof ArchiveImportsImageRecognitionModeEnum];
+/**
+ * @export
+ */
+export const DeleteArchiveImportsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteArchiveImportsAcceptLanguageEnum = typeof DeleteArchiveImportsAcceptLanguageEnum[keyof typeof DeleteArchiveImportsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const DeleteFoldersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1296,6 +2177,22 @@ export type FilesAcceptLanguageEnum = typeof FilesAcceptLanguageEnum[keyof typeo
 /**
  * @export
  */
+export const FilesRecognitionEstimateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FilesRecognitionEstimateAcceptLanguageEnum = typeof FilesRecognitionEstimateAcceptLanguageEnum[keyof typeof FilesRecognitionEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const FilesRecognitionEstimateLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FilesRecognitionEstimateLocaleEnum = typeof FilesRecognitionEstimateLocaleEnum[keyof typeof FilesRecognitionEstimateLocaleEnum];
+/**
+ * @export
+ */
 export const FilesUploadAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1304,11 +2201,37 @@ export type FilesUploadAcceptLanguageEnum = typeof FilesUploadAcceptLanguageEnum
 /**
  * @export
  */
+export const FilesUploadLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FilesUploadLocaleEnum = typeof FilesUploadLocaleEnum[keyof typeof FilesUploadLocaleEnum];
+/**
+ * @export
+ */
+export const FilesUploadImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+} as const;
+export type FilesUploadImageRecognitionModeEnum = typeof FilesUploadImageRecognitionModeEnum[keyof typeof FilesUploadImageRecognitionModeEnum];
+/**
+ * @export
+ */
 export const FilesUploadArchiveAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type FilesUploadArchiveAcceptLanguageEnum = typeof FilesUploadArchiveAcceptLanguageEnum[keyof typeof FilesUploadArchiveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const FilesUploadArchiveLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FilesUploadArchiveLocaleEnum = typeof FilesUploadArchiveLocaleEnum[keyof typeof FilesUploadArchiveLocaleEnum];
 /**
  * @export
  */
@@ -1321,11 +2244,88 @@ export type FilesUploadArchiveDuplicateResolutionEnum = typeof FilesUploadArchiv
 /**
  * @export
  */
+export const FilesUploadArchiveImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+} as const;
+export type FilesUploadArchiveImageRecognitionModeEnum = typeof FilesUploadArchiveImageRecognitionModeEnum[keyof typeof FilesUploadArchiveImageRecognitionModeEnum];
+/**
+ * @export
+ */
 export const FoldersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type FoldersAcceptLanguageEnum = typeof FoldersAcceptLanguageEnum[keyof typeof FoldersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetArchiveImportsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetArchiveImportsAcceptLanguageEnum = typeof GetArchiveImportsAcceptLanguageEnum[keyof typeof GetArchiveImportsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetArchiveImports2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetArchiveImports2AcceptLanguageEnum = typeof GetArchiveImports2AcceptLanguageEnum[keyof typeof GetArchiveImports2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetArchiveImportsContentDuplicateResolutionEnum = {
+    Ask: 'ask',
+    Replace: 'replace',
+    Rename: 'rename'
+} as const;
+export type GetArchiveImportsContentDuplicateResolutionEnum = typeof GetArchiveImportsContentDuplicateResolutionEnum[keyof typeof GetArchiveImportsContentDuplicateResolutionEnum];
+/**
+ * @export
+ */
+export const GetArchiveImportsContentLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetArchiveImportsContentLocaleEnum = typeof GetArchiveImportsContentLocaleEnum[keyof typeof GetArchiveImportsContentLocaleEnum];
+/**
+ * @export
+ */
+export const GetArchiveImportsContentImageRecognitionModeEnum = {
+    None: 'none',
+    WithoutMarkdownDescription: 'without_markdown_description',
+    Unrecognized: 'unrecognized',
+    All: 'all'
+} as const;
+export type GetArchiveImportsContentImageRecognitionModeEnum = typeof GetArchiveImportsContentImageRecognitionModeEnum[keyof typeof GetArchiveImportsContentImageRecognitionModeEnum];
+/**
+ * @export
+ */
+export const GetArchiveImportsContentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetArchiveImportsContentAcceptLanguageEnum = typeof GetArchiveImportsContentAcceptLanguageEnum[keyof typeof GetArchiveImportsContentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetImageContextsExportAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetImageContextsExportAcceptLanguageEnum = typeof GetImageContextsExportAcceptLanguageEnum[keyof typeof GetImageContextsExportAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetImageRecognitionRunsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetImageRecognitionRunsAcceptLanguageEnum = typeof GetImageRecognitionRunsAcceptLanguageEnum[keyof typeof GetImageRecognitionRunsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1399,6 +2399,14 @@ export const TablesUploadAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type TablesUploadAcceptLanguageEnum = typeof TablesUploadAcceptLanguageEnum[keyof typeof TablesUploadAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateArchiveImportsResolutionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateArchiveImportsResolutionAcceptLanguageEnum = typeof UpdateArchiveImportsResolutionAcceptLanguageEnum[keyof typeof UpdateArchiveImportsResolutionAcceptLanguageEnum];
 /**
  * @export
  */

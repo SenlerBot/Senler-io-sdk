@@ -46,6 +46,7 @@ function ProjectUsageStatsFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'projectId': json['project_id'],
         'projectName': json['project_name'] == null ? undefined : json['project_name'],
+        'projectAvatarUrl': json['project_avatar_url'] == null ? undefined : json['project_avatar_url'],
         'eventsCount': json['events_count'],
         'dialogsCount': json['dialogs_count'],
         'providerCost': json['provider_cost'],
@@ -63,6 +64,7 @@ function ProjectUsageStatsToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'project_id': value['projectId'],
         'project_name': value['projectName'],
+        'project_avatar_url': value['projectAvatarUrl'],
         'events_count': value['eventsCount'],
         'dialogs_count': value['dialogsCount'],
         'provider_cost': value['providerCost'],

@@ -16,6 +16,12 @@
  */
 export interface GenerateSummarizationRequestDto {
     /**
+     * ID
+     * @type {string}
+     * @memberof GenerateSummarizationRequestDto
+     */
+    operationId: string;
+    /**
      * ID (UUID)
      * @type {string}
      * @memberof GenerateSummarizationRequestDto

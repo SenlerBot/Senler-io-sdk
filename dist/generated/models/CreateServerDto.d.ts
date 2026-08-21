@@ -66,12 +66,6 @@ export interface CreateServerDto {
      */
     mcpServerTemplateId?: string;
     /**
-     * ,
-     * @type {string}
-     * @memberof CreateServerDto
-     */
-    descriptionPrepend?: string;
-    /**
      * MCP
      * @type {{ [key: string]: any; }}
      * @memberof CreateServerDto
@@ -85,6 +79,18 @@ export interface CreateServerDto {
      * @memberof CreateServerDto
      */
     authMode?: CreateServerDtoAuthModeEnum;
+    /**
+     * Senler
+     * @type {boolean}
+     * @memberof CreateServerDto
+     */
+    senlerDynamicToolLoadingEnabled?: boolean;
+    /**
+     * Senler
+     * @type {string}
+     * @memberof CreateServerDto
+     */
+    senlerToolSearchLanguage?: CreateServerDtoSenlerToolSearchLanguageEnum;
     /**
      * UUID . .
      * @type {string}
@@ -116,6 +122,14 @@ export declare const CreateServerDtoAuthModeEnum: {
     readonly Lead: "lead";
 };
 export type CreateServerDtoAuthModeEnum = typeof CreateServerDtoAuthModeEnum[keyof typeof CreateServerDtoAuthModeEnum];
+/**
+ * @export
+ */
+export declare const CreateServerDtoSenlerToolSearchLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type CreateServerDtoSenlerToolSearchLanguageEnum = typeof CreateServerDtoSenlerToolSearchLanguageEnum[keyof typeof CreateServerDtoSenlerToolSearchLanguageEnum];
 /**
  * Check if a given object implements the CreateServerDto interface.
  */

@@ -169,7 +169,8 @@ export const EventPollSnapshotDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type EventPollSnapshotDtoPlatformTypeEnum = typeof EventPollSnapshotDtoPlatformTypeEnum[keyof typeof EventPollSnapshotDtoPlatformTypeEnum];
 

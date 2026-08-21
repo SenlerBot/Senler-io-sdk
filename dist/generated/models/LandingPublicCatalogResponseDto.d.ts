@@ -17,6 +17,12 @@ import type { LandingPublicCatalogItemDto } from './LandingPublicCatalogItemDto'
  */
 export interface LandingPublicCatalogResponseDto {
     /**
+     *
+     * @type {string}
+     * @memberof LandingPublicCatalogResponseDto
+     */
+    language: LandingPublicCatalogResponseDtoLanguageEnum;
+    /**
      * .
      * @type {string}
      * @memberof LandingPublicCatalogResponseDto
@@ -38,8 +44,18 @@ export interface LandingPublicCatalogResponseDto {
 /**
  * @export
  */
+export declare const LandingPublicCatalogResponseDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingPublicCatalogResponseDtoLanguageEnum = typeof LandingPublicCatalogResponseDtoLanguageEnum[keyof typeof LandingPublicCatalogResponseDtoLanguageEnum];
+/**
+ * @export
+ */
 export declare const LandingPublicCatalogResponseDtoTargetModeEnum: {
-    readonly Catalog: "catalog";
+    readonly List: "list";
+    readonly IconList: "icon_list";
+    readonly BannerGrid: "banner_grid";
     readonly Landing: "landing";
 };
 export type LandingPublicCatalogResponseDtoTargetModeEnum = typeof LandingPublicCatalogResponseDtoTargetModeEnum[keyof typeof LandingPublicCatalogResponseDtoTargetModeEnum];

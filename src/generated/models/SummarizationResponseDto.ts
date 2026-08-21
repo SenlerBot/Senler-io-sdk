@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AutomationAnalysisDto } from './AutomationAnalysisDto';
+import {
+    AutomationAnalysisDtoFromJSON,
+    AutomationAnalysisDtoFromJSONTyped,
+    AutomationAnalysisDtoToJSON,
+    AutomationAnalysisDtoToJSONTyped,
+} from './AutomationAnalysisDto';
+import type { AutomationRecommendationDto } from './AutomationRecommendationDto';
+import {
+    AutomationRecommendationDtoFromJSON,
+    AutomationRecommendationDtoFromJSONTyped,
+    AutomationRecommendationDtoToJSON,
+    AutomationRecommendationDtoToJSONTyped,
+} from './AutomationRecommendationDto';
 import type { ImportantDiscussionAnalysisDto } from './ImportantDiscussionAnalysisDto';
 import {
     ImportantDiscussionAnalysisDtoFromJSON,
@@ -104,6 +118,18 @@ export interface SummarizationResponseDto {
      */
     agentRecommendations: Array<AgentRecommendationDto>;
     /**
+     * ,
+     * @type {Array<AutomationRecommendationDto>}
+     * @memberof SummarizationResponseDto
+     */
+    automationRecommendations: Array<AutomationRecommendationDto>;
+    /**
+     * ,
+     * @type {AutomationAnalysisDto}
+     * @memberof SummarizationResponseDto
+     */
+    automationAnalysis: AutomationAnalysisDto;
+    /**
      * -
      * @type {Array<string>}
      * @memberof SummarizationResponseDto
@@ -158,6 +184,8 @@ export function instanceOfSummarizationResponseDto(value: object): value is Summ
     if (!('discussionAnalysis' in value) || value['discussionAnalysis'] === undefined) return false;
     if (!('importantDiscussions' in value) || value['importantDiscussions'] === undefined) return false;
     if (!('agentRecommendations' in value) || value['agentRecommendations'] === undefined) return false;
+    if (!('automationRecommendations' in value) || value['automationRecommendations'] === undefined) return false;
+    if (!('automationAnalysis' in value) || value['automationAnalysis'] === undefined) return false;
     if (!('businessRecommendations' in value) || value['businessRecommendations'] === undefined) return false;
     if (!('generation' in value) || value['generation'] === undefined) return false;
     if (!('trigger' in value) || value['trigger'] === undefined) return false;
@@ -183,6 +211,8 @@ export function SummarizationResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'discussionAnalysis': ImportantDiscussionAnalysisDtoFromJSON(json['discussion_analysis']),
         'importantDiscussions': ((json['important_discussions'] as Array<any>).map(ImportantDiscussionDtoFromJSON)),
         'agentRecommendations': ((json['agent_recommendations'] as Array<any>).map(AgentRecommendationDtoFromJSON)),
+        'automationRecommendations': ((json['automation_recommendations'] as Array<any>).map(AutomationRecommendationDtoFromJSON)),
+        'automationAnalysis': AutomationAnalysisDtoFromJSON(json['automation_analysis']),
         'businessRecommendations': json['business_recommendations'],
         'generation': GenerationCostDtoFromJSON(json['generation']),
         'trigger': json['trigger'],
@@ -210,6 +240,8 @@ export function SummarizationResponseDtoToJSONTyped(value?: SummarizationRespons
         'discussion_analysis': ImportantDiscussionAnalysisDtoToJSON(value['discussionAnalysis']),
         'important_discussions': ((value['importantDiscussions'] as Array<any>).map(ImportantDiscussionDtoToJSON)),
         'agent_recommendations': ((value['agentRecommendations'] as Array<any>).map(AgentRecommendationDtoToJSON)),
+        'automation_recommendations': ((value['automationRecommendations'] as Array<any>).map(AutomationRecommendationDtoToJSON)),
+        'automation_analysis': AutomationAnalysisDtoToJSON(value['automationAnalysis']),
         'business_recommendations': value['businessRecommendations'],
         'generation': GenerationCostDtoToJSON(value['generation']),
         'trigger': value['trigger'],

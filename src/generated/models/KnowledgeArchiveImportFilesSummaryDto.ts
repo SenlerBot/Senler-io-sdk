@@ -38,6 +38,12 @@ export interface KnowledgeArchiveImportFilesSummaryDto {
      */
     replaced: number;
     /**
+     * ,
+     * @type {number}
+     * @memberof KnowledgeArchiveImportFilesSummaryDto
+     */
+    unchanged: number;
+    /**
      * duplicate_resolution=rename
      * @type {number}
      * @memberof KnowledgeArchiveImportFilesSummaryDto
@@ -70,6 +76,7 @@ export function instanceOfKnowledgeArchiveImportFilesSummaryDto(value: object): 
     if (!('total' in value) || value['total'] === undefined) return false;
     if (!('created' in value) || value['created'] === undefined) return false;
     if (!('replaced' in value) || value['replaced'] === undefined) return false;
+    if (!('unchanged' in value) || value['unchanged'] === undefined) return false;
     if (!('renamed' in value) || value['renamed'] === undefined) return false;
     if (!('extractionQueued' in value) || value['extractionQueued'] === undefined) return false;
     if (!('totalBytes' in value) || value['totalBytes'] === undefined) return false;
@@ -90,6 +97,7 @@ export function KnowledgeArchiveImportFilesSummaryDtoFromJSONTyped(json: any, ig
         'total': json['total'],
         'created': json['created'],
         'replaced': json['replaced'],
+        'unchanged': json['unchanged'],
         'renamed': json['renamed'],
         'extractionQueued': json['extraction_queued'],
         'totalBytes': json['total_bytes'],
@@ -111,6 +119,7 @@ export function KnowledgeArchiveImportFilesSummaryDtoToJSONTyped(value?: Knowled
         'total': value['total'],
         'created': value['created'],
         'replaced': value['replaced'],
+        'unchanged': value['unchanged'],
         'renamed': value['renamed'],
         'extraction_queued': value['extractionQueued'],
         'total_bytes': value['totalBytes'],

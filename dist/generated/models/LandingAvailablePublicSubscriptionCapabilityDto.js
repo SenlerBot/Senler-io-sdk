@@ -20,7 +20,6 @@ exports.LandingAvailablePublicSubscriptionCapabilityDtoFromJSONTyped = LandingAv
 exports.LandingAvailablePublicSubscriptionCapabilityDtoToJSON = LandingAvailablePublicSubscriptionCapabilityDtoToJSON;
 exports.LandingAvailablePublicSubscriptionCapabilityDtoToJSONTyped = LandingAvailablePublicSubscriptionCapabilityDtoToJSONTyped;
 const LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner_1 = require("./LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner");
-const LandingPublicPaymentDto_1 = require("./LandingPublicPaymentDto");
 const SegmentConsentSnapshotDto_1 = require("./SegmentConsentSnapshotDto");
 /**
  * @export
@@ -35,8 +34,6 @@ function instanceOfLandingAvailablePublicSubscriptionCapabilityDto(value) {
     if (!('status' in value) || value['status'] === undefined)
         return false;
     if (!('launchToken' in value) || value['launchToken'] === undefined)
-        return false;
-    if (!('payment' in value) || value['payment'] === undefined)
         return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined)
         return false;
@@ -54,7 +51,6 @@ function LandingAvailablePublicSubscriptionCapabilityDtoFromJSONTyped(json, igno
     return {
         'status': json['status'],
         'launchToken': json['launch_token'],
-        'payment': (0, LandingPublicPaymentDto_1.LandingPublicPaymentDtoFromJSON)(json['payment']),
         'requiredConsents': (json['required_consents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoFromJSON)),
         'channels': (json['channels'].map(LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner_1.LandingAvailablePublicSubscriptionCapabilityDtoChannelsInnerFromJSON)),
     };
@@ -69,7 +65,6 @@ function LandingAvailablePublicSubscriptionCapabilityDtoToJSONTyped(value, ignor
     return {
         'status': value['status'],
         'launch_token': value['launchToken'],
-        'payment': (0, LandingPublicPaymentDto_1.LandingPublicPaymentDtoToJSON)(value['payment']),
         'required_consents': (value['requiredConsents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoToJSON)),
         'channels': (value['channels'].map(LandingAvailablePublicSubscriptionCapabilityDtoChannelsInner_1.LandingAvailablePublicSubscriptionCapabilityDtoChannelsInnerToJSON)),
     };

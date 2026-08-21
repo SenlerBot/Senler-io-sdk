@@ -54,6 +54,16 @@ function instanceOfPermissionsDto(value) {
         return false;
     if (!('canManageLeads' in value) || value['canManageLeads'] === undefined)
         return false;
+    if (!('canViewTrafficMarks' in value) || value['canViewTrafficMarks'] === undefined)
+        return false;
+    if (!('canManageTrafficMarks' in value) || value['canManageTrafficMarks'] === undefined)
+        return false;
+    if (!('canViewAutomations' in value) || value['canViewAutomations'] === undefined)
+        return false;
+    if (!('canManageAutomations' in value) || value['canManageAutomations'] === undefined)
+        return false;
+    if (!('canRunAutomations' in value) || value['canRunAutomations'] === undefined)
+        return false;
     if (!('canViewMcpServers' in value) || value['canViewMcpServers'] === undefined)
         return false;
     if (!('canManageMcpServers' in value) || value['canManageMcpServers'] === undefined)
@@ -136,6 +146,11 @@ function PermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageSpaces': json['can_manage_spaces'],
         'canViewLeads': json['can_view_leads'],
         'canManageLeads': json['can_manage_leads'],
+        'canViewTrafficMarks': json['can_view_traffic_marks'],
+        'canManageTrafficMarks': json['can_manage_traffic_marks'],
+        'canViewAutomations': json['can_view_automations'],
+        'canManageAutomations': json['can_manage_automations'],
+        'canRunAutomations': json['can_run_automations'],
         'canViewMcpServers': json['can_view_mcp_servers'],
         'canManageMcpServers': json['can_manage_mcp_servers'],
         'canViewAnalytics': json['can_view_analytics'],
@@ -190,6 +205,11 @@ function PermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_spaces': value['canManageSpaces'],
         'can_view_leads': value['canViewLeads'],
         'can_manage_leads': value['canManageLeads'],
+        'can_view_traffic_marks': value['canViewTrafficMarks'],
+        'can_manage_traffic_marks': value['canManageTrafficMarks'],
+        'can_view_automations': value['canViewAutomations'],
+        'can_manage_automations': value['canManageAutomations'],
+        'can_run_automations': value['canRunAutomations'],
         'can_view_mcp_servers': value['canViewMcpServers'],
         'can_manage_mcp_servers': value['canManageMcpServers'],
         'can_view_analytics': value['canViewAnalytics'],

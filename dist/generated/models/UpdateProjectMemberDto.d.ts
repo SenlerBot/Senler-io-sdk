@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Role } from './Role';
 import type { ChannelRoleDto } from './ChannelRoleDto';
+import type { ProjectRole } from './ProjectRole';
 /**
  * UpdateProjectMemberDto.
  * @export
@@ -25,10 +25,10 @@ export interface UpdateProjectMemberDto {
      * - admin: ,
      * - member: ,
      * - viewer: ,
-     * @type {Role}
+     * @type {ProjectRole}
      * @memberof UpdateProjectMemberDto
      */
-    role?: Role;
+    role?: ProjectRole;
     /**
      * ( ).
      *

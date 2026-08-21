@@ -36,6 +36,8 @@ exports.ProjectVariableResponseDtoTypeEnum = {
  * Check if a given object implements the ProjectVariableResponseDto interface.
  */
 function instanceOfProjectVariableResponseDto(value) {
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
         return false;
     if (!('appId' in value) || value['appId'] === undefined)
@@ -60,6 +62,7 @@ function ProjectVariableResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'id': json['id'],
         'projectId': json['project_id'],
         'appId': json['app_id'],
         'name': json['name'],
@@ -80,6 +83,7 @@ function ProjectVariableResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'id': value['id'],
         'project_id': value['projectId'],
         'app_id': value['appId'],
         'name': value['name'],

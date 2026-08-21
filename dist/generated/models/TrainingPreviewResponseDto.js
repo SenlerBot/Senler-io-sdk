@@ -18,6 +18,8 @@ exports.TrainingPreviewResponseDtoFromJSON = TrainingPreviewResponseDtoFromJSON;
 exports.TrainingPreviewResponseDtoFromJSONTyped = TrainingPreviewResponseDtoFromJSONTyped;
 exports.TrainingPreviewResponseDtoToJSON = TrainingPreviewResponseDtoToJSON;
 exports.TrainingPreviewResponseDtoToJSONTyped = TrainingPreviewResponseDtoToJSONTyped;
+const TrainingModeOptionDto_1 = require("./TrainingModeOptionDto");
+const TrainingBillingPreviewDto_1 = require("./TrainingBillingPreviewDto");
 const TrainingPreviewEstimateDto_1 = require("./TrainingPreviewEstimateDto");
 const TrainingChannelHistoryPreviewDto_1 = require("./TrainingChannelHistoryPreviewDto");
 const TrainingDataVolumeEstimateDto_1 = require("./TrainingDataVolumeEstimateDto");
@@ -25,6 +27,8 @@ const TrainingDataVolumeEstimateDto_1 = require("./TrainingDataVolumeEstimateDto
  * Check if a given object implements the TrainingPreviewResponseDto interface.
  */
 function instanceOfTrainingPreviewResponseDto(value) {
+    if (!('modeOptions' in value) || value['modeOptions'] === undefined)
+        return false;
     if (!('requestedHistoryDepthDays' in value) || value['requestedHistoryDepthDays'] === undefined)
         return false;
     if (!('maxHistoryDepthDays' in value) || value['maxHistoryDepthDays'] === undefined)
@@ -39,6 +43,8 @@ function instanceOfTrainingPreviewResponseDto(value) {
         return false;
     if (!('estimate' in value) || value['estimate'] === undefined)
         return false;
+    if (!('billing' in value) || value['billing'] === undefined)
+        return false;
     if (!('warnings' in value) || value['warnings'] === undefined)
         return false;
     return true;
@@ -51,6 +57,7 @@ function TrainingPreviewResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'modeOptions': (json['mode_options'].map(TrainingModeOptionDto_1.TrainingModeOptionDtoFromJSON)),
         'requestedHistoryDepthDays': json['requested_history_depth_days'],
         'maxHistoryDepthDays': json['max_history_depth_days'],
         'historyScanAvailable': json['history_scan_available'],
@@ -59,6 +66,7 @@ function TrainingPreviewResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'dataVolume': (0, TrainingDataVolumeEstimateDto_1.TrainingDataVolumeEstimateDtoFromJSON)(json['data_volume']),
         'channels': (json['channels'].map(TrainingChannelHistoryPreviewDto_1.TrainingChannelHistoryPreviewDtoFromJSON)),
         'estimate': (0, TrainingPreviewEstimateDto_1.TrainingPreviewEstimateDtoFromJSON)(json['estimate']),
+        'billing': (0, TrainingBillingPreviewDto_1.TrainingBillingPreviewDtoFromJSON)(json['billing']),
         'warnings': json['warnings'],
     };
 }
@@ -70,6 +78,7 @@ function TrainingPreviewResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'mode_options': (value['modeOptions'].map(TrainingModeOptionDto_1.TrainingModeOptionDtoToJSON)),
         'requested_history_depth_days': value['requestedHistoryDepthDays'],
         'max_history_depth_days': value['maxHistoryDepthDays'],
         'history_scan_available': value['historyScanAvailable'],
@@ -78,6 +87,7 @@ function TrainingPreviewResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         'data_volume': (0, TrainingDataVolumeEstimateDto_1.TrainingDataVolumeEstimateDtoToJSON)(value['dataVolume']),
         'channels': (value['channels'].map(TrainingChannelHistoryPreviewDto_1.TrainingChannelHistoryPreviewDtoToJSON)),
         'estimate': (0, TrainingPreviewEstimateDto_1.TrainingPreviewEstimateDtoToJSON)(value['estimate']),
+        'billing': (0, TrainingBillingPreviewDto_1.TrainingBillingPreviewDtoToJSON)(value['billing']),
         'warnings': value['warnings'],
     };
 }

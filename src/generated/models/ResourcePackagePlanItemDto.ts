@@ -68,6 +68,7 @@ export interface ResourcePackagePlanItemDto {
  * @export
  */
 export const ResourcePackagePlanItemDtoResourceTypeEnum = {
+    Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',
     ProjectVariable: 'project_variable',
@@ -77,7 +78,21 @@ export const ResourcePackagePlanItemDtoResourceTypeEnum = {
     KnowledgeFolder: 'knowledge_folder',
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
-    AgentKnowledgeSource: 'agent_knowledge_source'
+    AgentKnowledgeSource: 'agent_knowledge_source',
+    AutomationChannelBinding: 'automation_channel_binding',
+    AutomationMessageTarget: 'automation_message_target',
+    AgentAppTool: 'agent_app_tool',
+    AgentAppEvent: 'agent_app_event',
+    AgentManualMetric: 'agent_manual_metric',
+    AgentMcpBinding: 'agent_mcp_binding',
+    AgentChannelBinding: 'agent_channel_binding',
+    AgentVariableDependency: 'agent_variable_dependency',
+    AgentAppOwnership: 'agent_app_ownership',
+    AppResourceOwnership: 'app_resource_ownership',
+    AgentManagedSegment: 'agent_managed_segment',
+    AgentManagedLanding: 'agent_managed_landing',
+    AgentManagedTrigger: 'agent_managed_trigger',
+    ExternalAsset: 'external_asset'
 } as const;
 export type ResourcePackagePlanItemDtoResourceTypeEnum = typeof ResourcePackagePlanItemDtoResourceTypeEnum[keyof typeof ResourcePackagePlanItemDtoResourceTypeEnum];
 
@@ -87,6 +102,7 @@ export type ResourcePackagePlanItemDtoResourceTypeEnum = typeof ResourcePackageP
 export const ResourcePackagePlanItemDtoActionEnum = {
     Create: 'create',
     UseExisting: 'use_existing',
+    SetupRequired: 'setup_required',
     Conflict: 'conflict',
     Skip: 'skip'
 } as const;

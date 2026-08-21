@@ -338,7 +338,8 @@ export const SpaceDetailsResponseDtoPlatformTypeEnum = {
     Email: 'email',
     Avito: 'avito',
     Web: 'web',
-    Ai: 'ai'
+    Ai: 'ai',
+    Automation: 'automation'
 } as const;
 export type SpaceDetailsResponseDtoPlatformTypeEnum = typeof SpaceDetailsResponseDtoPlatformTypeEnum[keyof typeof SpaceDetailsResponseDtoPlatformTypeEnum];
 

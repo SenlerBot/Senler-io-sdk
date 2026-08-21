@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingWebsitePageSummaryDto } from './TrainingWebsitePageSummaryDto';
 /**
  * TaskDetailDto.
  * @export
@@ -26,7 +27,7 @@ export interface TaskDetailDto {
      * @type {string}
      * @memberof TaskDetailDto
      */
-    type: string;
+    type: TaskDetailDtoTypeEnum;
     /**
      *
      * @type {string}
@@ -46,11 +47,23 @@ export interface TaskDetailDto {
      */
     progress: number;
     /**
-     * /
-     * @type {string}
+     *
+     * @type {number}
      * @memberof TaskDetailDto
      */
-    itemsProgress: string;
+    itemsProcessed: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TaskDetailDto
+     */
+    itemsTotal?: number;
+    /**
+     * ,
+     * @type {Array<TrainingWebsitePageSummaryDto>}
+     * @memberof TaskDetailDto
+     */
+    websitePages?: Array<TrainingWebsitePageSummaryDto>;
     /**
      *
      * @type {string}
@@ -70,6 +83,15 @@ export interface TaskDetailDto {
      */
     completedAt?: string;
 }
+/**
+ * @export
+ */
+export declare const TaskDetailDtoTypeEnum: {
+    readonly WebsiteParse: "website_parse";
+    readonly ChannelHistoryScan: "channel_history_scan";
+    readonly AgentVariantsGenerate: "agent_variants_generate";
+};
+export type TaskDetailDtoTypeEnum = typeof TaskDetailDtoTypeEnum[keyof typeof TaskDetailDtoTypeEnum];
 /**
  * @export
  */

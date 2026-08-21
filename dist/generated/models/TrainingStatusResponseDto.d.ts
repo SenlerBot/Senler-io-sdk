@@ -9,7 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingMode } from './TrainingMode';
 import type { TasksStatsDto } from './TasksStatsDto';
+import type { TrainingConfigurationSnapshotDto } from './TrainingConfigurationSnapshotDto';
+import type { AgentStatus } from './AgentStatus';
+import type { TrainingRunBillingSummaryDto } from './TrainingRunBillingSummaryDto';
 import type { TaskDetailDto } from './TaskDetailDto';
 import type { TrainingProgressDetailDto } from './TrainingProgressDetailDto';
 import type { AgentVariantDto } from './AgentVariantDto';
@@ -27,16 +31,16 @@ export interface TrainingStatusResponseDto {
     agentId: string;
     /**
      *
-     * @type {string}
+     * @type {AgentStatus}
      * @memberof TrainingStatusResponseDto
      */
-    agentStatus: string;
+    agentStatus: AgentStatus;
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof TrainingStatusResponseDto
      */
-    mode: TrainingStatusResponseDtoModeEnum;
+    mode: TrainingMode;
     /**
      * (0-100)
      * @type {number}
@@ -55,6 +59,12 @@ export interface TrainingStatusResponseDto {
      * @memberof TrainingStatusResponseDto
      */
     tasks: Array<TaskDetailDto>;
+    /**
+     *
+     * @type {TrainingConfigurationSnapshotDto}
+     * @memberof TrainingStatusResponseDto
+     */
+    _configuration?: TrainingConfigurationSnapshotDto;
     /**
      *
      * @type {Array<AgentVariantDto>}
@@ -81,20 +91,17 @@ export interface TrainingStatusResponseDto {
     estimatedCompletion?: string;
     /**
      *
+     * @type {TrainingRunBillingSummaryDto}
+     * @memberof TrainingStatusResponseDto
+     */
+    billing?: TrainingRunBillingSummaryDto;
+    /**
+     *
      * @type {TrainingProgressDetailDto}
      * @memberof TrainingStatusResponseDto
      */
     trainingProgress?: TrainingProgressDetailDto;
 }
-/**
- * @export
- */
-export declare const TrainingStatusResponseDtoModeEnum: {
-    readonly Fast: "fast";
-    readonly Medium: "medium";
-    readonly Deep: "deep";
-};
-export type TrainingStatusResponseDtoModeEnum = typeof TrainingStatusResponseDtoModeEnum[keyof typeof TrainingStatusResponseDtoModeEnum];
 /**
  * Check if a given object implements the TrainingStatusResponseDto interface.
  */

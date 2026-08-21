@@ -34,6 +34,12 @@ export interface KnowledgeArchiveImportFilesSummaryDto {
      */
     replaced: number;
     /**
+     * ,
+     * @type {number}
+     * @memberof KnowledgeArchiveImportFilesSummaryDto
+     */
+    unchanged: number;
+    /**
      * duplicate_resolution=rename
      * @type {number}
      * @memberof KnowledgeArchiveImportFilesSummaryDto

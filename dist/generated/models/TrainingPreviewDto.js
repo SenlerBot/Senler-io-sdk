@@ -13,20 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrainingPreviewDtoModeEnum = void 0;
 exports.instanceOfTrainingPreviewDto = instanceOfTrainingPreviewDto;
 exports.TrainingPreviewDtoFromJSON = TrainingPreviewDtoFromJSON;
 exports.TrainingPreviewDtoFromJSONTyped = TrainingPreviewDtoFromJSONTyped;
 exports.TrainingPreviewDtoToJSON = TrainingPreviewDtoToJSON;
 exports.TrainingPreviewDtoToJSONTyped = TrainingPreviewDtoToJSONTyped;
-/**
- * @export
- */
-exports.TrainingPreviewDtoModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-};
+const TrainingMode_1 = require("./TrainingMode");
 /**
  * Check if a given object implements the TrainingPreviewDto interface.
  */
@@ -43,11 +35,12 @@ function TrainingPreviewDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'mode': json['mode'],
+        'mode': (0, TrainingMode_1.TrainingModeFromJSON)(json['mode']),
         'websiteSourceIds': json['website_source_ids'] == null ? undefined : json['website_source_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'historyDepthDays': json['history_depth_days'] == null ? undefined : json['history_depth_days'],
         'scanChannelHistory': json['scan_channel_history'] == null ? undefined : json['scan_channel_history'],
+        'acceptedMaxCredits': json['accepted_max_credits'] == null ? undefined : json['accepted_max_credits'],
     };
 }
 function TrainingPreviewDtoToJSON(json) {
@@ -58,10 +51,11 @@ function TrainingPreviewDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'mode': value['mode'],
+        'mode': (0, TrainingMode_1.TrainingModeToJSON)(value['mode']),
         'website_source_ids': value['websiteSourceIds'],
         'channel_ids': value['channelIds'],
         'history_depth_days': value['historyDepthDays'],
         'scan_channel_history': value['scanChannelHistory'],
+        'accepted_max_credits': value['acceptedMaxCredits'],
     };
 }

@@ -18,6 +18,7 @@ exports.UnitEconomicsFromJSON = UnitEconomicsFromJSON;
 exports.UnitEconomicsFromJSONTyped = UnitEconomicsFromJSONTyped;
 exports.UnitEconomicsToJSON = UnitEconomicsToJSON;
 exports.UnitEconomicsToJSONTyped = UnitEconomicsToJSONTyped;
+const UsagePurposeEconomics_1 = require("./UsagePurposeEconomics");
 const ClientSpending_1 = require("./ClientSpending");
 const CostSectionEconomics_1 = require("./CostSectionEconomics");
 const CurrencyBreakdown_1 = require("./CurrencyBreakdown");
@@ -29,11 +30,17 @@ function instanceOfUnitEconomics(value) {
         return false;
     if (!('client' in value) || value['client'] === undefined)
         return false;
+    if (!('usageRevenue' in value) || value['usageRevenue'] === undefined)
+        return false;
     if (!('marginPercent' in value) || value['marginPercent'] === undefined)
+        return false;
+    if (!('usageMarginRub' in value) || value['usageMarginRub'] === undefined)
         return false;
     if (!('eventsWithCosts' in value) || value['eventsWithCosts'] === undefined)
         return false;
     if (!('costsBySection' in value) || value['costsBySection'] === undefined)
+        return false;
+    if (!('costsByPurpose' in value) || value['costsByPurpose'] === undefined)
         return false;
     return true;
 }
@@ -47,9 +54,12 @@ function UnitEconomicsFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['provider']),
         'client': (0, ClientSpending_1.ClientSpendingFromJSON)(json['client']),
+        'usageRevenue': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['usage_revenue']),
         'marginPercent': json['margin_percent'],
+        'usageMarginRub': json['usage_margin_rub'],
         'eventsWithCosts': json['events_with_costs'],
         'costsBySection': (json['costs_by_section'].map(CostSectionEconomics_1.CostSectionEconomicsFromJSON)),
+        'costsByPurpose': (json['costs_by_purpose'].map(UsagePurposeEconomics_1.UsagePurposeEconomicsFromJSON)),
     };
 }
 function UnitEconomicsToJSON(json) {
@@ -62,8 +72,11 @@ function UnitEconomicsToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['provider']),
         'client': (0, ClientSpending_1.ClientSpendingToJSON)(value['client']),
+        'usage_revenue': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['usageRevenue']),
         'margin_percent': value['marginPercent'],
+        'usage_margin_rub': value['usageMarginRub'],
         'events_with_costs': value['eventsWithCosts'],
         'costs_by_section': (value['costsBySection'].map(CostSectionEconomics_1.CostSectionEconomicsToJSON)),
+        'costs_by_purpose': (value['costsByPurpose'].map(UsagePurposeEconomics_1.UsagePurposeEconomicsToJSON)),
     };
 }

@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LeadsFilterDto } from './LeadsFilterDto';
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 import {
-    LeadsFilterDtoFromJSON,
-    LeadsFilterDtoFromJSONTyped,
-    LeadsFilterDtoToJSON,
-    LeadsFilterDtoToJSONTyped,
-} from './LeadsFilterDto';
+    DeliveryAudienceFilterDtoFromJSON,
+    DeliveryAudienceFilterDtoFromJSONTyped,
+    DeliveryAudienceFilterDtoToJSON,
+    DeliveryAudienceFilterDtoToJSONTyped,
+} from './DeliveryAudienceFilterDto';
 import type { DeliverySendParamsDto } from './DeliverySendParamsDto';
 import {
     DeliverySendParamsDtoFromJSON,
@@ -41,11 +41,11 @@ export interface DeliverySendPayloadDto {
      */
     projectId: string;
     /**
-     * ,
-     * @type {LeadsFilterDto}
+     *
+     * @type {DeliveryAudienceFilterDto}
      * @memberof DeliverySendPayloadDto
      */
-    filters?: LeadsFilterDto;
+    filters?: DeliveryAudienceFilterDto;
     /**
      *
      * @type {DeliverySendParamsDto}
@@ -74,7 +74,7 @@ export function DeliverySendPayloadDtoFromJSONTyped(json: any, ignoreDiscriminat
     return {
 
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : LeadsFilterDtoFromJSON(json['filters']),
+        'filters': json['filters'] == null ? undefined : DeliveryAudienceFilterDtoFromJSON(json['filters']),
         'params': DeliverySendParamsDtoFromJSON(json['params']),
     };
 }
@@ -91,7 +91,7 @@ export function DeliverySendPayloadDtoToJSONTyped(value?: DeliverySendPayloadDto
     return {
 
         'project_id': value['projectId'],
-        'filters': LeadsFilterDtoToJSON(value['filters']),
+        'filters': DeliveryAudienceFilterDtoToJSON(value['filters']),
         'params': DeliverySendParamsDtoToJSON(value['params']),
     };
 }

@@ -28,6 +28,8 @@ function instanceOfKnowledgeArchiveImportFilesSummaryDto(value) {
         return false;
     if (!('replaced' in value) || value['replaced'] === undefined)
         return false;
+    if (!('unchanged' in value) || value['unchanged'] === undefined)
+        return false;
     if (!('renamed' in value) || value['renamed'] === undefined)
         return false;
     if (!('extractionQueued' in value) || value['extractionQueued'] === undefined)
@@ -49,6 +51,7 @@ function KnowledgeArchiveImportFilesSummaryDtoFromJSONTyped(json, ignoreDiscrimi
         'total': json['total'],
         'created': json['created'],
         'replaced': json['replaced'],
+        'unchanged': json['unchanged'],
         'renamed': json['renamed'],
         'extractionQueued': json['extraction_queued'],
         'totalBytes': json['total_bytes'],
@@ -66,6 +69,7 @@ function KnowledgeArchiveImportFilesSummaryDtoToJSONTyped(value, ignoreDiscrimin
         'total': value['total'],
         'created': value['created'],
         'replaced': value['replaced'],
+        'unchanged': value['unchanged'],
         'renamed': value['renamed'],
         'extraction_queued': value['extractionQueued'],
         'total_bytes': value['totalBytes'],

@@ -11,6 +11,8 @@
  */
 import type { KnowledgeArchiveImportSummaryDto } from './KnowledgeArchiveImportSummaryDto';
 import type { KnowledgeFileResponseDto } from './KnowledgeFileResponseDto';
+import type { KnowledgeImageRecognitionRunResponseDto } from './KnowledgeImageRecognitionRunResponseDto';
+import type { KnowledgeImageContextsImportSummaryDto } from './KnowledgeImageContextsImportSummaryDto';
 import type { KnowledgeFolderResponseDto } from './KnowledgeFolderResponseDto';
 /**
  * UploadKnowledgeArchiveResponseDto.
@@ -36,6 +38,18 @@ export interface UploadKnowledgeArchiveResponseDto {
      * @memberof UploadKnowledgeArchiveResponseDto
      */
     summary: KnowledgeArchiveImportSummaryDto;
+    /**
+     * ; null, AI
+     * @type {KnowledgeImageRecognitionRunResponseDto}
+     * @memberof UploadKnowledgeArchiveResponseDto
+     */
+    recognitionRun: KnowledgeImageRecognitionRunResponseDto | null;
+    /**
+     *
+     * @type {KnowledgeImageContextsImportSummaryDto}
+     * @memberof UploadKnowledgeArchiveResponseDto
+     */
+    imageContexts: KnowledgeImageContextsImportSummaryDto;
 }
 /**
  * Check if a given object implements the UploadKnowledgeArchiveResponseDto interface.

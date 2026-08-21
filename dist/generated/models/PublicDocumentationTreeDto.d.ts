@@ -35,6 +35,12 @@ export interface PublicDocumentationTreeDto {
      * @memberof PublicDocumentationTreeDto
      */
     firstFileId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicDocumentationTreeDto
+     */
+    firstPageSlug: string | null;
 }
 /**
  * Check if a given object implements the PublicDocumentationTreeDto interface.

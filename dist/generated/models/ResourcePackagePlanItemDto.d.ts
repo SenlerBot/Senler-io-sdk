@@ -62,6 +62,7 @@ export interface ResourcePackagePlanItemDto {
  * @export
  */
 export declare const ResourcePackagePlanItemDtoResourceTypeEnum: {
+    readonly Automation: "automation";
     readonly Agent: "agent";
     readonly Delivery: "delivery";
     readonly ProjectVariable: "project_variable";
@@ -72,6 +73,20 @@ export declare const ResourcePackagePlanItemDtoResourceTypeEnum: {
     readonly KnowledgeFile: "knowledge_file";
     readonly KnowledgeTable: "knowledge_table";
     readonly AgentKnowledgeSource: "agent_knowledge_source";
+    readonly AutomationChannelBinding: "automation_channel_binding";
+    readonly AutomationMessageTarget: "automation_message_target";
+    readonly AgentAppTool: "agent_app_tool";
+    readonly AgentAppEvent: "agent_app_event";
+    readonly AgentManualMetric: "agent_manual_metric";
+    readonly AgentMcpBinding: "agent_mcp_binding";
+    readonly AgentChannelBinding: "agent_channel_binding";
+    readonly AgentVariableDependency: "agent_variable_dependency";
+    readonly AgentAppOwnership: "agent_app_ownership";
+    readonly AppResourceOwnership: "app_resource_ownership";
+    readonly AgentManagedSegment: "agent_managed_segment";
+    readonly AgentManagedLanding: "agent_managed_landing";
+    readonly AgentManagedTrigger: "agent_managed_trigger";
+    readonly ExternalAsset: "external_asset";
 };
 export type ResourcePackagePlanItemDtoResourceTypeEnum = typeof ResourcePackagePlanItemDtoResourceTypeEnum[keyof typeof ResourcePackagePlanItemDtoResourceTypeEnum];
 /**
@@ -80,6 +95,7 @@ export type ResourcePackagePlanItemDtoResourceTypeEnum = typeof ResourcePackageP
 export declare const ResourcePackagePlanItemDtoActionEnum: {
     readonly Create: "create";
     readonly UseExisting: "use_existing";
+    readonly SetupRequired: "setup_required";
     readonly Conflict: "conflict";
     readonly Skip: "skip";
 };

@@ -13,6 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LandingPublicResponseDtoLanguageEnum = void 0;
 exports.instanceOfLandingPublicResponseDto = instanceOfLandingPublicResponseDto;
 exports.LandingPublicResponseDtoFromJSON = LandingPublicResponseDtoFromJSON;
 exports.LandingPublicResponseDtoFromJSONTyped = LandingPublicResponseDtoFromJSONTyped;
@@ -22,9 +23,18 @@ const LandingPublicResponseDtoBlocksInner_1 = require("./LandingPublicResponseDt
 const LandingVariablesDto_1 = require("./LandingVariablesDto");
 const LandingSettingsDto_1 = require("./LandingSettingsDto");
 /**
+ * @export
+ */
+exports.LandingPublicResponseDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
  * Check if a given object implements the LandingPublicResponseDto interface.
  */
 function instanceOfLandingPublicResponseDto(value) {
+    if (!('language' in value) || value['language'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('publicId' in value) || value['publicId'] === undefined)
@@ -49,6 +59,7 @@ function LandingPublicResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'language': json['language'],
         'name': json['name'],
         'publicId': json['public_id'],
         'projectPublicId': json['project_public_id'],
@@ -66,6 +77,7 @@ function LandingPublicResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         return value;
     }
     return {
+        'language': value['language'],
         'name': value['name'],
         'public_id': value['publicId'],
         'project_public_id': value['projectPublicId'],

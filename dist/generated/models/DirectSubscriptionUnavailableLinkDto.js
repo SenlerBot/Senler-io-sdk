@@ -42,8 +42,7 @@ exports.DirectSubscriptionUnavailableLinkDtoReasonEnum = {
     ChannelTokenNotFound: 'channel_token_not_found',
     VkGroupIdentityMissing: 'vk_group_identity_missing',
     TelegramBotUsernameMissing: 'telegram_bot_username_missing',
-    MaxBotUsernameMissing: 'max_bot_username_missing',
-    SegmentPaymentRequired: 'segment_payment_required'
+    MaxBotUsernameMissing: 'max_bot_username_missing'
 };
 /**
  * Check if a given object implements the DirectSubscriptionUnavailableLinkDto interface.

@@ -26,7 +26,13 @@ export interface LeadVariableValueResponseDto {
      * @type {string}
      * @memberof LeadVariableValueResponseDto
      */
-    type: string;
+    type: LeadVariableValueResponseDtoTypeEnum;
+    /**
+     * ; null
+     * @type {boolean}
+     * @memberof LeadVariableValueResponseDto
+     */
+    isSet: boolean;
     /**
      *  (mixed type)
      * @type {{ [key: string]: any; }}
@@ -48,6 +54,19 @@ export interface LeadVariableValueResponseDto {
      */
     agentInstruction?: string;
 }
+/**
+ * @export
+ */
+export declare const LeadVariableValueResponseDtoTypeEnum: {
+    readonly String: "string";
+    readonly Number: "number";
+    readonly Boolean: "boolean";
+    readonly Json: "json";
+    readonly Date: "date";
+    readonly Array: "array";
+    readonly Object: "object";
+};
+export type LeadVariableValueResponseDtoTypeEnum = typeof LeadVariableValueResponseDtoTypeEnum[keyof typeof LeadVariableValueResponseDtoTypeEnum];
 /**
  * Check if a given object implements the LeadVariableValueResponseDto interface.
  */

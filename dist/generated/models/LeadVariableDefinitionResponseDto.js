@@ -36,6 +36,8 @@ exports.LeadVariableDefinitionResponseDtoTypeEnum = {
  * Check if a given object implements the LeadVariableDefinitionResponseDto interface.
  */
 function instanceOfLeadVariableDefinitionResponseDto(value) {
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
         return false;
     if (!('appId' in value) || value['appId'] === undefined)
@@ -58,6 +60,7 @@ function LeadVariableDefinitionResponseDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
+        'id': json['id'],
         'projectId': json['project_id'],
         'appId': json['app_id'],
         'name': json['name'],
@@ -77,6 +80,7 @@ function LeadVariableDefinitionResponseDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
+        'id': value['id'],
         'project_id': value['projectId'],
         'app_id': value['appId'],
         'name': value['name'],

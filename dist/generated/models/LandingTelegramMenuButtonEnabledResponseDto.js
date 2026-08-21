@@ -13,17 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum = void 0;
 exports.instanceOfLandingTelegramMenuButtonEnabledResponseDto = instanceOfLandingTelegramMenuButtonEnabledResponseDto;
 exports.LandingTelegramMenuButtonEnabledResponseDtoFromJSON = LandingTelegramMenuButtonEnabledResponseDtoFromJSON;
 exports.LandingTelegramMenuButtonEnabledResponseDtoFromJSONTyped = LandingTelegramMenuButtonEnabledResponseDtoFromJSONTyped;
 exports.LandingTelegramMenuButtonEnabledResponseDtoToJSON = LandingTelegramMenuButtonEnabledResponseDtoToJSON;
 exports.LandingTelegramMenuButtonEnabledResponseDtoToJSONTyped = LandingTelegramMenuButtonEnabledResponseDtoToJSONTyped;
 const LandingTelegramMenuButtonEnabledResponseDtoTarget_1 = require("./LandingTelegramMenuButtonEnabledResponseDtoTarget");
-/**
- * @export
- */
-exports.LandingTelegramMenuButtonEnabledResponseDtoEnabledEnum = {};
 /**
  * Check if a given object implements the LandingTelegramMenuButtonEnabledResponseDto interface.
  */

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
+exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.GetByVariableCountExistsAcceptLanguageEnum = exports.GetByVariableCountEqualsStringAcceptLanguageEnum = exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = exports.GetByVariableCountEqualsNullAcceptLanguageEnum = exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = exports.ExportByDeliveryAcceptLanguageEnum = exports.ByVariableSearchExistsAcceptLanguageEnum = exports.ByVariableSearchEqualsStringAcceptLanguageEnum = exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = exports.ByVariableSearchEqualsNullAcceptLanguageEnum = exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = exports.ByVariableExportExistsAcceptLanguageEnum = exports.ByVariableExportEqualsStringAcceptLanguageEnum = exports.ByVariableExportEqualsNumberAcceptLanguageEnum = exports.ByVariableExportEqualsNullAcceptLanguageEnum = exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = exports.AutomationOperationAcceptLanguageEnum = exports.AgentOperationAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -138,6 +138,845 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , . .
+     *
+     */
+    async agentOperationRaw(requestParameters, initOverrides) {
+        if (requestParameters['createLeadsAgentOperationProcessDto'] == null) {
+            throw new runtime.RequiredError('createLeadsAgentOperationProcessDto', 'Required parameter "createLeadsAgentOperationProcessDto" was null or undefined when calling agentOperation().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/agent-operation`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateLeadsAgentOperationProcessDtoToJSON)(requestParameters['createLeadsAgentOperationProcessDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     *
+     */
+    async agentOperation(requestParameters, initOverrides) {
+        const response = await this.agentOperationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async automationOperationRaw(requestParameters, initOverrides) {
+        if (requestParameters['createLeadsAutomationOperationProcessDto'] == null) {
+            throw new runtime.RequiredError('createLeadsAutomationOperationProcessDto', 'Required parameter "createLeadsAutomationOperationProcessDto" was null or undefined when calling automationOperation().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/automation-operation`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateLeadsAutomationOperationProcessDtoToJSON)(requestParameters['createLeadsAutomationOperationProcessDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async automationOperation(requestParameters, initOverrides) {
+        const response = await this.automationOperationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableExportEqualsBooleanRaw(requestParameters, initOverrides) {
+        if (requestParameters['exportVariableLeadsByBooleanDto'] == null) {
+            throw new runtime.RequiredError('exportVariableLeadsByBooleanDto', 'Required parameter "exportVariableLeadsByBooleanDto" was null or undefined when calling byVariableExportEqualsBoolean().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/export/equals/boolean`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExportVariableLeadsByBooleanDtoToJSON)(requestParameters['exportVariableLeadsByBooleanDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableExportEqualsBoolean(requestParameters, initOverrides) {
+        const response = await this.byVariableExportEqualsBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * null
+     */
+    async byVariableExportEqualsNullRaw(requestParameters, initOverrides) {
+        if (requestParameters['exportVariableLeadsDto'] == null) {
+            throw new runtime.RequiredError('exportVariableLeadsDto', 'Required parameter "exportVariableLeadsDto" was null or undefined when calling byVariableExportEqualsNull().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/export/equals/null`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExportVariableLeadsDtoToJSON)(requestParameters['exportVariableLeadsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * null
+     */
+    async byVariableExportEqualsNull(requestParameters, initOverrides) {
+        const response = await this.byVariableExportEqualsNullRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableExportEqualsNumberRaw(requestParameters, initOverrides) {
+        if (requestParameters['exportVariableLeadsByNumberDto'] == null) {
+            throw new runtime.RequiredError('exportVariableLeadsByNumberDto', 'Required parameter "exportVariableLeadsByNumberDto" was null or undefined when calling byVariableExportEqualsNumber().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/export/equals/number`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExportVariableLeadsByNumberDtoToJSON)(requestParameters['exportVariableLeadsByNumberDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableExportEqualsNumber(requestParameters, initOverrides) {
+        const response = await this.byVariableExportEqualsNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableExportEqualsStringRaw(requestParameters, initOverrides) {
+        if (requestParameters['exportVariableLeadsByStringDto'] == null) {
+            throw new runtime.RequiredError('exportVariableLeadsByStringDto', 'Required parameter "exportVariableLeadsByStringDto" was null or undefined when calling byVariableExportEqualsString().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/export/equals/string`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExportVariableLeadsByStringDtoToJSON)(requestParameters['exportVariableLeadsByStringDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableExportEqualsString(requestParameters, initOverrides) {
+        const response = await this.byVariableExportEqualsStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * ,
+     */
+    async byVariableExportExistsRaw(requestParameters, initOverrides) {
+        if (requestParameters['exportVariableLeadsDto'] == null) {
+            throw new runtime.RequiredError('exportVariableLeadsDto', 'Required parameter "exportVariableLeadsDto" was null or undefined when calling byVariableExportExists().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/export/exists`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExportVariableLeadsDtoToJSON)(requestParameters['exportVariableLeadsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * ,
+     */
+    async byVariableExportExists(requestParameters, initOverrides) {
+        const response = await this.byVariableExportExistsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableSearchEqualsBooleanRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchVariableLeadsByBooleanDto'] == null) {
+            throw new runtime.RequiredError('searchVariableLeadsByBooleanDto', 'Required parameter "searchVariableLeadsByBooleanDto" was null or undefined when calling byVariableSearchEqualsBoolean().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/search/equals/boolean`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchVariableLeadsByBooleanDtoToJSON)(requestParameters['searchVariableLeadsByBooleanDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableSearchEqualsBoolean(requestParameters, initOverrides) {
+        const response = await this.byVariableSearchEqualsBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * , null
+     */
+    async byVariableSearchEqualsNullRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchVariableLeadsDto'] == null) {
+            throw new runtime.RequiredError('searchVariableLeadsDto', 'Required parameter "searchVariableLeadsDto" was null or undefined when calling byVariableSearchEqualsNull().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/search/equals/null`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchVariableLeadsDtoToJSON)(requestParameters['searchVariableLeadsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * , null
+     */
+    async byVariableSearchEqualsNull(requestParameters, initOverrides) {
+        const response = await this.byVariableSearchEqualsNullRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableSearchEqualsNumberRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchVariableLeadsByNumberDto'] == null) {
+            throw new runtime.RequiredError('searchVariableLeadsByNumberDto', 'Required parameter "searchVariableLeadsByNumberDto" was null or undefined when calling byVariableSearchEqualsNumber().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/search/equals/number`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchVariableLeadsByNumberDtoToJSON)(requestParameters['searchVariableLeadsByNumberDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableSearchEqualsNumber(requestParameters, initOverrides) {
+        const response = await this.byVariableSearchEqualsNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableSearchEqualsStringRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchVariableLeadsByStringDto'] == null) {
+            throw new runtime.RequiredError('searchVariableLeadsByStringDto', 'Required parameter "searchVariableLeadsByStringDto" was null or undefined when calling byVariableSearchEqualsString().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/search/equals/string`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchVariableLeadsByStringDtoToJSON)(requestParameters['searchVariableLeadsByStringDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async byVariableSearchEqualsString(requestParameters, initOverrides) {
+        const response = await this.byVariableSearchEqualsStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * ,
+     */
+    async byVariableSearchExistsRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchVariableLeadsDto'] == null) {
+            throw new runtime.RequiredError('searchVariableLeadsDto', 'Required parameter "searchVariableLeadsDto" was null or undefined when calling byVariableSearchExists().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/search/exists`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchVariableLeadsDtoToJSON)(requestParameters['searchVariableLeadsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * ,
+     */
+    async byVariableSearchExists(requestParameters, initOverrides) {
+        const response = await this.byVariableSearchExistsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async exportByDeliveryRaw(requestParameters, initOverrides) {
+        if (requestParameters['exportLeadsByDeliveryDto'] == null) {
+            throw new runtime.RequiredError('exportLeadsByDeliveryDto', 'Required parameter "exportLeadsByDeliveryDto" was null or undefined when calling exportByDelivery().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/export/by-delivery`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExportLeadsByDeliveryDtoToJSON)(requestParameters['exportLeadsByDeliveryDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async exportByDelivery(requestParameters, initOverrides) {
+        const response = await this.exportByDeliveryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getByVariableCountEqualsBooleanRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getByVariableCountEqualsBoolean().');
+        }
+        if (requestParameters['variableName'] == null) {
+            throw new runtime.RequiredError('variableName', 'Required parameter "variableName" was null or undefined when calling getByVariableCountEqualsBoolean().');
+        }
+        if (requestParameters['value'] == null) {
+            throw new runtime.RequiredError('value', 'Required parameter "value" was null or undefined when calling getByVariableCountEqualsBoolean().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelIds'] != null) {
+            queryParameters['channel_ids'] = requestParameters['channelIds'];
+        }
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+        if (requestParameters['variableName'] != null) {
+            queryParameters['variable_name'] = requestParameters['variableName'];
+        }
+        if (requestParameters['value'] != null) {
+            queryParameters['value'] = requestParameters['value'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/count/equals/boolean`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CountLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getByVariableCountEqualsBoolean(requestParameters, initOverrides) {
+        const response = await this.getByVariableCountEqualsBooleanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , null.
+     * , null
+     */
+    async getByVariableCountEqualsNullRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getByVariableCountEqualsNull().');
+        }
+        if (requestParameters['variableName'] == null) {
+            throw new runtime.RequiredError('variableName', 'Required parameter "variableName" was null or undefined when calling getByVariableCountEqualsNull().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelIds'] != null) {
+            queryParameters['channel_ids'] = requestParameters['channelIds'];
+        }
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+        if (requestParameters['variableName'] != null) {
+            queryParameters['variable_name'] = requestParameters['variableName'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/count/equals/null`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CountLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , null.
+     * , null
+     */
+    async getByVariableCountEqualsNull(requestParameters, initOverrides) {
+        const response = await this.getByVariableCountEqualsNullRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getByVariableCountEqualsNumberRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getByVariableCountEqualsNumber().');
+        }
+        if (requestParameters['variableName'] == null) {
+            throw new runtime.RequiredError('variableName', 'Required parameter "variableName" was null or undefined when calling getByVariableCountEqualsNumber().');
+        }
+        if (requestParameters['value'] == null) {
+            throw new runtime.RequiredError('value', 'Required parameter "value" was null or undefined when calling getByVariableCountEqualsNumber().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelIds'] != null) {
+            queryParameters['channel_ids'] = requestParameters['channelIds'];
+        }
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+        if (requestParameters['variableName'] != null) {
+            queryParameters['variable_name'] = requestParameters['variableName'];
+        }
+        if (requestParameters['value'] != null) {
+            queryParameters['value'] = requestParameters['value'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/count/equals/number`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CountLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getByVariableCountEqualsNumber(requestParameters, initOverrides) {
+        const response = await this.getByVariableCountEqualsNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getByVariableCountEqualsStringRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getByVariableCountEqualsString().');
+        }
+        if (requestParameters['variableName'] == null) {
+            throw new runtime.RequiredError('variableName', 'Required parameter "variableName" was null or undefined when calling getByVariableCountEqualsString().');
+        }
+        if (requestParameters['value'] == null) {
+            throw new runtime.RequiredError('value', 'Required parameter "value" was null or undefined when calling getByVariableCountEqualsString().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelIds'] != null) {
+            queryParameters['channel_ids'] = requestParameters['channelIds'];
+        }
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+        if (requestParameters['variableName'] != null) {
+            queryParameters['variable_name'] = requestParameters['variableName'];
+        }
+        if (requestParameters['value'] != null) {
+            queryParameters['value'] = requestParameters['value'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/count/equals/string`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CountLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getByVariableCountEqualsString(requestParameters, initOverrides) {
+        const response = await this.getByVariableCountEqualsStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     * ,
+     */
+    async getByVariableCountExistsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getByVariableCountExists().');
+        }
+        if (requestParameters['variableName'] == null) {
+            throw new runtime.RequiredError('variableName', 'Required parameter "variableName" was null or undefined when calling getByVariableCountExists().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelIds'] != null) {
+            queryParameters['channel_ids'] = requestParameters['channelIds'];
+        }
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+        if (requestParameters['variableName'] != null) {
+            queryParameters['variable_name'] = requestParameters['variableName'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/by-variable/count/exists`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CountLeadsByVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     * ,
+     */
+    async getByVariableCountExists(requestParameters, initOverrides) {
+        const response = await this.getByVariableCountExistsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      * ID
      */
@@ -159,7 +998,7 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/leads/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -242,7 +1081,7 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
             path: `/api/leads/search`,
@@ -259,6 +1098,132 @@ class LeadsApi extends runtime.BaseAPI {
      */
     async search(requestParameters, initOverrides) {
         const response = await this.searchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . .
+     *
+     */
+    async searchByAutomationRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchLeadsByAutomationDto'] == null) {
+            throw new runtime.RequiredError('searchLeadsByAutomationDto', 'Required parameter "searchLeadsByAutomationDto" was null or undefined when calling searchByAutomation().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/search/by-automation`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchLeadsByAutomationDtoToJSON)(requestParameters['searchLeadsByAutomationDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByAutomationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     *
+     */
+    async searchByAutomation(requestParameters, initOverrides) {
+        const response = await this.searchByAutomationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async searchByDeliveryRaw(requestParameters, initOverrides) {
+        if (requestParameters['searchLeadsByDeliveryDto'] == null) {
+            throw new runtime.RequiredError('searchLeadsByDeliveryDto', 'Required parameter "searchLeadsByDeliveryDto" was null or undefined when calling searchByDelivery().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/search/by-delivery`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SearchLeadsByDeliveryDtoToJSON)(requestParameters['searchLeadsByDeliveryDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SearchLeadsByDeliveryResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async searchByDelivery(requestParameters, initOverrides) {
+        const response = await this.searchByDeliveryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , filters. ; .
+     *
+     */
+    async segmentOperationRaw(requestParameters, initOverrides) {
+        if (requestParameters['createLeadsSegmentOperationProcessDto'] == null) {
+            throw new runtime.RequiredError('createLeadsSegmentOperationProcessDto', 'Required parameter "createLeadsSegmentOperationProcessDto" was null or undefined when calling segmentOperation().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/segment-operation`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateLeadsSegmentOperationProcessDtoToJSON)(requestParameters['createLeadsSegmentOperationProcessDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , filters. ; .
+     *
+     */
+    async segmentOperation(requestParameters, initOverrides) {
+        const response = await this.segmentOperationRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -502,6 +1467,132 @@ exports.ImportAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.AgentOperationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AutomationOperationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableExportEqualsNullAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableExportEqualsNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableExportEqualsStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableExportExistsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableSearchEqualsNullAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableSearchEqualsStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ByVariableSearchExistsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ExportByDeliveryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetByVariableCountEqualsNullAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetByVariableCountEqualsStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetByVariableCountExistsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.LeadsGetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -517,6 +1608,27 @@ exports.RefreshAcceptLanguageEnum = {
  * @export
  */
 exports.SearchAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SearchByAutomationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SearchByDeliveryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SegmentOperationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

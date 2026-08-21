@@ -20,13 +20,6 @@ import {
     SegmentConsentSnapshotDtoToJSON,
     SegmentConsentSnapshotDtoToJSONTyped,
 } from './SegmentConsentSnapshotDto';
-import type { SegmentPaymentDto } from './SegmentPaymentDto';
-import {
-    SegmentPaymentDtoFromJSON,
-    SegmentPaymentDtoFromJSONTyped,
-    SegmentPaymentDtoToJSON,
-    SegmentPaymentDtoToJSONTyped,
-} from './SegmentPaymentDto';
 
 /**
  * SegmentResponseDto.
@@ -77,17 +70,17 @@ export interface SegmentResponseDto {
      */
     isReadOnly: boolean;
     /**
-     *
-     * @type {SegmentPaymentDto}
-     * @memberof SegmentResponseDto
-     */
-    payment: SegmentPaymentDto;
-    /**
      * ,
      * @type {Array<SegmentConsentSnapshotDto>}
      * @memberof SegmentResponseDto
      */
     requiredConsents: Array<SegmentConsentSnapshotDto>;
+    /**
+     *
+     * @type {string}
+     * @memberof SegmentResponseDto
+     */
+    consentPromptText: string | null;
     /**
      *
      * @type {Date}
@@ -130,8 +123,8 @@ export function instanceOfSegmentResponseDto(value: object): value is SegmentRes
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
-    if (!('payment' in value) || value['payment'] === undefined) return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined) return false;
+    if (!('consentPromptText' in value) || value['consentPromptText'] === undefined) return false;
     if (!('deletedAt' in value) || value['deletedAt'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -155,8 +148,8 @@ export function SegmentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'status': json['status'],
         'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
-        'payment': SegmentPaymentDtoFromJSON(json['payment']),
         'requiredConsents': ((json['required_consents'] as Array<any>).map(SegmentConsentSnapshotDtoFromJSON)),
+        'consentPromptText': json['consent_prompt_text'],
         'deletedAt': (json['deleted_at'] == null ? null : new Date(json['deleted_at'])),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -181,8 +174,8 @@ export function SegmentResponseDtoToJSONTyped(value?: SegmentResponseDto | null,
         'status': value['status'],
         'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
-        'payment': SegmentPaymentDtoToJSON(value['payment']),
         'required_consents': ((value['requiredConsents'] as Array<any>).map(SegmentConsentSnapshotDtoToJSON)),
+        'consent_prompt_text': value['consentPromptText'],
         'deleted_at': (value['deletedAt'] == null ? null : (value['deletedAt'] as any).toISOString()),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

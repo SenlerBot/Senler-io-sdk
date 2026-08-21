@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingMode } from './TrainingMode';
+import type { AgentStatus } from './AgentStatus';
 /**
  * StartTrainingResponseDto.
  * @export
@@ -23,10 +25,10 @@ export interface StartTrainingResponseDto {
     agentId: string;
     /**
      *
-     * @type {string}
+     * @type {AgentStatus}
      * @memberof StartTrainingResponseDto
      */
-    status: string;
+    status: AgentStatus;
     /**
      *
      * @type {number}
@@ -35,32 +37,29 @@ export interface StartTrainingResponseDto {
     tasksCreated: number;
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof StartTrainingResponseDto
      */
-    mode: StartTrainingResponseDtoModeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof StartTrainingResponseDto
-     */
-    estimatedTime: string;
+    mode: TrainingMode;
     /**
      * ID
      * @type {Array<string>}
      * @memberof StartTrainingResponseDto
      */
     taskIds: Array<string>;
+    /**
+     * ID
+     * @type {string}
+     * @memberof StartTrainingResponseDto
+     */
+    trainingRunId: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof StartTrainingResponseDto
+     */
+    billingExempt: boolean;
 }
-/**
- * @export
- */
-export declare const StartTrainingResponseDtoModeEnum: {
-    readonly Fast: "fast";
-    readonly Medium: "medium";
-    readonly Deep: "deep";
-};
-export type StartTrainingResponseDtoModeEnum = typeof StartTrainingResponseDtoModeEnum[keyof typeof StartTrainingResponseDtoModeEnum];
 /**
  * Check if a given object implements the StartTrainingResponseDto interface.
  */

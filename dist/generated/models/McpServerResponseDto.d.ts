@@ -79,6 +79,18 @@ export interface McpServerResponseDto {
      */
     authMode: McpServerResponseDtoAuthModeEnum;
     /**
+     * , Senler
+     * @type {boolean}
+     * @memberof McpServerResponseDto
+     */
+    senlerDynamicToolLoadingEnabled: boolean;
+    /**
+     * Senler
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    senlerToolSearchLanguage?: McpServerResponseDtoSenlerToolSearchLanguageEnum | null;
+    /**
      * MCP
      * @type {string}
      * @memberof McpServerResponseDto
@@ -205,6 +217,14 @@ export declare const McpServerResponseDtoAuthModeEnum: {
     readonly Lead: "lead";
 };
 export type McpServerResponseDtoAuthModeEnum = typeof McpServerResponseDtoAuthModeEnum[keyof typeof McpServerResponseDtoAuthModeEnum];
+/**
+ * @export
+ */
+export declare const McpServerResponseDtoSenlerToolSearchLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type McpServerResponseDtoSenlerToolSearchLanguageEnum = typeof McpServerResponseDtoSenlerToolSearchLanguageEnum[keyof typeof McpServerResponseDtoSenlerToolSearchLanguageEnum];
 /**
  * @export
  */

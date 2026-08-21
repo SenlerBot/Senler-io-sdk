@@ -16,14 +16,12 @@
 import * as runtime from '../runtime';
 import type {
   ConfirmS3UploadDto,
-  CreateLandingBlockDto,
   CreateLandingDto,
   DeleteLandingBlockDto,
   DuplicateLandingDto,
   ErrorResponse,
   GetLandingAssetUploadUrlDto,
   LandingAssetUploadResponseDto,
-  LandingBlockContentMutationResponseDto,
   LandingBlockDeleteMutationResponseDto,
   LandingBlockOrderMutationResponseDto,
   LandingDraftConflictResponseDto,
@@ -35,7 +33,6 @@ import type {
   LandingSummaryResponseDto,
   MoveLandingBlockDto,
   S3UploadUrlResponseDto,
-  UpdateLandingBlockDto,
   UpdateLandingDraftDto,
   UpdateLandingDto,
   UpdateLandingRealtimeFocusDto,
@@ -43,8 +40,6 @@ import type {
 import {
     ConfirmS3UploadDtoFromJSON,
     ConfirmS3UploadDtoToJSON,
-    CreateLandingBlockDtoFromJSON,
-    CreateLandingBlockDtoToJSON,
     CreateLandingDtoFromJSON,
     CreateLandingDtoToJSON,
     DeleteLandingBlockDtoFromJSON,
@@ -57,8 +52,6 @@ import {
     GetLandingAssetUploadUrlDtoToJSON,
     LandingAssetUploadResponseDtoFromJSON,
     LandingAssetUploadResponseDtoToJSON,
-    LandingBlockContentMutationResponseDtoFromJSON,
-    LandingBlockContentMutationResponseDtoToJSON,
     LandingBlockDeleteMutationResponseDtoFromJSON,
     LandingBlockDeleteMutationResponseDtoToJSON,
     LandingBlockOrderMutationResponseDtoFromJSON,
@@ -81,8 +74,6 @@ import {
     MoveLandingBlockDtoToJSON,
     S3UploadUrlResponseDtoFromJSON,
     S3UploadUrlResponseDtoToJSON,
-    UpdateLandingBlockDtoFromJSON,
-    UpdateLandingBlockDtoToJSON,
     UpdateLandingDraftDtoFromJSON,
     UpdateLandingDraftDtoToJSON,
     UpdateLandingDtoFromJSON,
@@ -153,14 +144,6 @@ export interface LandingsAssetsUploadUrlRequest {
     acceptLanguage?: LandingsAssetsUploadUrlAcceptLanguageEnum;
 }
 
-export interface LandingsBlocksRequest {
-    projectId: string;
-    landingId: string;
-    xLandingEditorSessionId: string;
-    createLandingBlockDto: CreateLandingBlockDto;
-    acceptLanguage?: LandingsBlocksAcceptLanguageEnum;
-}
-
 export interface LandingsBlocksMoveRequest {
     projectId: string;
     landingId: string;
@@ -198,15 +181,6 @@ export interface UpdateLandingsRequest {
     xLandingEditorSessionId: string;
     updateLandingDto: UpdateLandingDto;
     acceptLanguage?: UpdateLandingsAcceptLanguageEnum;
-}
-
-export interface UpdateLandingsBlocksRequest {
-    projectId: string;
-    landingId: string;
-    blockId: string;
-    xLandingEditorSessionId: string;
-    updateLandingBlockDto: UpdateLandingBlockDto;
-    acceptLanguage?: UpdateLandingsBlocksAcceptLanguageEnum;
 }
 
 export interface UpdateLandingsDraftRequest {
@@ -422,7 +396,7 @@ export class LandingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -481,7 +455,7 @@ export class LandingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -540,7 +514,7 @@ export class LandingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -599,7 +573,7 @@ export class LandingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -818,86 +792,6 @@ export class LandingsApi extends runtime.BaseAPI {
      */
     async landingsAssetsUploadUrl(requestParameters: LandingsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {
         const response = await this.landingsAssetsUploadUrlRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * .
-     *
-     */
-    async landingsBlocksRaw(requestParameters: LandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling landingsBlocks().'
-            );
-        }
-
-        if (requestParameters['landingId'] == null) {
-            throw new runtime.RequiredError(
-                'landingId',
-                'Required parameter "landingId" was null or undefined when calling landingsBlocks().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocks().'
-            );
-        }
-
-        if (requestParameters['createLandingBlockDto'] == null) {
-            throw new runtime.RequiredError(
-                'createLandingBlockDto',
-                'Required parameter "createLandingBlockDto" was null or undefined when calling landingsBlocks().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xLandingEditorSessionId'] != null) {
-            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{landingId}/blocks`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateLandingBlockDtoToJSON(requestParameters['createLandingBlockDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     *
-     */
-    async landingsBlocks(requestParameters: LandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
-        const response = await this.landingsBlocksRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1288,93 +1182,6 @@ export class LandingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsBlocksRaw(requestParameters: UpdateLandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsBlocks().'
-            );
-        }
-
-        if (requestParameters['landingId'] == null) {
-            throw new runtime.RequiredError(
-                'landingId',
-                'Required parameter "landingId" was null or undefined when calling updateLandingsBlocks().'
-            );
-        }
-
-        if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError(
-                'blockId',
-                'Required parameter "blockId" was null or undefined when calling updateLandingsBlocks().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocks().'
-            );
-        }
-
-        if (requestParameters['updateLandingBlockDto'] == null) {
-            throw new runtime.RequiredError(
-                'updateLandingBlockDto',
-                'Required parameter "updateLandingBlockDto" was null or undefined when calling updateLandingsBlocks().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xLandingEditorSessionId'] != null) {
-            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{landingId}/blocks/{blockId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UpdateLandingBlockDtoToJSON(requestParameters['updateLandingBlockDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockContentMutationResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     *
-     */
-    async updateLandingsBlocks(requestParameters: UpdateLandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
-        const response = await this.updateLandingsBlocksRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * .
-     *
-     */
     async updateLandingsDraftRaw(requestParameters: UpdateLandingsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
@@ -1608,14 +1415,6 @@ export type LandingsAssetsUploadUrlAcceptLanguageEnum = typeof LandingsAssetsUpl
 /**
  * @export
  */
-export const LandingsBlocksAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type LandingsBlocksAcceptLanguageEnum = typeof LandingsBlocksAcceptLanguageEnum[keyof typeof LandingsBlocksAcceptLanguageEnum];
-/**
- * @export
- */
 export const LandingsBlocksMoveAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1653,14 +1452,6 @@ export const UpdateLandingsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateLandingsAcceptLanguageEnum = typeof UpdateLandingsAcceptLanguageEnum[keyof typeof UpdateLandingsAcceptLanguageEnum];
-/**
- * @export
- */
-export const UpdateLandingsBlocksAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type UpdateLandingsBlocksAcceptLanguageEnum = typeof UpdateLandingsBlocksAcceptLanguageEnum[keyof typeof UpdateLandingsBlocksAcceptLanguageEnum];
 /**
  * @export
  */

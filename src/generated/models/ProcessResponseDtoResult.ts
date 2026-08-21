@@ -68,6 +68,13 @@ import {
     LeadsRefreshProcessResultDtoFromJSONTyped,
     LeadsRefreshProcessResultDtoToJSON,
 } from './LeadsRefreshProcessResultDto';
+import type { LeadsSegmentOperationProcessResultDto } from './LeadsSegmentOperationProcessResultDto';
+import {
+    instanceOfLeadsSegmentOperationProcessResultDto,
+    LeadsSegmentOperationProcessResultDtoFromJSON,
+    LeadsSegmentOperationProcessResultDtoFromJSONTyped,
+    LeadsSegmentOperationProcessResultDtoToJSON,
+} from './LeadsSegmentOperationProcessResultDto';
 import type { ResourcePackageImportProcessResultDto } from './ResourcePackageImportProcessResultDto';
 import {
     instanceOfResourcePackageImportProcessResultDto,
@@ -81,7 +88,7 @@ import {
  *
  * @export
  */
-export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | ResourcePackageImportProcessResultDto;
+export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | LeadsSegmentOperationProcessResultDto | ResourcePackageImportProcessResultDto;
 
 export function ProcessResponseDtoResultFromJSON(json: any): ProcessResponseDtoResult {
     return ProcessResponseDtoResultFromJSONTyped(json, false);
@@ -114,6 +121,9 @@ export function ProcessResponseDtoResultFromJSONTyped(json: any, ignoreDiscrimin
     }
     if (instanceOfLeadsRefreshProcessResultDto(json)) {
         return LeadsRefreshProcessResultDtoFromJSONTyped(json, true);
+    }
+    if (instanceOfLeadsSegmentOperationProcessResultDto(json)) {
+        return LeadsSegmentOperationProcessResultDtoFromJSONTyped(json, true);
     }
     if (instanceOfResourcePackageImportProcessResultDto(json)) {
         return ResourcePackageImportProcessResultDtoFromJSONTyped(json, true);
@@ -154,6 +164,9 @@ export function ProcessResponseDtoResultToJSONTyped(value?: ProcessResponseDtoRe
     }
     if (instanceOfLeadsRefreshProcessResultDto(value)) {
         return LeadsRefreshProcessResultDtoToJSON(value as LeadsRefreshProcessResultDto);
+    }
+    if (instanceOfLeadsSegmentOperationProcessResultDto(value)) {
+        return LeadsSegmentOperationProcessResultDtoToJSON(value as LeadsSegmentOperationProcessResultDto);
     }
     if (instanceOfResourcePackageImportProcessResultDto(value)) {
         return ResourcePackageImportProcessResultDtoToJSON(value as ResourcePackageImportProcessResultDto);

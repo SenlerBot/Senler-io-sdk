@@ -56,6 +56,48 @@ export interface LeadsFilterDto {
      */
     isBlocked?: boolean;
     /**
+     *
+     * @type {Array<string>}
+     * @memberof LeadsFilterDto
+     */
+    leadSource?: Array<LeadsFilterDtoLeadSourceEnum>;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    createdAtFrom?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    createdAtTo?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    updatedAtFrom?: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof LeadsFilterDto
+     */
+    updatedAtTo?: Date;
+    /**
+     * email
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    hasEmail?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LeadsFilterDto
+     */
+    hasPhone?: boolean;
+    /**
      * /username/ID
      * @type {string}
      * @memberof LeadsFilterDto
@@ -109,6 +151,21 @@ export const LeadsFilterDtoChannelTypeEnum = {
 } as const;
 export type LeadsFilterDtoChannelTypeEnum = typeof LeadsFilterDtoChannelTypeEnum[keyof typeof LeadsFilterDtoChannelTypeEnum];
 
+/**
+ * @export
+ */
+export const LeadsFilterDtoLeadSourceEnum = {
+    GroupJoin: 'group_join',
+    Message: 'message',
+    MessageAllow: 'message_allow',
+    BotAdded: 'bot_added',
+    Comment: 'comment',
+    Like: 'like',
+    Manual: 'manual',
+    Imported: 'imported'
+} as const;
+export type LeadsFilterDtoLeadSourceEnum = typeof LeadsFilterDtoLeadSourceEnum[keyof typeof LeadsFilterDtoLeadSourceEnum];
+
 
 /**
  * Check if a given object implements the LeadsFilterDto interface.
@@ -133,6 +190,13 @@ export function LeadsFilterDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'isSubscribed': json['is_subscribed'] == null ? undefined : json['is_subscribed'],
         'isBlacklisted': json['is_blacklisted'] == null ? undefined : json['is_blacklisted'],
         'isBlocked': json['is_blocked'] == null ? undefined : json['is_blocked'],
+        'leadSource': json['lead_source'] == null ? undefined : json['lead_source'],
+        'createdAtFrom': json['created_at_from'] == null ? undefined : (new Date(json['created_at_from'])),
+        'createdAtTo': json['created_at_to'] == null ? undefined : (new Date(json['created_at_to'])),
+        'updatedAtFrom': json['updated_at_from'] == null ? undefined : (new Date(json['updated_at_from'])),
+        'updatedAtTo': json['updated_at_to'] == null ? undefined : (new Date(json['updated_at_to'])),
+        'hasEmail': json['has_email'] == null ? undefined : json['has_email'],
+        'hasPhone': json['has_phone'] == null ? undefined : json['has_phone'],
         'search': json['search'] == null ? undefined : json['search'],
         'spaceId': json['space_id'] == null ? undefined : json['space_id'],
         'spaceIsMember': json['space_is_member'] == null ? undefined : json['space_is_member'],
@@ -159,6 +223,13 @@ export function LeadsFilterDtoToJSONTyped(value?: LeadsFilterDto | null, ignoreD
         'is_subscribed': value['isSubscribed'],
         'is_blacklisted': value['isBlacklisted'],
         'is_blocked': value['isBlocked'],
+        'lead_source': value['leadSource'],
+        'created_at_from': value['createdAtFrom'] == null ? undefined : ((value['createdAtFrom']).toISOString()),
+        'created_at_to': value['createdAtTo'] == null ? undefined : ((value['createdAtTo']).toISOString()),
+        'updated_at_from': value['updatedAtFrom'] == null ? undefined : ((value['updatedAtFrom']).toISOString()),
+        'updated_at_to': value['updatedAtTo'] == null ? undefined : ((value['updatedAtTo']).toISOString()),
+        'has_email': value['hasEmail'],
+        'has_phone': value['hasPhone'],
         'search': value['search'],
         'space_id': value['spaceId'],
         'space_is_member': value['spaceIsMember'],

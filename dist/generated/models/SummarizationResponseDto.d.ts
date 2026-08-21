@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AutomationAnalysisDto } from './AutomationAnalysisDto';
+import type { AutomationRecommendationDto } from './AutomationRecommendationDto';
 import type { ImportantDiscussionAnalysisDto } from './ImportantDiscussionAnalysisDto';
 import type { AgentRecommendationDto } from './AgentRecommendationDto';
 import type { ImportantDiscussionDto } from './ImportantDiscussionDto';
@@ -68,6 +70,18 @@ export interface SummarizationResponseDto {
      * @memberof SummarizationResponseDto
      */
     agentRecommendations: Array<AgentRecommendationDto>;
+    /**
+     * ,
+     * @type {Array<AutomationRecommendationDto>}
+     * @memberof SummarizationResponseDto
+     */
+    automationRecommendations: Array<AutomationRecommendationDto>;
+    /**
+     * ,
+     * @type {AutomationAnalysisDto}
+     * @memberof SummarizationResponseDto
+     */
+    automationAnalysis: AutomationAnalysisDto;
     /**
      * -
      * @type {Array<string>}

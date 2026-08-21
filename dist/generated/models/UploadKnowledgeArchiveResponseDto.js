@@ -20,6 +20,8 @@ exports.UploadKnowledgeArchiveResponseDtoToJSON = UploadKnowledgeArchiveResponse
 exports.UploadKnowledgeArchiveResponseDtoToJSONTyped = UploadKnowledgeArchiveResponseDtoToJSONTyped;
 const KnowledgeArchiveImportSummaryDto_1 = require("./KnowledgeArchiveImportSummaryDto");
 const KnowledgeFileResponseDto_1 = require("./KnowledgeFileResponseDto");
+const KnowledgeImageRecognitionRunResponseDto_1 = require("./KnowledgeImageRecognitionRunResponseDto");
+const KnowledgeImageContextsImportSummaryDto_1 = require("./KnowledgeImageContextsImportSummaryDto");
 const KnowledgeFolderResponseDto_1 = require("./KnowledgeFolderResponseDto");
 /**
  * Check if a given object implements the UploadKnowledgeArchiveResponseDto interface.
@@ -30,6 +32,10 @@ function instanceOfUploadKnowledgeArchiveResponseDto(value) {
     if (!('files' in value) || value['files'] === undefined)
         return false;
     if (!('summary' in value) || value['summary'] === undefined)
+        return false;
+    if (!('recognitionRun' in value) || value['recognitionRun'] === undefined)
+        return false;
+    if (!('imageContexts' in value) || value['imageContexts'] === undefined)
         return false;
     return true;
 }
@@ -44,6 +50,8 @@ function UploadKnowledgeArchiveResponseDtoFromJSONTyped(json, ignoreDiscriminato
         'folders': (json['folders'].map(KnowledgeFolderResponseDto_1.KnowledgeFolderResponseDtoFromJSON)),
         'files': (json['files'].map(KnowledgeFileResponseDto_1.KnowledgeFileResponseDtoFromJSON)),
         'summary': (0, KnowledgeArchiveImportSummaryDto_1.KnowledgeArchiveImportSummaryDtoFromJSON)(json['summary']),
+        'recognitionRun': (0, KnowledgeImageRecognitionRunResponseDto_1.KnowledgeImageRecognitionRunResponseDtoFromJSON)(json['recognition_run']),
+        'imageContexts': (0, KnowledgeImageContextsImportSummaryDto_1.KnowledgeImageContextsImportSummaryDtoFromJSON)(json['image_contexts']),
     };
 }
 function UploadKnowledgeArchiveResponseDtoToJSON(json) {
@@ -57,5 +65,7 @@ function UploadKnowledgeArchiveResponseDtoToJSONTyped(value, ignoreDiscriminator
         'folders': (value['folders'].map(KnowledgeFolderResponseDto_1.KnowledgeFolderResponseDtoToJSON)),
         'files': (value['files'].map(KnowledgeFileResponseDto_1.KnowledgeFileResponseDtoToJSON)),
         'summary': (0, KnowledgeArchiveImportSummaryDto_1.KnowledgeArchiveImportSummaryDtoToJSON)(value['summary']),
+        'recognition_run': (0, KnowledgeImageRecognitionRunResponseDto_1.KnowledgeImageRecognitionRunResponseDtoToJSON)(value['recognitionRun']),
+        'image_contexts': (0, KnowledgeImageContextsImportSummaryDto_1.KnowledgeImageContextsImportSummaryDtoToJSON)(value['imageContexts']),
     };
 }

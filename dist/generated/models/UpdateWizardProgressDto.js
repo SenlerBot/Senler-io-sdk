@@ -13,30 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateWizardProgressDtoTrainingModeEnum = exports.UpdateWizardProgressDtoCurrentStepEnum = void 0;
 exports.instanceOfUpdateWizardProgressDto = instanceOfUpdateWizardProgressDto;
 exports.UpdateWizardProgressDtoFromJSON = UpdateWizardProgressDtoFromJSON;
 exports.UpdateWizardProgressDtoFromJSONTyped = UpdateWizardProgressDtoFromJSONTyped;
 exports.UpdateWizardProgressDtoToJSON = UpdateWizardProgressDtoToJSON;
 exports.UpdateWizardProgressDtoToJSONTyped = UpdateWizardProgressDtoToJSONTyped;
-/**
- * @export
- */
-exports.UpdateWizardProgressDtoCurrentStepEnum = {
-    SourcesSelection: 'sources_selection',
-    TrainingConfig: 'training_config',
-    InProgress: 'in_progress',
-    VariantSelection: 'variant_selection',
-    Completed: 'completed'
-};
-/**
- * @export
- */
-exports.UpdateWizardProgressDtoTrainingModeEnum = {
-    Fast: 'fast',
-    Medium: 'medium',
-    Deep: 'deep'
-};
+const TrainingMode_1 = require("./TrainingMode");
+const WizardStep_1 = require("./WizardStep");
 /**
  * Check if a given object implements the UpdateWizardProgressDto interface.
  */
@@ -53,12 +36,12 @@ function UpdateWizardProgressDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'currentStep': json['current_step'],
+        'currentStep': (0, WizardStep_1.WizardStepFromJSON)(json['current_step']),
         'websiteSourceIds': json['website_source_ids'] == null ? undefined : json['website_source_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'historyDepthDays': json['history_depth_days'] == null ? undefined : json['history_depth_days'],
         'scanChannelHistory': json['scan_channel_history'] == null ? undefined : json['scan_channel_history'],
-        'trainingMode': json['training_mode'] == null ? undefined : json['training_mode'],
+        'trainingMode': json['training_mode'] == null ? undefined : (0, TrainingMode_1.TrainingModeFromJSON)(json['training_mode']),
     };
 }
 function UpdateWizardProgressDtoToJSON(json) {
@@ -69,11 +52,11 @@ function UpdateWizardProgressDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
-        'current_step': value['currentStep'],
+        'current_step': (0, WizardStep_1.WizardStepToJSON)(value['currentStep']),
         'website_source_ids': value['websiteSourceIds'],
         'channel_ids': value['channelIds'],
         'history_depth_days': value['historyDepthDays'],
         'scan_channel_history': value['scanChannelHistory'],
-        'training_mode': value['trainingMode'],
+        'training_mode': (0, TrainingMode_1.TrainingModeToJSON)(value['trainingMode']),
     };
 }

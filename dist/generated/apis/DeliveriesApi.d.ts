@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
+import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryStartPreviewResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
 export interface DeleteDeliveriesRequest {
     projectId: string;
     id: string;
@@ -87,18 +87,16 @@ export interface GetDeliveriesAudiencePreviewRequest {
     leadIds?: Array<string>;
     channelIds?: Array<string>;
     channelType?: GetDeliveriesAudiencePreviewChannelTypeEnum;
-    isSubscribed?: boolean;
-    isBlacklisted?: boolean;
-    isBlocked?: boolean;
-    search?: string;
-    spaceId?: Array<string>;
-    spaceIsMember?: boolean;
     segmentId?: Array<string>;
     segmentIsMember?: boolean;
-    pendingSegmentId?: Array<string>;
     limit?: number;
     cursor?: string | null;
     acceptLanguage?: GetDeliveriesAudiencePreviewAcceptLanguageEnum;
+}
+export interface GetDeliveriesStartPreviewRequest {
+    projectId: string;
+    id: string;
+    acceptLanguage?: GetDeliveriesStartPreviewAcceptLanguageEnum;
 }
 export interface GetDeliveriesTestRecipientsRequest {
     projectId: string;
@@ -266,6 +264,16 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      * , .
      *
      */
+    getDeliveriesStartPreviewRaw(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryStartPreviewResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getDeliveriesStartPreview(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryStartPreviewResponseDto>;
+    /**
+     * , .
+     *
+     */
     getDeliveriesTestRecipientsRaw(requestParameters: GetDeliveriesTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientsResponseDto>>;
     /**
      * , .
@@ -429,6 +437,14 @@ export declare const GetDeliveriesAudiencePreviewAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetDeliveriesAudiencePreviewAcceptLanguageEnum = typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum[keyof typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDeliveriesStartPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDeliveriesStartPreviewAcceptLanguageEnum = typeof GetDeliveriesStartPreviewAcceptLanguageEnum[keyof typeof GetDeliveriesStartPreviewAcceptLanguageEnum];
 /**
  * @export
  */

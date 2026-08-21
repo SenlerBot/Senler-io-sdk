@@ -22,7 +22,7 @@ import {
 } from './PublicDocumentationPageTreeItemDto';
 
 /**
- * PublicDocumentationFolderTreeItemDto.
+ * . folders ; pages Markdown- .
  * @export
  * @interface PublicDocumentationFolderTreeItemDto
  */
@@ -46,7 +46,7 @@ export interface PublicDocumentationFolderTreeItemDto {
      */
     sortOrder: number | null;
     /**
-     *
+     * id, name, sort_order, folders pages
      * @type {Array<PublicDocumentationFolderTreeItemDto>}
      * @memberof PublicDocumentationFolderTreeItemDto
      */

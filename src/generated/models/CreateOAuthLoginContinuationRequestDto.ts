@@ -26,6 +26,12 @@ export interface CreateOAuthLoginContinuationRequestDto {
      */
     clientId: string;
     /**
+     * OAuth-. authorization code flow.
+     * @type {string}
+     * @memberof CreateOAuthLoginContinuationRequestDto
+     */
+    responseType: CreateOAuthLoginContinuationRequestDtoResponseTypeEnum;
+    /**
      * URL , OAuth-
      * @type {string}
      * @memberof CreateOAuthLoginContinuationRequestDto
@@ -49,13 +55,39 @@ export interface CreateOAuthLoginContinuationRequestDto {
      * @memberof CreateOAuthLoginContinuationRequestDto
      */
     projectId?: string;
+    /**
+     * OAuth-. , project.
+     * @type {string}
+     * @memberof CreateOAuthLoginContinuationRequestDto
+     */
+    subject?: CreateOAuthLoginContinuationRequestDtoSubjectEnum;
 }
+
+
+/**
+ * @export
+ */
+export const CreateOAuthLoginContinuationRequestDtoResponseTypeEnum = {
+    Code: 'code'
+} as const;
+export type CreateOAuthLoginContinuationRequestDtoResponseTypeEnum = typeof CreateOAuthLoginContinuationRequestDtoResponseTypeEnum[keyof typeof CreateOAuthLoginContinuationRequestDtoResponseTypeEnum];
+
+/**
+ * @export
+ */
+export const CreateOAuthLoginContinuationRequestDtoSubjectEnum = {
+    Project: 'project',
+    User: 'user'
+} as const;
+export type CreateOAuthLoginContinuationRequestDtoSubjectEnum = typeof CreateOAuthLoginContinuationRequestDtoSubjectEnum[keyof typeof CreateOAuthLoginContinuationRequestDtoSubjectEnum];
+
 
 /**
  * Check if a given object implements the CreateOAuthLoginContinuationRequestDto interface.
  */
 export function instanceOfCreateOAuthLoginContinuationRequestDto(value: object): value is CreateOAuthLoginContinuationRequestDto {
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
+    if (!('responseType' in value) || value['responseType'] === undefined) return false;
     if (!('redirectUri' in value) || value['redirectUri'] === undefined) return false;
     return true;
 }
@@ -71,10 +103,12 @@ export function CreateOAuthLoginContinuationRequestDtoFromJSONTyped(json: any, i
     return {
 
         'clientId': json['client_id'],
+        'responseType': json['response_type'],
         'redirectUri': json['redirect_uri'],
         'scope': json['scope'] == null ? undefined : json['scope'],
         'state': json['state'] == null ? undefined : json['state'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
+        'subject': json['subject'] == null ? undefined : json['subject'],
     };
 }
 
@@ -90,9 +124,11 @@ export function CreateOAuthLoginContinuationRequestDtoToJSONTyped(value?: Create
     return {
 
         'client_id': value['clientId'],
+        'response_type': value['responseType'],
         'redirect_uri': value['redirectUri'],
         'scope': value['scope'],
         'state': value['state'],
         'project_id': value['projectId'],
+        'subject': value['subject'],
     };
 }

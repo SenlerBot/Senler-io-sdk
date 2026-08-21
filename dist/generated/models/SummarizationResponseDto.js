@@ -19,6 +19,8 @@ exports.SummarizationResponseDtoFromJSON = SummarizationResponseDtoFromJSON;
 exports.SummarizationResponseDtoFromJSONTyped = SummarizationResponseDtoFromJSONTyped;
 exports.SummarizationResponseDtoToJSON = SummarizationResponseDtoToJSON;
 exports.SummarizationResponseDtoToJSONTyped = SummarizationResponseDtoToJSONTyped;
+const AutomationAnalysisDto_1 = require("./AutomationAnalysisDto");
+const AutomationRecommendationDto_1 = require("./AutomationRecommendationDto");
 const ImportantDiscussionAnalysisDto_1 = require("./ImportantDiscussionAnalysisDto");
 const AgentRecommendationDto_1 = require("./AgentRecommendationDto");
 const ImportantDiscussionDto_1 = require("./ImportantDiscussionDto");
@@ -51,6 +53,10 @@ function instanceOfSummarizationResponseDto(value) {
         return false;
     if (!('agentRecommendations' in value) || value['agentRecommendations'] === undefined)
         return false;
+    if (!('automationRecommendations' in value) || value['automationRecommendations'] === undefined)
+        return false;
+    if (!('automationAnalysis' in value) || value['automationAnalysis'] === undefined)
+        return false;
     if (!('businessRecommendations' in value) || value['businessRecommendations'] === undefined)
         return false;
     if (!('generation' in value) || value['generation'] === undefined)
@@ -77,6 +83,8 @@ function SummarizationResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'discussionAnalysis': (0, ImportantDiscussionAnalysisDto_1.ImportantDiscussionAnalysisDtoFromJSON)(json['discussion_analysis']),
         'importantDiscussions': (json['important_discussions'].map(ImportantDiscussionDto_1.ImportantDiscussionDtoFromJSON)),
         'agentRecommendations': (json['agent_recommendations'].map(AgentRecommendationDto_1.AgentRecommendationDtoFromJSON)),
+        'automationRecommendations': (json['automation_recommendations'].map(AutomationRecommendationDto_1.AutomationRecommendationDtoFromJSON)),
+        'automationAnalysis': (0, AutomationAnalysisDto_1.AutomationAnalysisDtoFromJSON)(json['automation_analysis']),
         'businessRecommendations': json['business_recommendations'],
         'generation': (0, GenerationCostDto_1.GenerationCostDtoFromJSON)(json['generation']),
         'trigger': json['trigger'],
@@ -100,6 +108,8 @@ function SummarizationResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'discussion_analysis': (0, ImportantDiscussionAnalysisDto_1.ImportantDiscussionAnalysisDtoToJSON)(value['discussionAnalysis']),
         'important_discussions': (value['importantDiscussions'].map(ImportantDiscussionDto_1.ImportantDiscussionDtoToJSON)),
         'agent_recommendations': (value['agentRecommendations'].map(AgentRecommendationDto_1.AgentRecommendationDtoToJSON)),
+        'automation_recommendations': (value['automationRecommendations'].map(AutomationRecommendationDto_1.AutomationRecommendationDtoToJSON)),
+        'automation_analysis': (0, AutomationAnalysisDto_1.AutomationAnalysisDtoToJSON)(value['automationAnalysis']),
         'business_recommendations': value['businessRecommendations'],
         'generation': (0, GenerationCostDto_1.GenerationCostDtoToJSON)(value['generation']),
         'trigger': value['trigger'],

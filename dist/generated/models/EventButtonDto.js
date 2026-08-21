@@ -13,12 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventButtonDtoAppearanceEnum = void 0;
 exports.instanceOfEventButtonDto = instanceOfEventButtonDto;
 exports.EventButtonDtoFromJSON = EventButtonDtoFromJSON;
 exports.EventButtonDtoFromJSONTyped = EventButtonDtoFromJSONTyped;
 exports.EventButtonDtoToJSON = EventButtonDtoToJSON;
 exports.EventButtonDtoToJSONTyped = EventButtonDtoToJSONTyped;
 const EventButtonDtoAction_1 = require("./EventButtonDtoAction");
+/**
+ * @export
+ */
+exports.EventButtonDtoAppearanceEnum = {
+    Neutral: 'neutral',
+    Primary: 'primary',
+    Positive: 'positive',
+    Negative: 'negative'
+};
 /**
  * Check if a given object implements the EventButtonDto interface.
  */
@@ -39,7 +49,9 @@ function EventButtonDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'text': json['text'],
         'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
+        'isRepeatable': json['is_repeatable'] == null ? undefined : json['is_repeatable'],
         'action': (0, EventButtonDtoAction_1.EventButtonDtoActionFromJSON)(json['action']),
+        'appearance': json['appearance'] == null ? undefined : json['appearance'],
         'row': json['row'] == null ? undefined : json['row'],
     };
 }
@@ -53,7 +65,9 @@ function EventButtonDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'text': value['text'],
         'button_instance_id': value['buttonInstanceId'],
+        'is_repeatable': value['isRepeatable'],
         'action': (0, EventButtonDtoAction_1.EventButtonDtoActionToJSON)(value['action']),
+        'appearance': value['appearance'],
         'row': value['row'],
     };
 }

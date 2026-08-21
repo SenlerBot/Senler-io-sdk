@@ -16,7 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   CreateLeadVariableDefinitionDto,
-  Deactivate200Response,
+  DeleteVariables200Response,
   ErrorResponse,
   LeadVariableDefinitionListResponseDto,
   LeadVariableDefinitionResponseDto,
@@ -25,8 +25,8 @@ import type {
 import {
     CreateLeadVariableDefinitionDtoFromJSON,
     CreateLeadVariableDefinitionDtoToJSON,
-    Deactivate200ResponseFromJSON,
-    Deactivate200ResponseToJSON,
+    DeleteVariables200ResponseFromJSON,
+    DeleteVariables200ResponseToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     LeadVariableDefinitionListResponseDtoFromJSON,
@@ -36,6 +36,18 @@ import {
     UpdateLeadVariableDefinitionDtoFromJSON,
     UpdateLeadVariableDefinitionDtoToJSON,
 } from '../models/index';
+
+export interface GetById2Request {
+    projectId: string;
+    name: string;
+    acceptLanguage?: GetById2AcceptLanguageEnum;
+}
+
+export interface GetByIdsRequest {
+    projectId: string;
+    ids: Array<string>;
+    acceptLanguage?: GetByIdsAcceptLanguageEnum;
+}
 
 export interface LeadVariableDefinitionsCreateRequest {
     projectId: string;
@@ -57,12 +69,6 @@ export interface LeadVariableDefinitionsGetByIdRequest {
     acceptLanguage?: LeadVariableDefinitionsGetByIdAcceptLanguageEnum;
 }
 
-export interface LeadVariableDefinitionsGetById2Request {
-    projectId: string;
-    name: string;
-    acceptLanguage?: LeadVariableDefinitionsGetById2AcceptLanguageEnum;
-}
-
 export interface LeadVariableDefinitionsUpdateRequest {
     projectId: string;
     name: string;
@@ -74,6 +80,128 @@ export interface LeadVariableDefinitionsUpdateRequest {
  *
  */
 export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
+
+    /**
+     *
+     *
+     */
+    async getById2Raw(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getById2().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling getById2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/lead-definitions/{projectId}/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadVariableDefinitionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     *
+     */
+    async getById2(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
+        const response = await this.getById2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ID
+     * ID
+     */
+    async getByIdsRaw(requestParameters: GetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadVariableDefinitionResponseDto>>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getByIds().'
+            );
+        }
+
+        if (requestParameters['ids'] == null) {
+            throw new runtime.RequiredError(
+                'ids',
+                'Required parameter "ids" was null or undefined when calling getByIds().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/lead-definitions/{projectId}/by-ids`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LeadVariableDefinitionResponseDtoFromJSON));
+    }
+
+    /**
+     * ID
+     * ID
+     */
+    async getByIds(requestParameters: GetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableDefinitionResponseDto>> {
+        const response = await this.getByIdsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      *
@@ -141,7 +269,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      *
      *
      */
-    async leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
+    async leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteVariables200Response>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
@@ -184,14 +312,14 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => Deactivate200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteVariables200ResponseFromJSON(jsonValue));
     }
 
     /**
      *
      *
      */
-    async leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
+    async leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteVariables200Response> {
         const response = await this.leadVariableDefinitionsDeactivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -238,7 +366,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_lead_definitions"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
@@ -257,65 +385,6 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      */
     async leadVariableDefinitionsGetById(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto> {
         const response = await this.leadVariableDefinitionsGetByIdRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     *
-     *
-     */
-    async leadVariableDefinitionsGetById2Raw(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling leadVariableDefinitionsGetById2().'
-            );
-        }
-
-        if (requestParameters['name'] == null) {
-            throw new runtime.RequiredError(
-                'name',
-                'Required parameter "name" was null or undefined when calling leadVariableDefinitionsGetById2().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_lead_definitions"]);
-        }
-
-        const response = await this.request({
-            path: `/api/lead-definitions/{projectId}/{name}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => LeadVariableDefinitionResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     *
-     *
-     */
-    async leadVariableDefinitionsGetById2(requestParameters: LeadVariableDefinitionsGetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto> {
-        const response = await this.leadVariableDefinitionsGetById2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -393,6 +462,22 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export const GetById2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetById2AcceptLanguageEnum = typeof GetById2AcceptLanguageEnum[keyof typeof GetById2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetByIdsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetByIdsAcceptLanguageEnum = typeof GetByIdsAcceptLanguageEnum[keyof typeof GetByIdsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const LeadVariableDefinitionsCreateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -414,14 +499,6 @@ export const LeadVariableDefinitionsGetByIdAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LeadVariableDefinitionsGetByIdAcceptLanguageEnum = typeof LeadVariableDefinitionsGetByIdAcceptLanguageEnum[keyof typeof LeadVariableDefinitionsGetByIdAcceptLanguageEnum];
-/**
- * @export
- */
-export const LeadVariableDefinitionsGetById2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type LeadVariableDefinitionsGetById2AcceptLanguageEnum = typeof LeadVariableDefinitionsGetById2AcceptLanguageEnum[keyof typeof LeadVariableDefinitionsGetById2AcceptLanguageEnum];
 /**
  * @export
  */

@@ -83,7 +83,7 @@ class LandingsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * channel_public_id . channel_public_id .
      *
      */
     async getProjectsLandingsRaw(requestParameters, initOverrides) {
@@ -107,7 +107,7 @@ class LandingsPublicApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPublicCatalogResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * channel_public_id . channel_public_id .
      *
      */
     async getProjectsLandings(requestParameters, initOverrides) {

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { WidgetFeaturesDto } from './WidgetFeaturesDto';
+import type { WidgetExternalAiSettingsDto } from './WidgetExternalAiSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
  * WidgetChannelDataDto.
@@ -17,6 +18,12 @@ import type { WidgetThemeDto } from './WidgetThemeDto';
  * @interface WidgetChannelDataDto
  */
 export interface WidgetChannelDataDto {
+    /**
+     * MCP
+     * @type {WidgetExternalAiSettingsDto}
+     * @memberof WidgetChannelDataDto
+     */
+    externalAi?: WidgetExternalAiSettingsDto;
     /**
      * CORS
      * @type {Array<string>}

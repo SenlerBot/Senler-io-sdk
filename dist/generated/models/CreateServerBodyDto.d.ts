@@ -66,12 +66,6 @@ export interface CreateServerBodyDto {
      */
     mcpServerTemplateId?: string;
     /**
-     * ,
-     * @type {string}
-     * @memberof CreateServerBodyDto
-     */
-    descriptionPrepend?: string;
-    /**
      * MCP
      * @type {{ [key: string]: any; }}
      * @memberof CreateServerBodyDto
@@ -85,6 +79,18 @@ export interface CreateServerBodyDto {
      * @memberof CreateServerBodyDto
      */
     authMode?: CreateServerBodyDtoAuthModeEnum;
+    /**
+     * Senler
+     * @type {boolean}
+     * @memberof CreateServerBodyDto
+     */
+    senlerDynamicToolLoadingEnabled?: boolean;
+    /**
+     * Senler
+     * @type {string}
+     * @memberof CreateServerBodyDto
+     */
+    senlerToolSearchLanguage?: CreateServerBodyDtoSenlerToolSearchLanguageEnum;
     /**
      *
      * @type {CreateServerBodyDtoMeta}
@@ -110,6 +116,14 @@ export declare const CreateServerBodyDtoAuthModeEnum: {
     readonly Lead: "lead";
 };
 export type CreateServerBodyDtoAuthModeEnum = typeof CreateServerBodyDtoAuthModeEnum[keyof typeof CreateServerBodyDtoAuthModeEnum];
+/**
+ * @export
+ */
+export declare const CreateServerBodyDtoSenlerToolSearchLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type CreateServerBodyDtoSenlerToolSearchLanguageEnum = typeof CreateServerBodyDtoSenlerToolSearchLanguageEnum[keyof typeof CreateServerBodyDtoSenlerToolSearchLanguageEnum];
 /**
  * Check if a given object implements the CreateServerBodyDto interface.
  */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateLandingBlockDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockContentMutationResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingBlockDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface DeleteLandingsRequest {
     projectId: string;
     landingId: string;
@@ -64,13 +64,6 @@ export interface LandingsAssetsUploadUrlRequest {
     getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
     acceptLanguage?: LandingsAssetsUploadUrlAcceptLanguageEnum;
 }
-export interface LandingsBlocksRequest {
-    projectId: string;
-    landingId: string;
-    xLandingEditorSessionId: string;
-    createLandingBlockDto: CreateLandingBlockDto;
-    acceptLanguage?: LandingsBlocksAcceptLanguageEnum;
-}
 export interface LandingsBlocksMoveRequest {
     projectId: string;
     landingId: string;
@@ -104,14 +97,6 @@ export interface UpdateLandingsRequest {
     xLandingEditorSessionId: string;
     updateLandingDto: UpdateLandingDto;
     acceptLanguage?: UpdateLandingsAcceptLanguageEnum;
-}
-export interface UpdateLandingsBlocksRequest {
-    projectId: string;
-    landingId: string;
-    blockId: string;
-    xLandingEditorSessionId: string;
-    updateLandingBlockDto: UpdateLandingBlockDto;
-    acceptLanguage?: UpdateLandingsBlocksAcceptLanguageEnum;
 }
 export interface UpdateLandingsDraftRequest {
     projectId: string;
@@ -225,16 +210,6 @@ export declare class LandingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    landingsBlocksRaw(requestParameters: LandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
-    /**
-     * .
-     *
-     */
-    landingsBlocks(requestParameters: LandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
-    /**
-     * .
-     *
-     */
     landingsBlocksMoveRaw(requestParameters: LandingsBlocksMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
     /**
      * .
@@ -281,16 +256,6 @@ export declare class LandingsApi extends runtime.BaseAPI {
      *
      */
     updateLandings(requestParameters: UpdateLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateLandingsBlocksRaw(requestParameters: UpdateLandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateLandingsBlocks(requestParameters: UpdateLandingsBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
      * .
      *
@@ -387,14 +352,6 @@ export type LandingsAssetsUploadUrlAcceptLanguageEnum = typeof LandingsAssetsUpl
 /**
  * @export
  */
-export declare const LandingsBlocksAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type LandingsBlocksAcceptLanguageEnum = typeof LandingsBlocksAcceptLanguageEnum[keyof typeof LandingsBlocksAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const LandingsBlocksMoveAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -432,14 +389,6 @@ export declare const UpdateLandingsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateLandingsAcceptLanguageEnum = typeof UpdateLandingsAcceptLanguageEnum[keyof typeof UpdateLandingsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateLandingsBlocksAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateLandingsBlocksAcceptLanguageEnum = typeof UpdateLandingsBlocksAcceptLanguageEnum[keyof typeof UpdateLandingsBlocksAcceptLanguageEnum];
 /**
  * @export
  */

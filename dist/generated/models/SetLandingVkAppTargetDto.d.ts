@@ -28,6 +28,12 @@ export interface SetLandingVkAppTargetDto {
      * @memberof SetLandingVkAppTargetDto
      */
     target: LandingVkAppResponseDtoTarget;
+    /**
+     * list .
+     * @type {boolean}
+     * @memberof SetLandingVkAppTargetDto
+     */
+    openSingleLanding?: boolean;
 }
 /**
  * Check if a given object implements the SetLandingVkAppTargetDto interface.

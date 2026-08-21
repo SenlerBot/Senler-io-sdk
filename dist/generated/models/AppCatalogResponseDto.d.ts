@@ -61,7 +61,7 @@ export interface AppCatalogResponseDto {
      */
     documentationUrls: AppDocumentationPublicUrlsDto | null;
     /**
-     *
+     * : oauth , sales_funnel , plugin
      * @type {string}
      * @memberof AppCatalogResponseDto
      */
@@ -72,6 +72,12 @@ export interface AppCatalogResponseDto {
      * @memberof AppCatalogResponseDto
      */
     hasTools: boolean;
+    /**
+     * ,
+     * @type {Array<string>}
+     * @memberof AppCatalogResponseDto
+     */
+    automationTypes: Array<AppCatalogResponseDtoAutomationTypesEnum>;
     /**
      *
      * @type {AppEmbeddedPageSettingsResponseDto}
@@ -103,9 +109,17 @@ export interface AppCatalogResponseDto {
 export declare const AppCatalogResponseDtoTypeEnum: {
     readonly Oauth: "oauth";
     readonly SalesFunnel: "sales_funnel";
-    readonly AgentTool: "agent_tool";
+    readonly Plugin: "plugin";
 };
 export type AppCatalogResponseDtoTypeEnum = typeof AppCatalogResponseDtoTypeEnum[keyof typeof AppCatalogResponseDtoTypeEnum];
+/**
+ * @export
+ */
+export declare const AppCatalogResponseDtoAutomationTypesEnum: {
+    readonly Contextual: "contextual";
+    readonly Background: "background";
+};
+export type AppCatalogResponseDtoAutomationTypesEnum = typeof AppCatalogResponseDtoAutomationTypesEnum[keyof typeof AppCatalogResponseDtoAutomationTypesEnum];
 /**
  * Check if a given object implements the AppCatalogResponseDto interface.
  */

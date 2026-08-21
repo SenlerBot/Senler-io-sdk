@@ -21,19 +21,25 @@ interface WithTokenRefresh {
      */
     clientId: string;
     /**
+     * OAuth client_secret — required for confidential-client token refresh.
+     * Keep it on the server and never expose it to browser code.
+     */
+    clientSecret: string;
+    /**
      * Callback fired after a successful token refresh.
      * Use it to persist the new tokens in your storage.
      */
-    onTokenRefreshed?: (accessToken: string, refreshToken: string) => void;
+    onTokenRefreshed?: (accessToken: string, refreshToken: string) => void | Promise<void>;
 }
 interface WithoutTokenRefresh {
     refreshToken?: undefined;
     clientId?: undefined;
+    clientSecret?: undefined;
     onTokenRefreshed?: undefined;
 }
 /**
- * Either provide both refreshToken + clientId for auto-refresh,
- * or omit both. Partial configuration is a type error.
+ * Either provide refreshToken + clientId + clientSecret for auto-refresh,
+ * or omit all three. Partial configuration is a type error.
  */
 export type AiSenlerClientConfig = BaseClientConfig & (WithTokenRefresh | WithoutTokenRefresh);
 export {};

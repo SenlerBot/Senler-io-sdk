@@ -33,6 +33,42 @@ export interface LandingUnsubscriptionRequestDto {
      * @memberof LandingUnsubscriptionRequestDto
      */
     platformPayload: string;
+    /**
+     * ID , .
+     * @type {string}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    trafficMarkPublicId?: string;
+    /**
+     * (utm_source).
+     * @type {string}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    utmSource?: string;
+    /**
+     * (utm_medium).
+     * @type {string}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    utmMedium?: string;
+    /**
+     * (utm_campaign).
+     * @type {string}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    utmCampaign?: string;
+    /**
+     * (utm_content).
+     * @type {string}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    utmContent?: string;
+    /**
+     * (utm_term).
+     * @type {string}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    utmTerm?: string;
 }
 /**
  * @export

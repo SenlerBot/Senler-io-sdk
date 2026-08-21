@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TrainingMode } from './TrainingMode';
 /**
  * StartTrainingDto.
  * @export
@@ -17,10 +18,10 @@
 export interface StartTrainingDto {
     /**
      *
-     * @type {string}
+     * @type {TrainingMode}
      * @memberof StartTrainingDto
      */
-    mode: StartTrainingDtoModeEnum;
+    mode: TrainingMode;
     /**
      * ID website sources
      * @type {Array<string>}
@@ -45,16 +46,13 @@ export interface StartTrainingDto {
      * @memberof StartTrainingDto
      */
     scanChannelHistory?: boolean;
+    /**
+     * . ., ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof StartTrainingDto
+     */
+    acceptedMaxCredits?: number;
 }
-/**
- * @export
- */
-export declare const StartTrainingDtoModeEnum: {
-    readonly Fast: "fast";
-    readonly Medium: "medium";
-    readonly Deep: "deep";
-};
-export type StartTrainingDtoModeEnum = typeof StartTrainingDtoModeEnum[keyof typeof StartTrainingDtoModeEnum];
 /**
  * Check if a given object implements the StartTrainingDto interface.
  */
