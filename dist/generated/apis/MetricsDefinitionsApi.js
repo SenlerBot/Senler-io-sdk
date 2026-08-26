@@ -46,97 +46,13 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateStringAcceptLanguageEnum = exports.UpdateObjectAcceptLanguageEnum = exports.UpdateNumberAcceptLanguageEnum = exports.UpdateBooleanAcceptLanguageEnum = exports.UpdateArrayAcceptLanguageEnum = exports.StringAcceptLanguageEnum = exports.ObjectAcceptLanguageEnum = exports.NumberAcceptLanguageEnum = exports.MetricsDefinitionsUpdateRestoreAcceptLanguageEnum = exports.MetricsDefinitionsListAcceptLanguageEnum = exports.MetricsDefinitionsGetByIdAcceptLanguageEnum = exports.MetricsDefinitionsDeactivate2AcceptLanguageEnum = exports.MetricsDefinitionsDeactivateAcceptLanguageEnum = exports.MetricsDefinitionsActivateAcceptLanguageEnum = exports.ArrayAcceptLanguageEnum = exports.BooleanAcceptLanguageEnum = exports.MetricsDefinitionsApi = void 0;
+exports.UpdateStringAcceptLanguageEnum = exports.UpdateObjectAcceptLanguageEnum = exports.UpdateNumberAcceptLanguageEnum = exports.UpdateBooleanAcceptLanguageEnum = exports.UpdateArrayAcceptLanguageEnum = exports.MetricsDefinitionsUpdateRestoreAcceptLanguageEnum = exports.MetricsDefinitionsStringAcceptLanguageEnum = exports.MetricsDefinitionsObjectAcceptLanguageEnum = exports.MetricsDefinitionsNumberAcceptLanguageEnum = exports.MetricsDefinitionsListAcceptLanguageEnum = exports.MetricsDefinitionsGetByIdAcceptLanguageEnum = exports.MetricsDefinitionsDeactivate2AcceptLanguageEnum = exports.MetricsDefinitionsDeactivateAcceptLanguageEnum = exports.MetricsDefinitionsBooleanAcceptLanguageEnum = exports.MetricsDefinitionsArrayAcceptLanguageEnum = exports.MetricsDefinitionsActivateAcceptLanguageEnum = exports.MetricsDefinitionsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class MetricsDefinitionsApi extends runtime.BaseAPI {
-    /**
-     * .
-     *
-     */
-    async _booleanRaw(requestParameters, initOverrides) {
-        if (requestParameters['createBooleanMetricDto'] == null) {
-            throw new runtime.RequiredError('createBooleanMetricDto', 'Required parameter "createBooleanMetricDto" was null or undefined when calling _boolean().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
-        }
-        const response = await this.request({
-            path: `/api/metrics/definitions/boolean`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateBooleanMetricDtoToJSON)(requestParameters['createBooleanMetricDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async _boolean(requestParameters, initOverrides) {
-        const response = await this._booleanRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     * -
-     */
-    async arrayRaw(requestParameters, initOverrides) {
-        if (requestParameters['createArrayMetricDto'] == null) {
-            throw new runtime.RequiredError('createArrayMetricDto', 'Required parameter "createArrayMetricDto" was null or undefined when calling array().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
-        }
-        const response = await this.request({
-            path: `/api/metrics/definitions/array`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateArrayMetricDtoToJSON)(requestParameters['createArrayMetricDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     * -
-     */
-    async array(requestParameters, initOverrides) {
-        const response = await this.arrayRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
     /**
      * .
      *
@@ -175,6 +91,90 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
      */
     async metricsDefinitionsActivate(requestParameters, initOverrides) {
         const response = await this.metricsDefinitionsActivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * -
+     */
+    async metricsDefinitionsArrayRaw(requestParameters, initOverrides) {
+        if (requestParameters['createArrayMetricDto'] == null) {
+            throw new runtime.RequiredError('createArrayMetricDto', 'Required parameter "createArrayMetricDto" was null or undefined when calling metricsDefinitionsArray().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
+        }
+        const response = await this.request({
+            path: `/api/metrics/definitions/array`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateArrayMetricDtoToJSON)(requestParameters['createArrayMetricDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * -
+     */
+    async metricsDefinitionsArray(requestParameters, initOverrides) {
+        const response = await this.metricsDefinitionsArrayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async metricsDefinitionsBooleanRaw(requestParameters, initOverrides) {
+        if (requestParameters['createBooleanMetricDto'] == null) {
+            throw new runtime.RequiredError('createBooleanMetricDto', 'Required parameter "createBooleanMetricDto" was null or undefined when calling metricsDefinitionsBoolean().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
+        }
+        const response = await this.request({
+            path: `/api/metrics/definitions/boolean`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateBooleanMetricDtoToJSON)(requestParameters['createBooleanMetricDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async metricsDefinitionsBoolean(requestParameters, initOverrides) {
+        const response = await this.metricsDefinitionsBooleanRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -352,6 +352,132 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
      * .
      *
      */
+    async metricsDefinitionsNumberRaw(requestParameters, initOverrides) {
+        if (requestParameters['createNumberMetricDto'] == null) {
+            throw new runtime.RequiredError('createNumberMetricDto', 'Required parameter "createNumberMetricDto" was null or undefined when calling metricsDefinitionsNumber().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
+        }
+        const response = await this.request({
+            path: `/api/metrics/definitions/number`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateNumberMetricDtoToJSON)(requestParameters['createNumberMetricDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async metricsDefinitionsNumber(requestParameters, initOverrides) {
+        const response = await this.metricsDefinitionsNumberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * -
+     */
+    async metricsDefinitionsObjectRaw(requestParameters, initOverrides) {
+        if (requestParameters['createObjectMetricDto'] == null) {
+            throw new runtime.RequiredError('createObjectMetricDto', 'Required parameter "createObjectMetricDto" was null or undefined when calling metricsDefinitionsObject().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
+        }
+        const response = await this.request({
+            path: `/api/metrics/definitions/object`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateObjectMetricDtoToJSON)(requestParameters['createObjectMetricDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * -
+     */
+    async metricsDefinitionsObject(requestParameters, initOverrides) {
+        const response = await this.metricsDefinitionsObjectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async metricsDefinitionsStringRaw(requestParameters, initOverrides) {
+        if (requestParameters['createStringMetricDto'] == null) {
+            throw new runtime.RequiredError('createStringMetricDto', 'Required parameter "createStringMetricDto" was null or undefined when calling metricsDefinitionsString().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
+        }
+        const response = await this.request({
+            path: `/api/metrics/definitions/string`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateStringMetricDtoToJSON)(requestParameters['createStringMetricDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async metricsDefinitionsString(requestParameters, initOverrides) {
+        const response = await this.metricsDefinitionsStringRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
     async metricsDefinitionsUpdateRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling metricsDefinitionsUpdateRestore().');
@@ -386,132 +512,6 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
      */
     async metricsDefinitionsUpdateRestore(requestParameters, initOverrides) {
         const response = await this.metricsDefinitionsUpdateRestoreRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async numberRaw(requestParameters, initOverrides) {
-        if (requestParameters['createNumberMetricDto'] == null) {
-            throw new runtime.RequiredError('createNumberMetricDto', 'Required parameter "createNumberMetricDto" was null or undefined when calling number().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
-        }
-        const response = await this.request({
-            path: `/api/metrics/definitions/number`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateNumberMetricDtoToJSON)(requestParameters['createNumberMetricDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async number(requestParameters, initOverrides) {
-        const response = await this.numberRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     * -
-     */
-    async objectRaw(requestParameters, initOverrides) {
-        if (requestParameters['createObjectMetricDto'] == null) {
-            throw new runtime.RequiredError('createObjectMetricDto', 'Required parameter "createObjectMetricDto" was null or undefined when calling object().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
-        }
-        const response = await this.request({
-            path: `/api/metrics/definitions/object`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateObjectMetricDtoToJSON)(requestParameters['createObjectMetricDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     * -
-     */
-    async object(requestParameters, initOverrides) {
-        const response = await this.objectRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async stringRaw(requestParameters, initOverrides) {
-        if (requestParameters['createStringMetricDto'] == null) {
-            throw new runtime.RequiredError('createStringMetricDto', 'Required parameter "createStringMetricDto" was null or undefined when calling string().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
-        }
-        const response = await this.request({
-            path: `/api/metrics/definitions/string`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateStringMetricDtoToJSON)(requestParameters['createStringMetricDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async string(requestParameters, initOverrides) {
-        const response = await this.stringRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -744,21 +744,21 @@ exports.MetricsDefinitionsApi = MetricsDefinitionsApi;
 /**
  * @export
  */
-exports.BooleanAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.ArrayAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.MetricsDefinitionsActivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.MetricsDefinitionsArrayAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.MetricsDefinitionsBooleanAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -793,28 +793,28 @@ exports.MetricsDefinitionsListAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.MetricsDefinitionsNumberAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.MetricsDefinitionsObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.MetricsDefinitionsStringAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.MetricsDefinitionsUpdateRestoreAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.NumberAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.ObjectAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.StringAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

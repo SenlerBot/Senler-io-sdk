@@ -11,20 +11,18 @@
  */
 import * as runtime from '../runtime';
 import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryStartPreviewResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
-export interface DeleteDeliveriesRequest {
-    projectId: string;
+export interface CancelRequest {
     id: string;
-    acceptLanguage?: DeleteDeliveriesAcceptLanguageEnum;
+    acceptLanguage?: CancelAcceptLanguageEnum;
 }
-export interface DeleteDeliveriesScheduleRequest {
-    projectId: string;
+export interface CopyRequest {
     id: string;
-    acceptLanguage?: DeleteDeliveriesScheduleAcceptLanguageEnum;
+    copyDeliveryDto: CopyDeliveryDto;
+    acceptLanguage?: CopyAcceptLanguageEnum;
 }
-export interface DeliveriesRequest {
-    projectId: string;
-    createDeliveryDto: CreateDeliveryDto;
-    acceptLanguage?: DeliveriesAcceptLanguageEnum;
+export interface DeleteScheduleRequest {
+    id: string;
+    acceptLanguage?: DeleteScheduleAcceptLanguageEnum;
 }
 export interface DeliveriesAttachmentsConfirmRequest {
     projectId: string;
@@ -36,120 +34,108 @@ export interface DeliveriesAttachmentsUploadUrlRequest {
     getUploadUrlDto: GetUploadUrlDto;
     acceptLanguage?: DeliveriesAttachmentsUploadUrlAcceptLanguageEnum;
 }
-export interface DeliveriesCancelRequest {
+export interface DeliveriesCreateRequest {
     projectId: string;
-    id: string;
-    acceptLanguage?: DeliveriesCancelAcceptLanguageEnum;
+    createDeliveryDto: CreateDeliveryDto;
+    acceptLanguage?: DeliveriesCreateAcceptLanguageEnum;
 }
-export interface DeliveriesCopyRequest {
-    projectId: string;
+export interface DeliveriesDeactivateRequest {
     id: string;
-    copyDeliveryDto: CopyDeliveryDto;
-    acceptLanguage?: DeliveriesCopyAcceptLanguageEnum;
+    acceptLanguage?: DeliveriesDeactivateAcceptLanguageEnum;
 }
-export interface DeliveriesStartRequest {
-    projectId: string;
+export interface DeliveriesGetByIdRequest {
     id: string;
-    acceptLanguage?: DeliveriesStartAcceptLanguageEnum;
+    acceptLanguage?: DeliveriesGetByIdAcceptLanguageEnum;
 }
-export interface DeliveriesTestRequest {
+export interface DeliveriesListRequest {
     projectId: string;
-    id: string;
-    testDeliveryDto: TestDeliveryDto;
-    acceptLanguage?: DeliveriesTestAcceptLanguageEnum;
-}
-export interface DeliveriesTestRecipientLinkRequest {
-    projectId: string;
-    id: string;
-    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
-    acceptLanguage?: DeliveriesTestRecipientLinkAcceptLanguageEnum;
-}
-export interface DeliveriesTestRecipientVkConfirmRequest {
-    projectId: string;
-    id: string;
-    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
-    acceptLanguage?: DeliveriesTestRecipientVkConfirmAcceptLanguageEnum;
-}
-export interface GetDeliveriesRequest {
-    projectId: string;
-    tab?: GetDeliveriesTabEnum;
+    tab?: DeliveriesListTabEnum;
     search?: string;
-    acceptLanguage?: GetDeliveriesAcceptLanguageEnum;
+    acceptLanguage?: DeliveriesListAcceptLanguageEnum;
 }
-export interface GetDeliveries2Request {
-    projectId: string;
+export interface DeliveriesUpdateRequest {
     id: string;
-    acceptLanguage?: GetDeliveries2AcceptLanguageEnum;
+    updateDeliveryDto: UpdateDeliveryDto;
+    acceptLanguage?: DeliveriesUpdateAcceptLanguageEnum;
 }
-export interface GetDeliveriesAudiencePreviewRequest {
-    projectId: string;
+export interface GetAudiencePreviewRequest {
     id: string;
     leadIds?: Array<string>;
     channelIds?: Array<string>;
-    channelType?: GetDeliveriesAudiencePreviewChannelTypeEnum;
+    channelType?: GetAudiencePreviewChannelTypeEnum;
     segmentId?: Array<string>;
     segmentIsMember?: boolean;
     limit?: number;
     cursor?: string | null;
-    acceptLanguage?: GetDeliveriesAudiencePreviewAcceptLanguageEnum;
+    acceptLanguage?: GetAudiencePreviewAcceptLanguageEnum;
 }
-export interface GetDeliveriesStartPreviewRequest {
-    projectId: string;
+export interface GetStartPreviewRequest {
     id: string;
-    acceptLanguage?: GetDeliveriesStartPreviewAcceptLanguageEnum;
+    acceptLanguage?: GetStartPreviewAcceptLanguageEnum;
 }
-export interface GetDeliveriesTestRecipientsRequest {
-    projectId: string;
+export interface GetTestRecipientsRequest {
     id: string;
     channelId: string;
-    acceptLanguage?: GetDeliveriesTestRecipientsAcceptLanguageEnum;
+    acceptLanguage?: GetTestRecipientsAcceptLanguageEnum;
 }
-export interface UpdateDeliveriesRequest {
-    projectId: string;
+export interface StartRequest {
     id: string;
-    updateDeliveryDto: UpdateDeliveryDto;
-    acceptLanguage?: UpdateDeliveriesAcceptLanguageEnum;
+    acceptLanguage?: StartAcceptLanguageEnum;
 }
-export interface UpdateDeliveriesScheduleRequest {
-    projectId: string;
+export interface TestRequest {
+    id: string;
+    testDeliveryDto: TestDeliveryDto;
+    acceptLanguage?: TestAcceptLanguageEnum;
+}
+export interface TestRecipientLinkRequest {
+    id: string;
+    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
+    acceptLanguage?: TestRecipientLinkAcceptLanguageEnum;
+}
+export interface TestRecipientVkConfirmRequest {
+    id: string;
+    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
+    acceptLanguage?: TestRecipientVkConfirmAcceptLanguageEnum;
+}
+export interface UpdateScheduleRequest {
     id: string;
     scheduleDeliveryDto: ScheduleDeliveryDto;
-    acceptLanguage?: UpdateDeliveriesScheduleAcceptLanguageEnum;
+    acceptLanguage?: UpdateScheduleAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class DeliveriesApi extends runtime.BaseAPI {
     /**
-     * , .
+     * .
      *
      */
-    deleteDeliveriesRaw(requestParameters: DeleteDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>>;
+    cancelRaw(requestParameters: CancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
-     * , .
+     * .
      *
      */
-    deleteDeliveries(requestParameters: DeleteDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
+    cancel(requestParameters: CancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    /**
+     * , , .
+     *
+     */
+    copyRaw(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    /**
+     * , , .
+     *
+     */
+    copy(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
      * ready .
      *
      */
-    deleteDeliveriesScheduleRaw(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    deleteScheduleRaw(requestParameters: DeleteScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
      * ready .
      *
      */
-    deleteDeliveriesSchedule(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
-    /**
-     * . , .
-     *
-     */
-    deliveriesRaw(requestParameters: DeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
-    /**
-     * . , .
-     *
-     */
-    deliveries(requestParameters: DeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    deleteSchedule(requestParameters: DeleteScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
      * , .
      *
@@ -171,160 +157,160 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      */
     deliveriesAttachmentsUploadUrl(requestParameters: DeliveriesAttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
     /**
-     * .
+     * . , .
      *
      */
-    deliveriesCancelRaw(requestParameters: DeliveriesCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    deliveriesCreateRaw(requestParameters: DeliveriesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
-     * .
+     * . , .
      *
      */
-    deliveriesCancel(requestParameters: DeliveriesCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    deliveriesCreate(requestParameters: DeliveriesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    /**
+     * , .
+     *
+     */
+    deliveriesDeactivateRaw(requestParameters: DeliveriesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>>;
+    /**
+     * , .
+     *
+     */
+    deliveriesDeactivate(requestParameters: DeliveriesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
     /**
      * , , .
      *
      */
-    deliveriesCopyRaw(requestParameters: DeliveriesCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    deliveriesGetByIdRaw(requestParameters: DeliveriesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
      * , , .
      *
      */
-    deliveriesCopy(requestParameters: DeliveriesCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
-    /**
-     * delivery run, worker.
-     *
-     */
-    deliveriesStartRaw(requestParameters: DeliveriesStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartDeliveryResponseDto>>;
-    /**
-     * delivery run, worker.
-     *
-     */
-    deliveriesStart(requestParameters: DeliveriesStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartDeliveryResponseDto>;
-    /**
-     * .
-     *
-     */
-    deliveriesTestRaw(requestParameters: DeliveriesTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestDeliveryResponseDto>>;
-    /**
-     * .
-     *
-     */
-    deliveriesTest(requestParameters: DeliveriesTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestDeliveryResponseDto>;
-    /**
-     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
-     *
-     */
-    deliveriesTestRecipientLinkRaw(requestParameters: DeliveriesTestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientLinkResponseDto>>;
-    /**
-     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
-     *
-     */
-    deliveriesTestRecipientLink(requestParameters: DeliveriesTestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientLinkResponseDto>;
-    /**
-     * VK .
-     * VK-
-     */
-    deliveriesTestRecipientVkConfirmRaw(requestParameters: DeliveriesTestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientDto>>;
-    /**
-     * VK .
-     * VK-
-     */
-    deliveriesTestRecipientVkConfirm(requestParameters: DeliveriesTestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientDto>;
+    deliveriesGetById(requestParameters: DeliveriesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
      * : , , .
      *
      */
-    getDeliveriesRaw(requestParameters: GetDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListDeliveriesResponseDto>>;
+    deliveriesListRaw(requestParameters: DeliveriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListDeliveriesResponseDto>>;
     /**
      * : , , .
      *
      */
-    getDeliveries(requestParameters: GetDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListDeliveriesResponseDto>;
+    deliveriesList(requestParameters: DeliveriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListDeliveriesResponseDto>;
     /**
-     * , , .
+     * , .
      *
      */
-    getDeliveries2Raw(requestParameters: GetDeliveries2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    deliveriesUpdateRaw(requestParameters: DeliveriesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
-     * , , .
+     * , .
      *
      */
-    getDeliveries2(requestParameters: GetDeliveries2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    deliveriesUpdate(requestParameters: DeliveriesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
      * .
      * preview
      */
-    getDeliveriesAudiencePreviewRaw(requestParameters: GetDeliveriesAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>>;
+    getAudiencePreviewRaw(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>>;
     /**
      * .
      * preview
      */
-    getDeliveriesAudiencePreview(requestParameters: GetDeliveriesAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto>;
+    getAudiencePreview(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto>;
     /**
      * , .
      *
      */
-    getDeliveriesStartPreviewRaw(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryStartPreviewResponseDto>>;
+    getStartPreviewRaw(requestParameters: GetStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryStartPreviewResponseDto>>;
     /**
      * , .
      *
      */
-    getDeliveriesStartPreview(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryStartPreviewResponseDto>;
+    getStartPreview(requestParameters: GetStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryStartPreviewResponseDto>;
     /**
      * , .
      *
      */
-    getDeliveriesTestRecipientsRaw(requestParameters: GetDeliveriesTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientsResponseDto>>;
+    getTestRecipientsRaw(requestParameters: GetTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientsResponseDto>>;
     /**
      * , .
      *
      */
-    getDeliveriesTestRecipients(requestParameters: GetDeliveriesTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientsResponseDto>;
+    getTestRecipients(requestParameters: GetTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientsResponseDto>;
     /**
-     * , .
+     * delivery run, worker.
      *
      */
-    updateDeliveriesRaw(requestParameters: UpdateDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    startRaw(requestParameters: StartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartDeliveryResponseDto>>;
     /**
-     * , .
+     * delivery run, worker.
      *
      */
-    updateDeliveries(requestParameters: UpdateDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    start(requestParameters: StartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartDeliveryResponseDto>;
+    /**
+     * .
+     *
+     */
+    testRaw(requestParameters: TestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestDeliveryResponseDto>>;
+    /**
+     * .
+     *
+     */
+    test(requestParameters: TestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestDeliveryResponseDto>;
+    /**
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
+     *
+     */
+    testRecipientLinkRaw(requestParameters: TestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientLinkResponseDto>>;
+    /**
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
+     *
+     */
+    testRecipientLink(requestParameters: TestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientLinkResponseDto>;
+    /**
+     * VK .
+     * VK-
+     */
+    testRecipientVkConfirmRaw(requestParameters: TestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientDto>>;
+    /**
+     * VK .
+     * VK-
+     */
+    testRecipientVkConfirm(requestParameters: TestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientDto>;
     /**
      * scheduled .
      *
      */
-    updateDeliveriesScheduleRaw(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
+    updateScheduleRaw(requestParameters: UpdateScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
      * scheduled .
      *
      */
-    updateDeliveriesSchedule(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
+    updateSchedule(requestParameters: UpdateScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteDeliveriesAcceptLanguageEnum: {
+export declare const CancelAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteDeliveriesAcceptLanguageEnum = typeof DeleteDeliveriesAcceptLanguageEnum[keyof typeof DeleteDeliveriesAcceptLanguageEnum];
+export type CancelAcceptLanguageEnum = typeof CancelAcceptLanguageEnum[keyof typeof CancelAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeleteDeliveriesScheduleAcceptLanguageEnum: {
+export declare const CopyAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteDeliveriesScheduleAcceptLanguageEnum = typeof DeleteDeliveriesScheduleAcceptLanguageEnum[keyof typeof DeleteDeliveriesScheduleAcceptLanguageEnum];
+export type CopyAcceptLanguageEnum = typeof CopyAcceptLanguageEnum[keyof typeof CopyAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeliveriesAcceptLanguageEnum: {
+export declare const DeleteScheduleAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeliveriesAcceptLanguageEnum = typeof DeliveriesAcceptLanguageEnum[keyof typeof DeliveriesAcceptLanguageEnum];
+export type DeleteScheduleAcceptLanguageEnum = typeof DeleteScheduleAcceptLanguageEnum[keyof typeof DeleteScheduleAcceptLanguageEnum];
 /**
  * @export
  */
@@ -344,81 +330,57 @@ export type DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = typeof Deliveries
 /**
  * @export
  */
-export declare const DeliveriesCancelAcceptLanguageEnum: {
+export declare const DeliveriesCreateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeliveriesCancelAcceptLanguageEnum = typeof DeliveriesCancelAcceptLanguageEnum[keyof typeof DeliveriesCancelAcceptLanguageEnum];
+export type DeliveriesCreateAcceptLanguageEnum = typeof DeliveriesCreateAcceptLanguageEnum[keyof typeof DeliveriesCreateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeliveriesCopyAcceptLanguageEnum: {
+export declare const DeliveriesDeactivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeliveriesCopyAcceptLanguageEnum = typeof DeliveriesCopyAcceptLanguageEnum[keyof typeof DeliveriesCopyAcceptLanguageEnum];
+export type DeliveriesDeactivateAcceptLanguageEnum = typeof DeliveriesDeactivateAcceptLanguageEnum[keyof typeof DeliveriesDeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeliveriesStartAcceptLanguageEnum: {
+export declare const DeliveriesGetByIdAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeliveriesStartAcceptLanguageEnum = typeof DeliveriesStartAcceptLanguageEnum[keyof typeof DeliveriesStartAcceptLanguageEnum];
+export type DeliveriesGetByIdAcceptLanguageEnum = typeof DeliveriesGetByIdAcceptLanguageEnum[keyof typeof DeliveriesGetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeliveriesTestAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeliveriesTestAcceptLanguageEnum = typeof DeliveriesTestAcceptLanguageEnum[keyof typeof DeliveriesTestAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const DeliveriesTestRecipientLinkAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeliveriesTestRecipientLinkAcceptLanguageEnum = typeof DeliveriesTestRecipientLinkAcceptLanguageEnum[keyof typeof DeliveriesTestRecipientLinkAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const DeliveriesTestRecipientVkConfirmAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = typeof DeliveriesTestRecipientVkConfirmAcceptLanguageEnum[keyof typeof DeliveriesTestRecipientVkConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetDeliveriesTabEnum: {
+export declare const DeliveriesListTabEnum: {
     readonly Waiting: "waiting";
     readonly Processing: "processing";
     readonly Completed: "completed";
     readonly Deleted: "deleted";
 };
-export type GetDeliveriesTabEnum = typeof GetDeliveriesTabEnum[keyof typeof GetDeliveriesTabEnum];
+export type DeliveriesListTabEnum = typeof DeliveriesListTabEnum[keyof typeof DeliveriesListTabEnum];
 /**
  * @export
  */
-export declare const GetDeliveriesAcceptLanguageEnum: {
+export declare const DeliveriesListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDeliveriesAcceptLanguageEnum = typeof GetDeliveriesAcceptLanguageEnum[keyof typeof GetDeliveriesAcceptLanguageEnum];
+export type DeliveriesListAcceptLanguageEnum = typeof DeliveriesListAcceptLanguageEnum[keyof typeof DeliveriesListAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetDeliveries2AcceptLanguageEnum: {
+export declare const DeliveriesUpdateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDeliveries2AcceptLanguageEnum = typeof GetDeliveries2AcceptLanguageEnum[keyof typeof GetDeliveries2AcceptLanguageEnum];
+export type DeliveriesUpdateAcceptLanguageEnum = typeof DeliveriesUpdateAcceptLanguageEnum[keyof typeof DeliveriesUpdateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetDeliveriesAudiencePreviewChannelTypeEnum: {
+export declare const GetAudiencePreviewChannelTypeEnum: {
     readonly Vk: "vk";
     readonly Tg: "tg";
     readonly Max: "max";
@@ -428,44 +390,68 @@ export declare const GetDeliveriesAudiencePreviewChannelTypeEnum: {
     readonly Email: "email";
     readonly Avito: "avito";
 };
-export type GetDeliveriesAudiencePreviewChannelTypeEnum = typeof GetDeliveriesAudiencePreviewChannelTypeEnum[keyof typeof GetDeliveriesAudiencePreviewChannelTypeEnum];
+export type GetAudiencePreviewChannelTypeEnum = typeof GetAudiencePreviewChannelTypeEnum[keyof typeof GetAudiencePreviewChannelTypeEnum];
 /**
  * @export
  */
-export declare const GetDeliveriesAudiencePreviewAcceptLanguageEnum: {
+export declare const GetAudiencePreviewAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDeliveriesAudiencePreviewAcceptLanguageEnum = typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum[keyof typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum];
+export type GetAudiencePreviewAcceptLanguageEnum = typeof GetAudiencePreviewAcceptLanguageEnum[keyof typeof GetAudiencePreviewAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetDeliveriesStartPreviewAcceptLanguageEnum: {
+export declare const GetStartPreviewAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDeliveriesStartPreviewAcceptLanguageEnum = typeof GetDeliveriesStartPreviewAcceptLanguageEnum[keyof typeof GetDeliveriesStartPreviewAcceptLanguageEnum];
+export type GetStartPreviewAcceptLanguageEnum = typeof GetStartPreviewAcceptLanguageEnum[keyof typeof GetStartPreviewAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetDeliveriesTestRecipientsAcceptLanguageEnum: {
+export declare const GetTestRecipientsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDeliveriesTestRecipientsAcceptLanguageEnum = typeof GetDeliveriesTestRecipientsAcceptLanguageEnum[keyof typeof GetDeliveriesTestRecipientsAcceptLanguageEnum];
+export type GetTestRecipientsAcceptLanguageEnum = typeof GetTestRecipientsAcceptLanguageEnum[keyof typeof GetTestRecipientsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateDeliveriesAcceptLanguageEnum: {
+export declare const StartAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateDeliveriesAcceptLanguageEnum = typeof UpdateDeliveriesAcceptLanguageEnum[keyof typeof UpdateDeliveriesAcceptLanguageEnum];
+export type StartAcceptLanguageEnum = typeof StartAcceptLanguageEnum[keyof typeof StartAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateDeliveriesScheduleAcceptLanguageEnum: {
+export declare const TestAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateDeliveriesScheduleAcceptLanguageEnum = typeof UpdateDeliveriesScheduleAcceptLanguageEnum[keyof typeof UpdateDeliveriesScheduleAcceptLanguageEnum];
+export type TestAcceptLanguageEnum = typeof TestAcceptLanguageEnum[keyof typeof TestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestRecipientLinkAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestRecipientLinkAcceptLanguageEnum = typeof TestRecipientLinkAcceptLanguageEnum[keyof typeof TestRecipientLinkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestRecipientVkConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestRecipientVkConfirmAcceptLanguageEnum = typeof TestRecipientVkConfirmAcceptLanguageEnum[keyof typeof TestRecipientVkConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateScheduleAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateScheduleAcceptLanguageEnum = typeof UpdateScheduleAcceptLanguageEnum[keyof typeof UpdateScheduleAcceptLanguageEnum];

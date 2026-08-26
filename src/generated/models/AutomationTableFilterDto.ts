@@ -55,6 +55,12 @@ export interface AutomationTableFilterDto {
      * @memberof AutomationTableFilterDto
      */
     variableName?: string;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof AutomationTableFilterDto
+     */
+    variableType?: AutomationTableFilterDtoVariableTypeEnum;
 }
 
 
@@ -86,6 +92,20 @@ export const AutomationTableFilterDtoVariableScopeEnum = {
 } as const;
 export type AutomationTableFilterDtoVariableScopeEnum = typeof AutomationTableFilterDtoVariableScopeEnum[keyof typeof AutomationTableFilterDtoVariableScopeEnum];
 
+/**
+ * @export
+ */
+export const AutomationTableFilterDtoVariableTypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean',
+    Json: 'json',
+    Date: 'date',
+    Array: 'array',
+    Object: 'object'
+} as const;
+export type AutomationTableFilterDtoVariableTypeEnum = typeof AutomationTableFilterDtoVariableTypeEnum[keyof typeof AutomationTableFilterDtoVariableTypeEnum];
+
 
 /**
  * Check if a given object implements the AutomationTableFilterDto interface.
@@ -112,6 +132,7 @@ export function AutomationTableFilterDtoFromJSONTyped(json: any, ignoreDiscrimin
         'value': json['value'] == null ? undefined : json['value'],
         'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
         'variableName': json['variable_name'] == null ? undefined : json['variable_name'],
+        'variableType': json['variable_type'] == null ? undefined : json['variable_type'],
     };
 }
 
@@ -132,5 +153,6 @@ export function AutomationTableFilterDtoToJSONTyped(value?: AutomationTableFilte
         'value': value['value'],
         'variable_scope': value['variableScope'],
         'variable_name': value['variableName'],
+        'variable_type': value['variableType'],
     };
 }

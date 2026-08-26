@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum = exports.GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum = exports.AgentsAcquisitionApi = void 0;
+exports.UpdateAcquisitionSegmentDraftAcceptLanguageEnum = exports.GetAcquisitionSegmentDraftAcceptLanguageEnum = exports.AgentsAcquisitionApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,12 +57,9 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getAgentsAcquisitionSegmentDraftRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAgentsAcquisitionSegmentDraft().');
-        }
+    async getAcquisitionSegmentDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getAgentsAcquisitionSegmentDraft().');
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getAcquisitionSegmentDraft().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -81,7 +78,7 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/agents/{agentId}/acquisition/segment-draft`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            path: `/api/agents/{agentId}/acquisition/segment-draft`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -92,23 +89,20 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getAgentsAcquisitionSegmentDraft(requestParameters, initOverrides) {
-        const response = await this.getAgentsAcquisitionSegmentDraftRaw(requestParameters, initOverrides);
+    async getAcquisitionSegmentDraft(requestParameters, initOverrides) {
+        const response = await this.getAcquisitionSegmentDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async updateAgentsAcquisitionSegmentDraftRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateAgentsAcquisitionSegmentDraft().');
-        }
+    async updateAcquisitionSegmentDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateAgentsAcquisitionSegmentDraft().');
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateAcquisitionSegmentDraft().');
         }
         if (requestParameters['updateAgentSegmentDraftDto'] == null) {
-            throw new runtime.RequiredError('updateAgentSegmentDraftDto', 'Required parameter "updateAgentSegmentDraftDto" was null or undefined when calling updateAgentsAcquisitionSegmentDraft().');
+            throw new runtime.RequiredError('updateAgentSegmentDraftDto', 'Required parameter "updateAgentSegmentDraftDto" was null or undefined when calling updateAcquisitionSegmentDraft().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -128,7 +122,7 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/agents/{agentId}/acquisition/segment-draft`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            path: `/api/agents/{agentId}/acquisition/segment-draft`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -140,8 +134,8 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateAgentsAcquisitionSegmentDraft(requestParameters, initOverrides) {
-        const response = await this.updateAgentsAcquisitionSegmentDraftRaw(requestParameters, initOverrides);
+    async updateAcquisitionSegmentDraft(requestParameters, initOverrides) {
+        const response = await this.updateAcquisitionSegmentDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -149,14 +143,14 @@ exports.AgentsAcquisitionApi = AgentsAcquisitionApi;
 /**
  * @export
  */
-exports.GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum = {
+exports.GetAcquisitionSegmentDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum = {
+exports.UpdateAcquisitionSegmentDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

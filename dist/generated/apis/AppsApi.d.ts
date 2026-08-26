@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, GetAppAutomationStepIconUploadUrlDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SetAppCatalogVisibilityDto, UpdateAppDto, UpdateAppOAuthRedirectUrisDto, UserAppOAuthAccessPolicyDto } from '../models/index';
+import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SetAppCatalogVisibilityDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
 export interface AgentEventsRequest {
     appId: string;
     appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
@@ -22,11 +22,6 @@ export interface AppsGetByIdRequest {
 }
 export interface AppsListRequest {
     acceptLanguage?: AppsListAcceptLanguageEnum;
-}
-export interface AppsUpdateRequest {
-    id: string;
-    updateAppDto: UpdateAppDto;
-    acceptLanguage?: AppsUpdateAcceptLanguageEnum;
 }
 export interface AutomationStepsRequest {
     appId: string;
@@ -48,6 +43,11 @@ export interface DeleteAutomationStepsRequest {
     stepId: string;
     acceptLanguage?: DeleteAutomationStepsAcceptLanguageEnum;
 }
+export interface DeleteInstallationsRequest {
+    appId: string;
+    installationId: string;
+    acceptLanguage?: DeleteInstallationsAcceptLanguageEnum;
+}
 export interface DeleteToolsRequest {
     appId: string;
     toolId: string;
@@ -61,6 +61,15 @@ export interface GetEmbeddedPageTestRequest {
     id: string;
     projectId: string;
     acceptLanguage?: GetEmbeddedPageTestAcceptLanguageEnum;
+}
+export interface GetInstallationsRequest {
+    appId: string;
+    limit?: number;
+    offset?: number;
+    period?: GetInstallationsPeriodEnum;
+    state?: GetInstallationsStateEnum;
+    search?: string;
+    acceptLanguage?: GetInstallationsAcceptLanguageEnum;
 }
 export interface OauthTokenRequest {
     grantType: OauthTokenGrantTypeEnum;
@@ -112,6 +121,16 @@ export interface UpdateCatalogVisibilityRequest {
     setAppCatalogVisibilityDto: SetAppCatalogVisibilityDto;
     acceptLanguage?: UpdateCatalogVisibilityAcceptLanguageEnum;
 }
+export interface UpdateEmbeddedPageSettingsRequest {
+    id: string;
+    updateAppEmbeddedPageSettingsDto: UpdateAppEmbeddedPageSettingsDto;
+    acceptLanguage?: UpdateEmbeddedPageSettingsAcceptLanguageEnum;
+}
+export interface UpdateGeneralSettingsRequest {
+    id: string;
+    updateAppGeneralSettingsDto: UpdateAppGeneralSettingsDto;
+    acceptLanguage?: UpdateGeneralSettingsAcceptLanguageEnum;
+}
 export interface UpdateOauthAccessProjectRequest {
     id: string;
     projectAppOAuthAccessPolicyDto: ProjectAppOAuthAccessPolicyDto;
@@ -132,6 +151,11 @@ export interface UpdateToolsRequest {
     toolId: string;
     appManualToolDefinitionDto: AppManualToolDefinitionDto;
     acceptLanguage?: UpdateToolsAcceptLanguageEnum;
+}
+export interface UpdateToolsSettingsRequest {
+    id: string;
+    updateAppToolsSettingsDto: UpdateAppToolsSettingsDto;
+    acceptLanguage?: UpdateToolsSettingsAcceptLanguageEnum;
 }
 /**
  *
@@ -167,16 +191,6 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     appsList(requestParameters?: AppsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppListItemResponseDto>>;
-    /**
-     * .
-     *
-     */
-    appsUpdateRaw(requestParameters: AppsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
-    /**
-     * .
-     *
-     */
-    appsUpdate(requestParameters: AppsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
     /**
      * , .
      *
@@ -221,6 +235,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      * .
      *
      */
+    deleteInstallationsRaw(requestParameters: DeleteInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeveloperAppInstallationRemoveResponseDto>>;
+    /**
+     * .
+     *
+     */
+    deleteInstallations(requestParameters: DeleteInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeveloperAppInstallationRemoveResponseDto>;
+    /**
+     * .
+     *
+     */
     deleteToolsRaw(requestParameters: DeleteToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * .
@@ -247,6 +271,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     getEmbeddedPageTest(requestParameters: GetEmbeddedPageTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppEmbeddedPageTestLaunchResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getInstallationsRaw(requestParameters: GetInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeveloperAppInstallationsResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getInstallations(requestParameters: GetInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeveloperAppInstallationsResponseDto>;
     /**
      * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
@@ -338,6 +372,26 @@ export declare class AppsApi extends runtime.BaseAPI {
      */
     updateCatalogVisibility(requestParameters: UpdateCatalogVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
     /**
+     * .
+     *
+     */
+    updateEmbeddedPageSettingsRaw(requestParameters: UpdateEmbeddedPageSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateEmbeddedPageSettings(requestParameters: UpdateEmbeddedPageSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * , , .
+     *
+     */
+    updateGeneralSettingsRaw(requestParameters: UpdateGeneralSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * , , .
+     *
+     */
+    updateGeneralSettings(requestParameters: UpdateGeneralSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
      * OAuth- .
      * OAuth-
      */
@@ -377,6 +431,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     updateTools(requestParameters: UpdateToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppManualToolResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateToolsSettingsRaw(requestParameters: UpdateToolsSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateToolsSettings(requestParameters: UpdateToolsSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
 }
 /**
  * @export
@@ -402,14 +466,6 @@ export declare const AppsListAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AppsListAcceptLanguageEnum = typeof AppsListAcceptLanguageEnum[keyof typeof AppsListAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AppsUpdateAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AppsUpdateAcceptLanguageEnum = typeof AppsUpdateAcceptLanguageEnum[keyof typeof AppsUpdateAcceptLanguageEnum];
 /**
  * @export
  */
@@ -445,6 +501,14 @@ export type DeleteAutomationStepsAcceptLanguageEnum = typeof DeleteAutomationSte
 /**
  * @export
  */
+export declare const DeleteInstallationsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteInstallationsAcceptLanguageEnum = typeof DeleteInstallationsAcceptLanguageEnum[keyof typeof DeleteInstallationsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const DeleteToolsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -466,6 +530,32 @@ export declare const GetEmbeddedPageTestAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetEmbeddedPageTestAcceptLanguageEnum = typeof GetEmbeddedPageTestAcceptLanguageEnum[keyof typeof GetEmbeddedPageTestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstallationsPeriodEnum: {
+    readonly Week: "week";
+    readonly Month: "month";
+    readonly Quarter: "quarter";
+    readonly Year: "year";
+};
+export type GetInstallationsPeriodEnum = typeof GetInstallationsPeriodEnum[keyof typeof GetInstallationsPeriodEnum];
+/**
+ * @export
+ */
+export declare const GetInstallationsStateEnum: {
+    readonly Installed: "installed";
+    readonly Removed: "removed";
+};
+export type GetInstallationsStateEnum = typeof GetInstallationsStateEnum[keyof typeof GetInstallationsStateEnum];
+/**
+ * @export
+ */
+export declare const GetInstallationsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstallationsAcceptLanguageEnum = typeof GetInstallationsAcceptLanguageEnum[keyof typeof GetInstallationsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -549,6 +639,22 @@ export type UpdateCatalogVisibilityAcceptLanguageEnum = typeof UpdateCatalogVisi
 /**
  * @export
  */
+export declare const UpdateEmbeddedPageSettingsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateEmbeddedPageSettingsAcceptLanguageEnum = typeof UpdateEmbeddedPageSettingsAcceptLanguageEnum[keyof typeof UpdateEmbeddedPageSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateGeneralSettingsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateGeneralSettingsAcceptLanguageEnum = typeof UpdateGeneralSettingsAcceptLanguageEnum[keyof typeof UpdateGeneralSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateOauthAccessProjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -578,3 +684,11 @@ export declare const UpdateToolsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateToolsAcceptLanguageEnum = typeof UpdateToolsAcceptLanguageEnum[keyof typeof UpdateToolsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateToolsSettingsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateToolsSettingsAcceptLanguageEnum = typeof UpdateToolsSettingsAcceptLanguageEnum[keyof typeof UpdateToolsSettingsAcceptLanguageEnum];

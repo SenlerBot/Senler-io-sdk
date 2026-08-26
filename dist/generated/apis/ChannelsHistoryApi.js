@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetChannelsHistoryScanAcceptLanguageEnum = exports.ChannelsHistoryScanAcceptLanguageEnum = exports.ChannelsHistoryApi = void 0;
+exports.HistoryScanAcceptLanguageEnum = exports.GetHistoryScanAcceptLanguageEnum = exports.ChannelsHistoryApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,18 +54,55 @@ const index_1 = require("../models/index");
  */
 class ChannelsHistoryApi extends runtime.BaseAPI {
     /**
+     * coverage/status : , , .
+     * scan
+     */
+    async getHistoryScanRaw(requestParameters, initOverrides) {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling getHistoryScan().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/channels/{channelId}/history-scan`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelHistoryScanResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * coverage/status : , , .
+     * scan
+     */
+    async getHistoryScan(requestParameters, initOverrides) {
+        const response = await this.getHistoryScanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * depth_days. Telegram bot token Widget realtime-only .
      * scan
      */
-    async channelsHistoryScanRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling channelsHistoryScan().');
-        }
+    async historyScanRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
-            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling channelsHistoryScan().');
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling historyScan().');
         }
         if (requestParameters['channelHistoryScanDto'] == null) {
-            throw new runtime.RequiredError('channelHistoryScanDto', 'Required parameter "channelHistoryScanDto" was null or undefined when calling channelsHistoryScan().');
+            throw new runtime.RequiredError('channelHistoryScanDto', 'Required parameter "channelHistoryScanDto" was null or undefined when calling historyScan().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -85,7 +122,7 @@ class ChannelsHistoryApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/channels/{channelId}/history-scan`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            path: `/api/channels/{channelId}/history-scan`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -97,51 +134,8 @@ class ChannelsHistoryApi extends runtime.BaseAPI {
      * depth_days. Telegram bot token Widget realtime-only .
      * scan
      */
-    async channelsHistoryScan(requestParameters, initOverrides) {
-        const response = await this.channelsHistoryScanRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * coverage/status : , , .
-     * scan
-     */
-    async getChannelsHistoryScanRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getChannelsHistoryScan().');
-        }
-        if (requestParameters['channelId'] == null) {
-            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling getChannelsHistoryScan().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/channels/{channelId}/history-scan`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelHistoryScanResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * coverage/status : , , .
-     * scan
-     */
-    async getChannelsHistoryScan(requestParameters, initOverrides) {
-        const response = await this.getChannelsHistoryScanRaw(requestParameters, initOverrides);
+    async historyScan(requestParameters, initOverrides) {
+        const response = await this.historyScanRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -149,14 +143,14 @@ exports.ChannelsHistoryApi = ChannelsHistoryApi;
 /**
  * @export
  */
-exports.ChannelsHistoryScanAcceptLanguageEnum = {
+exports.GetHistoryScanAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetChannelsHistoryScanAcceptLanguageEnum = {
+exports.HistoryScanAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

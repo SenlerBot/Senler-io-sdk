@@ -81,7 +81,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments/{assignmentId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"assignmentId"}}`, encodeURIComponent(String(requestParameters['assignmentId']))),
+            path: `/api/access/{projectId}/support-schedule/assignments/{assignmentId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"assignmentId"}}`, encodeURIComponent(String(requestParameters['assignmentId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -124,7 +124,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/shifts/{shiftId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"shiftId"}}`, encodeURIComponent(String(requestParameters['shiftId']))),
+            path: `/api/access/{projectId}/support-schedule/shifts/{shiftId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"shiftId"}}`, encodeURIComponent(String(requestParameters['shiftId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -170,7 +170,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/support-schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -214,7 +214,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/support-schedule/assignments`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -259,7 +259,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/shifts`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/support-schedule/shifts`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -307,7 +307,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/assignments/{assignmentId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"assignmentId"}}`, encodeURIComponent(String(requestParameters['assignmentId']))),
+            path: `/api/access/{projectId}/support-schedule/assignments/{assignmentId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"assignmentId"}}`, encodeURIComponent(String(requestParameters['assignmentId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -352,7 +352,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/settings`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/support-schedule/settings`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -400,7 +400,7 @@ class SupportSchedulesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/support-schedule/shifts/{shiftId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"shiftId"}}`, encodeURIComponent(String(requestParameters['shiftId']))),
+            path: `/api/access/{projectId}/support-schedule/shifts/{shiftId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"shiftId"}}`, encodeURIComponent(String(requestParameters['shiftId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

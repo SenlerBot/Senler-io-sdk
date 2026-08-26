@@ -29,6 +29,7 @@ import type {
   ExportVariableLeadsByStringDto,
   ExportVariableLeadsDto,
   LeadResponseDto,
+  LeadSubscriptionUtmTreeResponseDto,
   LeadsListResponseDto,
   ProcessResponseDto,
   SearchLeadsByAutomationDto,
@@ -41,6 +42,7 @@ import type {
   SearchVariableLeadsByNumberDto,
   SearchVariableLeadsByStringDto,
   SearchVariableLeadsDto,
+  SegmentLeadConsentAcceptancesResponseDto,
   SyncLeadProfileDto,
   SyncLeadProfileResponseDto,
   UpdateBlacklistDto,
@@ -78,6 +80,8 @@ import {
     ExportVariableLeadsDtoToJSON,
     LeadResponseDtoFromJSON,
     LeadResponseDtoToJSON,
+    LeadSubscriptionUtmTreeResponseDtoFromJSON,
+    LeadSubscriptionUtmTreeResponseDtoToJSON,
     LeadsListResponseDtoFromJSON,
     LeadsListResponseDtoToJSON,
     ProcessResponseDtoFromJSON,
@@ -102,6 +106,8 @@ import {
     SearchVariableLeadsByStringDtoToJSON,
     SearchVariableLeadsDtoFromJSON,
     SearchVariableLeadsDtoToJSON,
+    SegmentLeadConsentAcceptancesResponseDtoFromJSON,
+    SegmentLeadConsentAcceptancesResponseDtoToJSON,
     SyncLeadProfileDtoFromJSON,
     SyncLeadProfileDtoToJSON,
     SyncLeadProfileResponseDtoFromJSON,
@@ -234,6 +240,24 @@ export interface GetByVariableCountExistsRequest {
     channelIds?: Array<string>;
     leadId?: string;
     acceptLanguage?: GetByVariableCountExistsAcceptLanguageEnum;
+}
+
+export interface GetConsentAcceptancesRequest {
+    leadId: string;
+    acceptLanguage?: GetConsentAcceptancesAcceptLanguageEnum;
+}
+
+export interface GetSubscriptionUtmTreeRequest {
+    projectId: string;
+    channelId?: Array<string>;
+    channelType?: GetSubscriptionUtmTreeChannelTypeEnum;
+    segmentId?: Array<string>;
+    segmentIsMember?: boolean;
+    parentId?: string;
+    q?: string;
+    offset?: number;
+    limit?: number;
+    acceptLanguage?: GetSubscriptionUtmTreeAcceptLanguageEnum;
 }
 
 export interface LeadsGetByIdRequest {
@@ -1534,6 +1558,146 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
+     * , .
+     *
+     */
+    async getConsentAcceptancesRaw(requestParameters: GetConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLeadConsentAcceptancesResponseDto>> {
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError(
+                'leadId',
+                'Required parameter "leadId" was null or undefined when calling getConsentAcceptances().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/{leadId}/consent-acceptances`.replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SegmentLeadConsentAcceptancesResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getConsentAcceptances(requestParameters: GetConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto> {
+        const response = await this.getConsentAcceptancesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * parent_id utm_source, parent_id . q . , , .
+     * UTM
+     */
+    async getSubscriptionUtmTreeRaw(requestParameters: GetSubscriptionUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadSubscriptionUtmTreeResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getSubscriptionUtmTree().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['channelType'] != null) {
+            queryParameters['channel_type'] = requestParameters['channelType'];
+        }
+
+        if (requestParameters['segmentId'] != null) {
+            queryParameters['segment_id'] = requestParameters['segmentId'];
+        }
+
+        if (requestParameters['segmentIsMember'] != null) {
+            queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
+        }
+
+        if (requestParameters['parentId'] != null) {
+            queryParameters['parent_id'] = requestParameters['parentId'];
+        }
+
+        if (requestParameters['q'] != null) {
+            queryParameters['q'] = requestParameters['q'];
+        }
+
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/subscription-utm/tree`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadSubscriptionUtmTreeResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * parent_id utm_source, parent_id . q . , , .
+     * UTM
+     */
+    async getSubscriptionUtmTree(requestParameters: GetSubscriptionUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto> {
+        const response = await this.getSubscriptionUtmTreeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      * ID
      */
@@ -2325,6 +2489,36 @@ export const GetByVariableCountExistsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetByVariableCountExistsAcceptLanguageEnum = typeof GetByVariableCountExistsAcceptLanguageEnum[keyof typeof GetByVariableCountExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetConsentAcceptancesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetConsentAcceptancesAcceptLanguageEnum = typeof GetConsentAcceptancesAcceptLanguageEnum[keyof typeof GetConsentAcceptancesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetSubscriptionUtmTreeChannelTypeEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito'
+} as const;
+export type GetSubscriptionUtmTreeChannelTypeEnum = typeof GetSubscriptionUtmTreeChannelTypeEnum[keyof typeof GetSubscriptionUtmTreeChannelTypeEnum];
+/**
+ * @export
+ */
+export const GetSubscriptionUtmTreeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetSubscriptionUtmTreeAcceptLanguageEnum = typeof GetSubscriptionUtmTreeAcceptLanguageEnum[keyof typeof GetSubscriptionUtmTreeAcceptLanguageEnum];
 /**
  * @export
  */

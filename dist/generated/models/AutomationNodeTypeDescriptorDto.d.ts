@@ -77,7 +77,7 @@ export interface AutomationNodeTypeDescriptorDto {
      * @type {AutomationNodeConfigDto}
      * @memberof AutomationNodeTypeDescriptorDto
      */
-    defaultConfig?: AutomationNodeConfigDto;
+    defaultConfig: AutomationNodeConfigDto;
     /**
      * ID .
      * @type {string}
@@ -120,6 +120,7 @@ export declare const AutomationNodeTypeDescriptorDtoTypeEnum: {
     readonly BranchRandom: "branch.random";
     readonly ActionSetVariable: "action.set_variable";
     readonly ActionMessage: "action.message";
+    readonly ActionAgentRequest: "action.agent_request";
     readonly ActionAddSegment: "action.add_segment";
     readonly ActionRemoveSegment: "action.remove_segment";
     readonly ActionAddAutomation: "action.add_automation";

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CountLeadsByVariableResponseDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
+import type { CountLeadsByVariableResponseDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
     acceptLanguage?: ExportAcceptLanguageEnum;
@@ -108,6 +108,22 @@ export interface GetByVariableCountExistsRequest {
     channelIds?: Array<string>;
     leadId?: string;
     acceptLanguage?: GetByVariableCountExistsAcceptLanguageEnum;
+}
+export interface GetConsentAcceptancesRequest {
+    leadId: string;
+    acceptLanguage?: GetConsentAcceptancesAcceptLanguageEnum;
+}
+export interface GetSubscriptionUtmTreeRequest {
+    projectId: string;
+    channelId?: Array<string>;
+    channelType?: GetSubscriptionUtmTreeChannelTypeEnum;
+    segmentId?: Array<string>;
+    segmentIsMember?: boolean;
+    parentId?: string;
+    q?: string;
+    offset?: number;
+    limit?: number;
+    acceptLanguage?: GetSubscriptionUtmTreeAcceptLanguageEnum;
 }
 export interface LeadsGetByIdRequest {
     id: string;
@@ -361,6 +377,26 @@ export declare class LeadsApi extends runtime.BaseAPI {
      * ,
      */
     getByVariableCountExists(requestParameters: GetByVariableCountExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getConsentAcceptancesRaw(requestParameters: GetConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentLeadConsentAcceptancesResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getConsentAcceptances(requestParameters: GetConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto>;
+    /**
+     * parent_id utm_source, parent_id . q . , , .
+     * UTM
+     */
+    getSubscriptionUtmTreeRaw(requestParameters: GetSubscriptionUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadSubscriptionUtmTreeResponseDto>>;
+    /**
+     * parent_id utm_source, parent_id . q . , , .
+     * UTM
+     */
+    getSubscriptionUtmTree(requestParameters: GetSubscriptionUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto>;
     /**
      * .
      * ID
@@ -632,6 +668,36 @@ export declare const GetByVariableCountExistsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetByVariableCountExistsAcceptLanguageEnum = typeof GetByVariableCountExistsAcceptLanguageEnum[keyof typeof GetByVariableCountExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetConsentAcceptancesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetConsentAcceptancesAcceptLanguageEnum = typeof GetConsentAcceptancesAcceptLanguageEnum[keyof typeof GetConsentAcceptancesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetSubscriptionUtmTreeChannelTypeEnum: {
+    readonly Vk: "vk";
+    readonly Tg: "tg";
+    readonly Max: "max";
+    readonly Discord: "discord";
+    readonly Widget: "widget";
+    readonly Streamvi: "streamvi";
+    readonly Email: "email";
+    readonly Avito: "avito";
+};
+export type GetSubscriptionUtmTreeChannelTypeEnum = typeof GetSubscriptionUtmTreeChannelTypeEnum[keyof typeof GetSubscriptionUtmTreeChannelTypeEnum];
+/**
+ * @export
+ */
+export declare const GetSubscriptionUtmTreeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSubscriptionUtmTreeAcceptLanguageEnum = typeof GetSubscriptionUtmTreeAcceptLanguageEnum[keyof typeof GetSubscriptionUtmTreeAcceptLanguageEnum];
 /**
  * @export
  */

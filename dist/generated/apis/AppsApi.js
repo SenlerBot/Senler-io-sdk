@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateToolsAcceptLanguageEnum = exports.UpdateOauthRedirectUrisAcceptLanguageEnum = exports.UpdateOauthAccessUserAcceptLanguageEnum = exports.UpdateOauthAccessProjectAcceptLanguageEnum = exports.UpdateCatalogVisibilityAcceptLanguageEnum = exports.UpdateAutomationStepsStatusAcceptLanguageEnum = exports.UpdateAutomationStepsAcceptLanguageEnum = exports.UpdateAgentEventsAcceptLanguageEnum = exports.ToolsAcceptLanguageEnum = exports.SubmitForModerationAcceptLanguageEnum = exports.SourceProjectAcceptLanguageEnum = exports.ProvisionAcceptLanguageEnum = exports.OauthTokenAcceptLanguageEnum = exports.OauthTokenGrantTypeEnum = exports.GetEmbeddedPageTestAcceptLanguageEnum = exports.GetAutomationStepsAcceptLanguageEnum = exports.DeleteToolsAcceptLanguageEnum = exports.DeleteAutomationStepsAcceptLanguageEnum = exports.DeleteAgentEventsAcceptLanguageEnum = exports.AutomationStepsIconUploadUrlAcceptLanguageEnum = exports.AutomationStepsAcceptLanguageEnum = exports.AppsUpdateAcceptLanguageEnum = exports.AppsListAcceptLanguageEnum = exports.AppsGetByIdAcceptLanguageEnum = exports.AgentEventsAcceptLanguageEnum = exports.AppsApi = void 0;
+exports.UpdateToolsSettingsAcceptLanguageEnum = exports.UpdateToolsAcceptLanguageEnum = exports.UpdateOauthRedirectUrisAcceptLanguageEnum = exports.UpdateOauthAccessUserAcceptLanguageEnum = exports.UpdateOauthAccessProjectAcceptLanguageEnum = exports.UpdateGeneralSettingsAcceptLanguageEnum = exports.UpdateEmbeddedPageSettingsAcceptLanguageEnum = exports.UpdateCatalogVisibilityAcceptLanguageEnum = exports.UpdateAutomationStepsStatusAcceptLanguageEnum = exports.UpdateAutomationStepsAcceptLanguageEnum = exports.UpdateAgentEventsAcceptLanguageEnum = exports.ToolsAcceptLanguageEnum = exports.SubmitForModerationAcceptLanguageEnum = exports.SourceProjectAcceptLanguageEnum = exports.ProvisionAcceptLanguageEnum = exports.OauthTokenAcceptLanguageEnum = exports.OauthTokenGrantTypeEnum = exports.GetInstallationsAcceptLanguageEnum = exports.GetInstallationsStateEnum = exports.GetInstallationsPeriodEnum = exports.GetEmbeddedPageTestAcceptLanguageEnum = exports.GetAutomationStepsAcceptLanguageEnum = exports.DeleteToolsAcceptLanguageEnum = exports.DeleteInstallationsAcceptLanguageEnum = exports.DeleteAutomationStepsAcceptLanguageEnum = exports.DeleteAgentEventsAcceptLanguageEnum = exports.AutomationStepsIconUploadUrlAcceptLanguageEnum = exports.AutomationStepsAcceptLanguageEnum = exports.AppsListAcceptLanguageEnum = exports.AppsGetByIdAcceptLanguageEnum = exports.AgentEventsAcceptLanguageEnum = exports.AppsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -152,44 +152,6 @@ class AppsApi extends runtime.BaseAPI {
      */
     async appsList(requestParameters = {}, initOverrides) {
         const response = await this.appsListRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async appsUpdateRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling appsUpdate().');
-        }
-        if (requestParameters['updateAppDto'] == null) {
-            throw new runtime.RequiredError('updateAppDto', 'Required parameter "updateAppDto" was null or undefined when calling appsUpdate().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
-        }
-        const response = await this.request({
-            path: `/api/apps/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.UpdateAppDtoToJSON)(requestParameters['updateAppDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async appsUpdate(requestParameters, initOverrides) {
-        const response = await this.appsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -342,6 +304,42 @@ class AppsApi extends runtime.BaseAPI {
      * .
      *
      */
+    async deleteInstallationsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteInstallations().');
+        }
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling deleteInstallations().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/installations/{installationId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeveloperAppInstallationRemoveResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async deleteInstallations(requestParameters, initOverrides) {
+        const response = await this.deleteInstallationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
     async deleteToolsRaw(requestParameters, initOverrides) {
         if (requestParameters['appId'] == null) {
             throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteTools().');
@@ -443,6 +441,54 @@ class AppsApi extends runtime.BaseAPI {
      */
     async getEmbeddedPageTest(requestParameters, initOverrides) {
         const response = await this.getEmbeddedPageTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getInstallationsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getInstallations().');
+        }
+        const queryParameters = {};
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+        if (requestParameters['state'] != null) {
+            queryParameters['state'] = requestParameters['state'];
+        }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/installations`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeveloperAppInstallationsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getInstallations(requestParameters, initOverrides) {
+        const response = await this.getInstallationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -811,6 +857,82 @@ class AppsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
+     *
+     */
+    async updateEmbeddedPageSettingsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateEmbeddedPageSettings().');
+        }
+        if (requestParameters['updateAppEmbeddedPageSettingsDto'] == null) {
+            throw new runtime.RequiredError('updateAppEmbeddedPageSettingsDto', 'Required parameter "updateAppEmbeddedPageSettingsDto" was null or undefined when calling updateEmbeddedPageSettings().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/embedded-page-settings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAppEmbeddedPageSettingsDtoToJSON)(requestParameters['updateAppEmbeddedPageSettingsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateEmbeddedPageSettings(requestParameters, initOverrides) {
+        const response = await this.updateEmbeddedPageSettingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , , .
+     *
+     */
+    async updateGeneralSettingsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateGeneralSettings().');
+        }
+        if (requestParameters['updateAppGeneralSettingsDto'] == null) {
+            throw new runtime.RequiredError('updateAppGeneralSettingsDto', 'Required parameter "updateAppGeneralSettingsDto" was null or undefined when calling updateGeneralSettings().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/general-settings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAppGeneralSettingsDtoToJSON)(requestParameters['updateAppGeneralSettingsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , , .
+     *
+     */
+    async updateGeneralSettings(requestParameters, initOverrides) {
+        const response = await this.updateGeneralSettingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * OAuth- .
      * OAuth-
      */
@@ -965,6 +1087,44 @@ class AppsApi extends runtime.BaseAPI {
         const response = await this.updateToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * .
+     *
+     */
+    async updateToolsSettingsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateToolsSettings().');
+        }
+        if (requestParameters['updateAppToolsSettingsDto'] == null) {
+            throw new runtime.RequiredError('updateAppToolsSettingsDto', 'Required parameter "updateAppToolsSettingsDto" was null or undefined when calling updateToolsSettings().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/tools-settings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAppToolsSettingsDtoToJSON)(requestParameters['updateAppToolsSettingsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateToolsSettings(requestParameters, initOverrides) {
+        const response = await this.updateToolsSettingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.AppsApi = AppsApi;
 /**
@@ -985,13 +1145,6 @@ exports.AppsGetByIdAcceptLanguageEnum = {
  * @export
  */
 exports.AppsListAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.AppsUpdateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1026,6 +1179,13 @@ exports.DeleteAutomationStepsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.DeleteInstallationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.DeleteToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1041,6 +1201,29 @@ exports.GetAutomationStepsAcceptLanguageEnum = {
  * @export
  */
 exports.GetEmbeddedPageTestAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstallationsPeriodEnum = {
+    Week: 'week',
+    Month: 'month',
+    Quarter: 'quarter',
+    Year: 'year'
+};
+/**
+ * @export
+ */
+exports.GetInstallationsStateEnum = {
+    Installed: 'installed',
+    Removed: 'removed'
+};
+/**
+ * @export
+ */
+exports.GetInstallationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1117,6 +1300,20 @@ exports.UpdateCatalogVisibilityAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.UpdateEmbeddedPageSettingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateGeneralSettingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.UpdateOauthAccessProjectAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1139,6 +1336,13 @@ exports.UpdateOauthRedirectUrisAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateToolsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateToolsSettingsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

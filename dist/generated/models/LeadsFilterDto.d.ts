@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LeadSubscriptionUtmPathDto } from './LeadSubscriptionUtmPathDto';
 /**
  * LeadsFilterDto.
  * @export
@@ -129,6 +130,12 @@ export interface LeadsFilterDto {
      * @memberof LeadsFilterDto
      */
     pendingSegmentId?: Array<string>;
+    /**
+     * UTM . , segment_id segment_is_member
+     * @type {Array<LeadSubscriptionUtmPathDto>}
+     * @memberof LeadsFilterDto
+     */
+    utmPaths?: Array<LeadSubscriptionUtmPathDto>;
 }
 /**
  * @export

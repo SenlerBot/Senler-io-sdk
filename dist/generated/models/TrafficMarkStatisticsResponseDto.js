@@ -18,7 +18,6 @@ exports.TrafficMarkStatisticsResponseDtoFromJSON = TrafficMarkStatisticsResponse
 exports.TrafficMarkStatisticsResponseDtoFromJSONTyped = TrafficMarkStatisticsResponseDtoFromJSONTyped;
 exports.TrafficMarkStatisticsResponseDtoToJSON = TrafficMarkStatisticsResponseDtoToJSON;
 exports.TrafficMarkStatisticsResponseDtoToJSONTyped = TrafficMarkStatisticsResponseDtoToJSONTyped;
-const TrafficMarkStatisticsRowDto_1 = require("./TrafficMarkStatisticsRowDto");
 /**
  * Check if a given object implements the TrafficMarkStatisticsResponseDto interface.
  */
@@ -30,10 +29,6 @@ function instanceOfTrafficMarkStatisticsResponseDto(value) {
     if (!('subscriptionsViaLinks' in value) || value['subscriptionsViaLinks'] === undefined)
         return false;
     if (!('subscriptionsWithUtm' in value) || value['subscriptionsWithUtm'] === undefined)
-        return false;
-    if (!('subscriptionsWithoutUtm' in value) || value['subscriptionsWithoutUtm'] === undefined)
-        return false;
-    if (!('utmCombinations' in value) || value['utmCombinations'] === undefined)
         return false;
     return true;
 }
@@ -49,8 +44,6 @@ function TrafficMarkStatisticsResponseDtoFromJSONTyped(json, ignoreDiscriminator
         'periodEnd': (new Date(json['period_end'])),
         'subscriptionsViaLinks': json['subscriptions_via_links'],
         'subscriptionsWithUtm': json['subscriptions_with_utm'],
-        'subscriptionsWithoutUtm': json['subscriptions_without_utm'],
-        'utmCombinations': (json['utm_combinations'].map(TrafficMarkStatisticsRowDto_1.TrafficMarkStatisticsRowDtoFromJSON)),
     };
 }
 function TrafficMarkStatisticsResponseDtoToJSON(json) {
@@ -65,7 +58,5 @@ function TrafficMarkStatisticsResponseDtoToJSONTyped(value, ignoreDiscriminator 
         'period_end': ((value['periodEnd']).toISOString()),
         'subscriptions_via_links': value['subscriptionsViaLinks'],
         'subscriptions_with_utm': value['subscriptionsWithUtm'],
-        'subscriptions_without_utm': value['subscriptionsWithoutUtm'],
-        'utm_combinations': (value['utmCombinations'].map(TrafficMarkStatisticsRowDto_1.TrafficMarkStatisticsRowDtoToJSON)),
     };
 }

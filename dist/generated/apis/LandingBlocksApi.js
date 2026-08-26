@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingsBlocksVideoAcceptLanguageEnum = exports.UpdateLandingsBlocksTimerAcceptLanguageEnum = exports.UpdateLandingsBlocksTextAcceptLanguageEnum = exports.UpdateLandingsBlocksReviewsAcceptLanguageEnum = exports.UpdateLandingsBlocksProductsAcceptLanguageEnum = exports.UpdateLandingsBlocksOtherAcceptLanguageEnum = exports.UpdateLandingsBlocksInteractiveAcceptLanguageEnum = exports.UpdateLandingsBlocksImageAcceptLanguageEnum = exports.UpdateLandingsBlocksFeaturesAcceptLanguageEnum = exports.UpdateLandingsBlocksCoverAcceptLanguageEnum = exports.UpdateLandingsBlocksButtonAcceptLanguageEnum = exports.UpdateLandingsBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateLandingsBlocksActionOpenUrlAcceptLanguageEnum = exports.LandingsBlocksVideoAcceptLanguageEnum = exports.LandingsBlocksTimerAcceptLanguageEnum = exports.LandingsBlocksTextAcceptLanguageEnum = exports.LandingsBlocksReviewsAcceptLanguageEnum = exports.LandingsBlocksProductsAcceptLanguageEnum = exports.LandingsBlocksOtherAcceptLanguageEnum = exports.LandingsBlocksInteractiveAcceptLanguageEnum = exports.LandingsBlocksImageAcceptLanguageEnum = exports.LandingsBlocksFeaturesAcceptLanguageEnum = exports.LandingsBlocksCoverAcceptLanguageEnum = exports.LandingsBlocksButtonAcceptLanguageEnum = exports.DeleteLandingsBlocksActionAcceptLanguageEnum = exports.LandingBlocksApi = void 0;
+exports.UpdateBlocksVideoAcceptLanguageEnum = exports.UpdateBlocksTimerAcceptLanguageEnum = exports.UpdateBlocksTextAcceptLanguageEnum = exports.UpdateBlocksReviewsAcceptLanguageEnum = exports.UpdateBlocksProductsAcceptLanguageEnum = exports.UpdateBlocksOtherAcceptLanguageEnum = exports.UpdateBlocksInteractiveAcceptLanguageEnum = exports.UpdateBlocksImageAcceptLanguageEnum = exports.UpdateBlocksFeaturesAcceptLanguageEnum = exports.UpdateBlocksCoverAcceptLanguageEnum = exports.UpdateBlocksButtonAcceptLanguageEnum = exports.UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateBlocksActionOpenUrlAcceptLanguageEnum = exports.DeleteBlocksActionAcceptLanguageEnum = exports.BlocksVideoAcceptLanguageEnum = exports.BlocksTimerAcceptLanguageEnum = exports.BlocksTextAcceptLanguageEnum = exports.BlocksReviewsAcceptLanguageEnum = exports.BlocksProductsAcceptLanguageEnum = exports.BlocksOtherAcceptLanguageEnum = exports.BlocksInteractiveAcceptLanguageEnum = exports.BlocksImageAcceptLanguageEnum = exports.BlocksFeaturesAcceptLanguageEnum = exports.BlocksCoverAcceptLanguageEnum = exports.BlocksButtonAcceptLanguageEnum = exports.LandingBlocksApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,78 +54,18 @@ const index_1 = require("../models/index");
  */
 class LandingBlocksApi extends runtime.BaseAPI {
     /**
-     * , .
-     *
-     */
-    async deleteLandingsBlocksActionRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteLandingsBlocksAction().');
-        }
-        if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling deleteLandingsBlocksAction().');
-        }
-        if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling deleteLandingsBlocksAction().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteLandingsBlocksAction().');
-        }
-        if (requestParameters['updateTypedLandingBlockActionCommonDto'] == null) {
-            throw new runtime.RequiredError('updateTypedLandingBlockActionCommonDto', 'Required parameter "updateTypedLandingBlockActionCommonDto" was null or undefined when calling deleteLandingsBlocksAction().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['xLandingEditorSessionId'] != null) {
-            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/action`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.UpdateTypedLandingBlockActionCommonDtoToJSON)(requestParameters['updateTypedLandingBlockActionCommonDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , .
-     *
-     */
-    async deleteLandingsBlocksAction(requestParameters, initOverrides) {
-        const response = await this.deleteLandingsBlocksActionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * .
      * button
      */
-    async landingsBlocksButtonRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksButton().');
-        }
+    async blocksButtonRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksButton().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksButton().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksButton().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksButton().');
         }
         if (requestParameters['createButtonLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createButtonLandingBlockDto', 'Required parameter "createButtonLandingBlockDto" was null or undefined when calling landingsBlocksButton().');
+            throw new runtime.RequiredError('createButtonLandingBlockDto', 'Required parameter "createButtonLandingBlockDto" was null or undefined when calling blocksButton().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -145,10 +85,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/button`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/button`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -160,26 +100,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * button
      */
-    async landingsBlocksButton(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksButtonRaw(requestParameters, initOverrides);
+    async blocksButton(requestParameters, initOverrides) {
+        const response = await this.blocksButtonRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * cover
      */
-    async landingsBlocksCoverRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksCover().');
-        }
+    async blocksCoverRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksCover().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksCover().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksCover().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksCover().');
         }
         if (requestParameters['createCoverLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createCoverLandingBlockDto', 'Required parameter "createCoverLandingBlockDto" was null or undefined when calling landingsBlocksCover().');
+            throw new runtime.RequiredError('createCoverLandingBlockDto', 'Required parameter "createCoverLandingBlockDto" was null or undefined when calling blocksCover().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -199,10 +136,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/cover`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/cover`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -214,26 +151,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * cover
      */
-    async landingsBlocksCover(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksCoverRaw(requestParameters, initOverrides);
+    async blocksCover(requestParameters, initOverrides) {
+        const response = await this.blocksCoverRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * features
      */
-    async landingsBlocksFeaturesRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksFeatures().');
-        }
+    async blocksFeaturesRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksFeatures().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksFeatures().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksFeatures().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksFeatures().');
         }
         if (requestParameters['createFeaturesLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createFeaturesLandingBlockDto', 'Required parameter "createFeaturesLandingBlockDto" was null or undefined when calling landingsBlocksFeatures().');
+            throw new runtime.RequiredError('createFeaturesLandingBlockDto', 'Required parameter "createFeaturesLandingBlockDto" was null or undefined when calling blocksFeatures().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -253,10 +187,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/features`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/features`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -268,26 +202,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * features
      */
-    async landingsBlocksFeatures(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksFeaturesRaw(requestParameters, initOverrides);
+    async blocksFeatures(requestParameters, initOverrides) {
+        const response = await this.blocksFeaturesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * image
      */
-    async landingsBlocksImageRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksImage().');
-        }
+    async blocksImageRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksImage().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksImage().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksImage().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksImage().');
         }
         if (requestParameters['createImageLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createImageLandingBlockDto', 'Required parameter "createImageLandingBlockDto" was null or undefined when calling landingsBlocksImage().');
+            throw new runtime.RequiredError('createImageLandingBlockDto', 'Required parameter "createImageLandingBlockDto" was null or undefined when calling blocksImage().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -307,10 +238,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/image`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/image`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -322,26 +253,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * image
      */
-    async landingsBlocksImage(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksImageRaw(requestParameters, initOverrides);
+    async blocksImage(requestParameters, initOverrides) {
+        const response = await this.blocksImageRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * cover, button timer.
      *
      */
-    async landingsBlocksInteractiveRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksInteractive().');
-        }
+    async blocksInteractiveRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksInteractive().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksInteractive().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksInteractive().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksInteractive().');
         }
         if (requestParameters['createLandingActionBlockDto'] == null) {
-            throw new runtime.RequiredError('createLandingActionBlockDto', 'Required parameter "createLandingActionBlockDto" was null or undefined when calling landingsBlocksInteractive().');
+            throw new runtime.RequiredError('createLandingActionBlockDto', 'Required parameter "createLandingActionBlockDto" was null or undefined when calling blocksInteractive().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -361,10 +289,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/interactive`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/interactive`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -376,26 +304,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * cover, button timer.
      *
      */
-    async landingsBlocksInteractive(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksInteractiveRaw(requestParameters, initOverrides);
+    async blocksInteractive(requestParameters, initOverrides) {
+        const response = await this.blocksInteractiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * other
      */
-    async landingsBlocksOtherRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksOther().');
-        }
+    async blocksOtherRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksOther().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksOther().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksOther().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksOther().');
         }
         if (requestParameters['createOtherLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createOtherLandingBlockDto', 'Required parameter "createOtherLandingBlockDto" was null or undefined when calling landingsBlocksOther().');
+            throw new runtime.RequiredError('createOtherLandingBlockDto', 'Required parameter "createOtherLandingBlockDto" was null or undefined when calling blocksOther().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -415,10 +340,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/other`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/other`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -430,26 +355,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * other
      */
-    async landingsBlocksOther(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksOtherRaw(requestParameters, initOverrides);
+    async blocksOther(requestParameters, initOverrides) {
+        const response = await this.blocksOtherRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * products
      */
-    async landingsBlocksProductsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksProducts().');
-        }
+    async blocksProductsRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksProducts().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksProducts().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksProducts().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksProducts().');
         }
         if (requestParameters['createProductsLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createProductsLandingBlockDto', 'Required parameter "createProductsLandingBlockDto" was null or undefined when calling landingsBlocksProducts().');
+            throw new runtime.RequiredError('createProductsLandingBlockDto', 'Required parameter "createProductsLandingBlockDto" was null or undefined when calling blocksProducts().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -469,10 +391,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/products`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/products`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -484,26 +406,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * products
      */
-    async landingsBlocksProducts(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksProductsRaw(requestParameters, initOverrides);
+    async blocksProducts(requestParameters, initOverrides) {
+        const response = await this.blocksProductsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * reviews
      */
-    async landingsBlocksReviewsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksReviews().');
-        }
+    async blocksReviewsRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksReviews().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksReviews().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksReviews().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksReviews().');
         }
         if (requestParameters['createReviewsLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createReviewsLandingBlockDto', 'Required parameter "createReviewsLandingBlockDto" was null or undefined when calling landingsBlocksReviews().');
+            throw new runtime.RequiredError('createReviewsLandingBlockDto', 'Required parameter "createReviewsLandingBlockDto" was null or undefined when calling blocksReviews().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -523,10 +442,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/reviews`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/reviews`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -538,26 +457,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * reviews
      */
-    async landingsBlocksReviews(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksReviewsRaw(requestParameters, initOverrides);
+    async blocksReviews(requestParameters, initOverrides) {
+        const response = await this.blocksReviewsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * text
      */
-    async landingsBlocksTextRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksText().');
-        }
+    async blocksTextRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksText().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksText().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksText().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksText().');
         }
         if (requestParameters['createTextLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createTextLandingBlockDto', 'Required parameter "createTextLandingBlockDto" was null or undefined when calling landingsBlocksText().');
+            throw new runtime.RequiredError('createTextLandingBlockDto', 'Required parameter "createTextLandingBlockDto" was null or undefined when calling blocksText().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -577,10 +493,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/text`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/text`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -592,26 +508,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * text
      */
-    async landingsBlocksText(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksTextRaw(requestParameters, initOverrides);
+    async blocksText(requestParameters, initOverrides) {
+        const response = await this.blocksTextRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * timer
      */
-    async landingsBlocksTimerRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksTimer().');
-        }
+    async blocksTimerRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksTimer().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksTimer().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksTimer().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksTimer().');
         }
         if (requestParameters['createTimerLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createTimerLandingBlockDto', 'Required parameter "createTimerLandingBlockDto" was null or undefined when calling landingsBlocksTimer().');
+            throw new runtime.RequiredError('createTimerLandingBlockDto', 'Required parameter "createTimerLandingBlockDto" was null or undefined when calling blocksTimer().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -631,10 +544,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/timer`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/timer`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -646,26 +559,23 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * timer
      */
-    async landingsBlocksTimer(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksTimerRaw(requestParameters, initOverrides);
+    async blocksTimer(requestParameters, initOverrides) {
+        const response = await this.blocksTimerRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * video
      */
-    async landingsBlocksVideoRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingsBlocksVideo().');
-        }
+    async blocksVideoRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingsBlocksVideo().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling blocksVideo().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsBlocksVideo().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksVideo().');
         }
         if (requestParameters['createVideoLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('createVideoLandingBlockDto', 'Required parameter "createVideoLandingBlockDto" was null or undefined when calling landingsBlocksVideo().');
+            throw new runtime.RequiredError('createVideoLandingBlockDto', 'Required parameter "createVideoLandingBlockDto" was null or undefined when calling blocksVideo().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -685,10 +595,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/video`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            path: `/api/landings/{resourceId}/blocks/video`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -700,29 +610,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * video
      */
-    async landingsBlocksVideo(requestParameters, initOverrides) {
-        const response = await this.landingsBlocksVideoRaw(requestParameters, initOverrides);
+    async blocksVideo(requestParameters, initOverrides) {
+        const response = await this.blocksVideoRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
-     * URL
+     *
      */
-    async updateLandingsBlocksActionOpenUrlRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksActionOpenUrl().');
-        }
+    async deleteBlocksActionRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksActionOpenUrl().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling deleteBlocksAction().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksActionOpenUrl().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling deleteBlocksAction().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksActionOpenUrl().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteBlocksAction().');
         }
-        if (requestParameters['setLandingOpenUrlActionDto'] == null) {
-            throw new runtime.RequiredError('setLandingOpenUrlActionDto', 'Required parameter "setLandingOpenUrlActionDto" was null or undefined when calling updateLandingsBlocksActionOpenUrl().');
+        if (requestParameters['updateTypedLandingBlockActionCommonDto'] == null) {
+            throw new runtime.RequiredError('updateTypedLandingBlockActionCommonDto', 'Required parameter "updateTypedLandingBlockActionCommonDto" was null or undefined when calling deleteBlocksAction().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -742,10 +649,64 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/action/open-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/action`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateTypedLandingBlockActionCommonDtoToJSON)(requestParameters['updateTypedLandingBlockActionCommonDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async deleteBlocksAction(requestParameters, initOverrides) {
+        const response = await this.deleteBlocksActionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     * URL
+     */
+    async updateBlocksActionOpenUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksActionOpenUrl().');
+        }
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksActionOpenUrl().');
+        }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksActionOpenUrl().');
+        }
+        if (requestParameters['setLandingOpenUrlActionDto'] == null) {
+            throw new runtime.RequiredError('setLandingOpenUrlActionDto', 'Required parameter "setLandingOpenUrlActionDto" was null or undefined when calling updateBlocksActionOpenUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+        const response = await this.request({
+            path: `/api/landings/{resourceId}/blocks/{blockId}/action/open-url`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -757,29 +718,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * , .
      * URL
      */
-    async updateLandingsBlocksActionOpenUrl(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksActionOpenUrlRaw(requestParameters, initOverrides);
+    async updateBlocksActionOpenUrl(requestParameters, initOverrides) {
+        const response = await this.updateBlocksActionOpenUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * standalone-.
      *
      */
-    async updateLandingsBlocksActionSubscribeSegmentRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksActionSubscribeSegment().');
-        }
+    async updateBlocksActionSubscribeSegmentRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksActionSubscribeSegment().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksActionSubscribeSegment().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksActionSubscribeSegment().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksActionSubscribeSegment().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksActionSubscribeSegment().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksActionSubscribeSegment().');
         }
         if (requestParameters['setLandingSubscribeActionDto'] == null) {
-            throw new runtime.RequiredError('setLandingSubscribeActionDto', 'Required parameter "setLandingSubscribeActionDto" was null or undefined when calling updateLandingsBlocksActionSubscribeSegment().');
+            throw new runtime.RequiredError('setLandingSubscribeActionDto', 'Required parameter "setLandingSubscribeActionDto" was null or undefined when calling updateBlocksActionSubscribeSegment().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -799,10 +757,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/action/subscribe-segment`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/action/subscribe-segment`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -814,29 +772,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * standalone-.
      *
      */
-    async updateLandingsBlocksActionSubscribeSegment(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksActionSubscribeSegmentRaw(requestParameters, initOverrides);
+    async updateBlocksActionSubscribeSegment(requestParameters, initOverrides) {
+        const response = await this.updateBlocksActionSubscribeSegmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * button
      */
-    async updateLandingsBlocksButtonRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksButton().');
-        }
+    async updateBlocksButtonRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksButton().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksButton().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksButton().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksButton().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksButton().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksButton().');
         }
         if (requestParameters['updateButtonLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateButtonLandingBlockDto', 'Required parameter "updateButtonLandingBlockDto" was null or undefined when calling updateLandingsBlocksButton().');
+            throw new runtime.RequiredError('updateButtonLandingBlockDto', 'Required parameter "updateButtonLandingBlockDto" was null or undefined when calling updateBlocksButton().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -856,10 +811,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/button`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/button`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -871,29 +826,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * button
      */
-    async updateLandingsBlocksButton(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksButtonRaw(requestParameters, initOverrides);
+    async updateBlocksButton(requestParameters, initOverrides) {
+        const response = await this.updateBlocksButtonRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * cover
      */
-    async updateLandingsBlocksCoverRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksCover().');
-        }
+    async updateBlocksCoverRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksCover().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksCover().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksCover().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksCover().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksCover().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksCover().');
         }
         if (requestParameters['updateCoverLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateCoverLandingBlockDto', 'Required parameter "updateCoverLandingBlockDto" was null or undefined when calling updateLandingsBlocksCover().');
+            throw new runtime.RequiredError('updateCoverLandingBlockDto', 'Required parameter "updateCoverLandingBlockDto" was null or undefined when calling updateBlocksCover().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -913,10 +865,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/cover`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/cover`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -928,29 +880,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * cover
      */
-    async updateLandingsBlocksCover(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksCoverRaw(requestParameters, initOverrides);
+    async updateBlocksCover(requestParameters, initOverrides) {
+        const response = await this.updateBlocksCoverRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * features
      */
-    async updateLandingsBlocksFeaturesRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksFeatures().');
-        }
+    async updateBlocksFeaturesRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksFeatures().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksFeatures().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksFeatures().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksFeatures().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksFeatures().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksFeatures().');
         }
         if (requestParameters['updateFeaturesLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateFeaturesLandingBlockDto', 'Required parameter "updateFeaturesLandingBlockDto" was null or undefined when calling updateLandingsBlocksFeatures().');
+            throw new runtime.RequiredError('updateFeaturesLandingBlockDto', 'Required parameter "updateFeaturesLandingBlockDto" was null or undefined when calling updateBlocksFeatures().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -970,10 +919,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/features`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/features`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -985,29 +934,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * features
      */
-    async updateLandingsBlocksFeatures(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksFeaturesRaw(requestParameters, initOverrides);
+    async updateBlocksFeatures(requestParameters, initOverrides) {
+        const response = await this.updateBlocksFeaturesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * image
      */
-    async updateLandingsBlocksImageRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksImage().');
-        }
+    async updateBlocksImageRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksImage().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksImage().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksImage().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksImage().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksImage().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksImage().');
         }
         if (requestParameters['updateImageLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateImageLandingBlockDto', 'Required parameter "updateImageLandingBlockDto" was null or undefined when calling updateLandingsBlocksImage().');
+            throw new runtime.RequiredError('updateImageLandingBlockDto', 'Required parameter "updateImageLandingBlockDto" was null or undefined when calling updateBlocksImage().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1027,10 +973,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/image`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/image`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1042,29 +988,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * image
      */
-    async updateLandingsBlocksImage(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksImageRaw(requestParameters, initOverrides);
+    async updateBlocksImage(requestParameters, initOverrides) {
+        const response = await this.updateBlocksImageRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * cover, button timer.
      *
      */
-    async updateLandingsBlocksInteractiveRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksInteractive().');
-        }
+    async updateBlocksInteractiveRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksInteractive().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksInteractive().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksInteractive().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksInteractive().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksInteractive().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksInteractive().');
         }
         if (requestParameters['updateLandingActionBlockDto'] == null) {
-            throw new runtime.RequiredError('updateLandingActionBlockDto', 'Required parameter "updateLandingActionBlockDto" was null or undefined when calling updateLandingsBlocksInteractive().');
+            throw new runtime.RequiredError('updateLandingActionBlockDto', 'Required parameter "updateLandingActionBlockDto" was null or undefined when calling updateBlocksInteractive().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1084,10 +1027,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/interactive`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/interactive`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1099,29 +1042,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * cover, button timer.
      *
      */
-    async updateLandingsBlocksInteractive(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksInteractiveRaw(requestParameters, initOverrides);
+    async updateBlocksInteractive(requestParameters, initOverrides) {
+        const response = await this.updateBlocksInteractiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * other
      */
-    async updateLandingsBlocksOtherRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksOther().');
-        }
+    async updateBlocksOtherRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksOther().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksOther().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksOther().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksOther().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksOther().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksOther().');
         }
         if (requestParameters['updateOtherLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateOtherLandingBlockDto', 'Required parameter "updateOtherLandingBlockDto" was null or undefined when calling updateLandingsBlocksOther().');
+            throw new runtime.RequiredError('updateOtherLandingBlockDto', 'Required parameter "updateOtherLandingBlockDto" was null or undefined when calling updateBlocksOther().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1141,10 +1081,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/other`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/other`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1156,29 +1096,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * other
      */
-    async updateLandingsBlocksOther(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksOtherRaw(requestParameters, initOverrides);
+    async updateBlocksOther(requestParameters, initOverrides) {
+        const response = await this.updateBlocksOtherRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * products
      */
-    async updateLandingsBlocksProductsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksProducts().');
-        }
+    async updateBlocksProductsRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksProducts().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksProducts().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksProducts().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksProducts().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksProducts().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksProducts().');
         }
         if (requestParameters['updateProductsLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateProductsLandingBlockDto', 'Required parameter "updateProductsLandingBlockDto" was null or undefined when calling updateLandingsBlocksProducts().');
+            throw new runtime.RequiredError('updateProductsLandingBlockDto', 'Required parameter "updateProductsLandingBlockDto" was null or undefined when calling updateBlocksProducts().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1198,10 +1135,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/products`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/products`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1213,29 +1150,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * products
      */
-    async updateLandingsBlocksProducts(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksProductsRaw(requestParameters, initOverrides);
+    async updateBlocksProducts(requestParameters, initOverrides) {
+        const response = await this.updateBlocksProductsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * reviews
      */
-    async updateLandingsBlocksReviewsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksReviews().');
-        }
+    async updateBlocksReviewsRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksReviews().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksReviews().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksReviews().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksReviews().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksReviews().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksReviews().');
         }
         if (requestParameters['updateReviewsLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateReviewsLandingBlockDto', 'Required parameter "updateReviewsLandingBlockDto" was null or undefined when calling updateLandingsBlocksReviews().');
+            throw new runtime.RequiredError('updateReviewsLandingBlockDto', 'Required parameter "updateReviewsLandingBlockDto" was null or undefined when calling updateBlocksReviews().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1255,10 +1189,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/reviews`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/reviews`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1270,29 +1204,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * reviews
      */
-    async updateLandingsBlocksReviews(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksReviewsRaw(requestParameters, initOverrides);
+    async updateBlocksReviews(requestParameters, initOverrides) {
+        const response = await this.updateBlocksReviewsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * text
      */
-    async updateLandingsBlocksTextRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksText().');
-        }
+    async updateBlocksTextRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksText().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksText().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksText().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksText().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksText().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksText().');
         }
         if (requestParameters['updateTextLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateTextLandingBlockDto', 'Required parameter "updateTextLandingBlockDto" was null or undefined when calling updateLandingsBlocksText().');
+            throw new runtime.RequiredError('updateTextLandingBlockDto', 'Required parameter "updateTextLandingBlockDto" was null or undefined when calling updateBlocksText().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1312,10 +1243,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/text`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/text`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1327,29 +1258,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * text
      */
-    async updateLandingsBlocksText(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksTextRaw(requestParameters, initOverrides);
+    async updateBlocksText(requestParameters, initOverrides) {
+        const response = await this.updateBlocksTextRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * timer
      */
-    async updateLandingsBlocksTimerRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksTimer().');
-        }
+    async updateBlocksTimerRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksTimer().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksTimer().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksTimer().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksTimer().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksTimer().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksTimer().');
         }
         if (requestParameters['updateTimerLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateTimerLandingBlockDto', 'Required parameter "updateTimerLandingBlockDto" was null or undefined when calling updateLandingsBlocksTimer().');
+            throw new runtime.RequiredError('updateTimerLandingBlockDto', 'Required parameter "updateTimerLandingBlockDto" was null or undefined when calling updateBlocksTimer().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1369,10 +1297,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/timer`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/timer`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1384,29 +1312,26 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * timer
      */
-    async updateLandingsBlocksTimer(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksTimerRaw(requestParameters, initOverrides);
+    async updateBlocksTimer(requestParameters, initOverrides) {
+        const response = await this.updateBlocksTimerRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * video
      */
-    async updateLandingsBlocksVideoRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLandingsBlocksVideo().');
-        }
+    async updateBlocksVideoRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
-            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingsBlocksVideo().');
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksVideo().');
         }
         if (requestParameters['blockId'] == null) {
-            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingsBlocksVideo().');
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksVideo().');
         }
         if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingsBlocksVideo().');
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksVideo().');
         }
         if (requestParameters['updateVideoLandingBlockDto'] == null) {
-            throw new runtime.RequiredError('updateVideoLandingBlockDto', 'Required parameter "updateVideoLandingBlockDto" was null or undefined when calling updateLandingsBlocksVideo().');
+            throw new runtime.RequiredError('updateVideoLandingBlockDto', 'Required parameter "updateVideoLandingBlockDto" was null or undefined when calling updateBlocksVideo().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -1426,10 +1351,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/{resourceId}/blocks/{blockId}/video`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            path: `/api/landings/{resourceId}/blocks/{blockId}/video`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1441,8 +1366,8 @@ class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * video
      */
-    async updateLandingsBlocksVideo(requestParameters, initOverrides) {
-        const response = await this.updateLandingsBlocksVideoRaw(requestParameters, initOverrides);
+    async updateBlocksVideo(requestParameters, initOverrides) {
+        const response = await this.updateBlocksVideoRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -1450,175 +1375,175 @@ exports.LandingBlocksApi = LandingBlocksApi;
 /**
  * @export
  */
-exports.DeleteLandingsBlocksActionAcceptLanguageEnum = {
+exports.BlocksButtonAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksButtonAcceptLanguageEnum = {
+exports.BlocksCoverAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksCoverAcceptLanguageEnum = {
+exports.BlocksFeaturesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksFeaturesAcceptLanguageEnum = {
+exports.BlocksImageAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksImageAcceptLanguageEnum = {
+exports.BlocksInteractiveAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksInteractiveAcceptLanguageEnum = {
+exports.BlocksOtherAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksOtherAcceptLanguageEnum = {
+exports.BlocksProductsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksProductsAcceptLanguageEnum = {
+exports.BlocksReviewsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksReviewsAcceptLanguageEnum = {
+exports.BlocksTextAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksTextAcceptLanguageEnum = {
+exports.BlocksTimerAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksTimerAcceptLanguageEnum = {
+exports.BlocksVideoAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.LandingsBlocksVideoAcceptLanguageEnum = {
+exports.DeleteBlocksActionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksActionOpenUrlAcceptLanguageEnum = {
+exports.UpdateBlocksActionOpenUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksActionSubscribeSegmentAcceptLanguageEnum = {
+exports.UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksButtonAcceptLanguageEnum = {
+exports.UpdateBlocksButtonAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksCoverAcceptLanguageEnum = {
+exports.UpdateBlocksCoverAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksFeaturesAcceptLanguageEnum = {
+exports.UpdateBlocksFeaturesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksImageAcceptLanguageEnum = {
+exports.UpdateBlocksImageAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksInteractiveAcceptLanguageEnum = {
+exports.UpdateBlocksInteractiveAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksOtherAcceptLanguageEnum = {
+exports.UpdateBlocksOtherAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksProductsAcceptLanguageEnum = {
+exports.UpdateBlocksProductsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksReviewsAcceptLanguageEnum = {
+exports.UpdateBlocksReviewsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksTextAcceptLanguageEnum = {
+exports.UpdateBlocksTextAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksTimerAcceptLanguageEnum = {
+exports.UpdateBlocksTimerAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateLandingsBlocksVideoAcceptLanguageEnum = {
+exports.UpdateBlocksVideoAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

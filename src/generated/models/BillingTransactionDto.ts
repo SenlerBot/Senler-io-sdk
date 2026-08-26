@@ -268,6 +268,8 @@ export const BillingTransactionDtoTypeEnum = {
     TariffPurchase: 'tariff_purchase',
     CreditPurchase: 'credit_purchase',
     CreditAutoPurchase: 'credit_auto_purchase',
+    SubscriptionPurchase: 'subscription_purchase',
+    MailingMessagePurchase: 'mailing_message_purchase',
     Refund: 'refund',
     Adjustment: 'adjustment',
     CurrencyConversion: 'currency_conversion'

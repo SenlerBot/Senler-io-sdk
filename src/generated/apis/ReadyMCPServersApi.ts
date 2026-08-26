@@ -34,8 +34,8 @@ import {
     ServerTemplateResponseDtoToJSON,
 } from '../models/index';
 
-export interface GetCategoriesListRequest {
-    acceptLanguage?: GetCategoriesListAcceptLanguageEnum;
+export interface GetCategoriesRequest {
+    acceptLanguage?: GetCategoriesAcceptLanguageEnum;
 }
 
 export interface GetKnowledgeBaseRequest {
@@ -80,7 +80,7 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
      * MCP .
      * MCP
      */
-    async getCategoriesListRaw(requestParameters: GetCategoriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerTemplateCategoryDto>>> {
+    async getCategoriesRaw(requestParameters: GetCategoriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerTemplateCategoryDto>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -90,7 +90,7 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-server-templates/categories/list`,
+            path: `/api/mcp-servers/templates/categories`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -103,8 +103,8 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
      * MCP .
      * MCP
      */
-    async getCategoriesList(requestParameters: GetCategoriesListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateCategoryDto>> {
-        const response = await this.getCategoriesListRaw(requestParameters, initOverrides);
+    async getCategories(requestParameters: GetCategoriesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateCategoryDto>> {
+        const response = await this.getCategoriesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -129,7 +129,7 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-server-templates/{id}/knowledge-base`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/templates/{id}/knowledge-base`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -213,7 +213,7 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-server-templates/project-catalog`,
+            path: `/api/mcp-servers/templates/project-catalog`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -252,7 +252,7 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-server-templates/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/templates/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -312,7 +312,7 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-server-templates`,
+            path: `/api/mcp-servers/templates`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -335,11 +335,11 @@ export class ReadyMCPServersApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const GetCategoriesListAcceptLanguageEnum = {
+export const GetCategoriesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetCategoriesListAcceptLanguageEnum = typeof GetCategoriesListAcceptLanguageEnum[keyof typeof GetCategoriesListAcceptLanguageEnum];
+export type GetCategoriesAcceptLanguageEnum = typeof GetCategoriesAcceptLanguageEnum[keyof typeof GetCategoriesAcceptLanguageEnum];
 /**
  * @export
  */

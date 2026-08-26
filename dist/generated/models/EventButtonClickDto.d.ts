@@ -20,6 +20,12 @@ export interface EventButtonClickDto {
      * @type {string}
      * @memberof EventButtonClickDto
      */
+    buttonInstanceId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof EventButtonClickDto
+     */
     callbackData?: string;
     /**
      *

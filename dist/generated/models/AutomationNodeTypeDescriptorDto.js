@@ -37,6 +37,7 @@ exports.AutomationNodeTypeDescriptorDtoTypeEnum = {
     BranchRandom: 'branch.random',
     ActionSetVariable: 'action.set_variable',
     ActionMessage: 'action.message',
+    ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
     ActionRemoveSegment: 'action.remove_segment',
     ActionAddAutomation: 'action.add_automation',
@@ -87,6 +88,8 @@ function instanceOfAutomationNodeTypeDescriptorDto(value) {
         return false;
     if (!('configSchema' in value) || value['configSchema'] === undefined)
         return false;
+    if (!('defaultConfig' in value) || value['defaultConfig'] === undefined)
+        return false;
     return true;
 }
 function AutomationNodeTypeDescriptorDtoFromJSON(json) {
@@ -106,7 +109,7 @@ function AutomationNodeTypeDescriptorDtoFromJSONTyped(json, ignoreDiscriminator)
         'automationTypes': json['automation_types'],
         'availableForNewNodes': json['available_for_new_nodes'],
         'configSchema': json['config_schema'],
-        'defaultConfig': json['default_config'] == null ? undefined : (0, AutomationNodeConfigDto_1.AutomationNodeConfigDtoFromJSON)(json['default_config']),
+        'defaultConfig': (0, AutomationNodeConfigDto_1.AutomationNodeConfigDtoFromJSON)(json['default_config']),
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'appName': json['app_name'] == null ? undefined : json['app_name'],
         'appIconUrl': json['app_icon_url'] == null ? undefined : json['app_icon_url'],

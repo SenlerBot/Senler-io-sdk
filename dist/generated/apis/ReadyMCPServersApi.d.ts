@@ -11,8 +11,8 @@
  */
 import * as runtime from '../runtime';
 import type { ServerTemplateCategoryDto, ServerTemplateKnowledgeSourceDto, ServerTemplateListResponseDto, ServerTemplateResponseDto } from '../models/index';
-export interface GetCategoriesListRequest {
-    acceptLanguage?: GetCategoriesListAcceptLanguageEnum;
+export interface GetCategoriesRequest {
+    acceptLanguage?: GetCategoriesAcceptLanguageEnum;
 }
 export interface GetKnowledgeBaseRequest {
     id: string;
@@ -51,12 +51,12 @@ export declare class ReadyMCPServersApi extends runtime.BaseAPI {
      * MCP .
      * MCP
      */
-    getCategoriesListRaw(requestParameters: GetCategoriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerTemplateCategoryDto>>>;
+    getCategoriesRaw(requestParameters: GetCategoriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerTemplateCategoryDto>>>;
     /**
      * MCP .
      * MCP
      */
-    getCategoriesList(requestParameters?: GetCategoriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateCategoryDto>>;
+    getCategories(requestParameters?: GetCategoriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerTemplateCategoryDto>>;
     /**
      * , MCP .
      * MCP
@@ -101,11 +101,11 @@ export declare class ReadyMCPServersApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export declare const GetCategoriesListAcceptLanguageEnum: {
+export declare const GetCategoriesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetCategoriesListAcceptLanguageEnum = typeof GetCategoriesListAcceptLanguageEnum[keyof typeof GetCategoriesListAcceptLanguageEnum];
+export type GetCategoriesAcceptLanguageEnum = typeof GetCategoriesAcceptLanguageEnum[keyof typeof GetCategoriesAcceptLanguageEnum];
 /**
  * @export
  */

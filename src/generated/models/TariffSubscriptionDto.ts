@@ -118,6 +118,7 @@ export interface TariffSubscriptionDto {
 export const TariffSubscriptionDtoStatusEnum = {
     Active: 'active',
     Scheduled: 'scheduled',
+    Prepaid: 'prepaid',
     Cancelled: 'cancelled',
     Expired: 'expired'
 } as const;

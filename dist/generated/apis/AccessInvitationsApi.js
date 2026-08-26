@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccessInvitationsGetByIdAcceptLanguageEnum = exports.AccessInvitationsDeactivateAcceptLanguageEnum = exports.AccessInvitationsCreateAcceptLanguageEnum = exports.AccessInvitationsApi = void 0;
+exports.AccessInvitationsInvitationsAcceptLanguageEnum = exports.AccessInvitationsGetInvitationsAcceptLanguageEnum = exports.AccessInvitationsDeleteInvitationsAcceptLanguageEnum = exports.AccessInvitationsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,60 +54,15 @@ const index_1 = require("../models/index");
  */
 class AccessInvitationsApi extends runtime.BaseAPI {
     /**
-     * user_id email. pending- ( 4 ). .
-     *
-     */
-    async accessInvitationsCreateRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessInvitationsCreate().');
-        }
-        if (requestParameters['createInvitationDto'] == null) {
-            throw new runtime.RequiredError('createInvitationDto', 'Required parameter "createInvitationDto" was null or undefined when calling accessInvitationsCreate().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-        const response = await this.request({
-            path: `/api/access/invitations/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateInvitationDtoToJSON)(requestParameters['createInvitationDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InvitationCreatedResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * user_id email. pending- ( 4 ). .
-     *
-     */
-    async accessInvitationsCreate(requestParameters, initOverrides) {
-        const response = await this.accessInvitationsCreateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * pending-. /.
      *
      */
-    async accessInvitationsDeactivateRaw(requestParameters, initOverrides) {
+    async accessInvitationsDeleteInvitationsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessInvitationsDeactivate().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessInvitationsDeleteInvitations().');
         }
         if (requestParameters['invitationId'] == null) {
-            throw new runtime.RequiredError('invitationId', 'Required parameter "invitationId" was null or undefined when calling accessInvitationsDeactivate().');
+            throw new runtime.RequiredError('invitationId', 'Required parameter "invitationId" was null or undefined when calling accessInvitationsDeleteInvitations().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -126,7 +81,7 @@ class AccessInvitationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/access/invitations/{projectId}/{invitationId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"invitationId"}}`, encodeURIComponent(String(requestParameters['invitationId']))),
+            path: `/api/access/{projectId}/invitations/{invitationId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"invitationId"}}`, encodeURIComponent(String(requestParameters['invitationId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -137,17 +92,17 @@ class AccessInvitationsApi extends runtime.BaseAPI {
      * pending-. /.
      *
      */
-    async accessInvitationsDeactivate(requestParameters, initOverrides) {
-        const response = await this.accessInvitationsDeactivateRaw(requestParameters, initOverrides);
+    async accessInvitationsDeleteInvitations(requestParameters, initOverrides) {
+        const response = await this.accessInvitationsDeleteInvitationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . ?status=pending|accepted|declined|expired|cancelled.
      *
      */
-    async accessInvitationsGetByIdRaw(requestParameters, initOverrides) {
+    async accessInvitationsGetInvitationsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessInvitationsGetById().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessInvitationsGetInvitations().');
         }
         const queryParameters = {};
         if (requestParameters['status'] != null) {
@@ -169,7 +124,7 @@ class AccessInvitationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/access/invitations/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/invitations`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -180,8 +135,53 @@ class AccessInvitationsApi extends runtime.BaseAPI {
      * . ?status=pending|accepted|declined|expired|cancelled.
      *
      */
-    async accessInvitationsGetById(requestParameters, initOverrides) {
-        const response = await this.accessInvitationsGetByIdRaw(requestParameters, initOverrides);
+    async accessInvitationsGetInvitations(requestParameters, initOverrides) {
+        const response = await this.accessInvitationsGetInvitationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * user_id email. pending- ( 4 ). .
+     *
+     */
+    async accessInvitationsInvitationsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling accessInvitationsInvitations().');
+        }
+        if (requestParameters['createInvitationDto'] == null) {
+            throw new runtime.RequiredError('createInvitationDto', 'Required parameter "createInvitationDto" was null or undefined when calling accessInvitationsInvitations().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/invitations`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateInvitationDtoToJSON)(requestParameters['createInvitationDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InvitationCreatedResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * user_id email. pending- ( 4 ). .
+     *
+     */
+    async accessInvitationsInvitations(requestParameters, initOverrides) {
+        const response = await this.accessInvitationsInvitationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -189,21 +189,21 @@ exports.AccessInvitationsApi = AccessInvitationsApi;
 /**
  * @export
  */
-exports.AccessInvitationsCreateAcceptLanguageEnum = {
+exports.AccessInvitationsDeleteInvitationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.AccessInvitationsDeactivateAcceptLanguageEnum = {
+exports.AccessInvitationsGetInvitationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.AccessInvitationsGetByIdAcceptLanguageEnum = {
+exports.AccessInvitationsInvitationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

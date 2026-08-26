@@ -86,7 +86,7 @@ export interface AutomationNodeTypeDescriptorDto {
      * @type {AutomationNodeConfigDto}
      * @memberof AutomationNodeTypeDescriptorDto
      */
-    defaultConfig?: AutomationNodeConfigDto;
+    defaultConfig: AutomationNodeConfigDto;
     /**
      * ID .
      * @type {string}
@@ -131,6 +131,7 @@ export const AutomationNodeTypeDescriptorDtoTypeEnum = {
     BranchRandom: 'branch.random',
     ActionSetVariable: 'action.set_variable',
     ActionMessage: 'action.message',
+    ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
     ActionRemoveSegment: 'action.remove_segment',
     ActionAddAutomation: 'action.add_automation',
@@ -179,6 +180,7 @@ export function instanceOfAutomationNodeTypeDescriptorDto(value: object): value 
     if (!('automationTypes' in value) || value['automationTypes'] === undefined) return false;
     if (!('availableForNewNodes' in value) || value['availableForNewNodes'] === undefined) return false;
     if (!('configSchema' in value) || value['configSchema'] === undefined) return false;
+    if (!('defaultConfig' in value) || value['defaultConfig'] === undefined) return false;
     return true;
 }
 
@@ -201,7 +203,7 @@ export function AutomationNodeTypeDescriptorDtoFromJSONTyped(json: any, ignoreDi
         'automationTypes': json['automation_types'],
         'availableForNewNodes': json['available_for_new_nodes'],
         'configSchema': json['config_schema'],
-        'defaultConfig': json['default_config'] == null ? undefined : AutomationNodeConfigDtoFromJSON(json['default_config']),
+        'defaultConfig': AutomationNodeConfigDtoFromJSON(json['default_config']),
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'appName': json['app_name'] == null ? undefined : json['app_name'],
         'appIconUrl': json['app_icon_url'] == null ? undefined : json['app_icon_url'],

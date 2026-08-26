@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TransferOwnershipAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
+exports.OwnershipTransferAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -81,7 +81,7 @@ class AccessApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -121,7 +121,7 @@ class AccessApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/access/members/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/members`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -164,7 +164,7 @@ class AccessApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -211,7 +211,7 @@ class AccessApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -255,7 +255,7 @@ class AccessApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}/channels`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}/channels`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -300,12 +300,12 @@ class AccessApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async transferOwnershipRaw(requestParameters, initOverrides) {
+    async ownershipTransferRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling transferOwnership().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling ownershipTransfer().');
         }
         if (requestParameters['transferOwnershipDto'] == null) {
-            throw new runtime.RequiredError('transferOwnershipDto', 'Required parameter "transferOwnershipDto" was null or undefined when calling transferOwnership().');
+            throw new runtime.RequiredError('transferOwnershipDto', 'Required parameter "transferOwnershipDto" was null or undefined when calling ownershipTransfer().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -325,7 +325,7 @@ class AccessApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
-            path: `/api/access/transfer-ownership/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/ownership-transfer`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -337,8 +337,8 @@ class AccessApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async transferOwnership(requestParameters, initOverrides) {
-        const response = await this.transferOwnershipRaw(requestParameters, initOverrides);
+    async ownershipTransfer(requestParameters, initOverrides) {
+        const response = await this.ownershipTransferRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -388,7 +388,7 @@ exports.GetRolePresetsAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.TransferOwnershipAcceptLanguageEnum = {
+exports.OwnershipTransferAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetProcessesResultAcceptLanguageEnum = exports.GetProcessesRealtimeTokenAcceptLanguageEnum = exports.GetProcessesDownloadAcceptLanguageEnum = exports.GetProcesses2AcceptLanguageEnum = exports.GetProcessesAcceptLanguageEnum = exports.GetProcessesStatusEnum = exports.GetProcessesTypeEnum = exports.DeleteProcessesAcceptLanguageEnum = exports.ProcessesApi = void 0;
+exports.ProcessesListAcceptLanguageEnum = exports.ProcessesListStatusEnum = exports.ProcessesListTypeEnum = exports.ProcessesGetDownloadAcceptLanguageEnum = exports.ProcessesGetByIdAcceptLanguageEnum = exports.ProcessesDeactivateAcceptLanguageEnum = exports.GetResultAcceptLanguageEnum = exports.GetRealtimeTokenAcceptLanguageEnum = exports.ProcessesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,15 +54,95 @@ const index_1 = require("../models/index");
  */
 class ProcessesApi extends runtime.BaseAPI {
     /**
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     *
+     */
+    async getRealtimeTokenRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getRealtimeToken().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/processes/realtime-token`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     *
+     */
+    async getRealtimeToken(requestParameters, initOverrides) {
+        const response = await this.getRealtimeTokenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     *
+     *
+     */
+    async getResultRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getResult().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/processes/{id}/result`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResultResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     *
+     */
+    async getResult(requestParameters, initOverrides) {
+        const response = await this.getResultRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * pending/preparing/processing completed/failed/cancelled
      *
      */
-    async deleteProcessesRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteProcesses().');
-        }
+    async processesDeactivateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteProcesses().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling processesDeactivate().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -81,7 +161,7 @@ class ProcessesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_processes"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/processes/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/processes/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -92,19 +172,102 @@ class ProcessesApi extends runtime.BaseAPI {
      * pending/preparing/processing completed/failed/cancelled
      *
      */
-    async deleteProcesses(requestParameters, initOverrides) {
-        const response = await this.deleteProcessesRaw(requestParameters, initOverrides);
+    async processesDeactivate(requestParameters, initOverrides) {
+        const response = await this.processesDeactivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ,
+     *
+     */
+    async processesGetByIdRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling processesGetById().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/processes/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ,
+     *
+     */
+    async processesGetById(requestParameters, initOverrides) {
+        const response = await this.processesGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * S3- .
+     *
+     */
+    async processesGetDownloadRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling processesGetDownload().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/processes/{id}/download`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ErrorResponseFromJSON)(jsonValue));
+    }
+    /**
+     * S3- .
+     *
+     */
+    async processesGetDownload(requestParameters, initOverrides) {
+        const response = await this.processesGetDownloadRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * (/)
      *
      */
-    async getProcessesRaw(requestParameters, initOverrides) {
+    async processesListRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProcesses().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling processesList().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         if (requestParameters['type'] != null) {
             queryParameters['type'] = requestParameters['type'];
         }
@@ -133,7 +296,7 @@ class ProcessesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/processes`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/processes`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -144,177 +307,8 @@ class ProcessesApi extends runtime.BaseAPI {
      * (/)
      *
      */
-    async getProcesses(requestParameters, initOverrides) {
-        const response = await this.getProcessesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * ,
-     *
-     */
-    async getProcesses2Raw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProcesses2().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProcesses2().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/processes/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * ,
-     *
-     */
-    async getProcesses2(requestParameters, initOverrides) {
-        const response = await this.getProcesses2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * S3- .
-     *
-     */
-    async getProcessesDownloadRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProcessesDownload().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProcessesDownload().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/processes/{id}/download`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ErrorResponseFromJSON)(jsonValue));
-    }
-    /**
-     * S3- .
-     *
-     */
-    async getProcessesDownload(requestParameters, initOverrides) {
-        const response = await this.getProcessesDownloadRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
-     *
-     */
-    async getProcessesRealtimeTokenRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProcessesRealtimeToken().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/processes/realtime-token`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
-    }
-    /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
-     *
-     */
-    async getProcessesRealtimeToken(requestParameters, initOverrides) {
-        const response = await this.getProcessesRealtimeTokenRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     *
-     *
-     */
-    async getProcessesResultRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProcessesResult().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getProcessesResult().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/processes/{id}/result`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResultResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     *
-     *
-     */
-    async getProcessesResult(requestParameters, initOverrides) {
-        const response = await this.getProcessesResultRaw(requestParameters, initOverrides);
+    async processesList(requestParameters, initOverrides) {
+        const response = await this.processesListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -322,14 +316,42 @@ exports.ProcessesApi = ProcessesApi;
 /**
  * @export
  */
-exports.DeleteProcessesAcceptLanguageEnum = {
+exports.GetRealtimeTokenAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetProcessesTypeEnum = {
+exports.GetResultAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProcessesDeactivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProcessesGetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProcessesGetDownloadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProcessesListTypeEnum = {
     LeadsExport: 'leads_export',
     LeadsImport: 'leads_import',
     LeadsRefresh: 'leads_refresh',
@@ -345,7 +367,7 @@ exports.GetProcessesTypeEnum = {
 /**
  * @export
  */
-exports.GetProcessesStatusEnum = {
+exports.ProcessesListStatusEnum = {
     Pending: 'pending',
     Preparing: 'preparing',
     Processing: 'processing',
@@ -356,35 +378,7 @@ exports.GetProcessesStatusEnum = {
 /**
  * @export
  */
-exports.GetProcessesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetProcesses2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetProcessesDownloadAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetProcessesRealtimeTokenAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetProcessesResultAcceptLanguageEnum = {
+exports.ProcessesListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

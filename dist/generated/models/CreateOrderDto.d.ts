@@ -28,13 +28,13 @@ export interface CreateOrderDto {
      */
     paySystemId: string;
     /**
-     * (default: topup)
+     * (default: topup). tariff ; billing_invoice.
      * @type {string}
      * @memberof CreateOrderDto
      */
     orderType?: CreateOrderDtoOrderTypeEnum;
     /**
-     * tariff/credits. true.
+     * . true.
      * @type {boolean}
      * @memberof CreateOrderDto
      */
@@ -57,6 +57,12 @@ export interface CreateOrderDto {
      * @memberof CreateOrderDto
      */
     packageId?: string;
+    /**
+     * ID ( billing_invoice)
+     * @type {string}
+     * @memberof CreateOrderDto
+     */
+    billingInvoiceId?: string;
 }
 /**
  * @export
@@ -65,6 +71,7 @@ export declare const CreateOrderDtoOrderTypeEnum: {
     readonly Topup: "topup";
     readonly Tariff: "tariff";
     readonly Credits: "credits";
+    readonly BillingInvoice: "billing_invoice";
 };
 export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[keyof typeof CreateOrderDtoOrderTypeEnum];
 /**

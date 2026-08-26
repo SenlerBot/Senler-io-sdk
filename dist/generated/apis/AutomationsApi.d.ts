@@ -11,297 +11,261 @@
  */
 import * as runtime from '../runtime';
 import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
-export interface AutomationsRequest {
-    projectId: string;
-    createAutomationDto: CreateAutomationDto;
-    acceptLanguage?: AutomationsAcceptLanguageEnum;
-}
-export interface AutomationsAttachmentsConfirmRequest {
-    projectId: string;
+export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
-    acceptLanguage?: AutomationsAttachmentsConfirmAcceptLanguageEnum;
+    acceptLanguage?: AttachmentsConfirmAcceptLanguageEnum;
 }
-export interface AutomationsAttachmentsUploadUrlRequest {
-    projectId: string;
+export interface AttachmentsUploadUrlRequest {
     automationId: string;
     getUploadUrlDto: GetUploadUrlDto;
-    acceptLanguage?: AutomationsAttachmentsUploadUrlAcceptLanguageEnum;
+    acceptLanguage?: AttachmentsUploadUrlAcceptLanguageEnum;
 }
 export interface AutomationsAvatarConfirmRequest {
-    projectId: string;
     automationId: string;
     confirmAutomationAvatarUploadDto: ConfirmAutomationAvatarUploadDto;
     acceptLanguage?: AutomationsAvatarConfirmAcceptLanguageEnum;
 }
 export interface AutomationsAvatarUploadUrlRequest {
-    projectId: string;
     automationId: string;
     getAutomationAvatarUploadUrlDto: GetAutomationAvatarUploadUrlDto;
     acceptLanguage?: AutomationsAvatarUploadUrlAcceptLanguageEnum;
 }
-export interface AutomationsBatchRequest {
+export interface AutomationsCreateRequest {
     projectId: string;
-    automationId: string;
-    applyAutomationBatchDto: ApplyAutomationBatchDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsBatchAcceptLanguageEnum;
+    createAutomationDto: CreateAutomationDto;
+    acceptLanguage?: AutomationsCreateAcceptLanguageEnum;
 }
-export interface AutomationsDialogsRunsRealtimeSubscriptionRequest {
-    projectId: string;
-    dialogId: string;
-    acceptLanguage?: AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
-}
-export interface AutomationsEdgesRequest {
-    projectId: string;
+export interface AutomationsDeactivateRequest {
     automationId: string;
-    createAutomationEdgeDto: CreateAutomationEdgeDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsEdgesAcceptLanguageEnum;
+    acceptLanguage?: AutomationsDeactivateAcceptLanguageEnum;
 }
-export interface AutomationsNodesRequest {
-    projectId: string;
+export interface AutomationsGetByIdRequest {
     automationId: string;
-    createAutomationNodeDto: CreateAutomationNodeDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsNodesAcceptLanguageEnum;
+    acceptLanguage?: AutomationsGetByIdAcceptLanguageEnum;
 }
-export interface AutomationsNodesValidateRequest {
-    projectId: string;
+export interface AutomationsGetVersionsRequest {
     automationId: string;
-    validateAutomationNodeConfigDto: ValidateAutomationNodeConfigDto;
-    acceptLanguage?: AutomationsNodesValidateAcceptLanguageEnum;
+    limit?: number;
+    beforeVersion?: number;
+    acceptLanguage?: AutomationsGetVersionsAcceptLanguageEnum;
+}
+export interface AutomationsListRequest {
+    projectId: string;
+    acceptLanguage?: AutomationsListAcceptLanguageEnum;
 }
 export interface AutomationsPauseRequest {
-    projectId: string;
     automationId: string;
     acceptLanguage?: AutomationsPauseAcceptLanguageEnum;
 }
-export interface AutomationsPublishRequest {
-    projectId: string;
+export interface AutomationsUpdateRequest {
     automationId: string;
-    publishAutomationDto: PublishAutomationDto;
-    acceptLanguage?: AutomationsPublishAcceptLanguageEnum;
+    updateAutomationDto: UpdateAutomationDto;
+    acceptLanguage?: AutomationsUpdateAcceptLanguageEnum;
 }
-export interface AutomationsRealtimeSubscriptionRequest {
-    projectId: string;
+export interface BatchRequest {
     automationId: string;
+    applyAutomationBatchDto: ApplyAutomationBatchDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsRealtimeSubscriptionAcceptLanguageEnum;
+    acceptLanguage?: BatchAcceptLanguageEnum;
 }
-export interface AutomationsResumeRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: AutomationsResumeAcceptLanguageEnum;
-}
-export interface AutomationsRunsRequest {
-    projectId: string;
-    automationId: string;
-    startAutomationRunDto: StartAutomationRunDto;
-    acceptLanguage?: AutomationsRunsAcceptLanguageEnum;
-}
-export interface AutomationsRunsCancelRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    acceptLanguage?: AutomationsRunsCancelAcceptLanguageEnum;
-}
-export interface AutomationsRunsPauseRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    pauseAutomationRunDto: PauseAutomationRunDto;
-    acceptLanguage?: AutomationsRunsPauseAcceptLanguageEnum;
-}
-export interface AutomationsRunsRealtimeSubscriptionRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    acceptLanguage?: AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum;
-}
-export interface AutomationsRunsRealtimeSubscription2Request {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: AutomationsRunsRealtimeSubscription2AcceptLanguageEnum;
-}
-export interface AutomationsRunsTasksRetryRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    taskId: string;
-    acceptLanguage?: AutomationsRunsTasksRetryAcceptLanguageEnum;
-}
-export interface AutomationsTestDialogMessagesRequest {
-    projectId: string;
-    automationId: string;
-    triggerNodeId: string;
-    sendFirstTestMessageDto: SendFirstTestMessageDto;
-    acceptLanguage?: AutomationsTestDialogMessagesAcceptLanguageEnum;
-}
-export interface AutomationsTestRunsRequest {
-    projectId: string;
-    automationId: string;
-    testAutomationRunDto: TestAutomationRunDto;
-    acceptLanguage?: AutomationsTestRunsAcceptLanguageEnum;
-}
-export interface AutomationsValidateRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: AutomationsValidateAcceptLanguageEnum;
-}
-export interface AutomationsVersionsRestoreRequest {
-    projectId: string;
-    automationId: string;
-    versionId: string;
-    restoreAutomationVersionDto: RestoreAutomationVersionDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsVersionsRestoreAcceptLanguageEnum;
-}
-export interface DeleteAutomationsRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: DeleteAutomationsAcceptLanguageEnum;
-}
-export interface DeleteAutomationsEdgesRequest {
-    projectId: string;
+export interface DeleteEdgesRequest {
     automationId: string;
     edgeId: string;
     deleteAutomationEdgeDto: DeleteAutomationEdgeDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: DeleteAutomationsEdgesAcceptLanguageEnum;
+    acceptLanguage?: DeleteEdgesAcceptLanguageEnum;
 }
-export interface DeleteAutomationsNodesRequest {
-    projectId: string;
+export interface DeleteNodesRequest {
     automationId: string;
     nodeId: string;
     deleteAutomationNodeDto: DeleteAutomationNodeDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: DeleteAutomationsNodesAcceptLanguageEnum;
+    acceptLanguage?: DeleteNodesAcceptLanguageEnum;
 }
-export interface GetAutomationsRequest {
-    projectId: string;
-    acceptLanguage?: GetAutomationsAcceptLanguageEnum;
-}
-export interface GetAutomations2Request {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: GetAutomations2AcceptLanguageEnum;
-}
-export interface GetAutomationsAttachmentsRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: GetAutomationsAttachmentsAcceptLanguageEnum;
-}
-export interface GetAutomationsDialogsRunsRequest {
-    projectId: string;
+export interface DialogsRunsRealtimeSubscriptionRequest {
     dialogId: string;
+    acceptLanguage?: DialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
+}
+export interface EdgesRequest {
+    automationId: string;
+    createAutomationEdgeDto: CreateAutomationEdgeDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: EdgesAcceptLanguageEnum;
+}
+export interface GetAttachmentsRequest {
+    automationId: string;
+    acceptLanguage?: GetAttachmentsAcceptLanguageEnum;
+}
+export interface GetDialogsRunsRequest {
+    dialogId: string;
+    runId?: string;
     leadId?: string;
     dialogId2?: string;
+    status?: GetDialogsRunsStatusEnum;
+    isTest?: boolean;
+    startedAfter?: Date;
+    startedBefore?: Date;
     sourceEventId?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetAutomationsDialogsRunsAcceptLanguageEnum;
+    acceptLanguage?: GetDialogsRunsAcceptLanguageEnum;
 }
-export interface GetAutomationsGraphRequest {
-    projectId: string;
+export interface GetGraphRequest {
     automationId: string;
-    view?: GetAutomationsGraphViewEnum;
-    acceptLanguage?: GetAutomationsGraphAcceptLanguageEnum;
+    view?: GetGraphViewEnum;
+    acceptLanguage?: GetGraphAcceptLanguageEnum;
 }
-export interface GetAutomationsNodeTypesRequest {
+export interface GetNodeTypesRequest {
     projectId: string;
-    acceptLanguage?: GetAutomationsNodeTypesAcceptLanguageEnum;
+    automationType?: GetNodeTypesAutomationTypeEnum;
+    timezone?: string;
+    acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
 }
-export interface GetAutomationsOperationsRequest {
-    projectId: string;
+export interface GetOperationsRequest {
     automationId: string;
     afterSequence?: number;
     limit?: number;
-    acceptLanguage?: GetAutomationsOperationsAcceptLanguageEnum;
+    acceptLanguage?: GetOperationsAcceptLanguageEnum;
 }
-export interface GetAutomationsRunsRequest {
-    projectId: string;
+export interface GetRunsRequest {
     automationId: string;
+    runId?: string;
     leadId?: string;
     dialogId?: string;
+    status?: GetRunsStatusEnum;
+    isTest?: boolean;
+    startedAfter?: Date;
+    startedBefore?: Date;
     sourceEventId?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetAutomationsRunsAcceptLanguageEnum;
+    acceptLanguage?: GetRunsAcceptLanguageEnum;
 }
-export interface GetAutomationsRuns2Request {
-    projectId: string;
+export interface GetRuns2Request {
     automationId: string;
     runId: string;
-    acceptLanguage?: GetAutomationsRuns2AcceptLanguageEnum;
+    acceptLanguage?: GetRuns2AcceptLanguageEnum;
 }
-export interface GetAutomationsTestDialogRequest {
-    projectId: string;
+export interface GetTestDialogRequest {
     automationId: string;
     triggerNodeId?: string;
-    acceptLanguage?: GetAutomationsTestDialogAcceptLanguageEnum;
+    acceptLanguage?: GetTestDialogAcceptLanguageEnum;
 }
-export interface GetAutomationsVersionsRequest {
-    projectId: string;
+export interface NodesRequest {
     automationId: string;
-    limit?: number;
-    beforeVersion?: number;
-    acceptLanguage?: GetAutomationsVersionsAcceptLanguageEnum;
+    createAutomationNodeDto: CreateAutomationNodeDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: NodesAcceptLanguageEnum;
 }
-export interface UpdateAutomationsRequest {
-    projectId: string;
+export interface NodesValidateRequest {
     automationId: string;
-    updateAutomationDto: UpdateAutomationDto;
-    acceptLanguage?: UpdateAutomationsAcceptLanguageEnum;
+    validateAutomationNodeConfigDto: ValidateAutomationNodeConfigDto;
+    acceptLanguage?: NodesValidateAcceptLanguageEnum;
 }
-export interface UpdateAutomationsNodesRequest {
-    projectId: string;
+export interface PublishRequest {
+    automationId: string;
+    publishAutomationDto: PublishAutomationDto;
+    acceptLanguage?: PublishAcceptLanguageEnum;
+}
+export interface RealtimeSubscriptionRequest {
+    automationId: string;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: RealtimeSubscriptionAcceptLanguageEnum;
+}
+export interface ResumeRequest {
+    automationId: string;
+    acceptLanguage?: ResumeAcceptLanguageEnum;
+}
+export interface RunsRequest {
+    automationId: string;
+    startAutomationRunDto: StartAutomationRunDto;
+    acceptLanguage?: RunsAcceptLanguageEnum;
+}
+export interface RunsCancelRequest {
+    automationId: string;
+    runId: string;
+    acceptLanguage?: RunsCancelAcceptLanguageEnum;
+}
+export interface RunsPauseRequest {
+    automationId: string;
+    runId: string;
+    pauseAutomationRunDto: PauseAutomationRunDto;
+    acceptLanguage?: RunsPauseAcceptLanguageEnum;
+}
+export interface RunsRealtimeSubscriptionRequest {
+    automationId: string;
+    runId: string;
+    acceptLanguage?: RunsRealtimeSubscriptionAcceptLanguageEnum;
+}
+export interface RunsRealtimeSubscription2Request {
+    automationId: string;
+    acceptLanguage?: RunsRealtimeSubscription2AcceptLanguageEnum;
+}
+export interface RunsTasksRetryRequest {
+    automationId: string;
+    runId: string;
+    taskId: string;
+    acceptLanguage?: RunsTasksRetryAcceptLanguageEnum;
+}
+export interface TestDialogMessagesRequest {
+    automationId: string;
+    triggerNodeId: string;
+    sendFirstTestMessageDto: SendFirstTestMessageDto;
+    acceptLanguage?: TestDialogMessagesAcceptLanguageEnum;
+}
+export interface TestRunsRequest {
+    automationId: string;
+    testAutomationRunDto: TestAutomationRunDto;
+    acceptLanguage?: TestRunsAcceptLanguageEnum;
+}
+export interface UpdateNodesRequest {
     automationId: string;
     nodeId: string;
     updateAutomationNodeDto: UpdateAutomationNodeDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: UpdateAutomationsNodesAcceptLanguageEnum;
+    acceptLanguage?: UpdateNodesAcceptLanguageEnum;
 }
-export interface UpdateAutomationsTriggerIntakeRequest {
-    projectId: string;
+export interface UpdateTriggerIntakeRequest {
     automationId: string;
     setAutomationTriggerIntakeDto: SetAutomationTriggerIntakeDto;
-    acceptLanguage?: UpdateAutomationsTriggerIntakeAcceptLanguageEnum;
+    acceptLanguage?: UpdateTriggerIntakeAcceptLanguageEnum;
+}
+export interface ValidateRequest {
+    automationId: string;
+    acceptLanguage?: ValidateAcceptLanguageEnum;
+}
+export interface VersionsRestoreRequest {
+    automationId: string;
+    versionId: string;
+    restoreAutomationVersionDto: RestoreAutomationVersionDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: VersionsRestoreAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class AutomationsApi extends runtime.BaseAPI {
     /**
-     * Mongo-.
+     * .
      *
      */
-    automationsRaw(requestParameters: AutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
-    /**
-     * Mongo-.
-     *
-     */
-    automations(requestParameters: AutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
+    attachmentsConfirmRaw(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
      * .
      *
      */
-    automationsAttachmentsConfirmRaw(requestParameters: AutomationsAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
-    /**
-     * .
-     *
-     */
-    automationsAttachmentsConfirm(requestParameters: AutomationsAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    attachmentsConfirm(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
      * upload-, . PUT confirm.
      *
      */
-    automationsAttachmentsUploadUrlRaw(requestParameters: AutomationsAttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
+    attachmentsUploadUrlRaw(requestParameters: AttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
     /**
      * upload-, . PUT confirm.
      *
      */
-    automationsAttachmentsUploadUrl(requestParameters: AutomationsAttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
+    attachmentsUploadUrl(requestParameters: AttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
     /**
      * .
      *
@@ -323,55 +287,55 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsAvatarUploadUrl(requestParameters: AutomationsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAvatarUploadUrlResponseDto>;
     /**
-     * 100 Mongo-. .
+     * Mongo-.
      *
      */
-    automationsBatchRaw(requestParameters: AutomationsBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
+    automationsCreateRaw(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
     /**
-     * 100 Mongo-. .
+     * Mongo-.
      *
      */
-    automationsBatch(requestParameters: AutomationsBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
+    automationsCreate(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * Centrifugo . channel subscription_token realtime-; .
+     * deleted_at.
      *
      */
-    automationsDialogsRunsRealtimeSubscriptionRaw(requestParameters: AutomationsDialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
+    automationsDeactivateRaw(requestParameters: AutomationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * Centrifugo . channel subscription_token realtime-; .
+     * deleted_at.
      *
      */
-    automationsDialogsRunsRealtimeSubscription(requestParameters: AutomationsDialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
+    automationsDeactivate(requestParameters: AutomationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
+     * , IDs draft/published version.
      *
      */
-    automationsEdgesRaw(requestParameters: AutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>>;
+    automationsGetByIdRaw(requestParameters: AutomationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
     /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
+     * , IDs draft/published version.
      *
      */
-    automationsEdges(requestParameters: AutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto>;
+    automationsGetById(requestParameters: AutomationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * . API .
+     * .
      *
      */
-    automationsNodesRaw(requestParameters: AutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
+    automationsGetVersionsRaw(requestParameters: AutomationsGetVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionHistoryResponseDto>>;
     /**
-     * . API .
+     * .
      *
      */
-    automationsNodes(requestParameters: AutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
+    automationsGetVersions(requestParameters: AutomationsGetVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionHistoryResponseDto>;
     /**
-     * . .
+     * , status, draft revision .
      *
      */
-    automationsNodesValidateRaw(requestParameters: AutomationsNodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeConfigValidationResponseDto>>;
+    automationsListRaw(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationListResponseDto>>;
     /**
-     * . .
+     * , status, draft revision .
      *
      */
-    automationsNodesValidate(requestParameters: AutomationsNodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeConfigValidationResponseDto>;
+    automationsList(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto>;
     /**
      * durable pause Runner, API status; starts parked.
      *
@@ -383,330 +347,332 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsPause(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
     /**
-     * DAG migration mapping. , .
-     * immutable-
-     */
-    automationsPublishRaw(requestParameters: AutomationsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionInfoDto>>;
-    /**
-     * DAG migration mapping. , .
-     * immutable-
-     */
-    automationsPublish(requestParameters: AutomationsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto>;
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    automationsRealtimeSubscriptionRaw(requestParameters: AutomationsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRealtimeSubscriptionResponseDto>>;
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    automationsRealtimeSubscription(requestParameters: AutomationsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRealtimeSubscriptionResponseDto>;
-    /**
-     * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
-     */
-    automationsResumeRaw(requestParameters: AutomationsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
-    /**
-     * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
-     */
-    automationsResume(requestParameters: AutomationsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
-    /**
-     * production- .
+     * ; .
      *
      */
-    automationsRunsRaw(requestParameters: AutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartAutomationRunResponseDto>>;
-    /**
-     * production- .
-     *
-     */
-    automationsRuns(requestParameters: AutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartAutomationRunResponseDto>;
-    /**
-     * : side effect , .
-     *
-     */
-    automationsRunsCancelRaw(requestParameters: AutomationsRunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CancelAutomationRunResponseDto>>;
-    /**
-     * : side effect , .
-     *
-     */
-    automationsRunsCancel(requestParameters: AutomationsRunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelAutomationRunResponseDto>;
-    /**
-     * . Mongo .
-     *
-     */
-    automationsRunsPauseRaw(requestParameters: AutomationsRunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PauseAutomationRunResponseDto>>;
-    /**
-     * . Mongo .
-     *
-     */
-    automationsRunsPause(requestParameters: AutomationsRunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PauseAutomationRunResponseDto>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    automationsRunsRealtimeSubscriptionRaw(requestParameters: AutomationsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    automationsRunsRealtimeSubscription(requestParameters: AutomationsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    automationsRunsRealtimeSubscription2Raw(requestParameters: AutomationsRunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    automationsRunsRealtimeSubscription2(requestParameters: AutomationsRunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
-    /**
-     * , . .
-     *
-     */
-    automationsRunsTasksRetryRaw(requestParameters: AutomationsRunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RetryAutomationTaskResponseDto>>;
-    /**
-     * , . .
-     *
-     */
-    automationsRunsTasksRetry(requestParameters: AutomationsRunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto>;
-    /**
-     * . execution plan .
-     *
-     */
-    automationsTestDialogMessagesRaw(requestParameters: AutomationsTestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>>;
-    /**
-     * . execution plan .
-     *
-     */
-    automationsTestDialogMessages(requestParameters: AutomationsTestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto>;
-    /**
-     * , execution plan durable start intent. production- .
-     *
-     */
-    automationsTestRunsRaw(requestParameters: AutomationsTestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestAutomationRunResponseDto>>;
-    /**
-     * , execution plan durable start intent. production- .
-     *
-     */
-    automationsTestRuns(requestParameters: AutomationsTestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestAutomationRunResponseDto>;
-    /**
-     * , , , , .
-     *
-     */
-    automationsValidateRaw(requestParameters: AutomationsValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationValidationResponseDto>>;
-    /**
-     * , , , , .
-     *
-     */
-    automationsValidate(requestParameters: AutomationsValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationValidationResponseDto>;
-    /**
-     * . .
-     *
-     */
-    automationsVersionsRestoreRaw(requestParameters: AutomationsVersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    automationsVersionsRestore(requestParameters: AutomationsVersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
-    /**
-     * deleted_at.
-     *
-     */
-    deleteAutomationsRaw(requestParameters: DeleteAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
-    /**
-     * deleted_at.
-     *
-     */
-    deleteAutomations(requestParameters: DeleteAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * draft-; published version processes .
-     *
-     */
-    deleteAutomationsEdgesRaw(requestParameters: DeleteAutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
-    /**
-     * draft-; published version processes .
-     *
-     */
-    deleteAutomationsEdges(requestParameters: DeleteAutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * draft- draft-; published version immutable.
-     *
-     */
-    deleteAutomationsNodesRaw(requestParameters: DeleteAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
-    /**
-     * draft- draft-; published version immutable.
-     *
-     */
-    deleteAutomationsNodes(requestParameters: DeleteAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * , status, draft revision .
-     *
-     */
-    getAutomationsRaw(requestParameters: GetAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationListResponseDto>>;
-    /**
-     * , status, draft revision .
-     *
-     */
-    getAutomations(requestParameters: GetAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto>;
-    /**
-     * , IDs draft/published version.
-     *
-     */
-    getAutomations2Raw(requestParameters: GetAutomations2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
-    /**
-     * , IDs draft/published version.
-     *
-     */
-    getAutomations2(requestParameters: GetAutomations2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
-    /**
-     * , .
-     *
-     */
-    getAutomationsAttachmentsRaw(requestParameters: GetAutomationsAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationAttachmentsResponseDto>>;
-    /**
-     * , .
-     *
-     */
-    getAutomationsAttachments(requestParameters: GetAutomationsAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAttachmentsResponseDto>;
-    /**
-     * .
-     *
-     */
-    getAutomationsDialogsRunsRaw(requestParameters: GetAutomationsDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAutomationRunsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getAutomationsDialogsRuns(requestParameters: GetAutomationsDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto>;
-    /**
-     * nodes/edges React Flow JSON.
-     *
-     */
-    getAutomationsGraphRaw(requestParameters: GetAutomationsGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
-    /**
-     * nodes/edges React Flow JSON.
-     *
-     */
-    getAutomationsGraph(requestParameters: GetAutomationsGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
-    /**
-     * , . MCP- React Flow.
-     *
-     */
-    getAutomationsNodeTypesRaw(requestParameters: GetAutomationsNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeCatalogResponseDto>>;
-    /**
-     * , . MCP- React Flow.
-     *
-     */
-    getAutomationsNodeTypes(requestParameters: GetAutomationsNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto>;
-    /**
-     * reconnect; compaction snapshot .
-     * sequence
-     */
-    getAutomationsOperationsRaw(requestParameters: GetAutomationsOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOperationsResponseDto>>;
-    /**
-     * reconnect; compaction snapshot .
-     * sequence
-     */
-    getAutomationsOperations(requestParameters: GetAutomationsOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperationsResponseDto>;
-    /**
-     * Automation Runner.
-     * durable-
-     */
-    getAutomationsRunsRaw(requestParameters: GetAutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunsResponseDto>>;
-    /**
-     * Automation Runner.
-     * durable-
-     */
-    getAutomationsRuns(requestParameters: GetAutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunsResponseDto>;
-    /**
-     * , , , .
-     * durable timeline
-     */
-    getAutomationsRuns2Raw(requestParameters: GetAutomationsRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunDetailResponseDto>>;
-    /**
-     * , , , .
-     * durable timeline
-     */
-    getAutomationsRuns2(requestParameters: GetAutomationsRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunDetailResponseDto>;
-    /**
-     * , . query-.
-     *
-     */
-    getAutomationsTestDialogRaw(requestParameters: GetAutomationsTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentAutomationTestDialogDataDto>>;
-    /**
-     * , . query-.
-     *
-     */
-    getAutomationsTestDialog(requestParameters: GetAutomationsTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto>;
-    /**
-     * .
-     *
-     */
-    getAutomationsVersionsRaw(requestParameters: GetAutomationsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionHistoryResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getAutomationsVersions(requestParameters: GetAutomationsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionHistoryResponseDto>;
+    automationsUpdateRaw(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
     /**
      * ; .
      *
      */
-    updateAutomationsRaw(requestParameters: UpdateAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
+    automationsUpdate(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * ; .
+     * 100 Mongo-. .
      *
      */
-    updateAutomations(requestParameters: UpdateAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
+    batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
+    /**
+     * 100 Mongo-. .
+     *
+     */
+    batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
+    /**
+     * draft-; published version processes .
+     *
+     */
+    deleteEdgesRaw(requestParameters: DeleteEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * draft-; published version processes .
+     *
+     */
+    deleteEdges(requestParameters: DeleteEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * draft- draft-; published version immutable.
+     *
+     */
+    deleteNodesRaw(requestParameters: DeleteNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * draft- draft-; published version immutable.
+     *
+     */
+    deleteNodes(requestParameters: DeleteNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    dialogsRunsRealtimeSubscriptionRaw(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    dialogsRunsRealtimeSubscription(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
+    /**
+     * idempotent draft-edge next, true false; DAG validate/publish.
+     *
+     */
+    edgesRaw(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>>;
+    /**
+     * idempotent draft-edge next, true false; DAG validate/publish.
+     *
+     */
+    edges(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getAttachmentsRaw(requestParameters: GetAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationAttachmentsResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getAttachments(requestParameters: GetAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAttachmentsResponseDto>;
+    /**
+     * .
+     *
+     */
+    getDialogsRunsRaw(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAutomationRunsResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getDialogsRuns(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto>;
+    /**
+     * nodes/edges React Flow JSON.
+     *
+     */
+    getGraphRaw(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
+    /**
+     * nodes/edges React Flow JSON.
+     *
+     */
+    getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
+    /**
+     * , . MCP- React Flow.
+     *
+     */
+    getNodeTypesRaw(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeCatalogResponseDto>>;
+    /**
+     * , . MCP- React Flow.
+     *
+     */
+    getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto>;
+    /**
+     * reconnect; compaction snapshot .
+     * sequence
+     */
+    getOperationsRaw(requestParameters: GetOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOperationsResponseDto>>;
+    /**
+     * reconnect; compaction snapshot .
+     * sequence
+     */
+    getOperations(requestParameters: GetOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperationsResponseDto>;
+    /**
+     * Automation Runner.
+     * durable-
+     */
+    getRunsRaw(requestParameters: GetRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunsResponseDto>>;
+    /**
+     * Automation Runner.
+     * durable-
+     */
+    getRuns(requestParameters: GetRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunsResponseDto>;
+    /**
+     * , , , .
+     * durable timeline
+     */
+    getRuns2Raw(requestParameters: GetRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunDetailResponseDto>>;
+    /**
+     * , , , .
+     * durable timeline
+     */
+    getRuns2(requestParameters: GetRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunDetailResponseDto>;
+    /**
+     * , . query-.
+     *
+     */
+    getTestDialogRaw(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentAutomationTestDialogDataDto>>;
+    /**
+     * , . query-.
+     *
+     */
+    getTestDialog(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto>;
+    /**
+     * . API .
+     *
+     */
+    nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
+    /**
+     * . API .
+     *
+     */
+    nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
+    /**
+     * . .
+     *
+     */
+    nodesValidateRaw(requestParameters: NodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeConfigValidationResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    nodesValidate(requestParameters: NodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeConfigValidationResponseDto>;
+    /**
+     * DAG migration mapping. , .
+     * immutable-
+     */
+    publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionInfoDto>>;
+    /**
+     * DAG migration mapping. , .
+     * immutable-
+     */
+    publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto>;
+    /**
+     * token draft-; collaboration-state API .
+     * Centrifugo presence
+     */
+    realtimeSubscriptionRaw(requestParameters: RealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRealtimeSubscriptionResponseDto>>;
+    /**
+     * token draft-; collaboration-state API .
+     * Centrifugo presence
+     */
+    realtimeSubscription(requestParameters: RealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRealtimeSubscriptionResponseDto>;
+    /**
+     * parked tasks queued/waiting available_at, API status.
+     * parked- Runner
+     */
+    resumeRaw(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
+    /**
+     * parked tasks queued/waiting available_at, API status.
+     * parked- Runner
+     */
+    resume(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
+    /**
+     * production- .
+     *
+     */
+    runsRaw(requestParameters: RunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartAutomationRunResponseDto>>;
+    /**
+     * production- .
+     *
+     */
+    runs(requestParameters: RunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartAutomationRunResponseDto>;
+    /**
+     * : side effect , .
+     *
+     */
+    runsCancelRaw(requestParameters: RunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CancelAutomationRunResponseDto>>;
+    /**
+     * : side effect , .
+     *
+     */
+    runsCancel(requestParameters: RunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelAutomationRunResponseDto>;
+    /**
+     * . Mongo .
+     *
+     */
+    runsPauseRaw(requestParameters: RunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PauseAutomationRunResponseDto>>;
+    /**
+     * . Mongo .
+     *
+     */
+    runsPause(requestParameters: RunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PauseAutomationRunResponseDto>;
+    /**
+     * Centrifugo . channel subscription_token realtime-; , .
+     *
+     */
+    runsRealtimeSubscriptionRaw(requestParameters: RunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
+    /**
+     * Centrifugo . channel subscription_token realtime-; , .
+     *
+     */
+    runsRealtimeSubscription(requestParameters: RunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    runsRealtimeSubscription2Raw(requestParameters: RunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    runsRealtimeSubscription2(requestParameters: RunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
+    /**
+     * , . .
+     *
+     */
+    runsTasksRetryRaw(requestParameters: RunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RetryAutomationTaskResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    runsTasksRetry(requestParameters: RunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto>;
+    /**
+     * . execution plan .
+     *
+     */
+    testDialogMessagesRaw(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>>;
+    /**
+     * . execution plan .
+     *
+     */
+    testDialogMessages(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto>;
+    /**
+     * , execution plan durable start intent. production- .
+     *
+     */
+    testRunsRaw(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestAutomationRunResponseDto>>;
+    /**
+     * , execution plan durable start intent. production- .
+     *
+     */
+    testRuns(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestAutomationRunResponseDto>;
     /**
      * , / .
      *
      */
-    updateAutomationsNodesRaw(requestParameters: UpdateAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
+    updateNodesRaw(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
     /**
      * , / .
      *
      */
-    updateAutomationsNodes(requestParameters: UpdateAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
+    updateNodes(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
     /**
      * runs .
      *
      */
-    updateAutomationsTriggerIntakeRaw(requestParameters: UpdateAutomationsTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
+    updateTriggerIntakeRaw(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
     /**
      * runs .
      *
      */
-    updateAutomationsTriggerIntake(requestParameters: UpdateAutomationsTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
+    updateTriggerIntake(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
+    /**
+     * , , , , .
+     *
+     */
+    validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationValidationResponseDto>>;
+    /**
+     * , , , , .
+     *
+     */
+    validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationValidationResponseDto>;
+    /**
+     * . .
+     *
+     */
+    versionsRestoreRaw(requestParameters: VersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    versionsRestore(requestParameters: VersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
 }
 /**
  * @export
  */
-export declare const AutomationsAcceptLanguageEnum: {
+export declare const AttachmentsConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsAcceptLanguageEnum = typeof AutomationsAcceptLanguageEnum[keyof typeof AutomationsAcceptLanguageEnum];
+export type AttachmentsConfirmAcceptLanguageEnum = typeof AttachmentsConfirmAcceptLanguageEnum[keyof typeof AttachmentsConfirmAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsAttachmentsConfirmAcceptLanguageEnum: {
+export declare const AttachmentsUploadUrlAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsAttachmentsConfirmAcceptLanguageEnum = typeof AutomationsAttachmentsConfirmAcceptLanguageEnum[keyof typeof AutomationsAttachmentsConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AutomationsAttachmentsUploadUrlAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AutomationsAttachmentsUploadUrlAcceptLanguageEnum = typeof AutomationsAttachmentsUploadUrlAcceptLanguageEnum[keyof typeof AutomationsAttachmentsUploadUrlAcceptLanguageEnum];
+export type AttachmentsUploadUrlAcceptLanguageEnum = typeof AttachmentsUploadUrlAcceptLanguageEnum[keyof typeof AttachmentsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -726,43 +692,43 @@ export type AutomationsAvatarUploadUrlAcceptLanguageEnum = typeof AutomationsAva
 /**
  * @export
  */
-export declare const AutomationsBatchAcceptLanguageEnum: {
+export declare const AutomationsCreateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsBatchAcceptLanguageEnum = typeof AutomationsBatchAcceptLanguageEnum[keyof typeof AutomationsBatchAcceptLanguageEnum];
+export type AutomationsCreateAcceptLanguageEnum = typeof AutomationsCreateAcceptLanguageEnum[keyof typeof AutomationsCreateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum: {
+export declare const AutomationsDeactivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum];
+export type AutomationsDeactivateAcceptLanguageEnum = typeof AutomationsDeactivateAcceptLanguageEnum[keyof typeof AutomationsDeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsEdgesAcceptLanguageEnum: {
+export declare const AutomationsGetByIdAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsEdgesAcceptLanguageEnum = typeof AutomationsEdgesAcceptLanguageEnum[keyof typeof AutomationsEdgesAcceptLanguageEnum];
+export type AutomationsGetByIdAcceptLanguageEnum = typeof AutomationsGetByIdAcceptLanguageEnum[keyof typeof AutomationsGetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsNodesAcceptLanguageEnum: {
+export declare const AutomationsGetVersionsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsNodesAcceptLanguageEnum = typeof AutomationsNodesAcceptLanguageEnum[keyof typeof AutomationsNodesAcceptLanguageEnum];
+export type AutomationsGetVersionsAcceptLanguageEnum = typeof AutomationsGetVersionsAcceptLanguageEnum[keyof typeof AutomationsGetVersionsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsNodesValidateAcceptLanguageEnum: {
+export declare const AutomationsListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsNodesValidateAcceptLanguageEnum = typeof AutomationsNodesValidateAcceptLanguageEnum[keyof typeof AutomationsNodesValidateAcceptLanguageEnum];
+export type AutomationsListAcceptLanguageEnum = typeof AutomationsListAcceptLanguageEnum[keyof typeof AutomationsListAcceptLanguageEnum];
 /**
  * @export
  */
@@ -774,248 +740,286 @@ export type AutomationsPauseAcceptLanguageEnum = typeof AutomationsPauseAcceptLa
 /**
  * @export
  */
-export declare const AutomationsPublishAcceptLanguageEnum: {
+export declare const AutomationsUpdateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsPublishAcceptLanguageEnum = typeof AutomationsPublishAcceptLanguageEnum[keyof typeof AutomationsPublishAcceptLanguageEnum];
+export type AutomationsUpdateAcceptLanguageEnum = typeof AutomationsUpdateAcceptLanguageEnum[keyof typeof AutomationsUpdateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRealtimeSubscriptionAcceptLanguageEnum: {
+export declare const BatchAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsRealtimeSubscriptionAcceptLanguageEnum = typeof AutomationsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof AutomationsRealtimeSubscriptionAcceptLanguageEnum];
+export type BatchAcceptLanguageEnum = typeof BatchAcceptLanguageEnum[keyof typeof BatchAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsResumeAcceptLanguageEnum: {
+export declare const DeleteEdgesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsResumeAcceptLanguageEnum = typeof AutomationsResumeAcceptLanguageEnum[keyof typeof AutomationsResumeAcceptLanguageEnum];
+export type DeleteEdgesAcceptLanguageEnum = typeof DeleteEdgesAcceptLanguageEnum[keyof typeof DeleteEdgesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRunsAcceptLanguageEnum: {
+export declare const DeleteNodesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsRunsAcceptLanguageEnum = typeof AutomationsRunsAcceptLanguageEnum[keyof typeof AutomationsRunsAcceptLanguageEnum];
+export type DeleteNodesAcceptLanguageEnum = typeof DeleteNodesAcceptLanguageEnum[keyof typeof DeleteNodesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRunsCancelAcceptLanguageEnum: {
+export declare const DialogsRunsRealtimeSubscriptionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsRunsCancelAcceptLanguageEnum = typeof AutomationsRunsCancelAcceptLanguageEnum[keyof typeof AutomationsRunsCancelAcceptLanguageEnum];
+export type DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof DialogsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof DialogsRunsRealtimeSubscriptionAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRunsPauseAcceptLanguageEnum: {
+export declare const EdgesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsRunsPauseAcceptLanguageEnum = typeof AutomationsRunsPauseAcceptLanguageEnum[keyof typeof AutomationsRunsPauseAcceptLanguageEnum];
+export type EdgesAcceptLanguageEnum = typeof EdgesAcceptLanguageEnum[keyof typeof EdgesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum: {
+export declare const GetAttachmentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum];
+export type GetAttachmentsAcceptLanguageEnum = typeof GetAttachmentsAcceptLanguageEnum[keyof typeof GetAttachmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRunsRealtimeSubscription2AcceptLanguageEnum: {
+export declare const GetDialogsRunsStatusEnum: {
+    readonly Active: "active";
+    readonly Parked: "parked";
+    readonly Completed: "completed";
+    readonly Failed: "failed";
+    readonly Cancelled: "cancelled";
+};
+export type GetDialogsRunsStatusEnum = typeof GetDialogsRunsStatusEnum[keyof typeof GetDialogsRunsStatusEnum];
+/**
+ * @export
+ */
+export declare const GetDialogsRunsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AutomationsRunsRealtimeSubscription2AcceptLanguageEnum = typeof AutomationsRunsRealtimeSubscription2AcceptLanguageEnum[keyof typeof AutomationsRunsRealtimeSubscription2AcceptLanguageEnum];
+export type GetDialogsRunsAcceptLanguageEnum = typeof GetDialogsRunsAcceptLanguageEnum[keyof typeof GetDialogsRunsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AutomationsRunsTasksRetryAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AutomationsRunsTasksRetryAcceptLanguageEnum = typeof AutomationsRunsTasksRetryAcceptLanguageEnum[keyof typeof AutomationsRunsTasksRetryAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AutomationsTestDialogMessagesAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AutomationsTestDialogMessagesAcceptLanguageEnum = typeof AutomationsTestDialogMessagesAcceptLanguageEnum[keyof typeof AutomationsTestDialogMessagesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AutomationsTestRunsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AutomationsTestRunsAcceptLanguageEnum = typeof AutomationsTestRunsAcceptLanguageEnum[keyof typeof AutomationsTestRunsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AutomationsValidateAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AutomationsValidateAcceptLanguageEnum = typeof AutomationsValidateAcceptLanguageEnum[keyof typeof AutomationsValidateAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AutomationsVersionsRestoreAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AutomationsVersionsRestoreAcceptLanguageEnum = typeof AutomationsVersionsRestoreAcceptLanguageEnum[keyof typeof AutomationsVersionsRestoreAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const DeleteAutomationsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeleteAutomationsAcceptLanguageEnum = typeof DeleteAutomationsAcceptLanguageEnum[keyof typeof DeleteAutomationsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const DeleteAutomationsEdgesAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeleteAutomationsEdgesAcceptLanguageEnum = typeof DeleteAutomationsEdgesAcceptLanguageEnum[keyof typeof DeleteAutomationsEdgesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const DeleteAutomationsNodesAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeleteAutomationsNodesAcceptLanguageEnum = typeof DeleteAutomationsNodesAcceptLanguageEnum[keyof typeof DeleteAutomationsNodesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetAutomationsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetAutomationsAcceptLanguageEnum = typeof GetAutomationsAcceptLanguageEnum[keyof typeof GetAutomationsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetAutomations2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetAutomations2AcceptLanguageEnum = typeof GetAutomations2AcceptLanguageEnum[keyof typeof GetAutomations2AcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetAutomationsAttachmentsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetAutomationsAttachmentsAcceptLanguageEnum = typeof GetAutomationsAttachmentsAcceptLanguageEnum[keyof typeof GetAutomationsAttachmentsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetAutomationsDialogsRunsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetAutomationsDialogsRunsAcceptLanguageEnum = typeof GetAutomationsDialogsRunsAcceptLanguageEnum[keyof typeof GetAutomationsDialogsRunsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetAutomationsGraphViewEnum: {
+export declare const GetGraphViewEnum: {
     readonly Draft: "draft";
     readonly Published: "published";
 };
-export type GetAutomationsGraphViewEnum = typeof GetAutomationsGraphViewEnum[keyof typeof GetAutomationsGraphViewEnum];
+export type GetGraphViewEnum = typeof GetGraphViewEnum[keyof typeof GetGraphViewEnum];
 /**
  * @export
  */
-export declare const GetAutomationsGraphAcceptLanguageEnum: {
+export declare const GetGraphAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAutomationsGraphAcceptLanguageEnum = typeof GetAutomationsGraphAcceptLanguageEnum[keyof typeof GetAutomationsGraphAcceptLanguageEnum];
+export type GetGraphAcceptLanguageEnum = typeof GetGraphAcceptLanguageEnum[keyof typeof GetGraphAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAutomationsNodeTypesAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
+export declare const GetNodeTypesAutomationTypeEnum: {
+    readonly Contextual: "contextual";
+    readonly Background: "background";
 };
-export type GetAutomationsNodeTypesAcceptLanguageEnum = typeof GetAutomationsNodeTypesAcceptLanguageEnum[keyof typeof GetAutomationsNodeTypesAcceptLanguageEnum];
+export type GetNodeTypesAutomationTypeEnum = typeof GetNodeTypesAutomationTypeEnum[keyof typeof GetNodeTypesAutomationTypeEnum];
 /**
  * @export
  */
-export declare const GetAutomationsOperationsAcceptLanguageEnum: {
+export declare const GetNodeTypesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAutomationsOperationsAcceptLanguageEnum = typeof GetAutomationsOperationsAcceptLanguageEnum[keyof typeof GetAutomationsOperationsAcceptLanguageEnum];
+export type GetNodeTypesAcceptLanguageEnum = typeof GetNodeTypesAcceptLanguageEnum[keyof typeof GetNodeTypesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAutomationsRunsAcceptLanguageEnum: {
+export declare const GetOperationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAutomationsRunsAcceptLanguageEnum = typeof GetAutomationsRunsAcceptLanguageEnum[keyof typeof GetAutomationsRunsAcceptLanguageEnum];
+export type GetOperationsAcceptLanguageEnum = typeof GetOperationsAcceptLanguageEnum[keyof typeof GetOperationsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAutomationsRuns2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
+export declare const GetRunsStatusEnum: {
+    readonly Active: "active";
+    readonly Parked: "parked";
+    readonly Completed: "completed";
+    readonly Failed: "failed";
+    readonly Cancelled: "cancelled";
 };
-export type GetAutomationsRuns2AcceptLanguageEnum = typeof GetAutomationsRuns2AcceptLanguageEnum[keyof typeof GetAutomationsRuns2AcceptLanguageEnum];
+export type GetRunsStatusEnum = typeof GetRunsStatusEnum[keyof typeof GetRunsStatusEnum];
 /**
  * @export
  */
-export declare const GetAutomationsTestDialogAcceptLanguageEnum: {
+export declare const GetRunsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAutomationsTestDialogAcceptLanguageEnum = typeof GetAutomationsTestDialogAcceptLanguageEnum[keyof typeof GetAutomationsTestDialogAcceptLanguageEnum];
+export type GetRunsAcceptLanguageEnum = typeof GetRunsAcceptLanguageEnum[keyof typeof GetRunsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAutomationsVersionsAcceptLanguageEnum: {
+export declare const GetRuns2AcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAutomationsVersionsAcceptLanguageEnum = typeof GetAutomationsVersionsAcceptLanguageEnum[keyof typeof GetAutomationsVersionsAcceptLanguageEnum];
+export type GetRuns2AcceptLanguageEnum = typeof GetRuns2AcceptLanguageEnum[keyof typeof GetRuns2AcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAutomationsAcceptLanguageEnum: {
+export declare const GetTestDialogAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAutomationsAcceptLanguageEnum = typeof UpdateAutomationsAcceptLanguageEnum[keyof typeof UpdateAutomationsAcceptLanguageEnum];
+export type GetTestDialogAcceptLanguageEnum = typeof GetTestDialogAcceptLanguageEnum[keyof typeof GetTestDialogAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAutomationsNodesAcceptLanguageEnum: {
+export declare const NodesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAutomationsNodesAcceptLanguageEnum = typeof UpdateAutomationsNodesAcceptLanguageEnum[keyof typeof UpdateAutomationsNodesAcceptLanguageEnum];
+export type NodesAcceptLanguageEnum = typeof NodesAcceptLanguageEnum[keyof typeof NodesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAutomationsTriggerIntakeAcceptLanguageEnum: {
+export declare const NodesValidateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAutomationsTriggerIntakeAcceptLanguageEnum = typeof UpdateAutomationsTriggerIntakeAcceptLanguageEnum[keyof typeof UpdateAutomationsTriggerIntakeAcceptLanguageEnum];
+export type NodesValidateAcceptLanguageEnum = typeof NodesValidateAcceptLanguageEnum[keyof typeof NodesValidateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const PublishAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type PublishAcceptLanguageEnum = typeof PublishAcceptLanguageEnum[keyof typeof PublishAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RealtimeSubscriptionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RealtimeSubscriptionAcceptLanguageEnum = typeof RealtimeSubscriptionAcceptLanguageEnum[keyof typeof RealtimeSubscriptionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ResumeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ResumeAcceptLanguageEnum = typeof ResumeAcceptLanguageEnum[keyof typeof ResumeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RunsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsAcceptLanguageEnum = typeof RunsAcceptLanguageEnum[keyof typeof RunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RunsCancelAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsCancelAcceptLanguageEnum = typeof RunsCancelAcceptLanguageEnum[keyof typeof RunsCancelAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RunsPauseAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsPauseAcceptLanguageEnum = typeof RunsPauseAcceptLanguageEnum[keyof typeof RunsPauseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RunsRealtimeSubscriptionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsRealtimeSubscriptionAcceptLanguageEnum = typeof RunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof RunsRealtimeSubscriptionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RunsRealtimeSubscription2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsRealtimeSubscription2AcceptLanguageEnum = typeof RunsRealtimeSubscription2AcceptLanguageEnum[keyof typeof RunsRealtimeSubscription2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const RunsTasksRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsTasksRetryAcceptLanguageEnum = typeof RunsTasksRetryAcceptLanguageEnum[keyof typeof RunsTasksRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestDialogMessagesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestDialogMessagesAcceptLanguageEnum = typeof TestDialogMessagesAcceptLanguageEnum[keyof typeof TestDialogMessagesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestRunsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestRunsAcceptLanguageEnum = typeof TestRunsAcceptLanguageEnum[keyof typeof TestRunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateNodesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateNodesAcceptLanguageEnum = typeof UpdateNodesAcceptLanguageEnum[keyof typeof UpdateNodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTriggerIntakeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTriggerIntakeAcceptLanguageEnum = typeof UpdateTriggerIntakeAcceptLanguageEnum[keyof typeof UpdateTriggerIntakeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ValidateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ValidateAcceptLanguageEnum = typeof ValidateAcceptLanguageEnum[keyof typeof ValidateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const VersionsRestoreAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type VersionsRestoreAcceptLanguageEnum = typeof VersionsRestoreAcceptLanguageEnum[keyof typeof VersionsRestoreAcceptLanguageEnum];

@@ -56,7 +56,8 @@ exports.AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum = {
     AcceptedLoss: 'accepted_loss',
     TaskCompleted: 'task_completed',
     DiagnosticCompleted: 'diagnostic_completed',
-    ReplayCancelled: 'replay_cancelled'
+    ReplayCancelled: 'replay_cancelled',
+    WebhookDeleted: 'webhook_deleted'
 };
 /**
  * Check if a given object implements the AppWebhookDeliveryTaskResponseDto interface.

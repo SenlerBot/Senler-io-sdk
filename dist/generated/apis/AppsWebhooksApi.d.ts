@@ -10,11 +10,24 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppWebhookDeliveryAttemptResponseDto, AppWebhookDeliveryHealthResponseDto, AppWebhookDeliveryResolvedResponseDto, AppWebhookDeliveryTaskPageResponseDto, AppWebhookDeliveryTaskResponseDto, AppWebhookResponseDto, BulkResolveAppWebhookDeliveriesDto, BulkResolveAppWebhookDeliveriesResponseDto, BulkRetryAppWebhookDeliveriesDto, BulkRetryAppWebhookDeliveriesResponseDto, CreateAppWebhookDto, ReplayAppWebhookDeliveryDto, ReplayAppWebhookDeliveryResponseDto, ResolveAppWebhookDeliveryDto, UpdateAppWebhookDto, WebhookTestPreviewDto, WebhookTestResponseDto } from '../models/index';
+import type { AppProjectsWebhookAnalyticsResponseDto, AppWebhookDeliveryAttemptResponseDto, AppWebhookDeliveryHealthResponseDto, AppWebhookDeliveryResolvedResponseDto, AppWebhookDeliveryTaskPageResponseDto, AppWebhookDeliveryTaskResponseDto, AppWebhookResponseDto, AppWebhooksAnalyticsResponseDto, BulkResolveAppWebhookDeliveriesDto, BulkResolveAppWebhookDeliveriesResponseDto, BulkRetryAppWebhookDeliveriesDto, BulkRetryAppWebhookDeliveriesResponseDto, CreateAppWebhookDto, ReplayAppWebhookDeliveryDto, ReplayAppWebhookDeliveryResponseDto, ResolveAppWebhookDeliveryDto, UpdateAppWebhookDto, WebhookTestPreviewDto, WebhookTestResponseDto } from '../models/index';
 export interface DeleteWebhooksRequest {
     appId: string;
     webhookId: string;
     acceptLanguage?: DeleteWebhooksAcceptLanguageEnum;
+}
+export interface GetWebhookAnalyticsProjectsRequest {
+    appId: string;
+    from: Date;
+    to: Date;
+    projectIds: Array<string>;
+    acceptLanguage?: GetWebhookAnalyticsProjectsAcceptLanguageEnum;
+}
+export interface GetWebhookAnalyticsWebhooksRequest {
+    appId: string;
+    from: Date;
+    to: Date;
+    acceptLanguage?: GetWebhookAnalyticsWebhooksAcceptLanguageEnum;
 }
 export interface GetWebhooksRequest {
     appId: string;
@@ -110,6 +123,26 @@ export declare class AppsWebhooksApi extends runtime.BaseAPI {
      *
      */
     deleteWebhooks(requestParameters: DeleteWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * , .
+     *
+     */
+    getWebhookAnalyticsProjectsRaw(requestParameters: GetWebhookAnalyticsProjectsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppProjectsWebhookAnalyticsResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getWebhookAnalyticsProjects(requestParameters: GetWebhookAnalyticsProjectsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppProjectsWebhookAnalyticsResponseDto>;
+    /**
+     * .
+     *
+     */
+    getWebhookAnalyticsWebhooksRaw(requestParameters: GetWebhookAnalyticsWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppWebhooksAnalyticsResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getWebhookAnalyticsWebhooks(requestParameters: GetWebhookAnalyticsWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppWebhooksAnalyticsResponseDto>;
     /**
      * URL.
      *
@@ -249,6 +282,22 @@ export declare const DeleteWebhooksAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeleteWebhooksAcceptLanguageEnum = typeof DeleteWebhooksAcceptLanguageEnum[keyof typeof DeleteWebhooksAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetWebhookAnalyticsProjectsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetWebhookAnalyticsProjectsAcceptLanguageEnum = typeof GetWebhookAnalyticsProjectsAcceptLanguageEnum[keyof typeof GetWebhookAnalyticsProjectsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetWebhookAnalyticsWebhooksAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetWebhookAnalyticsWebhooksAcceptLanguageEnum = typeof GetWebhookAnalyticsWebhooksAcceptLanguageEnum[keyof typeof GetWebhookAnalyticsWebhooksAcceptLanguageEnum];
 /**
  * @export
  */

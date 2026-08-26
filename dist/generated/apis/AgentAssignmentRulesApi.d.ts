@@ -11,35 +11,31 @@
  */
 import * as runtime from '../runtime';
 import type { AgentAssignmentRuleResponseDto, AgentAssignmentRulesListDto, CreateAgentAssignmentRuleDto, SuccessResponseDto, UpdateAgentAssignmentRuleDto } from '../models/index';
-export interface AgentAssignmentRequest {
+export interface AgentAssignmentRulesCreateRequest {
     projectId: string;
     createAgentAssignmentRuleDto: CreateAgentAssignmentRuleDto;
-    acceptLanguage?: AgentAssignmentAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesCreateAcceptLanguageEnum;
 }
-export interface DeleteAgentAssignmentRequest {
-    projectId: string;
+export interface AgentAssignmentRulesDeactivateRequest {
     ruleId: string;
-    acceptLanguage?: DeleteAgentAssignmentAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesDeactivateAcceptLanguageEnum;
 }
-export interface GetAgentAssignmentRequest {
-    projectId: string;
-    acceptLanguage?: GetAgentAssignmentAcceptLanguageEnum;
-}
-export interface GetAgentAssignment2Request {
-    projectId: string;
+export interface AgentAssignmentRulesGetByIdRequest {
     ruleId: string;
-    acceptLanguage?: GetAgentAssignment2AcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesGetByIdAcceptLanguageEnum;
 }
-export interface UpdateAgentAssignmentRequest {
+export interface AgentAssignmentRulesListRequest {
     projectId: string;
+    acceptLanguage?: AgentAssignmentRulesListAcceptLanguageEnum;
+}
+export interface AgentAssignmentRulesUpdateRequest {
     ruleId: string;
     updateAgentAssignmentRuleDto: UpdateAgentAssignmentRuleDto;
-    acceptLanguage?: UpdateAgentAssignmentAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesUpdateAcceptLanguageEnum;
 }
-export interface UpdateAgentAssignmentRestoreRequest {
-    projectId: string;
+export interface AgentAssignmentRulesUpdateRestoreRequest {
     ruleId: string;
-    acceptLanguage?: UpdateAgentAssignmentRestoreAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum;
 }
 /**
  *
@@ -49,108 +45,108 @@ export declare class AgentAssignmentRulesApi extends runtime.BaseAPI {
      * . channel_id segment_id; , .
      *
      */
-    agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
+    agentAssignmentRulesCreateRaw(requestParameters: AgentAssignmentRulesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
      * . channel_id segment_id; , .
      *
      */
-    agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
+    agentAssignmentRulesCreate(requestParameters: AgentAssignmentRulesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
     /**
      *
      *
      */
-    deleteAgentAssignmentRaw(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    agentAssignmentRulesDeactivateRaw(requestParameters: AgentAssignmentRulesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
      *
      *
      */
-    deleteAgentAssignment(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
-    /**
-     * : , .
-     *
-     */
-    getAgentAssignmentRaw(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>>;
-    /**
-     * : , .
-     *
-     */
-    getAgentAssignment(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto>;
+    agentAssignmentRulesDeactivate(requestParameters: AgentAssignmentRulesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
      *
      * ID
      */
-    getAgentAssignment2Raw(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
+    agentAssignmentRulesGetByIdRaw(requestParameters: AgentAssignmentRulesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
      *
      * ID
      */
-    getAgentAssignment2(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
+    agentAssignmentRulesGetById(requestParameters: AgentAssignmentRulesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
+    /**
+     * : , .
+     *
+     */
+    agentAssignmentRulesListRaw(requestParameters: AgentAssignmentRulesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>>;
+    /**
+     * : , .
+     *
+     */
+    agentAssignmentRulesList(requestParameters: AgentAssignmentRulesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto>;
     /**
      * ,
      *
      */
-    updateAgentAssignmentRaw(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
+    agentAssignmentRulesUpdateRaw(requestParameters: AgentAssignmentRulesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
      * ,
      *
      */
-    updateAgentAssignment(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
+    agentAssignmentRulesUpdate(requestParameters: AgentAssignmentRulesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
     /**
      *
      *
      */
-    updateAgentAssignmentRestoreRaw(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
+    agentAssignmentRulesUpdateRestoreRaw(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
      *
      *
      */
-    updateAgentAssignmentRestore(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
+    agentAssignmentRulesUpdateRestore(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
 }
 /**
  * @export
  */
-export declare const AgentAssignmentAcceptLanguageEnum: {
+export declare const AgentAssignmentRulesCreateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentAssignmentAcceptLanguageEnum = typeof AgentAssignmentAcceptLanguageEnum[keyof typeof AgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesCreateAcceptLanguageEnum = typeof AgentAssignmentRulesCreateAcceptLanguageEnum[keyof typeof AgentAssignmentRulesCreateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeleteAgentAssignmentAcceptLanguageEnum: {
+export declare const AgentAssignmentRulesDeactivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteAgentAssignmentAcceptLanguageEnum = typeof DeleteAgentAssignmentAcceptLanguageEnum[keyof typeof DeleteAgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesDeactivateAcceptLanguageEnum = typeof AgentAssignmentRulesDeactivateAcceptLanguageEnum[keyof typeof AgentAssignmentRulesDeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAgentAssignmentAcceptLanguageEnum: {
+export declare const AgentAssignmentRulesGetByIdAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAgentAssignmentAcceptLanguageEnum = typeof GetAgentAssignmentAcceptLanguageEnum[keyof typeof GetAgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesGetByIdAcceptLanguageEnum = typeof AgentAssignmentRulesGetByIdAcceptLanguageEnum[keyof typeof AgentAssignmentRulesGetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAgentAssignment2AcceptLanguageEnum: {
+export declare const AgentAssignmentRulesListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAgentAssignment2AcceptLanguageEnum = typeof GetAgentAssignment2AcceptLanguageEnum[keyof typeof GetAgentAssignment2AcceptLanguageEnum];
+export type AgentAssignmentRulesListAcceptLanguageEnum = typeof AgentAssignmentRulesListAcceptLanguageEnum[keyof typeof AgentAssignmentRulesListAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAgentAssignmentAcceptLanguageEnum: {
+export declare const AgentAssignmentRulesUpdateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAgentAssignmentAcceptLanguageEnum = typeof UpdateAgentAssignmentAcceptLanguageEnum[keyof typeof UpdateAgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesUpdateAcceptLanguageEnum = typeof AgentAssignmentRulesUpdateAcceptLanguageEnum[keyof typeof AgentAssignmentRulesUpdateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAgentAssignmentRestoreAcceptLanguageEnum: {
+export declare const AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAgentAssignmentRestoreAcceptLanguageEnum = typeof UpdateAgentAssignmentRestoreAcceptLanguageEnum[keyof typeof UpdateAgentAssignmentRestoreAcceptLanguageEnum];
+export type AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum[keyof typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum];

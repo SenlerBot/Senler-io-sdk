@@ -11,55 +11,53 @@
  */
 import * as runtime from '../runtime';
 import type { ChannelHistoryScanDto, ChannelHistoryScanResponseDto } from '../models/index';
-export interface ChannelsHistoryScanRequest {
-    projectId: string;
+export interface GetHistoryScanRequest {
+    channelId: string;
+    acceptLanguage?: GetHistoryScanAcceptLanguageEnum;
+}
+export interface HistoryScanRequest {
     channelId: string;
     channelHistoryScanDto: ChannelHistoryScanDto;
-    acceptLanguage?: ChannelsHistoryScanAcceptLanguageEnum;
-}
-export interface GetChannelsHistoryScanRequest {
-    projectId: string;
-    channelId: string;
-    acceptLanguage?: GetChannelsHistoryScanAcceptLanguageEnum;
+    acceptLanguage?: HistoryScanAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class ChannelsHistoryApi extends runtime.BaseAPI {
     /**
-     * depth_days. Telegram bot token Widget realtime-only .
+     * coverage/status : , , .
      * scan
      */
-    channelsHistoryScanRaw(requestParameters: ChannelsHistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelHistoryScanResponseDto>>;
-    /**
-     * depth_days. Telegram bot token Widget realtime-only .
-     * scan
-     */
-    channelsHistoryScan(requestParameters: ChannelsHistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelHistoryScanResponseDto>;
+    getHistoryScanRaw(requestParameters: GetHistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelHistoryScanResponseDto>>;
     /**
      * coverage/status : , , .
      * scan
      */
-    getChannelsHistoryScanRaw(requestParameters: GetChannelsHistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelHistoryScanResponseDto>>;
+    getHistoryScan(requestParameters: GetHistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelHistoryScanResponseDto>;
     /**
-     * coverage/status : , , .
+     * depth_days. Telegram bot token Widget realtime-only .
      * scan
      */
-    getChannelsHistoryScan(requestParameters: GetChannelsHistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelHistoryScanResponseDto>;
+    historyScanRaw(requestParameters: HistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelHistoryScanResponseDto>>;
+    /**
+     * depth_days. Telegram bot token Widget realtime-only .
+     * scan
+     */
+    historyScan(requestParameters: HistoryScanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelHistoryScanResponseDto>;
 }
 /**
  * @export
  */
-export declare const ChannelsHistoryScanAcceptLanguageEnum: {
+export declare const GetHistoryScanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type ChannelsHistoryScanAcceptLanguageEnum = typeof ChannelsHistoryScanAcceptLanguageEnum[keyof typeof ChannelsHistoryScanAcceptLanguageEnum];
+export type GetHistoryScanAcceptLanguageEnum = typeof GetHistoryScanAcceptLanguageEnum[keyof typeof GetHistoryScanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetChannelsHistoryScanAcceptLanguageEnum: {
+export declare const HistoryScanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetChannelsHistoryScanAcceptLanguageEnum = typeof GetChannelsHistoryScanAcceptLanguageEnum[keyof typeof GetChannelsHistoryScanAcceptLanguageEnum];
+export type HistoryScanAcceptLanguageEnum = typeof HistoryScanAcceptLanguageEnum[keyof typeof HistoryScanAcceptLanguageEnum];

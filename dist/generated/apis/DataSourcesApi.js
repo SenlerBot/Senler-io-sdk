@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ValidateAcceptLanguageEnum = exports.GetActiveForTrainingAcceptLanguageEnum = exports.DataSourcesUpdateRestoreAcceptLanguageEnum = exports.DataSourcesUpdateAcceptLanguageEnum = exports.DataSourcesListAcceptLanguageEnum = exports.DataSourcesGetByIdAcceptLanguageEnum = exports.DataSourcesDeactivateAcceptLanguageEnum = exports.DataSourcesCreateAcceptLanguageEnum = exports.BindWebsiteAcceptLanguageEnum = exports.DataSourcesApi = void 0;
+exports.GetActiveForTrainingAcceptLanguageEnum = exports.DataSourcesValidateAcceptLanguageEnum = exports.DataSourcesUpdateRestoreAcceptLanguageEnum = exports.DataSourcesUpdateAcceptLanguageEnum = exports.DataSourcesListAcceptLanguageEnum = exports.DataSourcesGetByIdAcceptLanguageEnum = exports.DataSourcesDeactivateAcceptLanguageEnum = exports.DataSourcesCreateAcceptLanguageEnum = exports.BindWebsiteAcceptLanguageEnum = exports.DataSourcesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -357,6 +357,46 @@ class DataSourcesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     *
+     *
+     */
+    async dataSourcesValidateRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling dataSourcesValidate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_data_sources"]);
+        }
+        const response = await this.request({
+            path: `/api/data-sources/{id}/validate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateDataSourceResultDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     *
+     */
+    async dataSourcesValidate(requestParameters, initOverrides) {
+        const response = await this.dataSourcesValidateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * ,
      *
      */
@@ -397,46 +437,6 @@ class DataSourcesApi extends runtime.BaseAPI {
      */
     async getActiveForTraining(requestParameters, initOverrides) {
         const response = await this.getActiveForTrainingRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     *
-     *
-     */
-    async validateRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling validate().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_data_sources"]);
-        }
-        const response = await this.request({
-            path: `/api/data-sources/{id}/validate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ValidateDataSourceResultDtoFromJSON)(jsonValue));
-    }
-    /**
-     *
-     *
-     */
-    async validate(requestParameters, initOverrides) {
-        const response = await this.validateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -493,14 +493,14 @@ exports.DataSourcesUpdateRestoreAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetActiveForTrainingAcceptLanguageEnum = {
+exports.DataSourcesValidateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ValidateAcceptLanguageEnum = {
+exports.GetActiveForTrainingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

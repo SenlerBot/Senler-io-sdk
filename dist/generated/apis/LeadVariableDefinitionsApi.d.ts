@@ -10,17 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateLeadVariableDefinitionDto, DeleteVariables200Response, LeadVariableDefinitionListResponseDto, LeadVariableDefinitionResponseDto, UpdateLeadVariableDefinitionDto } from '../models/index';
-export interface GetById2Request {
-    projectId: string;
-    name: string;
-    acceptLanguage?: GetById2AcceptLanguageEnum;
-}
-export interface GetByIdsRequest {
-    projectId: string;
-    ids: Array<string>;
-    acceptLanguage?: GetByIdsAcceptLanguageEnum;
-}
+import type { CreateLeadVariableDefinitionDto, Deactivate200Response, LeadVariableDefinitionListResponseDto, LeadVariableDefinitionResponseDto, UpdateLeadVariableDefinitionDto } from '../models/index';
 export interface LeadVariableDefinitionsCreateRequest {
     projectId: string;
     createLeadVariableDefinitionDto: CreateLeadVariableDefinitionDto;
@@ -33,10 +23,20 @@ export interface LeadVariableDefinitionsDeactivateRequest {
 }
 export interface LeadVariableDefinitionsGetByIdRequest {
     projectId: string;
-    search?: string;
-    limit?: number;
-    page?: number;
+    name: string;
     acceptLanguage?: LeadVariableDefinitionsGetByIdAcceptLanguageEnum;
+}
+export interface LeadVariableDefinitionsGetByIdsRequest {
+    projectId: string;
+    ids: Array<string>;
+    acceptLanguage?: LeadVariableDefinitionsGetByIdsAcceptLanguageEnum;
+}
+export interface LeadVariableDefinitionsListRequest {
+    projectId: string;
+    page?: number;
+    limit?: number;
+    search?: string;
+    acceptLanguage?: LeadVariableDefinitionsListAcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsUpdateRequest {
     projectId: string;
@@ -52,26 +52,6 @@ export declare class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      *
      *
      */
-    getById2Raw(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>>;
-    /**
-     *
-     *
-     */
-    getById2(requestParameters: GetById2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto>;
-    /**
-     * ID
-     * ID
-     */
-    getByIdsRaw(requestParameters: GetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadVariableDefinitionResponseDto>>>;
-    /**
-     * ID
-     * ID
-     */
-    getByIds(requestParameters: GetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableDefinitionResponseDto>>;
-    /**
-     *
-     *
-     */
     leadVariableDefinitionsCreateRaw(requestParameters: LeadVariableDefinitionsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>>;
     /**
      *
@@ -82,22 +62,42 @@ export declare class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      *
      *
      */
-    leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteVariables200Response>>;
+    leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
     /**
      *
      *
      */
-    leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteVariables200Response>;
+    leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
     /**
      *
      *
      */
-    leadVariableDefinitionsGetByIdRaw(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>>;
+    leadVariableDefinitionsGetByIdRaw(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionResponseDto>>;
     /**
      *
      *
      */
-    leadVariableDefinitionsGetById(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto>;
+    leadVariableDefinitionsGetById(requestParameters: LeadVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto>;
+    /**
+     * ID
+     * ID
+     */
+    leadVariableDefinitionsGetByIdsRaw(requestParameters: LeadVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadVariableDefinitionResponseDto>>>;
+    /**
+     * ID
+     * ID
+     */
+    leadVariableDefinitionsGetByIds(requestParameters: LeadVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableDefinitionResponseDto>>;
+    /**
+     *
+     *
+     */
+    leadVariableDefinitionsListRaw(requestParameters: LeadVariableDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>>;
+    /**
+     *
+     *
+     */
+    leadVariableDefinitionsList(requestParameters: LeadVariableDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto>;
     /**
      *
      *
@@ -109,22 +109,6 @@ export declare class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      */
     leadVariableDefinitionsUpdate(requestParameters: LeadVariableDefinitionsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionResponseDto>;
 }
-/**
- * @export
- */
-export declare const GetById2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetById2AcceptLanguageEnum = typeof GetById2AcceptLanguageEnum[keyof typeof GetById2AcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetByIdsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetByIdsAcceptLanguageEnum = typeof GetByIdsAcceptLanguageEnum[keyof typeof GetByIdsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -149,6 +133,22 @@ export declare const LeadVariableDefinitionsGetByIdAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LeadVariableDefinitionsGetByIdAcceptLanguageEnum = typeof LeadVariableDefinitionsGetByIdAcceptLanguageEnum[keyof typeof LeadVariableDefinitionsGetByIdAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariableDefinitionsGetByIdsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariableDefinitionsGetByIdsAcceptLanguageEnum = typeof LeadVariableDefinitionsGetByIdsAcceptLanguageEnum[keyof typeof LeadVariableDefinitionsGetByIdsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariableDefinitionsListAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariableDefinitionsListAcceptLanguageEnum = typeof LeadVariableDefinitionsListAcceptLanguageEnum[keyof typeof LeadVariableDefinitionsListAcceptLanguageEnum];
 /**
  * @export
  */

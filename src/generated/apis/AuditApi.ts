@@ -25,14 +25,14 @@ import {
     ErrorResponseToJSON,
 } from '../models/index';
 
-export interface GetAuditRequest {
+export interface AuditListRequest {
     projectId: string;
-    entityType?: GetAuditEntityTypeEnum;
+    entityType?: AuditListEntityTypeEnum;
     entityId?: string;
     actorId?: string;
     before?: string;
     limit?: number;
-    acceptLanguage?: GetAuditAcceptLanguageEnum;
+    acceptLanguage?: AuditListAcceptLanguageEnum;
 }
 
 /**
@@ -44,15 +44,19 @@ export class AuditApi extends runtime.BaseAPI {
      * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
-    async getAuditRaw(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditLogListResponseDto>> {
+    async auditListRaw(requestParameters: AuditListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditLogListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAudit().'
+                'Required parameter "projectId" was null or undefined when calling auditList().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         if (requestParameters['entityType'] != null) {
             queryParameters['entity_type'] = requestParameters['entityType'];
@@ -94,7 +98,7 @@ export class AuditApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/audit`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/audit`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -107,8 +111,8 @@ export class AuditApi extends runtime.BaseAPI {
      * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
-    async getAudit(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto> {
-        const response = await this.getAuditRaw(requestParameters, initOverrides);
+    async auditList(requestParameters: AuditListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto> {
+        const response = await this.auditListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -117,7 +121,7 @@ export class AuditApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const GetAuditEntityTypeEnum = {
+export const AuditListEntityTypeEnum = {
     Project: 'project',
     Agent: 'agent',
     Channel: 'channel',
@@ -147,12 +151,12 @@ export const GetAuditEntityTypeEnum = {
     SummarizationSettings: 'summarization_settings',
     TrafficMark: 'traffic_mark'
 } as const;
-export type GetAuditEntityTypeEnum = typeof GetAuditEntityTypeEnum[keyof typeof GetAuditEntityTypeEnum];
+export type AuditListEntityTypeEnum = typeof AuditListEntityTypeEnum[keyof typeof AuditListEntityTypeEnum];
 /**
  * @export
  */
-export const GetAuditAcceptLanguageEnum = {
+export const AuditListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAuditAcceptLanguageEnum = typeof GetAuditAcceptLanguageEnum[keyof typeof GetAuditAcceptLanguageEnum];
+export type AuditListAcceptLanguageEnum = typeof AuditListAcceptLanguageEnum[keyof typeof AuditListAcceptLanguageEnum];

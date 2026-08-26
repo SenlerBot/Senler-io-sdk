@@ -112,6 +112,7 @@ export interface TariffSubscriptionDto {
 export declare const TariffSubscriptionDtoStatusEnum: {
     readonly Active: "active";
     readonly Scheduled: "scheduled";
+    readonly Prepaid: "prepaid";
     readonly Cancelled: "cancelled";
     readonly Expired: "expired";
 };

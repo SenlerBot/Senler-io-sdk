@@ -77,16 +77,21 @@ export interface ActivateRequest {
     acceptLanguage?: ActivateAcceptLanguageEnum;
 }
 
+export interface AgentsDeactivateRequest {
+    id: string;
+    acceptLanguage?: AgentsDeactivateAcceptLanguageEnum;
+}
+
+export interface AgentsGetByIdRequest {
+    id: string;
+    acceptLanguage?: AgentsGetByIdAcceptLanguageEnum;
+}
+
 export interface AgentsListRequest {
     projectId: string;
     limit?: number;
     offset?: number;
     acceptLanguage?: AgentsListAcceptLanguageEnum;
-}
-
-export interface DeactivateRequest {
-    id: string;
-    acceptLanguage?: DeactivateAcceptLanguageEnum;
 }
 
 export interface Deactivate2Request {
@@ -106,11 +111,6 @@ export interface GetAutoAssignmentPreviewRequest {
     autoAssignmentDialogScope?: GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
     autoAssignmentRole?: GetAutoAssignmentPreviewAutoAssignmentRoleEnum;
     acceptLanguage?: GetAutoAssignmentPreviewAcceptLanguageEnum;
-}
-
-export interface GetByIdRequest {
-    id: string;
-    acceptLanguage?: GetByIdAcceptLanguageEnum;
 }
 
 export interface GetByListRequest {
@@ -287,6 +287,109 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . can_manage_agents.
+     *
+     */
+    async agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling agentsDeactivate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.agentsDeactivateRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * .
+     * ID
+     */
+    async agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling agentsGetById().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * ID
+     */
+    async agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
+        const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . .
      *
      */
@@ -348,57 +451,6 @@ export class AgentsApi extends runtime.BaseAPI {
     async agentsList(requestParameters: AgentsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto> {
         const response = await this.agentsListRaw(requestParameters, initOverrides);
         return await response.value();
-    }
-
-    /**
-     * . can_manage_agents.
-     *
-     */
-    async deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deactivate().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * . can_manage_agents.
-     *
-     */
-    async deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deactivateRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -576,58 +628,6 @@ export class AgentsApi extends runtime.BaseAPI {
      */
     async getAutoAssignmentPreview(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto> {
         const response = await this.getAutoAssignmentPreviewRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * .
-     * ID
-     */
-    async getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling getById().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     * ID
-     */
-    async getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
-        const response = await this.getByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1316,19 +1316,27 @@ export type ActivateAcceptLanguageEnum = typeof ActivateAcceptLanguageEnum[keyof
 /**
  * @export
  */
+export const AgentsDeactivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AgentsDeactivateAcceptLanguageEnum = typeof AgentsDeactivateAcceptLanguageEnum[keyof typeof AgentsDeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const AgentsGetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AgentsGetByIdAcceptLanguageEnum = typeof AgentsGetByIdAcceptLanguageEnum[keyof typeof AgentsGetByIdAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const AgentsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type AgentsListAcceptLanguageEnum = typeof AgentsListAcceptLanguageEnum[keyof typeof AgentsListAcceptLanguageEnum];
-/**
- * @export
- */
-export const DeactivateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeactivateAcceptLanguageEnum = typeof DeactivateAcceptLanguageEnum[keyof typeof DeactivateAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1379,14 +1387,6 @@ export const GetAutoAssignmentPreviewAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetAutoAssignmentPreviewAcceptLanguageEnum = typeof GetAutoAssignmentPreviewAcceptLanguageEnum[keyof typeof GetAutoAssignmentPreviewAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetByIdAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetByIdAcceptLanguageEnum = typeof GetByIdAcceptLanguageEnum[keyof typeof GetByIdAcceptLanguageEnum];
 /**
  * @export
  */

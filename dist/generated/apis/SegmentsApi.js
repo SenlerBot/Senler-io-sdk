@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = exports.UpdateSegmentsAcceptLanguageEnum = exports.SegmentsLeadsAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.SegmentsConsentDocumentsAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.GetSegmentsSubscriptionLinksAcceptLanguageEnum = exports.GetSegmentsReferencesAcceptLanguageEnum = exports.GetSegmentsMembershipEventsAcceptLanguageEnum = exports.GetSegmentsMembersAcceptLanguageEnum = exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesAcceptLanguageEnum = exports.GetSegmentsConsentTemplatesLocaleEnum = exports.GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = exports.GetSegmentsConsentDocumentsAcceptLanguageEnum = exports.GetSegments2AcceptLanguageEnum = exports.GetSegmentsAcceptLanguageEnum = exports.DeleteSegmentsLeadsAcceptLanguageEnum = exports.DeleteSegmentsConsentDocumentsAcceptLanguageEnum = exports.DeleteSegmentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
+exports.UpdateConsentDocumentsAcceptLanguageEnum = exports.SegmentsUpdateAcceptLanguageEnum = exports.SegmentsListAcceptLanguageEnum = exports.SegmentsGetMembersAcceptLanguageEnum = exports.SegmentsGetByIdAcceptLanguageEnum = exports.SegmentsDeactivateAcceptLanguageEnum = exports.SegmentsCreateAcceptLanguageEnum = exports.LeadsAcceptLanguageEnum = exports.GetSubscriptionLinksAcceptLanguageEnum = exports.GetReferencesAcceptLanguageEnum = exports.GetMembershipEventsAcceptLanguageEnum = exports.GetConsentTemplatesAcceptLanguageEnum = exports.GetConsentTemplatesLocaleEnum = exports.GetConsentDocumentsVersionsAcceptLanguageEnum = exports.GetConsentDocumentsAcceptLanguageEnum = exports.DeleteLeadsAcceptLanguageEnum = exports.DeleteConsentDocumentsAcceptLanguageEnum = exports.ConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.ConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.ConsentDocumentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,18 +54,22 @@ const index_1 = require("../models/index");
  */
 class SegmentsApi extends runtime.BaseAPI {
     /**
-     * deleted_at .
+     * .
      *
      */
-    async deleteSegmentsRaw(requestParameters, initOverrides) {
+    async consentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteSegments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling consentDocuments().');
         }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteSegments().');
+        if (requestParameters['createSegmentConsentDocumentDto'] == null) {
+            throw new runtime.RequiredError('createSegmentConsentDocumentDto', 'Required parameter "createSegmentConsentDocumentDto" was null or undefined when calling consentDocuments().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -78,34 +82,128 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
+            path: `/api/segments/consent-documents`,
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: (0, index_1.CreateSegmentConsentDocumentDtoToJSON)(requestParameters['createSegmentConsentDocumentDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentConsentDocumentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * deleted_at .
+     * .
      *
      */
-    async deleteSegments(requestParameters, initOverrides) {
-        const response = await this.deleteSegmentsRaw(requestParameters, initOverrides);
+    async consentDocuments(requestParameters, initOverrides) {
+        const response = await this.consentDocumentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * S3 .
+     * PDF-
+     */
+    async consentDocumentsAssetsConfirmRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling consentDocumentsAssetsConfirm().');
+        }
+        if (requestParameters['confirmS3UploadDto'] == null) {
+            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling consentDocumentsAssetsConfirm().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
+        }
+        const response = await this.request({
+            path: `/api/segments/consent-documents/assets/confirm`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ConfirmS3UploadDtoToJSON)(requestParameters['confirmS3UploadDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentConsentDocumentUploadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * S3 .
+     * PDF-
+     */
+    async consentDocumentsAssetsConfirm(requestParameters, initOverrides) {
+        const response = await this.consentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PDF S3- .
+     * S3- PDF-
+     */
+    async consentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling consentDocumentsAssetsUploadUrl().');
+        }
+        if (requestParameters['getSegmentConsentDocumentUploadUrlDto'] == null) {
+            throw new runtime.RequiredError('getSegmentConsentDocumentUploadUrlDto', 'Required parameter "getSegmentConsentDocumentUploadUrlDto" was null or undefined when calling consentDocumentsAssetsUploadUrl().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
+        }
+        const response = await this.request({
+            path: `/api/segments/consent-documents/assets/upload-url`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.GetSegmentConsentDocumentUploadUrlDtoToJSON)(requestParameters['getSegmentConsentDocumentUploadUrlDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PDF S3- .
+     * S3- PDF-
+     */
+    async consentDocumentsAssetsUploadUrl(requestParameters, initOverrides) {
+        const response = await this.consentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . .
      *
      */
-    async deleteSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteSegmentsConsentDocuments().');
-        }
+    async deleteConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling deleteSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling deleteConsentDocuments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -121,10 +219,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents/{documentId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
+            path: `/api/segments/consent-documents/{documentId}`.replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -135,23 +233,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async deleteSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.deleteSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async deleteConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.deleteConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * manual.
      *
      */
-    async deleteSegmentsLeadsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteSegmentsLeads().');
-        }
+    async deleteLeadsRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteSegmentsLeads().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteLeads().');
         }
         if (requestParameters['leadId'] == null) {
-            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling deleteSegmentsLeads().');
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling deleteLeads().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -167,10 +262,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/leads/{leadId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            path: `/api/segments/{id}/leads/{leadId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -181,19 +276,22 @@ class SegmentsApi extends runtime.BaseAPI {
      * manual.
      *
      */
-    async deleteSegmentsLeads(requestParameters, initOverrides) {
-        const response = await this.deleteSegmentsLeadsRaw(requestParameters, initOverrides);
+    async deleteLeads(requestParameters, initOverrides) {
+        const response = await this.deleteLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * . .
+     * .
      *
      */
-    async getSegmentsRaw(requestParameters, initOverrides) {
+    async getConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getConsentDocuments().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -210,90 +308,7 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentsListResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . .
-     *
-     */
-    async getSegments(requestParameters, initOverrides) {
-        const response = await this.getSegmentsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async getSegments2Raw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegments2().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegments2().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async getSegments2(requestParameters, initOverrides) {
-        const response = await this.getSegments2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async getSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsConsentDocuments().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/segments/consent-documents`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -304,20 +319,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.getSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async getConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.getConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsConsentDocumentsVersions().');
-        }
+    async getConsentDocumentsVersionsRaw(requestParameters, initOverrides) {
         if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getSegmentsConsentDocumentsVersions().');
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getConsentDocumentsVersions().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -336,7 +348,7 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents/{documentId}/versions`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
+            path: `/api/segments/consent-documents/{documentId}/versions`.replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -347,19 +359,22 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsConsentDocumentsVersions(requestParameters, initOverrides) {
-        const response = await this.getSegmentsConsentDocumentsVersionsRaw(requestParameters, initOverrides);
+    async getConsentDocumentsVersions(requestParameters, initOverrides) {
+        const response = await this.getConsentDocumentsVersionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . , .
      *
      */
-    async getSegmentsConsentTemplatesRaw(requestParameters, initOverrides) {
+    async getConsentTemplatesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsConsentTemplates().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getConsentTemplates().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         if (requestParameters['locale'] != null) {
             queryParameters['locale'] = requestParameters['locale'];
         }
@@ -379,7 +394,7 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-templates`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/segments/consent-templates`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -390,63 +405,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * . , .
      *
      */
-    async getSegmentsConsentTemplates(requestParameters, initOverrides) {
-        const response = await this.getSegmentsConsentTemplatesRaw(requestParameters, initOverrides);
+    async getConsentTemplates(requestParameters, initOverrides) {
+        const response = await this.getConsentTemplatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsLeadsConsentAcceptances().');
-        }
-        if (requestParameters['leadId'] == null) {
-            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling getSegmentsLeadsConsentAcceptances().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/leads/{leadId}/consent-acceptances`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentLeadConsentAcceptancesResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async getSegmentsLeadsConsentAcceptances(requestParameters, initOverrides) {
-        const response = await this.getSegmentsLeadsConsentAcceptancesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * , .
-     *
-     */
-    async getSegmentsMembersRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsMembers().');
-        }
+    async getMembershipEventsRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsMembers().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getMembershipEvents().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -465,50 +434,7 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/members`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.LeadResponseDtoFromJSON));
-    }
-    /**
-     * , .
-     *
-     */
-    async getSegmentsMembers(requestParameters, initOverrides) {
-        const response = await this.getSegmentsMembersRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async getSegmentsMembershipEventsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsMembershipEvents().');
-        }
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsMembershipEvents().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/membership-events`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/segments/{id}/membership-events`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -519,22 +445,25 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getSegmentsMembershipEvents(requestParameters, initOverrides) {
-        const response = await this.getSegmentsMembershipEventsRaw(requestParameters, initOverrides);
+    async getMembershipEvents(requestParameters, initOverrides) {
+        const response = await this.getMembershipEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      *
      */
-    async getSegmentsReferencesRaw(requestParameters, initOverrides) {
+    async getReferencesRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsReferences().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getReferences().');
         }
         if (requestParameters['ids'] == null) {
-            throw new runtime.RequiredError('ids', 'Required parameter "ids" was null or undefined when calling getSegmentsReferences().');
+            throw new runtime.RequiredError('ids', 'Required parameter "ids" was null or undefined when calling getReferences().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         if (requestParameters['ids'] != null) {
             queryParameters['ids'] = requestParameters['ids'];
         }
@@ -554,7 +483,7 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/references`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/segments/references`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -565,20 +494,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getSegmentsReferences(requestParameters, initOverrides) {
-        const response = await this.getSegmentsReferencesRaw(requestParameters, initOverrides);
+    async getReferences(requestParameters, initOverrides) {
+        const response = await this.getReferencesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * . Mini App- .
      *
      */
-    async getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSegmentsSubscriptionLinks().');
-        }
+    async getSubscriptionLinksRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSegmentsSubscriptionLinks().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getSubscriptionLinks().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -597,7 +523,7 @@ class SegmentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/subscription-links`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/segments/{id}/subscription-links`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -608,22 +534,68 @@ class SegmentsApi extends runtime.BaseAPI {
      * . Mini App- .
      *
      */
-    async getSegmentsSubscriptionLinks(requestParameters, initOverrides) {
-        const response = await this.getSegmentsSubscriptionLinksRaw(requestParameters, initOverrides);
+    async getSubscriptionLinks(requestParameters, initOverrides) {
+        const response = await this.getSubscriptionLinksRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * manual.
+     *
+     */
+    async leadsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling leads().');
+        }
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling leads().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
+        }
+        const response = await this.request({
+            path: `/api/segments/{id}/leads/{leadId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * manual.
+     *
+     */
+    async leads(requestParameters, initOverrides) {
+        const response = await this.leadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      *
      */
-    async segmentsRaw(requestParameters, initOverrides) {
+    async segmentsCreateRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segments().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsCreate().');
         }
         if (requestParameters['createSegmentDto'] == null) {
-            throw new runtime.RequiredError('createSegmentDto', 'Required parameter "createSegmentDto" was null or undefined when calling segments().');
+            throw new runtime.RequiredError('createSegmentDto', 'Required parameter "createSegmentDto" was null or undefined when calling segmentsCreate().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['acceptLanguage'] != null) {
@@ -638,10 +610,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/segments`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -653,158 +625,17 @@ class SegmentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async segments(requestParameters, initOverrides) {
-        const response = await this.segmentsRaw(requestParameters, initOverrides);
+    async segmentsCreate(requestParameters, initOverrides) {
+        const response = await this.segmentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * .
+     * deleted_at .
      *
      */
-    async segmentsConsentDocumentsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsConsentDocuments().');
-        }
-        if (requestParameters['createSegmentConsentDocumentDto'] == null) {
-            throw new runtime.RequiredError('createSegmentConsentDocumentDto', 'Required parameter "createSegmentConsentDocumentDto" was null or undefined when calling segmentsConsentDocuments().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.CreateSegmentConsentDocumentDtoToJSON)(requestParameters['createSegmentConsentDocumentDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentConsentDocumentResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async segmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.segmentsConsentDocumentsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * S3 .
-     * PDF-
-     */
-    async segmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsConsentDocumentsAssetsConfirm().');
-        }
-        if (requestParameters['confirmS3UploadDto'] == null) {
-            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling segmentsConsentDocumentsAssetsConfirm().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents/assets/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.ConfirmS3UploadDtoToJSON)(requestParameters['confirmS3UploadDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentConsentDocumentUploadResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * S3 .
-     * PDF-
-     */
-    async segmentsConsentDocumentsAssetsConfirm(requestParameters, initOverrides) {
-        const response = await this.segmentsConsentDocumentsAssetsConfirmRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * PDF S3- .
-     * S3- PDF-
-     */
-    async segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsConsentDocumentsAssetsUploadUrl().');
-        }
-        if (requestParameters['getSegmentConsentDocumentUploadUrlDto'] == null) {
-            throw new runtime.RequiredError('getSegmentConsentDocumentUploadUrlDto', 'Required parameter "getSegmentConsentDocumentUploadUrlDto" was null or undefined when calling segmentsConsentDocumentsAssetsUploadUrl().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-        const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents/assets/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.GetSegmentConsentDocumentUploadUrlDtoToJSON)(requestParameters['getSegmentConsentDocumentUploadUrlDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * PDF S3- .
-     * S3- PDF-
-     */
-    async segmentsConsentDocumentsAssetsUploadUrl(requestParameters, initOverrides) {
-        const response = await this.segmentsConsentDocumentsAssetsUploadUrlRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * manual.
-     *
-     */
-    async segmentsLeadsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsLeads().');
-        }
+    async segmentsDeactivateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsLeads().');
-        }
-        if (requestParameters['leadId'] == null) {
-            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling segmentsLeads().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsDeactivate().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -820,37 +651,157 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}/leads/{leadId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
-            method: 'POST',
+            path: `/api/segments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * manual.
+     * deleted_at .
      *
      */
-    async segmentsLeads(requestParameters, initOverrides) {
-        const response = await this.segmentsLeadsRaw(requestParameters, initOverrides);
+    async segmentsDeactivate(requestParameters, initOverrides) {
+        const response = await this.segmentsDeactivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async updateSegmentsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSegments().');
-        }
+    async segmentsGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateSegments().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsGetById().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/segments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async segmentsGetById(requestParameters, initOverrides) {
+        const response = await this.segmentsGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async segmentsGetMembersRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsGetMembers().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/segments/{id}/members`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.LeadResponseDtoFromJSON));
+    }
+    /**
+     * , .
+     *
+     */
+    async segmentsGetMembers(requestParameters, initOverrides) {
+        const response = await this.segmentsGetMembersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async segmentsListRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling segmentsList().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/segments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentsListResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async segmentsList(requestParameters, initOverrides) {
+        const response = await this.segmentsListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async segmentsUpdateRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling segmentsUpdate().');
         }
         if (requestParameters['updateSegmentDto'] == null) {
-            throw new runtime.RequiredError('updateSegmentDto', 'Required parameter "updateSegmentDto" was null or undefined when calling updateSegments().');
+            throw new runtime.RequiredError('updateSegmentDto', 'Required parameter "updateSegmentDto" was null or undefined when calling segmentsUpdate().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -867,10 +818,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/segments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -882,23 +833,20 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateSegments(requestParameters, initOverrides) {
-        const response = await this.updateSegmentsRaw(requestParameters, initOverrides);
+    async segmentsUpdate(requestParameters, initOverrides) {
+        const response = await this.segmentsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async updateSegmentsConsentDocumentsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSegmentsConsentDocuments().');
-        }
+    async updateConsentDocumentsRaw(requestParameters, initOverrides) {
         if (requestParameters['documentId'] == null) {
-            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling updateSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling updateConsentDocuments().');
         }
         if (requestParameters['updateSegmentConsentDocumentDto'] == null) {
-            throw new runtime.RequiredError('updateSegmentConsentDocumentDto', 'Required parameter "updateSegmentConsentDocumentDto" was null or undefined when calling updateSegmentsConsentDocuments().');
+            throw new runtime.RequiredError('updateSegmentConsentDocumentDto', 'Required parameter "updateSegmentConsentDocumentDto" was null or undefined when calling updateConsentDocuments().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -915,10 +863,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
-            path: `/api/projects/{projectId}/segments/consent-documents/{documentId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
+            path: `/api/segments/consent-documents/{documentId}`.replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -930,8 +878,8 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateSegmentsConsentDocuments(requestParameters, initOverrides) {
-        const response = await this.updateSegmentsConsentDocumentsRaw(requestParameters, initOverrides);
+    async updateConsentDocuments(requestParameters, initOverrides) {
+        const response = await this.updateConsentDocumentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -939,147 +887,140 @@ exports.SegmentsApi = SegmentsApi;
 /**
  * @export
  */
-exports.DeleteSegmentsAcceptLanguageEnum = {
+exports.ConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.DeleteSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.ConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.DeleteSegmentsLeadsAcceptLanguageEnum = {
+exports.ConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsAcceptLanguageEnum = {
+exports.DeleteConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegments2AcceptLanguageEnum = {
+exports.DeleteLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.GetConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsConsentDocumentsVersionsAcceptLanguageEnum = {
+exports.GetConsentDocumentsVersionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsConsentTemplatesLocaleEnum = {
+exports.GetConsentTemplatesLocaleEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsConsentTemplatesAcceptLanguageEnum = {
+exports.GetConsentTemplatesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsLeadsConsentAcceptancesAcceptLanguageEnum = {
+exports.GetMembershipEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsMembersAcceptLanguageEnum = {
+exports.GetReferencesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsMembershipEventsAcceptLanguageEnum = {
+exports.GetSubscriptionLinksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsReferencesAcceptLanguageEnum = {
+exports.LeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetSegmentsSubscriptionLinksAcceptLanguageEnum = {
+exports.SegmentsCreateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.SegmentsAcceptLanguageEnum = {
+exports.SegmentsDeactivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.SegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.SegmentsGetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.SegmentsConsentDocumentsAssetsConfirmAcceptLanguageEnum = {
+exports.SegmentsGetMembersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.SegmentsConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = {
+exports.SegmentsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.SegmentsLeadsAcceptLanguageEnum = {
+exports.SegmentsUpdateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateSegmentsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateSegmentsConsentDocumentsAcceptLanguageEnum = {
+exports.UpdateConsentDocumentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

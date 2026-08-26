@@ -74,7 +74,7 @@ export class TariffsApi extends runtime.BaseAPI {
     }
 
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise)
+     *
      *
      */
     async getTariffsRaw(requestParameters: GetTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffListResponseDto>> {
@@ -97,7 +97,7 @@ export class TariffsApi extends runtime.BaseAPI {
     }
 
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise)
+     *
      *
      */
     async getTariffs(requestParameters: GetTariffsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffListResponseDto> {

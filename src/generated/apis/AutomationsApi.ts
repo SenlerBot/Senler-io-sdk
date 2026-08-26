@@ -169,302 +169,276 @@ import {
     ValidateAutomationNodeConfigDtoToJSON,
 } from '../models/index';
 
-export interface AutomationsRequest {
-    projectId: string;
-    createAutomationDto: CreateAutomationDto;
-    acceptLanguage?: AutomationsAcceptLanguageEnum;
-}
-
-export interface AutomationsAttachmentsConfirmRequest {
-    projectId: string;
+export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
-    acceptLanguage?: AutomationsAttachmentsConfirmAcceptLanguageEnum;
+    acceptLanguage?: AttachmentsConfirmAcceptLanguageEnum;
 }
 
-export interface AutomationsAttachmentsUploadUrlRequest {
-    projectId: string;
+export interface AttachmentsUploadUrlRequest {
     automationId: string;
     getUploadUrlDto: GetUploadUrlDto;
-    acceptLanguage?: AutomationsAttachmentsUploadUrlAcceptLanguageEnum;
+    acceptLanguage?: AttachmentsUploadUrlAcceptLanguageEnum;
 }
 
 export interface AutomationsAvatarConfirmRequest {
-    projectId: string;
     automationId: string;
     confirmAutomationAvatarUploadDto: ConfirmAutomationAvatarUploadDto;
     acceptLanguage?: AutomationsAvatarConfirmAcceptLanguageEnum;
 }
 
 export interface AutomationsAvatarUploadUrlRequest {
-    projectId: string;
     automationId: string;
     getAutomationAvatarUploadUrlDto: GetAutomationAvatarUploadUrlDto;
     acceptLanguage?: AutomationsAvatarUploadUrlAcceptLanguageEnum;
 }
 
-export interface AutomationsBatchRequest {
+export interface AutomationsCreateRequest {
     projectId: string;
-    automationId: string;
-    applyAutomationBatchDto: ApplyAutomationBatchDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsBatchAcceptLanguageEnum;
+    createAutomationDto: CreateAutomationDto;
+    acceptLanguage?: AutomationsCreateAcceptLanguageEnum;
 }
 
-export interface AutomationsDialogsRunsRealtimeSubscriptionRequest {
-    projectId: string;
-    dialogId: string;
-    acceptLanguage?: AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
+export interface AutomationsDeactivateRequest {
+    automationId: string;
+    acceptLanguage?: AutomationsDeactivateAcceptLanguageEnum;
 }
 
-export interface AutomationsEdgesRequest {
-    projectId: string;
+export interface AutomationsGetByIdRequest {
     automationId: string;
-    createAutomationEdgeDto: CreateAutomationEdgeDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsEdgesAcceptLanguageEnum;
+    acceptLanguage?: AutomationsGetByIdAcceptLanguageEnum;
 }
 
-export interface AutomationsNodesRequest {
-    projectId: string;
+export interface AutomationsGetVersionsRequest {
     automationId: string;
-    createAutomationNodeDto: CreateAutomationNodeDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsNodesAcceptLanguageEnum;
+    limit?: number;
+    beforeVersion?: number;
+    acceptLanguage?: AutomationsGetVersionsAcceptLanguageEnum;
 }
 
-export interface AutomationsNodesValidateRequest {
+export interface AutomationsListRequest {
     projectId: string;
-    automationId: string;
-    validateAutomationNodeConfigDto: ValidateAutomationNodeConfigDto;
-    acceptLanguage?: AutomationsNodesValidateAcceptLanguageEnum;
+    acceptLanguage?: AutomationsListAcceptLanguageEnum;
 }
 
 export interface AutomationsPauseRequest {
-    projectId: string;
     automationId: string;
     acceptLanguage?: AutomationsPauseAcceptLanguageEnum;
 }
 
-export interface AutomationsPublishRequest {
-    projectId: string;
+export interface AutomationsUpdateRequest {
     automationId: string;
-    publishAutomationDto: PublishAutomationDto;
-    acceptLanguage?: AutomationsPublishAcceptLanguageEnum;
+    updateAutomationDto: UpdateAutomationDto;
+    acceptLanguage?: AutomationsUpdateAcceptLanguageEnum;
 }
 
-export interface AutomationsRealtimeSubscriptionRequest {
-    projectId: string;
+export interface BatchRequest {
     automationId: string;
+    applyAutomationBatchDto: ApplyAutomationBatchDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsRealtimeSubscriptionAcceptLanguageEnum;
+    acceptLanguage?: BatchAcceptLanguageEnum;
 }
 
-export interface AutomationsResumeRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: AutomationsResumeAcceptLanguageEnum;
-}
-
-export interface AutomationsRunsRequest {
-    projectId: string;
-    automationId: string;
-    startAutomationRunDto: StartAutomationRunDto;
-    acceptLanguage?: AutomationsRunsAcceptLanguageEnum;
-}
-
-export interface AutomationsRunsCancelRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    acceptLanguage?: AutomationsRunsCancelAcceptLanguageEnum;
-}
-
-export interface AutomationsRunsPauseRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    pauseAutomationRunDto: PauseAutomationRunDto;
-    acceptLanguage?: AutomationsRunsPauseAcceptLanguageEnum;
-}
-
-export interface AutomationsRunsRealtimeSubscriptionRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    acceptLanguage?: AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum;
-}
-
-export interface AutomationsRunsRealtimeSubscription2Request {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: AutomationsRunsRealtimeSubscription2AcceptLanguageEnum;
-}
-
-export interface AutomationsRunsTasksRetryRequest {
-    projectId: string;
-    automationId: string;
-    runId: string;
-    taskId: string;
-    acceptLanguage?: AutomationsRunsTasksRetryAcceptLanguageEnum;
-}
-
-export interface AutomationsTestDialogMessagesRequest {
-    projectId: string;
-    automationId: string;
-    triggerNodeId: string;
-    sendFirstTestMessageDto: SendFirstTestMessageDto;
-    acceptLanguage?: AutomationsTestDialogMessagesAcceptLanguageEnum;
-}
-
-export interface AutomationsTestRunsRequest {
-    projectId: string;
-    automationId: string;
-    testAutomationRunDto: TestAutomationRunDto;
-    acceptLanguage?: AutomationsTestRunsAcceptLanguageEnum;
-}
-
-export interface AutomationsValidateRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: AutomationsValidateAcceptLanguageEnum;
-}
-
-export interface AutomationsVersionsRestoreRequest {
-    projectId: string;
-    automationId: string;
-    versionId: string;
-    restoreAutomationVersionDto: RestoreAutomationVersionDto;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: AutomationsVersionsRestoreAcceptLanguageEnum;
-}
-
-export interface DeleteAutomationsRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: DeleteAutomationsAcceptLanguageEnum;
-}
-
-export interface DeleteAutomationsEdgesRequest {
-    projectId: string;
+export interface DeleteEdgesRequest {
     automationId: string;
     edgeId: string;
     deleteAutomationEdgeDto: DeleteAutomationEdgeDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: DeleteAutomationsEdgesAcceptLanguageEnum;
+    acceptLanguage?: DeleteEdgesAcceptLanguageEnum;
 }
 
-export interface DeleteAutomationsNodesRequest {
-    projectId: string;
+export interface DeleteNodesRequest {
     automationId: string;
     nodeId: string;
     deleteAutomationNodeDto: DeleteAutomationNodeDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: DeleteAutomationsNodesAcceptLanguageEnum;
+    acceptLanguage?: DeleteNodesAcceptLanguageEnum;
 }
 
-export interface GetAutomationsRequest {
-    projectId: string;
-    acceptLanguage?: GetAutomationsAcceptLanguageEnum;
-}
-
-export interface GetAutomations2Request {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: GetAutomations2AcceptLanguageEnum;
-}
-
-export interface GetAutomationsAttachmentsRequest {
-    projectId: string;
-    automationId: string;
-    acceptLanguage?: GetAutomationsAttachmentsAcceptLanguageEnum;
-}
-
-export interface GetAutomationsDialogsRunsRequest {
-    projectId: string;
+export interface DialogsRunsRealtimeSubscriptionRequest {
     dialogId: string;
+    acceptLanguage?: DialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
+}
+
+export interface EdgesRequest {
+    automationId: string;
+    createAutomationEdgeDto: CreateAutomationEdgeDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: EdgesAcceptLanguageEnum;
+}
+
+export interface GetAttachmentsRequest {
+    automationId: string;
+    acceptLanguage?: GetAttachmentsAcceptLanguageEnum;
+}
+
+export interface GetDialogsRunsRequest {
+    dialogId: string;
+    runId?: string;
     leadId?: string;
     dialogId2?: string;
+    status?: GetDialogsRunsStatusEnum;
+    isTest?: boolean;
+    startedAfter?: Date;
+    startedBefore?: Date;
     sourceEventId?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetAutomationsDialogsRunsAcceptLanguageEnum;
+    acceptLanguage?: GetDialogsRunsAcceptLanguageEnum;
 }
 
-export interface GetAutomationsGraphRequest {
-    projectId: string;
+export interface GetGraphRequest {
     automationId: string;
-    view?: GetAutomationsGraphViewEnum;
-    acceptLanguage?: GetAutomationsGraphAcceptLanguageEnum;
+    view?: GetGraphViewEnum;
+    acceptLanguage?: GetGraphAcceptLanguageEnum;
 }
 
-export interface GetAutomationsNodeTypesRequest {
+export interface GetNodeTypesRequest {
     projectId: string;
-    acceptLanguage?: GetAutomationsNodeTypesAcceptLanguageEnum;
+    automationType?: GetNodeTypesAutomationTypeEnum;
+    timezone?: string;
+    acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
 }
 
-export interface GetAutomationsOperationsRequest {
-    projectId: string;
+export interface GetOperationsRequest {
     automationId: string;
     afterSequence?: number;
     limit?: number;
-    acceptLanguage?: GetAutomationsOperationsAcceptLanguageEnum;
+    acceptLanguage?: GetOperationsAcceptLanguageEnum;
 }
 
-export interface GetAutomationsRunsRequest {
-    projectId: string;
+export interface GetRunsRequest {
     automationId: string;
+    runId?: string;
     leadId?: string;
     dialogId?: string;
+    status?: GetRunsStatusEnum;
+    isTest?: boolean;
+    startedAfter?: Date;
+    startedBefore?: Date;
     sourceEventId?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetAutomationsRunsAcceptLanguageEnum;
+    acceptLanguage?: GetRunsAcceptLanguageEnum;
 }
 
-export interface GetAutomationsRuns2Request {
-    projectId: string;
+export interface GetRuns2Request {
     automationId: string;
     runId: string;
-    acceptLanguage?: GetAutomationsRuns2AcceptLanguageEnum;
+    acceptLanguage?: GetRuns2AcceptLanguageEnum;
 }
 
-export interface GetAutomationsTestDialogRequest {
-    projectId: string;
+export interface GetTestDialogRequest {
     automationId: string;
     triggerNodeId?: string;
-    acceptLanguage?: GetAutomationsTestDialogAcceptLanguageEnum;
+    acceptLanguage?: GetTestDialogAcceptLanguageEnum;
 }
 
-export interface GetAutomationsVersionsRequest {
-    projectId: string;
+export interface NodesRequest {
     automationId: string;
-    limit?: number;
-    beforeVersion?: number;
-    acceptLanguage?: GetAutomationsVersionsAcceptLanguageEnum;
+    createAutomationNodeDto: CreateAutomationNodeDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: NodesAcceptLanguageEnum;
 }
 
-export interface UpdateAutomationsRequest {
-    projectId: string;
+export interface NodesValidateRequest {
     automationId: string;
-    updateAutomationDto: UpdateAutomationDto;
-    acceptLanguage?: UpdateAutomationsAcceptLanguageEnum;
+    validateAutomationNodeConfigDto: ValidateAutomationNodeConfigDto;
+    acceptLanguage?: NodesValidateAcceptLanguageEnum;
 }
 
-export interface UpdateAutomationsNodesRequest {
-    projectId: string;
+export interface PublishRequest {
+    automationId: string;
+    publishAutomationDto: PublishAutomationDto;
+    acceptLanguage?: PublishAcceptLanguageEnum;
+}
+
+export interface RealtimeSubscriptionRequest {
+    automationId: string;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: RealtimeSubscriptionAcceptLanguageEnum;
+}
+
+export interface ResumeRequest {
+    automationId: string;
+    acceptLanguage?: ResumeAcceptLanguageEnum;
+}
+
+export interface RunsRequest {
+    automationId: string;
+    startAutomationRunDto: StartAutomationRunDto;
+    acceptLanguage?: RunsAcceptLanguageEnum;
+}
+
+export interface RunsCancelRequest {
+    automationId: string;
+    runId: string;
+    acceptLanguage?: RunsCancelAcceptLanguageEnum;
+}
+
+export interface RunsPauseRequest {
+    automationId: string;
+    runId: string;
+    pauseAutomationRunDto: PauseAutomationRunDto;
+    acceptLanguage?: RunsPauseAcceptLanguageEnum;
+}
+
+export interface RunsRealtimeSubscriptionRequest {
+    automationId: string;
+    runId: string;
+    acceptLanguage?: RunsRealtimeSubscriptionAcceptLanguageEnum;
+}
+
+export interface RunsRealtimeSubscription2Request {
+    automationId: string;
+    acceptLanguage?: RunsRealtimeSubscription2AcceptLanguageEnum;
+}
+
+export interface RunsTasksRetryRequest {
+    automationId: string;
+    runId: string;
+    taskId: string;
+    acceptLanguage?: RunsTasksRetryAcceptLanguageEnum;
+}
+
+export interface TestDialogMessagesRequest {
+    automationId: string;
+    triggerNodeId: string;
+    sendFirstTestMessageDto: SendFirstTestMessageDto;
+    acceptLanguage?: TestDialogMessagesAcceptLanguageEnum;
+}
+
+export interface TestRunsRequest {
+    automationId: string;
+    testAutomationRunDto: TestAutomationRunDto;
+    acceptLanguage?: TestRunsAcceptLanguageEnum;
+}
+
+export interface UpdateNodesRequest {
     automationId: string;
     nodeId: string;
     updateAutomationNodeDto: UpdateAutomationNodeDto;
     xAutomationEditorSessionId?: string;
-    acceptLanguage?: UpdateAutomationsNodesAcceptLanguageEnum;
+    acceptLanguage?: UpdateNodesAcceptLanguageEnum;
 }
 
-export interface UpdateAutomationsTriggerIntakeRequest {
-    projectId: string;
+export interface UpdateTriggerIntakeRequest {
     automationId: string;
     setAutomationTriggerIntakeDto: SetAutomationTriggerIntakeDto;
-    acceptLanguage?: UpdateAutomationsTriggerIntakeAcceptLanguageEnum;
+    acceptLanguage?: UpdateTriggerIntakeAcceptLanguageEnum;
+}
+
+export interface ValidateRequest {
+    automationId: string;
+    acceptLanguage?: ValidateAcceptLanguageEnum;
+}
+
+export interface VersionsRestoreRequest {
+    automationId: string;
+    versionId: string;
+    restoreAutomationVersionDto: RestoreAutomationVersionDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: VersionsRestoreAcceptLanguageEnum;
 }
 
 /**
@@ -473,90 +447,21 @@ export interface UpdateAutomationsTriggerIntakeRequest {
 export class AutomationsApi extends runtime.BaseAPI {
 
     /**
-     * Mongo-.
-     *
-     */
-    async automationsRaw(requestParameters: AutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automations().'
-            );
-        }
-
-        if (requestParameters['createAutomationDto'] == null) {
-            throw new runtime.RequiredError(
-                'createAutomationDto',
-                'Required parameter "createAutomationDto" was null or undefined when calling automations().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateAutomationDtoToJSON(requestParameters['createAutomationDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Mongo-.
-     *
-     */
-    async automations(requestParameters: AutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
-        const response = await this.automationsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * .
      *
      */
-    async automationsAttachmentsConfirmRaw(requestParameters: AutomationsAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsAttachmentsConfirm().'
-            );
-        }
-
+    async attachmentsConfirmRaw(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsAttachmentsConfirm().'
+                'Required parameter "automationId" was null or undefined when calling attachmentsConfirm().'
             );
         }
 
         if (requestParameters['confirmUploadDto'] == null) {
             throw new runtime.RequiredError(
                 'confirmUploadDto',
-                'Required parameter "confirmUploadDto" was null or undefined when calling automationsAttachmentsConfirm().'
+                'Required parameter "confirmUploadDto" was null or undefined when calling attachmentsConfirm().'
             );
         }
 
@@ -584,7 +489,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/attachments/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}/attachments/confirm`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -598,8 +503,8 @@ export class AutomationsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async automationsAttachmentsConfirm(requestParameters: AutomationsAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
-        const response = await this.automationsAttachmentsConfirmRaw(requestParameters, initOverrides);
+    async attachmentsConfirm(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.attachmentsConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -607,25 +512,18 @@ export class AutomationsApi extends runtime.BaseAPI {
      * upload-, . PUT confirm.
      *
      */
-    async automationsAttachmentsUploadUrlRaw(requestParameters: AutomationsAttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsAttachmentsUploadUrl().'
-            );
-        }
-
+    async attachmentsUploadUrlRaw(requestParameters: AttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsAttachmentsUploadUrl().'
+                'Required parameter "automationId" was null or undefined when calling attachmentsUploadUrl().'
             );
         }
 
         if (requestParameters['getUploadUrlDto'] == null) {
             throw new runtime.RequiredError(
                 'getUploadUrlDto',
-                'Required parameter "getUploadUrlDto" was null or undefined when calling automationsAttachmentsUploadUrl().'
+                'Required parameter "getUploadUrlDto" was null or undefined when calling attachmentsUploadUrl().'
             );
         }
 
@@ -653,7 +551,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/attachments/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}/attachments/upload-url`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -667,8 +565,8 @@ export class AutomationsApi extends runtime.BaseAPI {
      * upload-, . PUT confirm.
      *
      */
-    async automationsAttachmentsUploadUrl(requestParameters: AutomationsAttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto> {
-        const response = await this.automationsAttachmentsUploadUrlRaw(requestParameters, initOverrides);
+    async attachmentsUploadUrl(requestParameters: AttachmentsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto> {
+        const response = await this.attachmentsUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -677,13 +575,6 @@ export class AutomationsApi extends runtime.BaseAPI {
      *
      */
     async automationsAvatarConfirmRaw(requestParameters: AutomationsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmAutomationAvatarUploadResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsAvatarConfirm().'
-            );
-        }
-
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
@@ -722,7 +613,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/avatar/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}/avatar/confirm`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -746,13 +637,6 @@ export class AutomationsApi extends runtime.BaseAPI {
      *
      */
     async automationsAvatarUploadUrlRaw(requestParameters: AutomationsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationAvatarUploadUrlResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsAvatarUploadUrl().'
-            );
-        }
-
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
@@ -791,7 +675,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/avatar/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}/avatar/upload-url`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -811,310 +695,29 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. .
+     * Mongo-.
      *
      */
-    async automationsBatchRaw(requestParameters: AutomationsBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
+    async automationsCreateRaw(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsBatch().'
+                'Required parameter "projectId" was null or undefined when calling automationsCreate().'
             );
         }
 
-        if (requestParameters['automationId'] == null) {
+        if (requestParameters['createAutomationDto'] == null) {
             throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsBatch().'
-            );
-        }
-
-        if (requestParameters['applyAutomationBatchDto'] == null) {
-            throw new runtime.RequiredError(
-                'applyAutomationBatchDto',
-                'Required parameter "applyAutomationBatchDto" was null or undefined when calling automationsBatch().'
+                'createAutomationDto',
+                'Required parameter "createAutomationDto" was null or undefined when calling automationsCreate().'
             );
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
         }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/batch`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ApplyAutomationBatchDtoToJSON(requestParameters['applyAutomationBatchDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * 100 Mongo-. .
-     *
-     */
-    async automationsBatch(requestParameters: AutomationsBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
-        const response = await this.automationsBatchRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async automationsDialogsRunsRealtimeSubscriptionRaw(requestParameters: AutomationsDialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsDialogsRunsRealtimeSubscription().'
-            );
-        }
-
-        if (requestParameters['dialogId'] == null) {
-            throw new runtime.RequiredError(
-                'dialogId',
-                'Required parameter "dialogId" was null or undefined when calling automationsDialogsRunsRealtimeSubscription().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/dialogs/{dialogId}/runs/realtime-subscription`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async automationsDialogsRunsRealtimeSubscription(requestParameters: AutomationsDialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto> {
-        const response = await this.automationsDialogsRunsRealtimeSubscriptionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
-     *
-     */
-    async automationsEdgesRaw(requestParameters: AutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsEdges().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsEdges().'
-            );
-        }
-
-        if (requestParameters['createAutomationEdgeDto'] == null) {
-            throw new runtime.RequiredError(
-                'createAutomationEdgeDto',
-                'Required parameter "createAutomationEdgeDto" was null or undefined when calling automationsEdges().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/edges`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateAutomationEdgeDtoToJSON(requestParameters['createAutomationEdgeDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationEdgeResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
-     *
-     */
-    async automationsEdges(requestParameters: AutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto> {
-        const response = await this.automationsEdgesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . API .
-     *
-     */
-    async automationsNodesRaw(requestParameters: AutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsNodes().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsNodes().'
-            );
-        }
-
-        if (requestParameters['createAutomationNodeDto'] == null) {
-            throw new runtime.RequiredError(
-                'createAutomationNodeDto',
-                'Required parameter "createAutomationNodeDto" was null or undefined when calling automationsNodes().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/nodes`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateAutomationNodeDtoToJSON(requestParameters['createAutomationNodeDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . API .
-     *
-     */
-    async automationsNodes(requestParameters: AutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
-        const response = await this.automationsNodesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . .
-     *
-     */
-    async automationsNodesValidateRaw(requestParameters: AutomationsNodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeConfigValidationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsNodesValidate().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsNodesValidate().'
-            );
-        }
-
-        if (requestParameters['validateAutomationNodeConfigDto'] == null) {
-            throw new runtime.RequiredError(
-                'validateAutomationNodeConfigDto',
-                'Required parameter "validateAutomationNodeConfigDto" was null or undefined when calling automationsNodesValidate().'
-            );
-        }
-
-        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1138,969 +741,22 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/nodes/validate`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ValidateAutomationNodeConfigDtoToJSON(requestParameters['validateAutomationNodeConfigDto']),
+            body: CreateAutomationDtoToJSON(requestParameters['createAutomationDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeConfigValidationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . .
+     * Mongo-.
      *
      */
-    async automationsNodesValidate(requestParameters: AutomationsNodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeConfigValidationResponseDto> {
-        const response = await this.automationsNodesValidateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * durable pause Runner, API status; starts parked.
-     *
-     */
-    async automationsPauseRaw(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsPause().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsPause().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/pause`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationStatusResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * durable pause Runner, API status; starts parked.
-     *
-     */
-    async automationsPause(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
-        const response = await this.automationsPauseRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * DAG migration mapping. , .
-     * immutable-
-     */
-    async automationsPublishRaw(requestParameters: AutomationsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionInfoDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsPublish().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsPublish().'
-            );
-        }
-
-        if (requestParameters['publishAutomationDto'] == null) {
-            throw new runtime.RequiredError(
-                'publishAutomationDto',
-                'Required parameter "publishAutomationDto" was null or undefined when calling automationsPublish().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/publish`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PublishAutomationDtoToJSON(requestParameters['publishAutomationDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationVersionInfoDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * DAG migration mapping. , .
-     * immutable-
-     */
-    async automationsPublish(requestParameters: AutomationsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto> {
-        const response = await this.automationsPublishRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    async automationsRealtimeSubscriptionRaw(requestParameters: AutomationsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRealtimeSubscriptionResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRealtimeSubscription().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRealtimeSubscription().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/realtime-subscription`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    async automationsRealtimeSubscription(requestParameters: AutomationsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRealtimeSubscriptionResponseDto> {
-        const response = await this.automationsRealtimeSubscriptionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
-     */
-    async automationsResumeRaw(requestParameters: AutomationsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsResume().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsResume().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/resume`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationStatusResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
-     */
-    async automationsResume(requestParameters: AutomationsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
-        const response = await this.automationsResumeRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * production- .
-     *
-     */
-    async automationsRunsRaw(requestParameters: AutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartAutomationRunResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRuns().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRuns().'
-            );
-        }
-
-        if (requestParameters['startAutomationRunDto'] == null) {
-            throw new runtime.RequiredError(
-                'startAutomationRunDto',
-                'Required parameter "startAutomationRunDto" was null or undefined when calling automationsRuns().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: StartAutomationRunDtoToJSON(requestParameters['startAutomationRunDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StartAutomationRunResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * production- .
-     *
-     */
-    async automationsRuns(requestParameters: AutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartAutomationRunResponseDto> {
-        const response = await this.automationsRunsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * : side effect , .
-     *
-     */
-    async automationsRunsCancelRaw(requestParameters: AutomationsRunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CancelAutomationRunResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRunsCancel().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRunsCancel().'
-            );
-        }
-
-        if (requestParameters['runId'] == null) {
-            throw new runtime.RequiredError(
-                'runId',
-                'Required parameter "runId" was null or undefined when calling automationsRunsCancel().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs/{runId}/cancel`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => CancelAutomationRunResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * : side effect , .
-     *
-     */
-    async automationsRunsCancel(requestParameters: AutomationsRunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelAutomationRunResponseDto> {
-        const response = await this.automationsRunsCancelRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . Mongo .
-     *
-     */
-    async automationsRunsPauseRaw(requestParameters: AutomationsRunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PauseAutomationRunResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRunsPause().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRunsPause().'
-            );
-        }
-
-        if (requestParameters['runId'] == null) {
-            throw new runtime.RequiredError(
-                'runId',
-                'Required parameter "runId" was null or undefined when calling automationsRunsPause().'
-            );
-        }
-
-        if (requestParameters['pauseAutomationRunDto'] == null) {
-            throw new runtime.RequiredError(
-                'pauseAutomationRunDto',
-                'Required parameter "pauseAutomationRunDto" was null or undefined when calling automationsRunsPause().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs/{runId}/pause`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PauseAutomationRunDtoToJSON(requestParameters['pauseAutomationRunDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => PauseAutomationRunResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . Mongo .
-     *
-     */
-    async automationsRunsPause(requestParameters: AutomationsRunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PauseAutomationRunResponseDto> {
-        const response = await this.automationsRunsPauseRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    async automationsRunsRealtimeSubscriptionRaw(requestParameters: AutomationsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRunsRealtimeSubscription().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRunsRealtimeSubscription().'
-            );
-        }
-
-        if (requestParameters['runId'] == null) {
-            throw new runtime.RequiredError(
-                'runId',
-                'Required parameter "runId" was null or undefined when calling automationsRunsRealtimeSubscription().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs/{runId}/realtime-subscription`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    async automationsRunsRealtimeSubscription(requestParameters: AutomationsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto> {
-        const response = await this.automationsRunsRealtimeSubscriptionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async automationsRunsRealtimeSubscription2Raw(requestParameters: AutomationsRunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRunsRealtimeSubscription2().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRunsRealtimeSubscription2().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs/realtime-subscription`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async automationsRunsRealtimeSubscription2(requestParameters: AutomationsRunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto> {
-        const response = await this.automationsRunsRealtimeSubscription2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , . .
-     *
-     */
-    async automationsRunsTasksRetryRaw(requestParameters: AutomationsRunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RetryAutomationTaskResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsRunsTasksRetry().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsRunsTasksRetry().'
-            );
-        }
-
-        if (requestParameters['runId'] == null) {
-            throw new runtime.RequiredError(
-                'runId',
-                'Required parameter "runId" was null or undefined when calling automationsRunsTasksRetry().'
-            );
-        }
-
-        if (requestParameters['taskId'] == null) {
-            throw new runtime.RequiredError(
-                'taskId',
-                'Required parameter "taskId" was null or undefined when calling automationsRunsTasksRetry().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs/{runId}/tasks/{taskId}/retry`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))).replace(`{${"taskId"}}`, encodeURIComponent(String(requestParameters['taskId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => RetryAutomationTaskResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , . .
-     *
-     */
-    async automationsRunsTasksRetry(requestParameters: AutomationsRunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto> {
-        const response = await this.automationsRunsTasksRetryRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . execution plan .
-     *
-     */
-    async automationsTestDialogMessagesRaw(requestParameters: AutomationsTestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsTestDialogMessages().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsTestDialogMessages().'
-            );
-        }
-
-        if (requestParameters['triggerNodeId'] == null) {
-            throw new runtime.RequiredError(
-                'triggerNodeId',
-                'Required parameter "triggerNodeId" was null or undefined when calling automationsTestDialogMessages().'
-            );
-        }
-
-        if (requestParameters['sendFirstTestMessageDto'] == null) {
-            throw new runtime.RequiredError(
-                'sendFirstTestMessageDto',
-                'Required parameter "sendFirstTestMessageDto" was null or undefined when calling automationsTestDialogMessages().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['triggerNodeId'] != null) {
-            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/test-dialog/messages`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: SendFirstTestMessageDtoToJSON(requestParameters['sendFirstTestMessageDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => SendFirstTestMessageResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . execution plan .
-     *
-     */
-    async automationsTestDialogMessages(requestParameters: AutomationsTestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto> {
-        const response = await this.automationsTestDialogMessagesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , execution plan durable start intent. production- .
-     *
-     */
-    async automationsTestRunsRaw(requestParameters: AutomationsTestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestAutomationRunResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsTestRuns().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsTestRuns().'
-            );
-        }
-
-        if (requestParameters['testAutomationRunDto'] == null) {
-            throw new runtime.RequiredError(
-                'testAutomationRunDto',
-                'Required parameter "testAutomationRunDto" was null or undefined when calling automationsTestRuns().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/test-runs`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: TestAutomationRunDtoToJSON(requestParameters['testAutomationRunDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TestAutomationRunResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , execution plan durable start intent. production- .
-     *
-     */
-    async automationsTestRuns(requestParameters: AutomationsTestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestAutomationRunResponseDto> {
-        const response = await this.automationsTestRunsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , , , , .
-     *
-     */
-    async automationsValidateRaw(requestParameters: AutomationsValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationValidationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsValidate().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsValidate().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/validate`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationValidationResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , , , , .
-     *
-     */
-    async automationsValidate(requestParameters: AutomationsValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationValidationResponseDto> {
-        const response = await this.automationsValidateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . .
-     *
-     */
-    async automationsVersionsRestoreRaw(requestParameters: AutomationsVersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling automationsVersionsRestore().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling automationsVersionsRestore().'
-            );
-        }
-
-        if (requestParameters['versionId'] == null) {
-            throw new runtime.RequiredError(
-                'versionId',
-                'Required parameter "versionId" was null or undefined when calling automationsVersionsRestore().'
-            );
-        }
-
-        if (requestParameters['restoreAutomationVersionDto'] == null) {
-            throw new runtime.RequiredError(
-                'restoreAutomationVersionDto',
-                'Required parameter "restoreAutomationVersionDto" was null or undefined when calling automationsVersionsRestore().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/versions/{versionId}/restore`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: RestoreAutomationVersionDtoToJSON(requestParameters['restoreAutomationVersionDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . .
-     *
-     */
-    async automationsVersionsRestore(requestParameters: AutomationsVersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
-        const response = await this.automationsVersionsRestoreRaw(requestParameters, initOverrides);
+    async automationsCreate(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
+        const response = await this.automationsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2108,18 +764,11 @@ export class AutomationsApi extends runtime.BaseAPI {
      * deleted_at.
      *
      */
-    async deleteAutomationsRaw(requestParameters: DeleteAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteAutomations().'
-            );
-        }
-
+    async automationsDeactivateRaw(requestParameters: AutomationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling deleteAutomations().'
+                'Required parameter "automationId" was null or undefined when calling automationsDeactivate().'
             );
         }
 
@@ -2145,7 +794,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -2158,236 +807,19 @@ export class AutomationsApi extends runtime.BaseAPI {
      * deleted_at.
      *
      */
-    async deleteAutomations(requestParameters: DeleteAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteAutomationsRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * draft-; published version processes .
-     *
-     */
-    async deleteAutomationsEdgesRaw(requestParameters: DeleteAutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteAutomationsEdges().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling deleteAutomationsEdges().'
-            );
-        }
-
-        if (requestParameters['edgeId'] == null) {
-            throw new runtime.RequiredError(
-                'edgeId',
-                'Required parameter "edgeId" was null or undefined when calling deleteAutomationsEdges().'
-            );
-        }
-
-        if (requestParameters['deleteAutomationEdgeDto'] == null) {
-            throw new runtime.RequiredError(
-                'deleteAutomationEdgeDto',
-                'Required parameter "deleteAutomationEdgeDto" was null or undefined when calling deleteAutomationsEdges().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/edges/{edgeId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"edgeId"}}`, encodeURIComponent(String(requestParameters['edgeId']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-            body: DeleteAutomationEdgeDtoToJSON(requestParameters['deleteAutomationEdgeDto']),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * draft-; published version processes .
-     *
-     */
-    async deleteAutomationsEdges(requestParameters: DeleteAutomationsEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteAutomationsEdgesRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * draft- draft-; published version immutable.
-     *
-     */
-    async deleteAutomationsNodesRaw(requestParameters: DeleteAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteAutomationsNodes().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling deleteAutomationsNodes().'
-            );
-        }
-
-        if (requestParameters['nodeId'] == null) {
-            throw new runtime.RequiredError(
-                'nodeId',
-                'Required parameter "nodeId" was null or undefined when calling deleteAutomationsNodes().'
-            );
-        }
-
-        if (requestParameters['deleteAutomationNodeDto'] == null) {
-            throw new runtime.RequiredError(
-                'deleteAutomationNodeDto',
-                'Required parameter "deleteAutomationNodeDto" was null or undefined when calling deleteAutomationsNodes().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/nodes/{nodeId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-            body: DeleteAutomationNodeDtoToJSON(requestParameters['deleteAutomationNodeDto']),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * draft- draft-; published version immutable.
-     *
-     */
-    async deleteAutomationsNodes(requestParameters: DeleteAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteAutomationsNodesRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * , status, draft revision .
-     *
-     */
-    async getAutomationsRaw(requestParameters: GetAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomations().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationListResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , status, draft revision .
-     *
-     */
-    async getAutomations(requestParameters: GetAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto> {
-        const response = await this.getAutomationsRaw(requestParameters, initOverrides);
-        return await response.value();
+    async automationsDeactivate(requestParameters: AutomationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.automationsDeactivateRaw(requestParameters, initOverrides);
     }
 
     /**
      * , IDs draft/published version.
      *
      */
-    async getAutomations2Raw(requestParameters: GetAutomations2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomations2().'
-            );
-        }
-
+    async automationsGetByIdRaw(requestParameters: AutomationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomations2().'
+                'Required parameter "automationId" was null or undefined when calling automationsGetById().'
             );
         }
 
@@ -2413,7 +845,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -2426,67 +858,8 @@ export class AutomationsApi extends runtime.BaseAPI {
      * , IDs draft/published version.
      *
      */
-    async getAutomations2(requestParameters: GetAutomations2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
-        const response = await this.getAutomations2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , .
-     *
-     */
-    async getAutomationsAttachmentsRaw(requestParameters: GetAutomationsAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationAttachmentsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsAttachments().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsAttachments().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/attachments`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationAttachmentsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , .
-     *
-     */
-    async getAutomationsAttachments(requestParameters: GetAutomationsAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAttachmentsResponseDto> {
-        const response = await this.getAutomationsAttachmentsRaw(requestParameters, initOverrides);
+    async automationsGetById(requestParameters: AutomationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
+        const response = await this.automationsGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2494,487 +867,11 @@ export class AutomationsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getAutomationsDialogsRunsRaw(requestParameters: GetAutomationsDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAutomationRunsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsDialogsRuns().'
-            );
-        }
-
-        if (requestParameters['dialogId'] == null) {
-            throw new runtime.RequiredError(
-                'dialogId',
-                'Required parameter "dialogId" was null or undefined when calling getAutomationsDialogsRuns().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['leadId'] != null) {
-            queryParameters['lead_id'] = requestParameters['leadId'];
-        }
-
-        if (requestParameters['dialogId2'] != null) {
-            queryParameters['dialog_id'] = requestParameters['dialogId2'];
-        }
-
-        if (requestParameters['sourceEventId'] != null) {
-            queryParameters['source_event_id'] = requestParameters['sourceEventId'];
-        }
-
-        if (requestParameters['cursor'] != null) {
-            queryParameters['cursor'] = requestParameters['cursor'];
-        }
-
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/dialogs/{dialogId}/runs`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => DialogAutomationRunsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     *
-     */
-    async getAutomationsDialogsRuns(requestParameters: GetAutomationsDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto> {
-        const response = await this.getAutomationsDialogsRunsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * nodes/edges React Flow JSON.
-     *
-     */
-    async getAutomationsGraphRaw(requestParameters: GetAutomationsGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsGraph().'
-            );
-        }
-
+    async automationsGetVersionsRaw(requestParameters: AutomationsGetVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionHistoryResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsGraph().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['view'] != null) {
-            queryParameters['view'] = requestParameters['view'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/graph`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * nodes/edges React Flow JSON.
-     *
-     */
-    async getAutomationsGraph(requestParameters: GetAutomationsGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
-        const response = await this.getAutomationsGraphRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , . MCP- React Flow.
-     *
-     */
-    async getAutomationsNodeTypesRaw(requestParameters: GetAutomationsNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeCatalogResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsNodeTypes().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/node-types`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeCatalogResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , . MCP- React Flow.
-     *
-     */
-    async getAutomationsNodeTypes(requestParameters: GetAutomationsNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto> {
-        const response = await this.getAutomationsNodeTypesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * reconnect; compaction snapshot .
-     * sequence
-     */
-    async getAutomationsOperationsRaw(requestParameters: GetAutomationsOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOperationsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsOperations().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsOperations().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['afterSequence'] != null) {
-            queryParameters['after_sequence'] = requestParameters['afterSequence'];
-        }
-
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/operations`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationOperationsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * reconnect; compaction snapshot .
-     * sequence
-     */
-    async getAutomationsOperations(requestParameters: GetAutomationsOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperationsResponseDto> {
-        const response = await this.getAutomationsOperationsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Automation Runner.
-     * durable-
-     */
-    async getAutomationsRunsRaw(requestParameters: GetAutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsRuns().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsRuns().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['leadId'] != null) {
-            queryParameters['lead_id'] = requestParameters['leadId'];
-        }
-
-        if (requestParameters['dialogId'] != null) {
-            queryParameters['dialog_id'] = requestParameters['dialogId'];
-        }
-
-        if (requestParameters['sourceEventId'] != null) {
-            queryParameters['source_event_id'] = requestParameters['sourceEventId'];
-        }
-
-        if (requestParameters['cursor'] != null) {
-            queryParameters['cursor'] = requestParameters['cursor'];
-        }
-
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Automation Runner.
-     * durable-
-     */
-    async getAutomationsRuns(requestParameters: GetAutomationsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunsResponseDto> {
-        const response = await this.getAutomationsRunsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , , , .
-     * durable timeline
-     */
-    async getAutomationsRuns2Raw(requestParameters: GetAutomationsRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunDetailResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsRuns2().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsRuns2().'
-            );
-        }
-
-        if (requestParameters['runId'] == null) {
-            throw new runtime.RequiredError(
-                'runId',
-                'Required parameter "runId" was null or undefined when calling getAutomationsRuns2().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/runs/{runId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunDetailResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , , , .
-     * durable timeline
-     */
-    async getAutomationsRuns2(requestParameters: GetAutomationsRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunDetailResponseDto> {
-        const response = await this.getAutomationsRuns2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , . query-.
-     *
-     */
-    async getAutomationsTestDialogRaw(requestParameters: GetAutomationsTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentAutomationTestDialogDataDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsTestDialog().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsTestDialog().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['triggerNodeId'] != null) {
-            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/test-dialog`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => CurrentAutomationTestDialogDataDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , . query-.
-     *
-     */
-    async getAutomationsTestDialog(requestParameters: GetAutomationsTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto> {
-        const response = await this.getAutomationsTestDialogRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * .
-     *
-     */
-    async getAutomationsVersionsRaw(requestParameters: GetAutomationsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionHistoryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAutomationsVersions().'
-            );
-        }
-
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling getAutomationsVersions().'
+                'Required parameter "automationId" was null or undefined when calling automationsGetVersions().'
             );
         }
 
@@ -3008,7 +905,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/versions`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}/versions`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -3021,8 +918,116 @@ export class AutomationsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getAutomationsVersions(requestParameters: GetAutomationsVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionHistoryResponseDto> {
-        const response = await this.getAutomationsVersionsRaw(requestParameters, initOverrides);
+    async automationsGetVersions(requestParameters: AutomationsGetVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionHistoryResponseDto> {
+        const response = await this.automationsGetVersionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , status, draft revision .
+     *
+     */
+    async automationsListRaw(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationListResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling automationsList().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationListResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , status, draft revision .
+     *
+     */
+    async automationsList(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto> {
+        const response = await this.automationsListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * durable pause Runner, API status; starts parked.
+     *
+     */
+    async automationsPauseRaw(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling automationsPause().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/pause`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationStatusResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * durable pause Runner, API status; starts parked.
+     *
+     */
+    async automationsPause(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
+        const response = await this.automationsPauseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3030,25 +1035,18 @@ export class AutomationsApi extends runtime.BaseAPI {
      * ; .
      *
      */
-    async updateAutomationsRaw(requestParameters: UpdateAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateAutomations().'
-            );
-        }
-
+    async automationsUpdateRaw(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling updateAutomations().'
+                'Required parameter "automationId" was null or undefined when calling automationsUpdate().'
             );
         }
 
         if (requestParameters['updateAutomationDto'] == null) {
             throw new runtime.RequiredError(
                 'updateAutomationDto',
-                'Required parameter "updateAutomationDto" was null or undefined when calling updateAutomations().'
+                'Required parameter "updateAutomationDto" was null or undefined when calling automationsUpdate().'
             );
         }
 
@@ -3076,7 +1074,7 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -3090,41 +1088,27 @@ export class AutomationsApi extends runtime.BaseAPI {
      * ; .
      *
      */
-    async updateAutomations(requestParameters: UpdateAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
-        const response = await this.updateAutomationsRaw(requestParameters, initOverrides);
+    async automationsUpdate(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
+        const response = await this.automationsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * , / .
+     * 100 Mongo-. .
      *
      */
-    async updateAutomationsNodesRaw(requestParameters: UpdateAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateAutomationsNodes().'
-            );
-        }
-
+    async batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling updateAutomationsNodes().'
+                'Required parameter "automationId" was null or undefined when calling batch().'
             );
         }
 
-        if (requestParameters['nodeId'] == null) {
+        if (requestParameters['applyAutomationBatchDto'] == null) {
             throw new runtime.RequiredError(
-                'nodeId',
-                'Required parameter "nodeId" was null or undefined when calling updateAutomationsNodes().'
-            );
-        }
-
-        if (requestParameters['updateAutomationNodeDto'] == null) {
-            throw new runtime.RequiredError(
-                'updateAutomationNodeDto',
-                'Required parameter "updateAutomationNodeDto" was null or undefined when calling updateAutomationsNodes().'
+                'applyAutomationBatchDto',
+                'Required parameter "applyAutomationBatchDto" was null or undefined when calling batch().'
             );
         }
 
@@ -3156,48 +1140,900 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/nodes/{nodeId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
-            method: 'PATCH',
+            path: `/api/automations/{automationId}/batch`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateAutomationNodeDtoToJSON(requestParameters['updateAutomationNodeDto']),
+            body: ApplyAutomationBatchDtoToJSON(requestParameters['applyAutomationBatchDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * 100 Mongo-. .
+     *
+     */
+    async batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
+        const response = await this.batchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * draft-; published version processes .
+     *
+     */
+    async deleteEdgesRaw(requestParameters: DeleteEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling deleteEdges().'
+            );
+        }
+
+        if (requestParameters['edgeId'] == null) {
+            throw new runtime.RequiredError(
+                'edgeId',
+                'Required parameter "edgeId" was null or undefined when calling deleteEdges().'
+            );
+        }
+
+        if (requestParameters['deleteAutomationEdgeDto'] == null) {
+            throw new runtime.RequiredError(
+                'deleteAutomationEdgeDto',
+                'Required parameter "deleteAutomationEdgeDto" was null or undefined when calling deleteEdges().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/edges/{edgeId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"edgeId"}}`, encodeURIComponent(String(requestParameters['edgeId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DeleteAutomationEdgeDtoToJSON(requestParameters['deleteAutomationEdgeDto']),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * draft-; published version processes .
+     *
+     */
+    async deleteEdges(requestParameters: DeleteEdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteEdgesRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * draft- draft-; published version immutable.
+     *
+     */
+    async deleteNodesRaw(requestParameters: DeleteNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling deleteNodes().'
+            );
+        }
+
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError(
+                'nodeId',
+                'Required parameter "nodeId" was null or undefined when calling deleteNodes().'
+            );
+        }
+
+        if (requestParameters['deleteAutomationNodeDto'] == null) {
+            throw new runtime.RequiredError(
+                'deleteAutomationNodeDto',
+                'Required parameter "deleteAutomationNodeDto" was null or undefined when calling deleteNodes().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DeleteAutomationNodeDtoToJSON(requestParameters['deleteAutomationNodeDto']),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * draft- draft-; published version immutable.
+     *
+     */
+    async deleteNodes(requestParameters: DeleteNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteNodesRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    async dialogsRunsRealtimeSubscriptionRaw(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling dialogsRunsRealtimeSubscription().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/dialogs/{dialogId}/runs/realtime-subscription`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    async dialogsRunsRealtimeSubscription(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto> {
+        const response = await this.dialogsRunsRealtimeSubscriptionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * idempotent draft-edge next, true false; DAG validate/publish.
+     *
+     */
+    async edgesRaw(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling edges().'
+            );
+        }
+
+        if (requestParameters['createAutomationEdgeDto'] == null) {
+            throw new runtime.RequiredError(
+                'createAutomationEdgeDto',
+                'Required parameter "createAutomationEdgeDto" was null or undefined when calling edges().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/edges`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAutomationEdgeDtoToJSON(requestParameters['createAutomationEdgeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationEdgeResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * idempotent draft-edge next, true false; DAG validate/publish.
+     *
+     */
+    async edges(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto> {
+        const response = await this.edgesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getAttachmentsRaw(requestParameters: GetAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationAttachmentsResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getAttachments().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/attachments`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationAttachmentsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getAttachments(requestParameters: GetAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAttachmentsResponseDto> {
+        const response = await this.getAttachmentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getDialogsRunsRaw(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAutomationRunsResponseDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling getDialogsRuns().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['runId'] != null) {
+            queryParameters['run_id'] = requestParameters['runId'];
+        }
+
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+
+        if (requestParameters['dialogId2'] != null) {
+            queryParameters['dialog_id'] = requestParameters['dialogId2'];
+        }
+
+        if (requestParameters['status'] != null) {
+            queryParameters['status'] = requestParameters['status'];
+        }
+
+        if (requestParameters['isTest'] != null) {
+            queryParameters['is_test'] = requestParameters['isTest'];
+        }
+
+        if (requestParameters['startedAfter'] != null) {
+            queryParameters['started_after'] = (requestParameters['startedAfter'] as any).toISOString();
+        }
+
+        if (requestParameters['startedBefore'] != null) {
+            queryParameters['started_before'] = (requestParameters['startedBefore'] as any).toISOString();
+        }
+
+        if (requestParameters['sourceEventId'] != null) {
+            queryParameters['source_event_id'] = requestParameters['sourceEventId'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/dialogs/{dialogId}/runs`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogAutomationRunsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getDialogsRuns(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto> {
+        const response = await this.getDialogsRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * nodes/edges React Flow JSON.
+     *
+     */
+    async getGraphRaw(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getGraph().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['view'] != null) {
+            queryParameters['view'] = requestParameters['view'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/graph`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * nodes/edges React Flow JSON.
+     *
+     */
+    async getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
+        const response = await this.getGraphRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . MCP- React Flow.
+     *
+     */
+    async getNodeTypesRaw(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeCatalogResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getNodeTypes().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['automationType'] != null) {
+            queryParameters['automation_type'] = requestParameters['automationType'];
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/node-types`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeCatalogResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . MCP- React Flow.
+     *
+     */
+    async getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto> {
+        const response = await this.getNodeTypesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * reconnect; compaction snapshot .
+     * sequence
+     */
+    async getOperationsRaw(requestParameters: GetOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOperationsResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getOperations().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['afterSequence'] != null) {
+            queryParameters['after_sequence'] = requestParameters['afterSequence'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/operations`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationOperationsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * reconnect; compaction snapshot .
+     * sequence
+     */
+    async getOperations(requestParameters: GetOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperationsResponseDto> {
+        const response = await this.getOperationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Automation Runner.
+     * durable-
+     */
+    async getRunsRaw(requestParameters: GetRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunsResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getRuns().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['runId'] != null) {
+            queryParameters['run_id'] = requestParameters['runId'];
+        }
+
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialog_id'] = requestParameters['dialogId'];
+        }
+
+        if (requestParameters['status'] != null) {
+            queryParameters['status'] = requestParameters['status'];
+        }
+
+        if (requestParameters['isTest'] != null) {
+            queryParameters['is_test'] = requestParameters['isTest'];
+        }
+
+        if (requestParameters['startedAfter'] != null) {
+            queryParameters['started_after'] = (requestParameters['startedAfter'] as any).toISOString();
+        }
+
+        if (requestParameters['startedBefore'] != null) {
+            queryParameters['started_before'] = (requestParameters['startedBefore'] as any).toISOString();
+        }
+
+        if (requestParameters['sourceEventId'] != null) {
+            queryParameters['source_event_id'] = requestParameters['sourceEventId'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * Automation Runner.
+     * durable-
+     */
+    async getRuns(requestParameters: GetRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunsResponseDto> {
+        const response = await this.getRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , , , .
+     * durable timeline
+     */
+    async getRuns2Raw(requestParameters: GetRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunDetailResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getRuns2().'
+            );
+        }
+
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError(
+                'runId',
+                'Required parameter "runId" was null or undefined when calling getRuns2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/{runId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunDetailResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , , .
+     * durable timeline
+     */
+    async getRuns2(requestParameters: GetRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunDetailResponseDto> {
+        const response = await this.getRuns2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . query-.
+     *
+     */
+    async getTestDialogRaw(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentAutomationTestDialogDataDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getTestDialog().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['triggerNodeId'] != null) {
+            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-dialog`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CurrentAutomationTestDialogDataDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . query-.
+     *
+     */
+    async getTestDialog(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto> {
+        const response = await this.getTestDialogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . API .
+     *
+     */
+    async nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling nodes().'
+            );
+        }
+
+        if (requestParameters['createAutomationNodeDto'] == null) {
+            throw new runtime.RequiredError(
+                'createAutomationNodeDto',
+                'Required parameter "createAutomationNodeDto" was null or undefined when calling nodes().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAutomationNodeDtoToJSON(requestParameters['createAutomationNodeDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * , / .
+     * . API .
      *
      */
-    async updateAutomationsNodes(requestParameters: UpdateAutomationsNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
-        const response = await this.updateAutomationsNodesRaw(requestParameters, initOverrides);
+    async nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
+        const response = await this.nodesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * runs .
+     * . .
      *
      */
-    async updateAutomationsTriggerIntakeRaw(requestParameters: UpdateAutomationsTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateAutomationsTriggerIntake().'
-            );
-        }
-
+    async nodesValidateRaw(requestParameters: NodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeConfigValidationResponseDto>> {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError(
                 'automationId',
-                'Required parameter "automationId" was null or undefined when calling updateAutomationsTriggerIntake().'
+                'Required parameter "automationId" was null or undefined when calling nodesValidate().'
             );
         }
 
-        if (requestParameters['setAutomationTriggerIntakeDto'] == null) {
+        if (requestParameters['validateAutomationNodeConfigDto'] == null) {
             throw new runtime.RequiredError(
-                'setAutomationTriggerIntakeDto',
-                'Required parameter "setAutomationTriggerIntakeDto" was null or undefined when calling updateAutomationsTriggerIntake().'
+                'validateAutomationNodeConfigDto',
+                'Required parameter "validateAutomationNodeConfigDto" was null or undefined when calling nodesValidate().'
             );
         }
 
@@ -3221,11 +2057,818 @@ export class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_run_automations"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/automations/{automationId}/trigger-intake`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            path: `/api/automations/{automationId}/nodes/validate`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ValidateAutomationNodeConfigDtoToJSON(requestParameters['validateAutomationNodeConfigDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeConfigValidationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async nodesValidate(requestParameters: NodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeConfigValidationResponseDto> {
+        const response = await this.nodesValidateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * DAG migration mapping. , .
+     * immutable-
+     */
+    async publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionInfoDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling publish().'
+            );
+        }
+
+        if (requestParameters['publishAutomationDto'] == null) {
+            throw new runtime.RequiredError(
+                'publishAutomationDto',
+                'Required parameter "publishAutomationDto" was null or undefined when calling publish().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/publish`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PublishAutomationDtoToJSON(requestParameters['publishAutomationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationVersionInfoDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * DAG migration mapping. , .
+     * immutable-
+     */
+    async publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto> {
+        const response = await this.publishRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * token draft-; collaboration-state API .
+     * Centrifugo presence
+     */
+    async realtimeSubscriptionRaw(requestParameters: RealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRealtimeSubscriptionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling realtimeSubscription().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/realtime-subscription`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * token draft-; collaboration-state API .
+     * Centrifugo presence
+     */
+    async realtimeSubscription(requestParameters: RealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRealtimeSubscriptionResponseDto> {
+        const response = await this.realtimeSubscriptionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * parked tasks queued/waiting available_at, API status.
+     * parked- Runner
+     */
+    async resumeRaw(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling resume().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/resume`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationStatusResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * parked tasks queued/waiting available_at, API status.
+     * parked- Runner
+     */
+    async resume(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
+        const response = await this.resumeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * production- .
+     *
+     */
+    async runsRaw(requestParameters: RunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartAutomationRunResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling runs().'
+            );
+        }
+
+        if (requestParameters['startAutomationRunDto'] == null) {
+            throw new runtime.RequiredError(
+                'startAutomationRunDto',
+                'Required parameter "startAutomationRunDto" was null or undefined when calling runs().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StartAutomationRunDtoToJSON(requestParameters['startAutomationRunDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StartAutomationRunResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * production- .
+     *
+     */
+    async runs(requestParameters: RunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartAutomationRunResponseDto> {
+        const response = await this.runsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * : side effect , .
+     *
+     */
+    async runsCancelRaw(requestParameters: RunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CancelAutomationRunResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling runsCancel().'
+            );
+        }
+
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError(
+                'runId',
+                'Required parameter "runId" was null or undefined when calling runsCancel().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/{runId}/cancel`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CancelAutomationRunResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * : side effect , .
+     *
+     */
+    async runsCancel(requestParameters: RunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelAutomationRunResponseDto> {
+        const response = await this.runsCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . Mongo .
+     *
+     */
+    async runsPauseRaw(requestParameters: RunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PauseAutomationRunResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling runsPause().'
+            );
+        }
+
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError(
+                'runId',
+                'Required parameter "runId" was null or undefined when calling runsPause().'
+            );
+        }
+
+        if (requestParameters['pauseAutomationRunDto'] == null) {
+            throw new runtime.RequiredError(
+                'pauseAutomationRunDto',
+                'Required parameter "pauseAutomationRunDto" was null or undefined when calling runsPause().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/{runId}/pause`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PauseAutomationRunDtoToJSON(requestParameters['pauseAutomationRunDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PauseAutomationRunResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . Mongo .
+     *
+     */
+    async runsPause(requestParameters: RunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PauseAutomationRunResponseDto> {
+        const response = await this.runsPauseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Centrifugo . channel subscription_token realtime-; , .
+     *
+     */
+    async runsRealtimeSubscriptionRaw(requestParameters: RunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling runsRealtimeSubscription().'
+            );
+        }
+
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError(
+                'runId',
+                'Required parameter "runId" was null or undefined when calling runsRealtimeSubscription().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/{runId}/realtime-subscription`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * Centrifugo . channel subscription_token realtime-; , .
+     *
+     */
+    async runsRealtimeSubscription(requestParameters: RunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto> {
+        const response = await this.runsRealtimeSubscriptionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    async runsRealtimeSubscription2Raw(requestParameters: RunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling runsRealtimeSubscription2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/realtime-subscription`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationRunRealtimeSubscriptionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * Centrifugo . channel subscription_token realtime-; .
+     *
+     */
+    async runsRealtimeSubscription2(requestParameters: RunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto> {
+        const response = await this.runsRealtimeSubscription2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async runsTasksRetryRaw(requestParameters: RunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RetryAutomationTaskResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling runsTasksRetry().'
+            );
+        }
+
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError(
+                'runId',
+                'Required parameter "runId" was null or undefined when calling runsTasksRetry().'
+            );
+        }
+
+        if (requestParameters['taskId'] == null) {
+            throw new runtime.RequiredError(
+                'taskId',
+                'Required parameter "taskId" was null or undefined when calling runsTasksRetry().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/{runId}/tasks/{taskId}/retry`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))).replace(`{${"taskId"}}`, encodeURIComponent(String(requestParameters['taskId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RetryAutomationTaskResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async runsTasksRetry(requestParameters: RunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto> {
+        const response = await this.runsTasksRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . execution plan .
+     *
+     */
+    async testDialogMessagesRaw(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling testDialogMessages().'
+            );
+        }
+
+        if (requestParameters['triggerNodeId'] == null) {
+            throw new runtime.RequiredError(
+                'triggerNodeId',
+                'Required parameter "triggerNodeId" was null or undefined when calling testDialogMessages().'
+            );
+        }
+
+        if (requestParameters['sendFirstTestMessageDto'] == null) {
+            throw new runtime.RequiredError(
+                'sendFirstTestMessageDto',
+                'Required parameter "sendFirstTestMessageDto" was null or undefined when calling testDialogMessages().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['triggerNodeId'] != null) {
+            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-dialog/messages`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SendFirstTestMessageDtoToJSON(requestParameters['sendFirstTestMessageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SendFirstTestMessageResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . execution plan .
+     *
+     */
+    async testDialogMessages(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto> {
+        const response = await this.testDialogMessagesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , execution plan durable start intent. production- .
+     *
+     */
+    async testRunsRaw(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestAutomationRunResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling testRuns().'
+            );
+        }
+
+        if (requestParameters['testAutomationRunDto'] == null) {
+            throw new runtime.RequiredError(
+                'testAutomationRunDto',
+                'Required parameter "testAutomationRunDto" was null or undefined when calling testRuns().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-runs`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TestAutomationRunDtoToJSON(requestParameters['testAutomationRunDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TestAutomationRunResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , execution plan durable start intent. production- .
+     *
+     */
+    async testRuns(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestAutomationRunResponseDto> {
+        const response = await this.testRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , / .
+     *
+     */
+    async updateNodesRaw(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling updateNodes().'
+            );
+        }
+
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError(
+                'nodeId',
+                'Required parameter "nodeId" was null or undefined when calling updateNodes().'
+            );
+        }
+
+        if (requestParameters['updateAutomationNodeDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAutomationNodeDto',
+                'Required parameter "updateAutomationNodeDto" was null or undefined when calling updateNodes().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAutomationNodeDtoToJSON(requestParameters['updateAutomationNodeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , / .
+     *
+     */
+    async updateNodes(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
+        const response = await this.updateNodesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * runs .
+     *
+     */
+    async updateTriggerIntakeRaw(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling updateTriggerIntake().'
+            );
+        }
+
+        if (requestParameters['setAutomationTriggerIntakeDto'] == null) {
+            throw new runtime.RequiredError(
+                'setAutomationTriggerIntakeDto',
+                'Required parameter "setAutomationTriggerIntakeDto" was null or undefined when calling updateTriggerIntake().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/trigger-intake`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -3239,8 +2882,133 @@ export class AutomationsApi extends runtime.BaseAPI {
      * runs .
      *
      */
-    async updateAutomationsTriggerIntake(requestParameters: UpdateAutomationsTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
-        const response = await this.updateAutomationsTriggerIntakeRaw(requestParameters, initOverrides);
+    async updateTriggerIntake(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
+        const response = await this.updateTriggerIntakeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , , , , .
+     *
+     */
+    async validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationValidationResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling validate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/validate`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationValidationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , , , .
+     *
+     */
+    async validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationValidationResponseDto> {
+        const response = await this.validateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async versionsRestoreRaw(requestParameters: VersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling versionsRestore().'
+            );
+        }
+
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError(
+                'versionId',
+                'Required parameter "versionId" was null or undefined when calling versionsRestore().'
+            );
+        }
+
+        if (requestParameters['restoreAutomationVersionDto'] == null) {
+            throw new runtime.RequiredError(
+                'restoreAutomationVersionDto',
+                'Required parameter "restoreAutomationVersionDto" was null or undefined when calling versionsRestore().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/versions/{versionId}/restore`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: RestoreAutomationVersionDtoToJSON(requestParameters['restoreAutomationVersionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async versionsRestore(requestParameters: VersionsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
+        const response = await this.versionsRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3249,27 +3017,19 @@ export class AutomationsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const AutomationsAcceptLanguageEnum = {
+export const AttachmentsConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsAcceptLanguageEnum = typeof AutomationsAcceptLanguageEnum[keyof typeof AutomationsAcceptLanguageEnum];
+export type AttachmentsConfirmAcceptLanguageEnum = typeof AttachmentsConfirmAcceptLanguageEnum[keyof typeof AttachmentsConfirmAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsAttachmentsConfirmAcceptLanguageEnum = {
+export const AttachmentsUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsAttachmentsConfirmAcceptLanguageEnum = typeof AutomationsAttachmentsConfirmAcceptLanguageEnum[keyof typeof AutomationsAttachmentsConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export const AutomationsAttachmentsUploadUrlAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AutomationsAttachmentsUploadUrlAcceptLanguageEnum = typeof AutomationsAttachmentsUploadUrlAcceptLanguageEnum[keyof typeof AutomationsAttachmentsUploadUrlAcceptLanguageEnum];
+export type AttachmentsUploadUrlAcceptLanguageEnum = typeof AttachmentsUploadUrlAcceptLanguageEnum[keyof typeof AttachmentsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -3289,43 +3049,43 @@ export type AutomationsAvatarUploadUrlAcceptLanguageEnum = typeof AutomationsAva
 /**
  * @export
  */
-export const AutomationsBatchAcceptLanguageEnum = {
+export const AutomationsCreateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsBatchAcceptLanguageEnum = typeof AutomationsBatchAcceptLanguageEnum[keyof typeof AutomationsBatchAcceptLanguageEnum];
+export type AutomationsCreateAcceptLanguageEnum = typeof AutomationsCreateAcceptLanguageEnum[keyof typeof AutomationsCreateAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum = {
+export const AutomationsDeactivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof AutomationsDialogsRunsRealtimeSubscriptionAcceptLanguageEnum];
+export type AutomationsDeactivateAcceptLanguageEnum = typeof AutomationsDeactivateAcceptLanguageEnum[keyof typeof AutomationsDeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsEdgesAcceptLanguageEnum = {
+export const AutomationsGetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsEdgesAcceptLanguageEnum = typeof AutomationsEdgesAcceptLanguageEnum[keyof typeof AutomationsEdgesAcceptLanguageEnum];
+export type AutomationsGetByIdAcceptLanguageEnum = typeof AutomationsGetByIdAcceptLanguageEnum[keyof typeof AutomationsGetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsNodesAcceptLanguageEnum = {
+export const AutomationsGetVersionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsNodesAcceptLanguageEnum = typeof AutomationsNodesAcceptLanguageEnum[keyof typeof AutomationsNodesAcceptLanguageEnum];
+export type AutomationsGetVersionsAcceptLanguageEnum = typeof AutomationsGetVersionsAcceptLanguageEnum[keyof typeof AutomationsGetVersionsAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsNodesValidateAcceptLanguageEnum = {
+export const AutomationsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsNodesValidateAcceptLanguageEnum = typeof AutomationsNodesValidateAcceptLanguageEnum[keyof typeof AutomationsNodesValidateAcceptLanguageEnum];
+export type AutomationsListAcceptLanguageEnum = typeof AutomationsListAcceptLanguageEnum[keyof typeof AutomationsListAcceptLanguageEnum];
 /**
  * @export
  */
@@ -3337,248 +3097,286 @@ export type AutomationsPauseAcceptLanguageEnum = typeof AutomationsPauseAcceptLa
 /**
  * @export
  */
-export const AutomationsPublishAcceptLanguageEnum = {
+export const AutomationsUpdateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsPublishAcceptLanguageEnum = typeof AutomationsPublishAcceptLanguageEnum[keyof typeof AutomationsPublishAcceptLanguageEnum];
+export type AutomationsUpdateAcceptLanguageEnum = typeof AutomationsUpdateAcceptLanguageEnum[keyof typeof AutomationsUpdateAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRealtimeSubscriptionAcceptLanguageEnum = {
+export const BatchAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsRealtimeSubscriptionAcceptLanguageEnum = typeof AutomationsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof AutomationsRealtimeSubscriptionAcceptLanguageEnum];
+export type BatchAcceptLanguageEnum = typeof BatchAcceptLanguageEnum[keyof typeof BatchAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsResumeAcceptLanguageEnum = {
+export const DeleteEdgesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsResumeAcceptLanguageEnum = typeof AutomationsResumeAcceptLanguageEnum[keyof typeof AutomationsResumeAcceptLanguageEnum];
+export type DeleteEdgesAcceptLanguageEnum = typeof DeleteEdgesAcceptLanguageEnum[keyof typeof DeleteEdgesAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRunsAcceptLanguageEnum = {
+export const DeleteNodesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsRunsAcceptLanguageEnum = typeof AutomationsRunsAcceptLanguageEnum[keyof typeof AutomationsRunsAcceptLanguageEnum];
+export type DeleteNodesAcceptLanguageEnum = typeof DeleteNodesAcceptLanguageEnum[keyof typeof DeleteNodesAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRunsCancelAcceptLanguageEnum = {
+export const DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsRunsCancelAcceptLanguageEnum = typeof AutomationsRunsCancelAcceptLanguageEnum[keyof typeof AutomationsRunsCancelAcceptLanguageEnum];
+export type DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof DialogsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof DialogsRunsRealtimeSubscriptionAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRunsPauseAcceptLanguageEnum = {
+export const EdgesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsRunsPauseAcceptLanguageEnum = typeof AutomationsRunsPauseAcceptLanguageEnum[keyof typeof AutomationsRunsPauseAcceptLanguageEnum];
+export type EdgesAcceptLanguageEnum = typeof EdgesAcceptLanguageEnum[keyof typeof EdgesAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum = {
+export const GetAttachmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof AutomationsRunsRealtimeSubscriptionAcceptLanguageEnum];
+export type GetAttachmentsAcceptLanguageEnum = typeof GetAttachmentsAcceptLanguageEnum[keyof typeof GetAttachmentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRunsRealtimeSubscription2AcceptLanguageEnum = {
+export const GetDialogsRunsStatusEnum = {
+    Active: 'active',
+    Parked: 'parked',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
+} as const;
+export type GetDialogsRunsStatusEnum = typeof GetDialogsRunsStatusEnum[keyof typeof GetDialogsRunsStatusEnum];
+/**
+ * @export
+ */
+export const GetDialogsRunsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AutomationsRunsRealtimeSubscription2AcceptLanguageEnum = typeof AutomationsRunsRealtimeSubscription2AcceptLanguageEnum[keyof typeof AutomationsRunsRealtimeSubscription2AcceptLanguageEnum];
+export type GetDialogsRunsAcceptLanguageEnum = typeof GetDialogsRunsAcceptLanguageEnum[keyof typeof GetDialogsRunsAcceptLanguageEnum];
 /**
  * @export
  */
-export const AutomationsRunsTasksRetryAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AutomationsRunsTasksRetryAcceptLanguageEnum = typeof AutomationsRunsTasksRetryAcceptLanguageEnum[keyof typeof AutomationsRunsTasksRetryAcceptLanguageEnum];
-/**
- * @export
- */
-export const AutomationsTestDialogMessagesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AutomationsTestDialogMessagesAcceptLanguageEnum = typeof AutomationsTestDialogMessagesAcceptLanguageEnum[keyof typeof AutomationsTestDialogMessagesAcceptLanguageEnum];
-/**
- * @export
- */
-export const AutomationsTestRunsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AutomationsTestRunsAcceptLanguageEnum = typeof AutomationsTestRunsAcceptLanguageEnum[keyof typeof AutomationsTestRunsAcceptLanguageEnum];
-/**
- * @export
- */
-export const AutomationsValidateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AutomationsValidateAcceptLanguageEnum = typeof AutomationsValidateAcceptLanguageEnum[keyof typeof AutomationsValidateAcceptLanguageEnum];
-/**
- * @export
- */
-export const AutomationsVersionsRestoreAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AutomationsVersionsRestoreAcceptLanguageEnum = typeof AutomationsVersionsRestoreAcceptLanguageEnum[keyof typeof AutomationsVersionsRestoreAcceptLanguageEnum];
-/**
- * @export
- */
-export const DeleteAutomationsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeleteAutomationsAcceptLanguageEnum = typeof DeleteAutomationsAcceptLanguageEnum[keyof typeof DeleteAutomationsAcceptLanguageEnum];
-/**
- * @export
- */
-export const DeleteAutomationsEdgesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeleteAutomationsEdgesAcceptLanguageEnum = typeof DeleteAutomationsEdgesAcceptLanguageEnum[keyof typeof DeleteAutomationsEdgesAcceptLanguageEnum];
-/**
- * @export
- */
-export const DeleteAutomationsNodesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeleteAutomationsNodesAcceptLanguageEnum = typeof DeleteAutomationsNodesAcceptLanguageEnum[keyof typeof DeleteAutomationsNodesAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetAutomationsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetAutomationsAcceptLanguageEnum = typeof GetAutomationsAcceptLanguageEnum[keyof typeof GetAutomationsAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetAutomations2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetAutomations2AcceptLanguageEnum = typeof GetAutomations2AcceptLanguageEnum[keyof typeof GetAutomations2AcceptLanguageEnum];
-/**
- * @export
- */
-export const GetAutomationsAttachmentsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetAutomationsAttachmentsAcceptLanguageEnum = typeof GetAutomationsAttachmentsAcceptLanguageEnum[keyof typeof GetAutomationsAttachmentsAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetAutomationsDialogsRunsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetAutomationsDialogsRunsAcceptLanguageEnum = typeof GetAutomationsDialogsRunsAcceptLanguageEnum[keyof typeof GetAutomationsDialogsRunsAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetAutomationsGraphViewEnum = {
+export const GetGraphViewEnum = {
     Draft: 'draft',
     Published: 'published'
 } as const;
-export type GetAutomationsGraphViewEnum = typeof GetAutomationsGraphViewEnum[keyof typeof GetAutomationsGraphViewEnum];
+export type GetGraphViewEnum = typeof GetGraphViewEnum[keyof typeof GetGraphViewEnum];
 /**
  * @export
  */
-export const GetAutomationsGraphAcceptLanguageEnum = {
+export const GetGraphAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAutomationsGraphAcceptLanguageEnum = typeof GetAutomationsGraphAcceptLanguageEnum[keyof typeof GetAutomationsGraphAcceptLanguageEnum];
+export type GetGraphAcceptLanguageEnum = typeof GetGraphAcceptLanguageEnum[keyof typeof GetGraphAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAutomationsNodeTypesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
+export const GetNodeTypesAutomationTypeEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
 } as const;
-export type GetAutomationsNodeTypesAcceptLanguageEnum = typeof GetAutomationsNodeTypesAcceptLanguageEnum[keyof typeof GetAutomationsNodeTypesAcceptLanguageEnum];
+export type GetNodeTypesAutomationTypeEnum = typeof GetNodeTypesAutomationTypeEnum[keyof typeof GetNodeTypesAutomationTypeEnum];
 /**
  * @export
  */
-export const GetAutomationsOperationsAcceptLanguageEnum = {
+export const GetNodeTypesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAutomationsOperationsAcceptLanguageEnum = typeof GetAutomationsOperationsAcceptLanguageEnum[keyof typeof GetAutomationsOperationsAcceptLanguageEnum];
+export type GetNodeTypesAcceptLanguageEnum = typeof GetNodeTypesAcceptLanguageEnum[keyof typeof GetNodeTypesAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAutomationsRunsAcceptLanguageEnum = {
+export const GetOperationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAutomationsRunsAcceptLanguageEnum = typeof GetAutomationsRunsAcceptLanguageEnum[keyof typeof GetAutomationsRunsAcceptLanguageEnum];
+export type GetOperationsAcceptLanguageEnum = typeof GetOperationsAcceptLanguageEnum[keyof typeof GetOperationsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAutomationsRuns2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
+export const GetRunsStatusEnum = {
+    Active: 'active',
+    Parked: 'parked',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
 } as const;
-export type GetAutomationsRuns2AcceptLanguageEnum = typeof GetAutomationsRuns2AcceptLanguageEnum[keyof typeof GetAutomationsRuns2AcceptLanguageEnum];
+export type GetRunsStatusEnum = typeof GetRunsStatusEnum[keyof typeof GetRunsStatusEnum];
 /**
  * @export
  */
-export const GetAutomationsTestDialogAcceptLanguageEnum = {
+export const GetRunsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAutomationsTestDialogAcceptLanguageEnum = typeof GetAutomationsTestDialogAcceptLanguageEnum[keyof typeof GetAutomationsTestDialogAcceptLanguageEnum];
+export type GetRunsAcceptLanguageEnum = typeof GetRunsAcceptLanguageEnum[keyof typeof GetRunsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAutomationsVersionsAcceptLanguageEnum = {
+export const GetRuns2AcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAutomationsVersionsAcceptLanguageEnum = typeof GetAutomationsVersionsAcceptLanguageEnum[keyof typeof GetAutomationsVersionsAcceptLanguageEnum];
+export type GetRuns2AcceptLanguageEnum = typeof GetRuns2AcceptLanguageEnum[keyof typeof GetRuns2AcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateAutomationsAcceptLanguageEnum = {
+export const GetTestDialogAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateAutomationsAcceptLanguageEnum = typeof UpdateAutomationsAcceptLanguageEnum[keyof typeof UpdateAutomationsAcceptLanguageEnum];
+export type GetTestDialogAcceptLanguageEnum = typeof GetTestDialogAcceptLanguageEnum[keyof typeof GetTestDialogAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateAutomationsNodesAcceptLanguageEnum = {
+export const NodesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateAutomationsNodesAcceptLanguageEnum = typeof UpdateAutomationsNodesAcceptLanguageEnum[keyof typeof UpdateAutomationsNodesAcceptLanguageEnum];
+export type NodesAcceptLanguageEnum = typeof NodesAcceptLanguageEnum[keyof typeof NodesAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateAutomationsTriggerIntakeAcceptLanguageEnum = {
+export const NodesValidateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateAutomationsTriggerIntakeAcceptLanguageEnum = typeof UpdateAutomationsTriggerIntakeAcceptLanguageEnum[keyof typeof UpdateAutomationsTriggerIntakeAcceptLanguageEnum];
+export type NodesValidateAcceptLanguageEnum = typeof NodesValidateAcceptLanguageEnum[keyof typeof NodesValidateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const PublishAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type PublishAcceptLanguageEnum = typeof PublishAcceptLanguageEnum[keyof typeof PublishAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RealtimeSubscriptionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RealtimeSubscriptionAcceptLanguageEnum = typeof RealtimeSubscriptionAcceptLanguageEnum[keyof typeof RealtimeSubscriptionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ResumeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ResumeAcceptLanguageEnum = typeof ResumeAcceptLanguageEnum[keyof typeof ResumeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RunsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RunsAcceptLanguageEnum = typeof RunsAcceptLanguageEnum[keyof typeof RunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RunsCancelAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RunsCancelAcceptLanguageEnum = typeof RunsCancelAcceptLanguageEnum[keyof typeof RunsCancelAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RunsPauseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RunsPauseAcceptLanguageEnum = typeof RunsPauseAcceptLanguageEnum[keyof typeof RunsPauseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RunsRealtimeSubscriptionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RunsRealtimeSubscriptionAcceptLanguageEnum = typeof RunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof RunsRealtimeSubscriptionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RunsRealtimeSubscription2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RunsRealtimeSubscription2AcceptLanguageEnum = typeof RunsRealtimeSubscription2AcceptLanguageEnum[keyof typeof RunsRealtimeSubscription2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export const RunsTasksRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type RunsTasksRetryAcceptLanguageEnum = typeof RunsTasksRetryAcceptLanguageEnum[keyof typeof RunsTasksRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TestDialogMessagesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TestDialogMessagesAcceptLanguageEnum = typeof TestDialogMessagesAcceptLanguageEnum[keyof typeof TestDialogMessagesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TestRunsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TestRunsAcceptLanguageEnum = typeof TestRunsAcceptLanguageEnum[keyof typeof TestRunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateNodesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateNodesAcceptLanguageEnum = typeof UpdateNodesAcceptLanguageEnum[keyof typeof UpdateNodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTriggerIntakeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTriggerIntakeAcceptLanguageEnum = typeof UpdateTriggerIntakeAcceptLanguageEnum[keyof typeof UpdateTriggerIntakeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ValidateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ValidateAcceptLanguageEnum = typeof ValidateAcceptLanguageEnum[keyof typeof ValidateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VersionsRestoreAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VersionsRestoreAcceptLanguageEnum = typeof VersionsRestoreAcceptLanguageEnum[keyof typeof VersionsRestoreAcceptLanguageEnum];

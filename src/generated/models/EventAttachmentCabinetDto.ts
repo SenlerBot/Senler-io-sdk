@@ -247,6 +247,7 @@ export type EventAttachmentCabinetDtoTypeEnum = typeof EventAttachmentCabinetDto
  * @export
  */
 export const EventAttachmentCabinetDtoActionsEnum = {
+    Load: 'load',
     View: 'view',
     Download: 'download',
     OpenExternal: 'open_external',
@@ -269,6 +270,7 @@ export type EventAttachmentCabinetDtoErrorCodeEnum = typeof EventAttachmentCabin
  * @export
  */
 export const EventAttachmentCabinetDtoStatusEnum = {
+    Deferred: 'deferred',
     Pending: 'pending',
     Fetching: 'fetching',
     Uploading: 'uploading',

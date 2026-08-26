@@ -32,12 +32,12 @@ export declare class TariffsApi extends runtime.BaseAPI {
      */
     getCreditPackages(requestParameters?: GetCreditPackagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditPackageListResponseDto>;
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise)
+     *
      *
      */
     getTariffsRaw(requestParameters: GetTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffListResponseDto>>;
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise)
+     *
      *
      */
     getTariffs(requestParameters?: GetTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffListResponseDto>;

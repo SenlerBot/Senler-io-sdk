@@ -25,23 +25,94 @@ import {
     ErrorResponseToJSON,
 } from '../models/index';
 
+export interface GetAnalyticsAutomationsRequest {
+    projectId: string;
+    period: GetAnalyticsAutomationsPeriodEnum;
+    timezone?: string;
+    acceptLanguage?: GetAnalyticsAutomationsAcceptLanguageEnum;
+}
+
 export interface GetBillingProjectsAutomationPerformanceRequest {
     projectId: string;
     timezone?: string;
     acceptLanguage?: GetBillingProjectsAutomationPerformanceAcceptLanguageEnum;
 }
 
-export interface GetStatisticsAutomationsRequest {
-    projectId: string;
-    period: GetStatisticsAutomationsPeriodEnum;
-    timezone?: string;
-    acceptLanguage?: GetStatisticsAutomationsAcceptLanguageEnum;
-}
-
 /**
  *
  */
 export class AutomationPerformanceApi extends runtime.BaseAPI {
+
+    /**
+     * .
+     *
+     */
+    async getAnalyticsAutomationsRaw(requestParameters: GetAnalyticsAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationPerformanceResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getAnalyticsAutomations().'
+            );
+        }
+
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling getAnalyticsAutomations().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/analytics/automations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationPerformanceResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getAnalyticsAutomations(requestParameters: GetAnalyticsAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationPerformanceResponseDto> {
+        const response = await this.getAnalyticsAutomationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * , .
@@ -99,79 +170,26 @@ export class AutomationPerformanceApi extends runtime.BaseAPI {
         return await response.value();
     }
 
-    /**
-     * .
-     *
-     */
-    async getStatisticsAutomationsRaw(requestParameters: GetStatisticsAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationPerformanceResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getStatisticsAutomations().'
-            );
-        }
-
-        if (requestParameters['period'] == null) {
-            throw new runtime.RequiredError(
-                'period',
-                'Required parameter "period" was null or undefined when calling getStatisticsAutomations().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        if (requestParameters['period'] != null) {
-            queryParameters['period'] = requestParameters['period'];
-        }
-
-        if (requestParameters['timezone'] != null) {
-            queryParameters['timezone'] = requestParameters['timezone'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/statistics/automations`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationPerformanceResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     *
-     */
-    async getStatisticsAutomations(requestParameters: GetStatisticsAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationPerformanceResponseDto> {
-        const response = await this.getStatisticsAutomationsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
 }
 
+/**
+ * @export
+ */
+export const GetAnalyticsAutomationsPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+} as const;
+export type GetAnalyticsAutomationsPeriodEnum = typeof GetAnalyticsAutomationsPeriodEnum[keyof typeof GetAnalyticsAutomationsPeriodEnum];
+/**
+ * @export
+ */
+export const GetAnalyticsAutomationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAnalyticsAutomationsAcceptLanguageEnum = typeof GetAnalyticsAutomationsAcceptLanguageEnum[keyof typeof GetAnalyticsAutomationsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -180,21 +198,3 @@ export const GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = typeof GetBillingProjectsAutomationPerformanceAcceptLanguageEnum[keyof typeof GetBillingProjectsAutomationPerformanceAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetStatisticsAutomationsPeriodEnum = {
-    _24h: '24h',
-    _7d: '7d',
-    _30d: '30d',
-    _90d: '90d'
-} as const;
-export type GetStatisticsAutomationsPeriodEnum = typeof GetStatisticsAutomationsPeriodEnum[keyof typeof GetStatisticsAutomationsPeriodEnum];
-/**
- * @export
- */
-export const GetStatisticsAutomationsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetStatisticsAutomationsAcceptLanguageEnum = typeof GetStatisticsAutomationsAcceptLanguageEnum[keyof typeof GetStatisticsAutomationsAcceptLanguageEnum];

@@ -13,16 +13,27 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AutomationRunVariableBindingDtoSourceVariableScopeEnum = void 0;
 exports.instanceOfAutomationRunVariableBindingDto = instanceOfAutomationRunVariableBindingDto;
 exports.AutomationRunVariableBindingDtoFromJSON = AutomationRunVariableBindingDtoFromJSON;
 exports.AutomationRunVariableBindingDtoFromJSONTyped = AutomationRunVariableBindingDtoFromJSONTyped;
 exports.AutomationRunVariableBindingDtoToJSON = AutomationRunVariableBindingDtoToJSON;
 exports.AutomationRunVariableBindingDtoToJSONTyped = AutomationRunVariableBindingDtoToJSONTyped;
 /**
+ * @export
+ */
+exports.AutomationRunVariableBindingDtoSourceVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Project: 'project'
+};
+/**
  * Check if a given object implements the AutomationRunVariableBindingDto interface.
  */
 function instanceOfAutomationRunVariableBindingDto(value) {
     if (!('targetVariableName' in value) || value['targetVariableName'] === undefined)
+        return false;
+    if (!('sourceVariableScope' in value) || value['sourceVariableScope'] === undefined)
         return false;
     if (!('sourceVariableName' in value) || value['sourceVariableName'] === undefined)
         return false;
@@ -37,6 +48,7 @@ function AutomationRunVariableBindingDtoFromJSONTyped(json, ignoreDiscriminator)
     }
     return {
         'targetVariableName': json['target_variable_name'],
+        'sourceVariableScope': json['source_variable_scope'],
         'sourceVariableName': json['source_variable_name'],
     };
 }
@@ -49,6 +61,7 @@ function AutomationRunVariableBindingDtoToJSONTyped(value, ignoreDiscriminator =
     }
     return {
         'target_variable_name': value['targetVariableName'],
+        'source_variable_scope': value['sourceVariableScope'],
         'source_variable_name': value['sourceVariableName'],
     };
 }

@@ -82,22 +82,20 @@ import {
     UpdateDeliveryDtoToJSON,
 } from '../models/index';
 
-export interface DeleteDeliveriesRequest {
-    projectId: string;
+export interface CancelRequest {
     id: string;
-    acceptLanguage?: DeleteDeliveriesAcceptLanguageEnum;
+    acceptLanguage?: CancelAcceptLanguageEnum;
 }
 
-export interface DeleteDeliveriesScheduleRequest {
-    projectId: string;
+export interface CopyRequest {
     id: string;
-    acceptLanguage?: DeleteDeliveriesScheduleAcceptLanguageEnum;
+    copyDeliveryDto: CopyDeliveryDto;
+    acceptLanguage?: CopyAcceptLanguageEnum;
 }
 
-export interface DeliveriesRequest {
-    projectId: string;
-    createDeliveryDto: CreateDeliveryDto;
-    acceptLanguage?: DeliveriesAcceptLanguageEnum;
+export interface DeleteScheduleRequest {
+    id: string;
+    acceptLanguage?: DeleteScheduleAcceptLanguageEnum;
 }
 
 export interface DeliveriesAttachmentsConfirmRequest {
@@ -112,97 +110,85 @@ export interface DeliveriesAttachmentsUploadUrlRequest {
     acceptLanguage?: DeliveriesAttachmentsUploadUrlAcceptLanguageEnum;
 }
 
-export interface DeliveriesCancelRequest {
+export interface DeliveriesCreateRequest {
     projectId: string;
-    id: string;
-    acceptLanguage?: DeliveriesCancelAcceptLanguageEnum;
+    createDeliveryDto: CreateDeliveryDto;
+    acceptLanguage?: DeliveriesCreateAcceptLanguageEnum;
 }
 
-export interface DeliveriesCopyRequest {
-    projectId: string;
+export interface DeliveriesDeactivateRequest {
     id: string;
-    copyDeliveryDto: CopyDeliveryDto;
-    acceptLanguage?: DeliveriesCopyAcceptLanguageEnum;
+    acceptLanguage?: DeliveriesDeactivateAcceptLanguageEnum;
 }
 
-export interface DeliveriesStartRequest {
-    projectId: string;
+export interface DeliveriesGetByIdRequest {
     id: string;
-    acceptLanguage?: DeliveriesStartAcceptLanguageEnum;
+    acceptLanguage?: DeliveriesGetByIdAcceptLanguageEnum;
 }
 
-export interface DeliveriesTestRequest {
+export interface DeliveriesListRequest {
     projectId: string;
-    id: string;
-    testDeliveryDto: TestDeliveryDto;
-    acceptLanguage?: DeliveriesTestAcceptLanguageEnum;
-}
-
-export interface DeliveriesTestRecipientLinkRequest {
-    projectId: string;
-    id: string;
-    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
-    acceptLanguage?: DeliveriesTestRecipientLinkAcceptLanguageEnum;
-}
-
-export interface DeliveriesTestRecipientVkConfirmRequest {
-    projectId: string;
-    id: string;
-    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
-    acceptLanguage?: DeliveriesTestRecipientVkConfirmAcceptLanguageEnum;
-}
-
-export interface GetDeliveriesRequest {
-    projectId: string;
-    tab?: GetDeliveriesTabEnum;
+    tab?: DeliveriesListTabEnum;
     search?: string;
-    acceptLanguage?: GetDeliveriesAcceptLanguageEnum;
+    acceptLanguage?: DeliveriesListAcceptLanguageEnum;
 }
 
-export interface GetDeliveries2Request {
-    projectId: string;
+export interface DeliveriesUpdateRequest {
     id: string;
-    acceptLanguage?: GetDeliveries2AcceptLanguageEnum;
+    updateDeliveryDto: UpdateDeliveryDto;
+    acceptLanguage?: DeliveriesUpdateAcceptLanguageEnum;
 }
 
-export interface GetDeliveriesAudiencePreviewRequest {
-    projectId: string;
+export interface GetAudiencePreviewRequest {
     id: string;
     leadIds?: Array<string>;
     channelIds?: Array<string>;
-    channelType?: GetDeliveriesAudiencePreviewChannelTypeEnum;
+    channelType?: GetAudiencePreviewChannelTypeEnum;
     segmentId?: Array<string>;
     segmentIsMember?: boolean;
     limit?: number;
     cursor?: string | null;
-    acceptLanguage?: GetDeliveriesAudiencePreviewAcceptLanguageEnum;
+    acceptLanguage?: GetAudiencePreviewAcceptLanguageEnum;
 }
 
-export interface GetDeliveriesStartPreviewRequest {
-    projectId: string;
+export interface GetStartPreviewRequest {
     id: string;
-    acceptLanguage?: GetDeliveriesStartPreviewAcceptLanguageEnum;
+    acceptLanguage?: GetStartPreviewAcceptLanguageEnum;
 }
 
-export interface GetDeliveriesTestRecipientsRequest {
-    projectId: string;
+export interface GetTestRecipientsRequest {
     id: string;
     channelId: string;
-    acceptLanguage?: GetDeliveriesTestRecipientsAcceptLanguageEnum;
+    acceptLanguage?: GetTestRecipientsAcceptLanguageEnum;
 }
 
-export interface UpdateDeliveriesRequest {
-    projectId: string;
+export interface StartRequest {
     id: string;
-    updateDeliveryDto: UpdateDeliveryDto;
-    acceptLanguage?: UpdateDeliveriesAcceptLanguageEnum;
+    acceptLanguage?: StartAcceptLanguageEnum;
 }
 
-export interface UpdateDeliveriesScheduleRequest {
-    projectId: string;
+export interface TestRequest {
+    id: string;
+    testDeliveryDto: TestDeliveryDto;
+    acceptLanguage?: TestAcceptLanguageEnum;
+}
+
+export interface TestRecipientLinkRequest {
+    id: string;
+    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
+    acceptLanguage?: TestRecipientLinkAcceptLanguageEnum;
+}
+
+export interface TestRecipientVkConfirmRequest {
+    id: string;
+    createDeliveryTestRecipientLinkDto: CreateDeliveryTestRecipientLinkDto;
+    acceptLanguage?: TestRecipientVkConfirmAcceptLanguageEnum;
+}
+
+export interface UpdateScheduleRequest {
     id: string;
     scheduleDeliveryDto: ScheduleDeliveryDto;
-    acceptLanguage?: UpdateDeliveriesScheduleAcceptLanguageEnum;
+    acceptLanguage?: UpdateScheduleAcceptLanguageEnum;
 }
 
 /**
@@ -211,21 +197,14 @@ export interface UpdateDeliveriesScheduleRequest {
 export class DeliveriesApi extends runtime.BaseAPI {
 
     /**
-     * , .
+     * .
      *
      */
-    async deleteDeliveriesRaw(requestParameters: DeleteDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteDeliveries().'
-            );
-        }
-
+    async cancelRaw(requestParameters: CancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling deleteDeliveries().'
+                'Required parameter "id" was null or undefined when calling cancel().'
             );
         }
 
@@ -247,71 +226,12 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessMessageDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , .
-     *
-     */
-    async deleteDeliveries(requestParameters: DeleteDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto> {
-        const response = await this.deleteDeliveriesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * ready .
-     *
-     */
-    async deleteDeliveriesScheduleRaw(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteDeliveriesSchedule().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deleteDeliveriesSchedule().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
+            path: `/api/deliveries/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
@@ -320,30 +240,30 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * ready .
+     * .
      *
      */
-    async deleteDeliveriesSchedule(requestParameters: DeleteDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.deleteDeliveriesScheduleRaw(requestParameters, initOverrides);
+    async cancel(requestParameters: CancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.cancelRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . , .
+     * , , .
      *
      */
-    async deliveriesRaw(requestParameters: DeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
+    async copyRaw(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
+        if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveries().'
+                'id',
+                'Required parameter "id" was null or undefined when calling copy().'
             );
         }
 
-        if (requestParameters['createDeliveryDto'] == null) {
+        if (requestParameters['copyDeliveryDto'] == null) {
             throw new runtime.RequiredError(
-                'createDeliveryDto',
-                'Required parameter "createDeliveryDto" was null or undefined when calling deliveries().'
+                'copyDeliveryDto',
+                'Required parameter "copyDeliveryDto" was null or undefined when calling copy().'
             );
         }
 
@@ -367,26 +287,78 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/deliveries/{id}/copy`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateDeliveryDtoToJSON(requestParameters['createDeliveryDto']),
+            body: CopyDeliveryDtoToJSON(requestParameters['copyDeliveryDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . , .
+     * , , .
      *
      */
-    async deliveries(requestParameters: DeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.deliveriesRaw(requestParameters, initOverrides);
+    async copy(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.copyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ready .
+     *
+     */
+    async deleteScheduleRaw(requestParameters: DeleteScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deleteSchedule().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries/{id}/schedule`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ready .
+     *
+     */
+    async deleteSchedule(requestParameters: DeleteScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.deleteScheduleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -411,6 +383,10 @@ export class DeliveriesApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
@@ -429,11 +405,11 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/attachments/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/deliveries/attachments/confirm`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -473,6 +449,10 @@ export class DeliveriesApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
@@ -491,11 +471,11 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/attachments/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/deliveries/attachments/upload-url`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -515,21 +495,80 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . , .
      *
      */
-    async deliveriesCancelRaw(requestParameters: DeliveriesCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
+    async deliveriesCreateRaw(requestParameters: DeliveriesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveriesCancel().'
+                'Required parameter "projectId" was null or undefined when calling deliveriesCreate().'
             );
         }
 
+        if (requestParameters['createDeliveryDto'] == null) {
+            throw new runtime.RequiredError(
+                'createDeliveryDto',
+                'Required parameter "createDeliveryDto" was null or undefined when calling deliveriesCreate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDeliveryDtoToJSON(requestParameters['createDeliveryDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , .
+     *
+     */
+    async deliveriesCreate(requestParameters: DeliveriesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.deliveriesCreateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     *
+     */
+    async deliveriesDeactivateRaw(requestParameters: DeliveriesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling deliveriesCancel().'
+                'Required parameter "id" was null or undefined when calling deliveriesDeactivate().'
             );
         }
 
@@ -551,12 +590,64 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/cancel`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/deliveries/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessMessageDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async deliveriesDeactivate(requestParameters: DeliveriesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto> {
+        const response = await this.deliveriesDeactivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , , .
+     *
+     */
+    async deliveriesGetByIdRaw(requestParameters: DeliveriesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deliveriesGetById().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
@@ -565,346 +656,11 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
-     *
-     */
-    async deliveriesCancel(requestParameters: DeliveriesCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.deliveriesCancelRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * , , .
      *
      */
-    async deliveriesCopyRaw(requestParameters: DeliveriesCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveriesCopy().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deliveriesCopy().'
-            );
-        }
-
-        if (requestParameters['copyDeliveryDto'] == null) {
-            throw new runtime.RequiredError(
-                'copyDeliveryDto',
-                'Required parameter "copyDeliveryDto" was null or undefined when calling deliveriesCopy().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/copy`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CopyDeliveryDtoToJSON(requestParameters['copyDeliveryDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , , .
-     *
-     */
-    async deliveriesCopy(requestParameters: DeliveriesCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.deliveriesCopyRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * delivery run, worker.
-     *
-     */
-    async deliveriesStartRaw(requestParameters: DeliveriesStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartDeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveriesStart().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deliveriesStart().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/start`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StartDeliveryResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * delivery run, worker.
-     *
-     */
-    async deliveriesStart(requestParameters: DeliveriesStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartDeliveryResponseDto> {
-        const response = await this.deliveriesStartRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * .
-     *
-     */
-    async deliveriesTestRaw(requestParameters: DeliveriesTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestDeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveriesTest().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deliveriesTest().'
-            );
-        }
-
-        if (requestParameters['testDeliveryDto'] == null) {
-            throw new runtime.RequiredError(
-                'testDeliveryDto',
-                'Required parameter "testDeliveryDto" was null or undefined when calling deliveriesTest().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/test`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: TestDeliveryDtoToJSON(requestParameters['testDeliveryDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TestDeliveryResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     *
-     */
-    async deliveriesTest(requestParameters: DeliveriesTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestDeliveryResponseDto> {
-        const response = await this.deliveriesTestRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
-     *
-     */
-    async deliveriesTestRecipientLinkRaw(requestParameters: DeliveriesTestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientLinkResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveriesTestRecipientLink().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deliveriesTestRecipientLink().'
-            );
-        }
-
-        if (requestParameters['createDeliveryTestRecipientLinkDto'] == null) {
-            throw new runtime.RequiredError(
-                'createDeliveryTestRecipientLinkDto',
-                'Required parameter "createDeliveryTestRecipientLinkDto" was null or undefined when calling deliveriesTestRecipientLink().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/test-recipient-link`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateDeliveryTestRecipientLinkDtoToJSON(requestParameters['createDeliveryTestRecipientLinkDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryTestRecipientLinkResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
-     *
-     */
-    async deliveriesTestRecipientLink(requestParameters: DeliveriesTestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientLinkResponseDto> {
-        const response = await this.deliveriesTestRecipientLinkRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * VK .
-     * VK-
-     */
-    async deliveriesTestRecipientVkConfirmRaw(requestParameters: DeliveriesTestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deliveriesTestRecipientVkConfirm().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deliveriesTestRecipientVkConfirm().'
-            );
-        }
-
-        if (requestParameters['createDeliveryTestRecipientLinkDto'] == null) {
-            throw new runtime.RequiredError(
-                'createDeliveryTestRecipientLinkDto',
-                'Required parameter "createDeliveryTestRecipientLinkDto" was null or undefined when calling deliveriesTestRecipientVkConfirm().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/test-recipient-vk-confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateDeliveryTestRecipientLinkDtoToJSON(requestParameters['createDeliveryTestRecipientLinkDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryTestRecipientDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * VK .
-     * VK-
-     */
-    async deliveriesTestRecipientVkConfirm(requestParameters: DeliveriesTestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientDto> {
-        const response = await this.deliveriesTestRecipientVkConfirmRaw(requestParameters, initOverrides);
+    async deliveriesGetById(requestParameters: DeliveriesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.deliveriesGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -912,15 +668,19 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * : , , .
      *
      */
-    async getDeliveriesRaw(requestParameters: GetDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListDeliveriesResponseDto>> {
+    async deliveriesListRaw(requestParameters: DeliveriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListDeliveriesResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getDeliveries().'
+                'Required parameter "projectId" was null or undefined when calling deliveriesList().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         if (requestParameters['tab'] != null) {
             queryParameters['tab'] = requestParameters['tab'];
@@ -950,7 +710,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/deliveries`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -963,33 +723,35 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * : , , .
      *
      */
-    async getDeliveries(requestParameters: GetDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListDeliveriesResponseDto> {
-        const response = await this.getDeliveriesRaw(requestParameters, initOverrides);
+    async deliveriesList(requestParameters: DeliveriesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListDeliveriesResponseDto> {
+        const response = await this.deliveriesListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * , , .
+     * , .
      *
      */
-    async getDeliveries2Raw(requestParameters: GetDeliveries2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getDeliveries2().'
-            );
-        }
-
+    async deliveriesUpdateRaw(requestParameters: DeliveriesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getDeliveries2().'
+                'Required parameter "id" was null or undefined when calling deliveriesUpdate().'
+            );
+        }
+
+        if (requestParameters['updateDeliveryDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateDeliveryDto',
+                'Required parameter "updateDeliveryDto" was null or undefined when calling deliveriesUpdate().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1005,25 +767,26 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
+            path: `/api/deliveries/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateDeliveryDtoToJSON(requestParameters['updateDeliveryDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * , , .
+     * , .
      *
      */
-    async getDeliveries2(requestParameters: GetDeliveries2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.getDeliveries2Raw(requestParameters, initOverrides);
+    async deliveriesUpdate(requestParameters: DeliveriesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.deliveriesUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1031,18 +794,11 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * .
      * preview
      */
-    async getDeliveriesAudiencePreviewRaw(requestParameters: GetDeliveriesAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getDeliveriesAudiencePreview().'
-            );
-        }
-
+    async getAudiencePreviewRaw(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getDeliveriesAudiencePreview().'
+                'Required parameter "id" was null or undefined when calling getAudiencePreview().'
             );
         }
 
@@ -1096,7 +852,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/audience-preview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/deliveries/{id}/audience-preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1109,8 +865,8 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * .
      * preview
      */
-    async getDeliveriesAudiencePreview(requestParameters: GetDeliveriesAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto> {
-        const response = await this.getDeliveriesAudiencePreviewRaw(requestParameters, initOverrides);
+    async getAudiencePreview(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto> {
+        const response = await this.getAudiencePreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1118,18 +874,11 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDeliveriesStartPreviewRaw(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryStartPreviewResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getDeliveriesStartPreview().'
-            );
-        }
-
+    async getStartPreviewRaw(requestParameters: GetStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryStartPreviewResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getDeliveriesStartPreview().'
+                'Required parameter "id" was null or undefined when calling getStartPreview().'
             );
         }
 
@@ -1155,7 +904,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/start-preview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/deliveries/{id}/start-preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1168,8 +917,8 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDeliveriesStartPreview(requestParameters: GetDeliveriesStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryStartPreviewResponseDto> {
-        const response = await this.getDeliveriesStartPreviewRaw(requestParameters, initOverrides);
+    async getStartPreview(requestParameters: GetStartPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryStartPreviewResponseDto> {
+        const response = await this.getStartPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1177,25 +926,18 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDeliveriesTestRecipientsRaw(requestParameters: GetDeliveriesTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getDeliveriesTestRecipients().'
-            );
-        }
-
+    async getTestRecipientsRaw(requestParameters: GetTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getDeliveriesTestRecipients().'
+                'Required parameter "id" was null or undefined when calling getTestRecipients().'
             );
         }
 
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError(
                 'channelId',
-                'Required parameter "channelId" was null or undefined when calling getDeliveriesTestRecipients().'
+                'Required parameter "channelId" was null or undefined when calling getTestRecipients().'
             );
         }
 
@@ -1225,7 +967,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/test-recipients`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/deliveries/{id}/test-recipients`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1238,34 +980,79 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDeliveriesTestRecipients(requestParameters: GetDeliveriesTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientsResponseDto> {
-        const response = await this.getDeliveriesTestRecipientsRaw(requestParameters, initOverrides);
+    async getTestRecipients(requestParameters: GetTestRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientsResponseDto> {
+        const response = await this.getTestRecipientsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * , .
+     * delivery run, worker.
      *
      */
-    async updateDeliveriesRaw(requestParameters: UpdateDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateDeliveries().'
-            );
-        }
-
+    async startRaw(requestParameters: StartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartDeliveryResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateDeliveries().'
+                'Required parameter "id" was null or undefined when calling start().'
             );
         }
 
-        if (requestParameters['updateDeliveryDto'] == null) {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries/{id}/start`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StartDeliveryResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * delivery run, worker.
+     *
+     */
+    async start(requestParameters: StartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartDeliveryResponseDto> {
+        const response = await this.startRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async testRaw(requestParameters: TestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestDeliveryResponseDto>> {
+        if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
-                'updateDeliveryDto',
-                'Required parameter "updateDeliveryDto" was null or undefined when calling updateDeliveries().'
+                'id',
+                'Required parameter "id" was null or undefined when calling test().'
+            );
+        }
+
+        if (requestParameters['testDeliveryDto'] == null) {
+            throw new runtime.RequiredError(
+                'testDeliveryDto',
+                'Required parameter "testDeliveryDto" was null or undefined when calling test().'
             );
         }
 
@@ -1289,26 +1076,150 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PATCH',
+            path: `/api/deliveries/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateDeliveryDtoToJSON(requestParameters['updateDeliveryDto']),
+            body: TestDeliveryDtoToJSON(requestParameters['testDeliveryDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TestDeliveryResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * , .
+     * .
      *
      */
-    async updateDeliveries(requestParameters: UpdateDeliveriesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.updateDeliveriesRaw(requestParameters, initOverrides);
+    async test(requestParameters: TestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestDeliveryResponseDto> {
+        const response = await this.testRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
+     *
+     */
+    async testRecipientLinkRaw(requestParameters: TestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientLinkResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling testRecipientLink().'
+            );
+        }
+
+        if (requestParameters['createDeliveryTestRecipientLinkDto'] == null) {
+            throw new runtime.RequiredError(
+                'createDeliveryTestRecipientLinkDto',
+                'Required parameter "createDeliveryTestRecipientLinkDto" was null or undefined when calling testRecipientLink().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries/{id}/test-recipient-link`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDeliveryTestRecipientLinkDtoToJSON(requestParameters['createDeliveryTestRecipientLinkDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryTestRecipientLinkResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * Telegram/MAX deep-link . VK ID AllowMessagesFromCommunity; VK ID , VK_AUTH_REQUIRED.
+     *
+     */
+    async testRecipientLink(requestParameters: TestRecipientLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientLinkResponseDto> {
+        const response = await this.testRecipientLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * VK .
+     * VK-
+     */
+    async testRecipientVkConfirmRaw(requestParameters: TestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryTestRecipientDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling testRecipientVkConfirm().'
+            );
+        }
+
+        if (requestParameters['createDeliveryTestRecipientLinkDto'] == null) {
+            throw new runtime.RequiredError(
+                'createDeliveryTestRecipientLinkDto',
+                'Required parameter "createDeliveryTestRecipientLinkDto" was null or undefined when calling testRecipientVkConfirm().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries/{id}/test-recipient-vk-confirm`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDeliveryTestRecipientLinkDtoToJSON(requestParameters['createDeliveryTestRecipientLinkDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeliveryTestRecipientDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * VK .
+     * VK-
+     */
+    async testRecipientVkConfirm(requestParameters: TestRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryTestRecipientDto> {
+        const response = await this.testRecipientVkConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1316,25 +1227,18 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * scheduled .
      *
      */
-    async updateDeliveriesScheduleRaw(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateDeliveriesSchedule().'
-            );
-        }
-
+    async updateScheduleRaw(requestParameters: UpdateScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateDeliveriesSchedule().'
+                'Required parameter "id" was null or undefined when calling updateSchedule().'
             );
         }
 
         if (requestParameters['scheduleDeliveryDto'] == null) {
             throw new runtime.RequiredError(
                 'scheduleDeliveryDto',
-                'Required parameter "scheduleDeliveryDto" was null or undefined when calling updateDeliveriesSchedule().'
+                'Required parameter "scheduleDeliveryDto" was null or undefined when calling updateSchedule().'
             );
         }
 
@@ -1358,11 +1262,11 @@ export class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/deliveries/{id}/schedule`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/deliveries/{id}/schedule`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1376,8 +1280,8 @@ export class DeliveriesApi extends runtime.BaseAPI {
      * scheduled .
      *
      */
-    async updateDeliveriesSchedule(requestParameters: UpdateDeliveriesScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
-        const response = await this.updateDeliveriesScheduleRaw(requestParameters, initOverrides);
+    async updateSchedule(requestParameters: UpdateScheduleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
+        const response = await this.updateScheduleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1386,27 +1290,27 @@ export class DeliveriesApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const DeleteDeliveriesAcceptLanguageEnum = {
+export const CancelAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteDeliveriesAcceptLanguageEnum = typeof DeleteDeliveriesAcceptLanguageEnum[keyof typeof DeleteDeliveriesAcceptLanguageEnum];
+export type CancelAcceptLanguageEnum = typeof CancelAcceptLanguageEnum[keyof typeof CancelAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeleteDeliveriesScheduleAcceptLanguageEnum = {
+export const CopyAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteDeliveriesScheduleAcceptLanguageEnum = typeof DeleteDeliveriesScheduleAcceptLanguageEnum[keyof typeof DeleteDeliveriesScheduleAcceptLanguageEnum];
+export type CopyAcceptLanguageEnum = typeof CopyAcceptLanguageEnum[keyof typeof CopyAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeliveriesAcceptLanguageEnum = {
+export const DeleteScheduleAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeliveriesAcceptLanguageEnum = typeof DeliveriesAcceptLanguageEnum[keyof typeof DeliveriesAcceptLanguageEnum];
+export type DeleteScheduleAcceptLanguageEnum = typeof DeleteScheduleAcceptLanguageEnum[keyof typeof DeleteScheduleAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1426,81 +1330,57 @@ export type DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = typeof Deliveries
 /**
  * @export
  */
-export const DeliveriesCancelAcceptLanguageEnum = {
+export const DeliveriesCreateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeliveriesCancelAcceptLanguageEnum = typeof DeliveriesCancelAcceptLanguageEnum[keyof typeof DeliveriesCancelAcceptLanguageEnum];
+export type DeliveriesCreateAcceptLanguageEnum = typeof DeliveriesCreateAcceptLanguageEnum[keyof typeof DeliveriesCreateAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeliveriesCopyAcceptLanguageEnum = {
+export const DeliveriesDeactivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeliveriesCopyAcceptLanguageEnum = typeof DeliveriesCopyAcceptLanguageEnum[keyof typeof DeliveriesCopyAcceptLanguageEnum];
+export type DeliveriesDeactivateAcceptLanguageEnum = typeof DeliveriesDeactivateAcceptLanguageEnum[keyof typeof DeliveriesDeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeliveriesStartAcceptLanguageEnum = {
+export const DeliveriesGetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeliveriesStartAcceptLanguageEnum = typeof DeliveriesStartAcceptLanguageEnum[keyof typeof DeliveriesStartAcceptLanguageEnum];
+export type DeliveriesGetByIdAcceptLanguageEnum = typeof DeliveriesGetByIdAcceptLanguageEnum[keyof typeof DeliveriesGetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeliveriesTestAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeliveriesTestAcceptLanguageEnum = typeof DeliveriesTestAcceptLanguageEnum[keyof typeof DeliveriesTestAcceptLanguageEnum];
-/**
- * @export
- */
-export const DeliveriesTestRecipientLinkAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeliveriesTestRecipientLinkAcceptLanguageEnum = typeof DeliveriesTestRecipientLinkAcceptLanguageEnum[keyof typeof DeliveriesTestRecipientLinkAcceptLanguageEnum];
-/**
- * @export
- */
-export const DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type DeliveriesTestRecipientVkConfirmAcceptLanguageEnum = typeof DeliveriesTestRecipientVkConfirmAcceptLanguageEnum[keyof typeof DeliveriesTestRecipientVkConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetDeliveriesTabEnum = {
+export const DeliveriesListTabEnum = {
     Waiting: 'waiting',
     Processing: 'processing',
     Completed: 'completed',
     Deleted: 'deleted'
 } as const;
-export type GetDeliveriesTabEnum = typeof GetDeliveriesTabEnum[keyof typeof GetDeliveriesTabEnum];
+export type DeliveriesListTabEnum = typeof DeliveriesListTabEnum[keyof typeof DeliveriesListTabEnum];
 /**
  * @export
  */
-export const GetDeliveriesAcceptLanguageEnum = {
+export const DeliveriesListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDeliveriesAcceptLanguageEnum = typeof GetDeliveriesAcceptLanguageEnum[keyof typeof GetDeliveriesAcceptLanguageEnum];
+export type DeliveriesListAcceptLanguageEnum = typeof DeliveriesListAcceptLanguageEnum[keyof typeof DeliveriesListAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetDeliveries2AcceptLanguageEnum = {
+export const DeliveriesUpdateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDeliveries2AcceptLanguageEnum = typeof GetDeliveries2AcceptLanguageEnum[keyof typeof GetDeliveries2AcceptLanguageEnum];
+export type DeliveriesUpdateAcceptLanguageEnum = typeof DeliveriesUpdateAcceptLanguageEnum[keyof typeof DeliveriesUpdateAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetDeliveriesAudiencePreviewChannelTypeEnum = {
+export const GetAudiencePreviewChannelTypeEnum = {
     Vk: 'vk',
     Tg: 'tg',
     Max: 'max',
@@ -1510,44 +1390,68 @@ export const GetDeliveriesAudiencePreviewChannelTypeEnum = {
     Email: 'email',
     Avito: 'avito'
 } as const;
-export type GetDeliveriesAudiencePreviewChannelTypeEnum = typeof GetDeliveriesAudiencePreviewChannelTypeEnum[keyof typeof GetDeliveriesAudiencePreviewChannelTypeEnum];
+export type GetAudiencePreviewChannelTypeEnum = typeof GetAudiencePreviewChannelTypeEnum[keyof typeof GetAudiencePreviewChannelTypeEnum];
 /**
  * @export
  */
-export const GetDeliveriesAudiencePreviewAcceptLanguageEnum = {
+export const GetAudiencePreviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDeliveriesAudiencePreviewAcceptLanguageEnum = typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum[keyof typeof GetDeliveriesAudiencePreviewAcceptLanguageEnum];
+export type GetAudiencePreviewAcceptLanguageEnum = typeof GetAudiencePreviewAcceptLanguageEnum[keyof typeof GetAudiencePreviewAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetDeliveriesStartPreviewAcceptLanguageEnum = {
+export const GetStartPreviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDeliveriesStartPreviewAcceptLanguageEnum = typeof GetDeliveriesStartPreviewAcceptLanguageEnum[keyof typeof GetDeliveriesStartPreviewAcceptLanguageEnum];
+export type GetStartPreviewAcceptLanguageEnum = typeof GetStartPreviewAcceptLanguageEnum[keyof typeof GetStartPreviewAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetDeliveriesTestRecipientsAcceptLanguageEnum = {
+export const GetTestRecipientsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDeliveriesTestRecipientsAcceptLanguageEnum = typeof GetDeliveriesTestRecipientsAcceptLanguageEnum[keyof typeof GetDeliveriesTestRecipientsAcceptLanguageEnum];
+export type GetTestRecipientsAcceptLanguageEnum = typeof GetTestRecipientsAcceptLanguageEnum[keyof typeof GetTestRecipientsAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateDeliveriesAcceptLanguageEnum = {
+export const StartAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateDeliveriesAcceptLanguageEnum = typeof UpdateDeliveriesAcceptLanguageEnum[keyof typeof UpdateDeliveriesAcceptLanguageEnum];
+export type StartAcceptLanguageEnum = typeof StartAcceptLanguageEnum[keyof typeof StartAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateDeliveriesScheduleAcceptLanguageEnum = {
+export const TestAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateDeliveriesScheduleAcceptLanguageEnum = typeof UpdateDeliveriesScheduleAcceptLanguageEnum[keyof typeof UpdateDeliveriesScheduleAcceptLanguageEnum];
+export type TestAcceptLanguageEnum = typeof TestAcceptLanguageEnum[keyof typeof TestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TestRecipientLinkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TestRecipientLinkAcceptLanguageEnum = typeof TestRecipientLinkAcceptLanguageEnum[keyof typeof TestRecipientLinkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TestRecipientVkConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TestRecipientVkConfirmAcceptLanguageEnum = typeof TestRecipientVkConfirmAcceptLanguageEnum[keyof typeof TestRecipientVkConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateScheduleAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateScheduleAcceptLanguageEnum = typeof UpdateScheduleAcceptLanguageEnum[keyof typeof UpdateScheduleAcceptLanguageEnum];

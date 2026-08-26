@@ -43,6 +43,7 @@ exports.EventAttachmentCabinetDtoTypeEnum = {
  * @export
  */
 exports.EventAttachmentCabinetDtoActionsEnum = {
+    Load: 'load',
     View: 'view',
     Download: 'download',
     OpenExternal: 'open_external',
@@ -61,6 +62,7 @@ exports.EventAttachmentCabinetDtoErrorCodeEnum = {
  * @export
  */
 exports.EventAttachmentCabinetDtoStatusEnum = {
+    Deferred: 'deferred',
     Pending: 'pending',
     Fetching: 'fetching',
     Uploading: 'uploading',

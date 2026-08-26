@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { TrafficMarkStatisticsRowDto } from './TrafficMarkStatisticsRowDto';
 /**
  * TrafficMarkStatisticsResponseDto.
  * @export
@@ -40,18 +39,6 @@ export interface TrafficMarkStatisticsResponseDto {
      * @memberof TrafficMarkStatisticsResponseDto
      */
     subscriptionsWithUtm: number;
-    /**
-     * UTM
-     * @type {number}
-     * @memberof TrafficMarkStatisticsResponseDto
-     */
-    subscriptionsWithoutUtm: number;
-    /**
-     * UTM-
-     * @type {Array<TrafficMarkStatisticsRowDto>}
-     * @memberof TrafficMarkStatisticsResponseDto
-     */
-    utmCombinations: Array<TrafficMarkStatisticsRowDto>;
 }
 /**
  * Check if a given object implements the TrafficMarkStatisticsResponseDto interface.

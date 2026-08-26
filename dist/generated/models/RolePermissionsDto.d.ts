@@ -88,6 +88,18 @@ export interface RolePermissionsDto {
      */
     canManageDialogs: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewDeliveries: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageDeliveries: boolean;
+    /**
      * spaces ( )
      * @type {boolean}
      * @memberof RolePermissionsDto
@@ -116,6 +128,30 @@ export interface RolePermissionsDto {
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
+    canViewSegments: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageSegments: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewLandings: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageLandings: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
     canViewTrafficMarks: boolean;
     /**
      *
@@ -135,12 +171,6 @@ export interface RolePermissionsDto {
      * @memberof RolePermissionsDto
      */
     canManageAutomations: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RolePermissionsDto
-     */
-    canRunAutomations: boolean;
     /**
      * MCP
      * @type {boolean}
@@ -165,12 +195,6 @@ export interface RolePermissionsDto {
      * @memberof RolePermissionsDto
      */
     canManageDataSources: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RolePermissionsDto
-     */
-    canManageServerLists: boolean;
     /**
      * API
      * @type {boolean}
@@ -297,18 +321,6 @@ export interface RolePermissionsDto {
      * @memberof RolePermissionsDto
      */
     canManageProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RolePermissionsDto
-     */
-    canViewLeadDefinitions: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RolePermissionsDto
-     */
-    canManageLeadDefinitions: boolean;
     /**
      *
      * @type {boolean}

@@ -37,40 +37,36 @@ import {
     UpdateAgentAssignmentRuleDtoToJSON,
 } from '../models/index';
 
-export interface AgentAssignmentRequest {
+export interface AgentAssignmentRulesCreateRequest {
     projectId: string;
     createAgentAssignmentRuleDto: CreateAgentAssignmentRuleDto;
-    acceptLanguage?: AgentAssignmentAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesCreateAcceptLanguageEnum;
 }
 
-export interface DeleteAgentAssignmentRequest {
-    projectId: string;
+export interface AgentAssignmentRulesDeactivateRequest {
     ruleId: string;
-    acceptLanguage?: DeleteAgentAssignmentAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesDeactivateAcceptLanguageEnum;
 }
 
-export interface GetAgentAssignmentRequest {
-    projectId: string;
-    acceptLanguage?: GetAgentAssignmentAcceptLanguageEnum;
-}
-
-export interface GetAgentAssignment2Request {
-    projectId: string;
+export interface AgentAssignmentRulesGetByIdRequest {
     ruleId: string;
-    acceptLanguage?: GetAgentAssignment2AcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesGetByIdAcceptLanguageEnum;
 }
 
-export interface UpdateAgentAssignmentRequest {
+export interface AgentAssignmentRulesListRequest {
     projectId: string;
+    acceptLanguage?: AgentAssignmentRulesListAcceptLanguageEnum;
+}
+
+export interface AgentAssignmentRulesUpdateRequest {
     ruleId: string;
     updateAgentAssignmentRuleDto: UpdateAgentAssignmentRuleDto;
-    acceptLanguage?: UpdateAgentAssignmentAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesUpdateAcceptLanguageEnum;
 }
 
-export interface UpdateAgentAssignmentRestoreRequest {
-    projectId: string;
+export interface AgentAssignmentRulesUpdateRestoreRequest {
     ruleId: string;
-    acceptLanguage?: UpdateAgentAssignmentRestoreAcceptLanguageEnum;
+    acceptLanguage?: AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum;
 }
 
 /**
@@ -82,22 +78,26 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      * . channel_id segment_id; , .
      *
      */
-    async agentAssignmentRaw(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
+    async agentAssignmentRulesCreateRaw(requestParameters: AgentAssignmentRulesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling agentAssignment().'
+                'Required parameter "projectId" was null or undefined when calling agentAssignmentRulesCreate().'
             );
         }
 
         if (requestParameters['createAgentAssignmentRuleDto'] == null) {
             throw new runtime.RequiredError(
                 'createAgentAssignmentRuleDto',
-                'Required parameter "createAgentAssignmentRuleDto" was null or undefined when calling agentAssignment().'
+                'Required parameter "createAgentAssignmentRuleDto" was null or undefined when calling agentAssignmentRulesCreate().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -121,7 +121,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/agent-assignment`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/agents/assignment-rules`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -135,8 +135,8 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      * . channel_id segment_id; , .
      *
      */
-    async agentAssignment(requestParameters: AgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
-        const response = await this.agentAssignmentRaw(requestParameters, initOverrides);
+    async agentAssignmentRulesCreate(requestParameters: AgentAssignmentRulesCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
+        const response = await this.agentAssignmentRulesCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -144,18 +144,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async deleteAgentAssignmentRaw(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteAgentAssignment().'
-            );
-        }
-
+    async agentAssignmentRulesDeactivateRaw(requestParameters: AgentAssignmentRulesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
         if (requestParameters['ruleId'] == null) {
             throw new runtime.RequiredError(
                 'ruleId',
-                'Required parameter "ruleId" was null or undefined when calling deleteAgentAssignment().'
+                'Required parameter "ruleId" was null or undefined when calling agentAssignmentRulesDeactivate().'
             );
         }
 
@@ -181,7 +174,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/agent-assignment/{ruleId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
+            path: `/api/agents/assignment-rules/{ruleId}`.replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -194,60 +187,8 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async deleteAgentAssignment(requestParameters: DeleteAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
-        const response = await this.deleteAgentAssignmentRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * : , .
-     *
-     */
-    async getAgentAssignmentRaw(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAgentAssignment().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/agent-assignment`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentAssignmentRulesListDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * : , .
-     *
-     */
-    async getAgentAssignment(requestParameters: GetAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto> {
-        const response = await this.getAgentAssignmentRaw(requestParameters, initOverrides);
+    async agentAssignmentRulesDeactivate(requestParameters: AgentAssignmentRulesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
+        const response = await this.agentAssignmentRulesDeactivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -255,18 +196,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      * ID
      */
-    async getAgentAssignment2Raw(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getAgentAssignment2().'
-            );
-        }
-
+    async agentAssignmentRulesGetByIdRaw(requestParameters: AgentAssignmentRulesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
         if (requestParameters['ruleId'] == null) {
             throw new runtime.RequiredError(
                 'ruleId',
-                'Required parameter "ruleId" was null or undefined when calling getAgentAssignment2().'
+                'Required parameter "ruleId" was null or undefined when calling agentAssignmentRulesGetById().'
             );
         }
 
@@ -292,7 +226,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/agent-assignment/{ruleId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
+            path: `/api/agents/assignment-rules/{ruleId}`.replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -305,8 +239,64 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      * ID
      */
-    async getAgentAssignment2(requestParameters: GetAgentAssignment2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
-        const response = await this.getAgentAssignment2Raw(requestParameters, initOverrides);
+    async agentAssignmentRulesGetById(requestParameters: AgentAssignmentRulesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
+        const response = await this.agentAssignmentRulesGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * : , .
+     *
+     */
+    async agentAssignmentRulesListRaw(requestParameters: AgentAssignmentRulesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRulesListDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling agentAssignmentRulesList().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/assignment-rules`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentAssignmentRulesListDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * : , .
+     *
+     */
+    async agentAssignmentRulesList(requestParameters: AgentAssignmentRulesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRulesListDto> {
+        const response = await this.agentAssignmentRulesListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -314,25 +304,18 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      * ,
      *
      */
-    async updateAgentAssignmentRaw(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateAgentAssignment().'
-            );
-        }
-
+    async agentAssignmentRulesUpdateRaw(requestParameters: AgentAssignmentRulesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
         if (requestParameters['ruleId'] == null) {
             throw new runtime.RequiredError(
                 'ruleId',
-                'Required parameter "ruleId" was null or undefined when calling updateAgentAssignment().'
+                'Required parameter "ruleId" was null or undefined when calling agentAssignmentRulesUpdate().'
             );
         }
 
         if (requestParameters['updateAgentAssignmentRuleDto'] == null) {
             throw new runtime.RequiredError(
                 'updateAgentAssignmentRuleDto',
-                'Required parameter "updateAgentAssignmentRuleDto" was null or undefined when calling updateAgentAssignment().'
+                'Required parameter "updateAgentAssignmentRuleDto" was null or undefined when calling agentAssignmentRulesUpdate().'
             );
         }
 
@@ -360,7 +343,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/agent-assignment/{ruleId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
+            path: `/api/agents/assignment-rules/{ruleId}`.replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -374,8 +357,8 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      * ,
      *
      */
-    async updateAgentAssignment(requestParameters: UpdateAgentAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
-        const response = await this.updateAgentAssignmentRaw(requestParameters, initOverrides);
+    async agentAssignmentRulesUpdate(requestParameters: AgentAssignmentRulesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
+        const response = await this.agentAssignmentRulesUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -383,18 +366,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async updateAgentAssignmentRestoreRaw(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateAgentAssignmentRestore().'
-            );
-        }
-
+    async agentAssignmentRulesUpdateRestoreRaw(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
         if (requestParameters['ruleId'] == null) {
             throw new runtime.RequiredError(
                 'ruleId',
-                'Required parameter "ruleId" was null or undefined when calling updateAgentAssignmentRestore().'
+                'Required parameter "ruleId" was null or undefined when calling agentAssignmentRulesUpdateRestore().'
             );
         }
 
@@ -420,7 +396,7 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/agent-assignment/{ruleId}/restore`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
+            path: `/api/agents/assignment-rules/{ruleId}/restore`.replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -433,8 +409,8 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async updateAgentAssignmentRestore(requestParameters: UpdateAgentAssignmentRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
-        const response = await this.updateAgentAssignmentRestoreRaw(requestParameters, initOverrides);
+    async agentAssignmentRulesUpdateRestore(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
+        const response = await this.agentAssignmentRulesUpdateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -443,48 +419,48 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const AgentAssignmentAcceptLanguageEnum = {
+export const AgentAssignmentRulesCreateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AgentAssignmentAcceptLanguageEnum = typeof AgentAssignmentAcceptLanguageEnum[keyof typeof AgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesCreateAcceptLanguageEnum = typeof AgentAssignmentRulesCreateAcceptLanguageEnum[keyof typeof AgentAssignmentRulesCreateAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeleteAgentAssignmentAcceptLanguageEnum = {
+export const AgentAssignmentRulesDeactivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteAgentAssignmentAcceptLanguageEnum = typeof DeleteAgentAssignmentAcceptLanguageEnum[keyof typeof DeleteAgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesDeactivateAcceptLanguageEnum = typeof AgentAssignmentRulesDeactivateAcceptLanguageEnum[keyof typeof AgentAssignmentRulesDeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAgentAssignmentAcceptLanguageEnum = {
+export const AgentAssignmentRulesGetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAgentAssignmentAcceptLanguageEnum = typeof GetAgentAssignmentAcceptLanguageEnum[keyof typeof GetAgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesGetByIdAcceptLanguageEnum = typeof AgentAssignmentRulesGetByIdAcceptLanguageEnum[keyof typeof AgentAssignmentRulesGetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAgentAssignment2AcceptLanguageEnum = {
+export const AgentAssignmentRulesListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAgentAssignment2AcceptLanguageEnum = typeof GetAgentAssignment2AcceptLanguageEnum[keyof typeof GetAgentAssignment2AcceptLanguageEnum];
+export type AgentAssignmentRulesListAcceptLanguageEnum = typeof AgentAssignmentRulesListAcceptLanguageEnum[keyof typeof AgentAssignmentRulesListAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateAgentAssignmentAcceptLanguageEnum = {
+export const AgentAssignmentRulesUpdateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateAgentAssignmentAcceptLanguageEnum = typeof UpdateAgentAssignmentAcceptLanguageEnum[keyof typeof UpdateAgentAssignmentAcceptLanguageEnum];
+export type AgentAssignmentRulesUpdateAcceptLanguageEnum = typeof AgentAssignmentRulesUpdateAcceptLanguageEnum[keyof typeof AgentAssignmentRulesUpdateAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateAgentAssignmentRestoreAcceptLanguageEnum = {
+export const AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateAgentAssignmentRestoreAcceptLanguageEnum = typeof UpdateAgentAssignmentRestoreAcceptLanguageEnum[keyof typeof UpdateAgentAssignmentRestoreAcceptLanguageEnum];
+export type AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum[keyof typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum];

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UploadUrlAcceptLanguageEnum = exports.SendToSelfRecipientVkConfirmAcceptLanguageEnum = exports.SendToSelfRecipientLinkAcceptLanguageEnum = exports.SendToSelfAcceptLanguageEnum = exports.GetSendToSelfRecipientsAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
+exports.UploadUrlAcceptLanguageEnum = exports.SendToSelfRecipientVkConfirmAcceptLanguageEnum = exports.SendToSelfRecipientLinkAcceptLanguageEnum = exports.SendToSelfAcceptLanguageEnum = exports.LoadAcceptLanguageEnum = exports.GetSendToSelfRecipientsAcceptLanguageEnum = exports.GetDownloadUrlAcceptLanguageEnum = exports.GetDownloadAcceptLanguageEnum = exports.ConfirmAcceptLanguageEnum = exports.AttachmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -220,6 +220,52 @@ class AttachmentsApi extends runtime.BaseAPI {
      */
     async getSendToSelfRecipients(requestParameters, initOverrides) {
         const response = await this.getSendToSelfRecipientsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . AI-.
+     *
+     */
+    async loadRaw(requestParameters, initOverrides) {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError('attachmentId', 'Required parameter "attachmentId" was null or undefined when calling load().');
+        }
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling load().');
+        }
+        const queryParameters = {};
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/load`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AttachmentLoadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . AI-.
+     *
+     */
+    async load(requestParameters, initOverrides) {
+        const response = await this.loadRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -440,6 +486,13 @@ exports.GetDownloadUrlAcceptLanguageEnum = {
  * @export
  */
 exports.GetSendToSelfRecipientsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LoadAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

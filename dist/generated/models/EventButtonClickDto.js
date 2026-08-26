@@ -32,6 +32,7 @@ function EventButtonClickDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
         'callbackData': json['callback_data'] == null ? undefined : json['callback_data'],
         'buttonText': json['button_text'] == null ? undefined : json['button_text'],
         'callbackId': json['callback_id'] == null ? undefined : json['callback_id'],
@@ -50,6 +51,7 @@ function EventButtonClickDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'button_instance_id': value['buttonInstanceId'],
         'callback_data': value['callbackData'],
         'button_text': value['buttonText'],
         'callback_id': value['callbackId'],

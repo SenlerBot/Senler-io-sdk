@@ -131,7 +131,7 @@ export interface ProjectTariffItemDto {
      */
     status: ProjectTariffItemDtoStatusEnum;
     /**
-     * null, (downgrade). DELETE /tariff-next tariff-buy.
+     * null, . API .
      * @type {NextSubscriptionDto}
      * @memberof ProjectTariffItemDto
      */

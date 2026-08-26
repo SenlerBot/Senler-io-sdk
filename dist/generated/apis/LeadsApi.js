@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.GetByVariableCountExistsAcceptLanguageEnum = exports.GetByVariableCountEqualsStringAcceptLanguageEnum = exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = exports.GetByVariableCountEqualsNullAcceptLanguageEnum = exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = exports.ExportByDeliveryAcceptLanguageEnum = exports.ByVariableSearchExistsAcceptLanguageEnum = exports.ByVariableSearchEqualsStringAcceptLanguageEnum = exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = exports.ByVariableSearchEqualsNullAcceptLanguageEnum = exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = exports.ByVariableExportExistsAcceptLanguageEnum = exports.ByVariableExportEqualsStringAcceptLanguageEnum = exports.ByVariableExportEqualsNumberAcceptLanguageEnum = exports.ByVariableExportEqualsNullAcceptLanguageEnum = exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = exports.AutomationOperationAcceptLanguageEnum = exports.AgentOperationAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
+exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.GetSubscriptionUtmTreeAcceptLanguageEnum = exports.GetSubscriptionUtmTreeChannelTypeEnum = exports.GetConsentAcceptancesAcceptLanguageEnum = exports.GetByVariableCountExistsAcceptLanguageEnum = exports.GetByVariableCountEqualsStringAcceptLanguageEnum = exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = exports.GetByVariableCountEqualsNullAcceptLanguageEnum = exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = exports.ExportByDeliveryAcceptLanguageEnum = exports.ByVariableSearchExistsAcceptLanguageEnum = exports.ByVariableSearchEqualsStringAcceptLanguageEnum = exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = exports.ByVariableSearchEqualsNullAcceptLanguageEnum = exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = exports.ByVariableExportExistsAcceptLanguageEnum = exports.ByVariableExportEqualsStringAcceptLanguageEnum = exports.ByVariableExportEqualsNumberAcceptLanguageEnum = exports.ByVariableExportEqualsNullAcceptLanguageEnum = exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = exports.AutomationOperationAcceptLanguageEnum = exports.AgentOperationAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -977,6 +977,113 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , .
+     *
+     */
+    async getConsentAcceptancesRaw(requestParameters, initOverrides) {
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling getConsentAcceptances().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/{leadId}/consent-acceptances`.replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentLeadConsentAcceptancesResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getConsentAcceptances(requestParameters, initOverrides) {
+        const response = await this.getConsentAcceptancesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * parent_id utm_source, parent_id . q . , , .
+     * UTM
+     */
+    async getSubscriptionUtmTreeRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSubscriptionUtmTree().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['channelType'] != null) {
+            queryParameters['channel_type'] = requestParameters['channelType'];
+        }
+        if (requestParameters['segmentId'] != null) {
+            queryParameters['segment_id'] = requestParameters['segmentId'];
+        }
+        if (requestParameters['segmentIsMember'] != null) {
+            queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
+        }
+        if (requestParameters['parentId'] != null) {
+            queryParameters['parent_id'] = requestParameters['parentId'];
+        }
+        if (requestParameters['q'] != null) {
+            queryParameters['q'] = requestParameters['q'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/leads/subscription-utm/tree`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadSubscriptionUtmTreeResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * parent_id utm_source, parent_id . q . , , .
+     * UTM
+     */
+    async getSubscriptionUtmTree(requestParameters, initOverrides) {
+        const response = await this.getSubscriptionUtmTreeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      * ID
      */
@@ -1587,6 +1694,33 @@ exports.GetByVariableCountEqualsStringAcceptLanguageEnum = {
  * @export
  */
 exports.GetByVariableCountExistsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetConsentAcceptancesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetSubscriptionUtmTreeChannelTypeEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito'
+};
+/**
+ * @export
+ */
+exports.GetSubscriptionUtmTreeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

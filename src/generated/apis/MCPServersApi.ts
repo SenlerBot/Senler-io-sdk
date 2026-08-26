@@ -87,13 +87,11 @@ export interface CustomOauthStartRequest {
 }
 
 export interface DeleteListsRequest {
-    projectId: string;
     id: string;
     acceptLanguage?: DeleteListsAcceptLanguageEnum;
 }
 
 export interface DeleteListsServersRequest {
-    projectId: string;
     listId: string;
     serverId: string;
     acceptLanguage?: DeleteListsServersAcceptLanguageEnum;
@@ -141,7 +139,6 @@ export interface GetListsRequest {
 }
 
 export interface GetLists2Request {
-    projectId: string;
     id: string;
     acceptLanguage?: GetLists2AcceptLanguageEnum;
 }
@@ -159,7 +156,6 @@ export interface ListsRequest {
 }
 
 export interface ListsServersRequest {
-    projectId: string;
     listId: string;
     serverId: string;
     acceptLanguage?: ListsServersAcceptLanguageEnum;
@@ -226,14 +222,12 @@ export interface ProjectCredentialValidateRequest {
 }
 
 export interface UpdateListsRequest {
-    projectId: string;
     id: string;
     updateMcpServerListDto: UpdateMcpServerListDto;
     acceptLanguage?: UpdateListsAcceptLanguageEnum;
 }
 
 export interface UpdateListsRestoreRequest {
-    projectId: string;
     id: string;
     acceptLanguage?: UpdateListsRestoreAcceptLanguageEnum;
 }
@@ -321,13 +315,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async deleteListsRaw(requestParameters: DeleteListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteLists().'
-            );
-        }
-
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -357,7 +344,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -379,13 +366,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async deleteListsServersRaw(requestParameters: DeleteListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteListsServers().'
-            );
-        }
-
         if (requestParameters['listId'] == null) {
             throw new runtime.RequiredError(
                 'listId',
@@ -422,7 +402,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{listId}/servers/{serverId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
+            path: `/api/mcp-servers/lists/{listId}/servers/{serverId}`.replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -774,6 +754,10 @@ export class MCPServersApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -802,7 +786,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/mcp-servers/lists`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -825,13 +809,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP ID
      */
     async getLists2Raw(requestParameters: GetLists2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getLists2().'
-            );
-        }
-
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -861,7 +838,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -963,6 +940,10 @@ export class MCPServersApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
@@ -985,7 +966,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/mcp-servers/lists`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1009,13 +990,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async listsServersRaw(requestParameters: ListsServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling listsServers().'
-            );
-        }
-
         if (requestParameters['listId'] == null) {
             throw new runtime.RequiredError(
                 'listId',
@@ -1052,7 +1026,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{listId}/servers/{serverId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
+            path: `/api/mcp-servers/lists/{listId}/servers/{serverId}`.replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1679,13 +1653,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async updateListsRaw(requestParameters: UpdateListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLists().'
-            );
-        }
-
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -1724,7 +1691,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -1748,13 +1715,6 @@ export class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async updateListsRestoreRaw(requestParameters: UpdateListsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpServerListResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateListsRestore().'
-            );
-        }
-
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -1784,7 +1744,7 @@ export class MCPServersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}/restore`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}/restore`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

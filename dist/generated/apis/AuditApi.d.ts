@@ -11,14 +11,14 @@
  */
 import * as runtime from '../runtime';
 import type { AuditLogListResponseDto } from '../models/index';
-export interface GetAuditRequest {
+export interface AuditListRequest {
     projectId: string;
-    entityType?: GetAuditEntityTypeEnum;
+    entityType?: AuditListEntityTypeEnum;
     entityId?: string;
     actorId?: string;
     before?: string;
     limit?: number;
-    acceptLanguage?: GetAuditAcceptLanguageEnum;
+    acceptLanguage?: AuditListAcceptLanguageEnum;
 }
 /**
  *
@@ -28,17 +28,17 @@ export declare class AuditApi extends runtime.BaseAPI {
      * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
-    getAuditRaw(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditLogListResponseDto>>;
+    auditListRaw(requestParameters: AuditListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditLogListResponseDto>>;
     /**
      * - cursor-.  **:** - `entity_type` (project, agent, channel, member, mcp_server, ...) - `entity_id` - `actor_id`  **:** - `before` Mongo ID next_cursor - `limit` - (1-100, default 50)
      *
      */
-    getAudit(requestParameters: GetAuditRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto>;
+    auditList(requestParameters: AuditListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto>;
 }
 /**
  * @export
  */
-export declare const GetAuditEntityTypeEnum: {
+export declare const AuditListEntityTypeEnum: {
     readonly Project: "project";
     readonly Agent: "agent";
     readonly Channel: "channel";
@@ -68,12 +68,12 @@ export declare const GetAuditEntityTypeEnum: {
     readonly SummarizationSettings: "summarization_settings";
     readonly TrafficMark: "traffic_mark";
 };
-export type GetAuditEntityTypeEnum = typeof GetAuditEntityTypeEnum[keyof typeof GetAuditEntityTypeEnum];
+export type AuditListEntityTypeEnum = typeof AuditListEntityTypeEnum[keyof typeof AuditListEntityTypeEnum];
 /**
  * @export
  */
-export declare const GetAuditAcceptLanguageEnum: {
+export declare const AuditListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAuditAcceptLanguageEnum = typeof GetAuditAcceptLanguageEnum[keyof typeof GetAuditAcceptLanguageEnum];
+export type AuditListAcceptLanguageEnum = typeof AuditListAcceptLanguageEnum[keyof typeof AuditListAcceptLanguageEnum];

@@ -88,9 +88,9 @@ export interface CabinetEventListItemDto {
      * @type {string}
      * @memberof CabinetEventListItemDto
      */
-    targetType?: CabinetEventListItemDtoTargetTypeEnum;
+    targetType: CabinetEventListItemDtoTargetTypeEnum;
     /**
-     * ID
+     * ID ,
      * @type {string}
      * @memberof CabinetEventListItemDto
      */

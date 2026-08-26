@@ -80,7 +80,7 @@ class TariffsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise)
+     *
      *
      */
     async getTariffsRaw(requestParameters, initOverrides) {
@@ -98,7 +98,7 @@ class TariffsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TariffListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * (Free, Start, Base, Plus, Max, Enterprise)
+     *
      *
      */
     async getTariffs(requestParameters = {}, initOverrides) {

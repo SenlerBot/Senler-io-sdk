@@ -24,6 +24,12 @@ export interface EventButtonClickDto {
      * @type {string}
      * @memberof EventButtonClickDto
      */
+    buttonInstanceId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof EventButtonClickDto
+     */
     callbackData?: string;
     /**
      *
@@ -86,6 +92,7 @@ export function EventButtonClickDtoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
 
+        'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
         'callbackData': json['callback_data'] == null ? undefined : json['callback_data'],
         'buttonText': json['button_text'] == null ? undefined : json['button_text'],
         'callbackId': json['callback_id'] == null ? undefined : json['callback_id'],
@@ -108,6 +115,7 @@ export function EventButtonClickDtoToJSONTyped(value?: EventButtonClickDto | nul
 
     return {
 
+        'button_instance_id': value['buttonInstanceId'],
         'callback_data': value['callbackData'],
         'button_text': value['buttonText'],
         'callback_id': value['callbackId'],

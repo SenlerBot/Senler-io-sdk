@@ -16,6 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   AttachmentDownloadUrlResponseDto,
+  AttachmentLoadResponseDto,
   AttachmentSendToSelfRecipientDto,
   AttachmentSendToSelfRecipientLinkResponseDto,
   AttachmentSendToSelfRecipientsResponseDto,
@@ -30,6 +31,8 @@ import type {
 import {
     AttachmentDownloadUrlResponseDtoFromJSON,
     AttachmentDownloadUrlResponseDtoToJSON,
+    AttachmentLoadResponseDtoFromJSON,
+    AttachmentLoadResponseDtoToJSON,
     AttachmentSendToSelfRecipientDtoFromJSON,
     AttachmentSendToSelfRecipientDtoToJSON,
     AttachmentSendToSelfRecipientLinkResponseDtoFromJSON,
@@ -74,6 +77,12 @@ export interface GetSendToSelfRecipientsRequest {
     attachmentId: string;
     dialogId: string;
     acceptLanguage?: GetSendToSelfRecipientsAcceptLanguageEnum;
+}
+
+export interface LoadRequest {
+    attachmentId: string;
+    dialogId: string;
+    acceptLanguage?: LoadAcceptLanguageEnum;
 }
 
 export interface SendToSelfRequest {
@@ -332,6 +341,69 @@ export class AttachmentsApi extends runtime.BaseAPI {
      */
     async getSendToSelfRecipients(requestParameters: GetSendToSelfRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientsResponseDto> {
         const response = await this.getSendToSelfRecipientsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . AI-.
+     *
+     */
+    async loadRaw(requestParameters: LoadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentLoadResponseDto>> {
+        if (requestParameters['attachmentId'] == null) {
+            throw new runtime.RequiredError(
+                'attachmentId',
+                'Required parameter "attachmentId" was null or undefined when calling load().'
+            );
+        }
+
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling load().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['dialogId'] != null) {
+            queryParameters['dialogId'] = requestParameters['dialogId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/{attachmentId}/load`.replace(`{${"attachmentId"}}`, encodeURIComponent(String(requestParameters['attachmentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AttachmentLoadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . AI-.
+     *
+     */
+    async load(requestParameters: LoadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentLoadResponseDto> {
+        const response = await this.loadRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -631,6 +703,14 @@ export const GetSendToSelfRecipientsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetSendToSelfRecipientsAcceptLanguageEnum = typeof GetSendToSelfRecipientsAcceptLanguageEnum[keyof typeof GetSendToSelfRecipientsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LoadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LoadAcceptLanguageEnum = typeof LoadAcceptLanguageEnum[keyof typeof LoadAcceptLanguageEnum];
 /**
  * @export
  */

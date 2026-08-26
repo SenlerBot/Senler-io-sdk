@@ -79,106 +79,101 @@ import {
     TypedTelegramMenuButtonTextDtoToJSON,
 } from '../models/index';
 
-export interface DeleteLandingsPlatformTelegramMenuButtonRequest {
-    projectId: string;
+export interface DeleteTelegramMenuButtonRequest {
     channelId: string;
-    acceptLanguage?: DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum;
+    acceptLanguage?: DeleteTelegramMenuButtonAcceptLanguageEnum;
 }
 
-export interface GetLandingsPlatformMaxMiniAppsRequest {
+export interface GetMaxMiniAppsRequest {
     projectId: string;
-    acceptLanguage?: GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum;
+    acceptLanguage?: GetMaxMiniAppsAcceptLanguageEnum;
 }
 
-export interface GetLandingsPlatformTelegramMenuButtonsRequest {
+export interface GetTelegramMenuButtonsRequest {
     projectId: string;
-    acceptLanguage?: GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum;
+    acceptLanguage?: GetTelegramMenuButtonsAcceptLanguageEnum;
 }
 
-export interface GetLandingsPlatformTelegramMiniAppsRequest {
+export interface GetTelegramMiniAppsRequest {
     projectId: string;
-    acceptLanguage?: GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum;
+    acceptLanguage?: GetTelegramMiniAppsAcceptLanguageEnum;
 }
 
-export interface GetLandingsPlatformVkAppsRequest {
+export interface GetVkAppsRequest {
     projectId: string;
-    acceptLanguage?: GetLandingsPlatformVkAppsAcceptLanguageEnum;
+    acceptLanguage?: GetVkAppsAcceptLanguageEnum;
 }
 
-export interface GetLandingsPlatformWebRequest {
+export interface GetWebRequest {
     projectId: string;
-    acceptLanguage?: GetLandingsPlatformWebAcceptLanguageEnum;
+    acceptLanguage?: GetWebAcceptLanguageEnum;
 }
 
-export interface LandingsPlatformMaxMiniAppTargetRequest {
+export interface MaxMiniAppTargetRequest {
     projectId: string;
     setLandingMaxMiniAppTargetDto: SetLandingMaxMiniAppTargetDto;
-    acceptLanguage?: LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum;
+    acceptLanguage?: MaxMiniAppTargetAcceptLanguageEnum;
 }
 
-export interface LandingsPlatformMaxMiniAppVerificationRequest {
+export interface MaxMiniAppVerificationRequest {
     projectId: string;
     startLandingMaxMiniAppVerificationDto: StartLandingMaxMiniAppVerificationDto;
-    acceptLanguage?: LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum;
+    acceptLanguage?: MaxMiniAppVerificationAcceptLanguageEnum;
 }
 
-export interface LandingsPlatformTelegramMenuButtonCheckRequest {
+export interface TelegramMenuButtonCheckRequest {
     projectId: string;
     checkLandingTelegramMenuButtonDto: CheckLandingTelegramMenuButtonDto;
-    acceptLanguage?: LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum;
+    acceptLanguage?: TelegramMenuButtonCheckAcceptLanguageEnum;
 }
 
-export interface LandingsPlatformTelegramMiniAppVerificationRequest {
+export interface TelegramMiniAppVerificationRequest {
     projectId: string;
     startLandingTelegramMiniAppVerificationDto: StartLandingTelegramMiniAppVerificationDto;
-    acceptLanguage?: LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum;
+    acceptLanguage?: TelegramMiniAppVerificationAcceptLanguageEnum;
 }
 
-export interface LandingsPlatformVkAppTargetRequest {
-    projectId: string;
-    setLandingVkAppTargetDto: SetLandingVkAppTargetDto;
-    acceptLanguage?: LandingsPlatformVkAppTargetAcceptLanguageEnum;
-}
-
-export interface UpdateLandingsPlatformTelegramMenuButtonBannerGridRequest {
-    projectId: string;
+export interface UpdateTelegramMenuButtonBannerGridRequest {
     channelId: string;
     typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
-    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum;
+    acceptLanguage?: UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum;
 }
 
-export interface UpdateLandingsPlatformTelegramMenuButtonIconListRequest {
-    projectId: string;
+export interface UpdateTelegramMenuButtonIconListRequest {
     channelId: string;
     typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
-    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum;
+    acceptLanguage?: UpdateTelegramMenuButtonIconListAcceptLanguageEnum;
 }
 
-export interface UpdateLandingsPlatformTelegramMenuButtonLandingRequest {
-    projectId: string;
+export interface UpdateTelegramMenuButtonLandingRequest {
     channelId: string;
     landingId: string;
     typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
-    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum;
+    acceptLanguage?: UpdateTelegramMenuButtonLandingAcceptLanguageEnum;
 }
 
-export interface UpdateLandingsPlatformTelegramMenuButtonListRequest {
-    projectId: string;
+export interface UpdateTelegramMenuButtonListRequest {
     channelId: string;
     typedTelegramMenuButtonTextDto: TypedTelegramMenuButtonTextDto;
-    acceptLanguage?: UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum;
+    acceptLanguage?: UpdateTelegramMenuButtonListAcceptLanguageEnum;
 }
 
-export interface UpdateLandingsPlatformTelegramMiniAppRequest {
+export interface UpdateTelegramMiniAppRequest {
     projectId: string;
     setLandingTelegramMiniAppDto: SetLandingTelegramMiniAppDto;
-    acceptLanguage?: UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum;
+    acceptLanguage?: UpdateTelegramMiniAppAcceptLanguageEnum;
 }
 
-export interface UpdateLandingsPlatformWebRequest {
+export interface UpdateWebRequest {
     projectId: string;
     setLandingWebSettingsDto: SetLandingWebSettingsDto;
-    acceptLanguage?: UpdateLandingsPlatformWebAcceptLanguageEnum;
+    acceptLanguage?: UpdateWebAcceptLanguageEnum;
+}
+
+export interface VkAppTargetRequest {
+    projectId: string;
+    setLandingVkAppTargetDto: SetLandingVkAppTargetDto;
+    acceptLanguage?: VkAppTargetAcceptLanguageEnum;
 }
 
 /**
@@ -190,18 +185,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      * Telegram
      */
-    async deleteLandingsPlatformTelegramMenuButtonRaw(requestParameters: DeleteLandingsPlatformTelegramMenuButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteLandingsPlatformTelegramMenuButton().'
-            );
-        }
-
+    async deleteTelegramMenuButtonRaw(requestParameters: DeleteTelegramMenuButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError(
                 'channelId',
-                'Required parameter "channelId" was null or undefined when calling deleteLandingsPlatformTelegramMenuButton().'
+                'Required parameter "channelId" was null or undefined when calling deleteTelegramMenuButton().'
             );
         }
 
@@ -223,11 +211,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            path: `/api/landings/platform/telegram-menu-button/{channelId}`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -240,8 +228,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      * Telegram
      */
-    async deleteLandingsPlatformTelegramMenuButton(requestParameters: DeleteLandingsPlatformTelegramMenuButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
-        const response = await this.deleteLandingsPlatformTelegramMenuButtonRaw(requestParameters, initOverrides);
+    async deleteTelegramMenuButton(requestParameters: DeleteTelegramMenuButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
+        const response = await this.deleteTelegramMenuButtonRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -249,15 +237,19 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX Mini App .
      * MAX Mini App
      */
-    async getLandingsPlatformMaxMiniAppsRaw(requestParameters: GetLandingsPlatformMaxMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMaxMiniAppListResponseDto>> {
+    async getMaxMiniAppsRaw(requestParameters: GetMaxMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMaxMiniAppListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getLandingsPlatformMaxMiniApps().'
+                'Required parameter "projectId" was null or undefined when calling getMaxMiniApps().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -279,7 +271,7 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/max-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/max-mini-apps`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -292,8 +284,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX Mini App .
      * MAX Mini App
      */
-    async getLandingsPlatformMaxMiniApps(requestParameters: GetLandingsPlatformMaxMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppListResponseDto> {
-        const response = await this.getLandingsPlatformMaxMiniAppsRaw(requestParameters, initOverrides);
+    async getMaxMiniApps(requestParameters: GetMaxMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppListResponseDto> {
+        const response = await this.getMaxMiniAppsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -301,15 +293,19 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * , .
      * Telegram-
      */
-    async getLandingsPlatformTelegramMenuButtonsRaw(requestParameters: GetLandingsPlatformTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonListResponseDto>> {
+    async getTelegramMenuButtonsRaw(requestParameters: GetTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getLandingsPlatformTelegramMenuButtons().'
+                'Required parameter "projectId" was null or undefined when calling getTelegramMenuButtons().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -331,7 +327,7 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-buttons`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/telegram-menu-buttons`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -344,8 +340,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * , .
      * Telegram-
      */
-    async getLandingsPlatformTelegramMenuButtons(requestParameters: GetLandingsPlatformTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonListResponseDto> {
-        const response = await this.getLandingsPlatformTelegramMenuButtonsRaw(requestParameters, initOverrides);
+    async getTelegramMenuButtons(requestParameters: GetTelegramMenuButtonsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonListResponseDto> {
+        const response = await this.getTelegramMenuButtonsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -353,15 +349,19 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App .
      * Telegram Mini App
      */
-    async getLandingsPlatformTelegramMiniAppsRaw(requestParameters: GetLandingsPlatformTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMiniAppListResponseDto>> {
+    async getTelegramMiniAppsRaw(requestParameters: GetTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMiniAppListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getLandingsPlatformTelegramMiniApps().'
+                'Required parameter "projectId" was null or undefined when calling getTelegramMiniApps().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -383,7 +383,7 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-mini-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/telegram-mini-apps`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -396,8 +396,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App .
      * Telegram Mini App
      */
-    async getLandingsPlatformTelegramMiniApps(requestParameters: GetLandingsPlatformTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppListResponseDto> {
-        const response = await this.getLandingsPlatformTelegramMiniAppsRaw(requestParameters, initOverrides);
+    async getTelegramMiniApps(requestParameters: GetTelegramMiniAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppListResponseDto> {
+        const response = await this.getTelegramMiniAppsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -405,15 +405,19 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * VK- .
      * VK App
      */
-    async getLandingsPlatformVkAppsRaw(requestParameters: GetLandingsPlatformVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingVkAppListResponseDto>> {
+    async getVkAppsRaw(requestParameters: GetVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingVkAppListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getLandingsPlatformVkApps().'
+                'Required parameter "projectId" was null or undefined when calling getVkApps().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -435,7 +439,7 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/vk-apps`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/vk-apps`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -448,8 +452,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * VK- .
      * VK App
      */
-    async getLandingsPlatformVkApps(requestParameters: GetLandingsPlatformVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVkAppListResponseDto> {
-        const response = await this.getLandingsPlatformVkAppsRaw(requestParameters, initOverrides);
+    async getVkApps(requestParameters: GetVkAppsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVkAppListResponseDto> {
+        const response = await this.getVkAppsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -457,15 +461,19 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * - .
      * -
      */
-    async getLandingsPlatformWebRaw(requestParameters: GetLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingWebSettingsResponseDto>> {
+    async getWebRaw(requestParameters: GetWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingWebSettingsResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getLandingsPlatformWeb().'
+                'Required parameter "projectId" was null or undefined when calling getWeb().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -487,7 +495,7 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/web`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/web`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -500,8 +508,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * - .
      * -
      */
-    async getLandingsPlatformWeb(requestParameters: GetLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto> {
-        const response = await this.getLandingsPlatformWebRaw(requestParameters, initOverrides);
+    async getWeb(requestParameters: GetWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto> {
+        const response = await this.getWebRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -509,22 +517,26 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX- Mini App : .
      * MAX Mini App
      */
-    async landingsPlatformMaxMiniAppTargetRaw(requestParameters: LandingsPlatformMaxMiniAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMaxMiniAppResponseDto>> {
+    async maxMiniAppTargetRaw(requestParameters: MaxMiniAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMaxMiniAppResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling landingsPlatformMaxMiniAppTarget().'
+                'Required parameter "projectId" was null or undefined when calling maxMiniAppTarget().'
             );
         }
 
         if (requestParameters['setLandingMaxMiniAppTargetDto'] == null) {
             throw new runtime.RequiredError(
                 'setLandingMaxMiniAppTargetDto',
-                'Required parameter "setLandingMaxMiniAppTargetDto" was null or undefined when calling landingsPlatformMaxMiniAppTarget().'
+                'Required parameter "setLandingMaxMiniAppTargetDto" was null or undefined when calling maxMiniAppTarget().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -544,11 +556,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/max-mini-app/target`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/max-mini-app/target`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -562,8 +574,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX- Mini App : .
      * MAX Mini App
      */
-    async landingsPlatformMaxMiniAppTarget(requestParameters: LandingsPlatformMaxMiniAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppResponseDto> {
-        const response = await this.landingsPlatformMaxMiniAppTargetRaw(requestParameters, initOverrides);
+    async maxMiniAppTarget(requestParameters: MaxMiniAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppResponseDto> {
+        const response = await this.maxMiniAppTargetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -571,22 +583,26 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX Mini App .
      * MAX Mini App
      */
-    async landingsPlatformMaxMiniAppVerificationRaw(requestParameters: LandingsPlatformMaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMaxMiniAppVerificationResponseDto>> {
+    async maxMiniAppVerificationRaw(requestParameters: MaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMaxMiniAppVerificationResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling landingsPlatformMaxMiniAppVerification().'
+                'Required parameter "projectId" was null or undefined when calling maxMiniAppVerification().'
             );
         }
 
         if (requestParameters['startLandingMaxMiniAppVerificationDto'] == null) {
             throw new runtime.RequiredError(
                 'startLandingMaxMiniAppVerificationDto',
-                'Required parameter "startLandingMaxMiniAppVerificationDto" was null or undefined when calling landingsPlatformMaxMiniAppVerification().'
+                'Required parameter "startLandingMaxMiniAppVerificationDto" was null or undefined when calling maxMiniAppVerification().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -606,11 +622,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/max-mini-app/verification`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/max-mini-app/verification`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -624,8 +640,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * MAX Mini App .
      * MAX Mini App
      */
-    async landingsPlatformMaxMiniAppVerification(requestParameters: LandingsPlatformMaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppVerificationResponseDto> {
-        const response = await this.landingsPlatformMaxMiniAppVerificationRaw(requestParameters, initOverrides);
+    async maxMiniAppVerification(requestParameters: MaxMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMaxMiniAppVerificationResponseDto> {
+        const response = await this.maxMiniAppVerificationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -633,22 +649,26 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram- .
      * Telegram-
      */
-    async landingsPlatformTelegramMenuButtonCheckRaw(requestParameters: LandingsPlatformTelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
+    async telegramMenuButtonCheckRaw(requestParameters: TelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling landingsPlatformTelegramMenuButtonCheck().'
+                'Required parameter "projectId" was null or undefined when calling telegramMenuButtonCheck().'
             );
         }
 
         if (requestParameters['checkLandingTelegramMenuButtonDto'] == null) {
             throw new runtime.RequiredError(
                 'checkLandingTelegramMenuButtonDto',
-                'Required parameter "checkLandingTelegramMenuButtonDto" was null or undefined when calling landingsPlatformTelegramMenuButtonCheck().'
+                'Required parameter "checkLandingTelegramMenuButtonDto" was null or undefined when calling telegramMenuButtonCheck().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -668,11 +688,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/check`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/telegram-menu-button/check`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -686,8 +706,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram- .
      * Telegram-
      */
-    async landingsPlatformTelegramMenuButtonCheck(requestParameters: LandingsPlatformTelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
-        const response = await this.landingsPlatformTelegramMenuButtonCheckRaw(requestParameters, initOverrides);
+    async telegramMenuButtonCheck(requestParameters: TelegramMenuButtonCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
+        const response = await this.telegramMenuButtonCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -695,22 +715,26 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App .
      * Telegram Mini App
      */
-    async landingsPlatformTelegramMiniAppVerificationRaw(requestParameters: LandingsPlatformTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMiniAppVerificationResponseDto>> {
+    async telegramMiniAppVerificationRaw(requestParameters: TelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMiniAppVerificationResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling landingsPlatformTelegramMiniAppVerification().'
+                'Required parameter "projectId" was null or undefined when calling telegramMiniAppVerification().'
             );
         }
 
         if (requestParameters['startLandingTelegramMiniAppVerificationDto'] == null) {
             throw new runtime.RequiredError(
                 'startLandingTelegramMiniAppVerificationDto',
-                'Required parameter "startLandingTelegramMiniAppVerificationDto" was null or undefined when calling landingsPlatformTelegramMiniAppVerification().'
+                'Required parameter "startLandingTelegramMiniAppVerificationDto" was null or undefined when calling telegramMiniAppVerification().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -730,11 +754,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-mini-app/verification`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/telegram-mini-app/verification`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -748,70 +772,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App .
      * Telegram Mini App
      */
-    async landingsPlatformTelegramMiniAppVerification(requestParameters: LandingsPlatformTelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppVerificationResponseDto> {
-        const response = await this.landingsPlatformTelegramMiniAppVerificationRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * VK- .
-     * VK App
-     */
-    async landingsPlatformVkAppTargetRaw(requestParameters: LandingsPlatformVkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingVkAppResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling landingsPlatformVkAppTarget().'
-            );
-        }
-
-        if (requestParameters['setLandingVkAppTargetDto'] == null) {
-            throw new runtime.RequiredError(
-                'setLandingVkAppTargetDto',
-                'Required parameter "setLandingVkAppTargetDto" was null or undefined when calling landingsPlatformVkAppTarget().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
-        }
-
-        const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/vk-app/target`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: SetLandingVkAppTargetDtoToJSON(requestParameters['setLandingVkAppTargetDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingVkAppResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * VK- .
-     * VK App
-     */
-    async landingsPlatformVkAppTarget(requestParameters: LandingsPlatformVkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVkAppResponseDto> {
-        const response = await this.landingsPlatformVkAppTargetRaw(requestParameters, initOverrides);
+    async telegramMiniAppVerification(requestParameters: TelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppVerificationResponseDto> {
+        const response = await this.telegramMiniAppVerificationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -819,25 +781,18 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonBannerGridRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonBannerGridRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonBannerGrid().'
-            );
-        }
-
+    async updateTelegramMenuButtonBannerGridRaw(requestParameters: UpdateTelegramMenuButtonBannerGridRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError(
                 'channelId',
-                'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonBannerGrid().'
+                'Required parameter "channelId" was null or undefined when calling updateTelegramMenuButtonBannerGrid().'
             );
         }
 
         if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
             throw new runtime.RequiredError(
                 'typedTelegramMenuButtonTextDto',
-                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonBannerGrid().'
+                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateTelegramMenuButtonBannerGrid().'
             );
         }
 
@@ -861,11 +816,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/banner-grid`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            path: `/api/landings/platform/telegram-menu-button/{channelId}/banner-grid`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -879,8 +834,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonBannerGrid(requestParameters: UpdateLandingsPlatformTelegramMenuButtonBannerGridRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
-        const response = await this.updateLandingsPlatformTelegramMenuButtonBannerGridRaw(requestParameters, initOverrides);
+    async updateTelegramMenuButtonBannerGrid(requestParameters: UpdateTelegramMenuButtonBannerGridRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
+        const response = await this.updateTelegramMenuButtonBannerGridRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -888,25 +843,18 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonIconListRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonIconListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonIconList().'
-            );
-        }
-
+    async updateTelegramMenuButtonIconListRaw(requestParameters: UpdateTelegramMenuButtonIconListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError(
                 'channelId',
-                'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonIconList().'
+                'Required parameter "channelId" was null or undefined when calling updateTelegramMenuButtonIconList().'
             );
         }
 
         if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
             throw new runtime.RequiredError(
                 'typedTelegramMenuButtonTextDto',
-                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonIconList().'
+                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateTelegramMenuButtonIconList().'
             );
         }
 
@@ -930,11 +878,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/icon-list`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            path: `/api/landings/platform/telegram-menu-button/{channelId}/icon-list`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -948,8 +896,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonIconList(requestParameters: UpdateLandingsPlatformTelegramMenuButtonIconListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
-        const response = await this.updateLandingsPlatformTelegramMenuButtonIconListRaw(requestParameters, initOverrides);
+    async updateTelegramMenuButtonIconList(requestParameters: UpdateTelegramMenuButtonIconListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
+        const response = await this.updateTelegramMenuButtonIconListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -957,32 +905,25 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonLandingRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().'
-            );
-        }
-
+    async updateTelegramMenuButtonLandingRaw(requestParameters: UpdateTelegramMenuButtonLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError(
                 'channelId',
-                'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().'
+                'Required parameter "channelId" was null or undefined when calling updateTelegramMenuButtonLanding().'
             );
         }
 
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError(
                 'landingId',
-                'Required parameter "landingId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().'
+                'Required parameter "landingId" was null or undefined when calling updateTelegramMenuButtonLanding().'
             );
         }
 
         if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
             throw new runtime.RequiredError(
                 'typedTelegramMenuButtonTextDto',
-                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonLanding().'
+                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateTelegramMenuButtonLanding().'
             );
         }
 
@@ -1006,11 +947,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/landing/{landingId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            path: `/api/landings/platform/telegram-menu-button/{channelId}/landing/{landingId}`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))).replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1024,8 +965,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonLanding(requestParameters: UpdateLandingsPlatformTelegramMenuButtonLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
-        const response = await this.updateLandingsPlatformTelegramMenuButtonLandingRaw(requestParameters, initOverrides);
+    async updateTelegramMenuButtonLanding(requestParameters: UpdateTelegramMenuButtonLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
+        const response = await this.updateTelegramMenuButtonLandingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1033,25 +974,18 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonListRaw(requestParameters: UpdateLandingsPlatformTelegramMenuButtonListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonList().'
-            );
-        }
-
+    async updateTelegramMenuButtonListRaw(requestParameters: UpdateTelegramMenuButtonListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMenuButtonResponseDto>> {
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError(
                 'channelId',
-                'Required parameter "channelId" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonList().'
+                'Required parameter "channelId" was null or undefined when calling updateTelegramMenuButtonList().'
             );
         }
 
         if (requestParameters['typedTelegramMenuButtonTextDto'] == null) {
             throw new runtime.RequiredError(
                 'typedTelegramMenuButtonTextDto',
-                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateLandingsPlatformTelegramMenuButtonList().'
+                'Required parameter "typedTelegramMenuButtonTextDto" was null or undefined when calling updateTelegramMenuButtonList().'
             );
         }
 
@@ -1075,11 +1009,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-menu-button/{channelId}/list`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            path: `/api/landings/platform/telegram-menu-button/{channelId}/list`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -1093,8 +1027,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateLandingsPlatformTelegramMenuButtonList(requestParameters: UpdateLandingsPlatformTelegramMenuButtonListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
-        const response = await this.updateLandingsPlatformTelegramMenuButtonListRaw(requestParameters, initOverrides);
+    async updateTelegramMenuButtonList(requestParameters: UpdateTelegramMenuButtonListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMenuButtonResponseDto> {
+        const response = await this.updateTelegramMenuButtonListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1102,22 +1036,26 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App .
      * Telegram Mini App
      */
-    async updateLandingsPlatformTelegramMiniAppRaw(requestParameters: UpdateLandingsPlatformTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMiniAppResponseDto>> {
+    async updateTelegramMiniAppRaw(requestParameters: UpdateTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingTelegramMiniAppResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformTelegramMiniApp().'
+                'Required parameter "projectId" was null or undefined when calling updateTelegramMiniApp().'
             );
         }
 
         if (requestParameters['setLandingTelegramMiniAppDto'] == null) {
             throw new runtime.RequiredError(
                 'setLandingTelegramMiniAppDto',
-                'Required parameter "setLandingTelegramMiniAppDto" was null or undefined when calling updateLandingsPlatformTelegramMiniApp().'
+                'Required parameter "setLandingTelegramMiniAppDto" was null or undefined when calling updateTelegramMiniApp().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1137,11 +1075,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/telegram-mini-app`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/telegram-mini-app`,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -1155,8 +1093,8 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App .
      * Telegram Mini App
      */
-    async updateLandingsPlatformTelegramMiniApp(requestParameters: UpdateLandingsPlatformTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppResponseDto> {
-        const response = await this.updateLandingsPlatformTelegramMiniAppRaw(requestParameters, initOverrides);
+    async updateTelegramMiniApp(requestParameters: UpdateTelegramMiniAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppResponseDto> {
+        const response = await this.updateTelegramMiniAppRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1164,22 +1102,26 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      * -
      */
-    async updateLandingsPlatformWebRaw(requestParameters: UpdateLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingWebSettingsResponseDto>> {
+    async updateWebRaw(requestParameters: UpdateWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingWebSettingsResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling updateLandingsPlatformWeb().'
+                'Required parameter "projectId" was null or undefined when calling updateWeb().'
             );
         }
 
         if (requestParameters['setLandingWebSettingsDto'] == null) {
             throw new runtime.RequiredError(
                 'setLandingWebSettingsDto',
-                'Required parameter "setLandingWebSettingsDto" was null or undefined when calling updateLandingsPlatformWeb().'
+                'Required parameter "setLandingWebSettingsDto" was null or undefined when calling updateWeb().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1199,11 +1141,11 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
 
         const response = await this.request({
-            path: `/api/projects/{projectId}/landings/platform/web`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/landings/platform/web`,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -1217,8 +1159,74 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * .
      * -
      */
-    async updateLandingsPlatformWeb(requestParameters: UpdateLandingsPlatformWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto> {
-        const response = await this.updateLandingsPlatformWebRaw(requestParameters, initOverrides);
+    async updateWeb(requestParameters: UpdateWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto> {
+        const response = await this.updateWebRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * VK- .
+     * VK App
+     */
+    async vkAppTargetRaw(requestParameters: VkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingVkAppResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling vkAppTarget().'
+            );
+        }
+
+        if (requestParameters['setLandingVkAppTargetDto'] == null) {
+            throw new runtime.RequiredError(
+                'setLandingVkAppTargetDto',
+                'Required parameter "setLandingVkAppTargetDto" was null or undefined when calling vkAppTarget().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/landings/platform/vk-app/target`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetLandingVkAppTargetDtoToJSON(requestParameters['setLandingVkAppTargetDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingVkAppResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * VK- .
+     * VK App
+     */
+    async vkAppTarget(requestParameters: VkAppTargetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVkAppResponseDto> {
+        const response = await this.vkAppTargetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1227,136 +1235,136 @@ export class LandingPlatformSettingsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum = {
+export const DeleteTelegramMenuButtonAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum = typeof DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum[keyof typeof DeleteLandingsPlatformTelegramMenuButtonAcceptLanguageEnum];
+export type DeleteTelegramMenuButtonAcceptLanguageEnum = typeof DeleteTelegramMenuButtonAcceptLanguageEnum[keyof typeof DeleteTelegramMenuButtonAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum = {
+export const GetMaxMiniAppsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum = typeof GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum[keyof typeof GetLandingsPlatformMaxMiniAppsAcceptLanguageEnum];
+export type GetMaxMiniAppsAcceptLanguageEnum = typeof GetMaxMiniAppsAcceptLanguageEnum[keyof typeof GetMaxMiniAppsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum = {
+export const GetTelegramMenuButtonsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum = typeof GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum[keyof typeof GetLandingsPlatformTelegramMenuButtonsAcceptLanguageEnum];
+export type GetTelegramMenuButtonsAcceptLanguageEnum = typeof GetTelegramMenuButtonsAcceptLanguageEnum[keyof typeof GetTelegramMenuButtonsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum = {
+export const GetTelegramMiniAppsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum = typeof GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum[keyof typeof GetLandingsPlatformTelegramMiniAppsAcceptLanguageEnum];
+export type GetTelegramMiniAppsAcceptLanguageEnum = typeof GetTelegramMiniAppsAcceptLanguageEnum[keyof typeof GetTelegramMiniAppsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetLandingsPlatformVkAppsAcceptLanguageEnum = {
+export const GetVkAppsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetLandingsPlatformVkAppsAcceptLanguageEnum = typeof GetLandingsPlatformVkAppsAcceptLanguageEnum[keyof typeof GetLandingsPlatformVkAppsAcceptLanguageEnum];
+export type GetVkAppsAcceptLanguageEnum = typeof GetVkAppsAcceptLanguageEnum[keyof typeof GetVkAppsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetLandingsPlatformWebAcceptLanguageEnum = {
+export const GetWebAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetLandingsPlatformWebAcceptLanguageEnum = typeof GetLandingsPlatformWebAcceptLanguageEnum[keyof typeof GetLandingsPlatformWebAcceptLanguageEnum];
+export type GetWebAcceptLanguageEnum = typeof GetWebAcceptLanguageEnum[keyof typeof GetWebAcceptLanguageEnum];
 /**
  * @export
  */
-export const LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum = {
+export const MaxMiniAppTargetAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum = typeof LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum[keyof typeof LandingsPlatformMaxMiniAppTargetAcceptLanguageEnum];
+export type MaxMiniAppTargetAcceptLanguageEnum = typeof MaxMiniAppTargetAcceptLanguageEnum[keyof typeof MaxMiniAppTargetAcceptLanguageEnum];
 /**
  * @export
  */
-export const LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum = {
+export const MaxMiniAppVerificationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum = typeof LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum[keyof typeof LandingsPlatformMaxMiniAppVerificationAcceptLanguageEnum];
+export type MaxMiniAppVerificationAcceptLanguageEnum = typeof MaxMiniAppVerificationAcceptLanguageEnum[keyof typeof MaxMiniAppVerificationAcceptLanguageEnum];
 /**
  * @export
  */
-export const LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum = {
+export const TelegramMenuButtonCheckAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum = typeof LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum[keyof typeof LandingsPlatformTelegramMenuButtonCheckAcceptLanguageEnum];
+export type TelegramMenuButtonCheckAcceptLanguageEnum = typeof TelegramMenuButtonCheckAcceptLanguageEnum[keyof typeof TelegramMenuButtonCheckAcceptLanguageEnum];
 /**
  * @export
  */
-export const LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum = {
+export const TelegramMiniAppVerificationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum = typeof LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum[keyof typeof LandingsPlatformTelegramMiniAppVerificationAcceptLanguageEnum];
+export type TelegramMiniAppVerificationAcceptLanguageEnum = typeof TelegramMiniAppVerificationAcceptLanguageEnum[keyof typeof TelegramMiniAppVerificationAcceptLanguageEnum];
 /**
  * @export
  */
-export const LandingsPlatformVkAppTargetAcceptLanguageEnum = {
+export const UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type LandingsPlatformVkAppTargetAcceptLanguageEnum = typeof LandingsPlatformVkAppTargetAcceptLanguageEnum[keyof typeof LandingsPlatformVkAppTargetAcceptLanguageEnum];
+export type UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum = typeof UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum[keyof typeof UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum = {
+export const UpdateTelegramMenuButtonIconListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonBannerGridAcceptLanguageEnum];
+export type UpdateTelegramMenuButtonIconListAcceptLanguageEnum = typeof UpdateTelegramMenuButtonIconListAcceptLanguageEnum[keyof typeof UpdateTelegramMenuButtonIconListAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum = {
+export const UpdateTelegramMenuButtonLandingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonIconListAcceptLanguageEnum];
+export type UpdateTelegramMenuButtonLandingAcceptLanguageEnum = typeof UpdateTelegramMenuButtonLandingAcceptLanguageEnum[keyof typeof UpdateTelegramMenuButtonLandingAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum = {
+export const UpdateTelegramMenuButtonListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonLandingAcceptLanguageEnum];
+export type UpdateTelegramMenuButtonListAcceptLanguageEnum = typeof UpdateTelegramMenuButtonListAcceptLanguageEnum[keyof typeof UpdateTelegramMenuButtonListAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum = {
+export const UpdateTelegramMiniAppAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMenuButtonListAcceptLanguageEnum];
+export type UpdateTelegramMiniAppAcceptLanguageEnum = typeof UpdateTelegramMiniAppAcceptLanguageEnum[keyof typeof UpdateTelegramMiniAppAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum = {
+export const UpdateWebAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum = typeof UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformTelegramMiniAppAcceptLanguageEnum];
+export type UpdateWebAcceptLanguageEnum = typeof UpdateWebAcceptLanguageEnum[keyof typeof UpdateWebAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateLandingsPlatformWebAcceptLanguageEnum = {
+export const VkAppTargetAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateLandingsPlatformWebAcceptLanguageEnum = typeof UpdateLandingsPlatformWebAcceptLanguageEnum[keyof typeof UpdateLandingsPlatformWebAcceptLanguageEnum];
+export type VkAppTargetAcceptLanguageEnum = typeof VkAppTargetAcceptLanguageEnum[keyof typeof VkAppTargetAcceptLanguageEnum];

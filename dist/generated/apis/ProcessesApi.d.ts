@@ -11,115 +11,143 @@
  */
 import * as runtime from '../runtime';
 import type { CentrifugoSubscriptionDto, ErrorResponse, ListProcessesResponseDto, ProcessResponseDto, ProcessResultResponseDto, SuccessMessageDto } from '../models/index';
-export interface DeleteProcessesRequest {
+export interface GetRealtimeTokenRequest {
     projectId: string;
-    id: string;
-    acceptLanguage?: DeleteProcessesAcceptLanguageEnum;
+    acceptLanguage?: GetRealtimeTokenAcceptLanguageEnum;
 }
-export interface GetProcessesRequest {
+export interface GetResultRequest {
+    id: string;
+    acceptLanguage?: GetResultAcceptLanguageEnum;
+}
+export interface ProcessesDeactivateRequest {
+    id: string;
+    acceptLanguage?: ProcessesDeactivateAcceptLanguageEnum;
+}
+export interface ProcessesGetByIdRequest {
+    id: string;
+    acceptLanguage?: ProcessesGetByIdAcceptLanguageEnum;
+}
+export interface ProcessesGetDownloadRequest {
+    id: string;
+    acceptLanguage?: ProcessesGetDownloadAcceptLanguageEnum;
+}
+export interface ProcessesListRequest {
     projectId: string;
-    type?: GetProcessesTypeEnum;
-    status?: GetProcessesStatusEnum;
+    type?: ProcessesListTypeEnum;
+    status?: ProcessesListStatusEnum;
     limit?: number;
     offset?: number;
-    acceptLanguage?: GetProcessesAcceptLanguageEnum;
-}
-export interface GetProcesses2Request {
-    projectId: string;
-    id: string;
-    acceptLanguage?: GetProcesses2AcceptLanguageEnum;
-}
-export interface GetProcessesDownloadRequest {
-    projectId: string;
-    id: string;
-    acceptLanguage?: GetProcessesDownloadAcceptLanguageEnum;
-}
-export interface GetProcessesRealtimeTokenRequest {
-    projectId: string;
-    acceptLanguage?: GetProcessesRealtimeTokenAcceptLanguageEnum;
-}
-export interface GetProcessesResultRequest {
-    projectId: string;
-    id: string;
-    acceptLanguage?: GetProcessesResultAcceptLanguageEnum;
+    acceptLanguage?: ProcessesListAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class ProcessesApi extends runtime.BaseAPI {
     /**
-     * pending/preparing/processing completed/failed/cancelled
+     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
      *
      */
-    deleteProcessesRaw(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>>;
-    /**
-     * pending/preparing/processing completed/failed/cancelled
-     *
-     */
-    deleteProcesses(requestParameters: DeleteProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
-    /**
-     * (/)
-     *
-     */
-    getProcessesRaw(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListProcessesResponseDto>>;
-    /**
-     * (/)
-     *
-     */
-    getProcesses(requestParameters: GetProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListProcessesResponseDto>;
-    /**
-     * ,
-     *
-     */
-    getProcesses2Raw(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
-    /**
-     * ,
-     *
-     */
-    getProcesses2(requestParameters: GetProcesses2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
-    /**
-     * S3- .
-     *
-     */
-    getProcessesDownloadRaw(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>>;
-    /**
-     * S3- .
-     *
-     */
-    getProcessesDownload(requestParameters: GetProcessesDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse>;
+    getRealtimeTokenRaw(requestParameters: GetRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
     /**
      * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
      *
      */
-    getProcessesRealtimeTokenRaw(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
-    /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
-     *
-     */
-    getProcessesRealtimeToken(requestParameters: GetProcessesRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
+    getRealtimeToken(requestParameters: GetRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
     /**
      *
      *
      */
-    getProcessesResultRaw(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>>;
+    getResultRaw(requestParameters: GetResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResultResponseDto>>;
     /**
      *
      *
      */
-    getProcessesResult(requestParameters: GetProcessesResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto>;
+    getResult(requestParameters: GetResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto>;
+    /**
+     * pending/preparing/processing completed/failed/cancelled
+     *
+     */
+    processesDeactivateRaw(requestParameters: ProcessesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessMessageDto>>;
+    /**
+     * pending/preparing/processing completed/failed/cancelled
+     *
+     */
+    processesDeactivate(requestParameters: ProcessesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessMessageDto>;
+    /**
+     * ,
+     *
+     */
+    processesGetByIdRaw(requestParameters: ProcessesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * ,
+     *
+     */
+    processesGetById(requestParameters: ProcessesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * S3- .
+     *
+     */
+    processesGetDownloadRaw(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>>;
+    /**
+     * S3- .
+     *
+     */
+    processesGetDownload(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse>;
+    /**
+     * (/)
+     *
+     */
+    processesListRaw(requestParameters: ProcessesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListProcessesResponseDto>>;
+    /**
+     * (/)
+     *
+     */
+    processesList(requestParameters: ProcessesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListProcessesResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteProcessesAcceptLanguageEnum: {
+export declare const GetRealtimeTokenAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteProcessesAcceptLanguageEnum = typeof DeleteProcessesAcceptLanguageEnum[keyof typeof DeleteProcessesAcceptLanguageEnum];
+export type GetRealtimeTokenAcceptLanguageEnum = typeof GetRealtimeTokenAcceptLanguageEnum[keyof typeof GetRealtimeTokenAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetProcessesTypeEnum: {
+export declare const GetResultAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetResultAcceptLanguageEnum = typeof GetResultAcceptLanguageEnum[keyof typeof GetResultAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProcessesDeactivateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProcessesDeactivateAcceptLanguageEnum = typeof ProcessesDeactivateAcceptLanguageEnum[keyof typeof ProcessesDeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProcessesGetByIdAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProcessesGetByIdAcceptLanguageEnum = typeof ProcessesGetByIdAcceptLanguageEnum[keyof typeof ProcessesGetByIdAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProcessesGetDownloadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProcessesGetDownloadAcceptLanguageEnum = typeof ProcessesGetDownloadAcceptLanguageEnum[keyof typeof ProcessesGetDownloadAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProcessesListTypeEnum: {
     readonly LeadsExport: "leads_export";
     readonly LeadsImport: "leads_import";
     readonly LeadsRefresh: "leads_refresh";
@@ -132,11 +160,11 @@ export declare const GetProcessesTypeEnum: {
     readonly ResourcePackageImport: "resource_package_import";
     readonly DeliverySend: "delivery_send";
 };
-export type GetProcessesTypeEnum = typeof GetProcessesTypeEnum[keyof typeof GetProcessesTypeEnum];
+export type ProcessesListTypeEnum = typeof ProcessesListTypeEnum[keyof typeof ProcessesListTypeEnum];
 /**
  * @export
  */
-export declare const GetProcessesStatusEnum: {
+export declare const ProcessesListStatusEnum: {
     readonly Pending: "pending";
     readonly Preparing: "preparing";
     readonly Processing: "processing";
@@ -144,44 +172,12 @@ export declare const GetProcessesStatusEnum: {
     readonly Failed: "failed";
     readonly Cancelled: "cancelled";
 };
-export type GetProcessesStatusEnum = typeof GetProcessesStatusEnum[keyof typeof GetProcessesStatusEnum];
+export type ProcessesListStatusEnum = typeof ProcessesListStatusEnum[keyof typeof ProcessesListStatusEnum];
 /**
  * @export
  */
-export declare const GetProcessesAcceptLanguageEnum: {
+export declare const ProcessesListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetProcessesAcceptLanguageEnum = typeof GetProcessesAcceptLanguageEnum[keyof typeof GetProcessesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetProcesses2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProcesses2AcceptLanguageEnum = typeof GetProcesses2AcceptLanguageEnum[keyof typeof GetProcesses2AcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetProcessesDownloadAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProcessesDownloadAcceptLanguageEnum = typeof GetProcessesDownloadAcceptLanguageEnum[keyof typeof GetProcessesDownloadAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetProcessesRealtimeTokenAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProcessesRealtimeTokenAcceptLanguageEnum = typeof GetProcessesRealtimeTokenAcceptLanguageEnum[keyof typeof GetProcessesRealtimeTokenAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetProcessesResultAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProcessesResultAcceptLanguageEnum = typeof GetProcessesResultAcceptLanguageEnum[keyof typeof GetProcessesResultAcceptLanguageEnum];
+export type ProcessesListAcceptLanguageEnum = typeof ProcessesListAcceptLanguageEnum[keyof typeof ProcessesListAcceptLanguageEnum];

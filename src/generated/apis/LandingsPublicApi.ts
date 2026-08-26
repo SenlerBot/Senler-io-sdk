@@ -15,9 +15,12 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateLandingSubscriptionContextDto,
   ErrorResponse,
   LandingAcquisitionIdentityDto,
+  LandingBotSubscriptionLinkResponseDto,
   LandingLaunchContextResponseDto,
+  LandingMiniAppLaunchResponseDto,
   LandingPublicCatalogResponseDto,
   LandingPublicResponseDto,
   LandingSubscriptionRequestDto,
@@ -28,12 +31,18 @@ import type {
   ResolveLandingVariablesRequestDto,
 } from '../models/index';
 import {
+    CreateLandingSubscriptionContextDtoFromJSON,
+    CreateLandingSubscriptionContextDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     LandingAcquisitionIdentityDtoFromJSON,
     LandingAcquisitionIdentityDtoToJSON,
+    LandingBotSubscriptionLinkResponseDtoFromJSON,
+    LandingBotSubscriptionLinkResponseDtoToJSON,
     LandingLaunchContextResponseDtoFromJSON,
     LandingLaunchContextResponseDtoToJSON,
+    LandingMiniAppLaunchResponseDtoFromJSON,
+    LandingMiniAppLaunchResponseDtoToJSON,
     LandingPublicCatalogResponseDtoFromJSON,
     LandingPublicCatalogResponseDtoToJSON,
     LandingPublicResponseDtoFromJSON,
@@ -52,6 +61,11 @@ import {
     ResolveLandingVariablesRequestDtoToJSON,
 } from '../models/index';
 
+export interface GetLandingsRequest {
+    landingPublicId: string;
+    acceptLanguage?: GetLandingsAcceptLanguageEnum;
+}
+
 export interface GetLandingsLaunchRequest {
     token: string;
     acceptLanguage?: GetLandingsLaunchAcceptLanguageEnum;
@@ -63,10 +77,16 @@ export interface GetProjectsLandingsRequest {
     acceptLanguage?: GetProjectsLandingsAcceptLanguageEnum;
 }
 
-export interface GetProjectsLandings2Request {
-    projectPublicId: string;
-    landingPublicId: string;
-    acceptLanguage?: GetProjectsLandings2AcceptLanguageEnum;
+export interface LandingsLaunchBotSubscriptionLinkRequest {
+    token: string;
+    createLandingSubscriptionContextDto: CreateLandingSubscriptionContextDto;
+    acceptLanguage?: LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum;
+}
+
+export interface LandingsLaunchMiniAppLaunchRequest {
+    token: string;
+    createLandingSubscriptionContextDto: CreateLandingSubscriptionContextDto;
+    acceptLanguage?: LandingsLaunchMiniAppLaunchAcceptLanguageEnum;
 }
 
 export interface LandingsLaunchSubscribeRequest {
@@ -97,6 +117,45 @@ export interface LandingsLaunchVariablesRequest {
  *
  */
 export class LandingsPublicApi extends runtime.BaseAPI {
+
+    /**
+     * , .
+     *
+     */
+    async getLandingsRaw(requestParameters: GetLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicResponseDto>> {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError(
+                'landingPublicId',
+                'Required parameter "landingPublicId" was null or undefined when calling getLandings().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPublicResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getLandings(requestParameters: GetLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicResponseDto> {
+        const response = await this.getLandingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * .
@@ -181,21 +240,21 @@ export class LandingsPublicApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
-     *
+     * UTM , start ID.
+     * Telegram- MAX-
      */
-    async getProjectsLandings2Raw(requestParameters: GetProjectsLandings2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicResponseDto>> {
-        if (requestParameters['projectPublicId'] == null) {
+    async landingsLaunchBotSubscriptionLinkRaw(requestParameters: LandingsLaunchBotSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBotSubscriptionLinkResponseDto>> {
+        if (requestParameters['token'] == null) {
             throw new runtime.RequiredError(
-                'projectPublicId',
-                'Required parameter "projectPublicId" was null or undefined when calling getProjectsLandings2().'
+                'token',
+                'Required parameter "token" was null or undefined when calling landingsLaunchBotSubscriptionLink().'
             );
         }
 
-        if (requestParameters['landingPublicId'] == null) {
+        if (requestParameters['createLandingSubscriptionContextDto'] == null) {
             throw new runtime.RequiredError(
-                'landingPublicId',
-                'Required parameter "landingPublicId" was null or undefined when calling getProjectsLandings2().'
+                'createLandingSubscriptionContextDto',
+                'Required parameter "createLandingSubscriptionContextDto" was null or undefined when calling landingsLaunchBotSubscriptionLink().'
             );
         }
 
@@ -203,26 +262,78 @@ export class LandingsPublicApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
 
         const response = await this.request({
-            path: `/api/public/projects/{projectPublicId}/landings/{landingPublicId}`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))).replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
-            method: 'GET',
+            path: `/api/public/landings/launch/{token}/bot-subscription-link`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLandingSubscriptionContextDtoToJSON(requestParameters['createLandingSubscriptionContextDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPublicResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBotSubscriptionLinkResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * , .
-     *
+     * UTM , start ID.
+     * Telegram- MAX-
      */
-    async getProjectsLandings2(requestParameters: GetProjectsLandings2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicResponseDto> {
-        const response = await this.getProjectsLandings2Raw(requestParameters, initOverrides);
+    async landingsLaunchBotSubscriptionLink(requestParameters: LandingsLaunchBotSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBotSubscriptionLinkResponseDto> {
+        const response = await this.landingsLaunchBotSubscriptionLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . Telegram MAX , VK UTM.
+     * UTM-
+     */
+    async landingsLaunchMiniAppLaunchRaw(requestParameters: LandingsLaunchMiniAppLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMiniAppLaunchResponseDto>> {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError(
+                'token',
+                'Required parameter "token" was null or undefined when calling landingsLaunchMiniAppLaunch().'
+            );
+        }
+
+        if (requestParameters['createLandingSubscriptionContextDto'] == null) {
+            throw new runtime.RequiredError(
+                'createLandingSubscriptionContextDto',
+                'Required parameter "createLandingSubscriptionContextDto" was null or undefined when calling landingsLaunchMiniAppLaunch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/launch/{token}/mini-app-launch`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateLandingSubscriptionContextDtoToJSON(requestParameters['createLandingSubscriptionContextDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingMiniAppLaunchResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . Telegram MAX , VK UTM.
+     * UTM-
+     */
+    async landingsLaunchMiniAppLaunch(requestParameters: LandingsLaunchMiniAppLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMiniAppLaunchResponseDto> {
+        const response = await this.landingsLaunchMiniAppLaunchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -427,6 +538,14 @@ export class LandingsPublicApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export const GetLandingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingsAcceptLanguageEnum = typeof GetLandingsAcceptLanguageEnum[keyof typeof GetLandingsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetLandingsLaunchAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -443,11 +562,19 @@ export type GetProjectsLandingsAcceptLanguageEnum = typeof GetProjectsLandingsAc
 /**
  * @export
  */
-export const GetProjectsLandings2AcceptLanguageEnum = {
+export const LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetProjectsLandings2AcceptLanguageEnum = typeof GetProjectsLandings2AcceptLanguageEnum[keyof typeof GetProjectsLandings2AcceptLanguageEnum];
+export type LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = typeof LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum[keyof typeof LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingsLaunchMiniAppLaunchAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingsLaunchMiniAppLaunchAcceptLanguageEnum = typeof LandingsLaunchMiniAppLaunchAcceptLanguageEnum[keyof typeof LandingsLaunchMiniAppLaunchAcceptLanguageEnum];
 /**
  * @export
  */

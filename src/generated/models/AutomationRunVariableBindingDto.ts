@@ -26,18 +26,37 @@ export interface AutomationRunVariableBindingDto {
      */
     targetVariableName: string;
     /**
-     * , .
+     * .
+     * @type {string}
+     * @memberof AutomationRunVariableBindingDto
+     */
+    sourceVariableScope: AutomationRunVariableBindingDtoSourceVariableScopeEnum;
+    /**
+     * .
      * @type {string}
      * @memberof AutomationRunVariableBindingDto
      */
     sourceVariableName: string;
 }
 
+
+/**
+ * @export
+ */
+export const AutomationRunVariableBindingDtoSourceVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Project: 'project'
+} as const;
+export type AutomationRunVariableBindingDtoSourceVariableScopeEnum = typeof AutomationRunVariableBindingDtoSourceVariableScopeEnum[keyof typeof AutomationRunVariableBindingDtoSourceVariableScopeEnum];
+
+
 /**
  * Check if a given object implements the AutomationRunVariableBindingDto interface.
  */
 export function instanceOfAutomationRunVariableBindingDto(value: object): value is AutomationRunVariableBindingDto {
     if (!('targetVariableName' in value) || value['targetVariableName'] === undefined) return false;
+    if (!('sourceVariableScope' in value) || value['sourceVariableScope'] === undefined) return false;
     if (!('sourceVariableName' in value) || value['sourceVariableName'] === undefined) return false;
     return true;
 }
@@ -53,6 +72,7 @@ export function AutomationRunVariableBindingDtoFromJSONTyped(json: any, ignoreDi
     return {
 
         'targetVariableName': json['target_variable_name'],
+        'sourceVariableScope': json['source_variable_scope'],
         'sourceVariableName': json['source_variable_name'],
     };
 }
@@ -69,6 +89,7 @@ export function AutomationRunVariableBindingDtoToJSONTyped(value?: AutomationRun
     return {
 
         'target_variable_name': value['targetVariableName'],
+        'source_variable_scope': value['sourceVariableScope'],
         'source_variable_name': value['sourceVariableName'],
     };
 }

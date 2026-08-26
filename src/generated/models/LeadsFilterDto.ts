@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LeadSubscriptionUtmPathDto } from './LeadSubscriptionUtmPathDto';
+import {
+    LeadSubscriptionUtmPathDtoFromJSON,
+    LeadSubscriptionUtmPathDtoFromJSONTyped,
+    LeadSubscriptionUtmPathDtoToJSON,
+    LeadSubscriptionUtmPathDtoToJSONTyped,
+} from './LeadSubscriptionUtmPathDto';
+
 /**
  * LeadsFilterDto.
  * @export
@@ -133,6 +141,12 @@ export interface LeadsFilterDto {
      * @memberof LeadsFilterDto
      */
     pendingSegmentId?: Array<string>;
+    /**
+     * UTM . , segment_id segment_is_member
+     * @type {Array<LeadSubscriptionUtmPathDto>}
+     * @memberof LeadsFilterDto
+     */
+    utmPaths?: Array<LeadSubscriptionUtmPathDto>;
 }
 
 
@@ -203,6 +217,7 @@ export function LeadsFilterDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
         'segmentIsMember': json['segment_is_member'] == null ? undefined : json['segment_is_member'],
         'pendingSegmentId': json['pending_segment_id'] == null ? undefined : json['pending_segment_id'],
+        'utmPaths': json['utm_paths'] == null ? undefined : ((json['utm_paths'] as Array<any>).map(LeadSubscriptionUtmPathDtoFromJSON)),
     };
 }
 
@@ -236,5 +251,6 @@ export function LeadsFilterDtoToJSONTyped(value?: LeadsFilterDto | null, ignoreD
         'segment_id': value['segmentId'],
         'segment_is_member': value['segmentIsMember'],
         'pending_segment_id': value['pendingSegmentId'],
+        'utm_paths': value['utmPaths'] == null ? undefined : ((value['utmPaths'] as Array<any>).map(LeadSubscriptionUtmPathDtoToJSON)),
     };
 }

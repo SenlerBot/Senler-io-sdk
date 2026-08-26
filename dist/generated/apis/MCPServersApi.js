@@ -109,9 +109,6 @@ class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async deleteListsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteLists().');
-        }
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteLists().');
         }
@@ -132,7 +129,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -151,9 +148,6 @@ class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async deleteListsServersRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteListsServers().');
-        }
         if (requestParameters['listId'] == null) {
             throw new runtime.RequiredError('listId', 'Required parameter "listId" was null or undefined when calling deleteListsServers().');
         }
@@ -177,7 +171,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{listId}/servers/{serverId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
+            path: `/api/mcp-servers/lists/{listId}/servers/{serverId}`.replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -440,6 +434,9 @@ class MCPServersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLists().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -462,7 +459,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/mcp-servers/lists`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -482,9 +479,6 @@ class MCPServersApi extends runtime.BaseAPI {
      * MCP ID
      */
     async getLists2Raw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLists2().');
-        }
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getLists2().');
         }
@@ -505,7 +499,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -578,6 +572,9 @@ class MCPServersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('createMcpServerListDto', 'Required parameter "createMcpServerListDto" was null or undefined when calling lists().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['acceptLanguage'] != null) {
@@ -595,7 +592,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/mcp-servers/lists`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -616,9 +613,6 @@ class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async listsServersRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling listsServers().');
-        }
         if (requestParameters['listId'] == null) {
             throw new runtime.RequiredError('listId', 'Required parameter "listId" was null or undefined when calling listsServers().');
         }
@@ -642,7 +636,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{listId}/servers/{serverId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
+            path: `/api/mcp-servers/lists/{listId}/servers/{serverId}`.replace(`{${"listId"}}`, encodeURIComponent(String(requestParameters['listId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1100,9 +1094,6 @@ class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async updateListsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateLists().');
-        }
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateLists().');
         }
@@ -1127,7 +1118,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -1148,9 +1139,6 @@ class MCPServersApi extends runtime.BaseAPI {
      * MCP
      */
     async updateListsRestoreRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateListsRestore().');
-        }
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateListsRestore().');
         }
@@ -1171,7 +1159,7 @@ class MCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
-            path: `/api/mcp-servers/lists/{projectId}/{id}/restore`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/lists/{id}/restore`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

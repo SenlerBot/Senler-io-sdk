@@ -53,15 +53,22 @@ export declare const ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageAgentEvents: "can_manage_agent_events";
     readonly CanViewDialogs: "can_view_dialogs";
     readonly CanManageDialogs: "can_manage_dialogs";
+    readonly CanViewDeliveries: "can_view_deliveries";
+    readonly CanManageDeliveries: "can_manage_deliveries";
     readonly CanViewSpaces: "can_view_spaces";
     readonly CanManageSpaces: "can_manage_spaces";
     readonly CanViewLeads: "can_view_leads";
     readonly CanManageLeads: "can_manage_leads";
+    readonly CanViewLeadVariables: "can_view_lead_variables";
+    readonly CanManageLeadVariables: "can_manage_lead_variables";
+    readonly CanViewSegments: "can_view_segments";
+    readonly CanManageSegments: "can_manage_segments";
+    readonly CanViewLandings: "can_view_landings";
+    readonly CanManageLandings: "can_manage_landings";
     readonly CanViewTrafficMarks: "can_view_traffic_marks";
     readonly CanManageTrafficMarks: "can_manage_traffic_marks";
     readonly CanViewAutomations: "can_view_automations";
     readonly CanManageAutomations: "can_manage_automations";
-    readonly CanRunAutomations: "can_run_automations";
     readonly CanViewMcpServers: "can_view_mcp_servers";
     readonly CanManageMcpServers: "can_manage_mcp_servers";
     readonly CanViewAnalytics: "can_view_analytics";
@@ -82,8 +89,6 @@ export declare const ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageStorage: "can_manage_storage";
     readonly CanViewProjectVariables: "can_view_project_variables";
     readonly CanManageProjectVariables: "can_manage_project_variables";
-    readonly CanViewLeadDefinitions: "can_view_lead_definitions";
-    readonly CanManageLeadDefinitions: "can_manage_lead_definitions";
 };
 export type ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = typeof ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum[keyof typeof ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum];
 /**

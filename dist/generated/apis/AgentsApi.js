@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.UpdateInstructionAcceptLanguageEnum = exports.UpdateInstalledAppEventsAcceptLanguageEnum = exports.UpdateDraftInstructionAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.GetInstructionAcceptLanguageEnum = exports.GetInstalledAppToolsAcceptLanguageEnum = exports.GetInstalledAppEventsAcceptLanguageEnum = exports.GetDraftInstructionAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetByIdAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.DeactivateAcceptLanguageEnum = exports.AgentsListAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
+exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.UpdateInstructionAcceptLanguageEnum = exports.UpdateInstalledAppEventsAcceptLanguageEnum = exports.UpdateDraftInstructionAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.GetInstructionAcceptLanguageEnum = exports.GetInstalledAppToolsAcceptLanguageEnum = exports.GetInstalledAppEventsAcceptLanguageEnum = exports.GetDraftInstructionAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.AgentsListAcceptLanguageEnum = exports.AgentsGetByIdAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -134,6 +134,85 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . can_manage_agents.
+     *
+     */
+    async agentsDeactivateRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsDeactivate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async agentsDeactivate(requestParameters, initOverrides) {
+        await this.agentsDeactivateRaw(requestParameters, initOverrides);
+    }
+    /**
+     * .
+     * ID
+     */
+    async agentsGetByIdRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsGetById().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * ID
+     */
+    async agentsGetById(requestParameters, initOverrides) {
+        const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * . .
      *
      */
@@ -181,45 +260,6 @@ class AgentsApi extends runtime.BaseAPI {
     async agentsList(requestParameters, initOverrides) {
         const response = await this.agentsListRaw(requestParameters, initOverrides);
         return await response.value();
-    }
-    /**
-     * . can_manage_agents.
-     *
-     */
-    async deactivateRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deactivate().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.VoidApiResponse(response);
-    }
-    /**
-     * . can_manage_agents.
-     *
-     */
-    async deactivate(requestParameters, initOverrides) {
-        await this.deactivateRaw(requestParameters, initOverrides);
     }
     /**
      * is_active = false . .
@@ -353,46 +393,6 @@ class AgentsApi extends runtime.BaseAPI {
      */
     async getAutoAssignmentPreview(requestParameters, initOverrides) {
         const response = await this.getAutoAssignmentPreviewRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * .
-     * ID
-     */
-    async getByIdRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getById().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     * ID
-     */
-    async getById(requestParameters, initOverrides) {
-        const response = await this.getByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -914,14 +914,21 @@ exports.ActivateAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.AgentsListAcceptLanguageEnum = {
+exports.AgentsDeactivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.DeactivateAcceptLanguageEnum = {
+exports.AgentsGetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AgentsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -966,13 +973,6 @@ exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = {
  * @export
  */
 exports.GetAutoAssignmentPreviewAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

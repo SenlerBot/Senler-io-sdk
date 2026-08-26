@@ -29,6 +29,16 @@ function instanceOfLandingLaunchContextResponseDto(value) {
         return false;
     if (!('action' in value) || value['action'] === undefined)
         return false;
+    if (!('utmSource' in value) || value['utmSource'] === undefined)
+        return false;
+    if (!('utmMedium' in value) || value['utmMedium'] === undefined)
+        return false;
+    if (!('utmCampaign' in value) || value['utmCampaign'] === undefined)
+        return false;
+    if (!('utmContent' in value) || value['utmContent'] === undefined)
+        return false;
+    if (!('utmTerm' in value) || value['utmTerm'] === undefined)
+        return false;
     return true;
 }
 function LandingLaunchContextResponseDtoFromJSON(json) {
@@ -42,6 +52,11 @@ function LandingLaunchContextResponseDtoFromJSONTyped(json, ignoreDiscriminator)
         'projectPublicId': json['project_public_id'],
         'landingPublicId': json['landing_public_id'],
         'action': (0, LandingLaunchContextResponseDtoAction_1.LandingLaunchContextResponseDtoActionFromJSON)(json['action']),
+        'utmSource': json['utm_source'],
+        'utmMedium': json['utm_medium'],
+        'utmCampaign': json['utm_campaign'],
+        'utmContent': json['utm_content'],
+        'utmTerm': json['utm_term'],
     };
 }
 function LandingLaunchContextResponseDtoToJSON(json) {
@@ -55,5 +70,10 @@ function LandingLaunchContextResponseDtoToJSONTyped(value, ignoreDiscriminator =
         'project_public_id': value['projectPublicId'],
         'landing_public_id': value['landingPublicId'],
         'action': (0, LandingLaunchContextResponseDtoAction_1.LandingLaunchContextResponseDtoActionToJSON)(value['action']),
+        'utm_source': value['utmSource'],
+        'utm_medium': value['utmMedium'],
+        'utm_campaign': value['utmCampaign'],
+        'utm_content': value['utmContent'],
+        'utm_term': value['utmTerm'],
     };
 }

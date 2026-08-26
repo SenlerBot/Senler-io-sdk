@@ -32,13 +32,13 @@ export interface CreateOrderDto {
      */
     paySystemId: string;
     /**
-     * (default: topup)
+     * (default: topup). tariff ; billing_invoice.
      * @type {string}
      * @memberof CreateOrderDto
      */
     orderType?: CreateOrderDtoOrderTypeEnum;
     /**
-     * tariff/credits. true.
+     * . true.
      * @type {boolean}
      * @memberof CreateOrderDto
      */
@@ -61,6 +61,12 @@ export interface CreateOrderDto {
      * @memberof CreateOrderDto
      */
     packageId?: string;
+    /**
+     * ID ( billing_invoice)
+     * @type {string}
+     * @memberof CreateOrderDto
+     */
+    billingInvoiceId?: string;
 }
 
 
@@ -70,7 +76,8 @@ export interface CreateOrderDto {
 export const CreateOrderDtoOrderTypeEnum = {
     Topup: 'topup',
     Tariff: 'tariff',
-    Credits: 'credits'
+    Credits: 'credits',
+    BillingInvoice: 'billing_invoice'
 } as const;
 export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[keyof typeof CreateOrderDtoOrderTypeEnum];
 
@@ -109,6 +116,7 @@ export function CreateOrderDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'tariffId': json['tariff_id'] == null ? undefined : json['tariff_id'],
         'period': json['period'] == null ? undefined : json['period'],
         'packageId': json['package_id'] == null ? undefined : json['package_id'],
+        'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
     };
 }
 
@@ -130,5 +138,6 @@ export function CreateOrderDtoToJSONTyped(value?: CreateOrderDto | null, ignoreD
         'tariff_id': value['tariffId'],
         'period': value['period'],
         'package_id': value['packageId'],
+        'billing_invoice_id': value['billingInvoiceId'],
     };
 }

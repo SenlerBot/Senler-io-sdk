@@ -152,7 +152,7 @@ export interface AppWebhookDeliveryTaskResponseDto {
      */
     resolvedBy: string | null;
     /**
-     * : obsolete, superseded, invalid_payload, accepted_loss, task_completed, diagnostic_completed, replay_cancelled.
+     * : obsolete, superseded, invalid_payload, accepted_loss, task_completed, diagnostic_completed, replay_cancelled, webhook_deleted.
      * @type {string}
      * @memberof AppWebhookDeliveryTaskResponseDto
      */
@@ -215,7 +215,8 @@ export const AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum = {
     AcceptedLoss: 'accepted_loss',
     TaskCompleted: 'task_completed',
     DiagnosticCompleted: 'diagnostic_completed',
-    ReplayCancelled: 'replay_cancelled'
+    ReplayCancelled: 'replay_cancelled',
+    WebhookDeleted: 'webhook_deleted'
 } as const;
 export type AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum = typeof AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum[keyof typeof AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum];
 

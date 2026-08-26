@@ -26,7 +26,8 @@ const OrderTariffResponseDto_1 = require("./OrderTariffResponseDto");
 exports.OrderItemResponseDtoTypeEnum = {
     BalanceDeposit: 'balance_deposit',
     Tariff: 'tariff',
-    CreditPackage: 'credit_package'
+    CreditPackage: 'credit_package',
+    BillingInvoice: 'billing_invoice'
 };
 /**
  * @export

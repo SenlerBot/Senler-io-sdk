@@ -16,7 +16,7 @@
  */
 export interface UpdateAppEmbeddedPageSettingsDto {
     /**
-     *
+     * . URL .
      * @type {boolean}
      * @memberof UpdateAppEmbeddedPageSettingsDto
      */

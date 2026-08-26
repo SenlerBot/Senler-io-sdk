@@ -15,6 +15,7 @@ import type { StatisticsNullableCreditsMetricDeltaDto } from './StatisticsNullab
 import type { StatisticsNullableMetricDeltaDto } from './StatisticsNullableMetricDeltaDto';
 import type { StatisticsNullableDecimalCreditsMetricDeltaDto } from './StatisticsNullableDecimalCreditsMetricDeltaDto';
 import type { StatisticsNullableProjectMoneyMetricDeltaDto } from './StatisticsNullableProjectMoneyMetricDeltaDto';
+import type { StatisticsAiResponseCancelledGenerationsDto } from './StatisticsAiResponseCancelledGenerationsDto';
 /**
  * StatisticsAiResponseCostsDto.
  * @export
@@ -51,6 +52,12 @@ export interface StatisticsAiResponseCostsDto {
      * @memberof StatisticsAiResponseCostsDto
      */
     excludedFromProjectCurrencyCredits: StatisticsNullableCreditsMetricDeltaDto;
+    /**
+     * . direct_credits_used breakdown, AI- ; terminal_at
+     * @type {StatisticsAiResponseCancelledGenerationsDto}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    cancelledGenerations: StatisticsAiResponseCancelledGenerationsDto;
     /**
      * . cost- ; project_currency_cost . reasoning_tokens cached_input_tokens
      * @type {StatisticsAiResponseBreakdownDto}

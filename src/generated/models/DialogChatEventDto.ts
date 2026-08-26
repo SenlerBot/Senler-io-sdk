@@ -247,9 +247,9 @@ export interface DialogChatEventDto {
      * @type {string}
      * @memberof DialogChatEventDto
      */
-    targetType?: DialogChatEventDtoTargetTypeEnum;
+    targetType: DialogChatEventDtoTargetTypeEnum;
     /**
-     * ID
+     * ID ,
      * @type {string}
      * @memberof DialogChatEventDto
      */
@@ -531,6 +531,7 @@ export const DialogChatEventDtoActionTypeEnum = {
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
     AiResponseStarted: 'ai_response_started',
+    AgentInvoked: 'agent_invoked',
     ToolStarted: 'tool_started',
     ReasoningRecorded: 'reasoning_recorded',
     ImageGenerated: 'image_generated',
@@ -550,6 +551,7 @@ export type DialogChatEventDtoActionTypeEnum = typeof DialogChatEventDtoActionTy
  */
 export function instanceOfDialogChatEventDto(value: object): value is DialogChatEventDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('targetType' in value) || value['targetType'] === undefined) return false;
     if (!('attachments' in value) || value['attachments'] === undefined) return false;
     if (!('buttons' in value) || value['buttons'] === undefined) return false;
     if (!('tags' in value) || value['tags'] === undefined) return false;
@@ -580,7 +582,7 @@ export function DialogChatEventDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
-        'targetType': json['target_type'] == null ? undefined : json['target_type'],
+        'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
         'externalMessageId': json['external_message_id'] == null ? undefined : json['external_message_id'],
         'sender': json['sender'] == null ? undefined : EventSenderDtoFromJSON(json['sender']),

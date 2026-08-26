@@ -82,11 +82,23 @@ export interface PermissionsDto {
      */
     canViewDialogs: boolean;
     /**
-     *
+     * ,
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageDialogs: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewDeliveries: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageDeliveries: boolean;
     /**
      * spaces
      * @type {boolean}
@@ -106,11 +118,47 @@ export interface PermissionsDto {
      */
     canViewLeads: boolean;
     /**
-     *
+     * , ,
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageLeads: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewLeadVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageLeadVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewSegments: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageSegments: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewLandings: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageLandings: boolean;
     /**
      *
      * @type {boolean}
@@ -135,12 +183,6 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canManageAutomations: boolean;
-    /**
-     * ,
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canRunAutomations: boolean;
     /**
      * MCP
      * @type {boolean}
@@ -189,12 +231,6 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canManageDataSources: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canManageServerLists: boolean;
     /**
      *
      * @type {boolean}
@@ -297,18 +333,6 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canManageProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canViewLeadDefinitions: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canManageLeadDefinitions: boolean;
 }
 /**
  * Check if a given object implements the PermissionsDto interface.

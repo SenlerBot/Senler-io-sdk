@@ -12,7 +12,6 @@
 import * as runtime from '../runtime';
 import type { StorageFileDeleteResponseDto, StorageFilesListResponseDto, StorageOrphanedDeleteResponseDto, StorageStatsResponseDto } from '../models/index';
 export interface DeleteFilesRequest {
-    projectId: string;
     fileId: string;
     acceptLanguage?: DeleteFilesAcceptLanguageEnum;
 }
@@ -26,8 +25,8 @@ export interface GetFilesRequest {
     category?: GetFilesCategoryEnum;
     source?: GetFilesSourceEnum;
     dialogId?: string;
-    limit?: number;
-    skip?: number;
+    limit?: object;
+    skip?: object;
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
 export interface GetStatsRequest {

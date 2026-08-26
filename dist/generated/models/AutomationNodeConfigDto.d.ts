@@ -12,12 +12,14 @@
 import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
 import type { AutomationMessageAttachmentDto } from './AutomationMessageAttachmentDto';
 import type { AutomationTableOutputDto } from './AutomationTableOutputDto';
+import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
 import type { AutomationRunVariableBindingDto } from './AutomationRunVariableBindingDto';
 import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
 import type { AutomationAppStepBranchSnapshotDto } from './AutomationAppStepBranchSnapshotDto';
 import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
 import type { AutomationAppStepFieldSnapshotDto } from './AutomationAppStepFieldSnapshotDto';
 import type { AutomationMessageButtonDto } from './AutomationMessageButtonDto';
+import type { AutomationTableResultFieldDto } from './AutomationTableResultFieldDto';
 /**
  * AutomationNodeConfigDto.
  * @export
@@ -43,11 +45,17 @@ export interface AutomationNodeConfigDto {
      */
     messagePhrases?: Array<string>;
     /**
-     * . $ .
+     * . .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     incomingMessageVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    incomingMessageVariableScope?: AutomationNodeConfigDtoIncomingMessageVariableScopeEnum;
     /**
      * . .
      * @type {Array<string>}
@@ -97,6 +105,96 @@ export interface AutomationNodeConfigDto {
      */
     agentProcessCurrentMessage?: boolean;
     /**
+     * . - .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentIncludeDialogHistory?: boolean;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentCommandText?: string;
+    /**
+     * .
+     * @type {Array<AutomationMessageAttachmentDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentCommandAttachments?: Array<AutomationMessageAttachmentDto>;
+    /**
+     * Run- , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentAttachmentsVariableScope?: AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum;
+    /**
+     * Run- , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentButtonClickVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentButtonClickVariableScope?: AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseTextVariableScope?: AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseTextVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseAttachmentsVariableScope?: AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseButtonsVariableScope?: AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseButtonsVariableName?: string;
+    /**
+     * JSON .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseJsonVariableScope?: AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum;
+    /**
+     * JSON .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentResponseJsonVariableName?: string;
+    /**
      * , .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
@@ -144,6 +242,48 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     tableOutputs?: Array<AutomationTableOutputDto>;
+    /**
+     * .
+     * @type {Array<AutomationTableResultFieldDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultFields?: Array<AutomationTableResultFieldDto>;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultMode?: AutomationNodeConfigDtoTableResultModeEnum;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableFirstRowSaveMode?: AutomationNodeConfigDtoTableFirstRowSaveModeEnum;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultVariableScope?: AutomationNodeConfigDtoTableResultVariableScopeEnum;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultVariableName?: string;
+    /**
+     * - . table_result_variable_scope.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableRowsVariableScope?: AutomationNodeConfigDtoTableRowsVariableScopeEnum;
+    /**
+     * - . row_number .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableRowsVariableName?: string;
     /**
      * .
      * @type {string}
@@ -217,17 +357,35 @@ export interface AutomationNodeConfigDto {
      */
     variableScope?: AutomationNodeConfigDtoVariableScopeEnum;
     /**
-     * $ .
+     * .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     variableName?: string;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableType?: AutomationNodeConfigDtoVariableTypeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableOperation?: AutomationNodeConfigDtoVariableOperationEnum;
     /**
      * .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     variableOperator?: AutomationNodeConfigDtoVariableOperatorEnum;
+    /**
+     * , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableValueType?: AutomationNodeConfigDtoVariableValueTypeEnum;
     /**
      * . JSON scalar, object array. (mixed type)
      * @type {{ [key: string]: any; }}
@@ -236,6 +394,12 @@ export interface AutomationNodeConfigDto {
     variableValue?: {
         [key: string]: any;
     } | null;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableDurationUnit?: AutomationNodeConfigDtoVariableDurationUnitEnum;
     /**
      * . {{lead_data.first_name}}, {{lead.name}}, {{run.code}}.
      * @type {string}
@@ -249,11 +413,53 @@ export interface AutomationNodeConfigDto {
      */
     messageAttachments?: Array<AutomationMessageAttachmentDto>;
     /**
+     * Run- , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageAttachmentsVariableScope?: AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum;
+    /**
      * .
      * @type {Array<AutomationMessageButtonDto>}
      * @memberof AutomationNodeConfigDto
      */
     messageButtons?: Array<AutomationMessageButtonDto>;
+    /**
+     * Run- , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDynamicButtonsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDynamicButtonsVariableScope?: AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum;
+    /**
+     * : 0 . , .
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDynamicButtonsPosition?: number;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageButtonClickVariableScope?: AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum;
+    /**
+     * . button_click.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageButtonClickVariableName?: string;
     /**
      * . .
      * @type {boolean}
@@ -285,7 +491,7 @@ export interface AutomationNodeConfigDto {
      */
     messageTargetVariableScope?: AutomationNodeConfigDtoMessageTargetVariableScopeEnum;
     /**
-     * , , $ .
+     * , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -302,6 +508,12 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     messageWaitForReply?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReplyVariableScope?: AutomationNodeConfigDtoMessageReplyVariableScopeEnum;
     /**
      * , reply.
      * @type {string}
@@ -333,7 +545,7 @@ export interface AutomationNodeConfigDto {
      */
     waitVariableScope?: AutomationNodeConfigDtoWaitVariableScopeEnum;
     /**
-     * $ . duration , until ISO 8601.
+     * . duration , until ISO 8601.
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -344,6 +556,36 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     maxIterations?: number;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    loopMode?: AutomationNodeConfigDtoLoopModeEnum;
+    /**
+     * - .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    loopCollectionVariableScope?: AutomationNodeConfigDtoLoopCollectionVariableScopeEnum;
+    /**
+     * - .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    loopCollectionVariableName?: string;
+    /**
+     * , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    loopItemVariableName?: string;
+    /**
+     * , 1.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    loopIndexVariableName?: string;
     /**
      * , .
      * @type {string}
@@ -408,11 +650,11 @@ export interface AutomationNodeConfigDto {
     appStepResultFields?: Array<AutomationAppStepFieldSnapshotDto>;
     /**
      * .
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: AutomationVariableDestinationDto; }}
      * @memberof AutomationNodeConfigDto
      */
     appStepResultBindings?: {
-        [key: string]: string;
+        [key: string]: AutomationVariableDestinationDto;
     };
     /**
      * .
@@ -474,11 +716,74 @@ export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeC
 /**
  * @export
  */
+export declare const AutomationNodeConfigDtoIncomingMessageVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = typeof AutomationNodeConfigDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationNodeConfigDtoIncomingMessageVariableScopeEnum];
+/**
+ * @export
+ */
 export declare const AutomationNodeConfigDtoAgentRoleEnum: {
     readonly Primary: "primary";
     readonly Background: "background";
 };
 export type AutomationNodeConfigDtoAgentRoleEnum = typeof AutomationNodeConfigDtoAgentRoleEnum[keyof typeof AutomationNodeConfigDtoAgentRoleEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = typeof AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum];
 /**
  * @export
  */
@@ -501,6 +806,41 @@ export declare const AutomationNodeConfigDtoTableStructureModeEnum: {
     readonly Custom: "custom";
 };
 export type AutomationNodeConfigDtoTableStructureModeEnum = typeof AutomationNodeConfigDtoTableStructureModeEnum[keyof typeof AutomationNodeConfigDtoTableStructureModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoTableResultModeEnum: {
+    readonly None: "none";
+    readonly FirstRow: "first_row";
+    readonly AllRows: "all_rows";
+};
+export type AutomationNodeConfigDtoTableResultModeEnum = typeof AutomationNodeConfigDtoTableResultModeEnum[keyof typeof AutomationNodeConfigDtoTableResultModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoTableFirstRowSaveModeEnum: {
+    readonly Object: "object";
+    readonly Fields: "fields";
+};
+export type AutomationNodeConfigDtoTableFirstRowSaveModeEnum = typeof AutomationNodeConfigDtoTableFirstRowSaveModeEnum[keyof typeof AutomationNodeConfigDtoTableFirstRowSaveModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoTableResultVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoTableRowsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoTableRowsVariableScopeEnum = typeof AutomationNodeConfigDtoTableRowsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableRowsVariableScopeEnum];
 /**
  * @export
  */
@@ -542,6 +882,41 @@ export type AutomationNodeConfigDtoVariableScopeEnum = typeof AutomationNodeConf
 /**
  * @export
  */
+export declare const AutomationNodeConfigDtoVariableTypeEnum: {
+    readonly String: "string";
+    readonly Number: "number";
+    readonly Boolean: "boolean";
+    readonly Json: "json";
+    readonly Date: "date";
+    readonly Array: "array";
+    readonly Object: "object";
+};
+export type AutomationNodeConfigDtoVariableTypeEnum = typeof AutomationNodeConfigDtoVariableTypeEnum[keyof typeof AutomationNodeConfigDtoVariableTypeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoVariableOperationEnum: {
+    readonly Set: "set";
+    readonly Clear: "clear";
+    readonly SetIfUnset: "set_if_unset";
+    readonly AppendText: "append_text";
+    readonly PrependText: "prepend_text";
+    readonly Increase: "increase";
+    readonly Decrease: "decrease";
+    readonly Toggle: "toggle";
+    readonly SetNow: "set_now";
+    readonly ShiftForward: "shift_forward";
+    readonly ShiftBackward: "shift_backward";
+    readonly AppendItems: "append_items";
+    readonly PrependItems: "prepend_items";
+    readonly RemoveItems: "remove_items";
+    readonly MergeObject: "merge_object";
+    readonly RemoveObjectKeys: "remove_object_keys";
+};
+export type AutomationNodeConfigDtoVariableOperationEnum = typeof AutomationNodeConfigDtoVariableOperationEnum[keyof typeof AutomationNodeConfigDtoVariableOperationEnum];
+/**
+ * @export
+ */
 export declare const AutomationNodeConfigDtoVariableOperatorEnum: {
     readonly Exists: "exists";
     readonly NotExists: "not_exists";
@@ -551,9 +926,60 @@ export declare const AutomationNodeConfigDtoVariableOperatorEnum: {
     readonly GreaterThanOrEqual: "greater_than_or_equal";
     readonly LessThan: "less_than";
     readonly LessThanOrEqual: "less_than_or_equal";
+    readonly Before: "before";
+    readonly After: "after";
     readonly Contains: "contains";
 };
 export type AutomationNodeConfigDtoVariableOperatorEnum = typeof AutomationNodeConfigDtoVariableOperatorEnum[keyof typeof AutomationNodeConfigDtoVariableOperatorEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoVariableValueTypeEnum: {
+    readonly String: "string";
+    readonly Number: "number";
+    readonly Boolean: "boolean";
+    readonly Json: "json";
+    readonly Date: "date";
+    readonly Array: "array";
+    readonly Object: "object";
+};
+export type AutomationNodeConfigDtoVariableValueTypeEnum = typeof AutomationNodeConfigDtoVariableValueTypeEnum[keyof typeof AutomationNodeConfigDtoVariableValueTypeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoVariableDurationUnitEnum: {
+    readonly Minute: "minute";
+    readonly Hour: "hour";
+    readonly Day: "day";
+};
+export type AutomationNodeConfigDtoVariableDurationUnitEnum = typeof AutomationNodeConfigDtoVariableDurationUnitEnum[keyof typeof AutomationNodeConfigDtoVariableDurationUnitEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = typeof AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum];
 /**
  * @export
  */
@@ -591,6 +1017,15 @@ export type AutomationNodeConfigDtoMessageTargetVariableScopeEnum = typeof Autom
 /**
  * @export
  */
+export declare const AutomationNodeConfigDtoMessageReplyVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoMessageReplyVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum];
+/**
+ * @export
+ */
 export declare const AutomationNodeConfigDtoWaitModeEnum: {
     readonly Duration: "duration";
     readonly Until: "until";
@@ -605,6 +1040,23 @@ export declare const AutomationNodeConfigDtoWaitVariableScopeEnum: {
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoWaitVariableScopeEnum = typeof AutomationNodeConfigDtoWaitVariableScopeEnum[keyof typeof AutomationNodeConfigDtoWaitVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoLoopModeEnum: {
+    readonly Repeat: "repeat";
+    readonly ForEach: "for_each";
+};
+export type AutomationNodeConfigDtoLoopModeEnum = typeof AutomationNodeConfigDtoLoopModeEnum[keyof typeof AutomationNodeConfigDtoLoopModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoLoopCollectionVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = typeof AutomationNodeConfigDtoLoopCollectionVariableScopeEnum[keyof typeof AutomationNodeConfigDtoLoopCollectionVariableScopeEnum];
 /**
  * @export
  */

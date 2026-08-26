@@ -39,10 +39,10 @@ export interface GetMembersChannelsRequest {
 export interface GetRolePresetsRequest {
     acceptLanguage?: GetRolePresetsAcceptLanguageEnum;
 }
-export interface TransferOwnershipRequest {
+export interface OwnershipTransferRequest {
     projectId: string;
     transferOwnershipDto: TransferOwnershipDto;
-    acceptLanguage?: TransferOwnershipAcceptLanguageEnum;
+    acceptLanguage?: OwnershipTransferAcceptLanguageEnum;
 }
 /**
  *
@@ -112,12 +112,12 @@ export declare class AccessApi extends runtime.BaseAPI {
      * . .
      *
      */
-    transferOwnershipRaw(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>>;
+    ownershipTransferRaw(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>>;
     /**
      * . .
      *
      */
-    transferOwnership(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto>;
+    ownershipTransfer(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto>;
 }
 /**
  * @export
@@ -170,8 +170,8 @@ export type GetRolePresetsAcceptLanguageEnum = typeof GetRolePresetsAcceptLangua
 /**
  * @export
  */
-export declare const TransferOwnershipAcceptLanguageEnum: {
+export declare const OwnershipTransferAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type TransferOwnershipAcceptLanguageEnum = typeof TransferOwnershipAcceptLanguageEnum[keyof typeof TransferOwnershipAcceptLanguageEnum];
+export type OwnershipTransferAcceptLanguageEnum = typeof OwnershipTransferAcceptLanguageEnum[keyof typeof OwnershipTransferAcceptLanguageEnum];

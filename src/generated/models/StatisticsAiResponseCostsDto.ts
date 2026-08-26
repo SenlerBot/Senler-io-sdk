@@ -55,6 +55,13 @@ import {
     StatisticsNullableProjectMoneyMetricDeltaDtoToJSON,
     StatisticsNullableProjectMoneyMetricDeltaDtoToJSONTyped,
 } from './StatisticsNullableProjectMoneyMetricDeltaDto';
+import type { StatisticsAiResponseCancelledGenerationsDto } from './StatisticsAiResponseCancelledGenerationsDto';
+import {
+    StatisticsAiResponseCancelledGenerationsDtoFromJSON,
+    StatisticsAiResponseCancelledGenerationsDtoFromJSONTyped,
+    StatisticsAiResponseCancelledGenerationsDtoToJSON,
+    StatisticsAiResponseCancelledGenerationsDtoToJSONTyped,
+} from './StatisticsAiResponseCancelledGenerationsDto';
 
 /**
  * StatisticsAiResponseCostsDto.
@@ -92,6 +99,12 @@ export interface StatisticsAiResponseCostsDto {
      * @memberof StatisticsAiResponseCostsDto
      */
     excludedFromProjectCurrencyCredits: StatisticsNullableCreditsMetricDeltaDto;
+    /**
+     * . direct_credits_used breakdown, AI- ; terminal_at
+     * @type {StatisticsAiResponseCancelledGenerationsDto}
+     * @memberof StatisticsAiResponseCostsDto
+     */
+    cancelledGenerations: StatisticsAiResponseCancelledGenerationsDto;
     /**
      * . cost- ; project_currency_cost . reasoning_tokens cached_input_tokens
      * @type {StatisticsAiResponseBreakdownDto}
@@ -172,6 +185,7 @@ export function instanceOfStatisticsAiResponseCostsDto(value: object): value is 
     if (!('directCreditsUsed' in value) || value['directCreditsUsed'] === undefined) return false;
     if (!('projectCurrencyCost' in value) || value['projectCurrencyCost'] === undefined) return false;
     if (!('excludedFromProjectCurrencyCredits' in value) || value['excludedFromProjectCurrencyCredits'] === undefined) return false;
+    if (!('cancelledGenerations' in value) || value['cancelledGenerations'] === undefined) return false;
     if (!('breakdown' in value) || value['breakdown'] === undefined) return false;
     if (!('toolUsage' in value) || value['toolUsage'] === undefined) return false;
     if (!('aiResponses' in value) || value['aiResponses'] === undefined) return false;
@@ -198,6 +212,7 @@ export function StatisticsAiResponseCostsDtoFromJSONTyped(json: any, ignoreDiscr
         'directCreditsUsed': StatisticsNullableCreditsMetricDeltaDtoFromJSON(json['direct_credits_used']),
         'projectCurrencyCost': StatisticsNullableProjectMoneyMetricDeltaDtoFromJSON(json['project_currency_cost']),
         'excludedFromProjectCurrencyCredits': StatisticsNullableCreditsMetricDeltaDtoFromJSON(json['excluded_from_project_currency_credits']),
+        'cancelledGenerations': StatisticsAiResponseCancelledGenerationsDtoFromJSON(json['cancelled_generations']),
         'breakdown': StatisticsAiResponseBreakdownDtoFromJSON(json['breakdown']),
         'toolUsage': StatisticsAiResponseToolUsageDtoFromJSON(json['tool_usage']),
         'aiResponses': StatisticsNullableMetricDeltaDtoFromJSON(json['ai_responses']),
@@ -225,6 +240,7 @@ export function StatisticsAiResponseCostsDtoToJSONTyped(value?: StatisticsAiResp
         'direct_credits_used': StatisticsNullableCreditsMetricDeltaDtoToJSON(value['directCreditsUsed']),
         'project_currency_cost': StatisticsNullableProjectMoneyMetricDeltaDtoToJSON(value['projectCurrencyCost']),
         'excluded_from_project_currency_credits': StatisticsNullableCreditsMetricDeltaDtoToJSON(value['excludedFromProjectCurrencyCredits']),
+        'cancelled_generations': StatisticsAiResponseCancelledGenerationsDtoToJSON(value['cancelledGenerations']),
         'breakdown': StatisticsAiResponseBreakdownDtoToJSON(value['breakdown']),
         'tool_usage': StatisticsAiResponseToolUsageDtoToJSON(value['toolUsage']),
         'ai_responses': StatisticsNullableMetricDeltaDtoToJSON(value['aiResponses']),

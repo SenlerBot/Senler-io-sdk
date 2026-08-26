@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationTableFilterDtoVariableScopeEnum = exports.AutomationTableFilterDtoValueSourceEnum = exports.AutomationTableFilterDtoOperatorEnum = void 0;
+exports.AutomationTableFilterDtoVariableTypeEnum = exports.AutomationTableFilterDtoVariableScopeEnum = exports.AutomationTableFilterDtoValueSourceEnum = exports.AutomationTableFilterDtoOperatorEnum = void 0;
 exports.instanceOfAutomationTableFilterDto = instanceOfAutomationTableFilterDto;
 exports.AutomationTableFilterDtoFromJSON = AutomationTableFilterDtoFromJSON;
 exports.AutomationTableFilterDtoFromJSONTyped = AutomationTableFilterDtoFromJSONTyped;
@@ -42,6 +42,18 @@ exports.AutomationTableFilterDtoVariableScopeEnum = {
     Project: 'project'
 };
 /**
+ * @export
+ */
+exports.AutomationTableFilterDtoVariableTypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean',
+    Json: 'json',
+    Date: 'date',
+    Array: 'array',
+    Object: 'object'
+};
+/**
  * Check if a given object implements the AutomationTableFilterDto interface.
  */
 function instanceOfAutomationTableFilterDto(value) {
@@ -65,6 +77,7 @@ function AutomationTableFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
         'value': json['value'] == null ? undefined : json['value'],
         'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
         'variableName': json['variable_name'] == null ? undefined : json['variable_name'],
+        'variableType': json['variable_type'] == null ? undefined : json['variable_type'],
     };
 }
 function AutomationTableFilterDtoToJSON(json) {
@@ -81,5 +94,6 @@ function AutomationTableFilterDtoToJSONTyped(value, ignoreDiscriminator = false)
         'value': value['value'],
         'variable_scope': value['variableScope'],
         'variable_name': value['variableName'],
+        'variable_type': value['variableType'],
     };
 }

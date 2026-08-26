@@ -102,6 +102,7 @@ export declare const OrderItemResponseDtoTypeEnum: {
     readonly BalanceDeposit: "balance_deposit";
     readonly Tariff: "tariff";
     readonly CreditPackage: "credit_package";
+    readonly BillingInvoice: "billing_invoice";
 };
 export type OrderItemResponseDtoTypeEnum = typeof OrderItemResponseDtoTypeEnum[keyof typeof OrderItemResponseDtoTypeEnum];
 /**

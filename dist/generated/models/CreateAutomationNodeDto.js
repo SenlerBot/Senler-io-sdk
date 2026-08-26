@@ -38,6 +38,7 @@ exports.CreateAutomationNodeDtoTypeEnum = {
     BranchRandom: 'branch.random',
     ActionSetVariable: 'action.set_variable',
     ActionMessage: 'action.message',
+    ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
     ActionRemoveSegment: 'action.remove_segment',
     ActionAddAutomation: 'action.add_automation',

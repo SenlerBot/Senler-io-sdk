@@ -148,6 +148,8 @@ function instanceOfCabinetEventListItemDto(value) {
         return false;
     if (!('actionType' in value) || value['actionType'] === undefined)
         return false;
+    if (!('targetType' in value) || value['targetType'] === undefined)
+        return false;
     if (!('attachments' in value) || value['attachments'] === undefined)
         return false;
     if (!('buttons' in value) || value['buttons'] === undefined)
@@ -181,7 +183,7 @@ function CabinetEventListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'actionType': json['action_type'],
-        'targetType': json['target_type'] == null ? undefined : json['target_type'],
+        'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
         'externalMessageId': json['external_message_id'] == null ? undefined : json['external_message_id'],
         'sender': json['sender'] == null ? undefined : (0, EventSenderDto_1.EventSenderDtoFromJSON)(json['sender']),

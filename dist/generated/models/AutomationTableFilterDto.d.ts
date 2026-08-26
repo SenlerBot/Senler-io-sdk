@@ -53,6 +53,12 @@ export interface AutomationTableFilterDto {
      * @memberof AutomationTableFilterDto
      */
     variableName?: string;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof AutomationTableFilterDto
+     */
+    variableType?: AutomationTableFilterDtoVariableTypeEnum;
 }
 /**
  * @export
@@ -79,6 +85,19 @@ export declare const AutomationTableFilterDtoVariableScopeEnum: {
     readonly Project: "project";
 };
 export type AutomationTableFilterDtoVariableScopeEnum = typeof AutomationTableFilterDtoVariableScopeEnum[keyof typeof AutomationTableFilterDtoVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationTableFilterDtoVariableTypeEnum: {
+    readonly String: "string";
+    readonly Number: "number";
+    readonly Boolean: "boolean";
+    readonly Json: "json";
+    readonly Date: "date";
+    readonly Array: "array";
+    readonly Object: "object";
+};
+export type AutomationTableFilterDtoVariableTypeEnum = typeof AutomationTableFilterDtoVariableTypeEnum[keyof typeof AutomationTableFilterDtoVariableTypeEnum];
 /**
  * Check if a given object implements the AutomationTableFilterDto interface.
  */

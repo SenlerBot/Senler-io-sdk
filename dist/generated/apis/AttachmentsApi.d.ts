@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AttachmentDownloadUrlResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
+import type { AttachmentDownloadUrlResponseDto, AttachmentLoadResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
 export interface ConfirmRequest {
     confirmUploadDto: ConfirmUploadDto;
     dialogId?: string;
@@ -30,6 +30,11 @@ export interface GetSendToSelfRecipientsRequest {
     attachmentId: string;
     dialogId: string;
     acceptLanguage?: GetSendToSelfRecipientsAcceptLanguageEnum;
+}
+export interface LoadRequest {
+    attachmentId: string;
+    dialogId: string;
+    acceptLanguage?: LoadAcceptLanguageEnum;
 }
 export interface SendToSelfRequest {
     attachmentId: string;
@@ -97,6 +102,16 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      *
      */
     getSendToSelfRecipients(requestParameters: GetSendToSelfRecipientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientsResponseDto>;
+    /**
+     * . AI-.
+     *
+     */
+    loadRaw(requestParameters: LoadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachmentLoadResponseDto>>;
+    /**
+     * . AI-.
+     *
+     */
+    load(requestParameters: LoadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentLoadResponseDto>;
     /**
      * API. read-like : .
      *
@@ -170,6 +185,14 @@ export declare const GetSendToSelfRecipientsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetSendToSelfRecipientsAcceptLanguageEnum = typeof GetSendToSelfRecipientsAcceptLanguageEnum[keyof typeof GetSendToSelfRecipientsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LoadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LoadAcceptLanguageEnum = typeof LoadAcceptLanguageEnum[keyof typeof LoadAcceptLanguageEnum];
 /**
  * @export
  */

@@ -28,15 +28,15 @@ import {
     UpsertAppVariableDtoToJSON,
 } from '../models/index';
 
-export interface AppVariablesDeleteVariablesRequest {
+export interface DeleteVariablesRequest {
     appId: string;
     key: string;
-    acceptLanguage?: AppVariablesDeleteVariablesAcceptLanguageEnum;
+    acceptLanguage?: DeleteVariablesAcceptLanguageEnum;
 }
 
-export interface AppVariablesGetVariablesRequest {
+export interface GetVariablesRequest {
     appId: string;
-    acceptLanguage?: AppVariablesGetVariablesAcceptLanguageEnum;
+    acceptLanguage?: GetVariablesAcceptLanguageEnum;
 }
 
 export interface UpdateVariablesRequest {
@@ -55,18 +55,18 @@ export class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    async appVariablesDeleteVariablesRaw(requestParameters: AppVariablesDeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteVariablesRaw(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['appId'] == null) {
             throw new runtime.RequiredError(
                 'appId',
-                'Required parameter "appId" was null or undefined when calling appVariablesDeleteVariables().'
+                'Required parameter "appId" was null or undefined when calling deleteVariables().'
             );
         }
 
         if (requestParameters['key'] == null) {
             throw new runtime.RequiredError(
                 'key',
-                'Required parameter "key" was null or undefined when calling appVariablesDeleteVariables().'
+                'Required parameter "key" was null or undefined when calling deleteVariables().'
             );
         }
 
@@ -97,19 +97,19 @@ export class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    async appVariablesDeleteVariables(requestParameters: AppVariablesDeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.appVariablesDeleteVariablesRaw(requestParameters, initOverrides);
+    async deleteVariables(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteVariablesRaw(requestParameters, initOverrides);
     }
 
     /**
      * .
      *
      */
-    async appVariablesGetVariablesRaw(requestParameters: AppVariablesGetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppVariableResponseDto>>> {
+    async getVariablesRaw(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppVariableResponseDto>>> {
         if (requestParameters['appId'] == null) {
             throw new runtime.RequiredError(
                 'appId',
-                'Required parameter "appId" was null or undefined when calling appVariablesGetVariables().'
+                'Required parameter "appId" was null or undefined when calling getVariables().'
             );
         }
 
@@ -140,8 +140,8 @@ export class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    async appVariablesGetVariables(requestParameters: AppVariablesGetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppVariableResponseDto>> {
-        const response = await this.appVariablesGetVariablesRaw(requestParameters, initOverrides);
+    async getVariables(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppVariableResponseDto>> {
+        const response = await this.getVariablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -211,19 +211,19 @@ export class AppVariablesApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const AppVariablesDeleteVariablesAcceptLanguageEnum = {
+export const DeleteVariablesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AppVariablesDeleteVariablesAcceptLanguageEnum = typeof AppVariablesDeleteVariablesAcceptLanguageEnum[keyof typeof AppVariablesDeleteVariablesAcceptLanguageEnum];
+export type DeleteVariablesAcceptLanguageEnum = typeof DeleteVariablesAcceptLanguageEnum[keyof typeof DeleteVariablesAcceptLanguageEnum];
 /**
  * @export
  */
-export const AppVariablesGetVariablesAcceptLanguageEnum = {
+export const GetVariablesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AppVariablesGetVariablesAcceptLanguageEnum = typeof AppVariablesGetVariablesAcceptLanguageEnum[keyof typeof AppVariablesGetVariablesAcceptLanguageEnum];
+export type GetVariablesAcceptLanguageEnum = typeof GetVariablesAcceptLanguageEnum[keyof typeof GetVariablesAcceptLanguageEnum];
 /**
  * @export
  */

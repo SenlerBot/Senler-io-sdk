@@ -247,6 +247,8 @@ export declare const BillingTransactionDtoTypeEnum: {
     readonly TariffPurchase: "tariff_purchase";
     readonly CreditPurchase: "credit_purchase";
     readonly CreditAutoPurchase: "credit_auto_purchase";
+    readonly SubscriptionPurchase: "subscription_purchase";
+    readonly MailingMessagePurchase: "mailing_message_purchase";
     readonly Refund: "refund";
     readonly Adjustment: "adjustment";
     readonly CurrencyConversion: "currency_conversion";

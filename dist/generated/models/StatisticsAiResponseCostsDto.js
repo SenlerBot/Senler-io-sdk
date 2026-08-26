@@ -25,6 +25,7 @@ const StatisticsNullableCreditsMetricDeltaDto_1 = require("./StatisticsNullableC
 const StatisticsNullableMetricDeltaDto_1 = require("./StatisticsNullableMetricDeltaDto");
 const StatisticsNullableDecimalCreditsMetricDeltaDto_1 = require("./StatisticsNullableDecimalCreditsMetricDeltaDto");
 const StatisticsNullableProjectMoneyMetricDeltaDto_1 = require("./StatisticsNullableProjectMoneyMetricDeltaDto");
+const StatisticsAiResponseCancelledGenerationsDto_1 = require("./StatisticsAiResponseCancelledGenerationsDto");
 /**
  * @export
  */
@@ -53,6 +54,8 @@ function instanceOfStatisticsAiResponseCostsDto(value) {
     if (!('projectCurrencyCost' in value) || value['projectCurrencyCost'] === undefined)
         return false;
     if (!('excludedFromProjectCurrencyCredits' in value) || value['excludedFromProjectCurrencyCredits'] === undefined)
+        return false;
+    if (!('cancelledGenerations' in value) || value['cancelledGenerations'] === undefined)
         return false;
     if (!('breakdown' in value) || value['breakdown'] === undefined)
         return false;
@@ -85,6 +88,7 @@ function StatisticsAiResponseCostsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'directCreditsUsed': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoFromJSON)(json['direct_credits_used']),
         'projectCurrencyCost': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoFromJSON)(json['project_currency_cost']),
         'excludedFromProjectCurrencyCredits': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoFromJSON)(json['excluded_from_project_currency_credits']),
+        'cancelledGenerations': (0, StatisticsAiResponseCancelledGenerationsDto_1.StatisticsAiResponseCancelledGenerationsDtoFromJSON)(json['cancelled_generations']),
         'breakdown': (0, StatisticsAiResponseBreakdownDto_1.StatisticsAiResponseBreakdownDtoFromJSON)(json['breakdown']),
         'toolUsage': (0, StatisticsAiResponseToolUsageDto_1.StatisticsAiResponseToolUsageDtoFromJSON)(json['tool_usage']),
         'aiResponses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['ai_responses']),
@@ -108,6 +112,7 @@ function StatisticsAiResponseCostsDtoToJSONTyped(value, ignoreDiscriminator = fa
         'direct_credits_used': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoToJSON)(value['directCreditsUsed']),
         'project_currency_cost': (0, StatisticsNullableProjectMoneyMetricDeltaDto_1.StatisticsNullableProjectMoneyMetricDeltaDtoToJSON)(value['projectCurrencyCost']),
         'excluded_from_project_currency_credits': (0, StatisticsNullableCreditsMetricDeltaDto_1.StatisticsNullableCreditsMetricDeltaDtoToJSON)(value['excludedFromProjectCurrencyCredits']),
+        'cancelled_generations': (0, StatisticsAiResponseCancelledGenerationsDto_1.StatisticsAiResponseCancelledGenerationsDtoToJSON)(value['cancelledGenerations']),
         'breakdown': (0, StatisticsAiResponseBreakdownDto_1.StatisticsAiResponseBreakdownDtoToJSON)(value['breakdown']),
         'tool_usage': (0, StatisticsAiResponseToolUsageDto_1.StatisticsAiResponseToolUsageDtoToJSON)(value['toolUsage']),
         'ai_responses': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['aiResponses']),

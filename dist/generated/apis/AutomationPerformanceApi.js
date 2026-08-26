@@ -46,13 +46,65 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetStatisticsAutomationsAcceptLanguageEnum = exports.GetStatisticsAutomationsPeriodEnum = exports.GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = exports.AutomationPerformanceApi = void 0;
+exports.GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = exports.GetAnalyticsAutomationsAcceptLanguageEnum = exports.GetAnalyticsAutomationsPeriodEnum = exports.AutomationPerformanceApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class AutomationPerformanceApi extends runtime.BaseAPI {
+    /**
+     * .
+     *
+     */
+    async getAnalyticsAutomationsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAnalyticsAutomations().');
+        }
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getAnalyticsAutomations().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/automations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationPerformanceResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getAnalyticsAutomations(requestParameters, initOverrides) {
+        const response = await this.getAnalyticsAutomationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * , .
      * 24
@@ -96,71 +148,12 @@ class AutomationPerformanceApi extends runtime.BaseAPI {
         const response = await this.getBillingProjectsAutomationPerformanceRaw(requestParameters, initOverrides);
         return await response.value();
     }
-    /**
-     * .
-     *
-     */
-    async getStatisticsAutomationsRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getStatisticsAutomations().');
-        }
-        if (requestParameters['period'] == null) {
-            throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getStatisticsAutomations().');
-        }
-        const queryParameters = {};
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-        if (requestParameters['period'] != null) {
-            queryParameters['period'] = requestParameters['period'];
-        }
-        if (requestParameters['timezone'] != null) {
-            queryParameters['timezone'] = requestParameters['timezone'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/statistics/automations`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationPerformanceResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * .
-     *
-     */
-    async getStatisticsAutomations(requestParameters, initOverrides) {
-        const response = await this.getStatisticsAutomationsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 }
 exports.AutomationPerformanceApi = AutomationPerformanceApi;
 /**
  * @export
  */
-exports.GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetStatisticsAutomationsPeriodEnum = {
+exports.GetAnalyticsAutomationsPeriodEnum = {
     _24h: '24h',
     _7d: '7d',
     _30d: '30d',
@@ -169,7 +162,14 @@ exports.GetStatisticsAutomationsPeriodEnum = {
 /**
  * @export
  */
-exports.GetStatisticsAutomationsAcceptLanguageEnum = {
+exports.GetAnalyticsAutomationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -121,6 +121,7 @@ exports.DialogChatEventDtoActionTypeEnum = {
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
     AiResponseStarted: 'ai_response_started',
+    AgentInvoked: 'agent_invoked',
     ToolStarted: 'tool_started',
     ReasoningRecorded: 'reasoning_recorded',
     ImageGenerated: 'image_generated',
@@ -137,6 +138,8 @@ exports.DialogChatEventDtoActionTypeEnum = {
  */
 function instanceOfDialogChatEventDto(value) {
     if (!('id' in value) || value['id'] === undefined)
+        return false;
+    if (!('targetType' in value) || value['targetType'] === undefined)
         return false;
     if (!('attachments' in value) || value['attachments'] === undefined)
         return false;
@@ -173,7 +176,7 @@ function DialogChatEventDtoFromJSONTyped(json, ignoreDiscriminator) {
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
-        'targetType': json['target_type'] == null ? undefined : json['target_type'],
+        'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
         'externalMessageId': json['external_message_id'] == null ? undefined : json['external_message_id'],
         'sender': json['sender'] == null ? undefined : (0, EventSenderDto_1.EventSenderDtoFromJSON)(json['sender']),

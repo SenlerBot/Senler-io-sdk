@@ -11,77 +11,77 @@
  */
 import * as runtime from '../runtime';
 import type { CreateInvitationDto, InvitationCreatedResponseDto, InvitationListItemDto, InvitationStatus, SuccessResponseDto } from '../models/index';
-export interface AccessInvitationsCreateRequest {
-    projectId: string;
-    createInvitationDto: CreateInvitationDto;
-    acceptLanguage?: AccessInvitationsCreateAcceptLanguageEnum;
-}
-export interface AccessInvitationsDeactivateRequest {
+export interface AccessInvitationsDeleteInvitationsRequest {
     projectId: string;
     invitationId: string;
-    acceptLanguage?: AccessInvitationsDeactivateAcceptLanguageEnum;
+    acceptLanguage?: AccessInvitationsDeleteInvitationsAcceptLanguageEnum;
 }
-export interface AccessInvitationsGetByIdRequest {
+export interface AccessInvitationsGetInvitationsRequest {
     projectId: string;
     status?: InvitationStatus;
-    acceptLanguage?: AccessInvitationsGetByIdAcceptLanguageEnum;
+    acceptLanguage?: AccessInvitationsGetInvitationsAcceptLanguageEnum;
+}
+export interface AccessInvitationsInvitationsRequest {
+    projectId: string;
+    createInvitationDto: CreateInvitationDto;
+    acceptLanguage?: AccessInvitationsInvitationsAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class AccessInvitationsApi extends runtime.BaseAPI {
     /**
-     * user_id email. pending- ( 4 ). .
+     * pending-. /.
      *
      */
-    accessInvitationsCreateRaw(requestParameters: AccessInvitationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>>;
-    /**
-     * user_id email. pending- ( 4 ). .
-     *
-     */
-    accessInvitationsCreate(requestParameters: AccessInvitationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto>;
+    accessInvitationsDeleteInvitationsRaw(requestParameters: AccessInvitationsDeleteInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
      * pending-. /.
      *
      */
-    accessInvitationsDeactivateRaw(requestParameters: AccessInvitationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
-    /**
-     * pending-. /.
-     *
-     */
-    accessInvitationsDeactivate(requestParameters: AccessInvitationsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
+    accessInvitationsDeleteInvitations(requestParameters: AccessInvitationsDeleteInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
      * . ?status=pending|accepted|declined|expired|cancelled.
      *
      */
-    accessInvitationsGetByIdRaw(requestParameters: AccessInvitationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<InvitationListItemDto>>>;
+    accessInvitationsGetInvitationsRaw(requestParameters: AccessInvitationsGetInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<InvitationListItemDto>>>;
     /**
      * . ?status=pending|accepted|declined|expired|cancelled.
      *
      */
-    accessInvitationsGetById(requestParameters: AccessInvitationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InvitationListItemDto>>;
+    accessInvitationsGetInvitations(requestParameters: AccessInvitationsGetInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InvitationListItemDto>>;
+    /**
+     * user_id email. pending- ( 4 ). .
+     *
+     */
+    accessInvitationsInvitationsRaw(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>>;
+    /**
+     * user_id email. pending- ( 4 ). .
+     *
+     */
+    accessInvitationsInvitations(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto>;
 }
 /**
  * @export
  */
-export declare const AccessInvitationsCreateAcceptLanguageEnum: {
+export declare const AccessInvitationsDeleteInvitationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AccessInvitationsCreateAcceptLanguageEnum = typeof AccessInvitationsCreateAcceptLanguageEnum[keyof typeof AccessInvitationsCreateAcceptLanguageEnum];
+export type AccessInvitationsDeleteInvitationsAcceptLanguageEnum = typeof AccessInvitationsDeleteInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsDeleteInvitationsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AccessInvitationsDeactivateAcceptLanguageEnum: {
+export declare const AccessInvitationsGetInvitationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AccessInvitationsDeactivateAcceptLanguageEnum = typeof AccessInvitationsDeactivateAcceptLanguageEnum[keyof typeof AccessInvitationsDeactivateAcceptLanguageEnum];
+export type AccessInvitationsGetInvitationsAcceptLanguageEnum = typeof AccessInvitationsGetInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsGetInvitationsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AccessInvitationsGetByIdAcceptLanguageEnum: {
+export declare const AccessInvitationsInvitationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AccessInvitationsGetByIdAcceptLanguageEnum = typeof AccessInvitationsGetByIdAcceptLanguageEnum[keyof typeof AccessInvitationsGetByIdAcceptLanguageEnum];
+export type AccessInvitationsInvitationsAcceptLanguageEnum = typeof AccessInvitationsInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsInvitationsAcceptLanguageEnum];

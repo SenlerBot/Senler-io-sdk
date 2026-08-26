@@ -25,7 +25,8 @@ exports.CreateOrderDtoToJSONTyped = CreateOrderDtoToJSONTyped;
 exports.CreateOrderDtoOrderTypeEnum = {
     Topup: 'topup',
     Tariff: 'tariff',
-    Credits: 'credits'
+    Credits: 'credits',
+    BillingInvoice: 'billing_invoice'
 };
 /**
  * @export
@@ -57,6 +58,7 @@ function CreateOrderDtoFromJSONTyped(json, ignoreDiscriminator) {
         'tariffId': json['tariff_id'] == null ? undefined : json['tariff_id'],
         'period': json['period'] == null ? undefined : json['period'],
         'packageId': json['package_id'] == null ? undefined : json['package_id'],
+        'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
     };
 }
 function CreateOrderDtoToJSON(json) {
@@ -74,5 +76,6 @@ function CreateOrderDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'tariff_id': value['tariffId'],
         'period': value['period'],
         'package_id': value['packageId'],
+        'billing_invoice_id': value['billingInvoiceId'],
     };
 }

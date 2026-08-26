@@ -45,6 +45,36 @@ export interface LandingLaunchContextResponseDto {
      * @memberof LandingLaunchContextResponseDto
      */
     action: LandingLaunchContextResponseDtoAction;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmSource: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmMedium: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmCampaign: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmContent: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmTerm: string | null;
 }
 
 /**
@@ -54,6 +84,11 @@ export function instanceOfLandingLaunchContextResponseDto(value: object): value 
     if (!('projectPublicId' in value) || value['projectPublicId'] === undefined) return false;
     if (!('landingPublicId' in value) || value['landingPublicId'] === undefined) return false;
     if (!('action' in value) || value['action'] === undefined) return false;
+    if (!('utmSource' in value) || value['utmSource'] === undefined) return false;
+    if (!('utmMedium' in value) || value['utmMedium'] === undefined) return false;
+    if (!('utmCampaign' in value) || value['utmCampaign'] === undefined) return false;
+    if (!('utmContent' in value) || value['utmContent'] === undefined) return false;
+    if (!('utmTerm' in value) || value['utmTerm'] === undefined) return false;
     return true;
 }
 
@@ -70,6 +105,11 @@ export function LandingLaunchContextResponseDtoFromJSONTyped(json: any, ignoreDi
         'projectPublicId': json['project_public_id'],
         'landingPublicId': json['landing_public_id'],
         'action': LandingLaunchContextResponseDtoActionFromJSON(json['action']),
+        'utmSource': json['utm_source'],
+        'utmMedium': json['utm_medium'],
+        'utmCampaign': json['utm_campaign'],
+        'utmContent': json['utm_content'],
+        'utmTerm': json['utm_term'],
     };
 }
 
@@ -87,5 +127,10 @@ export function LandingLaunchContextResponseDtoToJSONTyped(value?: LandingLaunch
         'project_public_id': value['projectPublicId'],
         'landing_public_id': value['landingPublicId'],
         'action': LandingLaunchContextResponseDtoActionToJSON(value['action']),
+        'utm_source': value['utmSource'],
+        'utm_medium': value['utmMedium'],
+        'utm_campaign': value['utmCampaign'],
+        'utm_content': value['utmContent'],
+        'utm_term': value['utmTerm'],
     };
 }

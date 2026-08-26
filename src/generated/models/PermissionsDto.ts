@@ -86,11 +86,23 @@ export interface PermissionsDto {
      */
     canViewDialogs: boolean;
     /**
-     *
+     * ,
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageDialogs: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewDeliveries: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageDeliveries: boolean;
     /**
      * spaces
      * @type {boolean}
@@ -110,11 +122,47 @@ export interface PermissionsDto {
      */
     canViewLeads: boolean;
     /**
-     *
+     * , ,
      * @type {boolean}
      * @memberof PermissionsDto
      */
     canManageLeads: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewLeadVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageLeadVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewSegments: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageSegments: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewLandings: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageLandings: boolean;
     /**
      *
      * @type {boolean}
@@ -139,12 +187,6 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canManageAutomations: boolean;
-    /**
-     * ,
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canRunAutomations: boolean;
     /**
      * MCP
      * @type {boolean}
@@ -193,12 +235,6 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canManageDataSources: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canManageServerLists: boolean;
     /**
      *
      * @type {boolean}
@@ -301,18 +337,6 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canManageProjectVariables: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canViewLeadDefinitions: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
-    canManageLeadDefinitions: boolean;
 }
 
 /**
@@ -331,15 +355,22 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canManageAgentEvents' in value) || value['canManageAgentEvents'] === undefined) return false;
     if (!('canViewDialogs' in value) || value['canViewDialogs'] === undefined) return false;
     if (!('canManageDialogs' in value) || value['canManageDialogs'] === undefined) return false;
+    if (!('canViewDeliveries' in value) || value['canViewDeliveries'] === undefined) return false;
+    if (!('canManageDeliveries' in value) || value['canManageDeliveries'] === undefined) return false;
     if (!('canViewSpaces' in value) || value['canViewSpaces'] === undefined) return false;
     if (!('canManageSpaces' in value) || value['canManageSpaces'] === undefined) return false;
     if (!('canViewLeads' in value) || value['canViewLeads'] === undefined) return false;
     if (!('canManageLeads' in value) || value['canManageLeads'] === undefined) return false;
+    if (!('canViewLeadVariables' in value) || value['canViewLeadVariables'] === undefined) return false;
+    if (!('canManageLeadVariables' in value) || value['canManageLeadVariables'] === undefined) return false;
+    if (!('canViewSegments' in value) || value['canViewSegments'] === undefined) return false;
+    if (!('canManageSegments' in value) || value['canManageSegments'] === undefined) return false;
+    if (!('canViewLandings' in value) || value['canViewLandings'] === undefined) return false;
+    if (!('canManageLandings' in value) || value['canManageLandings'] === undefined) return false;
     if (!('canViewTrafficMarks' in value) || value['canViewTrafficMarks'] === undefined) return false;
     if (!('canManageTrafficMarks' in value) || value['canManageTrafficMarks'] === undefined) return false;
     if (!('canViewAutomations' in value) || value['canViewAutomations'] === undefined) return false;
     if (!('canManageAutomations' in value) || value['canManageAutomations'] === undefined) return false;
-    if (!('canRunAutomations' in value) || value['canRunAutomations'] === undefined) return false;
     if (!('canViewMcpServers' in value) || value['canViewMcpServers'] === undefined) return false;
     if (!('canManageMcpServers' in value) || value['canManageMcpServers'] === undefined) return false;
     if (!('canViewAnalytics' in value) || value['canViewAnalytics'] === undefined) return false;
@@ -348,7 +379,6 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canManageBilling' in value) || value['canManageBilling'] === undefined) return false;
     if (!('canViewDataSources' in value) || value['canViewDataSources'] === undefined) return false;
     if (!('canManageDataSources' in value) || value['canManageDataSources'] === undefined) return false;
-    if (!('canManageServerLists' in value) || value['canManageServerLists'] === undefined) return false;
     if (!('canViewMetrics' in value) || value['canViewMetrics'] === undefined) return false;
     if (!('canManageMetrics' in value) || value['canManageMetrics'] === undefined) return false;
     if (!('canViewEvents' in value) || value['canViewEvents'] === undefined) return false;
@@ -366,8 +396,6 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canManageStorage' in value) || value['canManageStorage'] === undefined) return false;
     if (!('canViewProjectVariables' in value) || value['canViewProjectVariables'] === undefined) return false;
     if (!('canManageProjectVariables' in value) || value['canManageProjectVariables'] === undefined) return false;
-    if (!('canViewLeadDefinitions' in value) || value['canViewLeadDefinitions'] === undefined) return false;
-    if (!('canManageLeadDefinitions' in value) || value['canManageLeadDefinitions'] === undefined) return false;
     return true;
 }
 
@@ -393,15 +421,22 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canManageAgentEvents': json['can_manage_agent_events'],
         'canViewDialogs': json['can_view_dialogs'],
         'canManageDialogs': json['can_manage_dialogs'],
+        'canViewDeliveries': json['can_view_deliveries'],
+        'canManageDeliveries': json['can_manage_deliveries'],
         'canViewSpaces': json['can_view_spaces'],
         'canManageSpaces': json['can_manage_spaces'],
         'canViewLeads': json['can_view_leads'],
         'canManageLeads': json['can_manage_leads'],
+        'canViewLeadVariables': json['can_view_lead_variables'],
+        'canManageLeadVariables': json['can_manage_lead_variables'],
+        'canViewSegments': json['can_view_segments'],
+        'canManageSegments': json['can_manage_segments'],
+        'canViewLandings': json['can_view_landings'],
+        'canManageLandings': json['can_manage_landings'],
         'canViewTrafficMarks': json['can_view_traffic_marks'],
         'canManageTrafficMarks': json['can_manage_traffic_marks'],
         'canViewAutomations': json['can_view_automations'],
         'canManageAutomations': json['can_manage_automations'],
-        'canRunAutomations': json['can_run_automations'],
         'canViewMcpServers': json['can_view_mcp_servers'],
         'canManageMcpServers': json['can_manage_mcp_servers'],
         'canViewAnalytics': json['can_view_analytics'],
@@ -410,7 +445,6 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canManageBilling': json['can_manage_billing'],
         'canViewDataSources': json['can_view_data_sources'],
         'canManageDataSources': json['can_manage_data_sources'],
-        'canManageServerLists': json['can_manage_server_lists'],
         'canViewMetrics': json['can_view_metrics'],
         'canManageMetrics': json['can_manage_metrics'],
         'canViewEvents': json['can_view_events'],
@@ -428,8 +462,6 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canManageStorage': json['can_manage_storage'],
         'canViewProjectVariables': json['can_view_project_variables'],
         'canManageProjectVariables': json['can_manage_project_variables'],
-        'canViewLeadDefinitions': json['can_view_lead_definitions'],
-        'canManageLeadDefinitions': json['can_manage_lead_definitions'],
     };
 }
 
@@ -456,15 +488,22 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_manage_agent_events': value['canManageAgentEvents'],
         'can_view_dialogs': value['canViewDialogs'],
         'can_manage_dialogs': value['canManageDialogs'],
+        'can_view_deliveries': value['canViewDeliveries'],
+        'can_manage_deliveries': value['canManageDeliveries'],
         'can_view_spaces': value['canViewSpaces'],
         'can_manage_spaces': value['canManageSpaces'],
         'can_view_leads': value['canViewLeads'],
         'can_manage_leads': value['canManageLeads'],
+        'can_view_lead_variables': value['canViewLeadVariables'],
+        'can_manage_lead_variables': value['canManageLeadVariables'],
+        'can_view_segments': value['canViewSegments'],
+        'can_manage_segments': value['canManageSegments'],
+        'can_view_landings': value['canViewLandings'],
+        'can_manage_landings': value['canManageLandings'],
         'can_view_traffic_marks': value['canViewTrafficMarks'],
         'can_manage_traffic_marks': value['canManageTrafficMarks'],
         'can_view_automations': value['canViewAutomations'],
         'can_manage_automations': value['canManageAutomations'],
-        'can_run_automations': value['canRunAutomations'],
         'can_view_mcp_servers': value['canViewMcpServers'],
         'can_manage_mcp_servers': value['canManageMcpServers'],
         'can_view_analytics': value['canViewAnalytics'],
@@ -473,7 +512,6 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_manage_billing': value['canManageBilling'],
         'can_view_data_sources': value['canViewDataSources'],
         'can_manage_data_sources': value['canManageDataSources'],
-        'can_manage_server_lists': value['canManageServerLists'],
         'can_view_metrics': value['canViewMetrics'],
         'can_manage_metrics': value['canManageMetrics'],
         'can_view_events': value['canViewEvents'],
@@ -491,7 +529,5 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_manage_storage': value['canManageStorage'],
         'can_view_project_variables': value['canViewProjectVariables'],
         'can_manage_project_variables': value['canManageProjectVariables'],
-        'can_view_lead_definitions': value['canViewLeadDefinitions'],
-        'can_manage_lead_definitions': value['canManageLeadDefinitions'],
     };
 }

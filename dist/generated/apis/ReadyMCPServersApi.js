@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReadyMcpServersListAcceptLanguageEnum = exports.ReadyMcpServersGetByIdAcceptLanguageEnum = exports.GetProjectCatalogAcceptLanguageEnum = exports.GetKnowledgeBaseAcceptLanguageEnum = exports.GetCategoriesListAcceptLanguageEnum = exports.ReadyMCPServersApi = void 0;
+exports.ReadyMcpServersListAcceptLanguageEnum = exports.ReadyMcpServersGetByIdAcceptLanguageEnum = exports.GetProjectCatalogAcceptLanguageEnum = exports.GetKnowledgeBaseAcceptLanguageEnum = exports.GetCategoriesAcceptLanguageEnum = exports.ReadyMCPServersApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,14 +57,14 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
      * MCP .
      * MCP
      */
-    async getCategoriesListRaw(requestParameters, initOverrides) {
+    async getCategoriesRaw(requestParameters, initOverrides) {
         const queryParameters = {};
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         const response = await this.request({
-            path: `/api/mcp-server-templates/categories/list`,
+            path: `/api/mcp-servers/templates/categories`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -75,8 +75,8 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
      * MCP .
      * MCP
      */
-    async getCategoriesList(requestParameters = {}, initOverrides) {
-        const response = await this.getCategoriesListRaw(requestParameters, initOverrides);
+    async getCategories(requestParameters = {}, initOverrides) {
+        const response = await this.getCategoriesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -93,7 +93,7 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         const response = await this.request({
-            path: `/api/mcp-server-templates/{id}/knowledge-base`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/templates/{id}/knowledge-base`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -157,7 +157,7 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/mcp-server-templates/project-catalog`,
+            path: `/api/mcp-servers/templates/project-catalog`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -186,7 +186,7 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         const response = await this.request({
-            path: `/api/mcp-server-templates/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/mcp-servers/templates/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -233,7 +233,7 @@ class ReadyMCPServersApi extends runtime.BaseAPI {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         const response = await this.request({
-            path: `/api/mcp-server-templates`,
+            path: `/api/mcp-servers/templates`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -253,7 +253,7 @@ exports.ReadyMCPServersApi = ReadyMCPServersApi;
 /**
  * @export
  */
-exports.GetCategoriesListAcceptLanguageEnum = {
+exports.GetCategoriesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

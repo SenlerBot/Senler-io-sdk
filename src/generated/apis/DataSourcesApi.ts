@@ -75,14 +75,14 @@ export interface DataSourcesUpdateRestoreRequest {
     acceptLanguage?: DataSourcesUpdateRestoreAcceptLanguageEnum;
 }
 
+export interface DataSourcesValidateRequest {
+    id: string;
+    acceptLanguage?: DataSourcesValidateAcceptLanguageEnum;
+}
+
 export interface GetActiveForTrainingRequest {
     projectId: string;
     acceptLanguage?: GetActiveForTrainingAcceptLanguageEnum;
-}
-
-export interface ValidateRequest {
-    id: string;
-    acceptLanguage?: ValidateAcceptLanguageEnum;
 }
 
 /**
@@ -496,6 +496,58 @@ export class DataSourcesApi extends runtime.BaseAPI {
     }
 
     /**
+     *
+     *
+     */
+    async dataSourcesValidateRaw(requestParameters: DataSourcesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling dataSourcesValidate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_data_sources"]);
+        }
+
+        const response = await this.request({
+            path: `/api/data-sources/{id}/validate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ValidateDataSourceResultDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     *
+     */
+    async dataSourcesValidate(requestParameters: DataSourcesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto> {
+        const response = await this.dataSourcesValidateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * ,
      *
      */
@@ -548,58 +600,6 @@ export class DataSourcesApi extends runtime.BaseAPI {
      */
     async getActiveForTraining(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>> {
         const response = await this.getActiveForTrainingRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     *
-     *
-     */
-    async validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling validate().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_data_sources"]);
-        }
-
-        const response = await this.request({
-            path: `/api/data-sources/{id}/validate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => ValidateDataSourceResultDtoFromJSON(jsonValue));
-    }
-
-    /**
-     *
-     *
-     */
-    async validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto> {
-        const response = await this.validateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -664,16 +664,16 @@ export type DataSourcesUpdateRestoreAcceptLanguageEnum = typeof DataSourcesUpdat
 /**
  * @export
  */
+export const DataSourcesValidateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DataSourcesValidateAcceptLanguageEnum = typeof DataSourcesValidateAcceptLanguageEnum[keyof typeof DataSourcesValidateAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetActiveForTrainingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type GetActiveForTrainingAcceptLanguageEnum = typeof GetActiveForTrainingAcceptLanguageEnum[keyof typeof GetActiveForTrainingAcceptLanguageEnum];
-/**
- * @export
- */
-export const ValidateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type ValidateAcceptLanguageEnum = typeof ValidateAcceptLanguageEnum[keyof typeof ValidateAcceptLanguageEnum];

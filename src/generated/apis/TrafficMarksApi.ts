@@ -19,6 +19,7 @@ import type {
   ErrorResponse,
   TrafficMarkResponseDto,
   TrafficMarkStatisticsResponseDto,
+  TrafficMarkStatisticsTreeResponseDto,
   TrafficMarksListResponseDto,
 } from '../models/index';
 import {
@@ -30,6 +31,8 @@ import {
     TrafficMarkResponseDtoToJSON,
     TrafficMarkStatisticsResponseDtoFromJSON,
     TrafficMarkStatisticsResponseDtoToJSON,
+    TrafficMarkStatisticsTreeResponseDtoFromJSON,
+    TrafficMarkStatisticsTreeResponseDtoToJSON,
     TrafficMarksListResponseDtoFromJSON,
     TrafficMarksListResponseDtoToJSON,
 } from '../models/index';
@@ -41,8 +44,18 @@ export interface GetStatisticsRequest {
     acceptLanguage?: GetStatisticsAcceptLanguageEnum;
 }
 
-export interface RestoreRequest {
+export interface GetStatisticsTreeRequest {
     projectId: string;
+    period: GetStatisticsTreePeriodEnum;
+    periodEnd: Date;
+    channelId?: string;
+    parentId?: string;
+    offset?: number;
+    limit?: number;
+    acceptLanguage?: GetStatisticsTreeAcceptLanguageEnum;
+}
+
+export interface RestoreRequest {
     trafficMarkId: string;
     acceptLanguage?: RestoreAcceptLanguageEnum;
 }
@@ -54,14 +67,13 @@ export interface TrafficMarksCreateRequest {
 }
 
 export interface TrafficMarksDeactivateRequest {
-    projectId: string;
     trafficMarkId: string;
     acceptLanguage?: TrafficMarksDeactivateAcceptLanguageEnum;
 }
 
-export interface TrafficMarksGetByIdRequest {
+export interface TrafficMarksListRequest {
     projectId: string;
-    acceptLanguage?: TrafficMarksGetByIdAcceptLanguageEnum;
+    acceptLanguage?: TrafficMarksListAcceptLanguageEnum;
 }
 
 /**
@@ -89,6 +101,10 @@ export class TrafficMarksApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         if (requestParameters['period'] != null) {
             queryParameters['period'] = requestParameters['period'];
@@ -118,7 +134,7 @@ export class TrafficMarksApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}/statistics`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/traffic-marks/statistics`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -137,17 +153,104 @@ export class TrafficMarksApi extends runtime.BaseAPI {
     }
 
     /**
+     * parent_id utm_source. UTM-; .
+     * UTM
+     */
+    async getStatisticsTreeRaw(requestParameters: GetStatisticsTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkStatisticsTreeResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getStatisticsTree().'
+            );
+        }
+
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling getStatisticsTree().'
+            );
+        }
+
+        if (requestParameters['periodEnd'] == null) {
+            throw new runtime.RequiredError(
+                'periodEnd',
+                'Required parameter "periodEnd" was null or undefined when calling getStatisticsTree().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['periodEnd'] != null) {
+            queryParameters['period_end'] = (requestParameters['periodEnd'] as any).toISOString();
+        }
+
+        if (requestParameters['parentId'] != null) {
+            queryParameters['parent_id'] = requestParameters['parentId'];
+        }
+
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/traffic-marks/statistics/tree`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TrafficMarkStatisticsTreeResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * parent_id utm_source. UTM-; .
+     * UTM
+     */
+    async getStatisticsTree(requestParameters: GetStatisticsTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarkStatisticsTreeResponseDto> {
+        const response = await this.getStatisticsTreeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
     async restoreRaw(requestParameters: RestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling restore().'
-            );
-        }
-
         if (requestParameters['trafficMarkId'] == null) {
             throw new runtime.RequiredError(
                 'trafficMarkId',
@@ -177,7 +280,7 @@ export class TrafficMarksApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}/{trafficMarkId}/restore`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
+            path: `/api/traffic-marks/{trafficMarkId}/restore`.replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -216,6 +319,10 @@ export class TrafficMarksApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
@@ -238,7 +345,7 @@ export class TrafficMarksApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/traffic-marks`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -262,13 +369,6 @@ export class TrafficMarksApi extends runtime.BaseAPI {
      *
      */
     async trafficMarksDeactivateRaw(requestParameters: TrafficMarksDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling trafficMarksDeactivate().'
-            );
-        }
-
         if (requestParameters['trafficMarkId'] == null) {
             throw new runtime.RequiredError(
                 'trafficMarkId',
@@ -298,7 +398,7 @@ export class TrafficMarksApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}/{trafficMarkId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
+            path: `/api/traffic-marks/{trafficMarkId}`.replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -320,15 +420,19 @@ export class TrafficMarksApi extends runtime.BaseAPI {
      * .
      * UTM-
      */
-    async trafficMarksGetByIdRaw(requestParameters: TrafficMarksGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarksListResponseDto>> {
+    async trafficMarksListRaw(requestParameters: TrafficMarksListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarksListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling trafficMarksGetById().'
+                'Required parameter "projectId" was null or undefined when calling trafficMarksList().'
             );
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -350,7 +454,7 @@ export class TrafficMarksApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/traffic-marks`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -363,8 +467,8 @@ export class TrafficMarksApi extends runtime.BaseAPI {
      * .
      * UTM-
      */
-    async trafficMarksGetById(requestParameters: TrafficMarksGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarksListResponseDto> {
-        const response = await this.trafficMarksGetByIdRaw(requestParameters, initOverrides);
+    async trafficMarksList(requestParameters: TrafficMarksListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarksListResponseDto> {
+        const response = await this.trafficMarksListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -388,6 +492,24 @@ export const GetStatisticsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetStatisticsAcceptLanguageEnum = typeof GetStatisticsAcceptLanguageEnum[keyof typeof GetStatisticsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetStatisticsTreePeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+} as const;
+export type GetStatisticsTreePeriodEnum = typeof GetStatisticsTreePeriodEnum[keyof typeof GetStatisticsTreePeriodEnum];
+/**
+ * @export
+ */
+export const GetStatisticsTreeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetStatisticsTreeAcceptLanguageEnum = typeof GetStatisticsTreeAcceptLanguageEnum[keyof typeof GetStatisticsTreeAcceptLanguageEnum];
 /**
  * @export
  */
@@ -415,8 +537,8 @@ export type TrafficMarksDeactivateAcceptLanguageEnum = typeof TrafficMarksDeacti
 /**
  * @export
  */
-export const TrafficMarksGetByIdAcceptLanguageEnum = {
+export const TrafficMarksListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type TrafficMarksGetByIdAcceptLanguageEnum = typeof TrafficMarksGetByIdAcceptLanguageEnum[keyof typeof TrafficMarksGetByIdAcceptLanguageEnum];
+export type TrafficMarksListAcceptLanguageEnum = typeof TrafficMarksListAcceptLanguageEnum[keyof typeof TrafficMarksListAcceptLanguageEnum];

@@ -58,9 +58,6 @@ class StorageApi extends runtime.BaseAPI {
      *
      */
     async deleteFilesRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteFiles().');
-        }
         if (requestParameters['fileId'] == null) {
             throw new runtime.RequiredError('fileId', 'Required parameter "fileId" was null or undefined when calling deleteFiles().');
         }
@@ -81,7 +78,7 @@ class StorageApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_storage"]);
         }
         const response = await this.request({
-            path: `/api/storage/{projectId}/files/{fileId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"fileId"}}`, encodeURIComponent(String(requestParameters['fileId']))),
+            path: `/api/storage/files/{fileId}`.replace(`{${"fileId"}}`, encodeURIComponent(String(requestParameters['fileId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -105,6 +102,9 @@ class StorageApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteOrphaned().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -121,7 +121,7 @@ class StorageApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_storage"]);
         }
         const response = await this.request({
-            path: `/api/storage/{projectId}/orphaned`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/storage/orphaned`,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -145,6 +145,9 @@ class StorageApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getFiles().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         if (requestParameters['status'] != null) {
             queryParameters['status'] = requestParameters['status'];
         }
@@ -179,7 +182,7 @@ class StorageApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/storage/{projectId}/files`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/storage/files`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -203,6 +206,9 @@ class StorageApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getStats().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -219,7 +225,7 @@ class StorageApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/storage/{projectId}/stats`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/storage/stats`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

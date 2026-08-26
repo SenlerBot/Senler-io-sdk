@@ -18,12 +18,10 @@ export interface CustomOauthStartRequest {
     acceptLanguage?: CustomOauthStartAcceptLanguageEnum;
 }
 export interface DeleteListsRequest {
-    projectId: string;
     id: string;
     acceptLanguage?: DeleteListsAcceptLanguageEnum;
 }
 export interface DeleteListsServersRequest {
-    projectId: string;
     listId: string;
     serverId: string;
     acceptLanguage?: DeleteListsServersAcceptLanguageEnum;
@@ -64,7 +62,6 @@ export interface GetListsRequest {
     acceptLanguage?: GetListsAcceptLanguageEnum;
 }
 export interface GetLists2Request {
-    projectId: string;
     id: string;
     acceptLanguage?: GetLists2AcceptLanguageEnum;
 }
@@ -79,7 +76,6 @@ export interface ListsRequest {
     acceptLanguage?: ListsAcceptLanguageEnum;
 }
 export interface ListsServersRequest {
-    projectId: string;
     listId: string;
     serverId: string;
     acceptLanguage?: ListsServersAcceptLanguageEnum;
@@ -136,13 +132,11 @@ export interface ProjectCredentialValidateRequest {
     acceptLanguage?: ProjectCredentialValidateAcceptLanguageEnum;
 }
 export interface UpdateListsRequest {
-    projectId: string;
     id: string;
     updateMcpServerListDto: UpdateMcpServerListDto;
     acceptLanguage?: UpdateListsAcceptLanguageEnum;
 }
 export interface UpdateListsRestoreRequest {
-    projectId: string;
     id: string;
     acceptLanguage?: UpdateListsRestoreAcceptLanguageEnum;
 }

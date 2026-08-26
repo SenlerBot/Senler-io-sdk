@@ -34,6 +34,36 @@ export interface LandingLaunchContextResponseDto {
      * @memberof LandingLaunchContextResponseDto
      */
     action: LandingLaunchContextResponseDtoAction;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmSource: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmMedium: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmCampaign: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmContent: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    utmTerm: string | null;
 }
 /**
  * Check if a given object implements the LandingLaunchContextResponseDto interface.

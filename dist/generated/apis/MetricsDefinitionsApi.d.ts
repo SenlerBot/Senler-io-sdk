@@ -11,17 +11,17 @@
  */
 import * as runtime from '../runtime';
 import type { CreateArrayMetricDto, CreateBooleanMetricDto, CreateNumberMetricDto, CreateObjectMetricDto, CreateStringMetricDto, MetricDefinitionDto, UpdateArrayMetricDto, UpdateBooleanMetricDto, UpdateNumberMetricDto, UpdateObjectMetricDto, UpdateStringMetricDto } from '../models/index';
-export interface BooleanRequest {
-    createBooleanMetricDto: CreateBooleanMetricDto;
-    acceptLanguage?: BooleanAcceptLanguageEnum;
-}
-export interface ArrayRequest {
-    createArrayMetricDto: CreateArrayMetricDto;
-    acceptLanguage?: ArrayAcceptLanguageEnum;
-}
 export interface MetricsDefinitionsActivateRequest {
     id: string;
     acceptLanguage?: MetricsDefinitionsActivateAcceptLanguageEnum;
+}
+export interface MetricsDefinitionsArrayRequest {
+    createArrayMetricDto: CreateArrayMetricDto;
+    acceptLanguage?: MetricsDefinitionsArrayAcceptLanguageEnum;
+}
+export interface MetricsDefinitionsBooleanRequest {
+    createBooleanMetricDto: CreateBooleanMetricDto;
+    acceptLanguage?: MetricsDefinitionsBooleanAcceptLanguageEnum;
 }
 export interface MetricsDefinitionsDeactivateRequest {
     id: string;
@@ -42,21 +42,21 @@ export interface MetricsDefinitionsListRequest {
     onlyCustom?: string;
     acceptLanguage?: MetricsDefinitionsListAcceptLanguageEnum;
 }
+export interface MetricsDefinitionsNumberRequest {
+    createNumberMetricDto: CreateNumberMetricDto;
+    acceptLanguage?: MetricsDefinitionsNumberAcceptLanguageEnum;
+}
+export interface MetricsDefinitionsObjectRequest {
+    createObjectMetricDto: CreateObjectMetricDto;
+    acceptLanguage?: MetricsDefinitionsObjectAcceptLanguageEnum;
+}
+export interface MetricsDefinitionsStringRequest {
+    createStringMetricDto: CreateStringMetricDto;
+    acceptLanguage?: MetricsDefinitionsStringAcceptLanguageEnum;
+}
 export interface MetricsDefinitionsUpdateRestoreRequest {
     id: string;
     acceptLanguage?: MetricsDefinitionsUpdateRestoreAcceptLanguageEnum;
-}
-export interface NumberRequest {
-    createNumberMetricDto: CreateNumberMetricDto;
-    acceptLanguage?: NumberAcceptLanguageEnum;
-}
-export interface ObjectRequest {
-    createObjectMetricDto: CreateObjectMetricDto;
-    acceptLanguage?: ObjectAcceptLanguageEnum;
-}
-export interface StringRequest {
-    createStringMetricDto: CreateStringMetricDto;
-    acceptLanguage?: StringAcceptLanguageEnum;
 }
 export interface UpdateArrayRequest {
     id: string;
@@ -91,32 +91,32 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
      * .
      *
      */
-    _booleanRaw(requestParameters: BooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
-    /**
-     * .
-     *
-     */
-    _boolean(requestParameters: BooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
-    /**
-     * .
-     * -
-     */
-    arrayRaw(requestParameters: ArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
-    /**
-     * .
-     * -
-     */
-    array(requestParameters: ArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
-    /**
-     * .
-     *
-     */
     metricsDefinitionsActivateRaw(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
      * .
      *
      */
     metricsDefinitionsActivate(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    /**
+     * .
+     * -
+     */
+    metricsDefinitionsArrayRaw(requestParameters: MetricsDefinitionsArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    /**
+     * .
+     * -
+     */
+    metricsDefinitionsArray(requestParameters: MetricsDefinitionsArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    /**
+     * .
+     *
+     */
+    metricsDefinitionsBooleanRaw(requestParameters: MetricsDefinitionsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    /**
+     * .
+     *
+     */
+    metricsDefinitionsBoolean(requestParameters: MetricsDefinitionsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
      * . .
      *
@@ -161,42 +161,42 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
      * .
      *
      */
+    metricsDefinitionsNumberRaw(requestParameters: MetricsDefinitionsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    /**
+     * .
+     *
+     */
+    metricsDefinitionsNumber(requestParameters: MetricsDefinitionsNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    /**
+     * .
+     * -
+     */
+    metricsDefinitionsObjectRaw(requestParameters: MetricsDefinitionsObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    /**
+     * .
+     * -
+     */
+    metricsDefinitionsObject(requestParameters: MetricsDefinitionsObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    /**
+     * .
+     *
+     */
+    metricsDefinitionsStringRaw(requestParameters: MetricsDefinitionsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    /**
+     * .
+     *
+     */
+    metricsDefinitionsString(requestParameters: MetricsDefinitionsStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    /**
+     * .
+     *
+     */
     metricsDefinitionsUpdateRestoreRaw(requestParameters: MetricsDefinitionsUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
      * .
      *
      */
     metricsDefinitionsUpdateRestore(requestParameters: MetricsDefinitionsUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
-    /**
-     * .
-     *
-     */
-    numberRaw(requestParameters: NumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
-    /**
-     * .
-     *
-     */
-    number(requestParameters: NumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
-    /**
-     * .
-     * -
-     */
-    objectRaw(requestParameters: ObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
-    /**
-     * .
-     * -
-     */
-    object(requestParameters: ObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
-    /**
-     * .
-     *
-     */
-    stringRaw(requestParameters: StringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
-    /**
-     * .
-     *
-     */
-    string(requestParameters: StringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
      * .
      *
@@ -251,27 +251,27 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export declare const BooleanAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type BooleanAcceptLanguageEnum = typeof BooleanAcceptLanguageEnum[keyof typeof BooleanAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const ArrayAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type ArrayAcceptLanguageEnum = typeof ArrayAcceptLanguageEnum[keyof typeof ArrayAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const MetricsDefinitionsActivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type MetricsDefinitionsActivateAcceptLanguageEnum = typeof MetricsDefinitionsActivateAcceptLanguageEnum[keyof typeof MetricsDefinitionsActivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const MetricsDefinitionsArrayAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MetricsDefinitionsArrayAcceptLanguageEnum = typeof MetricsDefinitionsArrayAcceptLanguageEnum[keyof typeof MetricsDefinitionsArrayAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const MetricsDefinitionsBooleanAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MetricsDefinitionsBooleanAcceptLanguageEnum = typeof MetricsDefinitionsBooleanAcceptLanguageEnum[keyof typeof MetricsDefinitionsBooleanAcceptLanguageEnum];
 /**
  * @export
  */
@@ -307,35 +307,35 @@ export type MetricsDefinitionsListAcceptLanguageEnum = typeof MetricsDefinitions
 /**
  * @export
  */
+export declare const MetricsDefinitionsNumberAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MetricsDefinitionsNumberAcceptLanguageEnum = typeof MetricsDefinitionsNumberAcceptLanguageEnum[keyof typeof MetricsDefinitionsNumberAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const MetricsDefinitionsObjectAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MetricsDefinitionsObjectAcceptLanguageEnum = typeof MetricsDefinitionsObjectAcceptLanguageEnum[keyof typeof MetricsDefinitionsObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const MetricsDefinitionsStringAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type MetricsDefinitionsStringAcceptLanguageEnum = typeof MetricsDefinitionsStringAcceptLanguageEnum[keyof typeof MetricsDefinitionsStringAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const MetricsDefinitionsUpdateRestoreAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type MetricsDefinitionsUpdateRestoreAcceptLanguageEnum = typeof MetricsDefinitionsUpdateRestoreAcceptLanguageEnum[keyof typeof MetricsDefinitionsUpdateRestoreAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const NumberAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type NumberAcceptLanguageEnum = typeof NumberAcceptLanguageEnum[keyof typeof NumberAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const ObjectAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type ObjectAcceptLanguageEnum = typeof ObjectAcceptLanguageEnum[keyof typeof ObjectAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const StringAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type StringAcceptLanguageEnum = typeof StringAcceptLanguageEnum[keyof typeof StringAcceptLanguageEnum];
 /**
  * @export
  */

@@ -99,9 +99,9 @@ export interface DialogChatSearchEventDto {
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
-    targetType?: DialogChatSearchEventDtoTargetTypeEnum;
+    targetType: DialogChatSearchEventDtoTargetTypeEnum;
     /**
-     * ID
+     * ID ,
      * @type {string}
      * @memberof DialogChatSearchEventDto
      */
@@ -385,6 +385,7 @@ export declare const DialogChatSearchEventDtoActionTypeEnum: {
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
     readonly AiResponseStarted: "ai_response_started";
+    readonly AgentInvoked: "agent_invoked";
     readonly ToolStarted: "tool_started";
     readonly ReasoningRecorded: "reasoning_recorded";
     readonly ImageGenerated: "image_generated";

@@ -42,13 +42,13 @@ export interface DataSourcesUpdateRestoreRequest {
     id: string;
     acceptLanguage?: DataSourcesUpdateRestoreAcceptLanguageEnum;
 }
+export interface DataSourcesValidateRequest {
+    id: string;
+    acceptLanguage?: DataSourcesValidateAcceptLanguageEnum;
+}
 export interface GetActiveForTrainingRequest {
     projectId: string;
     acceptLanguage?: GetActiveForTrainingAcceptLanguageEnum;
-}
-export interface ValidateRequest {
-    id: string;
-    acceptLanguage?: ValidateAcceptLanguageEnum;
 }
 /**
  *
@@ -125,6 +125,16 @@ export declare class DataSourcesApi extends runtime.BaseAPI {
      */
     dataSourcesUpdateRestore(requestParameters: DataSourcesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataSourceResponseDto>;
     /**
+     *
+     *
+     */
+    dataSourcesValidateRaw(requestParameters: DataSourcesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>>;
+    /**
+     *
+     *
+     */
+    dataSourcesValidate(requestParameters: DataSourcesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto>;
+    /**
      * ,
      *
      */
@@ -134,16 +144,6 @@ export declare class DataSourcesApi extends runtime.BaseAPI {
      *
      */
     getActiveForTraining(requestParameters: GetActiveForTrainingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataSourceResponseDto>>;
-    /**
-     *
-     *
-     */
-    validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ValidateDataSourceResultDto>>;
-    /**
-     *
-     *
-     */
-    validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ValidateDataSourceResultDto>;
 }
 /**
  * @export
@@ -204,16 +204,16 @@ export type DataSourcesUpdateRestoreAcceptLanguageEnum = typeof DataSourcesUpdat
 /**
  * @export
  */
+export declare const DataSourcesValidateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DataSourcesValidateAcceptLanguageEnum = typeof DataSourcesValidateAcceptLanguageEnum[keyof typeof DataSourcesValidateAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetActiveForTrainingAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetActiveForTrainingAcceptLanguageEnum = typeof GetActiveForTrainingAcceptLanguageEnum[keyof typeof GetActiveForTrainingAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const ValidateAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type ValidateAcceptLanguageEnum = typeof ValidateAcceptLanguageEnum[keyof typeof ValidateAcceptLanguageEnum];

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateVariablesAcceptLanguageEnum = exports.AppVariablesGetVariablesAcceptLanguageEnum = exports.AppVariablesDeleteVariablesAcceptLanguageEnum = exports.AppVariablesApi = void 0;
+exports.UpdateVariablesAcceptLanguageEnum = exports.GetVariablesAcceptLanguageEnum = exports.DeleteVariablesAcceptLanguageEnum = exports.AppVariablesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,12 +57,12 @@ class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    async appVariablesDeleteVariablesRaw(requestParameters, initOverrides) {
+    async deleteVariablesRaw(requestParameters, initOverrides) {
         if (requestParameters['appId'] == null) {
-            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling appVariablesDeleteVariables().');
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteVariables().');
         }
         if (requestParameters['key'] == null) {
-            throw new runtime.RequiredError('key', 'Required parameter "key" was null or undefined when calling appVariablesDeleteVariables().');
+            throw new runtime.RequiredError('key', 'Required parameter "key" was null or undefined when calling deleteVariables().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -85,16 +85,16 @@ class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    async appVariablesDeleteVariables(requestParameters, initOverrides) {
-        await this.appVariablesDeleteVariablesRaw(requestParameters, initOverrides);
+    async deleteVariables(requestParameters, initOverrides) {
+        await this.deleteVariablesRaw(requestParameters, initOverrides);
     }
     /**
      * .
      *
      */
-    async appVariablesGetVariablesRaw(requestParameters, initOverrides) {
+    async getVariablesRaw(requestParameters, initOverrides) {
         if (requestParameters['appId'] == null) {
-            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling appVariablesGetVariables().');
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getVariables().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -117,8 +117,8 @@ class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    async appVariablesGetVariables(requestParameters, initOverrides) {
-        const response = await this.appVariablesGetVariablesRaw(requestParameters, initOverrides);
+    async getVariables(requestParameters, initOverrides) {
+        const response = await this.getVariablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -167,14 +167,14 @@ exports.AppVariablesApi = AppVariablesApi;
 /**
  * @export
  */
-exports.AppVariablesDeleteVariablesAcceptLanguageEnum = {
+exports.DeleteVariablesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.AppVariablesGetVariablesAcceptLanguageEnum = {
+exports.GetVariablesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

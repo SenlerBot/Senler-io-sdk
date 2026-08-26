@@ -83,10 +83,10 @@ export interface GetRolePresetsRequest {
     acceptLanguage?: GetRolePresetsAcceptLanguageEnum;
 }
 
-export interface TransferOwnershipRequest {
+export interface OwnershipTransferRequest {
     projectId: string;
     transferOwnershipDto: TransferOwnershipDto;
-    acceptLanguage?: TransferOwnershipAcceptLanguageEnum;
+    acceptLanguage?: OwnershipTransferAcceptLanguageEnum;
 }
 
 /**
@@ -135,7 +135,7 @@ export class AccessApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -187,7 +187,7 @@ export class AccessApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/access/members/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/members`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -246,7 +246,7 @@ export class AccessApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -314,7 +314,7 @@ export class AccessApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -374,7 +374,7 @@ export class AccessApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/access/members/{projectId}/{memberId}/channels`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: `/api/access/{projectId}/members/{memberId}/channels`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -428,18 +428,18 @@ export class AccessApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async transferOwnershipRaw(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>> {
+    async ownershipTransferRaw(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling transferOwnership().'
+                'Required parameter "projectId" was null or undefined when calling ownershipTransfer().'
             );
         }
 
         if (requestParameters['transferOwnershipDto'] == null) {
             throw new runtime.RequiredError(
                 'transferOwnershipDto',
-                'Required parameter "transferOwnershipDto" was null or undefined when calling transferOwnership().'
+                'Required parameter "transferOwnershipDto" was null or undefined when calling ownershipTransfer().'
             );
         }
 
@@ -467,7 +467,7 @@ export class AccessApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/access/transfer-ownership/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/access/{projectId}/ownership-transfer`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -481,8 +481,8 @@ export class AccessApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async transferOwnership(requestParameters: TransferOwnershipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto> {
-        const response = await this.transferOwnershipRaw(requestParameters, initOverrides);
+    async ownershipTransfer(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto> {
+        const response = await this.ownershipTransferRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -539,8 +539,8 @@ export type GetRolePresetsAcceptLanguageEnum = typeof GetRolePresetsAcceptLangua
 /**
  * @export
  */
-export const TransferOwnershipAcceptLanguageEnum = {
+export const OwnershipTransferAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type TransferOwnershipAcceptLanguageEnum = typeof TransferOwnershipAcceptLanguageEnum[keyof typeof TransferOwnershipAcceptLanguageEnum];
+export type OwnershipTransferAcceptLanguageEnum = typeof OwnershipTransferAcceptLanguageEnum[keyof typeof OwnershipTransferAcceptLanguageEnum];

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AutomationRunResponseDto } from './AutomationRunResponseDto';
+import type { AutomationTransitionEventResponseDto } from './AutomationTransitionEventResponseDto';
 import type { AutomationTaskResponseDto } from './AutomationTaskResponseDto';
 /**
  * AutomationRunDetailResponseDto.
@@ -29,6 +30,12 @@ export interface AutomationRunDetailResponseDto {
      * @memberof AutomationRunDetailResponseDto
      */
     tasks: Array<AutomationTaskResponseDto>;
+    /**
+     * transitions.
+     * @type {Array<AutomationTransitionEventResponseDto>}
+     * @memberof AutomationRunDetailResponseDto
+     */
+    transitions: Array<AutomationTransitionEventResponseDto>;
     /**
      * .
      * @type {{ [key: string]: any; }}

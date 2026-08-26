@@ -10,905 +10,905 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableValueDto, BooleanVariableValueDto, CreateArrayVariableDto, CreateBooleanVariableDto, CreateDateVariableDto, CreateJsonArrayVariableDto, CreateJsonBooleanVariableDto, CreateJsonNullVariableDto, CreateJsonNumberVariableDto, CreateJsonObjectVariableDto, CreateJsonStringVariableDto, CreateNumberVariableDto, CreateObjectVariableDto, CreateStringVariableDto, DateVariableValueDto, DeleteVariables200Response, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariableListResponseDto, ProjectVariableResponseDto, StringVariableValueDto, UpdateVariableMetadataDto, VariableSchemaValueDto } from '../models/index';
-export interface DeleteVariablesRequest {
+import type { ArrayVariableValueDto, BooleanVariableValueDto, CreateArrayVariableDto, CreateBooleanVariableDto, CreateDateVariableDto, CreateJsonArrayVariableDto, CreateJsonBooleanVariableDto, CreateJsonNullVariableDto, CreateJsonNumberVariableDto, CreateJsonObjectVariableDto, CreateJsonStringVariableDto, CreateNumberVariableDto, CreateObjectVariableDto, CreateStringVariableDto, DateVariableValueDto, Deactivate200Response, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariableListResponseDto, ProjectVariableResponseDto, StringVariableValueDto, UpdateVariableMetadataDto, VariableSchemaValueDto } from '../models/index';
+export interface BooleanRequest {
+    projectId: string;
+    createBooleanVariableDto: CreateBooleanVariableDto;
+    acceptLanguage?: BooleanAcceptLanguageEnum;
+}
+export interface ArrayRequest {
+    projectId: string;
+    createArrayVariableDto: CreateArrayVariableDto;
+    acceptLanguage?: ArrayAcceptLanguageEnum;
+}
+export interface DateRequest {
+    projectId: string;
+    createDateVariableDto: CreateDateVariableDto;
+    acceptLanguage?: DateAcceptLanguageEnum;
+}
+export interface DeactivateRequest {
     projectId: string;
     name: string;
-    acceptLanguage?: DeleteVariablesAcceptLanguageEnum;
+    acceptLanguage?: DeactivateAcceptLanguageEnum;
 }
-export interface GetVariablesRequest {
-    projectId: string;
-    search?: string;
-    limit?: number;
-    page?: number;
-    acceptLanguage?: GetVariablesAcceptLanguageEnum;
-}
-export interface GetVariables2Request {
+export interface GetByIdRequest {
     projectId: string;
     name: string;
-    acceptLanguage?: GetVariables2AcceptLanguageEnum;
+    acceptLanguage?: GetByIdAcceptLanguageEnum;
 }
-export interface GetVariablesByIdsRequest {
+export interface GetByIdsRequest {
     projectId: string;
     ids: Array<string>;
-    acceptLanguage?: GetVariablesByIdsAcceptLanguageEnum;
+    acceptLanguage?: GetByIdsAcceptLanguageEnum;
 }
-export interface UpdateVariablesArraySchemaRequest {
+export interface JsonArrayRequest {
+    projectId: string;
+    createJsonArrayVariableDto: CreateJsonArrayVariableDto;
+    acceptLanguage?: JsonArrayAcceptLanguageEnum;
+}
+export interface JsonBooleanRequest {
+    projectId: string;
+    createJsonBooleanVariableDto: CreateJsonBooleanVariableDto;
+    acceptLanguage?: JsonBooleanAcceptLanguageEnum;
+}
+export interface JsonNullRequest {
+    projectId: string;
+    createJsonNullVariableDto: CreateJsonNullVariableDto;
+    acceptLanguage?: JsonNullAcceptLanguageEnum;
+}
+export interface JsonNumberRequest {
+    projectId: string;
+    createJsonNumberVariableDto: CreateJsonNumberVariableDto;
+    acceptLanguage?: JsonNumberAcceptLanguageEnum;
+}
+export interface JsonObjectRequest {
+    projectId: string;
+    createJsonObjectVariableDto: CreateJsonObjectVariableDto;
+    acceptLanguage?: JsonObjectAcceptLanguageEnum;
+}
+export interface JsonStringRequest {
+    projectId: string;
+    createJsonStringVariableDto: CreateJsonStringVariableDto;
+    acceptLanguage?: JsonStringAcceptLanguageEnum;
+}
+export interface NumberRequest {
+    projectId: string;
+    createNumberVariableDto: CreateNumberVariableDto;
+    acceptLanguage?: NumberAcceptLanguageEnum;
+}
+export interface ObjectRequest {
+    projectId: string;
+    createObjectVariableDto: CreateObjectVariableDto;
+    acceptLanguage?: ObjectAcceptLanguageEnum;
+}
+export interface ProjectVariablesListRequest {
+    projectId: string;
+    page?: number;
+    limit?: number;
+    search?: string;
+    acceptLanguage?: ProjectVariablesListAcceptLanguageEnum;
+}
+export interface StringRequest {
+    projectId: string;
+    createStringVariableDto: CreateStringVariableDto;
+    acceptLanguage?: StringAcceptLanguageEnum;
+}
+export interface UpdateArraySchemaRequest {
     projectId: string;
     name: string;
     variableSchemaValueDto: VariableSchemaValueDto;
-    acceptLanguage?: UpdateVariablesArraySchemaAcceptLanguageEnum;
+    acceptLanguage?: UpdateArraySchemaAcceptLanguageEnum;
 }
-export interface UpdateVariablesMetadataRequest {
+export interface UpdateMetadataRequest {
     projectId: string;
     name: string;
     updateVariableMetadataDto: UpdateVariableMetadataDto;
-    acceptLanguage?: UpdateVariablesMetadataAcceptLanguageEnum;
+    acceptLanguage?: UpdateMetadataAcceptLanguageEnum;
 }
-export interface UpdateVariablesObjectSchemaRequest {
+export interface UpdateObjectSchemaRequest {
     projectId: string;
     name: string;
     variableSchemaValueDto: VariableSchemaValueDto;
-    acceptLanguage?: UpdateVariablesObjectSchemaAcceptLanguageEnum;
+    acceptLanguage?: UpdateObjectSchemaAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeArrayRequest {
+export interface UpdateTypeArrayRequest {
     projectId: string;
     name: string;
     arrayVariableValueDto: ArrayVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeArrayAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeArrayAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeBooleanRequest {
+export interface UpdateTypeBooleanRequest {
     projectId: string;
     name: string;
     booleanVariableValueDto: BooleanVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeBooleanAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeBooleanAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeDateRequest {
+export interface UpdateTypeDateRequest {
     projectId: string;
     name: string;
     dateVariableValueDto: DateVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeDateAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeDateAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeJsonArrayRequest {
+export interface UpdateTypeJsonArrayRequest {
     projectId: string;
     name: string;
     arrayVariableValueDto: ArrayVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeJsonArrayAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeJsonArrayAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeJsonBooleanRequest {
+export interface UpdateTypeJsonBooleanRequest {
     projectId: string;
     name: string;
     booleanVariableValueDto: BooleanVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeJsonBooleanAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeJsonBooleanAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeJsonNullRequest {
+export interface UpdateTypeJsonNullRequest {
     projectId: string;
     name: string;
-    acceptLanguage?: UpdateVariablesTypeJsonNullAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeJsonNullAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeJsonNumberRequest {
-    projectId: string;
-    name: string;
-    numberVariableValueDto: NumberVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeJsonNumberAcceptLanguageEnum;
-}
-export interface UpdateVariablesTypeJsonObjectRequest {
-    projectId: string;
-    name: string;
-    objectVariableValueDto: ObjectVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeJsonObjectAcceptLanguageEnum;
-}
-export interface UpdateVariablesTypeJsonStringRequest {
-    projectId: string;
-    name: string;
-    stringVariableValueDto: StringVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeJsonStringAcceptLanguageEnum;
-}
-export interface UpdateVariablesTypeNumberRequest {
+export interface UpdateTypeJsonNumberRequest {
     projectId: string;
     name: string;
     numberVariableValueDto: NumberVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeNumberAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeJsonNumberAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeObjectRequest {
+export interface UpdateTypeJsonObjectRequest {
     projectId: string;
     name: string;
     objectVariableValueDto: ObjectVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeObjectAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeJsonObjectAcceptLanguageEnum;
 }
-export interface UpdateVariablesTypeStringRequest {
+export interface UpdateTypeJsonStringRequest {
     projectId: string;
     name: string;
     stringVariableValueDto: StringVariableValueDto;
-    acceptLanguage?: UpdateVariablesTypeStringAcceptLanguageEnum;
+    acceptLanguage?: UpdateTypeJsonStringAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueArrayRequest {
+export interface UpdateTypeNumberRequest {
+    projectId: string;
+    name: string;
+    numberVariableValueDto: NumberVariableValueDto;
+    acceptLanguage?: UpdateTypeNumberAcceptLanguageEnum;
+}
+export interface UpdateTypeObjectRequest {
+    projectId: string;
+    name: string;
+    objectVariableValueDto: ObjectVariableValueDto;
+    acceptLanguage?: UpdateTypeObjectAcceptLanguageEnum;
+}
+export interface UpdateTypeStringRequest {
+    projectId: string;
+    name: string;
+    stringVariableValueDto: StringVariableValueDto;
+    acceptLanguage?: UpdateTypeStringAcceptLanguageEnum;
+}
+export interface UpdateValueArrayRequest {
     projectId: string;
     name: string;
     arrayVariableValueDto: ArrayVariableValueDto;
-    acceptLanguage?: UpdateVariablesValueArrayAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueArrayAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueBooleanRequest {
+export interface UpdateValueBooleanRequest {
     projectId: string;
     name: string;
     booleanVariableValueDto: BooleanVariableValueDto;
-    acceptLanguage?: UpdateVariablesValueBooleanAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueBooleanAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueDateRequest {
+export interface UpdateValueDateRequest {
     projectId: string;
     name: string;
     dateVariableValueDto: DateVariableValueDto;
-    acceptLanguage?: UpdateVariablesValueDateAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueDateAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueNullRequest {
+export interface UpdateValueNullRequest {
     projectId: string;
     name: string;
-    acceptLanguage?: UpdateVariablesValueNullAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueNullAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueNumberRequest {
+export interface UpdateValueNumberRequest {
     projectId: string;
     name: string;
     numberVariableValueDto: NumberVariableValueDto;
-    acceptLanguage?: UpdateVariablesValueNumberAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueNumberAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueObjectRequest {
+export interface UpdateValueObjectRequest {
     projectId: string;
     name: string;
     objectVariableValueDto: ObjectVariableValueDto;
-    acceptLanguage?: UpdateVariablesValueObjectAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueObjectAcceptLanguageEnum;
 }
-export interface UpdateVariablesValueStringRequest {
+export interface UpdateValueStringRequest {
     projectId: string;
     name: string;
     stringVariableValueDto: StringVariableValueDto;
-    acceptLanguage?: UpdateVariablesValueStringAcceptLanguageEnum;
-}
-export interface VariablesArrayRequest {
-    projectId: string;
-    createArrayVariableDto: CreateArrayVariableDto;
-    acceptLanguage?: VariablesArrayAcceptLanguageEnum;
-}
-export interface VariablesBooleanRequest {
-    projectId: string;
-    createBooleanVariableDto: CreateBooleanVariableDto;
-    acceptLanguage?: VariablesBooleanAcceptLanguageEnum;
-}
-export interface VariablesDateRequest {
-    projectId: string;
-    createDateVariableDto: CreateDateVariableDto;
-    acceptLanguage?: VariablesDateAcceptLanguageEnum;
-}
-export interface VariablesJsonArrayRequest {
-    projectId: string;
-    createJsonArrayVariableDto: CreateJsonArrayVariableDto;
-    acceptLanguage?: VariablesJsonArrayAcceptLanguageEnum;
-}
-export interface VariablesJsonBooleanRequest {
-    projectId: string;
-    createJsonBooleanVariableDto: CreateJsonBooleanVariableDto;
-    acceptLanguage?: VariablesJsonBooleanAcceptLanguageEnum;
-}
-export interface VariablesJsonNullRequest {
-    projectId: string;
-    createJsonNullVariableDto: CreateJsonNullVariableDto;
-    acceptLanguage?: VariablesJsonNullAcceptLanguageEnum;
-}
-export interface VariablesJsonNumberRequest {
-    projectId: string;
-    createJsonNumberVariableDto: CreateJsonNumberVariableDto;
-    acceptLanguage?: VariablesJsonNumberAcceptLanguageEnum;
-}
-export interface VariablesJsonObjectRequest {
-    projectId: string;
-    createJsonObjectVariableDto: CreateJsonObjectVariableDto;
-    acceptLanguage?: VariablesJsonObjectAcceptLanguageEnum;
-}
-export interface VariablesJsonStringRequest {
-    projectId: string;
-    createJsonStringVariableDto: CreateJsonStringVariableDto;
-    acceptLanguage?: VariablesJsonStringAcceptLanguageEnum;
-}
-export interface VariablesNumberRequest {
-    projectId: string;
-    createNumberVariableDto: CreateNumberVariableDto;
-    acceptLanguage?: VariablesNumberAcceptLanguageEnum;
-}
-export interface VariablesObjectRequest {
-    projectId: string;
-    createObjectVariableDto: CreateObjectVariableDto;
-    acceptLanguage?: VariablesObjectAcceptLanguageEnum;
-}
-export interface VariablesStringRequest {
-    projectId: string;
-    createStringVariableDto: CreateStringVariableDto;
-    acceptLanguage?: VariablesStringAcceptLanguageEnum;
+    acceptLanguage?: UpdateValueStringAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class ProjectVariablesApi extends runtime.BaseAPI {
     /**
-     *
+     * .
      *
      */
-    deleteVariablesRaw(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteVariables200Response>>;
+    _booleanRaw(requestParameters: BooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    _boolean(requestParameters: BooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * -
+     */
+    arrayRaw(requestParameters: ArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * -
+     */
+    array(requestParameters: ArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    dateRaw(requestParameters: DateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    date(requestParameters: DateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      *
      *
      */
-    deleteVariables(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteVariables200Response>;
+    deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
     /**
      *
      *
      */
-    getVariablesRaw(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableListResponseDto>>;
+    deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
     /**
      *
      *
      */
-    getVariables(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableListResponseDto>;
+    getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      *
      *
      */
-    getVariables2Raw(requestParameters: GetVariables2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     *
-     *
-     */
-    getVariables2(requestParameters: GetVariables2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * ID
      * ID
      */
-    getVariablesByIdsRaw(requestParameters: GetVariablesByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectVariableResponseDto>>>;
+    getByIdsRaw(requestParameters: GetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectVariableResponseDto>>>;
     /**
      * ID
      * ID
      */
-    getVariablesByIds(requestParameters: GetVariablesByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesArraySchemaRaw(requestParameters: UpdateVariablesArraySchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesArraySchema(requestParameters: UpdateVariablesArraySchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateVariablesMetadataRaw(requestParameters: UpdateVariablesMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateVariablesMetadata(requestParameters: UpdateVariablesMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesObjectSchemaRaw(requestParameters: UpdateVariablesObjectSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesObjectSchema(requestParameters: UpdateVariablesObjectSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * array
-     */
-    updateVariablesTypeArrayRaw(requestParameters: UpdateVariablesTypeArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * array
-     */
-    updateVariablesTypeArray(requestParameters: UpdateVariablesTypeArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * boolean
-     */
-    updateVariablesTypeBooleanRaw(requestParameters: UpdateVariablesTypeBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * boolean
-     */
-    updateVariablesTypeBoolean(requestParameters: UpdateVariablesTypeBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * date
-     */
-    updateVariablesTypeDateRaw(requestParameters: UpdateVariablesTypeDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * date
-     */
-    updateVariablesTypeDate(requestParameters: UpdateVariablesTypeDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * JSON- .
-     * json -
-     */
-    updateVariablesTypeJsonArrayRaw(requestParameters: UpdateVariablesTypeJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * JSON- .
-     * json -
-     */
-    updateVariablesTypeJsonArray(requestParameters: UpdateVariablesTypeJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * JSON- .
-     * json
-     */
-    updateVariablesTypeJsonBooleanRaw(requestParameters: UpdateVariablesTypeJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * JSON- .
-     * json
-     */
-    updateVariablesTypeJsonBoolean(requestParameters: UpdateVariablesTypeJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * JSON- null.
-     * json null
-     */
-    updateVariablesTypeJsonNullRaw(requestParameters: UpdateVariablesTypeJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * JSON- null.
-     * json null
-     */
-    updateVariablesTypeJsonNull(requestParameters: UpdateVariablesTypeJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * JSON- .
-     * json
-     */
-    updateVariablesTypeJsonNumberRaw(requestParameters: UpdateVariablesTypeJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * JSON- .
-     * json
-     */
-    updateVariablesTypeJsonNumber(requestParameters: UpdateVariablesTypeJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * JSON- .
-     * json -
-     */
-    updateVariablesTypeJsonObjectRaw(requestParameters: UpdateVariablesTypeJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * JSON- .
-     * json -
-     */
-    updateVariablesTypeJsonObject(requestParameters: UpdateVariablesTypeJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * JSON- .
-     * json
-     */
-    updateVariablesTypeJsonStringRaw(requestParameters: UpdateVariablesTypeJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * JSON- .
-     * json
-     */
-    updateVariablesTypeJsonString(requestParameters: UpdateVariablesTypeJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * number
-     */
-    updateVariablesTypeNumberRaw(requestParameters: UpdateVariablesTypeNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * number
-     */
-    updateVariablesTypeNumber(requestParameters: UpdateVariablesTypeNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * object
-     */
-    updateVariablesTypeObjectRaw(requestParameters: UpdateVariablesTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * object
-     */
-    updateVariablesTypeObject(requestParameters: UpdateVariablesTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * string
-     */
-    updateVariablesTypeStringRaw(requestParameters: UpdateVariablesTypeStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * string
-     */
-    updateVariablesTypeString(requestParameters: UpdateVariablesTypeStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesValueArrayRaw(requestParameters: UpdateVariablesValueArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesValueArray(requestParameters: UpdateVariablesValueArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueBooleanRaw(requestParameters: UpdateVariablesValueBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueBoolean(requestParameters: UpdateVariablesValueBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueDateRaw(requestParameters: UpdateVariablesValueDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueDate(requestParameters: UpdateVariablesValueDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * null
-     */
-    updateVariablesValueNullRaw(requestParameters: UpdateVariablesValueNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * null
-     */
-    updateVariablesValueNull(requestParameters: UpdateVariablesValueNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueNumberRaw(requestParameters: UpdateVariablesValueNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueNumber(requestParameters: UpdateVariablesValueNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesValueObjectRaw(requestParameters: UpdateVariablesValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * -
-     */
-    updateVariablesValueObject(requestParameters: UpdateVariablesValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueStringRaw(requestParameters: UpdateVariablesValueStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateVariablesValueString(requestParameters: UpdateVariablesValueStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     * -
-     */
-    variablesArrayRaw(requestParameters: VariablesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     * -
-     */
-    variablesArray(requestParameters: VariablesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    variablesBooleanRaw(requestParameters: VariablesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    variablesBoolean(requestParameters: VariablesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
-     * .
-     *
-     */
-    variablesDateRaw(requestParameters: VariablesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     * .
-     *
-     */
-    variablesDate(requestParameters: VariablesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    getByIds(requestParameters: GetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectVariableResponseDto>>;
     /**
      * json, JSON-.
      * JSON- -
      */
-    variablesJsonArrayRaw(requestParameters: VariablesJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    jsonArrayRaw(requestParameters: JsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * json, JSON-.
      * JSON- -
      */
-    variablesJsonArray(requestParameters: VariablesJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    jsonArray(requestParameters: JsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * json, boolean.
      * JSON-
      */
-    variablesJsonBooleanRaw(requestParameters: VariablesJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    jsonBooleanRaw(requestParameters: JsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * json, boolean.
      * JSON-
      */
-    variablesJsonBoolean(requestParameters: VariablesJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    jsonBoolean(requestParameters: JsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * null value.
      * JSON- null
      */
-    variablesJsonNullRaw(requestParameters: VariablesJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    jsonNullRaw(requestParameters: JsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * null value.
      * JSON- null
      */
-    variablesJsonNull(requestParameters: VariablesJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    jsonNull(requestParameters: JsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * json, .
      * JSON-
      */
-    variablesJsonNumberRaw(requestParameters: VariablesJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    jsonNumberRaw(requestParameters: JsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * json, .
      * JSON-
      */
-    variablesJsonNumber(requestParameters: VariablesJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    jsonNumber(requestParameters: JsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * json, JSON-.
      * JSON- -
      */
-    variablesJsonObjectRaw(requestParameters: VariablesJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    jsonObjectRaw(requestParameters: JsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * json, JSON-.
      * JSON- -
      */
-    variablesJsonObject(requestParameters: VariablesJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    jsonObject(requestParameters: JsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * json, .
      * JSON-
      */
-    variablesJsonStringRaw(requestParameters: VariablesJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    jsonStringRaw(requestParameters: JsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * json, .
      * JSON-
      */
-    variablesJsonString(requestParameters: VariablesJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    jsonString(requestParameters: JsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * .
      *
      */
-    variablesNumberRaw(requestParameters: VariablesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    numberRaw(requestParameters: NumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * .
      *
      */
-    variablesNumber(requestParameters: VariablesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    number(requestParameters: NumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * .
      * -
      */
-    variablesObjectRaw(requestParameters: VariablesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    objectRaw(requestParameters: ObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * .
      * -
      */
-    variablesObject(requestParameters: VariablesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    object(requestParameters: ObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     *
+     *
+     */
+    projectVariablesListRaw(requestParameters: ProjectVariablesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableListResponseDto>>;
+    /**
+     *
+     *
+     */
+    projectVariablesList(requestParameters: ProjectVariablesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableListResponseDto>;
     /**
      * .
      *
      */
-    variablesStringRaw(requestParameters: VariablesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    stringRaw(requestParameters: StringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
     /**
      * .
      *
      */
-    variablesString(requestParameters: VariablesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    string(requestParameters: StringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * -
+     */
+    updateArraySchemaRaw(requestParameters: UpdateArraySchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * -
+     */
+    updateArraySchema(requestParameters: UpdateArraySchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateMetadataRaw(requestParameters: UpdateMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateMetadata(requestParameters: UpdateMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * -
+     */
+    updateObjectSchemaRaw(requestParameters: UpdateObjectSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * -
+     */
+    updateObjectSchema(requestParameters: UpdateObjectSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * array
+     */
+    updateTypeArrayRaw(requestParameters: UpdateTypeArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * array
+     */
+    updateTypeArray(requestParameters: UpdateTypeArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * boolean
+     */
+    updateTypeBooleanRaw(requestParameters: UpdateTypeBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * boolean
+     */
+    updateTypeBoolean(requestParameters: UpdateTypeBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * date
+     */
+    updateTypeDateRaw(requestParameters: UpdateTypeDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * date
+     */
+    updateTypeDate(requestParameters: UpdateTypeDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * JSON- .
+     * json -
+     */
+    updateTypeJsonArrayRaw(requestParameters: UpdateTypeJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * JSON- .
+     * json -
+     */
+    updateTypeJsonArray(requestParameters: UpdateTypeJsonArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * JSON- .
+     * json
+     */
+    updateTypeJsonBooleanRaw(requestParameters: UpdateTypeJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * JSON- .
+     * json
+     */
+    updateTypeJsonBoolean(requestParameters: UpdateTypeJsonBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * JSON- null.
+     * json null
+     */
+    updateTypeJsonNullRaw(requestParameters: UpdateTypeJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * JSON- null.
+     * json null
+     */
+    updateTypeJsonNull(requestParameters: UpdateTypeJsonNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * JSON- .
+     * json
+     */
+    updateTypeJsonNumberRaw(requestParameters: UpdateTypeJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * JSON- .
+     * json
+     */
+    updateTypeJsonNumber(requestParameters: UpdateTypeJsonNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * JSON- .
+     * json -
+     */
+    updateTypeJsonObjectRaw(requestParameters: UpdateTypeJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * JSON- .
+     * json -
+     */
+    updateTypeJsonObject(requestParameters: UpdateTypeJsonObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * JSON- .
+     * json
+     */
+    updateTypeJsonStringRaw(requestParameters: UpdateTypeJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * JSON- .
+     * json
+     */
+    updateTypeJsonString(requestParameters: UpdateTypeJsonStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * number
+     */
+    updateTypeNumberRaw(requestParameters: UpdateTypeNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * number
+     */
+    updateTypeNumber(requestParameters: UpdateTypeNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * object
+     */
+    updateTypeObjectRaw(requestParameters: UpdateTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * object
+     */
+    updateTypeObject(requestParameters: UpdateTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * string
+     */
+    updateTypeStringRaw(requestParameters: UpdateTypeStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * string
+     */
+    updateTypeString(requestParameters: UpdateTypeStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * -
+     */
+    updateValueArrayRaw(requestParameters: UpdateValueArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * -
+     */
+    updateValueArray(requestParameters: UpdateValueArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateValueBooleanRaw(requestParameters: UpdateValueBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateValueBoolean(requestParameters: UpdateValueBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateValueDateRaw(requestParameters: UpdateValueDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateValueDate(requestParameters: UpdateValueDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * null
+     */
+    updateValueNullRaw(requestParameters: UpdateValueNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * null
+     */
+    updateValueNull(requestParameters: UpdateValueNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateValueNumberRaw(requestParameters: UpdateValueNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateValueNumber(requestParameters: UpdateValueNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     * -
+     */
+    updateValueObjectRaw(requestParameters: UpdateValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     * -
+     */
+    updateValueObject(requestParameters: UpdateValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateValueStringRaw(requestParameters: UpdateValueStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateValueString(requestParameters: UpdateValueStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteVariablesAcceptLanguageEnum: {
+export declare const BooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteVariablesAcceptLanguageEnum = typeof DeleteVariablesAcceptLanguageEnum[keyof typeof DeleteVariablesAcceptLanguageEnum];
+export type BooleanAcceptLanguageEnum = typeof BooleanAcceptLanguageEnum[keyof typeof BooleanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetVariablesAcceptLanguageEnum: {
+export declare const ArrayAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetVariablesAcceptLanguageEnum = typeof GetVariablesAcceptLanguageEnum[keyof typeof GetVariablesAcceptLanguageEnum];
+export type ArrayAcceptLanguageEnum = typeof ArrayAcceptLanguageEnum[keyof typeof ArrayAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetVariables2AcceptLanguageEnum: {
+export declare const DateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetVariables2AcceptLanguageEnum = typeof GetVariables2AcceptLanguageEnum[keyof typeof GetVariables2AcceptLanguageEnum];
+export type DateAcceptLanguageEnum = typeof DateAcceptLanguageEnum[keyof typeof DateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetVariablesByIdsAcceptLanguageEnum: {
+export declare const DeactivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetVariablesByIdsAcceptLanguageEnum = typeof GetVariablesByIdsAcceptLanguageEnum[keyof typeof GetVariablesByIdsAcceptLanguageEnum];
+export type DeactivateAcceptLanguageEnum = typeof DeactivateAcceptLanguageEnum[keyof typeof DeactivateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesArraySchemaAcceptLanguageEnum: {
+export declare const GetByIdAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesArraySchemaAcceptLanguageEnum = typeof UpdateVariablesArraySchemaAcceptLanguageEnum[keyof typeof UpdateVariablesArraySchemaAcceptLanguageEnum];
+export type GetByIdAcceptLanguageEnum = typeof GetByIdAcceptLanguageEnum[keyof typeof GetByIdAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesMetadataAcceptLanguageEnum: {
+export declare const GetByIdsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesMetadataAcceptLanguageEnum = typeof UpdateVariablesMetadataAcceptLanguageEnum[keyof typeof UpdateVariablesMetadataAcceptLanguageEnum];
+export type GetByIdsAcceptLanguageEnum = typeof GetByIdsAcceptLanguageEnum[keyof typeof GetByIdsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesObjectSchemaAcceptLanguageEnum: {
+export declare const JsonArrayAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesObjectSchemaAcceptLanguageEnum = typeof UpdateVariablesObjectSchemaAcceptLanguageEnum[keyof typeof UpdateVariablesObjectSchemaAcceptLanguageEnum];
+export type JsonArrayAcceptLanguageEnum = typeof JsonArrayAcceptLanguageEnum[keyof typeof JsonArrayAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeArrayAcceptLanguageEnum: {
+export declare const JsonBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeArrayAcceptLanguageEnum = typeof UpdateVariablesTypeArrayAcceptLanguageEnum[keyof typeof UpdateVariablesTypeArrayAcceptLanguageEnum];
+export type JsonBooleanAcceptLanguageEnum = typeof JsonBooleanAcceptLanguageEnum[keyof typeof JsonBooleanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeBooleanAcceptLanguageEnum: {
+export declare const JsonNullAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeBooleanAcceptLanguageEnum = typeof UpdateVariablesTypeBooleanAcceptLanguageEnum[keyof typeof UpdateVariablesTypeBooleanAcceptLanguageEnum];
+export type JsonNullAcceptLanguageEnum = typeof JsonNullAcceptLanguageEnum[keyof typeof JsonNullAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeDateAcceptLanguageEnum: {
+export declare const JsonNumberAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeDateAcceptLanguageEnum = typeof UpdateVariablesTypeDateAcceptLanguageEnum[keyof typeof UpdateVariablesTypeDateAcceptLanguageEnum];
+export type JsonNumberAcceptLanguageEnum = typeof JsonNumberAcceptLanguageEnum[keyof typeof JsonNumberAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeJsonArrayAcceptLanguageEnum: {
+export declare const JsonObjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeJsonArrayAcceptLanguageEnum = typeof UpdateVariablesTypeJsonArrayAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonArrayAcceptLanguageEnum];
+export type JsonObjectAcceptLanguageEnum = typeof JsonObjectAcceptLanguageEnum[keyof typeof JsonObjectAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeJsonBooleanAcceptLanguageEnum: {
+export declare const JsonStringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeJsonBooleanAcceptLanguageEnum = typeof UpdateVariablesTypeJsonBooleanAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonBooleanAcceptLanguageEnum];
+export type JsonStringAcceptLanguageEnum = typeof JsonStringAcceptLanguageEnum[keyof typeof JsonStringAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeJsonNullAcceptLanguageEnum: {
+export declare const NumberAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeJsonNullAcceptLanguageEnum = typeof UpdateVariablesTypeJsonNullAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonNullAcceptLanguageEnum];
+export type NumberAcceptLanguageEnum = typeof NumberAcceptLanguageEnum[keyof typeof NumberAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeJsonNumberAcceptLanguageEnum: {
+export declare const ObjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeJsonNumberAcceptLanguageEnum = typeof UpdateVariablesTypeJsonNumberAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonNumberAcceptLanguageEnum];
+export type ObjectAcceptLanguageEnum = typeof ObjectAcceptLanguageEnum[keyof typeof ObjectAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeJsonObjectAcceptLanguageEnum: {
+export declare const ProjectVariablesListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeJsonObjectAcceptLanguageEnum = typeof UpdateVariablesTypeJsonObjectAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonObjectAcceptLanguageEnum];
+export type ProjectVariablesListAcceptLanguageEnum = typeof ProjectVariablesListAcceptLanguageEnum[keyof typeof ProjectVariablesListAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeJsonStringAcceptLanguageEnum: {
+export declare const StringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeJsonStringAcceptLanguageEnum = typeof UpdateVariablesTypeJsonStringAcceptLanguageEnum[keyof typeof UpdateVariablesTypeJsonStringAcceptLanguageEnum];
+export type StringAcceptLanguageEnum = typeof StringAcceptLanguageEnum[keyof typeof StringAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeNumberAcceptLanguageEnum: {
+export declare const UpdateArraySchemaAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeNumberAcceptLanguageEnum = typeof UpdateVariablesTypeNumberAcceptLanguageEnum[keyof typeof UpdateVariablesTypeNumberAcceptLanguageEnum];
+export type UpdateArraySchemaAcceptLanguageEnum = typeof UpdateArraySchemaAcceptLanguageEnum[keyof typeof UpdateArraySchemaAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeObjectAcceptLanguageEnum: {
+export declare const UpdateMetadataAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeObjectAcceptLanguageEnum = typeof UpdateVariablesTypeObjectAcceptLanguageEnum[keyof typeof UpdateVariablesTypeObjectAcceptLanguageEnum];
+export type UpdateMetadataAcceptLanguageEnum = typeof UpdateMetadataAcceptLanguageEnum[keyof typeof UpdateMetadataAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesTypeStringAcceptLanguageEnum: {
+export declare const UpdateObjectSchemaAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesTypeStringAcceptLanguageEnum = typeof UpdateVariablesTypeStringAcceptLanguageEnum[keyof typeof UpdateVariablesTypeStringAcceptLanguageEnum];
+export type UpdateObjectSchemaAcceptLanguageEnum = typeof UpdateObjectSchemaAcceptLanguageEnum[keyof typeof UpdateObjectSchemaAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueArrayAcceptLanguageEnum: {
+export declare const UpdateTypeArrayAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueArrayAcceptLanguageEnum = typeof UpdateVariablesValueArrayAcceptLanguageEnum[keyof typeof UpdateVariablesValueArrayAcceptLanguageEnum];
+export type UpdateTypeArrayAcceptLanguageEnum = typeof UpdateTypeArrayAcceptLanguageEnum[keyof typeof UpdateTypeArrayAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueBooleanAcceptLanguageEnum: {
+export declare const UpdateTypeBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueBooleanAcceptLanguageEnum = typeof UpdateVariablesValueBooleanAcceptLanguageEnum[keyof typeof UpdateVariablesValueBooleanAcceptLanguageEnum];
+export type UpdateTypeBooleanAcceptLanguageEnum = typeof UpdateTypeBooleanAcceptLanguageEnum[keyof typeof UpdateTypeBooleanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueDateAcceptLanguageEnum: {
+export declare const UpdateTypeDateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueDateAcceptLanguageEnum = typeof UpdateVariablesValueDateAcceptLanguageEnum[keyof typeof UpdateVariablesValueDateAcceptLanguageEnum];
+export type UpdateTypeDateAcceptLanguageEnum = typeof UpdateTypeDateAcceptLanguageEnum[keyof typeof UpdateTypeDateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueNullAcceptLanguageEnum: {
+export declare const UpdateTypeJsonArrayAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueNullAcceptLanguageEnum = typeof UpdateVariablesValueNullAcceptLanguageEnum[keyof typeof UpdateVariablesValueNullAcceptLanguageEnum];
+export type UpdateTypeJsonArrayAcceptLanguageEnum = typeof UpdateTypeJsonArrayAcceptLanguageEnum[keyof typeof UpdateTypeJsonArrayAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueNumberAcceptLanguageEnum: {
+export declare const UpdateTypeJsonBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueNumberAcceptLanguageEnum = typeof UpdateVariablesValueNumberAcceptLanguageEnum[keyof typeof UpdateVariablesValueNumberAcceptLanguageEnum];
+export type UpdateTypeJsonBooleanAcceptLanguageEnum = typeof UpdateTypeJsonBooleanAcceptLanguageEnum[keyof typeof UpdateTypeJsonBooleanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueObjectAcceptLanguageEnum: {
+export declare const UpdateTypeJsonNullAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueObjectAcceptLanguageEnum = typeof UpdateVariablesValueObjectAcceptLanguageEnum[keyof typeof UpdateVariablesValueObjectAcceptLanguageEnum];
+export type UpdateTypeJsonNullAcceptLanguageEnum = typeof UpdateTypeJsonNullAcceptLanguageEnum[keyof typeof UpdateTypeJsonNullAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateVariablesValueStringAcceptLanguageEnum: {
+export declare const UpdateTypeJsonNumberAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateVariablesValueStringAcceptLanguageEnum = typeof UpdateVariablesValueStringAcceptLanguageEnum[keyof typeof UpdateVariablesValueStringAcceptLanguageEnum];
+export type UpdateTypeJsonNumberAcceptLanguageEnum = typeof UpdateTypeJsonNumberAcceptLanguageEnum[keyof typeof UpdateTypeJsonNumberAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesArrayAcceptLanguageEnum: {
+export declare const UpdateTypeJsonObjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesArrayAcceptLanguageEnum = typeof VariablesArrayAcceptLanguageEnum[keyof typeof VariablesArrayAcceptLanguageEnum];
+export type UpdateTypeJsonObjectAcceptLanguageEnum = typeof UpdateTypeJsonObjectAcceptLanguageEnum[keyof typeof UpdateTypeJsonObjectAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesBooleanAcceptLanguageEnum: {
+export declare const UpdateTypeJsonStringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesBooleanAcceptLanguageEnum = typeof VariablesBooleanAcceptLanguageEnum[keyof typeof VariablesBooleanAcceptLanguageEnum];
+export type UpdateTypeJsonStringAcceptLanguageEnum = typeof UpdateTypeJsonStringAcceptLanguageEnum[keyof typeof UpdateTypeJsonStringAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesDateAcceptLanguageEnum: {
+export declare const UpdateTypeNumberAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesDateAcceptLanguageEnum = typeof VariablesDateAcceptLanguageEnum[keyof typeof VariablesDateAcceptLanguageEnum];
+export type UpdateTypeNumberAcceptLanguageEnum = typeof UpdateTypeNumberAcceptLanguageEnum[keyof typeof UpdateTypeNumberAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesJsonArrayAcceptLanguageEnum: {
+export declare const UpdateTypeObjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesJsonArrayAcceptLanguageEnum = typeof VariablesJsonArrayAcceptLanguageEnum[keyof typeof VariablesJsonArrayAcceptLanguageEnum];
+export type UpdateTypeObjectAcceptLanguageEnum = typeof UpdateTypeObjectAcceptLanguageEnum[keyof typeof UpdateTypeObjectAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesJsonBooleanAcceptLanguageEnum: {
+export declare const UpdateTypeStringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesJsonBooleanAcceptLanguageEnum = typeof VariablesJsonBooleanAcceptLanguageEnum[keyof typeof VariablesJsonBooleanAcceptLanguageEnum];
+export type UpdateTypeStringAcceptLanguageEnum = typeof UpdateTypeStringAcceptLanguageEnum[keyof typeof UpdateTypeStringAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesJsonNullAcceptLanguageEnum: {
+export declare const UpdateValueArrayAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesJsonNullAcceptLanguageEnum = typeof VariablesJsonNullAcceptLanguageEnum[keyof typeof VariablesJsonNullAcceptLanguageEnum];
+export type UpdateValueArrayAcceptLanguageEnum = typeof UpdateValueArrayAcceptLanguageEnum[keyof typeof UpdateValueArrayAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesJsonNumberAcceptLanguageEnum: {
+export declare const UpdateValueBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesJsonNumberAcceptLanguageEnum = typeof VariablesJsonNumberAcceptLanguageEnum[keyof typeof VariablesJsonNumberAcceptLanguageEnum];
+export type UpdateValueBooleanAcceptLanguageEnum = typeof UpdateValueBooleanAcceptLanguageEnum[keyof typeof UpdateValueBooleanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesJsonObjectAcceptLanguageEnum: {
+export declare const UpdateValueDateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesJsonObjectAcceptLanguageEnum = typeof VariablesJsonObjectAcceptLanguageEnum[keyof typeof VariablesJsonObjectAcceptLanguageEnum];
+export type UpdateValueDateAcceptLanguageEnum = typeof UpdateValueDateAcceptLanguageEnum[keyof typeof UpdateValueDateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesJsonStringAcceptLanguageEnum: {
+export declare const UpdateValueNullAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesJsonStringAcceptLanguageEnum = typeof VariablesJsonStringAcceptLanguageEnum[keyof typeof VariablesJsonStringAcceptLanguageEnum];
+export type UpdateValueNullAcceptLanguageEnum = typeof UpdateValueNullAcceptLanguageEnum[keyof typeof UpdateValueNullAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesNumberAcceptLanguageEnum: {
+export declare const UpdateValueNumberAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesNumberAcceptLanguageEnum = typeof VariablesNumberAcceptLanguageEnum[keyof typeof VariablesNumberAcceptLanguageEnum];
+export type UpdateValueNumberAcceptLanguageEnum = typeof UpdateValueNumberAcceptLanguageEnum[keyof typeof UpdateValueNumberAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesObjectAcceptLanguageEnum: {
+export declare const UpdateValueObjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesObjectAcceptLanguageEnum = typeof VariablesObjectAcceptLanguageEnum[keyof typeof VariablesObjectAcceptLanguageEnum];
+export type UpdateValueObjectAcceptLanguageEnum = typeof UpdateValueObjectAcceptLanguageEnum[keyof typeof UpdateValueObjectAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const VariablesStringAcceptLanguageEnum: {
+export declare const UpdateValueStringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type VariablesStringAcceptLanguageEnum = typeof VariablesStringAcceptLanguageEnum[keyof typeof VariablesStringAcceptLanguageEnum];
+export type UpdateValueStringAcceptLanguageEnum = typeof UpdateValueStringAcceptLanguageEnum[keyof typeof UpdateValueStringAcceptLanguageEnum];

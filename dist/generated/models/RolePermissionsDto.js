@@ -46,6 +46,10 @@ function instanceOfRolePermissionsDto(value) {
         return false;
     if (!('canManageDialogs' in value) || value['canManageDialogs'] === undefined)
         return false;
+    if (!('canViewDeliveries' in value) || value['canViewDeliveries'] === undefined)
+        return false;
+    if (!('canManageDeliveries' in value) || value['canManageDeliveries'] === undefined)
+        return false;
     if (!('canViewSpaces' in value) || value['canViewSpaces'] === undefined)
         return false;
     if (!('canManageSpaces' in value) || value['canManageSpaces'] === undefined)
@@ -53,6 +57,14 @@ function instanceOfRolePermissionsDto(value) {
     if (!('canViewLeads' in value) || value['canViewLeads'] === undefined)
         return false;
     if (!('canManageLeads' in value) || value['canManageLeads'] === undefined)
+        return false;
+    if (!('canViewSegments' in value) || value['canViewSegments'] === undefined)
+        return false;
+    if (!('canManageSegments' in value) || value['canManageSegments'] === undefined)
+        return false;
+    if (!('canViewLandings' in value) || value['canViewLandings'] === undefined)
+        return false;
+    if (!('canManageLandings' in value) || value['canManageLandings'] === undefined)
         return false;
     if (!('canViewTrafficMarks' in value) || value['canViewTrafficMarks'] === undefined)
         return false;
@@ -62,8 +74,6 @@ function instanceOfRolePermissionsDto(value) {
         return false;
     if (!('canManageAutomations' in value) || value['canManageAutomations'] === undefined)
         return false;
-    if (!('canRunAutomations' in value) || value['canRunAutomations'] === undefined)
-        return false;
     if (!('canManageMcpServers' in value) || value['canManageMcpServers'] === undefined)
         return false;
     if (!('canViewMcpServers' in value) || value['canViewMcpServers'] === undefined)
@@ -71,8 +81,6 @@ function instanceOfRolePermissionsDto(value) {
     if (!('canViewDataSources' in value) || value['canViewDataSources'] === undefined)
         return false;
     if (!('canManageDataSources' in value) || value['canManageDataSources'] === undefined)
-        return false;
-    if (!('canManageServerLists' in value) || value['canManageServerLists'] === undefined)
         return false;
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined)
         return false;
@@ -116,10 +124,6 @@ function instanceOfRolePermissionsDto(value) {
         return false;
     if (!('canManageProjectVariables' in value) || value['canManageProjectVariables'] === undefined)
         return false;
-    if (!('canViewLeadDefinitions' in value) || value['canViewLeadDefinitions'] === undefined)
-        return false;
-    if (!('canManageLeadDefinitions' in value) || value['canManageLeadDefinitions'] === undefined)
-        return false;
     if (!('hasAccessToAllChannels' in value) || value['hasAccessToAllChannels'] === undefined)
         return false;
     return true;
@@ -144,20 +148,24 @@ function RolePermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageAgentEvents': json['can_manage_agent_events'],
         'canViewDialogs': json['can_view_dialogs'],
         'canManageDialogs': json['can_manage_dialogs'],
+        'canViewDeliveries': json['can_view_deliveries'],
+        'canManageDeliveries': json['can_manage_deliveries'],
         'canViewSpaces': json['can_view_spaces'],
         'canManageSpaces': json['can_manage_spaces'],
         'canViewLeads': json['can_view_leads'],
         'canManageLeads': json['can_manage_leads'],
+        'canViewSegments': json['can_view_segments'],
+        'canManageSegments': json['can_manage_segments'],
+        'canViewLandings': json['can_view_landings'],
+        'canManageLandings': json['can_manage_landings'],
         'canViewTrafficMarks': json['can_view_traffic_marks'],
         'canManageTrafficMarks': json['can_manage_traffic_marks'],
         'canViewAutomations': json['can_view_automations'],
         'canManageAutomations': json['can_manage_automations'],
-        'canRunAutomations': json['can_run_automations'],
         'canManageMcpServers': json['can_manage_mcp_servers'],
         'canViewMcpServers': json['can_view_mcp_servers'],
         'canViewDataSources': json['can_view_data_sources'],
         'canManageDataSources': json['can_manage_data_sources'],
-        'canManageServerLists': json['can_manage_server_lists'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
         'canViewProjectApps': json['can_view_project_apps'],
@@ -179,8 +187,6 @@ function RolePermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageStorage': json['can_manage_storage'],
         'canViewProjectVariables': json['can_view_project_variables'],
         'canManageProjectVariables': json['can_manage_project_variables'],
-        'canViewLeadDefinitions': json['can_view_lead_definitions'],
-        'canManageLeadDefinitions': json['can_manage_lead_definitions'],
         'hasAccessToAllChannels': json['has_access_to_all_channels'],
     };
 }
@@ -204,20 +210,24 @@ function RolePermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_agent_events': value['canManageAgentEvents'],
         'can_view_dialogs': value['canViewDialogs'],
         'can_manage_dialogs': value['canManageDialogs'],
+        'can_view_deliveries': value['canViewDeliveries'],
+        'can_manage_deliveries': value['canManageDeliveries'],
         'can_view_spaces': value['canViewSpaces'],
         'can_manage_spaces': value['canManageSpaces'],
         'can_view_leads': value['canViewLeads'],
         'can_manage_leads': value['canManageLeads'],
+        'can_view_segments': value['canViewSegments'],
+        'can_manage_segments': value['canManageSegments'],
+        'can_view_landings': value['canViewLandings'],
+        'can_manage_landings': value['canManageLandings'],
         'can_view_traffic_marks': value['canViewTrafficMarks'],
         'can_manage_traffic_marks': value['canManageTrafficMarks'],
         'can_view_automations': value['canViewAutomations'],
         'can_manage_automations': value['canManageAutomations'],
-        'can_run_automations': value['canRunAutomations'],
         'can_manage_mcp_servers': value['canManageMcpServers'],
         'can_view_mcp_servers': value['canViewMcpServers'],
         'can_view_data_sources': value['canViewDataSources'],
         'can_manage_data_sources': value['canManageDataSources'],
-        'can_manage_server_lists': value['canManageServerLists'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
         'can_view_project_apps': value['canViewProjectApps'],
@@ -239,8 +249,6 @@ function RolePermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_storage': value['canManageStorage'],
         'can_view_project_variables': value['canViewProjectVariables'],
         'can_manage_project_variables': value['canManageProjectVariables'],
-        'can_view_lead_definitions': value['canViewLeadDefinitions'],
-        'can_manage_lead_definitions': value['canManageLeadDefinitions'],
         'has_access_to_all_channels': value['hasAccessToAllChannels'],
     };
 }

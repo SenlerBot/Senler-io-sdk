@@ -25,6 +25,7 @@ exports.TariffSubscriptionDtoToJSONTyped = TariffSubscriptionDtoToJSONTyped;
 exports.TariffSubscriptionDtoStatusEnum = {
     Active: 'active',
     Scheduled: 'scheduled',
+    Prepaid: 'prepaid',
     Cancelled: 'cancelled',
     Expired: 'expired'
 };

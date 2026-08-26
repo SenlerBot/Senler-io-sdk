@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrafficMarksGetByIdAcceptLanguageEnum = exports.TrafficMarksDeactivateAcceptLanguageEnum = exports.TrafficMarksCreateAcceptLanguageEnum = exports.RestoreAcceptLanguageEnum = exports.GetStatisticsAcceptLanguageEnum = exports.GetStatisticsPeriodEnum = exports.TrafficMarksApi = void 0;
+exports.TrafficMarksListAcceptLanguageEnum = exports.TrafficMarksDeactivateAcceptLanguageEnum = exports.TrafficMarksCreateAcceptLanguageEnum = exports.RestoreAcceptLanguageEnum = exports.GetStatisticsTreeAcceptLanguageEnum = exports.GetStatisticsTreePeriodEnum = exports.GetStatisticsAcceptLanguageEnum = exports.GetStatisticsPeriodEnum = exports.TrafficMarksApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -65,6 +65,9 @@ class TrafficMarksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getStatistics().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         if (requestParameters['period'] != null) {
             queryParameters['period'] = requestParameters['period'];
         }
@@ -87,7 +90,7 @@ class TrafficMarksApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}/statistics`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/traffic-marks/statistics`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -103,13 +106,77 @@ class TrafficMarksApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * parent_id utm_source. UTM-; .
+     * UTM
+     */
+    async getStatisticsTreeRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getStatisticsTree().');
+        }
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getStatisticsTree().');
+        }
+        if (requestParameters['periodEnd'] == null) {
+            throw new runtime.RequiredError('periodEnd', 'Required parameter "periodEnd" was null or undefined when calling getStatisticsTree().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['periodEnd'] != null) {
+            queryParameters['period_end'] = requestParameters['periodEnd'].toISOString();
+        }
+        if (requestParameters['parentId'] != null) {
+            queryParameters['parent_id'] = requestParameters['parentId'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/traffic-marks/statistics/tree`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TrafficMarkStatisticsTreeResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * parent_id utm_source. UTM-; .
+     * UTM
+     */
+    async getStatisticsTree(requestParameters, initOverrides) {
+        const response = await this.getStatisticsTreeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
     async restoreRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling restore().');
-        }
         if (requestParameters['trafficMarkId'] == null) {
             throw new runtime.RequiredError('trafficMarkId', 'Required parameter "trafficMarkId" was null or undefined when calling restore().');
         }
@@ -130,7 +197,7 @@ class TrafficMarksApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_traffic_marks"]);
         }
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}/{trafficMarkId}/restore`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
+            path: `/api/traffic-marks/{trafficMarkId}/restore`.replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -157,6 +224,9 @@ class TrafficMarksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('createTrafficMarkDto', 'Required parameter "createTrafficMarkDto" was null or undefined when calling trafficMarksCreate().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['acceptLanguage'] != null) {
@@ -174,7 +244,7 @@ class TrafficMarksApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_traffic_marks"]);
         }
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/traffic-marks`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -195,9 +265,6 @@ class TrafficMarksApi extends runtime.BaseAPI {
      *
      */
     async trafficMarksDeactivateRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling trafficMarksDeactivate().');
-        }
         if (requestParameters['trafficMarkId'] == null) {
             throw new runtime.RequiredError('trafficMarkId', 'Required parameter "trafficMarkId" was null or undefined when calling trafficMarksDeactivate().');
         }
@@ -218,7 +285,7 @@ class TrafficMarksApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_traffic_marks"]);
         }
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}/{trafficMarkId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
+            path: `/api/traffic-marks/{trafficMarkId}`.replace(`{${"trafficMarkId"}}`, encodeURIComponent(String(requestParameters['trafficMarkId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -237,11 +304,14 @@ class TrafficMarksApi extends runtime.BaseAPI {
      * .
      * UTM-
      */
-    async trafficMarksGetByIdRaw(requestParameters, initOverrides) {
+    async trafficMarksListRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling trafficMarksGetById().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling trafficMarksList().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -258,7 +328,7 @@ class TrafficMarksApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/traffic-marks/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/traffic-marks`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -269,8 +339,8 @@ class TrafficMarksApi extends runtime.BaseAPI {
      * .
      * UTM-
      */
-    async trafficMarksGetById(requestParameters, initOverrides) {
-        const response = await this.trafficMarksGetByIdRaw(requestParameters, initOverrides);
+    async trafficMarksList(requestParameters, initOverrides) {
+        const response = await this.trafficMarksListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -288,6 +358,22 @@ exports.GetStatisticsPeriodEnum = {
  * @export
  */
 exports.GetStatisticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetStatisticsTreePeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+};
+/**
+ * @export
+ */
+exports.GetStatisticsTreeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -315,7 +401,7 @@ exports.TrafficMarksDeactivateAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.TrafficMarksGetByIdAcceptLanguageEnum = {
+exports.TrafficMarksListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

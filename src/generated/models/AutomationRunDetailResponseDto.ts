@@ -20,6 +20,13 @@ import {
     AutomationRunResponseDtoToJSON,
     AutomationRunResponseDtoToJSONTyped,
 } from './AutomationRunResponseDto';
+import type { AutomationTransitionEventResponseDto } from './AutomationTransitionEventResponseDto';
+import {
+    AutomationTransitionEventResponseDtoFromJSON,
+    AutomationTransitionEventResponseDtoFromJSONTyped,
+    AutomationTransitionEventResponseDtoToJSON,
+    AutomationTransitionEventResponseDtoToJSONTyped,
+} from './AutomationTransitionEventResponseDto';
 import type { AutomationTaskResponseDto } from './AutomationTaskResponseDto';
 import {
     AutomationTaskResponseDtoFromJSON,
@@ -47,6 +54,12 @@ export interface AutomationRunDetailResponseDto {
      */
     tasks: Array<AutomationTaskResponseDto>;
     /**
+     * transitions.
+     * @type {Array<AutomationTransitionEventResponseDto>}
+     * @memberof AutomationRunDetailResponseDto
+     */
+    transitions: Array<AutomationTransitionEventResponseDto>;
+    /**
      * .
      * @type {{ [key: string]: any; }}
      * @memberof AutomationRunDetailResponseDto
@@ -60,6 +73,7 @@ export interface AutomationRunDetailResponseDto {
 export function instanceOfAutomationRunDetailResponseDto(value: object): value is AutomationRunDetailResponseDto {
     if (!('run' in value) || value['run'] === undefined) return false;
     if (!('tasks' in value) || value['tasks'] === undefined) return false;
+    if (!('transitions' in value) || value['transitions'] === undefined) return false;
     if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
@@ -76,6 +90,7 @@ export function AutomationRunDetailResponseDtoFromJSONTyped(json: any, ignoreDis
 
         'run': AutomationRunResponseDtoFromJSON(json['run']),
         'tasks': ((json['tasks'] as Array<any>).map(AutomationTaskResponseDtoFromJSON)),
+        'transitions': ((json['transitions'] as Array<any>).map(AutomationTransitionEventResponseDtoFromJSON)),
         'variables': json['variables'],
     };
 }
@@ -93,6 +108,7 @@ export function AutomationRunDetailResponseDtoToJSONTyped(value?: AutomationRunD
 
         'run': AutomationRunResponseDtoToJSON(value['run']),
         'tasks': ((value['tasks'] as Array<any>).map(AutomationTaskResponseDtoToJSON)),
+        'transitions': ((value['transitions'] as Array<any>).map(AutomationTransitionEventResponseDtoToJSON)),
         'variables': value['variables'],
     };
 }

@@ -22,12 +22,27 @@ export interface AutomationRunVariableBindingDto {
      */
     targetVariableName: string;
     /**
-     * , .
+     * .
+     * @type {string}
+     * @memberof AutomationRunVariableBindingDto
+     */
+    sourceVariableScope: AutomationRunVariableBindingDtoSourceVariableScopeEnum;
+    /**
+     * .
      * @type {string}
      * @memberof AutomationRunVariableBindingDto
      */
     sourceVariableName: string;
 }
+/**
+ * @export
+ */
+export declare const AutomationRunVariableBindingDtoSourceVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Project: "project";
+};
+export type AutomationRunVariableBindingDtoSourceVariableScopeEnum = typeof AutomationRunVariableBindingDtoSourceVariableScopeEnum[keyof typeof AutomationRunVariableBindingDtoSourceVariableScopeEnum];
 /**
  * Check if a given object implements the AutomationRunVariableBindingDto interface.
  */

@@ -203,6 +203,7 @@ export type EventAttachmentCabinetDtoTypeEnum = typeof EventAttachmentCabinetDto
  * @export
  */
 export declare const EventAttachmentCabinetDtoActionsEnum: {
+    readonly Load: "load";
     readonly View: "view";
     readonly Download: "download";
     readonly OpenExternal: "open_external";
@@ -223,6 +224,7 @@ export type EventAttachmentCabinetDtoErrorCodeEnum = typeof EventAttachmentCabin
  * @export
  */
 export declare const EventAttachmentCabinetDtoStatusEnum: {
+    readonly Deferred: "deferred";
     readonly Pending: "pending";
     readonly Fetching: "fetching";
     readonly Uploading: "uploading";

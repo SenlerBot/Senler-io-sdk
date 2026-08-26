@@ -35,7 +35,6 @@ import {
 } from '../models/index';
 
 export interface DeleteFilesRequest {
-    projectId: string;
     fileId: string;
     acceptLanguage?: DeleteFilesAcceptLanguageEnum;
 }
@@ -51,8 +50,8 @@ export interface GetFilesRequest {
     category?: GetFilesCategoryEnum;
     source?: GetFilesSourceEnum;
     dialogId?: string;
-    limit?: number;
-    skip?: number;
+    limit?: object;
+    skip?: object;
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
 
@@ -71,13 +70,6 @@ export class StorageApi extends runtime.BaseAPI {
      *
      */
     async deleteFilesRaw(requestParameters: DeleteFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StorageFileDeleteResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteFiles().'
-            );
-        }
-
         if (requestParameters['fileId'] == null) {
             throw new runtime.RequiredError(
                 'fileId',
@@ -107,7 +99,7 @@ export class StorageApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/storage/{projectId}/files/{fileId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"fileId"}}`, encodeURIComponent(String(requestParameters['fileId']))),
+            path: `/api/storage/files/{fileId}`.replace(`{${"fileId"}}`, encodeURIComponent(String(requestParameters['fileId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -139,6 +131,10 @@ export class StorageApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -159,7 +155,7 @@ export class StorageApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/storage/{projectId}/orphaned`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/storage/orphaned`,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -190,6 +186,10 @@ export class StorageApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         if (requestParameters['status'] != null) {
             queryParameters['status'] = requestParameters['status'];
@@ -235,7 +235,7 @@ export class StorageApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/storage/{projectId}/files`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/storage/files`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -267,6 +267,10 @@ export class StorageApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -287,7 +291,7 @@ export class StorageApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/storage/{projectId}/stats`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            path: `/api/storage/stats`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

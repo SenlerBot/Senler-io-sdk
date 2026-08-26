@@ -114,7 +114,8 @@ export interface OrderItemResponseDto {
 export const OrderItemResponseDtoTypeEnum = {
     BalanceDeposit: 'balance_deposit',
     Tariff: 'tariff',
-    CreditPackage: 'credit_package'
+    CreditPackage: 'credit_package',
+    BillingInvoice: 'billing_invoice'
 } as const;
 export type OrderItemResponseDtoTypeEnum = typeof OrderItemResponseDtoTypeEnum[keyof typeof OrderItemResponseDtoTypeEnum];
 

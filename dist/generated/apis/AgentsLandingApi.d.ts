@@ -11,62 +11,53 @@
  */
 import * as runtime from '../runtime';
 import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
-export interface AgentsLandingAssetsConfirmRequest {
-    projectId: string;
-    agentId: string;
-    confirmS3UploadDto: ConfirmS3UploadDto;
-    acceptLanguage?: AgentsLandingAssetsConfirmAcceptLanguageEnum;
-}
-export interface AgentsLandingAssetsUploadUrlRequest {
-    projectId: string;
-    agentId: string;
-    getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
-    acceptLanguage?: AgentsLandingAssetsUploadUrlAcceptLanguageEnum;
-}
-export interface AgentsLandingBlocksMoveRequest {
-    projectId: string;
-    agentId: string;
-    blockId: string;
-    xLandingEditorSessionId: string;
-    moveLandingBlockDto: MoveLandingBlockDto;
-    acceptLanguage?: AgentsLandingBlocksMoveAcceptLanguageEnum;
-}
-export interface DeleteAgentsLandingBlocksRequest {
-    projectId: string;
+export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
     xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
-    acceptLanguage?: DeleteAgentsLandingBlocksAcceptLanguageEnum;
+    acceptLanguage?: DeleteLandingBlocksAcceptLanguageEnum;
 }
-export interface GetAgentsLandingRequest {
-    projectId: string;
+export interface GetLandingRequest {
     agentId: string;
-    acceptLanguage?: GetAgentsLandingAcceptLanguageEnum;
+    acceptLanguage?: GetLandingAcceptLanguageEnum;
 }
-export interface GetAgentsLandingPublicationsRequest {
-    projectId: string;
+export interface GetLandingPublicationsRequest {
     agentId: string;
-    acceptLanguage?: GetAgentsLandingPublicationsAcceptLanguageEnum;
+    acceptLanguage?: GetLandingPublicationsAcceptLanguageEnum;
 }
-export interface GetAgentsLandingShareLinksRequest {
-    projectId: string;
+export interface GetLandingShareLinksRequest {
     agentId: string;
-    acceptLanguage?: GetAgentsLandingShareLinksAcceptLanguageEnum;
+    acceptLanguage?: GetLandingShareLinksAcceptLanguageEnum;
 }
-export interface UpdateAgentsLandingDraftRequest {
-    projectId: string;
+export interface LandingAssetsConfirmRequest {
+    agentId: string;
+    confirmS3UploadDto: ConfirmS3UploadDto;
+    acceptLanguage?: LandingAssetsConfirmAcceptLanguageEnum;
+}
+export interface LandingAssetsUploadUrlRequest {
+    agentId: string;
+    getLandingAssetUploadUrlDto: GetLandingAssetUploadUrlDto;
+    acceptLanguage?: LandingAssetsUploadUrlAcceptLanguageEnum;
+}
+export interface LandingBlocksMoveRequest {
+    agentId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    moveLandingBlockDto: MoveLandingBlockDto;
+    acceptLanguage?: LandingBlocksMoveAcceptLanguageEnum;
+}
+export interface UpdateLandingDraftRequest {
     agentId: string;
     xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
-    acceptLanguage?: UpdateAgentsLandingDraftAcceptLanguageEnum;
+    acceptLanguage?: UpdateLandingDraftAcceptLanguageEnum;
 }
-export interface UpdateAgentsLandingRealtimeFocusRequest {
-    projectId: string;
+export interface UpdateLandingRealtimeFocusRequest {
     agentId: string;
     xLandingEditorSessionId: string;
     updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
-    acceptLanguage?: UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum;
+    acceptLanguage?: UpdateLandingRealtimeFocusAcceptLanguageEnum;
 }
 /**
  *
@@ -76,162 +67,162 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      * .
      *
      */
-    agentsLandingAssetsConfirmRaw(requestParameters: AgentsLandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>>;
+    deleteLandingBlocksRaw(requestParameters: DeleteLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockDeleteMutationResponseDto>>;
     /**
      * .
      *
      */
-    agentsLandingAssetsConfirm(requestParameters: AgentsLandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto>;
-    /**
-     * S3- .
-     *
-     */
-    agentsLandingAssetsUploadUrlRaw(requestParameters: AgentsLandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
-    /**
-     * S3- .
-     *
-     */
-    agentsLandingAssetsUploadUrl(requestParameters: AgentsLandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
-    /**
-     * .
-     *
-     */
-    agentsLandingBlocksMoveRaw(requestParameters: AgentsLandingBlocksMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
-    /**
-     * .
-     *
-     */
-    agentsLandingBlocksMove(requestParameters: AgentsLandingBlocksMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
-    /**
-     * .
-     *
-     */
-    deleteAgentsLandingBlocksRaw(requestParameters: DeleteAgentsLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockDeleteMutationResponseDto>>;
-    /**
-     * .
-     *
-     */
-    deleteAgentsLandingBlocks(requestParameters: DeleteAgentsLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockDeleteMutationResponseDto>;
+    deleteLandingBlocks(requestParameters: DeleteLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockDeleteMutationResponseDto>;
     /**
      * , .
      *
      */
-    getAgentsLandingRaw(requestParameters: GetAgentsLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    getLandingRaw(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
     /**
      * , .
      *
      */
-    getAgentsLanding(requestParameters: GetAgentsLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    getLanding(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
     /**
      * .
      *
      */
-    getAgentsLandingPublicationsRaw(requestParameters: GetAgentsLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationsListResponseDto>>;
+    getLandingPublicationsRaw(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationsListResponseDto>>;
     /**
      * .
      *
      */
-    getAgentsLandingPublications(requestParameters: GetAgentsLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
+    getLandingPublications(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
     /**
      * VK, Telegram MAX, .
      *
      */
-    getAgentsLandingShareLinksRaw(requestParameters: GetAgentsLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingShareLinksResponseDto>>;
+    getLandingShareLinksRaw(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingShareLinksResponseDto>>;
     /**
      * VK, Telegram MAX, .
      *
      */
-    getAgentsLandingShareLinks(requestParameters: GetAgentsLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
+    getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
     /**
      * .
      *
      */
-    updateAgentsLandingDraftRaw(requestParameters: UpdateAgentsLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    landingAssetsConfirmRaw(requestParameters: LandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>>;
     /**
      * .
      *
      */
-    updateAgentsLandingDraft(requestParameters: UpdateAgentsLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    landingAssetsConfirm(requestParameters: LandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto>;
+    /**
+     * S3- .
+     *
+     */
+    landingAssetsUploadUrlRaw(requestParameters: LandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
+    /**
+     * S3- .
+     *
+     */
+    landingAssetsUploadUrl(requestParameters: LandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
     /**
      * .
      *
      */
-    updateAgentsLandingRealtimeFocusRaw(requestParameters: UpdateAgentsLandingRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingRealtimeFocusResponseDto>>;
+    landingBlocksMoveRaw(requestParameters: LandingBlocksMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
     /**
      * .
      *
      */
-    updateAgentsLandingRealtimeFocus(requestParameters: UpdateAgentsLandingRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingRealtimeFocusResponseDto>;
+    landingBlocksMove(requestParameters: LandingBlocksMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateLandingDraftRaw(requestParameters: UpdateLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateLandingDraft(requestParameters: UpdateLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateLandingRealtimeFocusRaw(requestParameters: UpdateLandingRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingRealtimeFocusResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateLandingRealtimeFocus(requestParameters: UpdateLandingRealtimeFocusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingRealtimeFocusResponseDto>;
 }
 /**
  * @export
  */
-export declare const AgentsLandingAssetsConfirmAcceptLanguageEnum: {
+export declare const DeleteLandingBlocksAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentsLandingAssetsConfirmAcceptLanguageEnum = typeof AgentsLandingAssetsConfirmAcceptLanguageEnum[keyof typeof AgentsLandingAssetsConfirmAcceptLanguageEnum];
+export type DeleteLandingBlocksAcceptLanguageEnum = typeof DeleteLandingBlocksAcceptLanguageEnum[keyof typeof DeleteLandingBlocksAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AgentsLandingAssetsUploadUrlAcceptLanguageEnum: {
+export declare const GetLandingAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentsLandingAssetsUploadUrlAcceptLanguageEnum = typeof AgentsLandingAssetsUploadUrlAcceptLanguageEnum[keyof typeof AgentsLandingAssetsUploadUrlAcceptLanguageEnum];
+export type GetLandingAcceptLanguageEnum = typeof GetLandingAcceptLanguageEnum[keyof typeof GetLandingAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AgentsLandingBlocksMoveAcceptLanguageEnum: {
+export declare const GetLandingPublicationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentsLandingBlocksMoveAcceptLanguageEnum = typeof AgentsLandingBlocksMoveAcceptLanguageEnum[keyof typeof AgentsLandingBlocksMoveAcceptLanguageEnum];
+export type GetLandingPublicationsAcceptLanguageEnum = typeof GetLandingPublicationsAcceptLanguageEnum[keyof typeof GetLandingPublicationsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeleteAgentsLandingBlocksAcceptLanguageEnum: {
+export declare const GetLandingShareLinksAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteAgentsLandingBlocksAcceptLanguageEnum = typeof DeleteAgentsLandingBlocksAcceptLanguageEnum[keyof typeof DeleteAgentsLandingBlocksAcceptLanguageEnum];
+export type GetLandingShareLinksAcceptLanguageEnum = typeof GetLandingShareLinksAcceptLanguageEnum[keyof typeof GetLandingShareLinksAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAgentsLandingAcceptLanguageEnum: {
+export declare const LandingAssetsConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAgentsLandingAcceptLanguageEnum = typeof GetAgentsLandingAcceptLanguageEnum[keyof typeof GetAgentsLandingAcceptLanguageEnum];
+export type LandingAssetsConfirmAcceptLanguageEnum = typeof LandingAssetsConfirmAcceptLanguageEnum[keyof typeof LandingAssetsConfirmAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAgentsLandingPublicationsAcceptLanguageEnum: {
+export declare const LandingAssetsUploadUrlAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAgentsLandingPublicationsAcceptLanguageEnum = typeof GetAgentsLandingPublicationsAcceptLanguageEnum[keyof typeof GetAgentsLandingPublicationsAcceptLanguageEnum];
+export type LandingAssetsUploadUrlAcceptLanguageEnum = typeof LandingAssetsUploadUrlAcceptLanguageEnum[keyof typeof LandingAssetsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAgentsLandingShareLinksAcceptLanguageEnum: {
+export declare const LandingBlocksMoveAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAgentsLandingShareLinksAcceptLanguageEnum = typeof GetAgentsLandingShareLinksAcceptLanguageEnum[keyof typeof GetAgentsLandingShareLinksAcceptLanguageEnum];
+export type LandingBlocksMoveAcceptLanguageEnum = typeof LandingBlocksMoveAcceptLanguageEnum[keyof typeof LandingBlocksMoveAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAgentsLandingDraftAcceptLanguageEnum: {
+export declare const UpdateLandingDraftAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAgentsLandingDraftAcceptLanguageEnum = typeof UpdateAgentsLandingDraftAcceptLanguageEnum[keyof typeof UpdateAgentsLandingDraftAcceptLanguageEnum];
+export type UpdateLandingDraftAcceptLanguageEnum = typeof UpdateLandingDraftAcceptLanguageEnum[keyof typeof UpdateLandingDraftAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum: {
+export declare const UpdateLandingRealtimeFocusAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum = typeof UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum[keyof typeof UpdateAgentsLandingRealtimeFocusAcceptLanguageEnum];
+export type UpdateLandingRealtimeFocusAcceptLanguageEnum = typeof UpdateLandingRealtimeFocusAcceptLanguageEnum[keyof typeof UpdateLandingRealtimeFocusAcceptLanguageEnum];

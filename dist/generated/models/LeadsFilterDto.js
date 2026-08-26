@@ -19,6 +19,7 @@ exports.LeadsFilterDtoFromJSON = LeadsFilterDtoFromJSON;
 exports.LeadsFilterDtoFromJSONTyped = LeadsFilterDtoFromJSONTyped;
 exports.LeadsFilterDtoToJSON = LeadsFilterDtoToJSON;
 exports.LeadsFilterDtoToJSONTyped = LeadsFilterDtoToJSONTyped;
+const LeadSubscriptionUtmPathDto_1 = require("./LeadSubscriptionUtmPathDto");
 /**
  * @export
  */
@@ -78,6 +79,7 @@ function LeadsFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
         'segmentIsMember': json['segment_is_member'] == null ? undefined : json['segment_is_member'],
         'pendingSegmentId': json['pending_segment_id'] == null ? undefined : json['pending_segment_id'],
+        'utmPaths': json['utm_paths'] == null ? undefined : (json['utm_paths'].map(LeadSubscriptionUtmPathDto_1.LeadSubscriptionUtmPathDtoFromJSON)),
     };
 }
 function LeadsFilterDtoToJSON(json) {
@@ -107,5 +109,6 @@ function LeadsFilterDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'segment_id': value['segmentId'],
         'segment_is_member': value['segmentIsMember'],
         'pending_segment_id': value['pendingSegmentId'],
+        'utm_paths': value['utmPaths'] == null ? undefined : (value['utmPaths'].map(LeadSubscriptionUtmPathDto_1.LeadSubscriptionUtmPathDtoToJSON)),
     };
 }

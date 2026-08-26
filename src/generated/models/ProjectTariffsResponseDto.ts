@@ -41,7 +41,7 @@ export interface ProjectTariffsResponseDto {
      */
     tariffs: Array<ProjectTariffItemDto>;
     /**
-     * . null, Free .
+     * . null, Trial .
      * @type {TariffSubscriptionDto}
      * @memberof ProjectTariffsResponseDto
      */

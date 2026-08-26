@@ -11,16 +11,14 @@
  */
 import * as runtime from '../runtime';
 import type { AgentSegmentDraftResponseDto, UpdateAgentSegmentDraftDto } from '../models/index';
-export interface GetAgentsAcquisitionSegmentDraftRequest {
-    projectId: string;
+export interface GetAcquisitionSegmentDraftRequest {
     agentId: string;
-    acceptLanguage?: GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum;
+    acceptLanguage?: GetAcquisitionSegmentDraftAcceptLanguageEnum;
 }
-export interface UpdateAgentsAcquisitionSegmentDraftRequest {
-    projectId: string;
+export interface UpdateAcquisitionSegmentDraftRequest {
     agentId: string;
     updateAgentSegmentDraftDto: UpdateAgentSegmentDraftDto;
-    acceptLanguage?: UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum;
+    acceptLanguage?: UpdateAcquisitionSegmentDraftAcceptLanguageEnum;
 }
 /**
  *
@@ -30,36 +28,36 @@ export declare class AgentsAcquisitionApi extends runtime.BaseAPI {
      * .
      *
      */
-    getAgentsAcquisitionSegmentDraftRaw(requestParameters: GetAgentsAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSegmentDraftResponseDto>>;
+    getAcquisitionSegmentDraftRaw(requestParameters: GetAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSegmentDraftResponseDto>>;
     /**
      * .
      *
      */
-    getAgentsAcquisitionSegmentDraft(requestParameters: GetAgentsAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSegmentDraftResponseDto>;
+    getAcquisitionSegmentDraft(requestParameters: GetAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSegmentDraftResponseDto>;
     /**
      * .
      *
      */
-    updateAgentsAcquisitionSegmentDraftRaw(requestParameters: UpdateAgentsAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSegmentDraftResponseDto>>;
+    updateAcquisitionSegmentDraftRaw(requestParameters: UpdateAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSegmentDraftResponseDto>>;
     /**
      * .
      *
      */
-    updateAgentsAcquisitionSegmentDraft(requestParameters: UpdateAgentsAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSegmentDraftResponseDto>;
+    updateAcquisitionSegmentDraft(requestParameters: UpdateAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSegmentDraftResponseDto>;
 }
 /**
  * @export
  */
-export declare const GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum: {
+export declare const GetAcquisitionSegmentDraftAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum = typeof GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum[keyof typeof GetAgentsAcquisitionSegmentDraftAcceptLanguageEnum];
+export type GetAcquisitionSegmentDraftAcceptLanguageEnum = typeof GetAcquisitionSegmentDraftAcceptLanguageEnum[keyof typeof GetAcquisitionSegmentDraftAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum: {
+export declare const UpdateAcquisitionSegmentDraftAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum = typeof UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum[keyof typeof UpdateAgentsAcquisitionSegmentDraftAcceptLanguageEnum];
+export type UpdateAcquisitionSegmentDraftAcceptLanguageEnum = typeof UpdateAcquisitionSegmentDraftAcceptLanguageEnum[keyof typeof UpdateAcquisitionSegmentDraftAcceptLanguageEnum];

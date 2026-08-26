@@ -177,9 +177,9 @@ export interface CabinetEventListItemDto {
      * @type {string}
      * @memberof CabinetEventListItemDto
      */
-    targetType?: CabinetEventListItemDtoTargetTypeEnum;
+    targetType: CabinetEventListItemDtoTargetTypeEnum;
     /**
-     * ID
+     * ID ,
      * @type {string}
      * @memberof CabinetEventListItemDto
      */
@@ -433,6 +433,7 @@ export type CabinetEventListItemDtoTargetTypeEnum = typeof CabinetEventListItemD
 export function instanceOfCabinetEventListItemDto(value: object): value is CabinetEventListItemDto {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('actionType' in value) || value['actionType'] === undefined) return false;
+    if (!('targetType' in value) || value['targetType'] === undefined) return false;
     if (!('attachments' in value) || value['attachments'] === undefined) return false;
     if (!('buttons' in value) || value['buttons'] === undefined) return false;
     if (!('tags' in value) || value['tags'] === undefined) return false;
@@ -462,7 +463,7 @@ export function CabinetEventListItemDtoFromJSONTyped(json: any, ignoreDiscrimina
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'actionType': json['action_type'],
-        'targetType': json['target_type'] == null ? undefined : json['target_type'],
+        'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
         'externalMessageId': json['external_message_id'] == null ? undefined : json['external_message_id'],
         'sender': json['sender'] == null ? undefined : EventSenderDtoFromJSON(json['sender']),

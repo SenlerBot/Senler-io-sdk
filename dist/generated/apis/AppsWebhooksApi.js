@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WebhooksTestAcceptLanguageEnum = exports.WebhooksDeliveriesRetryAcceptLanguageEnum = exports.WebhooksDeliveriesResolveAcceptLanguageEnum = exports.WebhooksDeliveriesBulkRetryAcceptLanguageEnum = exports.WebhooksDeliveriesBulkResolveAcceptLanguageEnum = exports.WebhooksAcceptLanguageEnum = exports.UpdateWebhooksAcceptLanguageEnum = exports.GetWebhooksTestPreviewAcceptLanguageEnum = exports.GetWebhooksHealthAcceptLanguageEnum = exports.GetWebhooksDeliveriesAttemptsAcceptLanguageEnum = exports.GetWebhooksDeliveries2AcceptLanguageEnum = exports.GetWebhooksDeliveriesAcceptLanguageEnum = exports.GetWebhooksDeliveriesResolutionEnum = exports.GetWebhooksDeliveriesStatusEnum = exports.GetWebhooksAcceptLanguageEnum = exports.DeleteWebhooksAcceptLanguageEnum = exports.AppsWebhooksApi = void 0;
+exports.WebhooksTestAcceptLanguageEnum = exports.WebhooksDeliveriesRetryAcceptLanguageEnum = exports.WebhooksDeliveriesResolveAcceptLanguageEnum = exports.WebhooksDeliveriesBulkRetryAcceptLanguageEnum = exports.WebhooksDeliveriesBulkResolveAcceptLanguageEnum = exports.WebhooksAcceptLanguageEnum = exports.UpdateWebhooksAcceptLanguageEnum = exports.GetWebhooksTestPreviewAcceptLanguageEnum = exports.GetWebhooksHealthAcceptLanguageEnum = exports.GetWebhooksDeliveriesAttemptsAcceptLanguageEnum = exports.GetWebhooksDeliveries2AcceptLanguageEnum = exports.GetWebhooksDeliveriesAcceptLanguageEnum = exports.GetWebhooksDeliveriesResolutionEnum = exports.GetWebhooksDeliveriesStatusEnum = exports.GetWebhooksAcceptLanguageEnum = exports.GetWebhookAnalyticsWebhooksAcceptLanguageEnum = exports.GetWebhookAnalyticsProjectsAcceptLanguageEnum = exports.DeleteWebhooksAcceptLanguageEnum = exports.AppsWebhooksApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -87,6 +87,102 @@ class AppsWebhooksApi extends runtime.BaseAPI {
      */
     async deleteWebhooks(requestParameters, initOverrides) {
         await this.deleteWebhooksRaw(requestParameters, initOverrides);
+    }
+    /**
+     * , .
+     *
+     */
+    async getWebhookAnalyticsProjectsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getWebhookAnalyticsProjects().');
+        }
+        if (requestParameters['from'] == null) {
+            throw new runtime.RequiredError('from', 'Required parameter "from" was null or undefined when calling getWebhookAnalyticsProjects().');
+        }
+        if (requestParameters['to'] == null) {
+            throw new runtime.RequiredError('to', 'Required parameter "to" was null or undefined when calling getWebhookAnalyticsProjects().');
+        }
+        if (requestParameters['projectIds'] == null) {
+            throw new runtime.RequiredError('projectIds', 'Required parameter "projectIds" was null or undefined when calling getWebhookAnalyticsProjects().');
+        }
+        const queryParameters = {};
+        if (requestParameters['from'] != null) {
+            queryParameters['from'] = requestParameters['from'].toISOString();
+        }
+        if (requestParameters['to'] != null) {
+            queryParameters['to'] = requestParameters['to'].toISOString();
+        }
+        if (requestParameters['projectIds'] != null) {
+            queryParameters['project_ids'] = requestParameters['projectIds'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/webhook-analytics/projects`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppProjectsWebhookAnalyticsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getWebhookAnalyticsProjects(requestParameters, initOverrides) {
+        const response = await this.getWebhookAnalyticsProjectsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getWebhookAnalyticsWebhooksRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getWebhookAnalyticsWebhooks().');
+        }
+        if (requestParameters['from'] == null) {
+            throw new runtime.RequiredError('from', 'Required parameter "from" was null or undefined when calling getWebhookAnalyticsWebhooks().');
+        }
+        if (requestParameters['to'] == null) {
+            throw new runtime.RequiredError('to', 'Required parameter "to" was null or undefined when calling getWebhookAnalyticsWebhooks().');
+        }
+        const queryParameters = {};
+        if (requestParameters['from'] != null) {
+            queryParameters['from'] = requestParameters['from'].toISOString();
+        }
+        if (requestParameters['to'] != null) {
+            queryParameters['to'] = requestParameters['to'].toISOString();
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/webhook-analytics/webhooks`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppWebhooksAnalyticsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getWebhookAnalyticsWebhooks(requestParameters, initOverrides) {
+        const response = await this.getWebhookAnalyticsWebhooksRaw(requestParameters, initOverrides);
+        return await response.value();
     }
     /**
      * URL.
@@ -619,6 +715,20 @@ exports.AppsWebhooksApi = AppsWebhooksApi;
  * @export
  */
 exports.DeleteWebhooksAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetWebhookAnalyticsProjectsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetWebhookAnalyticsWebhooksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

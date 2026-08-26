@@ -11,14 +11,14 @@
  */
 import * as runtime from '../runtime';
 import type { AppVariableResponseDto, UpsertAppVariableDto } from '../models/index';
-export interface AppVariablesDeleteVariablesRequest {
+export interface DeleteVariablesRequest {
     appId: string;
     key: string;
-    acceptLanguage?: AppVariablesDeleteVariablesAcceptLanguageEnum;
+    acceptLanguage?: DeleteVariablesAcceptLanguageEnum;
 }
-export interface AppVariablesGetVariablesRequest {
+export interface GetVariablesRequest {
     appId: string;
-    acceptLanguage?: AppVariablesGetVariablesAcceptLanguageEnum;
+    acceptLanguage?: GetVariablesAcceptLanguageEnum;
 }
 export interface UpdateVariablesRequest {
     appId: string;
@@ -34,22 +34,22 @@ export declare class AppVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
-    appVariablesDeleteVariablesRaw(requestParameters: AppVariablesDeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    deleteVariablesRaw(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * .
      *
      */
-    appVariablesDeleteVariables(requestParameters: AppVariablesDeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteVariables(requestParameters: DeleteVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * .
      *
      */
-    appVariablesGetVariablesRaw(requestParameters: AppVariablesGetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppVariableResponseDto>>>;
+    getVariablesRaw(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppVariableResponseDto>>>;
     /**
      * .
      *
      */
-    appVariablesGetVariables(requestParameters: AppVariablesGetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppVariableResponseDto>>;
+    getVariables(requestParameters: GetVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppVariableResponseDto>>;
     /**
      * .
      *
@@ -64,19 +64,19 @@ export declare class AppVariablesApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export declare const AppVariablesDeleteVariablesAcceptLanguageEnum: {
+export declare const DeleteVariablesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AppVariablesDeleteVariablesAcceptLanguageEnum = typeof AppVariablesDeleteVariablesAcceptLanguageEnum[keyof typeof AppVariablesDeleteVariablesAcceptLanguageEnum];
+export type DeleteVariablesAcceptLanguageEnum = typeof DeleteVariablesAcceptLanguageEnum[keyof typeof DeleteVariablesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AppVariablesGetVariablesAcceptLanguageEnum: {
+export declare const GetVariablesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AppVariablesGetVariablesAcceptLanguageEnum = typeof AppVariablesGetVariablesAcceptLanguageEnum[keyof typeof AppVariablesGetVariablesAcceptLanguageEnum];
+export type GetVariablesAcceptLanguageEnum = typeof GetVariablesAcceptLanguageEnum[keyof typeof GetVariablesAcceptLanguageEnum];
 /**
  * @export
  */

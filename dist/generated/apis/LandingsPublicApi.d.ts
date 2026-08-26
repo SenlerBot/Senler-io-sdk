@@ -10,7 +10,11 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { LandingAcquisitionIdentityDto, LandingLaunchContextResponseDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
+import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
+export interface GetLandingsRequest {
+    landingPublicId: string;
+    acceptLanguage?: GetLandingsAcceptLanguageEnum;
+}
 export interface GetLandingsLaunchRequest {
     token: string;
     acceptLanguage?: GetLandingsLaunchAcceptLanguageEnum;
@@ -20,10 +24,15 @@ export interface GetProjectsLandingsRequest {
     channelPublicId?: string;
     acceptLanguage?: GetProjectsLandingsAcceptLanguageEnum;
 }
-export interface GetProjectsLandings2Request {
-    projectPublicId: string;
-    landingPublicId: string;
-    acceptLanguage?: GetProjectsLandings2AcceptLanguageEnum;
+export interface LandingsLaunchBotSubscriptionLinkRequest {
+    token: string;
+    createLandingSubscriptionContextDto: CreateLandingSubscriptionContextDto;
+    acceptLanguage?: LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum;
+}
+export interface LandingsLaunchMiniAppLaunchRequest {
+    token: string;
+    createLandingSubscriptionContextDto: CreateLandingSubscriptionContextDto;
+    acceptLanguage?: LandingsLaunchMiniAppLaunchAcceptLanguageEnum;
 }
 export interface LandingsLaunchSubscribeRequest {
     token: string;
@@ -50,6 +59,16 @@ export interface LandingsLaunchVariablesRequest {
  */
 export declare class LandingsPublicApi extends runtime.BaseAPI {
     /**
+     * , .
+     *
+     */
+    getLandingsRaw(requestParameters: GetLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getLandings(requestParameters: GetLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicResponseDto>;
+    /**
      * .
      *
      */
@@ -70,15 +89,25 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      */
     getProjectsLandings(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicCatalogResponseDto>;
     /**
-     * , .
-     *
+     * UTM , start ID.
+     * Telegram- MAX-
      */
-    getProjectsLandings2Raw(requestParameters: GetProjectsLandings2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicResponseDto>>;
+    landingsLaunchBotSubscriptionLinkRaw(requestParameters: LandingsLaunchBotSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBotSubscriptionLinkResponseDto>>;
     /**
-     * , .
-     *
+     * UTM , start ID.
+     * Telegram- MAX-
      */
-    getProjectsLandings2(requestParameters: GetProjectsLandings2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicResponseDto>;
+    landingsLaunchBotSubscriptionLink(requestParameters: LandingsLaunchBotSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBotSubscriptionLinkResponseDto>;
+    /**
+     * . Telegram MAX , VK UTM.
+     * UTM-
+     */
+    landingsLaunchMiniAppLaunchRaw(requestParameters: LandingsLaunchMiniAppLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingMiniAppLaunchResponseDto>>;
+    /**
+     * . Telegram MAX , VK UTM.
+     * UTM-
+     */
+    landingsLaunchMiniAppLaunch(requestParameters: LandingsLaunchMiniAppLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingMiniAppLaunchResponseDto>;
     /**
      * .
      *
@@ -123,6 +152,14 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export declare const GetLandingsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingsAcceptLanguageEnum = typeof GetLandingsAcceptLanguageEnum[keyof typeof GetLandingsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetLandingsLaunchAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -139,11 +176,19 @@ export type GetProjectsLandingsAcceptLanguageEnum = typeof GetProjectsLandingsAc
 /**
  * @export
  */
-export declare const GetProjectsLandings2AcceptLanguageEnum: {
+export declare const LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetProjectsLandings2AcceptLanguageEnum = typeof GetProjectsLandings2AcceptLanguageEnum[keyof typeof GetProjectsLandings2AcceptLanguageEnum];
+export type LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = typeof LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum[keyof typeof LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsLaunchMiniAppLaunchAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsLaunchMiniAppLaunchAcceptLanguageEnum = typeof LandingsLaunchMiniAppLaunchAcceptLanguageEnum[keyof typeof LandingsLaunchMiniAppLaunchAcceptLanguageEnum];
 /**
  * @export
  */

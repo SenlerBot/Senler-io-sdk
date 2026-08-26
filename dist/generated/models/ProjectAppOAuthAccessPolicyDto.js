@@ -43,15 +43,22 @@ exports.ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanManageAgentEvents: 'can_manage_agent_events',
     CanViewDialogs: 'can_view_dialogs',
     CanManageDialogs: 'can_manage_dialogs',
+    CanViewDeliveries: 'can_view_deliveries',
+    CanManageDeliveries: 'can_manage_deliveries',
     CanViewSpaces: 'can_view_spaces',
     CanManageSpaces: 'can_manage_spaces',
     CanViewLeads: 'can_view_leads',
     CanManageLeads: 'can_manage_leads',
+    CanViewLeadVariables: 'can_view_lead_variables',
+    CanManageLeadVariables: 'can_manage_lead_variables',
+    CanViewSegments: 'can_view_segments',
+    CanManageSegments: 'can_manage_segments',
+    CanViewLandings: 'can_view_landings',
+    CanManageLandings: 'can_manage_landings',
     CanViewTrafficMarks: 'can_view_traffic_marks',
     CanManageTrafficMarks: 'can_manage_traffic_marks',
     CanViewAutomations: 'can_view_automations',
     CanManageAutomations: 'can_manage_automations',
-    CanRunAutomations: 'can_run_automations',
     CanViewMcpServers: 'can_view_mcp_servers',
     CanManageMcpServers: 'can_manage_mcp_servers',
     CanViewAnalytics: 'can_view_analytics',
@@ -71,9 +78,7 @@ exports.ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanViewStorage: 'can_view_storage',
     CanManageStorage: 'can_manage_storage',
     CanViewProjectVariables: 'can_view_project_variables',
-    CanManageProjectVariables: 'can_manage_project_variables',
-    CanViewLeadDefinitions: 'can_view_lead_definitions',
-    CanManageLeadDefinitions: 'can_manage_lead_definitions'
+    CanManageProjectVariables: 'can_manage_project_variables'
 };
 /**
  * Check if a given object implements the ProjectAppOAuthAccessPolicyDto interface.

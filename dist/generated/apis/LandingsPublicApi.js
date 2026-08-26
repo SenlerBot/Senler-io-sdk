@@ -46,13 +46,42 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.GetProjectsLandings2AcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class LandingsPublicApi extends runtime.BaseAPI {
+    /**
+     * , .
+     *
+     */
+    async getLandingsRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling getLandings().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPublicResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getLandings(requestParameters, initOverrides) {
+        const response = await this.getLandingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * .
      *
@@ -115,35 +144,71 @@ class LandingsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
-     *
+     * UTM , start ID.
+     * Telegram- MAX-
      */
-    async getProjectsLandings2Raw(requestParameters, initOverrides) {
-        if (requestParameters['projectPublicId'] == null) {
-            throw new runtime.RequiredError('projectPublicId', 'Required parameter "projectPublicId" was null or undefined when calling getProjectsLandings2().');
+    async landingsLaunchBotSubscriptionLinkRaw(requestParameters, initOverrides) {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchBotSubscriptionLink().');
         }
-        if (requestParameters['landingPublicId'] == null) {
-            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling getProjectsLandings2().');
+        if (requestParameters['createLandingSubscriptionContextDto'] == null) {
+            throw new runtime.RequiredError('createLandingSubscriptionContextDto', 'Required parameter "createLandingSubscriptionContextDto" was null or undefined when calling landingsLaunchBotSubscriptionLink().');
         }
         const queryParameters = {};
         const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         const response = await this.request({
-            path: `/api/public/projects/{projectPublicId}/landings/{landingPublicId}`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))).replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
-            method: 'GET',
+            path: `/api/public/landings/launch/{token}/bot-subscription-link`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: (0, index_1.CreateLandingSubscriptionContextDtoToJSON)(requestParameters['createLandingSubscriptionContextDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPublicResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBotSubscriptionLinkResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
-     *
+     * UTM , start ID.
+     * Telegram- MAX-
      */
-    async getProjectsLandings2(requestParameters, initOverrides) {
-        const response = await this.getProjectsLandings2Raw(requestParameters, initOverrides);
+    async landingsLaunchBotSubscriptionLink(requestParameters, initOverrides) {
+        const response = await this.landingsLaunchBotSubscriptionLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . Telegram MAX , VK UTM.
+     * UTM-
+     */
+    async landingsLaunchMiniAppLaunchRaw(requestParameters, initOverrides) {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchMiniAppLaunch().');
+        }
+        if (requestParameters['createLandingSubscriptionContextDto'] == null) {
+            throw new runtime.RequiredError('createLandingSubscriptionContextDto', 'Required parameter "createLandingSubscriptionContextDto" was null or undefined when calling landingsLaunchMiniAppLaunch().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/launch/{token}/mini-app-launch`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateLandingSubscriptionContextDtoToJSON)(requestParameters['createLandingSubscriptionContextDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingMiniAppLaunchResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . Telegram MAX , VK UTM.
+     * UTM-
+     */
+    async landingsLaunchMiniAppLaunch(requestParameters, initOverrides) {
+        const response = await this.landingsLaunchMiniAppLaunchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -287,6 +352,13 @@ exports.LandingsPublicApi = LandingsPublicApi;
 /**
  * @export
  */
+exports.GetLandingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetLandingsLaunchAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -301,7 +373,14 @@ exports.GetProjectsLandingsAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetProjectsLandings2AcceptLanguageEnum = {
+exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

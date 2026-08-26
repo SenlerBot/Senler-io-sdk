@@ -96,7 +96,7 @@ class StatisticsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/statistics/communications`,
+            path: `/api/analytics/communications`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -154,7 +154,7 @@ class StatisticsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/statistics/costs`,
+            path: `/api/analytics/costs`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -215,7 +215,7 @@ class StatisticsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/statistics/costs/ai-response-tools`,
+            path: `/api/analytics/costs/ai-response-tools`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -273,7 +273,7 @@ class StatisticsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/statistics/leads`,
+            path: `/api/analytics/leads`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -337,7 +337,7 @@ class StatisticsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/statistics/leads/subscription-events`,
+            path: `/api/analytics/leads/subscription-events`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -395,7 +395,7 @@ class StatisticsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/statistics/overview`,
+            path: `/api/analytics/overview`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

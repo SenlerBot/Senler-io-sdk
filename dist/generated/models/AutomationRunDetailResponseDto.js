@@ -19,6 +19,7 @@ exports.AutomationRunDetailResponseDtoFromJSONTyped = AutomationRunDetailRespons
 exports.AutomationRunDetailResponseDtoToJSON = AutomationRunDetailResponseDtoToJSON;
 exports.AutomationRunDetailResponseDtoToJSONTyped = AutomationRunDetailResponseDtoToJSONTyped;
 const AutomationRunResponseDto_1 = require("./AutomationRunResponseDto");
+const AutomationTransitionEventResponseDto_1 = require("./AutomationTransitionEventResponseDto");
 const AutomationTaskResponseDto_1 = require("./AutomationTaskResponseDto");
 /**
  * Check if a given object implements the AutomationRunDetailResponseDto interface.
@@ -27,6 +28,8 @@ function instanceOfAutomationRunDetailResponseDto(value) {
     if (!('run' in value) || value['run'] === undefined)
         return false;
     if (!('tasks' in value) || value['tasks'] === undefined)
+        return false;
+    if (!('transitions' in value) || value['transitions'] === undefined)
         return false;
     if (!('variables' in value) || value['variables'] === undefined)
         return false;
@@ -42,6 +45,7 @@ function AutomationRunDetailResponseDtoFromJSONTyped(json, ignoreDiscriminator) 
     return {
         'run': (0, AutomationRunResponseDto_1.AutomationRunResponseDtoFromJSON)(json['run']),
         'tasks': (json['tasks'].map(AutomationTaskResponseDto_1.AutomationTaskResponseDtoFromJSON)),
+        'transitions': (json['transitions'].map(AutomationTransitionEventResponseDto_1.AutomationTransitionEventResponseDtoFromJSON)),
         'variables': json['variables'],
     };
 }
@@ -55,6 +59,7 @@ function AutomationRunDetailResponseDtoToJSONTyped(value, ignoreDiscriminator = 
     return {
         'run': (0, AutomationRunResponseDto_1.AutomationRunResponseDtoToJSON)(value['run']),
         'tasks': (value['tasks'].map(AutomationTaskResponseDto_1.AutomationTaskResponseDtoToJSON)),
+        'transitions': (value['transitions'].map(AutomationTransitionEventResponseDto_1.AutomationTransitionEventResponseDtoToJSON)),
         'variables': value['variables'],
     };
 }
