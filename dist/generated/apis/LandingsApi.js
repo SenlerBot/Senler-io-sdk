@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class LandingsApi extends runtime.BaseAPI {
     /**
-     * , , .
+     * , S3-, . url .
      *
      */
     async assetsConfirmRaw(requestParameters, initOverrides) {
@@ -91,7 +91,7 @@ class LandingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAssetUploadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , .
+     * , S3-, . url .
      *
      */
     async assetsConfirm(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ class LandingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     async assetsUploadUrlRaw(requestParameters, initOverrides) {
@@ -136,7 +136,7 @@ class LandingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     async assetsUploadUrl(requestParameters, initOverrides) {

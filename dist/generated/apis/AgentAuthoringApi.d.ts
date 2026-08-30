@@ -177,12 +177,12 @@ export interface UpdateVariablesBindingsRequest {
  */
 export declare class AgentAuthoringApi extends runtime.BaseAPI {
     /**
-     * : .
+     * : . ; .
      *
      */
     draftPublishRaw(requestParameters: DraftPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
-     * : .
+     * : . ; .
      *
      */
     draftPublish(requestParameters: DraftPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
@@ -297,12 +297,12 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      */
     updateDraftMetrics(requestParameters: UpdateDraftMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
-     * temperature .
+     * .
      *
      */
     updateDraftModelRaw(requestParameters: UpdateDraftModelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
     /**
-     * temperature .
+     * .
      *
      */
     updateDraftModel(requestParameters: UpdateDraftModelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;

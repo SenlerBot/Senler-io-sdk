@@ -24,10 +24,10 @@ export interface OrderItemResponseDto {
     id: string;
     /**
      * ID
-     * @type {string}
+     * @type {object}
      * @memberof OrderItemResponseDto
      */
-    projectId: string;
+    projectId: object | null;
     /**
      *
      * @type {string}
@@ -103,6 +103,7 @@ export declare const OrderItemResponseDtoTypeEnum: {
     readonly Tariff: "tariff";
     readonly CreditPackage: "credit_package";
     readonly BillingInvoice: "billing_invoice";
+    readonly UserAgentCreditPackage: "user_agent_credit_package";
 };
 export type OrderItemResponseDtoTypeEnum = typeof OrderItemResponseDtoTypeEnum[keyof typeof OrderItemResponseDtoTypeEnum];
 /**

@@ -25,8 +25,8 @@ export interface GetFilesRequest {
     category?: GetFilesCategoryEnum;
     source?: GetFilesSourceEnum;
     dialogId?: string;
-    limit?: object;
-    skip?: object;
+    limit?: number;
+    skip?: number;
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
 export interface GetStatsRequest {

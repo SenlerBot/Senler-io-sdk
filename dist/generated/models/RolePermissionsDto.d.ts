@@ -254,12 +254,6 @@ export interface RolePermissionsDto {
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
-    canManageEvents: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RolePermissionsDto
-     */
     canViewAudit: boolean;
     /**
      *

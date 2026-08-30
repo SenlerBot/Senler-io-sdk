@@ -109,6 +109,7 @@ export interface GetDocumentationSearchRequest {
     query: string;
     folderId?: string | null;
     resourceType?: GetDocumentationSearchResourceTypeEnum;
+    searchMode?: GetDocumentationSearchSearchModeEnum;
     limit?: number;
     page?: number;
     acceptLanguage?: GetDocumentationSearchAcceptLanguageEnum;
@@ -595,6 +596,14 @@ export declare const GetDocumentationSearchResourceTypeEnum: {
     readonly Table: "table";
 };
 export type GetDocumentationSearchResourceTypeEnum = typeof GetDocumentationSearchResourceTypeEnum[keyof typeof GetDocumentationSearchResourceTypeEnum];
+/**
+ * @export
+ */
+export declare const GetDocumentationSearchSearchModeEnum: {
+    readonly Name: "name";
+    readonly Content: "content";
+};
+export type GetDocumentationSearchSearchModeEnum = typeof GetDocumentationSearchSearchModeEnum[keyof typeof GetDocumentationSearchSearchModeEnum];
 /**
  * @export
  */

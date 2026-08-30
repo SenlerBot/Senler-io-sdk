@@ -68,19 +68,19 @@ export interface KnowledgeTableResponseDto {
      */
     name: string;
     /**
-     *
+     * . ; version sheet_revision.
      * @type {object}
      * @memberof KnowledgeTableResponseDto
      */
     workbookSnapshot: object;
     /**
-     *
+     * workbook_snapshot; , .
      * @type {number}
      * @memberof KnowledgeTableResponseDto
      */
     version: number;
     /**
-     *
+     * , workbook_snapshot. .
      * @type {number}
      * @memberof KnowledgeTableResponseDto
      */

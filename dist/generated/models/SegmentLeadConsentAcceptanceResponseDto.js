@@ -33,7 +33,8 @@ exports.SegmentLeadConsentAcceptanceResponseDtoSourceEnum = {
     Manual: 'manual',
     AutoAssignment: 'auto_assignment',
     Automation: 'automation',
-    AiAgent: 'ai_agent'
+    AiAgent: 'ai_agent',
+    Trigger: 'trigger'
 };
 /**
  * Check if a given object implements the SegmentLeadConsentAcceptanceResponseDto interface.

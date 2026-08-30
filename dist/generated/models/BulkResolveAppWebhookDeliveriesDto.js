@@ -42,7 +42,9 @@ exports.BulkResolveAppWebhookDeliveriesDtoResolutionCodeEnum = {
     Obsolete: 'obsolete',
     Superseded: 'superseded',
     InvalidPayload: 'invalid_payload',
-    AcceptedLoss: 'accepted_loss'
+    AcceptedLoss: 'accepted_loss',
+    Reviewed: 'reviewed',
+    Fixed: 'fixed'
 };
 /**
  * Check if a given object implements the BulkResolveAppWebhookDeliveriesDto interface.

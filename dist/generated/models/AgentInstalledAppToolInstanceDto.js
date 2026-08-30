@@ -33,6 +33,8 @@ exports.AgentInstalledAppToolInstanceDtoStatusEnum = {
 function instanceOfAgentInstalledAppToolInstanceDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
+    if (!('runtimeName' in value) || value['runtimeName'] === undefined)
+        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('_configuration' in value) || value['_configuration'] === undefined)
@@ -56,6 +58,7 @@ function AgentInstalledAppToolInstanceDtoFromJSONTyped(json, ignoreDiscriminator
     }
     return {
         'id': json['id'],
+        'runtimeName': json['runtime_name'],
         'title': json['title'],
         '_configuration': json['configuration'],
         'configuredParameters': (json['configured_parameters'].map(AgentInstalledAppToolConfiguredParameterDto_1.AgentInstalledAppToolConfiguredParameterDtoFromJSON)),
@@ -73,6 +76,7 @@ function AgentInstalledAppToolInstanceDtoToJSONTyped(value, ignoreDiscriminator 
     }
     return {
         'id': value['id'],
+        'runtime_name': value['runtimeName'],
         'title': value['title'],
         'configuration': value['_configuration'],
         'configured_parameters': (value['configuredParameters'].map(AgentInstalledAppToolConfiguredParameterDto_1.AgentInstalledAppToolConfiguredParameterDtoToJSON)),

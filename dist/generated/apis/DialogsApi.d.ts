@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DialogDetailsDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto } from '../models/index';
+import type { CabinetAiCostSummaryDto, DialogDetailsDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto } from '../models/index';
 export interface DialogsGetByIdRequest {
     id: string;
     acceptLanguage?: DialogsGetByIdAcceptLanguageEnum;
@@ -27,6 +27,10 @@ export interface EventsPollSnapshotRefreshRequest {
     id: string;
     eventId: string;
     acceptLanguage?: EventsPollSnapshotRefreshAcceptLanguageEnum;
+}
+export interface GetAiCostsRequest {
+    id: string;
+    acceptLanguage?: GetAiCostsAcceptLanguageEnum;
 }
 export interface GetEventsRequest {
     id: string;
@@ -109,6 +113,16 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto>;
     /**
+     * , AI-. event-time , .
+     * AI
+     */
+    getAiCostsRaw(requestParameters: GetAiCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetAiCostSummaryDto>>;
+    /**
+     * , AI-. event-time , .
+     * AI
+     */
+    getAiCosts(requestParameters: GetAiCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetAiCostSummaryDto>;
+    /**
      * . before/after limit; inclusive jump around_event_id; q.
      *
      */
@@ -181,6 +195,14 @@ export declare const EventsPollSnapshotRefreshAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type EventsPollSnapshotRefreshAcceptLanguageEnum = typeof EventsPollSnapshotRefreshAcceptLanguageEnum[keyof typeof EventsPollSnapshotRefreshAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAiCostsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAiCostsAcceptLanguageEnum = typeof GetAiCostsAcceptLanguageEnum[keyof typeof GetAiCostsAcceptLanguageEnum];
 /**
  * @export
  */

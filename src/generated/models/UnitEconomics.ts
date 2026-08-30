@@ -34,6 +34,13 @@ import {
     CostSectionEconomicsToJSON,
     CostSectionEconomicsToJSONTyped,
 } from './CostSectionEconomics';
+import type { UsageRevenueCoverage } from './UsageRevenueCoverage';
+import {
+    UsageRevenueCoverageFromJSON,
+    UsageRevenueCoverageFromJSONTyped,
+    UsageRevenueCoverageToJSON,
+    UsageRevenueCoverageToJSONTyped,
+} from './UsageRevenueCoverage';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
 import {
     CurrencyBreakdownFromJSON,
@@ -66,6 +73,12 @@ export interface UnitEconomics {
      * @memberof UnitEconomics
      */
     usageRevenue: CurrencyBreakdown;
+    /**
+     * usage-
+     * @type {UsageRevenueCoverage}
+     * @memberof UnitEconomics
+     */
+    revenueCoverage: UsageRevenueCoverage;
     /**
      * % = (usage_revenue.total_rub - provider.total_rub) / usage_revenue.total_rub * 100
      * @type {number}
@@ -105,6 +118,7 @@ export function instanceOfUnitEconomics(value: object): value is UnitEconomics {
     if (!('provider' in value) || value['provider'] === undefined) return false;
     if (!('client' in value) || value['client'] === undefined) return false;
     if (!('usageRevenue' in value) || value['usageRevenue'] === undefined) return false;
+    if (!('revenueCoverage' in value) || value['revenueCoverage'] === undefined) return false;
     if (!('marginPercent' in value) || value['marginPercent'] === undefined) return false;
     if (!('usageMarginRub' in value) || value['usageMarginRub'] === undefined) return false;
     if (!('eventsWithCosts' in value) || value['eventsWithCosts'] === undefined) return false;
@@ -126,6 +140,7 @@ export function UnitEconomicsFromJSONTyped(json: any, ignoreDiscriminator: boole
         'provider': CurrencyBreakdownFromJSON(json['provider']),
         'client': ClientSpendingFromJSON(json['client']),
         'usageRevenue': CurrencyBreakdownFromJSON(json['usage_revenue']),
+        'revenueCoverage': UsageRevenueCoverageFromJSON(json['revenue_coverage']),
         'marginPercent': json['margin_percent'],
         'usageMarginRub': json['usage_margin_rub'],
         'eventsWithCosts': json['events_with_costs'],
@@ -148,6 +163,7 @@ export function UnitEconomicsToJSONTyped(value?: UnitEconomics | null, ignoreDis
         'provider': CurrencyBreakdownToJSON(value['provider']),
         'client': ClientSpendingToJSON(value['client']),
         'usage_revenue': CurrencyBreakdownToJSON(value['usageRevenue']),
+        'revenue_coverage': UsageRevenueCoverageToJSON(value['revenueCoverage']),
         'margin_percent': value['marginPercent'],
         'usage_margin_rub': value['usageMarginRub'],
         'events_with_costs': value['eventsWithCosts'],

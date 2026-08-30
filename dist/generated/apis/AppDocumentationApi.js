@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDocumentationTablesAcceptLanguageEnum = exports.UpdateDocumentationPagesAcceptLanguageEnum = exports.UpdateDocumentationOrderAcceptLanguageEnum = exports.UpdateDocumentationFoldersAcceptLanguageEnum = exports.UpdateDocumentationFilesAcceptLanguageEnum = exports.UpdateDocumentationAcceptLanguageEnum = exports.GetDocumentationTablesAcceptLanguageEnum = exports.GetDocumentationSearchAcceptLanguageEnum = exports.GetDocumentationSearchResourceTypeEnum = exports.GetDocumentationResourcesResolveAcceptLanguageEnum = exports.GetDocumentationResourcesAcceptLanguageEnum = exports.GetDocumentationPagesAcceptLanguageEnum = exports.GetDocumentationFilesAcceptLanguageEnum = exports.GetDocumentationAcceptLanguageEnum = exports.DocumentationTablesUploadAcceptLanguageEnum = exports.DocumentationTablesUploadLocaleEnum = exports.DocumentationTablesAcceptLanguageEnum = exports.DocumentationFoldersAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveImageRecognitionModeEnum = exports.DocumentationFilesUploadArchiveDuplicateResolutionEnum = exports.DocumentationFilesUploadArchiveAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveLocaleEnum = exports.DocumentationFilesUploadImageRecognitionModeEnum = exports.DocumentationFilesUploadAcceptLanguageEnum = exports.DocumentationFilesUploadLocaleEnum = exports.DocumentationFilesRecognitionEstimateAcceptLanguageEnum = exports.DocumentationFilesRecognitionEstimateLocaleEnum = exports.DocumentationFilesAcceptLanguageEnum = exports.DeleteDocumentationTablesAcceptLanguageEnum = exports.DeleteDocumentationPagesAcceptLanguageEnum = exports.DeleteDocumentationFoldersAcceptLanguageEnum = exports.DeleteDocumentationFilesAcceptLanguageEnum = exports.AppDocumentationApi = void 0;
+exports.UpdateDocumentationTablesAcceptLanguageEnum = exports.UpdateDocumentationPagesAcceptLanguageEnum = exports.UpdateDocumentationOrderAcceptLanguageEnum = exports.UpdateDocumentationFoldersAcceptLanguageEnum = exports.UpdateDocumentationFilesAcceptLanguageEnum = exports.UpdateDocumentationAcceptLanguageEnum = exports.GetDocumentationTablesAcceptLanguageEnum = exports.GetDocumentationSearchAcceptLanguageEnum = exports.GetDocumentationSearchSearchModeEnum = exports.GetDocumentationSearchResourceTypeEnum = exports.GetDocumentationResourcesResolveAcceptLanguageEnum = exports.GetDocumentationResourcesAcceptLanguageEnum = exports.GetDocumentationPagesAcceptLanguageEnum = exports.GetDocumentationFilesAcceptLanguageEnum = exports.GetDocumentationAcceptLanguageEnum = exports.DocumentationTablesUploadAcceptLanguageEnum = exports.DocumentationTablesUploadLocaleEnum = exports.DocumentationTablesAcceptLanguageEnum = exports.DocumentationFoldersAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveImageRecognitionModeEnum = exports.DocumentationFilesUploadArchiveDuplicateResolutionEnum = exports.DocumentationFilesUploadArchiveAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveLocaleEnum = exports.DocumentationFilesUploadImageRecognitionModeEnum = exports.DocumentationFilesUploadAcceptLanguageEnum = exports.DocumentationFilesUploadLocaleEnum = exports.DocumentationFilesRecognitionEstimateAcceptLanguageEnum = exports.DocumentationFilesRecognitionEstimateLocaleEnum = exports.DocumentationFilesAcceptLanguageEnum = exports.DeleteDocumentationTablesAcceptLanguageEnum = exports.DeleteDocumentationPagesAcceptLanguageEnum = exports.DeleteDocumentationFoldersAcceptLanguageEnum = exports.DeleteDocumentationFilesAcceptLanguageEnum = exports.AppDocumentationApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -779,6 +779,9 @@ class AppDocumentationApi extends runtime.BaseAPI {
         if (requestParameters['resourceType'] != null) {
             queryParameters['resource_type'] = requestParameters['resourceType'];
         }
+        if (requestParameters['searchMode'] != null) {
+            queryParameters['search_mode'] = requestParameters['searchMode'];
+        }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -1259,6 +1262,13 @@ exports.GetDocumentationSearchResourceTypeEnum = {
     Folder: 'folder',
     File: 'file',
     Table: 'table'
+};
+/**
+ * @export
+ */
+exports.GetDocumentationSearchSearchModeEnum = {
+    Name: 'name',
+    Content: 'content'
 };
 /**
  * @export

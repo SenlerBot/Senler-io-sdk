@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateProjectsAutoPurchaseAcceptLanguageEnum = exports.ProjectsTariffBuyAcceptLanguageEnum = exports.ProjectsSubscriptionRenewAcceptLanguageEnum = exports.ProjectsSubscriptionConfirmAcceptLanguageEnum = exports.ProjectsPaymentSettingsAcceptLanguageEnum = exports.ProjectsOrdersCryptoSubmitAcceptLanguageEnum = exports.ProjectsOrdersCryptoIntentAcceptLanguageEnum = exports.ProjectsOrdersAcceptLanguageEnum = exports.ProjectsCreditsBuyAcceptLanguageEnum = exports.GetTransactionsDetailsAcceptLanguageEnum = exports.GetTransactionsDetailsGroupByEnum = exports.GetProjectsTransactionsAcceptLanguageEnum = exports.GetProjectsTransactionsCurrencyEnum = exports.GetProjectsTransactionsTypeEnum = exports.GetProjectsTariffsAcceptLanguageEnum = exports.GetProjectsTariffCheckAcceptLanguageEnum = exports.GetProjectsTariffCheckPeriodEnum = exports.GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = exports.GetProjectsSubscriptionRenewalPreviewPeriodEnum = exports.GetProjectsSubscriptionPreviewAcceptLanguageEnum = exports.GetProjectsSubscriptionPreviewPeriodEnum = exports.GetProjectsSubscriptionPreviewAddonKindEnum = exports.GetProjectsSubscriptionPreviewOperationEnum = exports.GetProjectsSubscriptionCatalogAcceptLanguageEnum = exports.GetProjectsSubscriptionAcceptLanguageEnum = exports.GetProjectsPaymentSettingsAcceptLanguageEnum = exports.GetProjectsOrdersCryptoStatusAcceptLanguageEnum = exports.GetProjectsOrdersAcceptLanguageEnum = exports.GetProjectsCreditsCheckAcceptLanguageEnum = exports.GetProjectsCreditUsageSummaryAcceptLanguageEnum = exports.GetProjectsCreditTransactionsAcceptLanguageEnum = exports.GetProjectsCreditTransactionsTypeEnum = exports.GetProjectsBalanceAcceptLanguageEnum = exports.GetCreditTransactionsDetailsAcceptLanguageEnum = exports.GetCreditTransactionsDetailsGroupByEnum = exports.DeleteProjectsTariffNextAcceptLanguageEnum = exports.DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum = exports.DeleteProjectsSubscriptionRenewalAcceptLanguageEnum = exports.BillingApi = void 0;
+exports.UpdateProjectsAutoPurchaseAcceptLanguageEnum = exports.ProjectsSubscriptionRenewAcceptLanguageEnum = exports.ProjectsSubscriptionConfirmAcceptLanguageEnum = exports.ProjectsPaymentSettingsAcceptLanguageEnum = exports.ProjectsOrdersCryptoSubmitAcceptLanguageEnum = exports.ProjectsOrdersCryptoIntentAcceptLanguageEnum = exports.ProjectsOrdersAcceptLanguageEnum = exports.ProjectsCreditsBuyAcceptLanguageEnum = exports.GetTransactionsDetailsAcceptLanguageEnum = exports.GetTransactionsDetailsGroupByEnum = exports.GetProjectsTransactionsAcceptLanguageEnum = exports.GetProjectsTransactionsCurrencyEnum = exports.GetProjectsTransactionsTypeEnum = exports.GetProjectsTariffsAcceptLanguageEnum = exports.GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = exports.GetProjectsSubscriptionRenewalPreviewPeriodEnum = exports.GetProjectsSubscriptionPreviewAcceptLanguageEnum = exports.GetProjectsSubscriptionPreviewPeriodEnum = exports.GetProjectsSubscriptionPreviewAddonKindEnum = exports.GetProjectsSubscriptionPreviewOperationEnum = exports.GetProjectsSubscriptionCatalogAcceptLanguageEnum = exports.GetProjectsSubscriptionAcceptLanguageEnum = exports.GetProjectsPaymentSettingsAcceptLanguageEnum = exports.GetProjectsOrdersCryptoStatusAcceptLanguageEnum = exports.GetProjectsOrdersAcceptLanguageEnum = exports.GetProjectsCreditsCheckAcceptLanguageEnum = exports.GetProjectsCreditUsageSummaryAcceptLanguageEnum = exports.GetProjectsCreditTransactionsAcceptLanguageEnum = exports.GetProjectsCreditTransactionsTypeEnum = exports.GetProjectsBalanceAcceptLanguageEnum = exports.GetCreditTransactionsDetailsAcceptLanguageEnum = exports.GetCreditTransactionsDetailsGroupByEnum = exports.DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum = exports.DeleteProjectsSubscriptionRenewalAcceptLanguageEnum = exports.BillingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -134,48 +134,6 @@ class BillingApi extends runtime.BaseAPI {
      */
     async deleteProjectsSubscriptionScheduledChanges(requestParameters, initOverrides) {
         const response = await this.deleteProjectsSubscriptionScheduledChangesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * . DELETE subscription/scheduled-changes/base_tariff.
-     * []
-     * @deprecated
-     */
-    async deleteProjectsTariffNextRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deleteProjectsTariffNext().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_billing"]);
-        }
-        const response = await this.request({
-            path: `/api/billing/projects/{projectId}/tariff-next`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . DELETE subscription/scheduled-changes/base_tariff.
-     * []
-     * @deprecated
-     */
-    async deleteProjectsTariffNext(requestParameters, initOverrides) {
-        const response = await this.deleteProjectsTariffNextRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -749,63 +707,6 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . GET subscription/preview.
-     * []
-     * @deprecated
-     */
-    async getProjectsTariffCheckRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsTariffCheck().');
-        }
-        if (requestParameters['tariffId'] == null) {
-            throw new runtime.RequiredError('tariffId', 'Required parameter "tariffId" was null or undefined when calling getProjectsTariffCheck().');
-        }
-        if (requestParameters['period'] == null) {
-            throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getProjectsTariffCheck().');
-        }
-        const queryParameters = {};
-        if (requestParameters['tariffId'] != null) {
-            queryParameters['tariff_id'] = requestParameters['tariffId'];
-        }
-        if (requestParameters['period'] != null) {
-            queryParameters['period'] = requestParameters['period'];
-        }
-        if (requestParameters['useBalance'] != null) {
-            queryParameters['use_balance'] = requestParameters['useBalance'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/billing/projects/{projectId}/tariff-check`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TariffCheckResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . GET subscription/preview.
-     * []
-     * @deprecated
-     */
-    async getProjectsTariffCheck(requestParameters, initOverrides) {
-        const response = await this.getProjectsTariffCheckRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Trial .
      *
      */
@@ -1298,59 +1199,6 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
-     * [] /
-     * @deprecated
-     */
-    async projectsTariffBuyRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsTariffBuy().');
-        }
-        if (requestParameters['idempotencyKey'] == null) {
-            throw new runtime.RequiredError('idempotencyKey', 'Required parameter "idempotencyKey" was null or undefined when calling projectsTariffBuy().');
-        }
-        if (requestParameters['tariffBuyDto'] == null) {
-            throw new runtime.RequiredError('tariffBuyDto', 'Required parameter "tariffBuyDto" was null or undefined when calling projectsTariffBuy().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['idempotencyKey'] != null) {
-            headerParameters['idempotency-key'] = String(requestParameters['idempotencyKey']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_billing"]);
-        }
-        const response = await this.request({
-            path: `/api/billing/projects/{projectId}/tariff-buy`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.TariffBuyDtoToJSON)(requestParameters['tariffBuyDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectBalanceInfoDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . .
-     * [] /
-     * @deprecated
-     */
-    async projectsTariffBuy(requestParameters, initOverrides) {
-        const response = await this.projectsTariffBuyRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * : . package_id ( GET /api/credit-packages).
      *
      */
@@ -1408,13 +1256,6 @@ exports.DeleteProjectsSubscriptionRenewalAcceptLanguageEnum = {
  * @export
  */
 exports.DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.DeleteProjectsTariffNextAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1554,20 +1395,6 @@ exports.GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetProjectsTariffCheckPeriodEnum = {
-    Monthly: 'monthly',
-    Yearly: 'yearly'
-};
-/**
- * @export
- */
-exports.GetProjectsTariffCheckAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.GetProjectsTariffsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1661,13 +1488,6 @@ exports.ProjectsSubscriptionConfirmAcceptLanguageEnum = {
  * @export
  */
 exports.ProjectsSubscriptionRenewAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.ProjectsTariffBuyAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

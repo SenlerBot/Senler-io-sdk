@@ -16,11 +16,17 @@
 import * as runtime from '../runtime';
 import type {
   AutomationPerformanceResponseDto,
+  AutomationUsageOverviewResponseDto,
+  AutomationUsageResponseDto,
   ErrorResponse,
 } from '../models/index';
 import {
     AutomationPerformanceResponseDtoFromJSON,
     AutomationPerformanceResponseDtoToJSON,
+    AutomationUsageOverviewResponseDtoFromJSON,
+    AutomationUsageOverviewResponseDtoToJSON,
+    AutomationUsageResponseDtoFromJSON,
+    AutomationUsageResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
 } from '../models/index';
@@ -30,6 +36,19 @@ export interface GetAnalyticsAutomationsRequest {
     period: GetAnalyticsAutomationsPeriodEnum;
     timezone?: string;
     acceptLanguage?: GetAnalyticsAutomationsAcceptLanguageEnum;
+}
+
+export interface GetAutomationPerformanceAutomationsRequest {
+    automationId: string;
+    period: GetAutomationPerformanceAutomationsPeriodEnum;
+    timezone?: string;
+    acceptLanguage?: GetAutomationPerformanceAutomationsAcceptLanguageEnum;
+}
+
+export interface GetAutomationPerformanceProjectsOverviewRequest {
+    projectId: string;
+    timezone?: string;
+    acceptLanguage?: GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum;
 }
 
 export interface GetBillingProjectsAutomationPerformanceRequest {
@@ -115,6 +134,129 @@ export class AutomationPerformanceApi extends runtime.BaseAPI {
     }
 
     /**
+     * , 24 7 .
+     *
+     */
+    async getAutomationPerformanceAutomationsRaw(requestParameters: GetAutomationPerformanceAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationUsageResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getAutomationPerformanceAutomations().'
+            );
+        }
+
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling getAutomationPerformanceAutomations().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automation-performance/automations/{automationId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationUsageResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , 24 7 .
+     *
+     */
+    async getAutomationPerformanceAutomations(requestParameters: GetAutomationPerformanceAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationUsageResponseDto> {
+        const response = await this.getAutomationPerformanceAutomationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * 24
+     */
+    async getAutomationPerformanceProjectsOverviewRaw(requestParameters: GetAutomationPerformanceProjectsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationUsageOverviewResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getAutomationPerformanceProjectsOverview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automation-performance/projects/{projectId}/overview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationUsageOverviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * 24
+     */
+    async getAutomationPerformanceProjectsOverview(requestParameters: GetAutomationPerformanceProjectsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationUsageOverviewResponseDto> {
+        const response = await this.getAutomationPerformanceProjectsOverviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      * 24
      */
@@ -190,6 +332,30 @@ export const GetAnalyticsAutomationsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetAnalyticsAutomationsAcceptLanguageEnum = typeof GetAnalyticsAutomationsAcceptLanguageEnum[keyof typeof GetAnalyticsAutomationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetAutomationPerformanceAutomationsPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d'
+} as const;
+export type GetAutomationPerformanceAutomationsPeriodEnum = typeof GetAutomationPerformanceAutomationsPeriodEnum[keyof typeof GetAutomationPerformanceAutomationsPeriodEnum];
+/**
+ * @export
+ */
+export const GetAutomationPerformanceAutomationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAutomationPerformanceAutomationsAcceptLanguageEnum = typeof GetAutomationPerformanceAutomationsAcceptLanguageEnum[keyof typeof GetAutomationPerformanceAutomationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum = typeof GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum[keyof typeof GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum];
 /**
  * @export
  */

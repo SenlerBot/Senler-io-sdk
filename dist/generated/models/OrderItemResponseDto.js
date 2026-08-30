@@ -27,7 +27,8 @@ exports.OrderItemResponseDtoTypeEnum = {
     BalanceDeposit: 'balance_deposit',
     Tariff: 'tariff',
     CreditPackage: 'credit_package',
-    BillingInvoice: 'billing_invoice'
+    BillingInvoice: 'billing_invoice',
+    UserAgentCreditPackage: 'user_agent_credit_package'
 };
 /**
  * @export

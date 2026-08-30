@@ -20,13 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface LandingCoverBackgroundDto {
     /**
-     * url.
+     * URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingCoverBackgroundDto
      */
     url?: string;
     /**
-     * mobile url.
+     * URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingCoverBackgroundDto
      */

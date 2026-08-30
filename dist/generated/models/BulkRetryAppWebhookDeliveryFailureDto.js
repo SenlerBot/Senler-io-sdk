@@ -24,6 +24,7 @@ exports.BulkRetryAppWebhookDeliveryFailureDtoToJSONTyped = BulkRetryAppWebhookDe
  */
 exports.BulkRetryAppWebhookDeliveryFailureDtoCodeEnum = {
     NotActionable: 'not_actionable',
+    RetryNotAllowed: 'retry_not_allowed',
     InvalidRequest: 'invalid_request',
     RetryFailed: 'retry_failed'
 };

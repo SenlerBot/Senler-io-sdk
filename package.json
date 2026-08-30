@@ -1,6 +1,6 @@
 {
   "name": "@aisenler/sdk-fetch",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Senler.io API SDK (fetch)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,7 +35,25 @@
       "require": "./dist/generated/runtime.js",
       "default": "./dist/generated/runtime.js"
     },
+    "./app-actions": {
+      "types": "./dist/app-actions/index.d.ts",
+      "require": "./dist/app-actions/index.js",
+      "default": "./dist/app-actions/index.js"
+    },
+    "./app-actions/nest": {
+      "types": "./dist/app-actions/nest.d.ts",
+      "require": "./dist/app-actions/nest.js",
+      "default": "./dist/app-actions/nest.js"
+    },
+    "./app-actions/validator": {
+      "types": "./dist/app-actions/validator.d.ts",
+      "require": "./dist/app-actions/validator.js",
+      "default": "./dist/app-actions/validator.js"
+    },
     "./package.json": "./package.json"
+  },
+  "bin": {
+    "senler-app": "./dist/app-actions/cli.js"
   },
   "files": [
     "dist",
@@ -45,13 +63,34 @@
   "scripts": {
     "prebuild": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "tsc",
+    "postbuild": "node -e \"require('fs').chmodSync('dist/app-actions/cli.js', 0o755)\"",
+    "test": "npm run build && node --test test/*.spec.js",
     "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18"
   },
+  "peerDependencies": {
+    "@nestjs/common": ">=10 <12",
+    "@nestjs/swagger": ">=7 <12"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": true
+    },
+    "@nestjs/swagger": {
+      "optional": true
+    }
+  },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "@nestjs/common": "^11.2.1",
+    "@nestjs/core": "^11.2.1",
+    "@nestjs/platform-express": "^11.2.1",
+    "@nestjs/swagger": "11.4.7",
+    "@types/node": "^24.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.0"
   },
   "keywords": [
     "aisenler",

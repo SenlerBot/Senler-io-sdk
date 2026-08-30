@@ -104,22 +104,22 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
     /**
-     * .
+     * S3- . url .
      *
      */
     landingAssetsConfirmRaw(requestParameters: LandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>>;
     /**
-     * .
+     * S3- . url .
      *
      */
     landingAssetsConfirm(requestParameters: LandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto>;
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     landingAssetsUploadUrlRaw(requestParameters: LandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     landingAssetsUploadUrl(requestParameters: LandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;

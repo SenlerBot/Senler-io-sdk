@@ -13,16 +13,26 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventMessageDtoContentFormatEnum = void 0;
 exports.instanceOfEventMessageDto = instanceOfEventMessageDto;
 exports.EventMessageDtoFromJSON = EventMessageDtoFromJSON;
 exports.EventMessageDtoFromJSONTyped = EventMessageDtoFromJSONTyped;
 exports.EventMessageDtoToJSON = EventMessageDtoToJSON;
 exports.EventMessageDtoToJSONTyped = EventMessageDtoToJSONTyped;
 /**
+ * @export
+ */
+exports.EventMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+};
+/**
  * Check if a given object implements the EventMessageDto interface.
  */
 function instanceOfEventMessageDto(value) {
     if (!('content' in value) || value['content'] === undefined)
+        return false;
+    if (!('contentFormat' in value) || value['contentFormat'] === undefined)
         return false;
     return true;
 }
@@ -35,6 +45,7 @@ function EventMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'content': json['content'],
+        'contentFormat': json['content_format'],
         'model': json['model'] == null ? undefined : json['model'],
         'subject': json['subject'] == null ? undefined : json['subject'],
         'rawText': json['raw_text'] == null ? undefined : json['raw_text'],
@@ -50,6 +61,7 @@ function EventMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'content': value['content'],
+        'content_format': value['contentFormat'],
         'model': value['model'],
         'subject': value['subject'],
         'raw_text': value['rawText'],

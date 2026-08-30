@@ -98,6 +98,24 @@ import {
  */
 export interface AutomationNodeConfigDto {
     /**
+     * , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    eventType?: AutomationNodeConfigDtoEventTypeEnum;
+    /**
+     * . .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    reactionValues?: Array<string>;
+    /**
+     * : , , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageSender?: AutomationNodeConfigDtoMessageSenderEnum;
+    /**
      * , : , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -344,25 +362,13 @@ export interface AutomationNodeConfigDto {
      */
     tableResultVariableName?: string;
     /**
-     * - . table_result_variable_scope.
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableRowsVariableScope?: AutomationNodeConfigDtoTableRowsVariableScopeEnum;
-    /**
-     * - . row_number .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableRowsVariableName?: string;
-    /**
-     * .
+     * : update , append , upsert , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     tableWriteMode?: AutomationNodeConfigDtoTableWriteModeEnum;
     /**
-     * , .
+     * . - , exactly_one. ; update, upsert .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -763,6 +769,31 @@ export interface AutomationNodeConfigDto {
 /**
  * @export
  */
+export const AutomationNodeConfigDtoEventTypeEnum = {
+    MessageCreated: 'message_created',
+    ReactionAdded: 'reaction_added',
+    ReactionRemoved: 'reaction_removed',
+    LikeAdded: 'like_added',
+    LikeRemoved: 'like_removed',
+    LeadBlacklisted: 'lead_blacklisted',
+    SegmentSubscribed: 'segment_subscribed'
+} as const;
+export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoMessageSenderEnum = {
+    Any: 'any',
+    Lead: 'lead',
+    Operator: 'operator',
+    Agent: 'agent'
+} as const;
+export type AutomationNodeConfigDtoMessageSenderEnum = typeof AutomationNodeConfigDtoMessageSenderEnum[keyof typeof AutomationNodeConfigDtoMessageSenderEnum];
+
+/**
+ * @export
+ */
 export const AutomationNodeConfigDtoRunReentryModeEnum = {
     IgnoreActive: 'ignore_active',
     ReplaceActive: 'replace_active',
@@ -911,16 +942,6 @@ export const AutomationNodeConfigDtoTableResultVariableScopeEnum = {
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoTableRowsVariableScopeEnum = {
-    Run: 'run',
-    Lead: 'lead',
-    Project: 'project'
-} as const;
-export type AutomationNodeConfigDtoTableRowsVariableScopeEnum = typeof AutomationNodeConfigDtoTableRowsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableRowsVariableScopeEnum];
 
 /**
  * @export
@@ -1222,6 +1243,9 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'eventType': json['event_type'] == null ? undefined : json['event_type'],
+        'reactionValues': json['reaction_values'] == null ? undefined : json['reaction_values'],
+        'messageSender': json['message_sender'] == null ? undefined : json['message_sender'],
         'runReentryMode': json['run_reentry_mode'] == null ? undefined : json['run_reentry_mode'],
         'messageMatchMode': json['message_match_mode'] == null ? undefined : json['message_match_mode'],
         'messagePhrases': json['message_phrases'] == null ? undefined : json['message_phrases'],
@@ -1263,8 +1287,6 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'tableFirstRowSaveMode': json['table_first_row_save_mode'] == null ? undefined : json['table_first_row_save_mode'],
         'tableResultVariableScope': json['table_result_variable_scope'] == null ? undefined : json['table_result_variable_scope'],
         'tableResultVariableName': json['table_result_variable_name'] == null ? undefined : json['table_result_variable_name'],
-        'tableRowsVariableScope': json['table_rows_variable_scope'] == null ? undefined : json['table_rows_variable_scope'],
-        'tableRowsVariableName': json['table_rows_variable_name'] == null ? undefined : json['table_rows_variable_name'],
         'tableWriteMode': json['table_write_mode'] == null ? undefined : json['table_write_mode'],
         'tableMatchMode': json['table_match_mode'] == null ? undefined : json['table_match_mode'],
         'tableWrites': json['table_writes'] == null ? undefined : ((json['table_writes'] as Array<any>).map(AutomationTableWriteDtoFromJSON)),
@@ -1346,6 +1368,9 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
 
     return {
 
+        'event_type': value['eventType'],
+        'reaction_values': value['reactionValues'],
+        'message_sender': value['messageSender'],
         'run_reentry_mode': value['runReentryMode'],
         'message_match_mode': value['messageMatchMode'],
         'message_phrases': value['messagePhrases'],
@@ -1387,8 +1412,6 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'table_first_row_save_mode': value['tableFirstRowSaveMode'],
         'table_result_variable_scope': value['tableResultVariableScope'],
         'table_result_variable_name': value['tableResultVariableName'],
-        'table_rows_variable_scope': value['tableRowsVariableScope'],
-        'table_rows_variable_name': value['tableRowsVariableName'],
         'table_write_mode': value['tableWriteMode'],
         'table_match_mode': value['tableMatchMode'],
         'table_writes': value['tableWrites'] == null ? undefined : ((value['tableWrites'] as Array<any>).map(AutomationTableWriteDtoToJSON)),

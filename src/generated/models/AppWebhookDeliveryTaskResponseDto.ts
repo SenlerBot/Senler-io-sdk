@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AppWebhookDeliveryIncidentDto } from './AppWebhookDeliveryIncidentDto';
+import {
+    AppWebhookDeliveryIncidentDtoFromJSON,
+    AppWebhookDeliveryIncidentDtoFromJSONTyped,
+    AppWebhookDeliveryIncidentDtoToJSON,
+    AppWebhookDeliveryIncidentDtoToJSONTyped,
+} from './AppWebhookDeliveryIncidentDto';
+
 /**
  * AppWebhookDeliveryTaskResponseDto.
  * @export
@@ -98,6 +106,12 @@ export interface AppWebhookDeliveryTaskResponseDto {
      */
     responseBody: string | null;
     /**
+     * incident.
+     * @type {AppWebhookDeliveryIncidentDto}
+     * @memberof AppWebhookDeliveryTaskResponseDto
+     */
+    incident: AppWebhookDeliveryIncidentDto | null;
+    /**
      * JSON- ,
      * @type {object}
      * @memberof AppWebhookDeliveryTaskResponseDto
@@ -152,7 +166,7 @@ export interface AppWebhookDeliveryTaskResponseDto {
      */
     resolvedBy: string | null;
     /**
-     * : obsolete, superseded, invalid_payload, accepted_loss, task_completed, diagnostic_completed, replay_cancelled, webhook_deleted.
+     * : obsolete, superseded, invalid_payload, accepted_loss, reviewed, fixed, task_completed, diagnostic_completed, replay_cancelled, webhook_deleted.
      * @type {string}
      * @memberof AppWebhookDeliveryTaskResponseDto
      */
@@ -213,6 +227,8 @@ export const AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum = {
     Superseded: 'superseded',
     InvalidPayload: 'invalid_payload',
     AcceptedLoss: 'accepted_loss',
+    Reviewed: 'reviewed',
+    Fixed: 'fixed',
     TaskCompleted: 'task_completed',
     DiagnosticCompleted: 'diagnostic_completed',
     ReplayCancelled: 'replay_cancelled',
@@ -238,6 +254,7 @@ export function instanceOfAppWebhookDeliveryTaskResponseDto(value: object): valu
     if (!('lastError' in value) || value['lastError'] === undefined) return false;
     if (!('lastStatusCode' in value) || value['lastStatusCode'] === undefined) return false;
     if (!('responseBody' in value) || value['responseBody'] === undefined) return false;
+    if (!('incident' in value) || value['incident'] === undefined) return false;
     if (!('payload' in value) || value['payload'] === undefined) return false;
     if (!('replayOfOperationId' in value) || value['replayOfOperationId'] === undefined) return false;
     if (!('notifyAgent' in value) || value['notifyAgent'] === undefined) return false;
@@ -276,6 +293,7 @@ export function AppWebhookDeliveryTaskResponseDtoFromJSONTyped(json: any, ignore
         'lastError': json['last_error'],
         'lastStatusCode': json['last_status_code'],
         'responseBody': json['response_body'],
+        'incident': AppWebhookDeliveryIncidentDtoFromJSON(json['incident']),
         'payload': json['payload'],
         'replayOfOperationId': json['replay_of_operation_id'],
         'notifyAgent': json['notify_agent'],
@@ -315,6 +333,7 @@ export function AppWebhookDeliveryTaskResponseDtoToJSONTyped(value?: AppWebhookD
         'last_error': value['lastError'],
         'last_status_code': value['lastStatusCode'],
         'response_body': value['responseBody'],
+        'incident': AppWebhookDeliveryIncidentDtoToJSON(value['incident']),
         'payload': value['payload'],
         'replay_of_operation_id': value['replayOfOperationId'],
         'notify_agent': value['notifyAgent'],

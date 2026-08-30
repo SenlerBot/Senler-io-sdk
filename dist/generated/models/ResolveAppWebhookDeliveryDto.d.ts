@@ -16,7 +16,7 @@
  */
 export interface ResolveAppWebhookDeliveryDto {
     /**
-     * : obsolete, superseded, invalid_payload, accepted_loss.
+     * : obsolete, superseded, invalid_payload, accepted_loss, reviewed, fixed.
      * @type {string}
      * @memberof ResolveAppWebhookDeliveryDto
      */
@@ -36,6 +36,8 @@ export declare const ResolveAppWebhookDeliveryDtoResolutionCodeEnum: {
     readonly Superseded: "superseded";
     readonly InvalidPayload: "invalid_payload";
     readonly AcceptedLoss: "accepted_loss";
+    readonly Reviewed: "reviewed";
+    readonly Fixed: "fixed";
 };
 export type ResolveAppWebhookDeliveryDtoResolutionCodeEnum = typeof ResolveAppWebhookDeliveryDtoResolutionCodeEnum[keyof typeof ResolveAppWebhookDeliveryDtoResolutionCodeEnum];
 /**

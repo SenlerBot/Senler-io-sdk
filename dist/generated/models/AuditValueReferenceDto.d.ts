@@ -58,6 +58,7 @@ export interface AuditValueReferenceDto {
 export declare const AuditValueReferenceDtoEntityTypeEnum: {
     readonly AiModel: "ai_model";
     readonly Agent: "agent";
+    readonly Automation: "automation";
     readonly App: "app";
     readonly Channel: "channel";
     readonly CreditPackage: "credit_package";

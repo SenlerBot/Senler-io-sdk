@@ -26,6 +26,12 @@ export interface AutomationTableFilterDto {
      */
     columnIndex: number;
     /**
+     * . , column_index. , .
+     * @type {string}
+     * @memberof AutomationTableFilterDto
+     */
+    columnHeader?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationTableFilterDto
@@ -127,6 +133,7 @@ export function AutomationTableFilterDtoFromJSONTyped(json: any, ignoreDiscrimin
     return {
 
         'columnIndex': json['column_index'],
+        'columnHeader': json['column_header'] == null ? undefined : json['column_header'],
         'operator': json['operator'],
         'valueSource': json['value_source'] == null ? undefined : json['value_source'],
         'value': json['value'] == null ? undefined : json['value'],
@@ -148,6 +155,7 @@ export function AutomationTableFilterDtoToJSONTyped(value?: AutomationTableFilte
     return {
 
         'column_index': value['columnIndex'],
+        'column_header': value['columnHeader'],
         'operator': value['operator'],
         'value_source': value['valueSource'],
         'value': value['value'],

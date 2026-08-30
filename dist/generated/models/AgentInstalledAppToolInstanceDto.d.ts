@@ -23,6 +23,12 @@ export interface AgentInstalledAppToolInstanceDto {
      */
     id: string;
     /**
+     * ,
+     * @type {string}
+     * @memberof AgentInstalledAppToolInstanceDto
+     */
+    runtimeName: string;
+    /**
      *
      * @type {string}
      * @memberof AgentInstalledAppToolInstanceDto

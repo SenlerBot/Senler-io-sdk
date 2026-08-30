@@ -72,6 +72,7 @@ function AutomationTableFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'columnIndex': json['column_index'],
+        'columnHeader': json['column_header'] == null ? undefined : json['column_header'],
         'operator': json['operator'],
         'valueSource': json['value_source'] == null ? undefined : json['value_source'],
         'value': json['value'] == null ? undefined : json['value'],
@@ -89,6 +90,7 @@ function AutomationTableFilterDtoToJSONTyped(value, ignoreDiscriminator = false)
     }
     return {
         'column_index': value['columnIndex'],
+        'column_header': value['columnHeader'],
         'operator': value['operator'],
         'value_source': value['valueSource'],
         'value': value['value'],

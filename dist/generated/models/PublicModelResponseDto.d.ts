@@ -41,7 +41,49 @@ export interface PublicModelResponseDto {
      * @type {string}
      * @memberof PublicModelResponseDto
      */
-    notes: string | null;
+    descriptionRu: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicModelResponseDto
+     */
+    descriptionEn: string | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    reasoningLevel: PublicModelResponseDtoReasoningLevelEnum | null;
+    /**
+     * Artificial Analysis Intelligence Index 100
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    reasoningScoreBasisPoints: number | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    speedLevel: PublicModelResponseDtoSpeedLevelEnum | null;
+    /**
+     * tool-capable OpenRouter, 010000
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    speedScoreBasisPoints: number | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    priceLevel: PublicModelResponseDtoPriceLevelEnum;
+    /**
+     *
+     * @type {Date}
+     * @memberof PublicModelResponseDto
+     */
+    presentationMetricsUpdatedAt: Date | null;
     /**
      *
      * @type {number}
@@ -193,6 +235,12 @@ export interface PublicModelResponseDto {
      */
     supportsStreaming: boolean;
     /**
+     * MCP,
+     * @type {Array<string>}
+     * @memberof PublicModelResponseDto
+     */
+    supportedServerBindingModes: Array<PublicModelResponseDtoSupportedServerBindingModesEnum>;
+    /**
      * : tokens ( ) messages ( )
      * @type {string}
      * @memberof PublicModelResponseDto
@@ -205,6 +253,39 @@ export interface PublicModelResponseDto {
      */
     pricing: ModelPricingDto;
 }
+/**
+ * @export
+ */
+export declare const PublicModelResponseDtoReasoningLevelEnum: {
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+    readonly NUMBER_4: 4;
+    readonly NUMBER_5: 5;
+};
+export type PublicModelResponseDtoReasoningLevelEnum = typeof PublicModelResponseDtoReasoningLevelEnum[keyof typeof PublicModelResponseDtoReasoningLevelEnum];
+/**
+ * @export
+ */
+export declare const PublicModelResponseDtoSpeedLevelEnum: {
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+    readonly NUMBER_4: 4;
+    readonly NUMBER_5: 5;
+};
+export type PublicModelResponseDtoSpeedLevelEnum = typeof PublicModelResponseDtoSpeedLevelEnum[keyof typeof PublicModelResponseDtoSpeedLevelEnum];
+/**
+ * @export
+ */
+export declare const PublicModelResponseDtoPriceLevelEnum: {
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+    readonly NUMBER_4: 4;
+    readonly NUMBER_5: 5;
+};
+export type PublicModelResponseDtoPriceLevelEnum = typeof PublicModelResponseDtoPriceLevelEnum[keyof typeof PublicModelResponseDtoPriceLevelEnum];
 /**
  * @export
  */
@@ -234,6 +315,16 @@ export declare const PublicModelResponseDtoImagePricingTypeEnum: {
     readonly ImageTokenUsage: "image_token_usage";
 };
 export type PublicModelResponseDtoImagePricingTypeEnum = typeof PublicModelResponseDtoImagePricingTypeEnum[keyof typeof PublicModelResponseDtoImagePricingTypeEnum];
+/**
+ * @export
+ */
+export declare const PublicModelResponseDtoSupportedServerBindingModesEnum: {
+    readonly ProviderDirect: "provider_direct";
+    readonly SenlerDirect: "senler_direct";
+    readonly SenlerList: "senler_list";
+    readonly None: "none";
+};
+export type PublicModelResponseDtoSupportedServerBindingModesEnum = typeof PublicModelResponseDtoSupportedServerBindingModesEnum[keyof typeof PublicModelResponseDtoSupportedServerBindingModesEnum];
 /**
  * @export
  */

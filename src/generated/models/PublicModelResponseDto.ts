@@ -64,7 +64,49 @@ export interface PublicModelResponseDto {
      * @type {string}
      * @memberof PublicModelResponseDto
      */
-    notes: string | null;
+    descriptionRu: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicModelResponseDto
+     */
+    descriptionEn: string | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    reasoningLevel: PublicModelResponseDtoReasoningLevelEnum | null;
+    /**
+     * Artificial Analysis Intelligence Index 100
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    reasoningScoreBasisPoints: number | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    speedLevel: PublicModelResponseDtoSpeedLevelEnum | null;
+    /**
+     * tool-capable OpenRouter, 010000
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    speedScoreBasisPoints: number | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    priceLevel: PublicModelResponseDtoPriceLevelEnum;
+    /**
+     *
+     * @type {Date}
+     * @memberof PublicModelResponseDto
+     */
+    presentationMetricsUpdatedAt: Date | null;
     /**
      *
      * @type {number}
@@ -216,6 +258,12 @@ export interface PublicModelResponseDto {
      */
     supportsStreaming: boolean;
     /**
+     * MCP,
+     * @type {Array<string>}
+     * @memberof PublicModelResponseDto
+     */
+    supportedServerBindingModes: Array<PublicModelResponseDtoSupportedServerBindingModesEnum>;
+    /**
      * : tokens ( ) messages ( )
      * @type {string}
      * @memberof PublicModelResponseDto
@@ -229,6 +277,42 @@ export interface PublicModelResponseDto {
     pricing: ModelPricingDto;
 }
 
+
+/**
+ * @export
+ */
+export const PublicModelResponseDtoReasoningLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+} as const;
+export type PublicModelResponseDtoReasoningLevelEnum = typeof PublicModelResponseDtoReasoningLevelEnum[keyof typeof PublicModelResponseDtoReasoningLevelEnum];
+
+/**
+ * @export
+ */
+export const PublicModelResponseDtoSpeedLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+} as const;
+export type PublicModelResponseDtoSpeedLevelEnum = typeof PublicModelResponseDtoSpeedLevelEnum[keyof typeof PublicModelResponseDtoSpeedLevelEnum];
+
+/**
+ * @export
+ */
+export const PublicModelResponseDtoPriceLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+} as const;
+export type PublicModelResponseDtoPriceLevelEnum = typeof PublicModelResponseDtoPriceLevelEnum[keyof typeof PublicModelResponseDtoPriceLevelEnum];
 
 /**
  * @export
@@ -265,6 +349,17 @@ export type PublicModelResponseDtoImagePricingTypeEnum = typeof PublicModelRespo
 /**
  * @export
  */
+export const PublicModelResponseDtoSupportedServerBindingModesEnum = {
+    ProviderDirect: 'provider_direct',
+    SenlerDirect: 'senler_direct',
+    SenlerList: 'senler_list',
+    None: 'none'
+} as const;
+export type PublicModelResponseDtoSupportedServerBindingModesEnum = typeof PublicModelResponseDtoSupportedServerBindingModesEnum[keyof typeof PublicModelResponseDtoSupportedServerBindingModesEnum];
+
+/**
+ * @export
+ */
 export const PublicModelResponseDtoBillingModeEnum = {
     Tokens: 'tokens',
     Messages: 'messages'
@@ -279,7 +374,14 @@ export function instanceOfPublicModelResponseDto(value: object): value is Public
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('slug' in value) || value['slug'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
-    if (!('notes' in value) || value['notes'] === undefined) return false;
+    if (!('descriptionRu' in value) || value['descriptionRu'] === undefined) return false;
+    if (!('descriptionEn' in value) || value['descriptionEn'] === undefined) return false;
+    if (!('reasoningLevel' in value) || value['reasoningLevel'] === undefined) return false;
+    if (!('reasoningScoreBasisPoints' in value) || value['reasoningScoreBasisPoints'] === undefined) return false;
+    if (!('speedLevel' in value) || value['speedLevel'] === undefined) return false;
+    if (!('speedScoreBasisPoints' in value) || value['speedScoreBasisPoints'] === undefined) return false;
+    if (!('priceLevel' in value) || value['priceLevel'] === undefined) return false;
+    if (!('presentationMetricsUpdatedAt' in value) || value['presentationMetricsUpdatedAt'] === undefined) return false;
     if (!('contextWindow' in value) || value['contextWindow'] === undefined) return false;
     if (!('maxOutputTokens' in value) || value['maxOutputTokens'] === undefined) return false;
     if (!('provider' in value) || value['provider'] === undefined) return false;
@@ -294,6 +396,7 @@ export function instanceOfPublicModelResponseDto(value: object): value is Public
     if (!('supportsFunctionCalling' in value) || value['supportsFunctionCalling'] === undefined) return false;
     if (!('supportsVision' in value) || value['supportsVision'] === undefined) return false;
     if (!('supportsStreaming' in value) || value['supportsStreaming'] === undefined) return false;
+    if (!('supportedServerBindingModes' in value) || value['supportedServerBindingModes'] === undefined) return false;
     if (!('billingMode' in value) || value['billingMode'] === undefined) return false;
     if (!('pricing' in value) || value['pricing'] === undefined) return false;
     return true;
@@ -312,7 +415,14 @@ export function PublicModelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
         'id': json['id'],
         'slug': json['slug'],
         'displayName': json['display_name'],
-        'notes': json['notes'],
+        'descriptionRu': json['description_ru'],
+        'descriptionEn': json['description_en'],
+        'reasoningLevel': json['reasoning_level'],
+        'reasoningScoreBasisPoints': json['reasoning_score_basis_points'],
+        'speedLevel': json['speed_level'],
+        'speedScoreBasisPoints': json['speed_score_basis_points'],
+        'priceLevel': json['price_level'],
+        'presentationMetricsUpdatedAt': (json['presentation_metrics_updated_at'] == null ? null : new Date(json['presentation_metrics_updated_at'])),
         'contextWindow': json['context_window'],
         'maxOutputTokens': json['max_output_tokens'],
         'provider': json['provider'],
@@ -338,6 +448,7 @@ export function PublicModelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
         'supportsFunctionCalling': json['supports_function_calling'],
         'supportsVision': json['supports_vision'],
         'supportsStreaming': json['supports_streaming'],
+        'supportedServerBindingModes': json['supported_server_binding_modes'],
         'billingMode': json['billing_mode'],
         'pricing': ModelPricingDtoFromJSON(json['pricing']),
     };
@@ -357,7 +468,14 @@ export function PublicModelResponseDtoToJSONTyped(value?: PublicModelResponseDto
         'id': value['id'],
         'slug': value['slug'],
         'display_name': value['displayName'],
-        'notes': value['notes'],
+        'description_ru': value['descriptionRu'],
+        'description_en': value['descriptionEn'],
+        'reasoning_level': value['reasoningLevel'],
+        'reasoning_score_basis_points': value['reasoningScoreBasisPoints'],
+        'speed_level': value['speedLevel'],
+        'speed_score_basis_points': value['speedScoreBasisPoints'],
+        'price_level': value['priceLevel'],
+        'presentation_metrics_updated_at': (value['presentationMetricsUpdatedAt'] == null ? null : (value['presentationMetricsUpdatedAt'] as any).toISOString()),
         'context_window': value['contextWindow'],
         'max_output_tokens': value['maxOutputTokens'],
         'provider': value['provider'],
@@ -383,6 +501,7 @@ export function PublicModelResponseDtoToJSONTyped(value?: PublicModelResponseDto
         'supports_function_calling': value['supportsFunctionCalling'],
         'supports_vision': value['supportsVision'],
         'supports_streaming': value['supportsStreaming'],
+        'supported_server_binding_modes': value['supportedServerBindingModes'],
         'billing_mode': value['billingMode'],
         'pricing': ModelPricingDtoToJSON(value['pricing']),
     };

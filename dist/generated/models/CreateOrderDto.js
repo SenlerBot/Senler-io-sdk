@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrderDtoPeriodEnum = exports.CreateOrderDtoOrderTypeEnum = void 0;
+exports.CreateOrderDtoOrderTypeEnum = void 0;
 exports.instanceOfCreateOrderDto = instanceOfCreateOrderDto;
 exports.CreateOrderDtoFromJSON = CreateOrderDtoFromJSON;
 exports.CreateOrderDtoFromJSONTyped = CreateOrderDtoFromJSONTyped;
@@ -24,16 +24,8 @@ exports.CreateOrderDtoToJSONTyped = CreateOrderDtoToJSONTyped;
  */
 exports.CreateOrderDtoOrderTypeEnum = {
     Topup: 'topup',
-    Tariff: 'tariff',
     Credits: 'credits',
     BillingInvoice: 'billing_invoice'
-};
-/**
- * @export
- */
-exports.CreateOrderDtoPeriodEnum = {
-    Monthly: 'monthly',
-    Yearly: 'yearly'
 };
 /**
  * Check if a given object implements the CreateOrderDto interface.
@@ -55,8 +47,6 @@ function CreateOrderDtoFromJSONTyped(json, ignoreDiscriminator) {
         'paySystemId': json['pay_system_id'],
         'orderType': json['order_type'] == null ? undefined : json['order_type'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
-        'tariffId': json['tariff_id'] == null ? undefined : json['tariff_id'],
-        'period': json['period'] == null ? undefined : json['period'],
         'packageId': json['package_id'] == null ? undefined : json['package_id'],
         'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
     };
@@ -73,8 +63,6 @@ function CreateOrderDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'pay_system_id': value['paySystemId'],
         'order_type': value['orderType'],
         'use_balance': value['useBalance'],
-        'tariff_id': value['tariffId'],
-        'period': value['period'],
         'package_id': value['packageId'],
         'billing_invoice_id': value['billingInvoiceId'],
     };

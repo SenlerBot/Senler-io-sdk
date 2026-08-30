@@ -22,6 +22,12 @@ export interface EventMessageDto {
      */
     content: string;
     /**
+     *
+     * @type {string}
+     * @memberof EventMessageDto
+     */
+    contentFormat: EventMessageDtoContentFormatEnum;
+    /**
      * AI ( assistant )
      * @type {string}
      * @memberof EventMessageDto
@@ -46,6 +52,14 @@ export interface EventMessageDto {
      */
     htmlContent?: string;
 }
+/**
+ * @export
+ */
+export declare const EventMessageDtoContentFormatEnum: {
+    readonly PlainText: "plain_text";
+    readonly Markdown: "markdown";
+};
+export type EventMessageDtoContentFormatEnum = typeof EventMessageDtoContentFormatEnum[keyof typeof EventMessageDtoContentFormatEnum];
 /**
  * Check if a given object implements the EventMessageDto interface.
  */

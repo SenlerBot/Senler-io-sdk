@@ -22,6 +22,12 @@ export interface AutomationTableFilterDto {
      */
     columnIndex: number;
     /**
+     * . , column_index. , .
+     * @type {string}
+     * @memberof AutomationTableFilterDto
+     */
+    columnHeader?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationTableFilterDto

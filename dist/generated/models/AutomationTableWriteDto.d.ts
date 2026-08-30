@@ -22,6 +22,12 @@ export interface AutomationTableWriteDto {
      */
     columnIndex: number;
     /**
+     * . , column_index. , .
+     * @type {string}
+     * @memberof AutomationTableWriteDto
+     */
+    columnHeader?: string;
+    /**
      * . , literal.
      * @type {string}
      * @memberof AutomationTableWriteDto

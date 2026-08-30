@@ -100,8 +100,6 @@ function instanceOfRolePermissionsDto(value) {
         return false;
     if (!('canViewEvents' in value) || value['canViewEvents'] === undefined)
         return false;
-    if (!('canManageEvents' in value) || value['canManageEvents'] === undefined)
-        return false;
     if (!('canViewAudit' in value) || value['canViewAudit'] === undefined)
         return false;
     if (!('canViewProcesses' in value) || value['canViewProcesses'] === undefined)
@@ -175,7 +173,6 @@ function RolePermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canViewMetrics': json['can_view_metrics'],
         'canManageMetrics': json['can_manage_metrics'],
         'canViewEvents': json['can_view_events'],
-        'canManageEvents': json['can_manage_events'],
         'canViewAudit': json['can_view_audit'],
         'canViewProcesses': json['can_view_processes'],
         'canManageProcesses': json['can_manage_processes'],
@@ -237,7 +234,6 @@ function RolePermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_view_metrics': value['canViewMetrics'],
         'can_manage_metrics': value['canManageMetrics'],
         'can_view_events': value['canViewEvents'],
-        'can_manage_events': value['canManageEvents'],
         'can_view_audit': value['canViewAudit'],
         'can_view_processes': value['canViewProcesses'],
         'can_manage_processes': value['canManageProcesses'],

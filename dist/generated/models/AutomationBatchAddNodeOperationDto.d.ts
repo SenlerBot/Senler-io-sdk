@@ -68,6 +68,7 @@ export declare const AutomationBatchAddNodeOperationDtoNodeTypeEnum: {
     readonly TriggerStart: "trigger.start";
     readonly TriggerIncomingMessage: "trigger.incoming_message";
     readonly TriggerSegmentEntered: "trigger.segment_entered";
+    readonly TriggerEvent: "trigger.event";
     readonly ConditionVariable: "condition.variable";
     readonly ConditionDateTime: "condition.date_time";
     readonly ConditionSegment: "condition.segment";

@@ -35,10 +35,10 @@ export interface CreateAutomationDto {
     type: CreateAutomationDtoTypeEnum;
     /**
      * , . .
-     * @type {Array<string>}
+     * @type {Set<string>}
      * @memberof CreateAutomationDto
      */
-    channelTypes: Array<CreateAutomationDtoChannelTypesEnum>;
+    channelTypes: Set<CreateAutomationDtoChannelTypesEnum>;
 }
 /**
  * @export

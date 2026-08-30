@@ -18,6 +18,7 @@ exports.ProjectListItemDtoFromJSON = ProjectListItemDtoFromJSON;
 exports.ProjectListItemDtoFromJSONTyped = ProjectListItemDtoFromJSONTyped;
 exports.ProjectListItemDtoToJSON = ProjectListItemDtoToJSON;
 exports.ProjectListItemDtoToJSONTyped = ProjectListItemDtoToJSONTyped;
+const PermissionsDto_1 = require("./PermissionsDto");
 const ProjectRole_1 = require("./ProjectRole");
 const ProjectResponseDto_1 = require("./ProjectResponseDto");
 /**
@@ -25,6 +26,8 @@ const ProjectResponseDto_1 = require("./ProjectResponseDto");
  */
 function instanceOfProjectListItemDto(value) {
     if (!('project' in value) || value['project'] === undefined)
+        return false;
+    if (!('permissions' in value) || value['permissions'] === undefined)
         return false;
     return true;
 }
@@ -38,6 +41,7 @@ function ProjectListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'project': (0, ProjectResponseDto_1.ProjectResponseDtoFromJSON)(json['project']),
         'userRole': json['userRole'] == null ? undefined : (0, ProjectRole_1.ProjectRoleFromJSON)(json['userRole']),
+        'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
     };
 }
 function ProjectListItemDtoToJSON(json) {
@@ -50,5 +54,6 @@ function ProjectListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'project': (0, ProjectResponseDto_1.ProjectResponseDtoToJSON)(value['project']),
         'userRole': (0, ProjectRole_1.ProjectRoleToJSON)(value['userRole']),
+        'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
     };
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
+import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto } from '../models/index';
 export interface ArchiveImportsRequest {
     projectId: string;
     idempotencyKey: string;
@@ -54,15 +54,6 @@ export interface FilesUploadRequest {
     title?: string;
     locale?: FilesUploadLocaleEnum;
     imageRecognitionMode?: FilesUploadImageRecognitionModeEnum;
-}
-export interface FilesUploadArchiveRequest {
-    projectId: string;
-    file: Blob;
-    acceptLanguage?: FilesUploadArchiveAcceptLanguageEnum;
-    locale?: FilesUploadArchiveLocaleEnum;
-    folderId?: string | null;
-    duplicateResolution?: FilesUploadArchiveDuplicateResolutionEnum;
-    imageRecognitionMode?: FilesUploadArchiveImageRecognitionModeEnum;
 }
 export interface FoldersRequest {
     createKnowledgeFolderDto: CreateKnowledgeFolderDto;
@@ -117,6 +108,7 @@ export interface GetSearchRequest {
     query: string;
     folderId?: string | null;
     resourceType?: GetSearchResourceTypeEnum;
+    searchMode?: GetSearchSearchModeEnum;
     limit?: number;
     page?: number;
     acceptLanguage?: GetSearchAcceptLanguageEnum;
@@ -241,18 +233,6 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     filesUpload(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * ZIP- 500 , .
-     * ZIP-
-     * @deprecated
-     */
-    filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>>;
-    /**
-     * ZIP- 500 , .
-     * ZIP-
-     * @deprecated
-     */
-    filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto>;
-    /**
      * .
      *
      */
@@ -373,12 +353,12 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     knowledgeBaseGetFiles(requestParameters: KnowledgeBaseGetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
-     * .
+     * . JSON API MCP ; CSV/XLSX .
      *
      */
     tablesRaw(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>>;
     /**
-     * .
+     * . JSON API MCP ; CSV/XLSX .
      *
      */
     tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
@@ -545,41 +525,6 @@ export type FilesUploadImageRecognitionModeEnum = typeof FilesUploadImageRecogni
 /**
  * @export
  */
-export declare const FilesUploadArchiveAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type FilesUploadArchiveAcceptLanguageEnum = typeof FilesUploadArchiveAcceptLanguageEnum[keyof typeof FilesUploadArchiveAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const FilesUploadArchiveLocaleEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type FilesUploadArchiveLocaleEnum = typeof FilesUploadArchiveLocaleEnum[keyof typeof FilesUploadArchiveLocaleEnum];
-/**
- * @export
- */
-export declare const FilesUploadArchiveDuplicateResolutionEnum: {
-    readonly Ask: "ask";
-    readonly Replace: "replace";
-    readonly Rename: "rename";
-};
-export type FilesUploadArchiveDuplicateResolutionEnum = typeof FilesUploadArchiveDuplicateResolutionEnum[keyof typeof FilesUploadArchiveDuplicateResolutionEnum];
-/**
- * @export
- */
-export declare const FilesUploadArchiveImageRecognitionModeEnum: {
-    readonly None: "none";
-    readonly WithoutMarkdownDescription: "without_markdown_description";
-    readonly Unrecognized: "unrecognized";
-    readonly All: "all";
-};
-export type FilesUploadArchiveImageRecognitionModeEnum = typeof FilesUploadArchiveImageRecognitionModeEnum[keyof typeof FilesUploadArchiveImageRecognitionModeEnum];
-/**
- * @export
- */
 export declare const FoldersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -677,6 +622,14 @@ export declare const GetSearchResourceTypeEnum: {
     readonly Table: "table";
 };
 export type GetSearchResourceTypeEnum = typeof GetSearchResourceTypeEnum[keyof typeof GetSearchResourceTypeEnum];
+/**
+ * @export
+ */
+export declare const GetSearchSearchModeEnum: {
+    readonly Name: "name";
+    readonly Content: "content";
+};
+export type GetSearchSearchModeEnum = typeof GetSearchSearchModeEnum[keyof typeof GetSearchSearchModeEnum];
 /**
  * @export
  */

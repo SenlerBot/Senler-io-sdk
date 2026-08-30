@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditUsageSummaryDto, CreditsBuyDto, CreditsCheckResponseDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectSubscriptionResponseDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SubscriptionCatalogResponseDto, SubscriptionChangeConfirmDto, SubscriptionChangeConfirmResponseDto, SubscriptionChangePreviewResponseDto, SubscriptionRenewalConfirmDto, SubscriptionRenewalPreviewResponseDto, SuccessResponseDto, TariffBuyDto, TariffCheckResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
+import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditUsageSummaryDto, CreditsBuyDto, CreditsCheckResponseDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectSubscriptionResponseDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SubscriptionCatalogResponseDto, SubscriptionChangeConfirmDto, SubscriptionChangeConfirmResponseDto, SubscriptionChangePreviewResponseDto, SubscriptionRenewalConfirmDto, SubscriptionRenewalPreviewResponseDto, SuccessResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
 export interface DeleteProjectsSubscriptionRenewalRequest {
     projectId: string;
     acceptLanguage?: DeleteProjectsSubscriptionRenewalAcceptLanguageEnum;
@@ -19,10 +19,6 @@ export interface DeleteProjectsSubscriptionScheduledChangesRequest {
     projectId: string;
     itemKind: string;
     acceptLanguage?: DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum;
-}
-export interface DeleteProjectsTariffNextRequest {
-    projectId: string;
-    acceptLanguage?: DeleteProjectsTariffNextAcceptLanguageEnum;
 }
 export interface GetCreditTransactionsDetailsRequest {
     transactionId: string;
@@ -97,13 +93,6 @@ export interface GetProjectsSubscriptionRenewalPreviewRequest {
     useBalance?: boolean;
     acceptLanguage?: GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum;
 }
-export interface GetProjectsTariffCheckRequest {
-    projectId: string;
-    tariffId: string;
-    period: GetProjectsTariffCheckPeriodEnum;
-    useBalance?: boolean;
-    acceptLanguage?: GetProjectsTariffCheckAcceptLanguageEnum;
-}
 export interface GetProjectsTariffsRequest {
     projectId: string;
     acceptLanguage?: GetProjectsTariffsAcceptLanguageEnum;
@@ -166,12 +155,6 @@ export interface ProjectsSubscriptionRenewRequest {
     subscriptionRenewalConfirmDto: SubscriptionRenewalConfirmDto;
     acceptLanguage?: ProjectsSubscriptionRenewAcceptLanguageEnum;
 }
-export interface ProjectsTariffBuyRequest {
-    projectId: string;
-    idempotencyKey: string;
-    tariffBuyDto: TariffBuyDto;
-    acceptLanguage?: ProjectsTariffBuyAcceptLanguageEnum;
-}
 export interface UpdateProjectsAutoPurchaseRequest {
     projectId: string;
     updateAutoPurchaseDto: UpdateAutoPurchaseDto;
@@ -201,18 +184,6 @@ export declare class BillingApi extends runtime.BaseAPI {
      *
      */
     deleteProjectsSubscriptionScheduledChanges(requestParameters: DeleteProjectsSubscriptionScheduledChangesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
-    /**
-     * . DELETE subscription/scheduled-changes/base_tariff.
-     * []
-     * @deprecated
-     */
-    deleteProjectsTariffNextRaw(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
-    /**
-     * . DELETE subscription/scheduled-changes/base_tariff.
-     * []
-     * @deprecated
-     */
-    deleteProjectsTariffNext(requestParameters: DeleteProjectsTariffNextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
      * : .
      *
@@ -334,18 +305,6 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getProjectsSubscriptionRenewalPreview(requestParameters: GetProjectsSubscriptionRenewalPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionRenewalPreviewResponseDto>;
     /**
-     * . GET subscription/preview.
-     * []
-     * @deprecated
-     */
-    getProjectsTariffCheckRaw(requestParameters: GetProjectsTariffCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffCheckResponseDto>>;
-    /**
-     * . GET subscription/preview.
-     * []
-     * @deprecated
-     */
-    getProjectsTariffCheck(requestParameters: GetProjectsTariffCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffCheckResponseDto>;
-    /**
      * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Trial .
      *
      */
@@ -446,18 +405,6 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     projectsSubscriptionRenew(requestParameters: ProjectsSubscriptionRenewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangeConfirmResponseDto>;
     /**
-     * . .
-     * [] /
-     * @deprecated
-     */
-    projectsTariffBuyRaw(requestParameters: ProjectsTariffBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
-    /**
-     * . .
-     * [] /
-     * @deprecated
-     */
-    projectsTariffBuy(requestParameters: ProjectsTariffBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
-    /**
      * : . package_id ( GET /api/credit-packages).
      *
      */
@@ -484,14 +431,6 @@ export declare const DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnu
     readonly En: "en";
 };
 export type DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum = typeof DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum[keyof typeof DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const DeleteProjectsTariffNextAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeleteProjectsTariffNextAcceptLanguageEnum = typeof DeleteProjectsTariffNextAcceptLanguageEnum[keyof typeof DeleteProjectsTariffNextAcceptLanguageEnum];
 /**
  * @export
  */
@@ -646,22 +585,6 @@ export type GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = typeof Get
 /**
  * @export
  */
-export declare const GetProjectsTariffCheckPeriodEnum: {
-    readonly Monthly: "monthly";
-    readonly Yearly: "yearly";
-};
-export type GetProjectsTariffCheckPeriodEnum = typeof GetProjectsTariffCheckPeriodEnum[keyof typeof GetProjectsTariffCheckPeriodEnum];
-/**
- * @export
- */
-export declare const GetProjectsTariffCheckAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProjectsTariffCheckAcceptLanguageEnum = typeof GetProjectsTariffCheckAcceptLanguageEnum[keyof typeof GetProjectsTariffCheckAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const GetProjectsTariffsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -771,14 +694,6 @@ export declare const ProjectsSubscriptionRenewAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ProjectsSubscriptionRenewAcceptLanguageEnum = typeof ProjectsSubscriptionRenewAcceptLanguageEnum[keyof typeof ProjectsSubscriptionRenewAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const ProjectsTariffBuyAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type ProjectsTariffBuyAcceptLanguageEnum = typeof ProjectsTariffBuyAcceptLanguageEnum[keyof typeof ProjectsTariffBuyAcceptLanguageEnum];
 /**
  * @export
  */

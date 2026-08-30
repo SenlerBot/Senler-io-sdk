@@ -19,6 +19,7 @@ exports.EventCostsCabinetDtoFromJSON = EventCostsCabinetDtoFromJSON;
 exports.EventCostsCabinetDtoFromJSONTyped = EventCostsCabinetDtoFromJSONTyped;
 exports.EventCostsCabinetDtoToJSON = EventCostsCabinetDtoToJSON;
 exports.EventCostsCabinetDtoToJSONTyped = EventCostsCabinetDtoToJSONTyped;
+const CabinetAiCostSummaryDto_1 = require("./CabinetAiCostSummaryDto");
 const ImageGenerationCostCabinetDto_1 = require("./ImageGenerationCostCabinetDto");
 const MetricsExtractionCostCabinetDto_1 = require("./MetricsExtractionCostCabinetDto");
 const TextCostCabinetDto_1 = require("./TextCostCabinetDto");
@@ -54,6 +55,7 @@ function EventCostsCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
         'metricsExtraction': json['metrics_extraction'] == null ? undefined : (0, MetricsExtractionCostCabinetDto_1.MetricsExtractionCostCabinetDtoFromJSON)(json['metrics_extraction']),
         'billingMode': json['billing_mode'] == null ? undefined : json['billing_mode'],
         'clientCurrency': json['client_currency'] == null ? undefined : json['client_currency'],
+        'summary': json['summary'] == null ? undefined : (0, CabinetAiCostSummaryDto_1.CabinetAiCostSummaryDtoFromJSON)(json['summary']),
     };
 }
 function EventCostsCabinetDtoToJSON(json) {
@@ -72,5 +74,6 @@ function EventCostsCabinetDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'metrics_extraction': (0, MetricsExtractionCostCabinetDto_1.MetricsExtractionCostCabinetDtoToJSON)(value['metricsExtraction']),
         'billing_mode': value['billingMode'],
         'client_currency': value['clientCurrency'],
+        'summary': (0, CabinetAiCostSummaryDto_1.CabinetAiCostSummaryDtoToJSON)(value['summary']),
     };
 }

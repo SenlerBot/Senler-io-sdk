@@ -19,6 +19,7 @@ exports.AppWebhookDeliveryTaskResponseDtoFromJSON = AppWebhookDeliveryTaskRespon
 exports.AppWebhookDeliveryTaskResponseDtoFromJSONTyped = AppWebhookDeliveryTaskResponseDtoFromJSONTyped;
 exports.AppWebhookDeliveryTaskResponseDtoToJSON = AppWebhookDeliveryTaskResponseDtoToJSON;
 exports.AppWebhookDeliveryTaskResponseDtoToJSONTyped = AppWebhookDeliveryTaskResponseDtoToJSONTyped;
+const AppWebhookDeliveryIncidentDto_1 = require("./AppWebhookDeliveryIncidentDto");
 /**
  * @export
  */
@@ -54,6 +55,8 @@ exports.AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum = {
     Superseded: 'superseded',
     InvalidPayload: 'invalid_payload',
     AcceptedLoss: 'accepted_loss',
+    Reviewed: 'reviewed',
+    Fixed: 'fixed',
     TaskCompleted: 'task_completed',
     DiagnosticCompleted: 'diagnostic_completed',
     ReplayCancelled: 'replay_cancelled',
@@ -88,6 +91,8 @@ function instanceOfAppWebhookDeliveryTaskResponseDto(value) {
     if (!('lastStatusCode' in value) || value['lastStatusCode'] === undefined)
         return false;
     if (!('responseBody' in value) || value['responseBody'] === undefined)
+        return false;
+    if (!('incident' in value) || value['incident'] === undefined)
         return false;
     if (!('payload' in value) || value['payload'] === undefined)
         return false;
@@ -136,6 +141,7 @@ function AppWebhookDeliveryTaskResponseDtoFromJSONTyped(json, ignoreDiscriminato
         'lastError': json['last_error'],
         'lastStatusCode': json['last_status_code'],
         'responseBody': json['response_body'],
+        'incident': (0, AppWebhookDeliveryIncidentDto_1.AppWebhookDeliveryIncidentDtoFromJSON)(json['incident']),
         'payload': json['payload'],
         'replayOfOperationId': json['replay_of_operation_id'],
         'notifyAgent': json['notify_agent'],
@@ -171,6 +177,7 @@ function AppWebhookDeliveryTaskResponseDtoToJSONTyped(value, ignoreDiscriminator
         'last_error': value['lastError'],
         'last_status_code': value['lastStatusCode'],
         'response_body': value['responseBody'],
+        'incident': (0, AppWebhookDeliveryIncidentDto_1.AppWebhookDeliveryIncidentDtoToJSON)(value['incident']),
         'payload': value['payload'],
         'replay_of_operation_id': value['replayOfOperationId'],
         'notify_agent': value['notifyAgent'],

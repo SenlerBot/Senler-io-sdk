@@ -366,7 +366,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * S3- . url .
      *
      */
     async landingAssetsConfirmRaw(requestParameters: LandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>> {
@@ -419,7 +419,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * S3- . url .
      *
      */
     async landingAssetsConfirm(requestParameters: LandingAssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto> {
@@ -428,7 +428,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     async landingAssetsUploadUrlRaw(requestParameters: LandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>> {
@@ -481,7 +481,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     async landingAssetsUploadUrl(requestParameters: LandingAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {

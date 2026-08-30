@@ -260,6 +260,24 @@ export interface DialogListItemDto {
      */
     isTest: boolean;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    testAutomationId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    testAutomationTriggerNodeId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    testAutomationTriggerSessionId?: string;
+    /**
      *
      * @type {number}
      * @memberof DialogListItemDto

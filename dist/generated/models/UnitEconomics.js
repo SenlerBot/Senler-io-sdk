@@ -21,6 +21,7 @@ exports.UnitEconomicsToJSONTyped = UnitEconomicsToJSONTyped;
 const UsagePurposeEconomics_1 = require("./UsagePurposeEconomics");
 const ClientSpending_1 = require("./ClientSpending");
 const CostSectionEconomics_1 = require("./CostSectionEconomics");
+const UsageRevenueCoverage_1 = require("./UsageRevenueCoverage");
 const CurrencyBreakdown_1 = require("./CurrencyBreakdown");
 /**
  * Check if a given object implements the UnitEconomics interface.
@@ -31,6 +32,8 @@ function instanceOfUnitEconomics(value) {
     if (!('client' in value) || value['client'] === undefined)
         return false;
     if (!('usageRevenue' in value) || value['usageRevenue'] === undefined)
+        return false;
+    if (!('revenueCoverage' in value) || value['revenueCoverage'] === undefined)
         return false;
     if (!('marginPercent' in value) || value['marginPercent'] === undefined)
         return false;
@@ -55,6 +58,7 @@ function UnitEconomicsFromJSONTyped(json, ignoreDiscriminator) {
         'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['provider']),
         'client': (0, ClientSpending_1.ClientSpendingFromJSON)(json['client']),
         'usageRevenue': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['usage_revenue']),
+        'revenueCoverage': (0, UsageRevenueCoverage_1.UsageRevenueCoverageFromJSON)(json['revenue_coverage']),
         'marginPercent': json['margin_percent'],
         'usageMarginRub': json['usage_margin_rub'],
         'eventsWithCosts': json['events_with_costs'],
@@ -73,6 +77,7 @@ function UnitEconomicsToJSONTyped(value, ignoreDiscriminator = false) {
         'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['provider']),
         'client': (0, ClientSpending_1.ClientSpendingToJSON)(value['client']),
         'usage_revenue': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['usageRevenue']),
+        'revenue_coverage': (0, UsageRevenueCoverage_1.UsageRevenueCoverageToJSON)(value['revenueCoverage']),
         'margin_percent': value['marginPercent'],
         'usage_margin_rub': value['usageMarginRub'],
         'events_with_costs': value['eventsWithCosts'],

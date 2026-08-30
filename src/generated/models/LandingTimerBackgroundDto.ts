@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface LandingTimerBackgroundDto {
     /**
-     * url.
+     * URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingTimerBackgroundDto
      */

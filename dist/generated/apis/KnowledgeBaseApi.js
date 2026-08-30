@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadArchiveImageRecognitionModeEnum = exports.FilesUploadArchiveDuplicateResolutionEnum = exports.FilesUploadArchiveLocaleEnum = exports.FilesUploadArchiveAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
+exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchSearchModeEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -453,85 +453,6 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async filesUpload(requestParameters, initOverrides) {
         const response = await this.filesUploadRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * ZIP- 500 , .
-     * ZIP-
-     * @deprecated
-     */
-    async filesUploadArchiveRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling filesUploadArchive().');
-        }
-        if (requestParameters['file'] == null) {
-            throw new runtime.RequiredError('file', 'Required parameter "file" was null or undefined when calling filesUploadArchive().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
-        }
-        const consumes = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-        let formParams;
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        }
-        else {
-            formParams = new URLSearchParams();
-        }
-        if (requestParameters['projectId'] != null) {
-            formParams.append('project_id', requestParameters['projectId']);
-        }
-        if (requestParameters['locale'] != null) {
-            formParams.append('locale', requestParameters['locale']);
-        }
-        if (requestParameters['folderId'] != null) {
-            formParams.append('folder_id', requestParameters['folderId']);
-        }
-        if (requestParameters['duplicateResolution'] != null) {
-            formParams.append('duplicate_resolution', requestParameters['duplicateResolution']);
-        }
-        if (requestParameters['imageRecognitionMode'] != null) {
-            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode']);
-        }
-        if (requestParameters['file'] != null) {
-            formParams.append('file', requestParameters['file']);
-        }
-        const response = await this.request({
-            path: `/api/knowledge-base/files/upload-archive`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UploadKnowledgeArchiveResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * ZIP- 500 , .
-     * ZIP-
-     * @deprecated
-     */
-    async filesUploadArchive(requestParameters, initOverrides) {
-        const response = await this.filesUploadArchiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -972,6 +893,9 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         if (requestParameters['resourceType'] != null) {
             queryParameters['resource_type'] = requestParameters['resourceType'];
         }
+        if (requestParameters['searchMode'] != null) {
+            queryParameters['search_mode'] = requestParameters['searchMode'];
+        }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -1129,7 +1053,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . JSON API MCP ; CSV/XLSX .
      *
      */
     async tablesRaw(requestParameters, initOverrides) {
@@ -1163,7 +1087,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeTableResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . JSON API MCP ; CSV/XLSX .
      *
      */
     async tables(requestParameters, initOverrides) {
@@ -1531,37 +1455,6 @@ exports.FilesUploadImageRecognitionModeEnum = {
 /**
  * @export
  */
-exports.FilesUploadArchiveAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.FilesUploadArchiveLocaleEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.FilesUploadArchiveDuplicateResolutionEnum = {
-    Ask: 'ask',
-    Replace: 'replace',
-    Rename: 'rename'
-};
-/**
- * @export
- */
-exports.FilesUploadArchiveImageRecognitionModeEnum = {
-    None: 'none',
-    WithoutMarkdownDescription: 'without_markdown_description',
-    Unrecognized: 'unrecognized',
-    All: 'all'
-};
-/**
- * @export
- */
 exports.FoldersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1646,6 +1539,13 @@ exports.GetSearchResourceTypeEnum = {
     Folder: 'folder',
     File: 'file',
     Table: 'table'
+};
+/**
+ * @export
+ */
+exports.GetSearchSearchModeEnum = {
+    Name: 'name',
+    Content: 'content'
 };
 /**
  * @export

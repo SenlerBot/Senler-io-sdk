@@ -12,6 +12,7 @@
 import type { UsagePurposeEconomics } from './UsagePurposeEconomics';
 import type { ClientSpending } from './ClientSpending';
 import type { CostSectionEconomics } from './CostSectionEconomics';
+import type { UsageRevenueCoverage } from './UsageRevenueCoverage';
 import type { CurrencyBreakdown } from './CurrencyBreakdown';
 /**
  * UnitEconomics.
@@ -37,6 +38,12 @@ export interface UnitEconomics {
      * @memberof UnitEconomics
      */
     usageRevenue: CurrencyBreakdown;
+    /**
+     * usage-
+     * @type {UsageRevenueCoverage}
+     * @memberof UnitEconomics
+     */
+    revenueCoverage: UsageRevenueCoverage;
     /**
      * % = (usage_revenue.total_rub - provider.total_rub) / usage_revenue.total_rub * 100
      * @type {number}

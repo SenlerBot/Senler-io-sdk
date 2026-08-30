@@ -26,6 +26,12 @@ export interface EventMessageDto {
      */
     content: string;
     /**
+     *
+     * @type {string}
+     * @memberof EventMessageDto
+     */
+    contentFormat: EventMessageDtoContentFormatEnum;
+    /**
      * AI ( assistant )
      * @type {string}
      * @memberof EventMessageDto
@@ -51,11 +57,23 @@ export interface EventMessageDto {
     htmlContent?: string;
 }
 
+
+/**
+ * @export
+ */
+export const EventMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+} as const;
+export type EventMessageDtoContentFormatEnum = typeof EventMessageDtoContentFormatEnum[keyof typeof EventMessageDtoContentFormatEnum];
+
+
 /**
  * Check if a given object implements the EventMessageDto interface.
  */
 export function instanceOfEventMessageDto(value: object): value is EventMessageDto {
     if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('contentFormat' in value) || value['contentFormat'] === undefined) return false;
     return true;
 }
 
@@ -70,6 +88,7 @@ export function EventMessageDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
 
         'content': json['content'],
+        'contentFormat': json['content_format'],
         'model': json['model'] == null ? undefined : json['model'],
         'subject': json['subject'] == null ? undefined : json['subject'],
         'rawText': json['raw_text'] == null ? undefined : json['raw_text'],
@@ -89,6 +108,7 @@ export function EventMessageDtoToJSONTyped(value?: EventMessageDto | null, ignor
     return {
 
         'content': value['content'],
+        'content_format': value['contentFormat'],
         'model': value['model'],
         'subject': value['subject'],
         'raw_text': value['rawText'],

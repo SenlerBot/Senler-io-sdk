@@ -55,6 +55,12 @@ export interface UpdateWidgetSettingsDto {
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
     /**
+     * host-
+     * @type {boolean}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    offerCreditPurchase?: boolean;
+    /**
      * MCP
      * @type {WidgetExternalAiSettingsDto}
      * @memberof UpdateWidgetSettingsDto

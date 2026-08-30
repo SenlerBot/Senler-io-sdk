@@ -22,13 +22,13 @@ export interface LandingImageContentDto {
      */
     title?: string;
     /**
-     * desktop img.
+     * URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingImageContentDto
      */
     desktopImg?: string;
     /**
-     * mobile img.
+     * URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingImageContentDto
      */

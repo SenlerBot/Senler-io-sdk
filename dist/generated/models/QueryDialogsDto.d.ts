@@ -70,6 +70,24 @@ export interface QueryDialogsDto {
      */
     agentId?: Array<string>;
     /**
+     * ID
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAutomationId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAutomationTriggerNodeId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAutomationTriggerSessionId?: string;
+    /**
      * ID (ObjectId, , 20 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto

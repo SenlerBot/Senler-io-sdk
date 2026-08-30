@@ -27,12 +27,6 @@ export interface UpdateAgentModelDto {
      * @memberof UpdateAgentModelDto
      */
     confirmModelChange?: boolean;
-    /**
-     * Temperature AI (0.0 - 2.0). null = (0.7)
-     * @type {number}
-     * @memberof UpdateAgentModelDto
-     */
-    temperature?: number | null;
 }
 /**
  * Check if a given object implements the UpdateAgentModelDto interface.

@@ -39,10 +39,10 @@ export interface CreateAutomationDto {
     type: CreateAutomationDtoTypeEnum;
     /**
      * , . .
-     * @type {Array<string>}
+     * @type {Set<string>}
      * @memberof CreateAutomationDto
      */
-    channelTypes: Array<CreateAutomationDtoChannelTypesEnum>;
+    channelTypes: Set<CreateAutomationDtoChannelTypesEnum>;
 }
 
 
@@ -94,7 +94,7 @@ export function CreateAutomationDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'type': json['type'],
-        'channelTypes': json['channel_types'],
+        'channelTypes': new Set(json['channel_types']),
     };
 }
 
@@ -112,6 +112,6 @@ export function CreateAutomationDtoToJSONTyped(value?: CreateAutomationDto | nul
         'name': value['name'],
         'description': value['description'],
         'type': value['type'],
-        'channel_types': value['channelTypes'],
+        'channel_types': Array.from(value['channelTypes'] as Set<any>),
     };
 }

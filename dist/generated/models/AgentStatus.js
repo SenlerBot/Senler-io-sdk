@@ -20,7 +20,7 @@ exports.AgentStatusFromJSONTyped = AgentStatusFromJSONTyped;
 exports.AgentStatusToJSON = AgentStatusToJSON;
 exports.AgentStatusToJSONTyped = AgentStatusToJSONTyped;
 /**
- *
+ * / . ; is_active.
  * @export
  */
 exports.AgentStatus = {

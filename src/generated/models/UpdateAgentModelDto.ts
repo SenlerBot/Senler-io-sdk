@@ -31,12 +31,6 @@ export interface UpdateAgentModelDto {
      * @memberof UpdateAgentModelDto
      */
     confirmModelChange?: boolean;
-    /**
-     * Temperature AI (0.0 - 2.0). null = (0.7)
-     * @type {number}
-     * @memberof UpdateAgentModelDto
-     */
-    temperature?: number | null;
 }
 
 /**
@@ -58,7 +52,6 @@ export function UpdateAgentModelDtoFromJSONTyped(json: any, ignoreDiscriminator:
 
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'confirmModelChange': json['confirm_model_change'] == null ? undefined : json['confirm_model_change'],
-        'temperature': json['temperature'] == null ? undefined : json['temperature'],
     };
 }
 
@@ -75,6 +68,5 @@ export function UpdateAgentModelDtoToJSONTyped(value?: UpdateAgentModelDto | nul
 
         'selected_model_id': value['selectedModelId'],
         'confirm_model_change': value['confirmModelChange'],
-        'temperature': value['temperature'],
     };
 }

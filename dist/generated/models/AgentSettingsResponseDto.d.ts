@@ -110,7 +110,7 @@ export interface AgentSettingsResponseDto {
      */
     appOrigin?: AgentAppOriginDto | null;
     /**
-     *
+     * . .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -127,12 +127,6 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     selectedModel?: AgentSelectedModelSummaryDto | null;
-    /**
-     * Temperature AI (0.0 - 2.0). null = (0.7)
-     * @type {number}
-     * @memberof AgentSettingsResponseDto
-     */
-    temperature?: number | null;
     /**
      *
      * @type {boolean}
@@ -206,7 +200,7 @@ export interface AgentSettingsResponseDto {
      */
     autoAssignmentRole: AgentSettingsResponseDtoAutoAssignmentRoleEnum;
     /**
-     *
+     * / . ; is_active.
      * @type {AgentStatus}
      * @memberof AgentSettingsResponseDto
      */

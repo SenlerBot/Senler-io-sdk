@@ -254,12 +254,6 @@ export interface PermissionsDto {
      * @type {boolean}
      * @memberof PermissionsDto
      */
-    canManageEvents: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PermissionsDto
-     */
     canViewAudit: boolean;
     /**
      *

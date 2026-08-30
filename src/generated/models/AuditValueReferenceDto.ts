@@ -64,6 +64,7 @@ export interface AuditValueReferenceDto {
 export const AuditValueReferenceDtoEntityTypeEnum = {
     AiModel: 'ai_model',
     Agent: 'agent',
+    Automation: 'automation',
     App: 'app',
     Channel: 'channel',
     CreditPackage: 'credit_package',

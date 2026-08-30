@@ -104,12 +104,6 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     selectedModel?: AgentSelectedModelSummaryDto | null;
     /**
-     * Temperature AI (0.0 - 2.0). null = (0.7)
-     * @type {number}
-     * @memberof AgentDraftSettingsStateResponseDto
-     */
-    temperature?: number | null;
-    /**
      *
      * @type {boolean}
      * @memberof AgentDraftSettingsStateResponseDto

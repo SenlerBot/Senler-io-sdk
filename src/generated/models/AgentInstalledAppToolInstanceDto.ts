@@ -34,6 +34,12 @@ export interface AgentInstalledAppToolInstanceDto {
      */
     id: string;
     /**
+     * ,
+     * @type {string}
+     * @memberof AgentInstalledAppToolInstanceDto
+     */
+    runtimeName: string;
+    /**
      *
      * @type {string}
      * @memberof AgentInstalledAppToolInstanceDto
@@ -87,6 +93,7 @@ export type AgentInstalledAppToolInstanceDtoStatusEnum = typeof AgentInstalledAp
  */
 export function instanceOfAgentInstalledAppToolInstanceDto(value: object): value is AgentInstalledAppToolInstanceDto {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('runtimeName' in value) || value['runtimeName'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('_configuration' in value) || value['_configuration'] === undefined) return false;
     if (!('configuredParameters' in value) || value['configuredParameters'] === undefined) return false;
@@ -107,6 +114,7 @@ export function AgentInstalledAppToolInstanceDtoFromJSONTyped(json: any, ignoreD
     return {
 
         'id': json['id'],
+        'runtimeName': json['runtime_name'],
         'title': json['title'],
         '_configuration': json['configuration'],
         'configuredParameters': ((json['configured_parameters'] as Array<any>).map(AgentInstalledAppToolConfiguredParameterDtoFromJSON)),
@@ -128,6 +136,7 @@ export function AgentInstalledAppToolInstanceDtoToJSONTyped(value?: AgentInstall
     return {
 
         'id': value['id'],
+        'runtime_name': value['runtimeName'],
         'title': value['title'],
         'configuration': value['_configuration'],
         'configured_parameters': ((value['configuredParameters'] as Array<any>).map(AgentInstalledAppToolConfiguredParameterDtoToJSON)),

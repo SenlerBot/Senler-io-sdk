@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { CabinetAiCostSummaryDto } from './CabinetAiCostSummaryDto';
 import type { ImageGenerationCostCabinetDto } from './ImageGenerationCostCabinetDto';
 import type { MetricsExtractionCostCabinetDto } from './MetricsExtractionCostCabinetDto';
 import type { TextCostCabinetDto } from './TextCostCabinetDto';
@@ -69,6 +70,12 @@ export interface EventCostsCabinetDto {
      * @memberof EventCostsCabinetDto
      */
     clientCurrency?: string;
+    /**
+     * , AI-
+     * @type {CabinetAiCostSummaryDto}
+     * @memberof EventCostsCabinetDto
+     */
+    summary?: CabinetAiCostSummaryDto;
 }
 /**
  * @export

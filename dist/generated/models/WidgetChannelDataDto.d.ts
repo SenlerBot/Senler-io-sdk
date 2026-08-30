@@ -19,6 +19,12 @@ import type { WidgetThemeDto } from './WidgetThemeDto';
  */
 export interface WidgetChannelDataDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof WidgetChannelDataDto
+     */
+    offerCreditPurchase?: boolean;
+    /**
      * MCP
      * @type {WidgetExternalAiSettingsDto}
      * @memberof WidgetChannelDataDto

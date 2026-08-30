@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PermissionsDto } from './PermissionsDto';
 import type { ProjectRole } from './ProjectRole';
 import type { ProjectResponseDto } from './ProjectResponseDto';
 /**
@@ -29,6 +30,12 @@ export interface ProjectListItemDto {
      * @memberof ProjectListItemDto
      */
     userRole?: ProjectRole;
+    /**
+     *
+     * @type {PermissionsDto}
+     * @memberof ProjectListItemDto
+     */
+    permissions: PermissionsDto;
 }
 /**
  * Check if a given object implements the ProjectListItemDto interface.

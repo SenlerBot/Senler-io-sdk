@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
+import {
+    KnowledgeBaseSourceBindingDtoFromJSON,
+    KnowledgeBaseSourceBindingDtoFromJSONTyped,
+    KnowledgeBaseSourceBindingDtoToJSON,
+    KnowledgeBaseSourceBindingDtoToJSONTyped,
+} from './KnowledgeBaseSourceBindingDto';
+
 /**
  * PatchAgentInstructionDto.
  * @export
@@ -37,6 +45,18 @@ export interface PatchAgentInstructionDto {
      * @memberof PatchAgentInstructionDto
      */
     instruction?: string;
+    /**
+     * . .
+     * @type {Array<KnowledgeBaseSourceBindingDto>}
+     * @memberof PatchAgentInstructionDto
+     */
+    knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
+    /**
+     * . .
+     * @type {Array<string>}
+     * @memberof PatchAgentInstructionDto
+     */
+    knowledgeBasePermissions?: Array<PatchAgentInstructionDtoKnowledgeBasePermissionsEnum>;
     /**
      * append_if_missing. , .
      * @type {string}
@@ -68,6 +88,30 @@ export const PatchAgentInstructionDtoOperationEnum = {
 } as const;
 export type PatchAgentInstructionDtoOperationEnum = typeof PatchAgentInstructionDtoOperationEnum[keyof typeof PatchAgentInstructionDtoOperationEnum];
 
+/**
+ * @export
+ */
+export const PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = {
+    ReadDocuments: 'read_documents',
+    CreateDocuments: 'create_documents',
+    UploadDocuments: 'upload_documents',
+    EditDocuments: 'edit_documents',
+    DeleteDocuments: 'delete_documents',
+    ReadTables: 'read_tables',
+    CreateTables: 'create_tables',
+    ImportCsvXlsx: 'import_csv_xlsx',
+    AddTableRows: 'add_table_rows',
+    EditTables: 'edit_tables',
+    CreateSheets: 'create_sheets',
+    DeleteRows: 'delete_rows',
+    DeleteSheets: 'delete_sheets',
+    DeleteTables: 'delete_tables',
+    ReadImages: 'read_images',
+    UploadImages: 'upload_images',
+    DeleteImages: 'delete_images'
+} as const;
+export type PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = typeof PatchAgentInstructionDtoKnowledgeBasePermissionsEnum[keyof typeof PatchAgentInstructionDtoKnowledgeBasePermissionsEnum];
+
 
 /**
  * Check if a given object implements the PatchAgentInstructionDto interface.
@@ -91,6 +135,8 @@ export function PatchAgentInstructionDtoFromJSONTyped(json: any, ignoreDiscrimin
         'operation': json['operation'],
         'expectedUpdatedAt': json['expected_updated_at'],
         'instruction': json['instruction'] == null ? undefined : json['instruction'],
+        'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : ((json['knowledge_base_sources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoFromJSON)),
+        'knowledgeBasePermissions': json['knowledge_base_permissions'] == null ? undefined : json['knowledge_base_permissions'],
         'content': json['content'] == null ? undefined : json['content'],
         'expectedText': json['expected_text'] == null ? undefined : json['expected_text'],
         'replacement': json['replacement'] == null ? undefined : json['replacement'],
@@ -111,6 +157,8 @@ export function PatchAgentInstructionDtoToJSONTyped(value?: PatchAgentInstructio
         'operation': value['operation'],
         'expected_updated_at': value['expectedUpdatedAt'],
         'instruction': value['instruction'],
+        'knowledge_base_sources': value['knowledgeBaseSources'] == null ? undefined : ((value['knowledgeBaseSources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoToJSON)),
+        'knowledge_base_permissions': value['knowledgeBasePermissions'],
         'content': value['content'],
         'expected_text': value['expectedText'],
         'replacement': value['replacement'],

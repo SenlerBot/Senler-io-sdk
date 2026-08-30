@@ -35,6 +35,7 @@ exports.CustomerCostEstimateDtoBasisEnum = {
     Purchased: 'purchased',
     Mixed: 'mixed',
     Free: 'free',
+    Overage: 'overage',
     Unavailable: 'unavailable',
     NotApplicable: 'not_applicable'
 };

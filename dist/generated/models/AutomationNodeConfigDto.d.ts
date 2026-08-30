@@ -27,6 +27,24 @@ import type { AutomationTableResultFieldDto } from './AutomationTableResultField
  */
 export interface AutomationNodeConfigDto {
     /**
+     * , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    eventType?: AutomationNodeConfigDtoEventTypeEnum;
+    /**
+     * . .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    reactionValues?: Array<string>;
+    /**
+     * : , , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageSender?: AutomationNodeConfigDtoMessageSenderEnum;
+    /**
      * , : , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -273,25 +291,13 @@ export interface AutomationNodeConfigDto {
      */
     tableResultVariableName?: string;
     /**
-     * - . table_result_variable_scope.
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableRowsVariableScope?: AutomationNodeConfigDtoTableRowsVariableScopeEnum;
-    /**
-     * - . row_number .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableRowsVariableName?: string;
-    /**
-     * .
+     * : update , append , upsert , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     tableWriteMode?: AutomationNodeConfigDtoTableWriteModeEnum;
     /**
-     * , .
+     * . - , exactly_one. ; update, upsert .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -698,6 +704,29 @@ export interface AutomationNodeConfigDto {
 /**
  * @export
  */
+export declare const AutomationNodeConfigDtoEventTypeEnum: {
+    readonly MessageCreated: "message_created";
+    readonly ReactionAdded: "reaction_added";
+    readonly ReactionRemoved: "reaction_removed";
+    readonly LikeAdded: "like_added";
+    readonly LikeRemoved: "like_removed";
+    readonly LeadBlacklisted: "lead_blacklisted";
+    readonly SegmentSubscribed: "segment_subscribed";
+};
+export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoMessageSenderEnum: {
+    readonly Any: "any";
+    readonly Lead: "lead";
+    readonly Operator: "operator";
+    readonly Agent: "agent";
+};
+export type AutomationNodeConfigDtoMessageSenderEnum = typeof AutomationNodeConfigDtoMessageSenderEnum[keyof typeof AutomationNodeConfigDtoMessageSenderEnum];
+/**
+ * @export
+ */
 export declare const AutomationNodeConfigDtoRunReentryModeEnum: {
     readonly IgnoreActive: "ignore_active";
     readonly ReplaceActive: "replace_active";
@@ -832,15 +861,6 @@ export declare const AutomationNodeConfigDtoTableResultVariableScopeEnum: {
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
-/**
- * @export
- */
-export declare const AutomationNodeConfigDtoTableRowsVariableScopeEnum: {
-    readonly Run: "run";
-    readonly Lead: "lead";
-    readonly Project: "project";
-};
-export type AutomationNodeConfigDtoTableRowsVariableScopeEnum = typeof AutomationNodeConfigDtoTableRowsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableRowsVariableScopeEnum];
 /**
  * @export
  */

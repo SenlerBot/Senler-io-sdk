@@ -12,7 +12,7 @@ API documentation: https://dev.senler.io
   Pin a version for reproducible installs:
   
   ```bash
-  npm install github:SenlerBot/Senler-io-sdk#v0.1.15
+  npm install github:SenlerBot/Senler-io-sdk#v0.1.16
   ```
   
   
@@ -74,6 +74,40 @@ API documentation: https://dev.senler.io
   
   ```typescript
   client.accessToken = 'new_token';
+  ```
+
+  ## Installed application actions
+
+  The framework-neutral OpenAPI contract and validator are available without NestJS:
+
+  ```typescript
+  import {
+    createSenlerAppActionMetadata,
+    validateAppActionOpenApiDocument,
+  } from '@aisenler/sdk-fetch/app-actions';
+  ```
+
+  NestJS applications can mark an endpoint with a compact decorator. NestJS packages are optional
+  peer dependencies and are loaded only by this subpath:
+
+  ```typescript
+  import { AgentToolConfigurator } from '@aisenler/sdk-fetch/app-actions/nest';
+
+  @AgentToolConfigurator({
+    name: 'configure_payment_tool',
+    description: 'Build normalized payment-tool configuration.',
+    response: { status: 201, type: ConfigurePaymentToolResponseDto },
+  })
+  @Post('payment-tool')
+  configurePaymentTool(@Body() input: ConfigurePaymentToolDto) {
+    // project_id remains gateway invocation context and is not part of input.
+  }
+  ```
+
+  Validate a generated OpenAPI document in CI:
+
+  ```bash
+  npx senler-app validate-openapi ./openapi.json
   ```
   
   ## Base URL

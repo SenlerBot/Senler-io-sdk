@@ -117,13 +117,15 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      */
     cancel(requestParameters: CancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
-     * , , .
+     * . .
      *
+     * @deprecated
      */
     copyRaw(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>>;
     /**
-     * , , .
+     * . .
      *
+     * @deprecated
      */
     copy(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**

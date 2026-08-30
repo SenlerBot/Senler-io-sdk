@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AppWebhookDeliveryIncidentDto } from './AppWebhookDeliveryIncidentDto';
 /**
  * AppWebhookDeliveryTaskSummaryResponseDto.
  * @export
@@ -69,6 +70,12 @@ export interface AppWebhookDeliveryTaskSummaryResponseDto {
      * @memberof AppWebhookDeliveryTaskSummaryResponseDto
      */
     lastStatusCode: number | null;
+    /**
+     * incident.
+     * @type {AppWebhookDeliveryIncidentDto}
+     * @memberof AppWebhookDeliveryTaskSummaryResponseDto
+     */
+    incident: AppWebhookDeliveryIncidentDto | null;
     /**
      * event type.
      * @type {string}

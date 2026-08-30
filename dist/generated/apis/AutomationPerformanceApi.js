@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = exports.GetAnalyticsAutomationsAcceptLanguageEnum = exports.GetAnalyticsAutomationsPeriodEnum = exports.AutomationPerformanceApi = void 0;
+exports.GetBillingProjectsAutomationPerformanceAcceptLanguageEnum = exports.GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum = exports.GetAutomationPerformanceAutomationsAcceptLanguageEnum = exports.GetAutomationPerformanceAutomationsPeriodEnum = exports.GetAnalyticsAutomationsAcceptLanguageEnum = exports.GetAnalyticsAutomationsPeriodEnum = exports.AutomationPerformanceApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -103,6 +103,98 @@ class AutomationPerformanceApi extends runtime.BaseAPI {
      */
     async getAnalyticsAutomations(requestParameters, initOverrides) {
         const response = await this.getAnalyticsAutomationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , 24 7 .
+     *
+     */
+    async getAutomationPerformanceAutomationsRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling getAutomationPerformanceAutomations().');
+        }
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError('period', 'Required parameter "period" was null or undefined when calling getAutomationPerformanceAutomations().');
+        }
+        const queryParameters = {};
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automation-performance/automations/{automationId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationUsageResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , 24 7 .
+     *
+     */
+    async getAutomationPerformanceAutomations(requestParameters, initOverrides) {
+        const response = await this.getAutomationPerformanceAutomationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * 24
+     */
+    async getAutomationPerformanceProjectsOverviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAutomationPerformanceProjectsOverview().');
+        }
+        const queryParameters = {};
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automation-performance/projects/{projectId}/overview`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationUsageOverviewResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * 24
+     */
+    async getAutomationPerformanceProjectsOverview(requestParameters, initOverrides) {
+        const response = await this.getAutomationPerformanceProjectsOverviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -163,6 +255,27 @@ exports.GetAnalyticsAutomationsPeriodEnum = {
  * @export
  */
 exports.GetAnalyticsAutomationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAutomationPerformanceAutomationsPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d'
+};
+/**
+ * @export
+ */
+exports.GetAutomationPerformanceAutomationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

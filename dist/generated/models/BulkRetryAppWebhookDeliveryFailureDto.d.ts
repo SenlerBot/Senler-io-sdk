@@ -22,7 +22,7 @@ export interface BulkRetryAppWebhookDeliveryFailureDto {
      */
     taskId: string;
     /**
-     * : not_actionable, invalid_request, retry_failed.
+     * : not_actionable, retry_not_allowed, invalid_request, retry_failed.
      * @type {string}
      * @memberof BulkRetryAppWebhookDeliveryFailureDto
      */
@@ -33,6 +33,7 @@ export interface BulkRetryAppWebhookDeliveryFailureDto {
  */
 export declare const BulkRetryAppWebhookDeliveryFailureDtoCodeEnum: {
     readonly NotActionable: "not_actionable";
+    readonly RetryNotAllowed: "retry_not_allowed";
     readonly InvalidRequest: "invalid_request";
     readonly RetryFailed: "retry_failed";
 };

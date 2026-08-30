@@ -13,12 +13,13 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PatchAgentInstructionDtoOperationEnum = void 0;
+exports.PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = exports.PatchAgentInstructionDtoOperationEnum = void 0;
 exports.instanceOfPatchAgentInstructionDto = instanceOfPatchAgentInstructionDto;
 exports.PatchAgentInstructionDtoFromJSON = PatchAgentInstructionDtoFromJSON;
 exports.PatchAgentInstructionDtoFromJSONTyped = PatchAgentInstructionDtoFromJSONTyped;
 exports.PatchAgentInstructionDtoToJSON = PatchAgentInstructionDtoToJSON;
 exports.PatchAgentInstructionDtoToJSONTyped = PatchAgentInstructionDtoToJSONTyped;
+const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 /**
  * @export
  */
@@ -26,6 +27,28 @@ exports.PatchAgentInstructionDtoOperationEnum = {
     ReplaceAll: 'replace_all',
     AppendIfMissing: 'append_if_missing',
     ReplaceExact: 'replace_exact'
+};
+/**
+ * @export
+ */
+exports.PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = {
+    ReadDocuments: 'read_documents',
+    CreateDocuments: 'create_documents',
+    UploadDocuments: 'upload_documents',
+    EditDocuments: 'edit_documents',
+    DeleteDocuments: 'delete_documents',
+    ReadTables: 'read_tables',
+    CreateTables: 'create_tables',
+    ImportCsvXlsx: 'import_csv_xlsx',
+    AddTableRows: 'add_table_rows',
+    EditTables: 'edit_tables',
+    CreateSheets: 'create_sheets',
+    DeleteRows: 'delete_rows',
+    DeleteSheets: 'delete_sheets',
+    DeleteTables: 'delete_tables',
+    ReadImages: 'read_images',
+    UploadImages: 'upload_images',
+    DeleteImages: 'delete_images'
 };
 /**
  * Check if a given object implements the PatchAgentInstructionDto interface.
@@ -48,6 +71,8 @@ function PatchAgentInstructionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'operation': json['operation'],
         'expectedUpdatedAt': json['expected_updated_at'],
         'instruction': json['instruction'] == null ? undefined : json['instruction'],
+        'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : (json['knowledge_base_sources'].map(KnowledgeBaseSourceBindingDto_1.KnowledgeBaseSourceBindingDtoFromJSON)),
+        'knowledgeBasePermissions': json['knowledge_base_permissions'] == null ? undefined : json['knowledge_base_permissions'],
         'content': json['content'] == null ? undefined : json['content'],
         'expectedText': json['expected_text'] == null ? undefined : json['expected_text'],
         'replacement': json['replacement'] == null ? undefined : json['replacement'],
@@ -64,6 +89,8 @@ function PatchAgentInstructionDtoToJSONTyped(value, ignoreDiscriminator = false)
         'operation': value['operation'],
         'expected_updated_at': value['expectedUpdatedAt'],
         'instruction': value['instruction'],
+        'knowledge_base_sources': value['knowledgeBaseSources'] == null ? undefined : (value['knowledgeBaseSources'].map(KnowledgeBaseSourceBindingDto_1.KnowledgeBaseSourceBindingDtoToJSON)),
+        'knowledge_base_permissions': value['knowledgeBasePermissions'],
         'content': value['content'],
         'expected_text': value['expectedText'],
         'replacement': value['replacement'],

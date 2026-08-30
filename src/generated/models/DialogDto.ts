@@ -304,6 +304,24 @@ export interface DialogDto {
      */
     isTest: boolean;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    testAutomationId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    testAutomationTriggerNodeId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    testAutomationTriggerSessionId?: string;
+    /**
      *
      * @type {number}
      * @memberof DialogDto
@@ -514,6 +532,9 @@ export function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'isTest': json['is_test'],
+        'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
+        'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
+        'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
         'totalEvents': json['total_events'],
         'messagesCount': json['messages_count'],
         'operatorUnreadCount': json['operator_unread_count'],
@@ -581,6 +602,9 @@ export function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminat
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'is_test': value['isTest'],
+        'test_automation_id': value['testAutomationId'],
+        'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
+        'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],
         'total_events': value['totalEvents'],
         'messages_count': value['messagesCount'],
         'operator_unread_count': value['operatorUnreadCount'],

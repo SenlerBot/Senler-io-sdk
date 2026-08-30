@@ -13,15 +13,25 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LandingSettingsDtoLanguageEnum = void 0;
 exports.instanceOfLandingSettingsDto = instanceOfLandingSettingsDto;
 exports.LandingSettingsDtoFromJSON = LandingSettingsDtoFromJSON;
 exports.LandingSettingsDtoFromJSONTyped = LandingSettingsDtoFromJSONTyped;
 exports.LandingSettingsDtoToJSON = LandingSettingsDtoToJSON;
 exports.LandingSettingsDtoToJSONTyped = LandingSettingsDtoToJSONTyped;
 /**
+ * @export
+ */
+exports.LandingSettingsDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
  * Check if a given object implements the LandingSettingsDto interface.
  */
 function instanceOfLandingSettingsDto(value) {
+    if (!('language' in value) || value['language'] === undefined)
+        return false;
     if (!('listVisible' in value) || value['listVisible'] === undefined)
         return false;
     if (!('backgroundColor' in value) || value['backgroundColor'] === undefined)
@@ -40,6 +50,7 @@ function LandingSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'language': json['language'],
         'listVisible': json['list_visible'],
         'backgroundColor': json['background_color'],
         'iconUrl': json['icon_url'],
@@ -54,6 +65,7 @@ function LandingSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'language': value['language'],
         'list_visible': value['listVisible'],
         'background_color': value['backgroundColor'],
         'icon_url': value['iconUrl'],

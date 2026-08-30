@@ -29,10 +29,10 @@ export interface UpdateAutomationDto {
     description?: string | null;
     /**
      * , . .
-     * @type {Array<string>}
+     * @type {Set<string>}
      * @memberof UpdateAutomationDto
      */
-    channelTypes?: Array<UpdateAutomationDtoChannelTypesEnum>;
+    channelTypes?: Set<UpdateAutomationDtoChannelTypesEnum>;
     /**
      * .
      * @type {boolean}

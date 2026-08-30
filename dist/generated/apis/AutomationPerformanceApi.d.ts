@@ -10,12 +10,23 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutomationPerformanceResponseDto } from '../models/index';
+import type { AutomationPerformanceResponseDto, AutomationUsageOverviewResponseDto, AutomationUsageResponseDto } from '../models/index';
 export interface GetAnalyticsAutomationsRequest {
     projectId: string;
     period: GetAnalyticsAutomationsPeriodEnum;
     timezone?: string;
     acceptLanguage?: GetAnalyticsAutomationsAcceptLanguageEnum;
+}
+export interface GetAutomationPerformanceAutomationsRequest {
+    automationId: string;
+    period: GetAutomationPerformanceAutomationsPeriodEnum;
+    timezone?: string;
+    acceptLanguage?: GetAutomationPerformanceAutomationsAcceptLanguageEnum;
+}
+export interface GetAutomationPerformanceProjectsOverviewRequest {
+    projectId: string;
+    timezone?: string;
+    acceptLanguage?: GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum;
 }
 export interface GetBillingProjectsAutomationPerformanceRequest {
     projectId: string;
@@ -36,6 +47,26 @@ export declare class AutomationPerformanceApi extends runtime.BaseAPI {
      *
      */
     getAnalyticsAutomations(requestParameters: GetAnalyticsAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationPerformanceResponseDto>;
+    /**
+     * , 24 7 .
+     *
+     */
+    getAutomationPerformanceAutomationsRaw(requestParameters: GetAutomationPerformanceAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationUsageResponseDto>>;
+    /**
+     * , 24 7 .
+     *
+     */
+    getAutomationPerformanceAutomations(requestParameters: GetAutomationPerformanceAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationUsageResponseDto>;
+    /**
+     * .
+     * 24
+     */
+    getAutomationPerformanceProjectsOverviewRaw(requestParameters: GetAutomationPerformanceProjectsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationUsageOverviewResponseDto>>;
+    /**
+     * .
+     * 24
+     */
+    getAutomationPerformanceProjectsOverview(requestParameters: GetAutomationPerformanceProjectsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationUsageOverviewResponseDto>;
     /**
      * , .
      * 24
@@ -65,6 +96,30 @@ export declare const GetAnalyticsAutomationsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAnalyticsAutomationsAcceptLanguageEnum = typeof GetAnalyticsAutomationsAcceptLanguageEnum[keyof typeof GetAnalyticsAutomationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAutomationPerformanceAutomationsPeriodEnum: {
+    readonly _24h: "24h";
+    readonly _7d: "7d";
+};
+export type GetAutomationPerformanceAutomationsPeriodEnum = typeof GetAutomationPerformanceAutomationsPeriodEnum[keyof typeof GetAutomationPerformanceAutomationsPeriodEnum];
+/**
+ * @export
+ */
+export declare const GetAutomationPerformanceAutomationsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAutomationPerformanceAutomationsAcceptLanguageEnum = typeof GetAutomationPerformanceAutomationsAcceptLanguageEnum[keyof typeof GetAutomationPerformanceAutomationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum = typeof GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum[keyof typeof GetAutomationPerformanceProjectsOverviewAcceptLanguageEnum];
 /**
  * @export
  */

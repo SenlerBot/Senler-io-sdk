@@ -676,7 +676,7 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
+     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
      *
      */
     async updateDraftInstructionRaw(requestParameters, initOverrides) {
@@ -713,7 +713,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PatchAgentInstructionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
+     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
      *
      */
     async updateDraftInstruction(requestParameters, initOverrides) {
@@ -766,7 +766,7 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , . getInstruction updated_at. , .
+     * , . . getInstruction updated_at. , .
      *
      */
     async updateInstructionRaw(requestParameters, initOverrides) {
@@ -803,7 +803,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PatchAgentInstructionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , . getInstruction updated_at. , .
+     * , . . getInstruction updated_at. , .
      *
      */
     async updateInstruction(requestParameters, initOverrides) {

@@ -14,7 +14,7 @@
 
 
 /**
- *
+ * / . ; is_active.
  * @export
  */
 export const AgentStatus = {

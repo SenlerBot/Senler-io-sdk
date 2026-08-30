@@ -258,12 +258,6 @@ export interface RolePermissionsDto {
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
-    canManageEvents: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RolePermissionsDto
-     */
     canViewAudit: boolean;
     /**
      *
@@ -376,7 +370,6 @@ export function instanceOfRolePermissionsDto(value: object): value is RolePermis
     if (!('canViewMetrics' in value) || value['canViewMetrics'] === undefined) return false;
     if (!('canManageMetrics' in value) || value['canManageMetrics'] === undefined) return false;
     if (!('canViewEvents' in value) || value['canViewEvents'] === undefined) return false;
-    if (!('canManageEvents' in value) || value['canManageEvents'] === undefined) return false;
     if (!('canViewAudit' in value) || value['canViewAudit'] === undefined) return false;
     if (!('canViewProcesses' in value) || value['canViewProcesses'] === undefined) return false;
     if (!('canManageProcesses' in value) || value['canManageProcesses'] === undefined) return false;
@@ -441,7 +434,6 @@ export function RolePermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'canViewMetrics': json['can_view_metrics'],
         'canManageMetrics': json['can_manage_metrics'],
         'canViewEvents': json['can_view_events'],
-        'canManageEvents': json['can_manage_events'],
         'canViewAudit': json['can_view_audit'],
         'canViewProcesses': json['can_view_processes'],
         'canManageProcesses': json['can_manage_processes'],
@@ -507,7 +499,6 @@ export function RolePermissionsDtoToJSONTyped(value?: RolePermissionsDto | null,
         'can_view_metrics': value['canViewMetrics'],
         'can_manage_metrics': value['canManageMetrics'],
         'can_view_events': value['canViewEvents'],
-        'can_manage_events': value['canManageEvents'],
         'can_view_audit': value['canViewAudit'],
         'can_view_processes': value['canViewProcesses'],
         'can_manage_processes': value['canManageProcesses'],

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 /**
  * PatchAgentInstructionDto.
  * @export
@@ -33,6 +34,18 @@ export interface PatchAgentInstructionDto {
      * @memberof PatchAgentInstructionDto
      */
     instruction?: string;
+    /**
+     * . .
+     * @type {Array<KnowledgeBaseSourceBindingDto>}
+     * @memberof PatchAgentInstructionDto
+     */
+    knowledgeBaseSources?: Array<KnowledgeBaseSourceBindingDto>;
+    /**
+     * . .
+     * @type {Array<string>}
+     * @memberof PatchAgentInstructionDto
+     */
+    knowledgeBasePermissions?: Array<PatchAgentInstructionDtoKnowledgeBasePermissionsEnum>;
     /**
      * append_if_missing. , .
      * @type {string}
@@ -61,6 +74,29 @@ export declare const PatchAgentInstructionDtoOperationEnum: {
     readonly ReplaceExact: "replace_exact";
 };
 export type PatchAgentInstructionDtoOperationEnum = typeof PatchAgentInstructionDtoOperationEnum[keyof typeof PatchAgentInstructionDtoOperationEnum];
+/**
+ * @export
+ */
+export declare const PatchAgentInstructionDtoKnowledgeBasePermissionsEnum: {
+    readonly ReadDocuments: "read_documents";
+    readonly CreateDocuments: "create_documents";
+    readonly UploadDocuments: "upload_documents";
+    readonly EditDocuments: "edit_documents";
+    readonly DeleteDocuments: "delete_documents";
+    readonly ReadTables: "read_tables";
+    readonly CreateTables: "create_tables";
+    readonly ImportCsvXlsx: "import_csv_xlsx";
+    readonly AddTableRows: "add_table_rows";
+    readonly EditTables: "edit_tables";
+    readonly CreateSheets: "create_sheets";
+    readonly DeleteRows: "delete_rows";
+    readonly DeleteSheets: "delete_sheets";
+    readonly DeleteTables: "delete_tables";
+    readonly ReadImages: "read_images";
+    readonly UploadImages: "upload_images";
+    readonly DeleteImages: "delete_images";
+};
+export type PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = typeof PatchAgentInstructionDtoKnowledgeBasePermissionsEnum[keyof typeof PatchAgentInstructionDtoKnowledgeBasePermissionsEnum];
 /**
  * Check if a given object implements the PatchAgentInstructionDto interface.
  */

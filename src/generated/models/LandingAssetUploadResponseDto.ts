@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface LandingAssetUploadResponseDto {
     /**
-     *
+     * URL S3-. .
      * @type {string}
      * @memberof LandingAssetUploadResponseDto
      */

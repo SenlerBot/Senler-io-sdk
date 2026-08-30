@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto } from '../models/index';
+import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto } from '../models/index';
 export interface DeleteAgentRequest {
     id: string;
     role: DeleteAgentRoleEnum;
@@ -25,9 +25,28 @@ export interface DeleteOperatorAssignmentRequest {
     id: string;
     acceptLanguage?: DeleteOperatorAssignmentAcceptLanguageEnum;
 }
+export interface EventsBillingRecoveryRetryRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: EventsBillingRecoveryRetryAcceptLanguageEnum;
+}
+export interface GetEventsBillingRecoveryRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: GetEventsBillingRecoveryAcceptLanguageEnum;
+}
 export interface GetParticipantsRequest {
     dialogId: string;
     acceptLanguage?: GetParticipantsAcceptLanguageEnum;
+}
+export interface GetProjectsBillingRecoveryRequest {
+    projectId: string;
+    acceptLanguage?: GetProjectsBillingRecoveryAcceptLanguageEnum;
+}
+export interface ProjectsBillingRecoveryRetryRequest {
+    projectId: string;
+    retryDialogAiBillingRecoveryDto: RetryDialogAiBillingRecoveryDto;
+    acceptLanguage?: ProjectsBillingRecoveryRetryAcceptLanguageEnum;
 }
 export interface UpdateAgentRequest {
     id: string;
@@ -120,6 +139,26 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     deleteOperatorAssignment(requestParameters: DeleteOperatorAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
+     * AI-, .
+     * AI-
+     */
+    eventsBillingRecoveryRetryRaw(requestParameters: EventsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryRetryResponseDto>>;
+    /**
+     * AI-, .
+     * AI-
+     */
+    eventsBillingRecoveryRetry(requestParameters: EventsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryRetryResponseDto>;
+    /**
+     * , .
+     * AI-
+     */
+    getEventsBillingRecoveryRaw(requestParameters: GetEventsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryEventStatusDto>>;
+    /**
+     * , .
+     * AI-
+     */
+    getEventsBillingRecovery(requestParameters: GetEventsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryEventStatusDto>;
+    /**
      * .
      *
      */
@@ -129,6 +168,26 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      *
      */
     getParticipants(requestParameters: GetParticipantsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogParticipantsResponseDto>;
+    /**
+     * , .
+     * AI- -
+     */
+    getProjectsBillingRecoveryRaw(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoverySummaryDto>>;
+    /**
+     * , .
+     * AI- -
+     */
+    getProjectsBillingRecovery(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoverySummaryDto>;
+    /**
+     * .
+     * AI-
+     */
+    projectsBillingRecoveryRetryRaw(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryBulkRetryResponseDto>>;
+    /**
+     * .
+     * AI-
+     */
+    projectsBillingRecoveryRetry(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto>;
     /**
      * .
      *
@@ -285,11 +344,43 @@ export type DeleteOperatorAssignmentAcceptLanguageEnum = typeof DeleteOperatorAs
 /**
  * @export
  */
+export declare const EventsBillingRecoveryRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type EventsBillingRecoveryRetryAcceptLanguageEnum = typeof EventsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof EventsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetEventsBillingRecoveryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetEventsBillingRecoveryAcceptLanguageEnum = typeof GetEventsBillingRecoveryAcceptLanguageEnum[keyof typeof GetEventsBillingRecoveryAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetParticipantsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetParticipantsAcceptLanguageEnum = typeof GetParticipantsAcceptLanguageEnum[keyof typeof GetParticipantsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetProjectsBillingRecoveryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProjectsBillingRecoveryAcceptLanguageEnum = typeof GetProjectsBillingRecoveryAcceptLanguageEnum[keyof typeof GetProjectsBillingRecoveryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsBillingRecoveryRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsBillingRecoveryRetryAcceptLanguageEnum = typeof ProjectsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof ProjectsBillingRecoveryRetryAcceptLanguageEnum];
 /**
  * @export
  */

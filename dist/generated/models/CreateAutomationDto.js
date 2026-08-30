@@ -62,7 +62,7 @@ function CreateAutomationDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'type': json['type'],
-        'channelTypes': json['channel_types'],
+        'channelTypes': new Set(json['channel_types']),
     };
 }
 function CreateAutomationDtoToJSON(json) {
@@ -76,6 +76,6 @@ function CreateAutomationDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'description': value['description'],
         'type': value['type'],
-        'channel_types': value['channelTypes'],
+        'channel_types': Array.from(value['channelTypes']),
     };
 }

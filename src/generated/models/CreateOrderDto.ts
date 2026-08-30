@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface CreateOrderDto {
     /**
-     * . topup; tariff/credits ., (/); : 1.25 = 125
+     * . topup; credits ., (/); : 1.25 = 125
      * @type {number}
      * @memberof CreateOrderDto
      */
@@ -32,7 +32,7 @@ export interface CreateOrderDto {
      */
     paySystemId: string;
     /**
-     * (default: topup). tariff ; billing_invoice.
+     * (default: topup). billing_invoice.
      * @type {string}
      * @memberof CreateOrderDto
      */
@@ -43,18 +43,6 @@ export interface CreateOrderDto {
      * @memberof CreateOrderDto
      */
     useBalance?: boolean;
-    /**
-     * ID ( order_type = "tariff")
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    tariffId?: string;
-    /**
-     * ( order_type = "tariff")
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    period?: CreateOrderDtoPeriodEnum;
     /**
      * ID ( order_type = "credits")
      * @type {string}
@@ -75,20 +63,10 @@ export interface CreateOrderDto {
  */
 export const CreateOrderDtoOrderTypeEnum = {
     Topup: 'topup',
-    Tariff: 'tariff',
     Credits: 'credits',
     BillingInvoice: 'billing_invoice'
 } as const;
 export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[keyof typeof CreateOrderDtoOrderTypeEnum];
-
-/**
- * @export
- */
-export const CreateOrderDtoPeriodEnum = {
-    Monthly: 'monthly',
-    Yearly: 'yearly'
-} as const;
-export type CreateOrderDtoPeriodEnum = typeof CreateOrderDtoPeriodEnum[keyof typeof CreateOrderDtoPeriodEnum];
 
 
 /**
@@ -113,8 +91,6 @@ export function CreateOrderDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'paySystemId': json['pay_system_id'],
         'orderType': json['order_type'] == null ? undefined : json['order_type'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
-        'tariffId': json['tariff_id'] == null ? undefined : json['tariff_id'],
-        'period': json['period'] == null ? undefined : json['period'],
         'packageId': json['package_id'] == null ? undefined : json['package_id'],
         'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
     };
@@ -135,8 +111,6 @@ export function CreateOrderDtoToJSONTyped(value?: CreateOrderDto | null, ignoreD
         'pay_system_id': value['paySystemId'],
         'order_type': value['orderType'],
         'use_balance': value['useBalance'],
-        'tariff_id': value['tariffId'],
-        'period': value['period'],
         'package_id': value['packageId'],
         'billing_invoice_id': value['billingInvoiceId'],
     };

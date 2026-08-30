@@ -257,6 +257,24 @@ export interface DialogDto {
      */
     isTest: boolean;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    testAutomationId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    testAutomationTriggerNodeId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    testAutomationTriggerSessionId?: string;
+    /**
      *
      * @type {number}
      * @memberof DialogDto

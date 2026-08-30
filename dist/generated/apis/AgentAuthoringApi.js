@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AgentAuthoringApi extends runtime.BaseAPI {
     /**
-     * : .
+     * : . ; .
      *
      */
     async draftPublishRaw(requestParameters, initOverrides) {
@@ -91,7 +91,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * : .
+     * : . ; .
      *
      */
     async draftPublish(requestParameters, initOverrides) {
@@ -586,7 +586,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * temperature .
+     * .
      *
      */
     async updateDraftModelRaw(requestParameters, initOverrides) {
@@ -623,7 +623,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * temperature .
+     * .
      *
      */
     async updateDraftModel(requestParameters, initOverrides) {

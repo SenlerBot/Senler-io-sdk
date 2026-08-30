@@ -33,10 +33,10 @@ export interface UpdateAutomationDto {
     description?: string | null;
     /**
      * , . .
-     * @type {Array<string>}
+     * @type {Set<string>}
      * @memberof UpdateAutomationDto
      */
-    channelTypes?: Array<UpdateAutomationDtoChannelTypesEnum>;
+    channelTypes?: Set<UpdateAutomationDtoChannelTypesEnum>;
     /**
      * .
      * @type {boolean}
@@ -87,7 +87,7 @@ export function UpdateAutomationDtoFromJSONTyped(json: any, ignoreDiscriminator:
 
         'name': json['name'] == null ? undefined : json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'channelTypes': json['channel_types'] == null ? undefined : json['channel_types'],
+        'channelTypes': json['channel_types'] == null ? undefined : new Set(json['channel_types']),
         'widgetPublicNameEnabled': json['widget_public_name_enabled'] == null ? undefined : json['widget_public_name_enabled'],
         'widgetPublicName': json['widget_public_name'] == null ? undefined : json['widget_public_name'],
     };
@@ -106,7 +106,7 @@ export function UpdateAutomationDtoToJSONTyped(value?: UpdateAutomationDto | nul
 
         'name': value['name'],
         'description': value['description'],
-        'channel_types': value['channelTypes'],
+        'channel_types': value['channelTypes'] == null ? undefined : Array.from(value['channelTypes'] as Set<any>),
         'widget_public_name_enabled': value['widgetPublicNameEnabled'],
         'widget_public_name': value['widgetPublicName'],
     };

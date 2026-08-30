@@ -119,12 +119,6 @@ export interface AgentDraftSettingsResponseDto {
      */
     selectedModel?: AgentSelectedModelSummaryDto | null;
     /**
-     * Temperature AI (0.0 - 2.0). null = (0.7)
-     * @type {number}
-     * @memberof AgentDraftSettingsResponseDto
-     */
-    temperature?: number | null;
-    /**
      *
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
@@ -679,7 +673,6 @@ export function AgentDraftSettingsResponseDtoFromJSONTyped(json: any, ignoreDisc
         'meta': json['meta'] == null ? undefined : json['meta'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
-        'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'] == null ? null : json['trigger_keywords'],
         'autostartMode': json['autostart_mode'],
@@ -762,7 +755,6 @@ export function AgentDraftSettingsResponseDtoToJSONTyped(value?: AgentDraftSetti
         'meta': value['meta'],
         'selected_model_id': value['selectedModelId'],
         'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
-        'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
         'autostart_mode': value['autostartMode'],

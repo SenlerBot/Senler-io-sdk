@@ -31,6 +31,7 @@ import type {
   AutomationRunRealtimeSubscriptionResponseDto,
   AutomationRunsResponseDto,
   AutomationStatusResponseDto,
+  AutomationTriggerTestSessionResponseDto,
   AutomationValidationResponseDto,
   AutomationVersionHistoryResponseDto,
   AutomationVersionInfoDto,
@@ -42,6 +43,7 @@ import type {
   CreateAutomationDto,
   CreateAutomationEdgeDto,
   CreateAutomationNodeDto,
+  CreateAutomationTriggerTestSessionDto,
   CurrentAutomationTestDialogDataDto,
   DeleteAutomationEdgeDto,
   DeleteAutomationNodeDto,
@@ -58,6 +60,7 @@ import type {
   SendFirstTestMessageDto,
   SendFirstTestMessageResponseDto,
   SetAutomationTriggerIntakeDto,
+  SimulateAutomationTriggerTestEventDto,
   StartAutomationRunDto,
   StartAutomationRunResponseDto,
   TestAutomationRunDto,
@@ -99,6 +102,8 @@ import {
     AutomationRunsResponseDtoToJSON,
     AutomationStatusResponseDtoFromJSON,
     AutomationStatusResponseDtoToJSON,
+    AutomationTriggerTestSessionResponseDtoFromJSON,
+    AutomationTriggerTestSessionResponseDtoToJSON,
     AutomationValidationResponseDtoFromJSON,
     AutomationValidationResponseDtoToJSON,
     AutomationVersionHistoryResponseDtoFromJSON,
@@ -121,6 +126,8 @@ import {
     CreateAutomationEdgeDtoToJSON,
     CreateAutomationNodeDtoFromJSON,
     CreateAutomationNodeDtoToJSON,
+    CreateAutomationTriggerTestSessionDtoFromJSON,
+    CreateAutomationTriggerTestSessionDtoToJSON,
     CurrentAutomationTestDialogDataDtoFromJSON,
     CurrentAutomationTestDialogDataDtoToJSON,
     DeleteAutomationEdgeDtoFromJSON,
@@ -153,6 +160,8 @@ import {
     SendFirstTestMessageResponseDtoToJSON,
     SetAutomationTriggerIntakeDtoFromJSON,
     SetAutomationTriggerIntakeDtoToJSON,
+    SimulateAutomationTriggerTestEventDtoFromJSON,
+    SimulateAutomationTriggerTestEventDtoToJSON,
     StartAutomationRunDtoFromJSON,
     StartAutomationRunDtoToJSON,
     StartAutomationRunResponseDtoFromJSON,
@@ -255,6 +264,12 @@ export interface DeleteNodesRequest {
     acceptLanguage?: DeleteNodesAcceptLanguageEnum;
 }
 
+export interface DeleteTestTriggerSessionsRequest {
+    automationId: string;
+    sessionId: string;
+    acceptLanguage?: DeleteTestTriggerSessionsAcceptLanguageEnum;
+}
+
 export interface DialogsRunsRealtimeSubscriptionRequest {
     dialogId: string;
     acceptLanguage?: DialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
@@ -330,8 +345,20 @@ export interface GetRuns2Request {
 
 export interface GetTestDialogRequest {
     automationId: string;
+    sessionId?: string;
     triggerNodeId?: string;
     acceptLanguage?: GetTestDialogAcceptLanguageEnum;
+}
+
+export interface GetTestTriggerSessionsRequest {
+    automationId: string;
+    sessionId: string;
+    acceptLanguage?: GetTestTriggerSessionsAcceptLanguageEnum;
+}
+
+export interface GetTestTriggerSessionsCurrentRequest {
+    automationId: string;
+    acceptLanguage?: GetTestTriggerSessionsCurrentAcceptLanguageEnum;
 }
 
 export interface NodesRequest {
@@ -403,7 +430,7 @@ export interface RunsTasksRetryRequest {
 
 export interface TestDialogMessagesRequest {
     automationId: string;
-    triggerNodeId: string;
+    sessionId: string;
     sendFirstTestMessageDto: SendFirstTestMessageDto;
     acceptLanguage?: TestDialogMessagesAcceptLanguageEnum;
 }
@@ -412,6 +439,19 @@ export interface TestRunsRequest {
     automationId: string;
     testAutomationRunDto: TestAutomationRunDto;
     acceptLanguage?: TestRunsAcceptLanguageEnum;
+}
+
+export interface TestTriggerSessionsRequest {
+    automationId: string;
+    createAutomationTriggerTestSessionDto: CreateAutomationTriggerTestSessionDto;
+    acceptLanguage?: TestTriggerSessionsAcceptLanguageEnum;
+}
+
+export interface TestTriggerSessionsEventsRequest {
+    automationId: string;
+    sessionId: string;
+    simulateAutomationTriggerTestEventDto: SimulateAutomationTriggerTestEventDto;
+    acceptLanguage?: TestTriggerSessionsEventsAcceptLanguageEnum;
 }
 
 export interface UpdateNodesRequest {
@@ -695,7 +735,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Mongo-.
+     * Mongo-. : graph, node_id . , .
      *
      */
     async automationsCreateRaw(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>> {
@@ -752,7 +792,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Mongo-.
+     * Mongo-. : graph, node_id . , .
      *
      */
     async automationsCreate(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto> {
@@ -1094,7 +1134,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. .
+     * 100 Mongo-. ; . graph , .
      *
      */
     async batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
@@ -1151,7 +1191,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. .
+     * 100 Mongo-. ; . graph , .
      *
      */
     async batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
@@ -1304,6 +1344,65 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     * cancelled. .
+     *
+     */
+    async deleteTestTriggerSessionsRaw(requestParameters: DeleteTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling deleteTestTriggerSessions().'
+            );
+        }
+
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError(
+                'sessionId',
+                'Required parameter "sessionId" was null or undefined when calling deleteTestTriggerSessions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-trigger-sessions/{sessionId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"sessionId"}}`, encodeURIComponent(String(requestParameters['sessionId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationTriggerTestSessionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * cancelled. .
+     *
+     */
+    async deleteTestTriggerSessions(requestParameters: DeleteTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto> {
+        const response = await this.deleteTestTriggerSessionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Centrifugo . channel subscription_token realtime-; .
      *
      */
@@ -1356,7 +1455,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
+     * idempotent draft-edge ; DAG validate/publish. : next , .
      *
      */
     async edgesRaw(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>> {
@@ -1413,7 +1512,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
+     * idempotent draft-edge ; DAG validate/publish. : next , .
      *
      */
     async edges(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto> {
@@ -1566,7 +1665,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * nodes/edges React Flow JSON.
+     * nodes/edges React Flow JSON. draft graph, node_id .
      *
      */
     async getGraphRaw(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
@@ -1613,7 +1712,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * nodes/edges React Flow JSON.
+     * nodes/edges React Flow JSON. draft graph, node_id .
      *
      */
     async getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
@@ -1910,6 +2009,10 @@ export class AutomationsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['sessionId'] != null) {
+            queryParameters['session_id'] = requestParameters['sessionId'];
+        }
+
         if (requestParameters['triggerNodeId'] != null) {
             queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
         }
@@ -1953,7 +2056,118 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . API .
+     * , .
+     *
+     */
+    async getTestTriggerSessionsRaw(requestParameters: GetTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getTestTriggerSessions().'
+            );
+        }
+
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError(
+                'sessionId',
+                'Required parameter "sessionId" was null or undefined when calling getTestTriggerSessions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-trigger-sessions/{sessionId}`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"sessionId"}}`, encodeURIComponent(String(requestParameters['sessionId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationTriggerTestSessionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async getTestTriggerSessions(requestParameters: GetTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto> {
+        const response = await this.getTestTriggerSessionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * null, .
+     *
+     */
+    async getTestTriggerSessionsCurrentRaw(requestParameters: GetTestTriggerSessionsCurrentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getTestTriggerSessionsCurrent().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-trigger-sessions/current`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationTriggerTestSessionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * null, .
+     *
+     */
+    async getTestTriggerSessionsCurrent(requestParameters: GetTestTriggerSessionsCurrentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto> {
+        const response = await this.getTestTriggerSessionsCurrentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . API . , . .
      *
      */
     async nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
@@ -2010,7 +2224,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . API .
+     * . API . , . .
      *
      */
     async nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
@@ -2618,7 +2832,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . execution plan .
+     * . .
      *
      */
     async testDialogMessagesRaw(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>> {
@@ -2629,10 +2843,10 @@ export class AutomationsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['triggerNodeId'] == null) {
+        if (requestParameters['sessionId'] == null) {
             throw new runtime.RequiredError(
-                'triggerNodeId',
-                'Required parameter "triggerNodeId" was null or undefined when calling testDialogMessages().'
+                'sessionId',
+                'Required parameter "sessionId" was null or undefined when calling testDialogMessages().'
             );
         }
 
@@ -2645,8 +2859,8 @@ export class AutomationsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
-        if (requestParameters['triggerNodeId'] != null) {
-            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
+        if (requestParameters['sessionId'] != null) {
+            queryParameters['session_id'] = requestParameters['sessionId'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -2682,7 +2896,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . execution plan .
+     * . .
      *
      */
     async testDialogMessages(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto> {
@@ -2691,7 +2905,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , execution plan durable start intent. production- .
+     * . , execution plan durable start intent. , start intent. production- .
      *
      */
     async testRunsRaw(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestAutomationRunResponseDto>> {
@@ -2744,11 +2958,142 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , execution plan durable start intent. production- .
+     * . , execution plan durable start intent. , start intent. production- .
      *
      */
     async testRuns(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestAutomationRunResponseDto> {
         const response = await this.testRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async testTriggerSessionsRaw(requestParameters: TestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling testTriggerSessions().'
+            );
+        }
+
+        if (requestParameters['createAutomationTriggerTestSessionDto'] == null) {
+            throw new runtime.RequiredError(
+                'createAutomationTriggerTestSessionDto',
+                'Required parameter "createAutomationTriggerTestSessionDto" was null or undefined when calling testTriggerSessions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-trigger-sessions`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAutomationTriggerTestSessionDtoToJSON(requestParameters['createAutomationTriggerTestSessionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationTriggerTestSessionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async testTriggerSessions(requestParameters: TestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto> {
+        const response = await this.testTriggerSessionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . start intent .
+     *
+     */
+    async testTriggerSessionsEventsRaw(requestParameters: TestTriggerSessionsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling testTriggerSessionsEvents().'
+            );
+        }
+
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError(
+                'sessionId',
+                'Required parameter "sessionId" was null or undefined when calling testTriggerSessionsEvents().'
+            );
+        }
+
+        if (requestParameters['simulateAutomationTriggerTestEventDto'] == null) {
+            throw new runtime.RequiredError(
+                'simulateAutomationTriggerTestEventDto',
+                'Required parameter "simulateAutomationTriggerTestEventDto" was null or undefined when calling testTriggerSessionsEvents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-trigger-sessions/{sessionId}/events`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"sessionId"}}`, encodeURIComponent(String(requestParameters['sessionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SimulateAutomationTriggerTestEventDtoToJSON(requestParameters['simulateAutomationTriggerTestEventDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationTriggerTestSessionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . start intent .
+     *
+     */
+    async testTriggerSessionsEvents(requestParameters: TestTriggerSessionsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto> {
+        const response = await this.testTriggerSessionsEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2888,7 +3233,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , , , .
+     * , , , , . .
      *
      */
     async validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationValidationResponseDto>> {
@@ -2931,7 +3276,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , , , .
+     * , , , , . .
      *
      */
     async validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationValidationResponseDto> {
@@ -3129,6 +3474,14 @@ export type DeleteNodesAcceptLanguageEnum = typeof DeleteNodesAcceptLanguageEnum
 /**
  * @export
  */
+export const DeleteTestTriggerSessionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteTestTriggerSessionsAcceptLanguageEnum = typeof DeleteTestTriggerSessionsAcceptLanguageEnum[keyof typeof DeleteTestTriggerSessionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -3247,6 +3600,22 @@ export type GetTestDialogAcceptLanguageEnum = typeof GetTestDialogAcceptLanguage
 /**
  * @export
  */
+export const GetTestTriggerSessionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetTestTriggerSessionsAcceptLanguageEnum = typeof GetTestTriggerSessionsAcceptLanguageEnum[keyof typeof GetTestTriggerSessionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetTestTriggerSessionsCurrentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetTestTriggerSessionsCurrentAcceptLanguageEnum = typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum[keyof typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const NodesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -3348,6 +3717,22 @@ export const TestRunsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type TestRunsAcceptLanguageEnum = typeof TestRunsAcceptLanguageEnum[keyof typeof TestRunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TestTriggerSessionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TestTriggerSessionsAcceptLanguageEnum = typeof TestTriggerSessionsAcceptLanguageEnum[keyof typeof TestTriggerSessionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TestTriggerSessionsEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TestTriggerSessionsEventsAcceptLanguageEnum = typeof TestTriggerSessionsEventsAcceptLanguageEnum[keyof typeof TestTriggerSessionsEventsAcceptLanguageEnum];
 /**
  * @export
  */

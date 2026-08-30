@@ -996,7 +996,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
+     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
      *
      */
     async updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
@@ -1049,7 +1049,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
+     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
      *
      */
     async updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
@@ -1120,7 +1120,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . getInstruction updated_at. , .
+     * , . . getInstruction updated_at. , .
      *
      */
     async updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
@@ -1173,7 +1173,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . getInstruction updated_at. , .
+     * , . . getInstruction updated_at. , .
      *
      */
     async updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {

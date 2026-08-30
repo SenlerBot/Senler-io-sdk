@@ -63,6 +63,7 @@ export declare const CustomerCostEstimateDtoBasisEnum: {
     readonly Purchased: "purchased";
     readonly Mixed: "mixed";
     readonly Free: "free";
+    readonly Overage: "overage";
     readonly Unavailable: "unavailable";
     readonly NotApplicable: "not_applicable";
 };

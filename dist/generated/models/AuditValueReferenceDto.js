@@ -25,6 +25,7 @@ exports.AuditValueReferenceDtoToJSONTyped = AuditValueReferenceDtoToJSONTyped;
 exports.AuditValueReferenceDtoEntityTypeEnum = {
     AiModel: 'ai_model',
     Agent: 'agent',
+    Automation: 'automation',
     App: 'app',
     Channel: 'channel',
     CreditPackage: 'credit_package',

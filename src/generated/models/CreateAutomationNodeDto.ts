@@ -80,6 +80,7 @@ export const CreateAutomationNodeDtoTypeEnum = {
     TriggerStart: 'trigger.start',
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
+    TriggerEvent: 'trigger.event',
     ConditionVariable: 'condition.variable',
     ConditionDateTime: 'condition.date_time',
     ConditionSegment: 'condition.segment',

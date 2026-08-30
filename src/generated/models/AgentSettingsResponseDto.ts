@@ -161,7 +161,7 @@ export interface AgentSettingsResponseDto {
      */
     appOrigin?: AgentAppOriginDto | null;
     /**
-     *
+     * . .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -178,12 +178,6 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     selectedModel?: AgentSelectedModelSummaryDto | null;
-    /**
-     * Temperature AI (0.0 - 2.0). null = (0.7)
-     * @type {number}
-     * @memberof AgentSettingsResponseDto
-     */
-    temperature?: number | null;
     /**
      *
      * @type {boolean}
@@ -257,7 +251,7 @@ export interface AgentSettingsResponseDto {
      */
     autoAssignmentRole: AgentSettingsResponseDtoAutoAssignmentRoleEnum;
     /**
-     *
+     * / . ; is_active.
      * @type {AgentStatus}
      * @memberof AgentSettingsResponseDto
      */
@@ -743,7 +737,6 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
-        'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'useDefaultEventMetrics': json['use_default_event_metrics'],
         'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'],
@@ -832,7 +825,6 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
         'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
-        'temperature': value['temperature'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'use_default_event_metrics': value['useDefaultEventMetrics'],
         'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],

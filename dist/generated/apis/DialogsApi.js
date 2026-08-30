@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetNavigationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsApi = void 0;
+exports.GetNavigationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -218,6 +218,46 @@ class DialogsApi extends runtime.BaseAPI {
      */
     async eventsPollSnapshotRefresh(requestParameters, initOverrides) {
         const response = await this.eventsPollSnapshotRefreshRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , AI-. event-time , .
+     * AI
+     */
+    async getAiCostsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAiCosts().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{id}/ai-costs`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetAiCostSummaryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , AI-. event-time , .
+     * AI
+     */
+    async getAiCosts(requestParameters, initOverrides) {
+        const response = await this.getAiCostsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -470,6 +510,13 @@ exports.DirectMessageAcceptLanguageEnum = {
  * @export
  */
 exports.EventsPollSnapshotRefreshAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAiCostsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

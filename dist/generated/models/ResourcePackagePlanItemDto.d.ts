@@ -72,6 +72,8 @@ export declare const ResourcePackagePlanItemDtoResourceTypeEnum: {
     readonly KnowledgeFolder: "knowledge_folder";
     readonly KnowledgeFile: "knowledge_file";
     readonly KnowledgeTable: "knowledge_table";
+    readonly Landing: "landing";
+    readonly MetricDefinition: "metric_definition";
     readonly AgentKnowledgeSource: "agent_knowledge_source";
     readonly AutomationChannelBinding: "automation_channel_binding";
     readonly AutomationMessageTarget: "automation_message_target";

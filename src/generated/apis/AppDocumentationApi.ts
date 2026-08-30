@@ -193,6 +193,7 @@ export interface GetDocumentationSearchRequest {
     query: string;
     folderId?: string | null;
     resourceType?: GetDocumentationSearchResourceTypeEnum;
+    searchMode?: GetDocumentationSearchSearchModeEnum;
     limit?: number;
     page?: number;
     acceptLanguage?: GetDocumentationSearchAcceptLanguageEnum;
@@ -1258,6 +1259,10 @@ export class AppDocumentationApi extends runtime.BaseAPI {
             queryParameters['resource_type'] = requestParameters['resourceType'];
         }
 
+        if (requestParameters['searchMode'] != null) {
+            queryParameters['search_mode'] = requestParameters['searchMode'];
+        }
+
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -1898,6 +1903,14 @@ export const GetDocumentationSearchResourceTypeEnum = {
     Table: 'table'
 } as const;
 export type GetDocumentationSearchResourceTypeEnum = typeof GetDocumentationSearchResourceTypeEnum[keyof typeof GetDocumentationSearchResourceTypeEnum];
+/**
+ * @export
+ */
+export const GetDocumentationSearchSearchModeEnum = {
+    Name: 'name',
+    Content: 'content'
+} as const;
+export type GetDocumentationSearchSearchModeEnum = typeof GetDocumentationSearchSearchModeEnum[keyof typeof GetDocumentationSearchSearchModeEnum];
 /**
  * @export
  */

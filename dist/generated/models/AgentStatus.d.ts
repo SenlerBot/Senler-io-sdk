@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * / . ; is_active.
  * @export
  */
 export declare const AgentStatus: {

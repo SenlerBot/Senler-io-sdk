@@ -58,6 +58,7 @@ function WidgetChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoFromJSON)(json['external_ai']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'theme': json['theme'] == null ? undefined : (0, WidgetThemeDto_1.WidgetThemeDtoFromJSON)(json['theme']),
@@ -76,6 +77,7 @@ function WidgetChannelDataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoToJSON)(value['externalAi']),
         'allowed_domains': value['allowedDomains'],
         'theme': (0, WidgetThemeDto_1.WidgetThemeDtoToJSON)(value['theme']),

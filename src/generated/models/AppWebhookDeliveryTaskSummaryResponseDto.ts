@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AppWebhookDeliveryIncidentDto } from './AppWebhookDeliveryIncidentDto';
+import {
+    AppWebhookDeliveryIncidentDtoFromJSON,
+    AppWebhookDeliveryIncidentDtoFromJSONTyped,
+    AppWebhookDeliveryIncidentDtoToJSON,
+    AppWebhookDeliveryIncidentDtoToJSONTyped,
+} from './AppWebhookDeliveryIncidentDto';
+
 /**
  * AppWebhookDeliveryTaskSummaryResponseDto.
  * @export
@@ -74,6 +82,12 @@ export interface AppWebhookDeliveryTaskSummaryResponseDto {
      */
     lastStatusCode: number | null;
     /**
+     * incident.
+     * @type {AppWebhookDeliveryIncidentDto}
+     * @memberof AppWebhookDeliveryTaskSummaryResponseDto
+     */
+    incident: AppWebhookDeliveryIncidentDto | null;
+    /**
      * event type.
      * @type {string}
      * @memberof AppWebhookDeliveryTaskSummaryResponseDto
@@ -129,6 +143,7 @@ export function instanceOfAppWebhookDeliveryTaskSummaryResponseDto(value: object
     if (!('nextRetryAt' in value) || value['nextRetryAt'] === undefined) return false;
     if (!('lastError' in value) || value['lastError'] === undefined) return false;
     if (!('lastStatusCode' in value) || value['lastStatusCode'] === undefined) return false;
+    if (!('incident' in value) || value['incident'] === undefined) return false;
     if (!('eventType' in value) || value['eventType'] === undefined) return false;
     if (!('resolvedAt' in value) || value['resolvedAt'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -154,6 +169,7 @@ export function AppWebhookDeliveryTaskSummaryResponseDtoFromJSONTyped(json: any,
         'nextRetryAt': (json['next_retry_at'] == null ? null : new Date(json['next_retry_at'])),
         'lastError': json['last_error'],
         'lastStatusCode': json['last_status_code'],
+        'incident': AppWebhookDeliveryIncidentDtoFromJSON(json['incident']),
         'eventType': json['event_type'],
         'resolvedAt': (json['resolved_at'] == null ? null : new Date(json['resolved_at'])),
         'createdAt': (new Date(json['created_at'])),
@@ -180,6 +196,7 @@ export function AppWebhookDeliveryTaskSummaryResponseDtoToJSONTyped(value?: AppW
         'next_retry_at': (value['nextRetryAt'] == null ? null : (value['nextRetryAt'] as any).toISOString()),
         'last_error': value['lastError'],
         'last_status_code': value['lastStatusCode'],
+        'incident': AppWebhookDeliveryIncidentDtoToJSON(value['incident']),
         'event_type': value['eventType'],
         'resolved_at': (value['resolvedAt'] == null ? null : (value['resolvedAt'] as any).toISOString()),
         'created_at': ((value['createdAt']).toISOString()),

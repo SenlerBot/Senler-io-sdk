@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AppWebhookDeliveryIncidentDto } from './AppWebhookDeliveryIncidentDto';
 /**
  * AppWebhookDeliveryTaskResponseDto.
  * @export
@@ -94,6 +95,12 @@ export interface AppWebhookDeliveryTaskResponseDto {
      */
     responseBody: string | null;
     /**
+     * incident.
+     * @type {AppWebhookDeliveryIncidentDto}
+     * @memberof AppWebhookDeliveryTaskResponseDto
+     */
+    incident: AppWebhookDeliveryIncidentDto | null;
+    /**
      * JSON- ,
      * @type {object}
      * @memberof AppWebhookDeliveryTaskResponseDto
@@ -148,7 +155,7 @@ export interface AppWebhookDeliveryTaskResponseDto {
      */
     resolvedBy: string | null;
     /**
-     * : obsolete, superseded, invalid_payload, accepted_loss, task_completed, diagnostic_completed, replay_cancelled, webhook_deleted.
+     * : obsolete, superseded, invalid_payload, accepted_loss, reviewed, fixed, task_completed, diagnostic_completed, replay_cancelled, webhook_deleted.
      * @type {string}
      * @memberof AppWebhookDeliveryTaskResponseDto
      */
@@ -204,6 +211,8 @@ export declare const AppWebhookDeliveryTaskResponseDtoResolutionCodeEnum: {
     readonly Superseded: "superseded";
     readonly InvalidPayload: "invalid_payload";
     readonly AcceptedLoss: "accepted_loss";
+    readonly Reviewed: "reviewed";
+    readonly Fixed: "fixed";
     readonly TaskCompleted: "task_completed";
     readonly DiagnosticCompleted: "diagnostic_completed";
     readonly ReplayCancelled: "replay_cancelled";

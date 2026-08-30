@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -83,6 +83,11 @@ export interface DeleteNodesRequest {
     xAutomationEditorSessionId?: string;
     acceptLanguage?: DeleteNodesAcceptLanguageEnum;
 }
+export interface DeleteTestTriggerSessionsRequest {
+    automationId: string;
+    sessionId: string;
+    acceptLanguage?: DeleteTestTriggerSessionsAcceptLanguageEnum;
+}
 export interface DialogsRunsRealtimeSubscriptionRequest {
     dialogId: string;
     acceptLanguage?: DialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
@@ -149,8 +154,18 @@ export interface GetRuns2Request {
 }
 export interface GetTestDialogRequest {
     automationId: string;
+    sessionId?: string;
     triggerNodeId?: string;
     acceptLanguage?: GetTestDialogAcceptLanguageEnum;
+}
+export interface GetTestTriggerSessionsRequest {
+    automationId: string;
+    sessionId: string;
+    acceptLanguage?: GetTestTriggerSessionsAcceptLanguageEnum;
+}
+export interface GetTestTriggerSessionsCurrentRequest {
+    automationId: string;
+    acceptLanguage?: GetTestTriggerSessionsCurrentAcceptLanguageEnum;
 }
 export interface NodesRequest {
     automationId: string;
@@ -210,7 +225,7 @@ export interface RunsTasksRetryRequest {
 }
 export interface TestDialogMessagesRequest {
     automationId: string;
-    triggerNodeId: string;
+    sessionId: string;
     sendFirstTestMessageDto: SendFirstTestMessageDto;
     acceptLanguage?: TestDialogMessagesAcceptLanguageEnum;
 }
@@ -218,6 +233,17 @@ export interface TestRunsRequest {
     automationId: string;
     testAutomationRunDto: TestAutomationRunDto;
     acceptLanguage?: TestRunsAcceptLanguageEnum;
+}
+export interface TestTriggerSessionsRequest {
+    automationId: string;
+    createAutomationTriggerTestSessionDto: CreateAutomationTriggerTestSessionDto;
+    acceptLanguage?: TestTriggerSessionsAcceptLanguageEnum;
+}
+export interface TestTriggerSessionsEventsRequest {
+    automationId: string;
+    sessionId: string;
+    simulateAutomationTriggerTestEventDto: SimulateAutomationTriggerTestEventDto;
+    acceptLanguage?: TestTriggerSessionsEventsAcceptLanguageEnum;
 }
 export interface UpdateNodesRequest {
     automationId: string;
@@ -287,12 +313,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsAvatarUploadUrl(requestParameters: AutomationsAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAvatarUploadUrlResponseDto>;
     /**
-     * Mongo-.
+     * Mongo-. : graph, node_id . , .
      *
      */
     automationsCreateRaw(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationResponseDto>>;
     /**
-     * Mongo-.
+     * Mongo-. : graph, node_id . , .
      *
      */
     automationsCreate(requestParameters: AutomationsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
@@ -357,12 +383,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsUpdate(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * 100 Mongo-. .
+     * 100 Mongo-. ; . graph , .
      *
      */
     batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
     /**
-     * 100 Mongo-. .
+     * 100 Mongo-. ; . graph , .
      *
      */
     batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
@@ -387,6 +413,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     deleteNodes(requestParameters: DeleteNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
+     * cancelled. .
+     *
+     */
+    deleteTestTriggerSessionsRaw(requestParameters: DeleteTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>>;
+    /**
+     * cancelled. .
+     *
+     */
+    deleteTestTriggerSessions(requestParameters: DeleteTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
+    /**
      * Centrifugo . channel subscription_token realtime-; .
      *
      */
@@ -397,12 +433,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     dialogsRunsRealtimeSubscription(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
     /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
+     * idempotent draft-edge ; DAG validate/publish. : next , .
      *
      */
     edgesRaw(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>>;
     /**
-     * idempotent draft-edge next, true false; DAG validate/publish.
+     * idempotent draft-edge ; DAG validate/publish. : next , .
      *
      */
     edges(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto>;
@@ -427,12 +463,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getDialogsRuns(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto>;
     /**
-     * nodes/edges React Flow JSON.
+     * nodes/edges React Flow JSON. draft graph, node_id .
      *
      */
     getGraphRaw(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
     /**
-     * nodes/edges React Flow JSON.
+     * nodes/edges React Flow JSON. draft graph, node_id .
      *
      */
     getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
@@ -487,12 +523,32 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getTestDialog(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto>;
     /**
-     * . API .
+     * , .
+     *
+     */
+    getTestTriggerSessionsRaw(requestParameters: GetTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getTestTriggerSessions(requestParameters: GetTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
+    /**
+     * null, .
+     *
+     */
+    getTestTriggerSessionsCurrentRaw(requestParameters: GetTestTriggerSessionsCurrentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>>;
+    /**
+     * null, .
+     *
+     */
+    getTestTriggerSessionsCurrent(requestParameters: GetTestTriggerSessionsCurrentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
+    /**
+     * . API . , . .
      *
      */
     nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
     /**
-     * . API .
+     * . API . , . .
      *
      */
     nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
@@ -597,25 +653,45 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     runsTasksRetry(requestParameters: RunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto>;
     /**
-     * . execution plan .
+     * . .
      *
      */
     testDialogMessagesRaw(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>>;
     /**
-     * . execution plan .
+     * . .
      *
      */
     testDialogMessages(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto>;
     /**
-     * , execution plan durable start intent. production- .
+     * . , execution plan durable start intent. , start intent. production- .
      *
      */
     testRunsRaw(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TestAutomationRunResponseDto>>;
     /**
-     * , execution plan durable start intent. production- .
+     * . , execution plan durable start intent. , start intent. production- .
      *
      */
     testRuns(requestParameters: TestRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TestAutomationRunResponseDto>;
+    /**
+     * . .
+     *
+     */
+    testTriggerSessionsRaw(requestParameters: TestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    testTriggerSessions(requestParameters: TestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
+    /**
+     * . start intent .
+     *
+     */
+    testTriggerSessionsEventsRaw(requestParameters: TestTriggerSessionsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationTriggerTestSessionResponseDto>>;
+    /**
+     * . start intent .
+     *
+     */
+    testTriggerSessionsEvents(requestParameters: TestTriggerSessionsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
     /**
      * , / .
      *
@@ -637,12 +713,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     updateTriggerIntake(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
     /**
-     * , , , , .
+     * , , , , . .
      *
      */
     validateRaw(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationValidationResponseDto>>;
     /**
-     * , , , , .
+     * , , , , . .
      *
      */
     validate(requestParameters: ValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationValidationResponseDto>;
@@ -772,6 +848,14 @@ export type DeleteNodesAcceptLanguageEnum = typeof DeleteNodesAcceptLanguageEnum
 /**
  * @export
  */
+export declare const DeleteTestTriggerSessionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteTestTriggerSessionsAcceptLanguageEnum = typeof DeleteTestTriggerSessionsAcceptLanguageEnum[keyof typeof DeleteTestTriggerSessionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const DialogsRunsRealtimeSubscriptionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -890,6 +974,22 @@ export type GetTestDialogAcceptLanguageEnum = typeof GetTestDialogAcceptLanguage
 /**
  * @export
  */
+export declare const GetTestTriggerSessionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetTestTriggerSessionsAcceptLanguageEnum = typeof GetTestTriggerSessionsAcceptLanguageEnum[keyof typeof GetTestTriggerSessionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetTestTriggerSessionsCurrentAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetTestTriggerSessionsCurrentAcceptLanguageEnum = typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum[keyof typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const NodesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -991,6 +1091,22 @@ export declare const TestRunsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TestRunsAcceptLanguageEnum = typeof TestRunsAcceptLanguageEnum[keyof typeof TestRunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestTriggerSessionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestTriggerSessionsAcceptLanguageEnum = typeof TestTriggerSessionsAcceptLanguageEnum[keyof typeof TestTriggerSessionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestTriggerSessionsEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestTriggerSessionsEventsAcceptLanguageEnum = typeof TestTriggerSessionsEventsAcceptLanguageEnum[keyof typeof TestTriggerSessionsEventsAcceptLanguageEnum];
 /**
  * @export
  */

@@ -15,6 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
+  CabinetAiCostSummaryDto,
   DialogDetailsDto,
   DialogNavigationResponseDto,
   DirectMessageDto,
@@ -28,6 +29,8 @@ import type {
   SendMessageResponseDto,
 } from '../models/index';
 import {
+    CabinetAiCostSummaryDtoFromJSON,
+    CabinetAiCostSummaryDtoToJSON,
     DialogDetailsDtoFromJSON,
     DialogDetailsDtoToJSON,
     DialogNavigationResponseDtoFromJSON,
@@ -71,6 +74,11 @@ export interface EventsPollSnapshotRefreshRequest {
     id: string;
     eventId: string;
     acceptLanguage?: EventsPollSnapshotRefreshAcceptLanguageEnum;
+}
+
+export interface GetAiCostsRequest {
+    id: string;
+    acceptLanguage?: GetAiCostsAcceptLanguageEnum;
 }
 
 export interface GetEventsRequest {
@@ -336,6 +344,58 @@ export class DialogsApi extends runtime.BaseAPI {
      */
     async eventsPollSnapshotRefresh(requestParameters: EventsPollSnapshotRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventPollSnapshotRefreshResponseDto> {
         const response = await this.eventsPollSnapshotRefreshRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , AI-. event-time , .
+     * AI
+     */
+    async getAiCostsRaw(requestParameters: GetAiCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetAiCostSummaryDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getAiCosts().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{id}/ai-costs`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CabinetAiCostSummaryDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , AI-. event-time , .
+     * AI
+     */
+    async getAiCosts(requestParameters: GetAiCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetAiCostSummaryDto> {
+        const response = await this.getAiCostsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -674,6 +734,14 @@ export const EventsPollSnapshotRefreshAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type EventsPollSnapshotRefreshAcceptLanguageEnum = typeof EventsPollSnapshotRefreshAcceptLanguageEnum[keyof typeof EventsPollSnapshotRefreshAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetAiCostsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAiCostsAcceptLanguageEnum = typeof GetAiCostsAcceptLanguageEnum[keyof typeof GetAiCostsAcceptLanguageEnum];
 /**
  * @export
  */

@@ -16,7 +16,7 @@
  */
 export interface CreateOrderDto {
     /**
-     * . topup; tariff/credits ., (/); : 1.25 = 125
+     * . topup; credits ., (/); : 1.25 = 125
      * @type {number}
      * @memberof CreateOrderDto
      */
@@ -28,7 +28,7 @@ export interface CreateOrderDto {
      */
     paySystemId: string;
     /**
-     * (default: topup). tariff ; billing_invoice.
+     * (default: topup). billing_invoice.
      * @type {string}
      * @memberof CreateOrderDto
      */
@@ -39,18 +39,6 @@ export interface CreateOrderDto {
      * @memberof CreateOrderDto
      */
     useBalance?: boolean;
-    /**
-     * ID ( order_type = "tariff")
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    tariffId?: string;
-    /**
-     * ( order_type = "tariff")
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    period?: CreateOrderDtoPeriodEnum;
     /**
      * ID ( order_type = "credits")
      * @type {string}
@@ -69,19 +57,10 @@ export interface CreateOrderDto {
  */
 export declare const CreateOrderDtoOrderTypeEnum: {
     readonly Topup: "topup";
-    readonly Tariff: "tariff";
     readonly Credits: "credits";
     readonly BillingInvoice: "billing_invoice";
 };
 export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[keyof typeof CreateOrderDtoOrderTypeEnum];
-/**
- * @export
- */
-export declare const CreateOrderDtoPeriodEnum: {
-    readonly Monthly: "monthly";
-    readonly Yearly: "yearly";
-};
-export type CreateOrderDtoPeriodEnum = typeof CreateOrderDtoPeriodEnum[keyof typeof CreateOrderDtoPeriodEnum];
 /**
  * Check if a given object implements the CreateOrderDto interface.
  */

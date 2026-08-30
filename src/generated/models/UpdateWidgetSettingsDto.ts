@@ -78,6 +78,12 @@ export interface UpdateWidgetSettingsDto {
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
     /**
+     * host-
+     * @type {boolean}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    offerCreditPurchase?: boolean;
+    /**
      * MCP
      * @type {WidgetExternalAiSettingsDto}
      * @memberof UpdateWidgetSettingsDto
@@ -156,6 +162,7 @@ export function UpdateWidgetSettingsDtoFromJSONTyped(json: any, ignoreDiscrimina
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
         'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -180,6 +187,7 @@ export function UpdateWidgetSettingsDtoToJSONTyped(value?: UpdateWidgetSettingsD
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),
         'config_source': value['configSource'],
         'name': value['name'],

@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface LandingSettingsDto {
     /**
+     * . null
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    language: LandingSettingsDtoLanguageEnum | null;
+    /**
      *
      * @type {boolean}
      * @memberof LandingSettingsDto
@@ -32,23 +38,35 @@ export interface LandingSettingsDto {
      */
     backgroundColor: string;
     /**
-     *
+     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     iconUrl: string | null;
     /**
-     *
+     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     bannerUrl: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const LandingSettingsDtoLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingSettingsDtoLanguageEnum = typeof LandingSettingsDtoLanguageEnum[keyof typeof LandingSettingsDtoLanguageEnum];
+
+
 /**
  * Check if a given object implements the LandingSettingsDto interface.
  */
 export function instanceOfLandingSettingsDto(value: object): value is LandingSettingsDto {
+    if (!('language' in value) || value['language'] === undefined) return false;
     if (!('listVisible' in value) || value['listVisible'] === undefined) return false;
     if (!('backgroundColor' in value) || value['backgroundColor'] === undefined) return false;
     if (!('iconUrl' in value) || value['iconUrl'] === undefined) return false;
@@ -66,6 +84,7 @@ export function LandingSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
+        'language': json['language'],
         'listVisible': json['list_visible'],
         'backgroundColor': json['background_color'],
         'iconUrl': json['icon_url'],
@@ -84,6 +103,7 @@ export function LandingSettingsDtoToJSONTyped(value?: LandingSettingsDto | null,
 
     return {
 
+        'language': value['language'],
         'list_visible': value['listVisible'],
         'background_color': value['backgroundColor'],
         'icon_url': value['iconUrl'],

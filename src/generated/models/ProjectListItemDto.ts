@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PermissionsDto } from './PermissionsDto';
+import {
+    PermissionsDtoFromJSON,
+    PermissionsDtoFromJSONTyped,
+    PermissionsDtoToJSON,
+    PermissionsDtoToJSONTyped,
+} from './PermissionsDto';
 import type { ProjectRole } from './ProjectRole';
 import {
     ProjectRoleFromJSON,
@@ -46,6 +53,12 @@ export interface ProjectListItemDto {
      * @memberof ProjectListItemDto
      */
     userRole?: ProjectRole;
+    /**
+     *
+     * @type {PermissionsDto}
+     * @memberof ProjectListItemDto
+     */
+    permissions: PermissionsDto;
 }
 
 
@@ -55,6 +68,7 @@ export interface ProjectListItemDto {
  */
 export function instanceOfProjectListItemDto(value: object): value is ProjectListItemDto {
     if (!('project' in value) || value['project'] === undefined) return false;
+    if (!('permissions' in value) || value['permissions'] === undefined) return false;
     return true;
 }
 
@@ -70,6 +84,7 @@ export function ProjectListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: 
 
         'project': ProjectResponseDtoFromJSON(json['project']),
         'userRole': json['userRole'] == null ? undefined : ProjectRoleFromJSON(json['userRole']),
+        'permissions': PermissionsDtoFromJSON(json['permissions']),
     };
 }
 
@@ -86,5 +101,6 @@ export function ProjectListItemDtoToJSONTyped(value?: ProjectListItemDto | null,
 
         'project': ProjectResponseDtoToJSON(value['project']),
         'userRole': ProjectRoleToJSON(value['userRole']),
+        'permissions': PermissionsDtoToJSON(value['permissions']),
     };
 }

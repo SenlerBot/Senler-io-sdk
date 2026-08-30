@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicModelResponseDtoBillingModeEnum = exports.PublicModelResponseDtoImagePricingTypeEnum = exports.PublicModelResponseDtoAudioPricingTypeEnum = exports.PublicModelResponseDtoTypeEnum = void 0;
+exports.PublicModelResponseDtoBillingModeEnum = exports.PublicModelResponseDtoSupportedServerBindingModesEnum = exports.PublicModelResponseDtoImagePricingTypeEnum = exports.PublicModelResponseDtoAudioPricingTypeEnum = exports.PublicModelResponseDtoTypeEnum = exports.PublicModelResponseDtoPriceLevelEnum = exports.PublicModelResponseDtoSpeedLevelEnum = exports.PublicModelResponseDtoReasoningLevelEnum = void 0;
 exports.instanceOfPublicModelResponseDto = instanceOfPublicModelResponseDto;
 exports.PublicModelResponseDtoFromJSON = PublicModelResponseDtoFromJSON;
 exports.PublicModelResponseDtoFromJSONTyped = PublicModelResponseDtoFromJSONTyped;
@@ -22,6 +22,36 @@ exports.PublicModelResponseDtoToJSONTyped = PublicModelResponseDtoToJSONTyped;
 const AudioPricingGuideDto_1 = require("./AudioPricingGuideDto");
 const ModelPricingDto_1 = require("./ModelPricingDto");
 const PublicImageGenerationPriceResponseDto_1 = require("./PublicImageGenerationPriceResponseDto");
+/**
+ * @export
+ */
+exports.PublicModelResponseDtoReasoningLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+};
+/**
+ * @export
+ */
+exports.PublicModelResponseDtoSpeedLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+};
+/**
+ * @export
+ */
+exports.PublicModelResponseDtoPriceLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+};
 /**
  * @export
  */
@@ -51,6 +81,15 @@ exports.PublicModelResponseDtoImagePricingTypeEnum = {
 /**
  * @export
  */
+exports.PublicModelResponseDtoSupportedServerBindingModesEnum = {
+    ProviderDirect: 'provider_direct',
+    SenlerDirect: 'senler_direct',
+    SenlerList: 'senler_list',
+    None: 'none'
+};
+/**
+ * @export
+ */
 exports.PublicModelResponseDtoBillingModeEnum = {
     Tokens: 'tokens',
     Messages: 'messages'
@@ -65,7 +104,21 @@ function instanceOfPublicModelResponseDto(value) {
         return false;
     if (!('displayName' in value) || value['displayName'] === undefined)
         return false;
-    if (!('notes' in value) || value['notes'] === undefined)
+    if (!('descriptionRu' in value) || value['descriptionRu'] === undefined)
+        return false;
+    if (!('descriptionEn' in value) || value['descriptionEn'] === undefined)
+        return false;
+    if (!('reasoningLevel' in value) || value['reasoningLevel'] === undefined)
+        return false;
+    if (!('reasoningScoreBasisPoints' in value) || value['reasoningScoreBasisPoints'] === undefined)
+        return false;
+    if (!('speedLevel' in value) || value['speedLevel'] === undefined)
+        return false;
+    if (!('speedScoreBasisPoints' in value) || value['speedScoreBasisPoints'] === undefined)
+        return false;
+    if (!('priceLevel' in value) || value['priceLevel'] === undefined)
+        return false;
+    if (!('presentationMetricsUpdatedAt' in value) || value['presentationMetricsUpdatedAt'] === undefined)
         return false;
     if (!('contextWindow' in value) || value['contextWindow'] === undefined)
         return false;
@@ -95,6 +148,8 @@ function instanceOfPublicModelResponseDto(value) {
         return false;
     if (!('supportsStreaming' in value) || value['supportsStreaming'] === undefined)
         return false;
+    if (!('supportedServerBindingModes' in value) || value['supportedServerBindingModes'] === undefined)
+        return false;
     if (!('billingMode' in value) || value['billingMode'] === undefined)
         return false;
     if (!('pricing' in value) || value['pricing'] === undefined)
@@ -112,7 +167,14 @@ function PublicModelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'slug': json['slug'],
         'displayName': json['display_name'],
-        'notes': json['notes'],
+        'descriptionRu': json['description_ru'],
+        'descriptionEn': json['description_en'],
+        'reasoningLevel': json['reasoning_level'],
+        'reasoningScoreBasisPoints': json['reasoning_score_basis_points'],
+        'speedLevel': json['speed_level'],
+        'speedScoreBasisPoints': json['speed_score_basis_points'],
+        'priceLevel': json['price_level'],
+        'presentationMetricsUpdatedAt': (json['presentation_metrics_updated_at'] == null ? null : new Date(json['presentation_metrics_updated_at'])),
         'contextWindow': json['context_window'],
         'maxOutputTokens': json['max_output_tokens'],
         'provider': json['provider'],
@@ -138,6 +200,7 @@ function PublicModelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'supportsFunctionCalling': json['supports_function_calling'],
         'supportsVision': json['supports_vision'],
         'supportsStreaming': json['supports_streaming'],
+        'supportedServerBindingModes': json['supported_server_binding_modes'],
         'billingMode': json['billing_mode'],
         'pricing': (0, ModelPricingDto_1.ModelPricingDtoFromJSON)(json['pricing']),
     };
@@ -153,7 +216,14 @@ function PublicModelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'slug': value['slug'],
         'display_name': value['displayName'],
-        'notes': value['notes'],
+        'description_ru': value['descriptionRu'],
+        'description_en': value['descriptionEn'],
+        'reasoning_level': value['reasoningLevel'],
+        'reasoning_score_basis_points': value['reasoningScoreBasisPoints'],
+        'speed_level': value['speedLevel'],
+        'speed_score_basis_points': value['speedScoreBasisPoints'],
+        'price_level': value['priceLevel'],
+        'presentation_metrics_updated_at': (value['presentationMetricsUpdatedAt'] == null ? null : value['presentationMetricsUpdatedAt'].toISOString()),
         'context_window': value['contextWindow'],
         'max_output_tokens': value['maxOutputTokens'],
         'provider': value['provider'],
@@ -179,6 +249,7 @@ function PublicModelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'supports_function_calling': value['supportsFunctionCalling'],
         'supports_vision': value['supportsVision'],
         'supports_streaming': value['supportsStreaming'],
+        'supported_server_binding_modes': value['supportedServerBindingModes'],
         'billing_mode': value['billingMode'],
         'pricing': (0, ModelPricingDto_1.ModelPricingDtoToJSON)(value['pricing']),
     };

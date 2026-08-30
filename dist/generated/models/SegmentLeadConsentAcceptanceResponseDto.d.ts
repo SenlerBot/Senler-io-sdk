@@ -135,6 +135,7 @@ export declare const SegmentLeadConsentAcceptanceResponseDtoSourceEnum: {
     readonly AutoAssignment: "auto_assignment";
     readonly Automation: "automation";
     readonly AiAgent: "ai_agent";
+    readonly Trigger: "trigger";
 };
 export type SegmentLeadConsentAcceptanceResponseDtoSourceEnum = typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum[keyof typeof SegmentLeadConsentAcceptanceResponseDtoSourceEnum];
 /**

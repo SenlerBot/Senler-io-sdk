@@ -51,6 +51,7 @@ function AutomationTableWriteDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'columnIndex': json['column_index'],
+        'columnHeader': json['column_header'] == null ? undefined : json['column_header'],
         'valueSource': json['value_source'] == null ? undefined : json['value_source'],
         'value': json['value'] == null ? undefined : json['value'],
         'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
@@ -66,6 +67,7 @@ function AutomationTableWriteDtoToJSONTyped(value, ignoreDiscriminator = false) 
     }
     return {
         'column_index': value['columnIndex'],
+        'column_header': value['columnHeader'],
         'value_source': value['valueSource'],
         'value': value['value'],
         'variable_scope': value['variableScope'],

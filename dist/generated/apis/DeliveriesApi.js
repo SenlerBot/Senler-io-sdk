@@ -94,8 +94,9 @@ class DeliveriesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , .
+     * . .
      *
+     * @deprecated
      */
     async copyRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -131,8 +132,9 @@ class DeliveriesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , .
+     * . .
      *
+     * @deprecated
      */
     async copy(requestParameters, initOverrides) {
         const response = await this.copyRaw(requestParameters, initOverrides);

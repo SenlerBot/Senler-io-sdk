@@ -84,7 +84,7 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
             path: `/api/events/analytics`,
@@ -124,7 +124,7 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
             path: `/api/events/{eventId}`.replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
@@ -236,7 +236,7 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
             path: `/api/events`,
@@ -282,7 +282,7 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
             path: `/api/events/marketing/quick-metrics`,
@@ -328,7 +328,7 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
             path: `/api/events/marketing/traffic-channels`,
@@ -374,7 +374,7 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
             path: `/api/events/marketing/traffic-sources`,

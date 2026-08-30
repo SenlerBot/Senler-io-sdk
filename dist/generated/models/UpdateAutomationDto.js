@@ -48,7 +48,7 @@ function UpdateAutomationDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'name': json['name'] == null ? undefined : json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'channelTypes': json['channel_types'] == null ? undefined : json['channel_types'],
+        'channelTypes': json['channel_types'] == null ? undefined : new Set(json['channel_types']),
         'widgetPublicNameEnabled': json['widget_public_name_enabled'] == null ? undefined : json['widget_public_name_enabled'],
         'widgetPublicName': json['widget_public_name'] == null ? undefined : json['widget_public_name'],
     };
@@ -63,7 +63,7 @@ function UpdateAutomationDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'name': value['name'],
         'description': value['description'],
-        'channel_types': value['channelTypes'],
+        'channel_types': value['channelTypes'] == null ? undefined : Array.from(value['channelTypes']),
         'widget_public_name_enabled': value['widgetPublicNameEnabled'],
         'widget_public_name': value['widgetPublicName'],
     };

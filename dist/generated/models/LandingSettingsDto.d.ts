@@ -16,6 +16,12 @@
  */
 export interface LandingSettingsDto {
     /**
+     * . null
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    language: LandingSettingsDtoLanguageEnum | null;
+    /**
      *
      * @type {boolean}
      * @memberof LandingSettingsDto
@@ -28,18 +34,26 @@ export interface LandingSettingsDto {
      */
     backgroundColor: string;
     /**
-     *
+     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     iconUrl: string | null;
     /**
-     *
+     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     bannerUrl: string | null;
 }
+/**
+ * @export
+ */
+export declare const LandingSettingsDtoLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingSettingsDtoLanguageEnum = typeof LandingSettingsDtoLanguageEnum[keyof typeof LandingSettingsDtoLanguageEnum];
 /**
  * Check if a given object implements the LandingSettingsDto interface.
  */

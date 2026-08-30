@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface ResolveAppWebhookDeliveryDto {
     /**
-     * : obsolete, superseded, invalid_payload, accepted_loss.
+     * : obsolete, superseded, invalid_payload, accepted_loss, reviewed, fixed.
      * @type {string}
      * @memberof ResolveAppWebhookDeliveryDto
      */
@@ -41,7 +41,9 @@ export const ResolveAppWebhookDeliveryDtoResolutionCodeEnum = {
     Obsolete: 'obsolete',
     Superseded: 'superseded',
     InvalidPayload: 'invalid_payload',
-    AcceptedLoss: 'accepted_loss'
+    AcceptedLoss: 'accepted_loss',
+    Reviewed: 'reviewed',
+    Fixed: 'fixed'
 } as const;
 export type ResolveAppWebhookDeliveryDtoResolutionCodeEnum = typeof ResolveAppWebhookDeliveryDtoResolutionCodeEnum[keyof typeof ResolveAppWebhookDeliveryDtoResolutionCodeEnum];
 

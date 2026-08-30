@@ -103,22 +103,22 @@ export interface UpdateRealtimeFocusRequest {
  */
 export declare class LandingsApi extends runtime.BaseAPI {
     /**
-     * , , .
+     * , S3-, . url .
      *
      */
     assetsConfirmRaw(requestParameters: AssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>>;
     /**
-     * , , .
+     * , S3-, . url .
      *
      */
     assetsConfirm(requestParameters: AssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto>;
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     assetsUploadUrlRaw(requestParameters: AssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
     /**
-     * S3- .
+     * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
      */
     assetsUploadUrl(requestParameters: AssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;

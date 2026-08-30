@@ -78,6 +78,8 @@ export const ResourcePackagePlanItemDtoResourceTypeEnum = {
     KnowledgeFolder: 'knowledge_folder',
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
+    Landing: 'landing',
+    MetricDefinition: 'metric_definition',
     AgentKnowledgeSource: 'agent_knowledge_source',
     AutomationChannelBinding: 'automation_channel_binding',
     AutomationMessageTarget: 'automation_message_target',

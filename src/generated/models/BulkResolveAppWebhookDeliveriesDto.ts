@@ -62,7 +62,7 @@ export interface BulkResolveAppWebhookDeliveriesDto {
      */
     createdTo?: Date;
     /**
-     * : obsolete, superseded, invalid_payload, accepted_loss.
+     * : obsolete, superseded, invalid_payload, accepted_loss, reviewed, fixed.
      * @type {string}
      * @memberof BulkResolveAppWebhookDeliveriesDto
      */
@@ -103,7 +103,9 @@ export const BulkResolveAppWebhookDeliveriesDtoResolutionCodeEnum = {
     Obsolete: 'obsolete',
     Superseded: 'superseded',
     InvalidPayload: 'invalid_payload',
-    AcceptedLoss: 'accepted_loss'
+    AcceptedLoss: 'accepted_loss',
+    Reviewed: 'reviewed',
+    Fixed: 'fixed'
 } as const;
 export type BulkResolveAppWebhookDeliveriesDtoResolutionCodeEnum = typeof BulkResolveAppWebhookDeliveriesDtoResolutionCodeEnum[keyof typeof BulkResolveAppWebhookDeliveriesDtoResolutionCodeEnum];
 

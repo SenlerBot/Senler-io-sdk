@@ -42,6 +42,12 @@ import {
  */
 export interface WidgetChannelDataDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof WidgetChannelDataDto
+     */
+    offerCreditPurchase?: boolean;
+    /**
      * MCP
      * @type {WidgetExternalAiSettingsDto}
      * @memberof WidgetChannelDataDto
@@ -138,6 +144,7 @@ export function WidgetChannelDataDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
+        'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'theme': json['theme'] == null ? undefined : WidgetThemeDtoFromJSON(json['theme']),
@@ -160,6 +167,7 @@ export function WidgetChannelDataDtoToJSONTyped(value?: WidgetChannelDataDto | n
 
     return {
 
+        'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),
         'allowed_domains': value['allowedDomains'],
         'theme': WidgetThemeDtoToJSON(value['theme']),

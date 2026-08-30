@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { CabinetAiCostSummaryDto } from './CabinetAiCostSummaryDto';
+import {
+    CabinetAiCostSummaryDtoFromJSON,
+    CabinetAiCostSummaryDtoFromJSONTyped,
+    CabinetAiCostSummaryDtoToJSON,
+    CabinetAiCostSummaryDtoToJSONTyped,
+} from './CabinetAiCostSummaryDto';
 import type { ImageGenerationCostCabinetDto } from './ImageGenerationCostCabinetDto';
 import {
     ImageGenerationCostCabinetDtoFromJSON,
@@ -110,6 +117,12 @@ export interface EventCostsCabinetDto {
      * @memberof EventCostsCabinetDto
      */
     clientCurrency?: string;
+    /**
+     * , AI-
+     * @type {CabinetAiCostSummaryDto}
+     * @memberof EventCostsCabinetDto
+     */
+    summary?: CabinetAiCostSummaryDto;
 }
 
 
@@ -148,6 +161,7 @@ export function EventCostsCabinetDtoFromJSONTyped(json: any, ignoreDiscriminator
         'metricsExtraction': json['metrics_extraction'] == null ? undefined : MetricsExtractionCostCabinetDtoFromJSON(json['metrics_extraction']),
         'billingMode': json['billing_mode'] == null ? undefined : json['billing_mode'],
         'clientCurrency': json['client_currency'] == null ? undefined : json['client_currency'],
+        'summary': json['summary'] == null ? undefined : CabinetAiCostSummaryDtoFromJSON(json['summary']),
     };
 }
 
@@ -170,5 +184,6 @@ export function EventCostsCabinetDtoToJSONTyped(value?: EventCostsCabinetDto | n
         'metrics_extraction': MetricsExtractionCostCabinetDtoToJSON(value['metricsExtraction']),
         'billing_mode': value['billingMode'],
         'client_currency': value['clientCurrency'],
+        'summary': CabinetAiCostSummaryDtoToJSON(value['summary']),
     };
 }

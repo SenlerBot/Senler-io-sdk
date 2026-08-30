@@ -256,12 +256,12 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
-     * . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
+     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
      *
      */
     updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
     /**
-     * . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
+     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
      *
      */
     updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
@@ -276,12 +276,12 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     updateInstalledAppEvents(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
     /**
-     * , . getInstruction updated_at. , .
+     * , . . getInstruction updated_at. , .
      *
      */
     updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
     /**
-     * , . getInstruction updated_at. , .
+     * , . . getInstruction updated_at. , .
      *
      */
     updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;

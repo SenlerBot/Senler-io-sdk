@@ -249,8 +249,9 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , .
+     * . .
      *
+     * @deprecated
      */
     async copyRaw(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -302,8 +303,9 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , .
+     * . .
      *
+     * @deprecated
      */
     async copy(requestParameters: CopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto> {
         const response = await this.copyRaw(requestParameters, initOverrides);

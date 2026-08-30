@@ -31,8 +31,6 @@ import type {
   UpdateKnowledgeFileDto,
   UpdateKnowledgeFolderDto,
   UpdateKnowledgeTableDto,
-  UploadKnowledgeArchiveConflictResponseDto,
-  UploadKnowledgeArchiveResponseDto,
 } from '../models/index';
 import {
     CreateKnowledgeFileDtoFromJSON,
@@ -67,10 +65,6 @@ import {
     UpdateKnowledgeFolderDtoToJSON,
     UpdateKnowledgeTableDtoFromJSON,
     UpdateKnowledgeTableDtoToJSON,
-    UploadKnowledgeArchiveConflictResponseDtoFromJSON,
-    UploadKnowledgeArchiveConflictResponseDtoToJSON,
-    UploadKnowledgeArchiveResponseDtoFromJSON,
-    UploadKnowledgeArchiveResponseDtoToJSON,
 } from '../models/index';
 
 export interface ArchiveImportsRequest {
@@ -122,16 +116,6 @@ export interface FilesUploadRequest {
     title?: string;
     locale?: FilesUploadLocaleEnum;
     imageRecognitionMode?: FilesUploadImageRecognitionModeEnum;
-}
-
-export interface FilesUploadArchiveRequest {
-    projectId: string;
-    file: Blob;
-    acceptLanguage?: FilesUploadArchiveAcceptLanguageEnum;
-    locale?: FilesUploadArchiveLocaleEnum;
-    folderId?: string | null;
-    duplicateResolution?: FilesUploadArchiveDuplicateResolutionEnum;
-    imageRecognitionMode?: FilesUploadArchiveImageRecognitionModeEnum;
 }
 
 export interface FoldersRequest {
@@ -195,6 +179,7 @@ export interface GetSearchRequest {
     query: string;
     folderId?: string | null;
     resourceType?: GetSearchResourceTypeEnum;
+    searchMode?: GetSearchSearchModeEnum;
     limit?: number;
     page?: number;
     acceptLanguage?: GetSearchAcceptLanguageEnum;
@@ -789,108 +774,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async filesUpload(requestParameters: FilesUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.filesUploadRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * ZIP- 500 , .
-     * ZIP-
-     * @deprecated
-     */
-    async filesUploadArchiveRaw(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UploadKnowledgeArchiveResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling filesUploadArchive().'
-            );
-        }
-
-        if (requestParameters['file'] == null) {
-            throw new runtime.RequiredError(
-                'file',
-                'Required parameter "file" was null or undefined when calling filesUploadArchive().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
-        }
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters['projectId'] != null) {
-            formParams.append('project_id', requestParameters['projectId'] as any);
-        }
-
-        if (requestParameters['locale'] != null) {
-            formParams.append('locale', requestParameters['locale'] as any);
-        }
-
-        if (requestParameters['folderId'] != null) {
-            formParams.append('folder_id', requestParameters['folderId'] as any);
-        }
-
-        if (requestParameters['duplicateResolution'] != null) {
-            formParams.append('duplicate_resolution', requestParameters['duplicateResolution'] as any);
-        }
-
-        if (requestParameters['imageRecognitionMode'] != null) {
-            formParams.append('image_recognition_mode', requestParameters['imageRecognitionMode'] as any);
-        }
-
-        if (requestParameters['file'] != null) {
-            formParams.append('file', requestParameters['file'] as any);
-        }
-
-        const response = await this.request({
-            path: `/api/knowledge-base/files/upload-archive`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UploadKnowledgeArchiveResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * ZIP- 500 , .
-     * ZIP-
-     * @deprecated
-     */
-    async filesUploadArchive(requestParameters: FilesUploadArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UploadKnowledgeArchiveResponseDto> {
-        const response = await this.filesUploadArchiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1494,6 +1377,10 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
             queryParameters['resource_type'] = requestParameters['resourceType'];
         }
 
+        if (requestParameters['searchMode'] != null) {
+            queryParameters['search_mode'] = requestParameters['searchMode'];
+        }
+
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -1696,7 +1583,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . JSON API MCP ; CSV/XLSX .
      *
      */
     async tablesRaw(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableResponseDto>> {
@@ -1742,7 +1629,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . JSON API MCP ; CSV/XLSX .
      *
      */
     async tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
@@ -2219,41 +2106,6 @@ export type FilesUploadImageRecognitionModeEnum = typeof FilesUploadImageRecogni
 /**
  * @export
  */
-export const FilesUploadArchiveAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type FilesUploadArchiveAcceptLanguageEnum = typeof FilesUploadArchiveAcceptLanguageEnum[keyof typeof FilesUploadArchiveAcceptLanguageEnum];
-/**
- * @export
- */
-export const FilesUploadArchiveLocaleEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type FilesUploadArchiveLocaleEnum = typeof FilesUploadArchiveLocaleEnum[keyof typeof FilesUploadArchiveLocaleEnum];
-/**
- * @export
- */
-export const FilesUploadArchiveDuplicateResolutionEnum = {
-    Ask: 'ask',
-    Replace: 'replace',
-    Rename: 'rename'
-} as const;
-export type FilesUploadArchiveDuplicateResolutionEnum = typeof FilesUploadArchiveDuplicateResolutionEnum[keyof typeof FilesUploadArchiveDuplicateResolutionEnum];
-/**
- * @export
- */
-export const FilesUploadArchiveImageRecognitionModeEnum = {
-    None: 'none',
-    WithoutMarkdownDescription: 'without_markdown_description',
-    Unrecognized: 'unrecognized',
-    All: 'all'
-} as const;
-export type FilesUploadArchiveImageRecognitionModeEnum = typeof FilesUploadArchiveImageRecognitionModeEnum[keyof typeof FilesUploadArchiveImageRecognitionModeEnum];
-/**
- * @export
- */
 export const FoldersAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2351,6 +2203,14 @@ export const GetSearchResourceTypeEnum = {
     Table: 'table'
 } as const;
 export type GetSearchResourceTypeEnum = typeof GetSearchResourceTypeEnum[keyof typeof GetSearchResourceTypeEnum];
+/**
+ * @export
+ */
+export const GetSearchSearchModeEnum = {
+    Name: 'name',
+    Content: 'content'
+} as const;
+export type GetSearchSearchModeEnum = typeof GetSearchSearchModeEnum[keyof typeof GetSearchSearchModeEnum];
 /**
  * @export
  */

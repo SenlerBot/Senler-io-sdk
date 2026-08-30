@@ -19,6 +19,7 @@ exports.AppWebhookDeliveryTaskSummaryResponseDtoFromJSON = AppWebhookDeliveryTas
 exports.AppWebhookDeliveryTaskSummaryResponseDtoFromJSONTyped = AppWebhookDeliveryTaskSummaryResponseDtoFromJSONTyped;
 exports.AppWebhookDeliveryTaskSummaryResponseDtoToJSON = AppWebhookDeliveryTaskSummaryResponseDtoToJSON;
 exports.AppWebhookDeliveryTaskSummaryResponseDtoToJSONTyped = AppWebhookDeliveryTaskSummaryResponseDtoToJSONTyped;
+const AppWebhookDeliveryIncidentDto_1 = require("./AppWebhookDeliveryIncidentDto");
 /**
  * @export
  */
@@ -58,6 +59,8 @@ function instanceOfAppWebhookDeliveryTaskSummaryResponseDto(value) {
         return false;
     if (!('lastStatusCode' in value) || value['lastStatusCode'] === undefined)
         return false;
+    if (!('incident' in value) || value['incident'] === undefined)
+        return false;
     if (!('eventType' in value) || value['eventType'] === undefined)
         return false;
     if (!('resolvedAt' in value) || value['resolvedAt'] === undefined)
@@ -83,6 +86,7 @@ function AppWebhookDeliveryTaskSummaryResponseDtoFromJSONTyped(json, ignoreDiscr
         'nextRetryAt': (json['next_retry_at'] == null ? null : new Date(json['next_retry_at'])),
         'lastError': json['last_error'],
         'lastStatusCode': json['last_status_code'],
+        'incident': (0, AppWebhookDeliveryIncidentDto_1.AppWebhookDeliveryIncidentDtoFromJSON)(json['incident']),
         'eventType': json['event_type'],
         'resolvedAt': (json['resolved_at'] == null ? null : new Date(json['resolved_at'])),
         'createdAt': (new Date(json['created_at'])),
@@ -105,6 +109,7 @@ function AppWebhookDeliveryTaskSummaryResponseDtoToJSONTyped(value, ignoreDiscri
         'next_retry_at': (value['nextRetryAt'] == null ? null : value['nextRetryAt'].toISOString()),
         'last_error': value['lastError'],
         'last_status_code': value['lastStatusCode'],
+        'incident': (0, AppWebhookDeliveryIncidentDto_1.AppWebhookDeliveryIncidentDtoToJSON)(value['incident']),
         'event_type': value['eventType'],
         'resolved_at': (value['resolvedAt'] == null ? null : value['resolvedAt'].toISOString()),
         'created_at': ((value['createdAt']).toISOString()),

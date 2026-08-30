@@ -74,6 +74,24 @@ export interface QueryDialogsDto {
      */
     agentId?: Array<string>;
     /**
+     * ID
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAutomationId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAutomationTriggerNodeId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAutomationTriggerSessionId?: string;
+    /**
      * ID (ObjectId, , 20 )
      * @type {Array<string>}
      * @memberof QueryDialogsDto
@@ -314,6 +332,9 @@ export function QueryDialogsDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'projectId': json['project_id'],
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
+        'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
+        'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
+        'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'selectionRef': json['selection_ref'] == null ? undefined : json['selection_ref'],
@@ -359,6 +380,9 @@ export function QueryDialogsDtoToJSONTyped(value?: QueryDialogsDto | null, ignor
         'project_id': value['projectId'],
         'channel_id': value['channelId'],
         'agent_id': value['agentId'],
+        'test_automation_id': value['testAutomationId'],
+        'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
+        'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],
         'lead_id': value['leadId'],
         'dialog_ids': value['dialogIds'],
         'selection_ref': value['selectionRef'],
