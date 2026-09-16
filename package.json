@@ -1,6 +1,6 @@
 {
-  "name": "@aisenler/sdk-fetch",
-  "version": "0.1.16",
+  "name": "@senlerio/api",
+  "version": "0.2.0",
   "description": "Senler.io API SDK (fetch)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -67,9 +67,6 @@
     "test": "npm run build && node --test test/*.spec.js",
     "prepublishOnly": "npm run build"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "peerDependencies": {
     "@nestjs/common": ">=10 <12",
     "@nestjs/swagger": ">=7 <12"
@@ -81,6 +78,9 @@
     "@nestjs/swagger": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=18"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
