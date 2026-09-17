@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface AllCustomVariableBindingDto {
     /**
-     * : project, lead.
+     * : project, lead, dialog.
      * @type {string}
      * @memberof AllCustomVariableBindingDto
      */
@@ -39,7 +39,8 @@ export interface AllCustomVariableBindingDto {
  */
 export const AllCustomVariableBindingDtoScopeEnum = {
     Project: 'project',
-    Lead: 'lead'
+    Lead: 'lead',
+    Dialog: 'dialog'
 } as const;
 export type AllCustomVariableBindingDtoScopeEnum = typeof AllCustomVariableBindingDtoScopeEnum[keyof typeof AllCustomVariableBindingDtoScopeEnum];
 

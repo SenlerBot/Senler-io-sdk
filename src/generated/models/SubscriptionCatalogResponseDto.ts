@@ -13,20 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { MailingMessagePackageCatalogDto } from './MailingMessagePackageCatalogDto';
+import type { BillingAddonCatalogDto } from './BillingAddonCatalogDto';
 import {
-    MailingMessagePackageCatalogDtoFromJSON,
-    MailingMessagePackageCatalogDtoFromJSONTyped,
-    MailingMessagePackageCatalogDtoToJSON,
-    MailingMessagePackageCatalogDtoToJSONTyped,
-} from './MailingMessagePackageCatalogDto';
-import type { BillingAddonPlanCatalogDto } from './BillingAddonPlanCatalogDto';
-import {
-    BillingAddonPlanCatalogDtoFromJSON,
-    BillingAddonPlanCatalogDtoFromJSONTyped,
-    BillingAddonPlanCatalogDtoToJSON,
-    BillingAddonPlanCatalogDtoToJSONTyped,
-} from './BillingAddonPlanCatalogDto';
+    BillingAddonCatalogDtoFromJSON,
+    BillingAddonCatalogDtoFromJSONTyped,
+    BillingAddonCatalogDtoToJSON,
+    BillingAddonCatalogDtoToJSONTyped,
+} from './BillingAddonCatalogDto';
 
 /**
  * SubscriptionCatalogResponseDto.
@@ -35,25 +28,18 @@ import {
  */
 export interface SubscriptionCatalogResponseDto {
     /**
-     * recurring addons.
-     * @type {Array<BillingAddonPlanCatalogDto>}
+     * addons.
+     * @type {Array<BillingAddonCatalogDto>}
      * @memberof SubscriptionCatalogResponseDto
      */
-    recurringAddons: Array<BillingAddonPlanCatalogDto>;
-    /**
-     * mailing packages.
-     * @type {Array<MailingMessagePackageCatalogDto>}
-     * @memberof SubscriptionCatalogResponseDto
-     */
-    mailingPackages: Array<MailingMessagePackageCatalogDto>;
+    addons: Array<BillingAddonCatalogDto>;
 }
 
 /**
  * Check if a given object implements the SubscriptionCatalogResponseDto interface.
  */
 export function instanceOfSubscriptionCatalogResponseDto(value: object): value is SubscriptionCatalogResponseDto {
-    if (!('recurringAddons' in value) || value['recurringAddons'] === undefined) return false;
-    if (!('mailingPackages' in value) || value['mailingPackages'] === undefined) return false;
+    if (!('addons' in value) || value['addons'] === undefined) return false;
     return true;
 }
 
@@ -67,8 +53,7 @@ export function SubscriptionCatalogResponseDtoFromJSONTyped(json: any, ignoreDis
     }
     return {
 
-        'recurringAddons': ((json['recurring_addons'] as Array<any>).map(BillingAddonPlanCatalogDtoFromJSON)),
-        'mailingPackages': ((json['mailing_packages'] as Array<any>).map(MailingMessagePackageCatalogDtoFromJSON)),
+        'addons': ((json['addons'] as Array<any>).map(BillingAddonCatalogDtoFromJSON)),
     };
 }
 
@@ -83,7 +68,6 @@ export function SubscriptionCatalogResponseDtoToJSONTyped(value?: SubscriptionCa
 
     return {
 
-        'recurring_addons': ((value['recurringAddons'] as Array<any>).map(BillingAddonPlanCatalogDtoToJSON)),
-        'mailing_packages': ((value['mailingPackages'] as Array<any>).map(MailingMessagePackageCatalogDtoToJSON)),
+        'addons': ((value['addons'] as Array<any>).map(BillingAddonCatalogDtoToJSON)),
     };
 }

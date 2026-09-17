@@ -41,31 +41,19 @@ export interface SendFirstTestMessageDto {
      */
     content: string;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof SendFirstTestMessageDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      *
      * @type {string}
      * @memberof SendFirstTestMessageDto
      */
     clientType?: SendFirstTestMessageDtoClientTypeEnum;
     /**
-     * (. 10).
-     *
-     * :
-     * 1. S3- .
-     * 2. .
-     * 3. .
-     * 4. fileId confirm.
-     *
-     * :
-     * ```typescript
-     * // - dialogId
-     * const confirm = await confirmUpload(uploadId, { dialogId });
-     * await sendMessage({
-     * content: '',
-     * attachments: [{ id: confirm.fileId }],
-     * });
-     * ```
-     *
-     * ID.
+     * . fileId confirm; .
      * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof SendFirstTestMessageDto
      */
@@ -76,6 +64,12 @@ export interface SendFirstTestMessageDto {
      * @memberof SendFirstTestMessageDto
      */
     buttons?: Array<MessageButtonDto>;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof SendFirstTestMessageDto
+     */
+    draftId: string;
     /**
      *
      * @type {string}
@@ -108,6 +102,7 @@ export type SendFirstTestMessageDtoClientTypeEnum = typeof SendFirstTestMessageD
  */
 export function instanceOfSendFirstTestMessageDto(value: object): value is SendFirstTestMessageDto {
     if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('draftId' in value) || value['draftId'] === undefined) return false;
     if (!('idempotencyKey' in value) || value['idempotencyKey'] === undefined) return false;
     return true;
 }
@@ -123,9 +118,11 @@ export function SendFirstTestMessageDtoFromJSONTyped(json: any, ignoreDiscrimina
     return {
 
         'content': json['content'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
         'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoFromJSON)),
         'buttons': json['buttons'] == null ? undefined : ((json['buttons'] as Array<any>).map(MessageButtonDtoFromJSON)),
+        'draftId': json['draft_id'],
         'idempotencyKey': json['idempotency_key'],
         'baseDialogId': json['base_dialog_id'] == null ? undefined : json['base_dialog_id'],
     };
@@ -143,9 +140,11 @@ export function SendFirstTestMessageDtoToJSONTyped(value?: SendFirstTestMessageD
     return {
 
         'content': value['content'],
+        'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],
         'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoToJSON)),
         'buttons': value['buttons'] == null ? undefined : ((value['buttons'] as Array<any>).map(MessageButtonDtoToJSON)),
+        'draft_id': value['draftId'],
         'idempotency_key': value['idempotencyKey'],
         'base_dialog_id': value['baseDialogId'],
     };

@@ -40,6 +40,7 @@ export interface PaymentCheckoutDto {
 export declare const PaymentCheckoutDtoTypeEnum: {
     readonly Redirect: "redirect";
     readonly Crypto: "crypto";
+    readonly SavedCard: "saved_card";
 };
 export type PaymentCheckoutDtoTypeEnum = typeof PaymentCheckoutDtoTypeEnum[keyof typeof PaymentCheckoutDtoTypeEnum];
 /**

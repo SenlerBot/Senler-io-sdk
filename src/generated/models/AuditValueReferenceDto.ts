@@ -67,7 +67,7 @@ export const AuditValueReferenceDtoEntityTypeEnum = {
     Automation: 'automation',
     App: 'app',
     Channel: 'channel',
-    CreditPackage: 'credit_package',
+    BillingAddon: 'billing_addon',
     DataSource: 'data_source',
     KnowledgeFolder: 'knowledge_folder',
     KnowledgeFile: 'knowledge_file',

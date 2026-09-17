@@ -10,68 +10,96 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, Deactivate200Response, LeadVariableResponseDto, LeadVariableValueResponseDto, LeadVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, StringVariableValueDto } from '../models/index';
-export interface DeleteValuesRequest {
+import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, Deactivate200Response, LeadVariableArrayMutationResponseDto, LeadVariableResponseDto, LeadVariableValueResponseDto, LeadVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, StringVariableValueDto } from '../models/index';
+export interface LeadVariablesDeleteValuesRequest {
     leadId: string;
     name: string;
-    acceptLanguage?: DeleteValuesAcceptLanguageEnum;
+    acceptLanguage?: LeadVariablesDeleteValuesAcceptLanguageEnum;
 }
-export interface GetValuesRequest {
+export interface LeadVariablesGetValuesRequest {
     leadId: string;
-    acceptLanguage?: GetValuesAcceptLanguageEnum;
+    acceptLanguage?: LeadVariablesGetValuesAcceptLanguageEnum;
 }
-export interface GetValues2Request {
+export interface LeadVariablesGetValues2Request {
     leadId: string;
     name: string;
-    acceptLanguage?: GetValues2AcceptLanguageEnum;
+    acceptLanguage?: LeadVariablesGetValues2AcceptLanguageEnum;
 }
-export interface UpdateValuesArrayRequest {
+export interface LeadVariablesUpdateValuesArrayRequest {
     leadId: string;
     name: string;
     arrayVariableValueDto: ArrayVariableValueDto;
-    writeMode?: UpdateValuesArrayWriteModeEnum;
-    acceptLanguage?: UpdateValuesArrayAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesArrayWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesArrayAcceptLanguageEnum;
 }
-export interface UpdateValuesBooleanRequest {
+export interface LeadVariablesUpdateValuesBooleanRequest {
     leadId: string;
     name: string;
     booleanVariableValueDto: BooleanVariableValueDto;
-    writeMode?: UpdateValuesBooleanWriteModeEnum;
-    acceptLanguage?: UpdateValuesBooleanAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesBooleanWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesBooleanAcceptLanguageEnum;
 }
-export interface UpdateValuesDateRequest {
+export interface LeadVariablesUpdateValuesDateRequest {
     leadId: string;
     name: string;
     dateVariableValueDto: DateVariableValueDto;
-    writeMode?: UpdateValuesDateWriteModeEnum;
-    acceptLanguage?: UpdateValuesDateAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesDateWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesDateAcceptLanguageEnum;
 }
-export interface UpdateValuesNullRequest {
+export interface LeadVariablesUpdateValuesNullRequest {
     leadId: string;
     name: string;
-    writeMode?: UpdateValuesNullWriteModeEnum;
-    acceptLanguage?: UpdateValuesNullAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesNullWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesNullAcceptLanguageEnum;
 }
-export interface UpdateValuesNumberRequest {
+export interface LeadVariablesUpdateValuesNumberRequest {
     leadId: string;
     name: string;
     numberVariableValueDto: NumberVariableValueDto;
-    writeMode?: UpdateValuesNumberWriteModeEnum;
-    acceptLanguage?: UpdateValuesNumberAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesNumberWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesNumberAcceptLanguageEnum;
 }
-export interface UpdateValuesObjectRequest {
+export interface LeadVariablesUpdateValuesObjectRequest {
     leadId: string;
     name: string;
     objectVariableValueDto: ObjectVariableValueDto;
-    writeMode?: UpdateValuesObjectWriteModeEnum;
-    acceptLanguage?: UpdateValuesObjectAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesObjectWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesObjectAcceptLanguageEnum;
 }
-export interface UpdateValuesStringRequest {
+export interface LeadVariablesUpdateValuesStringRequest {
     leadId: string;
     name: string;
     stringVariableValueDto: StringVariableValueDto;
-    writeMode?: UpdateValuesStringWriteModeEnum;
-    acceptLanguage?: UpdateValuesStringAcceptLanguageEnum;
+    writeMode?: LeadVariablesUpdateValuesStringWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesStringAcceptLanguageEnum;
+}
+export interface LeadVariablesValuesArrayAddUniqueItemsRequest {
+    leadId: string;
+    name: string;
+    arrayVariableItemsDto: ArrayVariableItemsDto;
+    includeValue?: boolean;
+    acceptLanguage?: LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum;
+}
+export interface LeadVariablesValuesArrayAppendItemsRequest {
+    leadId: string;
+    name: string;
+    arrayVariableItemsDto: ArrayVariableItemsDto;
+    includeValue?: boolean;
+    acceptLanguage?: LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum;
+}
+export interface LeadVariablesValuesArrayPrependItemsRequest {
+    leadId: string;
+    name: string;
+    arrayVariableItemsDto: ArrayVariableItemsDto;
+    includeValue?: boolean;
+    acceptLanguage?: LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum;
+}
+export interface LeadVariablesValuesArrayRemoveItemsRequest {
+    leadId: string;
+    name: string;
+    arrayVariableItemsDto: ArrayVariableItemsDto;
+    includeValue?: boolean;
+    acceptLanguage?: LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum;
 }
 /**
  *
@@ -81,236 +109,308 @@ export declare class LeadVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    deleteValuesRaw(requestParameters: DeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
+    leadVariablesDeleteValuesRaw(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
     /**
      *
      *
      */
-    deleteValues(requestParameters: DeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
+    leadVariablesDeleteValues(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
     /**
      *
      *
      */
-    getValuesRaw(requestParameters: GetValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadVariableResponseDto>>>;
+    leadVariablesGetValuesRaw(requestParameters: LeadVariablesGetValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadVariableResponseDto>>>;
     /**
      *
      *
      */
-    getValues(requestParameters: GetValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableResponseDto>>;
+    leadVariablesGetValues(requestParameters: LeadVariablesGetValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableResponseDto>>;
     /**
      *
      *
      */
-    getValues2Raw(requestParameters: GetValues2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableValueResponseDto>>;
+    leadVariablesGetValues2Raw(requestParameters: LeadVariablesGetValues2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableValueResponseDto>>;
     /**
      *
      *
      */
-    getValues2(requestParameters: GetValues2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableValueResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateValuesArrayRaw(requestParameters: UpdateValuesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesGetValues2(requestParameters: LeadVariablesGetValues2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableValueResponseDto>;
     /**
      * .
      *
      */
-    updateValuesArray(requestParameters: UpdateValuesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesArrayRaw(requestParameters: LeadVariablesUpdateValuesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
     /**
      * .
      *
      */
-    updateValuesBooleanRaw(requestParameters: UpdateValuesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesUpdateValuesArray(requestParameters: LeadVariablesUpdateValuesArrayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      *
      */
-    updateValuesBoolean(requestParameters: UpdateValuesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesBooleanRaw(requestParameters: LeadVariablesUpdateValuesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
     /**
      * .
      *
      */
-    updateValuesDateRaw(requestParameters: UpdateValuesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesUpdateValuesBoolean(requestParameters: LeadVariablesUpdateValuesBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      *
      */
-    updateValuesDate(requestParameters: UpdateValuesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesDateRaw(requestParameters: LeadVariablesUpdateValuesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
     /**
      * .
-     * null
+     *
      */
-    updateValuesNullRaw(requestParameters: UpdateValuesNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesUpdateValuesDate(requestParameters: LeadVariablesUpdateValuesDateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      * null
      */
-    updateValuesNull(requestParameters: UpdateValuesNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesNullRaw(requestParameters: LeadVariablesUpdateValuesNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    /**
+     * .
+     * null
+     */
+    leadVariablesUpdateValuesNull(requestParameters: LeadVariablesUpdateValuesNullRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      *
      */
-    updateValuesNumberRaw(requestParameters: UpdateValuesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesUpdateValuesNumberRaw(requestParameters: LeadVariablesUpdateValuesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
     /**
      * .
      *
      */
-    updateValuesNumber(requestParameters: UpdateValuesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesNumber(requestParameters: LeadVariablesUpdateValuesNumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      *
      */
-    updateValuesObjectRaw(requestParameters: UpdateValuesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesUpdateValuesObjectRaw(requestParameters: LeadVariablesUpdateValuesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
     /**
      * .
      *
      */
-    updateValuesObject(requestParameters: UpdateValuesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesObject(requestParameters: LeadVariablesUpdateValuesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      *
      */
-    updateValuesStringRaw(requestParameters: UpdateValuesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    leadVariablesUpdateValuesStringRaw(requestParameters: LeadVariablesUpdateValuesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
     /**
      * .
      *
      */
-    updateValuesString(requestParameters: UpdateValuesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    leadVariablesUpdateValuesString(requestParameters: LeadVariablesUpdateValuesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    /**
+     * JSON-. .
+     *
+     */
+    leadVariablesValuesArrayAddUniqueItemsRaw(requestParameters: LeadVariablesValuesArrayAddUniqueItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableArrayMutationResponseDto>>;
+    /**
+     * JSON-. .
+     *
+     */
+    leadVariablesValuesArrayAddUniqueItems(requestParameters: LeadVariablesValuesArrayAddUniqueItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableArrayMutationResponseDto>;
+    /**
+     * . .
+     *
+     */
+    leadVariablesValuesArrayAppendItemsRaw(requestParameters: LeadVariablesValuesArrayAppendItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableArrayMutationResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    leadVariablesValuesArrayAppendItems(requestParameters: LeadVariablesValuesArrayAppendItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableArrayMutationResponseDto>;
+    /**
+     * . .
+     *
+     */
+    leadVariablesValuesArrayPrependItemsRaw(requestParameters: LeadVariablesValuesArrayPrependItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableArrayMutationResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    leadVariablesValuesArrayPrependItems(requestParameters: LeadVariablesValuesArrayPrependItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableArrayMutationResponseDto>;
+    /**
+     * JSON- . .
+     *
+     */
+    leadVariablesValuesArrayRemoveItemsRaw(requestParameters: LeadVariablesValuesArrayRemoveItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableArrayMutationResponseDto>>;
+    /**
+     * JSON- . .
+     *
+     */
+    leadVariablesValuesArrayRemoveItems(requestParameters: LeadVariablesValuesArrayRemoveItemsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableArrayMutationResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteValuesAcceptLanguageEnum: {
+export declare const LeadVariablesDeleteValuesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteValuesAcceptLanguageEnum = typeof DeleteValuesAcceptLanguageEnum[keyof typeof DeleteValuesAcceptLanguageEnum];
+export type LeadVariablesDeleteValuesAcceptLanguageEnum = typeof LeadVariablesDeleteValuesAcceptLanguageEnum[keyof typeof LeadVariablesDeleteValuesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetValuesAcceptLanguageEnum: {
+export declare const LeadVariablesGetValuesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetValuesAcceptLanguageEnum = typeof GetValuesAcceptLanguageEnum[keyof typeof GetValuesAcceptLanguageEnum];
+export type LeadVariablesGetValuesAcceptLanguageEnum = typeof LeadVariablesGetValuesAcceptLanguageEnum[keyof typeof LeadVariablesGetValuesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetValues2AcceptLanguageEnum: {
+export declare const LeadVariablesGetValues2AcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetValues2AcceptLanguageEnum = typeof GetValues2AcceptLanguageEnum[keyof typeof GetValues2AcceptLanguageEnum];
+export type LeadVariablesGetValues2AcceptLanguageEnum = typeof LeadVariablesGetValues2AcceptLanguageEnum[keyof typeof LeadVariablesGetValues2AcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesArrayWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesArrayWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesArrayWriteModeEnum = typeof UpdateValuesArrayWriteModeEnum[keyof typeof UpdateValuesArrayWriteModeEnum];
+export type LeadVariablesUpdateValuesArrayWriteModeEnum = typeof LeadVariablesUpdateValuesArrayWriteModeEnum[keyof typeof LeadVariablesUpdateValuesArrayWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesArrayAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesArrayAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesArrayAcceptLanguageEnum = typeof UpdateValuesArrayAcceptLanguageEnum[keyof typeof UpdateValuesArrayAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesArrayAcceptLanguageEnum = typeof LeadVariablesUpdateValuesArrayAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesArrayAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesBooleanWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesBooleanWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesBooleanWriteModeEnum = typeof UpdateValuesBooleanWriteModeEnum[keyof typeof UpdateValuesBooleanWriteModeEnum];
+export type LeadVariablesUpdateValuesBooleanWriteModeEnum = typeof LeadVariablesUpdateValuesBooleanWriteModeEnum[keyof typeof LeadVariablesUpdateValuesBooleanWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesBooleanAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesBooleanAcceptLanguageEnum = typeof UpdateValuesBooleanAcceptLanguageEnum[keyof typeof UpdateValuesBooleanAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesBooleanAcceptLanguageEnum = typeof LeadVariablesUpdateValuesBooleanAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesBooleanAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesDateWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesDateWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesDateWriteModeEnum = typeof UpdateValuesDateWriteModeEnum[keyof typeof UpdateValuesDateWriteModeEnum];
+export type LeadVariablesUpdateValuesDateWriteModeEnum = typeof LeadVariablesUpdateValuesDateWriteModeEnum[keyof typeof LeadVariablesUpdateValuesDateWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesDateAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesDateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesDateAcceptLanguageEnum = typeof UpdateValuesDateAcceptLanguageEnum[keyof typeof UpdateValuesDateAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesDateAcceptLanguageEnum = typeof LeadVariablesUpdateValuesDateAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesDateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesNullWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesNullWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesNullWriteModeEnum = typeof UpdateValuesNullWriteModeEnum[keyof typeof UpdateValuesNullWriteModeEnum];
+export type LeadVariablesUpdateValuesNullWriteModeEnum = typeof LeadVariablesUpdateValuesNullWriteModeEnum[keyof typeof LeadVariablesUpdateValuesNullWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesNullAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesNullAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesNullAcceptLanguageEnum = typeof UpdateValuesNullAcceptLanguageEnum[keyof typeof UpdateValuesNullAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesNullAcceptLanguageEnum = typeof LeadVariablesUpdateValuesNullAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesNullAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesNumberWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesNumberWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesNumberWriteModeEnum = typeof UpdateValuesNumberWriteModeEnum[keyof typeof UpdateValuesNumberWriteModeEnum];
+export type LeadVariablesUpdateValuesNumberWriteModeEnum = typeof LeadVariablesUpdateValuesNumberWriteModeEnum[keyof typeof LeadVariablesUpdateValuesNumberWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesNumberAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesNumberAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesNumberAcceptLanguageEnum = typeof UpdateValuesNumberAcceptLanguageEnum[keyof typeof UpdateValuesNumberAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesNumberAcceptLanguageEnum = typeof LeadVariablesUpdateValuesNumberAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesNumberAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesObjectWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesObjectWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesObjectWriteModeEnum = typeof UpdateValuesObjectWriteModeEnum[keyof typeof UpdateValuesObjectWriteModeEnum];
+export type LeadVariablesUpdateValuesObjectWriteModeEnum = typeof LeadVariablesUpdateValuesObjectWriteModeEnum[keyof typeof LeadVariablesUpdateValuesObjectWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesObjectAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesObjectAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesObjectAcceptLanguageEnum = typeof UpdateValuesObjectAcceptLanguageEnum[keyof typeof UpdateValuesObjectAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesObjectAcceptLanguageEnum = typeof LeadVariablesUpdateValuesObjectAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesObjectAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateValuesStringWriteModeEnum: {
+export declare const LeadVariablesUpdateValuesStringWriteModeEnum: {
     readonly Overwrite: "overwrite";
     readonly IfAbsent: "if_absent";
 };
-export type UpdateValuesStringWriteModeEnum = typeof UpdateValuesStringWriteModeEnum[keyof typeof UpdateValuesStringWriteModeEnum];
+export type LeadVariablesUpdateValuesStringWriteModeEnum = typeof LeadVariablesUpdateValuesStringWriteModeEnum[keyof typeof LeadVariablesUpdateValuesStringWriteModeEnum];
 /**
  * @export
  */
-export declare const UpdateValuesStringAcceptLanguageEnum: {
+export declare const LeadVariablesUpdateValuesStringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateValuesStringAcceptLanguageEnum = typeof UpdateValuesStringAcceptLanguageEnum[keyof typeof UpdateValuesStringAcceptLanguageEnum];
+export type LeadVariablesUpdateValuesStringAcceptLanguageEnum = typeof LeadVariablesUpdateValuesStringAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesStringAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum = typeof LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum[keyof typeof LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum = typeof LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum[keyof typeof LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum = typeof LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum[keyof typeof LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum = typeof LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum[keyof typeof LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum];

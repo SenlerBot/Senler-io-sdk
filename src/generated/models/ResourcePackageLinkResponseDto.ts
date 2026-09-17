@@ -74,6 +74,7 @@ export const ResourcePackageLinkResponseDtoSourceSectionEnum = {
     KnowledgeBase: 'knowledge_base',
     ProjectVariables: 'project_variables',
     LeadVariables: 'lead_variables',
+    DialogVariables: 'dialog_variables',
     Segments: 'segments',
     Landings: 'landings',
     Metrics: 'metrics'

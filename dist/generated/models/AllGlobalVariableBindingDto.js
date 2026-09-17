@@ -24,7 +24,8 @@ exports.AllGlobalVariableBindingDtoToJSONTyped = AllGlobalVariableBindingDtoToJS
  */
 exports.AllGlobalVariableBindingDtoScopeEnum = {
     Project: 'project',
-    Lead: 'lead'
+    Lead: 'lead',
+    Dialog: 'dialog'
 };
 /**
  * Check if a given object implements the AllGlobalVariableBindingDto interface.

@@ -39,6 +39,7 @@ export declare class AuditApi extends runtime.BaseAPI {
  * @export
  */
 export declare const AuditListEntityTypeEnum: {
+    readonly Funnel: "funnel";
     readonly Project: "project";
     readonly Agent: "agent";
     readonly Channel: "channel";
@@ -51,6 +52,7 @@ export declare const AuditListEntityTypeEnum: {
     readonly KnowledgeTable: "knowledge_table";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly DialogVariableDefinition: "dialog_variable_definition";
     readonly Segment: "segment";
     readonly SegmentConsentDocument: "segment_consent_document";
     readonly Landing: "landing";

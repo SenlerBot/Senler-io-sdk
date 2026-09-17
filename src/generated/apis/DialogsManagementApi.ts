@@ -21,6 +21,8 @@ import type {
   DialogAiBillingRecoveryEventStatusDto,
   DialogAiBillingRecoveryRetryResponseDto,
   DialogAiBillingRecoverySummaryDto,
+  DialogAiResponseRecoveryRetryDto,
+  DialogAiResponseRecoveryStatusDto,
   DialogDto,
   DialogParticipantsResponseDto,
   EditMessageDto,
@@ -44,6 +46,10 @@ import {
     DialogAiBillingRecoveryRetryResponseDtoToJSON,
     DialogAiBillingRecoverySummaryDtoFromJSON,
     DialogAiBillingRecoverySummaryDtoToJSON,
+    DialogAiResponseRecoveryRetryDtoFromJSON,
+    DialogAiResponseRecoveryRetryDtoToJSON,
+    DialogAiResponseRecoveryStatusDtoFromJSON,
+    DialogAiResponseRecoveryStatusDtoToJSON,
     DialogDtoFromJSON,
     DialogDtoToJSON,
     DialogParticipantsResponseDtoFromJSON,
@@ -81,10 +87,22 @@ export interface DeleteOperatorAssignmentRequest {
     acceptLanguage?: DeleteOperatorAssignmentAcceptLanguageEnum;
 }
 
+export interface EventsAiResponseRecoveryRetryRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: EventsAiResponseRecoveryRetryAcceptLanguageEnum;
+}
+
 export interface EventsBillingRecoveryRetryRequest {
     dialogId: string;
     eventId: string;
     acceptLanguage?: EventsBillingRecoveryRetryAcceptLanguageEnum;
+}
+
+export interface GetEventsAiResponseRecoveryRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: GetEventsAiResponseRecoveryAcceptLanguageEnum;
 }
 
 export interface GetEventsBillingRecoveryRequest {
@@ -101,6 +119,11 @@ export interface GetParticipantsRequest {
 export interface GetProjectsBillingRecoveryRequest {
     projectId: string;
     acceptLanguage?: GetProjectsBillingRecoveryAcceptLanguageEnum;
+}
+
+export interface ProjectsBillingRecoveryDismissRequest {
+    projectId: string;
+    acceptLanguage?: ProjectsBillingRecoveryDismissAcceptLanguageEnum;
 }
 
 export interface ProjectsBillingRecoveryRetryRequest {
@@ -357,6 +380,65 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
+     * AI-
+     */
+    async eventsAiResponseRecoveryRetryRaw(requestParameters: EventsAiResponseRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiResponseRecoveryRetryDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling eventsAiResponseRecoveryRetry().'
+            );
+        }
+
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError(
+                'eventId',
+                'Required parameter "eventId" was null or undefined when calling eventsAiResponseRecoveryRetry().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/events/{eventId}/ai-response-recovery/retry`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogAiResponseRecoveryRetryDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * AI-
+     */
+    async eventsAiResponseRecoveryRetry(requestParameters: EventsAiResponseRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiResponseRecoveryRetryDto> {
+        const response = await this.eventsAiResponseRecoveryRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * AI-, .
      * AI-
      */
@@ -412,6 +494,65 @@ export class DialogsManagementApi extends runtime.BaseAPI {
      */
     async eventsBillingRecoveryRetry(requestParameters: EventsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryRetryResponseDto> {
         const response = await this.eventsBillingRecoveryRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * AI-
+     */
+    async getEventsAiResponseRecoveryRaw(requestParameters: GetEventsAiResponseRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiResponseRecoveryStatusDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling getEventsAiResponseRecovery().'
+            );
+        }
+
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError(
+                'eventId',
+                'Required parameter "eventId" was null or undefined when calling getEventsAiResponseRecovery().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/events/{eventId}/ai-response-recovery`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogAiResponseRecoveryStatusDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * AI-
+     */
+    async getEventsAiResponseRecovery(requestParameters: GetEventsAiResponseRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiResponseRecoveryStatusDto> {
+        const response = await this.getEventsAiResponseRecoveryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -527,7 +668,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * , , .
      * AI- -
      */
     async getProjectsBillingRecoveryRaw(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoverySummaryDto>> {
@@ -570,7 +711,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * , , .
      * AI- -
      */
     async getProjectsBillingRecovery(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoverySummaryDto> {
@@ -579,7 +720,59 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . . .
+     *
+     */
+    async projectsBillingRecoveryDismissRaw(requestParameters: ProjectsBillingRecoveryDismissRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryBulkRetryResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsBillingRecoveryDismiss().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/projects/{projectId}/billing-recovery/dismiss`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async projectsBillingRecoveryDismiss(requestParameters: ProjectsBillingRecoveryDismissRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto> {
+        const response = await this.projectsBillingRecoveryDismissRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , include_metrics=true, . . ; .
      * AI-
      */
     async projectsBillingRecoveryRetryRaw(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryBulkRetryResponseDto>> {
@@ -632,7 +825,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * , include_metrics=true, . . ; .
      * AI-
      */
     async projectsBillingRecoveryRetry(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto> {
@@ -1372,11 +1565,27 @@ export type DeleteOperatorAssignmentAcceptLanguageEnum = typeof DeleteOperatorAs
 /**
  * @export
  */
+export const EventsAiResponseRecoveryRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type EventsAiResponseRecoveryRetryAcceptLanguageEnum = typeof EventsAiResponseRecoveryRetryAcceptLanguageEnum[keyof typeof EventsAiResponseRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const EventsBillingRecoveryRetryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type EventsBillingRecoveryRetryAcceptLanguageEnum = typeof EventsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof EventsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetEventsAiResponseRecoveryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetEventsAiResponseRecoveryAcceptLanguageEnum = typeof GetEventsAiResponseRecoveryAcceptLanguageEnum[keyof typeof GetEventsAiResponseRecoveryAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1401,6 +1610,14 @@ export const GetProjectsBillingRecoveryAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetProjectsBillingRecoveryAcceptLanguageEnum = typeof GetProjectsBillingRecoveryAcceptLanguageEnum[keyof typeof GetProjectsBillingRecoveryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectsBillingRecoveryDismissAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsBillingRecoveryDismissAcceptLanguageEnum = typeof ProjectsBillingRecoveryDismissAcceptLanguageEnum[keyof typeof ProjectsBillingRecoveryDismissAcceptLanguageEnum];
 /**
  * @export
  */

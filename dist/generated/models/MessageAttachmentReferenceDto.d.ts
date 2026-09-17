@@ -16,7 +16,7 @@
  */
 export interface MessageAttachmentReferenceDto {
     /**
-     * ID /attachments/confirm ID
+     * ID
      * @type {string}
      * @memberof MessageAttachmentReferenceDto
      */

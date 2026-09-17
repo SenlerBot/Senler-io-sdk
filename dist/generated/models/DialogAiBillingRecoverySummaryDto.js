@@ -18,24 +18,26 @@ exports.DialogAiBillingRecoverySummaryDtoFromJSON = DialogAiBillingRecoverySumma
 exports.DialogAiBillingRecoverySummaryDtoFromJSONTyped = DialogAiBillingRecoverySummaryDtoFromJSONTyped;
 exports.DialogAiBillingRecoverySummaryDtoToJSON = DialogAiBillingRecoverySummaryDtoToJSON;
 exports.DialogAiBillingRecoverySummaryDtoToJSONTyped = DialogAiBillingRecoverySummaryDtoToJSONTyped;
+const DialogAiBillingRecoveryReason_1 = require("./DialogAiBillingRecoveryReason");
 const DialogAiBillingRecoveryAvailability_1 = require("./DialogAiBillingRecoveryAvailability");
+const DialogAiBillingRecoveryBulkRetryResponseDto_1 = require("./DialogAiBillingRecoveryBulkRetryResponseDto");
 /**
  * Check if a given object implements the DialogAiBillingRecoverySummaryDto interface.
  */
 function instanceOfDialogAiBillingRecoverySummaryDto(value) {
     if (!('missedDialogs' in value) || value['missedDialogs'] === undefined)
         return false;
-    if (!('missedMessages' in value) || value['missedMessages'] === undefined)
-        return false;
-    if (!('answeredMessages' in value) || value['answeredMessages'] === undefined)
-        return false;
-    if (!('unansweredMessages' in value) || value['unansweredMessages'] === undefined)
+    if (!('waitingMetrics' in value) || value['waitingMetrics'] === undefined)
         return false;
     if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined)
+        return false;
+    if (!('reasons' in value) || value['reasons'] === undefined)
         return false;
     if (!('availability' in value) || value['availability'] === undefined)
         return false;
     if (!('retryAvailable' in value) || value['retryAvailable'] === undefined)
+        return false;
+    if (!('run' in value) || value['run'] === undefined)
         return false;
     return true;
 }
@@ -48,12 +50,12 @@ function DialogAiBillingRecoverySummaryDtoFromJSONTyped(json, ignoreDiscriminato
     }
     return {
         'missedDialogs': json['missed_dialogs'],
-        'missedMessages': json['missed_messages'],
-        'answeredMessages': json['answered_messages'],
-        'unansweredMessages': json['unanswered_messages'],
+        'waitingMetrics': json['waiting_metrics'],
         'unansweredDialogs': json['unanswered_dialogs'],
+        'reasons': (json['reasons'].map(DialogAiBillingRecoveryReason_1.DialogAiBillingRecoveryReasonFromJSON)),
         'availability': (0, DialogAiBillingRecoveryAvailability_1.DialogAiBillingRecoveryAvailabilityFromJSON)(json['availability']),
         'retryAvailable': json['retry_available'],
+        'run': (0, DialogAiBillingRecoveryBulkRetryResponseDto_1.DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON)(json['run']),
     };
 }
 function DialogAiBillingRecoverySummaryDtoToJSON(json) {
@@ -65,11 +67,11 @@ function DialogAiBillingRecoverySummaryDtoToJSONTyped(value, ignoreDiscriminator
     }
     return {
         'missed_dialogs': value['missedDialogs'],
-        'missed_messages': value['missedMessages'],
-        'answered_messages': value['answeredMessages'],
-        'unanswered_messages': value['unansweredMessages'],
+        'waiting_metrics': value['waitingMetrics'],
         'unanswered_dialogs': value['unansweredDialogs'],
+        'reasons': (value['reasons'].map(DialogAiBillingRecoveryReason_1.DialogAiBillingRecoveryReasonToJSON)),
         'availability': (0, DialogAiBillingRecoveryAvailability_1.DialogAiBillingRecoveryAvailabilityToJSON)(value['availability']),
         'retry_available': value['retryAvailable'],
+        'run': (0, DialogAiBillingRecoveryBulkRetryResponseDto_1.DialogAiBillingRecoveryBulkRetryResponseDtoToJSON)(value['run']),
     };
 }

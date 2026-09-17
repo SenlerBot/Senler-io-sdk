@@ -68,6 +68,7 @@ export type AutomationTableWriteDtoValueSourceEnum = typeof AutomationTableWrite
 export declare const AutomationTableWriteDtoVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationTableWriteDtoVariableScopeEnum = typeof AutomationTableWriteDtoVariableScopeEnum[keyof typeof AutomationTableWriteDtoVariableScopeEnum];

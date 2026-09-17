@@ -72,12 +72,6 @@ export interface WidgetChannelDataDto {
      */
     features?: WidgetFeaturesDto;
     /**
-     * : local ( JS ) remote ( )
-     * @type {string}
-     * @memberof WidgetChannelDataDto
-     */
-    configSource?: WidgetChannelDataDtoConfigSourceEnum;
-    /**
      * HMAC identity verification
      * @type {boolean}
      * @memberof WidgetChannelDataDto
@@ -97,15 +91,6 @@ export interface WidgetChannelDataDto {
     displayMode?: WidgetChannelDataDtoDisplayModeEnum;
 }
 
-
-/**
- * @export
- */
-export const WidgetChannelDataDtoConfigSourceEnum = {
-    Local: 'local',
-    Remote: 'remote'
-} as const;
-export type WidgetChannelDataDtoConfigSourceEnum = typeof WidgetChannelDataDtoConfigSourceEnum[keyof typeof WidgetChannelDataDtoConfigSourceEnum];
 
 /**
  * @export
@@ -149,7 +134,6 @@ export function WidgetChannelDataDtoFromJSONTyped(json: any, ignoreDiscriminator
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'theme': json['theme'] == null ? undefined : WidgetThemeDtoFromJSON(json['theme']),
         'features': json['features'] == null ? undefined : WidgetFeaturesDtoFromJSON(json['features']),
-        'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
@@ -172,7 +156,6 @@ export function WidgetChannelDataDtoToJSONTyped(value?: WidgetChannelDataDto | n
         'allowed_domains': value['allowedDomains'],
         'theme': WidgetThemeDtoToJSON(value['theme']),
         'features': WidgetFeaturesDtoToJSON(value['features']),
-        'config_source': value['configSource'],
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],

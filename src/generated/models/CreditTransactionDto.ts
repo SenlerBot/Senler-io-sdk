@@ -61,7 +61,13 @@ export interface CreditTransactionDto {
      */
     type: CreditTransactionDtoTypeEnum;
     /**
-     * (+ , ), ; 1 = 10000 ; : 12.5 = 125000
+     * pending ; completed
+     * @type {string}
+     * @memberof CreditTransactionDto
+     */
+    status: CreditTransactionDtoStatusEnum;
+    /**
+     * (+ , ); pending , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
@@ -143,7 +149,7 @@ export interface CreditTransactionDto {
      * @type {LocalizedTextDto}
      * @memberof CreditTransactionDto
      */
-    creditPackageName?: LocalizedTextDto | null;
+    addonName?: LocalizedTextDto | null;
     /**
      *
      * @type {Date}
@@ -166,6 +172,15 @@ export const CreditTransactionDtoTypeEnum = {
 } as const;
 export type CreditTransactionDtoTypeEnum = typeof CreditTransactionDtoTypeEnum[keyof typeof CreditTransactionDtoTypeEnum];
 
+/**
+ * @export
+ */
+export const CreditTransactionDtoStatusEnum = {
+    Pending: 'pending',
+    Completed: 'completed'
+} as const;
+export type CreditTransactionDtoStatusEnum = typeof CreditTransactionDtoStatusEnum[keyof typeof CreditTransactionDtoStatusEnum];
+
 
 /**
  * Check if a given object implements the CreditTransactionDto interface.
@@ -173,6 +188,7 @@ export type CreditTransactionDtoTypeEnum = typeof CreditTransactionDtoTypeEnum[k
 export function instanceOfCreditTransactionDto(value: object): value is CreditTransactionDto {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('status' in value) || value['status'] === undefined) return false;
     if (!('creditsAmount' in value) || value['creditsAmount'] === undefined) return false;
     if (!('tariffCreditsBefore' in value) || value['tariffCreditsBefore'] === undefined) return false;
     if (!('tariffCreditsAfter' in value) || value['tariffCreditsAfter'] === undefined) return false;
@@ -197,6 +213,7 @@ export function CreditTransactionDtoFromJSONTyped(json: any, ignoreDiscriminator
 
         'id': json['id'],
         'type': json['type'],
+        'status': json['status'],
         'creditsAmount': json['credits_amount'],
         'tariffCreditsBefore': json['tariff_credits_before'],
         'tariffCreditsAfter': json['tariff_credits_after'],
@@ -210,7 +227,7 @@ export function CreditTransactionDtoFromJSONTyped(json: any, ignoreDiscriminator
         'detailsByAgent': json['details_by_agent'] == null ? undefined : (mapValues(json['details_by_agent'], CreditTransactionDtoDetailsByAgentValueFromJSON)),
         'detailsByModel': json['details_by_model'] == null ? undefined : (mapValues(json['details_by_model'], CreditTransactionDtoDetailsByModelValueFromJSON)),
         'tariffName': json['tariff_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['tariff_name']),
-        'creditPackageName': json['credit_package_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['credit_package_name']),
+        'addonName': json['addon_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['addon_name']),
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -228,6 +245,7 @@ export function CreditTransactionDtoToJSONTyped(value?: CreditTransactionDto | n
 
         'id': value['id'],
         'type': value['type'],
+        'status': value['status'],
         'credits_amount': value['creditsAmount'],
         'tariff_credits_before': value['tariffCreditsBefore'],
         'tariff_credits_after': value['tariffCreditsAfter'],
@@ -241,7 +259,7 @@ export function CreditTransactionDtoToJSONTyped(value?: CreditTransactionDto | n
         'details_by_agent': value['detailsByAgent'] == null ? undefined : (mapValues(value['detailsByAgent'], CreditTransactionDtoDetailsByAgentValueToJSON)),
         'details_by_model': value['detailsByModel'] == null ? undefined : (mapValues(value['detailsByModel'], CreditTransactionDtoDetailsByModelValueToJSON)),
         'tariff_name': LocalizedTextDtoToJSON(value['tariffName']),
-        'credit_package_name': LocalizedTextDtoToJSON(value['creditPackageName']),
+        'addon_name': LocalizedTextDtoToJSON(value['addonName']),
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

@@ -41,6 +41,12 @@ export interface SendMessageToDialogDto {
      */
     content: string;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof SendMessageToDialogDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      *
      * @type {string}
      * @memberof SendMessageToDialogDto
@@ -53,25 +59,7 @@ export interface SendMessageToDialogDto {
      */
     idempotencyKey?: string;
     /**
-     * (. 10).
-     *
-     * :
-     * 1. S3- .
-     * 2. .
-     * 3. .
-     * 4. fileId confirm.
-     *
-     * :
-     * ```typescript
-     * // - dialogId
-     * const confirm = await confirmUpload(uploadId, { dialogId });
-     * await sendMessage({
-     * content: '',
-     * attachments: [{ id: confirm.fileId }],
-     * });
-     * ```
-     *
-     * ID.
+     * . fileId confirm; .
      * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof SendMessageToDialogDto
      */
@@ -122,6 +110,7 @@ export function SendMessageToDialogDtoFromJSONTyped(json: any, ignoreDiscriminat
     return {
 
         'content': json['content'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
         'idempotencyKey': json['idempotency_key'] == null ? undefined : json['idempotency_key'],
         'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoFromJSON)),
@@ -142,6 +131,7 @@ export function SendMessageToDialogDtoToJSONTyped(value?: SendMessageToDialogDto
     return {
 
         'content': value['content'],
+        'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],
         'idempotency_key': value['idempotencyKey'],
         'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoToJSON)),

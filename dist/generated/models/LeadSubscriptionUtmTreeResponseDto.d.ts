@@ -24,10 +24,16 @@ export interface LeadSubscriptionUtmTreeResponseDto {
     nodes: Array<LeadSubscriptionUtmTreeNodeDto>;
     /**
      * null,
-     * @type {number}
+     * @type {string}
      * @memberof LeadSubscriptionUtmTreeResponseDto
      */
-    nextOffset: number | null;
+    nextCursor: string | null;
+    /**
+     * UTM ;
+     * @type {boolean}
+     * @memberof LeadSubscriptionUtmTreeResponseDto
+     */
+    isIndexing: boolean;
 }
 /**
  * Check if a given object implements the LeadSubscriptionUtmTreeResponseDto interface.

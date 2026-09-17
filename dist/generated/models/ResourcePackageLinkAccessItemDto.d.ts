@@ -115,6 +115,7 @@ export declare const ResourcePackageLinkAccessItemDtoRootResourceTypeEnum: {
     readonly Delivery: "delivery";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly DialogVariableDefinition: "dialog_variable_definition";
     readonly Segment: "segment";
     readonly SegmentConsentDocument: "segment_consent_document";
     readonly KnowledgeFolder: "knowledge_folder";
@@ -134,6 +135,7 @@ export declare const ResourcePackageLinkAccessItemDtoSourceSectionEnum: {
     readonly KnowledgeBase: "knowledge_base";
     readonly ProjectVariables: "project_variables";
     readonly LeadVariables: "lead_variables";
+    readonly DialogVariables: "dialog_variables";
     readonly Segments: "segments";
     readonly Landings: "landings";
     readonly Metrics: "metrics";

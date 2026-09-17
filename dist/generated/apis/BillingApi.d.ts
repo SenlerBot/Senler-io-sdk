@@ -10,15 +10,18 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditUsageSummaryDto, CreditsBuyDto, CreditsCheckResponseDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OrderListResponseDto, PaymentSettingsResponseDto, ProjectBalanceInfoDto, ProjectSubscriptionResponseDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SubscriptionCatalogResponseDto, SubscriptionChangeConfirmDto, SubscriptionChangeConfirmResponseDto, SubscriptionChangePreviewResponseDto, SubscriptionRenewalConfirmDto, SubscriptionRenewalPreviewResponseDto, SuccessResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
+import type { AutoPurchaseResponseDto, BillingTransactionsResponseDto, CreateCryptoPaymentIntentDto, CreateOrderDto, CreateOrderResponseDto, CreditTransactionDetailsResponseDto, CreditTransactionsResponseDto, CreditUsageSummaryDto, CryptoPaymentIntentResponseDto, CryptoPaymentStatusResponseDto, OneTimeAddonPurchaseConfirmDto, OneTimeAddonPurchaseDto, OrderListResponseDto, PaymentSettingsResponseDto, PrepaidRenewalCancellationPreviewDto, ProjectBalanceInfoDto, ProjectSubscriptionResponseDto, ProjectTariffsResponseDto, SavePaymentSettingsDto, SavePaymentSettingsResponseDto, SubmitCryptoPaymentDto, SubscriptionCatalogResponseDto, SubscriptionChangeConfirmResponseDto, SubscriptionChangePreviewResponseDto, SubscriptionConfigurationConfirmDto, SubscriptionConfigurationDto, SubscriptionRenewalConfirmDto, SubscriptionRenewalDto, SubscriptionRenewalPreviewResponseDto, SuccessResponseDto, TransactionDetailsResponseDto, UpdateAutoPurchaseDto } from '../models/index';
+export interface DeleteProjectsSubscriptionPrepaidRenewalRequest {
+    projectId: string;
+    acceptLanguage?: DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum;
+}
 export interface DeleteProjectsSubscriptionRenewalRequest {
     projectId: string;
     acceptLanguage?: DeleteProjectsSubscriptionRenewalAcceptLanguageEnum;
 }
-export interface DeleteProjectsSubscriptionScheduledChangesRequest {
+export interface DeleteProjectsSubscriptionScheduledConfigurationRequest {
     projectId: string;
-    itemKind: string;
-    acceptLanguage?: DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum;
+    acceptLanguage?: DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum;
 }
 export interface GetCreditTransactionsDetailsRequest {
     transactionId: string;
@@ -45,12 +48,6 @@ export interface GetProjectsCreditUsageSummaryRequest {
     dateTo: string;
     acceptLanguage?: GetProjectsCreditUsageSummaryAcceptLanguageEnum;
 }
-export interface GetProjectsCreditsCheckRequest {
-    projectId: string;
-    packageId: string;
-    useBalance?: boolean;
-    acceptLanguage?: GetProjectsCreditsCheckAcceptLanguageEnum;
-}
 export interface GetProjectsOrdersRequest {
     projectId: string;
     orderId?: string;
@@ -76,22 +73,9 @@ export interface GetProjectsSubscriptionCatalogRequest {
     projectId: string;
     acceptLanguage?: GetProjectsSubscriptionCatalogAcceptLanguageEnum;
 }
-export interface GetProjectsSubscriptionPreviewRequest {
+export interface GetProjectsSubscriptionPrepaidRenewalCancellationPreviewRequest {
     projectId: string;
-    operation: GetProjectsSubscriptionPreviewOperationEnum;
-    tariffId?: string;
-    addonPlanId?: string;
-    addonKind?: GetProjectsSubscriptionPreviewAddonKindEnum;
-    period?: GetProjectsSubscriptionPreviewPeriodEnum;
-    mailingPackageId?: string;
-    useBalance?: boolean;
-    acceptLanguage?: GetProjectsSubscriptionPreviewAcceptLanguageEnum;
-}
-export interface GetProjectsSubscriptionRenewalPreviewRequest {
-    projectId: string;
-    period: GetProjectsSubscriptionRenewalPreviewPeriodEnum;
-    useBalance?: boolean;
-    acceptLanguage?: GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum;
+    acceptLanguage?: GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum;
 }
 export interface GetProjectsTariffsRequest {
     projectId: string;
@@ -114,11 +98,16 @@ export interface GetTransactionsDetailsRequest {
     limit?: number;
     acceptLanguage?: GetTransactionsDetailsAcceptLanguageEnum;
 }
-export interface ProjectsCreditsBuyRequest {
+export interface ProjectsOneTimeAddonsConfirmRequest {
     projectId: string;
     idempotencyKey: string;
-    creditsBuyDto: CreditsBuyDto;
-    acceptLanguage?: ProjectsCreditsBuyAcceptLanguageEnum;
+    oneTimeAddonPurchaseConfirmDto: OneTimeAddonPurchaseConfirmDto;
+    acceptLanguage?: ProjectsOneTimeAddonsConfirmAcceptLanguageEnum;
+}
+export interface ProjectsOneTimeAddonsPreviewRequest {
+    projectId: string;
+    oneTimeAddonPurchaseDto: OneTimeAddonPurchaseDto;
+    acceptLanguage?: ProjectsOneTimeAddonsPreviewAcceptLanguageEnum;
 }
 export interface ProjectsOrdersRequest {
     projectId: string;
@@ -146,14 +135,24 @@ export interface ProjectsPaymentSettingsRequest {
 export interface ProjectsSubscriptionConfirmRequest {
     projectId: string;
     idempotencyKey: string;
-    subscriptionChangeConfirmDto: SubscriptionChangeConfirmDto;
+    subscriptionConfigurationConfirmDto: SubscriptionConfigurationConfirmDto;
     acceptLanguage?: ProjectsSubscriptionConfirmAcceptLanguageEnum;
+}
+export interface ProjectsSubscriptionPreviewRequest {
+    projectId: string;
+    subscriptionConfigurationDto: SubscriptionConfigurationDto;
+    acceptLanguage?: ProjectsSubscriptionPreviewAcceptLanguageEnum;
 }
 export interface ProjectsSubscriptionRenewRequest {
     projectId: string;
     idempotencyKey: string;
     subscriptionRenewalConfirmDto: SubscriptionRenewalConfirmDto;
     acceptLanguage?: ProjectsSubscriptionRenewAcceptLanguageEnum;
+}
+export interface ProjectsSubscriptionRenewalPreviewRequest {
+    projectId: string;
+    subscriptionRenewalDto: SubscriptionRenewalDto;
+    acceptLanguage?: ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum;
 }
 export interface UpdateProjectsAutoPurchaseRequest {
     projectId: string;
@@ -165,6 +164,16 @@ export interface UpdateProjectsAutoPurchaseRequest {
  */
 export declare class BillingApi extends runtime.BaseAPI {
     /**
+     * .
+     *
+     */
+    deleteProjectsSubscriptionPrepaidRenewalRaw(requestParameters: DeleteProjectsSubscriptionPrepaidRenewalRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PrepaidRenewalCancellationPreviewDto>>;
+    /**
+     * .
+     *
+     */
+    deleteProjectsSubscriptionPrepaidRenewal(requestParameters: DeleteProjectsSubscriptionPrepaidRenewalRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PrepaidRenewalCancellationPreviewDto>;
+    /**
      * , .
      *
      */
@@ -175,15 +184,15 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     deleteProjectsSubscriptionRenewal(requestParameters: DeleteProjectsSubscriptionRenewalRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
-     * , .
+     * .
      *
      */
-    deleteProjectsSubscriptionScheduledChangesRaw(requestParameters: DeleteProjectsSubscriptionScheduledChangesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    deleteProjectsSubscriptionScheduledConfigurationRaw(requestParameters: DeleteProjectsSubscriptionScheduledConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
     /**
-     * , .
+     * .
      *
      */
-    deleteProjectsSubscriptionScheduledChanges(requestParameters: DeleteProjectsSubscriptionScheduledChangesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
+    deleteProjectsSubscriptionScheduledConfiguration(requestParameters: DeleteProjectsSubscriptionScheduledConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
      * : .
      *
@@ -224,16 +233,6 @@ export declare class BillingApi extends runtime.BaseAPI {
      *
      */
     getProjectsCreditUsageSummary(requestParameters: GetProjectsCreditUsageSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditUsageSummaryDto>;
-    /**
-     * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
-     *
-     */
-    getProjectsCreditsCheckRaw(requestParameters: GetProjectsCreditsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditsCheckResponseDto>>;
-    /**
-     * . . total == null credits-buy. total > 0 POST /orders amount use_balance.
-     *
-     */
-    getProjectsCreditsCheck(requestParameters: GetProjectsCreditsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditsCheckResponseDto>;
     /**
      * , ( order_items). ID : ?order_id=...; : ?status=pending,processing
      *
@@ -285,32 +284,22 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getProjectsSubscriptionCatalog(requestParameters: GetProjectsSubscriptionCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionCatalogResponseDto>;
     /**
-     * , , .
+     * .
      *
      */
-    getProjectsSubscriptionPreviewRaw(requestParameters: GetProjectsSubscriptionPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SubscriptionChangePreviewResponseDto>>;
-    /**
-     * , , .
-     *
-     */
-    getProjectsSubscriptionPreview(requestParameters: GetProjectsSubscriptionPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangePreviewResponseDto>;
+    getProjectsSubscriptionPrepaidRenewalCancellationPreviewRaw(requestParameters: GetProjectsSubscriptionPrepaidRenewalCancellationPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PrepaidRenewalCancellationPreviewDto>>;
     /**
      * .
      *
      */
-    getProjectsSubscriptionRenewalPreviewRaw(requestParameters: GetProjectsSubscriptionRenewalPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SubscriptionRenewalPreviewResponseDto>>;
+    getProjectsSubscriptionPrepaidRenewalCancellationPreview(requestParameters: GetProjectsSubscriptionPrepaidRenewalCancellationPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PrepaidRenewalCancellationPreviewDto>;
     /**
-     * .
-     *
-     */
-    getProjectsSubscriptionRenewalPreview(requestParameters: GetProjectsSubscriptionRenewalPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionRenewalPreviewResponseDto>;
-    /**
-     * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Trial .
+     * status (current/upgrade/downgrade) . endpoint .
      *
      */
     getProjectsTariffsRaw(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectTariffsResponseDto>>;
     /**
-     * status (current/upgrade/downgrade) . (downgrade) next_subscription. current_subscription null, Trial .
+     * status (current/upgrade/downgrade) . endpoint .
      *
      */
     getProjectsTariffs(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectTariffsResponseDto>;
@@ -335,15 +324,25 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getTransactionsDetails(requestParameters: GetTransactionsDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransactionDetailsResponseDto>;
     /**
-     * credits-check total == null. , .
+     * .
      *
      */
-    projectsCreditsBuyRaw(requestParameters: ProjectsCreditsBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBalanceInfoDto>>;
+    projectsOneTimeAddonsConfirmRaw(requestParameters: ProjectsOneTimeAddonsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SubscriptionChangeConfirmResponseDto>>;
     /**
-     * credits-check total == null. , .
+     * .
      *
      */
-    projectsCreditsBuy(requestParameters: ProjectsCreditsBuyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBalanceInfoDto>;
+    projectsOneTimeAddonsConfirm(requestParameters: ProjectsOneTimeAddonsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangeConfirmResponseDto>;
+    /**
+     * .
+     *
+     */
+    projectsOneTimeAddonsPreviewRaw(requestParameters: ProjectsOneTimeAddonsPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SubscriptionChangePreviewResponseDto>>;
+    /**
+     * .
+     *
+     */
+    projectsOneTimeAddonsPreview(requestParameters: ProjectsOneTimeAddonsPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangePreviewResponseDto>;
     /**
      * checkout-: redirect crypto . payment_settings (, email). pay_system_id ; payment_settings .
      *
@@ -395,6 +394,16 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     projectsSubscriptionConfirm(requestParameters: ProjectsSubscriptionConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangeConfirmResponseDto>;
     /**
+     * , , .
+     *
+     */
+    projectsSubscriptionPreviewRaw(requestParameters: ProjectsSubscriptionPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SubscriptionChangePreviewResponseDto>>;
+    /**
+     * , , .
+     *
+     */
+    projectsSubscriptionPreview(requestParameters: ProjectsSubscriptionPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangePreviewResponseDto>;
+    /**
      * . .
      *
      */
@@ -405,16 +414,34 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     projectsSubscriptionRenew(requestParameters: ProjectsSubscriptionRenewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionChangeConfirmResponseDto>;
     /**
-     * : . package_id ( GET /api/credit-packages).
+     * .
+     *
+     */
+    projectsSubscriptionRenewalPreviewRaw(requestParameters: ProjectsSubscriptionRenewalPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SubscriptionRenewalPreviewResponseDto>>;
+    /**
+     * .
+     *
+     */
+    projectsSubscriptionRenewalPreview(requestParameters: ProjectsSubscriptionRenewalPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionRenewalPreviewResponseDto>;
+    /**
+     * : . addon_id .
      *
      */
     updateProjectsAutoPurchaseRaw(requestParameters: UpdateProjectsAutoPurchaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutoPurchaseResponseDto>>;
     /**
-     * : . package_id ( GET /api/credit-packages).
+     * : . addon_id .
      *
      */
     updateProjectsAutoPurchase(requestParameters: UpdateProjectsAutoPurchaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutoPurchaseResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum = typeof DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum[keyof typeof DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum];
 /**
  * @export
  */
@@ -426,11 +453,11 @@ export type DeleteProjectsSubscriptionRenewalAcceptLanguageEnum = typeof DeleteP
 /**
  * @export
  */
-export declare const DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum: {
+export declare const DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum = typeof DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum[keyof typeof DeleteProjectsSubscriptionScheduledChangesAcceptLanguageEnum];
+export type DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum = typeof DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum[keyof typeof DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum];
 /**
  * @export
  */
@@ -486,14 +513,6 @@ export type GetProjectsCreditUsageSummaryAcceptLanguageEnum = typeof GetProjects
 /**
  * @export
  */
-export declare const GetProjectsCreditsCheckAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProjectsCreditsCheckAcceptLanguageEnum = typeof GetProjectsCreditsCheckAcceptLanguageEnum[keyof typeof GetProjectsCreditsCheckAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const GetProjectsOrdersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -534,54 +553,11 @@ export type GetProjectsSubscriptionCatalogAcceptLanguageEnum = typeof GetProject
 /**
  * @export
  */
-export declare const GetProjectsSubscriptionPreviewOperationEnum: {
-    readonly Tariff: "tariff";
-    readonly RecurringAddon: "recurring_addon";
-    readonly CancelRecurringAddon: "cancel_recurring_addon";
-    readonly MailingPackage: "mailing_package";
-};
-export type GetProjectsSubscriptionPreviewOperationEnum = typeof GetProjectsSubscriptionPreviewOperationEnum[keyof typeof GetProjectsSubscriptionPreviewOperationEnum];
-/**
- * @export
- */
-export declare const GetProjectsSubscriptionPreviewAddonKindEnum: {
-    readonly AutomationSpeed: "automation_speed";
-    readonly MailingDaily: "mailing_daily";
-    readonly Storage: "storage";
-};
-export type GetProjectsSubscriptionPreviewAddonKindEnum = typeof GetProjectsSubscriptionPreviewAddonKindEnum[keyof typeof GetProjectsSubscriptionPreviewAddonKindEnum];
-/**
- * @export
- */
-export declare const GetProjectsSubscriptionPreviewPeriodEnum: {
-    readonly Monthly: "monthly";
-    readonly Yearly: "yearly";
-};
-export type GetProjectsSubscriptionPreviewPeriodEnum = typeof GetProjectsSubscriptionPreviewPeriodEnum[keyof typeof GetProjectsSubscriptionPreviewPeriodEnum];
-/**
- * @export
- */
-export declare const GetProjectsSubscriptionPreviewAcceptLanguageEnum: {
+export declare const GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetProjectsSubscriptionPreviewAcceptLanguageEnum = typeof GetProjectsSubscriptionPreviewAcceptLanguageEnum[keyof typeof GetProjectsSubscriptionPreviewAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetProjectsSubscriptionRenewalPreviewPeriodEnum: {
-    readonly Monthly: "monthly";
-    readonly Yearly: "yearly";
-};
-export type GetProjectsSubscriptionRenewalPreviewPeriodEnum = typeof GetProjectsSubscriptionRenewalPreviewPeriodEnum[keyof typeof GetProjectsSubscriptionRenewalPreviewPeriodEnum];
-/**
- * @export
- */
-export declare const GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = typeof GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum[keyof typeof GetProjectsSubscriptionRenewalPreviewAcceptLanguageEnum];
+export type GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum = typeof GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum[keyof typeof GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum];
 /**
  * @export
  */
@@ -595,11 +571,8 @@ export type GetProjectsTariffsAcceptLanguageEnum = typeof GetProjectsTariffsAcce
  */
 export declare const GetProjectsTransactionsTypeEnum: {
     readonly Deposit: "deposit";
-    readonly TariffPurchase: "tariff_purchase";
-    readonly CreditPurchase: "credit_purchase";
-    readonly CreditAutoPurchase: "credit_auto_purchase";
     readonly SubscriptionPurchase: "subscription_purchase";
-    readonly MailingMessagePurchase: "mailing_message_purchase";
+    readonly AddonPurchase: "addon_purchase";
     readonly Refund: "refund";
     readonly Adjustment: "adjustment";
     readonly CurrencyConversion: "currency_conversion";
@@ -641,11 +614,19 @@ export type GetTransactionsDetailsAcceptLanguageEnum = typeof GetTransactionsDet
 /**
  * @export
  */
-export declare const ProjectsCreditsBuyAcceptLanguageEnum: {
+export declare const ProjectsOneTimeAddonsConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type ProjectsCreditsBuyAcceptLanguageEnum = typeof ProjectsCreditsBuyAcceptLanguageEnum[keyof typeof ProjectsCreditsBuyAcceptLanguageEnum];
+export type ProjectsOneTimeAddonsConfirmAcceptLanguageEnum = typeof ProjectsOneTimeAddonsConfirmAcceptLanguageEnum[keyof typeof ProjectsOneTimeAddonsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsOneTimeAddonsPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsOneTimeAddonsPreviewAcceptLanguageEnum = typeof ProjectsOneTimeAddonsPreviewAcceptLanguageEnum[keyof typeof ProjectsOneTimeAddonsPreviewAcceptLanguageEnum];
 /**
  * @export
  */
@@ -689,11 +670,27 @@ export type ProjectsSubscriptionConfirmAcceptLanguageEnum = typeof ProjectsSubsc
 /**
  * @export
  */
+export declare const ProjectsSubscriptionPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsSubscriptionPreviewAcceptLanguageEnum = typeof ProjectsSubscriptionPreviewAcceptLanguageEnum[keyof typeof ProjectsSubscriptionPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const ProjectsSubscriptionRenewAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type ProjectsSubscriptionRenewAcceptLanguageEnum = typeof ProjectsSubscriptionRenewAcceptLanguageEnum[keyof typeof ProjectsSubscriptionRenewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = typeof ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum[keyof typeof ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum];
 /**
  * @export
  */

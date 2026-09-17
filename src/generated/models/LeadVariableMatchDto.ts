@@ -32,11 +32,17 @@ export interface LeadVariableMatchDto {
      */
     type: LeadVariableMatchDtoTypeEnum;
     /**
-     *  (mixed type)
+     * . null, include_value=false. (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof LeadVariableMatchDto
      */
     value: { [key: string]: any; } | null;
+    /**
+     * . array.
+     * @type {number}
+     * @memberof LeadVariableMatchDto
+     */
+    length?: number;
 }
 
 
@@ -78,6 +84,7 @@ export function LeadVariableMatchDtoFromJSONTyped(json: any, ignoreDiscriminator
         'name': json['name'],
         'type': json['type'],
         'value': json['value'],
+        'length': json['length'] == null ? undefined : json['length'],
     };
 }
 
@@ -95,5 +102,6 @@ export function LeadVariableMatchDtoToJSONTyped(value?: LeadVariableMatchDto | n
         'name': value['name'],
         'type': value['type'],
         'value': value['value'],
+        'length': value['length'],
     };
 }

@@ -51,6 +51,12 @@ export interface ImageGenerationCostCabinetDto {
     size?: string;
     /**
      *
+     * @type {string}
+     * @memberof ImageGenerationCostCabinetDto
+     */
+    resolution?: string;
+    /**
+     *
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */
@@ -88,6 +94,7 @@ export interface ImageGenerationCostCabinetDto {
 export const ImageGenerationCostCabinetDtoPricingTypeEnum = {
     PerImage: 'per_image',
     QualitySizeMatrix: 'quality_size_matrix',
+    VariantMatrix: 'variant_matrix',
     ImageTokenUsage: 'image_token_usage'
 } as const;
 export type ImageGenerationCostCabinetDtoPricingTypeEnum = typeof ImageGenerationCostCabinetDtoPricingTypeEnum[keyof typeof ImageGenerationCostCabinetDtoPricingTypeEnum];
@@ -134,6 +141,7 @@ export function ImageGenerationCostCabinetDtoFromJSONTyped(json: any, ignoreDisc
         'operation': json['operation'] == null ? undefined : json['operation'],
         'quality': json['quality'] == null ? undefined : json['quality'],
         'size': json['size'] == null ? undefined : json['size'],
+        'resolution': json['resolution'] == null ? undefined : json['resolution'],
         'imageCount': json['image_count'] == null ? undefined : json['image_count'],
         'textInputTokens': json['text_input_tokens'] == null ? undefined : json['text_input_tokens'],
         'imageInputTokens': json['image_input_tokens'] == null ? undefined : json['image_input_tokens'],
@@ -158,6 +166,7 @@ export function ImageGenerationCostCabinetDtoToJSONTyped(value?: ImageGeneration
         'operation': value['operation'],
         'quality': value['quality'],
         'size': value['size'],
+        'resolution': value['resolution'],
         'image_count': value['imageCount'],
         'text_input_tokens': value['textInputTokens'],
         'image_input_tokens': value['imageInputTokens'],

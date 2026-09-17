@@ -25,7 +25,9 @@ const LeadSubscriptionUtmTreeNodeDto_1 = require("./LeadSubscriptionUtmTreeNodeD
 function instanceOfLeadSubscriptionUtmTreeResponseDto(value) {
     if (!('nodes' in value) || value['nodes'] === undefined)
         return false;
-    if (!('nextOffset' in value) || value['nextOffset'] === undefined)
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined)
+        return false;
+    if (!('isIndexing' in value) || value['isIndexing'] === undefined)
         return false;
     return true;
 }
@@ -38,7 +40,8 @@ function LeadSubscriptionUtmTreeResponseDtoFromJSONTyped(json, ignoreDiscriminat
     }
     return {
         'nodes': (json['nodes'].map(LeadSubscriptionUtmTreeNodeDto_1.LeadSubscriptionUtmTreeNodeDtoFromJSON)),
-        'nextOffset': json['next_offset'],
+        'nextCursor': json['next_cursor'],
+        'isIndexing': json['is_indexing'],
     };
 }
 function LeadSubscriptionUtmTreeResponseDtoToJSON(json) {
@@ -50,6 +53,7 @@ function LeadSubscriptionUtmTreeResponseDtoToJSONTyped(value, ignoreDiscriminato
     }
     return {
         'nodes': (value['nodes'].map(LeadSubscriptionUtmTreeNodeDto_1.LeadSubscriptionUtmTreeNodeDtoToJSON)),
-        'next_offset': value['nextOffset'],
+        'next_cursor': value['nextCursor'],
+        'is_indexing': value['isIndexing'],
     };
 }

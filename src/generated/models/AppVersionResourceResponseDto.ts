@@ -85,7 +85,8 @@ export const AppVersionResourceResponseDtoTypeEnum = {
     KnowledgeTable: 'knowledge_table',
     Metric: 'metric',
     ProjectVariable: 'project_variable',
-    LeadVariableDefinition: 'lead_variable_definition'
+    LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition'
 } as const;
 export type AppVersionResourceResponseDtoTypeEnum = typeof AppVersionResourceResponseDtoTypeEnum[keyof typeof AppVersionResourceResponseDtoTypeEnum];
 

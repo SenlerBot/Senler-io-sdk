@@ -41,6 +41,7 @@ function ImageGenModelStatsFromJSONTyped(json, ignoreDiscriminator) {
         'model': json['model'],
         'quality': json['quality'] == null ? undefined : json['quality'],
         'size': json['size'] == null ? undefined : json['size'],
+        'resolution': json['resolution'] == null ? undefined : json['resolution'],
         'count': json['count'],
         'providerCost': json['provider_cost'],
     };
@@ -56,6 +57,7 @@ function ImageGenModelStatsToJSONTyped(value, ignoreDiscriminator = false) {
         'model': value['model'],
         'quality': value['quality'],
         'size': value['size'],
+        'resolution': value['resolution'],
         'count': value['count'],
         'provider_cost': value['providerCost'],
     };

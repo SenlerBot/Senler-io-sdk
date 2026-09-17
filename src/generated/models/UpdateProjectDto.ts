@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ProjectMetaDto } from './ProjectMetaDto';
+import {
+    ProjectMetaDtoFromJSON,
+    ProjectMetaDtoFromJSONTyped,
+    ProjectMetaDtoToJSON,
+    ProjectMetaDtoToJSONTyped,
+} from './ProjectMetaDto';
 import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachmentUploadLimitsByChannelDto';
 import {
     ProjectAttachmentUploadLimitsByChannelDtoFromJSON,
@@ -95,10 +102,10 @@ export interface UpdateProjectDto {
     attachmentUploadLimitsByChannelMb?: ProjectAttachmentUploadLimitsByChannelDto;
     /**
      *
-     * @type {object}
+     * @type {ProjectMetaDto}
      * @memberof UpdateProjectDto
      */
-    meta?: object;
+    meta?: ProjectMetaDto;
 }
 
 
@@ -149,7 +156,7 @@ export function UpdateProjectDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'attachmentUploadLimitMb': json['attachment_upload_limit_mb'] == null ? undefined : json['attachment_upload_limit_mb'],
         'attachmentUploadLimitsByChannelMb': json['attachment_upload_limits_by_channel_mb'] == null ? undefined : ProjectAttachmentUploadLimitsByChannelDtoFromJSON(json['attachment_upload_limits_by_channel_mb']),
-        'meta': json['meta'] == null ? undefined : json['meta'],
+        'meta': json['meta'] == null ? undefined : ProjectMetaDtoFromJSON(json['meta']),
     };
 }
 
@@ -175,6 +182,6 @@ export function UpdateProjectDtoToJSONTyped(value?: UpdateProjectDto | null, ign
         'is_active': value['isActive'],
         'attachment_upload_limit_mb': value['attachmentUploadLimitMb'],
         'attachment_upload_limits_by_channel_mb': ProjectAttachmentUploadLimitsByChannelDtoToJSON(value['attachmentUploadLimitsByChannelMb']),
-        'meta': value['meta'],
+        'meta': ProjectMetaDtoToJSON(value['meta']),
     };
 }

@@ -30,7 +30,7 @@ export interface UpdateAutoPurchaseDto {
      * @type {string}
      * @memberof UpdateAutoPurchaseDto
      */
-    packageId?: string | null;
+    addonId?: string | null;
 }
 
 /**
@@ -52,7 +52,7 @@ export function UpdateAutoPurchaseDtoFromJSONTyped(json: any, ignoreDiscriminato
     return {
 
         'enabled': json['enabled'],
-        'packageId': json['package_id'] == null ? undefined : json['package_id'],
+        'addonId': json['addon_id'] == null ? undefined : json['addon_id'],
     };
 }
 
@@ -68,6 +68,6 @@ export function UpdateAutoPurchaseDtoToJSONTyped(value?: UpdateAutoPurchaseDto |
     return {
 
         'enabled': value['enabled'],
-        'package_id': value['packageId'],
+        'addon_id': value['addonId'],
     };
 }

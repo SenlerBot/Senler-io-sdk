@@ -88,6 +88,12 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
+    qualityLevel: PublicModelResponseDtoQualityLevelEnum | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
     speedLevel: PublicModelResponseDtoSpeedLevelEnum | null;
     /**
      * tool-capable OpenRouter, 010000
@@ -96,11 +102,11 @@ export interface PublicModelResponseDto {
      */
     speedScoreBasisPoints: number | null;
     /**
-     * , 15
+     * , 15; null,
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    priceLevel: PublicModelResponseDtoPriceLevelEnum;
+    priceLevel: PublicModelResponseDtoPriceLevelEnum | null;
     /**
      *
      * @type {Date}
@@ -192,6 +198,12 @@ export interface PublicModelResponseDto {
      */
     audioPricingOptionalClientFields: Array<string>;
     /**
+     * 1000 web search, ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    clientWebSearchPricePer1kCallsCredits?: number;
+    /**
      * [image_generation] image input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
@@ -221,6 +233,12 @@ export interface PublicModelResponseDto {
      * @memberof PublicModelResponseDto
      */
     pricePer1kCharsCredits?: number;
+    /**
+     * [audio_generation] 1M UTF-8 , ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    pricePer1mUtf8BytesCredits?: number;
     /**
      * [speech_recognition] audio input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
@@ -293,6 +311,18 @@ export type PublicModelResponseDtoReasoningLevelEnum = typeof PublicModelRespons
 /**
  * @export
  */
+export const PublicModelResponseDtoQualityLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+} as const;
+export type PublicModelResponseDtoQualityLevelEnum = typeof PublicModelResponseDtoQualityLevelEnum[keyof typeof PublicModelResponseDtoQualityLevelEnum];
+
+/**
+ * @export
+ */
 export const PublicModelResponseDtoSpeedLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
@@ -330,6 +360,7 @@ export type PublicModelResponseDtoTypeEnum = typeof PublicModelResponseDtoTypeEn
  */
 export const PublicModelResponseDtoAudioPricingTypeEnum = {
     Characters: 'characters',
+    Utf8Bytes: 'utf8_bytes',
     Minutes: 'minutes',
     TextInputAudioOutputTokens: 'text_input_audio_output_tokens',
     AudioInputTextOutputTokens: 'audio_input_text_output_tokens'
@@ -341,7 +372,7 @@ export type PublicModelResponseDtoAudioPricingTypeEnum = typeof PublicModelRespo
  */
 export const PublicModelResponseDtoImagePricingTypeEnum = {
     PerImage: 'per_image',
-    QualitySizeMatrix: 'quality_size_matrix',
+    VariantMatrix: 'variant_matrix',
     ImageTokenUsage: 'image_token_usage'
 } as const;
 export type PublicModelResponseDtoImagePricingTypeEnum = typeof PublicModelResponseDtoImagePricingTypeEnum[keyof typeof PublicModelResponseDtoImagePricingTypeEnum];
@@ -378,6 +409,7 @@ export function instanceOfPublicModelResponseDto(value: object): value is Public
     if (!('descriptionEn' in value) || value['descriptionEn'] === undefined) return false;
     if (!('reasoningLevel' in value) || value['reasoningLevel'] === undefined) return false;
     if (!('reasoningScoreBasisPoints' in value) || value['reasoningScoreBasisPoints'] === undefined) return false;
+    if (!('qualityLevel' in value) || value['qualityLevel'] === undefined) return false;
     if (!('speedLevel' in value) || value['speedLevel'] === undefined) return false;
     if (!('speedScoreBasisPoints' in value) || value['speedScoreBasisPoints'] === undefined) return false;
     if (!('priceLevel' in value) || value['priceLevel'] === undefined) return false;
@@ -419,6 +451,7 @@ export function PublicModelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
         'descriptionEn': json['description_en'],
         'reasoningLevel': json['reasoning_level'],
         'reasoningScoreBasisPoints': json['reasoning_score_basis_points'],
+        'qualityLevel': json['quality_level'],
         'speedLevel': json['speed_level'],
         'speedScoreBasisPoints': json['speed_score_basis_points'],
         'priceLevel': json['price_level'],
@@ -437,11 +470,13 @@ export function PublicModelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
         'audioPricingOptionalProviderFields': json['audio_pricing_optional_provider_fields'],
         'audioPricingClientFields': json['audio_pricing_client_fields'],
         'audioPricingOptionalClientFields': json['audio_pricing_optional_client_fields'],
+        'clientWebSearchPricePer1kCallsCredits': json['client_web_search_price_per_1k_calls_credits'] == null ? undefined : json['client_web_search_price_per_1k_calls_credits'],
         'clientImageInputPricePer1mCredits': json['client_image_input_price_per_1m_credits'] == null ? undefined : json['client_image_input_price_per_1m_credits'],
         'clientImageCachedInputPricePer1mCredits': json['client_image_cached_input_price_per_1m_credits'] == null ? undefined : json['client_image_cached_input_price_per_1m_credits'],
         'clientImageOutputPricePer1mCredits': json['client_image_output_price_per_1m_credits'] == null ? undefined : json['client_image_output_price_per_1m_credits'],
         'imageGenerationPrices': json['image_generation_prices'] == null ? undefined : ((json['image_generation_prices'] as Array<any>).map(PublicImageGenerationPriceResponseDtoFromJSON)),
         'pricePer1kCharsCredits': json['price_per_1k_chars_credits'] == null ? undefined : json['price_per_1k_chars_credits'],
+        'pricePer1mUtf8BytesCredits': json['price_per_1m_utf8_bytes_credits'] == null ? undefined : json['price_per_1m_utf8_bytes_credits'],
         'clientAudioInputPricePer1mCredits': json['client_audio_input_price_per_1m_credits'] == null ? undefined : json['client_audio_input_price_per_1m_credits'],
         'clientAudioOutputPricePer1mCredits': json['client_audio_output_price_per_1m_credits'] == null ? undefined : json['client_audio_output_price_per_1m_credits'],
         'pricePerMinuteCredits': json['price_per_minute_credits'] == null ? undefined : json['price_per_minute_credits'],
@@ -472,6 +507,7 @@ export function PublicModelResponseDtoToJSONTyped(value?: PublicModelResponseDto
         'description_en': value['descriptionEn'],
         'reasoning_level': value['reasoningLevel'],
         'reasoning_score_basis_points': value['reasoningScoreBasisPoints'],
+        'quality_level': value['qualityLevel'],
         'speed_level': value['speedLevel'],
         'speed_score_basis_points': value['speedScoreBasisPoints'],
         'price_level': value['priceLevel'],
@@ -490,11 +526,13 @@ export function PublicModelResponseDtoToJSONTyped(value?: PublicModelResponseDto
         'audio_pricing_optional_provider_fields': value['audioPricingOptionalProviderFields'],
         'audio_pricing_client_fields': value['audioPricingClientFields'],
         'audio_pricing_optional_client_fields': value['audioPricingOptionalClientFields'],
+        'client_web_search_price_per_1k_calls_credits': value['clientWebSearchPricePer1kCallsCredits'],
         'client_image_input_price_per_1m_credits': value['clientImageInputPricePer1mCredits'],
         'client_image_cached_input_price_per_1m_credits': value['clientImageCachedInputPricePer1mCredits'],
         'client_image_output_price_per_1m_credits': value['clientImageOutputPricePer1mCredits'],
         'image_generation_prices': value['imageGenerationPrices'] == null ? undefined : ((value['imageGenerationPrices'] as Array<any>).map(PublicImageGenerationPriceResponseDtoToJSON)),
         'price_per_1k_chars_credits': value['pricePer1kCharsCredits'],
+        'price_per_1m_utf8_bytes_credits': value['pricePer1mUtf8BytesCredits'],
         'client_audio_input_price_per_1m_credits': value['clientAudioInputPricePer1mCredits'],
         'client_audio_output_price_per_1m_credits': value['clientAudioOutputPricePer1mCredits'],
         'price_per_minute_credits': value['pricePerMinuteCredits'],

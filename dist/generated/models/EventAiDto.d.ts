@@ -16,6 +16,30 @@
  */
 export interface EventAiDto {
     /**
+     * ID
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerGenerationId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    billingTariffVersion?: string;
+    /**
+     * upstream-
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    upstreamProviderName?: string;
+    /**
+     * ; reported
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    providerCostStatus?: EventAiDtoProviderCostStatusEnum;
+    /**
      * /
      * @type {string}
      * @memberof EventAiDto
@@ -82,6 +106,12 @@ export interface EventAiDto {
      */
     providerBindingId?: string;
     /**
+     *
+     * @type {string}
+     * @memberof EventAiDto
+     */
+    credentialSource?: EventAiDtoCredentialSourceEnum;
+    /**
      * ID ,
      * @type {string}
      * @memberof EventAiDto
@@ -136,6 +166,24 @@ export interface EventAiDto {
      */
     terminalEventId?: string;
 }
+/**
+ * @export
+ */
+export declare const EventAiDtoProviderCostStatusEnum: {
+    readonly Calculated: "calculated";
+    readonly Reported: "reported";
+    readonly Pending: "pending";
+    readonly Unavailable: "unavailable";
+};
+export type EventAiDtoProviderCostStatusEnum = typeof EventAiDtoProviderCostStatusEnum[keyof typeof EventAiDtoProviderCostStatusEnum];
+/**
+ * @export
+ */
+export declare const EventAiDtoCredentialSourceEnum: {
+    readonly Platform: "platform";
+    readonly Project: "project";
+};
+export type EventAiDtoCredentialSourceEnum = typeof EventAiDtoCredentialSourceEnum[keyof typeof EventAiDtoCredentialSourceEnum];
 /**
  * @export
  */

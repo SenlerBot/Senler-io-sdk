@@ -35,7 +35,7 @@ function UpdateAutoPurchaseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'enabled': json['enabled'],
-        'packageId': json['package_id'] == null ? undefined : json['package_id'],
+        'addonId': json['addon_id'] == null ? undefined : json['addon_id'],
     };
 }
 function UpdateAutoPurchaseDtoToJSON(json) {
@@ -47,6 +47,6 @@ function UpdateAutoPurchaseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'enabled': value['enabled'],
-        'package_id': value['packageId'],
+        'addon_id': value['addonId'],
     };
 }

@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { NextSubscriptionDto } from './NextSubscriptionDto';
 /**
  * ProjectTariffItemDto.
  * @export
@@ -57,12 +56,6 @@ export interface ProjectTariffItemDto {
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
-    approxMessages?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof ProjectTariffItemDto
-     */
     mailingMessagesPerDay: number;
     /**
      *
@@ -77,17 +70,17 @@ export interface ProjectTariffItemDto {
      */
     storageLimitBytes: number;
     /**
-     *
-     * @type {boolean}
-     * @memberof ProjectTariffItemDto
-     */
-    isUnlimited: boolean;
-    /**
      * ( )
      * @type {boolean}
      * @memberof ProjectTariffItemDto
      */
     isFree: boolean;
+    /**
+     * OpenAI OpenRouter
+     * @type {boolean}
+     * @memberof ProjectTariffItemDto
+     */
+    allowsCustomAiCredentials: boolean;
     /**
      * , (/); : 1.25 = 125
      * @type {number}
@@ -113,12 +106,6 @@ export interface ProjectTariffItemDto {
      */
     priceUsdYearly: number;
     /**
-     * ( , )
-     * @type {boolean}
-     * @memberof ProjectTariffItemDto
-     */
-    isRequestOnly: boolean;
-    /**
      *
      * @type {number}
      * @memberof ProjectTariffItemDto
@@ -130,12 +117,6 @@ export interface ProjectTariffItemDto {
      * @memberof ProjectTariffItemDto
      */
     status: ProjectTariffItemDtoStatusEnum;
-    /**
-     * null, . API .
-     * @type {NextSubscriptionDto}
-     * @memberof ProjectTariffItemDto
-     */
-    nextSubscription?: NextSubscriptionDto | null;
 }
 /**
  * @export

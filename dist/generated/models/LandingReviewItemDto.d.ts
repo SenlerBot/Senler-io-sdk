@@ -34,7 +34,7 @@ export interface LandingReviewItemDto {
      */
     text?: string;
     /**
-     * URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
+     * URL . URL attachment_id LandingsController_importAssetFromUrl; AgentLandingController_importAssetFromUrl. . PNG, JPEG WebP getAssetUploadUrl, PUT uploadUrl confirmAssetUpload . url ; URL .
      * @type {string}
      * @memberof LandingReviewItemDto
      */

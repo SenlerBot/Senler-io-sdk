@@ -30,6 +30,8 @@ exports.AgentInstructionResponseDtoVersionEnum = {
  * Check if a given object implements the AgentInstructionResponseDto interface.
  */
 function instanceOfAgentInstructionResponseDto(value) {
+    if (!('conflictFields' in value) || value['conflictFields'] === undefined)
+        return false;
     if (!('agentId' in value) || value['agentId'] === undefined)
         return false;
     if (!('version' in value) || value['version'] === undefined)
@@ -50,6 +52,7 @@ function AgentInstructionResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'conflictFields': json['conflict_fields'],
         'agentId': json['agent_id'],
         'version': json['version'],
         'versionId': json['version_id'],
@@ -65,6 +68,7 @@ function AgentInstructionResponseDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
+        'conflict_fields': value['conflictFields'],
         'agent_id': value['agentId'],
         'version': value['version'],
         'version_id': value['versionId'],

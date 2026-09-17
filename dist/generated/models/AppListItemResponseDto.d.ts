@@ -11,6 +11,7 @@
  */
 import type { AppSourceProjectResponseDto } from './AppSourceProjectResponseDto';
 import type { AppDeveloperEmbeddedPageSettingsResponseDto } from './AppDeveloperEmbeddedPageSettingsResponseDto';
+import type { AppActionSettingsResponseDto } from './AppActionSettingsResponseDto';
 import type { AppDescriptionDto } from './AppDescriptionDto';
 import type { AppOAuthAccessDto } from './AppOAuthAccessDto';
 import type { AppCurrentAccessResponseDto } from './AppCurrentAccessResponseDto';
@@ -112,6 +113,12 @@ export interface AppListItemResponseDto {
      * @memberof AppListItemResponseDto
      */
     embeddedPage: AppDeveloperEmbeddedPageSettingsResponseDto | null;
+    /**
+     * MCP
+     * @type {AppActionSettingsResponseDto}
+     * @memberof AppListItemResponseDto
+     */
+    appActions: AppActionSettingsResponseDto | null;
     /**
      * ID -
      * @type {string}

@@ -24,7 +24,6 @@ exports.TariffSubscriptionDtoToJSONTyped = TariffSubscriptionDtoToJSONTyped;
  */
 exports.TariffSubscriptionDtoStatusEnum = {
     Active: 'active',
-    Scheduled: 'scheduled',
     Prepaid: 'prepaid',
     Cancelled: 'cancelled',
     Expired: 'expired'
@@ -48,8 +47,6 @@ function instanceOfTariffSubscriptionDto(value) {
         return false;
     if (!('isFree' in value) || value['isFree'] === undefined)
         return false;
-    if (!('isUnlimited' in value) || value['isUnlimited'] === undefined)
-        return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined)
         return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined)
@@ -64,7 +61,7 @@ function instanceOfTariffSubscriptionDto(value) {
         return false;
     if (!('dateEnd' in value) || value['dateEnd'] === undefined)
         return false;
-    if (!('prolongation' in value) || value['prolongation'] === undefined)
+    if (!('autoRenewEnabled' in value) || value['autoRenewEnabled'] === undefined)
         return false;
     if (!('autoPurchaseEnabled' in value) || value['autoPurchaseEnabled'] === undefined)
         return false;
@@ -82,7 +79,6 @@ function TariffSubscriptionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'nameRu': json['name_ru'],
         'nameEn': json['name_en'],
         'isFree': json['is_free'],
-        'isUnlimited': json['is_unlimited'],
         'storageLimitBytes': json['storage_limit_bytes'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
@@ -90,9 +86,9 @@ function TariffSubscriptionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'period': json['period'],
         'dateStart': (new Date(json['date_start'])),
         'dateEnd': (new Date(json['date_end'])),
-        'prolongation': json['prolongation'],
+        'autoRenewEnabled': json['auto_renew_enabled'],
         'autoPurchaseEnabled': json['auto_purchase_enabled'],
-        'autoPurchasePackageId': json['auto_purchase_package_id'] == null ? undefined : json['auto_purchase_package_id'],
+        'autoPurchaseAddonId': json['auto_purchase_addon_id'] == null ? undefined : json['auto_purchase_addon_id'],
     };
 }
 function TariffSubscriptionDtoToJSON(json) {
@@ -107,7 +103,6 @@ function TariffSubscriptionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name_ru': value['nameRu'],
         'name_en': value['nameEn'],
         'is_free': value['isFree'],
-        'is_unlimited': value['isUnlimited'],
         'storage_limit_bytes': value['storageLimitBytes'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
@@ -115,8 +110,8 @@ function TariffSubscriptionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'period': value['period'],
         'date_start': ((value['dateStart']).toISOString()),
         'date_end': ((value['dateEnd']).toISOString()),
-        'prolongation': value['prolongation'],
+        'auto_renew_enabled': value['autoRenewEnabled'],
         'auto_purchase_enabled': value['autoPurchaseEnabled'],
-        'auto_purchase_package_id': value['autoPurchasePackageId'],
+        'auto_purchase_addon_id': value['autoPurchaseAddonId'],
     };
 }

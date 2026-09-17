@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteCoverAcceptLanguageEnum = exports.CoverUploadUrlAcceptLanguageEnum = exports.CoverConfirmAcceptLanguageEnum = exports.AppsCoverApi = void 0;
+exports.DeleteCoverAcceptLanguageEnum = exports.CoverUploadUrlAcceptLanguageEnum = exports.CoverFromUrlAcceptLanguageEnum = exports.CoverConfirmAcceptLanguageEnum = exports.AppsCoverApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -89,6 +89,44 @@ class AppsCoverApi extends runtime.BaseAPI {
      */
     async coverConfirm(requestParameters, initOverrides) {
         const response = await this.coverConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , 706398 cover_url. ; fit=cover . JSON- API MCP. 20 40 .
+     * URL attachment_id
+     */
+    async coverFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling coverFromUrl().');
+        }
+        if (requestParameters['importCoverImageDto'] == null) {
+            throw new runtime.RequiredError('importCoverImageDto', 'Required parameter "importCoverImageDto" was null or undefined when calling coverFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/cover/from-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportCoverImageDtoToJSON)(requestParameters['importCoverImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , 706398 cover_url. ; fit=cover . JSON- API MCP. 20 40 .
+     * URL attachment_id
+     */
+    async coverFromUrl(requestParameters, initOverrides) {
+        const response = await this.coverFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -168,6 +206,13 @@ exports.AppsCoverApi = AppsCoverApi;
  * @export
  */
 exports.CoverConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.CoverFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppResponseDto, ConfirmS3UploadDto, GetAppIconUploadUrlDto, S3UploadUrlResponseDto } from '../models/index';
+import type { AppResponseDto, ConfirmS3UploadDto, GetAppIconUploadUrlDto, ImportImageDto, S3UploadUrlResponseDto } from '../models/index';
 export interface DeleteIconRequest {
     id: string;
     acceptLanguage?: DeleteIconAcceptLanguageEnum;
@@ -19,6 +19,11 @@ export interface IconConfirmRequest {
     id: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: IconConfirmAcceptLanguageEnum;
+}
+export interface IconFromUrlRequest {
+    id: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: IconFromUrlAcceptLanguageEnum;
 }
 export interface IconUploadUrlRequest {
     id: string;
@@ -50,6 +55,16 @@ export declare class AppsIconApi extends runtime.BaseAPI {
      */
     iconConfirm(requestParameters: IconConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
     /**
+     * PNG, JPEG WebP, icon_url. JSON- API MCP PUT . 20 40 .
+     * URL attachment_id
+     */
+    iconFromUrlRaw(requestParameters: IconFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * PNG, JPEG WebP, icon_url. JSON- API MCP PUT . 20 40 .
+     * URL attachment_id
+     */
+    iconFromUrl(requestParameters: IconFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
      * S3- .
      * S3-
      */
@@ -76,6 +91,14 @@ export declare const IconConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type IconConfirmAcceptLanguageEnum = typeof IconConfirmAcceptLanguageEnum[keyof typeof IconConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const IconFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type IconFromUrlAcceptLanguageEnum = typeof IconFromUrlAcceptLanguageEnum[keyof typeof IconFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

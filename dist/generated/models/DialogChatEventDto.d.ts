@@ -11,27 +11,29 @@
  */
 import type { EventBroadcastDto } from './EventBroadcastDto';
 import type { EventButtonDto } from './EventButtonDto';
-import type { EventMessageDto } from './EventMessageDto';
 import type { EventPollAnswerChangeDto } from './EventPollAnswerChangeDto';
 import type { EventTriggerContextDto } from './EventTriggerContextDto';
+import type { EventCostsCabinetDto } from './EventCostsCabinetDto';
+import type { EventReactionDto } from './EventReactionDto';
+import type { DialogChatEventDtoDeliveryRef } from './DialogChatEventDtoDeliveryRef';
+import type { EventTypingDto } from './EventTypingDto';
+import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
+import type { EventErrorDto } from './EventErrorDto';
+import type { EventMessageDto } from './EventMessageDto';
 import type { EventTimerDto } from './EventTimerDto';
 import type { EventStatusDto } from './EventStatusDto';
 import type { EventAiDto } from './EventAiDto';
-import type { EventCostsCabinetDto } from './EventCostsCabinetDto';
-import type { EventReactionDto } from './EventReactionDto';
 import type { DialogChatEventDtoSourceContext } from './DialogChatEventDtoSourceContext';
-import type { DialogChatEventDtoDeliveryRef } from './DialogChatEventDtoDeliveryRef';
 import type { EventModerationDto } from './EventModerationDto';
 import type { EventToolDto } from './EventToolDto';
 import type { EventHierarchyDto } from './EventHierarchyDto';
 import type { EventChatChangeDto } from './EventChatChangeDto';
-import type { EventTypingDto } from './EventTypingDto';
 import type { EventButtonClickDto } from './EventButtonClickDto';
 import type { EventGenerationDto } from './EventGenerationDto';
+import type { AutomationFunnelObservationDto } from './AutomationFunnelObservationDto';
 import type { EventSenderDto } from './EventSenderDto';
-import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
+import type { EventFunnelDto } from './EventFunnelDto';
 import type { EventPollVoteDto } from './EventPollVoteDto';
-import type { EventErrorDto } from './EventErrorDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
 /**
  * DialogChatEventDto.
@@ -39,6 +41,18 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  * @interface DialogChatEventDto
  */
 export interface DialogChatEventDto {
+    /**
+     *
+     * @type {EventFunnelDto}
+     * @memberof DialogChatEventDto
+     */
+    funnel?: EventFunnelDto;
+    /**
+     *
+     * @type {AutomationFunnelObservationDto}
+     * @memberof DialogChatEventDto
+     */
+    automationObservation?: AutomationFunnelObservationDto;
     /**
      * ID
      * @type {string}
@@ -93,6 +107,12 @@ export interface DialogChatEventDto {
      * @memberof DialogChatEventDto
      */
     leadId?: string;
+    /**
+     * ;
+     * @type {string}
+     * @memberof DialogChatEventDto
+     */
+    dialogLeadId?: string;
     /**
      *
      * @type {string}
@@ -378,6 +398,7 @@ export declare const DialogChatEventDtoActionTypeEnum: {
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
     readonly AiResponseStarted: "ai_response_started";
+    readonly AiResponseCancelled: "ai_response_cancelled";
     readonly AgentInvoked: "agent_invoked";
     readonly ToolStarted: "tool_started";
     readonly ReasoningRecorded: "reasoning_recorded";

@@ -75,6 +75,7 @@ export interface AudioGenModelStats {
  */
 export declare const AudioGenModelStatsPricingTypeEnum: {
     readonly Characters: "characters";
+    readonly Utf8Bytes: "utf8_bytes";
     readonly Minutes: "minutes";
     readonly TextInputAudioOutputTokens: "text_input_audio_output_tokens";
     readonly AudioInputTextOutputTokens: "audio_input_text_output_tokens";

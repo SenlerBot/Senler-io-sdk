@@ -243,7 +243,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     *
+     * , .
      *
      */
     async leadVariableDefinitionsListRaw(requestParameters, initOverrides) {
@@ -287,7 +287,7 @@ class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadVariableDefinitionListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     *
+     * , .
      *
      */
     async leadVariableDefinitionsList(requestParameters, initOverrides) {

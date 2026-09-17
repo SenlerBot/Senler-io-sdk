@@ -129,8 +129,7 @@ export interface SubscriptionInvoiceLineDto {
  */
 export const SubscriptionInvoiceLineDtoKindEnum = {
     Tariff: 'tariff',
-    Addon: 'addon',
-    MailingPackage: 'mailing_package'
+    Addon: 'addon'
 } as const;
 export type SubscriptionInvoiceLineDtoKindEnum = typeof SubscriptionInvoiceLineDtoKindEnum[keyof typeof SubscriptionInvoiceLineDtoKindEnum];
 

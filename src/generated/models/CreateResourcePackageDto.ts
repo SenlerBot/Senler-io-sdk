@@ -89,6 +89,12 @@ export interface CreateResourcePackageDto {
     leadVariableDefinitionNames?: Array<string>;
     /**
      *
+     * @type {Array<string>}
+     * @memberof CreateResourcePackageDto
+     */
+    dialogVariableDefinitionNames?: Array<string>;
+    /**
+     *
      * @type {Array<ResourcePackageSelectedResourceDto>}
      * @memberof CreateResourcePackageDto
      */
@@ -105,6 +111,7 @@ export const CreateResourcePackageDtoRootResourceTypeEnum = {
     Delivery: 'delivery',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition',
     Segment: 'segment',
     SegmentConsentDocument: 'segment_consent_document',
     KnowledgeFolder: 'knowledge_folder',
@@ -146,6 +153,7 @@ export function CreateResourcePackageDtoFromJSONTyped(json: any, ignoreDiscrimin
         'includeProjectVariableValues': json['include_project_variable_values'] == null ? undefined : json['include_project_variable_values'],
         'projectVariableNames': json['project_variable_names'] == null ? undefined : json['project_variable_names'],
         'leadVariableDefinitionNames': json['lead_variable_definition_names'] == null ? undefined : json['lead_variable_definition_names'],
+        'dialogVariableDefinitionNames': json['dialog_variable_definition_names'] == null ? undefined : json['dialog_variable_definition_names'],
         'additionalResources': json['additional_resources'] == null ? undefined : ((json['additional_resources'] as Array<any>).map(ResourcePackageSelectedResourceDtoFromJSON)),
     };
 }
@@ -171,6 +179,7 @@ export function CreateResourcePackageDtoToJSONTyped(value?: CreateResourcePackag
         'include_project_variable_values': value['includeProjectVariableValues'],
         'project_variable_names': value['projectVariableNames'],
         'lead_variable_definition_names': value['leadVariableDefinitionNames'],
+        'dialog_variable_definition_names': value['dialogVariableDefinitionNames'],
         'additional_resources': value['additionalResources'] == null ? undefined : ((value['additionalResources'] as Array<any>).map(ResourcePackageSelectedResourceDtoToJSON)),
     };
 }

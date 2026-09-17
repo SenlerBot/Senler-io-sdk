@@ -36,6 +36,12 @@ export interface UpdateDeliveryDto {
      */
     messageText?: string;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateDeliveryDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      * ID
      * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof UpdateDeliveryDto

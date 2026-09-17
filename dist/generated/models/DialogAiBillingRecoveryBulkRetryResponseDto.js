@@ -18,17 +18,23 @@ exports.DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON = DialogAiBillingRec
 exports.DialogAiBillingRecoveryBulkRetryResponseDtoFromJSONTyped = DialogAiBillingRecoveryBulkRetryResponseDtoFromJSONTyped;
 exports.DialogAiBillingRecoveryBulkRetryResponseDtoToJSON = DialogAiBillingRecoveryBulkRetryResponseDtoToJSON;
 exports.DialogAiBillingRecoveryBulkRetryResponseDtoToJSONTyped = DialogAiBillingRecoveryBulkRetryResponseDtoToJSONTyped;
+const DialogAiBillingRecoveryRunStatus_1 = require("./DialogAiBillingRecoveryRunStatus");
+const DialogAiBillingRecoveryRunMode_1 = require("./DialogAiBillingRecoveryRunMode");
 /**
  * Check if a given object implements the DialogAiBillingRecoveryBulkRetryResponseDto interface.
  */
 function instanceOfDialogAiBillingRecoveryBulkRetryResponseDto(value) {
+    if (!('runId' in value) || value['runId'] === undefined)
+        return false;
+    if (!('status' in value) || value['status'] === undefined)
+        return false;
+    if (!('mode' in value) || value['mode'] === undefined)
+        return false;
     if (!('submitted' in value) || value['submitted'] === undefined)
         return false;
+    if (!('metricsResumed' in value) || value['metricsResumed'] === undefined)
+        return false;
     if (!('failed' in value) || value['failed'] === undefined)
-        return false;
-    if (!('remainingMessages' in value) || value['remainingMessages'] === undefined)
-        return false;
-    if (!('hasMore' in value) || value['hasMore'] === undefined)
         return false;
     return true;
 }
@@ -40,10 +46,12 @@ function DialogAiBillingRecoveryBulkRetryResponseDtoFromJSONTyped(json, ignoreDi
         return json;
     }
     return {
+        'runId': json['run_id'],
+        'status': (0, DialogAiBillingRecoveryRunStatus_1.DialogAiBillingRecoveryRunStatusFromJSON)(json['status']),
+        'mode': (0, DialogAiBillingRecoveryRunMode_1.DialogAiBillingRecoveryRunModeFromJSON)(json['mode']),
         'submitted': json['submitted'],
+        'metricsResumed': json['metrics_resumed'],
         'failed': json['failed'],
-        'remainingMessages': json['remaining_messages'],
-        'hasMore': json['has_more'],
     };
 }
 function DialogAiBillingRecoveryBulkRetryResponseDtoToJSON(json) {
@@ -54,9 +62,11 @@ function DialogAiBillingRecoveryBulkRetryResponseDtoToJSONTyped(value, ignoreDis
         return value;
     }
     return {
+        'run_id': value['runId'],
+        'status': (0, DialogAiBillingRecoveryRunStatus_1.DialogAiBillingRecoveryRunStatusToJSON)(value['status']),
+        'mode': (0, DialogAiBillingRecoveryRunMode_1.DialogAiBillingRecoveryRunModeToJSON)(value['mode']),
         'submitted': value['submitted'],
+        'metrics_resumed': value['metricsResumed'],
         'failed': value['failed'],
-        'remaining_messages': value['remainingMessages'],
-        'has_more': value['hasMore'],
     };
 }

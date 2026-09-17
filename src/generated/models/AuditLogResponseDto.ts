@@ -157,6 +157,7 @@ export type AuditLogResponseDtoDelegatedActorTypeEnum = typeof AuditLogResponseD
  * @export
  */
 export const AuditLogResponseDtoEntityTypeEnum = {
+    Funnel: 'funnel',
     Project: 'project',
     Agent: 'agent',
     Channel: 'channel',
@@ -169,6 +170,7 @@ export const AuditLogResponseDtoEntityTypeEnum = {
     KnowledgeTable: 'knowledge_table',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition',
     Segment: 'segment',
     SegmentConsentDocument: 'segment_consent_document',
     Landing: 'landing',

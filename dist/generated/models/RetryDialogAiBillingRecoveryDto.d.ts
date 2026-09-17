@@ -22,6 +22,12 @@ export interface RetryDialogAiBillingRecoveryDto {
      * @memberof RetryDialogAiBillingRecoveryDto
      */
     mode: DialogAiBillingRecoveryRetryMode;
+    /**
+     * . false
+     * @type {boolean}
+     * @memberof RetryDialogAiBillingRecoveryDto
+     */
+    includeMetrics?: boolean;
 }
 /**
  * Check if a given object implements the RetryDialogAiBillingRecoveryDto interface.

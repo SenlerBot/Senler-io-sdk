@@ -30,8 +30,6 @@ function instanceOfStorageTariffDto(value) {
         return false;
     if (!('isFree' in value) || value['isFree'] === undefined)
         return false;
-    if (!('isRequestOnly' in value) || value['isRequestOnly'] === undefined)
-        return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined)
         return false;
     return true;
@@ -48,7 +46,6 @@ function StorageTariffDtoFromJSONTyped(json, ignoreDiscriminator) {
         'nameRu': json['name_ru'],
         'nameEn': json['name_en'],
         'isFree': json['is_free'],
-        'isRequestOnly': json['is_request_only'],
         'storageLimitBytes': json['storage_limit_bytes'],
     };
 }
@@ -64,7 +61,6 @@ function StorageTariffDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name_ru': value['nameRu'],
         'name_en': value['nameEn'],
         'is_free': value['isFree'],
-        'is_request_only': value['isRequestOnly'],
         'storage_limit_bytes': value['storageLimitBytes'],
     };
 }

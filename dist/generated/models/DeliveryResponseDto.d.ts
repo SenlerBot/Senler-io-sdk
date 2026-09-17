@@ -56,6 +56,12 @@ export interface DeliveryResponseDto {
     messageText: string;
     /**
      *
+     * @type {boolean}
+     * @memberof DeliveryResponseDto
+     */
+    disableLinkPreview: boolean;
+    /**
+     *
      * @type {Array<DeliveryAttachmentResponseDto>}
      * @memberof DeliveryResponseDto
      */

@@ -35,11 +35,17 @@ export interface SearchLeadsDto {
      */
     limit?: number;
     /**
-     *
-     * @type {number}
+     * next_cursor . _id.
+     * @type {string}
      * @memberof SearchLeadsDto
      */
-    offset?: number;
+    cursor?: string;
+    /**
+     * . ; has_more
+     * @type {boolean}
+     * @memberof SearchLeadsDto
+     */
+    includeTotal?: boolean;
 }
 /**
  * Check if a given object implements the SearchLeadsDto interface.

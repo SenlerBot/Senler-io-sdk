@@ -49,6 +49,7 @@ export const ResourcePackageResourcePreviewDtoResourceTypeEnum = {
     Delivery: 'delivery',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition',
     Segment: 'segment',
     SegmentConsentDocument: 'segment_consent_document',
     KnowledgeFolder: 'knowledge_folder',

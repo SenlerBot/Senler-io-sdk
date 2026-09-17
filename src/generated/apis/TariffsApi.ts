@@ -15,25 +15,18 @@
 
 import * as runtime from '../runtime';
 import type {
-  CreditPackageListResponseDto,
   ErrorResponse,
-  TariffListResponseDto,
+  PublicBillingCatalogResponseDto,
 } from '../models/index';
 import {
-    CreditPackageListResponseDtoFromJSON,
-    CreditPackageListResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
-    TariffListResponseDtoFromJSON,
-    TariffListResponseDtoToJSON,
+    PublicBillingCatalogResponseDtoFromJSON,
+    PublicBillingCatalogResponseDtoToJSON,
 } from '../models/index';
 
-export interface GetCreditPackagesRequest {
-    acceptLanguage?: GetCreditPackagesAcceptLanguageEnum;
-}
-
-export interface GetTariffsRequest {
-    acceptLanguage?: GetTariffsAcceptLanguageEnum;
+export interface TariffsListRequest {
+    acceptLanguage?: TariffsListAcceptLanguageEnum;
 }
 
 /**
@@ -45,7 +38,7 @@ export class TariffsApi extends runtime.BaseAPI {
      *
      *
      */
-    async getCreditPackagesRaw(requestParameters: GetCreditPackagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditPackageListResponseDto>> {
+    async tariffsListRaw(requestParameters: TariffsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicBillingCatalogResponseDto>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -55,53 +48,21 @@ export class TariffsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/credit-packages`,
+            path: `/api/billing-catalog`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreditPackageListResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicBillingCatalogResponseDtoFromJSON(jsonValue));
     }
 
     /**
      *
      *
      */
-    async getCreditPackages(requestParameters: GetCreditPackagesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditPackageListResponseDto> {
-        const response = await this.getCreditPackagesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     *
-     *
-     */
-    async getTariffsRaw(requestParameters: GetTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffListResponseDto>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        const response = await this.request({
-            path: `/api/tariffs`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TariffListResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     *
-     *
-     */
-    async getTariffs(requestParameters: GetTariffsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffListResponseDto> {
-        const response = await this.getTariffsRaw(requestParameters, initOverrides);
+    async tariffsList(requestParameters: TariffsListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicBillingCatalogResponseDto> {
+        const response = await this.tariffsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -110,16 +71,8 @@ export class TariffsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const GetCreditPackagesAcceptLanguageEnum = {
+export const TariffsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetCreditPackagesAcceptLanguageEnum = typeof GetCreditPackagesAcceptLanguageEnum[keyof typeof GetCreditPackagesAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetTariffsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetTariffsAcceptLanguageEnum = typeof GetTariffsAcceptLanguageEnum[keyof typeof GetTariffsAcceptLanguageEnum];
+export type TariffsListAcceptLanguageEnum = typeof TariffsListAcceptLanguageEnum[keyof typeof TariffsListAcceptLanguageEnum];

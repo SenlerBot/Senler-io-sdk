@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateVariablesBindingsAcceptLanguageEnum = exports.UpdateVariablesAccessModeAcceptLanguageEnum = exports.UpdateServersAcceptLanguageEnum = exports.UpdateSegmentsSelectedAcceptLanguageEnum = exports.UpdateSegmentsNoneAcceptLanguageEnum = exports.UpdateSegmentsAllAcceptLanguageEnum = exports.UpdateProfileAcceptLanguageEnum = exports.UpdateModelAcceptLanguageEnum = exports.UpdateMetricsAcceptLanguageEnum = exports.UpdateKnowledgeBaseAcceptLanguageEnum = exports.UpdateDraftWizardAcceptLanguageEnum = exports.UpdateDraftVariablesBindingsAcceptLanguageEnum = exports.UpdateDraftVariablesAccessModeAcceptLanguageEnum = exports.UpdateDraftTrainingAcceptLanguageEnum = exports.UpdateDraftStatusAcceptLanguageEnum = exports.UpdateDraftStatusStatusEnum = exports.UpdateDraftServersAcceptLanguageEnum = exports.UpdateDraftSegmentsSelectedAcceptLanguageEnum = exports.UpdateDraftSegmentsNoneAcceptLanguageEnum = exports.UpdateDraftSegmentsAllAcceptLanguageEnum = exports.UpdateDraftProfileAcceptLanguageEnum = exports.UpdateDraftModelAcceptLanguageEnum = exports.UpdateDraftMetricsAcceptLanguageEnum = exports.UpdateDraftKnowledgeBaseAcceptLanguageEnum = exports.UpdateDraftCreationAcceptLanguageEnum = exports.UpdateDraftContextAcceptLanguageEnum = exports.UpdateDraftCapabilitiesAcceptLanguageEnum = exports.UpdateDraftAssignmentAcceptLanguageEnum = exports.UpdateContextAcceptLanguageEnum = exports.UpdateCapabilitiesAcceptLanguageEnum = exports.UpdateAssignmentAcceptLanguageEnum = exports.DraftsAcceptLanguageEnum = exports.DraftSnapshotAcceptLanguageEnum = exports.DraftPublishAcceptLanguageEnum = exports.AgentAuthoringApi = void 0;
+exports.UpdateVariablesBindingsAcceptLanguageEnum = exports.UpdateVariablesAccessModeAcceptLanguageEnum = exports.UpdateServersAcceptLanguageEnum = exports.UpdateSegmentsSelectedAcceptLanguageEnum = exports.UpdateSegmentsNoneAcceptLanguageEnum = exports.UpdateSegmentsAllAcceptLanguageEnum = exports.UpdateProfileAcceptLanguageEnum = exports.UpdateModelAcceptLanguageEnum = exports.UpdateMetricsAcceptLanguageEnum = exports.UpdateKnowledgeBaseAcceptLanguageEnum = exports.UpdateFunnelsAcceptLanguageEnum = exports.UpdateDraftWizardAcceptLanguageEnum = exports.UpdateDraftVariablesBindingsAcceptLanguageEnum = exports.UpdateDraftVariablesAccessModeAcceptLanguageEnum = exports.UpdateDraftTrainingAcceptLanguageEnum = exports.UpdateDraftStatusAcceptLanguageEnum = exports.UpdateDraftStatusStatusEnum = exports.UpdateDraftServersAcceptLanguageEnum = exports.UpdateDraftSegmentsSelectedAcceptLanguageEnum = exports.UpdateDraftSegmentsNoneAcceptLanguageEnum = exports.UpdateDraftSegmentsAllAcceptLanguageEnum = exports.UpdateDraftProfileAcceptLanguageEnum = exports.UpdateDraftModelAcceptLanguageEnum = exports.UpdateDraftMetricsAcceptLanguageEnum = exports.UpdateDraftKnowledgeBaseAcceptLanguageEnum = exports.UpdateDraftFunnelsAcceptLanguageEnum = exports.UpdateDraftCreationAcceptLanguageEnum = exports.UpdateDraftContextAcceptLanguageEnum = exports.UpdateDraftCapabilitiesAcceptLanguageEnum = exports.UpdateDraftAssignmentAcceptLanguageEnum = exports.UpdateContextAcceptLanguageEnum = exports.UpdateCapabilitiesAcceptLanguageEnum = exports.UpdateAssignmentAcceptLanguageEnum = exports.GetInstructionReferenceAcceptLanguageEnum = exports.GetInstructionReferenceLocaleEnum = exports.GetInstructionReferenceResourceTypeEnum = exports.DraftsAcceptLanguageEnum = exports.DraftSnapshotAcceptLanguageEnum = exports.DraftPublishAcceptLanguageEnum = exports.AgentAuthoringApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AgentAuthoringApi extends runtime.BaseAPI {
     /**
-     * : . ; .
+     * . : . . conflict_fields , ; agents.draft_conflict . . ; . .
      *
      */
     async draftPublishRaw(requestParameters, initOverrides) {
@@ -91,7 +91,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * : . ; .
+     * . : . . conflict_fields , ; agents.draft_conflict . . ; . .
      *
      */
     async draftPublish(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . . . JSON null, .
      *
      */
     async draftSnapshotRaw(requestParameters, initOverrides) {
@@ -131,7 +131,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . . . JSON null, .
      *
      */
     async draftSnapshot(requestParameters, initOverrides) {
@@ -139,7 +139,7 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
+     * . . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     async draftsRaw(requestParameters, initOverrides) {
@@ -173,11 +173,66 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . .
+     * . . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     async drafts(requestParameters, initOverrides) {
         const response = await this.draftsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , , Markdown- . markdown . . patchDraftInstruction .
+     * @-
+     */
+    async getInstructionReferenceRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getInstructionReference().');
+        }
+        if (requestParameters['resourceType'] == null) {
+            throw new runtime.RequiredError('resourceType', 'Required parameter "resourceType" was null or undefined when calling getInstructionReference().');
+        }
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling getInstructionReference().');
+        }
+        const queryParameters = {};
+        if (requestParameters['resourceType'] != null) {
+            queryParameters['resource_type'] = requestParameters['resourceType'];
+        }
+        if (requestParameters['resourceId'] != null) {
+            queryParameters['resource_id'] = requestParameters['resourceId'];
+        }
+        if (requestParameters['locale'] != null) {
+            queryParameters['locale'] = requestParameters['locale'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/instruction-reference`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentInstructionReferenceResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , , Markdown- . markdown . . patchDraftInstruction .
+     * @-
+     */
+    async getInstructionReference(requestParameters, initOverrides) {
+        const response = await this.getInstructionReferenceRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -493,6 +548,51 @@ class AgentAuthoringApi extends runtime.BaseAPI {
      */
     async updateDraftCreation(requestParameters, initOverrides) {
         const response = await this.updateDraftCreationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . AgentInstructionReferences_resolve resource_type=funnel_stage.
+     *
+     */
+    async updateDraftFunnelsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateDraftFunnels().');
+        }
+        if (requestParameters['updateAgentFunnelsDto'] == null) {
+            throw new runtime.RequiredError('updateAgentFunnelsDto', 'Required parameter "updateAgentFunnelsDto" was null or undefined when calling updateDraftFunnels().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/funnels`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAgentFunnelsDtoToJSON)(requestParameters['updateAgentFunnelsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . AgentInstructionReferences_resolve resource_type=funnel_stage.
+     *
+     */
+    async updateDraftFunnels(requestParameters, initOverrides) {
+        const response = await this.updateDraftFunnelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1074,6 +1174,51 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . none .
+     *
+     */
+    async updateFunnelsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateFunnels().');
+        }
+        if (requestParameters['updateAgentFunnelsDto'] == null) {
+            throw new runtime.RequiredError('updateAgentFunnelsDto', 'Required parameter "updateAgentFunnelsDto" was null or undefined when calling updateFunnels().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/funnels`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAgentFunnelsDtoToJSON)(requestParameters['updateAgentFunnelsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . none .
+     *
+     */
+    async updateFunnels(requestParameters, initOverrides) {
+        const response = await this.updateFunnelsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
@@ -1209,8 +1354,8 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
-     *
+     * (rename agent). . . .
+     * , ,
      */
     async updateProfileRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -1246,8 +1391,8 @@ class AgentAuthoringApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
-     *
+     * (rename agent). . . .
+     * , ,
      */
     async updateProfile(requestParameters, initOverrides) {
         const response = await this.updateProfileRaw(requestParameters, initOverrides);
@@ -1544,6 +1689,36 @@ exports.DraftsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetInstructionReferenceResourceTypeEnum = {
+    KnowledgeFile: 'knowledge_file',
+    KnowledgeFolder: 'knowledge_folder',
+    KnowledgeTable: 'knowledge_table',
+    ProjectVariable: 'project_variable',
+    LeadVariable: 'lead_variable',
+    DialogVariable: 'dialog_variable',
+    Segment: 'segment',
+    FunnelStage: 'funnel_stage',
+    PluginTool: 'plugin_tool',
+    PluginEvent: 'plugin_event',
+    McpServer: 'mcp_server'
+};
+/**
+ * @export
+ */
+exports.GetInstructionReferenceLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstructionReferenceAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.UpdateAssignmentAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1587,6 +1762,13 @@ exports.UpdateDraftContextAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateDraftCreationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateDraftFunnelsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1688,6 +1870,13 @@ exports.UpdateDraftVariablesBindingsAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateDraftWizardAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateFunnelsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -23,7 +23,7 @@ export interface SubscriptionChangePreviewResponseDto {
      */
     mode: SubscriptionChangePreviewResponseDtoModeEnum;
     /**
-     * ; null
+     *
      * @type {string}
      * @memberof SubscriptionChangePreviewResponseDto
      */
@@ -35,19 +35,19 @@ export interface SubscriptionChangePreviewResponseDto {
      */
     currency: SubscriptionChangePreviewResponseDtoCurrencyEnum;
     /**
-     * total amount.
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionChangePreviewResponseDto
      */
     totalAmount: number;
     /**
-     * balance amount.
+     * , , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionChangePreviewResponseDto
      */
     balanceAmount: number;
     /**
-     * external amount.
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionChangePreviewResponseDto
      */
@@ -64,6 +64,18 @@ export interface SubscriptionChangePreviewResponseDto {
      * @memberof SubscriptionChangePreviewResponseDto
      */
     lines: Array<SubscriptionInvoiceLineDto>;
+    /**
+     * . Null ., (/); : 1.25 = 125
+     * @type {number}
+     * @memberof SubscriptionChangePreviewResponseDto
+     */
+    futurePeriodAmount: number | null;
+    /**
+     * .
+     * @type {Array<SubscriptionInvoiceLineDto>}
+     * @memberof SubscriptionChangePreviewResponseDto
+     */
+    futureLines: Array<SubscriptionInvoiceLineDto>;
 }
 /**
  * @export
@@ -78,7 +90,6 @@ export type SubscriptionChangePreviewResponseDtoModeEnum = typeof SubscriptionCh
  */
 export declare const SubscriptionChangePreviewResponseDtoTariffChangeStatusEnum: {
     readonly New: "new";
-    readonly Prolongation: "prolongation";
     readonly Upgrade: "upgrade";
     readonly Downgrade: "downgrade";
 };

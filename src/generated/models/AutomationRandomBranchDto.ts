@@ -36,7 +36,7 @@ export interface AutomationRandomBranchDto {
      * @type {number}
      * @memberof AutomationRandomBranchDto
      */
-    percentage: number;
+    weight: number;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface AutomationRandomBranchDto {
 export function instanceOfAutomationRandomBranchDto(value: object): value is AutomationRandomBranchDto {
     if (!('branchId' in value) || value['branchId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('percentage' in value) || value['percentage'] === undefined) return false;
+    if (!('weight' in value) || value['weight'] === undefined) return false;
     return true;
 }
 
@@ -61,7 +61,7 @@ export function AutomationRandomBranchDtoFromJSONTyped(json: any, ignoreDiscrimi
 
         'branchId': json['branch_id'],
         'name': json['name'],
-        'percentage': json['percentage'],
+        'weight': json['weight'],
     };
 }
 
@@ -78,6 +78,6 @@ export function AutomationRandomBranchDtoToJSONTyped(value?: AutomationRandomBra
 
         'branch_id': value['branchId'],
         'name': value['name'],
-        'percentage': value['percentage'],
+        'weight': value['weight'],
     };
 }

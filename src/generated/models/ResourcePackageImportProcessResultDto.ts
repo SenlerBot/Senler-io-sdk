@@ -114,6 +114,7 @@ export const ResourcePackageImportProcessResultDtoStageEnum = {
     Planned: 'planned',
     ProjectVariables: 'project_variables',
     LeadVariables: 'lead_variables',
+    DialogVariables: 'dialog_variables',
     MetricDefinitions: 'metric_definitions',
     Segments: 'segments',
     Landings: 'landings',

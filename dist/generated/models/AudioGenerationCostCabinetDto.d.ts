@@ -34,6 +34,12 @@ export interface AudioGenerationCostCabinetDto {
      */
     charCount?: number;
     /**
+     * UTF-8
+     * @type {number}
+     * @memberof AudioGenerationCostCabinetDto
+     */
+    inputUtf8Bytes?: number;
+    /**
      * Text input
      * @type {number}
      * @memberof AudioGenerationCostCabinetDto
@@ -56,6 +62,12 @@ export interface AudioGenerationCostCabinetDto {
      * @type {string}
      * @memberof AudioGenerationCostCabinetDto
      */
+    mode?: AudioGenerationCostCabinetDtoModeEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof AudioGenerationCostCabinetDto
+     */
     voice?: string;
     /**
      *
@@ -69,11 +81,20 @@ export interface AudioGenerationCostCabinetDto {
  */
 export declare const AudioGenerationCostCabinetDtoPricingTypeEnum: {
     readonly Characters: "characters";
+    readonly Utf8Bytes: "utf8_bytes";
     readonly Minutes: "minutes";
     readonly TextInputAudioOutputTokens: "text_input_audio_output_tokens";
     readonly AudioInputTextOutputTokens: "audio_input_text_output_tokens";
 };
 export type AudioGenerationCostCabinetDtoPricingTypeEnum = typeof AudioGenerationCostCabinetDtoPricingTypeEnum[keyof typeof AudioGenerationCostCabinetDtoPricingTypeEnum];
+/**
+ * @export
+ */
+export declare const AudioGenerationCostCabinetDtoModeEnum: {
+    readonly PresetVoice: "preset_voice";
+    readonly VoiceClone: "voice_clone";
+};
+export type AudioGenerationCostCabinetDtoModeEnum = typeof AudioGenerationCostCabinetDtoModeEnum[keyof typeof AudioGenerationCostCabinetDtoModeEnum];
 /**
  * Check if a given object implements the AudioGenerationCostCabinetDto interface.
  */

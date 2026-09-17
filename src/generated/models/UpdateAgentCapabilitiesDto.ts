@@ -38,7 +38,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     enableCustomAttachments?: boolean;
     /**
-     * (DALL-E)
+     *
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -61,6 +61,18 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     audioGenerationModelId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    enableVoiceCloning?: boolean;
+    /**
+     * UUID audio_generation stateless voice cloning GET /api/ai/models.
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    voiceCloningModelId?: string | null;
     /**
      * (STT)
      * @type {boolean}
@@ -145,6 +157,12 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     enableStreaming?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    disableLinkPreview?: boolean;
     /**
      * AI
      * @type {string}
@@ -249,6 +267,8 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'imageGenerationModelId': json['image_generation_model_id'] == null ? undefined : json['image_generation_model_id'],
         'enableAudioGeneration': json['enable_audio_generation'] == null ? undefined : json['enable_audio_generation'],
         'audioGenerationModelId': json['audio_generation_model_id'] == null ? undefined : json['audio_generation_model_id'],
+        'enableVoiceCloning': json['enable_voice_cloning'] == null ? undefined : json['enable_voice_cloning'],
+        'voiceCloningModelId': json['voice_cloning_model_id'] == null ? undefined : json['voice_cloning_model_id'],
         'enableSpeechRecognition': json['enable_speech_recognition'] == null ? undefined : json['enable_speech_recognition'],
         'speechRecognitionModelId': json['speech_recognition_model_id'] == null ? undefined : json['speech_recognition_model_id'],
         'enableImageRecognition': json['enable_image_recognition'] == null ? undefined : json['enable_image_recognition'],
@@ -263,6 +283,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'] == null ? undefined : json['cancel_pending_response_on_automation_message'],
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'] == null ? undefined : json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
         'respondOnSegmentSubscription': json['respond_on_segment_subscription'] == null ? undefined : json['respond_on_segment_subscription'],
@@ -295,6 +316,8 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'image_generation_model_id': value['imageGenerationModelId'],
         'enable_audio_generation': value['enableAudioGeneration'],
         'audio_generation_model_id': value['audioGenerationModelId'],
+        'enable_voice_cloning': value['enableVoiceCloning'],
+        'voice_cloning_model_id': value['voiceCloningModelId'],
         'enable_speech_recognition': value['enableSpeechRecognition'],
         'speech_recognition_model_id': value['speechRecognitionModelId'],
         'enable_image_recognition': value['enableImageRecognition'],
@@ -309,6 +332,7 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'disable_link_preview': value['disableLinkPreview'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'respond_on_segment_subscription': value['respondOnSegmentSubscription'],

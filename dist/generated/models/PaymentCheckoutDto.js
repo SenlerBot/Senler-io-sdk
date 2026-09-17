@@ -24,7 +24,8 @@ exports.PaymentCheckoutDtoToJSONTyped = PaymentCheckoutDtoToJSONTyped;
  */
 exports.PaymentCheckoutDtoTypeEnum = {
     Redirect: 'redirect',
-    Crypto: 'crypto'
+    Crypto: 'crypto',
+    SavedCard: 'saved_card'
 };
 /**
  * @export

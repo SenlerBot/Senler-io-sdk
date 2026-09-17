@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicDocumentationNavigationTargetDto } from './PublicDocumentationNavigationTargetDto';
+import {
+    PublicDocumentationNavigationTargetDtoFromJSON,
+    PublicDocumentationNavigationTargetDtoFromJSONTyped,
+    PublicDocumentationNavigationTargetDtoToJSON,
+    PublicDocumentationNavigationTargetDtoToJSONTyped,
+} from './PublicDocumentationNavigationTargetDto';
 import type { PublicDocumentationContextRefDto } from './PublicDocumentationContextRefDto';
 import {
     PublicDocumentationContextRefDtoFromJSON,
@@ -78,6 +85,12 @@ export interface PublicDocumentationPageDto {
      */
     contextRefs: Array<PublicDocumentationContextRefDto>;
     /**
+     * custom actions host-
+     * @type {Array<PublicDocumentationNavigationTargetDto>}
+     * @memberof PublicDocumentationPageDto
+     */
+    navigationTargets: Array<PublicDocumentationNavigationTargetDto>;
+    /**
      *
      * @type {Array<PublicDocumentationResolvedLinkDto>}
      * @memberof PublicDocumentationPageDto
@@ -118,6 +131,7 @@ export function instanceOfPublicDocumentationPageDto(value: object): value is Pu
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('content' in value) || value['content'] === undefined) return false;
     if (!('contextRefs' in value) || value['contextRefs'] === undefined) return false;
+    if (!('navigationTargets' in value) || value['navigationTargets'] === undefined) return false;
     if (!('resolvedLinks' in value) || value['resolvedLinks'] === undefined) return false;
     if (!('app' in value) || value['app'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
@@ -140,6 +154,7 @@ export function PublicDocumentationPageDtoFromJSONTyped(json: any, ignoreDiscrim
         'title': json['title'],
         'content': json['content'],
         'contextRefs': ((json['context_refs'] as Array<any>).map(PublicDocumentationContextRefDtoFromJSON)),
+        'navigationTargets': ((json['navigation_targets'] as Array<any>).map(PublicDocumentationNavigationTargetDtoFromJSON)),
         'resolvedLinks': ((json['resolved_links'] as Array<any>).map(PublicDocumentationResolvedLinkDtoFromJSON)),
         'app': PublicDocumentationAppDtoFromJSON(json['app']),
         'url': json['url'],
@@ -163,6 +178,7 @@ export function PublicDocumentationPageDtoToJSONTyped(value?: PublicDocumentatio
         'title': value['title'],
         'content': value['content'],
         'context_refs': ((value['contextRefs'] as Array<any>).map(PublicDocumentationContextRefDtoToJSON)),
+        'navigation_targets': ((value['navigationTargets'] as Array<any>).map(PublicDocumentationNavigationTargetDtoToJSON)),
         'resolved_links': ((value['resolvedLinks'] as Array<any>).map(PublicDocumentationResolvedLinkDtoToJSON)),
         'app': PublicDocumentationAppDtoToJSON(value['app']),
         'url': value['url'],

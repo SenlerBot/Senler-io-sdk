@@ -66,6 +66,7 @@ exports.EventErrorDtoErrorTypeEnum = {
     MediaFileTooLarge: 'media.file_too_large',
     MediaProcessingError: 'media.processing_error',
     BillingInsufficientBalance: 'billing.insufficient_balance',
+    BillingNoActiveTariff: 'billing.no_active_tariff',
     BillingServiceUnavailable: 'billing.service_unavailable',
     WebhookSetupFailed: 'webhook.setup_failed',
     WebhookInvalidToken: 'webhook.invalid_token',

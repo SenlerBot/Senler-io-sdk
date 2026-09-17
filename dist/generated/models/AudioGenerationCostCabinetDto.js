@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AudioGenerationCostCabinetDtoPricingTypeEnum = void 0;
+exports.AudioGenerationCostCabinetDtoModeEnum = exports.AudioGenerationCostCabinetDtoPricingTypeEnum = void 0;
 exports.instanceOfAudioGenerationCostCabinetDto = instanceOfAudioGenerationCostCabinetDto;
 exports.AudioGenerationCostCabinetDtoFromJSON = AudioGenerationCostCabinetDtoFromJSON;
 exports.AudioGenerationCostCabinetDtoFromJSONTyped = AudioGenerationCostCabinetDtoFromJSONTyped;
@@ -24,9 +24,17 @@ exports.AudioGenerationCostCabinetDtoToJSONTyped = AudioGenerationCostCabinetDto
  */
 exports.AudioGenerationCostCabinetDtoPricingTypeEnum = {
     Characters: 'characters',
+    Utf8Bytes: 'utf8_bytes',
     Minutes: 'minutes',
     TextInputAudioOutputTokens: 'text_input_audio_output_tokens',
     AudioInputTextOutputTokens: 'audio_input_text_output_tokens'
+};
+/**
+ * @export
+ */
+exports.AudioGenerationCostCabinetDtoModeEnum = {
+    PresetVoice: 'preset_voice',
+    VoiceClone: 'voice_clone'
 };
 /**
  * Check if a given object implements the AudioGenerationCostCabinetDto interface.
@@ -45,9 +53,11 @@ function AudioGenerationCostCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
         'model': json['model'] == null ? undefined : json['model'],
         'pricingType': json['pricing_type'] == null ? undefined : json['pricing_type'],
         'charCount': json['char_count'] == null ? undefined : json['char_count'],
+        'inputUtf8Bytes': json['input_utf8_bytes'] == null ? undefined : json['input_utf8_bytes'],
         'textInputTokens': json['text_input_tokens'] == null ? undefined : json['text_input_tokens'],
         'audioOutputTokens': json['audio_output_tokens'] == null ? undefined : json['audio_output_tokens'],
         'durationSeconds': json['duration_seconds'] == null ? undefined : json['duration_seconds'],
+        'mode': json['mode'] == null ? undefined : json['mode'],
         'voice': json['voice'] == null ? undefined : json['voice'],
         'speed': json['speed'] == null ? undefined : json['speed'],
     };
@@ -63,9 +73,11 @@ function AudioGenerationCostCabinetDtoToJSONTyped(value, ignoreDiscriminator = f
         'model': value['model'],
         'pricing_type': value['pricingType'],
         'char_count': value['charCount'],
+        'input_utf8_bytes': value['inputUtf8Bytes'],
         'text_input_tokens': value['textInputTokens'],
         'audio_output_tokens': value['audioOutputTokens'],
         'duration_seconds': value['durationSeconds'],
+        'mode': value['mode'],
         'voice': value['voice'],
         'speed': value['speed'],
     };

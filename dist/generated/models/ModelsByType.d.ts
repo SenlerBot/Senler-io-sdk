@@ -26,7 +26,7 @@ export interface ModelsByType {
      */
     text?: Array<TextModelStats>;
     /**
-     * - DALL-E
+     *
      * @type {Array<ImageGenModelStats>}
      * @memberof ModelsByType
      */

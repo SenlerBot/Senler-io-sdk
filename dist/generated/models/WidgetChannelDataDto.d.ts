@@ -49,12 +49,6 @@ export interface WidgetChannelDataDto {
      */
     features?: WidgetFeaturesDto;
     /**
-     * : local ( JS ) remote ( )
-     * @type {string}
-     * @memberof WidgetChannelDataDto
-     */
-    configSource?: WidgetChannelDataDtoConfigSourceEnum;
-    /**
      * HMAC identity verification
      * @type {boolean}
      * @memberof WidgetChannelDataDto
@@ -73,14 +67,6 @@ export interface WidgetChannelDataDto {
      */
     displayMode?: WidgetChannelDataDtoDisplayModeEnum;
 }
-/**
- * @export
- */
-export declare const WidgetChannelDataDtoConfigSourceEnum: {
-    readonly Local: "local";
-    readonly Remote: "remote";
-};
-export type WidgetChannelDataDtoConfigSourceEnum = typeof WidgetChannelDataDtoConfigSourceEnum[keyof typeof WidgetChannelDataDtoConfigSourceEnum];
 /**
  * @export
  */

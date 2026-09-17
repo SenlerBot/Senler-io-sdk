@@ -38,6 +38,7 @@ export interface EventGenerationSummaryDto {
  * @export
  */
 export declare const EventGenerationSummaryDtoStatusEnum: {
+    readonly WaitingBilling: "waiting_billing";
     readonly Pending: "pending";
     readonly Completed: "completed";
     readonly Skipped: "skipped";

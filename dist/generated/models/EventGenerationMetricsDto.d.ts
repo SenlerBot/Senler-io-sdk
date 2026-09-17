@@ -39,6 +39,7 @@ export interface EventGenerationMetricsDto {
  * @export
  */
 export declare const EventGenerationMetricsDtoStatusEnum: {
+    readonly WaitingBilling: "waiting_billing";
     readonly Pending: "pending";
     readonly Completed: "completed";
     readonly Skipped: "skipped";

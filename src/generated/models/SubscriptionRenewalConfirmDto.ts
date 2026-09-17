@@ -32,11 +32,17 @@ export interface SubscriptionRenewalConfirmDto {
      */
     useBalance?: boolean;
     /**
-     * ID ,
+     *
      * @type {string}
      * @memberof SubscriptionRenewalConfirmDto
      */
     paySystemId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SubscriptionRenewalConfirmDto
+     */
+    paymentMethodId?: string;
 }
 
 
@@ -71,6 +77,7 @@ export function SubscriptionRenewalConfirmDtoFromJSONTyped(json: any, ignoreDisc
         'period': json['period'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
         'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
+        'paymentMethodId': json['payment_method_id'] == null ? undefined : json['payment_method_id'],
     };
 }
 
@@ -88,5 +95,6 @@ export function SubscriptionRenewalConfirmDtoToJSONTyped(value?: SubscriptionRen
         'period': value['period'],
         'use_balance': value['useBalance'],
         'pay_system_id': value['paySystemId'],
+        'payment_method_id': value['paymentMethodId'],
     };
 }

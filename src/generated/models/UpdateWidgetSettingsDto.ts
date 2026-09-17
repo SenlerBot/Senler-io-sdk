@@ -48,12 +48,6 @@ export interface UpdateWidgetSettingsDto {
      */
     theme?: WidgetThemeDto;
     /**
-     * CORS
-     * @type {Array<string>}
-     * @memberof UpdateWidgetSettingsDto
-     */
-    allowedDomains?: Array<string>;
-    /**
      * ( , , , )
      * @type {WidgetFeaturesDto}
      * @memberof UpdateWidgetSettingsDto
@@ -78,6 +72,12 @@ export interface UpdateWidgetSettingsDto {
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
     /**
+     * CORS
+     * @type {Array<string>}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    allowedDomains?: Array<string>;
+    /**
      * host-
      * @type {boolean}
      * @memberof UpdateWidgetSettingsDto
@@ -89,12 +89,6 @@ export interface UpdateWidgetSettingsDto {
      * @memberof UpdateWidgetSettingsDto
      */
     externalAi?: WidgetExternalAiSettingsDto;
-    /**
-     * : local ( JS ) remote ( /init)
-     * @type {string}
-     * @memberof UpdateWidgetSettingsDto
-     */
-    configSource?: UpdateWidgetSettingsDtoConfigSourceEnum;
     /**
      *
      * @type {string}
@@ -129,15 +123,6 @@ export const UpdateWidgetSettingsDtoDisplayModeEnum = {
 } as const;
 export type UpdateWidgetSettingsDtoDisplayModeEnum = typeof UpdateWidgetSettingsDtoDisplayModeEnum[keyof typeof UpdateWidgetSettingsDtoDisplayModeEnum];
 
-/**
- * @export
- */
-export const UpdateWidgetSettingsDtoConfigSourceEnum = {
-    Local: 'local',
-    Remote: 'remote'
-} as const;
-export type UpdateWidgetSettingsDtoConfigSourceEnum = typeof UpdateWidgetSettingsDtoConfigSourceEnum[keyof typeof UpdateWidgetSettingsDtoConfigSourceEnum];
-
 
 /**
  * Check if a given object implements the UpdateWidgetSettingsDto interface.
@@ -157,14 +142,13 @@ export function UpdateWidgetSettingsDtoFromJSONTyped(json: any, ignoreDiscrimina
     return {
 
         'theme': json['theme'] == null ? undefined : WidgetThemeDtoFromJSON(json['theme']),
-        'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'features': json['features'] == null ? undefined : WidgetFeaturesDtoFromJSON(json['features']),
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
-        'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'name': json['name'] == null ? undefined : json['name'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
     };
@@ -182,14 +166,13 @@ export function UpdateWidgetSettingsDtoToJSONTyped(value?: UpdateWidgetSettingsD
     return {
 
         'theme': WidgetThemeDtoToJSON(value['theme']),
-        'allowed_domains': value['allowedDomains'],
         'features': WidgetFeaturesDtoToJSON(value['features']),
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'allowed_domains': value['allowedDomains'],
         'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),
-        'config_source': value['configSource'],
         'name': value['name'],
         'avatar_url': value['avatarUrl'],
     };

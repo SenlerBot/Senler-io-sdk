@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateScheduleAcceptLanguageEnum = exports.TestRecipientVkConfirmAcceptLanguageEnum = exports.TestRecipientLinkAcceptLanguageEnum = exports.TestAcceptLanguageEnum = exports.StartAcceptLanguageEnum = exports.GetTestRecipientsAcceptLanguageEnum = exports.GetStartPreviewAcceptLanguageEnum = exports.GetAudiencePreviewAcceptLanguageEnum = exports.GetAudiencePreviewChannelTypeEnum = exports.DeliveriesUpdateAcceptLanguageEnum = exports.DeliveriesListAcceptLanguageEnum = exports.DeliveriesListTabEnum = exports.DeliveriesGetByIdAcceptLanguageEnum = exports.DeliveriesDeactivateAcceptLanguageEnum = exports.DeliveriesCreateAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeleteScheduleAcceptLanguageEnum = exports.CopyAcceptLanguageEnum = exports.CancelAcceptLanguageEnum = exports.DeliveriesApi = void 0;
+exports.UpdateScheduleAcceptLanguageEnum = exports.TestRecipientVkConfirmAcceptLanguageEnum = exports.TestRecipientLinkAcceptLanguageEnum = exports.TestAcceptLanguageEnum = exports.StartAcceptLanguageEnum = exports.GetTestRecipientsAcceptLanguageEnum = exports.GetStartPreviewAcceptLanguageEnum = exports.GetAudiencePreviewAcceptLanguageEnum = exports.GetAudiencePreviewChannelTypeEnum = exports.DeliveriesUpdateAcceptLanguageEnum = exports.DeliveriesListAcceptLanguageEnum = exports.DeliveriesListTabEnum = exports.DeliveriesGetByIdAcceptLanguageEnum = exports.DeliveriesDeactivateAcceptLanguageEnum = exports.DeliveriesCreateAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsFromUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeleteScheduleAcceptLanguageEnum = exports.CopyAcceptLanguageEnum = exports.CancelAcceptLanguageEnum = exports.DeliveriesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -226,6 +226,54 @@ class DeliveriesApi extends runtime.BaseAPI {
      */
     async deliveriesAttachmentsConfirm(requestParameters, initOverrides) {
         const response = await this.deliveriesAttachmentsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    async deliveriesAttachmentsFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deliveriesAttachmentsFromUrl().');
+        }
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling deliveriesAttachmentsFromUrl().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+        const response = await this.request({
+            path: `/api/deliveries/attachments/from-url`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ConfirmUploadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    async deliveriesAttachmentsFromUrl(requestParameters, initOverrides) {
+        const response = await this.deliveriesAttachmentsFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -892,6 +940,13 @@ exports.DeleteScheduleAcceptLanguageEnum = {
  * @export
  */
 exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeliveriesAttachmentsFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

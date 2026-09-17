@@ -20,18 +20,41 @@ import { mapValues } from '../runtime';
  */
 export interface UploadAvatarFromUrlDto {
     /**
-     * URL
+     * HTTP(S) URL , storage_url . url attachment_id. ; PUT .
      * @type {string}
      * @memberof UploadAvatarFromUrlDto
      */
-    imageUrl: string;
+    url?: string;
+    /**
+     * ID - URL. fileId : url. .
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    attachmentId?: string;
+    /**
+     * . MIME-, .
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    fileName?: string;
+    /**
+     * . 24 . . : API 409 24 ; .
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    idempotencyKey?: string;
+    /**
+     * URL . : imageUrl, url attachment_id.
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    imageUrl?: string;
 }
 
 /**
  * Check if a given object implements the UploadAvatarFromUrlDto interface.
  */
 export function instanceOfUploadAvatarFromUrlDto(value: object): value is UploadAvatarFromUrlDto {
-    if (!('imageUrl' in value) || value['imageUrl'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +68,11 @@ export function UploadAvatarFromUrlDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
-        'imageUrl': json['imageUrl'],
+        'url': json['url'] == null ? undefined : json['url'],
+        'attachmentId': json['attachment_id'] == null ? undefined : json['attachment_id'],
+        'fileName': json['file_name'] == null ? undefined : json['file_name'],
+        'idempotencyKey': json['idempotency_key'] == null ? undefined : json['idempotency_key'],
+        'imageUrl': json['imageUrl'] == null ? undefined : json['imageUrl'],
     };
 }
 
@@ -60,6 +87,10 @@ export function UploadAvatarFromUrlDtoToJSONTyped(value?: UploadAvatarFromUrlDto
 
     return {
 
+        'url': value['url'],
+        'attachment_id': value['attachmentId'],
+        'file_name': value['fileName'],
+        'idempotency_key': value['idempotencyKey'],
         'imageUrl': value['imageUrl'],
     };
 }

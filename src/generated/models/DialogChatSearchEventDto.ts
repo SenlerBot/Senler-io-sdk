@@ -160,6 +160,13 @@ import {
     EventGenerationDtoToJSON,
     EventGenerationDtoToJSONTyped,
 } from './EventGenerationDto';
+import type { AutomationFunnelObservationDto } from './AutomationFunnelObservationDto';
+import {
+    AutomationFunnelObservationDtoFromJSON,
+    AutomationFunnelObservationDtoFromJSONTyped,
+    AutomationFunnelObservationDtoToJSON,
+    AutomationFunnelObservationDtoToJSONTyped,
+} from './AutomationFunnelObservationDto';
 import type { EventSenderDto } from './EventSenderDto';
 import {
     EventSenderDtoFromJSON,
@@ -167,6 +174,13 @@ import {
     EventSenderDtoToJSON,
     EventSenderDtoToJSONTyped,
 } from './EventSenderDto';
+import type { EventFunnelDto } from './EventFunnelDto';
+import {
+    EventFunnelDtoFromJSON,
+    EventFunnelDtoFromJSONTyped,
+    EventFunnelDtoToJSON,
+    EventFunnelDtoToJSONTyped,
+} from './EventFunnelDto';
 import type { EventPollVoteDto } from './EventPollVoteDto';
 import {
     EventPollVoteDtoFromJSON,
@@ -195,6 +209,18 @@ import {
  * @interface DialogChatSearchEventDto
  */
 export interface DialogChatSearchEventDto {
+    /**
+     *
+     * @type {EventFunnelDto}
+     * @memberof DialogChatSearchEventDto
+     */
+    funnel?: EventFunnelDto;
+    /**
+     *
+     * @type {AutomationFunnelObservationDto}
+     * @memberof DialogChatSearchEventDto
+     */
+    automationObservation?: AutomationFunnelObservationDto;
     /**
      * ID
      * @type {string}
@@ -249,6 +275,12 @@ export interface DialogChatSearchEventDto {
      * @memberof DialogChatSearchEventDto
      */
     leadId?: string;
+    /**
+     * ;
+     * @type {string}
+     * @memberof DialogChatSearchEventDto
+     */
+    dialogLeadId?: string;
     /**
      *
      * @type {string}
@@ -544,6 +576,7 @@ export const DialogChatSearchEventDtoActionTypeEnum = {
     BroadcastStopped: 'broadcast_stopped',
     BroadcastViewersUpdated: 'broadcast_viewers_updated',
     AiResponseStarted: 'ai_response_started',
+    AiResponseCancelled: 'ai_response_cancelled',
     AgentInvoked: 'agent_invoked',
     ToolStarted: 'tool_started',
     ReasoningRecorded: 'reasoning_recorded',
@@ -586,6 +619,8 @@ export function DialogChatSearchEventDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'funnel': json['funnel'] == null ? undefined : EventFunnelDtoFromJSON(json['funnel']),
+        'automationObservation': json['automation_observation'] == null ? undefined : AutomationFunnelObservationDtoFromJSON(json['automation_observation']),
         'id': json['id'],
         'dialogId': json['dialog_id'] == null ? undefined : json['dialog_id'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
@@ -595,6 +630,7 @@ export function DialogChatSearchEventDtoFromJSONTyped(json: any, ignoreDiscrimin
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
+        'dialogLeadId': json['dialog_lead_id'] == null ? undefined : json['dialog_lead_id'],
         'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
         'externalMessageId': json['external_message_id'] == null ? undefined : json['external_message_id'],
@@ -644,6 +680,8 @@ export function DialogChatSearchEventDtoToJSONTyped(value?: DialogChatSearchEven
 
     return {
 
+        'funnel': EventFunnelDtoToJSON(value['funnel']),
+        'automation_observation': AutomationFunnelObservationDtoToJSON(value['automationObservation']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'mcp_server_id': value['mcpServerId'],
@@ -653,6 +691,7 @@ export function DialogChatSearchEventDtoToJSONTyped(value?: DialogChatSearchEven
         'agent_id': value['agentId'],
         'app_id': value['appId'],
         'lead_id': value['leadId'],
+        'dialog_lead_id': value['dialogLeadId'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],
         'external_message_id': value['externalMessageId'],

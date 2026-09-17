@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateWidgetSettingsDtoConfigSourceEnum = exports.UpdateWidgetSettingsDtoDisplayModeEnum = exports.UpdateWidgetSettingsDtoLanguageEnum = void 0;
+exports.UpdateWidgetSettingsDtoDisplayModeEnum = exports.UpdateWidgetSettingsDtoLanguageEnum = void 0;
 exports.instanceOfUpdateWidgetSettingsDto = instanceOfUpdateWidgetSettingsDto;
 exports.UpdateWidgetSettingsDtoFromJSON = UpdateWidgetSettingsDtoFromJSON;
 exports.UpdateWidgetSettingsDtoFromJSONTyped = UpdateWidgetSettingsDtoFromJSONTyped;
@@ -38,13 +38,6 @@ exports.UpdateWidgetSettingsDtoDisplayModeEnum = {
     Embedded: 'embedded'
 };
 /**
- * @export
- */
-exports.UpdateWidgetSettingsDtoConfigSourceEnum = {
-    Local: 'local',
-    Remote: 'remote'
-};
-/**
  * Check if a given object implements the UpdateWidgetSettingsDto interface.
  */
 function instanceOfUpdateWidgetSettingsDto(value) {
@@ -59,14 +52,13 @@ function UpdateWidgetSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'theme': json['theme'] == null ? undefined : (0, WidgetThemeDto_1.WidgetThemeDtoFromJSON)(json['theme']),
-        'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'features': json['features'] == null ? undefined : (0, WidgetFeaturesDto_1.WidgetFeaturesDtoFromJSON)(json['features']),
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoFromJSON)(json['external_ai']),
-        'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'name': json['name'] == null ? undefined : json['name'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
     };
@@ -80,14 +72,13 @@ function UpdateWidgetSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) 
     }
     return {
         'theme': (0, WidgetThemeDto_1.WidgetThemeDtoToJSON)(value['theme']),
-        'allowed_domains': value['allowedDomains'],
         'features': (0, WidgetFeaturesDto_1.WidgetFeaturesDtoToJSON)(value['features']),
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'allowed_domains': value['allowedDomains'],
         'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoToJSON)(value['externalAi']),
-        'config_source': value['configSource'],
         'name': value['name'],
         'avatar_url': value['avatarUrl'],
     };

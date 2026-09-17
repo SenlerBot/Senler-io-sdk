@@ -34,19 +34,19 @@ export interface PatchAgentInstructionDto {
      */
     operation: PatchAgentInstructionDtoOperationEnum;
     /**
-     * updated_at , . .
+     * updated_at . , 409 . ; replace_all .
      * @type {string}
      * @memberof PatchAgentInstructionDto
      */
-    expectedUpdatedAt: string;
+    expectedUpdatedAt?: string;
     /**
-     * replace_all. .
+     * replace_all. . markdown AgentInstructionReferences_resolve; #/knowledge-base #/agent-reference .
      * @type {string}
      * @memberof PatchAgentInstructionDto
      */
     instruction?: string;
     /**
-     * . .
+     * . . .
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof PatchAgentInstructionDto
      */
@@ -118,7 +118,6 @@ export type PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = typeof PatchA
  */
 export function instanceOfPatchAgentInstructionDto(value: object): value is PatchAgentInstructionDto {
     if (!('operation' in value) || value['operation'] === undefined) return false;
-    if (!('expectedUpdatedAt' in value) || value['expectedUpdatedAt'] === undefined) return false;
     return true;
 }
 
@@ -133,7 +132,7 @@ export function PatchAgentInstructionDtoFromJSONTyped(json: any, ignoreDiscrimin
     return {
 
         'operation': json['operation'],
-        'expectedUpdatedAt': json['expected_updated_at'],
+        'expectedUpdatedAt': json['expected_updated_at'] == null ? undefined : json['expected_updated_at'],
         'instruction': json['instruction'] == null ? undefined : json['instruction'],
         'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : ((json['knowledge_base_sources'] as Array<any>).map(KnowledgeBaseSourceBindingDtoFromJSON)),
         'knowledgeBasePermissions': json['knowledge_base_permissions'] == null ? undefined : json['knowledge_base_permissions'],

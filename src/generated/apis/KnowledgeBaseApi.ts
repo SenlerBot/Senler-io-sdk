@@ -19,6 +19,7 @@ import type {
   CreateKnowledgeFolderDto,
   CreateKnowledgeTableDto,
   ErrorResponse,
+  ImportProjectKnowledgeImageDto,
   KnowledgeArchiveImportOperationResponseDto,
   KnowledgeFileResponseDto,
   KnowledgeFolderResponseDto,
@@ -41,6 +42,8 @@ import {
     CreateKnowledgeTableDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ImportProjectKnowledgeImageDtoFromJSON,
+    ImportProjectKnowledgeImageDtoToJSON,
     KnowledgeArchiveImportOperationResponseDtoFromJSON,
     KnowledgeArchiveImportOperationResponseDtoToJSON,
     KnowledgeFileResponseDtoFromJSON,
@@ -99,6 +102,11 @@ export interface DeleteTablesRequest {
 export interface FilesRequest {
     createKnowledgeFileDto: CreateKnowledgeFileDto;
     acceptLanguage?: FilesAcceptLanguageEnum;
+}
+
+export interface FilesFromUrlRequest {
+    importProjectKnowledgeImageDto: ImportProjectKnowledgeImageDto;
+    acceptLanguage?: FilesFromUrlAcceptLanguageEnum;
 }
 
 export interface FilesRecognitionEstimateRequest {
@@ -586,6 +594,61 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async files(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.filesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . image_recognition_mode .
+     * URL attachment_id
+     */
+    async filesFromUrlRaw(requestParameters: FilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>> {
+        if (requestParameters['importProjectKnowledgeImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importProjectKnowledgeImageDto',
+                'Required parameter "importProjectKnowledgeImageDto" was null or undefined when calling filesFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/files/from-url`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportProjectKnowledgeImageDtoToJSON(requestParameters['importProjectKnowledgeImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeFileResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . image_recognition_mode .
+     * URL attachment_id
+     */
+    async filesFromUrl(requestParameters: FilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
+        const response = await this.filesFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2061,6 +2124,14 @@ export const FilesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type FilesAcceptLanguageEnum = typeof FilesAcceptLanguageEnum[keyof typeof FilesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const FilesFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FilesFromUrlAcceptLanguageEnum = typeof FilesFromUrlAcceptLanguageEnum[keyof typeof FilesFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

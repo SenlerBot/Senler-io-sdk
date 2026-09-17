@@ -24,15 +24,12 @@ exports.CreateOrderDtoToJSONTyped = CreateOrderDtoToJSONTyped;
  */
 exports.CreateOrderDtoOrderTypeEnum = {
     Topup: 'topup',
-    Credits: 'credits',
     BillingInvoice: 'billing_invoice'
 };
 /**
  * Check if a given object implements the CreateOrderDto interface.
  */
 function instanceOfCreateOrderDto(value) {
-    if (!('paySystemId' in value) || value['paySystemId'] === undefined)
-        return false;
     return true;
 }
 function CreateOrderDtoFromJSON(json) {
@@ -43,11 +40,11 @@ function CreateOrderDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
+        'paymentMethodId': json['payment_method_id'] == null ? undefined : json['payment_method_id'],
         'amount': json['amount'] == null ? undefined : json['amount'],
-        'paySystemId': json['pay_system_id'],
         'orderType': json['order_type'] == null ? undefined : json['order_type'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
-        'packageId': json['package_id'] == null ? undefined : json['package_id'],
         'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
     };
 }
@@ -59,11 +56,11 @@ function CreateOrderDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'amount': value['amount'],
         'pay_system_id': value['paySystemId'],
+        'payment_method_id': value['paymentMethodId'],
+        'amount': value['amount'],
         'order_type': value['orderType'],
         'use_balance': value['useBalance'],
-        'package_id': value['packageId'],
         'billing_invoice_id': value['billingInvoiceId'],
     };
 }

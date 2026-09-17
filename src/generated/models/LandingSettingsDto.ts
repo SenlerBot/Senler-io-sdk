@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingTheme } from './LandingTheme';
+import {
+    LandingThemeFromJSON,
+    LandingThemeFromJSONTyped,
+    LandingThemeToJSON,
+    LandingThemeToJSONTyped,
+} from './LandingTheme';
+
 /**
  * LandingSettingsDto.
  * @export
@@ -32,19 +40,25 @@ export interface LandingSettingsDto {
      */
     listVisible: boolean;
     /**
-     * HEX-
+     * . auto VK,
+     * @type {LandingTheme}
+     * @memberof LandingSettingsDto
+     */
+    theme: LandingTheme;
+    /**
+     * HEX-. ; auto
      * @type {string}
      * @memberof LandingSettingsDto
      */
     backgroundColor: string;
     /**
-     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
+     * . URL . URL attachment_id LandingsController_importAssetFromUrl; AgentLandingController_importAssetFromUrl. . PNG, JPEG WebP getAssetUploadUrl, PUT uploadUrl confirmAssetUpload . url ; URL .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     iconUrl: string | null;
     /**
-     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
+     * . URL . URL attachment_id LandingsController_importAssetFromUrl; AgentLandingController_importAssetFromUrl. . PNG, JPEG WebP getAssetUploadUrl, PUT uploadUrl confirmAssetUpload . url ; URL .
      * @type {string}
      * @memberof LandingSettingsDto
      */
@@ -68,6 +82,7 @@ export type LandingSettingsDtoLanguageEnum = typeof LandingSettingsDtoLanguageEn
 export function instanceOfLandingSettingsDto(value: object): value is LandingSettingsDto {
     if (!('language' in value) || value['language'] === undefined) return false;
     if (!('listVisible' in value) || value['listVisible'] === undefined) return false;
+    if (!('theme' in value) || value['theme'] === undefined) return false;
     if (!('backgroundColor' in value) || value['backgroundColor'] === undefined) return false;
     if (!('iconUrl' in value) || value['iconUrl'] === undefined) return false;
     if (!('bannerUrl' in value) || value['bannerUrl'] === undefined) return false;
@@ -86,6 +101,7 @@ export function LandingSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
 
         'language': json['language'],
         'listVisible': json['list_visible'],
+        'theme': LandingThemeFromJSON(json['theme']),
         'backgroundColor': json['background_color'],
         'iconUrl': json['icon_url'],
         'bannerUrl': json['banner_url'],
@@ -105,6 +121,7 @@ export function LandingSettingsDtoToJSONTyped(value?: LandingSettingsDto | null,
 
         'language': value['language'],
         'list_visible': value['listVisible'],
+        'theme': LandingThemeToJSON(value['theme']),
         'background_color': value['backgroundColor'],
         'icon_url': value['iconUrl'],
         'banner_url': value['bannerUrl'],

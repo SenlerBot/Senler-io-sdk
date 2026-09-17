@@ -20,6 +20,13 @@ import {
     LeadSpaceLinkResponseDtoToJSON,
     LeadSpaceLinkResponseDtoToJSONTyped,
 } from './LeadSpaceLinkResponseDto';
+import type { LeadFunnelDto } from './LeadFunnelDto';
+import {
+    LeadFunnelDtoFromJSON,
+    LeadFunnelDtoFromJSONTyped,
+    LeadFunnelDtoToJSON,
+    LeadFunnelDtoToJSONTyped,
+} from './LeadFunnelDto';
 import type { PendingSegmentResponseDto } from './PendingSegmentResponseDto';
 import {
     PendingSegmentResponseDtoFromJSON,
@@ -41,6 +48,12 @@ import {
  * @interface LeadResponseDto
  */
 export interface LeadResponseDto {
+    /**
+     *
+     * @type {Array<LeadFunnelDto>}
+     * @memberof LeadResponseDto
+     */
+    funnels: Array<LeadFunnelDto>;
     /**
      * ID
      * @type {string}
@@ -257,6 +270,7 @@ export type LeadResponseDtoLeadTypeEnum = typeof LeadResponseDtoLeadTypeEnum[key
  * Check if a given object implements the LeadResponseDto interface.
  */
 export function instanceOfLeadResponseDto(value: object): value is LeadResponseDto {
+    if (!('funnels' in value) || value['funnels'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('channelId' in value) || value['channelId'] === undefined) return false;
     if (!('channelType' in value) || value['channelType'] === undefined) return false;
@@ -286,6 +300,7 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
 
+        'funnels': ((json['funnels'] as Array<any>).map(LeadFunnelDtoFromJSON)),
         'id': json['id'],
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
@@ -328,6 +343,7 @@ export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignor
 
     return {
 
+        'funnels': ((value['funnels'] as Array<any>).map(LeadFunnelDtoToJSON)),
         'id': value['id'],
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],

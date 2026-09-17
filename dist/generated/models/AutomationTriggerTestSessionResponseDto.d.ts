@@ -47,7 +47,7 @@ export interface AutomationTriggerTestSessionResponseDto {
      */
     dialogId: string;
     /**
-     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed.
+     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof AutomationTriggerTestSessionResponseDto
      */
@@ -106,6 +106,7 @@ export declare const AutomationTriggerTestSessionResponseDtoEventTypeEnum: {
     readonly LikeRemoved: "like_removed";
     readonly LeadBlacklisted: "lead_blacklisted";
     readonly SegmentSubscribed: "segment_subscribed";
+    readonly AppEventReceived: "app_event_received";
 };
 export type AutomationTriggerTestSessionResponseDtoEventTypeEnum = typeof AutomationTriggerTestSessionResponseDtoEventTypeEnum[keyof typeof AutomationTriggerTestSessionResponseDtoEventTypeEnum];
 /**

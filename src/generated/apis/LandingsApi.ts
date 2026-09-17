@@ -21,6 +21,7 @@ import type {
   DuplicateLandingDto,
   ErrorResponse,
   GetLandingAssetUploadUrlDto,
+  ImportImageDto,
   LandingAssetUploadResponseDto,
   LandingBlockDeleteMutationResponseDto,
   LandingBlockOrderMutationResponseDto,
@@ -50,6 +51,8 @@ import {
     ErrorResponseToJSON,
     GetLandingAssetUploadUrlDtoFromJSON,
     GetLandingAssetUploadUrlDtoToJSON,
+    ImportImageDtoFromJSON,
+    ImportImageDtoToJSON,
     LandingAssetUploadResponseDtoFromJSON,
     LandingAssetUploadResponseDtoToJSON,
     LandingBlockDeleteMutationResponseDtoFromJSON,
@@ -86,6 +89,12 @@ export interface AssetsConfirmRequest {
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: AssetsConfirmAcceptLanguageEnum;
+}
+
+export interface AssetsFromUrlRequest {
+    landingId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AssetsFromUrlAcceptLanguageEnum;
 }
 
 export interface AssetsUploadUrlRequest {
@@ -249,6 +258,68 @@ export class LandingsApi extends runtime.BaseAPI {
      */
     async assetsConfirm(requestParameters: AssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto> {
         const response = await this.assetsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    async assetsFromUrlRaw(requestParameters: AssetsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>> {
+        if (requestParameters['landingId'] == null) {
+            throw new runtime.RequiredError(
+                'landingId',
+                'Required parameter "landingId" was null or undefined when calling assetsFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling assetsFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/landings/{landingId}/assets/from-url`.replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingAssetUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    async assetsFromUrl(requestParameters: AssetsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto> {
+        const response = await this.assetsFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1244,6 +1315,14 @@ export const AssetsConfirmAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type AssetsConfirmAcceptLanguageEnum = typeof AssetsConfirmAcceptLanguageEnum[keyof typeof AssetsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const AssetsFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AssetsFromUrlAcceptLanguageEnum = typeof AssetsFromUrlAcceptLanguageEnum[keyof typeof AssetsFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

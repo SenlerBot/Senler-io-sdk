@@ -34,6 +34,7 @@ function SimulateAutomationTriggerTestEventPayloadDtoFromJSONTyped(json, ignoreD
     return {
         'reactionValue': json['reaction_value'] == null ? undefined : json['reaction_value'],
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
+        'appEventData': json['app_event_data'] == null ? undefined : json['app_event_data'],
     };
 }
 function SimulateAutomationTriggerTestEventPayloadDtoToJSON(json) {
@@ -46,5 +47,6 @@ function SimulateAutomationTriggerTestEventPayloadDtoToJSONTyped(value, ignoreDi
     return {
         'reaction_value': value['reactionValue'],
         'segment_id': value['segmentId'],
+        'app_event_data': value['appEventData'],
     };
 }

@@ -34,11 +34,11 @@ export interface LeadsListResponseDto {
      */
     leads: Array<LeadResponseDto>;
     /**
-     *
+     * include_total: true; null
      * @type {number}
      * @memberof LeadsListResponseDto
      */
-    total: number;
+    total: number | null;
     /**
      *
      * @type {number}
@@ -47,10 +47,16 @@ export interface LeadsListResponseDto {
     limit: number;
     /**
      *
-     * @type {number}
+     * @type {boolean}
      * @memberof LeadsListResponseDto
      */
-    offset: number;
+    hasMore: boolean;
+    /**
+     * cursor ; null,
+     * @type {string}
+     * @memberof LeadsListResponseDto
+     */
+    nextCursor: string | null;
 }
 
 /**
@@ -60,7 +66,8 @@ export function instanceOfLeadsListResponseDto(value: object): value is LeadsLis
     if (!('leads' in value) || value['leads'] === undefined) return false;
     if (!('total' in value) || value['total'] === undefined) return false;
     if (!('limit' in value) || value['limit'] === undefined) return false;
-    if (!('offset' in value) || value['offset'] === undefined) return false;
+    if (!('hasMore' in value) || value['hasMore'] === undefined) return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
     return true;
 }
 
@@ -77,7 +84,8 @@ export function LeadsListResponseDtoFromJSONTyped(json: any, ignoreDiscriminator
         'leads': ((json['leads'] as Array<any>).map(LeadResponseDtoFromJSON)),
         'total': json['total'],
         'limit': json['limit'],
-        'offset': json['offset'],
+        'hasMore': json['has_more'],
+        'nextCursor': json['next_cursor'],
     };
 }
 
@@ -95,6 +103,7 @@ export function LeadsListResponseDtoToJSONTyped(value?: LeadsListResponseDto | n
         'leads': ((value['leads'] as Array<any>).map(LeadResponseDtoToJSON)),
         'total': value['total'],
         'limit': value['limit'],
-        'offset': value['offset'],
+        'has_more': value['hasMore'],
+        'next_cursor': value['nextCursor'],
     };
 }

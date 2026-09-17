@@ -19,6 +19,7 @@ exports.LandingSettingsDtoFromJSON = LandingSettingsDtoFromJSON;
 exports.LandingSettingsDtoFromJSONTyped = LandingSettingsDtoFromJSONTyped;
 exports.LandingSettingsDtoToJSON = LandingSettingsDtoToJSON;
 exports.LandingSettingsDtoToJSONTyped = LandingSettingsDtoToJSONTyped;
+const LandingTheme_1 = require("./LandingTheme");
 /**
  * @export
  */
@@ -33,6 +34,8 @@ function instanceOfLandingSettingsDto(value) {
     if (!('language' in value) || value['language'] === undefined)
         return false;
     if (!('listVisible' in value) || value['listVisible'] === undefined)
+        return false;
+    if (!('theme' in value) || value['theme'] === undefined)
         return false;
     if (!('backgroundColor' in value) || value['backgroundColor'] === undefined)
         return false;
@@ -52,6 +55,7 @@ function LandingSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'language': json['language'],
         'listVisible': json['list_visible'],
+        'theme': (0, LandingTheme_1.LandingThemeFromJSON)(json['theme']),
         'backgroundColor': json['background_color'],
         'iconUrl': json['icon_url'],
         'bannerUrl': json['banner_url'],
@@ -67,6 +71,7 @@ function LandingSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'language': value['language'],
         'list_visible': value['listVisible'],
+        'theme': (0, LandingTheme_1.LandingThemeToJSON)(value['theme']),
         'background_color': value['backgroundColor'],
         'icon_url': value['iconUrl'],
         'banner_url': value['bannerUrl'],

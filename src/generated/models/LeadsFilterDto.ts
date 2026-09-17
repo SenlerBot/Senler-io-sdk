@@ -20,6 +20,13 @@ import {
     LeadSubscriptionUtmPathDtoToJSON,
     LeadSubscriptionUtmPathDtoToJSONTyped,
 } from './LeadSubscriptionUtmPathDto';
+import type { LeadFunnelFilterDto } from './LeadFunnelFilterDto';
+import {
+    LeadFunnelFilterDtoFromJSON,
+    LeadFunnelFilterDtoFromJSONTyped,
+    LeadFunnelFilterDtoToJSON,
+    LeadFunnelFilterDtoToJSONTyped,
+} from './LeadFunnelFilterDto';
 
 /**
  * LeadsFilterDto.
@@ -27,6 +34,12 @@ import {
  * @interface LeadsFilterDto
  */
 export interface LeadsFilterDto {
+    /**
+     * . ;
+     * @type {Array<LeadFunnelFilterDto>}
+     * @memberof LeadsFilterDto
+     */
+    funnels?: Array<LeadFunnelFilterDto>;
     /**
      * ID (ObjectId, , 50 ). , ID
      * @type {Array<string>}
@@ -198,6 +211,7 @@ export function LeadsFilterDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'funnels': json['funnels'] == null ? undefined : ((json['funnels'] as Array<any>).map(LeadFunnelFilterDtoFromJSON)),
         'leadIds': json['lead_ids'] == null ? undefined : json['lead_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'channelType': json['channel_type'] == null ? undefined : json['channel_type'],
@@ -232,6 +246,7 @@ export function LeadsFilterDtoToJSONTyped(value?: LeadsFilterDto | null, ignoreD
 
     return {
 
+        'funnels': value['funnels'] == null ? undefined : ((value['funnels'] as Array<any>).map(LeadFunnelFilterDtoToJSON)),
         'lead_ids': value['leadIds'],
         'channel_ids': value['channelIds'],
         'channel_type': value['channelType'],

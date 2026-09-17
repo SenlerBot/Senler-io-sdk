@@ -44,12 +44,6 @@ export interface TariffSubscriptionDto {
      */
     isFree: boolean;
     /**
-     * (Enterprise)
-     * @type {boolean}
-     * @memberof TariffSubscriptionDto
-     */
-    isUnlimited: boolean;
-    /**
      *
      * @type {number}
      * @memberof TariffSubscriptionDto
@@ -96,7 +90,7 @@ export interface TariffSubscriptionDto {
      * @type {boolean}
      * @memberof TariffSubscriptionDto
      */
-    prolongation: boolean;
+    autoRenewEnabled: boolean;
     /**
      *
      * @type {boolean}
@@ -108,7 +102,7 @@ export interface TariffSubscriptionDto {
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
-    autoPurchasePackageId?: string | null;
+    autoPurchaseAddonId?: string | null;
 }
 
 
@@ -117,7 +111,6 @@ export interface TariffSubscriptionDto {
  */
 export const TariffSubscriptionDtoStatusEnum = {
     Active: 'active',
-    Scheduled: 'scheduled',
     Prepaid: 'prepaid',
     Cancelled: 'cancelled',
     Expired: 'expired'
@@ -142,7 +135,6 @@ export function instanceOfTariffSubscriptionDto(value: object): value is TariffS
     if (!('nameRu' in value) || value['nameRu'] === undefined) return false;
     if (!('nameEn' in value) || value['nameEn'] === undefined) return false;
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
-    if (!('isUnlimited' in value) || value['isUnlimited'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
@@ -150,7 +142,7 @@ export function instanceOfTariffSubscriptionDto(value: object): value is TariffS
     if (!('period' in value) || value['period'] === undefined) return false;
     if (!('dateStart' in value) || value['dateStart'] === undefined) return false;
     if (!('dateEnd' in value) || value['dateEnd'] === undefined) return false;
-    if (!('prolongation' in value) || value['prolongation'] === undefined) return false;
+    if (!('autoRenewEnabled' in value) || value['autoRenewEnabled'] === undefined) return false;
     if (!('autoPurchaseEnabled' in value) || value['autoPurchaseEnabled'] === undefined) return false;
     return true;
 }
@@ -169,7 +161,6 @@ export function TariffSubscriptionDtoFromJSONTyped(json: any, ignoreDiscriminato
         'nameRu': json['name_ru'],
         'nameEn': json['name_en'],
         'isFree': json['is_free'],
-        'isUnlimited': json['is_unlimited'],
         'storageLimitBytes': json['storage_limit_bytes'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
@@ -177,9 +168,9 @@ export function TariffSubscriptionDtoFromJSONTyped(json: any, ignoreDiscriminato
         'period': json['period'],
         'dateStart': (new Date(json['date_start'])),
         'dateEnd': (new Date(json['date_end'])),
-        'prolongation': json['prolongation'],
+        'autoRenewEnabled': json['auto_renew_enabled'],
         'autoPurchaseEnabled': json['auto_purchase_enabled'],
-        'autoPurchasePackageId': json['auto_purchase_package_id'] == null ? undefined : json['auto_purchase_package_id'],
+        'autoPurchaseAddonId': json['auto_purchase_addon_id'] == null ? undefined : json['auto_purchase_addon_id'],
     };
 }
 
@@ -198,7 +189,6 @@ export function TariffSubscriptionDtoToJSONTyped(value?: TariffSubscriptionDto |
         'name_ru': value['nameRu'],
         'name_en': value['nameEn'],
         'is_free': value['isFree'],
-        'is_unlimited': value['isUnlimited'],
         'storage_limit_bytes': value['storageLimitBytes'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
@@ -206,8 +196,8 @@ export function TariffSubscriptionDtoToJSONTyped(value?: TariffSubscriptionDto |
         'period': value['period'],
         'date_start': ((value['dateStart']).toISOString()),
         'date_end': ((value['dateEnd']).toISOString()),
-        'prolongation': value['prolongation'],
+        'auto_renew_enabled': value['autoRenewEnabled'],
         'auto_purchase_enabled': value['autoPurchaseEnabled'],
-        'auto_purchase_package_id': value['autoPurchasePackageId'],
+        'auto_purchase_addon_id': value['autoPurchaseAddonId'],
     };
 }

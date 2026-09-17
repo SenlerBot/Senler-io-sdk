@@ -13,24 +13,26 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationNodeConfigDtoAppStepConfigurationPresentationEnum = exports.AutomationNodeConfigDtoAppStepCompletionModeEnum = exports.AutomationNodeConfigDtoAppStepContinuationModeEnum = exports.AutomationNodeConfigDtoAppStepIconPresetEnum = exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = exports.AutomationNodeConfigDtoLoopModeEnum = exports.AutomationNodeConfigDtoWaitVariableScopeEnum = exports.AutomationNodeConfigDtoWaitModeEnum = exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetTypeEnum = exports.AutomationNodeConfigDtoMessageChannelTypesEnum = exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoVariableDurationUnitEnum = exports.AutomationNodeConfigDtoVariableValueTypeEnum = exports.AutomationNodeConfigDtoVariableOperatorEnum = exports.AutomationNodeConfigDtoVariableOperationEnum = exports.AutomationNodeConfigDtoVariableTypeEnum = exports.AutomationNodeConfigDtoVariableScopeEnum = exports.AutomationNodeConfigDtoDateTimeConditionEnum = exports.AutomationNodeConfigDtoTableMatchModeEnum = exports.AutomationNodeConfigDtoTableWriteModeEnum = exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = exports.AutomationNodeConfigDtoTableResultModeEnum = exports.AutomationNodeConfigDtoTableStructureModeEnum = exports.AutomationNodeConfigDtoChannelTypesEnum = exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentRoleEnum = exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = exports.AutomationNodeConfigDtoMessageMatchModeEnum = exports.AutomationNodeConfigDtoRunReentryModeEnum = exports.AutomationNodeConfigDtoMessageSenderEnum = exports.AutomationNodeConfigDtoEventTypeEnum = void 0;
+exports.AutomationNodeConfigDtoAppStepConfigurationPresentationEnum = exports.AutomationNodeConfigDtoAppStepCompletionModeEnum = exports.AutomationNodeConfigDtoAppStepContinuationModeEnum = exports.AutomationNodeConfigDtoAppStepIconPresetEnum = exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = exports.AutomationNodeConfigDtoLoopModeEnum = exports.AutomationNodeConfigDtoWaitVariableScopeEnum = exports.AutomationNodeConfigDtoWaitModeEnum = exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = exports.AutomationNodeConfigDtoMessageVariableContextEnum = exports.AutomationNodeConfigDtoMessageTargetTypeEnum = exports.AutomationNodeConfigDtoMessageChannelTypesEnum = exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoVariableDurationUnitEnum = exports.AutomationNodeConfigDtoVariableValueTypeEnum = exports.AutomationNodeConfigDtoVariableOperatorEnum = exports.AutomationNodeConfigDtoVariableOperationEnum = exports.AutomationNodeConfigDtoVariableTypeEnum = exports.AutomationNodeConfigDtoVariableScopeEnum = exports.AutomationNodeConfigDtoDateTimeConditionEnum = exports.AutomationNodeConfigDtoTableMatchModeEnum = exports.AutomationNodeConfigDtoTableWriteModeEnum = exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = exports.AutomationNodeConfigDtoTableResultModeEnum = exports.AutomationNodeConfigDtoTableStructureModeEnum = exports.AutomationNodeConfigDtoChannelTypesEnum = exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentRoleEnum = exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = exports.AutomationNodeConfigDtoMessageMatchModeEnum = exports.AutomationNodeConfigDtoRunReentryModeEnum = exports.AutomationNodeConfigDtoMessageSenderEnum = exports.AutomationNodeConfigDtoEventTypeEnum = void 0;
 exports.instanceOfAutomationNodeConfigDto = instanceOfAutomationNodeConfigDto;
 exports.AutomationNodeConfigDtoFromJSON = AutomationNodeConfigDtoFromJSON;
 exports.AutomationNodeConfigDtoFromJSONTyped = AutomationNodeConfigDtoFromJSONTyped;
 exports.AutomationNodeConfigDtoToJSON = AutomationNodeConfigDtoToJSON;
 exports.AutomationNodeConfigDtoToJSONTyped = AutomationNodeConfigDtoToJSONTyped;
 const runtime_1 = require("../runtime");
-const AutomationRandomBranchDto_1 = require("./AutomationRandomBranchDto");
+const AutomationHttpConfigDto_1 = require("./AutomationHttpConfigDto");
 const AutomationMessageAttachmentDto_1 = require("./AutomationMessageAttachmentDto");
+const AutomationAgentBranchDto_1 = require("./AutomationAgentBranchDto");
 const AutomationTableOutputDto_1 = require("./AutomationTableOutputDto");
-const AutomationVariableDestinationDto_1 = require("./AutomationVariableDestinationDto");
 const AutomationRunVariableBindingDto_1 = require("./AutomationRunVariableBindingDto");
-const AutomationTableWriteDto_1 = require("./AutomationTableWriteDto");
 const AutomationAppStepBranchSnapshotDto_1 = require("./AutomationAppStepBranchSnapshotDto");
-const AutomationTableFilterDto_1 = require("./AutomationTableFilterDto");
 const AutomationAppStepFieldSnapshotDto_1 = require("./AutomationAppStepFieldSnapshotDto");
 const AutomationMessageButtonDto_1 = require("./AutomationMessageButtonDto");
 const AutomationTableResultFieldDto_1 = require("./AutomationTableResultFieldDto");
+const AutomationRandomBranchDto_1 = require("./AutomationRandomBranchDto");
+const AutomationVariableDestinationDto_1 = require("./AutomationVariableDestinationDto");
+const AutomationTableWriteDto_1 = require("./AutomationTableWriteDto");
+const AutomationTableFilterDto_1 = require("./AutomationTableFilterDto");
 /**
  * @export
  */
@@ -41,7 +43,8 @@ exports.AutomationNodeConfigDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
-    SegmentSubscribed: 'segment_subscribed'
+    SegmentSubscribed: 'segment_subscribed',
+    AppEventReceived: 'app_event_received'
 };
 /**
  * @export
@@ -74,6 +77,7 @@ exports.AutomationNodeConfigDtoMessageMatchModeEnum = {
 exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -89,6 +93,7 @@ exports.AutomationNodeConfigDtoAgentRoleEnum = {
 exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -97,6 +102,7 @@ exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = {
 exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -105,6 +111,7 @@ exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = {
 exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -113,6 +120,7 @@ exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = {
 exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -121,6 +129,7 @@ exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = {
 exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -129,6 +138,7 @@ exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = {
 exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -172,6 +182,7 @@ exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = {
 exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -206,6 +217,7 @@ exports.AutomationNodeConfigDtoDateTimeConditionEnum = {
 exports.AutomationNodeConfigDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -237,6 +249,7 @@ exports.AutomationNodeConfigDtoVariableOperationEnum = {
     ShiftBackward: 'shift_backward',
     AppendItems: 'append_items',
     PrependItems: 'prepend_items',
+    AddUniqueItems: 'add_unique_items',
     RemoveItems: 'remove_items',
     MergeObject: 'merge_object',
     RemoveObjectKeys: 'remove_object_keys'
@@ -283,6 +296,7 @@ exports.AutomationNodeConfigDtoVariableDurationUnitEnum = {
 exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -291,6 +305,7 @@ exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = {
 exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -299,6 +314,7 @@ exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = {
 exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -327,9 +343,17 @@ exports.AutomationNodeConfigDtoMessageTargetTypeEnum = {
 /**
  * @export
  */
+exports.AutomationNodeConfigDtoMessageVariableContextEnum = {
+    Run: 'run',
+    Recipient: 'recipient'
+};
+/**
+ * @export
+ */
 exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -338,6 +362,7 @@ exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = {
 exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -353,6 +378,7 @@ exports.AutomationNodeConfigDtoWaitModeEnum = {
 exports.AutomationNodeConfigDtoWaitVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -368,6 +394,7 @@ exports.AutomationNodeConfigDtoLoopModeEnum = {
 exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -422,6 +449,7 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'http': json['http'] == null ? undefined : (0, AutomationHttpConfigDto_1.AutomationHttpConfigDtoFromJSON)(json['http']),
         'eventType': json['event_type'] == null ? undefined : json['event_type'],
         'reactionValues': json['reaction_values'] == null ? undefined : json['reaction_values'],
         'messageSender': json['message_sender'] == null ? undefined : json['message_sender'],
@@ -430,9 +458,15 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'messagePhrases': json['message_phrases'] == null ? undefined : json['message_phrases'],
         'incomingMessageVariableName': json['incoming_message_variable_name'] == null ? undefined : json['incoming_message_variable_name'],
         'incomingMessageVariableScope': json['incoming_message_variable_scope'] == null ? undefined : json['incoming_message_variable_scope'],
+        'appEventId': json['app_event_id'] == null ? undefined : json['app_event_id'],
+        'appEventName': json['app_event_name'] == null ? undefined : json['app_event_name'],
+        'appEventVariableName': json['app_event_variable_name'] == null ? undefined : json['app_event_variable_name'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
+        'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'dialogScope': json['dialog_scope'] == null ? undefined : json['dialog_scope'],
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
+        'funnelId': json['funnel_id'] == null ? undefined : json['funnel_id'],
+        'funnelStageId': json['funnel_stage_id'] == null ? undefined : json['funnel_stage_id'],
         'targetAutomationId': json['target_automation_id'] == null ? undefined : json['target_automation_id'],
         'targetRunVariableBindings': json['target_run_variable_bindings'] == null ? undefined : (json['target_run_variable_bindings'].map(AutomationRunVariableBindingDto_1.AutomationRunVariableBindingDtoFromJSON)),
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
@@ -477,6 +511,7 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'dateTimeEndTime': json['date_time_end_time'] == null ? undefined : json['date_time_end_time'],
         'dateTimeTimezone': json['date_time_timezone'] == null ? undefined : json['date_time_timezone'],
         'randomBranches': json['random_branches'] == null ? undefined : (json['random_branches'].map(AutomationRandomBranchDto_1.AutomationRandomBranchDtoFromJSON)),
+        'agentBranches': json['agent_branches'] == null ? undefined : (json['agent_branches'].map(AutomationAgentBranchDto_1.AutomationAgentBranchDtoFromJSON)),
         'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
         'variableName': json['variable_name'] == null ? undefined : json['variable_name'],
         'variableType': json['variable_type'] == null ? undefined : json['variable_type'],
@@ -490,14 +525,17 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'messageAttachmentsVariableName': json['message_attachments_variable_name'] == null ? undefined : json['message_attachments_variable_name'],
         'messageAttachmentsVariableScope': json['message_attachments_variable_scope'] == null ? undefined : json['message_attachments_variable_scope'],
         'messageButtons': json['message_buttons'] == null ? undefined : (json['message_buttons'].map(AutomationMessageButtonDto_1.AutomationMessageButtonDtoFromJSON)),
+        'messageDisableLinkPreview': json['message_disable_link_preview'] == null ? undefined : json['message_disable_link_preview'],
         'messageDynamicButtonsVariableName': json['message_dynamic_buttons_variable_name'] == null ? undefined : json['message_dynamic_buttons_variable_name'],
         'messageDynamicButtonsVariableScope': json['message_dynamic_buttons_variable_scope'] == null ? undefined : json['message_dynamic_buttons_variable_scope'],
         'messageDynamicButtonsPosition': json['message_dynamic_buttons_position'] == null ? undefined : json['message_dynamic_buttons_position'],
         'messageButtonClickVariableScope': json['message_button_click_variable_scope'] == null ? undefined : json['message_button_click_variable_scope'],
         'messageButtonClickVariableName': json['message_button_click_variable_name'] == null ? undefined : json['message_button_click_variable_name'],
         'messageAllowRepeatedButtonClicks': json['message_allow_repeated_button_clicks'] == null ? undefined : json['message_allow_repeated_button_clicks'],
+        'messageVkTextButtons': json['message_vk_text_buttons'] == null ? undefined : json['message_vk_text_buttons'],
         'messageChannelTypes': json['message_channel_types'] == null ? undefined : json['message_channel_types'],
         'messageTargetType': json['message_target_type'] == null ? undefined : json['message_target_type'],
+        'messageVariableContext': json['message_variable_context'] == null ? undefined : json['message_variable_context'],
         'messageTargetId': json['message_target_id'] == null ? undefined : json['message_target_id'],
         'messageTargetVariableScope': json['message_target_variable_scope'] == null ? undefined : json['message_target_variable_scope'],
         'messageTargetVariableName': json['message_target_variable_name'] == null ? undefined : json['message_target_variable_name'],
@@ -543,6 +581,7 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'http': (0, AutomationHttpConfigDto_1.AutomationHttpConfigDtoToJSON)(value['http']),
         'event_type': value['eventType'],
         'reaction_values': value['reactionValues'],
         'message_sender': value['messageSender'],
@@ -551,9 +590,15 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'message_phrases': value['messagePhrases'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_message_variable_scope': value['incomingMessageVariableScope'],
+        'app_event_id': value['appEventId'],
+        'app_event_name': value['appEventName'],
+        'app_event_variable_name': value['appEventVariableName'],
         'channel_ids': value['channelIds'],
+        'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
         'segment_id': value['segmentId'],
+        'funnel_id': value['funnelId'],
+        'funnel_stage_id': value['funnelStageId'],
         'target_automation_id': value['targetAutomationId'],
         'target_run_variable_bindings': value['targetRunVariableBindings'] == null ? undefined : (value['targetRunVariableBindings'].map(AutomationRunVariableBindingDto_1.AutomationRunVariableBindingDtoToJSON)),
         'agent_id': value['agentId'],
@@ -598,6 +643,7 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'date_time_end_time': value['dateTimeEndTime'],
         'date_time_timezone': value['dateTimeTimezone'],
         'random_branches': value['randomBranches'] == null ? undefined : (value['randomBranches'].map(AutomationRandomBranchDto_1.AutomationRandomBranchDtoToJSON)),
+        'agent_branches': value['agentBranches'] == null ? undefined : (value['agentBranches'].map(AutomationAgentBranchDto_1.AutomationAgentBranchDtoToJSON)),
         'variable_scope': value['variableScope'],
         'variable_name': value['variableName'],
         'variable_type': value['variableType'],
@@ -611,14 +657,17 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'message_attachments_variable_name': value['messageAttachmentsVariableName'],
         'message_attachments_variable_scope': value['messageAttachmentsVariableScope'],
         'message_buttons': value['messageButtons'] == null ? undefined : (value['messageButtons'].map(AutomationMessageButtonDto_1.AutomationMessageButtonDtoToJSON)),
+        'message_disable_link_preview': value['messageDisableLinkPreview'],
         'message_dynamic_buttons_variable_name': value['messageDynamicButtonsVariableName'],
         'message_dynamic_buttons_variable_scope': value['messageDynamicButtonsVariableScope'],
         'message_dynamic_buttons_position': value['messageDynamicButtonsPosition'],
         'message_button_click_variable_scope': value['messageButtonClickVariableScope'],
         'message_button_click_variable_name': value['messageButtonClickVariableName'],
         'message_allow_repeated_button_clicks': value['messageAllowRepeatedButtonClicks'],
+        'message_vk_text_buttons': value['messageVkTextButtons'],
         'message_channel_types': value['messageChannelTypes'],
         'message_target_type': value['messageTargetType'],
+        'message_variable_context': value['messageVariableContext'],
         'message_target_id': value['messageTargetId'],
         'message_target_variable_scope': value['messageTargetVariableScope'],
         'message_target_variable_name': value['messageTargetVariableName'],

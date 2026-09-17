@@ -41,12 +41,6 @@ export interface StorageTariffDto {
     isFree: boolean;
     /**
      *
-     * @type {boolean}
-     * @memberof StorageTariffDto
-     */
-    isRequestOnly: boolean;
-    /**
-     *
      * @type {number}
      * @memberof StorageTariffDto
      */

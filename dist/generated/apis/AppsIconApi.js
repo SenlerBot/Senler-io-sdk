@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IconUploadUrlAcceptLanguageEnum = exports.IconConfirmAcceptLanguageEnum = exports.DeleteIconAcceptLanguageEnum = exports.AppsIconApi = void 0;
+exports.IconUploadUrlAcceptLanguageEnum = exports.IconFromUrlAcceptLanguageEnum = exports.IconConfirmAcceptLanguageEnum = exports.DeleteIconAcceptLanguageEnum = exports.AppsIconApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -125,6 +125,44 @@ class AppsIconApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * PNG, JPEG WebP, icon_url. JSON- API MCP PUT . 20 40 .
+     * URL attachment_id
+     */
+    async iconFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling iconFromUrl().');
+        }
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling iconFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{id}/icon/from-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG WebP, icon_url. JSON- API MCP PUT . 20 40 .
+     * URL attachment_id
+     */
+    async iconFromUrl(requestParameters, initOverrides) {
+        const response = await this.iconFromUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * S3- .
      * S3-
      */
@@ -175,6 +213,13 @@ exports.DeleteIconAcceptLanguageEnum = {
  * @export
  */
 exports.IconConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.IconFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

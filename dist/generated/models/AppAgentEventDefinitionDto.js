@@ -49,6 +49,8 @@ function AppAgentEventDefinitionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'displayName': (0, AppAgentEventLocalizedNameDto_1.AppAgentEventLocalizedNameDtoFromJSON)(json['display_name']),
         'displayDescription': (0, AppAgentEventLocalizedDescriptionDto_1.AppAgentEventLocalizedDescriptionDtoFromJSON)(json['display_description']),
         'agentDescriptionOverride': json['agent_description_override'],
+        'agentReactionEnabled': json['agent_reaction_enabled'] == null ? undefined : json['agent_reaction_enabled'],
+        'automationStartEnabled': json['automation_start_enabled'] == null ? undefined : json['automation_start_enabled'],
         'fields': (json['fields'].map(AppAgentEventFieldDefinitionDto_1.AppAgentEventFieldDefinitionDtoFromJSON)),
     };
 }
@@ -64,6 +66,8 @@ function AppAgentEventDefinitionDtoToJSONTyped(value, ignoreDiscriminator = fals
         'display_name': (0, AppAgentEventLocalizedNameDto_1.AppAgentEventLocalizedNameDtoToJSON)(value['displayName']),
         'display_description': (0, AppAgentEventLocalizedDescriptionDto_1.AppAgentEventLocalizedDescriptionDtoToJSON)(value['displayDescription']),
         'agent_description_override': value['agentDescriptionOverride'],
+        'agent_reaction_enabled': value['agentReactionEnabled'],
+        'automation_start_enabled': value['automationStartEnabled'],
         'fields': (value['fields'].map(AppAgentEventFieldDefinitionDto_1.AppAgentEventFieldDefinitionDtoToJSON)),
     };
 }

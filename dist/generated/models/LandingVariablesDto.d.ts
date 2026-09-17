@@ -20,7 +20,7 @@ export interface LandingVariablesDto {
      * @type {{ [key: string]: any; }}
      * @memberof LandingVariablesDto
      */
-    global: {
+    project: {
         [key: string]: any;
     };
     /**

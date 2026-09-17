@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchSearchModeEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
+exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchSearchModeEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesFromUrlAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -308,6 +308,48 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async files(requestParameters, initOverrides) {
         const response = await this.filesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . image_recognition_mode .
+     * URL attachment_id
+     */
+    async filesFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['importProjectKnowledgeImageDto'] == null) {
+            throw new runtime.RequiredError('importProjectKnowledgeImageDto', 'Required parameter "importProjectKnowledgeImageDto" was null or undefined when calling filesFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/files/from-url`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportProjectKnowledgeImageDtoToJSON)(requestParameters['importProjectKnowledgeImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFileResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . image_recognition_mode .
+     * URL attachment_id
+     */
+    async filesFromUrl(requestParameters, initOverrides) {
+        const response = await this.filesFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1412,6 +1454,13 @@ exports.DeleteTablesAcceptLanguageEnum = {
  * @export
  */
 exports.FilesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.FilesFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

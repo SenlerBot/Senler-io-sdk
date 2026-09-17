@@ -80,6 +80,7 @@ export declare const AppVersionResourceResponseDtoTypeEnum: {
     readonly Metric: "metric";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly DialogVariableDefinition: "dialog_variable_definition";
 };
 export type AppVersionResourceResponseDtoTypeEnum = typeof AppVersionResourceResponseDtoTypeEnum[keyof typeof AppVersionResourceResponseDtoTypeEnum];
 /**

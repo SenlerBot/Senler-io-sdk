@@ -178,6 +178,12 @@ export interface QueryDialogsDto {
      */
     hasEvents?: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    hasMessageNotes?: boolean;
+    /**
      * : true - , false -
      * @type {boolean}
      * @memberof QueryDialogsDto

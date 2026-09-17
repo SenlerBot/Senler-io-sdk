@@ -53,6 +53,12 @@ export interface UpdateDeliveryDto {
      */
     messageText?: string;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateDeliveryDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      * ID
      * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof UpdateDeliveryDto
@@ -80,6 +86,7 @@ export function UpdateDeliveryDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'name': json['name'] == null ? undefined : json['name'],
         'filters': json['filters'] == null ? undefined : DeliveryAudienceFilterDtoFromJSON(json['filters']),
         'messageText': json['message_text'] == null ? undefined : json['message_text'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoFromJSON)),
     };
 }
@@ -98,6 +105,7 @@ export function UpdateDeliveryDtoToJSONTyped(value?: UpdateDeliveryDto | null, i
         'name': value['name'],
         'filters': DeliveryAudienceFilterDtoToJSON(value['filters']),
         'message_text': value['messageText'],
+        'disable_link_preview': value['disableLinkPreview'],
         'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MessageAttachmentReferenceDtoToJSON)),
     };
 }

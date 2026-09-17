@@ -38,6 +38,12 @@ export interface AudioGenerationCostCabinetDto {
      */
     charCount?: number;
     /**
+     * UTF-8
+     * @type {number}
+     * @memberof AudioGenerationCostCabinetDto
+     */
+    inputUtf8Bytes?: number;
+    /**
      * Text input
      * @type {number}
      * @memberof AudioGenerationCostCabinetDto
@@ -60,6 +66,12 @@ export interface AudioGenerationCostCabinetDto {
      * @type {string}
      * @memberof AudioGenerationCostCabinetDto
      */
+    mode?: AudioGenerationCostCabinetDtoModeEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof AudioGenerationCostCabinetDto
+     */
     voice?: string;
     /**
      *
@@ -75,11 +87,21 @@ export interface AudioGenerationCostCabinetDto {
  */
 export const AudioGenerationCostCabinetDtoPricingTypeEnum = {
     Characters: 'characters',
+    Utf8Bytes: 'utf8_bytes',
     Minutes: 'minutes',
     TextInputAudioOutputTokens: 'text_input_audio_output_tokens',
     AudioInputTextOutputTokens: 'audio_input_text_output_tokens'
 } as const;
 export type AudioGenerationCostCabinetDtoPricingTypeEnum = typeof AudioGenerationCostCabinetDtoPricingTypeEnum[keyof typeof AudioGenerationCostCabinetDtoPricingTypeEnum];
+
+/**
+ * @export
+ */
+export const AudioGenerationCostCabinetDtoModeEnum = {
+    PresetVoice: 'preset_voice',
+    VoiceClone: 'voice_clone'
+} as const;
+export type AudioGenerationCostCabinetDtoModeEnum = typeof AudioGenerationCostCabinetDtoModeEnum[keyof typeof AudioGenerationCostCabinetDtoModeEnum];
 
 
 /**
@@ -102,9 +124,11 @@ export function AudioGenerationCostCabinetDtoFromJSONTyped(json: any, ignoreDisc
         'model': json['model'] == null ? undefined : json['model'],
         'pricingType': json['pricing_type'] == null ? undefined : json['pricing_type'],
         'charCount': json['char_count'] == null ? undefined : json['char_count'],
+        'inputUtf8Bytes': json['input_utf8_bytes'] == null ? undefined : json['input_utf8_bytes'],
         'textInputTokens': json['text_input_tokens'] == null ? undefined : json['text_input_tokens'],
         'audioOutputTokens': json['audio_output_tokens'] == null ? undefined : json['audio_output_tokens'],
         'durationSeconds': json['duration_seconds'] == null ? undefined : json['duration_seconds'],
+        'mode': json['mode'] == null ? undefined : json['mode'],
         'voice': json['voice'] == null ? undefined : json['voice'],
         'speed': json['speed'] == null ? undefined : json['speed'],
     };
@@ -124,9 +148,11 @@ export function AudioGenerationCostCabinetDtoToJSONTyped(value?: AudioGeneration
         'model': value['model'],
         'pricing_type': value['pricingType'],
         'char_count': value['charCount'],
+        'input_utf8_bytes': value['inputUtf8Bytes'],
         'text_input_tokens': value['textInputTokens'],
         'audio_output_tokens': value['audioOutputTokens'],
         'duration_seconds': value['durationSeconds'],
+        'mode': value['mode'],
         'voice': value['voice'],
         'speed': value['speed'],
     };

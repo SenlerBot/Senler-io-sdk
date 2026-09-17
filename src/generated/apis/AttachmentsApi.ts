@@ -27,6 +27,7 @@ import type {
   ErrorResponse,
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
+  ImportImageDto,
 } from '../models/index';
 import {
     AttachmentDownloadUrlResponseDtoFromJSON,
@@ -53,13 +54,44 @@ import {
     GetUploadUrlDtoToJSON,
     GetUploadUrlResponseDtoFromJSON,
     GetUploadUrlResponseDtoToJSON,
+    ImportImageDtoFromJSON,
+    ImportImageDtoToJSON,
 } from '../models/index';
 
-export interface ConfirmRequest {
+export interface ChannelsConfirmRequest {
+    channelId: string;
     confirmUploadDto: ConfirmUploadDto;
-    dialogId?: string;
-    channelId?: any;
-    acceptLanguage?: ConfirmAcceptLanguageEnum;
+    acceptLanguage?: ChannelsConfirmAcceptLanguageEnum;
+}
+
+export interface ChannelsFromUrlRequest {
+    channelId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: ChannelsFromUrlAcceptLanguageEnum;
+}
+
+export interface ChannelsUploadUrlRequest {
+    channelId: string;
+    getUploadUrlDto: GetUploadUrlDto;
+    acceptLanguage?: ChannelsUploadUrlAcceptLanguageEnum;
+}
+
+export interface DialogsConfirmRequest {
+    dialogId: string;
+    confirmUploadDto: ConfirmUploadDto;
+    acceptLanguage?: DialogsConfirmAcceptLanguageEnum;
+}
+
+export interface DialogsFromUrlRequest {
+    dialogId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: DialogsFromUrlAcceptLanguageEnum;
+}
+
+export interface DialogsUploadUrlRequest {
+    dialogId: string;
+    getUploadUrlDto: GetUploadUrlDto;
+    acceptLanguage?: DialogsUploadUrlAcceptLanguageEnum;
 }
 
 export interface GetDownloadRequest {
@@ -85,6 +117,27 @@ export interface LoadRequest {
     acceptLanguage?: LoadAcceptLanguageEnum;
 }
 
+export interface ProjectsDraftsConfirmRequest {
+    projectId: string;
+    draftId: string;
+    confirmUploadDto: ConfirmUploadDto;
+    acceptLanguage?: ProjectsDraftsConfirmAcceptLanguageEnum;
+}
+
+export interface ProjectsDraftsFromUrlRequest {
+    projectId: string;
+    draftId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: ProjectsDraftsFromUrlAcceptLanguageEnum;
+}
+
+export interface ProjectsDraftsUploadUrlRequest {
+    projectId: string;
+    draftId: string;
+    getUploadUrlDto: GetUploadUrlDto;
+    acceptLanguage?: ProjectsDraftsUploadUrlAcceptLanguageEnum;
+}
+
 export interface SendToSelfRequest {
     attachmentId: string;
     dialogId: string;
@@ -104,39 +157,31 @@ export interface SendToSelfRecipientVkConfirmRequest {
     acceptLanguage?: SendToSelfRecipientVkConfirmAcceptLanguageEnum;
 }
 
-export interface UploadUrlRequest {
-    getUploadUrlDto: GetUploadUrlDto;
-    channelId?: string;
-    dialogId?: string;
-    acceptLanguage?: UploadUrlAcceptLanguageEnum;
-}
-
 /**
  *
  */
 export class AttachmentsApi extends runtime.BaseAPI {
 
     /**
-     * , S3-, .
+     * .
      *
      */
-    async confirmRaw(requestParameters: ConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+    async channelsConfirmRaw(requestParameters: ChannelsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError(
+                'channelId',
+                'Required parameter "channelId" was null or undefined when calling channelsConfirm().'
+            );
+        }
+
         if (requestParameters['confirmUploadDto'] == null) {
             throw new runtime.RequiredError(
                 'confirmUploadDto',
-                'Required parameter "confirmUploadDto" was null or undefined when calling confirm().'
+                'Required parameter "confirmUploadDto" was null or undefined when calling channelsConfirm().'
             );
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters['dialogId'] != null) {
-            queryParameters['dialogId'] = requestParameters['dialogId'];
-        }
-
-        if (requestParameters['channelId'] != null) {
-            queryParameters['channelId'] = requestParameters['channelId'];
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -160,7 +205,7 @@ export class AttachmentsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/dialogs/attachments/confirm`,
+            path: `/api/dialogs/attachments/channels/{channelId}/confirm`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -171,11 +216,321 @@ export class AttachmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , S3-, .
+     * .
      *
      */
-    async confirm(requestParameters: ConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
-        const response = await this.confirmRaw(requestParameters, initOverrides);
+    async channelsConfirm(requestParameters: ChannelsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.channelsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    async channelsFromUrlRaw(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError(
+                'channelId',
+                'Required parameter "channelId" was null or undefined when calling channelsFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling channelsFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/channels/{channelId}/from-url`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    async channelsFromUrl(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.channelsFromUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * S3- .
+     * S3-
+     */
+    async channelsUploadUrlRaw(requestParameters: ChannelsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>> {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError(
+                'channelId',
+                'Required parameter "channelId" was null or undefined when calling channelsUploadUrl().'
+            );
+        }
+
+        if (requestParameters['getUploadUrlDto'] == null) {
+            throw new runtime.RequiredError(
+                'getUploadUrlDto',
+                'Required parameter "getUploadUrlDto" was null or undefined when calling channelsUploadUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/channels/{channelId}/upload-url`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GetUploadUrlDtoToJSON(requestParameters['getUploadUrlDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetUploadUrlResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * S3- .
+     * S3-
+     */
+    async channelsUploadUrl(requestParameters: ChannelsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto> {
+        const response = await this.channelsUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async dialogsConfirmRaw(requestParameters: DialogsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling dialogsConfirm().'
+            );
+        }
+
+        if (requestParameters['confirmUploadDto'] == null) {
+            throw new runtime.RequiredError(
+                'confirmUploadDto',
+                'Required parameter "confirmUploadDto" was null or undefined when calling dialogsConfirm().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/dialogs/{dialogId}/confirm`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ConfirmUploadDtoToJSON(requestParameters['confirmUploadDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async dialogsConfirm(requestParameters: DialogsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.dialogsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    async dialogsFromUrlRaw(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling dialogsFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling dialogsFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/dialogs/{dialogId}/from-url`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    async dialogsFromUrl(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.dialogsFromUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * S3- .
+     * S3-
+     */
+    async dialogsUploadUrlRaw(requestParameters: DialogsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling dialogsUploadUrl().'
+            );
+        }
+
+        if (requestParameters['getUploadUrlDto'] == null) {
+            throw new runtime.RequiredError(
+                'getUploadUrlDto',
+                'Required parameter "getUploadUrlDto" was null or undefined when calling dialogsUploadUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/dialogs/{dialogId}/upload-url`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GetUploadUrlDtoToJSON(requestParameters['getUploadUrlDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetUploadUrlResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * S3- .
+     * S3-
+     */
+    async dialogsUploadUrl(requestParameters: DialogsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto> {
+        const response = await this.dialogsUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -408,6 +763,213 @@ export class AttachmentsApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
+     *
+     */
+    async projectsDraftsConfirmRaw(requestParameters: ProjectsDraftsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsDraftsConfirm().'
+            );
+        }
+
+        if (requestParameters['draftId'] == null) {
+            throw new runtime.RequiredError(
+                'draftId',
+                'Required parameter "draftId" was null or undefined when calling projectsDraftsConfirm().'
+            );
+        }
+
+        if (requestParameters['confirmUploadDto'] == null) {
+            throw new runtime.RequiredError(
+                'confirmUploadDto',
+                'Required parameter "confirmUploadDto" was null or undefined when calling projectsDraftsConfirm().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/projects/{projectId}/drafts/{draftId}/confirm`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"draftId"}}`, encodeURIComponent(String(requestParameters['draftId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ConfirmUploadDtoToJSON(requestParameters['confirmUploadDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async projectsDraftsConfirm(requestParameters: ProjectsDraftsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.projectsDraftsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . fileId . 20 , 40 . .
+     * URL attachment_id
+     */
+    async projectsDraftsFromUrlRaw(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsDraftsFromUrl().'
+            );
+        }
+
+        if (requestParameters['draftId'] == null) {
+            throw new runtime.RequiredError(
+                'draftId',
+                'Required parameter "draftId" was null or undefined when calling projectsDraftsFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling projectsDraftsFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/projects/{projectId}/drafts/{draftId}/from-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"draftId"}}`, encodeURIComponent(String(requestParameters['draftId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . fileId . 20 , 40 . .
+     * URL attachment_id
+     */
+    async projectsDraftsFromUrl(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.projectsDraftsFromUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * S3- .
+     * S3-
+     */
+    async projectsDraftsUploadUrlRaw(requestParameters: ProjectsDraftsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsDraftsUploadUrl().'
+            );
+        }
+
+        if (requestParameters['draftId'] == null) {
+            throw new runtime.RequiredError(
+                'draftId',
+                'Required parameter "draftId" was null or undefined when calling projectsDraftsUploadUrl().'
+            );
+        }
+
+        if (requestParameters['getUploadUrlDto'] == null) {
+            throw new runtime.RequiredError(
+                'getUploadUrlDto',
+                'Required parameter "getUploadUrlDto" was null or undefined when calling projectsDraftsUploadUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/attachments/projects/{projectId}/drafts/{draftId}/upload-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"draftId"}}`, encodeURIComponent(String(requestParameters['draftId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GetUploadUrlDtoToJSON(requestParameters['getUploadUrlDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetUploadUrlResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * S3- .
+     * S3-
+     */
+    async projectsDraftsUploadUrl(requestParameters: ProjectsDraftsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto> {
+        const response = await this.projectsDraftsUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * API. read-like : .
      *
      */
@@ -606,79 +1168,56 @@ export class AttachmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
-    /**
-     * S3- . channelId dialogId, confirm.
-     * S3-
-     */
-    async uploadUrlRaw(requestParameters: UploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>> {
-        if (requestParameters['getUploadUrlDto'] == null) {
-            throw new runtime.RequiredError(
-                'getUploadUrlDto',
-                'Required parameter "getUploadUrlDto" was null or undefined when calling uploadUrl().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['channelId'] != null) {
-            queryParameters['channelId'] = requestParameters['channelId'];
-        }
-
-        if (requestParameters['dialogId'] != null) {
-            queryParameters['dialogId'] = requestParameters['dialogId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
-        }
-
-        const response = await this.request({
-            path: `/api/dialogs/attachments/upload-url`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: GetUploadUrlDtoToJSON(requestParameters['getUploadUrlDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetUploadUrlResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * S3- . channelId dialogId, confirm.
-     * S3-
-     */
-    async uploadUrl(requestParameters: UploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto> {
-        const response = await this.uploadUrlRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
 }
 
 /**
  * @export
  */
-export const ConfirmAcceptLanguageEnum = {
+export const ChannelsConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type ConfirmAcceptLanguageEnum = typeof ConfirmAcceptLanguageEnum[keyof typeof ConfirmAcceptLanguageEnum];
+export type ChannelsConfirmAcceptLanguageEnum = typeof ChannelsConfirmAcceptLanguageEnum[keyof typeof ChannelsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ChannelsFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ChannelsFromUrlAcceptLanguageEnum = typeof ChannelsFromUrlAcceptLanguageEnum[keyof typeof ChannelsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ChannelsUploadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ChannelsUploadUrlAcceptLanguageEnum = typeof ChannelsUploadUrlAcceptLanguageEnum[keyof typeof ChannelsUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DialogsConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DialogsConfirmAcceptLanguageEnum = typeof DialogsConfirmAcceptLanguageEnum[keyof typeof DialogsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DialogsFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DialogsFromUrlAcceptLanguageEnum = typeof DialogsFromUrlAcceptLanguageEnum[keyof typeof DialogsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DialogsUploadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DialogsUploadUrlAcceptLanguageEnum = typeof DialogsUploadUrlAcceptLanguageEnum[keyof typeof DialogsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -714,6 +1253,30 @@ export type LoadAcceptLanguageEnum = typeof LoadAcceptLanguageEnum[keyof typeof 
 /**
  * @export
  */
+export const ProjectsDraftsConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsDraftsConfirmAcceptLanguageEnum = typeof ProjectsDraftsConfirmAcceptLanguageEnum[keyof typeof ProjectsDraftsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectsDraftsFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsDraftsFromUrlAcceptLanguageEnum = typeof ProjectsDraftsFromUrlAcceptLanguageEnum[keyof typeof ProjectsDraftsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectsDraftsUploadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsDraftsUploadUrlAcceptLanguageEnum = typeof ProjectsDraftsUploadUrlAcceptLanguageEnum[keyof typeof ProjectsDraftsUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const SendToSelfAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -735,11 +1298,3 @@ export const SendToSelfRecipientVkConfirmAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type SendToSelfRecipientVkConfirmAcceptLanguageEnum = typeof SendToSelfRecipientVkConfirmAcceptLanguageEnum[keyof typeof SendToSelfRecipientVkConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export const UploadUrlAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type UploadUrlAcceptLanguageEnum = typeof UploadUrlAcceptLanguageEnum[keyof typeof UploadUrlAcceptLanguageEnum];

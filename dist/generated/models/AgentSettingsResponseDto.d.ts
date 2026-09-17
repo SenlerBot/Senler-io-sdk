@@ -122,6 +122,12 @@ export interface AgentSettingsResponseDto {
      */
     selectedModelId?: string | null;
     /**
+     * ID . null .
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    metricsModelId?: string | null;
+    /**
      * . , .
      * @type {AgentSelectedModelSummaryDto}
      * @memberof AgentSettingsResponseDto
@@ -266,7 +272,7 @@ export interface AgentSettingsResponseDto {
      */
     enableCustomAttachments: boolean;
     /**
-     * (DALL-E)
+     *
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -289,6 +295,18 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     audioGenerationModelId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    enableVoiceCloning: boolean;
+    /**
+     * ID stateless-
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    voiceCloningModelId?: string | null;
     /**
      * (STT)
      * @type {boolean}
@@ -374,6 +392,12 @@ export interface AgentSettingsResponseDto {
      */
     enableStreaming: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    disableLinkPreview: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof AgentSettingsResponseDto
@@ -453,6 +477,14 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     segmentAccessPolicy: {
+        [key: string]: any;
+    };
+    /**
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
+     * @memberof AgentSettingsResponseDto
+     */
+    funnelAccessPolicy: {
         [key: string]: any;
     };
     /**

@@ -23,6 +23,7 @@ exports.EventGenerationSummaryDtoToJSONTyped = EventGenerationSummaryDtoToJSONTy
  * @export
  */
 exports.EventGenerationSummaryDtoStatusEnum = {
+    WaitingBilling: 'waiting_billing',
     Pending: 'pending',
     Completed: 'completed',
     Skipped: 'skipped',

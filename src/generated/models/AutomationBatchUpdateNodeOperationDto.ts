@@ -59,7 +59,7 @@ export interface AutomationBatchUpdateNodeOperationDto {
      */
     config?: AutomationNodeConfigDto;
     /**
-     * .
+     * x y. position expected_position_revision, config.
      * @type {AutomationNodePositionDto}
      * @memberof AutomationBatchUpdateNodeOperationDto
      */

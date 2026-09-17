@@ -122,6 +122,7 @@ export class AuditApi extends runtime.BaseAPI {
  * @export
  */
 export const AuditListEntityTypeEnum = {
+    Funnel: 'funnel',
     Project: 'project',
     Agent: 'agent',
     Channel: 'channel',
@@ -134,6 +135,7 @@ export const AuditListEntityTypeEnum = {
     KnowledgeTable: 'knowledge_table',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition',
     Segment: 'segment',
     SegmentConsentDocument: 'segment_consent_document',
     Landing: 'landing',

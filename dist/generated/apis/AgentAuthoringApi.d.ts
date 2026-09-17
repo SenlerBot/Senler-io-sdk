@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentDraftSettingsResponseDto, AgentSettingsResponseDto, CreateAgentAuthoringDraftDto, PublishAgentAuthoringDraftDto, UpdateAgentAssignmentDto, UpdateAgentCapabilitiesDto, UpdateAgentContextDto, UpdateAgentDraftCreationDto, UpdateAgentDraftMetricsDto, UpdateAgentDraftTrainingDto, UpdateAgentDraftWizardDto, UpdateAgentKnowledgeBaseDto, UpdateAgentMetricsDto, UpdateAgentModelDto, UpdateAgentProfileDto, UpdateAgentSegmentPermissionsDto, UpdateAgentSelectedSegmentsDto, UpdateAgentServersDto, UpdateAgentVariableAccessModeDto, UpdateAgentVariableBindingsDto } from '../models/index';
+import type { AgentDraftSettingsResponseDto, AgentInstructionReferenceResponseDto, AgentSettingsResponseDto, CreateAgentAuthoringDraftDto, PublishAgentAuthoringDraftDto, UpdateAgentAssignmentDto, UpdateAgentCapabilitiesDto, UpdateAgentContextDto, UpdateAgentDraftCreationDto, UpdateAgentDraftMetricsDto, UpdateAgentDraftTrainingDto, UpdateAgentDraftWizardDto, UpdateAgentFunnelsDto, UpdateAgentKnowledgeBaseDto, UpdateAgentMetricsDto, UpdateAgentModelDto, UpdateAgentProfileDto, UpdateAgentSegmentPermissionsDto, UpdateAgentSelectedSegmentsDto, UpdateAgentServersDto, UpdateAgentVariableAccessModeDto, UpdateAgentVariableBindingsDto } from '../models/index';
 export interface DraftPublishRequest {
     id: string;
     publishAgentAuthoringDraftDto: PublishAgentAuthoringDraftDto;
@@ -23,6 +23,13 @@ export interface DraftSnapshotRequest {
 export interface DraftsRequest {
     createAgentAuthoringDraftDto: CreateAgentAuthoringDraftDto;
     acceptLanguage?: DraftsAcceptLanguageEnum;
+}
+export interface GetInstructionReferenceRequest {
+    id: string;
+    resourceType: GetInstructionReferenceResourceTypeEnum;
+    resourceId: string;
+    locale?: GetInstructionReferenceLocaleEnum;
+    acceptLanguage?: GetInstructionReferenceAcceptLanguageEnum;
 }
 export interface UpdateAssignmentRequest {
     id: string;
@@ -58,6 +65,11 @@ export interface UpdateDraftCreationRequest {
     id: string;
     updateAgentDraftCreationDto: UpdateAgentDraftCreationDto;
     acceptLanguage?: UpdateDraftCreationAcceptLanguageEnum;
+}
+export interface UpdateDraftFunnelsRequest {
+    id: string;
+    updateAgentFunnelsDto: UpdateAgentFunnelsDto;
+    acceptLanguage?: UpdateDraftFunnelsAcceptLanguageEnum;
 }
 export interface UpdateDraftKnowledgeBaseRequest {
     id: string;
@@ -123,6 +135,11 @@ export interface UpdateDraftWizardRequest {
     updateAgentDraftWizardDto: UpdateAgentDraftWizardDto;
     acceptLanguage?: UpdateDraftWizardAcceptLanguageEnum;
 }
+export interface UpdateFunnelsRequest {
+    id: string;
+    updateAgentFunnelsDto: UpdateAgentFunnelsDto;
+    acceptLanguage?: UpdateFunnelsAcceptLanguageEnum;
+}
 export interface UpdateKnowledgeBaseRequest {
     id: string;
     updateAgentKnowledgeBaseDto: UpdateAgentKnowledgeBaseDto;
@@ -177,35 +194,45 @@ export interface UpdateVariablesBindingsRequest {
  */
 export declare class AgentAuthoringApi extends runtime.BaseAPI {
     /**
-     * : . ; .
+     * . : . . conflict_fields , ; agents.draft_conflict . . ; . .
      *
      */
     draftPublishRaw(requestParameters: DraftPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
-     * : . ; .
+     * . : . . conflict_fields , ; agents.draft_conflict . . ; . .
      *
      */
     draftPublish(requestParameters: DraftPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
-     * .
+     * . . . JSON null, .
      *
      */
     draftSnapshotRaw(requestParameters: DraftSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
     /**
-     * .
+     * . . . JSON null, .
      *
      */
     draftSnapshot(requestParameters: DraftSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
-     * . .
+     * . . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     draftsRaw(requestParameters: DraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
-     * . .
+     * . . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     drafts(requestParameters: DraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    /**
+     * . , , Markdown- . markdown . . patchDraftInstruction .
+     * @-
+     */
+    getInstructionReferenceRaw(requestParameters: GetInstructionReferenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionReferenceResponseDto>>;
+    /**
+     * . , , Markdown- . markdown . . patchDraftInstruction .
+     * @-
+     */
+    getInstructionReference(requestParameters: GetInstructionReferenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionReferenceResponseDto>;
     /**
      * .
      *
@@ -276,6 +303,16 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      *
      */
     updateDraftCreation(requestParameters: UpdateDraftCreationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
+    /**
+     * . AgentInstructionReferences_resolve resource_type=funnel_stage.
+     *
+     */
+    updateDraftFunnelsRaw(requestParameters: UpdateDraftFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
+    /**
+     * . AgentInstructionReferences_resolve resource_type=funnel_stage.
+     *
+     */
+    updateDraftFunnels(requestParameters: UpdateDraftFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
      * .
      *
@@ -407,6 +444,16 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      */
     updateDraftWizard(requestParameters: UpdateDraftWizardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
+     * . none .
+     *
+     */
+    updateFunnelsRaw(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    /**
+     * . none .
+     *
+     */
+    updateFunnels(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    /**
      * .
      *
      */
@@ -437,13 +484,13 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      */
     updateModel(requestParameters: UpdateModelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
-     * .
-     *
+     * (rename agent). . . .
+     * , ,
      */
     updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
-     * .
-     *
+     * (rename agent). . . .
+     * , ,
      */
     updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
@@ -534,6 +581,39 @@ export type DraftsAcceptLanguageEnum = typeof DraftsAcceptLanguageEnum[keyof typ
 /**
  * @export
  */
+export declare const GetInstructionReferenceResourceTypeEnum: {
+    readonly KnowledgeFile: "knowledge_file";
+    readonly KnowledgeFolder: "knowledge_folder";
+    readonly KnowledgeTable: "knowledge_table";
+    readonly ProjectVariable: "project_variable";
+    readonly LeadVariable: "lead_variable";
+    readonly DialogVariable: "dialog_variable";
+    readonly Segment: "segment";
+    readonly FunnelStage: "funnel_stage";
+    readonly PluginTool: "plugin_tool";
+    readonly PluginEvent: "plugin_event";
+    readonly McpServer: "mcp_server";
+};
+export type GetInstructionReferenceResourceTypeEnum = typeof GetInstructionReferenceResourceTypeEnum[keyof typeof GetInstructionReferenceResourceTypeEnum];
+/**
+ * @export
+ */
+export declare const GetInstructionReferenceLocaleEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstructionReferenceLocaleEnum = typeof GetInstructionReferenceLocaleEnum[keyof typeof GetInstructionReferenceLocaleEnum];
+/**
+ * @export
+ */
+export declare const GetInstructionReferenceAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstructionReferenceAcceptLanguageEnum = typeof GetInstructionReferenceAcceptLanguageEnum[keyof typeof GetInstructionReferenceAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateAssignmentAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -587,6 +667,14 @@ export declare const UpdateDraftCreationAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateDraftCreationAcceptLanguageEnum = typeof UpdateDraftCreationAcceptLanguageEnum[keyof typeof UpdateDraftCreationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDraftFunnelsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDraftFunnelsAcceptLanguageEnum = typeof UpdateDraftFunnelsAcceptLanguageEnum[keyof typeof UpdateDraftFunnelsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -702,6 +790,14 @@ export declare const UpdateDraftWizardAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateDraftWizardAcceptLanguageEnum = typeof UpdateDraftWizardAcceptLanguageEnum[keyof typeof UpdateDraftWizardAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateFunnelsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateFunnelsAcceptLanguageEnum = typeof UpdateFunnelsAcceptLanguageEnum[keyof typeof UpdateFunnelsAcceptLanguageEnum];
 /**
  * @export
  */

@@ -42,7 +42,8 @@ exports.AppVersionUpdateImpactResponseDtoResourceTypeEnum = {
     KnowledgeTable: 'knowledge_table',
     Metric: 'metric',
     ProjectVariable: 'project_variable',
-    LeadVariableDefinition: 'lead_variable_definition'
+    LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition'
 };
 /**
  * Check if a given object implements the AppVersionUpdateImpactResponseDto interface.

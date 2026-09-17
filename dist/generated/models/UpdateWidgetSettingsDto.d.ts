@@ -25,12 +25,6 @@ export interface UpdateWidgetSettingsDto {
      */
     theme?: WidgetThemeDto;
     /**
-     * CORS
-     * @type {Array<string>}
-     * @memberof UpdateWidgetSettingsDto
-     */
-    allowedDomains?: Array<string>;
-    /**
      * ( , , , )
      * @type {WidgetFeaturesDto}
      * @memberof UpdateWidgetSettingsDto
@@ -55,6 +49,12 @@ export interface UpdateWidgetSettingsDto {
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
     /**
+     * CORS
+     * @type {Array<string>}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    allowedDomains?: Array<string>;
+    /**
      * host-
      * @type {boolean}
      * @memberof UpdateWidgetSettingsDto
@@ -66,12 +66,6 @@ export interface UpdateWidgetSettingsDto {
      * @memberof UpdateWidgetSettingsDto
      */
     externalAi?: WidgetExternalAiSettingsDto;
-    /**
-     * : local ( JS ) remote ( /init)
-     * @type {string}
-     * @memberof UpdateWidgetSettingsDto
-     */
-    configSource?: UpdateWidgetSettingsDtoConfigSourceEnum;
     /**
      *
      * @type {string}
@@ -102,14 +96,6 @@ export declare const UpdateWidgetSettingsDtoDisplayModeEnum: {
     readonly Embedded: "embedded";
 };
 export type UpdateWidgetSettingsDtoDisplayModeEnum = typeof UpdateWidgetSettingsDtoDisplayModeEnum[keyof typeof UpdateWidgetSettingsDtoDisplayModeEnum];
-/**
- * @export
- */
-export declare const UpdateWidgetSettingsDtoConfigSourceEnum: {
-    readonly Local: "local";
-    readonly Remote: "remote";
-};
-export type UpdateWidgetSettingsDtoConfigSourceEnum = typeof UpdateWidgetSettingsDtoConfigSourceEnum[keyof typeof UpdateWidgetSettingsDtoConfigSourceEnum];
 /**
  * Check if a given object implements the UpdateWidgetSettingsDto interface.
  */

@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { NextSubscriptionDto } from './NextSubscriptionDto';
-import {
-    NextSubscriptionDtoFromJSON,
-    NextSubscriptionDtoFromJSONTyped,
-    NextSubscriptionDtoToJSON,
-    NextSubscriptionDtoToJSONTyped,
-} from './NextSubscriptionDto';
-
 /**
  * ProjectTariffItemDto.
  * @export
@@ -68,12 +60,6 @@ export interface ProjectTariffItemDto {
      * @type {number}
      * @memberof ProjectTariffItemDto
      */
-    approxMessages?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof ProjectTariffItemDto
-     */
     mailingMessagesPerDay: number;
     /**
      *
@@ -88,17 +74,17 @@ export interface ProjectTariffItemDto {
      */
     storageLimitBytes: number;
     /**
-     *
-     * @type {boolean}
-     * @memberof ProjectTariffItemDto
-     */
-    isUnlimited: boolean;
-    /**
      * ( )
      * @type {boolean}
      * @memberof ProjectTariffItemDto
      */
     isFree: boolean;
+    /**
+     * OpenAI OpenRouter
+     * @type {boolean}
+     * @memberof ProjectTariffItemDto
+     */
+    allowsCustomAiCredentials: boolean;
     /**
      * , (/); : 1.25 = 125
      * @type {number}
@@ -124,12 +110,6 @@ export interface ProjectTariffItemDto {
      */
     priceUsdYearly: number;
     /**
-     * ( , )
-     * @type {boolean}
-     * @memberof ProjectTariffItemDto
-     */
-    isRequestOnly: boolean;
-    /**
      *
      * @type {number}
      * @memberof ProjectTariffItemDto
@@ -141,12 +121,6 @@ export interface ProjectTariffItemDto {
      * @memberof ProjectTariffItemDto
      */
     status: ProjectTariffItemDtoStatusEnum;
-    /**
-     * null, . API .
-     * @type {NextSubscriptionDto}
-     * @memberof ProjectTariffItemDto
-     */
-    nextSubscription?: NextSubscriptionDto | null;
 }
 
 
@@ -172,13 +146,12 @@ export function instanceOfProjectTariffItemDto(value: object): value is ProjectT
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
-    if (!('isUnlimited' in value) || value['isUnlimited'] === undefined) return false;
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
+    if (!('allowsCustomAiCredentials' in value) || value['allowsCustomAiCredentials'] === undefined) return false;
     if (!('priceRubMonthly' in value) || value['priceRubMonthly'] === undefined) return false;
     if (!('priceUsdMonthly' in value) || value['priceUsdMonthly'] === undefined) return false;
     if (!('priceRubYearly' in value) || value['priceRubYearly'] === undefined) return false;
     if (!('priceUsdYearly' in value) || value['priceUsdYearly'] === undefined) return false;
-    if (!('isRequestOnly' in value) || value['isRequestOnly'] === undefined) return false;
     if (!('sortOrder' in value) || value['sortOrder'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     return true;
@@ -200,20 +173,17 @@ export function ProjectTariffItemDtoFromJSONTyped(json: any, ignoreDiscriminator
         'descriptionRu': json['description_ru'] == null ? undefined : json['description_ru'],
         'descriptionEn': json['description_en'] == null ? undefined : json['description_en'],
         'creditsPerMonth': json['credits_per_month'],
-        'approxMessages': json['approx_messages'] == null ? undefined : json['approx_messages'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'storageLimitBytes': json['storage_limit_bytes'],
-        'isUnlimited': json['is_unlimited'],
         'isFree': json['is_free'],
+        'allowsCustomAiCredentials': json['allows_custom_ai_credentials'],
         'priceRubMonthly': json['price_rub_monthly'],
         'priceUsdMonthly': json['price_usd_monthly'],
         'priceRubYearly': json['price_rub_yearly'],
         'priceUsdYearly': json['price_usd_yearly'],
-        'isRequestOnly': json['is_request_only'],
         'sortOrder': json['sort_order'],
         'status': json['status'],
-        'nextSubscription': json['next_subscription'] == null ? undefined : NextSubscriptionDtoFromJSON(json['next_subscription']),
     };
 }
 
@@ -234,19 +204,16 @@ export function ProjectTariffItemDtoToJSONTyped(value?: ProjectTariffItemDto | n
         'description_ru': value['descriptionRu'],
         'description_en': value['descriptionEn'],
         'credits_per_month': value['creditsPerMonth'],
-        'approx_messages': value['approxMessages'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'storage_limit_bytes': value['storageLimitBytes'],
-        'is_unlimited': value['isUnlimited'],
         'is_free': value['isFree'],
+        'allows_custom_ai_credentials': value['allowsCustomAiCredentials'],
         'price_rub_monthly': value['priceRubMonthly'],
         'price_usd_monthly': value['priceUsdMonthly'],
         'price_rub_yearly': value['priceRubYearly'],
         'price_usd_yearly': value['priceUsdYearly'],
-        'is_request_only': value['isRequestOnly'],
         'sort_order': value['sortOrder'],
         'status': value['status'],
-        'next_subscription': NextSubscriptionDtoToJSON(value['nextSubscription']),
     };
 }

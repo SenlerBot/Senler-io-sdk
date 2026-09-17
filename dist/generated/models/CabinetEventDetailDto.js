@@ -21,27 +21,29 @@ exports.CabinetEventDetailDtoToJSON = CabinetEventDetailDtoToJSON;
 exports.CabinetEventDetailDtoToJSONTyped = CabinetEventDetailDtoToJSONTyped;
 const EventBroadcastDto_1 = require("./EventBroadcastDto");
 const EventButtonDto_1 = require("./EventButtonDto");
-const EventMessageDto_1 = require("./EventMessageDto");
 const EventPollAnswerChangeDto_1 = require("./EventPollAnswerChangeDto");
 const EventTriggerContextDto_1 = require("./EventTriggerContextDto");
+const EventCostsCabinetDto_1 = require("./EventCostsCabinetDto");
+const EventReactionDto_1 = require("./EventReactionDto");
+const DialogChatEventDtoDeliveryRef_1 = require("./DialogChatEventDtoDeliveryRef");
+const EventTypingDto_1 = require("./EventTypingDto");
+const EventMessageInteractionsDto_1 = require("./EventMessageInteractionsDto");
+const EventErrorDto_1 = require("./EventErrorDto");
+const EventMessageDto_1 = require("./EventMessageDto");
 const EventTimerDto_1 = require("./EventTimerDto");
 const EventStatusDto_1 = require("./EventStatusDto");
 const EventAiDto_1 = require("./EventAiDto");
-const EventCostsCabinetDto_1 = require("./EventCostsCabinetDto");
-const EventReactionDto_1 = require("./EventReactionDto");
 const DialogChatEventDtoSourceContext_1 = require("./DialogChatEventDtoSourceContext");
-const DialogChatEventDtoDeliveryRef_1 = require("./DialogChatEventDtoDeliveryRef");
 const EventModerationDto_1 = require("./EventModerationDto");
 const EventToolDto_1 = require("./EventToolDto");
 const EventHierarchyDto_1 = require("./EventHierarchyDto");
 const EventChatChangeDto_1 = require("./EventChatChangeDto");
-const EventTypingDto_1 = require("./EventTypingDto");
 const EventButtonClickDto_1 = require("./EventButtonClickDto");
 const EventGenerationDto_1 = require("./EventGenerationDto");
+const AutomationFunnelObservationDto_1 = require("./AutomationFunnelObservationDto");
 const EventSenderDto_1 = require("./EventSenderDto");
-const EventMessageInteractionsDto_1 = require("./EventMessageInteractionsDto");
+const EventFunnelDto_1 = require("./EventFunnelDto");
 const EventPollVoteDto_1 = require("./EventPollVoteDto");
-const EventErrorDto_1 = require("./EventErrorDto");
 const EventAttachmentCabinetDto_1 = require("./EventAttachmentCabinetDto");
 /**
  * @export
@@ -63,6 +65,9 @@ exports.CabinetEventDetailDtoPlatformTypeEnum = {
  * @export
  */
 exports.CabinetEventDetailDtoActionTypeEnum = {
+    FunnelEntered: 'funnel_entered',
+    FunnelStageChanged: 'funnel_stage_changed',
+    FunnelLeft: 'funnel_left',
     MessageCreated: 'message_created',
     MessageEdited: 'message_edited',
     MessageDeleted: 'message_deleted',
@@ -184,6 +189,8 @@ function CabinetEventDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'funnel': json['funnel'] == null ? undefined : (0, EventFunnelDto_1.EventFunnelDtoFromJSON)(json['funnel']),
+        'automationObservation': json['automation_observation'] == null ? undefined : (0, AutomationFunnelObservationDto_1.AutomationFunnelObservationDtoFromJSON)(json['automation_observation']),
         'id': json['id'],
         'dialogId': json['dialog_id'] == null ? undefined : json['dialog_id'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
@@ -193,6 +200,7 @@ function CabinetEventDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
+        'dialogLeadId': json['dialog_lead_id'] == null ? undefined : json['dialog_lead_id'],
         'actionType': json['action_type'],
         'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
@@ -237,6 +245,8 @@ function CabinetEventDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'funnel': (0, EventFunnelDto_1.EventFunnelDtoToJSON)(value['funnel']),
+        'automation_observation': (0, AutomationFunnelObservationDto_1.AutomationFunnelObservationDtoToJSON)(value['automationObservation']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'mcp_server_id': value['mcpServerId'],
@@ -246,6 +256,7 @@ function CabinetEventDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'agent_id': value['agentId'],
         'app_id': value['appId'],
         'lead_id': value['leadId'],
+        'dialog_lead_id': value['dialogLeadId'],
         'action_type': value['actionType'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],

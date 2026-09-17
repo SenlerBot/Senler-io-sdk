@@ -341,7 +341,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     *
+     * , .
      *
      */
     async leadVariableDefinitionsListRaw(requestParameters: LeadVariableDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>> {
@@ -400,7 +400,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     *
+     * , .
      *
      */
     async leadVariableDefinitionsList(requestParameters: LeadVariableDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto> {

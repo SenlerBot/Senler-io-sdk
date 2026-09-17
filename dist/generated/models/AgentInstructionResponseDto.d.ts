@@ -16,6 +16,12 @@
  */
 export interface AgentInstructionResponseDto {
     /**
+     * . .
+     * @type {Array<string>}
+     * @memberof AgentInstructionResponseDto
+     */
+    conflictFields: Array<string>;
+    /**
      * UUID
      * @type {string}
      * @memberof AgentInstructionResponseDto

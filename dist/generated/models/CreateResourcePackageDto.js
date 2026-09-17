@@ -29,6 +29,7 @@ exports.CreateResourcePackageDtoRootResourceTypeEnum = {
     Delivery: 'delivery',
     ProjectVariable: 'project_variable',
     LeadVariableDefinition: 'lead_variable_definition',
+    DialogVariableDefinition: 'dialog_variable_definition',
     Segment: 'segment',
     SegmentConsentDocument: 'segment_consent_document',
     KnowledgeFolder: 'knowledge_folder',
@@ -67,6 +68,7 @@ function CreateResourcePackageDtoFromJSONTyped(json, ignoreDiscriminator) {
         'includeProjectVariableValues': json['include_project_variable_values'] == null ? undefined : json['include_project_variable_values'],
         'projectVariableNames': json['project_variable_names'] == null ? undefined : json['project_variable_names'],
         'leadVariableDefinitionNames': json['lead_variable_definition_names'] == null ? undefined : json['lead_variable_definition_names'],
+        'dialogVariableDefinitionNames': json['dialog_variable_definition_names'] == null ? undefined : json['dialog_variable_definition_names'],
         'additionalResources': json['additional_resources'] == null ? undefined : (json['additional_resources'].map(ResourcePackageSelectedResourceDto_1.ResourcePackageSelectedResourceDtoFromJSON)),
     };
 }
@@ -88,6 +90,7 @@ function CreateResourcePackageDtoToJSONTyped(value, ignoreDiscriminator = false)
         'include_project_variable_values': value['includeProjectVariableValues'],
         'project_variable_names': value['projectVariableNames'],
         'lead_variable_definition_names': value['leadVariableDefinitionNames'],
+        'dialog_variable_definition_names': value['dialogVariableDefinitionNames'],
         'additional_resources': value['additionalResources'] == null ? undefined : (value['additionalResources'].map(ResourcePackageSelectedResourceDto_1.ResourcePackageSelectedResourceDtoToJSON)),
     };
 }

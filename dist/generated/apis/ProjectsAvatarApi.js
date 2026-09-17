@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AvatarUploadUrlAcceptLanguageEnum = exports.AvatarConfirmAcceptLanguageEnum = exports.ProjectsAvatarApi = void 0;
+exports.AvatarUploadUrlAcceptLanguageEnum = exports.AvatarFromUrlAcceptLanguageEnum = exports.AvatarConfirmAcceptLanguageEnum = exports.ProjectsAvatarApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -96,6 +96,51 @@ class ProjectsAvatarApi extends runtime.BaseAPI {
      */
     async avatarConfirm(requestParameters, initOverrides) {
         const response = await this.avatarConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG WebP, avatar_url . 20 40 . PUT .
+     * URL attachment_id
+     */
+    async avatarFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling avatarFromUrl().');
+        }
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling avatarFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}/avatar/from-url`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectConfirmAvatarUploadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG WebP, avatar_url . 20 40 . PUT .
+     * URL attachment_id
+     */
+    async avatarFromUrl(requestParameters, initOverrides) {
+        const response = await this.avatarFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -149,6 +194,13 @@ exports.ProjectsAvatarApi = ProjectsAvatarApi;
  * @export
  */
 exports.AvatarConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AvatarFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

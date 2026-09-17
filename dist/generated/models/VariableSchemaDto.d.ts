@@ -28,7 +28,7 @@ export interface VariableSchemaDto {
      */
     itemSchema?: object;
     /**
-     * ( 1000)
+     * ( 1000, 100000)
      * @type {number}
      * @memberof VariableSchemaDto
      */

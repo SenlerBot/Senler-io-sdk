@@ -21,6 +21,7 @@ import type {
   CreateAppDocumentationFolderDto,
   CreateAppDocumentationTableDto,
   ErrorResponse,
+  ImportKnowledgeImageDto,
   KnowledgeFileResponseDto,
   KnowledgeFolderResponseDto,
   KnowledgeImageRecognitionEstimateResponseDto,
@@ -49,6 +50,8 @@ import {
     CreateAppDocumentationTableDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ImportKnowledgeImageDtoFromJSON,
+    ImportKnowledgeImageDtoToJSON,
     KnowledgeFileResponseDtoFromJSON,
     KnowledgeFileResponseDtoToJSON,
     KnowledgeFolderResponseDtoFromJSON,
@@ -107,6 +110,12 @@ export interface DocumentationFilesRequest {
     appId: string;
     createAppDocumentationFileDto: CreateAppDocumentationFileDto;
     acceptLanguage?: DocumentationFilesAcceptLanguageEnum;
+}
+
+export interface DocumentationFilesFromUrlRequest {
+    appId: string;
+    importKnowledgeImageDto: ImportKnowledgeImageDto;
+    acceptLanguage?: DocumentationFilesFromUrlAcceptLanguageEnum;
 }
 
 export interface DocumentationFilesRecognitionEstimateRequest {
@@ -501,6 +510,60 @@ export class AppDocumentationApi extends runtime.BaseAPI {
      */
     async documentationFiles(requestParameters: DocumentationFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
         const response = await this.documentationFilesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . , JSON.
+     * URL attachment_id
+     */
+    async documentationFilesFromUrlRaw(requestParameters: DocumentationFilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling documentationFilesFromUrl().'
+            );
+        }
+
+        if (requestParameters['importKnowledgeImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importKnowledgeImageDto',
+                'Required parameter "importKnowledgeImageDto" was null or undefined when calling documentationFilesFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/documentation/files/from-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportKnowledgeImageDtoToJSON(requestParameters['importKnowledgeImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeFileResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . , JSON.
+     * URL attachment_id
+     */
+    async documentationFilesFromUrl(requestParameters: DocumentationFilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto> {
+        const response = await this.documentationFilesFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1745,6 +1808,14 @@ export const DocumentationFilesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type DocumentationFilesAcceptLanguageEnum = typeof DocumentationFilesAcceptLanguageEnum[keyof typeof DocumentationFilesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DocumentationFilesFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DocumentationFilesFromUrlAcceptLanguageEnum = typeof DocumentationFilesFromUrlAcceptLanguageEnum[keyof typeof DocumentationFilesFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

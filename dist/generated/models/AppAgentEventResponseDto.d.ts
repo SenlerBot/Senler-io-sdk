@@ -43,6 +43,18 @@ export interface AppAgentEventResponseDto {
      */
     agentDescriptionOverride: string | null;
     /**
+     * .
+     * @type {boolean}
+     * @memberof AppAgentEventResponseDto
+     */
+    agentReactionEnabled?: boolean;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AppAgentEventResponseDto
+     */
+    automationStartEnabled?: boolean;
+    /**
      * data
      * @type {Array<AppAgentEventFieldDefinitionDto>}
      * @memberof AppAgentEventResponseDto

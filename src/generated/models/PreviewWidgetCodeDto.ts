@@ -41,12 +41,6 @@ export interface PreviewWidgetCodeDto {
      */
     theme?: WidgetThemeDto;
     /**
-     * CORS
-     * @type {Array<string>}
-     * @memberof PreviewWidgetCodeDto
-     */
-    allowedDomains?: Array<string>;
-    /**
      * ( , , , )
      * @type {WidgetFeaturesDto}
      * @memberof PreviewWidgetCodeDto
@@ -70,12 +64,6 @@ export interface PreviewWidgetCodeDto {
      * @memberof PreviewWidgetCodeDto
      */
     displayMode?: PreviewWidgetCodeDtoDisplayModeEnum;
-    /**
-     * : local ( ) remote ( )
-     * @type {string}
-     * @memberof PreviewWidgetCodeDto
-     */
-    configSource: PreviewWidgetCodeDtoConfigSourceEnum;
 }
 
 
@@ -98,21 +86,11 @@ export const PreviewWidgetCodeDtoDisplayModeEnum = {
 } as const;
 export type PreviewWidgetCodeDtoDisplayModeEnum = typeof PreviewWidgetCodeDtoDisplayModeEnum[keyof typeof PreviewWidgetCodeDtoDisplayModeEnum];
 
-/**
- * @export
- */
-export const PreviewWidgetCodeDtoConfigSourceEnum = {
-    Local: 'local',
-    Remote: 'remote'
-} as const;
-export type PreviewWidgetCodeDtoConfigSourceEnum = typeof PreviewWidgetCodeDtoConfigSourceEnum[keyof typeof PreviewWidgetCodeDtoConfigSourceEnum];
-
 
 /**
  * Check if a given object implements the PreviewWidgetCodeDto interface.
  */
 export function instanceOfPreviewWidgetCodeDto(value: object): value is PreviewWidgetCodeDto {
-    if (!('configSource' in value) || value['configSource'] === undefined) return false;
     return true;
 }
 
@@ -127,12 +105,10 @@ export function PreviewWidgetCodeDtoFromJSONTyped(json: any, ignoreDiscriminator
     return {
 
         'theme': json['theme'] == null ? undefined : WidgetThemeDtoFromJSON(json['theme']),
-        'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'features': json['features'] == null ? undefined : WidgetFeaturesDtoFromJSON(json['features']),
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
-        'configSource': json['config_source'],
     };
 }
 
@@ -148,11 +124,9 @@ export function PreviewWidgetCodeDtoToJSONTyped(value?: PreviewWidgetCodeDto | n
     return {
 
         'theme': WidgetThemeDtoToJSON(value['theme']),
-        'allowed_domains': value['allowedDomains'],
         'features': WidgetFeaturesDtoToJSON(value['features']),
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
-        'config_source': value['configSource'],
     };
 }

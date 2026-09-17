@@ -9,7 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { DialogAiBillingRecoveryReason } from './DialogAiBillingRecoveryReason';
 import type { DialogAiBillingRecoveryAvailability } from './DialogAiBillingRecoveryAvailability';
+import type { DialogAiBillingRecoveryBulkRetryResponseDto } from './DialogAiBillingRecoveryBulkRetryResponseDto';
 /**
  * DialogAiBillingRecoverySummaryDto.
  * @export
@@ -23,29 +25,23 @@ export interface DialogAiBillingRecoverySummaryDto {
      */
     missedDialogs: number;
     /**
-     * AI- -
-     * @type {number}
-     * @memberof DialogAiBillingRecoverySummaryDto
-     */
-    missedMessages: number;
-    /**
      * ,
      * @type {number}
      * @memberof DialogAiBillingRecoverySummaryDto
      */
-    answeredMessages: number;
-    /**
-     *
-     * @type {number}
-     * @memberof DialogAiBillingRecoverySummaryDto
-     */
-    unansweredMessages: number;
+    waitingMetrics: number;
     /**
      * ,
      * @type {number}
      * @memberof DialogAiBillingRecoverySummaryDto
      */
     unansweredDialogs: number;
+    /**
+     * ; unknown
+     * @type {Array<DialogAiBillingRecoveryReason>}
+     * @memberof DialogAiBillingRecoverySummaryDto
+     */
+    reasons: Array<DialogAiBillingRecoveryReason>;
     /**
      * availability.
      * @type {DialogAiBillingRecoveryAvailability}
@@ -58,6 +54,12 @@ export interface DialogAiBillingRecoverySummaryDto {
      * @memberof DialogAiBillingRecoverySummaryDto
      */
     retryAvailable: boolean;
+    /**
+     * run.
+     * @type {DialogAiBillingRecoveryBulkRetryResponseDto}
+     * @memberof DialogAiBillingRecoverySummaryDto
+     */
+    run: DialogAiBillingRecoveryBulkRetryResponseDto | null;
 }
 /**
  * Check if a given object implements the DialogAiBillingRecoverySummaryDto interface.

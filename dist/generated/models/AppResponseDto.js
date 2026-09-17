@@ -21,6 +21,7 @@ exports.AppResponseDtoToJSON = AppResponseDtoToJSON;
 exports.AppResponseDtoToJSONTyped = AppResponseDtoToJSONTyped;
 const AppSourceProjectResponseDto_1 = require("./AppSourceProjectResponseDto");
 const AppDeveloperEmbeddedPageSettingsResponseDto_1 = require("./AppDeveloperEmbeddedPageSettingsResponseDto");
+const AppActionSettingsResponseDto_1 = require("./AppActionSettingsResponseDto");
 const AppDescriptionDto_1 = require("./AppDescriptionDto");
 const AppOAuthAccessDto_1 = require("./AppOAuthAccessDto");
 const AppCurrentAccessResponseDto_1 = require("./AppCurrentAccessResponseDto");
@@ -77,6 +78,8 @@ function instanceOfAppResponseDto(value) {
         return false;
     if (!('embeddedPage' in value) || value['embeddedPage'] === undefined)
         return false;
+    if (!('appActions' in value) || value['appActions'] === undefined)
+        return false;
     if (!('sourceProjectId' in value) || value['sourceProjectId'] === undefined)
         return false;
     if (!('sourceProject' in value) || value['sourceProject'] === undefined)
@@ -124,6 +127,7 @@ function AppResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'tools': (0, AppToolsSettingsResponseDto_1.AppToolsSettingsResponseDtoFromJSON)(json['tools']),
         'agentEvents': (json['agent_events'].map(AppAgentEventResponseDto_1.AppAgentEventResponseDtoFromJSON)),
         'embeddedPage': (0, AppDeveloperEmbeddedPageSettingsResponseDto_1.AppDeveloperEmbeddedPageSettingsResponseDtoFromJSON)(json['embedded_page']),
+        'appActions': (0, AppActionSettingsResponseDto_1.AppActionSettingsResponseDtoFromJSON)(json['app_actions']),
         'sourceProjectId': json['source_project_id'],
         'sourceProject': (0, AppSourceProjectResponseDto_1.AppSourceProjectResponseDtoFromJSON)(json['source_project']),
         'publicationStatus': json['publication_status'],
@@ -160,6 +164,7 @@ function AppResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'tools': (0, AppToolsSettingsResponseDto_1.AppToolsSettingsResponseDtoToJSON)(value['tools']),
         'agent_events': (value['agentEvents'].map(AppAgentEventResponseDto_1.AppAgentEventResponseDtoToJSON)),
         'embedded_page': (0, AppDeveloperEmbeddedPageSettingsResponseDto_1.AppDeveloperEmbeddedPageSettingsResponseDtoToJSON)(value['embeddedPage']),
+        'app_actions': (0, AppActionSettingsResponseDto_1.AppActionSettingsResponseDtoToJSON)(value['appActions']),
         'source_project_id': value['sourceProjectId'],
         'source_project': (0, AppSourceProjectResponseDto_1.AppSourceProjectResponseDtoToJSON)(value['sourceProject']),
         'publication_status': value['publicationStatus'],

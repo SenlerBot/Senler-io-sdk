@@ -32,6 +32,7 @@ exports.AutomationTableWriteDtoValueSourceEnum = {
 exports.AutomationTableWriteDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**

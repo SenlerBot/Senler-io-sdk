@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AutomationHttpResultSummaryDto } from './AutomationHttpResultSummaryDto';
 /**
  * AutomationTaskResponseDto.
  * @export
  * @interface AutomationTaskResponseDto
  */
 export interface AutomationTaskResponseDto {
+    /**
+     * HTTP- , .
+     * @type {AutomationHttpResultSummaryDto}
+     * @memberof AutomationTaskResponseDto
+     */
+    httpResult?: AutomationHttpResultSummaryDto;
     /**
      * Mongo ID .
      * @type {string}

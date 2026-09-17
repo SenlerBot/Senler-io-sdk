@@ -34,7 +34,7 @@ export interface SubscriptionChangePreviewResponseDto {
      */
     mode: SubscriptionChangePreviewResponseDtoModeEnum;
     /**
-     * ; null
+     *
      * @type {string}
      * @memberof SubscriptionChangePreviewResponseDto
      */
@@ -46,19 +46,19 @@ export interface SubscriptionChangePreviewResponseDto {
      */
     currency: SubscriptionChangePreviewResponseDtoCurrencyEnum;
     /**
-     * total amount.
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionChangePreviewResponseDto
      */
     totalAmount: number;
     /**
-     * balance amount.
+     * , , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionChangePreviewResponseDto
      */
     balanceAmount: number;
     /**
-     * external amount.
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionChangePreviewResponseDto
      */
@@ -75,6 +75,18 @@ export interface SubscriptionChangePreviewResponseDto {
      * @memberof SubscriptionChangePreviewResponseDto
      */
     lines: Array<SubscriptionInvoiceLineDto>;
+    /**
+     * . Null ., (/); : 1.25 = 125
+     * @type {number}
+     * @memberof SubscriptionChangePreviewResponseDto
+     */
+    futurePeriodAmount: number | null;
+    /**
+     * .
+     * @type {Array<SubscriptionInvoiceLineDto>}
+     * @memberof SubscriptionChangePreviewResponseDto
+     */
+    futureLines: Array<SubscriptionInvoiceLineDto>;
 }
 
 
@@ -92,7 +104,6 @@ export type SubscriptionChangePreviewResponseDtoModeEnum = typeof SubscriptionCh
  */
 export const SubscriptionChangePreviewResponseDtoTariffChangeStatusEnum = {
     New: 'new',
-    Prolongation: 'prolongation',
     Upgrade: 'upgrade',
     Downgrade: 'downgrade'
 } as const;
@@ -120,6 +131,8 @@ export function instanceOfSubscriptionChangePreviewResponseDto(value: object): v
     if (!('externalAmount' in value) || value['externalAmount'] === undefined) return false;
     if (!('effectiveAt' in value) || value['effectiveAt'] === undefined) return false;
     if (!('lines' in value) || value['lines'] === undefined) return false;
+    if (!('futurePeriodAmount' in value) || value['futurePeriodAmount'] === undefined) return false;
+    if (!('futureLines' in value) || value['futureLines'] === undefined) return false;
     return true;
 }
 
@@ -141,6 +154,8 @@ export function SubscriptionChangePreviewResponseDtoFromJSONTyped(json: any, ign
         'externalAmount': json['external_amount'],
         'effectiveAt': (json['effective_at'] == null ? null : new Date(json['effective_at'])),
         'lines': ((json['lines'] as Array<any>).map(SubscriptionInvoiceLineDtoFromJSON)),
+        'futurePeriodAmount': json['future_period_amount'],
+        'futureLines': ((json['future_lines'] as Array<any>).map(SubscriptionInvoiceLineDtoFromJSON)),
     };
 }
 
@@ -163,5 +178,7 @@ export function SubscriptionChangePreviewResponseDtoToJSONTyped(value?: Subscrip
         'external_amount': value['externalAmount'],
         'effective_at': (value['effectiveAt'] == null ? null : (value['effectiveAt'] as any).toISOString()),
         'lines': ((value['lines'] as Array<any>).map(SubscriptionInvoiceLineDtoToJSON)),
+        'future_period_amount': value['futurePeriodAmount'],
+        'future_lines': ((value['futureLines'] as Array<any>).map(SubscriptionInvoiceLineDtoToJSON)),
     };
 }

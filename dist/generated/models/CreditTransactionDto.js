@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreditTransactionDtoTypeEnum = void 0;
+exports.CreditTransactionDtoStatusEnum = exports.CreditTransactionDtoTypeEnum = void 0;
 exports.instanceOfCreditTransactionDto = instanceOfCreditTransactionDto;
 exports.CreditTransactionDtoFromJSON = CreditTransactionDtoFromJSON;
 exports.CreditTransactionDtoFromJSONTyped = CreditTransactionDtoFromJSONTyped;
@@ -36,12 +36,21 @@ exports.CreditTransactionDtoTypeEnum = {
     Adjustment: 'adjustment'
 };
 /**
+ * @export
+ */
+exports.CreditTransactionDtoStatusEnum = {
+    Pending: 'pending',
+    Completed: 'completed'
+};
+/**
  * Check if a given object implements the CreditTransactionDto interface.
  */
 function instanceOfCreditTransactionDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('type' in value) || value['type'] === undefined)
+        return false;
+    if (!('status' in value) || value['status'] === undefined)
         return false;
     if (!('creditsAmount' in value) || value['creditsAmount'] === undefined)
         return false;
@@ -73,6 +82,7 @@ function CreditTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'type': json['type'],
+        'status': json['status'],
         'creditsAmount': json['credits_amount'],
         'tariffCreditsBefore': json['tariff_credits_before'],
         'tariffCreditsAfter': json['tariff_credits_after'],
@@ -86,7 +96,7 @@ function CreditTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'detailsByAgent': json['details_by_agent'] == null ? undefined : ((0, runtime_1.mapValues)(json['details_by_agent'], CreditTransactionDtoDetailsByAgentValue_1.CreditTransactionDtoDetailsByAgentValueFromJSON)),
         'detailsByModel': json['details_by_model'] == null ? undefined : ((0, runtime_1.mapValues)(json['details_by_model'], CreditTransactionDtoDetailsByModelValue_1.CreditTransactionDtoDetailsByModelValueFromJSON)),
         'tariffName': json['tariff_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['tariff_name']),
-        'creditPackageName': json['credit_package_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['credit_package_name']),
+        'addonName': json['addon_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['addon_name']),
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -100,6 +110,7 @@ function CreditTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'id': value['id'],
         'type': value['type'],
+        'status': value['status'],
         'credits_amount': value['creditsAmount'],
         'tariff_credits_before': value['tariffCreditsBefore'],
         'tariff_credits_after': value['tariffCreditsAfter'],
@@ -113,7 +124,7 @@ function CreditTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'details_by_agent': value['detailsByAgent'] == null ? undefined : ((0, runtime_1.mapValues)(value['detailsByAgent'], CreditTransactionDtoDetailsByAgentValue_1.CreditTransactionDtoDetailsByAgentValueToJSON)),
         'details_by_model': value['detailsByModel'] == null ? undefined : ((0, runtime_1.mapValues)(value['detailsByModel'], CreditTransactionDtoDetailsByModelValue_1.CreditTransactionDtoDetailsByModelValueToJSON)),
         'tariff_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['tariffName']),
-        'credit_package_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['creditPackageName']),
+        'addon_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['addonName']),
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

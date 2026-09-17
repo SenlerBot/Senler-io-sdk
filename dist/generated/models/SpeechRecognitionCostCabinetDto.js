@@ -24,6 +24,7 @@ exports.SpeechRecognitionCostCabinetDtoToJSONTyped = SpeechRecognitionCostCabine
  */
 exports.SpeechRecognitionCostCabinetDtoPricingTypeEnum = {
     Characters: 'characters',
+    Utf8Bytes: 'utf8_bytes',
     Minutes: 'minutes',
     TextInputAudioOutputTokens: 'text_input_audio_output_tokens',
     AudioInputTextOutputTokens: 'audio_input_text_output_tokens'

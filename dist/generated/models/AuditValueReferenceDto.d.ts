@@ -61,7 +61,7 @@ export declare const AuditValueReferenceDtoEntityTypeEnum: {
     readonly Automation: "automation";
     readonly App: "app";
     readonly Channel: "channel";
-    readonly CreditPackage: "credit_package";
+    readonly BillingAddon: "billing_addon";
     readonly DataSource: "data_source";
     readonly KnowledgeFolder: "knowledge_folder";
     readonly KnowledgeFile: "knowledge_file";

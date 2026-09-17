@@ -19,6 +19,7 @@ exports.ProjectSubscriptionResponseDtoFromJSON = ProjectSubscriptionResponseDtoF
 exports.ProjectSubscriptionResponseDtoFromJSONTyped = ProjectSubscriptionResponseDtoFromJSONTyped;
 exports.ProjectSubscriptionResponseDtoToJSON = ProjectSubscriptionResponseDtoToJSON;
 exports.ProjectSubscriptionResponseDtoToJSONTyped = ProjectSubscriptionResponseDtoToJSONTyped;
+const SubscriptionNextActionDto_1 = require("./SubscriptionNextActionDto");
 const SubscriptionInvoiceLineDto_1 = require("./SubscriptionInvoiceLineDto");
 const SubscriptionPositionDto_1 = require("./SubscriptionPositionDto");
 const EffectiveSubscriptionLimitsDto_1 = require("./EffectiveSubscriptionLimitsDto");
@@ -37,9 +38,11 @@ function instanceOfProjectSubscriptionResponseDto(value) {
         return false;
     if (!('autoRenewEnabled' in value) || value['autoRenewEnabled'] === undefined)
         return false;
-    if (!('nextBillingAt' in value) || value['nextBillingAt'] === undefined)
+    if (!('nextAction' in value) || value['nextAction'] === undefined)
         return false;
     if (!('currency' in value) || value['currency'] === undefined)
+        return false;
+    if (!('allowsCustomAiCredentials' in value) || value['allowsCustomAiCredentials'] === undefined)
         return false;
     if (!('positions' in value) || value['positions'] === undefined)
         return false;
@@ -61,8 +64,9 @@ function ProjectSubscriptionResponseDtoFromJSONTyped(json, ignoreDiscriminator) 
     return {
         'subscriptionId': json['subscription_id'],
         'autoRenewEnabled': json['auto_renew_enabled'],
-        'nextBillingAt': (json['next_billing_at'] == null ? null : new Date(json['next_billing_at'])),
+        'nextAction': (0, SubscriptionNextActionDto_1.SubscriptionNextActionDtoFromJSON)(json['next_action']),
         'currency': json['currency'],
+        'allowsCustomAiCredentials': json['allows_custom_ai_credentials'],
         'positions': (json['positions'].map(SubscriptionPositionDto_1.SubscriptionPositionDtoFromJSON)),
         'effectiveLimits': (0, EffectiveSubscriptionLimitsDto_1.EffectiveSubscriptionLimitsDtoFromJSON)(json['effective_limits']),
         'purchasedMailingMessages': json['purchased_mailing_messages'],
@@ -79,8 +83,9 @@ function ProjectSubscriptionResponseDtoToJSONTyped(value, ignoreDiscriminator = 
     return {
         'subscription_id': value['subscriptionId'],
         'auto_renew_enabled': value['autoRenewEnabled'],
-        'next_billing_at': (value['nextBillingAt'] == null ? null : value['nextBillingAt'].toISOString()),
+        'next_action': (0, SubscriptionNextActionDto_1.SubscriptionNextActionDtoToJSON)(value['nextAction']),
         'currency': value['currency'],
+        'allows_custom_ai_credentials': value['allowsCustomAiCredentials'],
         'positions': (value['positions'].map(SubscriptionPositionDto_1.SubscriptionPositionDtoToJSON)),
         'effective_limits': (0, EffectiveSubscriptionLimitsDto_1.EffectiveSubscriptionLimitsDtoToJSON)(value['effectiveLimits']),
         'purchased_mailing_messages': value['purchasedMailingMessages'],

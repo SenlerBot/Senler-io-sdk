@@ -218,6 +218,12 @@ export interface RolePermissionsDto {
      * @type {boolean}
      * @memberof RolePermissionsDto
      */
+    canUseProjectApps: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
     canManageProjectApps: boolean;
     /**
      *

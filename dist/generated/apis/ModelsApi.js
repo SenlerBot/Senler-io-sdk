@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ModelsListAcceptLanguageEnum = exports.ModelsListPurposeEnum = exports.ModelsListTypeEnum = exports.ModelsApi = void 0;
+exports.ModelsListAcceptLanguageEnum = exports.ModelsListCapabilityEnum = exports.ModelsListPurposeEnum = exports.ModelsListTypeEnum = exports.ModelsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class ModelsApi extends runtime.BaseAPI {
     /**
-     *
+     * ,
      *
      */
     async modelsListRaw(requestParameters, initOverrides) {
@@ -64,6 +64,9 @@ class ModelsApi extends runtime.BaseAPI {
         }
         if (requestParameters['purpose'] != null) {
             queryParameters['purpose'] = requestParameters['purpose'];
+        }
+        if (requestParameters['capability'] != null) {
+            queryParameters['capability'] = requestParameters['capability'];
         }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
@@ -78,7 +81,7 @@ class ModelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AvailableModelsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     *
+     * ,
      *
      */
     async modelsList(requestParameters = {}, initOverrides) {
@@ -103,6 +106,12 @@ exports.ModelsListPurposeEnum = {
     Dialog: 'dialog',
     Summarization: 'summarization',
     AgentGeneration: 'agent_generation'
+};
+/**
+ * @export
+ */
+exports.ModelsListCapabilityEnum = {
+    VoiceCloning: 'voice_cloning'
 };
 /**
  * @export

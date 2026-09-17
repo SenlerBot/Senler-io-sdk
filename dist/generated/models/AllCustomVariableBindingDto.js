@@ -24,7 +24,8 @@ exports.AllCustomVariableBindingDtoToJSONTyped = AllCustomVariableBindingDtoToJS
  */
 exports.AllCustomVariableBindingDtoScopeEnum = {
     Project: 'project',
-    Lead: 'lead'
+    Lead: 'lead',
+    Dialog: 'dialog'
 };
 /**
  * @export

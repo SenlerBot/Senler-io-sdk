@@ -53,6 +53,8 @@ function instanceOfDeliveryResponseDto(value) {
         return false;
     if (!('messageText' in value) || value['messageText'] === undefined)
         return false;
+    if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined)
+        return false;
     if (!('attachments' in value) || value['attachments'] === undefined)
         return false;
     if (!('scheduledAt' in value) || value['scheduledAt'] === undefined)
@@ -83,6 +85,7 @@ function DeliveryResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'],
         'filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoFromJSON)(json['filters']),
         'messageText': json['message_text'],
+        'disableLinkPreview': json['disable_link_preview'],
         'attachments': (json['attachments'].map(DeliveryAttachmentResponseDto_1.DeliveryAttachmentResponseDtoFromJSON)),
         'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
         'recipientCount': json['recipient_count'],
@@ -107,6 +110,7 @@ function DeliveryResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'status': value['status'],
         'filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoToJSON)(value['filters']),
         'message_text': value['messageText'],
+        'disable_link_preview': value['disableLinkPreview'],
         'attachments': (value['attachments'].map(DeliveryAttachmentResponseDto_1.DeliveryAttachmentResponseDtoToJSON)),
         'scheduled_at': (value['scheduledAt'] == null ? null : value['scheduledAt'].toISOString()),
         'recipient_count': value['recipientCount'],

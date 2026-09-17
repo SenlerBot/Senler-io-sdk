@@ -38,7 +38,7 @@ export interface CreateAgentAuthoringDraftDto {
      */
     agentType?: CreateAgentAuthoringDraftDtoAgentTypeEnum;
     /**
-     *
+     * . , , , MCP, instruction, , AgentInstructionReferences_resolve patchDraftInstruction.
      * @type {string}
      * @memberof CreateAgentAuthoringDraftDto
      */

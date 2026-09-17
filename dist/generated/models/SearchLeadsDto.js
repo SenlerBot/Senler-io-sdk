@@ -38,7 +38,8 @@ function SearchLeadsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'],
         'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'limit': json['limit'] == null ? undefined : json['limit'],
-        'offset': json['offset'] == null ? undefined : json['offset'],
+        'cursor': json['cursor'] == null ? undefined : json['cursor'],
+        'includeTotal': json['include_total'] == null ? undefined : json['include_total'],
     };
 }
 function SearchLeadsDtoToJSON(json) {
@@ -52,6 +53,7 @@ function SearchLeadsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'limit': value['limit'],
-        'offset': value['offset'],
+        'cursor': value['cursor'],
+        'include_total': value['includeTotal'],
     };
 }

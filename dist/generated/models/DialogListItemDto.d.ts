@@ -57,6 +57,12 @@ export interface DialogListItemDto {
     autoAssignDisabled: boolean;
     /**
      *
+     * @type {boolean}
+     * @memberof DialogListItemDto
+     */
+    hasMessageNotes: boolean;
+    /**
+     *
      * @type {string}
      * @memberof DialogListItemDto
      */
@@ -295,6 +301,24 @@ export interface DialogListItemDto {
      * @memberof DialogListItemDto
      */
     operatorUnreadCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof DialogListItemDto
+     */
+    operatorReadRevision?: number;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    operatorReadEventId?: string;
+    /**
+     * ,
+     * @type {Date}
+     * @memberof DialogListItemDto
+     */
+    operatorReadEventTimestamp?: Date;
     /**
      *
      * @type {number}

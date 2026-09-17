@@ -54,6 +54,12 @@ export interface DialogDto {
     autoAssignDisabled: boolean;
     /**
      *
+     * @type {boolean}
+     * @memberof DialogDto
+     */
+    hasMessageNotes: boolean;
+    /**
+     *
      * @type {string}
      * @memberof DialogDto
      */
@@ -292,6 +298,24 @@ export interface DialogDto {
      * @memberof DialogDto
      */
     operatorUnreadCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof DialogDto
+     */
+    operatorReadRevision?: number;
+    /**
+     * ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    operatorReadEventId?: string;
+    /**
+     * ,
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    operatorReadEventTimestamp?: Date;
     /**
      *
      * @type {number}

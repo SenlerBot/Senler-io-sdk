@@ -35,13 +35,13 @@ import {
  */
 export interface AutomationUsageOverviewItemDto {
     /**
-     * MongoDB ID
+     * .
      * @type {string}
      * @memberof AutomationUsageOverviewItemDto
      */
     automationId: string;
     /**
-     *
+     * .
      * @type {AutomationUsageSummaryDto}
      * @memberof AutomationUsageOverviewItemDto
      */

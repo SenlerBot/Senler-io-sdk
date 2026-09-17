@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface AllGlobalVariableBindingDto {
     /**
-     * : project, lead.
+     * : project, lead, dialog.
      * @type {string}
      * @memberof AllGlobalVariableBindingDto
      */
@@ -33,7 +33,8 @@ export interface AllGlobalVariableBindingDto {
  */
 export const AllGlobalVariableBindingDtoScopeEnum = {
     Project: 'project',
-    Lead: 'lead'
+    Lead: 'lead',
+    Dialog: 'dialog'
 } as const;
 export type AllGlobalVariableBindingDtoScopeEnum = typeof AllGlobalVariableBindingDtoScopeEnum[keyof typeof AllGlobalVariableBindingDtoScopeEnum];
 

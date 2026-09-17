@@ -9,23 +9,31 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
+import type { AutomationHttpConfigDto } from './AutomationHttpConfigDto';
 import type { AutomationMessageAttachmentDto } from './AutomationMessageAttachmentDto';
+import type { AutomationAgentBranchDto } from './AutomationAgentBranchDto';
 import type { AutomationTableOutputDto } from './AutomationTableOutputDto';
-import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
 import type { AutomationRunVariableBindingDto } from './AutomationRunVariableBindingDto';
-import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
 import type { AutomationAppStepBranchSnapshotDto } from './AutomationAppStepBranchSnapshotDto';
-import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
 import type { AutomationAppStepFieldSnapshotDto } from './AutomationAppStepFieldSnapshotDto';
 import type { AutomationMessageButtonDto } from './AutomationMessageButtonDto';
 import type { AutomationTableResultFieldDto } from './AutomationTableResultFieldDto';
+import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
+import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
+import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
+import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
 /**
  * AutomationNodeConfigDto.
  * @export
  * @interface AutomationNodeConfigDto
  */
 export interface AutomationNodeConfigDto {
+    /**
+     * HTTP- .
+     * @type {AutomationHttpConfigDto}
+     * @memberof AutomationNodeConfigDto
+     */
+    http?: AutomationHttpConfigDto;
     /**
      * , .
      * @type {string}
@@ -75,11 +83,35 @@ export interface AutomationNodeConfigDto {
      */
     incomingMessageVariableScope?: AutomationNodeConfigDtoIncomingMessageVariableScopeEnum;
     /**
+     * UUID .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    appEventId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    appEventName?: string;
+    /**
+     * Run-, .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    appEventVariableName?: string;
+    /**
      * . .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
      */
     channelIds?: Array<string>;
+    /**
+     * , .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    dialogIds?: Array<string>;
     /**
      * keyword-.
      * @type {string}
@@ -92,6 +124,18 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     segmentId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    funnelId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    funnelStageId?: string;
     /**
      * Mongo ID .
      * @type {string}
@@ -255,7 +299,7 @@ export interface AutomationNodeConfigDto {
      */
     tableFilters?: Array<AutomationTableFilterDto>;
     /**
-     * , , .
+     * , , , .
      * @type {Array<AutomationTableOutputDto>}
      * @memberof AutomationNodeConfigDto
      */
@@ -357,6 +401,12 @@ export interface AutomationNodeConfigDto {
      */
     randomBranches?: Array<AutomationRandomBranchDto>;
     /**
+     * . . .
+     * @type {Array<AutomationAgentBranchDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentBranches?: Array<AutomationAgentBranchDto>;
+    /**
      * .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -369,7 +419,7 @@ export interface AutomationNodeConfigDto {
      */
     variableName?: string;
     /**
-     * . , .
+     * . , , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -437,6 +487,12 @@ export interface AutomationNodeConfigDto {
      */
     messageButtons?: Array<AutomationMessageButtonDto>;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDisableLinkPreview?: boolean;
+    /**
      * Run- , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -473,6 +529,12 @@ export interface AutomationNodeConfigDto {
      */
     messageAllowRepeatedButtonClicks?: boolean;
     /**
+     * VK , . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageVkTextButtons?: boolean;
+    /**
      * . , . .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
@@ -484,6 +546,12 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     messageTargetType?: AutomationNodeConfigDtoMessageTargetTypeEnum;
+    /**
+     * : . .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageVariableContext?: AutomationNodeConfigDtoMessageVariableContextEnum;
     /**
      * ID message_target_type lead dialog.
      * @type {string}
@@ -712,6 +780,7 @@ export declare const AutomationNodeConfigDtoEventTypeEnum: {
     readonly LikeRemoved: "like_removed";
     readonly LeadBlacklisted: "lead_blacklisted";
     readonly SegmentSubscribed: "segment_subscribed";
+    readonly AppEventReceived: "app_event_received";
 };
 export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
 /**
@@ -748,6 +817,7 @@ export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeC
 export declare const AutomationNodeConfigDtoIncomingMessageVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = typeof AutomationNodeConfigDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationNodeConfigDtoIncomingMessageVariableScopeEnum];
@@ -765,6 +835,7 @@ export type AutomationNodeConfigDtoAgentRoleEnum = typeof AutomationNodeConfigDt
 export declare const AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum];
@@ -774,6 +845,7 @@ export type AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = typeof Au
 export declare const AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = typeof AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum];
@@ -783,6 +855,7 @@ export type AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = typeof Au
 export declare const AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum];
@@ -792,6 +865,7 @@ export type AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = typeof A
 export declare const AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum];
@@ -801,6 +875,7 @@ export type AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = t
 export declare const AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum];
@@ -810,6 +885,7 @@ export type AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = typeo
 export declare const AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum];
@@ -858,6 +934,7 @@ export type AutomationNodeConfigDtoTableFirstRowSaveModeEnum = typeof Automation
 export declare const AutomationNodeConfigDtoTableResultVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
@@ -896,6 +973,7 @@ export type AutomationNodeConfigDtoDateTimeConditionEnum = typeof AutomationNode
 export declare const AutomationNodeConfigDtoVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoVariableScopeEnum = typeof AutomationNodeConfigDtoVariableScopeEnum[keyof typeof AutomationNodeConfigDtoVariableScopeEnum];
@@ -929,6 +1007,7 @@ export declare const AutomationNodeConfigDtoVariableOperationEnum: {
     readonly ShiftBackward: "shift_backward";
     readonly AppendItems: "append_items";
     readonly PrependItems: "prepend_items";
+    readonly AddUniqueItems: "add_unique_items";
     readonly RemoveItems: "remove_items";
     readonly MergeObject: "merge_object";
     readonly RemoveObjectKeys: "remove_object_keys";
@@ -979,6 +1058,7 @@ export type AutomationNodeConfigDtoVariableDurationUnitEnum = typeof AutomationN
 export declare const AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum];
@@ -988,6 +1068,7 @@ export type AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = typeof 
 export declare const AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum];
@@ -997,6 +1078,7 @@ export type AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = type
 export declare const AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = typeof AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum];
@@ -1028,9 +1110,18 @@ export type AutomationNodeConfigDtoMessageTargetTypeEnum = typeof AutomationNode
 /**
  * @export
  */
+export declare const AutomationNodeConfigDtoMessageVariableContextEnum: {
+    readonly Run: "run";
+    readonly Recipient: "recipient";
+};
+export type AutomationNodeConfigDtoMessageVariableContextEnum = typeof AutomationNodeConfigDtoMessageVariableContextEnum[keyof typeof AutomationNodeConfigDtoMessageVariableContextEnum];
+/**
+ * @export
+ */
 export declare const AutomationNodeConfigDtoMessageTargetVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoMessageTargetVariableScopeEnum = typeof AutomationNodeConfigDtoMessageTargetVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageTargetVariableScopeEnum];
@@ -1040,6 +1131,7 @@ export type AutomationNodeConfigDtoMessageTargetVariableScopeEnum = typeof Autom
 export declare const AutomationNodeConfigDtoMessageReplyVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoMessageReplyVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum];
@@ -1057,6 +1149,7 @@ export type AutomationNodeConfigDtoWaitModeEnum = typeof AutomationNodeConfigDto
 export declare const AutomationNodeConfigDtoWaitVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoWaitVariableScopeEnum = typeof AutomationNodeConfigDtoWaitVariableScopeEnum[keyof typeof AutomationNodeConfigDtoWaitVariableScopeEnum];
@@ -1074,6 +1167,7 @@ export type AutomationNodeConfigDtoLoopModeEnum = typeof AutomationNodeConfigDto
 export declare const AutomationNodeConfigDtoLoopCollectionVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = typeof AutomationNodeConfigDtoLoopCollectionVariableScopeEnum[keyof typeof AutomationNodeConfigDtoLoopCollectionVariableScopeEnum];

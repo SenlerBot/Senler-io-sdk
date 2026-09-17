@@ -10,10 +10,13 @@
  * Do not edit the class manually.
  */
 import type { AutomationBatchAddDraftNodeOperationDto } from './AutomationBatchAddDraftNodeOperationDto';
+import type { AutomationBatchAddGroupOperationDto } from './AutomationBatchAddGroupOperationDto';
 import type { AutomationBatchAddNodeOperationDto } from './AutomationBatchAddNodeOperationDto';
 import type { AutomationBatchConnectOperationDto } from './AutomationBatchConnectOperationDto';
 import type { AutomationBatchDisconnectOperationDto } from './AutomationBatchDisconnectOperationDto';
+import type { AutomationBatchRemoveGroupOperationDto } from './AutomationBatchRemoveGroupOperationDto';
 import type { AutomationBatchRemoveNodeOperationDto } from './AutomationBatchRemoveNodeOperationDto';
+import type { AutomationBatchUpdateGroupOperationDto } from './AutomationBatchUpdateGroupOperationDto';
 import type { AutomationBatchUpdateNodeOperationDto } from './AutomationBatchUpdateNodeOperationDto';
 /**
  * @type ApplyAutomationBatchDtoOperationsInner
@@ -23,14 +26,20 @@ import type { AutomationBatchUpdateNodeOperationDto } from './AutomationBatchUpd
 export type ApplyAutomationBatchDtoOperationsInner = {
     kind: 'add_draft_node';
 } & AutomationBatchAddDraftNodeOperationDto | {
+    kind: 'add_group';
+} & AutomationBatchAddGroupOperationDto | {
     kind: 'add_node';
 } & AutomationBatchAddNodeOperationDto | {
     kind: 'connect';
 } & AutomationBatchConnectOperationDto | {
     kind: 'disconnect';
 } & AutomationBatchDisconnectOperationDto | {
+    kind: 'remove_group';
+} & AutomationBatchRemoveGroupOperationDto | {
     kind: 'remove_node';
 } & AutomationBatchRemoveNodeOperationDto | {
+    kind: 'update_group';
+} & AutomationBatchUpdateGroupOperationDto | {
     kind: 'update_node';
 } & AutomationBatchUpdateNodeOperationDto;
 export declare function ApplyAutomationBatchDtoOperationsInnerFromJSON(json: any): ApplyAutomationBatchDtoOperationsInner;

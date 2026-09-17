@@ -20,13 +20,6 @@ import {
     ProjectTariffItemDtoToJSON,
     ProjectTariffItemDtoToJSONTyped,
 } from './ProjectTariffItemDto';
-import type { TariffSubscriptionDto } from './TariffSubscriptionDto';
-import {
-    TariffSubscriptionDtoFromJSON,
-    TariffSubscriptionDtoFromJSONTyped,
-    TariffSubscriptionDtoToJSON,
-    TariffSubscriptionDtoToJSONTyped,
-} from './TariffSubscriptionDto';
 
 /**
  * ProjectTariffsResponseDto.
@@ -40,12 +33,6 @@ export interface ProjectTariffsResponseDto {
      * @memberof ProjectTariffsResponseDto
      */
     tariffs: Array<ProjectTariffItemDto>;
-    /**
-     * . null, Trial .
-     * @type {TariffSubscriptionDto}
-     * @memberof ProjectTariffsResponseDto
-     */
-    currentSubscription?: TariffSubscriptionDto | null;
 }
 
 /**
@@ -67,7 +54,6 @@ export function ProjectTariffsResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'tariffs': ((json['tariffs'] as Array<any>).map(ProjectTariffItemDtoFromJSON)),
-        'currentSubscription': json['current_subscription'] == null ? undefined : TariffSubscriptionDtoFromJSON(json['current_subscription']),
     };
 }
 
@@ -83,6 +69,5 @@ export function ProjectTariffsResponseDtoToJSONTyped(value?: ProjectTariffsRespo
     return {
 
         'tariffs': ((value['tariffs'] as Array<any>).map(ProjectTariffItemDtoToJSON)),
-        'current_subscription': TariffSubscriptionDtoToJSON(value['currentSubscription']),
     };
 }

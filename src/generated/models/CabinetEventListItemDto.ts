@@ -83,6 +83,13 @@ import {
     EventGenerationDtoToJSON,
     EventGenerationDtoToJSONTyped,
 } from './EventGenerationDto';
+import type { AutomationFunnelObservationDto } from './AutomationFunnelObservationDto';
+import {
+    AutomationFunnelObservationDtoFromJSON,
+    AutomationFunnelObservationDtoFromJSONTyped,
+    AutomationFunnelObservationDtoToJSON,
+    AutomationFunnelObservationDtoToJSONTyped,
+} from './AutomationFunnelObservationDto';
 import type { EventSenderDto } from './EventSenderDto';
 import {
     EventSenderDtoFromJSON,
@@ -97,6 +104,13 @@ import {
     EventMessageInteractionsDtoToJSON,
     EventMessageInteractionsDtoToJSONTyped,
 } from './EventMessageInteractionsDto';
+import type { EventFunnelDto } from './EventFunnelDto';
+import {
+    EventFunnelDtoFromJSON,
+    EventFunnelDtoFromJSONTyped,
+    EventFunnelDtoToJSON,
+    EventFunnelDtoToJSONTyped,
+} from './EventFunnelDto';
 import type { EventErrorDto } from './EventErrorDto';
 import {
     EventErrorDtoFromJSON,
@@ -118,6 +132,18 @@ import {
  * @interface CabinetEventListItemDto
  */
 export interface CabinetEventListItemDto {
+    /**
+     *
+     * @type {EventFunnelDto}
+     * @memberof CabinetEventListItemDto
+     */
+    funnel?: EventFunnelDto;
+    /**
+     *
+     * @type {AutomationFunnelObservationDto}
+     * @memberof CabinetEventListItemDto
+     */
+    automationObservation?: AutomationFunnelObservationDto;
     /**
      * ID
      * @type {string}
@@ -166,6 +192,12 @@ export interface CabinetEventListItemDto {
      * @memberof CabinetEventListItemDto
      */
     leadId?: string;
+    /**
+     * ;
+     * @type {string}
+     * @memberof CabinetEventListItemDto
+     */
+    dialogLeadId?: string;
     /**
      *
      * @type {string}
@@ -335,6 +367,9 @@ export type CabinetEventListItemDtoPlatformTypeEnum = typeof CabinetEventListIte
  * @export
  */
 export const CabinetEventListItemDtoActionTypeEnum = {
+    FunnelEntered: 'funnel_entered',
+    FunnelStageChanged: 'funnel_stage_changed',
+    FunnelLeft: 'funnel_left',
     MessageCreated: 'message_created',
     MessageEdited: 'message_edited',
     MessageDeleted: 'message_deleted',
@@ -454,6 +489,8 @@ export function CabinetEventListItemDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'funnel': json['funnel'] == null ? undefined : EventFunnelDtoFromJSON(json['funnel']),
+        'automationObservation': json['automation_observation'] == null ? undefined : AutomationFunnelObservationDtoFromJSON(json['automation_observation']),
         'id': json['id'],
         'dialogId': json['dialog_id'] == null ? undefined : json['dialog_id'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
@@ -462,6 +499,7 @@ export function CabinetEventListItemDtoFromJSONTyped(json: any, ignoreDiscrimina
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
+        'dialogLeadId': json['dialog_lead_id'] == null ? undefined : json['dialog_lead_id'],
         'actionType': json['action_type'],
         'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
@@ -500,6 +538,8 @@ export function CabinetEventListItemDtoToJSONTyped(value?: CabinetEventListItemD
 
     return {
 
+        'funnel': EventFunnelDtoToJSON(value['funnel']),
+        'automation_observation': AutomationFunnelObservationDtoToJSON(value['automationObservation']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'mcp_server_id': value['mcpServerId'],
@@ -508,6 +548,7 @@ export function CabinetEventListItemDtoToJSONTyped(value?: CabinetEventListItemD
         'project_id': value['projectId'],
         'agent_id': value['agentId'],
         'lead_id': value['leadId'],
+        'dialog_lead_id': value['dialogLeadId'],
         'action_type': value['actionType'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],

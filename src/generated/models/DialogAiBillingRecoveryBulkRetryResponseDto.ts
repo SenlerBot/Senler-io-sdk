@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { DialogAiBillingRecoveryRunStatus } from './DialogAiBillingRecoveryRunStatus';
+import {
+    DialogAiBillingRecoveryRunStatusFromJSON,
+    DialogAiBillingRecoveryRunStatusFromJSONTyped,
+    DialogAiBillingRecoveryRunStatusToJSON,
+    DialogAiBillingRecoveryRunStatusToJSONTyped,
+} from './DialogAiBillingRecoveryRunStatus';
+import type { DialogAiBillingRecoveryRunMode } from './DialogAiBillingRecoveryRunMode';
+import {
+    DialogAiBillingRecoveryRunModeFromJSON,
+    DialogAiBillingRecoveryRunModeFromJSONTyped,
+    DialogAiBillingRecoveryRunModeToJSON,
+    DialogAiBillingRecoveryRunModeToJSONTyped,
+} from './DialogAiBillingRecoveryRunMode';
+
 /**
  * DialogAiBillingRecoveryBulkRetryResponseDto.
  * @export
@@ -20,39 +35,55 @@ import { mapValues } from '../runtime';
  */
 export interface DialogAiBillingRecoveryBulkRetryResponseDto {
     /**
-     * ,
+     *
+     * @type {string}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    runId: string;
+    /**
+     * status.
+     * @type {DialogAiBillingRecoveryRunStatus}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    status: DialogAiBillingRecoveryRunStatus;
+    /**
+     * mode.
+     * @type {DialogAiBillingRecoveryRunMode}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    mode: DialogAiBillingRecoveryRunMode;
+    /**
+     *
      * @type {number}
      * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
      */
     submitted: number;
+    /**
+     *
+     * @type {number}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    metricsResumed: number;
     /**
      * ,
      * @type {number}
      * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
      */
     failed: number;
-    /**
-     *
-     * @type {number}
-     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
-     */
-    remainingMessages: number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
-     */
-    hasMore: boolean;
 }
+
+
 
 /**
  * Check if a given object implements the DialogAiBillingRecoveryBulkRetryResponseDto interface.
  */
 export function instanceOfDialogAiBillingRecoveryBulkRetryResponseDto(value: object): value is DialogAiBillingRecoveryBulkRetryResponseDto {
+    if (!('runId' in value) || value['runId'] === undefined) return false;
+    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('mode' in value) || value['mode'] === undefined) return false;
     if (!('submitted' in value) || value['submitted'] === undefined) return false;
+    if (!('metricsResumed' in value) || value['metricsResumed'] === undefined) return false;
     if (!('failed' in value) || value['failed'] === undefined) return false;
-    if (!('remainingMessages' in value) || value['remainingMessages'] === undefined) return false;
-    if (!('hasMore' in value) || value['hasMore'] === undefined) return false;
     return true;
 }
 
@@ -66,10 +97,12 @@ export function DialogAiBillingRecoveryBulkRetryResponseDtoFromJSONTyped(json: a
     }
     return {
 
+        'runId': json['run_id'],
+        'status': DialogAiBillingRecoveryRunStatusFromJSON(json['status']),
+        'mode': DialogAiBillingRecoveryRunModeFromJSON(json['mode']),
         'submitted': json['submitted'],
+        'metricsResumed': json['metrics_resumed'],
         'failed': json['failed'],
-        'remainingMessages': json['remaining_messages'],
-        'hasMore': json['has_more'],
     };
 }
 
@@ -84,9 +117,11 @@ export function DialogAiBillingRecoveryBulkRetryResponseDtoToJSONTyped(value?: D
 
     return {
 
+        'run_id': value['runId'],
+        'status': DialogAiBillingRecoveryRunStatusToJSON(value['status']),
+        'mode': DialogAiBillingRecoveryRunModeToJSON(value['mode']),
         'submitted': value['submitted'],
+        'metrics_resumed': value['metricsResumed'],
         'failed': value['failed'],
-        'remaining_messages': value['remainingMessages'],
-        'has_more': value['hasMore'],
     };
 }

@@ -29,7 +29,8 @@ exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
-    SegmentSubscribed: 'segment_subscribed'
+    SegmentSubscribed: 'segment_subscribed',
+    AppEventReceived: 'app_event_received'
 };
 /**
  * @export
@@ -70,6 +71,7 @@ exports.AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = {
 exports.AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**
@@ -85,6 +87,8 @@ function instanceOfAutomationTriggerTestConditionResponseDto(value) {
     if (!('phrases' in value) || value['phrases'] === undefined)
         return false;
     if (!('channelIds' in value) || value['channelIds'] === undefined)
+        return false;
+    if (!('dialogIds' in value) || value['dialogIds'] === undefined)
         return false;
     if (!('dialogScope' in value) || value['dialogScope'] === undefined)
         return false;
@@ -113,6 +117,7 @@ function AutomationTriggerTestConditionResponseDtoFromJSONTyped(json, ignoreDisc
         'messageMatchMode': json['message_match_mode'],
         'phrases': json['phrases'],
         'channelIds': json['channel_ids'] == null ? null : json['channel_ids'],
+        'dialogIds': json['dialog_ids'] == null ? null : json['dialog_ids'],
         'dialogScope': json['dialog_scope'],
         'segmentId': json['segment_id'],
         'reactionValues': json['reaction_values'],
@@ -134,6 +139,7 @@ function AutomationTriggerTestConditionResponseDtoToJSONTyped(value, ignoreDiscr
         'message_match_mode': value['messageMatchMode'],
         'phrases': value['phrases'],
         'channel_ids': value['channelIds'],
+        'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
         'segment_id': value['segmentId'],
         'reaction_values': value['reactionValues'],

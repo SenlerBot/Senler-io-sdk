@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentsByListResponseDto, PatchAgentInstructionDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentInstalledAppEventsDto, UpdateWizardProgressDto } from '../models/index';
+import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentUnpublishedStateResponseDto, AgentsByListResponseDto, PatchAgentInstructionDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentInstalledAppEventsDto, UpdateWizardProgressDto } from '../models/index';
 export interface AcquisitionRequest {
     id: string;
     acceptLanguage?: AcquisitionAcceptLanguageEnum;
@@ -72,6 +72,10 @@ export interface GetInstalledAppToolsRequest {
 export interface GetInstructionRequest {
     id: string;
     acceptLanguage?: GetInstructionAcceptLanguageEnum;
+}
+export interface GetUnpublishedStateRequest {
+    id: string;
+    acceptLanguage?: GetUnpublishedStateAcceptLanguageEnum;
 }
 export interface RevertRequest {
     id: string;
@@ -246,6 +250,16 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     getInstruction(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
     /**
+     * , , .
+     *
+     */
+    getUnpublishedStateRaw(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentUnpublishedStateResponseDto>>;
+    /**
+     * , , .
+     *
+     */
+    getUnpublishedState(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentUnpublishedStateResponseDto>;
+    /**
      * .
      *
      */
@@ -256,13 +270,13 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
-     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
-     *
+     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
      */
     updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
     /**
-     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
-     *
+     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
      */
     updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
     /**
@@ -276,12 +290,12 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     updateInstalledAppEvents(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
     /**
-     * , . . getInstruction updated_at. , .
+     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      *
      */
     updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
     /**
-     * , . . getInstruction updated_at. , .
+     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      *
      */
     updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
@@ -444,6 +458,14 @@ export declare const GetInstructionAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetUnpublishedStateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetUnpublishedStateAcceptLanguageEnum = typeof GetUnpublishedStateAcceptLanguageEnum[keyof typeof GetUnpublishedStateAcceptLanguageEnum];
 /**
  * @export
  */

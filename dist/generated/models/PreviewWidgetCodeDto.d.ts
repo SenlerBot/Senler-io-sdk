@@ -24,12 +24,6 @@ export interface PreviewWidgetCodeDto {
      */
     theme?: WidgetThemeDto;
     /**
-     * CORS
-     * @type {Array<string>}
-     * @memberof PreviewWidgetCodeDto
-     */
-    allowedDomains?: Array<string>;
-    /**
      * ( , , , )
      * @type {WidgetFeaturesDto}
      * @memberof PreviewWidgetCodeDto
@@ -53,12 +47,6 @@ export interface PreviewWidgetCodeDto {
      * @memberof PreviewWidgetCodeDto
      */
     displayMode?: PreviewWidgetCodeDtoDisplayModeEnum;
-    /**
-     * : local ( ) remote ( )
-     * @type {string}
-     * @memberof PreviewWidgetCodeDto
-     */
-    configSource: PreviewWidgetCodeDtoConfigSourceEnum;
 }
 /**
  * @export
@@ -77,14 +65,6 @@ export declare const PreviewWidgetCodeDtoDisplayModeEnum: {
     readonly Embedded: "embedded";
 };
 export type PreviewWidgetCodeDtoDisplayModeEnum = typeof PreviewWidgetCodeDtoDisplayModeEnum[keyof typeof PreviewWidgetCodeDtoDisplayModeEnum];
-/**
- * @export
- */
-export declare const PreviewWidgetCodeDtoConfigSourceEnum: {
-    readonly Local: "local";
-    readonly Remote: "remote";
-};
-export type PreviewWidgetCodeDtoConfigSourceEnum = typeof PreviewWidgetCodeDtoConfigSourceEnum[keyof typeof PreviewWidgetCodeDtoConfigSourceEnum];
 /**
  * Check if a given object implements the PreviewWidgetCodeDto interface.
  */

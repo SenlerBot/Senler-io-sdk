@@ -79,6 +79,12 @@ export interface DeliveryResponseDto {
     messageText: string;
     /**
      *
+     * @type {boolean}
+     * @memberof DeliveryResponseDto
+     */
+    disableLinkPreview: boolean;
+    /**
+     *
      * @type {Array<DeliveryAttachmentResponseDto>}
      * @memberof DeliveryResponseDto
      */
@@ -156,6 +162,7 @@ export function instanceOfDeliveryResponseDto(value: object): value is DeliveryR
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('filters' in value) || value['filters'] === undefined) return false;
     if (!('messageText' in value) || value['messageText'] === undefined) return false;
+    if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined) return false;
     if (!('attachments' in value) || value['attachments'] === undefined) return false;
     if (!('scheduledAt' in value) || value['scheduledAt'] === undefined) return false;
     if (!('recipientCount' in value) || value['recipientCount'] === undefined) return false;
@@ -182,6 +189,7 @@ export function DeliveryResponseDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'status': json['status'],
         'filters': DeliveryAudienceFilterDtoFromJSON(json['filters']),
         'messageText': json['message_text'],
+        'disableLinkPreview': json['disable_link_preview'],
         'attachments': ((json['attachments'] as Array<any>).map(DeliveryAttachmentResponseDtoFromJSON)),
         'scheduledAt': (json['scheduled_at'] == null ? null : new Date(json['scheduled_at'])),
         'recipientCount': json['recipient_count'],
@@ -210,6 +218,7 @@ export function DeliveryResponseDtoToJSONTyped(value?: DeliveryResponseDto | nul
         'status': value['status'],
         'filters': DeliveryAudienceFilterDtoToJSON(value['filters']),
         'message_text': value['messageText'],
+        'disable_link_preview': value['disableLinkPreview'],
         'attachments': ((value['attachments'] as Array<any>).map(DeliveryAttachmentResponseDtoToJSON)),
         'scheduled_at': (value['scheduledAt'] == null ? null : (value['scheduledAt'] as any).toISOString()),
         'recipient_count': value['recipientCount'],

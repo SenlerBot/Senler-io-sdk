@@ -24,6 +24,7 @@ import type {
   AgentInstructionResponseDto,
   AgentSettingsListResponseDto,
   AgentSettingsResponseDto,
+  AgentUnpublishedStateResponseDto,
   AgentsByListResponseDto,
   ErrorResponse,
   PatchAgentInstructionDto,
@@ -51,6 +52,8 @@ import {
     AgentSettingsListResponseDtoToJSON,
     AgentSettingsResponseDtoFromJSON,
     AgentSettingsResponseDtoToJSON,
+    AgentUnpublishedStateResponseDtoFromJSON,
+    AgentUnpublishedStateResponseDtoToJSON,
     AgentsByListResponseDtoFromJSON,
     AgentsByListResponseDtoToJSON,
     ErrorResponseFromJSON,
@@ -141,6 +144,11 @@ export interface GetInstalledAppToolsRequest {
 export interface GetInstructionRequest {
     id: string;
     acceptLanguage?: GetInstructionAcceptLanguageEnum;
+}
+
+export interface GetUnpublishedStateRequest {
+    id: string;
+    acceptLanguage?: GetUnpublishedStateAcceptLanguageEnum;
 }
 
 export interface RevertRequest {
@@ -944,6 +952,58 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
+     * , , .
+     *
+     */
+    async getUnpublishedStateRaw(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentUnpublishedStateResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getUnpublishedState().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/unpublished-state`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentUnpublishedStateResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , .
+     *
+     */
+    async getUnpublishedState(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentUnpublishedStateResponseDto> {
+        const response = await this.getUnpublishedStateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -996,8 +1056,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
-     *
+     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
      */
     async updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1049,8 +1109,8 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
-     *
+     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
      */
     async updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
         const response = await this.updateDraftInstructionRaw(requestParameters, initOverrides);
@@ -1120,7 +1180,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . . getInstruction updated_at. , .
+     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      *
      */
     async updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
@@ -1173,7 +1233,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . . getInstruction updated_at. , .
+     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      *
      */
     async updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
@@ -1435,6 +1495,14 @@ export const GetInstructionAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetUnpublishedStateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetUnpublishedStateAcceptLanguageEnum = typeof GetUnpublishedStateAcceptLanguageEnum[keyof typeof GetUnpublishedStateAcceptLanguageEnum];
 /**
  * @export
  */

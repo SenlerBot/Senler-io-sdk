@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WidgetChannelDataDtoDisplayModeEnum = exports.WidgetChannelDataDtoLanguageEnum = exports.WidgetChannelDataDtoConfigSourceEnum = void 0;
+exports.WidgetChannelDataDtoDisplayModeEnum = exports.WidgetChannelDataDtoLanguageEnum = void 0;
 exports.instanceOfWidgetChannelDataDto = instanceOfWidgetChannelDataDto;
 exports.WidgetChannelDataDtoFromJSON = WidgetChannelDataDtoFromJSON;
 exports.WidgetChannelDataDtoFromJSONTyped = WidgetChannelDataDtoFromJSONTyped;
@@ -22,13 +22,6 @@ exports.WidgetChannelDataDtoToJSONTyped = WidgetChannelDataDtoToJSONTyped;
 const WidgetFeaturesDto_1 = require("./WidgetFeaturesDto");
 const WidgetExternalAiSettingsDto_1 = require("./WidgetExternalAiSettingsDto");
 const WidgetThemeDto_1 = require("./WidgetThemeDto");
-/**
- * @export
- */
-exports.WidgetChannelDataDtoConfigSourceEnum = {
-    Local: 'local',
-    Remote: 'remote'
-};
 /**
  * @export
  */
@@ -63,7 +56,6 @@ function WidgetChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'theme': json['theme'] == null ? undefined : (0, WidgetThemeDto_1.WidgetThemeDtoFromJSON)(json['theme']),
         'features': json['features'] == null ? undefined : (0, WidgetFeaturesDto_1.WidgetFeaturesDtoFromJSON)(json['features']),
-        'configSource': json['config_source'] == null ? undefined : json['config_source'],
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
@@ -82,7 +74,6 @@ function WidgetChannelDataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'allowed_domains': value['allowedDomains'],
         'theme': (0, WidgetThemeDto_1.WidgetThemeDtoToJSON)(value['theme']),
         'features': (0, WidgetFeaturesDto_1.WidgetFeaturesDtoToJSON)(value['features']),
-        'config_source': value['configSource'],
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],

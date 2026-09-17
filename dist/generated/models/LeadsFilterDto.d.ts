@@ -10,12 +10,19 @@
  * Do not edit the class manually.
  */
 import type { LeadSubscriptionUtmPathDto } from './LeadSubscriptionUtmPathDto';
+import type { LeadFunnelFilterDto } from './LeadFunnelFilterDto';
 /**
  * LeadsFilterDto.
  * @export
  * @interface LeadsFilterDto
  */
 export interface LeadsFilterDto {
+    /**
+     * . ;
+     * @type {Array<LeadFunnelFilterDto>}
+     * @memberof LeadsFilterDto
+     */
+    funnels?: Array<LeadFunnelFilterDto>;
     /**
      * ID (ObjectId, , 50 ). , ID
      * @type {Array<string>}

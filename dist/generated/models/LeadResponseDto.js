@@ -20,6 +20,7 @@ exports.LeadResponseDtoFromJSONTyped = LeadResponseDtoFromJSONTyped;
 exports.LeadResponseDtoToJSON = LeadResponseDtoToJSON;
 exports.LeadResponseDtoToJSONTyped = LeadResponseDtoToJSONTyped;
 const LeadSpaceLinkResponseDto_1 = require("./LeadSpaceLinkResponseDto");
+const LeadFunnelDto_1 = require("./LeadFunnelDto");
 const PendingSegmentResponseDto_1 = require("./PendingSegmentResponseDto");
 const SegmentMembershipResponseDto_1 = require("./SegmentMembershipResponseDto");
 /**
@@ -60,6 +61,8 @@ exports.LeadResponseDtoLeadTypeEnum = {
  * Check if a given object implements the LeadResponseDto interface.
  */
 function instanceOfLeadResponseDto(value) {
+    if (!('funnels' in value) || value['funnels'] === undefined)
+        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('channelId' in value) || value['channelId'] === undefined)
@@ -102,6 +105,7 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'funnels': (json['funnels'].map(LeadFunnelDto_1.LeadFunnelDtoFromJSON)),
         'id': json['id'],
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
@@ -140,6 +144,7 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'funnels': (value['funnels'].map(LeadFunnelDto_1.LeadFunnelDtoToJSON)),
         'id': value['id'],
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],

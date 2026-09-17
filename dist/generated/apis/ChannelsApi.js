@@ -46,58 +46,13 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TokensSyncAcceptLanguageEnum = exports.RegenerateSecretAcceptLanguageEnum = exports.PauseAcceptLanguageEnum = exports.MigrationStartAcceptLanguageEnum = exports.MigrationFinishNowAcceptLanguageEnum = exports.MigrationEstimateAcceptLanguageEnum = exports.MigrationBackfillStartAcceptLanguageEnum = exports.GetWidgetCodeAcceptLanguageEnum = exports.GetTokensAcceptLanguageEnum = exports.GetSenlerStatusAcceptLanguageEnum = exports.GetMigrationBackfillEstimateAcceptLanguageEnum = exports.GetAccessAcceptLanguageEnum = exports.DeleteTokensAcceptLanguageEnum = exports.DeleteTokensPlatformEnum = exports.DeleteSenlerAcceptLanguageEnum = exports.ChannelsUpdateAcceptLanguageEnum = exports.ChannelsListAcceptLanguageEnum = exports.ChannelsListTypeEnum = exports.ChannelsGetByIdAcceptLanguageEnum = exports.ChannelsDeactivateAcceptLanguageEnum = exports.ChannelsAvatarUploadUrlAcceptLanguageEnum = exports.ChannelsAvatarConfirmAcceptLanguageEnum = exports.AvatarFromUrlAcceptLanguageEnum = exports.ChannelsApi = void 0;
+exports.TokensSyncAcceptLanguageEnum = exports.RegenerateSecretAcceptLanguageEnum = exports.PauseAcceptLanguageEnum = exports.MigrationStartAcceptLanguageEnum = exports.MigrationFinishNowAcceptLanguageEnum = exports.MigrationEstimateAcceptLanguageEnum = exports.MigrationBackfillStartAcceptLanguageEnum = exports.GetWidgetCodeAcceptLanguageEnum = exports.GetTokensAcceptLanguageEnum = exports.GetSenlerStatusAcceptLanguageEnum = exports.GetMigrationBackfillEstimateAcceptLanguageEnum = exports.GetAccessAcceptLanguageEnum = exports.DeleteTokensAcceptLanguageEnum = exports.DeleteTokensPlatformEnum = exports.DeleteSenlerAcceptLanguageEnum = exports.ChannelsUpdateAcceptLanguageEnum = exports.ChannelsListAcceptLanguageEnum = exports.ChannelsListTypeEnum = exports.ChannelsGetByIdAcceptLanguageEnum = exports.ChannelsDeactivateAcceptLanguageEnum = exports.ChannelsAvatarUploadUrlAcceptLanguageEnum = exports.ChannelsAvatarFromUrlAcceptLanguageEnum = exports.ChannelsAvatarConfirmAcceptLanguageEnum = exports.ChannelsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class ChannelsApi extends runtime.BaseAPI {
-    /**
-     * URL S3 . .
-     * URL
-     */
-    async avatarFromUrlRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling avatarFromUrl().');
-        }
-        if (requestParameters['uploadAvatarFromUrlDto'] == null) {
-            throw new runtime.RequiredError('uploadAvatarFromUrlDto', 'Required parameter "uploadAvatarFromUrlDto" was null or undefined when calling avatarFromUrl().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
-        }
-        const response = await this.request({
-            path: `/api/channels/{id}/avatar/from-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.UploadAvatarFromUrlDtoToJSON)(requestParameters['uploadAvatarFromUrlDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * URL S3 . .
-     * URL
-     */
-    async avatarFromUrl(requestParameters, initOverrides) {
-        const response = await this.avatarFromUrlRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
     /**
      * avatar_url S3. .
      *
@@ -141,6 +96,51 @@ class ChannelsApi extends runtime.BaseAPI {
      */
     async channelsAvatarConfirm(requestParameters, initOverrides) {
         const response = await this.channelsAvatarConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG WebP, . url, attachment_id imageUrl. 20 40 . .
+     * URL attachment_id
+     */
+    async channelsAvatarFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling channelsAvatarFromUrl().');
+        }
+        if (requestParameters['uploadAvatarFromUrlDto'] == null) {
+            throw new runtime.RequiredError('uploadAvatarFromUrlDto', 'Required parameter "uploadAvatarFromUrlDto" was null or undefined when calling channelsAvatarFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+        const response = await this.request({
+            path: `/api/channels/{id}/avatar/from-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UploadAvatarFromUrlDtoToJSON)(requestParameters['uploadAvatarFromUrlDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG WebP, . url, attachment_id imageUrl. 20 40 . .
+     * URL attachment_id
+     */
+    async channelsAvatarFromUrl(requestParameters, initOverrides) {
+        const response = await this.channelsAvatarFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -940,14 +940,14 @@ exports.ChannelsApi = ChannelsApi;
 /**
  * @export
  */
-exports.AvatarFromUrlAcceptLanguageEnum = {
+exports.ChannelsAvatarConfirmAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ChannelsAvatarConfirmAcceptLanguageEnum = {
+exports.ChannelsAvatarFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

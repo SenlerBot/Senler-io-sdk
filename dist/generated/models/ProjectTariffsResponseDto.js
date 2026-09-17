@@ -19,7 +19,6 @@ exports.ProjectTariffsResponseDtoFromJSONTyped = ProjectTariffsResponseDtoFromJS
 exports.ProjectTariffsResponseDtoToJSON = ProjectTariffsResponseDtoToJSON;
 exports.ProjectTariffsResponseDtoToJSONTyped = ProjectTariffsResponseDtoToJSONTyped;
 const ProjectTariffItemDto_1 = require("./ProjectTariffItemDto");
-const TariffSubscriptionDto_1 = require("./TariffSubscriptionDto");
 /**
  * Check if a given object implements the ProjectTariffsResponseDto interface.
  */
@@ -37,7 +36,6 @@ function ProjectTariffsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'tariffs': (json['tariffs'].map(ProjectTariffItemDto_1.ProjectTariffItemDtoFromJSON)),
-        'currentSubscription': json['current_subscription'] == null ? undefined : (0, TariffSubscriptionDto_1.TariffSubscriptionDtoFromJSON)(json['current_subscription']),
     };
 }
 function ProjectTariffsResponseDtoToJSON(json) {
@@ -49,6 +47,5 @@ function ProjectTariffsResponseDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'tariffs': (value['tariffs'].map(ProjectTariffItemDto_1.ProjectTariffItemDtoToJSON)),
-        'current_subscription': (0, TariffSubscriptionDto_1.TariffSubscriptionDtoToJSON)(value['currentSubscription']),
     };
 }

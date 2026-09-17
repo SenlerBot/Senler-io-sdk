@@ -20,17 +20,23 @@ import { mapValues } from '../runtime';
  */
 export interface CreateOrderDto {
     /**
-     * . topup; credits ., (/); : 1.25 = 125
+     *
+     * @type {string}
+     * @memberof CreateOrderDto
+     */
+    paySystemId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateOrderDto
+     */
+    paymentMethodId?: string;
+    /**
+     * . topup., (/); : 1.25 = 125
      * @type {number}
      * @memberof CreateOrderDto
      */
     amount?: number;
-    /**
-     * ID . payment_settings .
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    paySystemId: string;
     /**
      * (default: topup). billing_invoice.
      * @type {string}
@@ -43,12 +49,6 @@ export interface CreateOrderDto {
      * @memberof CreateOrderDto
      */
     useBalance?: boolean;
-    /**
-     * ID ( order_type = "credits")
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    packageId?: string;
     /**
      * ID ( billing_invoice)
      * @type {string}
@@ -63,7 +63,6 @@ export interface CreateOrderDto {
  */
 export const CreateOrderDtoOrderTypeEnum = {
     Topup: 'topup',
-    Credits: 'credits',
     BillingInvoice: 'billing_invoice'
 } as const;
 export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[keyof typeof CreateOrderDtoOrderTypeEnum];
@@ -73,7 +72,6 @@ export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[key
  * Check if a given object implements the CreateOrderDto interface.
  */
 export function instanceOfCreateOrderDto(value: object): value is CreateOrderDto {
-    if (!('paySystemId' in value) || value['paySystemId'] === undefined) return false;
     return true;
 }
 
@@ -87,11 +85,11 @@ export function CreateOrderDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
+        'paymentMethodId': json['payment_method_id'] == null ? undefined : json['payment_method_id'],
         'amount': json['amount'] == null ? undefined : json['amount'],
-        'paySystemId': json['pay_system_id'],
         'orderType': json['order_type'] == null ? undefined : json['order_type'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
-        'packageId': json['package_id'] == null ? undefined : json['package_id'],
         'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
     };
 }
@@ -107,11 +105,11 @@ export function CreateOrderDtoToJSONTyped(value?: CreateOrderDto | null, ignoreD
 
     return {
 
-        'amount': value['amount'],
         'pay_system_id': value['paySystemId'],
+        'payment_method_id': value['paymentMethodId'],
+        'amount': value['amount'],
         'order_type': value['orderType'],
         'use_balance': value['useBalance'],
-        'package_id': value['packageId'],
         'billing_invoice_id': value['billingInvoiceId'],
     };
 }

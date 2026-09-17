@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { OrderTariffResponseDto } from './OrderTariffResponseDto';
-import {
-    OrderTariffResponseDtoFromJSON,
-    OrderTariffResponseDtoFromJSONTyped,
-    OrderTariffResponseDtoToJSON,
-    OrderTariffResponseDtoToJSONTyped,
-} from './OrderTariffResponseDto';
-
 /**
  * OrderItemResponseDto.
  * @export
@@ -35,10 +27,10 @@ export interface OrderItemResponseDto {
     id: string;
     /**
      * ID
-     * @type {object}
+     * @type {string}
      * @memberof OrderItemResponseDto
      */
-    projectId: object | null;
+    projectId: string | null;
     /**
      *
      * @type {string}
@@ -88,17 +80,11 @@ export interface OrderItemResponseDto {
      */
     processingStartedAt?: Date | null;
     /**
-     * ID ( type = credit_package)
+     * ID
      * @type {string}
      * @memberof OrderItemResponseDto
      */
-    creditPackageId?: string | null;
-    /**
-     * ( type = tariff)
-     * @type {OrderTariffResponseDto}
-     * @memberof OrderItemResponseDto
-     */
-    tariff?: OrderTariffResponseDto | null;
+    billingInvoiceId?: string | null;
     /**
      *
      * @type {Date}
@@ -113,8 +99,6 @@ export interface OrderItemResponseDto {
  */
 export const OrderItemResponseDtoTypeEnum = {
     BalanceDeposit: 'balance_deposit',
-    Tariff: 'tariff',
-    CreditPackage: 'credit_package',
     BillingInvoice: 'billing_invoice',
     UserAgentCreditPackage: 'user_agent_credit_package'
 } as const;
@@ -189,8 +173,7 @@ export function OrderItemResponseDtoFromJSONTyped(json: any, ignoreDiscriminator
         'activationStatus': json['activation_status'],
         'activationError': json['activation_error'] == null ? undefined : json['activation_error'],
         'processingStartedAt': json['processing_started_at'] == null ? undefined : (new Date(json['processing_started_at'])),
-        'creditPackageId': json['credit_package_id'] == null ? undefined : json['credit_package_id'],
-        'tariff': json['tariff'] == null ? undefined : OrderTariffResponseDtoFromJSON(json['tariff']),
+        'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -216,8 +199,7 @@ export function OrderItemResponseDtoToJSONTyped(value?: OrderItemResponseDto | n
         'activation_status': value['activationStatus'],
         'activation_error': value['activationError'],
         'processing_started_at': value['processingStartedAt'] == null ? undefined : ((value['processingStartedAt'] as any).toISOString()),
-        'credit_package_id': value['creditPackageId'],
-        'tariff': OrderTariffResponseDtoToJSON(value['tariff']),
+        'billing_invoice_id': value['billingInvoiceId'],
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

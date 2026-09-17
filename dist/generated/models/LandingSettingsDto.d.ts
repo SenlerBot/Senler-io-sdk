@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingTheme } from './LandingTheme';
 /**
  * LandingSettingsDto.
  * @export
@@ -28,19 +29,25 @@ export interface LandingSettingsDto {
      */
     listVisible: boolean;
     /**
-     * HEX-
+     * . auto VK,
+     * @type {LandingTheme}
+     * @memberof LandingSettingsDto
+     */
+    theme: LandingTheme;
+    /**
+     * HEX-. ; auto
      * @type {string}
      * @memberof LandingSettingsDto
      */
     backgroundColor: string;
     /**
-     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
+     * . URL . URL attachment_id LandingsController_importAssetFromUrl; AgentLandingController_importAssetFromUrl. . PNG, JPEG WebP getAssetUploadUrl, PUT uploadUrl confirmAssetUpload . url ; URL .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     iconUrl: string | null;
     /**
-     * . URL S3- . URL . LandingsController_getAssetUploadUrl, PNG, JPEG WebP PUT- uploadUrl Authorization, LandingsController_confirmAssetUpload. AgentLandingController_getAssetUploadUrl AgentLandingController_confirmAssetUpload. url .
+     * . URL . URL attachment_id LandingsController_importAssetFromUrl; AgentLandingController_importAssetFromUrl. . PNG, JPEG WebP getAssetUploadUrl, PUT uploadUrl confirmAssetUpload . url ; URL .
      * @type {string}
      * @memberof LandingSettingsDto
      */

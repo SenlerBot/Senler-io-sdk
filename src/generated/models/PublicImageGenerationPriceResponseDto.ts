@@ -24,52 +24,71 @@ export interface PublicImageGenerationPriceResponseDto {
      * @type {string}
      * @memberof PublicImageGenerationPriceResponseDto
      */
-    quality: PublicImageGenerationPriceResponseDtoQualityEnum;
+    generationQuality: PublicImageGenerationPriceResponseDtoGenerationQualityEnum;
     /**
      * . auto wildcard per_image
      * @type {string}
      * @memberof PublicImageGenerationPriceResponseDto
      */
-    size: PublicImageGenerationPriceResponseDtoSizeEnum;
+    aspectRatio: PublicImageGenerationPriceResponseDtoAspectRatioEnum;
+    /**
+     * . auto wildcard.
+     * @type {string}
+     * @memberof PublicImageGenerationPriceResponseDto
+     */
+    resolutionTier: PublicImageGenerationPriceResponseDtoResolutionTierEnum;
     /**
      * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicImageGenerationPriceResponseDto
      */
-    clientCredits: number;
+    clientPricePerImageCredits: number;
 }
 
 
 /**
  * @export
  */
-export const PublicImageGenerationPriceResponseDtoQualityEnum = {
+export const PublicImageGenerationPriceResponseDtoGenerationQualityEnum = {
     Auto: 'auto',
     Low: 'low',
     Medium: 'medium',
     High: 'high'
 } as const;
-export type PublicImageGenerationPriceResponseDtoQualityEnum = typeof PublicImageGenerationPriceResponseDtoQualityEnum[keyof typeof PublicImageGenerationPriceResponseDtoQualityEnum];
+export type PublicImageGenerationPriceResponseDtoGenerationQualityEnum = typeof PublicImageGenerationPriceResponseDtoGenerationQualityEnum[keyof typeof PublicImageGenerationPriceResponseDtoGenerationQualityEnum];
 
 /**
  * @export
  */
-export const PublicImageGenerationPriceResponseDtoSizeEnum = {
+export const PublicImageGenerationPriceResponseDtoAspectRatioEnum = {
     Auto: 'auto',
     Square: 'square',
     Portrait: 'portrait',
     Landscape: 'landscape'
 } as const;
-export type PublicImageGenerationPriceResponseDtoSizeEnum = typeof PublicImageGenerationPriceResponseDtoSizeEnum[keyof typeof PublicImageGenerationPriceResponseDtoSizeEnum];
+export type PublicImageGenerationPriceResponseDtoAspectRatioEnum = typeof PublicImageGenerationPriceResponseDtoAspectRatioEnum[keyof typeof PublicImageGenerationPriceResponseDtoAspectRatioEnum];
+
+/**
+ * @export
+ */
+export const PublicImageGenerationPriceResponseDtoResolutionTierEnum = {
+    Auto: 'auto',
+    _05k: '0.5k',
+    _1k: '1k',
+    _2k: '2k',
+    _4k: '4k'
+} as const;
+export type PublicImageGenerationPriceResponseDtoResolutionTierEnum = typeof PublicImageGenerationPriceResponseDtoResolutionTierEnum[keyof typeof PublicImageGenerationPriceResponseDtoResolutionTierEnum];
 
 
 /**
  * Check if a given object implements the PublicImageGenerationPriceResponseDto interface.
  */
 export function instanceOfPublicImageGenerationPriceResponseDto(value: object): value is PublicImageGenerationPriceResponseDto {
-    if (!('quality' in value) || value['quality'] === undefined) return false;
-    if (!('size' in value) || value['size'] === undefined) return false;
-    if (!('clientCredits' in value) || value['clientCredits'] === undefined) return false;
+    if (!('generationQuality' in value) || value['generationQuality'] === undefined) return false;
+    if (!('aspectRatio' in value) || value['aspectRatio'] === undefined) return false;
+    if (!('resolutionTier' in value) || value['resolutionTier'] === undefined) return false;
+    if (!('clientPricePerImageCredits' in value) || value['clientPricePerImageCredits'] === undefined) return false;
     return true;
 }
 
@@ -83,9 +102,10 @@ export function PublicImageGenerationPriceResponseDtoFromJSONTyped(json: any, ig
     }
     return {
 
-        'quality': json['quality'],
-        'size': json['size'],
-        'clientCredits': json['client_credits'],
+        'generationQuality': json['generation_quality'],
+        'aspectRatio': json['aspect_ratio'],
+        'resolutionTier': json['resolution_tier'],
+        'clientPricePerImageCredits': json['client_price_per_image_credits'],
     };
 }
 
@@ -100,8 +120,9 @@ export function PublicImageGenerationPriceResponseDtoToJSONTyped(value?: PublicI
 
     return {
 
-        'quality': value['quality'],
-        'size': value['size'],
-        'client_credits': value['clientCredits'],
+        'generation_quality': value['generationQuality'],
+        'aspect_ratio': value['aspectRatio'],
+        'resolution_tier': value['resolutionTier'],
+        'client_price_per_image_credits': value['clientPricePerImageCredits'],
     };
 }

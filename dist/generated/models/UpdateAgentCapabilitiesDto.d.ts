@@ -34,7 +34,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     enableCustomAttachments?: boolean;
     /**
-     * (DALL-E)
+     *
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -57,6 +57,18 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     audioGenerationModelId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    enableVoiceCloning?: boolean;
+    /**
+     * UUID audio_generation stateless voice cloning GET /api/ai/models.
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    voiceCloningModelId?: string | null;
     /**
      * (STT)
      * @type {boolean}
@@ -141,6 +153,12 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     enableStreaming?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    disableLinkPreview?: boolean;
     /**
      * AI
      * @type {string}

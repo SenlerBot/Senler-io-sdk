@@ -46,6 +46,7 @@ export interface AutomationRunVariableBindingDto {
 export const AutomationRunVariableBindingDtoSourceVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationRunVariableBindingDtoSourceVariableScopeEnum = typeof AutomationRunVariableBindingDtoSourceVariableScopeEnum[keyof typeof AutomationRunVariableBindingDtoSourceVariableScopeEnum];

@@ -38,6 +38,18 @@ export interface WidgetCustomActionCapabilityDto {
      */
     description?: string;
     /**
+     * AI- handler JSON-. false: .
+     * @type {boolean}
+     * @memberof WidgetCustomActionCapabilityDto
+     */
+    returnsResult?: boolean;
+    /**
+     * ID handler . SDK ; returns_result=true.
+     * @type {string}
+     * @memberof WidgetCustomActionCapabilityDto
+     */
+    executionContextId?: string;
+    /**
      * JSON Schema payload, action.payload. object payload; scalar/array/object . ; host-. .
      * @type {{ [key: string]: any; }}
      * @memberof WidgetCustomActionCapabilityDto
@@ -66,6 +78,8 @@ export function WidgetCustomActionCapabilityDtoFromJSONTyped(json: any, ignoreDi
         'name': json['name'],
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
+        'returnsResult': json['returns_result'] == null ? undefined : json['returns_result'],
+        'executionContextId': json['execution_context_id'] == null ? undefined : json['execution_context_id'],
         'payloadSchema': json['payload_schema'] == null ? undefined : json['payload_schema'],
     };
 }
@@ -84,6 +98,8 @@ export function WidgetCustomActionCapabilityDtoToJSONTyped(value?: WidgetCustomA
         'name': value['name'],
         'title': value['title'],
         'description': value['description'],
+        'returns_result': value['returnsResult'],
+        'execution_context_id': value['executionContextId'],
         'payload_schema': value['payloadSchema'],
     };
 }

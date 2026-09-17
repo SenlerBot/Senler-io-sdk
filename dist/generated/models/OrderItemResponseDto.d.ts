@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { OrderTariffResponseDto } from './OrderTariffResponseDto';
 /**
  * OrderItemResponseDto.
  * @export
@@ -24,10 +23,10 @@ export interface OrderItemResponseDto {
     id: string;
     /**
      * ID
-     * @type {object}
+     * @type {string}
      * @memberof OrderItemResponseDto
      */
-    projectId: object | null;
+    projectId: string | null;
     /**
      *
      * @type {string}
@@ -77,17 +76,11 @@ export interface OrderItemResponseDto {
      */
     processingStartedAt?: Date | null;
     /**
-     * ID ( type = credit_package)
+     * ID
      * @type {string}
      * @memberof OrderItemResponseDto
      */
-    creditPackageId?: string | null;
-    /**
-     * ( type = tariff)
-     * @type {OrderTariffResponseDto}
-     * @memberof OrderItemResponseDto
-     */
-    tariff?: OrderTariffResponseDto | null;
+    billingInvoiceId?: string | null;
     /**
      *
      * @type {Date}
@@ -100,8 +93,6 @@ export interface OrderItemResponseDto {
  */
 export declare const OrderItemResponseDtoTypeEnum: {
     readonly BalanceDeposit: "balance_deposit";
-    readonly Tariff: "tariff";
-    readonly CreditPackage: "credit_package";
     readonly BillingInvoice: "billing_invoice";
     readonly UserAgentCreditPackage: "user_agent_credit_package";
 };

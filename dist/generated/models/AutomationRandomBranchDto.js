@@ -26,7 +26,7 @@ function instanceOfAutomationRandomBranchDto(value) {
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
-    if (!('percentage' in value) || value['percentage'] === undefined)
+    if (!('weight' in value) || value['weight'] === undefined)
         return false;
     return true;
 }
@@ -40,7 +40,7 @@ function AutomationRandomBranchDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'branchId': json['branch_id'],
         'name': json['name'],
-        'percentage': json['percentage'],
+        'weight': json['weight'],
     };
 }
 function AutomationRandomBranchDtoToJSON(json) {
@@ -53,6 +53,6 @@ function AutomationRandomBranchDtoToJSONTyped(value, ignoreDiscriminator = false
     return {
         'branch_id': value['branchId'],
         'name': value['name'],
-        'percentage': value['percentage'],
+        'weight': value['weight'],
     };
 }

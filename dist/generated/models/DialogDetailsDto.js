@@ -78,6 +78,8 @@ function instanceOfDialogDetailsDto(value) {
         return false;
     if (!('autoAssignDisabled' in value) || value['autoAssignDisabled'] === undefined)
         return false;
+    if (!('hasMessageNotes' in value) || value['hasMessageNotes'] === undefined)
+        return false;
     if (!('status' in value) || value['status'] === undefined)
         return false;
     if (!('operatorResponseStatus' in value) || value['operatorResponseStatus'] === undefined)
@@ -123,6 +125,7 @@ function DialogDetailsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'autoAssignDisabled': json['auto_assign_disabled'],
+        'hasMessageNotes': json['has_message_notes'],
         'status': json['status'],
         'operatorResponseStatus': json['operator_response_status'],
         'operatorWaitingSince': json['operator_waiting_since'] == null ? undefined : (new Date(json['operator_waiting_since'])),
@@ -163,6 +166,9 @@ function DialogDetailsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'totalEvents': json['total_events'],
         'messagesCount': json['messages_count'],
         'operatorUnreadCount': json['operator_unread_count'],
+        'operatorReadRevision': json['operator_read_revision'] == null ? undefined : json['operator_read_revision'],
+        'operatorReadEventId': json['operator_read_event_id'] == null ? undefined : json['operator_read_event_id'],
+        'operatorReadEventTimestamp': json['operator_read_event_timestamp'] == null ? undefined : (new Date(json['operator_read_event_timestamp'])),
         'leadUnreadCount': json['lead_unread_count'],
         'primaryLeadId': json['primary_lead_id'] == null ? undefined : json['primary_lead_id'],
         'displayInfo': json['display_info'] == null ? undefined : (0, DialogDisplayInfoDto_1.DialogDisplayInfoDtoFromJSON)(json['display_info']),
@@ -193,6 +199,7 @@ function DialogDetailsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'channel_id': value['channelId'],
         'project_id': value['projectId'],
         'auto_assign_disabled': value['autoAssignDisabled'],
+        'has_message_notes': value['hasMessageNotes'],
         'status': value['status'],
         'operator_response_status': value['operatorResponseStatus'],
         'operator_waiting_since': value['operatorWaitingSince'] == null ? undefined : ((value['operatorWaitingSince']).toISOString()),
@@ -233,6 +240,9 @@ function DialogDetailsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'total_events': value['totalEvents'],
         'messages_count': value['messagesCount'],
         'operator_unread_count': value['operatorUnreadCount'],
+        'operator_read_revision': value['operatorReadRevision'],
+        'operator_read_event_id': value['operatorReadEventId'],
+        'operator_read_event_timestamp': value['operatorReadEventTimestamp'] == null ? undefined : ((value['operatorReadEventTimestamp']).toISOString()),
         'lead_unread_count': value['leadUnreadCount'],
         'primary_lead_id': value['primaryLeadId'],
         'display_info': (0, DialogDisplayInfoDto_1.DialogDisplayInfoDtoToJSON)(value['displayInfo']),

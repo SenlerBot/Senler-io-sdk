@@ -182,6 +182,12 @@ export interface QueryDialogsDto {
      */
     hasEvents?: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    hasMessageNotes?: boolean;
+    /**
      * : true - , false -
      * @type {boolean}
      * @memberof QueryDialogsDto
@@ -350,6 +356,7 @@ export function QueryDialogsDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'hasChannel': json['has_channel'] == null ? undefined : json['has_channel'],
         'hasLead': json['has_lead'] == null ? undefined : json['has_lead'],
         'hasEvents': json['has_events'] == null ? undefined : json['has_events'],
+        'hasMessageNotes': json['has_message_notes'] == null ? undefined : json['has_message_notes'],
         'isTest': json['is_test'] == null ? undefined : json['is_test'],
         'autoAssignDisabled': json['auto_assign_disabled'] == null ? undefined : json['auto_assign_disabled'],
         'muteStatus': json['mute_status'] == null ? undefined : json['mute_status'],
@@ -398,6 +405,7 @@ export function QueryDialogsDtoToJSONTyped(value?: QueryDialogsDto | null, ignor
         'has_channel': value['hasChannel'],
         'has_lead': value['hasLead'],
         'has_events': value['hasEvents'],
+        'has_message_notes': value['hasMessageNotes'],
         'is_test': value['isTest'],
         'auto_assign_disabled': value['autoAssignDisabled'],
         'mute_status': value['muteStatus'],

@@ -23,6 +23,7 @@ const AutomationEdgeResponseDto_1 = require("./AutomationEdgeResponseDto");
 const AutomationNodeResponseDto_1 = require("./AutomationNodeResponseDto");
 const AutomationDraftInfoDto_1 = require("./AutomationDraftInfoDto");
 const AutomationResponseDto_1 = require("./AutomationResponseDto");
+const AutomationGroupResponseDto_1 = require("./AutomationGroupResponseDto");
 /**
  * Check if a given object implements the AutomationGraphResponseDto interface.
  */
@@ -34,6 +35,8 @@ function instanceOfAutomationGraphResponseDto(value) {
     if (!('nodes' in value) || value['nodes'] === undefined)
         return false;
     if (!('edges' in value) || value['edges'] === undefined)
+        return false;
+    if (!('groups' in value) || value['groups'] === undefined)
         return false;
     return true;
 }
@@ -51,6 +54,7 @@ function AutomationGraphResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'hasUnpublishedChanges': json['has_unpublished_changes'],
         'nodes': (json['nodes'].map(AutomationNodeResponseDto_1.AutomationNodeResponseDtoFromJSON)),
         'edges': (json['edges'].map(AutomationEdgeResponseDto_1.AutomationEdgeResponseDtoFromJSON)),
+        'groups': (json['groups'].map(AutomationGroupResponseDto_1.AutomationGroupResponseDtoFromJSON)),
     };
 }
 function AutomationGraphResponseDtoToJSON(json) {
@@ -67,5 +71,6 @@ function AutomationGraphResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         'has_unpublished_changes': value['hasUnpublishedChanges'],
         'nodes': (value['nodes'].map(AutomationNodeResponseDto_1.AutomationNodeResponseDtoToJSON)),
         'edges': (value['edges'].map(AutomationEdgeResponseDto_1.AutomationEdgeResponseDtoToJSON)),
+        'groups': (value['groups'].map(AutomationGroupResponseDto_1.AutomationGroupResponseDtoToJSON)),
     };
 }

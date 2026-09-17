@@ -23,19 +23,19 @@ export interface PatchAgentInstructionDto {
      */
     operation: PatchAgentInstructionDtoOperationEnum;
     /**
-     * updated_at , . .
+     * updated_at . , 409 . ; replace_all .
      * @type {string}
      * @memberof PatchAgentInstructionDto
      */
-    expectedUpdatedAt: string;
+    expectedUpdatedAt?: string;
     /**
-     * replace_all. .
+     * replace_all. . markdown AgentInstructionReferences_resolve; #/knowledge-base #/agent-reference .
      * @type {string}
      * @memberof PatchAgentInstructionDto
      */
     instruction?: string;
     /**
-     * . .
+     * . . .
      * @type {Array<KnowledgeBaseSourceBindingDto>}
      * @memberof PatchAgentInstructionDto
      */

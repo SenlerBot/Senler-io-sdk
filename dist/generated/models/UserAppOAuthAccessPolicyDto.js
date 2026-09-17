@@ -40,7 +40,6 @@ exports.UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanDeleteChannels: 'can_delete_channels',
     CanViewAgents: 'can_view_agents',
     CanManageAgents: 'can_manage_agents',
-    CanManageAgentEvents: 'can_manage_agent_events',
     CanViewDialogs: 'can_view_dialogs',
     CanManageDialogs: 'can_manage_dialogs',
     CanViewDeliveries: 'can_view_deliveries',
@@ -51,6 +50,8 @@ exports.UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanManageLeads: 'can_manage_leads',
     CanViewLeadVariables: 'can_view_lead_variables',
     CanManageLeadVariables: 'can_manage_lead_variables',
+    CanViewDialogVariables: 'can_view_dialog_variables',
+    CanManageDialogVariables: 'can_manage_dialog_variables',
     CanViewSegments: 'can_view_segments',
     CanManageSegments: 'can_manage_segments',
     CanViewLandings: 'can_view_landings',
@@ -76,6 +77,7 @@ exports.UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanViewKnowledgeBase: 'can_view_knowledge_base',
     CanManageKnowledgeBase: 'can_manage_knowledge_base',
     CanViewProjectApps: 'can_view_project_apps',
+    CanUseProjectApps: 'can_use_project_apps',
     CanManageProjectApps: 'can_manage_project_apps',
     CanViewStorage: 'can_view_storage',
     CanManageStorage: 'can_manage_storage',
@@ -92,7 +94,8 @@ exports.UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanManageAppCatalog: 'can_manage_app_catalog',
     CanManageAppDocumentation: 'can_manage_app_documentation',
     CanViewAppAnalytics: 'can_view_app_analytics',
-    CanCreateApps: 'can_create_apps'
+    CanCreateApps: 'can_create_apps',
+    CanManageProfile: 'can_manage_profile'
 };
 /**
  * Check if a given object implements the UserAppOAuthAccessPolicyDto interface.

@@ -26,7 +26,8 @@ exports.SubscriptionScheduledChangeDtoItemKindEnum = {
     BaseTariff: 'base_tariff',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
-    Storage: 'storage'
+    Storage: 'storage',
+    Credits: 'credits'
 };
 /**
  * @export
@@ -52,7 +53,7 @@ function instanceOfSubscriptionScheduledChangeDto(value) {
         return false;
     if (!('targetTariffId' in value) || value['targetTariffId'] === undefined)
         return false;
-    if (!('targetAddonPlanId' in value) || value['targetAddonPlanId'] === undefined)
+    if (!('targetAddonId' in value) || value['targetAddonId'] === undefined)
         return false;
     if (!('targetPeriod' in value) || value['targetPeriod'] === undefined)
         return false;
@@ -71,7 +72,7 @@ function SubscriptionScheduledChangeDtoFromJSONTyped(json, ignoreDiscriminator) 
         'itemKind': json['item_kind'],
         'action': json['action'],
         'targetTariffId': json['target_tariff_id'],
-        'targetAddonPlanId': json['target_addon_plan_id'],
+        'targetAddonId': json['target_addon_id'],
         'targetPeriod': json['target_period'],
         'effectiveAt': (new Date(json['effective_at'])),
     };
@@ -87,7 +88,7 @@ function SubscriptionScheduledChangeDtoToJSONTyped(value, ignoreDiscriminator = 
         'item_kind': value['itemKind'],
         'action': value['action'],
         'target_tariff_id': value['targetTariffId'],
-        'target_addon_plan_id': value['targetAddonPlanId'],
+        'target_addon_id': value['targetAddonId'],
         'target_period': value['targetPeriod'],
         'effective_at': ((value['effectiveAt']).toISOString()),
     };

@@ -40,6 +40,7 @@ export interface AutomationTableOutputDto {
 export declare const AutomationTableOutputDtoVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationTableOutputDtoVariableScopeEnum = typeof AutomationTableOutputDtoVariableScopeEnum[keyof typeof AutomationTableOutputDtoVariableScopeEnum];

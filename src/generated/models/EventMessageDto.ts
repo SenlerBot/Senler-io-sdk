@@ -32,6 +32,12 @@ export interface EventMessageDto {
      */
     contentFormat: EventMessageDtoContentFormatEnum;
     /**
+     *
+     * @type {boolean}
+     * @memberof EventMessageDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      * AI ( assistant )
      * @type {string}
      * @memberof EventMessageDto
@@ -89,6 +95,7 @@ export function EventMessageDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
 
         'content': json['content'],
         'contentFormat': json['content_format'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'model': json['model'] == null ? undefined : json['model'],
         'subject': json['subject'] == null ? undefined : json['subject'],
         'rawText': json['raw_text'] == null ? undefined : json['raw_text'],
@@ -109,6 +116,7 @@ export function EventMessageDtoToJSONTyped(value?: EventMessageDto | null, ignor
 
         'content': value['content'],
         'content_format': value['contentFormat'],
+        'disable_link_preview': value['disableLinkPreview'],
         'model': value['model'],
         'subject': value['subject'],
         'raw_text': value['rawText'],

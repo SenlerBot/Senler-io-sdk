@@ -26,6 +26,7 @@ exports.TextModelStatsProviderEnum = {
     Openai: 'openai',
     Google: 'google',
     Openrouter: 'openrouter',
+    FishAudio: 'fish_audio',
     Together: 'together',
     Custom: 'custom'
 };

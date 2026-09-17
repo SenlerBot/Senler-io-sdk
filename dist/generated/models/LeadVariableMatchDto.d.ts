@@ -28,13 +28,19 @@ export interface LeadVariableMatchDto {
      */
     type: LeadVariableMatchDtoTypeEnum;
     /**
-     *  (mixed type)
+     * . null, include_value=false. (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof LeadVariableMatchDto
      */
     value: {
         [key: string]: any;
     } | null;
+    /**
+     * . array.
+     * @type {number}
+     * @memberof LeadVariableMatchDto
+     */
+    length?: number;
 }
 /**
  * @export

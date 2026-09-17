@@ -10,12 +10,36 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AttachmentDownloadUrlResponseDto, AttachmentLoadResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto } from '../models/index';
-export interface ConfirmRequest {
+import type { AttachmentDownloadUrlResponseDto, AttachmentLoadResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportImageDto } from '../models/index';
+export interface ChannelsConfirmRequest {
+    channelId: string;
     confirmUploadDto: ConfirmUploadDto;
-    dialogId?: string;
-    channelId?: any;
-    acceptLanguage?: ConfirmAcceptLanguageEnum;
+    acceptLanguage?: ChannelsConfirmAcceptLanguageEnum;
+}
+export interface ChannelsFromUrlRequest {
+    channelId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: ChannelsFromUrlAcceptLanguageEnum;
+}
+export interface ChannelsUploadUrlRequest {
+    channelId: string;
+    getUploadUrlDto: GetUploadUrlDto;
+    acceptLanguage?: ChannelsUploadUrlAcceptLanguageEnum;
+}
+export interface DialogsConfirmRequest {
+    dialogId: string;
+    confirmUploadDto: ConfirmUploadDto;
+    acceptLanguage?: DialogsConfirmAcceptLanguageEnum;
+}
+export interface DialogsFromUrlRequest {
+    dialogId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: DialogsFromUrlAcceptLanguageEnum;
+}
+export interface DialogsUploadUrlRequest {
+    dialogId: string;
+    getUploadUrlDto: GetUploadUrlDto;
+    acceptLanguage?: DialogsUploadUrlAcceptLanguageEnum;
 }
 export interface GetDownloadRequest {
     downloadToken: string;
@@ -36,6 +60,24 @@ export interface LoadRequest {
     dialogId: string;
     acceptLanguage?: LoadAcceptLanguageEnum;
 }
+export interface ProjectsDraftsConfirmRequest {
+    projectId: string;
+    draftId: string;
+    confirmUploadDto: ConfirmUploadDto;
+    acceptLanguage?: ProjectsDraftsConfirmAcceptLanguageEnum;
+}
+export interface ProjectsDraftsFromUrlRequest {
+    projectId: string;
+    draftId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: ProjectsDraftsFromUrlAcceptLanguageEnum;
+}
+export interface ProjectsDraftsUploadUrlRequest {
+    projectId: string;
+    draftId: string;
+    getUploadUrlDto: GetUploadUrlDto;
+    acceptLanguage?: ProjectsDraftsUploadUrlAcceptLanguageEnum;
+}
 export interface SendToSelfRequest {
     attachmentId: string;
     dialogId: string;
@@ -52,26 +94,70 @@ export interface SendToSelfRecipientVkConfirmRequest {
     dialogId: string;
     acceptLanguage?: SendToSelfRecipientVkConfirmAcceptLanguageEnum;
 }
-export interface UploadUrlRequest {
-    getUploadUrlDto: GetUploadUrlDto;
-    channelId?: string;
-    dialogId?: string;
-    acceptLanguage?: UploadUrlAcceptLanguageEnum;
-}
 /**
  *
  */
 export declare class AttachmentsApi extends runtime.BaseAPI {
     /**
-     * , S3-, .
+     * .
      *
      */
-    confirmRaw(requestParameters: ConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    channelsConfirmRaw(requestParameters: ChannelsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * , S3-, .
+     * .
      *
      */
-    confirm(requestParameters: ConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    channelsConfirm(requestParameters: ChannelsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    channelsFromUrlRaw(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    channelsFromUrl(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * S3- .
+     * S3-
+     */
+    channelsUploadUrlRaw(requestParameters: ChannelsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
+    /**
+     * S3- .
+     * S3-
+     */
+    channelsUploadUrl(requestParameters: ChannelsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
+    /**
+     * .
+     *
+     */
+    dialogsConfirmRaw(requestParameters: DialogsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * .
+     *
+     */
+    dialogsConfirm(requestParameters: DialogsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    dialogsFromUrlRaw(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id
+     */
+    dialogsFromUrl(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * S3- .
+     * S3-
+     */
+    dialogsUploadUrlRaw(requestParameters: DialogsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
+    /**
+     * S3- .
+     * S3-
+     */
+    dialogsUploadUrl(requestParameters: DialogsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
     /**
      * . .
      *
@@ -113,6 +199,36 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      */
     load(requestParameters: LoadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentLoadResponseDto>;
     /**
+     * .
+     *
+     */
+    projectsDraftsConfirmRaw(requestParameters: ProjectsDraftsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * .
+     *
+     */
+    projectsDraftsConfirm(requestParameters: ProjectsDraftsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * . fileId . 20 , 40 . .
+     * URL attachment_id
+     */
+    projectsDraftsFromUrlRaw(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * . fileId . 20 , 40 . .
+     * URL attachment_id
+     */
+    projectsDraftsFromUrl(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * S3- .
+     * S3-
+     */
+    projectsDraftsUploadUrlRaw(requestParameters: ProjectsDraftsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
+    /**
+     * S3- .
+     * S3-
+     */
+    projectsDraftsUploadUrl(requestParameters: ProjectsDraftsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
+    /**
      * API. read-like : .
      *
      */
@@ -142,25 +258,55 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      * VK-
      */
     sendToSelfRecipientVkConfirm(requestParameters: SendToSelfRecipientVkConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachmentSendToSelfRecipientDto>;
-    /**
-     * S3- . channelId dialogId, confirm.
-     * S3-
-     */
-    uploadUrlRaw(requestParameters: UploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUploadUrlResponseDto>>;
-    /**
-     * S3- . channelId dialogId, confirm.
-     * S3-
-     */
-    uploadUrl(requestParameters: UploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUploadUrlResponseDto>;
 }
 /**
  * @export
  */
-export declare const ConfirmAcceptLanguageEnum: {
+export declare const ChannelsConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type ConfirmAcceptLanguageEnum = typeof ConfirmAcceptLanguageEnum[keyof typeof ConfirmAcceptLanguageEnum];
+export type ChannelsConfirmAcceptLanguageEnum = typeof ChannelsConfirmAcceptLanguageEnum[keyof typeof ChannelsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ChannelsFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ChannelsFromUrlAcceptLanguageEnum = typeof ChannelsFromUrlAcceptLanguageEnum[keyof typeof ChannelsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ChannelsUploadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ChannelsUploadUrlAcceptLanguageEnum = typeof ChannelsUploadUrlAcceptLanguageEnum[keyof typeof ChannelsUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DialogsConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DialogsConfirmAcceptLanguageEnum = typeof DialogsConfirmAcceptLanguageEnum[keyof typeof DialogsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DialogsFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DialogsFromUrlAcceptLanguageEnum = typeof DialogsFromUrlAcceptLanguageEnum[keyof typeof DialogsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DialogsUploadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DialogsUploadUrlAcceptLanguageEnum = typeof DialogsUploadUrlAcceptLanguageEnum[keyof typeof DialogsUploadUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -196,6 +342,30 @@ export type LoadAcceptLanguageEnum = typeof LoadAcceptLanguageEnum[keyof typeof 
 /**
  * @export
  */
+export declare const ProjectsDraftsConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsDraftsConfirmAcceptLanguageEnum = typeof ProjectsDraftsConfirmAcceptLanguageEnum[keyof typeof ProjectsDraftsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsDraftsFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsDraftsFromUrlAcceptLanguageEnum = typeof ProjectsDraftsFromUrlAcceptLanguageEnum[keyof typeof ProjectsDraftsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsDraftsUploadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsDraftsUploadUrlAcceptLanguageEnum = typeof ProjectsDraftsUploadUrlAcceptLanguageEnum[keyof typeof ProjectsDraftsUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const SendToSelfAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -217,11 +387,3 @@ export declare const SendToSelfRecipientVkConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type SendToSelfRecipientVkConfirmAcceptLanguageEnum = typeof SendToSelfRecipientVkConfirmAcceptLanguageEnum[keyof typeof SendToSelfRecipientVkConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UploadUrlAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UploadUrlAcceptLanguageEnum = typeof UploadUrlAcceptLanguageEnum[keyof typeof UploadUrlAcceptLanguageEnum];

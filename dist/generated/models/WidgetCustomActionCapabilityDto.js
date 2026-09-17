@@ -37,6 +37,8 @@ function WidgetCustomActionCapabilityDtoFromJSONTyped(json, ignoreDiscriminator)
         'name': json['name'],
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
+        'returnsResult': json['returns_result'] == null ? undefined : json['returns_result'],
+        'executionContextId': json['execution_context_id'] == null ? undefined : json['execution_context_id'],
         'payloadSchema': json['payload_schema'] == null ? undefined : json['payload_schema'],
     };
 }
@@ -51,6 +53,8 @@ function WidgetCustomActionCapabilityDtoToJSONTyped(value, ignoreDiscriminator =
         'name': value['name'],
         'title': value['title'],
         'description': value['description'],
+        'returns_result': value['returnsResult'],
+        'execution_context_id': value['executionContextId'],
         'payload_schema': value['payloadSchema'],
     };
 }

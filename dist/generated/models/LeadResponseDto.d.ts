@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
+import type { LeadFunnelDto } from './LeadFunnelDto';
 import type { PendingSegmentResponseDto } from './PendingSegmentResponseDto';
 import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDto';
 /**
@@ -18,6 +19,12 @@ import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDt
  * @interface LeadResponseDto
  */
 export interface LeadResponseDto {
+    /**
+     *
+     * @type {Array<LeadFunnelDto>}
+     * @memberof LeadResponseDto
+     */
+    funnels: Array<LeadFunnelDto>;
     /**
      * ID
      * @type {string}

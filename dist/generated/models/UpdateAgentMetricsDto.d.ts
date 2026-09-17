@@ -16,6 +16,12 @@
  */
 export interface UpdateAgentMetricsDto {
     /**
+     * ID . null .
+     * @type {string}
+     * @memberof UpdateAgentMetricsDto
+     */
+    metricsModelId?: string | null;
+    /**
      *
      * @type {boolean}
      * @memberof UpdateAgentMetricsDto

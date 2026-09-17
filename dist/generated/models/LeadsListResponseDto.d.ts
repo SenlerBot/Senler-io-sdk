@@ -23,11 +23,11 @@ export interface LeadsListResponseDto {
      */
     leads: Array<LeadResponseDto>;
     /**
-     *
+     * include_total: true; null
      * @type {number}
      * @memberof LeadsListResponseDto
      */
-    total: number;
+    total: number | null;
     /**
      *
      * @type {number}
@@ -36,10 +36,16 @@ export interface LeadsListResponseDto {
     limit: number;
     /**
      *
-     * @type {number}
+     * @type {boolean}
      * @memberof LeadsListResponseDto
      */
-    offset: number;
+    hasMore: boolean;
+    /**
+     * cursor ; null,
+     * @type {string}
+     * @memberof LeadsListResponseDto
+     */
+    nextCursor: string | null;
 }
 /**
  * Check if a given object implements the LeadsListResponseDto interface.

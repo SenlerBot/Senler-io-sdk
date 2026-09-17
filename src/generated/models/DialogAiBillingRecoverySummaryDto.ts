@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { DialogAiBillingRecoveryReason } from './DialogAiBillingRecoveryReason';
+import {
+    DialogAiBillingRecoveryReasonFromJSON,
+    DialogAiBillingRecoveryReasonFromJSONTyped,
+    DialogAiBillingRecoveryReasonToJSON,
+    DialogAiBillingRecoveryReasonToJSONTyped,
+} from './DialogAiBillingRecoveryReason';
 import type { DialogAiBillingRecoveryAvailability } from './DialogAiBillingRecoveryAvailability';
 import {
     DialogAiBillingRecoveryAvailabilityFromJSON,
@@ -20,6 +27,13 @@ import {
     DialogAiBillingRecoveryAvailabilityToJSON,
     DialogAiBillingRecoveryAvailabilityToJSONTyped,
 } from './DialogAiBillingRecoveryAvailability';
+import type { DialogAiBillingRecoveryBulkRetryResponseDto } from './DialogAiBillingRecoveryBulkRetryResponseDto';
+import {
+    DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON,
+    DialogAiBillingRecoveryBulkRetryResponseDtoFromJSONTyped,
+    DialogAiBillingRecoveryBulkRetryResponseDtoToJSON,
+    DialogAiBillingRecoveryBulkRetryResponseDtoToJSONTyped,
+} from './DialogAiBillingRecoveryBulkRetryResponseDto';
 
 /**
  * DialogAiBillingRecoverySummaryDto.
@@ -34,29 +48,23 @@ export interface DialogAiBillingRecoverySummaryDto {
      */
     missedDialogs: number;
     /**
-     * AI- -
-     * @type {number}
-     * @memberof DialogAiBillingRecoverySummaryDto
-     */
-    missedMessages: number;
-    /**
      * ,
      * @type {number}
      * @memberof DialogAiBillingRecoverySummaryDto
      */
-    answeredMessages: number;
-    /**
-     *
-     * @type {number}
-     * @memberof DialogAiBillingRecoverySummaryDto
-     */
-    unansweredMessages: number;
+    waitingMetrics: number;
     /**
      * ,
      * @type {number}
      * @memberof DialogAiBillingRecoverySummaryDto
      */
     unansweredDialogs: number;
+    /**
+     * ; unknown
+     * @type {Array<DialogAiBillingRecoveryReason>}
+     * @memberof DialogAiBillingRecoverySummaryDto
+     */
+    reasons: Array<DialogAiBillingRecoveryReason>;
     /**
      * availability.
      * @type {DialogAiBillingRecoveryAvailability}
@@ -69,6 +77,12 @@ export interface DialogAiBillingRecoverySummaryDto {
      * @memberof DialogAiBillingRecoverySummaryDto
      */
     retryAvailable: boolean;
+    /**
+     * run.
+     * @type {DialogAiBillingRecoveryBulkRetryResponseDto}
+     * @memberof DialogAiBillingRecoverySummaryDto
+     */
+    run: DialogAiBillingRecoveryBulkRetryResponseDto | null;
 }
 
 
@@ -78,12 +92,12 @@ export interface DialogAiBillingRecoverySummaryDto {
  */
 export function instanceOfDialogAiBillingRecoverySummaryDto(value: object): value is DialogAiBillingRecoverySummaryDto {
     if (!('missedDialogs' in value) || value['missedDialogs'] === undefined) return false;
-    if (!('missedMessages' in value) || value['missedMessages'] === undefined) return false;
-    if (!('answeredMessages' in value) || value['answeredMessages'] === undefined) return false;
-    if (!('unansweredMessages' in value) || value['unansweredMessages'] === undefined) return false;
+    if (!('waitingMetrics' in value) || value['waitingMetrics'] === undefined) return false;
     if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined) return false;
+    if (!('reasons' in value) || value['reasons'] === undefined) return false;
     if (!('availability' in value) || value['availability'] === undefined) return false;
     if (!('retryAvailable' in value) || value['retryAvailable'] === undefined) return false;
+    if (!('run' in value) || value['run'] === undefined) return false;
     return true;
 }
 
@@ -98,12 +112,12 @@ export function DialogAiBillingRecoverySummaryDtoFromJSONTyped(json: any, ignore
     return {
 
         'missedDialogs': json['missed_dialogs'],
-        'missedMessages': json['missed_messages'],
-        'answeredMessages': json['answered_messages'],
-        'unansweredMessages': json['unanswered_messages'],
+        'waitingMetrics': json['waiting_metrics'],
         'unansweredDialogs': json['unanswered_dialogs'],
+        'reasons': ((json['reasons'] as Array<any>).map(DialogAiBillingRecoveryReasonFromJSON)),
         'availability': DialogAiBillingRecoveryAvailabilityFromJSON(json['availability']),
         'retryAvailable': json['retry_available'],
+        'run': DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON(json['run']),
     };
 }
 
@@ -119,11 +133,11 @@ export function DialogAiBillingRecoverySummaryDtoToJSONTyped(value?: DialogAiBil
     return {
 
         'missed_dialogs': value['missedDialogs'],
-        'missed_messages': value['missedMessages'],
-        'answered_messages': value['answeredMessages'],
-        'unanswered_messages': value['unansweredMessages'],
+        'waiting_metrics': value['waitingMetrics'],
         'unanswered_dialogs': value['unansweredDialogs'],
+        'reasons': ((value['reasons'] as Array<any>).map(DialogAiBillingRecoveryReasonToJSON)),
         'availability': DialogAiBillingRecoveryAvailabilityToJSON(value['availability']),
         'retry_available': value['retryAvailable'],
+        'run': DialogAiBillingRecoveryBulkRetryResponseDtoToJSON(value['run']),
     };
 }

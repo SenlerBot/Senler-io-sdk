@@ -35,6 +35,12 @@ export interface ImageGenModelStats {
     size?: string;
     /**
      *
+     * @type {string}
+     * @memberof ImageGenModelStats
+     */
+    resolution?: string;
+    /**
+     *
      * @type {number}
      * @memberof ImageGenModelStats
      */

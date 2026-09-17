@@ -22,10 +22,6 @@ exports.TokensPricingDtoToJSONTyped = TokensPricingDtoToJSONTyped;
  * Check if a given object implements the TokensPricingDto interface.
  */
 function instanceOfTokensPricingDto(value) {
-    if (!('inputCredits' in value) || value['inputCredits'] === undefined)
-        return false;
-    if (!('outputCredits' in value) || value['outputCredits'] === undefined)
-        return false;
     return true;
 }
 function TokensPricingDtoFromJSON(json) {
@@ -36,8 +32,8 @@ function TokensPricingDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'inputCredits': json['input_credits'],
-        'outputCredits': json['output_credits'],
+        'inputCredits': json['input_credits'] == null ? undefined : json['input_credits'],
+        'outputCredits': json['output_credits'] == null ? undefined : json['output_credits'],
         'cachedCredits': json['cached_credits'] == null ? undefined : json['cached_credits'],
     };
 }

@@ -19,6 +19,7 @@ exports.UpdateProjectDtoFromJSON = UpdateProjectDtoFromJSON;
 exports.UpdateProjectDtoFromJSONTyped = UpdateProjectDtoFromJSONTyped;
 exports.UpdateProjectDtoToJSON = UpdateProjectDtoToJSON;
 exports.UpdateProjectDtoToJSONTyped = UpdateProjectDtoToJSONTyped;
+const ProjectMetaDto_1 = require("./ProjectMetaDto");
 const ProjectAttachmentUploadLimitsByChannelDto_1 = require("./ProjectAttachmentUploadLimitsByChannelDto");
 /**
  * @export
@@ -59,7 +60,7 @@ function UpdateProjectDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isActive': json['is_active'] == null ? undefined : json['is_active'],
         'attachmentUploadLimitMb': json['attachment_upload_limit_mb'] == null ? undefined : json['attachment_upload_limit_mb'],
         'attachmentUploadLimitsByChannelMb': json['attachment_upload_limits_by_channel_mb'] == null ? undefined : (0, ProjectAttachmentUploadLimitsByChannelDto_1.ProjectAttachmentUploadLimitsByChannelDtoFromJSON)(json['attachment_upload_limits_by_channel_mb']),
-        'meta': json['meta'] == null ? undefined : json['meta'],
+        'meta': json['meta'] == null ? undefined : (0, ProjectMetaDto_1.ProjectMetaDtoFromJSON)(json['meta']),
     };
 }
 function UpdateProjectDtoToJSON(json) {
@@ -81,6 +82,6 @@ function UpdateProjectDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_active': value['isActive'],
         'attachment_upload_limit_mb': value['attachmentUploadLimitMb'],
         'attachment_upload_limits_by_channel_mb': (0, ProjectAttachmentUploadLimitsByChannelDto_1.ProjectAttachmentUploadLimitsByChannelDtoToJSON)(value['attachmentUploadLimitsByChannelMb']),
-        'meta': value['meta'],
+        'meta': (0, ProjectMetaDto_1.ProjectMetaDtoToJSON)(value['meta']),
     };
 }

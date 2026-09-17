@@ -24,7 +24,8 @@ exports.SelectedGlobalVariableBindingDtoToJSONTyped = SelectedGlobalVariableBind
  */
 exports.SelectedGlobalVariableBindingDtoScopeEnum = {
     Project: 'project',
-    Lead: 'lead'
+    Lead: 'lead',
+    Dialog: 'dialog'
 };
 /**
  * Check if a given object implements the SelectedGlobalVariableBindingDto interface.

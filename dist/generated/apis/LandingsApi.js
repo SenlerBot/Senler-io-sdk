@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateRealtimeFocusAcceptLanguageEnum = exports.UpdateDraftAcceptLanguageEnum = exports.PublicationsRestoreAcceptLanguageEnum = exports.LandingsUpdateAcceptLanguageEnum = exports.LandingsPublishAcceptLanguageEnum = exports.LandingsListAcceptLanguageEnum = exports.LandingsGetByIdAcceptLanguageEnum = exports.LandingsDeactivateAcceptLanguageEnum = exports.LandingsCreateAcceptLanguageEnum = exports.GetShareLinksAcceptLanguageEnum = exports.GetPublicationsAcceptLanguageEnum = exports.DuplicateAcceptLanguageEnum = exports.DeleteBlocksAcceptLanguageEnum = exports.BlocksMoveAcceptLanguageEnum = exports.AssetsUploadUrlAcceptLanguageEnum = exports.AssetsConfirmAcceptLanguageEnum = exports.LandingsApi = void 0;
+exports.UpdateRealtimeFocusAcceptLanguageEnum = exports.UpdateDraftAcceptLanguageEnum = exports.PublicationsRestoreAcceptLanguageEnum = exports.LandingsUpdateAcceptLanguageEnum = exports.LandingsPublishAcceptLanguageEnum = exports.LandingsListAcceptLanguageEnum = exports.LandingsGetByIdAcceptLanguageEnum = exports.LandingsDeactivateAcceptLanguageEnum = exports.LandingsCreateAcceptLanguageEnum = exports.GetShareLinksAcceptLanguageEnum = exports.GetPublicationsAcceptLanguageEnum = exports.DuplicateAcceptLanguageEnum = exports.DeleteBlocksAcceptLanguageEnum = exports.BlocksMoveAcceptLanguageEnum = exports.AssetsUploadUrlAcceptLanguageEnum = exports.AssetsFromUrlAcceptLanguageEnum = exports.AssetsConfirmAcceptLanguageEnum = exports.LandingsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -96,6 +96,51 @@ class LandingsApi extends runtime.BaseAPI {
      */
     async assetsConfirm(requestParameters, initOverrides) {
         const response = await this.assetsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    async assetsFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingId'] == null) {
+            throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling assetsFromUrl().');
+        }
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling assetsFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+        const response = await this.request({
+            path: `/api/landings/{landingId}/assets/from-url`.replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAssetUploadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    async assetsFromUrl(requestParameters, initOverrides) {
+        const response = await this.assetsFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -813,6 +858,13 @@ exports.LandingsApi = LandingsApi;
  * @export
  */
 exports.AssetsConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AssetsFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

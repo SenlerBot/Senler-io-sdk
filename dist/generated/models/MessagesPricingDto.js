@@ -22,8 +22,6 @@ exports.MessagesPricingDtoToJSONTyped = MessagesPricingDtoToJSONTyped;
  * Check if a given object implements the MessagesPricingDto interface.
  */
 function instanceOfMessagesPricingDto(value) {
-    if (!('priceCredits' in value) || value['priceCredits'] === undefined)
-        return false;
     return true;
 }
 function MessagesPricingDtoFromJSON(json) {
@@ -34,7 +32,7 @@ function MessagesPricingDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'priceCredits': json['price_credits'],
+        'priceCredits': json['price_credits'] == null ? undefined : json['price_credits'],
     };
 }
 function MessagesPricingDtoToJSON(json) {

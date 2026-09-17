@@ -65,6 +65,12 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
+    qualityLevel: PublicModelResponseDtoQualityLevelEnum | null;
+    /**
+     * , 15
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
     speedLevel: PublicModelResponseDtoSpeedLevelEnum | null;
     /**
      * tool-capable OpenRouter, 010000
@@ -73,11 +79,11 @@ export interface PublicModelResponseDto {
      */
     speedScoreBasisPoints: number | null;
     /**
-     * , 15
+     * , 15; null,
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    priceLevel: PublicModelResponseDtoPriceLevelEnum;
+    priceLevel: PublicModelResponseDtoPriceLevelEnum | null;
     /**
      *
      * @type {Date}
@@ -169,6 +175,12 @@ export interface PublicModelResponseDto {
      */
     audioPricingOptionalClientFields: Array<string>;
     /**
+     * 1000 web search, ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    clientWebSearchPricePer1kCallsCredits?: number;
+    /**
      * [image_generation] image input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicModelResponseDto
@@ -198,6 +210,12 @@ export interface PublicModelResponseDto {
      * @memberof PublicModelResponseDto
      */
     pricePer1kCharsCredits?: number;
+    /**
+     * [audio_generation] 1M UTF-8 , ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof PublicModelResponseDto
+     */
+    pricePer1mUtf8BytesCredits?: number;
     /**
      * [speech_recognition] audio input 1M , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
@@ -267,6 +285,17 @@ export type PublicModelResponseDtoReasoningLevelEnum = typeof PublicModelRespons
 /**
  * @export
  */
+export declare const PublicModelResponseDtoQualityLevelEnum: {
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+    readonly NUMBER_4: 4;
+    readonly NUMBER_5: 5;
+};
+export type PublicModelResponseDtoQualityLevelEnum = typeof PublicModelResponseDtoQualityLevelEnum[keyof typeof PublicModelResponseDtoQualityLevelEnum];
+/**
+ * @export
+ */
 export declare const PublicModelResponseDtoSpeedLevelEnum: {
     readonly NUMBER_1: 1;
     readonly NUMBER_2: 2;
@@ -301,6 +330,7 @@ export type PublicModelResponseDtoTypeEnum = typeof PublicModelResponseDtoTypeEn
  */
 export declare const PublicModelResponseDtoAudioPricingTypeEnum: {
     readonly Characters: "characters";
+    readonly Utf8Bytes: "utf8_bytes";
     readonly Minutes: "minutes";
     readonly TextInputAudioOutputTokens: "text_input_audio_output_tokens";
     readonly AudioInputTextOutputTokens: "audio_input_text_output_tokens";
@@ -311,7 +341,7 @@ export type PublicModelResponseDtoAudioPricingTypeEnum = typeof PublicModelRespo
  */
 export declare const PublicModelResponseDtoImagePricingTypeEnum: {
     readonly PerImage: "per_image";
-    readonly QualitySizeMatrix: "quality_size_matrix";
+    readonly VariantMatrix: "variant_matrix";
     readonly ImageTokenUsage: "image_token_usage";
 };
 export type PublicModelResponseDtoImagePricingTypeEnum = typeof PublicModelResponseDtoImagePricingTypeEnum[keyof typeof PublicModelResponseDtoImagePricingTypeEnum];

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryStartPreviewResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
+import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryStartPreviewResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportImageDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
 export interface CancelRequest {
     id: string;
     acceptLanguage?: CancelAcceptLanguageEnum;
@@ -28,6 +28,11 @@ export interface DeliveriesAttachmentsConfirmRequest {
     projectId: string;
     confirmUploadDto: ConfirmUploadDto;
     acceptLanguage?: DeliveriesAttachmentsConfirmAcceptLanguageEnum;
+}
+export interface DeliveriesAttachmentsFromUrlRequest {
+    projectId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: DeliveriesAttachmentsFromUrlAcceptLanguageEnum;
 }
 export interface DeliveriesAttachmentsUploadUrlRequest {
     projectId: string;
@@ -148,6 +153,16 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      *
      */
     deliveriesAttachmentsConfirm(requestParameters: DeliveriesAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    deliveriesAttachmentsFromUrlRaw(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    deliveriesAttachmentsFromUrl(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
      * URL .
      * S3 upload URL
@@ -321,6 +336,14 @@ export declare const DeliveriesAttachmentsConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeliveriesAttachmentsConfirmAcceptLanguageEnum = typeof DeliveriesAttachmentsConfirmAcceptLanguageEnum[keyof typeof DeliveriesAttachmentsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeliveriesAttachmentsFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeliveriesAttachmentsFromUrlAcceptLanguageEnum = typeof DeliveriesAttachmentsFromUrlAcceptLanguageEnum[keyof typeof DeliveriesAttachmentsFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

@@ -138,6 +138,7 @@ export type AuditLogResponseDtoDelegatedActorTypeEnum = typeof AuditLogResponseD
  * @export
  */
 export declare const AuditLogResponseDtoEntityTypeEnum: {
+    readonly Funnel: "funnel";
     readonly Project: "project";
     readonly Agent: "agent";
     readonly Channel: "channel";
@@ -150,6 +151,7 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly KnowledgeTable: "knowledge_table";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly DialogVariableDefinition: "dialog_variable_definition";
     readonly Segment: "segment";
     readonly SegmentConsentDocument: "segment_consent_document";
     readonly Landing: "landing";

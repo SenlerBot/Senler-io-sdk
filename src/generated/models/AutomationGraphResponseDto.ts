@@ -48,6 +48,13 @@ import {
     AutomationResponseDtoToJSON,
     AutomationResponseDtoToJSONTyped,
 } from './AutomationResponseDto';
+import type { AutomationGroupResponseDto } from './AutomationGroupResponseDto';
+import {
+    AutomationGroupResponseDtoFromJSON,
+    AutomationGroupResponseDtoFromJSONTyped,
+    AutomationGroupResponseDtoToJSON,
+    AutomationGroupResponseDtoToJSONTyped,
+} from './AutomationGroupResponseDto';
 
 /**
  * AutomationGraphResponseDto.
@@ -91,6 +98,12 @@ export interface AutomationGraphResponseDto {
      * @memberof AutomationGraphResponseDto
      */
     edges: Array<AutomationEdgeResponseDto>;
+    /**
+     * .
+     * @type {Array<AutomationGroupResponseDto>}
+     * @memberof AutomationGraphResponseDto
+     */
+    groups: Array<AutomationGroupResponseDto>;
 }
 
 /**
@@ -101,6 +114,7 @@ export function instanceOfAutomationGraphResponseDto(value: object): value is Au
     if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined) return false;
     if (!('nodes' in value) || value['nodes'] === undefined) return false;
     if (!('edges' in value) || value['edges'] === undefined) return false;
+    if (!('groups' in value) || value['groups'] === undefined) return false;
     return true;
 }
 
@@ -120,6 +134,7 @@ export function AutomationGraphResponseDtoFromJSONTyped(json: any, ignoreDiscrim
         'hasUnpublishedChanges': json['has_unpublished_changes'],
         'nodes': ((json['nodes'] as Array<any>).map(AutomationNodeResponseDtoFromJSON)),
         'edges': ((json['edges'] as Array<any>).map(AutomationEdgeResponseDtoFromJSON)),
+        'groups': ((json['groups'] as Array<any>).map(AutomationGroupResponseDtoFromJSON)),
     };
 }
 
@@ -140,5 +155,6 @@ export function AutomationGraphResponseDtoToJSONTyped(value?: AutomationGraphRes
         'has_unpublished_changes': value['hasUnpublishedChanges'],
         'nodes': ((value['nodes'] as Array<any>).map(AutomationNodeResponseDtoToJSON)),
         'edges': ((value['edges'] as Array<any>).map(AutomationEdgeResponseDtoToJSON)),
+        'groups': ((value['groups'] as Array<any>).map(AutomationGroupResponseDtoToJSON)),
     };
 }

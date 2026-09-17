@@ -29,6 +29,7 @@ import type {
   ErrorResponse,
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
+  ImportImageDto,
   ListDeliveriesResponseDto,
   ScheduleDeliveryDto,
   StartDeliveryResponseDto,
@@ -66,6 +67,8 @@ import {
     GetUploadUrlDtoToJSON,
     GetUploadUrlResponseDtoFromJSON,
     GetUploadUrlResponseDtoToJSON,
+    ImportImageDtoFromJSON,
+    ImportImageDtoToJSON,
     ListDeliveriesResponseDtoFromJSON,
     ListDeliveriesResponseDtoToJSON,
     ScheduleDeliveryDtoFromJSON,
@@ -102,6 +105,12 @@ export interface DeliveriesAttachmentsConfirmRequest {
     projectId: string;
     confirmUploadDto: ConfirmUploadDto;
     acceptLanguage?: DeliveriesAttachmentsConfirmAcceptLanguageEnum;
+}
+
+export interface DeliveriesAttachmentsFromUrlRequest {
+    projectId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: DeliveriesAttachmentsFromUrlAcceptLanguageEnum;
 }
 
 export interface DeliveriesAttachmentsUploadUrlRequest {
@@ -427,6 +436,72 @@ export class DeliveriesApi extends runtime.BaseAPI {
      */
     async deliveriesAttachmentsConfirm(requestParameters: DeliveriesAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
         const response = await this.deliveriesAttachmentsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    async deliveriesAttachmentsFromUrlRaw(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling deliveriesAttachmentsFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling deliveriesAttachmentsFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
+        }
+
+        const response = await this.request({
+            path: `/api/deliveries/attachments/from-url`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    async deliveriesAttachmentsFromUrl(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.deliveriesAttachmentsFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1321,6 +1396,14 @@ export const DeliveriesAttachmentsConfirmAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type DeliveriesAttachmentsConfirmAcceptLanguageEnum = typeof DeliveriesAttachmentsConfirmAcceptLanguageEnum[keyof typeof DeliveriesAttachmentsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DeliveriesAttachmentsFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeliveriesAttachmentsFromUrlAcceptLanguageEnum = typeof DeliveriesAttachmentsFromUrlAcceptLanguageEnum[keyof typeof DeliveriesAttachmentsFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

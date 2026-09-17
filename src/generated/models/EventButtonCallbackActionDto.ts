@@ -31,6 +31,12 @@ export interface EventButtonCallbackActionDto {
      * @memberof EventButtonCallbackActionDto
      */
     data: string;
+    /**
+     * VK . callback.
+     * @type {boolean}
+     * @memberof EventButtonCallbackActionDto
+     */
+    vkSendText?: boolean;
 }
 
 
@@ -64,6 +70,7 @@ export function EventButtonCallbackActionDtoFromJSONTyped(json: any, ignoreDiscr
 
         'type': json['type'],
         'data': json['data'],
+        'vkSendText': json['vk_send_text'] == null ? undefined : json['vk_send_text'],
     };
 }
 
@@ -80,5 +87,6 @@ export function EventButtonCallbackActionDtoToJSONTyped(value?: EventButtonCallb
 
         'type': value['type'],
         'data': value['data'],
+        'vk_send_text': value['vkSendText'],
     };
 }

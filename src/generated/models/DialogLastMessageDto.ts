@@ -90,6 +90,9 @@ export interface DialogLastMessageDto {
  * @export
  */
 export const DialogLastMessageDtoActionTypeEnum = {
+    FunnelEntered: 'funnel_entered',
+    FunnelStageChanged: 'funnel_stage_changed',
+    FunnelLeft: 'funnel_left',
     MessageCreated: 'message_created',
     MessageEdited: 'message_edited',
     MessageDeleted: 'message_deleted',

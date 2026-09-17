@@ -9,8 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { MailingMessagePackageCatalogDto } from './MailingMessagePackageCatalogDto';
-import type { BillingAddonPlanCatalogDto } from './BillingAddonPlanCatalogDto';
+import type { BillingAddonCatalogDto } from './BillingAddonCatalogDto';
 /**
  * SubscriptionCatalogResponseDto.
  * @export
@@ -18,17 +17,11 @@ import type { BillingAddonPlanCatalogDto } from './BillingAddonPlanCatalogDto';
  */
 export interface SubscriptionCatalogResponseDto {
     /**
-     * recurring addons.
-     * @type {Array<BillingAddonPlanCatalogDto>}
+     * addons.
+     * @type {Array<BillingAddonCatalogDto>}
      * @memberof SubscriptionCatalogResponseDto
      */
-    recurringAddons: Array<BillingAddonPlanCatalogDto>;
-    /**
-     * mailing packages.
-     * @type {Array<MailingMessagePackageCatalogDto>}
-     * @memberof SubscriptionCatalogResponseDto
-     */
-    mailingPackages: Array<MailingMessagePackageCatalogDto>;
+    addons: Array<BillingAddonCatalogDto>;
 }
 /**
  * Check if a given object implements the SubscriptionCatalogResponseDto interface.

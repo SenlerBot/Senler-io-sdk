@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface AgentInstructionResponseDto {
     /**
+     * . .
+     * @type {Array<string>}
+     * @memberof AgentInstructionResponseDto
+     */
+    conflictFields: Array<string>;
+    /**
      * UUID
      * @type {string}
      * @memberof AgentInstructionResponseDto
@@ -66,6 +72,7 @@ export type AgentInstructionResponseDtoVersionEnum = typeof AgentInstructionResp
  * Check if a given object implements the AgentInstructionResponseDto interface.
  */
 export function instanceOfAgentInstructionResponseDto(value: object): value is AgentInstructionResponseDto {
+    if (!('conflictFields' in value) || value['conflictFields'] === undefined) return false;
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
     if (!('version' in value) || value['version'] === undefined) return false;
     if (!('versionId' in value) || value['versionId'] === undefined) return false;
@@ -84,6 +91,7 @@ export function AgentInstructionResponseDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'conflictFields': json['conflict_fields'],
         'agentId': json['agent_id'],
         'version': json['version'],
         'versionId': json['version_id'],
@@ -103,6 +111,7 @@ export function AgentInstructionResponseDtoToJSONTyped(value?: AgentInstructionR
 
     return {
 
+        'conflict_fields': value['conflictFields'],
         'agent_id': value['agentId'],
         'version': value['version'],
         'version_id': value['versionId'],

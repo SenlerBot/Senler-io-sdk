@@ -46,6 +46,7 @@ function EventMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'content': json['content'],
         'contentFormat': json['content_format'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'model': json['model'] == null ? undefined : json['model'],
         'subject': json['subject'] == null ? undefined : json['subject'],
         'rawText': json['raw_text'] == null ? undefined : json['raw_text'],
@@ -62,6 +63,7 @@ function EventMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'content': value['content'],
         'content_format': value['contentFormat'],
+        'disable_link_preview': value['disableLinkPreview'],
         'model': value['model'],
         'subject': value['subject'],
         'raw_text': value['rawText'],

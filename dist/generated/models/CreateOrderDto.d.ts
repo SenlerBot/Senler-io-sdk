@@ -16,17 +16,23 @@
  */
 export interface CreateOrderDto {
     /**
-     * . topup; credits ., (/); : 1.25 = 125
+     *
+     * @type {string}
+     * @memberof CreateOrderDto
+     */
+    paySystemId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateOrderDto
+     */
+    paymentMethodId?: string;
+    /**
+     * . topup., (/); : 1.25 = 125
      * @type {number}
      * @memberof CreateOrderDto
      */
     amount?: number;
-    /**
-     * ID . payment_settings .
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    paySystemId: string;
     /**
      * (default: topup). billing_invoice.
      * @type {string}
@@ -40,12 +46,6 @@ export interface CreateOrderDto {
      */
     useBalance?: boolean;
     /**
-     * ID ( order_type = "credits")
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    packageId?: string;
-    /**
      * ID ( billing_invoice)
      * @type {string}
      * @memberof CreateOrderDto
@@ -57,7 +57,6 @@ export interface CreateOrderDto {
  */
 export declare const CreateOrderDtoOrderTypeEnum: {
     readonly Topup: "topup";
-    readonly Credits: "credits";
     readonly BillingInvoice: "billing_invoice";
 };
 export type CreateOrderDtoOrderTypeEnum = typeof CreateOrderDtoOrderTypeEnum[keyof typeof CreateOrderDtoOrderTypeEnum];

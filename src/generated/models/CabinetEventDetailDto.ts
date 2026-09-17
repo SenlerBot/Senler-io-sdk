@@ -27,13 +27,6 @@ import {
     EventButtonDtoToJSON,
     EventButtonDtoToJSONTyped,
 } from './EventButtonDto';
-import type { EventMessageDto } from './EventMessageDto';
-import {
-    EventMessageDtoFromJSON,
-    EventMessageDtoFromJSONTyped,
-    EventMessageDtoToJSON,
-    EventMessageDtoToJSONTyped,
-} from './EventMessageDto';
 import type { EventPollAnswerChangeDto } from './EventPollAnswerChangeDto';
 import {
     EventPollAnswerChangeDtoFromJSON,
@@ -48,6 +41,55 @@ import {
     EventTriggerContextDtoToJSON,
     EventTriggerContextDtoToJSONTyped,
 } from './EventTriggerContextDto';
+import type { EventCostsCabinetDto } from './EventCostsCabinetDto';
+import {
+    EventCostsCabinetDtoFromJSON,
+    EventCostsCabinetDtoFromJSONTyped,
+    EventCostsCabinetDtoToJSON,
+    EventCostsCabinetDtoToJSONTyped,
+} from './EventCostsCabinetDto';
+import type { EventReactionDto } from './EventReactionDto';
+import {
+    EventReactionDtoFromJSON,
+    EventReactionDtoFromJSONTyped,
+    EventReactionDtoToJSON,
+    EventReactionDtoToJSONTyped,
+} from './EventReactionDto';
+import type { DialogChatEventDtoDeliveryRef } from './DialogChatEventDtoDeliveryRef';
+import {
+    DialogChatEventDtoDeliveryRefFromJSON,
+    DialogChatEventDtoDeliveryRefFromJSONTyped,
+    DialogChatEventDtoDeliveryRefToJSON,
+    DialogChatEventDtoDeliveryRefToJSONTyped,
+} from './DialogChatEventDtoDeliveryRef';
+import type { EventTypingDto } from './EventTypingDto';
+import {
+    EventTypingDtoFromJSON,
+    EventTypingDtoFromJSONTyped,
+    EventTypingDtoToJSON,
+    EventTypingDtoToJSONTyped,
+} from './EventTypingDto';
+import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
+import {
+    EventMessageInteractionsDtoFromJSON,
+    EventMessageInteractionsDtoFromJSONTyped,
+    EventMessageInteractionsDtoToJSON,
+    EventMessageInteractionsDtoToJSONTyped,
+} from './EventMessageInteractionsDto';
+import type { EventErrorDto } from './EventErrorDto';
+import {
+    EventErrorDtoFromJSON,
+    EventErrorDtoFromJSONTyped,
+    EventErrorDtoToJSON,
+    EventErrorDtoToJSONTyped,
+} from './EventErrorDto';
+import type { EventMessageDto } from './EventMessageDto';
+import {
+    EventMessageDtoFromJSON,
+    EventMessageDtoFromJSONTyped,
+    EventMessageDtoToJSON,
+    EventMessageDtoToJSONTyped,
+} from './EventMessageDto';
 import type { EventTimerDto } from './EventTimerDto';
 import {
     EventTimerDtoFromJSON,
@@ -69,20 +111,6 @@ import {
     EventAiDtoToJSON,
     EventAiDtoToJSONTyped,
 } from './EventAiDto';
-import type { EventCostsCabinetDto } from './EventCostsCabinetDto';
-import {
-    EventCostsCabinetDtoFromJSON,
-    EventCostsCabinetDtoFromJSONTyped,
-    EventCostsCabinetDtoToJSON,
-    EventCostsCabinetDtoToJSONTyped,
-} from './EventCostsCabinetDto';
-import type { EventReactionDto } from './EventReactionDto';
-import {
-    EventReactionDtoFromJSON,
-    EventReactionDtoFromJSONTyped,
-    EventReactionDtoToJSON,
-    EventReactionDtoToJSONTyped,
-} from './EventReactionDto';
 import type { DialogChatEventDtoSourceContext } from './DialogChatEventDtoSourceContext';
 import {
     DialogChatEventDtoSourceContextFromJSON,
@@ -90,13 +118,6 @@ import {
     DialogChatEventDtoSourceContextToJSON,
     DialogChatEventDtoSourceContextToJSONTyped,
 } from './DialogChatEventDtoSourceContext';
-import type { DialogChatEventDtoDeliveryRef } from './DialogChatEventDtoDeliveryRef';
-import {
-    DialogChatEventDtoDeliveryRefFromJSON,
-    DialogChatEventDtoDeliveryRefFromJSONTyped,
-    DialogChatEventDtoDeliveryRefToJSON,
-    DialogChatEventDtoDeliveryRefToJSONTyped,
-} from './DialogChatEventDtoDeliveryRef';
 import type { EventModerationDto } from './EventModerationDto';
 import {
     EventModerationDtoFromJSON,
@@ -125,13 +146,6 @@ import {
     EventChatChangeDtoToJSON,
     EventChatChangeDtoToJSONTyped,
 } from './EventChatChangeDto';
-import type { EventTypingDto } from './EventTypingDto';
-import {
-    EventTypingDtoFromJSON,
-    EventTypingDtoFromJSONTyped,
-    EventTypingDtoToJSON,
-    EventTypingDtoToJSONTyped,
-} from './EventTypingDto';
 import type { EventButtonClickDto } from './EventButtonClickDto';
 import {
     EventButtonClickDtoFromJSON,
@@ -146,6 +160,13 @@ import {
     EventGenerationDtoToJSON,
     EventGenerationDtoToJSONTyped,
 } from './EventGenerationDto';
+import type { AutomationFunnelObservationDto } from './AutomationFunnelObservationDto';
+import {
+    AutomationFunnelObservationDtoFromJSON,
+    AutomationFunnelObservationDtoFromJSONTyped,
+    AutomationFunnelObservationDtoToJSON,
+    AutomationFunnelObservationDtoToJSONTyped,
+} from './AutomationFunnelObservationDto';
 import type { EventSenderDto } from './EventSenderDto';
 import {
     EventSenderDtoFromJSON,
@@ -153,13 +174,13 @@ import {
     EventSenderDtoToJSON,
     EventSenderDtoToJSONTyped,
 } from './EventSenderDto';
-import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
+import type { EventFunnelDto } from './EventFunnelDto';
 import {
-    EventMessageInteractionsDtoFromJSON,
-    EventMessageInteractionsDtoFromJSONTyped,
-    EventMessageInteractionsDtoToJSON,
-    EventMessageInteractionsDtoToJSONTyped,
-} from './EventMessageInteractionsDto';
+    EventFunnelDtoFromJSON,
+    EventFunnelDtoFromJSONTyped,
+    EventFunnelDtoToJSON,
+    EventFunnelDtoToJSONTyped,
+} from './EventFunnelDto';
 import type { EventPollVoteDto } from './EventPollVoteDto';
 import {
     EventPollVoteDtoFromJSON,
@@ -167,13 +188,6 @@ import {
     EventPollVoteDtoToJSON,
     EventPollVoteDtoToJSONTyped,
 } from './EventPollVoteDto';
-import type { EventErrorDto } from './EventErrorDto';
-import {
-    EventErrorDtoFromJSON,
-    EventErrorDtoFromJSONTyped,
-    EventErrorDtoToJSON,
-    EventErrorDtoToJSONTyped,
-} from './EventErrorDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
 import {
     EventAttachmentCabinetDtoFromJSON,
@@ -188,6 +202,18 @@ import {
  * @interface CabinetEventDetailDto
  */
 export interface CabinetEventDetailDto {
+    /**
+     *
+     * @type {EventFunnelDto}
+     * @memberof CabinetEventDetailDto
+     */
+    funnel?: EventFunnelDto;
+    /**
+     *
+     * @type {AutomationFunnelObservationDto}
+     * @memberof CabinetEventDetailDto
+     */
+    automationObservation?: AutomationFunnelObservationDto;
     /**
      * ID
      * @type {string}
@@ -242,6 +268,12 @@ export interface CabinetEventDetailDto {
      * @memberof CabinetEventDetailDto
      */
     leadId?: string;
+    /**
+     * ;
+     * @type {string}
+     * @memberof CabinetEventDetailDto
+     */
+    dialogLeadId?: string;
     /**
      *
      * @type {string}
@@ -471,6 +503,9 @@ export type CabinetEventDetailDtoPlatformTypeEnum = typeof CabinetEventDetailDto
  * @export
  */
 export const CabinetEventDetailDtoActionTypeEnum = {
+    FunnelEntered: 'funnel_entered',
+    FunnelStageChanged: 'funnel_stage_changed',
+    FunnelLeft: 'funnel_left',
     MessageCreated: 'message_created',
     MessageEdited: 'message_edited',
     MessageDeleted: 'message_deleted',
@@ -590,6 +625,8 @@ export function CabinetEventDetailDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'funnel': json['funnel'] == null ? undefined : EventFunnelDtoFromJSON(json['funnel']),
+        'automationObservation': json['automation_observation'] == null ? undefined : AutomationFunnelObservationDtoFromJSON(json['automation_observation']),
         'id': json['id'],
         'dialogId': json['dialog_id'] == null ? undefined : json['dialog_id'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
@@ -599,6 +636,7 @@ export function CabinetEventDetailDtoFromJSONTyped(json: any, ignoreDiscriminato
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'appId': json['app_id'] == null ? undefined : json['app_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
+        'dialogLeadId': json['dialog_lead_id'] == null ? undefined : json['dialog_lead_id'],
         'actionType': json['action_type'],
         'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
@@ -647,6 +685,8 @@ export function CabinetEventDetailDtoToJSONTyped(value?: CabinetEventDetailDto |
 
     return {
 
+        'funnel': EventFunnelDtoToJSON(value['funnel']),
+        'automation_observation': AutomationFunnelObservationDtoToJSON(value['automationObservation']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'mcp_server_id': value['mcpServerId'],
@@ -656,6 +696,7 @@ export function CabinetEventDetailDtoToJSONTyped(value?: CabinetEventDetailDto |
         'agent_id': value['agentId'],
         'app_id': value['appId'],
         'lead_id': value['leadId'],
+        'dialog_lead_id': value['dialogLeadId'],
         'action_type': value['actionType'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],

@@ -30,7 +30,9 @@ import type { EventHierarchyDto } from './EventHierarchyDto';
 import type { EventChatChangeDto } from './EventChatChangeDto';
 import type { EventButtonClickDto } from './EventButtonClickDto';
 import type { EventGenerationDto } from './EventGenerationDto';
+import type { AutomationFunnelObservationDto } from './AutomationFunnelObservationDto';
 import type { EventSenderDto } from './EventSenderDto';
+import type { EventFunnelDto } from './EventFunnelDto';
 import type { EventPollVoteDto } from './EventPollVoteDto';
 import type { EventSearchMetadataDto } from './EventSearchMetadataDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
@@ -40,6 +42,18 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  * @interface DialogChatSearchEventDto
  */
 export interface DialogChatSearchEventDto {
+    /**
+     *
+     * @type {EventFunnelDto}
+     * @memberof DialogChatSearchEventDto
+     */
+    funnel?: EventFunnelDto;
+    /**
+     *
+     * @type {AutomationFunnelObservationDto}
+     * @memberof DialogChatSearchEventDto
+     */
+    automationObservation?: AutomationFunnelObservationDto;
     /**
      * ID
      * @type {string}
@@ -94,6 +108,12 @@ export interface DialogChatSearchEventDto {
      * @memberof DialogChatSearchEventDto
      */
     leadId?: string;
+    /**
+     * ;
+     * @type {string}
+     * @memberof DialogChatSearchEventDto
+     */
+    dialogLeadId?: string;
     /**
      *
      * @type {string}
@@ -385,6 +405,7 @@ export declare const DialogChatSearchEventDtoActionTypeEnum: {
     readonly BroadcastStopped: "broadcast_stopped";
     readonly BroadcastViewersUpdated: "broadcast_viewers_updated";
     readonly AiResponseStarted: "ai_response_started";
+    readonly AiResponseCancelled: "ai_response_cancelled";
     readonly AgentInvoked: "agent_invoked";
     readonly ToolStarted: "tool_started";
     readonly ReasoningRecorded: "reasoning_recorded";

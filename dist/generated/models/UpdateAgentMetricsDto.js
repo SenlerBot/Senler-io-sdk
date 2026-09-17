@@ -32,6 +32,7 @@ function UpdateAgentMetricsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'metricsCollectionEnabled': json['metrics_collection_enabled'] == null ? undefined : json['metrics_collection_enabled'],
         'useDefaultEventMetrics': json['use_default_event_metrics'] == null ? undefined : json['use_default_event_metrics'],
         'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'] == null ? undefined : json['use_default_discussion_metrics'],
@@ -45,6 +46,7 @@ function UpdateAgentMetricsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'metrics_model_id': value['metricsModelId'],
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'use_default_event_metrics': value['useDefaultEventMetrics'],
         'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],

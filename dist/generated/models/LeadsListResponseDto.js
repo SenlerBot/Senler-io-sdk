@@ -29,7 +29,9 @@ function instanceOfLeadsListResponseDto(value) {
         return false;
     if (!('limit' in value) || value['limit'] === undefined)
         return false;
-    if (!('offset' in value) || value['offset'] === undefined)
+    if (!('hasMore' in value) || value['hasMore'] === undefined)
+        return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined)
         return false;
     return true;
 }
@@ -44,7 +46,8 @@ function LeadsListResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'leads': (json['leads'].map(LeadResponseDto_1.LeadResponseDtoFromJSON)),
         'total': json['total'],
         'limit': json['limit'],
-        'offset': json['offset'],
+        'hasMore': json['has_more'],
+        'nextCursor': json['next_cursor'],
     };
 }
 function LeadsListResponseDtoToJSON(json) {
@@ -58,6 +61,7 @@ function LeadsListResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'leads': (value['leads'].map(LeadResponseDto_1.LeadResponseDtoToJSON)),
         'total': value['total'],
         'limit': value['limit'],
-        'offset': value['offset'],
+        'has_more': value['hasMore'],
+        'next_cursor': value['nextCursor'],
     };
 }

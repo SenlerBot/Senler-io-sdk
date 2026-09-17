@@ -45,6 +45,7 @@ function EventButtonCallbackActionDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'data': json['data'],
+        'vkSendText': json['vk_send_text'] == null ? undefined : json['vk_send_text'],
     };
 }
 function EventButtonCallbackActionDtoToJSON(json) {
@@ -57,5 +58,6 @@ function EventButtonCallbackActionDtoToJSONTyped(value, ignoreDiscriminator = fa
     return {
         'type': value['type'],
         'data': value['data'],
+        'vk_send_text': value['vkSendText'],
     };
 }

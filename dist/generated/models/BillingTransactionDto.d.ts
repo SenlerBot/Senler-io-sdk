@@ -233,22 +233,19 @@ export interface BillingTransactionDto {
      */
     tariffName?: LocalizedTextDto | null;
     /**
-     * ( )
+     *
      * @type {LocalizedTextDto}
      * @memberof BillingTransactionDto
      */
-    creditPackageName?: LocalizedTextDto | null;
+    addonName?: LocalizedTextDto | null;
 }
 /**
  * @export
  */
 export declare const BillingTransactionDtoTypeEnum: {
     readonly Deposit: "deposit";
-    readonly TariffPurchase: "tariff_purchase";
-    readonly CreditPurchase: "credit_purchase";
-    readonly CreditAutoPurchase: "credit_auto_purchase";
     readonly SubscriptionPurchase: "subscription_purchase";
-    readonly MailingMessagePurchase: "mailing_message_purchase";
+    readonly AddonPurchase: "addon_purchase";
     readonly Refund: "refund";
     readonly Adjustment: "adjustment";
     readonly CurrencyConversion: "currency_conversion";

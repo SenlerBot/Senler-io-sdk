@@ -24,14 +24,13 @@ export interface MessagesPricingDto {
      * @type {number}
      * @memberof MessagesPricingDto
      */
-    priceCredits: number;
+    priceCredits?: number;
 }
 
 /**
  * Check if a given object implements the MessagesPricingDto interface.
  */
 export function instanceOfMessagesPricingDto(value: object): value is MessagesPricingDto {
-    if (!('priceCredits' in value) || value['priceCredits'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +44,7 @@ export function MessagesPricingDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
-        'priceCredits': json['price_credits'],
+        'priceCredits': json['price_credits'] == null ? undefined : json['price_credits'],
     };
 }
 

@@ -66,6 +66,18 @@ export interface AppAgentEventDefinitionDto {
      */
     agentDescriptionOverride: string | null;
     /**
+     * .
+     * @type {boolean}
+     * @memberof AppAgentEventDefinitionDto
+     */
+    agentReactionEnabled?: boolean;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AppAgentEventDefinitionDto
+     */
+    automationStartEnabled?: boolean;
+    /**
      * data
      * @type {Array<AppAgentEventFieldDefinitionDto>}
      * @memberof AppAgentEventDefinitionDto
@@ -99,6 +111,8 @@ export function AppAgentEventDefinitionDtoFromJSONTyped(json: any, ignoreDiscrim
         'displayName': AppAgentEventLocalizedNameDtoFromJSON(json['display_name']),
         'displayDescription': AppAgentEventLocalizedDescriptionDtoFromJSON(json['display_description']),
         'agentDescriptionOverride': json['agent_description_override'],
+        'agentReactionEnabled': json['agent_reaction_enabled'] == null ? undefined : json['agent_reaction_enabled'],
+        'automationStartEnabled': json['automation_start_enabled'] == null ? undefined : json['automation_start_enabled'],
         'fields': ((json['fields'] as Array<any>).map(AppAgentEventFieldDefinitionDtoFromJSON)),
     };
 }
@@ -118,6 +132,8 @@ export function AppAgentEventDefinitionDtoToJSONTyped(value?: AppAgentEventDefin
         'display_name': AppAgentEventLocalizedNameDtoToJSON(value['displayName']),
         'display_description': AppAgentEventLocalizedDescriptionDtoToJSON(value['displayDescription']),
         'agent_description_override': value['agentDescriptionOverride'],
+        'agent_reaction_enabled': value['agentReactionEnabled'],
+        'automation_start_enabled': value['automationStartEnabled'],
         'fields': ((value['fields'] as Array<any>).map(AppAgentEventFieldDefinitionDtoToJSON)),
     };
 }

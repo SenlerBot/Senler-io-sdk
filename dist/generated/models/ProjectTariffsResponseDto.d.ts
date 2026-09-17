@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 import type { ProjectTariffItemDto } from './ProjectTariffItemDto';
-import type { TariffSubscriptionDto } from './TariffSubscriptionDto';
 /**
  * ProjectTariffsResponseDto.
  * @export
@@ -23,12 +22,6 @@ export interface ProjectTariffsResponseDto {
      * @memberof ProjectTariffsResponseDto
      */
     tariffs: Array<ProjectTariffItemDto>;
-    /**
-     * . null, Trial .
-     * @type {TariffSubscriptionDto}
-     * @memberof ProjectTariffsResponseDto
-     */
-    currentSubscription?: TariffSubscriptionDto | null;
 }
 /**
  * Check if a given object implements the ProjectTariffsResponseDto interface.

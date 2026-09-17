@@ -51,6 +51,8 @@ exports.ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanManageLeads: 'can_manage_leads',
     CanViewLeadVariables: 'can_view_lead_variables',
     CanManageLeadVariables: 'can_manage_lead_variables',
+    CanViewDialogVariables: 'can_view_dialog_variables',
+    CanManageDialogVariables: 'can_manage_dialog_variables',
     CanViewSegments: 'can_view_segments',
     CanManageSegments: 'can_manage_segments',
     CanViewLandings: 'can_view_landings',
@@ -78,7 +80,8 @@ exports.ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanViewStorage: 'can_view_storage',
     CanManageStorage: 'can_manage_storage',
     CanViewProjectVariables: 'can_view_project_variables',
-    CanManageProjectVariables: 'can_manage_project_variables'
+    CanManageProjectVariables: 'can_manage_project_variables',
+    CanUseProjectApps: 'can_use_project_apps'
 };
 /**
  * Check if a given object implements the ProjectAppOAuthAccessPolicyDto interface.

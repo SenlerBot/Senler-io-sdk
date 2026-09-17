@@ -18,6 +18,7 @@ import type {
   AppAgentEventDefinitionDto,
   AppAgentEventResponseDto,
   AppAutomationStepDefinitionDto,
+  AppAutomationStepIconImportResponseDto,
   AppAutomationStepIconUploadUrlResponseDto,
   AppAutomationStepResponseDto,
   AppAutomationStepStatusDto,
@@ -33,10 +34,12 @@ import type {
   DeveloperAppInstallationsResponseDto,
   ErrorResponse,
   GetAppAutomationStepIconUploadUrlDto,
+  ImportImageDto,
   OAuthTokenErrorResponseDto,
   OauthToken200Response,
   ProjectAppOAuthAccessPolicyDto,
   SetAppCatalogVisibilityDto,
+  UpdateAppActionSettingsDto,
   UpdateAppEmbeddedPageSettingsDto,
   UpdateAppGeneralSettingsDto,
   UpdateAppOAuthRedirectUrisDto,
@@ -50,6 +53,8 @@ import {
     AppAgentEventResponseDtoToJSON,
     AppAutomationStepDefinitionDtoFromJSON,
     AppAutomationStepDefinitionDtoToJSON,
+    AppAutomationStepIconImportResponseDtoFromJSON,
+    AppAutomationStepIconImportResponseDtoToJSON,
     AppAutomationStepIconUploadUrlResponseDtoFromJSON,
     AppAutomationStepIconUploadUrlResponseDtoToJSON,
     AppAutomationStepResponseDtoFromJSON,
@@ -80,6 +85,8 @@ import {
     ErrorResponseToJSON,
     GetAppAutomationStepIconUploadUrlDtoFromJSON,
     GetAppAutomationStepIconUploadUrlDtoToJSON,
+    ImportImageDtoFromJSON,
+    ImportImageDtoToJSON,
     OAuthTokenErrorResponseDtoFromJSON,
     OAuthTokenErrorResponseDtoToJSON,
     OauthToken200ResponseFromJSON,
@@ -88,6 +95,8 @@ import {
     ProjectAppOAuthAccessPolicyDtoToJSON,
     SetAppCatalogVisibilityDtoFromJSON,
     SetAppCatalogVisibilityDtoToJSON,
+    UpdateAppActionSettingsDtoFromJSON,
+    UpdateAppActionSettingsDtoToJSON,
     UpdateAppEmbeddedPageSettingsDtoFromJSON,
     UpdateAppEmbeddedPageSettingsDtoToJSON,
     UpdateAppGeneralSettingsDtoFromJSON,
@@ -119,6 +128,12 @@ export interface AutomationStepsRequest {
     appId: string;
     appAutomationStepDefinitionDto: AppAutomationStepDefinitionDto;
     acceptLanguage?: AutomationStepsAcceptLanguageEnum;
+}
+
+export interface AutomationStepsIconFromUrlRequest {
+    appId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AutomationStepsIconFromUrlAcceptLanguageEnum;
 }
 
 export interface AutomationStepsIconUploadUrlRequest {
@@ -209,6 +224,12 @@ export interface UpdateAgentEventsRequest {
     eventId: string;
     appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
     acceptLanguage?: UpdateAgentEventsAcceptLanguageEnum;
+}
+
+export interface UpdateAppActionsRequest {
+    id: string;
+    updateAppActionSettingsDto: UpdateAppActionSettingsDto;
+    acceptLanguage?: UpdateAppActionsAcceptLanguageEnum;
 }
 
 export interface UpdateAutomationStepsRequest {
@@ -465,6 +486,60 @@ export class AppsApi extends runtime.BaseAPI {
      */
     async automationSteps(requestParameters: AutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepResponseDto> {
         const response = await this.automationStepsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG WebP. key icon_asset_key . 20 40 . .
+     * URL attachment_id
+     */
+    async automationStepsIconFromUrlRaw(requestParameters: AutomationStepsIconFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepIconImportResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling automationStepsIconFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling automationStepsIconFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/automation-steps/icon/from-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppAutomationStepIconImportResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG WebP. key icon_asset_key . 20 40 . .
+     * URL attachment_id
+     */
+    async automationStepsIconFromUrl(requestParameters: AutomationStepsIconFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepIconImportResponseDto> {
+        const response = await this.automationStepsIconFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1220,6 +1295,60 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * OpenAPI- MCP-.
+     *
+     */
+    async updateAppActionsRaw(requestParameters: UpdateAppActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateAppActions().'
+            );
+        }
+
+        if (requestParameters['updateAppActionSettingsDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAppActionSettingsDto',
+                'Required parameter "updateAppActionSettingsDto" was null or undefined when calling updateAppActions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{id}/app-actions`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAppActionSettingsDtoToJSON(requestParameters['updateAppActionSettingsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * OpenAPI- MCP-.
+     *
+     */
+    async updateAppActions(requestParameters: UpdateAppActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto> {
+        const response = await this.updateAppActionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . .
      *
      */
@@ -1817,6 +1946,14 @@ export type AutomationStepsAcceptLanguageEnum = typeof AutomationStepsAcceptLang
 /**
  * @export
  */
+export const AutomationStepsIconFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AutomationStepsIconFromUrlAcceptLanguageEnum = typeof AutomationStepsIconFromUrlAcceptLanguageEnum[keyof typeof AutomationStepsIconFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const AutomationStepsIconUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1952,6 +2089,14 @@ export const UpdateAgentEventsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateAgentEventsAcceptLanguageEnum = typeof UpdateAgentEventsAcceptLanguageEnum[keyof typeof UpdateAgentEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateAppActionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateAppActionsAcceptLanguageEnum = typeof UpdateAppActionsAcceptLanguageEnum[keyof typeof UpdateAppActionsAcceptLanguageEnum];
 /**
  * @export
  */

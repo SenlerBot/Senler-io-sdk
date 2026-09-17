@@ -20,7 +20,7 @@ export interface MessagesPricingDto {
      * @type {number}
      * @memberof MessagesPricingDto
      */
-    priceCredits: number;
+    priceCredits?: number;
 }
 /**
  * Check if a given object implements the MessagesPricingDto interface.

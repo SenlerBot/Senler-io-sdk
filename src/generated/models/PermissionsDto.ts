@@ -144,6 +144,18 @@ export interface PermissionsDto {
      * @type {boolean}
      * @memberof PermissionsDto
      */
+    canViewDialogVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageDialogVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
     canViewSegments: boolean;
     /**
      *
@@ -306,6 +318,12 @@ export interface PermissionsDto {
      * @type {boolean}
      * @memberof PermissionsDto
      */
+    canUseProjectApps: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
     canManageProjectApps: boolean;
     /**
      *
@@ -357,6 +375,8 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canManageLeads' in value) || value['canManageLeads'] === undefined) return false;
     if (!('canViewLeadVariables' in value) || value['canViewLeadVariables'] === undefined) return false;
     if (!('canManageLeadVariables' in value) || value['canManageLeadVariables'] === undefined) return false;
+    if (!('canViewDialogVariables' in value) || value['canViewDialogVariables'] === undefined) return false;
+    if (!('canManageDialogVariables' in value) || value['canManageDialogVariables'] === undefined) return false;
     if (!('canViewSegments' in value) || value['canViewSegments'] === undefined) return false;
     if (!('canManageSegments' in value) || value['canManageSegments'] === undefined) return false;
     if (!('canViewLandings' in value) || value['canViewLandings'] === undefined) return false;
@@ -384,6 +404,7 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined) return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined) return false;
     if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined) return false;
+    if (!('canUseProjectApps' in value) || value['canUseProjectApps'] === undefined) return false;
     if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined) return false;
     if (!('canViewStorage' in value) || value['canViewStorage'] === undefined) return false;
     if (!('canManageStorage' in value) || value['canManageStorage'] === undefined) return false;
@@ -422,6 +443,8 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canManageLeads': json['can_manage_leads'],
         'canViewLeadVariables': json['can_view_lead_variables'],
         'canManageLeadVariables': json['can_manage_lead_variables'],
+        'canViewDialogVariables': json['can_view_dialog_variables'],
+        'canManageDialogVariables': json['can_manage_dialog_variables'],
         'canViewSegments': json['can_view_segments'],
         'canManageSegments': json['can_manage_segments'],
         'canViewLandings': json['can_view_landings'],
@@ -449,6 +472,7 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
         'canViewProjectApps': json['can_view_project_apps'],
+        'canUseProjectApps': json['can_use_project_apps'],
         'canManageProjectApps': json['can_manage_project_apps'],
         'canViewStorage': json['can_view_storage'],
         'canManageStorage': json['can_manage_storage'],
@@ -488,6 +512,8 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_manage_leads': value['canManageLeads'],
         'can_view_lead_variables': value['canViewLeadVariables'],
         'can_manage_lead_variables': value['canManageLeadVariables'],
+        'can_view_dialog_variables': value['canViewDialogVariables'],
+        'can_manage_dialog_variables': value['canManageDialogVariables'],
         'can_view_segments': value['canViewSegments'],
         'can_manage_segments': value['canManageSegments'],
         'can_view_landings': value['canViewLandings'],
@@ -515,6 +541,7 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
         'can_view_project_apps': value['canViewProjectApps'],
+        'can_use_project_apps': value['canUseProjectApps'],
         'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_storage': value['canViewStorage'],
         'can_manage_storage': value['canManageStorage'],

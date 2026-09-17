@@ -1,6 +1,6 @@
 {
   "name": "@senlerio/api",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Senler.io API SDK (fetch)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -84,9 +84,9 @@
   },
   "devDependencies": {
     "typescript": "^5.0.0",
-    "@nestjs/common": "^11.2.1",
-    "@nestjs/core": "^11.2.1",
-    "@nestjs/platform-express": "^11.2.1",
+    "@nestjs/common": "^11.2.3",
+    "@nestjs/core": "^11.2.3",
+    "@nestjs/platform-express": "^11.2.3",
     "@nestjs/swagger": "11.4.7",
     "@types/node": "^24.0.0",
     "reflect-metadata": "^0.2.2",

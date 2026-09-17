@@ -52,7 +52,7 @@ export interface AutomationBatchAddDraftNodeOperationDto {
      */
     name: string;
     /**
-     * . , API .
+     * . : layoutAutomation. API 220 180 . x y.
      * @type {AutomationNodePositionDto}
      * @memberof AutomationBatchAddDraftNodeOperationDto
      */
@@ -76,9 +76,11 @@ export const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum = {
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
     TriggerEvent: 'trigger.event',
+    TriggerAppEvent: 'trigger.app_event',
     ConditionVariable: 'condition.variable',
     ConditionDateTime: 'condition.date_time',
     ConditionSegment: 'condition.segment',
+    ConditionFunnelStage: 'condition.funnel_stage',
     ConditionAutomation: 'condition.automation',
     ConditionAgent: 'condition.agent',
     ConditionChannelType: 'condition.channel_type',
@@ -88,12 +90,14 @@ export const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum = {
     ActionMessage: 'action.message',
     ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
+    ActionMoveFunnelStage: 'action.move_funnel_stage',
     ActionRemoveSegment: 'action.remove_segment',
     ActionAddAutomation: 'action.add_automation',
     ActionRemoveAutomation: 'action.remove_automation',
     ActionAssignAgent: 'action.assign_agent',
     ActionUnassignAgent: 'action.unassign_agent',
     ActionTableWrite: 'action.table_write',
+    ActionHttp: 'action.http',
     ActionApp: 'action.app',
     ControlWait: 'control.wait',
     ControlLoop: 'control.loop'

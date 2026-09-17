@@ -12,7 +12,7 @@ API documentation: https://dev.senler.io
   Pin a version for reproducible installs:
   
   ```bash
-  npm install github:SenlerBot/Senler-io-sdk#v0.2.0
+  npm install github:SenlerBot/Senler-io-sdk#v0.2.1
   ```
   
   

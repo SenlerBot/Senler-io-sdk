@@ -32,7 +32,7 @@ export interface AutomationRandomBranchDto {
      * @type {number}
      * @memberof AutomationRandomBranchDto
      */
-    percentage: number;
+    weight: number;
 }
 /**
  * Check if a given object implements the AutomationRandomBranchDto interface.

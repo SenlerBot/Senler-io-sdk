@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto } from '../models/index';
+import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto } from '../models/index';
 export interface DeleteAgentRequest {
     id: string;
     role: DeleteAgentRoleEnum;
@@ -25,10 +25,20 @@ export interface DeleteOperatorAssignmentRequest {
     id: string;
     acceptLanguage?: DeleteOperatorAssignmentAcceptLanguageEnum;
 }
+export interface EventsAiResponseRecoveryRetryRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: EventsAiResponseRecoveryRetryAcceptLanguageEnum;
+}
 export interface EventsBillingRecoveryRetryRequest {
     dialogId: string;
     eventId: string;
     acceptLanguage?: EventsBillingRecoveryRetryAcceptLanguageEnum;
+}
+export interface GetEventsAiResponseRecoveryRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: GetEventsAiResponseRecoveryAcceptLanguageEnum;
 }
 export interface GetEventsBillingRecoveryRequest {
     dialogId: string;
@@ -42,6 +52,10 @@ export interface GetParticipantsRequest {
 export interface GetProjectsBillingRecoveryRequest {
     projectId: string;
     acceptLanguage?: GetProjectsBillingRecoveryAcceptLanguageEnum;
+}
+export interface ProjectsBillingRecoveryDismissRequest {
+    projectId: string;
+    acceptLanguage?: ProjectsBillingRecoveryDismissAcceptLanguageEnum;
 }
 export interface ProjectsBillingRecoveryRetryRequest {
     projectId: string;
@@ -139,6 +153,16 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     deleteOperatorAssignment(requestParameters: DeleteOperatorAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
+     * .
+     * AI-
+     */
+    eventsAiResponseRecoveryRetryRaw(requestParameters: EventsAiResponseRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiResponseRecoveryRetryDto>>;
+    /**
+     * .
+     * AI-
+     */
+    eventsAiResponseRecoveryRetry(requestParameters: EventsAiResponseRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiResponseRecoveryRetryDto>;
+    /**
      * AI-, .
      * AI-
      */
@@ -148,6 +172,16 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      * AI-
      */
     eventsBillingRecoveryRetry(requestParameters: EventsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryRetryResponseDto>;
+    /**
+     * .
+     * AI-
+     */
+    getEventsAiResponseRecoveryRaw(requestParameters: GetEventsAiResponseRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiResponseRecoveryStatusDto>>;
+    /**
+     * .
+     * AI-
+     */
+    getEventsAiResponseRecovery(requestParameters: GetEventsAiResponseRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiResponseRecoveryStatusDto>;
     /**
      * , .
      * AI-
@@ -169,22 +203,32 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     getParticipants(requestParameters: GetParticipantsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogParticipantsResponseDto>;
     /**
-     * , .
+     * , , .
      * AI- -
      */
     getProjectsBillingRecoveryRaw(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoverySummaryDto>>;
     /**
-     * , .
+     * , , .
      * AI- -
      */
     getProjectsBillingRecovery(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoverySummaryDto>;
     /**
-     * .
+     * . . .
+     *
+     */
+    projectsBillingRecoveryDismissRaw(requestParameters: ProjectsBillingRecoveryDismissRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryBulkRetryResponseDto>>;
+    /**
+     * . . .
+     *
+     */
+    projectsBillingRecoveryDismiss(requestParameters: ProjectsBillingRecoveryDismissRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto>;
+    /**
+     * , include_metrics=true, . . ; .
      * AI-
      */
     projectsBillingRecoveryRetryRaw(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiBillingRecoveryBulkRetryResponseDto>>;
     /**
-     * .
+     * , include_metrics=true, . . ; .
      * AI-
      */
     projectsBillingRecoveryRetry(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto>;
@@ -344,11 +388,27 @@ export type DeleteOperatorAssignmentAcceptLanguageEnum = typeof DeleteOperatorAs
 /**
  * @export
  */
+export declare const EventsAiResponseRecoveryRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type EventsAiResponseRecoveryRetryAcceptLanguageEnum = typeof EventsAiResponseRecoveryRetryAcceptLanguageEnum[keyof typeof EventsAiResponseRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const EventsBillingRecoveryRetryAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type EventsBillingRecoveryRetryAcceptLanguageEnum = typeof EventsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof EventsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetEventsAiResponseRecoveryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetEventsAiResponseRecoveryAcceptLanguageEnum = typeof GetEventsAiResponseRecoveryAcceptLanguageEnum[keyof typeof GetEventsAiResponseRecoveryAcceptLanguageEnum];
 /**
  * @export
  */
@@ -373,6 +433,14 @@ export declare const GetProjectsBillingRecoveryAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetProjectsBillingRecoveryAcceptLanguageEnum = typeof GetProjectsBillingRecoveryAcceptLanguageEnum[keyof typeof GetProjectsBillingRecoveryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsBillingRecoveryDismissAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsBillingRecoveryDismissAcceptLanguageEnum = typeof ProjectsBillingRecoveryDismissAcceptLanguageEnum[keyof typeof ProjectsBillingRecoveryDismissAcceptLanguageEnum];
 /**
  * @export
  */

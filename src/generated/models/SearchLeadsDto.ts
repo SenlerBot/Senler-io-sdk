@@ -46,11 +46,17 @@ export interface SearchLeadsDto {
      */
     limit?: number;
     /**
-     *
-     * @type {number}
+     * next_cursor . _id.
+     * @type {string}
      * @memberof SearchLeadsDto
      */
-    offset?: number;
+    cursor?: string;
+    /**
+     * . ; has_more
+     * @type {boolean}
+     * @memberof SearchLeadsDto
+     */
+    includeTotal?: boolean;
 }
 
 /**
@@ -74,7 +80,8 @@ export function SearchLeadsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'projectId': json['project_id'],
         'filters': json['filters'] == null ? undefined : LeadsFilterDtoFromJSON(json['filters']),
         'limit': json['limit'] == null ? undefined : json['limit'],
-        'offset': json['offset'] == null ? undefined : json['offset'],
+        'cursor': json['cursor'] == null ? undefined : json['cursor'],
+        'includeTotal': json['include_total'] == null ? undefined : json['include_total'],
     };
 }
 
@@ -92,6 +99,7 @@ export function SearchLeadsDtoToJSONTyped(value?: SearchLeadsDto | null, ignoreD
         'project_id': value['projectId'],
         'filters': LeadsFilterDtoToJSON(value['filters']),
         'limit': value['limit'],
-        'offset': value['offset'],
+        'cursor': value['cursor'],
+        'include_total': value['includeTotal'],
     };
 }

@@ -26,7 +26,7 @@ export interface UpdateAutoPurchaseDto {
      * @type {string}
      * @memberof UpdateAutoPurchaseDto
      */
-    packageId?: string | null;
+    addonId?: string | null;
 }
 /**
  * Check if a given object implements the UpdateAutoPurchaseDto interface.

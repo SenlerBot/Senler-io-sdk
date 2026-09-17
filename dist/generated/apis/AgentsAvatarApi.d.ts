@@ -10,16 +10,26 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentConfirmAvatarUploadResponseDto, ConfirmS3UploadDto, GetAvatarUploadUrlDto, S3UploadUrlResponseDto } from '../models/index';
+import type { AgentConfirmAvatarUploadResponseDto, AgentDraftSettingsResponseDto, ConfirmS3UploadDto, GetAvatarUploadUrlDto, ImportImageDto, S3UploadUrlResponseDto } from '../models/index';
 export interface AgentsAvatarAvatarConfirmRequest {
     agentId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: AgentsAvatarAvatarConfirmAcceptLanguageEnum;
 }
+export interface AgentsAvatarAvatarFromUrlRequest {
+    agentId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AgentsAvatarAvatarFromUrlAcceptLanguageEnum;
+}
 export interface AgentsAvatarAvatarUploadUrlRequest {
     agentId: string;
     getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
     acceptLanguage?: AgentsAvatarAvatarUploadUrlAcceptLanguageEnum;
+}
+export interface DraftAvatarFromUrlRequest {
+    agentId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: DraftAvatarFromUrlAcceptLanguageEnum;
 }
 /**
  *
@@ -36,6 +46,16 @@ export declare class AgentsAvatarApi extends runtime.BaseAPI {
      */
     agentsAvatarAvatarConfirm(requestParameters: AgentsAvatarAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentConfirmAvatarUploadResponseDto>;
     /**
+     * PNG, JPEG WebP, . draft/avatar/from-url. 20 40 .
+     * URL attachment_id
+     */
+    agentsAvatarAvatarFromUrlRaw(requestParameters: AgentsAvatarAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentConfirmAvatarUploadResponseDto>>;
+    /**
+     * PNG, JPEG WebP, . draft/avatar/from-url. 20 40 .
+     * URL attachment_id
+     */
+    agentsAvatarAvatarFromUrl(requestParameters: AgentsAvatarAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentConfirmAvatarUploadResponseDto>;
+    /**
      * S3- .
      * S3-
      */
@@ -45,6 +65,16 @@ export declare class AgentsAvatarApi extends runtime.BaseAPI {
      * S3-
      */
     agentsAvatarAvatarUploadUrl(requestParameters: AgentsAvatarAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
+    /**
+     * PNG, JPEG WebP avatar_url . . 20 40 .
+     * URL attachment_id
+     */
+    draftAvatarFromUrlRaw(requestParameters: DraftAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
+    /**
+     * PNG, JPEG WebP avatar_url . . 20 40 .
+     * URL attachment_id
+     */
+    draftAvatarFromUrl(requestParameters: DraftAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
 }
 /**
  * @export
@@ -57,8 +87,24 @@ export type AgentsAvatarAvatarConfirmAcceptLanguageEnum = typeof AgentsAvatarAva
 /**
  * @export
  */
+export declare const AgentsAvatarAvatarFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AgentsAvatarAvatarFromUrlAcceptLanguageEnum = typeof AgentsAvatarAvatarFromUrlAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const AgentsAvatarAvatarUploadUrlAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type AgentsAvatarAvatarUploadUrlAcceptLanguageEnum = typeof AgentsAvatarAvatarUploadUrlAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DraftAvatarFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DraftAvatarFromUrlAcceptLanguageEnum = typeof DraftAvatarFromUrlAcceptLanguageEnum[keyof typeof DraftAvatarFromUrlAcceptLanguageEnum];

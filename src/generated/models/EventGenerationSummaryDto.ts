@@ -44,6 +44,7 @@ export interface EventGenerationSummaryDto {
  * @export
  */
 export const EventGenerationSummaryDtoStatusEnum = {
+    WaitingBilling: 'waiting_billing',
     Pending: 'pending',
     Completed: 'completed',
     Skipped: 'skipped',

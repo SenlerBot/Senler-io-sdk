@@ -35,10 +35,16 @@ export interface LeadSubscriptionUtmTreeResponseDto {
     nodes: Array<LeadSubscriptionUtmTreeNodeDto>;
     /**
      * null,
-     * @type {number}
+     * @type {string}
      * @memberof LeadSubscriptionUtmTreeResponseDto
      */
-    nextOffset: number | null;
+    nextCursor: string | null;
+    /**
+     * UTM ;
+     * @type {boolean}
+     * @memberof LeadSubscriptionUtmTreeResponseDto
+     */
+    isIndexing: boolean;
 }
 
 /**
@@ -46,7 +52,8 @@ export interface LeadSubscriptionUtmTreeResponseDto {
  */
 export function instanceOfLeadSubscriptionUtmTreeResponseDto(value: object): value is LeadSubscriptionUtmTreeResponseDto {
     if (!('nodes' in value) || value['nodes'] === undefined) return false;
-    if (!('nextOffset' in value) || value['nextOffset'] === undefined) return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
+    if (!('isIndexing' in value) || value['isIndexing'] === undefined) return false;
     return true;
 }
 
@@ -61,7 +68,8 @@ export function LeadSubscriptionUtmTreeResponseDtoFromJSONTyped(json: any, ignor
     return {
 
         'nodes': ((json['nodes'] as Array<any>).map(LeadSubscriptionUtmTreeNodeDtoFromJSON)),
-        'nextOffset': json['next_offset'],
+        'nextCursor': json['next_cursor'],
+        'isIndexing': json['is_indexing'],
     };
 }
 
@@ -77,6 +85,7 @@ export function LeadSubscriptionUtmTreeResponseDtoToJSONTyped(value?: LeadSubscr
     return {
 
         'nodes': ((value['nodes'] as Array<any>).map(LeadSubscriptionUtmTreeNodeDtoToJSON)),
-        'next_offset': value['nextOffset'],
+        'next_cursor': value['nextCursor'],
+        'is_indexing': value['isIndexing'],
     };
 }

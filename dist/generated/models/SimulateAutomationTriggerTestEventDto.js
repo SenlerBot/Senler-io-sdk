@@ -30,7 +30,8 @@ exports.SimulateAutomationTriggerTestEventDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
-    SegmentSubscribed: 'segment_subscribed'
+    SegmentSubscribed: 'segment_subscribed',
+    AppEventReceived: 'app_event_received'
 };
 /**
  * Check if a given object implements the SimulateAutomationTriggerTestEventDto interface.

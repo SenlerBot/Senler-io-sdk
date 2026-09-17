@@ -19,8 +19,10 @@ import type { EventToolListDto } from './EventToolListDto';
 import type { EventHierarchyDto } from './EventHierarchyDto';
 import type { EventButtonClickDto } from './EventButtonClickDto';
 import type { EventGenerationDto } from './EventGenerationDto';
+import type { AutomationFunnelObservationDto } from './AutomationFunnelObservationDto';
 import type { EventSenderDto } from './EventSenderDto';
 import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
+import type { EventFunnelDto } from './EventFunnelDto';
 import type { EventErrorDto } from './EventErrorDto';
 import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
 /**
@@ -29,6 +31,18 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  * @interface CabinetEventListItemDto
  */
 export interface CabinetEventListItemDto {
+    /**
+     *
+     * @type {EventFunnelDto}
+     * @memberof CabinetEventListItemDto
+     */
+    funnel?: EventFunnelDto;
+    /**
+     *
+     * @type {AutomationFunnelObservationDto}
+     * @memberof CabinetEventListItemDto
+     */
+    automationObservation?: AutomationFunnelObservationDto;
     /**
      * ID
      * @type {string}
@@ -77,6 +91,12 @@ export interface CabinetEventListItemDto {
      * @memberof CabinetEventListItemDto
      */
     leadId?: string;
+    /**
+     * ;
+     * @type {string}
+     * @memberof CabinetEventListItemDto
+     */
+    dialogLeadId?: string;
     /**
      *
      * @type {string}
@@ -243,6 +263,9 @@ export type CabinetEventListItemDtoPlatformTypeEnum = typeof CabinetEventListIte
  * @export
  */
 export declare const CabinetEventListItemDtoActionTypeEnum: {
+    readonly FunnelEntered: "funnel_entered";
+    readonly FunnelStageChanged: "funnel_stage_changed";
+    readonly FunnelLeft: "funnel_left";
     readonly MessageCreated: "message_created";
     readonly MessageEdited: "message_edited";
     readonly MessageDeleted: "message_deleted";

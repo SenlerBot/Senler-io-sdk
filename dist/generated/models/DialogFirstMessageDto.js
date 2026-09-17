@@ -26,6 +26,9 @@ const EventSenderDto_1 = require("./EventSenderDto");
  * @export
  */
 exports.DialogFirstMessageDtoActionTypeEnum = {
+    FunnelEntered: 'funnel_entered',
+    FunnelStageChanged: 'funnel_stage_changed',
+    FunnelLeft: 'funnel_left',
     MessageCreated: 'message_created',
     MessageEdited: 'message_edited',
     MessageDeleted: 'message_deleted',

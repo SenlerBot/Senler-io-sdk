@@ -27,6 +27,13 @@ import {
     AppDeveloperEmbeddedPageSettingsResponseDtoToJSON,
     AppDeveloperEmbeddedPageSettingsResponseDtoToJSONTyped,
 } from './AppDeveloperEmbeddedPageSettingsResponseDto';
+import type { AppActionSettingsResponseDto } from './AppActionSettingsResponseDto';
+import {
+    AppActionSettingsResponseDtoFromJSON,
+    AppActionSettingsResponseDtoFromJSONTyped,
+    AppActionSettingsResponseDtoToJSON,
+    AppActionSettingsResponseDtoToJSONTyped,
+} from './AppActionSettingsResponseDto';
 import type { AppDescriptionDto } from './AppDescriptionDto';
 import {
     AppDescriptionDtoFromJSON,
@@ -160,6 +167,12 @@ export interface AppResponseDto {
      */
     embeddedPage: AppDeveloperEmbeddedPageSettingsResponseDto | null;
     /**
+     * MCP
+     * @type {AppActionSettingsResponseDto}
+     * @memberof AppResponseDto
+     */
+    appActions: AppActionSettingsResponseDto | null;
+    /**
      * ID -
      * @type {string}
      * @memberof AppResponseDto
@@ -269,6 +282,7 @@ export function instanceOfAppResponseDto(value: object): value is AppResponseDto
     if (!('tools' in value) || value['tools'] === undefined) return false;
     if (!('agentEvents' in value) || value['agentEvents'] === undefined) return false;
     if (!('embeddedPage' in value) || value['embeddedPage'] === undefined) return false;
+    if (!('appActions' in value) || value['appActions'] === undefined) return false;
     if (!('sourceProjectId' in value) || value['sourceProjectId'] === undefined) return false;
     if (!('sourceProject' in value) || value['sourceProject'] === undefined) return false;
     if (!('publicationStatus' in value) || value['publicationStatus'] === undefined) return false;
@@ -308,6 +322,7 @@ export function AppResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'tools': AppToolsSettingsResponseDtoFromJSON(json['tools']),
         'agentEvents': ((json['agent_events'] as Array<any>).map(AppAgentEventResponseDtoFromJSON)),
         'embeddedPage': AppDeveloperEmbeddedPageSettingsResponseDtoFromJSON(json['embedded_page']),
+        'appActions': AppActionSettingsResponseDtoFromJSON(json['app_actions']),
         'sourceProjectId': json['source_project_id'],
         'sourceProject': AppSourceProjectResponseDtoFromJSON(json['source_project']),
         'publicationStatus': json['publication_status'],
@@ -348,6 +363,7 @@ export function AppResponseDtoToJSONTyped(value?: AppResponseDto | null, ignoreD
         'tools': AppToolsSettingsResponseDtoToJSON(value['tools']),
         'agent_events': ((value['agentEvents'] as Array<any>).map(AppAgentEventResponseDtoToJSON)),
         'embedded_page': AppDeveloperEmbeddedPageSettingsResponseDtoToJSON(value['embeddedPage']),
+        'app_actions': AppActionSettingsResponseDtoToJSON(value['appActions']),
         'source_project_id': value['sourceProjectId'],
         'source_project': AppSourceProjectResponseDtoToJSON(value['sourceProject']),
         'publication_status': value['publicationStatus'],

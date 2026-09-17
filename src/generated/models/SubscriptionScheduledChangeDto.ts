@@ -42,7 +42,7 @@ export interface SubscriptionScheduledChangeDto {
      * @type {string}
      * @memberof SubscriptionScheduledChangeDto
      */
-    targetAddonPlanId: string | null;
+    targetAddonId: string | null;
     /**
      *
      * @type {string}
@@ -65,7 +65,8 @@ export const SubscriptionScheduledChangeDtoItemKindEnum = {
     BaseTariff: 'base_tariff',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
-    Storage: 'storage'
+    Storage: 'storage',
+    Credits: 'credits'
 } as const;
 export type SubscriptionScheduledChangeDtoItemKindEnum = typeof SubscriptionScheduledChangeDtoItemKindEnum[keyof typeof SubscriptionScheduledChangeDtoItemKindEnum];
 
@@ -95,7 +96,7 @@ export function instanceOfSubscriptionScheduledChangeDto(value: object): value i
     if (!('itemKind' in value) || value['itemKind'] === undefined) return false;
     if (!('action' in value) || value['action'] === undefined) return false;
     if (!('targetTariffId' in value) || value['targetTariffId'] === undefined) return false;
-    if (!('targetAddonPlanId' in value) || value['targetAddonPlanId'] === undefined) return false;
+    if (!('targetAddonId' in value) || value['targetAddonId'] === undefined) return false;
     if (!('targetPeriod' in value) || value['targetPeriod'] === undefined) return false;
     if (!('effectiveAt' in value) || value['effectiveAt'] === undefined) return false;
     return true;
@@ -114,7 +115,7 @@ export function SubscriptionScheduledChangeDtoFromJSONTyped(json: any, ignoreDis
         'itemKind': json['item_kind'],
         'action': json['action'],
         'targetTariffId': json['target_tariff_id'],
-        'targetAddonPlanId': json['target_addon_plan_id'],
+        'targetAddonId': json['target_addon_id'],
         'targetPeriod': json['target_period'],
         'effectiveAt': (new Date(json['effective_at'])),
     };
@@ -134,7 +135,7 @@ export function SubscriptionScheduledChangeDtoToJSONTyped(value?: SubscriptionSc
         'item_kind': value['itemKind'],
         'action': value['action'],
         'target_tariff_id': value['targetTariffId'],
-        'target_addon_plan_id': value['targetAddonPlanId'],
+        'target_addon_id': value['targetAddonId'],
         'target_period': value['targetPeriod'],
         'effective_at': ((value['effectiveAt']).toISOString()),
     };

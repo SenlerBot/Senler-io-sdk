@@ -30,7 +30,7 @@ export interface AutoPurchaseResponseDto {
      * @type {string}
      * @memberof AutoPurchaseResponseDto
      */
-    autoPurchasePackageId?: string | null;
+    autoPurchaseAddonId?: string | null;
 }
 
 /**
@@ -52,7 +52,7 @@ export function AutoPurchaseResponseDtoFromJSONTyped(json: any, ignoreDiscrimina
     return {
 
         'autoPurchaseEnabled': json['auto_purchase_enabled'],
-        'autoPurchasePackageId': json['auto_purchase_package_id'] == null ? undefined : json['auto_purchase_package_id'],
+        'autoPurchaseAddonId': json['auto_purchase_addon_id'] == null ? undefined : json['auto_purchase_addon_id'],
     };
 }
 
@@ -68,6 +68,6 @@ export function AutoPurchaseResponseDtoToJSONTyped(value?: AutoPurchaseResponseD
     return {
 
         'auto_purchase_enabled': value['autoPurchaseEnabled'],
-        'auto_purchase_package_id': value['autoPurchasePackageId'],
+        'auto_purchase_addon_id': value['autoPurchaseAddonId'],
     };
 }

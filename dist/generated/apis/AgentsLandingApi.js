@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateLandingDraftAcceptLanguageEnum = exports.LandingBlocksMoveAcceptLanguageEnum = exports.LandingAssetsUploadUrlAcceptLanguageEnum = exports.LandingAssetsConfirmAcceptLanguageEnum = exports.GetLandingShareLinksAcceptLanguageEnum = exports.GetLandingPublicationsAcceptLanguageEnum = exports.GetLandingAcceptLanguageEnum = exports.DeleteLandingBlocksAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
+exports.UpdateLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateLandingDraftAcceptLanguageEnum = exports.LandingBlocksMoveAcceptLanguageEnum = exports.LandingAssetsUploadUrlAcceptLanguageEnum = exports.LandingAssetsFromUrlAcceptLanguageEnum = exports.LandingAssetsConfirmAcceptLanguageEnum = exports.GetLandingShareLinksAcceptLanguageEnum = exports.GetLandingPublicationsAcceptLanguageEnum = exports.GetLandingAcceptLanguageEnum = exports.DeleteLandingBlocksAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -270,6 +270,51 @@ class AgentsLandingApi extends runtime.BaseAPI {
      */
     async landingAssetsConfirm(requestParameters, initOverrides) {
         const response = await this.landingAssetsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    async landingAssetsFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling landingAssetsFromUrl().');
+        }
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling landingAssetsFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/assets/from-url`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAssetUploadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    async landingAssetsFromUrl(requestParameters, initOverrides) {
+        const response = await this.landingAssetsFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -507,6 +552,13 @@ exports.GetLandingShareLinksAcceptLanguageEnum = {
  * @export
  */
 exports.LandingAssetsConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingAssetsFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

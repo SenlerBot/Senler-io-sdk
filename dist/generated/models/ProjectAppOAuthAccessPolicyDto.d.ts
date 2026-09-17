@@ -61,6 +61,8 @@ export declare const ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageLeads: "can_manage_leads";
     readonly CanViewLeadVariables: "can_view_lead_variables";
     readonly CanManageLeadVariables: "can_manage_lead_variables";
+    readonly CanViewDialogVariables: "can_view_dialog_variables";
+    readonly CanManageDialogVariables: "can_manage_dialog_variables";
     readonly CanViewSegments: "can_view_segments";
     readonly CanManageSegments: "can_manage_segments";
     readonly CanViewLandings: "can_view_landings";
@@ -89,6 +91,7 @@ export declare const ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageStorage: "can_manage_storage";
     readonly CanViewProjectVariables: "can_view_project_variables";
     readonly CanManageProjectVariables: "can_manage_project_variables";
+    readonly CanUseProjectApps: "can_use_project_apps";
 };
 export type ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = typeof ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum[keyof typeof ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum];
 /**

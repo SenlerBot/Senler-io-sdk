@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppDocumentationPageResponseDto, AppDocumentationSettingsResponseDto, CreateAppDocumentationFileDto, CreateAppDocumentationFolderDto, CreateAppDocumentationTableDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, UpdateAppDocumentationFileDto, UpdateAppDocumentationFolderDto, UpdateAppDocumentationOrderDto, UpdateAppDocumentationPageDto, UpdateAppDocumentationSettingsDto, UpdateAppDocumentationTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
+import type { AppDocumentationPageResponseDto, AppDocumentationSettingsResponseDto, CreateAppDocumentationFileDto, CreateAppDocumentationFolderDto, CreateAppDocumentationTableDto, ImportKnowledgeImageDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, UpdateAppDocumentationFileDto, UpdateAppDocumentationFolderDto, UpdateAppDocumentationOrderDto, UpdateAppDocumentationPageDto, UpdateAppDocumentationSettingsDto, UpdateAppDocumentationTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
 export interface DeleteDocumentationFilesRequest {
     appId: string;
     id: string;
@@ -35,6 +35,11 @@ export interface DocumentationFilesRequest {
     appId: string;
     createAppDocumentationFileDto: CreateAppDocumentationFileDto;
     acceptLanguage?: DocumentationFilesAcceptLanguageEnum;
+}
+export interface DocumentationFilesFromUrlRequest {
+    appId: string;
+    importKnowledgeImageDto: ImportKnowledgeImageDto;
+    acceptLanguage?: DocumentationFilesFromUrlAcceptLanguageEnum;
 }
 export interface DocumentationFilesRecognitionEstimateRequest {
     appId: string;
@@ -207,6 +212,16 @@ export declare class AppDocumentationApi extends runtime.BaseAPI {
      * Markdown-
      */
     documentationFiles(requestParameters: DocumentationFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . , JSON.
+     * URL attachment_id
+     */
+    documentationFilesFromUrlRaw(requestParameters: DocumentationFilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . , JSON.
+     * URL attachment_id
+     */
+    documentationFilesFromUrl(requestParameters: DocumentationFilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
      * ZIP .
      *
@@ -438,6 +453,14 @@ export declare const DocumentationFilesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DocumentationFilesAcceptLanguageEnum = typeof DocumentationFilesAcceptLanguageEnum[keyof typeof DocumentationFilesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DocumentationFilesFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DocumentationFilesFromUrlAcceptLanguageEnum = typeof DocumentationFilesFromUrlAcceptLanguageEnum[keyof typeof DocumentationFilesFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

@@ -16,6 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   AgentDraftSettingsResponseDto,
+  AgentInstructionReferenceResponseDto,
   AgentSettingsResponseDto,
   CreateAgentAuthoringDraftDto,
   ErrorResponse,
@@ -27,6 +28,7 @@ import type {
   UpdateAgentDraftMetricsDto,
   UpdateAgentDraftTrainingDto,
   UpdateAgentDraftWizardDto,
+  UpdateAgentFunnelsDto,
   UpdateAgentKnowledgeBaseDto,
   UpdateAgentMetricsDto,
   UpdateAgentModelDto,
@@ -40,6 +42,8 @@ import type {
 import {
     AgentDraftSettingsResponseDtoFromJSON,
     AgentDraftSettingsResponseDtoToJSON,
+    AgentInstructionReferenceResponseDtoFromJSON,
+    AgentInstructionReferenceResponseDtoToJSON,
     AgentSettingsResponseDtoFromJSON,
     AgentSettingsResponseDtoToJSON,
     CreateAgentAuthoringDraftDtoFromJSON,
@@ -62,6 +66,8 @@ import {
     UpdateAgentDraftTrainingDtoToJSON,
     UpdateAgentDraftWizardDtoFromJSON,
     UpdateAgentDraftWizardDtoToJSON,
+    UpdateAgentFunnelsDtoFromJSON,
+    UpdateAgentFunnelsDtoToJSON,
     UpdateAgentKnowledgeBaseDtoFromJSON,
     UpdateAgentKnowledgeBaseDtoToJSON,
     UpdateAgentMetricsDtoFromJSON,
@@ -96,6 +102,14 @@ export interface DraftSnapshotRequest {
 export interface DraftsRequest {
     createAgentAuthoringDraftDto: CreateAgentAuthoringDraftDto;
     acceptLanguage?: DraftsAcceptLanguageEnum;
+}
+
+export interface GetInstructionReferenceRequest {
+    id: string;
+    resourceType: GetInstructionReferenceResourceTypeEnum;
+    resourceId: string;
+    locale?: GetInstructionReferenceLocaleEnum;
+    acceptLanguage?: GetInstructionReferenceAcceptLanguageEnum;
 }
 
 export interface UpdateAssignmentRequest {
@@ -138,6 +152,12 @@ export interface UpdateDraftCreationRequest {
     id: string;
     updateAgentDraftCreationDto: UpdateAgentDraftCreationDto;
     acceptLanguage?: UpdateDraftCreationAcceptLanguageEnum;
+}
+
+export interface UpdateDraftFunnelsRequest {
+    id: string;
+    updateAgentFunnelsDto: UpdateAgentFunnelsDto;
+    acceptLanguage?: UpdateDraftFunnelsAcceptLanguageEnum;
 }
 
 export interface UpdateDraftKnowledgeBaseRequest {
@@ -217,6 +237,12 @@ export interface UpdateDraftWizardRequest {
     acceptLanguage?: UpdateDraftWizardAcceptLanguageEnum;
 }
 
+export interface UpdateFunnelsRequest {
+    id: string;
+    updateAgentFunnelsDto: UpdateAgentFunnelsDto;
+    acceptLanguage?: UpdateFunnelsAcceptLanguageEnum;
+}
+
 export interface UpdateKnowledgeBaseRequest {
     id: string;
     updateAgentKnowledgeBaseDto: UpdateAgentKnowledgeBaseDto;
@@ -282,7 +308,7 @@ export interface UpdateVariablesBindingsRequest {
 export class AgentAuthoringApi extends runtime.BaseAPI {
 
     /**
-     * : . ; .
+     * . : . . conflict_fields , ; agents.draft_conflict . . ; . .
      *
      */
     async draftPublishRaw(requestParameters: DraftPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
@@ -335,7 +361,7 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * : . ; .
+     * . : . . conflict_fields , ; agents.draft_conflict . . ; . .
      *
      */
     async draftPublish(requestParameters: DraftPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
@@ -344,7 +370,7 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . . . JSON null, .
      *
      */
     async draftSnapshotRaw(requestParameters: DraftSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
@@ -387,7 +413,7 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . . . JSON null, .
      *
      */
     async draftSnapshot(requestParameters: DraftSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
@@ -396,7 +422,7 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
+     * . . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     async draftsRaw(requestParameters: DraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
@@ -442,11 +468,89 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
+     * . . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     async drafts(requestParameters: DraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.draftsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , , Markdown- . markdown . . patchDraftInstruction .
+     * @-
+     */
+    async getInstructionReferenceRaw(requestParameters: GetInstructionReferenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionReferenceResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getInstructionReference().'
+            );
+        }
+
+        if (requestParameters['resourceType'] == null) {
+            throw new runtime.RequiredError(
+                'resourceType',
+                'Required parameter "resourceType" was null or undefined when calling getInstructionReference().'
+            );
+        }
+
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling getInstructionReference().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['resourceType'] != null) {
+            queryParameters['resource_type'] = requestParameters['resourceType'];
+        }
+
+        if (requestParameters['resourceId'] != null) {
+            queryParameters['resource_id'] = requestParameters['resourceId'];
+        }
+
+        if (requestParameters['locale'] != null) {
+            queryParameters['locale'] = requestParameters['locale'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/instruction-reference`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentInstructionReferenceResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , , Markdown- . markdown . . patchDraftInstruction .
+     * @-
+     */
+    async getInstructionReference(requestParameters: GetInstructionReferenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionReferenceResponseDto> {
+        const response = await this.getInstructionReferenceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -881,6 +985,68 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
      */
     async updateDraftCreation(requestParameters: UpdateDraftCreationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
         const response = await this.updateDraftCreationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . AgentInstructionReferences_resolve resource_type=funnel_stage.
+     *
+     */
+    async updateDraftFunnelsRaw(requestParameters: UpdateDraftFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateDraftFunnels().'
+            );
+        }
+
+        if (requestParameters['updateAgentFunnelsDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAgentFunnelsDto',
+                'Required parameter "updateAgentFunnelsDto" was null or undefined when calling updateDraftFunnels().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/funnels`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAgentFunnelsDtoToJSON(requestParameters['updateAgentFunnelsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . AgentInstructionReferences_resolve resource_type=funnel_stage.
+     *
+     */
+    async updateDraftFunnels(requestParameters: UpdateDraftFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
+        const response = await this.updateDraftFunnelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1678,6 +1844,68 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
+     * . none .
+     *
+     */
+    async updateFunnelsRaw(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateFunnels().'
+            );
+        }
+
+        if (requestParameters['updateAgentFunnelsDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAgentFunnelsDto',
+                'Required parameter "updateAgentFunnelsDto" was null or undefined when calling updateFunnels().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/funnels`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAgentFunnelsDtoToJSON(requestParameters['updateAgentFunnelsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . none .
+     *
+     */
+    async updateFunnels(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
+        const response = await this.updateFunnelsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -1864,8 +2092,8 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
-     *
+     * (rename agent). . . .
+     * , ,
      */
     async updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
@@ -1917,8 +2145,8 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
-     *
+     * (rename agent). . . .
+     * , ,
      */
     async updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
         const response = await this.updateProfileRaw(requestParameters, initOverrides);
@@ -2316,6 +2544,39 @@ export type DraftsAcceptLanguageEnum = typeof DraftsAcceptLanguageEnum[keyof typ
 /**
  * @export
  */
+export const GetInstructionReferenceResourceTypeEnum = {
+    KnowledgeFile: 'knowledge_file',
+    KnowledgeFolder: 'knowledge_folder',
+    KnowledgeTable: 'knowledge_table',
+    ProjectVariable: 'project_variable',
+    LeadVariable: 'lead_variable',
+    DialogVariable: 'dialog_variable',
+    Segment: 'segment',
+    FunnelStage: 'funnel_stage',
+    PluginTool: 'plugin_tool',
+    PluginEvent: 'plugin_event',
+    McpServer: 'mcp_server'
+} as const;
+export type GetInstructionReferenceResourceTypeEnum = typeof GetInstructionReferenceResourceTypeEnum[keyof typeof GetInstructionReferenceResourceTypeEnum];
+/**
+ * @export
+ */
+export const GetInstructionReferenceLocaleEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetInstructionReferenceLocaleEnum = typeof GetInstructionReferenceLocaleEnum[keyof typeof GetInstructionReferenceLocaleEnum];
+/**
+ * @export
+ */
+export const GetInstructionReferenceAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetInstructionReferenceAcceptLanguageEnum = typeof GetInstructionReferenceAcceptLanguageEnum[keyof typeof GetInstructionReferenceAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const UpdateAssignmentAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2369,6 +2630,14 @@ export const UpdateDraftCreationAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateDraftCreationAcceptLanguageEnum = typeof UpdateDraftCreationAcceptLanguageEnum[keyof typeof UpdateDraftCreationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateDraftFunnelsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateDraftFunnelsAcceptLanguageEnum = typeof UpdateDraftFunnelsAcceptLanguageEnum[keyof typeof UpdateDraftFunnelsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2484,6 +2753,14 @@ export const UpdateDraftWizardAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateDraftWizardAcceptLanguageEnum = typeof UpdateDraftWizardAcceptLanguageEnum[keyof typeof UpdateDraftWizardAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateFunnelsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateFunnelsAcceptLanguageEnum = typeof UpdateFunnelsAcceptLanguageEnum[keyof typeof UpdateFunnelsAcceptLanguageEnum];
 /**
  * @export
  */

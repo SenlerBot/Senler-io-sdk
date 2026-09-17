@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetTariffsAcceptLanguageEnum = exports.GetCreditPackagesAcceptLanguageEnum = exports.TariffsApi = void 0;
+exports.TariffsListAcceptLanguageEnum = exports.TariffsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,52 +57,26 @@ class TariffsApi extends runtime.BaseAPI {
      *
      *
      */
-    async getCreditPackagesRaw(requestParameters, initOverrides) {
+    async tariffsListRaw(requestParameters, initOverrides) {
         const queryParameters = {};
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         const response = await this.request({
-            path: `/api/credit-packages`,
+            path: `/api/billing-catalog`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreditPackageListResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicBillingCatalogResponseDtoFromJSON)(jsonValue));
     }
     /**
      *
      *
      */
-    async getCreditPackages(requestParameters = {}, initOverrides) {
-        const response = await this.getCreditPackagesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     *
-     *
-     */
-    async getTariffsRaw(requestParameters, initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        const response = await this.request({
-            path: `/api/tariffs`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TariffListResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     *
-     *
-     */
-    async getTariffs(requestParameters = {}, initOverrides) {
-        const response = await this.getTariffsRaw(requestParameters, initOverrides);
+    async tariffsList(requestParameters = {}, initOverrides) {
+        const response = await this.tariffsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -110,14 +84,7 @@ exports.TariffsApi = TariffsApi;
 /**
  * @export
  */
-exports.GetCreditPackagesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetTariffsAcceptLanguageEnum = {
+exports.TariffsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

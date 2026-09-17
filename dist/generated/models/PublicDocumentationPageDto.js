@@ -19,6 +19,7 @@ exports.PublicDocumentationPageDtoFromJSON = PublicDocumentationPageDtoFromJSON;
 exports.PublicDocumentationPageDtoFromJSONTyped = PublicDocumentationPageDtoFromJSONTyped;
 exports.PublicDocumentationPageDtoToJSON = PublicDocumentationPageDtoToJSON;
 exports.PublicDocumentationPageDtoToJSONTyped = PublicDocumentationPageDtoToJSONTyped;
+const PublicDocumentationNavigationTargetDto_1 = require("./PublicDocumentationNavigationTargetDto");
 const PublicDocumentationContextRefDto_1 = require("./PublicDocumentationContextRefDto");
 const PublicDocumentationAppDto_1 = require("./PublicDocumentationAppDto");
 const PublicDocumentationResolvedLinkDto_1 = require("./PublicDocumentationResolvedLinkDto");
@@ -45,6 +46,8 @@ function instanceOfPublicDocumentationPageDto(value) {
         return false;
     if (!('contextRefs' in value) || value['contextRefs'] === undefined)
         return false;
+    if (!('navigationTargets' in value) || value['navigationTargets'] === undefined)
+        return false;
     if (!('resolvedLinks' in value) || value['resolvedLinks'] === undefined)
         return false;
     if (!('app' in value) || value['app'] === undefined)
@@ -67,6 +70,7 @@ function PublicDocumentationPageDtoFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'content': json['content'],
         'contextRefs': (json['context_refs'].map(PublicDocumentationContextRefDto_1.PublicDocumentationContextRefDtoFromJSON)),
+        'navigationTargets': (json['navigation_targets'].map(PublicDocumentationNavigationTargetDto_1.PublicDocumentationNavigationTargetDtoFromJSON)),
         'resolvedLinks': (json['resolved_links'].map(PublicDocumentationResolvedLinkDto_1.PublicDocumentationResolvedLinkDtoFromJSON)),
         'app': (0, PublicDocumentationAppDto_1.PublicDocumentationAppDtoFromJSON)(json['app']),
         'url': json['url'],
@@ -86,6 +90,7 @@ function PublicDocumentationPageDtoToJSONTyped(value, ignoreDiscriminator = fals
         'title': value['title'],
         'content': value['content'],
         'context_refs': (value['contextRefs'].map(PublicDocumentationContextRefDto_1.PublicDocumentationContextRefDtoToJSON)),
+        'navigation_targets': (value['navigationTargets'].map(PublicDocumentationNavigationTargetDto_1.PublicDocumentationNavigationTargetDtoToJSON)),
         'resolved_links': (value['resolvedLinks'].map(PublicDocumentationResolvedLinkDto_1.PublicDocumentationResolvedLinkDtoToJSON)),
         'app': (0, PublicDocumentationAppDto_1.PublicDocumentationAppDtoToJSON)(value['app']),
         'url': value['url'],

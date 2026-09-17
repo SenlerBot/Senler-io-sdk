@@ -20,13 +20,13 @@ export interface TokensPricingDto {
      * @type {number}
      * @memberof TokensPricingDto
      */
-    inputCredits: number;
+    inputCredits?: number;
     /**
      * output 1M, ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof TokensPricingDto
      */
-    outputCredits: number;
+    outputCredits?: number;
     /**
      * cached input 1M, ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}

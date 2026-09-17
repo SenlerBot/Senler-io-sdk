@@ -47,6 +47,7 @@ function SendMessageToDialogDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'content': json['content'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
         'idempotencyKey': json['idempotency_key'] == null ? undefined : json['idempotency_key'],
         'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoFromJSON)),
@@ -63,6 +64,7 @@ function SendMessageToDialogDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'content': value['content'],
+        'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],
         'idempotency_key': value['idempotencyKey'],
         'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoToJSON)),

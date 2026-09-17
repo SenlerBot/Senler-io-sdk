@@ -16,7 +16,7 @@
  */
 export interface SelectedGlobalVariableBindingDto {
     /**
-     * : project, lead.
+     * : project, lead, dialog.
      * @type {string}
      * @memberof SelectedGlobalVariableBindingDto
      */
@@ -34,6 +34,7 @@ export interface SelectedGlobalVariableBindingDto {
 export declare const SelectedGlobalVariableBindingDtoScopeEnum: {
     readonly Project: "project";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
 };
 export type SelectedGlobalVariableBindingDtoScopeEnum = typeof SelectedGlobalVariableBindingDtoScopeEnum[keyof typeof SelectedGlobalVariableBindingDtoScopeEnum];
 /**

@@ -22,6 +22,8 @@ exports.EffectiveSubscriptionLimitsDtoToJSONTyped = EffectiveSubscriptionLimitsD
  * Check if a given object implements the EffectiveSubscriptionLimitsDto interface.
  */
 function instanceOfEffectiveSubscriptionLimitsDto(value) {
+    if (!('creditsPerMonth' in value) || value['creditsPerMonth'] === undefined)
+        return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined)
         return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined)
@@ -38,6 +40,7 @@ function EffectiveSubscriptionLimitsDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
+        'creditsPerMonth': json['credits_per_month'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
         'storageLimitBytes': json['storage_limit_bytes'],
@@ -51,6 +54,7 @@ function EffectiveSubscriptionLimitsDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
+        'credits_per_month': value['creditsPerMonth'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
         'storage_limit_bytes': value['storageLimitBytes'],

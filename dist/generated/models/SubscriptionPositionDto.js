@@ -25,6 +25,7 @@ const SubscriptionScheduledChangeDto_1 = require("./SubscriptionScheduledChangeD
  */
 exports.SubscriptionPositionDtoKindEnum = {
     BaseTariff: 'base_tariff',
+    Credits: 'credits',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
     Storage: 'storage'

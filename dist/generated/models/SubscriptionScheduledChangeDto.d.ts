@@ -38,7 +38,7 @@ export interface SubscriptionScheduledChangeDto {
      * @type {string}
      * @memberof SubscriptionScheduledChangeDto
      */
-    targetAddonPlanId: string | null;
+    targetAddonId: string | null;
     /**
      *
      * @type {string}
@@ -60,6 +60,7 @@ export declare const SubscriptionScheduledChangeDtoItemKindEnum: {
     readonly AutomationSpeed: "automation_speed";
     readonly MailingDaily: "mailing_daily";
     readonly Storage: "storage";
+    readonly Credits: "credits";
 };
 export type SubscriptionScheduledChangeDtoItemKindEnum = typeof SubscriptionScheduledChangeDtoItemKindEnum[keyof typeof SubscriptionScheduledChangeDtoItemKindEnum];
 /**

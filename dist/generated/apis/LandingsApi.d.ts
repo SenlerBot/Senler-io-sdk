@@ -10,11 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface AssetsConfirmRequest {
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: AssetsConfirmAcceptLanguageEnum;
+}
+export interface AssetsFromUrlRequest {
+    landingId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AssetsFromUrlAcceptLanguageEnum;
 }
 export interface AssetsUploadUrlRequest {
     landingId: string;
@@ -112,6 +117,16 @@ export declare class LandingsApi extends runtime.BaseAPI {
      *
      */
     assetsConfirm(requestParameters: AssetsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto>;
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    assetsFromUrlRaw(requestParameters: AssetsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAssetUploadResponseDto>>;
+    /**
+     * PNG, JPEG WebP 10 , 8000 40 . url , , . .
+     * URL attachment_id
+     */
+    assetsFromUrl(requestParameters: AssetsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAssetUploadResponseDto>;
     /**
      * S3. PNG, JPEG WebP PUT- uploadUrl Authorization, . URL .
      *
@@ -271,6 +286,14 @@ export declare const AssetsConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AssetsConfirmAcceptLanguageEnum = typeof AssetsConfirmAcceptLanguageEnum[keyof typeof AssetsConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AssetsFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AssetsFromUrlAcceptLanguageEnum = typeof AssetsFromUrlAcceptLanguageEnum[keyof typeof AssetsFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

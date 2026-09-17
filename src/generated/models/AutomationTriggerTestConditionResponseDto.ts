@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationTriggerTestConditionResponseDto {
     /**
-     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed.
+     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -49,6 +49,12 @@ export interface AutomationTriggerTestConditionResponseDto {
      * @memberof AutomationTriggerTestConditionResponseDto
      */
     channelIds: Array<string> | null;
+    /**
+     * dialog ids.
+     * @type {Array<string>}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    dialogIds: Array<string> | null;
     /**
      * : all, private, group.
      * @type {string}
@@ -80,7 +86,7 @@ export interface AutomationTriggerTestConditionResponseDto {
      */
     incomingMessageVariableName: string | null;
     /**
-     * : run, lead, project.
+     * : run, lead, dialog, project.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -98,7 +104,8 @@ export const AutomationTriggerTestConditionResponseDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
-    SegmentSubscribed: 'segment_subscribed'
+    SegmentSubscribed: 'segment_subscribed',
+    AppEventReceived: 'app_event_received'
 } as const;
 export type AutomationTriggerTestConditionResponseDtoEventTypeEnum = typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum];
 
@@ -149,6 +156,7 @@ export type AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = typeof
 export const AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum];
@@ -163,6 +171,7 @@ export function instanceOfAutomationTriggerTestConditionResponseDto(value: objec
     if (!('messageMatchMode' in value) || value['messageMatchMode'] === undefined) return false;
     if (!('phrases' in value) || value['phrases'] === undefined) return false;
     if (!('channelIds' in value) || value['channelIds'] === undefined) return false;
+    if (!('dialogIds' in value) || value['dialogIds'] === undefined) return false;
     if (!('dialogScope' in value) || value['dialogScope'] === undefined) return false;
     if (!('segmentId' in value) || value['segmentId'] === undefined) return false;
     if (!('reactionValues' in value) || value['reactionValues'] === undefined) return false;
@@ -187,6 +196,7 @@ export function AutomationTriggerTestConditionResponseDtoFromJSONTyped(json: any
         'messageMatchMode': json['message_match_mode'],
         'phrases': json['phrases'],
         'channelIds': json['channel_ids'] == null ? null : json['channel_ids'],
+        'dialogIds': json['dialog_ids'] == null ? null : json['dialog_ids'],
         'dialogScope': json['dialog_scope'],
         'segmentId': json['segment_id'],
         'reactionValues': json['reaction_values'],
@@ -212,6 +222,7 @@ export function AutomationTriggerTestConditionResponseDtoToJSONTyped(value?: Aut
         'message_match_mode': value['messageMatchMode'],
         'phrases': value['phrases'],
         'channel_ids': value['channelIds'],
+        'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
         'segment_id': value['segmentId'],
         'reaction_values': value['reactionValues'],

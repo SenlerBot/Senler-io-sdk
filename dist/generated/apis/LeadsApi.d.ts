@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CountLeadsByVariableResponseDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
+import type { CountLeadsByVariableResponseDto, CountVariableLeadsByArrayItemDto, CountVariableLeadsByArrayItemsDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByArrayItemDto, ExportVariableLeadsByArrayItemsDto, ExportVariableLeadsByArrayLengthDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByArrayItemDto, SearchVariableLeadsByArrayItemsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
     acceptLanguage?: ExportAcceptLanguageEnum;
@@ -26,6 +26,50 @@ export interface AgentOperationRequest {
 export interface AutomationOperationRequest {
     createLeadsAutomationOperationProcessDto: CreateLeadsAutomationOperationProcessDto;
     acceptLanguage?: AutomationOperationAcceptLanguageEnum;
+}
+export interface ByVariableCountArrayContainsRequest {
+    countVariableLeadsByArrayItemDto: CountVariableLeadsByArrayItemDto;
+    acceptLanguage?: ByVariableCountArrayContainsAcceptLanguageEnum;
+}
+export interface ByVariableCountArrayContainsAllRequest {
+    countVariableLeadsByArrayItemsDto: CountVariableLeadsByArrayItemsDto;
+    acceptLanguage?: ByVariableCountArrayContainsAllAcceptLanguageEnum;
+}
+export interface ByVariableCountArrayContainsAnyRequest {
+    countVariableLeadsByArrayItemsDto: CountVariableLeadsByArrayItemsDto;
+    acceptLanguage?: ByVariableCountArrayContainsAnyAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayContainsRequest {
+    exportVariableLeadsByArrayItemDto: ExportVariableLeadsByArrayItemDto;
+    acceptLanguage?: ByVariableExportArrayContainsAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayContainsAllRequest {
+    exportVariableLeadsByArrayItemsDto: ExportVariableLeadsByArrayItemsDto;
+    acceptLanguage?: ByVariableExportArrayContainsAllAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayContainsAnyRequest {
+    exportVariableLeadsByArrayItemsDto: ExportVariableLeadsByArrayItemsDto;
+    acceptLanguage?: ByVariableExportArrayContainsAnyAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayEmptyRequest {
+    exportVariableLeadsDto: ExportVariableLeadsDto;
+    acceptLanguage?: ByVariableExportArrayEmptyAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayLengthAtLeastRequest {
+    exportVariableLeadsByArrayLengthDto: ExportVariableLeadsByArrayLengthDto;
+    acceptLanguage?: ByVariableExportArrayLengthAtLeastAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayLengthAtMostRequest {
+    exportVariableLeadsByArrayLengthDto: ExportVariableLeadsByArrayLengthDto;
+    acceptLanguage?: ByVariableExportArrayLengthAtMostAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayLengthEqualsRequest {
+    exportVariableLeadsByArrayLengthDto: ExportVariableLeadsByArrayLengthDto;
+    acceptLanguage?: ByVariableExportArrayLengthEqualsAcceptLanguageEnum;
+}
+export interface ByVariableExportArrayNotEmptyRequest {
+    exportVariableLeadsDto: ExportVariableLeadsDto;
+    acceptLanguage?: ByVariableExportArrayNotEmptyAcceptLanguageEnum;
 }
 export interface ByVariableExportEqualsBooleanRequest {
     exportVariableLeadsByBooleanDto: ExportVariableLeadsByBooleanDto;
@@ -46,6 +90,18 @@ export interface ByVariableExportEqualsStringRequest {
 export interface ByVariableExportExistsRequest {
     exportVariableLeadsDto: ExportVariableLeadsDto;
     acceptLanguage?: ByVariableExportExistsAcceptLanguageEnum;
+}
+export interface ByVariableSearchArrayContainsRequest {
+    searchVariableLeadsByArrayItemDto: SearchVariableLeadsByArrayItemDto;
+    acceptLanguage?: ByVariableSearchArrayContainsAcceptLanguageEnum;
+}
+export interface ByVariableSearchArrayContainsAllRequest {
+    searchVariableLeadsByArrayItemsDto: SearchVariableLeadsByArrayItemsDto;
+    acceptLanguage?: ByVariableSearchArrayContainsAllAcceptLanguageEnum;
+}
+export interface ByVariableSearchArrayContainsAnyRequest {
+    searchVariableLeadsByArrayItemsDto: SearchVariableLeadsByArrayItemsDto;
+    acceptLanguage?: ByVariableSearchArrayContainsAnyAcceptLanguageEnum;
 }
 export interface ByVariableSearchEqualsBooleanRequest {
     searchVariableLeadsByBooleanDto: SearchVariableLeadsByBooleanDto;
@@ -70,6 +126,44 @@ export interface ByVariableSearchExistsRequest {
 export interface ExportByDeliveryRequest {
     exportLeadsByDeliveryDto: ExportLeadsByDeliveryDto;
     acceptLanguage?: ExportByDeliveryAcceptLanguageEnum;
+}
+export interface GetByVariableCountArrayEmptyRequest {
+    projectId: string;
+    variableName: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountArrayEmptyAcceptLanguageEnum;
+}
+export interface GetByVariableCountArrayLengthAtLeastRequest {
+    projectId: string;
+    variableName: string;
+    length: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum;
+}
+export interface GetByVariableCountArrayLengthAtMostRequest {
+    projectId: string;
+    variableName: string;
+    length: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountArrayLengthAtMostAcceptLanguageEnum;
+}
+export interface GetByVariableCountArrayLengthEqualsRequest {
+    projectId: string;
+    variableName: string;
+    length: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountArrayLengthEqualsAcceptLanguageEnum;
+}
+export interface GetByVariableCountArrayNotEmptyRequest {
+    projectId: string;
+    variableName: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    acceptLanguage?: GetByVariableCountArrayNotEmptyAcceptLanguageEnum;
 }
 export interface GetByVariableCountEqualsBooleanRequest {
     projectId: string;
@@ -109,6 +203,69 @@ export interface GetByVariableCountExistsRequest {
     leadId?: string;
     acceptLanguage?: GetByVariableCountExistsAcceptLanguageEnum;
 }
+export interface GetByVariableSearchArrayEmptyRequest {
+    projectId: string;
+    variableName: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    limit?: number;
+    leadIds?: Array<string>;
+    includeValue?: boolean;
+    order?: GetByVariableSearchArrayEmptyOrderEnum;
+    cursor?: string;
+    acceptLanguage?: GetByVariableSearchArrayEmptyAcceptLanguageEnum;
+}
+export interface GetByVariableSearchArrayLengthAtLeastRequest {
+    projectId: string;
+    variableName: string;
+    length: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    limit?: number;
+    leadIds?: Array<string>;
+    includeValue?: boolean;
+    order?: GetByVariableSearchArrayLengthAtLeastOrderEnum;
+    cursor?: string;
+    acceptLanguage?: GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum;
+}
+export interface GetByVariableSearchArrayLengthAtMostRequest {
+    projectId: string;
+    variableName: string;
+    length: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    limit?: number;
+    leadIds?: Array<string>;
+    includeValue?: boolean;
+    order?: GetByVariableSearchArrayLengthAtMostOrderEnum;
+    cursor?: string;
+    acceptLanguage?: GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum;
+}
+export interface GetByVariableSearchArrayLengthEqualsRequest {
+    projectId: string;
+    variableName: string;
+    length: number;
+    channelIds?: Array<string>;
+    leadId?: string;
+    limit?: number;
+    leadIds?: Array<string>;
+    includeValue?: boolean;
+    order?: GetByVariableSearchArrayLengthEqualsOrderEnum;
+    cursor?: string;
+    acceptLanguage?: GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum;
+}
+export interface GetByVariableSearchArrayNotEmptyRequest {
+    projectId: string;
+    variableName: string;
+    channelIds?: Array<string>;
+    leadId?: string;
+    limit?: number;
+    leadIds?: Array<string>;
+    includeValue?: boolean;
+    order?: GetByVariableSearchArrayNotEmptyOrderEnum;
+    cursor?: string;
+    acceptLanguage?: GetByVariableSearchArrayNotEmptyAcceptLanguageEnum;
+}
 export interface GetConsentAcceptancesRequest {
     leadId: string;
     acceptLanguage?: GetConsentAcceptancesAcceptLanguageEnum;
@@ -121,7 +278,7 @@ export interface GetSubscriptionUtmTreeRequest {
     segmentIsMember?: boolean;
     parentId?: string;
     q?: string;
-    offset?: number;
+    cursor?: string;
     limit?: number;
     acceptLanguage?: GetSubscriptionUtmTreeAcceptLanguageEnum;
 }
@@ -218,6 +375,116 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     automationOperation(requestParameters: AutomationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
+     * JSON- .
+     * ,
+     */
+    byVariableCountArrayContainsRaw(requestParameters: ByVariableCountArrayContainsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * JSON- .
+     * ,
+     */
+    byVariableCountArrayContains(requestParameters: ByVariableCountArrayContainsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableCountArrayContainsAllRaw(requestParameters: ByVariableCountArrayContainsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableCountArrayContainsAll(requestParameters: ByVariableCountArrayContainsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableCountArrayContainsAnyRaw(requestParameters: ByVariableCountArrayContainsAnyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableCountArrayContainsAny(requestParameters: ByVariableCountArrayContainsAnyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * JSON-. .
+     * ,
+     */
+    byVariableExportArrayContainsRaw(requestParameters: ByVariableExportArrayContainsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * JSON-. .
+     * ,
+     */
+    byVariableExportArrayContains(requestParameters: ByVariableExportArrayContainsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * , .
+     * ,
+     */
+    byVariableExportArrayContainsAllRaw(requestParameters: ByVariableExportArrayContainsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * , .
+     * ,
+     */
+    byVariableExportArrayContainsAll(requestParameters: ByVariableExportArrayContainsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * JSON-.
+     * ,
+     */
+    byVariableExportArrayContainsAnyRaw(requestParameters: ByVariableExportArrayContainsAnyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * JSON-.
+     * ,
+     */
+    byVariableExportArrayContainsAny(requestParameters: ByVariableExportArrayContainsAnyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableExportArrayEmptyRaw(requestParameters: ByVariableExportArrayEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableExportArrayEmpty(requestParameters: ByVariableExportArrayEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    byVariableExportArrayLengthAtLeastRaw(requestParameters: ByVariableExportArrayLengthAtLeastRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    byVariableExportArrayLengthAtLeast(requestParameters: ByVariableExportArrayLengthAtLeastRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    byVariableExportArrayLengthAtMostRaw(requestParameters: ByVariableExportArrayLengthAtMostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    byVariableExportArrayLengthAtMost(requestParameters: ByVariableExportArrayLengthAtMostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * .
+     *
+     */
+    byVariableExportArrayLengthEqualsRaw(requestParameters: ByVariableExportArrayLengthEqualsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    byVariableExportArrayLengthEquals(requestParameters: ByVariableExportArrayLengthEqualsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * , .
+     *
+     */
+    byVariableExportArrayNotEmptyRaw(requestParameters: ByVariableExportArrayNotEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    byVariableExportArrayNotEmpty(requestParameters: ByVariableExportArrayNotEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
      * .
      *
      */
@@ -267,6 +534,36 @@ export declare class LeadsApi extends runtime.BaseAPI {
      * ,
      */
     byVariableExportExists(requestParameters: ByVariableExportExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * JSON- .
+     * ,
+     */
+    byVariableSearchArrayContainsRaw(requestParameters: ByVariableSearchArrayContainsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * JSON- .
+     * ,
+     */
+    byVariableSearchArrayContains(requestParameters: ByVariableSearchArrayContainsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableSearchArrayContainsAllRaw(requestParameters: ByVariableSearchArrayContainsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableSearchArrayContainsAll(requestParameters: ByVariableSearchArrayContainsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableSearchArrayContainsAnyRaw(requestParameters: ByVariableSearchArrayContainsAnyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * , JSON-.
+     * ,
+     */
+    byVariableSearchArrayContainsAny(requestParameters: ByVariableSearchArrayContainsAnyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
     /**
      * .
      *
@@ -331,6 +628,56 @@ export declare class LeadsApi extends runtime.BaseAPI {
      * , .
      *
      */
+    getByVariableCountArrayEmptyRaw(requestParameters: GetByVariableCountArrayEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountArrayEmpty(requestParameters: GetByVariableCountArrayEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableCountArrayLengthAtLeastRaw(requestParameters: GetByVariableCountArrayLengthAtLeastRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableCountArrayLengthAtLeast(requestParameters: GetByVariableCountArrayLengthAtLeastRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableCountArrayLengthAtMostRaw(requestParameters: GetByVariableCountArrayLengthAtMostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableCountArrayLengthAtMost(requestParameters: GetByVariableCountArrayLengthAtMostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    getByVariableCountArrayLengthEqualsRaw(requestParameters: GetByVariableCountArrayLengthEqualsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getByVariableCountArrayLengthEquals(requestParameters: GetByVariableCountArrayLengthEqualsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountArrayNotEmptyRaw(requestParameters: GetByVariableCountArrayNotEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getByVariableCountArrayNotEmpty(requestParameters: GetByVariableCountArrayNotEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
+    /**
+     * , .
+     *
+     */
     getByVariableCountEqualsBooleanRaw(requestParameters: GetByVariableCountEqualsBooleanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CountLeadsByVariableResponseDto>>;
     /**
      * , .
@@ -378,6 +725,56 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     getByVariableCountExists(requestParameters: GetByVariableCountExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CountLeadsByVariableResponseDto>;
     /**
+     * - .
+     *
+     */
+    getByVariableSearchArrayEmptyRaw(requestParameters: GetByVariableSearchArrayEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * - .
+     *
+     */
+    getByVariableSearchArrayEmpty(requestParameters: GetByVariableSearchArrayEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableSearchArrayLengthAtLeastRaw(requestParameters: GetByVariableSearchArrayLengthAtLeastRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableSearchArrayLengthAtLeast(requestParameters: GetByVariableSearchArrayLengthAtLeastRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableSearchArrayLengthAtMostRaw(requestParameters: GetByVariableSearchArrayLengthAtMostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     * ,
+     */
+    getByVariableSearchArrayLengthAtMost(requestParameters: GetByVariableSearchArrayLengthAtMostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * .
+     *
+     */
+    getByVariableSearchArrayLengthEqualsRaw(requestParameters: GetByVariableSearchArrayLengthEqualsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getByVariableSearchArrayLengthEquals(requestParameters: GetByVariableSearchArrayLengthEqualsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getByVariableSearchArrayNotEmptyRaw(requestParameters: GetByVariableSearchArrayNotEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchLeadsByVariableResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getByVariableSearchArrayNotEmpty(requestParameters: GetByVariableSearchArrayNotEmptyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
+    /**
      * , .
      *
      */
@@ -418,12 +815,12 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     refresh(requestParameters: RefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
-     * . JSON body.
+     * _id . JSON body; boolean . total include_total.
      *
      */
     searchRaw(requestParameters: SearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadsListResponseDto>>;
     /**
-     * . JSON body.
+     * _id . JSON body; boolean . total include_total.
      *
      */
     search(requestParameters: SearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadsListResponseDto>;
@@ -543,6 +940,94 @@ export type AutomationOperationAcceptLanguageEnum = typeof AutomationOperationAc
 /**
  * @export
  */
+export declare const ByVariableCountArrayContainsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableCountArrayContainsAcceptLanguageEnum = typeof ByVariableCountArrayContainsAcceptLanguageEnum[keyof typeof ByVariableCountArrayContainsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableCountArrayContainsAllAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableCountArrayContainsAllAcceptLanguageEnum = typeof ByVariableCountArrayContainsAllAcceptLanguageEnum[keyof typeof ByVariableCountArrayContainsAllAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableCountArrayContainsAnyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableCountArrayContainsAnyAcceptLanguageEnum = typeof ByVariableCountArrayContainsAnyAcceptLanguageEnum[keyof typeof ByVariableCountArrayContainsAnyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayContainsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayContainsAcceptLanguageEnum = typeof ByVariableExportArrayContainsAcceptLanguageEnum[keyof typeof ByVariableExportArrayContainsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayContainsAllAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayContainsAllAcceptLanguageEnum = typeof ByVariableExportArrayContainsAllAcceptLanguageEnum[keyof typeof ByVariableExportArrayContainsAllAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayContainsAnyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayContainsAnyAcceptLanguageEnum = typeof ByVariableExportArrayContainsAnyAcceptLanguageEnum[keyof typeof ByVariableExportArrayContainsAnyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayEmptyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayEmptyAcceptLanguageEnum = typeof ByVariableExportArrayEmptyAcceptLanguageEnum[keyof typeof ByVariableExportArrayEmptyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayLengthAtLeastAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayLengthAtLeastAcceptLanguageEnum = typeof ByVariableExportArrayLengthAtLeastAcceptLanguageEnum[keyof typeof ByVariableExportArrayLengthAtLeastAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayLengthAtMostAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayLengthAtMostAcceptLanguageEnum = typeof ByVariableExportArrayLengthAtMostAcceptLanguageEnum[keyof typeof ByVariableExportArrayLengthAtMostAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayLengthEqualsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayLengthEqualsAcceptLanguageEnum = typeof ByVariableExportArrayLengthEqualsAcceptLanguageEnum[keyof typeof ByVariableExportArrayLengthEqualsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableExportArrayNotEmptyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableExportArrayNotEmptyAcceptLanguageEnum = typeof ByVariableExportArrayNotEmptyAcceptLanguageEnum[keyof typeof ByVariableExportArrayNotEmptyAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const ByVariableExportEqualsBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -580,6 +1065,30 @@ export declare const ByVariableExportExistsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ByVariableExportExistsAcceptLanguageEnum = typeof ByVariableExportExistsAcceptLanguageEnum[keyof typeof ByVariableExportExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchArrayContainsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchArrayContainsAcceptLanguageEnum = typeof ByVariableSearchArrayContainsAcceptLanguageEnum[keyof typeof ByVariableSearchArrayContainsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchArrayContainsAllAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchArrayContainsAllAcceptLanguageEnum = typeof ByVariableSearchArrayContainsAllAcceptLanguageEnum[keyof typeof ByVariableSearchArrayContainsAllAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ByVariableSearchArrayContainsAnyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ByVariableSearchArrayContainsAnyAcceptLanguageEnum = typeof ByVariableSearchArrayContainsAnyAcceptLanguageEnum[keyof typeof ByVariableSearchArrayContainsAnyAcceptLanguageEnum];
 /**
  * @export
  */
@@ -631,6 +1140,46 @@ export type ExportByDeliveryAcceptLanguageEnum = typeof ExportByDeliveryAcceptLa
 /**
  * @export
  */
+export declare const GetByVariableCountArrayEmptyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountArrayEmptyAcceptLanguageEnum = typeof GetByVariableCountArrayEmptyAcceptLanguageEnum[keyof typeof GetByVariableCountArrayEmptyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum = typeof GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum[keyof typeof GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountArrayLengthAtMostAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountArrayLengthAtMostAcceptLanguageEnum = typeof GetByVariableCountArrayLengthAtMostAcceptLanguageEnum[keyof typeof GetByVariableCountArrayLengthAtMostAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountArrayLengthEqualsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountArrayLengthEqualsAcceptLanguageEnum = typeof GetByVariableCountArrayLengthEqualsAcceptLanguageEnum[keyof typeof GetByVariableCountArrayLengthEqualsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableCountArrayNotEmptyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableCountArrayNotEmptyAcceptLanguageEnum = typeof GetByVariableCountArrayNotEmptyAcceptLanguageEnum[keyof typeof GetByVariableCountArrayNotEmptyAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetByVariableCountEqualsBooleanAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -668,6 +1217,91 @@ export declare const GetByVariableCountExistsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetByVariableCountExistsAcceptLanguageEnum = typeof GetByVariableCountExistsAcceptLanguageEnum[keyof typeof GetByVariableCountExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayEmptyOrderEnum: {
+    readonly Default: "default";
+    readonly LengthAsc: "length_asc";
+    readonly LengthDesc: "length_desc";
+};
+export type GetByVariableSearchArrayEmptyOrderEnum = typeof GetByVariableSearchArrayEmptyOrderEnum[keyof typeof GetByVariableSearchArrayEmptyOrderEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayEmptyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableSearchArrayEmptyAcceptLanguageEnum = typeof GetByVariableSearchArrayEmptyAcceptLanguageEnum[keyof typeof GetByVariableSearchArrayEmptyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayLengthAtLeastOrderEnum: {
+    readonly Default: "default";
+    readonly LengthAsc: "length_asc";
+    readonly LengthDesc: "length_desc";
+};
+export type GetByVariableSearchArrayLengthAtLeastOrderEnum = typeof GetByVariableSearchArrayLengthAtLeastOrderEnum[keyof typeof GetByVariableSearchArrayLengthAtLeastOrderEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum = typeof GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum[keyof typeof GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayLengthAtMostOrderEnum: {
+    readonly Default: "default";
+    readonly LengthAsc: "length_asc";
+    readonly LengthDesc: "length_desc";
+};
+export type GetByVariableSearchArrayLengthAtMostOrderEnum = typeof GetByVariableSearchArrayLengthAtMostOrderEnum[keyof typeof GetByVariableSearchArrayLengthAtMostOrderEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum = typeof GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum[keyof typeof GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayLengthEqualsOrderEnum: {
+    readonly Default: "default";
+    readonly LengthAsc: "length_asc";
+    readonly LengthDesc: "length_desc";
+};
+export type GetByVariableSearchArrayLengthEqualsOrderEnum = typeof GetByVariableSearchArrayLengthEqualsOrderEnum[keyof typeof GetByVariableSearchArrayLengthEqualsOrderEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum = typeof GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum[keyof typeof GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayNotEmptyOrderEnum: {
+    readonly Default: "default";
+    readonly LengthAsc: "length_asc";
+    readonly LengthDesc: "length_desc";
+};
+export type GetByVariableSearchArrayNotEmptyOrderEnum = typeof GetByVariableSearchArrayNotEmptyOrderEnum[keyof typeof GetByVariableSearchArrayNotEmptyOrderEnum];
+/**
+ * @export
+ */
+export declare const GetByVariableSearchArrayNotEmptyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByVariableSearchArrayNotEmptyAcceptLanguageEnum = typeof GetByVariableSearchArrayNotEmptyAcceptLanguageEnum[keyof typeof GetByVariableSearchArrayNotEmptyAcceptLanguageEnum];
 /**
  * @export
  */

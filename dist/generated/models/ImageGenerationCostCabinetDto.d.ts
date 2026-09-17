@@ -47,6 +47,12 @@ export interface ImageGenerationCostCabinetDto {
     size?: string;
     /**
      *
+     * @type {string}
+     * @memberof ImageGenerationCostCabinetDto
+     */
+    resolution?: string;
+    /**
+     *
      * @type {number}
      * @memberof ImageGenerationCostCabinetDto
      */
@@ -82,6 +88,7 @@ export interface ImageGenerationCostCabinetDto {
 export declare const ImageGenerationCostCabinetDtoPricingTypeEnum: {
     readonly PerImage: "per_image";
     readonly QualitySizeMatrix: "quality_size_matrix";
+    readonly VariantMatrix: "variant_matrix";
     readonly ImageTokenUsage: "image_token_usage";
 };
 export type ImageGenerationCostCabinetDtoPricingTypeEnum = typeof ImageGenerationCostCabinetDtoPricingTypeEnum[keyof typeof ImageGenerationCostCabinetDtoPricingTypeEnum];

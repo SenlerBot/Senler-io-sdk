@@ -24,8 +24,7 @@ exports.SubscriptionInvoiceLineDtoToJSONTyped = SubscriptionInvoiceLineDtoToJSON
  */
 exports.SubscriptionInvoiceLineDtoKindEnum = {
     Tariff: 'tariff',
-    Addon: 'addon',
-    MailingPackage: 'mailing_package'
+    Addon: 'addon'
 };
 /**
  * @export

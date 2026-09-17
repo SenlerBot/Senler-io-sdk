@@ -27,6 +27,13 @@ import {
     LocalizedTextDtoToJSON,
     LocalizedTextDtoToJSONTyped,
 } from './LocalizedTextDto';
+import type { AppToolParameterDto } from './AppToolParameterDto';
+import {
+    AppToolParameterDtoFromJSON,
+    AppToolParameterDtoFromJSONTyped,
+    AppToolParameterDtoToJSON,
+    AppToolParameterDtoToJSONTyped,
+} from './AppToolParameterDto';
 
 /**
  * AgentInstalledAppToolDto.
@@ -60,10 +67,22 @@ export interface AgentInstalledAppToolDto {
     displayDescription: LocalizedTextDto;
     /**
      *
+     * @type {LocalizedTextDto}
+     * @memberof AgentInstalledAppToolDto
+     */
+    responseDescription: LocalizedTextDto | null;
+    /**
+     *
      * @type {string}
      * @memberof AgentInstalledAppToolDto
      */
     description: string;
+    /**
+     * ,
+     * @type {Array<AppToolParameterDto>}
+     * @memberof AgentInstalledAppToolDto
+     */
+    parameters: Array<AppToolParameterDto>;
     /**
      *
      * @type {boolean}
@@ -92,7 +111,9 @@ export function instanceOfAgentInstalledAppToolDto(value: object): value is Agen
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
     if (!('displayDescription' in value) || value['displayDescription'] === undefined) return false;
+    if (!('responseDescription' in value) || value['responseDescription'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('parameters' in value) || value['parameters'] === undefined) return false;
     if (!('configurable' in value) || value['configurable'] === undefined) return false;
     if (!('allowMultipleBindings' in value) || value['allowMultipleBindings'] === undefined) return false;
     if (!('instances' in value) || value['instances'] === undefined) return false;
@@ -113,7 +134,9 @@ export function AgentInstalledAppToolDtoFromJSONTyped(json: any, ignoreDiscrimin
         'name': json['name'],
         'displayName': LocalizedTextDtoFromJSON(json['display_name']),
         'displayDescription': LocalizedTextDtoFromJSON(json['display_description']),
+        'responseDescription': LocalizedTextDtoFromJSON(json['response_description']),
         'description': json['description'],
+        'parameters': ((json['parameters'] as Array<any>).map(AppToolParameterDtoFromJSON)),
         'configurable': json['configurable'],
         'allowMultipleBindings': json['allow_multiple_bindings'],
         'instances': ((json['instances'] as Array<any>).map(AgentInstalledAppToolInstanceDtoFromJSON)),
@@ -135,7 +158,9 @@ export function AgentInstalledAppToolDtoToJSONTyped(value?: AgentInstalledAppToo
         'name': value['name'],
         'display_name': LocalizedTextDtoToJSON(value['displayName']),
         'display_description': LocalizedTextDtoToJSON(value['displayDescription']),
+        'response_description': LocalizedTextDtoToJSON(value['responseDescription']),
         'description': value['description'],
+        'parameters': ((value['parameters'] as Array<any>).map(AppToolParameterDtoToJSON)),
         'configurable': value['configurable'],
         'allow_multiple_bindings': value['allowMultipleBindings'],
         'instances': ((value['instances'] as Array<any>).map(AgentInstalledAppToolInstanceDtoToJSON)),

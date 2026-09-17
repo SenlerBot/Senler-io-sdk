@@ -38,6 +38,7 @@ export declare const CreateResourcePackageLinkDtoSourceSectionEnum: {
     readonly KnowledgeBase: "knowledge_base";
     readonly ProjectVariables: "project_variables";
     readonly LeadVariables: "lead_variables";
+    readonly DialogVariables: "dialog_variables";
     readonly Segments: "segments";
     readonly Landings: "landings";
     readonly Metrics: "metrics";

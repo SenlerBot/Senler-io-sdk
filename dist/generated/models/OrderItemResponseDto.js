@@ -19,14 +19,11 @@ exports.OrderItemResponseDtoFromJSON = OrderItemResponseDtoFromJSON;
 exports.OrderItemResponseDtoFromJSONTyped = OrderItemResponseDtoFromJSONTyped;
 exports.OrderItemResponseDtoToJSON = OrderItemResponseDtoToJSON;
 exports.OrderItemResponseDtoToJSONTyped = OrderItemResponseDtoToJSONTyped;
-const OrderTariffResponseDto_1 = require("./OrderTariffResponseDto");
 /**
  * @export
  */
 exports.OrderItemResponseDtoTypeEnum = {
     BalanceDeposit: 'balance_deposit',
-    Tariff: 'tariff',
-    CreditPackage: 'credit_package',
     BillingInvoice: 'billing_invoice',
     UserAgentCreditPackage: 'user_agent_credit_package'
 };
@@ -98,8 +95,7 @@ function OrderItemResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'activationStatus': json['activation_status'],
         'activationError': json['activation_error'] == null ? undefined : json['activation_error'],
         'processingStartedAt': json['processing_started_at'] == null ? undefined : (new Date(json['processing_started_at'])),
-        'creditPackageId': json['credit_package_id'] == null ? undefined : json['credit_package_id'],
-        'tariff': json['tariff'] == null ? undefined : (0, OrderTariffResponseDto_1.OrderTariffResponseDtoFromJSON)(json['tariff']),
+        'billingInvoiceId': json['billing_invoice_id'] == null ? undefined : json['billing_invoice_id'],
         'createdAt': (new Date(json['created_at'])),
     };
 }
@@ -121,8 +117,7 @@ function OrderItemResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'activation_status': value['activationStatus'],
         'activation_error': value['activationError'],
         'processing_started_at': value['processingStartedAt'] == null ? undefined : (value['processingStartedAt'].toISOString()),
-        'credit_package_id': value['creditPackageId'],
-        'tariff': (0, OrderTariffResponseDto_1.OrderTariffResponseDtoToJSON)(value['tariff']),
+        'billing_invoice_id': value['billingInvoiceId'],
         'created_at': ((value['createdAt']).toISOString()),
     };
 }

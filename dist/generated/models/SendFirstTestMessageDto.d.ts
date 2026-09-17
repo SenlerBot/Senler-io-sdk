@@ -24,31 +24,19 @@ export interface SendFirstTestMessageDto {
      */
     content: string;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof SendFirstTestMessageDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      *
      * @type {string}
      * @memberof SendFirstTestMessageDto
      */
     clientType?: SendFirstTestMessageDtoClientTypeEnum;
     /**
-     * (. 10).
-     *
-     * :
-     * 1. S3- .
-     * 2. .
-     * 3. .
-     * 4. fileId confirm.
-     *
-     * :
-     * ```typescript
-     * // - dialogId
-     * const confirm = await confirmUpload(uploadId, { dialogId });
-     * await sendMessage({
-     * content: '',
-     * attachments: [{ id: confirm.fileId }],
-     * });
-     * ```
-     *
-     * ID.
+     * . fileId confirm; .
      * @type {Array<MessageAttachmentReferenceDto>}
      * @memberof SendFirstTestMessageDto
      */
@@ -59,6 +47,12 @@ export interface SendFirstTestMessageDto {
      * @memberof SendFirstTestMessageDto
      */
     buttons?: Array<MessageButtonDto>;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof SendFirstTestMessageDto
+     */
+    draftId: string;
     /**
      *
      * @type {string}

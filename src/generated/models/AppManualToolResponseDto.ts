@@ -60,6 +60,12 @@ export interface AppManualToolResponseDto {
      */
     displayDescription: AppToolDisplayDescriptionDto;
     /**
+     *
+     * @type {AppToolDisplayDescriptionDto}
+     * @memberof AppManualToolResponseDto
+     */
+    responseDescription?: AppToolDisplayDescriptionDto | null;
+    /**
      * . null .
      * @type {string}
      * @memberof AppManualToolResponseDto
@@ -170,6 +176,7 @@ export function AppManualToolResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'name': json['name'],
         'displayName': AppToolDisplayNameDtoFromJSON(json['display_name']),
         'displayDescription': AppToolDisplayDescriptionDtoFromJSON(json['display_description']),
+        'responseDescription': json['response_description'] == null ? undefined : AppToolDisplayDescriptionDtoFromJSON(json['response_description']),
         'agentDescriptionOverride': json['agent_description_override'],
         'endpointUrl': json['endpoint_url'],
         'parameters': ((json['parameters'] as Array<any>).map(AppToolParameterDtoFromJSON)),
@@ -196,6 +203,7 @@ export function AppManualToolResponseDtoToJSONTyped(value?: AppManualToolRespons
         'name': value['name'],
         'display_name': AppToolDisplayNameDtoToJSON(value['displayName']),
         'display_description': AppToolDisplayDescriptionDtoToJSON(value['displayDescription']),
+        'response_description': AppToolDisplayDescriptionDtoToJSON(value['responseDescription']),
         'agent_description_override': value['agentDescriptionOverride'],
         'endpoint_url': value['endpointUrl'],
         'parameters': ((value['parameters'] as Array<any>).map(AppToolParameterDtoToJSON)),

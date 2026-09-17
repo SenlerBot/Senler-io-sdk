@@ -28,6 +28,7 @@ import {
 export interface ModelsListRequest {
     type?: ModelsListTypeEnum;
     purpose?: ModelsListPurposeEnum;
+    capability?: ModelsListCapabilityEnum;
     acceptLanguage?: ModelsListAcceptLanguageEnum;
 }
 
@@ -37,7 +38,7 @@ export interface ModelsListRequest {
 export class ModelsApi extends runtime.BaseAPI {
 
     /**
-     *
+     * ,
      *
      */
     async modelsListRaw(requestParameters: ModelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AvailableModelsResponseDto>> {
@@ -49,6 +50,10 @@ export class ModelsApi extends runtime.BaseAPI {
 
         if (requestParameters['purpose'] != null) {
             queryParameters['purpose'] = requestParameters['purpose'];
+        }
+
+        if (requestParameters['capability'] != null) {
+            queryParameters['capability'] = requestParameters['capability'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -68,7 +73,7 @@ export class ModelsApi extends runtime.BaseAPI {
     }
 
     /**
-     *
+     * ,
      *
      */
     async modelsList(requestParameters: ModelsListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AvailableModelsResponseDto> {
@@ -97,6 +102,13 @@ export const ModelsListPurposeEnum = {
     AgentGeneration: 'agent_generation'
 } as const;
 export type ModelsListPurposeEnum = typeof ModelsListPurposeEnum[keyof typeof ModelsListPurposeEnum];
+/**
+ * @export
+ */
+export const ModelsListCapabilityEnum = {
+    VoiceCloning: 'voice_cloning'
+} as const;
+export type ModelsListCapabilityEnum = typeof ModelsListCapabilityEnum[keyof typeof ModelsListCapabilityEnum];
 /**
  * @export
  */

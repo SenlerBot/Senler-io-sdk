@@ -74,6 +74,7 @@ export declare const ResourcePackageResponseDtoRootResourceTypeEnum: {
     readonly Delivery: "delivery";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly DialogVariableDefinition: "dialog_variable_definition";
     readonly Segment: "segment";
     readonly SegmentConsentDocument: "segment_consent_document";
     readonly KnowledgeFolder: "knowledge_folder";

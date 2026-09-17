@@ -56,12 +56,6 @@ export interface TariffResponseDto {
      * @type {number}
      * @memberof TariffResponseDto
      */
-    approxMessages?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof TariffResponseDto
-     */
     mailingMessagesPerDay: number;
     /**
      *
@@ -76,17 +70,17 @@ export interface TariffResponseDto {
      */
     storageLimitBytes: number;
     /**
-     *
-     * @type {boolean}
-     * @memberof TariffResponseDto
-     */
-    isUnlimited: boolean;
-    /**
      * ( )
      * @type {boolean}
      * @memberof TariffResponseDto
      */
     isFree: boolean;
+    /**
+     * OpenAI OpenRouter
+     * @type {boolean}
+     * @memberof TariffResponseDto
+     */
+    allowsCustomAiCredentials: boolean;
     /**
      * , (/); : 1.25 = 125
      * @type {number}
@@ -111,12 +105,6 @@ export interface TariffResponseDto {
      * @memberof TariffResponseDto
      */
     priceUsdYearly: number;
-    /**
-     * ( , )
-     * @type {boolean}
-     * @memberof TariffResponseDto
-     */
-    isRequestOnly: boolean;
     /**
      *
      * @type {number}

@@ -36,6 +36,8 @@ exports.SendFirstTestMessageDtoClientTypeEnum = {
 function instanceOfSendFirstTestMessageDto(value) {
     if (!('content' in value) || value['content'] === undefined)
         return false;
+    if (!('draftId' in value) || value['draftId'] === undefined)
+        return false;
     if (!('idempotencyKey' in value) || value['idempotencyKey'] === undefined)
         return false;
     return true;
@@ -49,9 +51,11 @@ function SendFirstTestMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'content': json['content'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
         'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoFromJSON)),
         'buttons': json['buttons'] == null ? undefined : (json['buttons'].map(MessageButtonDto_1.MessageButtonDtoFromJSON)),
+        'draftId': json['draft_id'],
         'idempotencyKey': json['idempotency_key'],
         'baseDialogId': json['base_dialog_id'] == null ? undefined : json['base_dialog_id'],
     };
@@ -65,9 +69,11 @@ function SendFirstTestMessageDtoToJSONTyped(value, ignoreDiscriminator = false) 
     }
     return {
         'content': value['content'],
+        'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],
         'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoToJSON)),
         'buttons': value['buttons'] == null ? undefined : (value['buttons'].map(MessageButtonDto_1.MessageButtonDtoToJSON)),
+        'draft_id': value['draftId'],
         'idempotency_key': value['idempotencyKey'],
         'base_dialog_id': value['baseDialogId'],
     };

@@ -32,7 +32,13 @@ export interface CreditTransactionDto {
      */
     type: CreditTransactionDtoTypeEnum;
     /**
-     * (+ , ), ; 1 = 10000 ; : 12.5 = 125000
+     * pending ; completed
+     * @type {string}
+     * @memberof CreditTransactionDto
+     */
+    status: CreditTransactionDtoStatusEnum;
+    /**
+     * (+ , ); pending , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof CreditTransactionDto
      */
@@ -118,7 +124,7 @@ export interface CreditTransactionDto {
      * @type {LocalizedTextDto}
      * @memberof CreditTransactionDto
      */
-    creditPackageName?: LocalizedTextDto | null;
+    addonName?: LocalizedTextDto | null;
     /**
      *
      * @type {Date}
@@ -138,6 +144,14 @@ export declare const CreditTransactionDtoTypeEnum: {
     readonly Adjustment: "adjustment";
 };
 export type CreditTransactionDtoTypeEnum = typeof CreditTransactionDtoTypeEnum[keyof typeof CreditTransactionDtoTypeEnum];
+/**
+ * @export
+ */
+export declare const CreditTransactionDtoStatusEnum: {
+    readonly Pending: "pending";
+    readonly Completed: "completed";
+};
+export type CreditTransactionDtoStatusEnum = typeof CreditTransactionDtoStatusEnum[keyof typeof CreditTransactionDtoStatusEnum];
 /**
  * Check if a given object implements the CreditTransactionDto interface.
  */

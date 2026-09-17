@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { SubscriptionNextActionDto } from './SubscriptionNextActionDto';
+import {
+    SubscriptionNextActionDtoFromJSON,
+    SubscriptionNextActionDtoFromJSONTyped,
+    SubscriptionNextActionDtoToJSON,
+    SubscriptionNextActionDtoToJSONTyped,
+} from './SubscriptionNextActionDto';
 import type { SubscriptionInvoiceLineDto } from './SubscriptionInvoiceLineDto';
 import {
     SubscriptionInvoiceLineDtoFromJSON,
@@ -54,17 +61,23 @@ export interface ProjectSubscriptionResponseDto {
      */
     autoRenewEnabled: boolean;
     /**
-     * next billing at.
-     * @type {Date}
+     * next action.
+     * @type {SubscriptionNextActionDto}
      * @memberof ProjectSubscriptionResponseDto
      */
-    nextBillingAt: Date | null;
+    nextAction: SubscriptionNextActionDto | null;
     /**
      * : USD, RUB.
      * @type {string}
      * @memberof ProjectSubscriptionResponseDto
      */
     currency: ProjectSubscriptionResponseDtoCurrencyEnum;
+    /**
+     * OpenAI OpenRouter
+     * @type {boolean}
+     * @memberof ProjectSubscriptionResponseDto
+     */
+    allowsCustomAiCredentials: boolean;
     /**
      * positions.
      * @type {Array<SubscriptionPositionDto>}
@@ -108,8 +121,9 @@ export type ProjectSubscriptionResponseDtoCurrencyEnum = typeof ProjectSubscript
 export function instanceOfProjectSubscriptionResponseDto(value: object): value is ProjectSubscriptionResponseDto {
     if (!('subscriptionId' in value) || value['subscriptionId'] === undefined) return false;
     if (!('autoRenewEnabled' in value) || value['autoRenewEnabled'] === undefined) return false;
-    if (!('nextBillingAt' in value) || value['nextBillingAt'] === undefined) return false;
+    if (!('nextAction' in value) || value['nextAction'] === undefined) return false;
     if (!('currency' in value) || value['currency'] === undefined) return false;
+    if (!('allowsCustomAiCredentials' in value) || value['allowsCustomAiCredentials'] === undefined) return false;
     if (!('positions' in value) || value['positions'] === undefined) return false;
     if (!('effectiveLimits' in value) || value['effectiveLimits'] === undefined) return false;
     if (!('purchasedMailingMessages' in value) || value['purchasedMailingMessages'] === undefined) return false;
@@ -129,8 +143,9 @@ export function ProjectSubscriptionResponseDtoFromJSONTyped(json: any, ignoreDis
 
         'subscriptionId': json['subscription_id'],
         'autoRenewEnabled': json['auto_renew_enabled'],
-        'nextBillingAt': (json['next_billing_at'] == null ? null : new Date(json['next_billing_at'])),
+        'nextAction': SubscriptionNextActionDtoFromJSON(json['next_action']),
         'currency': json['currency'],
+        'allowsCustomAiCredentials': json['allows_custom_ai_credentials'],
         'positions': ((json['positions'] as Array<any>).map(SubscriptionPositionDtoFromJSON)),
         'effectiveLimits': EffectiveSubscriptionLimitsDtoFromJSON(json['effective_limits']),
         'purchasedMailingMessages': json['purchased_mailing_messages'],
@@ -151,8 +166,9 @@ export function ProjectSubscriptionResponseDtoToJSONTyped(value?: ProjectSubscri
 
         'subscription_id': value['subscriptionId'],
         'auto_renew_enabled': value['autoRenewEnabled'],
-        'next_billing_at': (value['nextBillingAt'] == null ? null : (value['nextBillingAt'] as any).toISOString()),
+        'next_action': SubscriptionNextActionDtoToJSON(value['nextAction']),
         'currency': value['currency'],
+        'allows_custom_ai_credentials': value['allowsCustomAiCredentials'],
         'positions': ((value['positions'] as Array<any>).map(SubscriptionPositionDtoToJSON)),
         'effective_limits': EffectiveSubscriptionLimitsDtoToJSON(value['effectiveLimits']),
         'purchased_mailing_messages': value['purchasedMailingMessages'],

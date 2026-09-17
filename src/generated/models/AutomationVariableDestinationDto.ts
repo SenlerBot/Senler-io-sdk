@@ -40,6 +40,7 @@ export interface AutomationVariableDestinationDto {
 export const AutomationVariableDestinationDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationVariableDestinationDtoVariableScopeEnum = typeof AutomationVariableDestinationDtoVariableScopeEnum[keyof typeof AutomationVariableDestinationDtoVariableScopeEnum];

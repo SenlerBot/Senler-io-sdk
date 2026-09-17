@@ -29,8 +29,10 @@ const EventToolListDto_1 = require("./EventToolListDto");
 const EventHierarchyDto_1 = require("./EventHierarchyDto");
 const EventButtonClickDto_1 = require("./EventButtonClickDto");
 const EventGenerationDto_1 = require("./EventGenerationDto");
+const AutomationFunnelObservationDto_1 = require("./AutomationFunnelObservationDto");
 const EventSenderDto_1 = require("./EventSenderDto");
 const EventMessageInteractionsDto_1 = require("./EventMessageInteractionsDto");
+const EventFunnelDto_1 = require("./EventFunnelDto");
 const EventErrorDto_1 = require("./EventErrorDto");
 const EventAttachmentCabinetDto_1 = require("./EventAttachmentCabinetDto");
 /**
@@ -53,6 +55,9 @@ exports.CabinetEventListItemDtoPlatformTypeEnum = {
  * @export
  */
 exports.CabinetEventListItemDtoActionTypeEnum = {
+    FunnelEntered: 'funnel_entered',
+    FunnelStageChanged: 'funnel_stage_changed',
+    FunnelLeft: 'funnel_left',
     MessageCreated: 'message_created',
     MessageEdited: 'message_edited',
     MessageDeleted: 'message_deleted',
@@ -174,6 +179,8 @@ function CabinetEventListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'funnel': json['funnel'] == null ? undefined : (0, EventFunnelDto_1.EventFunnelDtoFromJSON)(json['funnel']),
+        'automationObservation': json['automation_observation'] == null ? undefined : (0, AutomationFunnelObservationDto_1.AutomationFunnelObservationDtoFromJSON)(json['automation_observation']),
         'id': json['id'],
         'dialogId': json['dialog_id'] == null ? undefined : json['dialog_id'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
@@ -182,6 +189,7 @@ function CabinetEventListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
+        'dialogLeadId': json['dialog_lead_id'] == null ? undefined : json['dialog_lead_id'],
         'actionType': json['action_type'],
         'targetType': json['target_type'],
         'targetId': json['target_id'] == null ? undefined : json['target_id'],
@@ -216,6 +224,8 @@ function CabinetEventListItemDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'funnel': (0, EventFunnelDto_1.EventFunnelDtoToJSON)(value['funnel']),
+        'automation_observation': (0, AutomationFunnelObservationDto_1.AutomationFunnelObservationDtoToJSON)(value['automationObservation']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'mcp_server_id': value['mcpServerId'],
@@ -224,6 +234,7 @@ function CabinetEventListItemDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'project_id': value['projectId'],
         'agent_id': value['agentId'],
         'lead_id': value['leadId'],
+        'dialog_lead_id': value['dialogLeadId'],
         'action_type': value['actionType'],
         'target_type': value['targetType'],
         'target_id': value['targetId'],

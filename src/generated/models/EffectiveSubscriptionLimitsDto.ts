@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface EffectiveSubscriptionLimitsDto {
     /**
+     * , ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof EffectiveSubscriptionLimitsDto
+     */
+    creditsPerMonth: number;
+    /**
      * automation steps per second.
      * @type {number}
      * @memberof EffectiveSubscriptionLimitsDto
@@ -43,6 +49,7 @@ export interface EffectiveSubscriptionLimitsDto {
  * Check if a given object implements the EffectiveSubscriptionLimitsDto interface.
  */
 export function instanceOfEffectiveSubscriptionLimitsDto(value: object): value is EffectiveSubscriptionLimitsDto {
+    if (!('creditsPerMonth' in value) || value['creditsPerMonth'] === undefined) return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
@@ -59,6 +66,7 @@ export function EffectiveSubscriptionLimitsDtoFromJSONTyped(json: any, ignoreDis
     }
     return {
 
+        'creditsPerMonth': json['credits_per_month'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
         'storageLimitBytes': json['storage_limit_bytes'],
@@ -76,6 +84,7 @@ export function EffectiveSubscriptionLimitsDtoToJSONTyped(value?: EffectiveSubsc
 
     return {
 
+        'credits_per_month': value['creditsPerMonth'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
         'storage_limit_bytes': value['storageLimitBytes'],

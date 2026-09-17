@@ -28,11 +28,17 @@ export interface SubscriptionRenewalConfirmDto {
      */
     useBalance?: boolean;
     /**
-     * ID ,
+     *
      * @type {string}
      * @memberof SubscriptionRenewalConfirmDto
      */
     paySystemId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SubscriptionRenewalConfirmDto
+     */
+    paymentMethodId?: string;
 }
 /**
  * @export

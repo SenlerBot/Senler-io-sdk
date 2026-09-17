@@ -59,7 +59,7 @@ export interface AutomationUsageResponseDto {
      */
     publicStepsPerSecondLimit: number | null;
     /**
-     *
+     * .
      * @type {AutomationUsageSummaryDto}
      * @memberof AutomationUsageResponseDto
      */

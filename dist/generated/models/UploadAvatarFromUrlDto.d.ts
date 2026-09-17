@@ -16,11 +16,35 @@
  */
 export interface UploadAvatarFromUrlDto {
     /**
-     * URL
+     * HTTP(S) URL , storage_url . url attachment_id. ; PUT .
      * @type {string}
      * @memberof UploadAvatarFromUrlDto
      */
-    imageUrl: string;
+    url?: string;
+    /**
+     * ID - URL. fileId : url. .
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    attachmentId?: string;
+    /**
+     * . MIME-, .
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    fileName?: string;
+    /**
+     * . 24 . . : API 409 24 ; .
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    idempotencyKey?: string;
+    /**
+     * URL . : imageUrl, url attachment_id.
+     * @type {string}
+     * @memberof UploadAvatarFromUrlDto
+     */
+    imageUrl?: string;
 }
 /**
  * Check if a given object implements the UploadAvatarFromUrlDto interface.

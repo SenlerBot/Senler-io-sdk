@@ -40,12 +40,6 @@ export interface TariffSubscriptionDto {
      */
     isFree: boolean;
     /**
-     * (Enterprise)
-     * @type {boolean}
-     * @memberof TariffSubscriptionDto
-     */
-    isUnlimited: boolean;
-    /**
      *
      * @type {number}
      * @memberof TariffSubscriptionDto
@@ -92,7 +86,7 @@ export interface TariffSubscriptionDto {
      * @type {boolean}
      * @memberof TariffSubscriptionDto
      */
-    prolongation: boolean;
+    autoRenewEnabled: boolean;
     /**
      *
      * @type {boolean}
@@ -104,14 +98,13 @@ export interface TariffSubscriptionDto {
      * @type {string}
      * @memberof TariffSubscriptionDto
      */
-    autoPurchasePackageId?: string | null;
+    autoPurchaseAddonId?: string | null;
 }
 /**
  * @export
  */
 export declare const TariffSubscriptionDtoStatusEnum: {
     readonly Active: "active";
-    readonly Scheduled: "scheduled";
     readonly Prepaid: "prepaid";
     readonly Cancelled: "cancelled";
     readonly Expired: "expired";

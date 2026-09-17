@@ -39,6 +39,7 @@ exports.AutomationTableFilterDtoValueSourceEnum = {
 exports.AutomationTableFilterDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**

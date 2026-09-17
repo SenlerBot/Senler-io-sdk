@@ -16,20 +16,26 @@
 import * as runtime from '../runtime';
 import type {
   AgentConfirmAvatarUploadResponseDto,
+  AgentDraftSettingsResponseDto,
   ConfirmS3UploadDto,
   ErrorResponse,
   GetAvatarUploadUrlDto,
+  ImportImageDto,
   S3UploadUrlResponseDto,
 } from '../models/index';
 import {
     AgentConfirmAvatarUploadResponseDtoFromJSON,
     AgentConfirmAvatarUploadResponseDtoToJSON,
+    AgentDraftSettingsResponseDtoFromJSON,
+    AgentDraftSettingsResponseDtoToJSON,
     ConfirmS3UploadDtoFromJSON,
     ConfirmS3UploadDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     GetAvatarUploadUrlDtoFromJSON,
     GetAvatarUploadUrlDtoToJSON,
+    ImportImageDtoFromJSON,
+    ImportImageDtoToJSON,
     S3UploadUrlResponseDtoFromJSON,
     S3UploadUrlResponseDtoToJSON,
 } from '../models/index';
@@ -40,10 +46,22 @@ export interface AgentsAvatarAvatarConfirmRequest {
     acceptLanguage?: AgentsAvatarAvatarConfirmAcceptLanguageEnum;
 }
 
+export interface AgentsAvatarAvatarFromUrlRequest {
+    agentId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AgentsAvatarAvatarFromUrlAcceptLanguageEnum;
+}
+
 export interface AgentsAvatarAvatarUploadUrlRequest {
     agentId: string;
     getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
     acceptLanguage?: AgentsAvatarAvatarUploadUrlAcceptLanguageEnum;
+}
+
+export interface DraftAvatarFromUrlRequest {
+    agentId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: DraftAvatarFromUrlAcceptLanguageEnum;
 }
 
 /**
@@ -114,6 +132,68 @@ export class AgentsAvatarApi extends runtime.BaseAPI {
     }
 
     /**
+     * PNG, JPEG WebP, . draft/avatar/from-url. 20 40 .
+     * URL attachment_id
+     */
+    async agentsAvatarAvatarFromUrlRaw(requestParameters: AgentsAvatarAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentConfirmAvatarUploadResponseDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling agentsAvatarAvatarFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling agentsAvatarAvatarFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/avatar/from-url`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentConfirmAvatarUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG WebP, . draft/avatar/from-url. 20 40 .
+     * URL attachment_id
+     */
+    async agentsAvatarAvatarFromUrl(requestParameters: AgentsAvatarAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentConfirmAvatarUploadResponseDto> {
+        const response = await this.agentsAvatarAvatarFromUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * S3- .
      * S3-
      */
@@ -175,6 +255,68 @@ export class AgentsAvatarApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * PNG, JPEG WebP avatar_url . . 20 40 .
+     * URL attachment_id
+     */
+    async draftAvatarFromUrlRaw(requestParameters: DraftAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling draftAvatarFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling draftAvatarFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/draft/avatar/from-url`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG WebP avatar_url . . 20 40 .
+     * URL attachment_id
+     */
+    async draftAvatarFromUrl(requestParameters: DraftAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
+        const response = await this.draftAvatarFromUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -188,8 +330,24 @@ export type AgentsAvatarAvatarConfirmAcceptLanguageEnum = typeof AgentsAvatarAva
 /**
  * @export
  */
+export const AgentsAvatarAvatarFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AgentsAvatarAvatarFromUrlAcceptLanguageEnum = typeof AgentsAvatarAvatarFromUrlAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const AgentsAvatarAvatarUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type AgentsAvatarAvatarUploadUrlAcceptLanguageEnum = typeof AgentsAvatarAvatarUploadUrlAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DraftAvatarFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DraftAvatarFromUrlAcceptLanguageEnum = typeof DraftAvatarFromUrlAcceptLanguageEnum[keyof typeof DraftAvatarFromUrlAcceptLanguageEnum];

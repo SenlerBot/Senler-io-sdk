@@ -11,6 +11,7 @@
  */
 import type { AgentInstalledAppToolInstanceDto } from './AgentInstalledAppToolInstanceDto';
 import type { LocalizedTextDto } from './LocalizedTextDto';
+import type { AppToolParameterDto } from './AppToolParameterDto';
 /**
  * AgentInstalledAppToolDto.
  * @export
@@ -43,10 +44,22 @@ export interface AgentInstalledAppToolDto {
     displayDescription: LocalizedTextDto;
     /**
      *
+     * @type {LocalizedTextDto}
+     * @memberof AgentInstalledAppToolDto
+     */
+    responseDescription: LocalizedTextDto | null;
+    /**
+     *
      * @type {string}
      * @memberof AgentInstalledAppToolDto
      */
     description: string;
+    /**
+     * ,
+     * @type {Array<AppToolParameterDto>}
+     * @memberof AgentInstalledAppToolDto
+     */
+    parameters: Array<AppToolParameterDto>;
     /**
      *
      * @type {boolean}

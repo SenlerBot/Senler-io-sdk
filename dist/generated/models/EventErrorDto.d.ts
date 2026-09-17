@@ -82,6 +82,7 @@ export declare const EventErrorDtoErrorTypeEnum: {
     readonly MediaFileTooLarge: "media.file_too_large";
     readonly MediaProcessingError: "media.processing_error";
     readonly BillingInsufficientBalance: "billing.insufficient_balance";
+    readonly BillingNoActiveTariff: "billing.no_active_tariff";
     readonly BillingServiceUnavailable: "billing.service_unavailable";
     readonly WebhookSetupFailed: "webhook.setup_failed";
     readonly WebhookInvalidToken: "webhook.invalid_token";

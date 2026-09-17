@@ -13,12 +13,28 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EventAiDtoActivityPhaseEnum = exports.EventAiDtoResponseStatusEnum = exports.EventAiDtoUsagePurposeEnum = void 0;
+exports.EventAiDtoActivityPhaseEnum = exports.EventAiDtoResponseStatusEnum = exports.EventAiDtoUsagePurposeEnum = exports.EventAiDtoCredentialSourceEnum = exports.EventAiDtoProviderCostStatusEnum = void 0;
 exports.instanceOfEventAiDto = instanceOfEventAiDto;
 exports.EventAiDtoFromJSON = EventAiDtoFromJSON;
 exports.EventAiDtoFromJSONTyped = EventAiDtoFromJSONTyped;
 exports.EventAiDtoToJSON = EventAiDtoToJSON;
 exports.EventAiDtoToJSONTyped = EventAiDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.EventAiDtoProviderCostStatusEnum = {
+    Calculated: 'calculated',
+    Reported: 'reported',
+    Pending: 'pending',
+    Unavailable: 'unavailable'
+};
+/**
+ * @export
+ */
+exports.EventAiDtoCredentialSourceEnum = {
+    Platform: 'platform',
+    Project: 'project'
+};
 /**
  * @export
  */
@@ -67,6 +83,10 @@ function EventAiDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'providerGenerationId': json['provider_generation_id'] == null ? undefined : json['provider_generation_id'],
+        'billingTariffVersion': json['billing_tariff_version'] == null ? undefined : json['billing_tariff_version'],
+        'upstreamProviderName': json['upstream_provider_name'] == null ? undefined : json['upstream_provider_name'],
+        'providerCostStatus': json['provider_cost_status'] == null ? undefined : json['provider_cost_status'],
         'skipReason': json['skip_reason'] == null ? undefined : json['skip_reason'],
         'skipResponse': json['skip_response'] == null ? undefined : json['skip_response'],
         'skipMetrics': json['skip_metrics'] == null ? undefined : json['skip_metrics'],
@@ -78,6 +98,7 @@ function EventAiDtoFromJSONTyped(json, ignoreDiscriminator) {
         'modelId': json['model_id'] == null ? undefined : json['model_id'],
         'providerId': json['provider_id'] == null ? undefined : json['provider_id'],
         'providerBindingId': json['provider_binding_id'] == null ? undefined : json['provider_binding_id'],
+        'credentialSource': json['credential_source'] == null ? undefined : json['credential_source'],
         'providerResponseId': json['provider_response_id'] == null ? undefined : json['provider_response_id'],
         'providerCallIndex': json['provider_call_index'] == null ? undefined : json['provider_call_index'],
         'usagePurpose': json['usage_purpose'] == null ? undefined : json['usage_purpose'],
@@ -97,6 +118,10 @@ function EventAiDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'provider_generation_id': value['providerGenerationId'],
+        'billing_tariff_version': value['billingTariffVersion'],
+        'upstream_provider_name': value['upstreamProviderName'],
+        'provider_cost_status': value['providerCostStatus'],
         'skip_reason': value['skipReason'],
         'skip_response': value['skipResponse'],
         'skip_metrics': value['skipMetrics'],
@@ -108,6 +133,7 @@ function EventAiDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'model_id': value['modelId'],
         'provider_id': value['providerId'],
         'provider_binding_id': value['providerBindingId'],
+        'credential_source': value['credentialSource'],
         'provider_response_id': value['providerResponseId'],
         'provider_call_index': value['providerCallIndex'],
         'usage_purpose': value['usagePurpose'],

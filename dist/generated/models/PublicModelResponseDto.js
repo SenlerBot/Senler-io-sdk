@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicModelResponseDtoBillingModeEnum = exports.PublicModelResponseDtoSupportedServerBindingModesEnum = exports.PublicModelResponseDtoImagePricingTypeEnum = exports.PublicModelResponseDtoAudioPricingTypeEnum = exports.PublicModelResponseDtoTypeEnum = exports.PublicModelResponseDtoPriceLevelEnum = exports.PublicModelResponseDtoSpeedLevelEnum = exports.PublicModelResponseDtoReasoningLevelEnum = void 0;
+exports.PublicModelResponseDtoBillingModeEnum = exports.PublicModelResponseDtoSupportedServerBindingModesEnum = exports.PublicModelResponseDtoImagePricingTypeEnum = exports.PublicModelResponseDtoAudioPricingTypeEnum = exports.PublicModelResponseDtoTypeEnum = exports.PublicModelResponseDtoPriceLevelEnum = exports.PublicModelResponseDtoSpeedLevelEnum = exports.PublicModelResponseDtoQualityLevelEnum = exports.PublicModelResponseDtoReasoningLevelEnum = void 0;
 exports.instanceOfPublicModelResponseDto = instanceOfPublicModelResponseDto;
 exports.PublicModelResponseDtoFromJSON = PublicModelResponseDtoFromJSON;
 exports.PublicModelResponseDtoFromJSONTyped = PublicModelResponseDtoFromJSONTyped;
@@ -26,6 +26,16 @@ const PublicImageGenerationPriceResponseDto_1 = require("./PublicImageGeneration
  * @export
  */
 exports.PublicModelResponseDtoReasoningLevelEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5
+};
+/**
+ * @export
+ */
+exports.PublicModelResponseDtoQualityLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
@@ -66,6 +76,7 @@ exports.PublicModelResponseDtoTypeEnum = {
  */
 exports.PublicModelResponseDtoAudioPricingTypeEnum = {
     Characters: 'characters',
+    Utf8Bytes: 'utf8_bytes',
     Minutes: 'minutes',
     TextInputAudioOutputTokens: 'text_input_audio_output_tokens',
     AudioInputTextOutputTokens: 'audio_input_text_output_tokens'
@@ -75,7 +86,7 @@ exports.PublicModelResponseDtoAudioPricingTypeEnum = {
  */
 exports.PublicModelResponseDtoImagePricingTypeEnum = {
     PerImage: 'per_image',
-    QualitySizeMatrix: 'quality_size_matrix',
+    VariantMatrix: 'variant_matrix',
     ImageTokenUsage: 'image_token_usage'
 };
 /**
@@ -111,6 +122,8 @@ function instanceOfPublicModelResponseDto(value) {
     if (!('reasoningLevel' in value) || value['reasoningLevel'] === undefined)
         return false;
     if (!('reasoningScoreBasisPoints' in value) || value['reasoningScoreBasisPoints'] === undefined)
+        return false;
+    if (!('qualityLevel' in value) || value['qualityLevel'] === undefined)
         return false;
     if (!('speedLevel' in value) || value['speedLevel'] === undefined)
         return false;
@@ -171,6 +184,7 @@ function PublicModelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'descriptionEn': json['description_en'],
         'reasoningLevel': json['reasoning_level'],
         'reasoningScoreBasisPoints': json['reasoning_score_basis_points'],
+        'qualityLevel': json['quality_level'],
         'speedLevel': json['speed_level'],
         'speedScoreBasisPoints': json['speed_score_basis_points'],
         'priceLevel': json['price_level'],
@@ -189,11 +203,13 @@ function PublicModelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'audioPricingOptionalProviderFields': json['audio_pricing_optional_provider_fields'],
         'audioPricingClientFields': json['audio_pricing_client_fields'],
         'audioPricingOptionalClientFields': json['audio_pricing_optional_client_fields'],
+        'clientWebSearchPricePer1kCallsCredits': json['client_web_search_price_per_1k_calls_credits'] == null ? undefined : json['client_web_search_price_per_1k_calls_credits'],
         'clientImageInputPricePer1mCredits': json['client_image_input_price_per_1m_credits'] == null ? undefined : json['client_image_input_price_per_1m_credits'],
         'clientImageCachedInputPricePer1mCredits': json['client_image_cached_input_price_per_1m_credits'] == null ? undefined : json['client_image_cached_input_price_per_1m_credits'],
         'clientImageOutputPricePer1mCredits': json['client_image_output_price_per_1m_credits'] == null ? undefined : json['client_image_output_price_per_1m_credits'],
         'imageGenerationPrices': json['image_generation_prices'] == null ? undefined : (json['image_generation_prices'].map(PublicImageGenerationPriceResponseDto_1.PublicImageGenerationPriceResponseDtoFromJSON)),
         'pricePer1kCharsCredits': json['price_per_1k_chars_credits'] == null ? undefined : json['price_per_1k_chars_credits'],
+        'pricePer1mUtf8BytesCredits': json['price_per_1m_utf8_bytes_credits'] == null ? undefined : json['price_per_1m_utf8_bytes_credits'],
         'clientAudioInputPricePer1mCredits': json['client_audio_input_price_per_1m_credits'] == null ? undefined : json['client_audio_input_price_per_1m_credits'],
         'clientAudioOutputPricePer1mCredits': json['client_audio_output_price_per_1m_credits'] == null ? undefined : json['client_audio_output_price_per_1m_credits'],
         'pricePerMinuteCredits': json['price_per_minute_credits'] == null ? undefined : json['price_per_minute_credits'],
@@ -220,6 +236,7 @@ function PublicModelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'description_en': value['descriptionEn'],
         'reasoning_level': value['reasoningLevel'],
         'reasoning_score_basis_points': value['reasoningScoreBasisPoints'],
+        'quality_level': value['qualityLevel'],
         'speed_level': value['speedLevel'],
         'speed_score_basis_points': value['speedScoreBasisPoints'],
         'price_level': value['priceLevel'],
@@ -238,11 +255,13 @@ function PublicModelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'audio_pricing_optional_provider_fields': value['audioPricingOptionalProviderFields'],
         'audio_pricing_client_fields': value['audioPricingClientFields'],
         'audio_pricing_optional_client_fields': value['audioPricingOptionalClientFields'],
+        'client_web_search_price_per_1k_calls_credits': value['clientWebSearchPricePer1kCallsCredits'],
         'client_image_input_price_per_1m_credits': value['clientImageInputPricePer1mCredits'],
         'client_image_cached_input_price_per_1m_credits': value['clientImageCachedInputPricePer1mCredits'],
         'client_image_output_price_per_1m_credits': value['clientImageOutputPricePer1mCredits'],
         'image_generation_prices': value['imageGenerationPrices'] == null ? undefined : (value['imageGenerationPrices'].map(PublicImageGenerationPriceResponseDto_1.PublicImageGenerationPriceResponseDtoToJSON)),
         'price_per_1k_chars_credits': value['pricePer1kCharsCredits'],
+        'price_per_1m_utf8_bytes_credits': value['pricePer1mUtf8BytesCredits'],
         'client_audio_input_price_per_1m_credits': value['clientAudioInputPricePer1mCredits'],
         'client_audio_output_price_per_1m_credits': value['clientAudioOutputPricePer1mCredits'],
         'price_per_minute_credits': value['pricePerMinuteCredits'],

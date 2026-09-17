@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { SubscriptionNextActionDto } from './SubscriptionNextActionDto';
 import type { SubscriptionInvoiceLineDto } from './SubscriptionInvoiceLineDto';
 import type { SubscriptionPositionDto } from './SubscriptionPositionDto';
 import type { EffectiveSubscriptionLimitsDto } from './EffectiveSubscriptionLimitsDto';
@@ -31,17 +32,23 @@ export interface ProjectSubscriptionResponseDto {
      */
     autoRenewEnabled: boolean;
     /**
-     * next billing at.
-     * @type {Date}
+     * next action.
+     * @type {SubscriptionNextActionDto}
      * @memberof ProjectSubscriptionResponseDto
      */
-    nextBillingAt: Date | null;
+    nextAction: SubscriptionNextActionDto | null;
     /**
      * : USD, RUB.
      * @type {string}
      * @memberof ProjectSubscriptionResponseDto
      */
     currency: ProjectSubscriptionResponseDtoCurrencyEnum;
+    /**
+     * OpenAI OpenRouter
+     * @type {boolean}
+     * @memberof ProjectSubscriptionResponseDto
+     */
+    allowsCustomAiCredentials: boolean;
     /**
      * positions.
      * @type {Array<SubscriptionPositionDto>}

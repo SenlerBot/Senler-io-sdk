@@ -36,6 +36,7 @@ function RetryDialogAiBillingRecoveryDtoFromJSONTyped(json, ignoreDiscriminator)
     }
     return {
         'mode': (0, DialogAiBillingRecoveryRetryMode_1.DialogAiBillingRecoveryRetryModeFromJSON)(json['mode']),
+        'includeMetrics': json['include_metrics'] == null ? undefined : json['include_metrics'],
     };
 }
 function RetryDialogAiBillingRecoveryDtoToJSON(json) {
@@ -47,5 +48,6 @@ function RetryDialogAiBillingRecoveryDtoToJSONTyped(value, ignoreDiscriminator =
     }
     return {
         'mode': (0, DialogAiBillingRecoveryRetryMode_1.DialogAiBillingRecoveryRetryModeToJSON)(value['mode']),
+        'include_metrics': value['includeMetrics'],
     };
 }

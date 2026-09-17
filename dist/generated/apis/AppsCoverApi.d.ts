@@ -10,11 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppResponseDto, ConfirmS3UploadDto, GetAppCoverUploadUrlDto, S3UploadUrlResponseDto } from '../models/index';
+import type { AppResponseDto, ConfirmS3UploadDto, GetAppCoverUploadUrlDto, ImportCoverImageDto, S3UploadUrlResponseDto } from '../models/index';
 export interface CoverConfirmRequest {
     id: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: CoverConfirmAcceptLanguageEnum;
+}
+export interface CoverFromUrlRequest {
+    id: string;
+    importCoverImageDto: ImportCoverImageDto;
+    acceptLanguage?: CoverFromUrlAcceptLanguageEnum;
 }
 export interface CoverUploadUrlRequest {
     id: string;
@@ -39,6 +44,16 @@ export declare class AppsCoverApi extends runtime.BaseAPI {
      *
      */
     coverConfirm(requestParameters: CoverConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * , 706398 cover_url. ; fit=cover . JSON- API MCP. 20 40 .
+     * URL attachment_id
+     */
+    coverFromUrlRaw(requestParameters: CoverFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * , 706398 cover_url. ; fit=cover . JSON- API MCP. 20 40 .
+     * URL attachment_id
+     */
+    coverFromUrl(requestParameters: CoverFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
     /**
      * S3- . 706x398px.
      * S3-
@@ -68,6 +83,14 @@ export declare const CoverConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type CoverConfirmAcceptLanguageEnum = typeof CoverConfirmAcceptLanguageEnum[keyof typeof CoverConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const CoverFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type CoverFromUrlAcceptLanguageEnum = typeof CoverFromUrlAcceptLanguageEnum[keyof typeof CoverFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

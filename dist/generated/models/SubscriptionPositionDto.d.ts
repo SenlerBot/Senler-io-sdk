@@ -23,7 +23,7 @@ export interface SubscriptionPositionDto {
      */
     periodId: string;
     /**
-     * : base_tariff, automation_speed, mailing_daily, storage.
+     * : base_tariff, credits, automation_speed, mailing_daily, storage.
      * @type {string}
      * @memberof SubscriptionPositionDto
      */
@@ -53,7 +53,7 @@ export interface SubscriptionPositionDto {
      */
     period: SubscriptionPositionDtoPeriodEnum;
     /**
-     * price paid.
+     * , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionPositionDto
      */
@@ -65,7 +65,7 @@ export interface SubscriptionPositionDto {
      */
     pricePaidCurrency: SubscriptionPositionDtoPricePaidCurrencyEnum | null;
     /**
-     * . .
+     * . ., (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionPositionDto
      */
@@ -112,6 +112,7 @@ export interface SubscriptionPositionDto {
  */
 export declare const SubscriptionPositionDtoKindEnum: {
     readonly BaseTariff: "base_tariff";
+    readonly Credits: "credits";
     readonly AutomationSpeed: "automation_speed";
     readonly MailingDaily: "mailing_daily";
     readonly Storage: "storage";

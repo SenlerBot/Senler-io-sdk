@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ProjectMetaDto } from './ProjectMetaDto';
 import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachmentUploadLimitsByChannelDto';
 /**
  * UpdateProjectDto.
@@ -84,10 +85,10 @@ export interface UpdateProjectDto {
     attachmentUploadLimitsByChannelMb?: ProjectAttachmentUploadLimitsByChannelDto;
     /**
      *
-     * @type {object}
+     * @type {ProjectMetaDto}
      * @memberof UpdateProjectDto
      */
-    meta?: object;
+    meta?: ProjectMetaDto;
 }
 /**
  * @export

@@ -10,11 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, GetAvatarUploadUrlDto, ProjectConfirmAvatarUploadResponseDto, S3UploadUrlResponseDto } from '../models/index';
+import type { ConfirmS3UploadDto, GetAvatarUploadUrlDto, ImportImageDto, ProjectConfirmAvatarUploadResponseDto, S3UploadUrlResponseDto } from '../models/index';
 export interface AvatarConfirmRequest {
     projectId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: AvatarConfirmAcceptLanguageEnum;
+}
+export interface AvatarFromUrlRequest {
+    projectId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AvatarFromUrlAcceptLanguageEnum;
 }
 export interface AvatarUploadUrlRequest {
     projectId: string;
@@ -36,6 +41,16 @@ export declare class ProjectsAvatarApi extends runtime.BaseAPI {
      */
     avatarConfirm(requestParameters: AvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectConfirmAvatarUploadResponseDto>;
     /**
+     * PNG, JPEG WebP, avatar_url . 20 40 . PUT .
+     * URL attachment_id
+     */
+    avatarFromUrlRaw(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectConfirmAvatarUploadResponseDto>>;
+    /**
+     * PNG, JPEG WebP, avatar_url . 20 40 . PUT .
+     * URL attachment_id
+     */
+    avatarFromUrl(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectConfirmAvatarUploadResponseDto>;
+    /**
      * S3- .
      * S3-
      */
@@ -54,6 +69,14 @@ export declare const AvatarConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AvatarConfirmAcceptLanguageEnum = typeof AvatarConfirmAcceptLanguageEnum[keyof typeof AvatarConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AvatarFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AvatarFromUrlAcceptLanguageEnum = typeof AvatarFromUrlAcceptLanguageEnum[keyof typeof AvatarFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

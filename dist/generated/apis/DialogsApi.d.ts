@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CabinetAiCostSummaryDto, DialogDetailsDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto } from '../models/index';
+import type { CabinetAiCostSummaryDto, CentrifugoSubscriptionDto, DialogDetailsDto, DialogMessageNoteDto, DialogMessageNoteMarkersDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, LeadConversationEventsDto, LeadConversationSummaryDto, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto, UpdateDialogMessageNoteDto } from '../models/index';
 export interface DialogsGetByIdRequest {
     id: string;
     acceptLanguage?: DialogsGetByIdAcceptLanguageEnum;
@@ -48,6 +48,11 @@ export interface GetEventsRequest {
     limit?: number;
     acceptLanguage?: GetEventsAcceptLanguageEnum;
 }
+export interface GetEventsNoteRequest {
+    id: string;
+    eventId: string;
+    acceptLanguage?: GetEventsNoteAcceptLanguageEnum;
+}
 export interface GetEventsPollOptionVotersRequest {
     id: string;
     eventId: string;
@@ -63,10 +68,37 @@ export interface GetEventsReactionUsersRequest {
     emoji?: string;
     acceptLanguage?: GetEventsReactionUsersAcceptLanguageEnum;
 }
+export interface GetLeadConversationRequest {
+    id: string;
+    acceptLanguage?: GetLeadConversationAcceptLanguageEnum;
+}
+export interface GetLeadConversationEventsRequest {
+    id: string;
+    before?: string;
+    after?: string;
+    limit?: number;
+    acceptLanguage?: GetLeadConversationEventsAcceptLanguageEnum;
+}
+export interface GetLeadConversationSubscriptionRequest {
+    id: string;
+    acceptLanguage?: GetLeadConversationSubscriptionAcceptLanguageEnum;
+}
+export interface GetMessageNotesRequest {
+    id: string;
+    after?: string;
+    limit?: number;
+    acceptLanguage?: GetMessageNotesAcceptLanguageEnum;
+}
 export interface GetNavigationRequest {
     id: string;
     maxSegments?: number;
     acceptLanguage?: GetNavigationAcceptLanguageEnum;
+}
+export interface UpdateEventsNoteRequest {
+    id: string;
+    eventId: string;
+    updateDialogMessageNoteDto: UpdateDialogMessageNoteDto;
+    acceptLanguage?: UpdateEventsNoteAcceptLanguageEnum;
 }
 /**
  *
@@ -136,6 +168,16 @@ export declare class DialogsApi extends runtime.BaseAPI {
      * , .
      *
      */
+    getEventsNoteRaw(requestParameters: GetEventsNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogMessageNoteDto>>;
+    /**
+     * , .
+     *
+     */
+    getEventsNote(requestParameters: GetEventsNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogMessageNoteDto>;
+    /**
+     * , .
+     *
+     */
     getEventsPollOptionVotersRaw(requestParameters: GetEventsPollOptionVotersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventPollOptionVotersResponseDto>>;
     /**
      * , .
@@ -153,6 +195,46 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     getEventsReactionUsers(requestParameters: GetEventsReactionUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventReactionUsersResponseDto>;
     /**
+     * , ; .
+     *
+     */
+    getLeadConversationRaw(requestParameters: GetLeadConversationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadConversationSummaryDto>>;
+    /**
+     * , ; .
+     *
+     */
+    getLeadConversation(requestParameters: GetLeadConversationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadConversationSummaryDto>;
+    /**
+     * before , after . , .
+     *
+     */
+    getLeadConversationEventsRaw(requestParameters: GetLeadConversationEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadConversationEventsDto>>;
+    /**
+     * before , after . , .
+     *
+     */
+    getLeadConversationEvents(requestParameters: GetLeadConversationEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadConversationEventsDto>;
+    /**
+     * .
+     *
+     */
+    getLeadConversationSubscriptionRaw(requestParameters: GetLeadConversationSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
+    /**
+     * .
+     *
+     */
+    getLeadConversationSubscription(requestParameters: GetLeadConversationSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
+    /**
+     * , . .
+     *
+     */
+    getMessageNotesRaw(requestParameters: GetMessageNotesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogMessageNoteMarkersDto>>;
+    /**
+     * , . .
+     *
+     */
+    getMessageNotes(requestParameters: GetMessageNotesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogMessageNoteMarkersDto>;
+    /**
      * summary AI-.
      *
      */
@@ -162,6 +244,16 @@ export declare class DialogsApi extends runtime.BaseAPI {
      *
      */
     getNavigation(requestParameters: GetNavigationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogNavigationResponseDto>;
+    /**
+     * . . .
+     *
+     */
+    updateEventsNoteRaw(requestParameters: UpdateEventsNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogMessageNoteDto>>;
+    /**
+     * . . .
+     *
+     */
+    updateEventsNote(requestParameters: UpdateEventsNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogMessageNoteDto>;
 }
 /**
  * @export
@@ -222,6 +314,14 @@ export type GetEventsAcceptLanguageEnum = typeof GetEventsAcceptLanguageEnum[key
 /**
  * @export
  */
+export declare const GetEventsNoteAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetEventsNoteAcceptLanguageEnum = typeof GetEventsNoteAcceptLanguageEnum[keyof typeof GetEventsNoteAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetEventsPollOptionVotersAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -238,8 +338,48 @@ export type GetEventsReactionUsersAcceptLanguageEnum = typeof GetEventsReactionU
 /**
  * @export
  */
+export declare const GetLeadConversationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadConversationAcceptLanguageEnum = typeof GetLeadConversationAcceptLanguageEnum[keyof typeof GetLeadConversationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLeadConversationEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadConversationEventsAcceptLanguageEnum = typeof GetLeadConversationEventsAcceptLanguageEnum[keyof typeof GetLeadConversationEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLeadConversationSubscriptionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLeadConversationSubscriptionAcceptLanguageEnum = typeof GetLeadConversationSubscriptionAcceptLanguageEnum[keyof typeof GetLeadConversationSubscriptionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetMessageNotesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetMessageNotesAcceptLanguageEnum = typeof GetMessageNotesAcceptLanguageEnum[keyof typeof GetMessageNotesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetNavigationAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetNavigationAcceptLanguageEnum = typeof GetNavigationAcceptLanguageEnum[keyof typeof GetNavigationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateEventsNoteAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateEventsNoteAcceptLanguageEnum = typeof UpdateEventsNoteAcceptLanguageEnum[keyof typeof UpdateEventsNoteAcceptLanguageEnum];

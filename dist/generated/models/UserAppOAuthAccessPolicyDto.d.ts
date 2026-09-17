@@ -50,7 +50,6 @@ export declare const UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanDeleteChannels: "can_delete_channels";
     readonly CanViewAgents: "can_view_agents";
     readonly CanManageAgents: "can_manage_agents";
-    readonly CanManageAgentEvents: "can_manage_agent_events";
     readonly CanViewDialogs: "can_view_dialogs";
     readonly CanManageDialogs: "can_manage_dialogs";
     readonly CanViewDeliveries: "can_view_deliveries";
@@ -61,6 +60,8 @@ export declare const UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageLeads: "can_manage_leads";
     readonly CanViewLeadVariables: "can_view_lead_variables";
     readonly CanManageLeadVariables: "can_manage_lead_variables";
+    readonly CanViewDialogVariables: "can_view_dialog_variables";
+    readonly CanManageDialogVariables: "can_manage_dialog_variables";
     readonly CanViewSegments: "can_view_segments";
     readonly CanManageSegments: "can_manage_segments";
     readonly CanViewLandings: "can_view_landings";
@@ -86,6 +87,7 @@ export declare const UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanViewKnowledgeBase: "can_view_knowledge_base";
     readonly CanManageKnowledgeBase: "can_manage_knowledge_base";
     readonly CanViewProjectApps: "can_view_project_apps";
+    readonly CanUseProjectApps: "can_use_project_apps";
     readonly CanManageProjectApps: "can_manage_project_apps";
     readonly CanViewStorage: "can_view_storage";
     readonly CanManageStorage: "can_manage_storage";
@@ -103,6 +105,7 @@ export declare const UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageAppDocumentation: "can_manage_app_documentation";
     readonly CanViewAppAnalytics: "can_view_app_analytics";
     readonly CanCreateApps: "can_create_apps";
+    readonly CanManageProfile: "can_manage_profile";
 };
 export type UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum = typeof UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum[keyof typeof UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum];
 /**

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto } from '../models/index';
+import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, ImportProjectKnowledgeImageDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto } from '../models/index';
 export interface ArchiveImportsRequest {
     projectId: string;
     idempotencyKey: string;
@@ -39,6 +39,10 @@ export interface DeleteTablesRequest {
 export interface FilesRequest {
     createKnowledgeFileDto: CreateKnowledgeFileDto;
     acceptLanguage?: FilesAcceptLanguageEnum;
+}
+export interface FilesFromUrlRequest {
+    importProjectKnowledgeImageDto: ImportProjectKnowledgeImageDto;
+    acceptLanguage?: FilesFromUrlAcceptLanguageEnum;
 }
 export interface FilesRecognitionEstimateRequest {
     projectId: string;
@@ -212,6 +216,16 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      *
      */
     files(requestParameters: FilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . image_recognition_mode .
+     * URL attachment_id
+     */
+    filesFromUrlRaw(requestParameters: FilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeFileResponseDto>>;
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . image_recognition_mode .
+     * URL attachment_id
+     */
+    filesFromUrl(requestParameters: FilesFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeFileResponseDto>;
     /**
      * ZIP .
      *
@@ -480,6 +494,14 @@ export declare const FilesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type FilesAcceptLanguageEnum = typeof FilesAcceptLanguageEnum[keyof typeof FilesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const FilesFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FilesFromUrlAcceptLanguageEnum = typeof FilesFromUrlAcceptLanguageEnum[keyof typeof FilesFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

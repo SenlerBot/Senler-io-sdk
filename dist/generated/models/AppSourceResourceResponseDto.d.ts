@@ -74,6 +74,7 @@ export declare const AppSourceResourceResponseDtoTypeEnum: {
     readonly Metric: "metric";
     readonly ProjectVariable: "project_variable";
     readonly LeadVariableDefinition: "lead_variable_definition";
+    readonly DialogVariableDefinition: "dialog_variable_definition";
 };
 export type AppSourceResourceResponseDtoTypeEnum = typeof AppSourceResourceResponseDtoTypeEnum[keyof typeof AppSourceResourceResponseDtoTypeEnum];
 /**

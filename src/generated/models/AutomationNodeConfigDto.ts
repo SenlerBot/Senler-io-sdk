@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
+import type { AutomationHttpConfigDto } from './AutomationHttpConfigDto';
 import {
-    AutomationRandomBranchDtoFromJSON,
-    AutomationRandomBranchDtoFromJSONTyped,
-    AutomationRandomBranchDtoToJSON,
-    AutomationRandomBranchDtoToJSONTyped,
-} from './AutomationRandomBranchDto';
+    AutomationHttpConfigDtoFromJSON,
+    AutomationHttpConfigDtoFromJSONTyped,
+    AutomationHttpConfigDtoToJSON,
+    AutomationHttpConfigDtoToJSONTyped,
+} from './AutomationHttpConfigDto';
 import type { AutomationMessageAttachmentDto } from './AutomationMessageAttachmentDto';
 import {
     AutomationMessageAttachmentDtoFromJSON,
@@ -27,6 +27,13 @@ import {
     AutomationMessageAttachmentDtoToJSON,
     AutomationMessageAttachmentDtoToJSONTyped,
 } from './AutomationMessageAttachmentDto';
+import type { AutomationAgentBranchDto } from './AutomationAgentBranchDto';
+import {
+    AutomationAgentBranchDtoFromJSON,
+    AutomationAgentBranchDtoFromJSONTyped,
+    AutomationAgentBranchDtoToJSON,
+    AutomationAgentBranchDtoToJSONTyped,
+} from './AutomationAgentBranchDto';
 import type { AutomationTableOutputDto } from './AutomationTableOutputDto';
 import {
     AutomationTableOutputDtoFromJSON,
@@ -34,13 +41,6 @@ import {
     AutomationTableOutputDtoToJSON,
     AutomationTableOutputDtoToJSONTyped,
 } from './AutomationTableOutputDto';
-import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
-import {
-    AutomationVariableDestinationDtoFromJSON,
-    AutomationVariableDestinationDtoFromJSONTyped,
-    AutomationVariableDestinationDtoToJSON,
-    AutomationVariableDestinationDtoToJSONTyped,
-} from './AutomationVariableDestinationDto';
 import type { AutomationRunVariableBindingDto } from './AutomationRunVariableBindingDto';
 import {
     AutomationRunVariableBindingDtoFromJSON,
@@ -48,13 +48,6 @@ import {
     AutomationRunVariableBindingDtoToJSON,
     AutomationRunVariableBindingDtoToJSONTyped,
 } from './AutomationRunVariableBindingDto';
-import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
-import {
-    AutomationTableWriteDtoFromJSON,
-    AutomationTableWriteDtoFromJSONTyped,
-    AutomationTableWriteDtoToJSON,
-    AutomationTableWriteDtoToJSONTyped,
-} from './AutomationTableWriteDto';
 import type { AutomationAppStepBranchSnapshotDto } from './AutomationAppStepBranchSnapshotDto';
 import {
     AutomationAppStepBranchSnapshotDtoFromJSON,
@@ -62,13 +55,6 @@ import {
     AutomationAppStepBranchSnapshotDtoToJSON,
     AutomationAppStepBranchSnapshotDtoToJSONTyped,
 } from './AutomationAppStepBranchSnapshotDto';
-import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
-import {
-    AutomationTableFilterDtoFromJSON,
-    AutomationTableFilterDtoFromJSONTyped,
-    AutomationTableFilterDtoToJSON,
-    AutomationTableFilterDtoToJSONTyped,
-} from './AutomationTableFilterDto';
 import type { AutomationAppStepFieldSnapshotDto } from './AutomationAppStepFieldSnapshotDto';
 import {
     AutomationAppStepFieldSnapshotDtoFromJSON,
@@ -90,6 +76,34 @@ import {
     AutomationTableResultFieldDtoToJSON,
     AutomationTableResultFieldDtoToJSONTyped,
 } from './AutomationTableResultFieldDto';
+import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
+import {
+    AutomationRandomBranchDtoFromJSON,
+    AutomationRandomBranchDtoFromJSONTyped,
+    AutomationRandomBranchDtoToJSON,
+    AutomationRandomBranchDtoToJSONTyped,
+} from './AutomationRandomBranchDto';
+import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
+import {
+    AutomationVariableDestinationDtoFromJSON,
+    AutomationVariableDestinationDtoFromJSONTyped,
+    AutomationVariableDestinationDtoToJSON,
+    AutomationVariableDestinationDtoToJSONTyped,
+} from './AutomationVariableDestinationDto';
+import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
+import {
+    AutomationTableWriteDtoFromJSON,
+    AutomationTableWriteDtoFromJSONTyped,
+    AutomationTableWriteDtoToJSON,
+    AutomationTableWriteDtoToJSONTyped,
+} from './AutomationTableWriteDto';
+import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
+import {
+    AutomationTableFilterDtoFromJSON,
+    AutomationTableFilterDtoFromJSONTyped,
+    AutomationTableFilterDtoToJSON,
+    AutomationTableFilterDtoToJSONTyped,
+} from './AutomationTableFilterDto';
 
 /**
  * AutomationNodeConfigDto.
@@ -97,6 +111,12 @@ import {
  * @interface AutomationNodeConfigDto
  */
 export interface AutomationNodeConfigDto {
+    /**
+     * HTTP- .
+     * @type {AutomationHttpConfigDto}
+     * @memberof AutomationNodeConfigDto
+     */
+    http?: AutomationHttpConfigDto;
     /**
      * , .
      * @type {string}
@@ -146,11 +166,35 @@ export interface AutomationNodeConfigDto {
      */
     incomingMessageVariableScope?: AutomationNodeConfigDtoIncomingMessageVariableScopeEnum;
     /**
+     * UUID .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    appEventId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    appEventName?: string;
+    /**
+     * Run-, .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    appEventVariableName?: string;
+    /**
      * . .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
      */
     channelIds?: Array<string>;
+    /**
+     * , .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    dialogIds?: Array<string>;
     /**
      * keyword-.
      * @type {string}
@@ -163,6 +207,18 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     segmentId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    funnelId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    funnelStageId?: string;
     /**
      * Mongo ID .
      * @type {string}
@@ -326,7 +382,7 @@ export interface AutomationNodeConfigDto {
      */
     tableFilters?: Array<AutomationTableFilterDto>;
     /**
-     * , , .
+     * , , , .
      * @type {Array<AutomationTableOutputDto>}
      * @memberof AutomationNodeConfigDto
      */
@@ -428,6 +484,12 @@ export interface AutomationNodeConfigDto {
      */
     randomBranches?: Array<AutomationRandomBranchDto>;
     /**
+     * . . .
+     * @type {Array<AutomationAgentBranchDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentBranches?: Array<AutomationAgentBranchDto>;
+    /**
      * .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -440,7 +502,7 @@ export interface AutomationNodeConfigDto {
      */
     variableName?: string;
     /**
-     * . , .
+     * . , , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -506,6 +568,12 @@ export interface AutomationNodeConfigDto {
      */
     messageButtons?: Array<AutomationMessageButtonDto>;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDisableLinkPreview?: boolean;
+    /**
      * Run- , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -542,6 +610,12 @@ export interface AutomationNodeConfigDto {
      */
     messageAllowRepeatedButtonClicks?: boolean;
     /**
+     * VK , . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageVkTextButtons?: boolean;
+    /**
      * . , . .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
@@ -553,6 +627,12 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     messageTargetType?: AutomationNodeConfigDtoMessageTargetTypeEnum;
+    /**
+     * : . .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageVariableContext?: AutomationNodeConfigDtoMessageVariableContextEnum;
     /**
      * ID message_target_type lead dialog.
      * @type {string}
@@ -776,7 +856,8 @@ export const AutomationNodeConfigDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
-    SegmentSubscribed: 'segment_subscribed'
+    SegmentSubscribed: 'segment_subscribed',
+    AppEventReceived: 'app_event_received'
 } as const;
 export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
 
@@ -817,6 +898,7 @@ export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeC
 export const AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = typeof AutomationNodeConfigDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationNodeConfigDtoIncomingMessageVariableScopeEnum];
@@ -836,6 +918,7 @@ export type AutomationNodeConfigDtoAgentRoleEnum = typeof AutomationNodeConfigDt
 export const AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum];
@@ -846,6 +929,7 @@ export type AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = typeof Au
 export const AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = typeof AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum];
@@ -856,6 +940,7 @@ export type AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = typeof Au
 export const AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum];
@@ -866,6 +951,7 @@ export type AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = typeof A
 export const AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum];
@@ -876,6 +962,7 @@ export type AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = t
 export const AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum];
@@ -886,6 +973,7 @@ export type AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = typeo
 export const AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = typeof AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum];
@@ -939,6 +1027,7 @@ export type AutomationNodeConfigDtoTableFirstRowSaveModeEnum = typeof Automation
 export const AutomationNodeConfigDtoTableResultVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
@@ -981,6 +1070,7 @@ export type AutomationNodeConfigDtoDateTimeConditionEnum = typeof AutomationNode
 export const AutomationNodeConfigDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoVariableScopeEnum = typeof AutomationNodeConfigDtoVariableScopeEnum[keyof typeof AutomationNodeConfigDtoVariableScopeEnum];
@@ -1016,6 +1106,7 @@ export const AutomationNodeConfigDtoVariableOperationEnum = {
     ShiftBackward: 'shift_backward',
     AppendItems: 'append_items',
     PrependItems: 'prepend_items',
+    AddUniqueItems: 'add_unique_items',
     RemoveItems: 'remove_items',
     MergeObject: 'merge_object',
     RemoveObjectKeys: 'remove_object_keys'
@@ -1070,6 +1161,7 @@ export type AutomationNodeConfigDtoVariableDurationUnitEnum = typeof AutomationN
 export const AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum];
@@ -1080,6 +1172,7 @@ export type AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = typeof 
 export const AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum];
@@ -1090,6 +1183,7 @@ export type AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = type
 export const AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = typeof AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum];
@@ -1124,9 +1218,19 @@ export type AutomationNodeConfigDtoMessageTargetTypeEnum = typeof AutomationNode
 /**
  * @export
  */
+export const AutomationNodeConfigDtoMessageVariableContextEnum = {
+    Run: 'run',
+    Recipient: 'recipient'
+} as const;
+export type AutomationNodeConfigDtoMessageVariableContextEnum = typeof AutomationNodeConfigDtoMessageVariableContextEnum[keyof typeof AutomationNodeConfigDtoMessageVariableContextEnum];
+
+/**
+ * @export
+ */
 export const AutomationNodeConfigDtoMessageTargetVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoMessageTargetVariableScopeEnum = typeof AutomationNodeConfigDtoMessageTargetVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageTargetVariableScopeEnum];
@@ -1137,6 +1241,7 @@ export type AutomationNodeConfigDtoMessageTargetVariableScopeEnum = typeof Autom
 export const AutomationNodeConfigDtoMessageReplyVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoMessageReplyVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum];
@@ -1156,6 +1261,7 @@ export type AutomationNodeConfigDtoWaitModeEnum = typeof AutomationNodeConfigDto
 export const AutomationNodeConfigDtoWaitVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoWaitVariableScopeEnum = typeof AutomationNodeConfigDtoWaitVariableScopeEnum[keyof typeof AutomationNodeConfigDtoWaitVariableScopeEnum];
@@ -1175,6 +1281,7 @@ export type AutomationNodeConfigDtoLoopModeEnum = typeof AutomationNodeConfigDto
 export const AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = typeof AutomationNodeConfigDtoLoopCollectionVariableScopeEnum[keyof typeof AutomationNodeConfigDtoLoopCollectionVariableScopeEnum];
@@ -1243,6 +1350,7 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'http': json['http'] == null ? undefined : AutomationHttpConfigDtoFromJSON(json['http']),
         'eventType': json['event_type'] == null ? undefined : json['event_type'],
         'reactionValues': json['reaction_values'] == null ? undefined : json['reaction_values'],
         'messageSender': json['message_sender'] == null ? undefined : json['message_sender'],
@@ -1251,9 +1359,15 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'messagePhrases': json['message_phrases'] == null ? undefined : json['message_phrases'],
         'incomingMessageVariableName': json['incoming_message_variable_name'] == null ? undefined : json['incoming_message_variable_name'],
         'incomingMessageVariableScope': json['incoming_message_variable_scope'] == null ? undefined : json['incoming_message_variable_scope'],
+        'appEventId': json['app_event_id'] == null ? undefined : json['app_event_id'],
+        'appEventName': json['app_event_name'] == null ? undefined : json['app_event_name'],
+        'appEventVariableName': json['app_event_variable_name'] == null ? undefined : json['app_event_variable_name'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
+        'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'dialogScope': json['dialog_scope'] == null ? undefined : json['dialog_scope'],
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
+        'funnelId': json['funnel_id'] == null ? undefined : json['funnel_id'],
+        'funnelStageId': json['funnel_stage_id'] == null ? undefined : json['funnel_stage_id'],
         'targetAutomationId': json['target_automation_id'] == null ? undefined : json['target_automation_id'],
         'targetRunVariableBindings': json['target_run_variable_bindings'] == null ? undefined : ((json['target_run_variable_bindings'] as Array<any>).map(AutomationRunVariableBindingDtoFromJSON)),
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
@@ -1298,6 +1412,7 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'dateTimeEndTime': json['date_time_end_time'] == null ? undefined : json['date_time_end_time'],
         'dateTimeTimezone': json['date_time_timezone'] == null ? undefined : json['date_time_timezone'],
         'randomBranches': json['random_branches'] == null ? undefined : ((json['random_branches'] as Array<any>).map(AutomationRandomBranchDtoFromJSON)),
+        'agentBranches': json['agent_branches'] == null ? undefined : ((json['agent_branches'] as Array<any>).map(AutomationAgentBranchDtoFromJSON)),
         'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
         'variableName': json['variable_name'] == null ? undefined : json['variable_name'],
         'variableType': json['variable_type'] == null ? undefined : json['variable_type'],
@@ -1311,14 +1426,17 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'messageAttachmentsVariableName': json['message_attachments_variable_name'] == null ? undefined : json['message_attachments_variable_name'],
         'messageAttachmentsVariableScope': json['message_attachments_variable_scope'] == null ? undefined : json['message_attachments_variable_scope'],
         'messageButtons': json['message_buttons'] == null ? undefined : ((json['message_buttons'] as Array<any>).map(AutomationMessageButtonDtoFromJSON)),
+        'messageDisableLinkPreview': json['message_disable_link_preview'] == null ? undefined : json['message_disable_link_preview'],
         'messageDynamicButtonsVariableName': json['message_dynamic_buttons_variable_name'] == null ? undefined : json['message_dynamic_buttons_variable_name'],
         'messageDynamicButtonsVariableScope': json['message_dynamic_buttons_variable_scope'] == null ? undefined : json['message_dynamic_buttons_variable_scope'],
         'messageDynamicButtonsPosition': json['message_dynamic_buttons_position'] == null ? undefined : json['message_dynamic_buttons_position'],
         'messageButtonClickVariableScope': json['message_button_click_variable_scope'] == null ? undefined : json['message_button_click_variable_scope'],
         'messageButtonClickVariableName': json['message_button_click_variable_name'] == null ? undefined : json['message_button_click_variable_name'],
         'messageAllowRepeatedButtonClicks': json['message_allow_repeated_button_clicks'] == null ? undefined : json['message_allow_repeated_button_clicks'],
+        'messageVkTextButtons': json['message_vk_text_buttons'] == null ? undefined : json['message_vk_text_buttons'],
         'messageChannelTypes': json['message_channel_types'] == null ? undefined : json['message_channel_types'],
         'messageTargetType': json['message_target_type'] == null ? undefined : json['message_target_type'],
+        'messageVariableContext': json['message_variable_context'] == null ? undefined : json['message_variable_context'],
         'messageTargetId': json['message_target_id'] == null ? undefined : json['message_target_id'],
         'messageTargetVariableScope': json['message_target_variable_scope'] == null ? undefined : json['message_target_variable_scope'],
         'messageTargetVariableName': json['message_target_variable_name'] == null ? undefined : json['message_target_variable_name'],
@@ -1368,6 +1486,7 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
 
     return {
 
+        'http': AutomationHttpConfigDtoToJSON(value['http']),
         'event_type': value['eventType'],
         'reaction_values': value['reactionValues'],
         'message_sender': value['messageSender'],
@@ -1376,9 +1495,15 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'message_phrases': value['messagePhrases'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_message_variable_scope': value['incomingMessageVariableScope'],
+        'app_event_id': value['appEventId'],
+        'app_event_name': value['appEventName'],
+        'app_event_variable_name': value['appEventVariableName'],
         'channel_ids': value['channelIds'],
+        'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
         'segment_id': value['segmentId'],
+        'funnel_id': value['funnelId'],
+        'funnel_stage_id': value['funnelStageId'],
         'target_automation_id': value['targetAutomationId'],
         'target_run_variable_bindings': value['targetRunVariableBindings'] == null ? undefined : ((value['targetRunVariableBindings'] as Array<any>).map(AutomationRunVariableBindingDtoToJSON)),
         'agent_id': value['agentId'],
@@ -1423,6 +1548,7 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'date_time_end_time': value['dateTimeEndTime'],
         'date_time_timezone': value['dateTimeTimezone'],
         'random_branches': value['randomBranches'] == null ? undefined : ((value['randomBranches'] as Array<any>).map(AutomationRandomBranchDtoToJSON)),
+        'agent_branches': value['agentBranches'] == null ? undefined : ((value['agentBranches'] as Array<any>).map(AutomationAgentBranchDtoToJSON)),
         'variable_scope': value['variableScope'],
         'variable_name': value['variableName'],
         'variable_type': value['variableType'],
@@ -1436,14 +1562,17 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'message_attachments_variable_name': value['messageAttachmentsVariableName'],
         'message_attachments_variable_scope': value['messageAttachmentsVariableScope'],
         'message_buttons': value['messageButtons'] == null ? undefined : ((value['messageButtons'] as Array<any>).map(AutomationMessageButtonDtoToJSON)),
+        'message_disable_link_preview': value['messageDisableLinkPreview'],
         'message_dynamic_buttons_variable_name': value['messageDynamicButtonsVariableName'],
         'message_dynamic_buttons_variable_scope': value['messageDynamicButtonsVariableScope'],
         'message_dynamic_buttons_position': value['messageDynamicButtonsPosition'],
         'message_button_click_variable_scope': value['messageButtonClickVariableScope'],
         'message_button_click_variable_name': value['messageButtonClickVariableName'],
         'message_allow_repeated_button_clicks': value['messageAllowRepeatedButtonClicks'],
+        'message_vk_text_buttons': value['messageVkTextButtons'],
         'message_channel_types': value['messageChannelTypes'],
         'message_target_type': value['messageTargetType'],
+        'message_variable_context': value['messageVariableContext'],
         'message_target_id': value['messageTargetId'],
         'message_target_variable_scope': value['messageTargetVariableScope'],
         'message_target_variable_name': value['messageTargetVariableName'],

@@ -26,7 +26,7 @@ export interface AutoPurchaseResponseDto {
      * @type {string}
      * @memberof AutoPurchaseResponseDto
      */
-    autoPurchasePackageId?: string | null;
+    autoPurchaseAddonId?: string | null;
 }
 /**
  * Check if a given object implements the AutoPurchaseResponseDto interface.

@@ -35,7 +35,7 @@ function AutoPurchaseResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'autoPurchaseEnabled': json['auto_purchase_enabled'],
-        'autoPurchasePackageId': json['auto_purchase_package_id'] == null ? undefined : json['auto_purchase_package_id'],
+        'autoPurchaseAddonId': json['auto_purchase_addon_id'] == null ? undefined : json['auto_purchase_addon_id'],
     };
 }
 function AutoPurchaseResponseDtoToJSON(json) {
@@ -47,6 +47,6 @@ function AutoPurchaseResponseDtoToJSONTyped(value, ignoreDiscriminator = false) 
     }
     return {
         'auto_purchase_enabled': value['autoPurchaseEnabled'],
-        'auto_purchase_package_id': value['autoPurchasePackageId'],
+        'auto_purchase_addon_id': value['autoPurchaseAddonId'],
     };
 }

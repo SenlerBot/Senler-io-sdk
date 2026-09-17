@@ -18,6 +18,12 @@ import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBinding
  */
 export interface AgentDraftSettingsResponseDto {
     /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    conflictFields: Array<string>;
+    /**
      * UUID
      * @type {string}
      * @memberof AgentDraftSettingsResponseDto
@@ -97,6 +103,12 @@ export interface AgentDraftSettingsResponseDto {
      * @memberof AgentDraftSettingsResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * ID . null .
+     * @type {string}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    metricsModelId?: string | null;
     /**
      * . , .
      * @type {AgentSelectedModelSummaryDto}
@@ -224,7 +236,7 @@ export interface AgentDraftSettingsResponseDto {
      */
     enableCustomAttachments: boolean;
     /**
-     * (DALL-E)
+     *
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
      */
@@ -247,6 +259,18 @@ export interface AgentDraftSettingsResponseDto {
      * @memberof AgentDraftSettingsResponseDto
      */
     audioGenerationModelId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    enableVoiceCloning: boolean;
+    /**
+     * ID stateless-
+     * @type {string}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    voiceCloningModelId?: string | null;
     /**
      * (STT)
      * @type {boolean}
@@ -332,6 +356,12 @@ export interface AgentDraftSettingsResponseDto {
      */
     enableStreaming: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    disableLinkPreview: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof AgentDraftSettingsResponseDto
@@ -411,6 +441,14 @@ export interface AgentDraftSettingsResponseDto {
      * @memberof AgentDraftSettingsResponseDto
      */
     segmentAccessPolicy: {
+        [key: string]: any;
+    };
+    /**
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    funnelAccessPolicy: {
         [key: string]: any;
     };
     /**
@@ -545,6 +583,7 @@ export type AgentDraftSettingsResponseDtoKindEnum = typeof AgentDraftSettingsRes
  */
 export declare const AgentDraftSettingsResponseDtoStatusEnum: {
     readonly Draft: "draft";
+    readonly Training: "training";
     readonly Ready: "ready";
     readonly Active: "active";
     readonly Inactive: "inactive";

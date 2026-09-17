@@ -16,7 +16,7 @@
  */
 export interface AllCustomVariableBindingDto {
     /**
-     * : project, lead.
+     * : project, lead, dialog.
      * @type {string}
      * @memberof AllCustomVariableBindingDto
      */
@@ -34,6 +34,7 @@ export interface AllCustomVariableBindingDto {
 export declare const AllCustomVariableBindingDtoScopeEnum: {
     readonly Project: "project";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
 };
 export type AllCustomVariableBindingDtoScopeEnum = typeof AllCustomVariableBindingDtoScopeEnum[keyof typeof AllCustomVariableBindingDtoScopeEnum];
 /**

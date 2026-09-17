@@ -25,6 +25,7 @@ exports.AutomationVariableDestinationDtoToJSONTyped = AutomationVariableDestinat
 exports.AutomationVariableDestinationDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**

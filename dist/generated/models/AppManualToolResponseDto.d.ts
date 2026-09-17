@@ -37,6 +37,12 @@ export interface AppManualToolResponseDto {
      */
     displayDescription: AppToolDisplayDescriptionDto;
     /**
+     *
+     * @type {AppToolDisplayDescriptionDto}
+     * @memberof AppManualToolResponseDto
+     */
+    responseDescription?: AppToolDisplayDescriptionDto | null;
+    /**
      * . null .
      * @type {string}
      * @memberof AppManualToolResponseDto

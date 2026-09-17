@@ -28,6 +28,12 @@ export interface EventMessageDto {
      */
     contentFormat: EventMessageDtoContentFormatEnum;
     /**
+     *
+     * @type {boolean}
+     * @memberof EventMessageDto
+     */
+    disableLinkPreview?: boolean;
+    /**
      * AI ( assistant )
      * @type {string}
      * @memberof EventMessageDto

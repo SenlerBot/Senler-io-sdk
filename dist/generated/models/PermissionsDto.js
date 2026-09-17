@@ -62,6 +62,10 @@ function instanceOfPermissionsDto(value) {
         return false;
     if (!('canManageLeadVariables' in value) || value['canManageLeadVariables'] === undefined)
         return false;
+    if (!('canViewDialogVariables' in value) || value['canViewDialogVariables'] === undefined)
+        return false;
+    if (!('canManageDialogVariables' in value) || value['canManageDialogVariables'] === undefined)
+        return false;
     if (!('canViewSegments' in value) || value['canViewSegments'] === undefined)
         return false;
     if (!('canManageSegments' in value) || value['canManageSegments'] === undefined)
@@ -116,6 +120,8 @@ function instanceOfPermissionsDto(value) {
         return false;
     if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined)
         return false;
+    if (!('canUseProjectApps' in value) || value['canUseProjectApps'] === undefined)
+        return false;
     if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined)
         return false;
     if (!('canViewStorage' in value) || value['canViewStorage'] === undefined)
@@ -156,6 +162,8 @@ function PermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageLeads': json['can_manage_leads'],
         'canViewLeadVariables': json['can_view_lead_variables'],
         'canManageLeadVariables': json['can_manage_lead_variables'],
+        'canViewDialogVariables': json['can_view_dialog_variables'],
+        'canManageDialogVariables': json['can_manage_dialog_variables'],
         'canViewSegments': json['can_view_segments'],
         'canManageSegments': json['can_manage_segments'],
         'canViewLandings': json['can_view_landings'],
@@ -183,6 +191,7 @@ function PermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
         'canViewProjectApps': json['can_view_project_apps'],
+        'canUseProjectApps': json['can_use_project_apps'],
         'canManageProjectApps': json['can_manage_project_apps'],
         'canViewStorage': json['can_view_storage'],
         'canManageStorage': json['can_manage_storage'],
@@ -218,6 +227,8 @@ function PermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_leads': value['canManageLeads'],
         'can_view_lead_variables': value['canViewLeadVariables'],
         'can_manage_lead_variables': value['canManageLeadVariables'],
+        'can_view_dialog_variables': value['canViewDialogVariables'],
+        'can_manage_dialog_variables': value['canManageDialogVariables'],
         'can_view_segments': value['canViewSegments'],
         'can_manage_segments': value['canManageSegments'],
         'can_view_landings': value['canViewLandings'],
@@ -245,6 +256,7 @@ function PermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
         'can_view_project_apps': value['canViewProjectApps'],
+        'can_use_project_apps': value['canUseProjectApps'],
         'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_storage': value['canViewStorage'],
         'can_manage_storage': value['canManageStorage'],

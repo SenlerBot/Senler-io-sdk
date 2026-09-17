@@ -24,13 +24,13 @@ export interface TokensPricingDto {
      * @type {number}
      * @memberof TokensPricingDto
      */
-    inputCredits: number;
+    inputCredits?: number;
     /**
      * output 1M, ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof TokensPricingDto
      */
-    outputCredits: number;
+    outputCredits?: number;
     /**
      * cached input 1M, ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
@@ -43,8 +43,6 @@ export interface TokensPricingDto {
  * Check if a given object implements the TokensPricingDto interface.
  */
 export function instanceOfTokensPricingDto(value: object): value is TokensPricingDto {
-    if (!('inputCredits' in value) || value['inputCredits'] === undefined) return false;
-    if (!('outputCredits' in value) || value['outputCredits'] === undefined) return false;
     return true;
 }
 
@@ -58,8 +56,8 @@ export function TokensPricingDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
 
-        'inputCredits': json['input_credits'],
-        'outputCredits': json['output_credits'],
+        'inputCredits': json['input_credits'] == null ? undefined : json['input_credits'],
+        'outputCredits': json['output_credits'] == null ? undefined : json['output_credits'],
         'cachedCredits': json['cached_credits'] == null ? undefined : json['cached_credits'],
     };
 }

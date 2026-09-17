@@ -20,6 +20,9 @@ import type {
   AutomationAvatarUploadUrlResponseDto,
   AutomationEdgeResponseDto,
   AutomationGraphResponseDto,
+  AutomationHttpPreviewDto,
+  AutomationHttpPreviewResponseDto,
+  AutomationHttpResponseSampleDto,
   AutomationListResponseDto,
   AutomationNodeCatalogResponseDto,
   AutomationNodeConfigValidationResponseDto,
@@ -49,9 +52,12 @@ import type {
   DeleteAutomationNodeDto,
   DialogAutomationRunsResponseDto,
   ErrorResponse,
+  FunnelOptionsResponseDto,
   GetAutomationAvatarUploadUrlDto,
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
+  ImportImageDto,
+  LayoutAutomationDto,
   PauseAutomationRunDto,
   PauseAutomationRunResponseDto,
   PublishAutomationDto,
@@ -66,6 +72,7 @@ import type {
   TestAutomationRunDto,
   TestAutomationRunResponseDto,
   UpdateAutomationDto,
+  UpdateAutomationHttpResponseSampleDto,
   UpdateAutomationNodeDto,
   ValidateAutomationNodeConfigDto,
 } from '../models/index';
@@ -80,6 +87,12 @@ import {
     AutomationEdgeResponseDtoToJSON,
     AutomationGraphResponseDtoFromJSON,
     AutomationGraphResponseDtoToJSON,
+    AutomationHttpPreviewDtoFromJSON,
+    AutomationHttpPreviewDtoToJSON,
+    AutomationHttpPreviewResponseDtoFromJSON,
+    AutomationHttpPreviewResponseDtoToJSON,
+    AutomationHttpResponseSampleDtoFromJSON,
+    AutomationHttpResponseSampleDtoToJSON,
     AutomationListResponseDtoFromJSON,
     AutomationListResponseDtoToJSON,
     AutomationNodeCatalogResponseDtoFromJSON,
@@ -138,12 +151,18 @@ import {
     DialogAutomationRunsResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    FunnelOptionsResponseDtoFromJSON,
+    FunnelOptionsResponseDtoToJSON,
     GetAutomationAvatarUploadUrlDtoFromJSON,
     GetAutomationAvatarUploadUrlDtoToJSON,
     GetUploadUrlDtoFromJSON,
     GetUploadUrlDtoToJSON,
     GetUploadUrlResponseDtoFromJSON,
     GetUploadUrlResponseDtoToJSON,
+    ImportImageDtoFromJSON,
+    ImportImageDtoToJSON,
+    LayoutAutomationDtoFromJSON,
+    LayoutAutomationDtoToJSON,
     PauseAutomationRunDtoFromJSON,
     PauseAutomationRunDtoToJSON,
     PauseAutomationRunResponseDtoFromJSON,
@@ -172,6 +191,8 @@ import {
     TestAutomationRunResponseDtoToJSON,
     UpdateAutomationDtoFromJSON,
     UpdateAutomationDtoToJSON,
+    UpdateAutomationHttpResponseSampleDtoFromJSON,
+    UpdateAutomationHttpResponseSampleDtoToJSON,
     UpdateAutomationNodeDtoFromJSON,
     UpdateAutomationNodeDtoToJSON,
     ValidateAutomationNodeConfigDtoFromJSON,
@@ -184,6 +205,12 @@ export interface AttachmentsConfirmRequest {
     acceptLanguage?: AttachmentsConfirmAcceptLanguageEnum;
 }
 
+export interface AttachmentsFromUrlRequest {
+    automationId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AttachmentsFromUrlAcceptLanguageEnum;
+}
+
 export interface AttachmentsUploadUrlRequest {
     automationId: string;
     getUploadUrlDto: GetUploadUrlDto;
@@ -194,6 +221,12 @@ export interface AutomationsAvatarConfirmRequest {
     automationId: string;
     confirmAutomationAvatarUploadDto: ConfirmAutomationAvatarUploadDto;
     acceptLanguage?: AutomationsAvatarConfirmAcceptLanguageEnum;
+}
+
+export interface AutomationsAvatarFromUrlRequest {
+    automationId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AutomationsAvatarFromUrlAcceptLanguageEnum;
 }
 
 export interface AutomationsAvatarUploadUrlRequest {
@@ -302,6 +335,11 @@ export interface GetDialogsRunsRequest {
     acceptLanguage?: GetDialogsRunsAcceptLanguageEnum;
 }
 
+export interface GetFunnelOptionsRequest {
+    projectId: string;
+    acceptLanguage?: GetFunnelOptionsAcceptLanguageEnum;
+}
+
 export interface GetGraphRequest {
     automationId: string;
     view?: GetGraphViewEnum;
@@ -313,6 +351,12 @@ export interface GetNodeTypesRequest {
     automationType?: GetNodeTypesAutomationTypeEnum;
     timezone?: string;
     acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
+}
+
+export interface GetNodesHttpResponseSampleRequest {
+    automationId: string;
+    nodeId: string;
+    acceptLanguage?: GetNodesHttpResponseSampleAcceptLanguageEnum;
 }
 
 export interface GetOperationsRequest {
@@ -361,11 +405,25 @@ export interface GetTestTriggerSessionsCurrentRequest {
     acceptLanguage?: GetTestTriggerSessionsCurrentAcceptLanguageEnum;
 }
 
+export interface LayoutRequest {
+    automationId: string;
+    layoutAutomationDto: LayoutAutomationDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: LayoutAcceptLanguageEnum;
+}
+
 export interface NodesRequest {
     automationId: string;
     createAutomationNodeDto: CreateAutomationNodeDto;
     xAutomationEditorSessionId?: string;
     acceptLanguage?: NodesAcceptLanguageEnum;
+}
+
+export interface NodesHttpPreviewRequest {
+    automationId: string;
+    nodeId: string;
+    automationHttpPreviewDto: AutomationHttpPreviewDto;
+    acceptLanguage?: NodesHttpPreviewAcceptLanguageEnum;
 }
 
 export interface NodesValidateRequest {
@@ -462,6 +520,13 @@ export interface UpdateNodesRequest {
     acceptLanguage?: UpdateNodesAcceptLanguageEnum;
 }
 
+export interface UpdateNodesHttpResponseSampleRequest {
+    automationId: string;
+    nodeId: string;
+    updateAutomationHttpResponseSampleDto: UpdateAutomationHttpResponseSampleDto;
+    acceptLanguage?: UpdateNodesHttpResponseSampleAcceptLanguageEnum;
+}
+
 export interface UpdateTriggerIntakeRequest {
     automationId: string;
     setAutomationTriggerIntakeDto: SetAutomationTriggerIntakeDto;
@@ -545,6 +610,68 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async attachmentsConfirm(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
         const response = await this.attachmentsConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    async attachmentsFromUrlRaw(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling attachmentsFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling attachmentsFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/attachments/from-url`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    async attachmentsFromUrl(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
+        const response = await this.attachmentsFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -669,6 +796,68 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async automationsAvatarConfirm(requestParameters: AutomationsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmAutomationAvatarUploadResponseDto> {
         const response = await this.automationsAvatarConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * PNG, JPEG WebP . 20 40 . PUT .
+     * URL attachment_id
+     */
+    async automationsAvatarFromUrlRaw(requestParameters: AutomationsAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmAutomationAvatarUploadResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling automationsAvatarFromUrl().'
+            );
+        }
+
+        if (requestParameters['importImageDto'] == null) {
+            throw new runtime.RequiredError(
+                'importImageDto',
+                'Required parameter "importImageDto" was null or undefined when calling automationsAvatarFromUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/avatar/from-url`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmAutomationAvatarUploadResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * PNG, JPEG WebP . 20 40 . PUT .
+     * URL attachment_id
+     */
+    async automationsAvatarFromUrl(requestParameters: AutomationsAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmAutomationAvatarUploadResponseDto> {
+        const response = await this.automationsAvatarFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1134,7 +1323,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. ; . graph , .
+     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     async batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
@@ -1191,7 +1380,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. ; . graph , .
+     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     async batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
@@ -1455,7 +1644,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * idempotent draft-edge ; DAG validate/publish. : next , .
+     * idempotent draft-edge ; validate/publish. : next , .
      *
      */
     async edgesRaw(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>> {
@@ -1512,7 +1701,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * idempotent draft-edge ; DAG validate/publish. : next , .
+     * idempotent draft-edge ; validate/publish. : next , .
      *
      */
     async edges(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto> {
@@ -1665,6 +1854,60 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     *
+     */
+    async getFunnelOptionsRaw(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnelOptions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/funnel-options`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelOptionsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async getFunnelOptions(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto> {
+        const response = await this.getFunnelOptionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * nodes/edges React Flow JSON. draft graph, node_id .
      *
      */
@@ -1781,6 +2024,65 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto> {
         const response = await this.getNodeTypesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     * JSON- HTTP-
+     */
+    async getNodesHttpResponseSampleRaw(requestParameters: GetNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHttpResponseSampleDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getNodesHttpResponseSample().'
+            );
+        }
+
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError(
+                'nodeId',
+                'Required parameter "nodeId" was null or undefined when calling getNodesHttpResponseSample().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}/http-response-sample`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationHttpResponseSampleDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     * JSON- HTTP-
+     */
+    async getNodesHttpResponseSample(requestParameters: GetNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto> {
+        const response = await this.getNodesHttpResponseSampleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2167,7 +2469,73 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . API . , . .
+     * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
+     *
+     */
+    async layoutRaw(requestParameters: LayoutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling layout().'
+            );
+        }
+
+        if (requestParameters['layoutAutomationDto'] == null) {
+            throw new runtime.RequiredError(
+                'layoutAutomationDto',
+                'Required parameter "layoutAutomationDto" was null or undefined when calling layout().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xAutomationEditorSessionId'] != null) {
+            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/layout`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LayoutAutomationDtoToJSON(requestParameters['layoutAutomationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationGraphResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
+     *
+     */
+    async layout(requestParameters: LayoutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
+        const response = await this.layoutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     async nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
@@ -2224,11 +2592,80 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . API . , . .
+     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     async nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
         const response = await this.nodesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . . . JSON- . . request_id 10 .
+     * HTTP-
+     */
+    async nodesHttpPreviewRaw(requestParameters: NodesHttpPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHttpPreviewResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling nodesHttpPreview().'
+            );
+        }
+
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError(
+                'nodeId',
+                'Required parameter "nodeId" was null or undefined when calling nodesHttpPreview().'
+            );
+        }
+
+        if (requestParameters['automationHttpPreviewDto'] == null) {
+            throw new runtime.RequiredError(
+                'automationHttpPreviewDto',
+                'Required parameter "automationHttpPreviewDto" was null or undefined when calling nodesHttpPreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}/http-preview`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AutomationHttpPreviewDtoToJSON(requestParameters['automationHttpPreviewDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationHttpPreviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . . JSON- . . request_id 10 .
+     * HTTP-
+     */
+    async nodesHttpPreview(requestParameters: NodesHttpPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpPreviewResponseDto> {
+        const response = await this.nodesHttpPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2295,7 +2732,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * DAG migration mapping. , .
+     * migration mapping. , ; . , .
      * immutable-
      */
     async publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionInfoDto>> {
@@ -2348,7 +2785,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * DAG migration mapping. , .
+     * migration mapping. , ; . , .
      * immutable-
      */
     async publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto> {
@@ -3098,7 +3535,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , / .
+     * , / . . layoutAutomation. position expected_position_revision.
      *
      */
     async updateNodesRaw(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
@@ -3162,11 +3599,80 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , / .
+     * , / . . layoutAutomation. position expected_position_revision.
      *
      */
     async updateNodes(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
         const response = await this.updateNodesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON . body: null . expected_revision ; 409.
+     * JSON- HTTP-
+     */
+    async updateNodesHttpResponseSampleRaw(requestParameters: UpdateNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHttpResponseSampleDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling updateNodesHttpResponseSample().'
+            );
+        }
+
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError(
+                'nodeId',
+                'Required parameter "nodeId" was null or undefined when calling updateNodesHttpResponseSample().'
+            );
+        }
+
+        if (requestParameters['updateAutomationHttpResponseSampleDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAutomationHttpResponseSampleDto',
+                'Required parameter "updateAutomationHttpResponseSampleDto" was null or undefined when calling updateNodesHttpResponseSample().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}/http-response-sample`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAutomationHttpResponseSampleDtoToJSON(requestParameters['updateAutomationHttpResponseSampleDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationHttpResponseSampleDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON . body: null . expected_revision ; 409.
+     * JSON- HTTP-
+     */
+    async updateNodesHttpResponseSample(requestParameters: UpdateNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto> {
+        const response = await this.updateNodesHttpResponseSampleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3370,6 +3876,14 @@ export type AttachmentsConfirmAcceptLanguageEnum = typeof AttachmentsConfirmAcce
 /**
  * @export
  */
+export const AttachmentsFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AttachmentsFromUrlAcceptLanguageEnum = typeof AttachmentsFromUrlAcceptLanguageEnum[keyof typeof AttachmentsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const AttachmentsUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -3383,6 +3897,14 @@ export const AutomationsAvatarConfirmAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type AutomationsAvatarConfirmAcceptLanguageEnum = typeof AutomationsAvatarConfirmAcceptLanguageEnum[keyof typeof AutomationsAvatarConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const AutomationsAvatarFromUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AutomationsAvatarFromUrlAcceptLanguageEnum = typeof AutomationsAvatarFromUrlAcceptLanguageEnum[keyof typeof AutomationsAvatarFromUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -3525,6 +4047,14 @@ export type GetDialogsRunsAcceptLanguageEnum = typeof GetDialogsRunsAcceptLangua
 /**
  * @export
  */
+export const GetFunnelOptionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelOptionsAcceptLanguageEnum = typeof GetFunnelOptionsAcceptLanguageEnum[keyof typeof GetFunnelOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetGraphViewEnum = {
     Draft: 'draft',
     Published: 'published'
@@ -3554,6 +4084,14 @@ export const GetNodeTypesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetNodeTypesAcceptLanguageEnum = typeof GetNodeTypesAcceptLanguageEnum[keyof typeof GetNodeTypesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetNodesHttpResponseSampleAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetNodesHttpResponseSampleAcceptLanguageEnum = typeof GetNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof GetNodesHttpResponseSampleAcceptLanguageEnum];
 /**
  * @export
  */
@@ -3616,11 +4154,27 @@ export type GetTestTriggerSessionsCurrentAcceptLanguageEnum = typeof GetTestTrig
 /**
  * @export
  */
+export const LayoutAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LayoutAcceptLanguageEnum = typeof LayoutAcceptLanguageEnum[keyof typeof LayoutAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const NodesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type NodesAcceptLanguageEnum = typeof NodesAcceptLanguageEnum[keyof typeof NodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const NodesHttpPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type NodesHttpPreviewAcceptLanguageEnum = typeof NodesHttpPreviewAcceptLanguageEnum[keyof typeof NodesHttpPreviewAcceptLanguageEnum];
 /**
  * @export
  */
@@ -3741,6 +4295,14 @@ export const UpdateNodesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateNodesAcceptLanguageEnum = typeof UpdateNodesAcceptLanguageEnum[keyof typeof UpdateNodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateNodesHttpResponseSampleAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateNodesHttpResponseSampleAcceptLanguageEnum = typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum];
 /**
  * @export
  */

@@ -25,6 +25,7 @@ exports.AutomationRunVariableBindingDtoToJSONTyped = AutomationRunVariableBindin
 exports.AutomationRunVariableBindingDtoSourceVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**

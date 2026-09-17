@@ -45,12 +45,6 @@ export interface StorageTariffDto {
     isFree: boolean;
     /**
      *
-     * @type {boolean}
-     * @memberof StorageTariffDto
-     */
-    isRequestOnly: boolean;
-    /**
-     *
      * @type {number}
      * @memberof StorageTariffDto
      */
@@ -65,7 +59,6 @@ export function instanceOfStorageTariffDto(value: object): value is StorageTarif
     if (!('nameRu' in value) || value['nameRu'] === undefined) return false;
     if (!('nameEn' in value) || value['nameEn'] === undefined) return false;
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
-    if (!('isRequestOnly' in value) || value['isRequestOnly'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
     return true;
 }
@@ -84,7 +77,6 @@ export function StorageTariffDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'nameRu': json['name_ru'],
         'nameEn': json['name_en'],
         'isFree': json['is_free'],
-        'isRequestOnly': json['is_request_only'],
         'storageLimitBytes': json['storage_limit_bytes'],
     };
 }
@@ -104,7 +96,6 @@ export function StorageTariffDtoToJSONTyped(value?: StorageTariffDto | null, ign
         'name_ru': value['nameRu'],
         'name_en': value['nameEn'],
         'is_free': value['isFree'],
-        'is_request_only': value['isRequestOnly'],
         'storage_limit_bytes': value['storageLimitBytes'],
     };
 }

@@ -20,6 +20,7 @@ exports.LeadsFilterDtoFromJSONTyped = LeadsFilterDtoFromJSONTyped;
 exports.LeadsFilterDtoToJSON = LeadsFilterDtoToJSON;
 exports.LeadsFilterDtoToJSONTyped = LeadsFilterDtoToJSONTyped;
 const LeadSubscriptionUtmPathDto_1 = require("./LeadSubscriptionUtmPathDto");
+const LeadFunnelFilterDto_1 = require("./LeadFunnelFilterDto");
 /**
  * @export
  */
@@ -60,6 +61,7 @@ function LeadsFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'funnels': json['funnels'] == null ? undefined : (json['funnels'].map(LeadFunnelFilterDto_1.LeadFunnelFilterDtoFromJSON)),
         'leadIds': json['lead_ids'] == null ? undefined : json['lead_ids'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'channelType': json['channel_type'] == null ? undefined : json['channel_type'],
@@ -90,6 +92,7 @@ function LeadsFilterDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'funnels': value['funnels'] == null ? undefined : (value['funnels'].map(LeadFunnelFilterDto_1.LeadFunnelFilterDtoToJSON)),
         'lead_ids': value['leadIds'],
         'channel_ids': value['channelIds'],
         'channel_type': value['channelType'],

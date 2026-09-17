@@ -14,6 +14,7 @@ import type { AutomationEdgeResponseDto } from './AutomationEdgeResponseDto';
 import type { AutomationNodeResponseDto } from './AutomationNodeResponseDto';
 import type { AutomationDraftInfoDto } from './AutomationDraftInfoDto';
 import type { AutomationResponseDto } from './AutomationResponseDto';
+import type { AutomationGroupResponseDto } from './AutomationGroupResponseDto';
 /**
  * AutomationGraphResponseDto.
  * @export
@@ -56,6 +57,12 @@ export interface AutomationGraphResponseDto {
      * @memberof AutomationGraphResponseDto
      */
     edges: Array<AutomationEdgeResponseDto>;
+    /**
+     * .
+     * @type {Array<AutomationGroupResponseDto>}
+     * @memberof AutomationGraphResponseDto
+     */
+    groups: Array<AutomationGroupResponseDto>;
 }
 /**
  * Check if a given object implements the AutomationGraphResponseDto interface.

@@ -18,15 +18,12 @@ exports.SubscriptionCatalogResponseDtoFromJSON = SubscriptionCatalogResponseDtoF
 exports.SubscriptionCatalogResponseDtoFromJSONTyped = SubscriptionCatalogResponseDtoFromJSONTyped;
 exports.SubscriptionCatalogResponseDtoToJSON = SubscriptionCatalogResponseDtoToJSON;
 exports.SubscriptionCatalogResponseDtoToJSONTyped = SubscriptionCatalogResponseDtoToJSONTyped;
-const MailingMessagePackageCatalogDto_1 = require("./MailingMessagePackageCatalogDto");
-const BillingAddonPlanCatalogDto_1 = require("./BillingAddonPlanCatalogDto");
+const BillingAddonCatalogDto_1 = require("./BillingAddonCatalogDto");
 /**
  * Check if a given object implements the SubscriptionCatalogResponseDto interface.
  */
 function instanceOfSubscriptionCatalogResponseDto(value) {
-    if (!('recurringAddons' in value) || value['recurringAddons'] === undefined)
-        return false;
-    if (!('mailingPackages' in value) || value['mailingPackages'] === undefined)
+    if (!('addons' in value) || value['addons'] === undefined)
         return false;
     return true;
 }
@@ -38,8 +35,7 @@ function SubscriptionCatalogResponseDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
-        'recurringAddons': (json['recurring_addons'].map(BillingAddonPlanCatalogDto_1.BillingAddonPlanCatalogDtoFromJSON)),
-        'mailingPackages': (json['mailing_packages'].map(MailingMessagePackageCatalogDto_1.MailingMessagePackageCatalogDtoFromJSON)),
+        'addons': (json['addons'].map(BillingAddonCatalogDto_1.BillingAddonCatalogDtoFromJSON)),
     };
 }
 function SubscriptionCatalogResponseDtoToJSON(json) {
@@ -50,7 +46,6 @@ function SubscriptionCatalogResponseDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
-        'recurring_addons': (value['recurringAddons'].map(BillingAddonPlanCatalogDto_1.BillingAddonPlanCatalogDtoToJSON)),
-        'mailing_packages': (value['mailingPackages'].map(MailingMessagePackageCatalogDto_1.MailingMessagePackageCatalogDtoToJSON)),
+        'addons': (value['addons'].map(BillingAddonCatalogDto_1.BillingAddonCatalogDtoToJSON)),
     };
 }

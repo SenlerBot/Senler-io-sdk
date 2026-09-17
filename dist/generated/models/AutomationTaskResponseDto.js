@@ -19,6 +19,7 @@ exports.AutomationTaskResponseDtoFromJSON = AutomationTaskResponseDtoFromJSON;
 exports.AutomationTaskResponseDtoFromJSONTyped = AutomationTaskResponseDtoFromJSONTyped;
 exports.AutomationTaskResponseDtoToJSON = AutomationTaskResponseDtoToJSON;
 exports.AutomationTaskResponseDtoToJSONTyped = AutomationTaskResponseDtoToJSONTyped;
+const AutomationHttpResultSummaryDto_1 = require("./AutomationHttpResultSummaryDto");
 /**
  * @export
  */
@@ -83,6 +84,7 @@ function AutomationTaskResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'httpResult': json['http_result'] == null ? undefined : (0, AutomationHttpResultSummaryDto_1.AutomationHttpResultSummaryDtoFromJSON)(json['http_result']),
         'id': json['id'],
         'nodeId': json['node_id'],
         'nodeName': json['node_name'],
@@ -108,6 +110,7 @@ function AutomationTaskResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         return value;
     }
     return {
+        'http_result': (0, AutomationHttpResultSummaryDto_1.AutomationHttpResultSummaryDtoToJSON)(value['httpResult']),
         'id': value['id'],
         'node_id': value['nodeId'],
         'node_name': value['nodeName'],

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicDocumentationNavigationTargetDto } from './PublicDocumentationNavigationTargetDto';
 import type { PublicDocumentationContextRefDto } from './PublicDocumentationContextRefDto';
 import type { PublicDocumentationAppDto } from './PublicDocumentationAppDto';
 import type { PublicDocumentationResolvedLinkDto } from './PublicDocumentationResolvedLinkDto';
@@ -54,6 +55,12 @@ export interface PublicDocumentationPageDto {
      * @memberof PublicDocumentationPageDto
      */
     contextRefs: Array<PublicDocumentationContextRefDto>;
+    /**
+     * custom actions host-
+     * @type {Array<PublicDocumentationNavigationTargetDto>}
+     * @memberof PublicDocumentationPageDto
+     */
+    navigationTargets: Array<PublicDocumentationNavigationTargetDto>;
     /**
      *
      * @type {Array<PublicDocumentationResolvedLinkDto>}

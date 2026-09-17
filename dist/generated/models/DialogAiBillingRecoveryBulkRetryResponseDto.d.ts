@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { DialogAiBillingRecoveryRunStatus } from './DialogAiBillingRecoveryRunStatus';
+import type { DialogAiBillingRecoveryRunMode } from './DialogAiBillingRecoveryRunMode';
 /**
  * DialogAiBillingRecoveryBulkRetryResponseDto.
  * @export
@@ -16,29 +18,41 @@
  */
 export interface DialogAiBillingRecoveryBulkRetryResponseDto {
     /**
-     * ,
+     *
+     * @type {string}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    runId: string;
+    /**
+     * status.
+     * @type {DialogAiBillingRecoveryRunStatus}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    status: DialogAiBillingRecoveryRunStatus;
+    /**
+     * mode.
+     * @type {DialogAiBillingRecoveryRunMode}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    mode: DialogAiBillingRecoveryRunMode;
+    /**
+     *
      * @type {number}
      * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
      */
     submitted: number;
+    /**
+     *
+     * @type {number}
+     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
+     */
+    metricsResumed: number;
     /**
      * ,
      * @type {number}
      * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
      */
     failed: number;
-    /**
-     *
-     * @type {number}
-     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
-     */
-    remainingMessages: number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof DialogAiBillingRecoveryBulkRetryResponseDto
-     */
-    hasMore: boolean;
 }
 /**
  * Check if a given object implements the DialogAiBillingRecoveryBulkRetryResponseDto interface.

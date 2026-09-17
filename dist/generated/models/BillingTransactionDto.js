@@ -28,11 +28,8 @@ const BillingTransactionDtoDetailsByModelValue_1 = require("./BillingTransaction
  */
 exports.BillingTransactionDtoTypeEnum = {
     Deposit: 'deposit',
-    TariffPurchase: 'tariff_purchase',
-    CreditPurchase: 'credit_purchase',
-    CreditAutoPurchase: 'credit_auto_purchase',
     SubscriptionPurchase: 'subscription_purchase',
-    MailingMessagePurchase: 'mailing_message_purchase',
+    AddonPurchase: 'addon_purchase',
     Refund: 'refund',
     Adjustment: 'adjustment',
     CurrencyConversion: 'currency_conversion'
@@ -120,7 +117,7 @@ function BillingTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
         'paySystemAccountId': json['pay_system_account_id'] == null ? undefined : json['pay_system_account_id'],
         'tariffName': json['tariff_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['tariff_name']),
-        'creditPackageName': json['credit_package_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['credit_package_name']),
+        'addonName': json['addon_name'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['addon_name']),
     };
 }
 function BillingTransactionDtoToJSON(json) {
@@ -166,6 +163,6 @@ function BillingTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'pay_system_id': value['paySystemId'],
         'pay_system_account_id': value['paySystemAccountId'],
         'tariff_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['tariffName']),
-        'credit_package_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['creditPackageName']),
+        'addon_name': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['addonName']),
     };
 }

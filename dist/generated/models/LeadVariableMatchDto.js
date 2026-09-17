@@ -54,6 +54,7 @@ function LeadVariableMatchDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'type': json['type'],
         'value': json['value'],
+        'length': json['length'] == null ? undefined : json['length'],
     };
 }
 function LeadVariableMatchDtoToJSON(json) {
@@ -67,5 +68,6 @@ function LeadVariableMatchDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'type': value['type'],
         'value': value['value'],
+        'length': value['length'],
     };
 }

@@ -179,6 +179,12 @@ export interface AgentResponseDto {
      */
     selectedModelId?: string | null;
     /**
+     * ID . null .
+     * @type {string}
+     * @memberof AgentResponseDto
+     */
+    metricsModelId?: string | null;
+    /**
      * . , .
      * @type {AgentSelectedModelSummaryDto}
      * @memberof AgentResponseDto
@@ -323,7 +329,7 @@ export interface AgentResponseDto {
      */
     enableCustomAttachments: boolean;
     /**
-     * (DALL-E)
+     *
      * @type {boolean}
      * @memberof AgentResponseDto
      */
@@ -346,6 +352,18 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     audioGenerationModelId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    enableVoiceCloning: boolean;
+    /**
+     * ID stateless-
+     * @type {string}
+     * @memberof AgentResponseDto
+     */
+    voiceCloningModelId?: string | null;
     /**
      * (STT)
      * @type {boolean}
@@ -431,6 +449,12 @@ export interface AgentResponseDto {
      */
     enableStreaming: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof AgentResponseDto
+     */
+    disableLinkPreview: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof AgentResponseDto
@@ -508,6 +532,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     segmentAccessPolicy: { [key: string]: any; };
+    /**
+     *  (mixed type)
+     * @type {{ [key: string]: any; }}
+     * @memberof AgentResponseDto
+     */
+    funnelAccessPolicy: { [key: string]: any; };
     /**
      * recipient messaging tools (mixed type)
      * @type {{ [key: string]: any; }}
@@ -685,6 +715,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('enableCustomAttachments' in value) || value['enableCustomAttachments'] === undefined) return false;
     if (!('enableImageGeneration' in value) || value['enableImageGeneration'] === undefined) return false;
     if (!('enableAudioGeneration' in value) || value['enableAudioGeneration'] === undefined) return false;
+    if (!('enableVoiceCloning' in value) || value['enableVoiceCloning'] === undefined) return false;
     if (!('enableSpeechRecognition' in value) || value['enableSpeechRecognition'] === undefined) return false;
     if (!('enableImageRecognition' in value) || value['enableImageRecognition'] === undefined) return false;
     if (!('enableQrCode' in value) || value['enableQrCode'] === undefined) return false;
@@ -697,6 +728,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
+    if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined) return false;
     if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined) return false;
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined) return false;
     if (!('respondOnSegmentSubscription' in value) || value['respondOnSegmentSubscription'] === undefined) return false;
@@ -710,6 +742,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('variableBindings' in value) || value['variableBindings'] === undefined) return false;
     if (!('variablesAccessMode' in value) || value['variablesAccessMode'] === undefined) return false;
     if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined) return false;
+    if (!('funnelAccessPolicy' in value) || value['funnelAccessPolicy'] === undefined) return false;
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -743,6 +776,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'appOrigin': json['app_origin'] == null ? undefined : AgentAppOriginDtoFromJSON(json['app_origin']),
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'useDefaultEventMetrics': json['use_default_event_metrics'],
@@ -771,6 +805,8 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'imageGenerationModelId': json['image_generation_model_id'] == null ? undefined : json['image_generation_model_id'],
         'enableAudioGeneration': json['enable_audio_generation'],
         'audioGenerationModelId': json['audio_generation_model_id'] == null ? undefined : json['audio_generation_model_id'],
+        'enableVoiceCloning': json['enable_voice_cloning'],
+        'voiceCloningModelId': json['voice_cloning_model_id'] == null ? undefined : json['voice_cloning_model_id'],
         'enableSpeechRecognition': json['enable_speech_recognition'],
         'speechRecognitionModelId': json['speech_recognition_model_id'] == null ? undefined : json['speech_recognition_model_id'],
         'enableImageRecognition': json['enable_image_recognition'],
@@ -785,6 +821,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
+        'disableLinkPreview': json['disable_link_preview'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'respondOnSegmentSubscription': json['respond_on_segment_subscription'],
@@ -798,6 +835,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'variableBindings': json['variable_bindings'],
         'variablesAccessMode': json['variables_access_mode'],
         'segmentAccessPolicy': json['segment_access_policy'],
+        'funnelAccessPolicy': json['funnel_access_policy'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -832,6 +870,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'app_origin': AgentAppOriginDtoToJSON(value['appOrigin']),
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
+        'metrics_model_id': value['metricsModelId'],
         'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'use_default_event_metrics': value['useDefaultEventMetrics'],
@@ -860,6 +899,8 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'image_generation_model_id': value['imageGenerationModelId'],
         'enable_audio_generation': value['enableAudioGeneration'],
         'audio_generation_model_id': value['audioGenerationModelId'],
+        'enable_voice_cloning': value['enableVoiceCloning'],
+        'voice_cloning_model_id': value['voiceCloningModelId'],
         'enable_speech_recognition': value['enableSpeechRecognition'],
         'speech_recognition_model_id': value['speechRecognitionModelId'],
         'enable_image_recognition': value['enableImageRecognition'],
@@ -874,6 +915,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
+        'disable_link_preview': value['disableLinkPreview'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
@@ -887,6 +929,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'variable_bindings': value['variableBindings'],
         'variables_access_mode': value['variablesAccessMode'],
         'segment_access_policy': value['segmentAccessPolicy'],
+        'funnel_access_policy': value['funnelAccessPolicy'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

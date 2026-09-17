@@ -25,6 +25,7 @@ exports.AutomationTableOutputDtoToJSONTyped = AutomationTableOutputDtoToJSONType
 exports.AutomationTableOutputDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 };
 /**

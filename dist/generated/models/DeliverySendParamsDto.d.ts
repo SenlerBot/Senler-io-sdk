@@ -35,6 +35,12 @@ export interface DeliverySendParamsDto {
     messageText: string;
     /**
      *
+     * @type {boolean}
+     * @memberof DeliverySendParamsDto
+     */
+    disableLinkPreview?: boolean;
+    /**
+     *
      * @type {Array<{ [key: string]: any; }>}
      * @memberof DeliverySendParamsDto
      */

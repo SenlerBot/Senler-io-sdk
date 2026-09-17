@@ -24,7 +24,7 @@ export interface LandingVariablesDto {
      * @type {{ [key: string]: any; }}
      * @memberof LandingVariablesDto
      */
-    global: { [key: string]: any; };
+    project: { [key: string]: any; };
     /**
      * .
      * @type {{ [key: string]: any; }}
@@ -37,7 +37,7 @@ export interface LandingVariablesDto {
  * Check if a given object implements the LandingVariablesDto interface.
  */
 export function instanceOfLandingVariablesDto(value: object): value is LandingVariablesDto {
-    if (!('global' in value) || value['global'] === undefined) return false;
+    if (!('project' in value) || value['project'] === undefined) return false;
     if (!('lead' in value) || value['lead'] === undefined) return false;
     return true;
 }
@@ -52,7 +52,7 @@ export function LandingVariablesDtoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
 
-        'global': json['global'],
+        'project': json['project'],
         'lead': json['lead'],
     };
 }
@@ -68,7 +68,7 @@ export function LandingVariablesDtoToJSONTyped(value?: LandingVariablesDto | nul
 
     return {
 
-        'global': value['global'],
+        'project': value['project'],
         'lead': value['lead'],
     };
 }

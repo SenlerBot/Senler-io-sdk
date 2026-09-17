@@ -88,6 +88,8 @@ function instanceOfRolePermissionsDto(value) {
         return false;
     if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined)
         return false;
+    if (!('canUseProjectApps' in value) || value['canUseProjectApps'] === undefined)
+        return false;
     if (!('canManageProjectApps' in value) || value['canManageProjectApps'] === undefined)
         return false;
     if (!('canViewAnalytics' in value) || value['canViewAnalytics'] === undefined)
@@ -167,6 +169,7 @@ function RolePermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
         'canViewProjectApps': json['can_view_project_apps'],
+        'canUseProjectApps': json['can_use_project_apps'],
         'canManageProjectApps': json['can_manage_project_apps'],
         'canViewAnalytics': json['can_view_analytics'],
         'canManageAnalytics': json['can_manage_analytics'],
@@ -228,6 +231,7 @@ function RolePermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
         'can_view_project_apps': value['canViewProjectApps'],
+        'can_use_project_apps': value['canUseProjectApps'],
         'can_manage_project_apps': value['canManageProjectApps'],
         'can_view_analytics': value['canViewAnalytics'],
         'can_manage_analytics': value['canManageAnalytics'],

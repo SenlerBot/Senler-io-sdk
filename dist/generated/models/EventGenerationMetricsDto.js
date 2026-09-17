@@ -24,6 +24,7 @@ const EventMetricDto_1 = require("./EventMetricDto");
  * @export
  */
 exports.EventGenerationMetricsDtoStatusEnum = {
+    WaitingBilling: 'waiting_billing',
     Pending: 'pending',
     Completed: 'completed',
     Skipped: 'skipped',

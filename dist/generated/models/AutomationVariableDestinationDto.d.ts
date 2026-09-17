@@ -34,6 +34,7 @@ export interface AutomationVariableDestinationDto {
 export declare const AutomationVariableDestinationDtoVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationVariableDestinationDtoVariableScopeEnum = typeof AutomationVariableDestinationDtoVariableScopeEnum[keyof typeof AutomationVariableDestinationDtoVariableScopeEnum];

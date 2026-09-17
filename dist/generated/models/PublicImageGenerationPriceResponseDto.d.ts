@@ -20,40 +20,57 @@ export interface PublicImageGenerationPriceResponseDto {
      * @type {string}
      * @memberof PublicImageGenerationPriceResponseDto
      */
-    quality: PublicImageGenerationPriceResponseDtoQualityEnum;
+    generationQuality: PublicImageGenerationPriceResponseDtoGenerationQualityEnum;
     /**
      * . auto wildcard per_image
      * @type {string}
      * @memberof PublicImageGenerationPriceResponseDto
      */
-    size: PublicImageGenerationPriceResponseDtoSizeEnum;
+    aspectRatio: PublicImageGenerationPriceResponseDtoAspectRatioEnum;
+    /**
+     * . auto wildcard.
+     * @type {string}
+     * @memberof PublicImageGenerationPriceResponseDto
+     */
+    resolutionTier: PublicImageGenerationPriceResponseDtoResolutionTierEnum;
     /**
      * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof PublicImageGenerationPriceResponseDto
      */
-    clientCredits: number;
+    clientPricePerImageCredits: number;
 }
 /**
  * @export
  */
-export declare const PublicImageGenerationPriceResponseDtoQualityEnum: {
+export declare const PublicImageGenerationPriceResponseDtoGenerationQualityEnum: {
     readonly Auto: "auto";
     readonly Low: "low";
     readonly Medium: "medium";
     readonly High: "high";
 };
-export type PublicImageGenerationPriceResponseDtoQualityEnum = typeof PublicImageGenerationPriceResponseDtoQualityEnum[keyof typeof PublicImageGenerationPriceResponseDtoQualityEnum];
+export type PublicImageGenerationPriceResponseDtoGenerationQualityEnum = typeof PublicImageGenerationPriceResponseDtoGenerationQualityEnum[keyof typeof PublicImageGenerationPriceResponseDtoGenerationQualityEnum];
 /**
  * @export
  */
-export declare const PublicImageGenerationPriceResponseDtoSizeEnum: {
+export declare const PublicImageGenerationPriceResponseDtoAspectRatioEnum: {
     readonly Auto: "auto";
     readonly Square: "square";
     readonly Portrait: "portrait";
     readonly Landscape: "landscape";
 };
-export type PublicImageGenerationPriceResponseDtoSizeEnum = typeof PublicImageGenerationPriceResponseDtoSizeEnum[keyof typeof PublicImageGenerationPriceResponseDtoSizeEnum];
+export type PublicImageGenerationPriceResponseDtoAspectRatioEnum = typeof PublicImageGenerationPriceResponseDtoAspectRatioEnum[keyof typeof PublicImageGenerationPriceResponseDtoAspectRatioEnum];
+/**
+ * @export
+ */
+export declare const PublicImageGenerationPriceResponseDtoResolutionTierEnum: {
+    readonly Auto: "auto";
+    readonly _05k: "0.5k";
+    readonly _1k: "1k";
+    readonly _2k: "2k";
+    readonly _4k: "4k";
+};
+export type PublicImageGenerationPriceResponseDtoResolutionTierEnum = typeof PublicImageGenerationPriceResponseDtoResolutionTierEnum[keyof typeof PublicImageGenerationPriceResponseDtoResolutionTierEnum];
 /**
  * Check if a given object implements the PublicImageGenerationPriceResponseDto interface.
  */

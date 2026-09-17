@@ -11,15 +11,15 @@
  */
 import * as runtime from '../runtime';
 import type { ChannelTokenResponseDto, ConfirmS3UploadDto, FinishMigrationNowResponseDto, GetAvatarUploadUrlDto, GetChannelAccessUserResponseDto, GetChannelResponseDto, GetChannelUserResponseDto, GetChannelsUserResponseDto, MigrationBackfillEstimateResponseDto, MigrationEstimateDto, MigrationEstimateResponseDto, S3UploadUrlResponseDto, SenlerStatusDto, StartMigrationBackfillResponseDto, StartMigrationDto, StartMigrationResponseDto, SuccessResponseDto, SyncChannelResponseDto, UpdateChannelDto, UpdateChannelResponseDto, UploadAvatarFromUrlDto, WidgetCodeResponseDto } from '../models/index';
-export interface AvatarFromUrlRequest {
-    id: string;
-    uploadAvatarFromUrlDto: UploadAvatarFromUrlDto;
-    acceptLanguage?: AvatarFromUrlAcceptLanguageEnum;
-}
 export interface ChannelsAvatarConfirmRequest {
     id: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
     acceptLanguage?: ChannelsAvatarConfirmAcceptLanguageEnum;
+}
+export interface ChannelsAvatarFromUrlRequest {
+    id: string;
+    uploadAvatarFromUrlDto: UploadAvatarFromUrlDto;
+    acceptLanguage?: ChannelsAvatarFromUrlAcceptLanguageEnum;
 }
 export interface ChannelsAvatarUploadUrlRequest {
     id: string;
@@ -109,16 +109,6 @@ export interface TokensSyncRequest {
  */
 export declare class ChannelsApi extends runtime.BaseAPI {
     /**
-     * URL S3 . .
-     * URL
-     */
-    avatarFromUrlRaw(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelResponseDto>>;
-    /**
-     * URL S3 . .
-     * URL
-     */
-    avatarFromUrl(requestParameters: AvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
-    /**
      * avatar_url S3. .
      *
      */
@@ -128,6 +118,16 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      *
      */
     channelsAvatarConfirm(requestParameters: ChannelsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
+    /**
+     * PNG, JPEG WebP, . url, attachment_id imageUrl. 20 40 . .
+     * URL attachment_id
+     */
+    channelsAvatarFromUrlRaw(requestParameters: ChannelsAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChannelResponseDto>>;
+    /**
+     * PNG, JPEG WebP, . url, attachment_id imageUrl. 20 40 . .
+     * URL attachment_id
+     */
+    channelsAvatarFromUrl(requestParameters: ChannelsAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChannelResponseDto>;
     /**
      * S3- . .
      * S3-
@@ -322,19 +322,19 @@ export declare class ChannelsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export declare const AvatarFromUrlAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AvatarFromUrlAcceptLanguageEnum = typeof AvatarFromUrlAcceptLanguageEnum[keyof typeof AvatarFromUrlAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const ChannelsAvatarConfirmAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type ChannelsAvatarConfirmAcceptLanguageEnum = typeof ChannelsAvatarConfirmAcceptLanguageEnum[keyof typeof ChannelsAvatarConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ChannelsAvatarFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ChannelsAvatarFromUrlAcceptLanguageEnum = typeof ChannelsAvatarFromUrlAcceptLanguageEnum[keyof typeof ChannelsAvatarFromUrlAcceptLanguageEnum];
 /**
  * @export
  */

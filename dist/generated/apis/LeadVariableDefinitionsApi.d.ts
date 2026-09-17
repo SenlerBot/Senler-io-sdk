@@ -89,12 +89,12 @@ export declare class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      */
     leadVariableDefinitionsGetByIds(requestParameters: LeadVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadVariableDefinitionResponseDto>>;
     /**
-     *
+     * , .
      *
      */
     leadVariableDefinitionsListRaw(requestParameters: LeadVariableDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableDefinitionListResponseDto>>;
     /**
-     *
+     * , .
      *
      */
     leadVariableDefinitionsList(requestParameters: LeadVariableDefinitionsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableDefinitionListResponseDto>;

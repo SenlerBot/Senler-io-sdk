@@ -27,6 +27,12 @@ export interface SimulateAutomationTriggerTestEventPayloadDto {
      * @memberof SimulateAutomationTriggerTestEventPayloadDto
      */
     segmentId?: string;
+    /**
+     * app_event_received.
+     * @type {object}
+     * @memberof SimulateAutomationTriggerTestEventPayloadDto
+     */
+    appEventData?: object;
 }
 /**
  * Check if a given object implements the SimulateAutomationTriggerTestEventPayloadDto interface.

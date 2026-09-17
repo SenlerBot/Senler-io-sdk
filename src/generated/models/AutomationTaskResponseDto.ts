@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AutomationHttpResultSummaryDto } from './AutomationHttpResultSummaryDto';
+import {
+    AutomationHttpResultSummaryDtoFromJSON,
+    AutomationHttpResultSummaryDtoFromJSONTyped,
+    AutomationHttpResultSummaryDtoToJSON,
+    AutomationHttpResultSummaryDtoToJSONTyped,
+} from './AutomationHttpResultSummaryDto';
+
 /**
  * AutomationTaskResponseDto.
  * @export
  * @interface AutomationTaskResponseDto
  */
 export interface AutomationTaskResponseDto {
+    /**
+     * HTTP- , .
+     * @type {AutomationHttpResultSummaryDto}
+     * @memberof AutomationTaskResponseDto
+     */
+    httpResult?: AutomationHttpResultSummaryDto;
     /**
      * Mongo ID .
      * @type {string}
@@ -170,6 +184,7 @@ export function AutomationTaskResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
 
+        'httpResult': json['http_result'] == null ? undefined : AutomationHttpResultSummaryDtoFromJSON(json['http_result']),
         'id': json['id'],
         'nodeId': json['node_id'],
         'nodeName': json['node_name'],
@@ -199,6 +214,7 @@ export function AutomationTaskResponseDtoToJSONTyped(value?: AutomationTaskRespo
 
     return {
 
+        'http_result': AutomationHttpResultSummaryDtoToJSON(value['httpResult']),
         'id': value['id'],
         'node_id': value['nodeId'],
         'node_name': value['nodeName'],

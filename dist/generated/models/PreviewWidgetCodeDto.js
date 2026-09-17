@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PreviewWidgetCodeDtoConfigSourceEnum = exports.PreviewWidgetCodeDtoDisplayModeEnum = exports.PreviewWidgetCodeDtoLanguageEnum = void 0;
+exports.PreviewWidgetCodeDtoDisplayModeEnum = exports.PreviewWidgetCodeDtoLanguageEnum = void 0;
 exports.instanceOfPreviewWidgetCodeDto = instanceOfPreviewWidgetCodeDto;
 exports.PreviewWidgetCodeDtoFromJSON = PreviewWidgetCodeDtoFromJSON;
 exports.PreviewWidgetCodeDtoFromJSONTyped = PreviewWidgetCodeDtoFromJSONTyped;
@@ -37,18 +37,9 @@ exports.PreviewWidgetCodeDtoDisplayModeEnum = {
     Embedded: 'embedded'
 };
 /**
- * @export
- */
-exports.PreviewWidgetCodeDtoConfigSourceEnum = {
-    Local: 'local',
-    Remote: 'remote'
-};
-/**
  * Check if a given object implements the PreviewWidgetCodeDto interface.
  */
 function instanceOfPreviewWidgetCodeDto(value) {
-    if (!('configSource' in value) || value['configSource'] === undefined)
-        return false;
     return true;
 }
 function PreviewWidgetCodeDtoFromJSON(json) {
@@ -60,12 +51,10 @@ function PreviewWidgetCodeDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'theme': json['theme'] == null ? undefined : (0, WidgetThemeDto_1.WidgetThemeDtoFromJSON)(json['theme']),
-        'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'features': json['features'] == null ? undefined : (0, WidgetFeaturesDto_1.WidgetFeaturesDtoFromJSON)(json['features']),
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
-        'configSource': json['config_source'],
     };
 }
 function PreviewWidgetCodeDtoToJSON(json) {
@@ -77,11 +66,9 @@ function PreviewWidgetCodeDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'theme': (0, WidgetThemeDto_1.WidgetThemeDtoToJSON)(value['theme']),
-        'allowed_domains': value['allowedDomains'],
         'features': (0, WidgetFeaturesDto_1.WidgetFeaturesDtoToJSON)(value['features']),
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
-        'config_source': value['configSource'],
     };
 }

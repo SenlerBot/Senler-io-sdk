@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDocumentationTablesAcceptLanguageEnum = exports.UpdateDocumentationPagesAcceptLanguageEnum = exports.UpdateDocumentationOrderAcceptLanguageEnum = exports.UpdateDocumentationFoldersAcceptLanguageEnum = exports.UpdateDocumentationFilesAcceptLanguageEnum = exports.UpdateDocumentationAcceptLanguageEnum = exports.GetDocumentationTablesAcceptLanguageEnum = exports.GetDocumentationSearchAcceptLanguageEnum = exports.GetDocumentationSearchSearchModeEnum = exports.GetDocumentationSearchResourceTypeEnum = exports.GetDocumentationResourcesResolveAcceptLanguageEnum = exports.GetDocumentationResourcesAcceptLanguageEnum = exports.GetDocumentationPagesAcceptLanguageEnum = exports.GetDocumentationFilesAcceptLanguageEnum = exports.GetDocumentationAcceptLanguageEnum = exports.DocumentationTablesUploadAcceptLanguageEnum = exports.DocumentationTablesUploadLocaleEnum = exports.DocumentationTablesAcceptLanguageEnum = exports.DocumentationFoldersAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveImageRecognitionModeEnum = exports.DocumentationFilesUploadArchiveDuplicateResolutionEnum = exports.DocumentationFilesUploadArchiveAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveLocaleEnum = exports.DocumentationFilesUploadImageRecognitionModeEnum = exports.DocumentationFilesUploadAcceptLanguageEnum = exports.DocumentationFilesUploadLocaleEnum = exports.DocumentationFilesRecognitionEstimateAcceptLanguageEnum = exports.DocumentationFilesRecognitionEstimateLocaleEnum = exports.DocumentationFilesAcceptLanguageEnum = exports.DeleteDocumentationTablesAcceptLanguageEnum = exports.DeleteDocumentationPagesAcceptLanguageEnum = exports.DeleteDocumentationFoldersAcceptLanguageEnum = exports.DeleteDocumentationFilesAcceptLanguageEnum = exports.AppDocumentationApi = void 0;
+exports.UpdateDocumentationTablesAcceptLanguageEnum = exports.UpdateDocumentationPagesAcceptLanguageEnum = exports.UpdateDocumentationOrderAcceptLanguageEnum = exports.UpdateDocumentationFoldersAcceptLanguageEnum = exports.UpdateDocumentationFilesAcceptLanguageEnum = exports.UpdateDocumentationAcceptLanguageEnum = exports.GetDocumentationTablesAcceptLanguageEnum = exports.GetDocumentationSearchAcceptLanguageEnum = exports.GetDocumentationSearchSearchModeEnum = exports.GetDocumentationSearchResourceTypeEnum = exports.GetDocumentationResourcesResolveAcceptLanguageEnum = exports.GetDocumentationResourcesAcceptLanguageEnum = exports.GetDocumentationPagesAcceptLanguageEnum = exports.GetDocumentationFilesAcceptLanguageEnum = exports.GetDocumentationAcceptLanguageEnum = exports.DocumentationTablesUploadAcceptLanguageEnum = exports.DocumentationTablesUploadLocaleEnum = exports.DocumentationTablesAcceptLanguageEnum = exports.DocumentationFoldersAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveImageRecognitionModeEnum = exports.DocumentationFilesUploadArchiveDuplicateResolutionEnum = exports.DocumentationFilesUploadArchiveAcceptLanguageEnum = exports.DocumentationFilesUploadArchiveLocaleEnum = exports.DocumentationFilesUploadImageRecognitionModeEnum = exports.DocumentationFilesUploadAcceptLanguageEnum = exports.DocumentationFilesUploadLocaleEnum = exports.DocumentationFilesRecognitionEstimateAcceptLanguageEnum = exports.DocumentationFilesRecognitionEstimateLocaleEnum = exports.DocumentationFilesFromUrlAcceptLanguageEnum = exports.DocumentationFilesAcceptLanguageEnum = exports.DeleteDocumentationTablesAcceptLanguageEnum = exports.DeleteDocumentationPagesAcceptLanguageEnum = exports.DeleteDocumentationFoldersAcceptLanguageEnum = exports.DeleteDocumentationFilesAcceptLanguageEnum = exports.AppDocumentationApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -229,6 +229,44 @@ class AppDocumentationApi extends runtime.BaseAPI {
      */
     async documentationFiles(requestParameters, initOverrides) {
         const response = await this.documentationFilesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . , JSON.
+     * URL attachment_id
+     */
+    async documentationFilesFromUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling documentationFilesFromUrl().');
+        }
+        if (requestParameters['importKnowledgeImageDto'] == null) {
+            throw new runtime.RequiredError('importKnowledgeImageDto', 'Required parameter "importKnowledgeImageDto" was null or undefined when calling documentationFilesFromUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/documentation/files/from-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ImportKnowledgeImageDtoToJSON)(requestParameters['importKnowledgeImageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeFileResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * PNG, JPEG, WebP GIF . 20 40 . , JSON.
+     * URL attachment_id
+     */
+    async documentationFilesFromUrl(requestParameters, initOverrides) {
+        const response = await this.documentationFilesFromUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1121,6 +1159,13 @@ exports.DeleteDocumentationTablesAcceptLanguageEnum = {
  * @export
  */
 exports.DocumentationFilesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DocumentationFilesFromUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

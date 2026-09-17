@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicImageGenerationPriceResponseDtoSizeEnum = exports.PublicImageGenerationPriceResponseDtoQualityEnum = void 0;
+exports.PublicImageGenerationPriceResponseDtoResolutionTierEnum = exports.PublicImageGenerationPriceResponseDtoAspectRatioEnum = exports.PublicImageGenerationPriceResponseDtoGenerationQualityEnum = void 0;
 exports.instanceOfPublicImageGenerationPriceResponseDto = instanceOfPublicImageGenerationPriceResponseDto;
 exports.PublicImageGenerationPriceResponseDtoFromJSON = PublicImageGenerationPriceResponseDtoFromJSON;
 exports.PublicImageGenerationPriceResponseDtoFromJSONTyped = PublicImageGenerationPriceResponseDtoFromJSONTyped;
@@ -22,7 +22,7 @@ exports.PublicImageGenerationPriceResponseDtoToJSONTyped = PublicImageGeneration
 /**
  * @export
  */
-exports.PublicImageGenerationPriceResponseDtoQualityEnum = {
+exports.PublicImageGenerationPriceResponseDtoGenerationQualityEnum = {
     Auto: 'auto',
     Low: 'low',
     Medium: 'medium',
@@ -31,21 +31,33 @@ exports.PublicImageGenerationPriceResponseDtoQualityEnum = {
 /**
  * @export
  */
-exports.PublicImageGenerationPriceResponseDtoSizeEnum = {
+exports.PublicImageGenerationPriceResponseDtoAspectRatioEnum = {
     Auto: 'auto',
     Square: 'square',
     Portrait: 'portrait',
     Landscape: 'landscape'
 };
 /**
+ * @export
+ */
+exports.PublicImageGenerationPriceResponseDtoResolutionTierEnum = {
+    Auto: 'auto',
+    _05k: '0.5k',
+    _1k: '1k',
+    _2k: '2k',
+    _4k: '4k'
+};
+/**
  * Check if a given object implements the PublicImageGenerationPriceResponseDto interface.
  */
 function instanceOfPublicImageGenerationPriceResponseDto(value) {
-    if (!('quality' in value) || value['quality'] === undefined)
+    if (!('generationQuality' in value) || value['generationQuality'] === undefined)
         return false;
-    if (!('size' in value) || value['size'] === undefined)
+    if (!('aspectRatio' in value) || value['aspectRatio'] === undefined)
         return false;
-    if (!('clientCredits' in value) || value['clientCredits'] === undefined)
+    if (!('resolutionTier' in value) || value['resolutionTier'] === undefined)
+        return false;
+    if (!('clientPricePerImageCredits' in value) || value['clientPricePerImageCredits'] === undefined)
         return false;
     return true;
 }
@@ -57,9 +69,10 @@ function PublicImageGenerationPriceResponseDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
-        'quality': json['quality'],
-        'size': json['size'],
-        'clientCredits': json['client_credits'],
+        'generationQuality': json['generation_quality'],
+        'aspectRatio': json['aspect_ratio'],
+        'resolutionTier': json['resolution_tier'],
+        'clientPricePerImageCredits': json['client_price_per_image_credits'],
     };
 }
 function PublicImageGenerationPriceResponseDtoToJSON(json) {
@@ -70,8 +83,9 @@ function PublicImageGenerationPriceResponseDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
-        'quality': value['quality'],
-        'size': value['size'],
-        'client_credits': value['clientCredits'],
+        'generation_quality': value['generationQuality'],
+        'aspect_ratio': value['aspectRatio'],
+        'resolution_tier': value['resolutionTier'],
+        'client_price_per_image_credits': value['clientPricePerImageCredits'],
     };
 }

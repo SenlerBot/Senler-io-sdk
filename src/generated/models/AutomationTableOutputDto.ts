@@ -46,6 +46,7 @@ export interface AutomationTableOutputDto {
 export const AutomationTableOutputDtoVariableScopeEnum = {
     Run: 'run',
     Lead: 'lead',
+    Dialog: 'dialog',
     Project: 'project'
 } as const;
 export type AutomationTableOutputDtoVariableScopeEnum = typeof AutomationTableOutputDtoVariableScopeEnum[keyof typeof AutomationTableOutputDtoVariableScopeEnum];

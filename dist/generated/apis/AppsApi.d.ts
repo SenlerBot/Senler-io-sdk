@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SetAppCatalogVisibilityDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
+import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconImportResponseDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, ImportImageDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SetAppCatalogVisibilityDto, UpdateAppActionSettingsDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
 export interface AgentEventsRequest {
     appId: string;
     appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
@@ -27,6 +27,11 @@ export interface AutomationStepsRequest {
     appId: string;
     appAutomationStepDefinitionDto: AppAutomationStepDefinitionDto;
     acceptLanguage?: AutomationStepsAcceptLanguageEnum;
+}
+export interface AutomationStepsIconFromUrlRequest {
+    appId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AutomationStepsIconFromUrlAcceptLanguageEnum;
 }
 export interface AutomationStepsIconUploadUrlRequest {
     appId: string;
@@ -103,6 +108,11 @@ export interface UpdateAgentEventsRequest {
     eventId: string;
     appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
     acceptLanguage?: UpdateAgentEventsAcceptLanguageEnum;
+}
+export interface UpdateAppActionsRequest {
+    id: string;
+    updateAppActionSettingsDto: UpdateAppActionSettingsDto;
+    acceptLanguage?: UpdateAppActionsAcceptLanguageEnum;
 }
 export interface UpdateAutomationStepsRequest {
     appId: string;
@@ -201,6 +211,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     automationSteps(requestParameters: AutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepResponseDto>;
+    /**
+     * PNG, JPEG WebP. key icon_asset_key . 20 40 . .
+     * URL attachment_id
+     */
+    automationStepsIconFromUrlRaw(requestParameters: AutomationStepsIconFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppAutomationStepIconImportResponseDto>>;
+    /**
+     * PNG, JPEG WebP. key icon_asset_key . 20 40 . .
+     * URL attachment_id
+     */
+    automationStepsIconFromUrl(requestParameters: AutomationStepsIconFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAutomationStepIconImportResponseDto>;
     /**
      * S3- .
      *
@@ -342,6 +362,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      */
     updateAgentEvents(requestParameters: UpdateAgentEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppAgentEventResponseDto>;
     /**
+     * OpenAPI- MCP-.
+     *
+     */
+    updateAppActionsRaw(requestParameters: UpdateAppActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponseDto>>;
+    /**
+     * OpenAPI- MCP-.
+     *
+     */
+    updateAppActions(requestParameters: UpdateAppActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
      * . .
      *
      */
@@ -474,6 +504,14 @@ export declare const AutomationStepsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AutomationStepsAcceptLanguageEnum = typeof AutomationStepsAcceptLanguageEnum[keyof typeof AutomationStepsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AutomationStepsIconFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationStepsIconFromUrlAcceptLanguageEnum = typeof AutomationStepsIconFromUrlAcceptLanguageEnum[keyof typeof AutomationStepsIconFromUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -612,6 +650,14 @@ export declare const UpdateAgentEventsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateAgentEventsAcceptLanguageEnum = typeof UpdateAgentEventsAcceptLanguageEnum[keyof typeof UpdateAgentEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateAppActionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateAppActionsAcceptLanguageEnum = typeof UpdateAppActionsAcceptLanguageEnum[keyof typeof UpdateAppActionsAcceptLanguageEnum];
 /**
  * @export
  */

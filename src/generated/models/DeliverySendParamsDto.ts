@@ -39,6 +39,12 @@ export interface DeliverySendParamsDto {
     messageText: string;
     /**
      *
+     * @type {boolean}
+     * @memberof DeliverySendParamsDto
+     */
+    disableLinkPreview?: boolean;
+    /**
+     *
      * @type {Array<{ [key: string]: any; }>}
      * @memberof DeliverySendParamsDto
      */
@@ -74,6 +80,7 @@ export function DeliverySendParamsDtoFromJSONTyped(json: any, ignoreDiscriminato
         'deliveryId': json['delivery_id'],
         'deliveryRunId': json['delivery_run_id'],
         'messageText': json['message_text'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'attachments': json['attachments'] == null ? undefined : json['attachments'],
         'actorUserId': json['actor_user_id'] == null ? undefined : json['actor_user_id'],
     };
@@ -93,6 +100,7 @@ export function DeliverySendParamsDtoToJSONTyped(value?: DeliverySendParamsDto |
         'delivery_id': value['deliveryId'],
         'delivery_run_id': value['deliveryRunId'],
         'message_text': value['messageText'],
+        'disable_link_preview': value['disableLinkPreview'],
         'attachments': value['attachments'],
         'actor_user_id': value['actorUserId'],
     };

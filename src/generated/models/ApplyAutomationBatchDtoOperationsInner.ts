@@ -19,6 +19,13 @@ import {
     AutomationBatchAddDraftNodeOperationDtoFromJSONTyped,
     AutomationBatchAddDraftNodeOperationDtoToJSON,
 } from './AutomationBatchAddDraftNodeOperationDto';
+import type { AutomationBatchAddGroupOperationDto } from './AutomationBatchAddGroupOperationDto';
+import {
+    instanceOfAutomationBatchAddGroupOperationDto,
+    AutomationBatchAddGroupOperationDtoFromJSON,
+    AutomationBatchAddGroupOperationDtoFromJSONTyped,
+    AutomationBatchAddGroupOperationDtoToJSON,
+} from './AutomationBatchAddGroupOperationDto';
 import type { AutomationBatchAddNodeOperationDto } from './AutomationBatchAddNodeOperationDto';
 import {
     instanceOfAutomationBatchAddNodeOperationDto,
@@ -40,6 +47,13 @@ import {
     AutomationBatchDisconnectOperationDtoFromJSONTyped,
     AutomationBatchDisconnectOperationDtoToJSON,
 } from './AutomationBatchDisconnectOperationDto';
+import type { AutomationBatchRemoveGroupOperationDto } from './AutomationBatchRemoveGroupOperationDto';
+import {
+    instanceOfAutomationBatchRemoveGroupOperationDto,
+    AutomationBatchRemoveGroupOperationDtoFromJSON,
+    AutomationBatchRemoveGroupOperationDtoFromJSONTyped,
+    AutomationBatchRemoveGroupOperationDtoToJSON,
+} from './AutomationBatchRemoveGroupOperationDto';
 import type { AutomationBatchRemoveNodeOperationDto } from './AutomationBatchRemoveNodeOperationDto';
 import {
     instanceOfAutomationBatchRemoveNodeOperationDto,
@@ -47,6 +61,13 @@ import {
     AutomationBatchRemoveNodeOperationDtoFromJSONTyped,
     AutomationBatchRemoveNodeOperationDtoToJSON,
 } from './AutomationBatchRemoveNodeOperationDto';
+import type { AutomationBatchUpdateGroupOperationDto } from './AutomationBatchUpdateGroupOperationDto';
+import {
+    instanceOfAutomationBatchUpdateGroupOperationDto,
+    AutomationBatchUpdateGroupOperationDtoFromJSON,
+    AutomationBatchUpdateGroupOperationDtoFromJSONTyped,
+    AutomationBatchUpdateGroupOperationDtoToJSON,
+} from './AutomationBatchUpdateGroupOperationDto';
 import type { AutomationBatchUpdateNodeOperationDto } from './AutomationBatchUpdateNodeOperationDto';
 import {
     instanceOfAutomationBatchUpdateNodeOperationDto,
@@ -60,7 +81,7 @@ import {
  * : Mongo-.
  * @export
  */
-export type ApplyAutomationBatchDtoOperationsInner = { kind: 'add_draft_node' } & AutomationBatchAddDraftNodeOperationDto | { kind: 'add_node' } & AutomationBatchAddNodeOperationDto | { kind: 'connect' } & AutomationBatchConnectOperationDto | { kind: 'disconnect' } & AutomationBatchDisconnectOperationDto | { kind: 'remove_node' } & AutomationBatchRemoveNodeOperationDto | { kind: 'update_node' } & AutomationBatchUpdateNodeOperationDto;
+export type ApplyAutomationBatchDtoOperationsInner = { kind: 'add_draft_node' } & AutomationBatchAddDraftNodeOperationDto | { kind: 'add_group' } & AutomationBatchAddGroupOperationDto | { kind: 'add_node' } & AutomationBatchAddNodeOperationDto | { kind: 'connect' } & AutomationBatchConnectOperationDto | { kind: 'disconnect' } & AutomationBatchDisconnectOperationDto | { kind: 'remove_group' } & AutomationBatchRemoveGroupOperationDto | { kind: 'remove_node' } & AutomationBatchRemoveNodeOperationDto | { kind: 'update_group' } & AutomationBatchUpdateGroupOperationDto | { kind: 'update_node' } & AutomationBatchUpdateNodeOperationDto;
 
 export function ApplyAutomationBatchDtoOperationsInnerFromJSON(json: any): ApplyAutomationBatchDtoOperationsInner {
     return ApplyAutomationBatchDtoOperationsInnerFromJSONTyped(json, false);
@@ -73,14 +94,20 @@ export function ApplyAutomationBatchDtoOperationsInnerFromJSONTyped(json: any, i
     switch (json['kind']) {
         case 'add_draft_node':
             return Object.assign({}, AutomationBatchAddDraftNodeOperationDtoFromJSONTyped(json, true), { kind: 'add_draft_node' } as const);
+        case 'add_group':
+            return Object.assign({}, AutomationBatchAddGroupOperationDtoFromJSONTyped(json, true), { kind: 'add_group' } as const);
         case 'add_node':
             return Object.assign({}, AutomationBatchAddNodeOperationDtoFromJSONTyped(json, true), { kind: 'add_node' } as const);
         case 'connect':
             return Object.assign({}, AutomationBatchConnectOperationDtoFromJSONTyped(json, true), { kind: 'connect' } as const);
         case 'disconnect':
             return Object.assign({}, AutomationBatchDisconnectOperationDtoFromJSONTyped(json, true), { kind: 'disconnect' } as const);
+        case 'remove_group':
+            return Object.assign({}, AutomationBatchRemoveGroupOperationDtoFromJSONTyped(json, true), { kind: 'remove_group' } as const);
         case 'remove_node':
             return Object.assign({}, AutomationBatchRemoveNodeOperationDtoFromJSONTyped(json, true), { kind: 'remove_node' } as const);
+        case 'update_group':
+            return Object.assign({}, AutomationBatchUpdateGroupOperationDtoFromJSONTyped(json, true), { kind: 'update_group' } as const);
         case 'update_node':
             return Object.assign({}, AutomationBatchUpdateNodeOperationDtoFromJSONTyped(json, true), { kind: 'update_node' } as const);
         default:
@@ -99,14 +126,20 @@ export function ApplyAutomationBatchDtoOperationsInnerToJSONTyped(value?: ApplyA
     switch (value['kind']) {
         case 'add_draft_node':
             return Object.assign({}, AutomationBatchAddDraftNodeOperationDtoToJSON(value), { kind: 'add_draft_node' } as const);
+        case 'add_group':
+            return Object.assign({}, AutomationBatchAddGroupOperationDtoToJSON(value), { kind: 'add_group' } as const);
         case 'add_node':
             return Object.assign({}, AutomationBatchAddNodeOperationDtoToJSON(value), { kind: 'add_node' } as const);
         case 'connect':
             return Object.assign({}, AutomationBatchConnectOperationDtoToJSON(value), { kind: 'connect' } as const);
         case 'disconnect':
             return Object.assign({}, AutomationBatchDisconnectOperationDtoToJSON(value), { kind: 'disconnect' } as const);
+        case 'remove_group':
+            return Object.assign({}, AutomationBatchRemoveGroupOperationDtoToJSON(value), { kind: 'remove_group' } as const);
         case 'remove_node':
             return Object.assign({}, AutomationBatchRemoveNodeOperationDtoToJSON(value), { kind: 'remove_node' } as const);
+        case 'update_group':
+            return Object.assign({}, AutomationBatchUpdateGroupOperationDtoToJSON(value), { kind: 'update_group' } as const);
         case 'update_node':
             return Object.assign({}, AutomationBatchUpdateNodeOperationDtoToJSON(value), { kind: 'update_node' } as const);
         default:

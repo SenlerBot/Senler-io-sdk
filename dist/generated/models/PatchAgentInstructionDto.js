@@ -56,8 +56,6 @@ exports.PatchAgentInstructionDtoKnowledgeBasePermissionsEnum = {
 function instanceOfPatchAgentInstructionDto(value) {
     if (!('operation' in value) || value['operation'] === undefined)
         return false;
-    if (!('expectedUpdatedAt' in value) || value['expectedUpdatedAt'] === undefined)
-        return false;
     return true;
 }
 function PatchAgentInstructionDtoFromJSON(json) {
@@ -69,7 +67,7 @@ function PatchAgentInstructionDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'operation': json['operation'],
-        'expectedUpdatedAt': json['expected_updated_at'],
+        'expectedUpdatedAt': json['expected_updated_at'] == null ? undefined : json['expected_updated_at'],
         'instruction': json['instruction'] == null ? undefined : json['instruction'],
         'knowledgeBaseSources': json['knowledge_base_sources'] == null ? undefined : (json['knowledge_base_sources'].map(KnowledgeBaseSourceBindingDto_1.KnowledgeBaseSourceBindingDtoFromJSON)),
         'knowledgeBasePermissions': json['knowledge_base_permissions'] == null ? undefined : json['knowledge_base_permissions'],

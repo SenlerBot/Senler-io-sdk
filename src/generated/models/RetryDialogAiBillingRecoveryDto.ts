@@ -33,6 +33,12 @@ export interface RetryDialogAiBillingRecoveryDto {
      * @memberof RetryDialogAiBillingRecoveryDto
      */
     mode: DialogAiBillingRecoveryRetryMode;
+    /**
+     * . false
+     * @type {boolean}
+     * @memberof RetryDialogAiBillingRecoveryDto
+     */
+    includeMetrics?: boolean;
 }
 
 
@@ -56,6 +62,7 @@ export function RetryDialogAiBillingRecoveryDtoFromJSONTyped(json: any, ignoreDi
     return {
 
         'mode': DialogAiBillingRecoveryRetryModeFromJSON(json['mode']),
+        'includeMetrics': json['include_metrics'] == null ? undefined : json['include_metrics'],
     };
 }
 
@@ -71,5 +78,6 @@ export function RetryDialogAiBillingRecoveryDtoToJSONTyped(value?: RetryDialogAi
     return {
 
         'mode': DialogAiBillingRecoveryRetryModeToJSON(value['mode']),
+        'include_metrics': value['includeMetrics'],
     };
 }

@@ -16,6 +16,12 @@
  */
 export interface EffectiveSubscriptionLimitsDto {
     /**
+     * , ; 1 = 10000 ; : 12.5 = 125000
+     * @type {number}
+     * @memberof EffectiveSubscriptionLimitsDto
+     */
+    creditsPerMonth: number;
+    /**
      * automation steps per second.
      * @type {number}
      * @memberof EffectiveSubscriptionLimitsDto

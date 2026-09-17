@@ -140,6 +140,18 @@ export interface PermissionsDto {
      * @type {boolean}
      * @memberof PermissionsDto
      */
+    canViewDialogVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageDialogVariables: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
     canViewSegments: boolean;
     /**
      *
@@ -297,6 +309,12 @@ export interface PermissionsDto {
      * @memberof PermissionsDto
      */
     canViewProjectApps: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canUseProjectApps: boolean;
     /**
      *
      * @type {boolean}

@@ -252,11 +252,11 @@ export interface BillingTransactionDto {
      */
     tariffName?: LocalizedTextDto | null;
     /**
-     * ( )
+     *
      * @type {LocalizedTextDto}
      * @memberof BillingTransactionDto
      */
-    creditPackageName?: LocalizedTextDto | null;
+    addonName?: LocalizedTextDto | null;
 }
 
 
@@ -265,11 +265,8 @@ export interface BillingTransactionDto {
  */
 export const BillingTransactionDtoTypeEnum = {
     Deposit: 'deposit',
-    TariffPurchase: 'tariff_purchase',
-    CreditPurchase: 'credit_purchase',
-    CreditAutoPurchase: 'credit_auto_purchase',
     SubscriptionPurchase: 'subscription_purchase',
-    MailingMessagePurchase: 'mailing_message_purchase',
+    AddonPurchase: 'addon_purchase',
     Refund: 'refund',
     Adjustment: 'adjustment',
     CurrencyConversion: 'currency_conversion'
@@ -346,7 +343,7 @@ export function BillingTransactionDtoFromJSONTyped(json: any, ignoreDiscriminato
         'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
         'paySystemAccountId': json['pay_system_account_id'] == null ? undefined : json['pay_system_account_id'],
         'tariffName': json['tariff_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['tariff_name']),
-        'creditPackageName': json['credit_package_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['credit_package_name']),
+        'addonName': json['addon_name'] == null ? undefined : LocalizedTextDtoFromJSON(json['addon_name']),
     };
 }
 
@@ -396,6 +393,6 @@ export function BillingTransactionDtoToJSONTyped(value?: BillingTransactionDto |
         'pay_system_id': value['paySystemId'],
         'pay_system_account_id': value['paySystemAccountId'],
         'tariff_name': LocalizedTextDtoToJSON(value['tariffName']),
-        'credit_package_name': LocalizedTextDtoToJSON(value['creditPackageName']),
+        'addon_name': LocalizedTextDtoToJSON(value['addonName']),
     };
 }

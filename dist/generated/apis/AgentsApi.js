@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.UpdateInstructionAcceptLanguageEnum = exports.UpdateInstalledAppEventsAcceptLanguageEnum = exports.UpdateDraftInstructionAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.GetInstructionAcceptLanguageEnum = exports.GetInstalledAppToolsAcceptLanguageEnum = exports.GetInstalledAppEventsAcceptLanguageEnum = exports.GetDraftInstructionAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.AgentsListAcceptLanguageEnum = exports.AgentsGetByIdAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
+exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.UpdateInstructionAcceptLanguageEnum = exports.UpdateInstalledAppEventsAcceptLanguageEnum = exports.UpdateDraftInstructionAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.GetUnpublishedStateAcceptLanguageEnum = exports.GetInstructionAcceptLanguageEnum = exports.GetInstalledAppToolsAcceptLanguageEnum = exports.GetInstalledAppEventsAcceptLanguageEnum = exports.GetDraftInstructionAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.AgentsListAcceptLanguageEnum = exports.AgentsGetByIdAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -636,6 +636,46 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , , .
+     *
+     */
+    async getUnpublishedStateRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getUnpublishedState().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/unpublished-state`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentUnpublishedStateResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , , .
+     *
+     */
+    async getUnpublishedState(requestParameters, initOverrides) {
+        const response = await this.getUnpublishedStateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
@@ -676,8 +716,8 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
-     *
+     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
      */
     async updateDraftInstructionRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
@@ -713,8 +753,8 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PatchAgentInstructionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . . getDraftInstruction: null, saveDraft, getDraftInstruction updated_at . updated_at .
-     *
+     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
      */
     async updateDraftInstruction(requestParameters, initOverrides) {
         const response = await this.updateDraftInstructionRaw(requestParameters, initOverrides);
@@ -766,7 +806,7 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , . . getInstruction updated_at. , .
+     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      *
      */
     async updateInstructionRaw(requestParameters, initOverrides) {
@@ -803,7 +843,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PatchAgentInstructionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , . . getInstruction updated_at. , .
+     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      *
      */
     async updateInstruction(requestParameters, initOverrides) {
@@ -1015,6 +1055,13 @@ exports.GetInstalledAppToolsAcceptLanguageEnum = {
  * @export
  */
 exports.GetInstructionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetUnpublishedStateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

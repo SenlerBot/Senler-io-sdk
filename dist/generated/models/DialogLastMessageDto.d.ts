@@ -65,6 +65,9 @@ export interface DialogLastMessageDto {
  * @export
  */
 export declare const DialogLastMessageDtoActionTypeEnum: {
+    readonly FunnelEntered: "funnel_entered";
+    readonly FunnelStageChanged: "funnel_stage_changed";
+    readonly FunnelLeft: "funnel_left";
     readonly MessageCreated: "message_created";
     readonly MessageEdited: "message_edited";
     readonly MessageDeleted: "message_deleted";

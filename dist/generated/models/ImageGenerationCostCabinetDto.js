@@ -25,6 +25,7 @@ exports.ImageGenerationCostCabinetDtoToJSONTyped = ImageGenerationCostCabinetDto
 exports.ImageGenerationCostCabinetDtoPricingTypeEnum = {
     PerImage: 'per_image',
     QualitySizeMatrix: 'quality_size_matrix',
+    VariantMatrix: 'variant_matrix',
     ImageTokenUsage: 'image_token_usage'
 };
 /**
@@ -61,6 +62,7 @@ function ImageGenerationCostCabinetDtoFromJSONTyped(json, ignoreDiscriminator) {
         'operation': json['operation'] == null ? undefined : json['operation'],
         'quality': json['quality'] == null ? undefined : json['quality'],
         'size': json['size'] == null ? undefined : json['size'],
+        'resolution': json['resolution'] == null ? undefined : json['resolution'],
         'imageCount': json['image_count'] == null ? undefined : json['image_count'],
         'textInputTokens': json['text_input_tokens'] == null ? undefined : json['text_input_tokens'],
         'imageInputTokens': json['image_input_tokens'] == null ? undefined : json['image_input_tokens'],
@@ -81,6 +83,7 @@ function ImageGenerationCostCabinetDtoToJSONTyped(value, ignoreDiscriminator = f
         'operation': value['operation'],
         'quality': value['quality'],
         'size': value['size'],
+        'resolution': value['resolution'],
         'image_count': value['imageCount'],
         'text_input_tokens': value['textInputTokens'],
         'image_input_tokens': value['imageInputTokens'],

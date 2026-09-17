@@ -14,6 +14,7 @@ import type { AvailableModelsResponseDto } from '../models/index';
 export interface ModelsListRequest {
     type?: ModelsListTypeEnum;
     purpose?: ModelsListPurposeEnum;
+    capability?: ModelsListCapabilityEnum;
     acceptLanguage?: ModelsListAcceptLanguageEnum;
 }
 /**
@@ -21,12 +22,12 @@ export interface ModelsListRequest {
  */
 export declare class ModelsApi extends runtime.BaseAPI {
     /**
-     *
+     * ,
      *
      */
     modelsListRaw(requestParameters: ModelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AvailableModelsResponseDto>>;
     /**
-     *
+     * ,
      *
      */
     modelsList(requestParameters?: ModelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AvailableModelsResponseDto>;
@@ -50,6 +51,13 @@ export declare const ModelsListPurposeEnum: {
     readonly AgentGeneration: "agent_generation";
 };
 export type ModelsListPurposeEnum = typeof ModelsListPurposeEnum[keyof typeof ModelsListPurposeEnum];
+/**
+ * @export
+ */
+export declare const ModelsListCapabilityEnum: {
+    readonly VoiceCloning: "voice_cloning";
+};
+export type ModelsListCapabilityEnum = typeof ModelsListCapabilityEnum[keyof typeof ModelsListCapabilityEnum];
 /**
  * @export
  */

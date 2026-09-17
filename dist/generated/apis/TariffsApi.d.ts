@@ -10,12 +10,9 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreditPackageListResponseDto, TariffListResponseDto } from '../models/index';
-export interface GetCreditPackagesRequest {
-    acceptLanguage?: GetCreditPackagesAcceptLanguageEnum;
-}
-export interface GetTariffsRequest {
-    acceptLanguage?: GetTariffsAcceptLanguageEnum;
+import type { PublicBillingCatalogResponseDto } from '../models/index';
+export interface TariffsListRequest {
+    acceptLanguage?: TariffsListAcceptLanguageEnum;
 }
 /**
  *
@@ -25,36 +22,18 @@ export declare class TariffsApi extends runtime.BaseAPI {
      *
      *
      */
-    getCreditPackagesRaw(requestParameters: GetCreditPackagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditPackageListResponseDto>>;
+    tariffsListRaw(requestParameters: TariffsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicBillingCatalogResponseDto>>;
     /**
      *
      *
      */
-    getCreditPackages(requestParameters?: GetCreditPackagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditPackageListResponseDto>;
-    /**
-     *
-     *
-     */
-    getTariffsRaw(requestParameters: GetTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TariffListResponseDto>>;
-    /**
-     *
-     *
-     */
-    getTariffs(requestParameters?: GetTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TariffListResponseDto>;
+    tariffsList(requestParameters?: TariffsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicBillingCatalogResponseDto>;
 }
 /**
  * @export
  */
-export declare const GetCreditPackagesAcceptLanguageEnum: {
+export declare const TariffsListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetCreditPackagesAcceptLanguageEnum = typeof GetCreditPackagesAcceptLanguageEnum[keyof typeof GetCreditPackagesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetTariffsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetTariffsAcceptLanguageEnum = typeof GetTariffsAcceptLanguageEnum[keyof typeof GetTariffsAcceptLanguageEnum];
+export type TariffsListAcceptLanguageEnum = typeof TariffsListAcceptLanguageEnum[keyof typeof TariffsListAcceptLanguageEnum];

@@ -37,6 +37,7 @@ function UpdateDeliveryDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'] == null ? undefined : json['name'],
         'filters': json['filters'] == null ? undefined : (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoFromJSON)(json['filters']),
         'messageText': json['message_text'] == null ? undefined : json['message_text'],
+        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'attachments': json['attachments'] == null ? undefined : (json['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoFromJSON)),
     };
 }
@@ -51,6 +52,7 @@ function UpdateDeliveryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoToJSON)(value['filters']),
         'message_text': value['messageText'],
+        'disable_link_preview': value['disableLinkPreview'],
         'attachments': value['attachments'] == null ? undefined : (value['attachments'].map(MessageAttachmentReferenceDto_1.MessageAttachmentReferenceDtoToJSON)),
     };
 }

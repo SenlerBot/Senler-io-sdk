@@ -60,12 +60,6 @@ export interface TariffResponseDto {
      * @type {number}
      * @memberof TariffResponseDto
      */
-    approxMessages?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof TariffResponseDto
-     */
     mailingMessagesPerDay: number;
     /**
      *
@@ -80,17 +74,17 @@ export interface TariffResponseDto {
      */
     storageLimitBytes: number;
     /**
-     *
-     * @type {boolean}
-     * @memberof TariffResponseDto
-     */
-    isUnlimited: boolean;
-    /**
      * ( )
      * @type {boolean}
      * @memberof TariffResponseDto
      */
     isFree: boolean;
+    /**
+     * OpenAI OpenRouter
+     * @type {boolean}
+     * @memberof TariffResponseDto
+     */
+    allowsCustomAiCredentials: boolean;
     /**
      * , (/); : 1.25 = 125
      * @type {number}
@@ -116,12 +110,6 @@ export interface TariffResponseDto {
      */
     priceUsdYearly: number;
     /**
-     * ( , )
-     * @type {boolean}
-     * @memberof TariffResponseDto
-     */
-    isRequestOnly: boolean;
-    /**
      *
      * @type {number}
      * @memberof TariffResponseDto
@@ -140,13 +128,12 @@ export function instanceOfTariffResponseDto(value: object): value is TariffRespo
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
-    if (!('isUnlimited' in value) || value['isUnlimited'] === undefined) return false;
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
+    if (!('allowsCustomAiCredentials' in value) || value['allowsCustomAiCredentials'] === undefined) return false;
     if (!('priceRubMonthly' in value) || value['priceRubMonthly'] === undefined) return false;
     if (!('priceUsdMonthly' in value) || value['priceUsdMonthly'] === undefined) return false;
     if (!('priceRubYearly' in value) || value['priceRubYearly'] === undefined) return false;
     if (!('priceUsdYearly' in value) || value['priceUsdYearly'] === undefined) return false;
-    if (!('isRequestOnly' in value) || value['isRequestOnly'] === undefined) return false;
     if (!('sortOrder' in value) || value['sortOrder'] === undefined) return false;
     return true;
 }
@@ -167,17 +154,15 @@ export function TariffResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'descriptionRu': json['description_ru'] == null ? undefined : json['description_ru'],
         'descriptionEn': json['description_en'] == null ? undefined : json['description_en'],
         'creditsPerMonth': json['credits_per_month'],
-        'approxMessages': json['approx_messages'] == null ? undefined : json['approx_messages'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'storageLimitBytes': json['storage_limit_bytes'],
-        'isUnlimited': json['is_unlimited'],
         'isFree': json['is_free'],
+        'allowsCustomAiCredentials': json['allows_custom_ai_credentials'],
         'priceRubMonthly': json['price_rub_monthly'],
         'priceUsdMonthly': json['price_usd_monthly'],
         'priceRubYearly': json['price_rub_yearly'],
         'priceUsdYearly': json['price_usd_yearly'],
-        'isRequestOnly': json['is_request_only'],
         'sortOrder': json['sort_order'],
     };
 }
@@ -199,17 +184,15 @@ export function TariffResponseDtoToJSONTyped(value?: TariffResponseDto | null, i
         'description_ru': value['descriptionRu'],
         'description_en': value['descriptionEn'],
         'credits_per_month': value['creditsPerMonth'],
-        'approx_messages': value['approxMessages'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'storage_limit_bytes': value['storageLimitBytes'],
-        'is_unlimited': value['isUnlimited'],
         'is_free': value['isFree'],
+        'allows_custom_ai_credentials': value['allowsCustomAiCredentials'],
         'price_rub_monthly': value['priceRubMonthly'],
         'price_usd_monthly': value['priceUsdMonthly'],
         'price_rub_yearly': value['priceRubYearly'],
         'price_usd_yearly': value['priceUsdYearly'],
-        'is_request_only': value['isRequestOnly'],
         'sort_order': value['sortOrder'],
     };
 }

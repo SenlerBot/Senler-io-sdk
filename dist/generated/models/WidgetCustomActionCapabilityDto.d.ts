@@ -34,6 +34,18 @@ export interface WidgetCustomActionCapabilityDto {
      */
     description?: string;
     /**
+     * AI- handler JSON-. false: .
+     * @type {boolean}
+     * @memberof WidgetCustomActionCapabilityDto
+     */
+    returnsResult?: boolean;
+    /**
+     * ID handler . SDK ; returns_result=true.
+     * @type {string}
+     * @memberof WidgetCustomActionCapabilityDto
+     */
+    executionContextId?: string;
+    /**
      * JSON Schema payload, action.payload. object payload; scalar/array/object . ; host-. .
      * @type {{ [key: string]: any; }}
      * @memberof WidgetCustomActionCapabilityDto

@@ -22,7 +22,7 @@ exports.LandingVariablesDtoToJSONTyped = LandingVariablesDtoToJSONTyped;
  * Check if a given object implements the LandingVariablesDto interface.
  */
 function instanceOfLandingVariablesDto(value) {
-    if (!('global' in value) || value['global'] === undefined)
+    if (!('project' in value) || value['project'] === undefined)
         return false;
     if (!('lead' in value) || value['lead'] === undefined)
         return false;
@@ -36,7 +36,7 @@ function LandingVariablesDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'global': json['global'],
+        'project': json['project'],
         'lead': json['lead'],
     };
 }
@@ -48,7 +48,7 @@ function LandingVariablesDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'global': value['global'],
+        'project': value['project'],
         'lead': value['lead'],
     };
 }

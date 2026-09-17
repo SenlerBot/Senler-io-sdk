@@ -16,7 +16,7 @@
  */
 export interface AutomationTriggerTestConditionResponseDto {
     /**
-     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed.
+     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -45,6 +45,12 @@ export interface AutomationTriggerTestConditionResponseDto {
      * @memberof AutomationTriggerTestConditionResponseDto
      */
     channelIds: Array<string> | null;
+    /**
+     * dialog ids.
+     * @type {Array<string>}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    dialogIds: Array<string> | null;
     /**
      * : all, private, group.
      * @type {string}
@@ -76,7 +82,7 @@ export interface AutomationTriggerTestConditionResponseDto {
      */
     incomingMessageVariableName: string | null;
     /**
-     * : run, lead, project.
+     * : run, lead, dialog, project.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -93,6 +99,7 @@ export declare const AutomationTriggerTestConditionResponseDtoEventTypeEnum: {
     readonly LikeRemoved: "like_removed";
     readonly LeadBlacklisted: "lead_blacklisted";
     readonly SegmentSubscribed: "segment_subscribed";
+    readonly AppEventReceived: "app_event_received";
 };
 export type AutomationTriggerTestConditionResponseDtoEventTypeEnum = typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum];
 /**
@@ -138,6 +145,7 @@ export type AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = typeof
 export declare const AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum];

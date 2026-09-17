@@ -41,7 +41,7 @@ export interface AutomationBatchAddDraftNodeOperationDto {
      */
     name: string;
     /**
-     * . , API .
+     * . : layoutAutomation. API 220 180 . x y.
      * @type {AutomationNodePositionDto}
      * @memberof AutomationBatchAddDraftNodeOperationDto
      */
@@ -62,9 +62,11 @@ export declare const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum: {
     readonly TriggerIncomingMessage: "trigger.incoming_message";
     readonly TriggerSegmentEntered: "trigger.segment_entered";
     readonly TriggerEvent: "trigger.event";
+    readonly TriggerAppEvent: "trigger.app_event";
     readonly ConditionVariable: "condition.variable";
     readonly ConditionDateTime: "condition.date_time";
     readonly ConditionSegment: "condition.segment";
+    readonly ConditionFunnelStage: "condition.funnel_stage";
     readonly ConditionAutomation: "condition.automation";
     readonly ConditionAgent: "condition.agent";
     readonly ConditionChannelType: "condition.channel_type";
@@ -74,12 +76,14 @@ export declare const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum: {
     readonly ActionMessage: "action.message";
     readonly ActionAgentRequest: "action.agent_request";
     readonly ActionAddSegment: "action.add_segment";
+    readonly ActionMoveFunnelStage: "action.move_funnel_stage";
     readonly ActionRemoveSegment: "action.remove_segment";
     readonly ActionAddAutomation: "action.add_automation";
     readonly ActionRemoveAutomation: "action.remove_automation";
     readonly ActionAssignAgent: "action.assign_agent";
     readonly ActionUnassignAgent: "action.unassign_agent";
     readonly ActionTableWrite: "action.table_write";
+    readonly ActionHttp: "action.http";
     readonly ActionApp: "action.app";
     readonly ControlWait: "control.wait";
     readonly ControlLoop: "control.loop";

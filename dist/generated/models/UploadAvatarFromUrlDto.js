@@ -22,8 +22,6 @@ exports.UploadAvatarFromUrlDtoToJSONTyped = UploadAvatarFromUrlDtoToJSONTyped;
  * Check if a given object implements the UploadAvatarFromUrlDto interface.
  */
 function instanceOfUploadAvatarFromUrlDto(value) {
-    if (!('imageUrl' in value) || value['imageUrl'] === undefined)
-        return false;
     return true;
 }
 function UploadAvatarFromUrlDtoFromJSON(json) {
@@ -34,7 +32,11 @@ function UploadAvatarFromUrlDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'imageUrl': json['imageUrl'],
+        'url': json['url'] == null ? undefined : json['url'],
+        'attachmentId': json['attachment_id'] == null ? undefined : json['attachment_id'],
+        'fileName': json['file_name'] == null ? undefined : json['file_name'],
+        'idempotencyKey': json['idempotency_key'] == null ? undefined : json['idempotency_key'],
+        'imageUrl': json['imageUrl'] == null ? undefined : json['imageUrl'],
     };
 }
 function UploadAvatarFromUrlDtoToJSON(json) {
@@ -45,6 +47,10 @@ function UploadAvatarFromUrlDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'url': value['url'],
+        'attachment_id': value['attachmentId'],
+        'file_name': value['fileName'],
+        'idempotency_key': value['idempotencyKey'],
         'imageUrl': value['imageUrl'],
     };
 }

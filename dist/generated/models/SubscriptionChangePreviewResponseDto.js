@@ -32,7 +32,6 @@ exports.SubscriptionChangePreviewResponseDtoModeEnum = {
  */
 exports.SubscriptionChangePreviewResponseDtoTariffChangeStatusEnum = {
     New: 'new',
-    Prolongation: 'prolongation',
     Upgrade: 'upgrade',
     Downgrade: 'downgrade'
 };
@@ -63,6 +62,10 @@ function instanceOfSubscriptionChangePreviewResponseDto(value) {
         return false;
     if (!('lines' in value) || value['lines'] === undefined)
         return false;
+    if (!('futurePeriodAmount' in value) || value['futurePeriodAmount'] === undefined)
+        return false;
+    if (!('futureLines' in value) || value['futureLines'] === undefined)
+        return false;
     return true;
 }
 function SubscriptionChangePreviewResponseDtoFromJSON(json) {
@@ -81,6 +84,8 @@ function SubscriptionChangePreviewResponseDtoFromJSONTyped(json, ignoreDiscrimin
         'externalAmount': json['external_amount'],
         'effectiveAt': (json['effective_at'] == null ? null : new Date(json['effective_at'])),
         'lines': (json['lines'].map(SubscriptionInvoiceLineDto_1.SubscriptionInvoiceLineDtoFromJSON)),
+        'futurePeriodAmount': json['future_period_amount'],
+        'futureLines': (json['future_lines'].map(SubscriptionInvoiceLineDto_1.SubscriptionInvoiceLineDtoFromJSON)),
     };
 }
 function SubscriptionChangePreviewResponseDtoToJSON(json) {
@@ -99,5 +104,7 @@ function SubscriptionChangePreviewResponseDtoToJSONTyped(value, ignoreDiscrimina
         'external_amount': value['externalAmount'],
         'effective_at': (value['effectiveAt'] == null ? null : value['effectiveAt'].toISOString()),
         'lines': (value['lines'].map(SubscriptionInvoiceLineDto_1.SubscriptionInvoiceLineDtoToJSON)),
+        'future_period_amount': value['futurePeriodAmount'],
+        'future_lines': (value['futureLines'].map(SubscriptionInvoiceLineDto_1.SubscriptionInvoiceLineDtoToJSON)),
     };
 }

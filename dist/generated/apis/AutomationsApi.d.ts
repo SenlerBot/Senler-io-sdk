@@ -10,11 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
     acceptLanguage?: AttachmentsConfirmAcceptLanguageEnum;
+}
+export interface AttachmentsFromUrlRequest {
+    automationId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AttachmentsFromUrlAcceptLanguageEnum;
 }
 export interface AttachmentsUploadUrlRequest {
     automationId: string;
@@ -25,6 +30,11 @@ export interface AutomationsAvatarConfirmRequest {
     automationId: string;
     confirmAutomationAvatarUploadDto: ConfirmAutomationAvatarUploadDto;
     acceptLanguage?: AutomationsAvatarConfirmAcceptLanguageEnum;
+}
+export interface AutomationsAvatarFromUrlRequest {
+    automationId: string;
+    importImageDto: ImportImageDto;
+    acceptLanguage?: AutomationsAvatarFromUrlAcceptLanguageEnum;
 }
 export interface AutomationsAvatarUploadUrlRequest {
     automationId: string;
@@ -116,6 +126,10 @@ export interface GetDialogsRunsRequest {
     limit?: number;
     acceptLanguage?: GetDialogsRunsAcceptLanguageEnum;
 }
+export interface GetFunnelOptionsRequest {
+    projectId: string;
+    acceptLanguage?: GetFunnelOptionsAcceptLanguageEnum;
+}
 export interface GetGraphRequest {
     automationId: string;
     view?: GetGraphViewEnum;
@@ -126,6 +140,11 @@ export interface GetNodeTypesRequest {
     automationType?: GetNodeTypesAutomationTypeEnum;
     timezone?: string;
     acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
+}
+export interface GetNodesHttpResponseSampleRequest {
+    automationId: string;
+    nodeId: string;
+    acceptLanguage?: GetNodesHttpResponseSampleAcceptLanguageEnum;
 }
 export interface GetOperationsRequest {
     automationId: string;
@@ -167,11 +186,23 @@ export interface GetTestTriggerSessionsCurrentRequest {
     automationId: string;
     acceptLanguage?: GetTestTriggerSessionsCurrentAcceptLanguageEnum;
 }
+export interface LayoutRequest {
+    automationId: string;
+    layoutAutomationDto: LayoutAutomationDto;
+    xAutomationEditorSessionId?: string;
+    acceptLanguage?: LayoutAcceptLanguageEnum;
+}
 export interface NodesRequest {
     automationId: string;
     createAutomationNodeDto: CreateAutomationNodeDto;
     xAutomationEditorSessionId?: string;
     acceptLanguage?: NodesAcceptLanguageEnum;
+}
+export interface NodesHttpPreviewRequest {
+    automationId: string;
+    nodeId: string;
+    automationHttpPreviewDto: AutomationHttpPreviewDto;
+    acceptLanguage?: NodesHttpPreviewAcceptLanguageEnum;
 }
 export interface NodesValidateRequest {
     automationId: string;
@@ -252,6 +283,12 @@ export interface UpdateNodesRequest {
     xAutomationEditorSessionId?: string;
     acceptLanguage?: UpdateNodesAcceptLanguageEnum;
 }
+export interface UpdateNodesHttpResponseSampleRequest {
+    automationId: string;
+    nodeId: string;
+    updateAutomationHttpResponseSampleDto: UpdateAutomationHttpResponseSampleDto;
+    acceptLanguage?: UpdateNodesHttpResponseSampleAcceptLanguageEnum;
+}
 export interface UpdateTriggerIntakeRequest {
     automationId: string;
     setAutomationTriggerIntakeDto: SetAutomationTriggerIntakeDto;
@@ -283,6 +320,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     attachmentsConfirm(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    attachmentsFromUrlRaw(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
+    /**
+     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id
+     */
+    attachmentsFromUrl(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
+    /**
      * upload-, . PUT confirm.
      *
      */
@@ -302,6 +349,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      *
      */
     automationsAvatarConfirm(requestParameters: AutomationsAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmAutomationAvatarUploadResponseDto>;
+    /**
+     * PNG, JPEG WebP . 20 40 . PUT .
+     * URL attachment_id
+     */
+    automationsAvatarFromUrlRaw(requestParameters: AutomationsAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmAutomationAvatarUploadResponseDto>>;
+    /**
+     * PNG, JPEG WebP . 20 40 . PUT .
+     * URL attachment_id
+     */
+    automationsAvatarFromUrl(requestParameters: AutomationsAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmAutomationAvatarUploadResponseDto>;
     /**
      * .
      *
@@ -383,12 +440,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsUpdate(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * 100 Mongo-. ; . graph , .
+     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
     /**
-     * 100 Mongo-. ; . graph , .
+     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
@@ -433,12 +490,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     dialogsRunsRealtimeSubscription(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
     /**
-     * idempotent draft-edge ; DAG validate/publish. : next , .
+     * idempotent draft-edge ; validate/publish. : next , .
      *
      */
     edgesRaw(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationEdgeResponseDto>>;
     /**
-     * idempotent draft-edge ; DAG validate/publish. : next , .
+     * idempotent draft-edge ; validate/publish. : next , .
      *
      */
     edges(requestParameters: EdgesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationEdgeResponseDto>;
@@ -463,6 +520,14 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getDialogsRuns(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto>;
     /**
+     *
+     */
+    getFunnelOptionsRaw(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>>;
+    /**
+     *
+     */
+    getFunnelOptions(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto>;
+    /**
      * nodes/edges React Flow JSON. draft graph, node_id .
      *
      */
@@ -482,6 +547,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      *
      */
     getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto>;
+    /**
+     * . .
+     * JSON- HTTP-
+     */
+    getNodesHttpResponseSampleRaw(requestParameters: GetNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHttpResponseSampleDto>>;
+    /**
+     * . .
+     * JSON- HTTP-
+     */
+    getNodesHttpResponseSample(requestParameters: GetNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto>;
     /**
      * reconnect; compaction snapshot .
      * sequence
@@ -543,15 +618,35 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getTestTriggerSessionsCurrent(requestParameters: GetTestTriggerSessionsCurrentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
     /**
-     * . API . , . .
+     * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
+     *
+     */
+    layoutRaw(requestParameters: LayoutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
+    /**
+     * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
+     *
+     */
+    layout(requestParameters: LayoutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
+    /**
+     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
     /**
-     * . API . , . .
+     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
+    /**
+     * . . . JSON- . . request_id 10 .
+     * HTTP-
+     */
+    nodesHttpPreviewRaw(requestParameters: NodesHttpPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHttpPreviewResponseDto>>;
+    /**
+     * . . . JSON- . . request_id 10 .
+     * HTTP-
+     */
+    nodesHttpPreview(requestParameters: NodesHttpPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpPreviewResponseDto>;
     /**
      * . .
      *
@@ -563,12 +658,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     nodesValidate(requestParameters: NodesValidateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeConfigValidationResponseDto>;
     /**
-     * DAG migration mapping. , .
+     * migration mapping. , ; . , .
      * immutable-
      */
     publishRaw(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationVersionInfoDto>>;
     /**
-     * DAG migration mapping. , .
+     * migration mapping. , ; . , .
      * immutable-
      */
     publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto>;
@@ -693,15 +788,25 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     testTriggerSessionsEvents(requestParameters: TestTriggerSessionsEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
     /**
-     * , / .
+     * , / . . layoutAutomation. position expected_position_revision.
      *
      */
     updateNodesRaw(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
     /**
-     * , / .
+     * , / . . layoutAutomation. position expected_position_revision.
      *
      */
     updateNodes(requestParameters: UpdateNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;
+    /**
+     * JSON . body: null . expected_revision ; 409.
+     * JSON- HTTP-
+     */
+    updateNodesHttpResponseSampleRaw(requestParameters: UpdateNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHttpResponseSampleDto>>;
+    /**
+     * JSON . body: null . expected_revision ; 409.
+     * JSON- HTTP-
+     */
+    updateNodesHttpResponseSample(requestParameters: UpdateNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto>;
     /**
      * runs .
      *
@@ -744,6 +849,14 @@ export type AttachmentsConfirmAcceptLanguageEnum = typeof AttachmentsConfirmAcce
 /**
  * @export
  */
+export declare const AttachmentsFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AttachmentsFromUrlAcceptLanguageEnum = typeof AttachmentsFromUrlAcceptLanguageEnum[keyof typeof AttachmentsFromUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const AttachmentsUploadUrlAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -757,6 +870,14 @@ export declare const AutomationsAvatarConfirmAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AutomationsAvatarConfirmAcceptLanguageEnum = typeof AutomationsAvatarConfirmAcceptLanguageEnum[keyof typeof AutomationsAvatarConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AutomationsAvatarFromUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationsAvatarFromUrlAcceptLanguageEnum = typeof AutomationsAvatarFromUrlAcceptLanguageEnum[keyof typeof AutomationsAvatarFromUrlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -899,6 +1020,14 @@ export type GetDialogsRunsAcceptLanguageEnum = typeof GetDialogsRunsAcceptLangua
 /**
  * @export
  */
+export declare const GetFunnelOptionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelOptionsAcceptLanguageEnum = typeof GetFunnelOptionsAcceptLanguageEnum[keyof typeof GetFunnelOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetGraphViewEnum: {
     readonly Draft: "draft";
     readonly Published: "published";
@@ -928,6 +1057,14 @@ export declare const GetNodeTypesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetNodeTypesAcceptLanguageEnum = typeof GetNodeTypesAcceptLanguageEnum[keyof typeof GetNodeTypesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetNodesHttpResponseSampleAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetNodesHttpResponseSampleAcceptLanguageEnum = typeof GetNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof GetNodesHttpResponseSampleAcceptLanguageEnum];
 /**
  * @export
  */
@@ -990,11 +1127,27 @@ export type GetTestTriggerSessionsCurrentAcceptLanguageEnum = typeof GetTestTrig
 /**
  * @export
  */
+export declare const LayoutAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LayoutAcceptLanguageEnum = typeof LayoutAcceptLanguageEnum[keyof typeof LayoutAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const NodesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type NodesAcceptLanguageEnum = typeof NodesAcceptLanguageEnum[keyof typeof NodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const NodesHttpPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type NodesHttpPreviewAcceptLanguageEnum = typeof NodesHttpPreviewAcceptLanguageEnum[keyof typeof NodesHttpPreviewAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1115,6 +1268,14 @@ export declare const UpdateNodesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateNodesAcceptLanguageEnum = typeof UpdateNodesAcceptLanguageEnum[keyof typeof UpdateNodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateNodesHttpResponseSampleAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateNodesHttpResponseSampleAcceptLanguageEnum = typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum];
 /**
  * @export
  */

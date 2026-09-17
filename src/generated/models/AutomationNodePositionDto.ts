@@ -20,13 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationNodePositionDto {
     /**
-     * .
+     * X , . 64 px, 112 px. X 200240 px; , . .
      * @type {number}
      * @memberof AutomationNodePositionDto
      */
     x: number;
     /**
-     * .
+     * Y , . , Y 140180 px. ; .
      * @type {number}
      * @memberof AutomationNodePositionDto
      */

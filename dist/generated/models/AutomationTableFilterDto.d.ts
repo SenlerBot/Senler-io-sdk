@@ -60,7 +60,7 @@ export interface AutomationTableFilterDto {
      */
     variableName?: string;
     /**
-     * . , .
+     * . , , .
      * @type {string}
      * @memberof AutomationTableFilterDto
      */
@@ -88,6 +88,7 @@ export type AutomationTableFilterDtoValueSourceEnum = typeof AutomationTableFilt
 export declare const AutomationTableFilterDtoVariableScopeEnum: {
     readonly Run: "run";
     readonly Lead: "lead";
+    readonly Dialog: "dialog";
     readonly Project: "project";
 };
 export type AutomationTableFilterDtoVariableScopeEnum = typeof AutomationTableFilterDtoVariableScopeEnum[keyof typeof AutomationTableFilterDtoVariableScopeEnum];

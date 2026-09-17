@@ -53,6 +53,7 @@ export declare const TextModelStatsProviderEnum: {
     readonly Openai: "openai";
     readonly Google: "google";
     readonly Openrouter: "openrouter";
+    readonly FishAudio: "fish_audio";
     readonly Together: "together";
     readonly Custom: "custom";
 };

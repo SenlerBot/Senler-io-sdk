@@ -45,6 +45,7 @@ function SubscriptionRenewalConfirmDtoFromJSONTyped(json, ignoreDiscriminator) {
         'period': json['period'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
         'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
+        'paymentMethodId': json['payment_method_id'] == null ? undefined : json['payment_method_id'],
     };
 }
 function SubscriptionRenewalConfirmDtoToJSON(json) {
@@ -58,5 +59,6 @@ function SubscriptionRenewalConfirmDtoToJSONTyped(value, ignoreDiscriminator = f
         'period': value['period'],
         'use_balance': value['useBalance'],
         'pay_system_id': value['paySystemId'],
+        'payment_method_id': value['paymentMethodId'],
     };
 }

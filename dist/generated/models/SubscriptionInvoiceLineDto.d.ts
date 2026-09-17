@@ -124,7 +124,6 @@ export interface SubscriptionInvoiceLineDto {
 export declare const SubscriptionInvoiceLineDtoKindEnum: {
     readonly Tariff: "tariff";
     readonly Addon: "addon";
-    readonly MailingPackage: "mailing_package";
 };
 export type SubscriptionInvoiceLineDtoKindEnum = typeof SubscriptionInvoiceLineDtoKindEnum[keyof typeof SubscriptionInvoiceLineDtoKindEnum];
 /**
