@@ -52,6 +52,8 @@ export interface TextModelStats {
 export declare const TextModelStatsProviderEnum: {
     readonly Openai: "openai";
     readonly Google: "google";
+    readonly Gigachat: "gigachat";
+    readonly CloudRu: "cloud_ru";
     readonly Openrouter: "openrouter";
     readonly FishAudio: "fish_audio";
     readonly Together: "together";

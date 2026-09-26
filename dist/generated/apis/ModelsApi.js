@@ -94,6 +94,7 @@ exports.ModelsApi = ModelsApi;
  * @export
  */
 exports.ModelsListTypeEnum = {
+    Decision: 'decision',
     Text: 'text',
     ImageGeneration: 'image_generation',
     AudioGeneration: 'audio_generation',

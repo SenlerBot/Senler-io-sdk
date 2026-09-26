@@ -27,6 +27,13 @@ import {
     WidgetExternalAiSettingsDtoToJSON,
     WidgetExternalAiSettingsDtoToJSONTyped,
 } from './WidgetExternalAiSettingsDto';
+import type { WidgetWelcomeSettingsDto } from './WidgetWelcomeSettingsDto';
+import {
+    WidgetWelcomeSettingsDtoFromJSON,
+    WidgetWelcomeSettingsDtoFromJSONTyped,
+    WidgetWelcomeSettingsDtoToJSON,
+    WidgetWelcomeSettingsDtoToJSONTyped,
+} from './WidgetWelcomeSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 import {
     WidgetThemeDtoFromJSON,
@@ -71,6 +78,12 @@ export interface UpdateWidgetSettingsDto {
      * @memberof UpdateWidgetSettingsDto
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
+    /**
+     *
+     * @type {WidgetWelcomeSettingsDto}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    welcome?: WidgetWelcomeSettingsDto;
     /**
      * CORS
      * @type {Array<string>}
@@ -146,6 +159,7 @@ export function UpdateWidgetSettingsDtoFromJSONTyped(json: any, ignoreDiscrimina
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'welcome': json['welcome'] == null ? undefined : WidgetWelcomeSettingsDtoFromJSON(json['welcome']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
@@ -170,6 +184,7 @@ export function UpdateWidgetSettingsDtoToJSONTyped(value?: UpdateWidgetSettingsD
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'welcome': WidgetWelcomeSettingsDtoToJSON(value['welcome']),
         'allowed_domains': value['allowedDomains'],
         'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),

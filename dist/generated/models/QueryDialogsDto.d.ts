@@ -16,6 +16,30 @@
  */
 export interface QueryDialogsDto {
     /**
+     * (UUID )
+     * @type {Array<string>}
+     * @memberof QueryDialogsDto
+     */
+    operatorUserIds?: Array<string>;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof QueryDialogsDto
+     */
+    supportGroupId?: Array<string>;
+    /**
+     *
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    supportGroupAssignment?: QueryDialogsDtoSupportGroupAssignmentEnum;
+    /**
+     * active , snoozed , all
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    snoozeStatus?: QueryDialogsDtoSnoozeStatusEnum;
+    /**
      * ( 2 )
      * @type {string}
      * @memberof QueryDialogsDto
@@ -226,6 +250,22 @@ export interface QueryDialogsDto {
      */
     startedBefore?: string;
 }
+/**
+ * @export
+ */
+export declare const QueryDialogsDtoSupportGroupAssignmentEnum: {
+    readonly None: "none";
+};
+export type QueryDialogsDtoSupportGroupAssignmentEnum = typeof QueryDialogsDtoSupportGroupAssignmentEnum[keyof typeof QueryDialogsDtoSupportGroupAssignmentEnum];
+/**
+ * @export
+ */
+export declare const QueryDialogsDtoSnoozeStatusEnum: {
+    readonly Active: "active";
+    readonly Snoozed: "snoozed";
+    readonly All: "all";
+};
+export type QueryDialogsDtoSnoozeStatusEnum = typeof QueryDialogsDtoSnoozeStatusEnum[keyof typeof QueryDialogsDtoSnoozeStatusEnum];
 /**
  * @export
  */

@@ -1015,6 +1015,7 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
      *
      */
     async getFunnelOptionsRaw(requestParameters, initOverrides) {
@@ -1049,6 +1050,7 @@ class AutomationsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.FunnelOptionsResponseDtoFromJSON)(jsonValue));
     }
     /**
+     * .
      *
      */
     async getFunnelOptions(requestParameters, initOverrides) {

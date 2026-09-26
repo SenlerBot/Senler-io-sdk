@@ -464,6 +464,12 @@ class DeliveriesApi extends runtime.BaseAPI {
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
         if (requestParameters['tab'] != null) {
             queryParameters['tab'] = requestParameters['tab'];
         }

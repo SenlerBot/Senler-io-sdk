@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DialogListItemDtoPriorityEnum = exports.DialogListItemDtoDialogTypeEnum = exports.DialogListItemDtoLeadResponseStatusEnum = exports.DialogListItemDtoOperatorResponseStatusEnum = exports.DialogListItemDtoStatusEnum = void 0;
+exports.DialogListItemDtoOperatorAssignmentSourceEnum = exports.DialogListItemDtoPriorityEnum = exports.DialogListItemDtoDialogTypeEnum = exports.DialogListItemDtoLeadResponseStatusEnum = exports.DialogListItemDtoOperatorResponseStatusEnum = exports.DialogListItemDtoStatusEnum = void 0;
 exports.instanceOfDialogListItemDto = instanceOfDialogListItemDto;
 exports.DialogListItemDtoFromJSON = DialogListItemDtoFromJSON;
 exports.DialogListItemDtoFromJSONTyped = DialogListItemDtoFromJSONTyped;
@@ -68,6 +68,13 @@ exports.DialogListItemDtoPriorityEnum = {
     Medium: 'medium',
     High: 'high',
     Urgent: 'urgent'
+};
+/**
+ * @export
+ */
+exports.DialogListItemDtoOperatorAssignmentSourceEnum = {
+    Auto: 'auto',
+    Manual: 'manual'
 };
 /**
  * Check if a given object implements the DialogListItemDto interface.
@@ -163,6 +170,7 @@ function DialogListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
         'totalEvents': json['total_events'],
+        'messageStateRevision': json['message_state_revision'] == null ? undefined : json['message_state_revision'],
         'messagesCount': json['messages_count'],
         'operatorUnreadCount': json['operator_unread_count'],
         'operatorReadRevision': json['operator_read_revision'] == null ? undefined : json['operator_read_revision'],
@@ -178,6 +186,10 @@ function DialogListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'lastMessage': json['last_message'] == null ? undefined : (0, DialogLastMessageDto_1.DialogLastMessageDtoFromJSON)(json['last_message']),
         'serviceActor': json['service_actor'] == null ? undefined : (0, EventSenderDto_1.EventSenderDtoFromJSON)(json['service_actor']),
         'operatorAssignment': json['operator_assignment'] == null ? undefined : (0, DialogOperatorAssignmentDto_1.DialogOperatorAssignmentDtoFromJSON)(json['operator_assignment']),
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'snoozedUntil': json['snoozed_until'] == null ? undefined : (new Date(json['snoozed_until'])),
+        'humanHandoff': json['human_handoff'] == null ? undefined : json['human_handoff'],
+        'operatorAssignmentSource': json['operator_assignment_source'] == null ? undefined : json['operator_assignment_source'],
         'isSoundMuted': json['is_sound_muted'],
         'currentTyping': json['current_typing'] == null ? undefined : (json['current_typing'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoFromJSON)),
         'currentAiActivity': json['current_ai_activity'] == null ? undefined : (0, AiResponseActivityDto_1.AiResponseActivityDtoFromJSON)(json['current_ai_activity']),
@@ -236,6 +248,7 @@ function DialogListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
         'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],
         'total_events': value['totalEvents'],
+        'message_state_revision': value['messageStateRevision'],
         'messages_count': value['messagesCount'],
         'operator_unread_count': value['operatorUnreadCount'],
         'operator_read_revision': value['operatorReadRevision'],
@@ -251,6 +264,10 @@ function DialogListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'last_message': (0, DialogLastMessageDto_1.DialogLastMessageDtoToJSON)(value['lastMessage']),
         'service_actor': (0, EventSenderDto_1.EventSenderDtoToJSON)(value['serviceActor']),
         'operator_assignment': (0, DialogOperatorAssignmentDto_1.DialogOperatorAssignmentDtoToJSON)(value['operatorAssignment']),
+        'support_group_id': value['supportGroupId'],
+        'snoozed_until': value['snoozedUntil'] == null ? undefined : (value['snoozedUntil'].toISOString()),
+        'human_handoff': value['humanHandoff'],
+        'operator_assignment_source': value['operatorAssignmentSource'],
         'is_sound_muted': value['isSoundMuted'],
         'current_typing': value['currentTyping'] == null ? undefined : (value['currentTyping'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoToJSON)),
         'current_ai_activity': (0, AiResponseActivityDto_1.AiResponseActivityDtoToJSON)(value['currentAiActivity']),

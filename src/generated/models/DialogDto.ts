@@ -334,6 +334,12 @@ export interface DialogDto {
      */
     totalEvents: number;
     /**
+     * . .
+     * @type {number}
+     * @memberof DialogDto
+     */
+    messageStateRevision?: number;
+    /**
      *
      * @type {number}
      * @memberof DialogDto
@@ -424,6 +430,30 @@ export interface DialogDto {
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
+     *
+     * @type {string}
+     * @memberof DialogDto
+     */
+    supportGroupId?: string | null;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    snoozedUntil?: Date | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DialogDto
+     */
+    humanHandoff?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof DialogDto
+     */
+    operatorAssignmentSource?: DialogDtoOperatorAssignmentSourceEnum;
+    /**
      * (UI )
      * @type {boolean}
      * @memberof DialogDto
@@ -481,6 +511,15 @@ export const DialogDtoPriorityEnum = {
     Urgent: 'urgent'
 } as const;
 export type DialogDtoPriorityEnum = typeof DialogDtoPriorityEnum[keyof typeof DialogDtoPriorityEnum];
+
+/**
+ * @export
+ */
+export const DialogDtoOperatorAssignmentSourceEnum = {
+    Auto: 'auto',
+    Manual: 'manual'
+} as const;
+export type DialogDtoOperatorAssignmentSourceEnum = typeof DialogDtoOperatorAssignmentSourceEnum[keyof typeof DialogDtoOperatorAssignmentSourceEnum];
 
 
 /**
@@ -562,6 +601,7 @@ export function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
         'totalEvents': json['total_events'],
+        'messageStateRevision': json['message_state_revision'] == null ? undefined : json['message_state_revision'],
         'messagesCount': json['messages_count'],
         'operatorUnreadCount': json['operator_unread_count'],
         'operatorReadRevision': json['operator_read_revision'] == null ? undefined : json['operator_read_revision'],
@@ -577,6 +617,10 @@ export function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'lastMessage': json['last_message'] == null ? undefined : DialogLastMessageDtoFromJSON(json['last_message']),
         'serviceActor': json['service_actor'] == null ? undefined : EventSenderDtoFromJSON(json['service_actor']),
         'operatorAssignment': json['operator_assignment'] == null ? undefined : DialogOperatorAssignmentDtoFromJSON(json['operator_assignment']),
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'snoozedUntil': json['snoozed_until'] == null ? undefined : (new Date(json['snoozed_until'])),
+        'humanHandoff': json['human_handoff'] == null ? undefined : json['human_handoff'],
+        'operatorAssignmentSource': json['operator_assignment_source'] == null ? undefined : json['operator_assignment_source'],
         'isSoundMuted': json['is_sound_muted'],
     };
 }
@@ -636,6 +680,7 @@ export function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminat
         'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
         'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],
         'total_events': value['totalEvents'],
+        'message_state_revision': value['messageStateRevision'],
         'messages_count': value['messagesCount'],
         'operator_unread_count': value['operatorUnreadCount'],
         'operator_read_revision': value['operatorReadRevision'],
@@ -651,6 +696,10 @@ export function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminat
         'last_message': DialogLastMessageDtoToJSON(value['lastMessage']),
         'service_actor': EventSenderDtoToJSON(value['serviceActor']),
         'operator_assignment': DialogOperatorAssignmentDtoToJSON(value['operatorAssignment']),
+        'support_group_id': value['supportGroupId'],
+        'snoozed_until': value['snoozedUntil'] == null ? undefined : ((value['snoozedUntil'] as any).toISOString()),
+        'human_handoff': value['humanHandoff'],
+        'operator_assignment_source': value['operatorAssignmentSource'],
         'is_sound_muted': value['isSoundMuted'],
     };
 }

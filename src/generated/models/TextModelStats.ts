@@ -58,6 +58,8 @@ export interface TextModelStats {
 export const TextModelStatsProviderEnum = {
     Openai: 'openai',
     Google: 'google',
+    Gigachat: 'gigachat',
+    CloudRu: 'cloud_ru',
     Openrouter: 'openrouter',
     FishAudio: 'fish_audio',
     Together: 'together',

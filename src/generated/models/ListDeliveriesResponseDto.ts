@@ -33,6 +33,18 @@ export interface ListDeliveriesResponseDto {
      * @memberof ListDeliveriesResponseDto
      */
     items: Array<DeliveryResponseDto>;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof ListDeliveriesResponseDto
+     */
+    hasMore: boolean;
+    /**
+     * ID .
+     * @type {string}
+     * @memberof ListDeliveriesResponseDto
+     */
+    nextCursor: string | null;
 }
 
 /**
@@ -40,6 +52,8 @@ export interface ListDeliveriesResponseDto {
  */
 export function instanceOfListDeliveriesResponseDto(value: object): value is ListDeliveriesResponseDto {
     if (!('items' in value) || value['items'] === undefined) return false;
+    if (!('hasMore' in value) || value['hasMore'] === undefined) return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +68,8 @@ export function ListDeliveriesResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'items': ((json['items'] as Array<any>).map(DeliveryResponseDtoFromJSON)),
+        'hasMore': json['has_more'],
+        'nextCursor': json['next_cursor'],
     };
 }
 
@@ -69,5 +85,7 @@ export function ListDeliveriesResponseDtoToJSONTyped(value?: ListDeliveriesRespo
     return {
 
         'items': ((value['items'] as Array<any>).map(DeliveryResponseDtoToJSON)),
+        'has_more': value['hasMore'],
+        'next_cursor': value['nextCursor'],
     };
 }

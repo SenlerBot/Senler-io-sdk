@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ProviderPricingSnapshotDto } from './ProviderPricingSnapshotDto';
 /**
  * EventAiDto.
  * @export
  * @interface EventAiDto
  */
 export interface EventAiDto {
+    /**
+     * ,
+     * @type {ProviderPricingSnapshotDto}
+     * @memberof EventAiDto
+     */
+    providerPricingSnapshot?: ProviderPricingSnapshotDto;
     /**
      * ID
      * @type {string}

@@ -265,6 +265,12 @@ class ProcessesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling processesList().');
         }
         const queryParameters = {};
+        if (requestParameters['includeTotal'] != null) {
+            queryParameters['include_total'] = requestParameters['includeTotal'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
         }

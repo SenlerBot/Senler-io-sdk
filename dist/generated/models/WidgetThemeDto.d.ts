@@ -19,6 +19,18 @@ import type { ButtonSettingsDto } from './ButtonSettingsDto';
  */
 export interface WidgetThemeDto {
     /**
+     * URL (HTTP/HTTPS).
+     * @type {string}
+     * @memberof WidgetThemeDto
+     */
+    welcomeIconUrl?: string;
+    /**
+     * . ;
+     * @type {string}
+     * @memberof WidgetThemeDto
+     */
+    welcomeIconShape?: WidgetThemeDtoWelcomeIconShapeEnum;
+    /**
      * . ?lang=ru|en|auto
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
@@ -91,6 +103,14 @@ export interface WidgetThemeDto {
      */
     shadowEnabled?: boolean;
 }
+/**
+ * @export
+ */
+export declare const WidgetThemeDtoWelcomeIconShapeEnum: {
+    readonly Circle: "circle";
+    readonly Square: "square";
+};
+export type WidgetThemeDtoWelcomeIconShapeEnum = typeof WidgetThemeDtoWelcomeIconShapeEnum[keyof typeof WidgetThemeDtoWelcomeIconShapeEnum];
 /**
  * @export
  */

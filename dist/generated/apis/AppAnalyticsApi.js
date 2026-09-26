@@ -82,7 +82,7 @@ class AppAnalyticsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalyticsResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ScopedAnalyticsResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -121,7 +121,7 @@ class AppAnalyticsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalyticsResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ScopedAnalyticsResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .

@@ -34,6 +34,7 @@ function McpServerResponseDtoMetaFromJSONTyped(json, ignoreDiscriminator) {
     return {
         ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
+        'toolCallTimeoutSeconds': json['tool_call_timeout_seconds'] == null ? undefined : json['tool_call_timeout_seconds'],
     };
 }
 function McpServerResponseDtoMetaToJSON(json) {
@@ -46,5 +47,6 @@ function McpServerResponseDtoMetaToJSONTyped(value, ignoreDiscriminator = false)
     return {
         ...value,
         'tags': value['tags'],
+        'tool_call_timeout_seconds': value['toolCallTimeoutSeconds'],
     };
 }

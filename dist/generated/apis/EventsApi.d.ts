@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AnalyticsResponseDto, CabinetEventDetailDto, EventsList200Response, QuickMetricsResponseDto, TrafficChannelsResponseDto, TrafficSourcesResponseDto } from '../models/index';
+import type { CabinetEventDetailDto, CabinetEventsPageDto, QuickMetricsResponseDto, ScopedAnalyticsResponseDto, TrafficChannelsResponseDto, TrafficSourcesResponseDto } from '../models/index';
 export interface EventsGetAnalyticsRequest {
     period: EventsGetAnalyticsPeriodEnum;
     projectId: string;
@@ -70,12 +70,12 @@ export declare class EventsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    eventsGetAnalyticsRaw(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>>;
+    eventsGetAnalyticsRaw(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScopedAnalyticsResponseDto>>;
     /**
      * . .
      *
      */
-    eventsGetAnalytics(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto>;
+    eventsGetAnalytics(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScopedAnalyticsResponseDto>;
     /**
      * .
      * ID
@@ -90,12 +90,12 @@ export declare class EventsApi extends runtime.BaseAPI {
      * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
-    eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventsList200Response>>;
+    eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetEventsPageDto>>;
     /**
      * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
-    eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response>;
+    eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetEventsPageDto>;
     /**
      * .
      *
@@ -161,7 +161,6 @@ export declare const EventsListPeriodEnum: {
     readonly _7d: "7d";
     readonly _30d: "30d";
     readonly _90d: "90d";
-    readonly All: "all";
     readonly Custom: "custom";
 };
 export type EventsListPeriodEnum = typeof EventsListPeriodEnum[keyof typeof EventsListPeriodEnum];

@@ -137,6 +137,8 @@ export interface DeliveriesGetByIdRequest {
 
 export interface DeliveriesListRequest {
     projectId: string;
+    limit?: number;
+    cursor?: string;
     tab?: DeliveriesListTabEnum;
     search?: string;
     acceptLanguage?: DeliveriesListAcceptLanguageEnum;
@@ -757,6 +759,14 @@ export class DeliveriesApi extends runtime.BaseAPI {
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
         }
 
         if (requestParameters['tab'] != null) {

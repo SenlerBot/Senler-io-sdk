@@ -27,6 +27,20 @@ import {
     KnowledgeBaseSourceBindingDtoToJSON,
     KnowledgeBaseSourceBindingDtoToJSONTyped,
 } from './KnowledgeBaseSourceBindingDto';
+import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
+import {
+    AgentAssignmentPolicyDtoFromJSON,
+    AgentAssignmentPolicyDtoFromJSONTyped,
+    AgentAssignmentPolicyDtoToJSON,
+    AgentAssignmentPolicyDtoToJSONTyped,
+} from './AgentAssignmentPolicyDto';
+import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
+import {
+    AgentAutomationEventPolicyDtoFromJSON,
+    AgentAutomationEventPolicyDtoFromJSONTyped,
+    AgentAutomationEventPolicyDtoToJSON,
+    AgentAutomationEventPolicyDtoToJSONTyped,
+} from './AgentAutomationEventPolicyDto';
 
 /**
  * AgentDraftSettingsResponseDto.
@@ -359,6 +373,12 @@ export interface AgentDraftSettingsResponseDto {
      */
     cancelPendingResponseOnAutomationMessage: boolean;
     /**
+     *
+     * @type {AgentAutomationEventPolicyDto}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    automationEventPolicy: AgentAutomationEventPolicyDto;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
@@ -466,6 +486,12 @@ export interface AgentDraftSettingsResponseDto {
      * @memberof AgentDraftSettingsResponseDto
      */
     recipientMessagingPolicy: { [key: string]: any; };
+    /**
+     *
+     * @type {AgentAssignmentPolicyDto}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    agentAssignmentPolicy: AgentAssignmentPolicyDto;
     /**
      *
      * @type {Date}
@@ -667,6 +693,7 @@ export function instanceOfAgentDraftSettingsResponseDto(value: object): value is
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined) return false;
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined) return false;
     if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined) return false;
+    if (!('automationEventPolicy' in value) || value['automationEventPolicy'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
     if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined) return false;
@@ -685,6 +712,7 @@ export function instanceOfAgentDraftSettingsResponseDto(value: object): value is
     if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined) return false;
     if (!('funnelAccessPolicy' in value) || value['funnelAccessPolicy'] === undefined) return false;
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
+    if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
@@ -754,6 +782,7 @@ export function AgentDraftSettingsResponseDtoFromJSONTyped(json: any, ignoreDisc
         'enableAiResponse': json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
+        'automationEventPolicy': AgentAutomationEventPolicyDtoFromJSON(json['automation_event_policy']),
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
@@ -772,6 +801,7 @@ export function AgentDraftSettingsResponseDtoFromJSONTyped(json: any, ignoreDisc
         'segmentAccessPolicy': json['segment_access_policy'],
         'funnelAccessPolicy': json['funnel_access_policy'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
+        'agentAssignmentPolicy': AgentAssignmentPolicyDtoFromJSON(json['agent_assignment_policy']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -842,6 +872,7 @@ export function AgentDraftSettingsResponseDtoToJSONTyped(value?: AgentDraftSetti
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
+        'automation_event_policy': AgentAutomationEventPolicyDtoToJSON(value['automationEventPolicy']),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
@@ -860,6 +891,7 @@ export function AgentDraftSettingsResponseDtoToJSONTyped(value?: AgentDraftSetti
         'segment_access_policy': value['segmentAccessPolicy'],
         'funnel_access_policy': value['funnelAccessPolicy'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
+        'agent_assignment_policy': AgentAssignmentPolicyDtoToJSON(value['agentAssignmentPolicy']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

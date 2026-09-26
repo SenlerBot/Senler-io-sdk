@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CheckLandingTelegramMenuButtonDto, LandingMaxMiniAppListResponseDto, LandingMaxMiniAppResponseDto, LandingMaxMiniAppVerificationResponseDto, LandingTelegramMenuButtonListResponseDto, LandingTelegramMenuButtonResponseDto, LandingTelegramMiniAppListResponseDto, LandingTelegramMiniAppResponseDto, LandingTelegramMiniAppVerificationResponseDto, LandingVkAppListResponseDto, LandingVkAppResponseDto, LandingWebSettingsResponseDto, SetLandingMaxMiniAppTargetDto, SetLandingTelegramMiniAppDto, SetLandingVkAppTargetDto, SetLandingWebSettingsDto, StartLandingMaxMiniAppVerificationDto, StartLandingTelegramMiniAppVerificationDto, TypedTelegramMenuButtonTextDto } from '../models/index';
+import type { CheckLandingTelegramMenuButtonDto, LandingAnalyticsSettingsDto, LandingMaxMiniAppListResponseDto, LandingMaxMiniAppResponseDto, LandingMaxMiniAppVerificationResponseDto, LandingTelegramMenuButtonListResponseDto, LandingTelegramMenuButtonResponseDto, LandingTelegramMiniAppListResponseDto, LandingTelegramMiniAppResponseDto, LandingTelegramMiniAppVerificationResponseDto, LandingVkAppListResponseDto, LandingVkAppResponseDto, LandingWebSettingsResponseDto, SetLandingMaxMiniAppTargetDto, SetLandingTelegramMiniAppDto, SetLandingVkAppTargetDto, SetLandingWebSettingsDto, StartLandingMaxMiniAppVerificationDto, StartLandingTelegramMiniAppVerificationDto, TypedTelegramMenuButtonTextDto } from '../models/index';
 export interface DeleteTelegramMenuButtonRequest {
     channelId: string;
     acceptLanguage?: DeleteTelegramMenuButtonAcceptLanguageEnum;
@@ -35,6 +35,10 @@ export interface GetWebRequest {
     projectId: string;
     acceptLanguage?: GetWebAcceptLanguageEnum;
 }
+export interface LandingPlatformSettingsGetAnalyticsRequest {
+    projectId: string;
+    acceptLanguage?: LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum;
+}
 export interface MaxMiniAppTargetRequest {
     projectId: string;
     setLandingMaxMiniAppTargetDto: SetLandingMaxMiniAppTargetDto;
@@ -54,6 +58,11 @@ export interface TelegramMiniAppVerificationRequest {
     projectId: string;
     startLandingTelegramMiniAppVerificationDto: StartLandingTelegramMiniAppVerificationDto;
     acceptLanguage?: TelegramMiniAppVerificationAcceptLanguageEnum;
+}
+export interface UpdateAnalyticsRequest {
+    projectId: string;
+    landingAnalyticsSettingsDto: LandingAnalyticsSettingsDto;
+    acceptLanguage?: UpdateAnalyticsAcceptLanguageEnum;
 }
 export interface UpdateTelegramMenuButtonBannerGridRequest {
     channelId: string;
@@ -156,6 +165,16 @@ export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
      */
     getWeb(requestParameters: GetWebRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingWebSettingsResponseDto>;
     /**
+     * .
+     *
+     */
+    landingPlatformSettingsGetAnalyticsRaw(requestParameters: LandingPlatformSettingsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAnalyticsSettingsDto>>;
+    /**
+     * .
+     *
+     */
+    landingPlatformSettingsGetAnalytics(requestParameters: LandingPlatformSettingsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAnalyticsSettingsDto>;
+    /**
      * MAX- Mini App : .
      * MAX Mini App
      */
@@ -195,6 +214,16 @@ export declare class LandingPlatformSettingsApi extends runtime.BaseAPI {
      * Telegram Mini App
      */
     telegramMiniAppVerification(requestParameters: TelegramMiniAppVerificationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingTelegramMiniAppVerificationResponseDto>;
+    /**
+     * . - .
+     *
+     */
+    updateAnalyticsRaw(requestParameters: UpdateAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAnalyticsSettingsDto>>;
+    /**
+     * . - .
+     *
+     */
+    updateAnalytics(requestParameters: UpdateAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAnalyticsSettingsDto>;
     /**
      * .
      *
@@ -317,6 +346,14 @@ export type GetWebAcceptLanguageEnum = typeof GetWebAcceptLanguageEnum[keyof typ
 /**
  * @export
  */
+export declare const LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum = typeof LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum[keyof typeof LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const MaxMiniAppTargetAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -346,6 +383,14 @@ export declare const TelegramMiniAppVerificationAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TelegramMiniAppVerificationAcceptLanguageEnum = typeof TelegramMiniAppVerificationAcceptLanguageEnum[keyof typeof TelegramMiniAppVerificationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateAnalyticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateAnalyticsAcceptLanguageEnum = typeof UpdateAnalyticsAcceptLanguageEnum[keyof typeof UpdateAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */

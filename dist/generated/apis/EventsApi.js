@@ -92,7 +92,7 @@ class EventsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalyticsResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ScopedAnalyticsResponseDtoFromJSON)(jsonValue));
     }
     /**
      * . .
@@ -244,7 +244,7 @@ class EventsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventsList200ResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CabinetEventsPageDtoFromJSON)(jsonValue));
     }
     /**
      * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
@@ -425,7 +425,6 @@ exports.EventsListPeriodEnum = {
     _7d: '7d',
     _30d: '30d',
     _90d: '90d',
-    All: 'all',
     Custom: 'custom'
 };
 /**

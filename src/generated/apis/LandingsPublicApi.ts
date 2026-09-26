@@ -21,6 +21,7 @@ import type {
   LandingBotSubscriptionLinkResponseDto,
   LandingLaunchContextResponseDto,
   LandingMiniAppLaunchResponseDto,
+  LandingPublicAnalyticsDto,
   LandingPublicCatalogResponseDto,
   LandingPublicResponseDto,
   LandingSubscriptionRequestDto,
@@ -43,6 +44,8 @@ import {
     LandingLaunchContextResponseDtoToJSON,
     LandingMiniAppLaunchResponseDtoFromJSON,
     LandingMiniAppLaunchResponseDtoToJSON,
+    LandingPublicAnalyticsDtoFromJSON,
+    LandingPublicAnalyticsDtoToJSON,
     LandingPublicCatalogResponseDtoFromJSON,
     LandingPublicCatalogResponseDtoToJSON,
     LandingPublicResponseDtoFromJSON,
@@ -75,6 +78,11 @@ export interface GetProjectsLandingsRequest {
     projectPublicId: string;
     channelPublicId?: string;
     acceptLanguage?: GetProjectsLandingsAcceptLanguageEnum;
+}
+
+export interface GetProjectsLandingsAnalyticsRequest {
+    projectPublicId: string;
+    acceptLanguage?: GetProjectsLandingsAnalyticsAcceptLanguageEnum;
 }
 
 export interface LandingsLaunchBotSubscriptionLinkRequest {
@@ -236,6 +244,45 @@ export class LandingsPublicApi extends runtime.BaseAPI {
      */
     async getProjectsLandings(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicCatalogResponseDto> {
         const response = await this.getProjectsLandingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * - .
+     *
+     */
+    async getProjectsLandingsAnalyticsRaw(requestParameters: GetProjectsLandingsAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicAnalyticsDto>> {
+        if (requestParameters['projectPublicId'] == null) {
+            throw new runtime.RequiredError(
+                'projectPublicId',
+                'Required parameter "projectPublicId" was null or undefined when calling getProjectsLandingsAnalytics().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/projects/{projectPublicId}/landings/analytics`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPublicAnalyticsDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * - .
+     *
+     */
+    async getProjectsLandingsAnalytics(requestParameters: GetProjectsLandingsAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicAnalyticsDto> {
+        const response = await this.getProjectsLandingsAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -559,6 +606,14 @@ export const GetProjectsLandingsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetProjectsLandingsAcceptLanguageEnum = typeof GetProjectsLandingsAcceptLanguageEnum[keyof typeof GetProjectsLandingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetProjectsLandingsAnalyticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetProjectsLandingsAnalyticsAcceptLanguageEnum = typeof GetProjectsLandingsAnalyticsAcceptLanguageEnum[keyof typeof GetProjectsLandingsAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */

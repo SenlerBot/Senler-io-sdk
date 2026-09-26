@@ -20,7 +20,7 @@ exports.CostSectionEconomicsFromJSONTyped = CostSectionEconomicsFromJSONTyped;
 exports.CostSectionEconomicsToJSON = CostSectionEconomicsToJSON;
 exports.CostSectionEconomicsToJSONTyped = CostSectionEconomicsToJSONTyped;
 const ClientSpending_1 = require("./ClientSpending");
-const CurrencyBreakdown_1 = require("./CurrencyBreakdown");
+const ProviderCostBreakdown_1 = require("./ProviderCostBreakdown");
 /**
  * @export
  */
@@ -56,7 +56,7 @@ function CostSectionEconomicsFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'section': json['section'],
-        'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['provider']),
+        'provider': (0, ProviderCostBreakdown_1.ProviderCostBreakdownFromJSON)(json['provider']),
         'client': (0, ClientSpending_1.ClientSpendingFromJSON)(json['client']),
         'eventsWithCosts': json['events_with_costs'],
     };
@@ -70,7 +70,7 @@ function CostSectionEconomicsToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'section': value['section'],
-        'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['provider']),
+        'provider': (0, ProviderCostBreakdown_1.ProviderCostBreakdownToJSON)(value['provider']),
         'client': (0, ClientSpending_1.ClientSpendingToJSON)(value['client']),
         'events_with_costs': value['eventsWithCosts'],
     };

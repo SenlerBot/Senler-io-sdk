@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    groupId?: string | null;
+    /**
      * , ISO 8601 timezone offset
      * @type {Date}
      * @memberof UpdateSupportScheduleAssignmentDto
@@ -68,6 +74,7 @@ export function UpdateSupportScheduleAssignmentDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'groupId': json['group_id'] == null ? undefined : json['group_id'],
         'startsAt': json['starts_at'] == null ? undefined : (new Date(json['starts_at'])),
         'endsAt': json['ends_at'] == null ? undefined : (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'] == null ? undefined : json['project_member_id'],
@@ -87,6 +94,7 @@ export function UpdateSupportScheduleAssignmentDtoToJSONTyped(value?: UpdateSupp
 
     return {
 
+        'group_id': value['groupId'],
         'starts_at': value['startsAt'] == null ? undefined : ((value['startsAt']).toISOString()),
         'ends_at': value['endsAt'] == null ? undefined : ((value['endsAt']).toISOString()),
         'project_member_id': value['projectMemberId'],

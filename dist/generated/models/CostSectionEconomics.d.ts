@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ClientSpending } from './ClientSpending';
-import type { CurrencyBreakdown } from './CurrencyBreakdown';
+import type { ProviderCostBreakdown } from './ProviderCostBreakdown';
 /**
  * CostSectionEconomics.
  * @export
@@ -25,10 +25,10 @@ export interface CostSectionEconomics {
     section: CostSectionEconomicsSectionEnum;
     /**
      * ()
-     * @type {CurrencyBreakdown}
+     * @type {ProviderCostBreakdown}
      * @memberof CostSectionEconomics
      */
-    provider: CurrencyBreakdown;
+    provider: ProviderCostBreakdown;
     /**
      * ( + )
      * @type {ClientSpending}

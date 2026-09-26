@@ -16,6 +16,12 @@
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    groupId?: string | null;
+    /**
      * , ISO 8601 timezone offset
      * @type {Date}
      * @memberof UpdateSupportScheduleAssignmentDto

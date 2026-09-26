@@ -22,6 +22,18 @@ export interface ListDeliveriesResponseDto {
      * @memberof ListDeliveriesResponseDto
      */
     items: Array<DeliveryResponseDto>;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof ListDeliveriesResponseDto
+     */
+    hasMore: boolean;
+    /**
+     * ID .
+     * @type {string}
+     * @memberof ListDeliveriesResponseDto
+     */
+    nextCursor: string | null;
 }
 /**
  * Check if a given object implements the ListDeliveriesResponseDto interface.

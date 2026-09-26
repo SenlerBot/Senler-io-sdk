@@ -16,6 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   AssignAgentToDialogDto,
+  CloseDialogDto,
   DeleteMessageResponseDto,
   DialogAiBillingRecoveryBulkRetryResponseDto,
   DialogAiBillingRecoveryEventStatusDto,
@@ -25,17 +26,24 @@ import type {
   DialogAiResponseRecoveryStatusDto,
   DialogDto,
   DialogParticipantsResponseDto,
+  DialogSupportChangeDto,
   EditMessageDto,
   EditMessageResponseDto,
   ErrorResponse,
+  HandoffDialogDto,
   RetryDialogAiBillingRecoveryDto,
   SetAutoAssignDisabledDto,
   SetDialogPriorityDto,
   SetSoundMuteDto,
+  SnoozeDialogDto,
+  SupportOperatorDirectoryDto,
+  TransferDialogOperatorDto,
 } from '../models/index';
 import {
     AssignAgentToDialogDtoFromJSON,
     AssignAgentToDialogDtoToJSON,
+    CloseDialogDtoFromJSON,
+    CloseDialogDtoToJSON,
     DeleteMessageResponseDtoFromJSON,
     DeleteMessageResponseDtoToJSON,
     DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON,
@@ -54,12 +62,16 @@ import {
     DialogDtoToJSON,
     DialogParticipantsResponseDtoFromJSON,
     DialogParticipantsResponseDtoToJSON,
+    DialogSupportChangeDtoFromJSON,
+    DialogSupportChangeDtoToJSON,
     EditMessageDtoFromJSON,
     EditMessageDtoToJSON,
     EditMessageResponseDtoFromJSON,
     EditMessageResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    HandoffDialogDtoFromJSON,
+    HandoffDialogDtoToJSON,
     RetryDialogAiBillingRecoveryDtoFromJSON,
     RetryDialogAiBillingRecoveryDtoToJSON,
     SetAutoAssignDisabledDtoFromJSON,
@@ -68,6 +80,12 @@ import {
     SetDialogPriorityDtoToJSON,
     SetSoundMuteDtoFromJSON,
     SetSoundMuteDtoToJSON,
+    SnoozeDialogDtoFromJSON,
+    SnoozeDialogDtoToJSON,
+    SupportOperatorDirectoryDtoFromJSON,
+    SupportOperatorDirectoryDtoToJSON,
+    TransferDialogOperatorDtoFromJSON,
+    TransferDialogOperatorDtoToJSON,
 } from '../models/index';
 
 export interface DeleteAgentRequest {
@@ -121,6 +139,16 @@ export interface GetProjectsBillingRecoveryRequest {
     acceptLanguage?: GetProjectsBillingRecoveryAcceptLanguageEnum;
 }
 
+export interface GetProjectsSupportOperatorsRequest {
+    projectId: string;
+    acceptLanguage?: GetProjectsSupportOperatorsAcceptLanguageEnum;
+}
+
+export interface GetSupportHistoryRequest {
+    dialogId: string;
+    acceptLanguage?: GetSupportHistoryAcceptLanguageEnum;
+}
+
 export interface ProjectsBillingRecoveryDismissRequest {
     projectId: string;
     acceptLanguage?: ProjectsBillingRecoveryDismissAcceptLanguageEnum;
@@ -130,6 +158,29 @@ export interface ProjectsBillingRecoveryRetryRequest {
     projectId: string;
     retryDialogAiBillingRecoveryDto: RetryDialogAiBillingRecoveryDto;
     acceptLanguage?: ProjectsBillingRecoveryRetryAcceptLanguageEnum;
+}
+
+export interface SupportCloseRequest {
+    dialogId: string;
+    closeDialogDto: CloseDialogDto;
+    acceptLanguage?: SupportCloseAcceptLanguageEnum;
+}
+
+export interface SupportHandoffRequest {
+    dialogId: string;
+    handoffDialogDto: HandoffDialogDto;
+    acceptLanguage?: SupportHandoffAcceptLanguageEnum;
+}
+
+export interface SupportReopenRequest {
+    dialogId: string;
+    acceptLanguage?: SupportReopenAcceptLanguageEnum;
+}
+
+export interface SupportSnoozeRequest {
+    dialogId: string;
+    snoozeDialogDto: SnoozeDialogDto;
+    acceptLanguage?: SupportSnoozeAcceptLanguageEnum;
 }
 
 export interface UpdateAgentRequest {
@@ -193,6 +244,12 @@ export interface UpdateSoundMuteRequest {
     id: string;
     setSoundMuteDto: SetSoundMuteDto;
     acceptLanguage?: UpdateSoundMuteAcceptLanguageEnum;
+}
+
+export interface UpdateSupportAssignmentRequest {
+    dialogId: string;
+    transferDialogOperatorDto: TransferDialogOperatorDto;
+    acceptLanguage?: UpdateSupportAssignmentAcceptLanguageEnum;
 }
 
 export interface UpdateUnarchiveRequest {
@@ -720,6 +777,110 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
+     *
+     */
+    async getProjectsSupportOperatorsRaw(requestParameters: GetProjectsSupportOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportOperatorDirectoryDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectsSupportOperators().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/projects/{projectId}/support-operators`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SupportOperatorDirectoryDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getProjectsSupportOperators(requestParameters: GetProjectsSupportOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportOperatorDirectoryDto> {
+        const response = await this.getProjectsSupportOperatorsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 50 , .
+     *
+     */
+    async getSupportHistoryRaw(requestParameters: GetSupportHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DialogSupportChangeDto>>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling getSupportHistory().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/history`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DialogSupportChangeDtoFromJSON));
+    }
+
+    /**
+     * 50 , .
+     *
+     */
+    async getSupportHistory(requestParameters: GetSupportHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DialogSupportChangeDto>> {
+        const response = await this.getSupportHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . . .
      *
      */
@@ -830,6 +991,244 @@ export class DialogsManagementApi extends runtime.BaseAPI {
      */
     async projectsBillingRecoveryRetry(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto> {
         const response = await this.projectsBillingRecoveryRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async supportCloseRaw(requestParameters: SupportCloseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling supportClose().'
+            );
+        }
+
+        if (requestParameters['closeDialogDto'] == null) {
+            throw new runtime.RequiredError(
+                'closeDialogDto',
+                'Required parameter "closeDialogDto" was null or undefined when calling supportClose().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/close`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CloseDialogDtoToJSON(requestParameters['closeDialogDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async supportClose(requestParameters: SupportCloseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.supportCloseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , .
+     *
+     */
+    async supportHandoffRaw(requestParameters: SupportHandoffRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling supportHandoff().'
+            );
+        }
+
+        if (requestParameters['handoffDialogDto'] == null) {
+            throw new runtime.RequiredError(
+                'handoffDialogDto',
+                'Required parameter "handoffDialogDto" was null or undefined when calling supportHandoff().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/handoff`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: HandoffDialogDtoToJSON(requestParameters['handoffDialogDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async supportHandoff(requestParameters: SupportHandoffRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.supportHandoffRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async supportReopenRaw(requestParameters: SupportReopenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling supportReopen().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/reopen`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async supportReopen(requestParameters: SupportReopenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.supportReopenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async supportSnoozeRaw(requestParameters: SupportSnoozeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling supportSnooze().'
+            );
+        }
+
+        if (requestParameters['snoozeDialogDto'] == null) {
+            throw new runtime.RequiredError(
+                'snoozeDialogDto',
+                'Required parameter "snoozeDialogDto" was null or undefined when calling supportSnooze().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/snooze`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SnoozeDialogDtoToJSON(requestParameters['snoozeDialogDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async supportSnooze(requestParameters: SupportSnoozeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.supportSnoozeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1477,6 +1876,68 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
+     * . .
+     *
+     */
+    async updateSupportAssignmentRaw(requestParameters: UpdateSupportAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling updateSupportAssignment().'
+            );
+        }
+
+        if (requestParameters['transferDialogOperatorDto'] == null) {
+            throw new runtime.RequiredError(
+                'transferDialogOperatorDto',
+                'Required parameter "transferDialogOperatorDto" was null or undefined when calling updateSupportAssignment().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/assignment`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TransferDialogOperatorDtoToJSON(requestParameters['transferDialogOperatorDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async updateSupportAssignment(requestParameters: UpdateSupportAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
+        const response = await this.updateSupportAssignmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -1613,6 +2074,22 @@ export type GetProjectsBillingRecoveryAcceptLanguageEnum = typeof GetProjectsBil
 /**
  * @export
  */
+export const GetProjectsSupportOperatorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetProjectsSupportOperatorsAcceptLanguageEnum = typeof GetProjectsSupportOperatorsAcceptLanguageEnum[keyof typeof GetProjectsSupportOperatorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetSupportHistoryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetSupportHistoryAcceptLanguageEnum = typeof GetSupportHistoryAcceptLanguageEnum[keyof typeof GetSupportHistoryAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const ProjectsBillingRecoveryDismissAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1626,6 +2103,38 @@ export const ProjectsBillingRecoveryRetryAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type ProjectsBillingRecoveryRetryAcceptLanguageEnum = typeof ProjectsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof ProjectsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SupportCloseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SupportCloseAcceptLanguageEnum = typeof SupportCloseAcceptLanguageEnum[keyof typeof SupportCloseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SupportHandoffAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SupportHandoffAcceptLanguageEnum = typeof SupportHandoffAcceptLanguageEnum[keyof typeof SupportHandoffAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SupportReopenAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SupportReopenAcceptLanguageEnum = typeof SupportReopenAcceptLanguageEnum[keyof typeof SupportReopenAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SupportSnoozeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SupportSnoozeAcceptLanguageEnum = typeof SupportSnoozeAcceptLanguageEnum[keyof typeof SupportSnoozeAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1722,6 +2231,14 @@ export const UpdateSoundMuteAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateSoundMuteAcceptLanguageEnum = typeof UpdateSoundMuteAcceptLanguageEnum[keyof typeof UpdateSoundMuteAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateSupportAssignmentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateSupportAssignmentAcceptLanguageEnum = typeof UpdateSupportAssignmentAcceptLanguageEnum[keyof typeof UpdateSupportAssignmentAcceptLanguageEnum];
 /**
  * @export
  */

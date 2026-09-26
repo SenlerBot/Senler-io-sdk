@@ -29,7 +29,7 @@ export interface DialogOperatorAssignmentDto {
      */
     assignedAt: Date;
     /**
-     * UUID ,
+     * UUID , , system
      * @type {string}
      * @memberof DialogOperatorAssignmentDto
      */

@@ -18,6 +18,24 @@ import type { CustomMcpServerAuthHeaderDto } from './CustomMcpServerAuthHeaderDt
  */
 export interface UpdateServerBodyDto {
     /**
+     *
+     * @type {string}
+     * @memberof UpdateServerBodyDto
+     */
+    leadAuthHeaderName?: string;
+    /**
+     * JWT, Bearer;
+     * @type {string}
+     * @memberof UpdateServerBodyDto
+     */
+    leadAuthHeaderPrefix?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateServerBodyDto
+     */
+    leadAuthRequireVerified?: boolean;
+    /**
      * MCP
      * @type {string}
      * @memberof UpdateServerBodyDto
@@ -100,6 +118,7 @@ export declare const UpdateServerBodyDtoCustomAuthModeEnum: {
     readonly AccessToken: "access_token";
     readonly CustomHeaders: "custom_headers";
     readonly McpOauth: "mcp_oauth";
+    readonly LeadJwt: "lead_jwt";
 };
 export type UpdateServerBodyDtoCustomAuthModeEnum = typeof UpdateServerBodyDtoCustomAuthModeEnum[keyof typeof UpdateServerBodyDtoCustomAuthModeEnum];
 /**

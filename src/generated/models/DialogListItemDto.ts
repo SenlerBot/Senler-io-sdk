@@ -355,6 +355,12 @@ export interface DialogListItemDto {
      */
     totalEvents: number;
     /**
+     * . .
+     * @type {number}
+     * @memberof DialogListItemDto
+     */
+    messageStateRevision?: number;
+    /**
      *
      * @type {number}
      * @memberof DialogListItemDto
@@ -445,6 +451,30 @@ export interface DialogListItemDto {
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
+     *
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    supportGroupId?: string | null;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogListItemDto
+     */
+    snoozedUntil?: Date | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DialogListItemDto
+     */
+    humanHandoff?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    operatorAssignmentSource?: DialogListItemDtoOperatorAssignmentSourceEnum;
+    /**
      * (UI )
      * @type {boolean}
      * @memberof DialogListItemDto
@@ -520,6 +550,15 @@ export const DialogListItemDtoPriorityEnum = {
     Urgent: 'urgent'
 } as const;
 export type DialogListItemDtoPriorityEnum = typeof DialogListItemDtoPriorityEnum[keyof typeof DialogListItemDtoPriorityEnum];
+
+/**
+ * @export
+ */
+export const DialogListItemDtoOperatorAssignmentSourceEnum = {
+    Auto: 'auto',
+    Manual: 'manual'
+} as const;
+export type DialogListItemDtoOperatorAssignmentSourceEnum = typeof DialogListItemDtoOperatorAssignmentSourceEnum[keyof typeof DialogListItemDtoOperatorAssignmentSourceEnum];
 
 
 /**
@@ -601,6 +640,7 @@ export function DialogListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
         'totalEvents': json['total_events'],
+        'messageStateRevision': json['message_state_revision'] == null ? undefined : json['message_state_revision'],
         'messagesCount': json['messages_count'],
         'operatorUnreadCount': json['operator_unread_count'],
         'operatorReadRevision': json['operator_read_revision'] == null ? undefined : json['operator_read_revision'],
@@ -616,6 +656,10 @@ export function DialogListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'lastMessage': json['last_message'] == null ? undefined : DialogLastMessageDtoFromJSON(json['last_message']),
         'serviceActor': json['service_actor'] == null ? undefined : EventSenderDtoFromJSON(json['service_actor']),
         'operatorAssignment': json['operator_assignment'] == null ? undefined : DialogOperatorAssignmentDtoFromJSON(json['operator_assignment']),
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'snoozedUntil': json['snoozed_until'] == null ? undefined : (new Date(json['snoozed_until'])),
+        'humanHandoff': json['human_handoff'] == null ? undefined : json['human_handoff'],
+        'operatorAssignmentSource': json['operator_assignment_source'] == null ? undefined : json['operator_assignment_source'],
         'isSoundMuted': json['is_sound_muted'],
         'currentTyping': json['current_typing'] == null ? undefined : ((json['current_typing'] as Array<any>).map(DialogCurrentTypingDtoFromJSON)),
         'currentAiActivity': json['current_ai_activity'] == null ? undefined : AiResponseActivityDtoFromJSON(json['current_ai_activity']),
@@ -678,6 +722,7 @@ export function DialogListItemDtoToJSONTyped(value?: DialogListItemDto | null, i
         'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
         'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],
         'total_events': value['totalEvents'],
+        'message_state_revision': value['messageStateRevision'],
         'messages_count': value['messagesCount'],
         'operator_unread_count': value['operatorUnreadCount'],
         'operator_read_revision': value['operatorReadRevision'],
@@ -693,6 +738,10 @@ export function DialogListItemDtoToJSONTyped(value?: DialogListItemDto | null, i
         'last_message': DialogLastMessageDtoToJSON(value['lastMessage']),
         'service_actor': EventSenderDtoToJSON(value['serviceActor']),
         'operator_assignment': DialogOperatorAssignmentDtoToJSON(value['operatorAssignment']),
+        'support_group_id': value['supportGroupId'],
+        'snoozed_until': value['snoozedUntil'] == null ? undefined : ((value['snoozedUntil'] as any).toISOString()),
+        'human_handoff': value['humanHandoff'],
+        'operator_assignment_source': value['operatorAssignmentSource'],
         'is_sound_muted': value['isSoundMuted'],
         'current_typing': value['currentTyping'] == null ? undefined : ((value['currentTyping'] as Array<any>).map(DialogCurrentTypingDtoToJSON)),
         'current_ai_activity': AiResponseActivityDtoToJSON(value['currentAiActivity']),

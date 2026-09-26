@@ -38,6 +38,7 @@ function StorageStatsFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'name': json['name'],
         'eventCount': json['event_count'],
+        'isEstimated': json['is_estimated'] == null ? undefined : json['is_estimated'],
         'oldestEvent': json['oldest_event'] == null ? undefined : json['oldest_event'],
         'newestEvent': json['newest_event'] == null ? undefined : json['newest_event'],
     };
@@ -52,6 +53,7 @@ function StorageStatsToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'name': value['name'],
         'event_count': value['eventCount'],
+        'is_estimated': value['isEstimated'],
         'oldest_event': value['oldestEvent'],
         'newest_event': value['newestEvent'],
     };

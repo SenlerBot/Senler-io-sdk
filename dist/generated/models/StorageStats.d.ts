@@ -29,6 +29,12 @@ export interface StorageStats {
     eventCount: number;
     /**
      *
+     * @type {boolean}
+     * @memberof StorageStats
+     */
+    isEstimated?: boolean;
+    /**
+     *
      * @type {string}
      * @memberof StorageStats
      */

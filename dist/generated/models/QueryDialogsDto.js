@@ -13,12 +13,26 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryDialogsDtoSpamStatusEnum = exports.QueryDialogsDtoMuteStatusEnum = exports.QueryDialogsDtoDialogTypeEnum = exports.QueryDialogsDtoOperatorAssignmentEnum = exports.QueryDialogsDtoLeadResponseStatusEnum = exports.QueryDialogsDtoOperatorResponseStatusEnum = exports.QueryDialogsDtoStatusEnum = exports.QueryDialogsDtoSortByEnum = void 0;
+exports.QueryDialogsDtoSpamStatusEnum = exports.QueryDialogsDtoMuteStatusEnum = exports.QueryDialogsDtoDialogTypeEnum = exports.QueryDialogsDtoOperatorAssignmentEnum = exports.QueryDialogsDtoLeadResponseStatusEnum = exports.QueryDialogsDtoOperatorResponseStatusEnum = exports.QueryDialogsDtoStatusEnum = exports.QueryDialogsDtoSortByEnum = exports.QueryDialogsDtoSnoozeStatusEnum = exports.QueryDialogsDtoSupportGroupAssignmentEnum = void 0;
 exports.instanceOfQueryDialogsDto = instanceOfQueryDialogsDto;
 exports.QueryDialogsDtoFromJSON = QueryDialogsDtoFromJSON;
 exports.QueryDialogsDtoFromJSONTyped = QueryDialogsDtoFromJSONTyped;
 exports.QueryDialogsDtoToJSON = QueryDialogsDtoToJSON;
 exports.QueryDialogsDtoToJSONTyped = QueryDialogsDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.QueryDialogsDtoSupportGroupAssignmentEnum = {
+    None: 'none'
+};
+/**
+ * @export
+ */
+exports.QueryDialogsDtoSnoozeStatusEnum = {
+    Active: 'active',
+    Snoozed: 'snoozed',
+    All: 'all'
+};
 /**
  * @export
  */
@@ -97,6 +111,10 @@ function QueryDialogsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'operatorUserIds': json['operator_user_ids'] == null ? undefined : json['operator_user_ids'],
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'supportGroupAssignment': json['support_group_assignment'] == null ? undefined : json['support_group_assignment'],
+        'snoozeStatus': json['snooze_status'] == null ? undefined : json['snooze_status'],
         'q': json['q'] == null ? undefined : json['q'],
         'from': json['from'] == null ? undefined : json['from'],
         'size': json['size'] == null ? undefined : json['size'],
@@ -142,6 +160,10 @@ function QueryDialogsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'operator_user_ids': value['operatorUserIds'],
+        'support_group_id': value['supportGroupId'],
+        'support_group_assignment': value['supportGroupAssignment'],
+        'snooze_status': value['snoozeStatus'],
         'q': value['q'],
         'from': value['from'],
         'size': value['size'],

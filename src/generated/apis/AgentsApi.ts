@@ -94,6 +94,9 @@ export interface AgentsListRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    search?: string;
+    activeOnly?: boolean;
+    ids?: Array<string>;
     acceptLanguage?: AgentsListAcceptLanguageEnum;
 }
 
@@ -421,6 +424,18 @@ export class AgentsApi extends runtime.BaseAPI {
 
         if (requestParameters['offset'] != null) {
             queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['activeOnly'] != null) {
+            queryParameters['active_only'] = requestParameters['activeOnly'];
+        }
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

@@ -21,6 +21,7 @@ exports.UpdateWidgetSettingsDtoToJSON = UpdateWidgetSettingsDtoToJSON;
 exports.UpdateWidgetSettingsDtoToJSONTyped = UpdateWidgetSettingsDtoToJSONTyped;
 const WidgetFeaturesDto_1 = require("./WidgetFeaturesDto");
 const WidgetExternalAiSettingsDto_1 = require("./WidgetExternalAiSettingsDto");
+const WidgetWelcomeSettingsDto_1 = require("./WidgetWelcomeSettingsDto");
 const WidgetThemeDto_1 = require("./WidgetThemeDto");
 /**
  * @export
@@ -56,6 +57,7 @@ function UpdateWidgetSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'identityVerification': json['identity_verification'] == null ? undefined : json['identity_verification'],
         'language': json['language'] == null ? undefined : json['language'],
         'displayMode': json['display_mode'] == null ? undefined : json['display_mode'],
+        'welcome': json['welcome'] == null ? undefined : (0, WidgetWelcomeSettingsDto_1.WidgetWelcomeSettingsDtoFromJSON)(json['welcome']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
         'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoFromJSON)(json['external_ai']),
@@ -76,6 +78,7 @@ function UpdateWidgetSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'identity_verification': value['identityVerification'],
         'language': value['language'],
         'display_mode': value['displayMode'],
+        'welcome': (0, WidgetWelcomeSettingsDto_1.WidgetWelcomeSettingsDtoToJSON)(value['welcome']),
         'allowed_domains': value['allowedDomains'],
         'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoToJSON)(value['externalAi']),

@@ -83,6 +83,13 @@ import {
     AutomationRandomBranchDtoToJSON,
     AutomationRandomBranchDtoToJSONTyped,
 } from './AutomationRandomBranchDto';
+import type { AutomationPollOptionDto } from './AutomationPollOptionDto';
+import {
+    AutomationPollOptionDtoFromJSON,
+    AutomationPollOptionDtoFromJSONTyped,
+    AutomationPollOptionDtoToJSON,
+    AutomationPollOptionDtoToJSONTyped,
+} from './AutomationPollOptionDto';
 import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
 import {
     AutomationVariableDestinationDtoFromJSON,
@@ -111,6 +118,66 @@ import {
  * @interface AutomationNodeConfigDto
  */
 export interface AutomationNodeConfigDto {
+    /**
+     * .
+     * @type {Array<AutomationPollOptionDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollOptions?: Array<AutomationPollOptionDto>;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollMultiple?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollVariableName?: string;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollAllowCustomAnswer?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollReplyVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollConfirmText?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiInstruction?: string;
+    /**
+     * ai branches.
+     * @type {Array<AutomationAgentBranchDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiBranches?: Array<AutomationAgentBranchDto>;
+    /**
+     * ai confidence threshold.
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiConfidenceThreshold?: number;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiIncludeDialogHistory?: boolean;
     /**
      * HTTP- .
      * @type {AutomationHttpConfigDto}
@@ -159,6 +226,18 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     incomingMessageVariableName?: string;
+    /**
+     * . .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    incomingAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    incomingAttachmentsVariableScope?: AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum;
     /**
      * .
      * @type {string}
@@ -676,6 +755,18 @@ export interface AutomationNodeConfigDto {
      */
     messageReplyVariableName?: string;
     /**
+     * , reply.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReplyAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReplyAttachmentsVariableScope?: AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum;
+    /**
      * .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -705,6 +796,12 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     waitVariableName?: string;
+    /**
+     * .
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    typingDurationSeconds?: number;
     /**
      * .
      * @type {number}
@@ -891,6 +988,17 @@ export const AutomationNodeConfigDtoMessageMatchModeEnum = {
     StartPayloadPrefix: 'start_payload_prefix'
 } as const;
 export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeConfigDtoMessageMatchModeEnum[keyof typeof AutomationNodeConfigDtoMessageMatchModeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum];
 
 /**
  * @export
@@ -1127,7 +1235,11 @@ export const AutomationNodeConfigDtoVariableOperatorEnum = {
     LessThanOrEqual: 'less_than_or_equal',
     Before: 'before',
     After: 'after',
-    Contains: 'contains'
+    Contains: 'contains',
+    HasAttachments: 'has_attachments',
+    NoAttachments: 'no_attachments',
+    AttachmentType: 'attachment_type',
+    AttachmentFormat: 'attachment_format'
 } as const;
 export type AutomationNodeConfigDtoVariableOperatorEnum = typeof AutomationNodeConfigDtoVariableOperatorEnum[keyof typeof AutomationNodeConfigDtoVariableOperatorEnum];
 
@@ -1249,6 +1361,17 @@ export type AutomationNodeConfigDtoMessageReplyVariableScopeEnum = typeof Automa
 /**
  * @export
  */
+export const AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum];
+
+/**
+ * @export
+ */
 export const AutomationNodeConfigDtoWaitModeEnum = {
     Duration: 'duration',
     Until: 'until'
@@ -1350,6 +1473,16 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'pollOptions': json['poll_options'] == null ? undefined : ((json['poll_options'] as Array<any>).map(AutomationPollOptionDtoFromJSON)),
+        'pollMultiple': json['poll_multiple'] == null ? undefined : json['poll_multiple'],
+        'pollVariableName': json['poll_variable_name'] == null ? undefined : json['poll_variable_name'],
+        'pollAllowCustomAnswer': json['poll_allow_custom_answer'] == null ? undefined : json['poll_allow_custom_answer'],
+        'pollReplyVariableName': json['poll_reply_variable_name'] == null ? undefined : json['poll_reply_variable_name'],
+        'pollConfirmText': json['poll_confirm_text'] == null ? undefined : json['poll_confirm_text'],
+        'aiInstruction': json['ai_instruction'] == null ? undefined : json['ai_instruction'],
+        'aiBranches': json['ai_branches'] == null ? undefined : ((json['ai_branches'] as Array<any>).map(AutomationAgentBranchDtoFromJSON)),
+        'aiConfidenceThreshold': json['ai_confidence_threshold'] == null ? undefined : json['ai_confidence_threshold'],
+        'aiIncludeDialogHistory': json['ai_include_dialog_history'] == null ? undefined : json['ai_include_dialog_history'],
         'http': json['http'] == null ? undefined : AutomationHttpConfigDtoFromJSON(json['http']),
         'eventType': json['event_type'] == null ? undefined : json['event_type'],
         'reactionValues': json['reaction_values'] == null ? undefined : json['reaction_values'],
@@ -1358,6 +1491,8 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'messageMatchMode': json['message_match_mode'] == null ? undefined : json['message_match_mode'],
         'messagePhrases': json['message_phrases'] == null ? undefined : json['message_phrases'],
         'incomingMessageVariableName': json['incoming_message_variable_name'] == null ? undefined : json['incoming_message_variable_name'],
+        'incomingAttachmentsVariableName': json['incoming_attachments_variable_name'] == null ? undefined : json['incoming_attachments_variable_name'],
+        'incomingAttachmentsVariableScope': json['incoming_attachments_variable_scope'] == null ? undefined : json['incoming_attachments_variable_scope'],
         'incomingMessageVariableScope': json['incoming_message_variable_scope'] == null ? undefined : json['incoming_message_variable_scope'],
         'appEventId': json['app_event_id'] == null ? undefined : json['app_event_id'],
         'appEventName': json['app_event_name'] == null ? undefined : json['app_event_name'],
@@ -1444,11 +1579,14 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'messageWaitForReply': json['message_wait_for_reply'] == null ? undefined : json['message_wait_for_reply'],
         'messageReplyVariableScope': json['message_reply_variable_scope'] == null ? undefined : json['message_reply_variable_scope'],
         'messageReplyVariableName': json['message_reply_variable_name'] == null ? undefined : json['message_reply_variable_name'],
+        'messageReplyAttachmentsVariableName': json['message_reply_attachments_variable_name'] == null ? undefined : json['message_reply_attachments_variable_name'],
+        'messageReplyAttachmentsVariableScope': json['message_reply_attachments_variable_scope'] == null ? undefined : json['message_reply_attachments_variable_scope'],
         'waitMode': json['wait_mode'] == null ? undefined : json['wait_mode'],
         'waitDurationSeconds': json['wait_duration_seconds'] == null ? undefined : json['wait_duration_seconds'],
         'waitUntil': json['wait_until'] == null ? undefined : json['wait_until'],
         'waitVariableScope': json['wait_variable_scope'] == null ? undefined : json['wait_variable_scope'],
         'waitVariableName': json['wait_variable_name'] == null ? undefined : json['wait_variable_name'],
+        'typingDurationSeconds': json['typing_duration_seconds'] == null ? undefined : json['typing_duration_seconds'],
         'maxIterations': json['max_iterations'] == null ? undefined : json['max_iterations'],
         'loopMode': json['loop_mode'] == null ? undefined : json['loop_mode'],
         'loopCollectionVariableScope': json['loop_collection_variable_scope'] == null ? undefined : json['loop_collection_variable_scope'],
@@ -1486,6 +1624,16 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
 
     return {
 
+        'poll_options': value['pollOptions'] == null ? undefined : ((value['pollOptions'] as Array<any>).map(AutomationPollOptionDtoToJSON)),
+        'poll_multiple': value['pollMultiple'],
+        'poll_variable_name': value['pollVariableName'],
+        'poll_allow_custom_answer': value['pollAllowCustomAnswer'],
+        'poll_reply_variable_name': value['pollReplyVariableName'],
+        'poll_confirm_text': value['pollConfirmText'],
+        'ai_instruction': value['aiInstruction'],
+        'ai_branches': value['aiBranches'] == null ? undefined : ((value['aiBranches'] as Array<any>).map(AutomationAgentBranchDtoToJSON)),
+        'ai_confidence_threshold': value['aiConfidenceThreshold'],
+        'ai_include_dialog_history': value['aiIncludeDialogHistory'],
         'http': AutomationHttpConfigDtoToJSON(value['http']),
         'event_type': value['eventType'],
         'reaction_values': value['reactionValues'],
@@ -1494,6 +1642,8 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'message_match_mode': value['messageMatchMode'],
         'message_phrases': value['messagePhrases'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
+        'incoming_attachments_variable_name': value['incomingAttachmentsVariableName'],
+        'incoming_attachments_variable_scope': value['incomingAttachmentsVariableScope'],
         'incoming_message_variable_scope': value['incomingMessageVariableScope'],
         'app_event_id': value['appEventId'],
         'app_event_name': value['appEventName'],
@@ -1580,11 +1730,14 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'message_wait_for_reply': value['messageWaitForReply'],
         'message_reply_variable_scope': value['messageReplyVariableScope'],
         'message_reply_variable_name': value['messageReplyVariableName'],
+        'message_reply_attachments_variable_name': value['messageReplyAttachmentsVariableName'],
+        'message_reply_attachments_variable_scope': value['messageReplyAttachmentsVariableScope'],
         'wait_mode': value['waitMode'],
         'wait_duration_seconds': value['waitDurationSeconds'],
         'wait_until': value['waitUntil'],
         'wait_variable_scope': value['waitVariableScope'],
         'wait_variable_name': value['waitVariableName'],
+        'typing_duration_seconds': value['typingDurationSeconds'],
         'max_iterations': value['maxIterations'],
         'loop_mode': value['loopMode'],
         'loop_collection_variable_scope': value['loopCollectionVariableScope'],

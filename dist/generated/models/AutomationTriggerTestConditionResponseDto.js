@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = exports.AutomationTriggerTestConditionResponseDtoDialogScopeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageSenderEnum = exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = void 0;
+exports.AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = exports.AutomationTriggerTestConditionResponseDtoDialogScopeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageSenderEnum = exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = void 0;
 exports.instanceOfAutomationTriggerTestConditionResponseDto = instanceOfAutomationTriggerTestConditionResponseDto;
 exports.AutomationTriggerTestConditionResponseDtoFromJSON = AutomationTriggerTestConditionResponseDtoFromJSON;
 exports.AutomationTriggerTestConditionResponseDtoFromJSONTyped = AutomationTriggerTestConditionResponseDtoFromJSONTyped;
@@ -75,6 +75,15 @@ exports.AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnu
     Project: 'project'
 };
 /**
+ * @export
+ */
+exports.AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+};
+/**
  * Check if a given object implements the AutomationTriggerTestConditionResponseDto interface.
  */
 function instanceOfAutomationTriggerTestConditionResponseDto(value) {
@@ -102,6 +111,10 @@ function instanceOfAutomationTriggerTestConditionResponseDto(value) {
         return false;
     if (!('incomingMessageVariableScope' in value) || value['incomingMessageVariableScope'] === undefined)
         return false;
+    if (!('incomingAttachmentsVariableName' in value) || value['incomingAttachmentsVariableName'] === undefined)
+        return false;
+    if (!('incomingAttachmentsVariableScope' in value) || value['incomingAttachmentsVariableScope'] === undefined)
+        return false;
     return true;
 }
 function AutomationTriggerTestConditionResponseDtoFromJSON(json) {
@@ -124,6 +137,8 @@ function AutomationTriggerTestConditionResponseDtoFromJSONTyped(json, ignoreDisc
         'runReentryMode': json['run_reentry_mode'],
         'incomingMessageVariableName': json['incoming_message_variable_name'],
         'incomingMessageVariableScope': json['incoming_message_variable_scope'],
+        'incomingAttachmentsVariableName': json['incoming_attachments_variable_name'],
+        'incomingAttachmentsVariableScope': json['incoming_attachments_variable_scope'],
     };
 }
 function AutomationTriggerTestConditionResponseDtoToJSON(json) {
@@ -146,5 +161,7 @@ function AutomationTriggerTestConditionResponseDtoToJSONTyped(value, ignoreDiscr
         'run_reentry_mode': value['runReentryMode'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_message_variable_scope': value['incomingMessageVariableScope'],
+        'incoming_attachments_variable_name': value['incomingAttachmentsVariableName'],
+        'incoming_attachments_variable_scope': value['incomingAttachmentsVariableScope'],
     };
 }

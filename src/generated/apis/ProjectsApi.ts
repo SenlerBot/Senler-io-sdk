@@ -58,6 +58,7 @@ export interface GetMeRequest {
 export interface ListRequest {
     limit?: number;
     offset?: number;
+    search?: string;
     isActive?: boolean;
     source?: ListSourceEnum;
     acceptLanguage?: ListAcceptLanguageEnum;
@@ -203,6 +204,10 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (requestParameters['offset'] != null) {
             queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
         }
 
         if (requestParameters['isActive'] != null) {

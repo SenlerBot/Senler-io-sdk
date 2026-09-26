@@ -35,6 +35,24 @@ import {
  */
 export interface CreateServerDto {
     /**
+     *
+     * @type {string}
+     * @memberof CreateServerDto
+     */
+    leadAuthHeaderName?: string;
+    /**
+     * JWT, Bearer;
+     * @type {string}
+     * @memberof CreateServerDto
+     */
+    leadAuthHeaderPrefix?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof CreateServerDto
+     */
+    leadAuthRequireVerified?: boolean;
+    /**
      * MCP
      * @type {string}
      * @memberof CreateServerDto
@@ -128,7 +146,8 @@ export const CreateServerDtoCustomAuthModeEnum = {
     None: 'none',
     AccessToken: 'access_token',
     CustomHeaders: 'custom_headers',
-    McpOauth: 'mcp_oauth'
+    McpOauth: 'mcp_oauth',
+    LeadJwt: 'lead_jwt'
 } as const;
 export type CreateServerDtoCustomAuthModeEnum = typeof CreateServerDtoCustomAuthModeEnum[keyof typeof CreateServerDtoCustomAuthModeEnum];
 
@@ -169,6 +188,9 @@ export function CreateServerDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
 
+        'leadAuthHeaderName': json['lead_auth_header_name'] == null ? undefined : json['lead_auth_header_name'],
+        'leadAuthHeaderPrefix': json['lead_auth_header_prefix'] == null ? undefined : json['lead_auth_header_prefix'],
+        'leadAuthRequireVerified': json['lead_auth_require_verified'] == null ? undefined : json['lead_auth_require_verified'],
         'customAuthMode': json['custom_auth_mode'] == null ? undefined : json['custom_auth_mode'],
         'authToken': json['auth_token'] == null ? undefined : json['auth_token'],
         'authHeaders': json['auth_headers'] == null ? undefined : ((json['auth_headers'] as Array<any>).map(CustomMcpServerAuthHeaderDtoFromJSON)),
@@ -197,6 +219,9 @@ export function CreateServerDtoToJSONTyped(value?: CreateServerDto | null, ignor
 
     return {
 
+        'lead_auth_header_name': value['leadAuthHeaderName'],
+        'lead_auth_header_prefix': value['leadAuthHeaderPrefix'],
+        'lead_auth_require_verified': value['leadAuthRequireVerified'],
         'custom_auth_mode': value['customAuthMode'],
         'auth_token': value['authToken'],
         'auth_headers': value['authHeaders'] == null ? undefined : ((value['authHeaders'] as Array<any>).map(CustomMcpServerAuthHeaderDtoToJSON)),

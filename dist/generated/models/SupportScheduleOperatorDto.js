@@ -22,6 +22,8 @@ exports.SupportScheduleOperatorDtoToJSONTyped = SupportScheduleOperatorDtoToJSON
  * Check if a given object implements the SupportScheduleOperatorDto interface.
  */
 function instanceOfSupportScheduleOperatorDto(value) {
+    if (!('groupId' in value) || value['groupId'] === undefined)
+        return false;
     if (!('projectMemberId' in value) || value['projectMemberId'] === undefined)
         return false;
     if (!('userId' in value) || value['userId'] === undefined)
@@ -46,6 +48,7 @@ function SupportScheduleOperatorDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'groupId': json['group_id'],
         'projectMemberId': json['project_member_id'],
         'userId': json['user_id'],
         'email': json['email'],
@@ -63,6 +66,7 @@ function SupportScheduleOperatorDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'group_id': value['groupId'],
         'project_member_id': value['projectMemberId'],
         'user_id': value['userId'],
         'email': value['email'],

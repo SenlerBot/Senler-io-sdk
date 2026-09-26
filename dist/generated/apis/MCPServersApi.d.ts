@@ -59,6 +59,7 @@ export interface GetListsRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    search?: string;
     acceptLanguage?: GetListsAcceptLanguageEnum;
 }
 export interface GetLists2Request {

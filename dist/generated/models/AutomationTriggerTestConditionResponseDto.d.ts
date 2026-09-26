@@ -87,6 +87,18 @@ export interface AutomationTriggerTestConditionResponseDto {
      * @memberof AutomationTriggerTestConditionResponseDto
      */
     incomingMessageVariableScope: AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum | null;
+    /**
+     * incoming attachments variable name.
+     * @type {string}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    incomingAttachmentsVariableName: string | null;
+    /**
+     * : run, lead, dialog, project.
+     * @type {string}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    incomingAttachmentsVariableScope: AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum | null;
 }
 /**
  * @export
@@ -149,6 +161,16 @@ export declare const AutomationTriggerTestConditionResponseDtoIncomingMessageVar
     readonly Project: "project";
 };
 export type AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Dialog: "dialog";
+    readonly Project: "project";
+};
+export type AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum];
 /**
  * Check if a given object implements the AutomationTriggerTestConditionResponseDto interface.
  */

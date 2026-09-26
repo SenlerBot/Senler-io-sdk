@@ -25,6 +25,8 @@ exports.TextModelStatsToJSONTyped = TextModelStatsToJSONTyped;
 exports.TextModelStatsProviderEnum = {
     Openai: 'openai',
     Google: 'google',
+    Gigachat: 'gigachat',
+    CloudRu: 'cloud_ru',
     Openrouter: 'openrouter',
     FishAudio: 'fish_audio',
     Together: 'together',

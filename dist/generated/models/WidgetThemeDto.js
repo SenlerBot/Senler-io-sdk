@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WidgetThemeDtoThemeModeEnum = exports.WidgetThemeDtoPositionEnum = void 0;
+exports.WidgetThemeDtoThemeModeEnum = exports.WidgetThemeDtoPositionEnum = exports.WidgetThemeDtoWelcomeIconShapeEnum = void 0;
 exports.instanceOfWidgetThemeDto = instanceOfWidgetThemeDto;
 exports.WidgetThemeDtoFromJSON = WidgetThemeDtoFromJSON;
 exports.WidgetThemeDtoFromJSONTyped = WidgetThemeDtoFromJSONTyped;
@@ -22,6 +22,13 @@ exports.WidgetThemeDtoToJSONTyped = WidgetThemeDtoToJSONTyped;
 const WidgetLocalizedTextDto_1 = require("./WidgetLocalizedTextDto");
 const WidgetLocalizedButtonsDto_1 = require("./WidgetLocalizedButtonsDto");
 const ButtonSettingsDto_1 = require("./ButtonSettingsDto");
+/**
+ * @export
+ */
+exports.WidgetThemeDtoWelcomeIconShapeEnum = {
+    Circle: 'circle',
+    Square: 'square'
+};
 /**
  * @export
  */
@@ -53,6 +60,8 @@ function WidgetThemeDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'welcomeIconUrl': json['welcome_icon_url'] == null ? undefined : json['welcome_icon_url'],
+        'welcomeIconShape': json['welcome_icon_shape'] == null ? undefined : json['welcome_icon_shape'],
         'chatTitle': json['chat_title'] == null ? undefined : (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoFromJSON)(json['chat_title']),
         'defaultDialogTitle': json['default_dialog_title'] == null ? undefined : (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoFromJSON)(json['default_dialog_title']),
         'position': json['position'] == null ? undefined : json['position'],
@@ -75,6 +84,8 @@ function WidgetThemeDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'welcome_icon_url': value['welcomeIconUrl'],
+        'welcome_icon_shape': value['welcomeIconShape'],
         'chat_title': (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoToJSON)(value['chatTitle']),
         'default_dialog_title': (0, WidgetLocalizedTextDto_1.WidgetLocalizedTextDtoToJSON)(value['defaultDialogTitle']),
         'position': value['position'],

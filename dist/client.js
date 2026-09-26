@@ -88,6 +88,7 @@ const SegmentsPublicApi_1 = require("./generated/apis/SegmentsPublicApi");
 const SpacesApi_1 = require("./generated/apis/SpacesApi");
 const StatisticsApi_1 = require("./generated/apis/StatisticsApi");
 const StorageApi_1 = require("./generated/apis/StorageApi");
+const SupportOperatorsApi_1 = require("./generated/apis/SupportOperatorsApi");
 const SupportSchedulesApi_1 = require("./generated/apis/SupportSchedulesApi");
 const TariffsApi_1 = require("./generated/apis/TariffsApi");
 const TrafficMarksApi_1 = require("./generated/apis/TrafficMarksApi");
@@ -198,6 +199,7 @@ class AiSenlerClient {
         this.spaces = new SpacesApi_1.SpacesApi(configuration);
         this.statistics = new StatisticsApi_1.StatisticsApi(configuration);
         this.storage = new StorageApi_1.StorageApi(configuration);
+        this.supportOperators = new SupportOperatorsApi_1.SupportOperatorsApi(configuration);
         this.supportSchedules = new SupportSchedulesApi_1.SupportSchedulesApi(configuration);
         this.tariffs = new TariffsApi_1.TariffsApi(configuration);
         this.trafficMarks = new TrafficMarksApi_1.TrafficMarksApi(configuration);

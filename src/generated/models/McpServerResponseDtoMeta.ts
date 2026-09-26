@@ -26,6 +26,12 @@ export interface McpServerResponseDtoMeta {
      * @memberof McpServerResponseDtoMeta
      */
     tags?: Array<string>;
+    /**
+     * MCP,
+     * @type {number}
+     * @memberof McpServerResponseDtoMeta
+     */
+    toolCallTimeoutSeconds?: number;
 }
 
 /**
@@ -47,6 +53,7 @@ export function McpServerResponseDtoMetaFromJSONTyped(json: any, ignoreDiscrimin
 
             ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
+        'toolCallTimeoutSeconds': json['tool_call_timeout_seconds'] == null ? undefined : json['tool_call_timeout_seconds'],
     };
 }
 
@@ -63,5 +70,6 @@ export function McpServerResponseDtoMetaToJSONTyped(value?: McpServerResponseDto
 
             ...value,
         'tags': value['tags'],
+        'tool_call_timeout_seconds': value['toolCallTimeoutSeconds'],
     };
 }

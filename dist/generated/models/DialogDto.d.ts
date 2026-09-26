@@ -287,6 +287,12 @@ export interface DialogDto {
      */
     totalEvents: number;
     /**
+     * . .
+     * @type {number}
+     * @memberof DialogDto
+     */
+    messageStateRevision?: number;
+    /**
      *
      * @type {number}
      * @memberof DialogDto
@@ -377,6 +383,30 @@ export interface DialogDto {
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
+     *
+     * @type {string}
+     * @memberof DialogDto
+     */
+    supportGroupId?: string | null;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDto
+     */
+    snoozedUntil?: Date | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DialogDto
+     */
+    humanHandoff?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof DialogDto
+     */
+    operatorAssignmentSource?: DialogDtoOperatorAssignmentSourceEnum;
+    /**
      * (UI )
      * @type {boolean}
      * @memberof DialogDto
@@ -428,6 +458,14 @@ export declare const DialogDtoPriorityEnum: {
     readonly Urgent: "urgent";
 };
 export type DialogDtoPriorityEnum = typeof DialogDtoPriorityEnum[keyof typeof DialogDtoPriorityEnum];
+/**
+ * @export
+ */
+export declare const DialogDtoOperatorAssignmentSourceEnum: {
+    readonly Auto: "auto";
+    readonly Manual: "manual";
+};
+export type DialogDtoOperatorAssignmentSourceEnum = typeof DialogDtoOperatorAssignmentSourceEnum[keyof typeof DialogDtoOperatorAssignmentSourceEnum];
 /**
  * Check if a given object implements the DialogDto interface.
  */

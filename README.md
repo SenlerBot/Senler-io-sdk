@@ -12,7 +12,7 @@ API documentation: https://dev.senler.io
   Pin a version for reproducible installs:
   
   ```bash
-  npm install github:SenlerBot/Senler-io-sdk#v0.2.1
+  npm install github:SenlerBot/Senler-io-sdk#v0.3.0
   ```
   
   
@@ -59,7 +59,7 @@ API documentation: https://dev.senler.io
   All generated API groups are available as client properties. Method parameters are passed as one camelCase object:
   
   ```typescript
-  const agents = await client.agents.list({
+  const agents = await client.agents.agentsList({
     projectId: 'project_id',
     limit: 20,
   });

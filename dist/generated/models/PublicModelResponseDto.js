@@ -66,6 +66,7 @@ exports.PublicModelResponseDtoPriceLevelEnum = {
  * @export
  */
 exports.PublicModelResponseDtoTypeEnum = {
+    Decision: 'decision',
     Text: 'text',
     ImageGeneration: 'image_generation',
     AudioGeneration: 'audio_generation',

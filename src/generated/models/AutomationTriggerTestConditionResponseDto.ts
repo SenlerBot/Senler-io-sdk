@@ -91,6 +91,18 @@ export interface AutomationTriggerTestConditionResponseDto {
      * @memberof AutomationTriggerTestConditionResponseDto
      */
     incomingMessageVariableScope: AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum | null;
+    /**
+     * incoming attachments variable name.
+     * @type {string}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    incomingAttachmentsVariableName: string | null;
+    /**
+     * : run, lead, dialog, project.
+     * @type {string}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    incomingAttachmentsVariableScope: AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum | null;
 }
 
 
@@ -161,6 +173,17 @@ export const AutomationTriggerTestConditionResponseDtoIncomingMessageVariableSco
 } as const;
 export type AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum];
 
+/**
+ * @export
+ */
+export const AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum];
+
 
 /**
  * Check if a given object implements the AutomationTriggerTestConditionResponseDto interface.
@@ -178,6 +201,8 @@ export function instanceOfAutomationTriggerTestConditionResponseDto(value: objec
     if (!('runReentryMode' in value) || value['runReentryMode'] === undefined) return false;
     if (!('incomingMessageVariableName' in value) || value['incomingMessageVariableName'] === undefined) return false;
     if (!('incomingMessageVariableScope' in value) || value['incomingMessageVariableScope'] === undefined) return false;
+    if (!('incomingAttachmentsVariableName' in value) || value['incomingAttachmentsVariableName'] === undefined) return false;
+    if (!('incomingAttachmentsVariableScope' in value) || value['incomingAttachmentsVariableScope'] === undefined) return false;
     return true;
 }
 
@@ -203,6 +228,8 @@ export function AutomationTriggerTestConditionResponseDtoFromJSONTyped(json: any
         'runReentryMode': json['run_reentry_mode'],
         'incomingMessageVariableName': json['incoming_message_variable_name'],
         'incomingMessageVariableScope': json['incoming_message_variable_scope'],
+        'incomingAttachmentsVariableName': json['incoming_attachments_variable_name'],
+        'incomingAttachmentsVariableScope': json['incoming_attachments_variable_scope'],
     };
 }
 
@@ -229,5 +256,7 @@ export function AutomationTriggerTestConditionResponseDtoToJSONTyped(value?: Aut
         'run_reentry_mode': value['runReentryMode'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_message_variable_scope': value['incomingMessageVariableScope'],
+        'incoming_attachments_variable_name': value['incomingAttachmentsVariableName'],
+        'incoming_attachments_variable_scope': value['incomingAttachmentsVariableScope'],
     };
 }

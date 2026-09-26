@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
+import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
  * UpdateAgentCapabilitiesDto.
  * @export
@@ -142,6 +144,12 @@ export interface UpdateAgentCapabilitiesDto {
      */
     cancelPendingResponseOnAutomationMessage?: boolean;
     /**
+     *
+     * @type {AgentAutomationEventPolicyDto}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    automationEventPolicy?: AgentAutomationEventPolicyDto;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
@@ -227,6 +235,12 @@ export interface UpdateAgentCapabilitiesDto {
     recipientMessagingPolicy?: {
         [key: string]: any;
     };
+    /**
+     *
+     * @type {AgentAssignmentPolicyDto}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    agentAssignmentPolicy?: AgentAssignmentPolicyDto;
 }
 /**
  * @export

@@ -32,6 +32,8 @@ function instanceOfAgentSelectedModelSummaryDto(value) {
         return false;
     if (!('isSelectable' in value) || value['isSelectable'] === undefined)
         return false;
+    if (!('supportsVision' in value) || value['supportsVision'] === undefined)
+        return false;
     return true;
 }
 function AgentSelectedModelSummaryDtoFromJSON(json) {
@@ -47,6 +49,7 @@ function AgentSelectedModelSummaryDtoFromJSONTyped(json, ignoreDiscriminator) {
         'displayName': json['display_name'],
         'isPublic': json['is_public'],
         'isSelectable': json['is_selectable'],
+        'supportsVision': json['supports_vision'],
     };
 }
 function AgentSelectedModelSummaryDtoToJSON(json) {
@@ -62,5 +65,6 @@ function AgentSelectedModelSummaryDtoToJSONTyped(value, ignoreDiscriminator = fa
         'display_name': value['displayName'],
         'is_public': value['isPublic'],
         'is_selectable': value['isSelectable'],
+        'supports_vision': value['supportsVision'],
     };
 }

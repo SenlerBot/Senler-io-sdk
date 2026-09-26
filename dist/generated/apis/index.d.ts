@@ -83,6 +83,7 @@ export { SegmentsPublicApi } from './SegmentsPublicApi';
 export { SpacesApi } from './SpacesApi';
 export { StatisticsApi } from './StatisticsApi';
 export { StorageApi } from './StorageApi';
+export { SupportOperatorsApi } from './SupportOperatorsApi';
 export { SupportSchedulesApi } from './SupportSchedulesApi';
 export { TariffsApi } from './TariffsApi';
 export { TrafficMarksApi } from './TrafficMarksApi';

@@ -43,6 +43,7 @@ exports.AuditValueReferenceDtoEntityTypeEnum = {
     ProjectMember: 'project_member',
     Segment: 'segment',
     SupportShift: 'support_shift',
+    SupportOperatorGroup: 'support_operator_group',
     Tariff: 'tariff',
     Trigger: 'trigger',
     User: 'user'

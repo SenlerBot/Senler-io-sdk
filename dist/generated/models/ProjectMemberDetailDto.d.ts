@@ -57,6 +57,12 @@ export interface ProjectMemberDetailDto {
     isSupportOperator: boolean;
     /**
      *
+     * @type {string}
+     * @memberof ProjectMemberDetailDto
+     */
+    supportGroupId: string | null;
+    /**
+     *
      * @type {UserResponseDto}
      * @memberof ProjectMemberDetailDto
      */

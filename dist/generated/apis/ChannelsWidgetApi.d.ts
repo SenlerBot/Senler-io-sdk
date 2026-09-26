@@ -10,7 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateWidgetChannelDto, CreateWidgetChannelResponseDto, PreviewWidgetCodeDto, PreviewWidgetCodeResponseDto, UpdateWidgetSettingsDto, UpdateWidgetSettingsResponseDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateWidgetChannelDto, CreateWidgetChannelResponseDto, GetAvatarUploadUrlDto, PreviewWidgetCodeDto, PreviewWidgetCodeResponseDto, S3UploadUrlResponseDto, UpdateWidgetSettingsDto, UpdateWidgetSettingsResponseDto, WidgetWelcomeIconResponseDto, WidgetWelcomeStepsDto } from '../models/index';
+export interface GetWidgetWelcomeStepsRequest {
+    id: string;
+    automationId: string;
+    acceptLanguage?: GetWidgetWelcomeStepsAcceptLanguageEnum;
+}
 export interface UpdateWidgetSettingsRequest {
     id: string;
     updateWidgetSettingsDto: UpdateWidgetSettingsDto;
@@ -25,10 +30,28 @@ export interface WidgetCodePreviewRequest {
     previewWidgetCodeDto: PreviewWidgetCodeDto;
     acceptLanguage?: WidgetCodePreviewAcceptLanguageEnum;
 }
+export interface WidgetWelcomeIconConfirmRequest {
+    id: string;
+    confirmS3UploadDto: ConfirmS3UploadDto;
+    acceptLanguage?: WidgetWelcomeIconConfirmAcceptLanguageEnum;
+}
+export interface WidgetWelcomeIconUploadUrlRequest {
+    id: string;
+    getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
+    acceptLanguage?: WidgetWelcomeIconUploadUrlAcceptLanguageEnum;
+}
 /**
  *
  */
 export declare class ChannelsWidgetApi extends runtime.BaseAPI {
+    /**
+     *
+     */
+    getWidgetWelcomeStepsRaw(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeStepsDto>>;
+    /**
+     *
+     */
+    getWidgetWelcomeSteps(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeStepsDto>;
     /**
      * , -. , .
      * Widget
@@ -59,7 +82,33 @@ export declare class ChannelsWidgetApi extends runtime.BaseAPI {
      *
      */
     widgetCodePreview(requestParameters: WidgetCodePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PreviewWidgetCodeResponseDto>;
+    /**
+     * URL theme.welcome_icon_url. .
+     *
+     */
+    widgetWelcomeIconConfirmRaw(requestParameters: WidgetWelcomeIconConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeIconResponseDto>>;
+    /**
+     * URL theme.welcome_icon_url. .
+     *
+     */
+    widgetWelcomeIconConfirm(requestParameters: WidgetWelcomeIconConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeIconResponseDto>;
+    /**
+     *
+     */
+    widgetWelcomeIconUploadUrlRaw(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
+    /**
+     *
+     */
+    widgetWelcomeIconUploadUrl(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const GetWidgetWelcomeStepsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetWidgetWelcomeStepsAcceptLanguageEnum = typeof GetWidgetWelcomeStepsAcceptLanguageEnum[keyof typeof GetWidgetWelcomeStepsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -84,3 +133,19 @@ export declare const WidgetCodePreviewAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type WidgetCodePreviewAcceptLanguageEnum = typeof WidgetCodePreviewAcceptLanguageEnum[keyof typeof WidgetCodePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const WidgetWelcomeIconConfirmAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type WidgetWelcomeIconConfirmAcceptLanguageEnum = typeof WidgetWelcomeIconConfirmAcceptLanguageEnum[keyof typeof WidgetWelcomeIconConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const WidgetWelcomeIconUploadUrlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type WidgetWelcomeIconUploadUrlAcceptLanguageEnum = typeof WidgetWelcomeIconUploadUrlAcceptLanguageEnum[keyof typeof WidgetWelcomeIconUploadUrlAcceptLanguageEnum];

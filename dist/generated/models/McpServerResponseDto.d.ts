@@ -19,6 +19,42 @@ import type { McpServerTemplateManualAuthHeaderDto } from './McpServerTemplateMa
  */
 export interface McpServerResponseDto {
     /**
+     *
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthHeaderName?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthHeaderPrefix?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthRequireVerified?: boolean;
+    /**
+     * PEM ES256 JWT
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthPublicKey?: string;
+    /**
+     * JWT (iss)
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthIssuer?: string;
+    /**
+     * JWT (aud)
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthAudience?: string;
+    /**
      * UUID MCP
      * @type {string}
      * @memberof McpServerResponseDto
@@ -207,6 +243,7 @@ export declare const McpServerResponseDtoCustomAuthModeEnum: {
     readonly AccessToken: "access_token";
     readonly CustomHeaders: "custom_headers";
     readonly McpOauth: "mcp_oauth";
+    readonly LeadJwt: "lead_jwt";
 };
 export type McpServerResponseDtoCustomAuthModeEnum = typeof McpServerResponseDtoCustomAuthModeEnum[keyof typeof McpServerResponseDtoCustomAuthModeEnum];
 /**

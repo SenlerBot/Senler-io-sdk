@@ -291,6 +291,12 @@ export interface DialogDetailsDto {
      */
     totalEvents: number;
     /**
+     * . .
+     * @type {number}
+     * @memberof DialogDetailsDto
+     */
+    messageStateRevision?: number;
+    /**
      *
      * @type {number}
      * @memberof DialogDetailsDto
@@ -381,6 +387,30 @@ export interface DialogDetailsDto {
      */
     operatorAssignment?: DialogOperatorAssignmentDto;
     /**
+     *
+     * @type {string}
+     * @memberof DialogDetailsDto
+     */
+    supportGroupId?: string | null;
+    /**
+     *
+     * @type {Date}
+     * @memberof DialogDetailsDto
+     */
+    snoozedUntil?: Date | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DialogDetailsDto
+     */
+    humanHandoff?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof DialogDetailsDto
+     */
+    operatorAssignmentSource?: DialogDetailsDtoOperatorAssignmentSourceEnum;
+    /**
      * (UI )
      * @type {boolean}
      * @memberof DialogDetailsDto
@@ -456,6 +486,14 @@ export declare const DialogDetailsDtoPriorityEnum: {
     readonly Urgent: "urgent";
 };
 export type DialogDetailsDtoPriorityEnum = typeof DialogDetailsDtoPriorityEnum[keyof typeof DialogDetailsDtoPriorityEnum];
+/**
+ * @export
+ */
+export declare const DialogDetailsDtoOperatorAssignmentSourceEnum: {
+    readonly Auto: "auto";
+    readonly Manual: "manual";
+};
+export type DialogDetailsDtoOperatorAssignmentSourceEnum = typeof DialogDetailsDtoOperatorAssignmentSourceEnum[keyof typeof DialogDetailsDtoOperatorAssignmentSourceEnum];
 /**
  * Check if a given object implements the DialogDetailsDto interface.
  */

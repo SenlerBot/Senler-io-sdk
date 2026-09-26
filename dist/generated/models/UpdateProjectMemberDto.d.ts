@@ -18,6 +18,12 @@ import type { ProjectRole } from './ProjectRole';
  */
 export interface UpdateProjectMemberDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof UpdateProjectMemberDto
+     */
+    supportGroupId?: string | null;
+    /**
      * . (can_manage_projects, can_manage_access, can_manage_channels ..) .
      *
      * :

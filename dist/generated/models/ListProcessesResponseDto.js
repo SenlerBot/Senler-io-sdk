@@ -23,6 +23,8 @@ const ProcessResponseDto_1 = require("./ProcessResponseDto");
  * Check if a given object implements the ListProcessesResponseDto interface.
  */
 function instanceOfListProcessesResponseDto(value) {
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined)
+        return false;
     if (!('processes' in value) || value['processes'] === undefined)
         return false;
     if (!('total' in value) || value['total'] === undefined)
@@ -41,6 +43,7 @@ function ListProcessesResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'nextCursor': json['next_cursor'],
         'processes': (json['processes'].map(ProcessResponseDto_1.ProcessResponseDtoFromJSON)),
         'total': json['total'],
         'limit': json['limit'],
@@ -55,6 +58,7 @@ function ListProcessesResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         return value;
     }
     return {
+        'next_cursor': value['nextCursor'],
         'processes': (value['processes'].map(ProcessResponseDto_1.ProcessResponseDtoToJSON)),
         'total': value['total'],
         'limit': value['limit'],

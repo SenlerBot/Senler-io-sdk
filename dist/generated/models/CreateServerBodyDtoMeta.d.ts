@@ -22,6 +22,12 @@ export interface CreateServerBodyDtoMeta {
      * @memberof CreateServerBodyDtoMeta
      */
     tags?: Array<string>;
+    /**
+     * MCP,
+     * @type {number}
+     * @memberof CreateServerBodyDtoMeta
+     */
+    toolCallTimeoutSeconds?: number;
 }
 /**
  * Check if a given object implements the CreateServerBodyDtoMeta interface.

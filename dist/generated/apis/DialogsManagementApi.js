@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUnarchiveAcceptLanguageEnum = exports.UpdateSoundMuteAcceptLanguageEnum = exports.UpdatePriorityAcceptLanguageEnum = exports.UpdateOperatorResponseAnsweredAcceptLanguageEnum = exports.UpdateOperatorResponseAcceptLanguageEnum = exports.UpdateOperatorResponseStatusEnum = exports.UpdateOperatorAssignmentMeAcceptLanguageEnum = exports.UpdateNotSpamAcceptLanguageEnum = exports.UpdateEventsSpamAcceptLanguageEnum = exports.UpdateEventsAcceptLanguageEnum = exports.UpdateAutoAssignDisabledAcceptLanguageEnum = exports.UpdateArchiveAcceptLanguageEnum = exports.UpdateAgentAcceptLanguageEnum = exports.ProjectsBillingRecoveryRetryAcceptLanguageEnum = exports.ProjectsBillingRecoveryDismissAcceptLanguageEnum = exports.GetProjectsBillingRecoveryAcceptLanguageEnum = exports.GetParticipantsAcceptLanguageEnum = exports.GetEventsBillingRecoveryAcceptLanguageEnum = exports.GetEventsAiResponseRecoveryAcceptLanguageEnum = exports.EventsBillingRecoveryRetryAcceptLanguageEnum = exports.EventsAiResponseRecoveryRetryAcceptLanguageEnum = exports.DeleteOperatorAssignmentAcceptLanguageEnum = exports.DeleteEventsAcceptLanguageEnum = exports.DeleteAgentAcceptLanguageEnum = exports.DeleteAgentRoleEnum = exports.DialogsManagementApi = void 0;
+exports.UpdateUnarchiveAcceptLanguageEnum = exports.UpdateSupportAssignmentAcceptLanguageEnum = exports.UpdateSoundMuteAcceptLanguageEnum = exports.UpdatePriorityAcceptLanguageEnum = exports.UpdateOperatorResponseAnsweredAcceptLanguageEnum = exports.UpdateOperatorResponseAcceptLanguageEnum = exports.UpdateOperatorResponseStatusEnum = exports.UpdateOperatorAssignmentMeAcceptLanguageEnum = exports.UpdateNotSpamAcceptLanguageEnum = exports.UpdateEventsSpamAcceptLanguageEnum = exports.UpdateEventsAcceptLanguageEnum = exports.UpdateAutoAssignDisabledAcceptLanguageEnum = exports.UpdateArchiveAcceptLanguageEnum = exports.UpdateAgentAcceptLanguageEnum = exports.SupportSnoozeAcceptLanguageEnum = exports.SupportReopenAcceptLanguageEnum = exports.SupportHandoffAcceptLanguageEnum = exports.SupportCloseAcceptLanguageEnum = exports.ProjectsBillingRecoveryRetryAcceptLanguageEnum = exports.ProjectsBillingRecoveryDismissAcceptLanguageEnum = exports.GetSupportHistoryAcceptLanguageEnum = exports.GetProjectsSupportOperatorsAcceptLanguageEnum = exports.GetProjectsBillingRecoveryAcceptLanguageEnum = exports.GetParticipantsAcceptLanguageEnum = exports.GetEventsBillingRecoveryAcceptLanguageEnum = exports.GetEventsAiResponseRecoveryAcceptLanguageEnum = exports.EventsBillingRecoveryRetryAcceptLanguageEnum = exports.EventsAiResponseRecoveryRetryAcceptLanguageEnum = exports.DeleteOperatorAssignmentAcceptLanguageEnum = exports.DeleteEventsAcceptLanguageEnum = exports.DeleteAgentAcceptLanguageEnum = exports.DeleteAgentRoleEnum = exports.DialogsManagementApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -435,6 +435,86 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
+     *
+     */
+    async getProjectsSupportOperatorsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsSupportOperators().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/projects/{projectId}/support-operators`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportOperatorDirectoryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getProjectsSupportOperators(requestParameters, initOverrides) {
+        const response = await this.getProjectsSupportOperatorsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 50 , .
+     *
+     */
+    async getSupportHistoryRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling getSupportHistory().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/history`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.DialogSupportChangeDtoFromJSON));
+    }
+    /**
+     * 50 , .
+     *
+     */
+    async getSupportHistory(requestParameters, initOverrides) {
+        const response = await this.getSupportHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * . . .
      *
      */
@@ -517,6 +597,181 @@ class DialogsManagementApi extends runtime.BaseAPI {
      */
     async projectsBillingRecoveryRetry(requestParameters, initOverrides) {
         const response = await this.projectsBillingRecoveryRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . ; .
+     *
+     */
+    async supportCloseRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling supportClose().');
+        }
+        if (requestParameters['closeDialogDto'] == null) {
+            throw new runtime.RequiredError('closeDialogDto', 'Required parameter "closeDialogDto" was null or undefined when calling supportClose().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/close`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CloseDialogDtoToJSON)(requestParameters['closeDialogDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . ; .
+     *
+     */
+    async supportClose(requestParameters, initOverrides) {
+        const response = await this.supportCloseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async supportHandoffRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling supportHandoff().');
+        }
+        if (requestParameters['handoffDialogDto'] == null) {
+            throw new runtime.RequiredError('handoffDialogDto', 'Required parameter "handoffDialogDto" was null or undefined when calling supportHandoff().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/handoff`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.HandoffDialogDtoToJSON)(requestParameters['handoffDialogDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async supportHandoff(requestParameters, initOverrides) {
+        const response = await this.supportHandoffRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . ; .
+     *
+     */
+    async supportReopenRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling supportReopen().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/reopen`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . ; .
+     *
+     */
+    async supportReopen(requestParameters, initOverrides) {
+        const response = await this.supportReopenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async supportSnoozeRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling supportSnooze().');
+        }
+        if (requestParameters['snoozeDialogDto'] == null) {
+            throw new runtime.RequiredError('snoozeDialogDto', 'Required parameter "snoozeDialogDto" was null or undefined when calling supportSnooze().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/snooze`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SnoozeDialogDtoToJSON)(requestParameters['snoozeDialogDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async supportSnooze(requestParameters, initOverrides) {
+        const response = await this.supportSnoozeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -994,6 +1249,51 @@ class DialogsManagementApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . .
+     *
+     */
+    async updateSupportAssignmentRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling updateSupportAssignment().');
+        }
+        if (requestParameters['transferDialogOperatorDto'] == null) {
+            throw new runtime.RequiredError('transferDialogOperatorDto', 'Required parameter "transferDialogOperatorDto" was null or undefined when calling updateSupportAssignment().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/support/assignment`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TransferDialogOperatorDtoToJSON)(requestParameters['transferDialogOperatorDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async updateSupportAssignment(requestParameters, initOverrides) {
+        const response = await this.updateSupportAssignmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
@@ -1108,6 +1408,20 @@ exports.GetProjectsBillingRecoveryAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetProjectsSupportOperatorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetSupportHistoryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.ProjectsBillingRecoveryDismissAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1116,6 +1430,34 @@ exports.ProjectsBillingRecoveryDismissAcceptLanguageEnum = {
  * @export
  */
 exports.ProjectsBillingRecoveryRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SupportCloseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SupportHandoffAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SupportReopenAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SupportSnoozeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1200,6 +1542,13 @@ exports.UpdatePriorityAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateSoundMuteAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateSupportAssignmentAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

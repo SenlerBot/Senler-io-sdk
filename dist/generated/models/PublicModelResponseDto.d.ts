@@ -319,6 +319,7 @@ export type PublicModelResponseDtoPriceLevelEnum = typeof PublicModelResponseDto
  * @export
  */
 export declare const PublicModelResponseDtoTypeEnum: {
+    readonly Decision: "decision";
     readonly Text: "text";
     readonly ImageGeneration: "image_generation";
     readonly AudioGeneration: "audio_generation";

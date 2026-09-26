@@ -1854,6 +1854,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
      *
      */
     async getFunnelOptionsRaw(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>> {
@@ -1900,6 +1901,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
      *
      */
     async getFunnelOptions(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto> {

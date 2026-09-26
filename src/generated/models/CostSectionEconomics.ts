@@ -20,13 +20,13 @@ import {
     ClientSpendingToJSON,
     ClientSpendingToJSONTyped,
 } from './ClientSpending';
-import type { CurrencyBreakdown } from './CurrencyBreakdown';
+import type { ProviderCostBreakdown } from './ProviderCostBreakdown';
 import {
-    CurrencyBreakdownFromJSON,
-    CurrencyBreakdownFromJSONTyped,
-    CurrencyBreakdownToJSON,
-    CurrencyBreakdownToJSONTyped,
-} from './CurrencyBreakdown';
+    ProviderCostBreakdownFromJSON,
+    ProviderCostBreakdownFromJSONTyped,
+    ProviderCostBreakdownToJSON,
+    ProviderCostBreakdownToJSONTyped,
+} from './ProviderCostBreakdown';
 
 /**
  * CostSectionEconomics.
@@ -42,10 +42,10 @@ export interface CostSectionEconomics {
     section: CostSectionEconomicsSectionEnum;
     /**
      * ()
-     * @type {CurrencyBreakdown}
+     * @type {ProviderCostBreakdown}
      * @memberof CostSectionEconomics
      */
-    provider: CurrencyBreakdown;
+    provider: ProviderCostBreakdown;
     /**
      * ( + )
      * @type {ClientSpending}
@@ -98,7 +98,7 @@ export function CostSectionEconomicsFromJSONTyped(json: any, ignoreDiscriminator
     return {
 
         'section': json['section'],
-        'provider': CurrencyBreakdownFromJSON(json['provider']),
+        'provider': ProviderCostBreakdownFromJSON(json['provider']),
         'client': ClientSpendingFromJSON(json['client']),
         'eventsWithCosts': json['events_with_costs'],
     };
@@ -116,7 +116,7 @@ export function CostSectionEconomicsToJSONTyped(value?: CostSectionEconomics | n
     return {
 
         'section': value['section'],
-        'provider': CurrencyBreakdownToJSON(value['provider']),
+        'provider': ProviderCostBreakdownToJSON(value['provider']),
         'client': ClientSpendingToJSON(value['client']),
         'events_with_costs': value['eventsWithCosts'],
     };

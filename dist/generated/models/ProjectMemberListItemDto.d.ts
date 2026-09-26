@@ -84,6 +84,12 @@ export interface ProjectMemberListItemDto {
      */
     isSupportOperator: boolean;
     /**
+     *
+     * @type {string}
+     * @memberof ProjectMemberListItemDto
+     */
+    supportGroupId: string | null;
+    /**
      * , . hasAccessToAllChannels=true,
      * @type {number}
      * @memberof ProjectMemberListItemDto

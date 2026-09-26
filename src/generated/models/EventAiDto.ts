@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ProviderPricingSnapshotDto } from './ProviderPricingSnapshotDto';
+import {
+    ProviderPricingSnapshotDtoFromJSON,
+    ProviderPricingSnapshotDtoFromJSONTyped,
+    ProviderPricingSnapshotDtoToJSON,
+    ProviderPricingSnapshotDtoToJSONTyped,
+} from './ProviderPricingSnapshotDto';
+
 /**
  * EventAiDto.
  * @export
  * @interface EventAiDto
  */
 export interface EventAiDto {
+    /**
+     * ,
+     * @type {ProviderPricingSnapshotDto}
+     * @memberof EventAiDto
+     */
+    providerPricingSnapshot?: ProviderPricingSnapshotDto;
     /**
      * ID
      * @type {string}
@@ -250,6 +264,7 @@ export function EventAiDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
 
+        'providerPricingSnapshot': json['provider_pricing_snapshot'] == null ? undefined : ProviderPricingSnapshotDtoFromJSON(json['provider_pricing_snapshot']),
         'providerGenerationId': json['provider_generation_id'] == null ? undefined : json['provider_generation_id'],
         'billingTariffVersion': json['billing_tariff_version'] == null ? undefined : json['billing_tariff_version'],
         'upstreamProviderName': json['upstream_provider_name'] == null ? undefined : json['upstream_provider_name'],
@@ -289,6 +304,7 @@ export function EventAiDtoToJSONTyped(value?: EventAiDto | null, ignoreDiscrimin
 
     return {
 
+        'provider_pricing_snapshot': ProviderPricingSnapshotDtoToJSON(value['providerPricingSnapshot']),
         'provider_generation_id': value['providerGenerationId'],
         'billing_tariff_version': value['billingTariffVersion'],
         'upstream_provider_name': value['upstreamProviderName'],

@@ -34,6 +34,7 @@ function UpdateProjectMemberDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
         'role': json['role'] == null ? undefined : (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
         'hasAccessToAllChannels': json['has_access_to_all_channels'] == null ? undefined : json['has_access_to_all_channels'],
         'isSupportOperator': json['is_support_operator'] == null ? undefined : json['is_support_operator'],
@@ -48,6 +49,7 @@ function UpdateProjectMemberDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'support_group_id': value['supportGroupId'],
         'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
         'has_access_to_all_channels': value['hasAccessToAllChannels'],
         'is_support_operator': value['isSupportOperator'],

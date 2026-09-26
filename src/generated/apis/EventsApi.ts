@@ -15,25 +15,25 @@
 
 import * as runtime from '../runtime';
 import type {
-  AnalyticsResponseDto,
   CabinetEventDetailDto,
+  CabinetEventsPageDto,
   ErrorResponse,
-  EventsList200Response,
   QuickMetricsResponseDto,
+  ScopedAnalyticsResponseDto,
   TrafficChannelsResponseDto,
   TrafficSourcesResponseDto,
 } from '../models/index';
 import {
-    AnalyticsResponseDtoFromJSON,
-    AnalyticsResponseDtoToJSON,
     CabinetEventDetailDtoFromJSON,
     CabinetEventDetailDtoToJSON,
+    CabinetEventsPageDtoFromJSON,
+    CabinetEventsPageDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
-    EventsList200ResponseFromJSON,
-    EventsList200ResponseToJSON,
     QuickMetricsResponseDtoFromJSON,
     QuickMetricsResponseDtoToJSON,
+    ScopedAnalyticsResponseDtoFromJSON,
+    ScopedAnalyticsResponseDtoToJSON,
     TrafficChannelsResponseDtoFromJSON,
     TrafficChannelsResponseDtoToJSON,
     TrafficSourcesResponseDtoFromJSON,
@@ -106,7 +106,7 @@ export class EventsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async eventsGetAnalyticsRaw(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
+    async eventsGetAnalyticsRaw(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScopedAnalyticsResponseDto>> {
         if (requestParameters['period'] == null) {
             throw new runtime.RequiredError(
                 'period',
@@ -157,14 +157,14 @@ export class EventsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticsResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ScopedAnalyticsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * . .
      *
      */
-    async eventsGetAnalytics(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {
+    async eventsGetAnalytics(requestParameters: EventsGetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScopedAnalyticsResponseDto> {
         const response = await this.eventsGetAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -225,7 +225,7 @@ export class EventsApi extends runtime.BaseAPI {
      * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
-    async eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventsList200Response>> {
+    async eventsListRaw(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CabinetEventsPageDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
@@ -357,14 +357,14 @@ export class EventsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => EventsList200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CabinetEventsPageDtoFromJSON(jsonValue));
     }
 
     /**
      * ().  .  **:** - , , - -  ** :**  1. 7 : `?period=7d&action_type=message_created&target_type=message`  2. : `?agent_id=UUID&date_from=2024-01-01&date_to=2024-01-31`  . QueryEventsUnifiedDto .
      *
      */
-    async eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventsList200Response> {
+    async eventsList(requestParameters: EventsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetEventsPageDto> {
         const response = await this.eventsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -585,7 +585,6 @@ export const EventsListPeriodEnum = {
     _7d: '7d',
     _30d: '30d',
     _90d: '90d',
-    All: 'all',
     Custom: 'custom'
 } as const;
 export type EventsListPeriodEnum = typeof EventsListPeriodEnum[keyof typeof EventsListPeriodEnum];

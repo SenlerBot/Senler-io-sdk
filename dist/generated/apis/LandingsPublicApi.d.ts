@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
+import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
 export interface GetLandingsRequest {
     landingPublicId: string;
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
@@ -23,6 +23,10 @@ export interface GetProjectsLandingsRequest {
     projectPublicId: string;
     channelPublicId?: string;
     acceptLanguage?: GetProjectsLandingsAcceptLanguageEnum;
+}
+export interface GetProjectsLandingsAnalyticsRequest {
+    projectPublicId: string;
+    acceptLanguage?: GetProjectsLandingsAnalyticsAcceptLanguageEnum;
 }
 export interface LandingsLaunchBotSubscriptionLinkRequest {
     token: string;
@@ -88,6 +92,16 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      *
      */
     getProjectsLandings(requestParameters: GetProjectsLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicCatalogResponseDto>;
+    /**
+     * - .
+     *
+     */
+    getProjectsLandingsAnalyticsRaw(requestParameters: GetProjectsLandingsAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicAnalyticsDto>>;
+    /**
+     * - .
+     *
+     */
+    getProjectsLandingsAnalytics(requestParameters: GetProjectsLandingsAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicAnalyticsDto>;
     /**
      * UTM , start ID.
      * Telegram- MAX-
@@ -173,6 +187,14 @@ export declare const GetProjectsLandingsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetProjectsLandingsAcceptLanguageEnum = typeof GetProjectsLandingsAcceptLanguageEnum[keyof typeof GetProjectsLandingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetProjectsLandingsAnalyticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProjectsLandingsAnalyticsAcceptLanguageEnum = typeof GetProjectsLandingsAnalyticsAcceptLanguageEnum[keyof typeof GetProjectsLandingsAnalyticsAcceptLanguageEnum];
 /**
  * @export
  */

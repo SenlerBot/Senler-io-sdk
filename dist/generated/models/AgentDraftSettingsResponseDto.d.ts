@@ -11,6 +11,8 @@
  */
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
+import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
+import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
  * AgentDraftSettingsResponseDto.
  * @export
@@ -344,6 +346,12 @@ export interface AgentDraftSettingsResponseDto {
      */
     cancelPendingResponseOnAutomationMessage: boolean;
     /**
+     *
+     * @type {AgentAutomationEventPolicyDto}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    automationEventPolicy: AgentAutomationEventPolicyDto;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
@@ -459,6 +467,12 @@ export interface AgentDraftSettingsResponseDto {
     recipientMessagingPolicy: {
         [key: string]: any;
     };
+    /**
+     *
+     * @type {AgentAssignmentPolicyDto}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    agentAssignmentPolicy: AgentAssignmentPolicyDto;
     /**
      *
      * @type {Date}

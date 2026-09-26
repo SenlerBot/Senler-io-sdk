@@ -19,6 +19,7 @@ exports.EventAiDtoFromJSON = EventAiDtoFromJSON;
 exports.EventAiDtoFromJSONTyped = EventAiDtoFromJSONTyped;
 exports.EventAiDtoToJSON = EventAiDtoToJSON;
 exports.EventAiDtoToJSONTyped = EventAiDtoToJSONTyped;
+const ProviderPricingSnapshotDto_1 = require("./ProviderPricingSnapshotDto");
 /**
  * @export
  */
@@ -83,6 +84,7 @@ function EventAiDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'providerPricingSnapshot': json['provider_pricing_snapshot'] == null ? undefined : (0, ProviderPricingSnapshotDto_1.ProviderPricingSnapshotDtoFromJSON)(json['provider_pricing_snapshot']),
         'providerGenerationId': json['provider_generation_id'] == null ? undefined : json['provider_generation_id'],
         'billingTariffVersion': json['billing_tariff_version'] == null ? undefined : json['billing_tariff_version'],
         'upstreamProviderName': json['upstream_provider_name'] == null ? undefined : json['upstream_provider_name'],
@@ -118,6 +120,7 @@ function EventAiDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'provider_pricing_snapshot': (0, ProviderPricingSnapshotDto_1.ProviderPricingSnapshotDtoToJSON)(value['providerPricingSnapshot']),
         'provider_generation_id': value['providerGenerationId'],
         'billing_tariff_version': value['billingTariffVersion'],
         'upstream_provider_name': value['upstreamProviderName'],

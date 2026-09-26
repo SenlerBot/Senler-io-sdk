@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ClientSpending } from './ClientSpending';
-import type { CurrencyBreakdown } from './CurrencyBreakdown';
+import type { ProviderCostBreakdown } from './ProviderCostBreakdown';
 /**
  * UsagePurposeEconomics.
  * @export
@@ -31,10 +31,10 @@ export interface UsagePurposeEconomics {
     purpose: UsagePurposeEconomicsPurposeEnum;
     /**
      *
-     * @type {CurrencyBreakdown}
+     * @type {ProviderCostBreakdown}
      * @memberof UsagePurposeEconomics
      */
-    provider: CurrencyBreakdown;
+    provider: ProviderCostBreakdown;
     /**
      *
      * @type {ClientSpending}

@@ -160,6 +160,7 @@ export declare const AuditLogResponseDtoEntityTypeEnum: {
     readonly Delivery: "delivery";
     readonly ProjectTariff: "project_tariff";
     readonly SupportSchedule: "support_schedule";
+    readonly SupportOperatorGroup: "support_operator_group";
     readonly Invitation: "invitation";
     readonly ApiKey: "api_key";
     readonly MetricDefinition: "metric_definition";

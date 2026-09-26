@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DialogDtoPriorityEnum = exports.DialogDtoDialogTypeEnum = exports.DialogDtoLeadResponseStatusEnum = exports.DialogDtoOperatorResponseStatusEnum = exports.DialogDtoStatusEnum = void 0;
+exports.DialogDtoOperatorAssignmentSourceEnum = exports.DialogDtoPriorityEnum = exports.DialogDtoDialogTypeEnum = exports.DialogDtoLeadResponseStatusEnum = exports.DialogDtoOperatorResponseStatusEnum = exports.DialogDtoStatusEnum = void 0;
 exports.instanceOfDialogDto = instanceOfDialogDto;
 exports.DialogDtoFromJSON = DialogDtoFromJSON;
 exports.DialogDtoFromJSONTyped = DialogDtoFromJSONTyped;
@@ -65,6 +65,13 @@ exports.DialogDtoPriorityEnum = {
     Medium: 'medium',
     High: 'high',
     Urgent: 'urgent'
+};
+/**
+ * @export
+ */
+exports.DialogDtoOperatorAssignmentSourceEnum = {
+    Auto: 'auto',
+    Manual: 'manual'
 };
 /**
  * Check if a given object implements the DialogDto interface.
@@ -160,6 +167,7 @@ function DialogDtoFromJSONTyped(json, ignoreDiscriminator) {
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
         'totalEvents': json['total_events'],
+        'messageStateRevision': json['message_state_revision'] == null ? undefined : json['message_state_revision'],
         'messagesCount': json['messages_count'],
         'operatorUnreadCount': json['operator_unread_count'],
         'operatorReadRevision': json['operator_read_revision'] == null ? undefined : json['operator_read_revision'],
@@ -175,6 +183,10 @@ function DialogDtoFromJSONTyped(json, ignoreDiscriminator) {
         'lastMessage': json['last_message'] == null ? undefined : (0, DialogLastMessageDto_1.DialogLastMessageDtoFromJSON)(json['last_message']),
         'serviceActor': json['service_actor'] == null ? undefined : (0, EventSenderDto_1.EventSenderDtoFromJSON)(json['service_actor']),
         'operatorAssignment': json['operator_assignment'] == null ? undefined : (0, DialogOperatorAssignmentDto_1.DialogOperatorAssignmentDtoFromJSON)(json['operator_assignment']),
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'snoozedUntil': json['snoozed_until'] == null ? undefined : (new Date(json['snoozed_until'])),
+        'humanHandoff': json['human_handoff'] == null ? undefined : json['human_handoff'],
+        'operatorAssignmentSource': json['operator_assignment_source'] == null ? undefined : json['operator_assignment_source'],
         'isSoundMuted': json['is_sound_muted'],
     };
 }
@@ -230,6 +242,7 @@ function DialogDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
         'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],
         'total_events': value['totalEvents'],
+        'message_state_revision': value['messageStateRevision'],
         'messages_count': value['messagesCount'],
         'operator_unread_count': value['operatorUnreadCount'],
         'operator_read_revision': value['operatorReadRevision'],
@@ -245,6 +258,10 @@ function DialogDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'last_message': (0, DialogLastMessageDto_1.DialogLastMessageDtoToJSON)(value['lastMessage']),
         'service_actor': (0, EventSenderDto_1.EventSenderDtoToJSON)(value['serviceActor']),
         'operator_assignment': (0, DialogOperatorAssignmentDto_1.DialogOperatorAssignmentDtoToJSON)(value['operatorAssignment']),
+        'support_group_id': value['supportGroupId'],
+        'snoozed_until': value['snoozedUntil'] == null ? undefined : (value['snoozedUntil'].toISOString()),
+        'human_handoff': value['humanHandoff'],
+        'operator_assignment_source': value['operatorAssignmentSource'],
         'is_sound_muted': value['isSoundMuted'],
     };
 }

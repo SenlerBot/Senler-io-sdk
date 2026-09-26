@@ -31,6 +31,9 @@ export interface AgentsListRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    search?: string;
+    activeOnly?: boolean;
+    ids?: Array<string>;
     acceptLanguage?: AgentsListAcceptLanguageEnum;
 }
 export interface Deactivate2Request {

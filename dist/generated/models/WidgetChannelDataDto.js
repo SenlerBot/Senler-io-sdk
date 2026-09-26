@@ -21,6 +21,7 @@ exports.WidgetChannelDataDtoToJSON = WidgetChannelDataDtoToJSON;
 exports.WidgetChannelDataDtoToJSONTyped = WidgetChannelDataDtoToJSONTyped;
 const WidgetFeaturesDto_1 = require("./WidgetFeaturesDto");
 const WidgetExternalAiSettingsDto_1 = require("./WidgetExternalAiSettingsDto");
+const WidgetWelcomeSettingsDto_1 = require("./WidgetWelcomeSettingsDto");
 const WidgetThemeDto_1 = require("./WidgetThemeDto");
 /**
  * @export
@@ -51,6 +52,7 @@ function WidgetChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'welcome': json['welcome'] == null ? undefined : (0, WidgetWelcomeSettingsDto_1.WidgetWelcomeSettingsDtoFromJSON)(json['welcome']),
         'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoFromJSON)(json['external_ai']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
@@ -69,6 +71,7 @@ function WidgetChannelDataDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'welcome': (0, WidgetWelcomeSettingsDto_1.WidgetWelcomeSettingsDtoToJSON)(value['welcome']),
         'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': (0, WidgetExternalAiSettingsDto_1.WidgetExternalAiSettingsDtoToJSON)(value['externalAi']),
         'allowed_domains': value['allowedDomains'],

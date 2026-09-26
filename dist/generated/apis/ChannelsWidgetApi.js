@@ -46,13 +46,57 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WidgetCodePreviewAcceptLanguageEnum = exports.WidgetAcceptLanguageEnum = exports.UpdateWidgetSettingsAcceptLanguageEnum = exports.ChannelsWidgetApi = void 0;
+exports.WidgetWelcomeIconUploadUrlAcceptLanguageEnum = exports.WidgetWelcomeIconConfirmAcceptLanguageEnum = exports.WidgetCodePreviewAcceptLanguageEnum = exports.WidgetAcceptLanguageEnum = exports.UpdateWidgetSettingsAcceptLanguageEnum = exports.GetWidgetWelcomeStepsAcceptLanguageEnum = exports.ChannelsWidgetApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class ChannelsWidgetApi extends runtime.BaseAPI {
+    /**
+     *
+     */
+    async getWidgetWelcomeStepsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getWidgetWelcomeSteps().');
+        }
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling getWidgetWelcomeSteps().');
+        }
+        const queryParameters = {};
+        if (requestParameters['automationId'] != null) {
+            queryParameters['automation_id'] = requestParameters['automationId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-steps`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetWelcomeStepsDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     */
+    async getWidgetWelcomeSteps(requestParameters, initOverrides) {
+        const response = await this.getWidgetWelcomeStepsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * , -. , .
      * Widget
@@ -185,8 +229,103 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         const response = await this.widgetCodePreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * URL theme.welcome_icon_url. .
+     *
+     */
+    async widgetWelcomeIconConfirmRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling widgetWelcomeIconConfirm().');
+        }
+        if (requestParameters['confirmS3UploadDto'] == null) {
+            throw new runtime.RequiredError('confirmS3UploadDto', 'Required parameter "confirmS3UploadDto" was null or undefined when calling widgetWelcomeIconConfirm().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-icon/confirm`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ConfirmS3UploadDtoToJSON)(requestParameters['confirmS3UploadDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetWelcomeIconResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * URL theme.welcome_icon_url. .
+     *
+     */
+    async widgetWelcomeIconConfirm(requestParameters, initOverrides) {
+        const response = await this.widgetWelcomeIconConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     *
+     */
+    async widgetWelcomeIconUploadUrlRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling widgetWelcomeIconUploadUrl().');
+        }
+        if (requestParameters['getAvatarUploadUrlDto'] == null) {
+            throw new runtime.RequiredError('getAvatarUploadUrlDto', 'Required parameter "getAvatarUploadUrlDto" was null or undefined when calling widgetWelcomeIconUploadUrl().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-icon/upload-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.GetAvatarUploadUrlDtoToJSON)(requestParameters['getAvatarUploadUrlDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     */
+    async widgetWelcomeIconUploadUrl(requestParameters, initOverrides) {
+        const response = await this.widgetWelcomeIconUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.ChannelsWidgetApi = ChannelsWidgetApi;
+/**
+ * @export
+ */
+exports.GetWidgetWelcomeStepsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */
@@ -205,6 +344,20 @@ exports.WidgetAcceptLanguageEnum = {
  * @export
  */
 exports.WidgetCodePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.WidgetWelcomeIconConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.WidgetWelcomeIconUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

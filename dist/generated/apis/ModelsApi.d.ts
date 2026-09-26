@@ -36,6 +36,7 @@ export declare class ModelsApi extends runtime.BaseAPI {
  * @export
  */
 export declare const ModelsListTypeEnum: {
+    readonly Decision: "decision";
     readonly Text: "text";
     readonly ImageGeneration: "image_generation";
     readonly AudioGeneration: "audio_generation";

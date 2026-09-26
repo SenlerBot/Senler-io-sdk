@@ -42,6 +42,42 @@ import {
  */
 export interface McpServerResponseDto {
     /**
+     *
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthHeaderName?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthHeaderPrefix?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthRequireVerified?: boolean;
+    /**
+     * PEM ES256 JWT
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthPublicKey?: string;
+    /**
+     * JWT (iss)
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthIssuer?: string;
+    /**
+     * JWT (aud)
+     * @type {string}
+     * @memberof McpServerResponseDto
+     */
+    leadAuthAudience?: string;
+    /**
      * UUID MCP
      * @type {string}
      * @memberof McpServerResponseDto
@@ -231,7 +267,8 @@ export const McpServerResponseDtoCustomAuthModeEnum = {
     None: 'none',
     AccessToken: 'access_token',
     CustomHeaders: 'custom_headers',
-    McpOauth: 'mcp_oauth'
+    McpOauth: 'mcp_oauth',
+    LeadJwt: 'lead_jwt'
 } as const;
 export type McpServerResponseDtoCustomAuthModeEnum = typeof McpServerResponseDtoCustomAuthModeEnum[keyof typeof McpServerResponseDtoCustomAuthModeEnum];
 
@@ -300,6 +337,12 @@ export function McpServerResponseDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
+        'leadAuthHeaderName': json['lead_auth_header_name'] == null ? undefined : json['lead_auth_header_name'],
+        'leadAuthHeaderPrefix': json['lead_auth_header_prefix'] == null ? undefined : json['lead_auth_header_prefix'],
+        'leadAuthRequireVerified': json['lead_auth_require_verified'] == null ? undefined : json['lead_auth_require_verified'],
+        'leadAuthPublicKey': json['lead_auth_public_key'] == null ? undefined : json['lead_auth_public_key'],
+        'leadAuthIssuer': json['lead_auth_issuer'] == null ? undefined : json['lead_auth_issuer'],
+        'leadAuthAudience': json['lead_auth_audience'] == null ? undefined : json['lead_auth_audience'],
         'id': json['id'],
         'name': json['name'] == null ? undefined : json['name'],
         'templateName': json['template_name'] == null ? undefined : json['template_name'],
@@ -344,6 +387,12 @@ export function McpServerResponseDtoToJSONTyped(value?: McpServerResponseDto | n
 
     return {
 
+        'lead_auth_header_name': value['leadAuthHeaderName'],
+        'lead_auth_header_prefix': value['leadAuthHeaderPrefix'],
+        'lead_auth_require_verified': value['leadAuthRequireVerified'],
+        'lead_auth_public_key': value['leadAuthPublicKey'],
+        'lead_auth_issuer': value['leadAuthIssuer'],
+        'lead_auth_audience': value['leadAuthAudience'],
         'id': value['id'],
         'name': value['name'],
         'template_name': value['templateName'],

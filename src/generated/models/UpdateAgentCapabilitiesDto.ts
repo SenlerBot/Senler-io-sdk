@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
+import {
+    AgentAssignmentPolicyDtoFromJSON,
+    AgentAssignmentPolicyDtoFromJSONTyped,
+    AgentAssignmentPolicyDtoToJSON,
+    AgentAssignmentPolicyDtoToJSONTyped,
+} from './AgentAssignmentPolicyDto';
+import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
+import {
+    AgentAutomationEventPolicyDtoFromJSON,
+    AgentAutomationEventPolicyDtoFromJSONTyped,
+    AgentAutomationEventPolicyDtoToJSON,
+    AgentAutomationEventPolicyDtoToJSONTyped,
+} from './AgentAutomationEventPolicyDto';
+
 /**
  * UpdateAgentCapabilitiesDto.
  * @export
@@ -146,6 +161,12 @@ export interface UpdateAgentCapabilitiesDto {
      */
     cancelPendingResponseOnAutomationMessage?: boolean;
     /**
+     *
+     * @type {AgentAutomationEventPolicyDto}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    automationEventPolicy?: AgentAutomationEventPolicyDto;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
@@ -229,6 +250,12 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     recipientMessagingPolicy?: { [key: string]: any; };
+    /**
+     *
+     * @type {AgentAssignmentPolicyDto}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    agentAssignmentPolicy?: AgentAssignmentPolicyDto;
 }
 
 
@@ -281,6 +308,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'enableAiResponse': json['enable_ai_response'] == null ? undefined : json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'] == null ? undefined : json['cancel_pending_response_on_automation_message'],
+        'automationEventPolicy': json['automation_event_policy'] == null ? undefined : AgentAutomationEventPolicyDtoFromJSON(json['automation_event_policy']),
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
@@ -295,6 +323,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'enableMuteDialog': json['enable_mute_dialog'] == null ? undefined : json['enable_mute_dialog'],
         'enableDetachFromDialog': json['enable_detach_from_dialog'] == null ? undefined : json['enable_detach_from_dialog'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'] == null ? undefined : json['recipient_messaging_policy'],
+        'agentAssignmentPolicy': json['agent_assignment_policy'] == null ? undefined : AgentAssignmentPolicyDtoFromJSON(json['agent_assignment_policy']),
     };
 }
 
@@ -330,6 +359,7 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
+        'automation_event_policy': AgentAutomationEventPolicyDtoToJSON(value['automationEventPolicy']),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
@@ -344,5 +374,6 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'enable_mute_dialog': value['enableMuteDialog'],
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
+        'agent_assignment_policy': AgentAssignmentPolicyDtoToJSON(value['agentAssignmentPolicy']),
     };
 }

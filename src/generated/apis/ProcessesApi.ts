@@ -64,6 +64,8 @@ export interface ProcessesGetDownloadRequest {
 
 export interface ProcessesListRequest {
     projectId: string;
+    includeTotal?: boolean;
+    cursor?: string;
     type?: ProcessesListTypeEnum;
     status?: ProcessesListStatusEnum;
     limit?: number;
@@ -353,6 +355,14 @@ export class ProcessesApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['includeTotal'] != null) {
+            queryParameters['include_total'] = requestParameters['includeTotal'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];

@@ -28,17 +28,23 @@ import {
  */
 export interface ListProcessesResponseDto {
     /**
+     * next cursor.
+     * @type {string}
+     * @memberof ListProcessesResponseDto
+     */
+    nextCursor: string | null;
+    /**
      *
      * @type {Array<ProcessResponseDto>}
      * @memberof ListProcessesResponseDto
      */
     processes: Array<ProcessResponseDto>;
     /**
-     *
+     * include_total=true; null, .
      * @type {number}
      * @memberof ListProcessesResponseDto
      */
-    total: number;
+    total: number | null;
     /**
      *
      * @type {number}
@@ -57,6 +63,7 @@ export interface ListProcessesResponseDto {
  * Check if a given object implements the ListProcessesResponseDto interface.
  */
 export function instanceOfListProcessesResponseDto(value: object): value is ListProcessesResponseDto {
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
     if (!('processes' in value) || value['processes'] === undefined) return false;
     if (!('total' in value) || value['total'] === undefined) return false;
     if (!('limit' in value) || value['limit'] === undefined) return false;
@@ -74,6 +81,7 @@ export function ListProcessesResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'nextCursor': json['next_cursor'],
         'processes': ((json['processes'] as Array<any>).map(ProcessResponseDtoFromJSON)),
         'total': json['total'],
         'limit': json['limit'],
@@ -92,6 +100,7 @@ export function ListProcessesResponseDtoToJSONTyped(value?: ListProcessesRespons
 
     return {
 
+        'next_cursor': value['nextCursor'],
         'processes': ((value['processes'] as Array<any>).map(ProcessResponseDtoToJSON)),
         'total': value['total'],
         'limit': value['limit'],

@@ -15,30 +15,51 @@
 
 import * as runtime from '../runtime';
 import type {
+  ConfirmS3UploadDto,
   CreateWidgetChannelDto,
   CreateWidgetChannelResponseDto,
   ErrorResponse,
+  GetAvatarUploadUrlDto,
   PreviewWidgetCodeDto,
   PreviewWidgetCodeResponseDto,
+  S3UploadUrlResponseDto,
   UpdateWidgetSettingsDto,
   UpdateWidgetSettingsResponseDto,
+  WidgetWelcomeIconResponseDto,
+  WidgetWelcomeStepsDto,
 } from '../models/index';
 import {
+    ConfirmS3UploadDtoFromJSON,
+    ConfirmS3UploadDtoToJSON,
     CreateWidgetChannelDtoFromJSON,
     CreateWidgetChannelDtoToJSON,
     CreateWidgetChannelResponseDtoFromJSON,
     CreateWidgetChannelResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    GetAvatarUploadUrlDtoFromJSON,
+    GetAvatarUploadUrlDtoToJSON,
     PreviewWidgetCodeDtoFromJSON,
     PreviewWidgetCodeDtoToJSON,
     PreviewWidgetCodeResponseDtoFromJSON,
     PreviewWidgetCodeResponseDtoToJSON,
+    S3UploadUrlResponseDtoFromJSON,
+    S3UploadUrlResponseDtoToJSON,
     UpdateWidgetSettingsDtoFromJSON,
     UpdateWidgetSettingsDtoToJSON,
     UpdateWidgetSettingsResponseDtoFromJSON,
     UpdateWidgetSettingsResponseDtoToJSON,
+    WidgetWelcomeIconResponseDtoFromJSON,
+    WidgetWelcomeIconResponseDtoToJSON,
+    WidgetWelcomeStepsDtoFromJSON,
+    WidgetWelcomeStepsDtoToJSON,
 } from '../models/index';
+
+export interface GetWidgetWelcomeStepsRequest {
+    id: string;
+    automationId: string;
+    acceptLanguage?: GetWidgetWelcomeStepsAcceptLanguageEnum;
+}
 
 export interface UpdateWidgetSettingsRequest {
     id: string;
@@ -57,10 +78,83 @@ export interface WidgetCodePreviewRequest {
     acceptLanguage?: WidgetCodePreviewAcceptLanguageEnum;
 }
 
+export interface WidgetWelcomeIconConfirmRequest {
+    id: string;
+    confirmS3UploadDto: ConfirmS3UploadDto;
+    acceptLanguage?: WidgetWelcomeIconConfirmAcceptLanguageEnum;
+}
+
+export interface WidgetWelcomeIconUploadUrlRequest {
+    id: string;
+    getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
+    acceptLanguage?: WidgetWelcomeIconUploadUrlAcceptLanguageEnum;
+}
+
 /**
  *
  */
 export class ChannelsWidgetApi extends runtime.BaseAPI {
+
+    /**
+     *
+     */
+    async getWidgetWelcomeStepsRaw(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeStepsDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getWidgetWelcomeSteps().'
+            );
+        }
+
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getWidgetWelcomeSteps().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['automationId'] != null) {
+            queryParameters['automation_id'] = requestParameters['automationId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-steps`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WidgetWelcomeStepsDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async getWidgetWelcomeSteps(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeStepsDto> {
+        const response = await this.getWidgetWelcomeStepsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * , -. , .
@@ -241,8 +335,138 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * URL theme.welcome_icon_url. .
+     *
+     */
+    async widgetWelcomeIconConfirmRaw(requestParameters: WidgetWelcomeIconConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeIconResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling widgetWelcomeIconConfirm().'
+            );
+        }
+
+        if (requestParameters['confirmS3UploadDto'] == null) {
+            throw new runtime.RequiredError(
+                'confirmS3UploadDto',
+                'Required parameter "confirmS3UploadDto" was null or undefined when calling widgetWelcomeIconConfirm().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-icon/confirm`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ConfirmS3UploadDtoToJSON(requestParameters['confirmS3UploadDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WidgetWelcomeIconResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * URL theme.welcome_icon_url. .
+     *
+     */
+    async widgetWelcomeIconConfirm(requestParameters: WidgetWelcomeIconConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeIconResponseDto> {
+        const response = await this.widgetWelcomeIconConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     *
+     */
+    async widgetWelcomeIconUploadUrlRaw(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling widgetWelcomeIconUploadUrl().'
+            );
+        }
+
+        if (requestParameters['getAvatarUploadUrlDto'] == null) {
+            throw new runtime.RequiredError(
+                'getAvatarUploadUrlDto',
+                'Required parameter "getAvatarUploadUrlDto" was null or undefined when calling widgetWelcomeIconUploadUrl().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-icon/upload-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GetAvatarUploadUrlDtoToJSON(requestParameters['getAvatarUploadUrlDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => S3UploadUrlResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async widgetWelcomeIconUploadUrl(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {
+        const response = await this.widgetWelcomeIconUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
+/**
+ * @export
+ */
+export const GetWidgetWelcomeStepsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetWidgetWelcomeStepsAcceptLanguageEnum = typeof GetWidgetWelcomeStepsAcceptLanguageEnum[keyof typeof GetWidgetWelcomeStepsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -267,3 +491,19 @@ export const WidgetCodePreviewAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type WidgetCodePreviewAcceptLanguageEnum = typeof WidgetCodePreviewAcceptLanguageEnum[keyof typeof WidgetCodePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const WidgetWelcomeIconConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type WidgetWelcomeIconConfirmAcceptLanguageEnum = typeof WidgetWelcomeIconConfirmAcceptLanguageEnum[keyof typeof WidgetWelcomeIconConfirmAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const WidgetWelcomeIconUploadUrlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type WidgetWelcomeIconUploadUrlAcceptLanguageEnum = typeof WidgetWelcomeIconUploadUrlAcceptLanguageEnum[keyof typeof WidgetWelcomeIconUploadUrlAcceptLanguageEnum];

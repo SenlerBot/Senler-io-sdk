@@ -49,6 +49,12 @@ export interface AgentSelectedModelSummaryDto {
      * @memberof AgentSelectedModelSummaryDto
      */
     isSelectable: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSelectedModelSummaryDto
+     */
+    supportsVision: boolean;
 }
 
 /**
@@ -60,6 +66,7 @@ export function instanceOfAgentSelectedModelSummaryDto(value: object): value is 
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
     if (!('isPublic' in value) || value['isPublic'] === undefined) return false;
     if (!('isSelectable' in value) || value['isSelectable'] === undefined) return false;
+    if (!('supportsVision' in value) || value['supportsVision'] === undefined) return false;
     return true;
 }
 
@@ -78,6 +85,7 @@ export function AgentSelectedModelSummaryDtoFromJSONTyped(json: any, ignoreDiscr
         'displayName': json['display_name'],
         'isPublic': json['is_public'],
         'isSelectable': json['is_selectable'],
+        'supportsVision': json['supports_vision'],
     };
 }
 
@@ -97,5 +105,6 @@ export function AgentSelectedModelSummaryDtoToJSONTyped(value?: AgentSelectedMod
         'display_name': value['displayName'],
         'is_public': value['isPublic'],
         'is_selectable': value['isSelectable'],
+        'supports_vision': value['supportsVision'],
     };
 }

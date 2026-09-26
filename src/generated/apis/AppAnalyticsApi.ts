@@ -15,14 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
-  AnalyticsResponseDto,
   ErrorResponse,
+  ScopedAnalyticsResponseDto,
 } from '../models/index';
 import {
-    AnalyticsResponseDtoFromJSON,
-    AnalyticsResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ScopedAnalyticsResponseDtoFromJSON,
+    ScopedAnalyticsResponseDtoToJSON,
 } from '../models/index';
 
 export interface GetAnalyticsRequest {
@@ -48,7 +48,7 @@ export class AppAnalyticsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
+    async getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScopedAnalyticsResponseDto>> {
         if (requestParameters['appId'] == null) {
             throw new runtime.RequiredError(
                 'appId',
@@ -84,14 +84,14 @@ export class AppAnalyticsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticsResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ScopedAnalyticsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      *
      */
-    async getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {
+    async getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScopedAnalyticsResponseDto> {
         const response = await this.getAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -100,7 +100,7 @@ export class AppAnalyticsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getAnalyticsByAgentRaw(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>> {
+    async getAnalyticsByAgentRaw(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScopedAnalyticsResponseDto>> {
         if (requestParameters['appId'] == null) {
             throw new runtime.RequiredError(
                 'appId',
@@ -139,14 +139,14 @@ export class AppAnalyticsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticsResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ScopedAnalyticsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      *
      */
-    async getAnalyticsByAgent(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto> {
+    async getAnalyticsByAgent(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScopedAnalyticsResponseDto> {
         const response = await this.getAnalyticsByAgentRaw(requestParameters, initOverrides);
         return await response.value();
     }

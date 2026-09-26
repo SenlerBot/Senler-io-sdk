@@ -101,6 +101,12 @@ export interface ProjectMemberListItemDto {
      */
     isSupportOperator: boolean;
     /**
+     *
+     * @type {string}
+     * @memberof ProjectMemberListItemDto
+     */
+    supportGroupId: string | null;
+    /**
      * , . hasAccessToAllChannels=true,
      * @type {number}
      * @memberof ProjectMemberListItemDto
@@ -139,6 +145,7 @@ export function instanceOfProjectMemberListItemDto(value: object): value is Proj
     if (!('permissions' in value) || value['permissions'] === undefined) return false;
     if (!('hasAccessToAllChannels' in value) || value['hasAccessToAllChannels'] === undefined) return false;
     if (!('isSupportOperator' in value) || value['isSupportOperator'] === undefined) return false;
+    if (!('supportGroupId' in value) || value['supportGroupId'] === undefined) return false;
     if (!('channelsCount' in value) || value['channelsCount'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -166,6 +173,7 @@ export function ProjectMemberListItemDtoFromJSONTyped(json: any, ignoreDiscrimin
         'permissions': PermissionsDtoFromJSON(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
         'isSupportOperator': json['isSupportOperator'],
+        'supportGroupId': json['support_group_id'],
         'channelsCount': json['channelsCount'],
         'isActive': json['isActive'],
         'createdAt': (new Date(json['createdAt'])),
@@ -195,6 +203,7 @@ export function ProjectMemberListItemDtoToJSONTyped(value?: ProjectMemberListIte
         'permissions': PermissionsDtoToJSON(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],
         'isSupportOperator': value['isSupportOperator'],
+        'support_group_id': value['supportGroupId'],
         'channelsCount': value['channelsCount'],
         'isActive': value['isActive'],
         'createdAt': ((value['createdAt']).toISOString()),

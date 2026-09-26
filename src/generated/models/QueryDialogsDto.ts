@@ -20,6 +20,30 @@ import { mapValues } from '../runtime';
  */
 export interface QueryDialogsDto {
     /**
+     * (UUID )
+     * @type {Array<string>}
+     * @memberof QueryDialogsDto
+     */
+    operatorUserIds?: Array<string>;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof QueryDialogsDto
+     */
+    supportGroupId?: Array<string>;
+    /**
+     *
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    supportGroupAssignment?: QueryDialogsDtoSupportGroupAssignmentEnum;
+    /**
+     * active , snoozed , all
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    snoozeStatus?: QueryDialogsDtoSnoozeStatusEnum;
+    /**
      * ( 2 )
      * @type {string}
      * @memberof QueryDialogsDto
@@ -235,6 +259,24 @@ export interface QueryDialogsDto {
 /**
  * @export
  */
+export const QueryDialogsDtoSupportGroupAssignmentEnum = {
+    None: 'none'
+} as const;
+export type QueryDialogsDtoSupportGroupAssignmentEnum = typeof QueryDialogsDtoSupportGroupAssignmentEnum[keyof typeof QueryDialogsDtoSupportGroupAssignmentEnum];
+
+/**
+ * @export
+ */
+export const QueryDialogsDtoSnoozeStatusEnum = {
+    Active: 'active',
+    Snoozed: 'snoozed',
+    All: 'all'
+} as const;
+export type QueryDialogsDtoSnoozeStatusEnum = typeof QueryDialogsDtoSnoozeStatusEnum[keyof typeof QueryDialogsDtoSnoozeStatusEnum];
+
+/**
+ * @export
+ */
 export const QueryDialogsDtoSortByEnum = {
     LastEvent: 'last_event',
     LastMessage: 'last_message',
@@ -329,6 +371,10 @@ export function QueryDialogsDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
 
+        'operatorUserIds': json['operator_user_ids'] == null ? undefined : json['operator_user_ids'],
+        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'supportGroupAssignment': json['support_group_assignment'] == null ? undefined : json['support_group_assignment'],
+        'snoozeStatus': json['snooze_status'] == null ? undefined : json['snooze_status'],
         'q': json['q'] == null ? undefined : json['q'],
         'from': json['from'] == null ? undefined : json['from'],
         'size': json['size'] == null ? undefined : json['size'],
@@ -378,6 +424,10 @@ export function QueryDialogsDtoToJSONTyped(value?: QueryDialogsDto | null, ignor
 
     return {
 
+        'operator_user_ids': value['operatorUserIds'],
+        'support_group_id': value['supportGroupId'],
+        'support_group_assignment': value['supportGroupAssignment'],
+        'snooze_status': value['snoozeStatus'],
         'q': value['q'],
         'from': value['from'],
         'size': value['size'],

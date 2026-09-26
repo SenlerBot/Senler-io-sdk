@@ -29,7 +29,8 @@ exports.McpServerResponseDtoCustomAuthModeEnum = {
     None: 'none',
     AccessToken: 'access_token',
     CustomHeaders: 'custom_headers',
-    McpOauth: 'mcp_oauth'
+    McpOauth: 'mcp_oauth',
+    LeadJwt: 'lead_jwt'
 };
 /**
  * @export
@@ -94,6 +95,12 @@ function McpServerResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'leadAuthHeaderName': json['lead_auth_header_name'] == null ? undefined : json['lead_auth_header_name'],
+        'leadAuthHeaderPrefix': json['lead_auth_header_prefix'] == null ? undefined : json['lead_auth_header_prefix'],
+        'leadAuthRequireVerified': json['lead_auth_require_verified'] == null ? undefined : json['lead_auth_require_verified'],
+        'leadAuthPublicKey': json['lead_auth_public_key'] == null ? undefined : json['lead_auth_public_key'],
+        'leadAuthIssuer': json['lead_auth_issuer'] == null ? undefined : json['lead_auth_issuer'],
+        'leadAuthAudience': json['lead_auth_audience'] == null ? undefined : json['lead_auth_audience'],
         'id': json['id'],
         'name': json['name'] == null ? undefined : json['name'],
         'templateName': json['template_name'] == null ? undefined : json['template_name'],
@@ -134,6 +141,12 @@ function McpServerResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'lead_auth_header_name': value['leadAuthHeaderName'],
+        'lead_auth_header_prefix': value['leadAuthHeaderPrefix'],
+        'lead_auth_require_verified': value['leadAuthRequireVerified'],
+        'lead_auth_public_key': value['leadAuthPublicKey'],
+        'lead_auth_issuer': value['leadAuthIssuer'],
+        'lead_auth_audience': value['leadAuthAudience'],
         'id': value['id'],
         'name': value['name'],
         'template_name': value['templateName'],

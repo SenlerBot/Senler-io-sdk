@@ -26,6 +26,12 @@ export interface CreateServerBodyDtoMeta {
      * @memberof CreateServerBodyDtoMeta
      */
     tags?: Array<string>;
+    /**
+     * MCP,
+     * @type {number}
+     * @memberof CreateServerBodyDtoMeta
+     */
+    toolCallTimeoutSeconds?: number;
 }
 
 /**
@@ -47,6 +53,7 @@ export function CreateServerBodyDtoMetaFromJSONTyped(json: any, ignoreDiscrimina
 
             ...json,
         'tags': json['tags'] == null ? undefined : json['tags'],
+        'toolCallTimeoutSeconds': json['tool_call_timeout_seconds'] == null ? undefined : json['tool_call_timeout_seconds'],
     };
 }
 
@@ -63,5 +70,6 @@ export function CreateServerBodyDtoMetaToJSONTyped(value?: CreateServerBodyDtoMe
 
             ...value,
         'tags': value['tags'],
+        'tool_call_timeout_seconds': value['toolCallTimeoutSeconds'],
     };
 }

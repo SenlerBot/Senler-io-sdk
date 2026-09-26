@@ -22,6 +22,12 @@ export interface McpServerResponseDtoMeta {
      * @memberof McpServerResponseDtoMeta
      */
     tags?: Array<string>;
+    /**
+     * MCP,
+     * @type {number}
+     * @memberof McpServerResponseDtoMeta
+     */
+    toolCallTimeoutSeconds?: number;
 }
 /**
  * Check if a given object implements the McpServerResponseDtoMeta interface.

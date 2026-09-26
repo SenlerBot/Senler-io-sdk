@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AssignAgentToDialogDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogDto, DialogParticipantsResponseDto, EditMessageDto, EditMessageResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto } from '../models/index';
+import type { AssignAgentToDialogDto, CloseDialogDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogDto, DialogParticipantsResponseDto, DialogSupportChangeDto, EditMessageDto, EditMessageResponseDto, HandoffDialogDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto, SnoozeDialogDto, SupportOperatorDirectoryDto, TransferDialogOperatorDto } from '../models/index';
 export interface DeleteAgentRequest {
     id: string;
     role: DeleteAgentRoleEnum;
@@ -53,6 +53,14 @@ export interface GetProjectsBillingRecoveryRequest {
     projectId: string;
     acceptLanguage?: GetProjectsBillingRecoveryAcceptLanguageEnum;
 }
+export interface GetProjectsSupportOperatorsRequest {
+    projectId: string;
+    acceptLanguage?: GetProjectsSupportOperatorsAcceptLanguageEnum;
+}
+export interface GetSupportHistoryRequest {
+    dialogId: string;
+    acceptLanguage?: GetSupportHistoryAcceptLanguageEnum;
+}
 export interface ProjectsBillingRecoveryDismissRequest {
     projectId: string;
     acceptLanguage?: ProjectsBillingRecoveryDismissAcceptLanguageEnum;
@@ -61,6 +69,25 @@ export interface ProjectsBillingRecoveryRetryRequest {
     projectId: string;
     retryDialogAiBillingRecoveryDto: RetryDialogAiBillingRecoveryDto;
     acceptLanguage?: ProjectsBillingRecoveryRetryAcceptLanguageEnum;
+}
+export interface SupportCloseRequest {
+    dialogId: string;
+    closeDialogDto: CloseDialogDto;
+    acceptLanguage?: SupportCloseAcceptLanguageEnum;
+}
+export interface SupportHandoffRequest {
+    dialogId: string;
+    handoffDialogDto: HandoffDialogDto;
+    acceptLanguage?: SupportHandoffAcceptLanguageEnum;
+}
+export interface SupportReopenRequest {
+    dialogId: string;
+    acceptLanguage?: SupportReopenAcceptLanguageEnum;
+}
+export interface SupportSnoozeRequest {
+    dialogId: string;
+    snoozeDialogDto: SnoozeDialogDto;
+    acceptLanguage?: SupportSnoozeAcceptLanguageEnum;
 }
 export interface UpdateAgentRequest {
     id: string;
@@ -113,6 +140,11 @@ export interface UpdateSoundMuteRequest {
     id: string;
     setSoundMuteDto: SetSoundMuteDto;
     acceptLanguage?: UpdateSoundMuteAcceptLanguageEnum;
+}
+export interface UpdateSupportAssignmentRequest {
+    dialogId: string;
+    transferDialogOperatorDto: TransferDialogOperatorDto;
+    acceptLanguage?: UpdateSupportAssignmentAcceptLanguageEnum;
 }
 export interface UpdateUnarchiveRequest {
     id: string;
@@ -213,6 +245,26 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     getProjectsBillingRecovery(requestParameters: GetProjectsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoverySummaryDto>;
     /**
+     * .
+     *
+     */
+    getProjectsSupportOperatorsRaw(requestParameters: GetProjectsSupportOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportOperatorDirectoryDto>>;
+    /**
+     * .
+     *
+     */
+    getProjectsSupportOperators(requestParameters: GetProjectsSupportOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportOperatorDirectoryDto>;
+    /**
+     * 50 , .
+     *
+     */
+    getSupportHistoryRaw(requestParameters: GetSupportHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DialogSupportChangeDto>>>;
+    /**
+     * 50 , .
+     *
+     */
+    getSupportHistory(requestParameters: GetSupportHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DialogSupportChangeDto>>;
+    /**
      * . . .
      *
      */
@@ -232,6 +284,46 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      * AI-
      */
     projectsBillingRecoveryRetry(requestParameters: ProjectsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryBulkRetryResponseDto>;
+    /**
+     * . ; .
+     *
+     */
+    supportCloseRaw(requestParameters: SupportCloseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * . ; .
+     *
+     */
+    supportClose(requestParameters: SupportCloseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
+    /**
+     * , .
+     *
+     */
+    supportHandoffRaw(requestParameters: SupportHandoffRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * , .
+     *
+     */
+    supportHandoff(requestParameters: SupportHandoffRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
+    /**
+     * . ; .
+     *
+     */
+    supportReopenRaw(requestParameters: SupportReopenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * . ; .
+     *
+     */
+    supportReopen(requestParameters: SupportReopenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
+    /**
+     * . .
+     *
+     */
+    supportSnoozeRaw(requestParameters: SupportSnoozeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * . .
+     *
+     */
+    supportSnooze(requestParameters: SupportSnoozeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
      * .
      *
@@ -343,6 +435,16 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateSoundMute(requestParameters: UpdateSoundMuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
+     * . .
+     *
+     */
+    updateSupportAssignmentRaw(requestParameters: UpdateSupportAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
+    /**
+     * . .
+     *
+     */
+    updateSupportAssignment(requestParameters: UpdateSupportAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
+    /**
      * .
      *
      */
@@ -436,6 +538,22 @@ export type GetProjectsBillingRecoveryAcceptLanguageEnum = typeof GetProjectsBil
 /**
  * @export
  */
+export declare const GetProjectsSupportOperatorsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetProjectsSupportOperatorsAcceptLanguageEnum = typeof GetProjectsSupportOperatorsAcceptLanguageEnum[keyof typeof GetProjectsSupportOperatorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetSupportHistoryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSupportHistoryAcceptLanguageEnum = typeof GetSupportHistoryAcceptLanguageEnum[keyof typeof GetSupportHistoryAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const ProjectsBillingRecoveryDismissAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -449,6 +567,38 @@ export declare const ProjectsBillingRecoveryRetryAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ProjectsBillingRecoveryRetryAcceptLanguageEnum = typeof ProjectsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof ProjectsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SupportCloseAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SupportCloseAcceptLanguageEnum = typeof SupportCloseAcceptLanguageEnum[keyof typeof SupportCloseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SupportHandoffAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SupportHandoffAcceptLanguageEnum = typeof SupportHandoffAcceptLanguageEnum[keyof typeof SupportHandoffAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SupportReopenAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SupportReopenAcceptLanguageEnum = typeof SupportReopenAcceptLanguageEnum[keyof typeof SupportReopenAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SupportSnoozeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SupportSnoozeAcceptLanguageEnum = typeof SupportSnoozeAcceptLanguageEnum[keyof typeof SupportSnoozeAcceptLanguageEnum];
 /**
  * @export
  */
@@ -545,6 +695,14 @@ export declare const UpdateSoundMuteAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateSoundMuteAcceptLanguageEnum = typeof UpdateSoundMuteAcceptLanguageEnum[keyof typeof UpdateSoundMuteAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateSupportAssignmentAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateSupportAssignmentAcceptLanguageEnum = typeof UpdateSupportAssignmentAcceptLanguageEnum[keyof typeof UpdateSupportAssignmentAcceptLanguageEnum];
 /**
  * @export
  */

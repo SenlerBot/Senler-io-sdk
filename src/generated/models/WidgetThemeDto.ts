@@ -42,6 +42,18 @@ import {
  */
 export interface WidgetThemeDto {
     /**
+     * URL (HTTP/HTTPS).
+     * @type {string}
+     * @memberof WidgetThemeDto
+     */
+    welcomeIconUrl?: string;
+    /**
+     * . ;
+     * @type {string}
+     * @memberof WidgetThemeDto
+     */
+    welcomeIconShape?: WidgetThemeDtoWelcomeIconShapeEnum;
+    /**
      * . ?lang=ru|en|auto
      * @type {WidgetLocalizedTextDto}
      * @memberof WidgetThemeDto
@@ -119,6 +131,15 @@ export interface WidgetThemeDto {
 /**
  * @export
  */
+export const WidgetThemeDtoWelcomeIconShapeEnum = {
+    Circle: 'circle',
+    Square: 'square'
+} as const;
+export type WidgetThemeDtoWelcomeIconShapeEnum = typeof WidgetThemeDtoWelcomeIconShapeEnum[keyof typeof WidgetThemeDtoWelcomeIconShapeEnum];
+
+/**
+ * @export
+ */
 export const WidgetThemeDtoPositionEnum = {
     BottomRight: 'bottom-right',
     BottomLeft: 'bottom-left',
@@ -155,6 +176,8 @@ export function WidgetThemeDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'welcomeIconUrl': json['welcome_icon_url'] == null ? undefined : json['welcome_icon_url'],
+        'welcomeIconShape': json['welcome_icon_shape'] == null ? undefined : json['welcome_icon_shape'],
         'chatTitle': json['chat_title'] == null ? undefined : WidgetLocalizedTextDtoFromJSON(json['chat_title']),
         'defaultDialogTitle': json['default_dialog_title'] == null ? undefined : WidgetLocalizedTextDtoFromJSON(json['default_dialog_title']),
         'position': json['position'] == null ? undefined : json['position'],
@@ -181,6 +204,8 @@ export function WidgetThemeDtoToJSONTyped(value?: WidgetThemeDto | null, ignoreD
 
     return {
 
+        'welcome_icon_url': value['welcomeIconUrl'],
+        'welcome_icon_shape': value['welcomeIconShape'],
         'chat_title': WidgetLocalizedTextDtoToJSON(value['chatTitle']),
         'default_dialog_title': WidgetLocalizedTextDtoToJSON(value['defaultDialogTitle']),
         'position': value['position'],

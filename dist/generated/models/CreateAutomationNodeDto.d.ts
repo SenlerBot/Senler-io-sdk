@@ -64,6 +64,7 @@ export declare const CreateAutomationNodeDtoTypeEnum: {
     readonly TriggerEvent: "trigger.event";
     readonly TriggerAppEvent: "trigger.app_event";
     readonly ConditionVariable: "condition.variable";
+    readonly ConditionAi: "condition.ai";
     readonly ConditionDateTime: "condition.date_time";
     readonly ConditionSegment: "condition.segment";
     readonly ConditionFunnelStage: "condition.funnel_stage";
@@ -74,6 +75,8 @@ export declare const CreateAutomationNodeDtoTypeEnum: {
     readonly BranchRandom: "branch.random";
     readonly ActionSetVariable: "action.set_variable";
     readonly ActionMessage: "action.message";
+    readonly ActionPoll: "action.poll";
+    readonly ActionTyping: "action.typing";
     readonly ActionAgentRequest: "action.agent_request";
     readonly ActionAddSegment: "action.add_segment";
     readonly ActionMoveFunnelStage: "action.move_funnel_stage";

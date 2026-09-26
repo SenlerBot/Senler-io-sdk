@@ -17,17 +17,23 @@ import type { ProcessResponseDto } from './ProcessResponseDto';
  */
 export interface ListProcessesResponseDto {
     /**
+     * next cursor.
+     * @type {string}
+     * @memberof ListProcessesResponseDto
+     */
+    nextCursor: string | null;
+    /**
      *
      * @type {Array<ProcessResponseDto>}
      * @memberof ListProcessesResponseDto
      */
     processes: Array<ProcessResponseDto>;
     /**
-     *
+     * include_total=true; null, .
      * @type {number}
      * @memberof ListProcessesResponseDto
      */
-    total: number;
+    total: number | null;
     /**
      *
      * @type {number}

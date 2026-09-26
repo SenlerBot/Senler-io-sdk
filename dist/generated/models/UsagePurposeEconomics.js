@@ -20,7 +20,7 @@ exports.UsagePurposeEconomicsFromJSONTyped = UsagePurposeEconomicsFromJSONTyped;
 exports.UsagePurposeEconomicsToJSON = UsagePurposeEconomicsToJSON;
 exports.UsagePurposeEconomicsToJSONTyped = UsagePurposeEconomicsToJSONTyped;
 const ClientSpending_1 = require("./ClientSpending");
-const CurrencyBreakdown_1 = require("./CurrencyBreakdown");
+const ProviderCostBreakdown_1 = require("./ProviderCostBreakdown");
 /**
  * @export
  */
@@ -69,7 +69,7 @@ function UsagePurposeEconomicsFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'category': json['category'],
         'purpose': json['purpose'],
-        'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownFromJSON)(json['provider']),
+        'provider': (0, ProviderCostBreakdown_1.ProviderCostBreakdownFromJSON)(json['provider']),
         'client': (0, ClientSpending_1.ClientSpendingFromJSON)(json['client']),
         'eventsWithCosts': json['events_with_costs'],
     };
@@ -84,7 +84,7 @@ function UsagePurposeEconomicsToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'category': value['category'],
         'purpose': value['purpose'],
-        'provider': (0, CurrencyBreakdown_1.CurrencyBreakdownToJSON)(value['provider']),
+        'provider': (0, ProviderCostBreakdown_1.ProviderCostBreakdownToJSON)(value['provider']),
         'client': (0, ClientSpending_1.ClientSpendingToJSON)(value['client']),
         'events_with_costs': value['eventsWithCosts'],
     };

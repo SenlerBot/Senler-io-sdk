@@ -21,6 +21,7 @@ export interface GetMeRequest {
 export interface ListRequest {
     limit?: number;
     offset?: number;
+    search?: string;
     isActive?: boolean;
     source?: ListSourceEnum;
     acceptLanguage?: ListAcceptLanguageEnum;

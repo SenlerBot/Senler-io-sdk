@@ -16,7 +16,9 @@ import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDt
 import type { WizardStep } from './WizardStep';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { McpServerResponseDto } from './McpServerResponseDto';
+import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import type { McpServerListResponseDto } from './McpServerListResponseDto';
+import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
  * AgentResponseDto.
  * @export
@@ -386,6 +388,12 @@ export interface AgentResponseDto {
      */
     cancelPendingResponseOnAutomationMessage: boolean;
     /**
+     *
+     * @type {AgentAutomationEventPolicyDto}
+     * @memberof AgentResponseDto
+     */
+    automationEventPolicy: AgentAutomationEventPolicyDto;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentResponseDto
@@ -501,6 +509,12 @@ export interface AgentResponseDto {
     recipientMessagingPolicy: {
         [key: string]: any;
     };
+    /**
+     *
+     * @type {AgentAssignmentPolicyDto}
+     * @memberof AgentResponseDto
+     */
+    agentAssignmentPolicy: AgentAssignmentPolicyDto;
     /**
      *
      * @type {Date}

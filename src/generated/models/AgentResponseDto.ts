@@ -62,6 +62,13 @@ import {
     McpServerResponseDtoToJSON,
     McpServerResponseDtoToJSONTyped,
 } from './McpServerResponseDto';
+import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
+import {
+    AgentAssignmentPolicyDtoFromJSON,
+    AgentAssignmentPolicyDtoFromJSONTyped,
+    AgentAssignmentPolicyDtoToJSON,
+    AgentAssignmentPolicyDtoToJSONTyped,
+} from './AgentAssignmentPolicyDto';
 import type { McpServerListResponseDto } from './McpServerListResponseDto';
 import {
     McpServerListResponseDtoFromJSON,
@@ -69,6 +76,13 @@ import {
     McpServerListResponseDtoToJSON,
     McpServerListResponseDtoToJSONTyped,
 } from './McpServerListResponseDto';
+import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
+import {
+    AgentAutomationEventPolicyDtoFromJSON,
+    AgentAutomationEventPolicyDtoFromJSONTyped,
+    AgentAutomationEventPolicyDtoToJSON,
+    AgentAutomationEventPolicyDtoToJSONTyped,
+} from './AgentAutomationEventPolicyDto';
 
 /**
  * AgentResponseDto.
@@ -437,6 +451,12 @@ export interface AgentResponseDto {
      */
     cancelPendingResponseOnAutomationMessage: boolean;
     /**
+     *
+     * @type {AgentAutomationEventPolicyDto}
+     * @memberof AgentResponseDto
+     */
+    automationEventPolicy: AgentAutomationEventPolicyDto;
+    /**
      * . false AGENT_ACTION,
      * @type {boolean}
      * @memberof AgentResponseDto
@@ -544,6 +564,12 @@ export interface AgentResponseDto {
      * @memberof AgentResponseDto
      */
     recipientMessagingPolicy: { [key: string]: any; };
+    /**
+     *
+     * @type {AgentAssignmentPolicyDto}
+     * @memberof AgentResponseDto
+     */
+    agentAssignmentPolicy: AgentAssignmentPolicyDto;
     /**
      *
      * @type {Date}
@@ -726,6 +752,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('enableAiResponse' in value) || value['enableAiResponse'] === undefined) return false;
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined) return false;
     if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined) return false;
+    if (!('automationEventPolicy' in value) || value['automationEventPolicy'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
     if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined) return false;
@@ -744,6 +771,7 @@ export function instanceOfAgentResponseDto(value: object): value is AgentRespons
     if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined) return false;
     if (!('funnelAccessPolicy' in value) || value['funnelAccessPolicy'] === undefined) return false;
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
+    if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
@@ -819,6 +847,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'enableAiResponse': json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
+        'automationEventPolicy': AgentAutomationEventPolicyDtoFromJSON(json['automation_event_policy']),
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
@@ -837,6 +866,7 @@ export function AgentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'segmentAccessPolicy': json['segment_access_policy'],
         'funnelAccessPolicy': json['funnel_access_policy'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
+        'agentAssignmentPolicy': AgentAssignmentPolicyDtoFromJSON(json['agent_assignment_policy']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -913,6 +943,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
+        'automation_event_policy': AgentAutomationEventPolicyDtoToJSON(value['automationEventPolicy']),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
@@ -931,6 +962,7 @@ export function AgentResponseDtoToJSONTyped(value?: AgentResponseDto | null, ign
         'segment_access_policy': value['segmentAccessPolicy'],
         'funnel_access_policy': value['funnelAccessPolicy'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
+        'agent_assignment_policy': AgentAssignmentPolicyDtoToJSON(value['agentAssignmentPolicy']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

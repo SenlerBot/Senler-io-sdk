@@ -20,13 +20,13 @@ import {
     ClientSpendingToJSON,
     ClientSpendingToJSONTyped,
 } from './ClientSpending';
-import type { CurrencyBreakdown } from './CurrencyBreakdown';
+import type { ProviderCostBreakdown } from './ProviderCostBreakdown';
 import {
-    CurrencyBreakdownFromJSON,
-    CurrencyBreakdownFromJSONTyped,
-    CurrencyBreakdownToJSON,
-    CurrencyBreakdownToJSONTyped,
-} from './CurrencyBreakdown';
+    ProviderCostBreakdownFromJSON,
+    ProviderCostBreakdownFromJSONTyped,
+    ProviderCostBreakdownToJSON,
+    ProviderCostBreakdownToJSONTyped,
+} from './ProviderCostBreakdown';
 
 /**
  * UsagePurposeEconomics.
@@ -48,10 +48,10 @@ export interface UsagePurposeEconomics {
     purpose: UsagePurposeEconomicsPurposeEnum;
     /**
      *
-     * @type {CurrencyBreakdown}
+     * @type {ProviderCostBreakdown}
      * @memberof UsagePurposeEconomics
      */
-    provider: CurrencyBreakdown;
+    provider: ProviderCostBreakdown;
     /**
      *
      * @type {ClientSpending}
@@ -118,7 +118,7 @@ export function UsagePurposeEconomicsFromJSONTyped(json: any, ignoreDiscriminato
 
         'category': json['category'],
         'purpose': json['purpose'],
-        'provider': CurrencyBreakdownFromJSON(json['provider']),
+        'provider': ProviderCostBreakdownFromJSON(json['provider']),
         'client': ClientSpendingFromJSON(json['client']),
         'eventsWithCosts': json['events_with_costs'],
     };
@@ -137,7 +137,7 @@ export function UsagePurposeEconomicsToJSONTyped(value?: UsagePurposeEconomics |
 
         'category': value['category'],
         'purpose': value['purpose'],
-        'provider': CurrencyBreakdownToJSON(value['provider']),
+        'provider': ProviderCostBreakdownToJSON(value['provider']),
         'client': ClientSpendingToJSON(value['client']),
         'events_with_costs': value['eventsWithCosts'],
     };

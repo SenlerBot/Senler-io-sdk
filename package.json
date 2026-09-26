@@ -1,6 +1,6 @@
 {
   "name": "@senlerio/api",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Senler.io API SDK (fetch)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

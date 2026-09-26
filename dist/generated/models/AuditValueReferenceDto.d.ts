@@ -76,6 +76,7 @@ export declare const AuditValueReferenceDtoEntityTypeEnum: {
     readonly ProjectMember: "project_member";
     readonly Segment: "segment";
     readonly SupportShift: "support_shift";
+    readonly SupportOperatorGroup: "support_operator_group";
     readonly Tariff: "tariff";
     readonly Trigger: "trigger";
     readonly User: "user";

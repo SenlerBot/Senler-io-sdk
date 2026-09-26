@@ -54,6 +54,8 @@ export interface DeliveriesGetByIdRequest {
 }
 export interface DeliveriesListRequest {
     projectId: string;
+    limit?: number;
+    cursor?: string;
     tab?: DeliveriesListTabEnum;
     search?: string;
     acceptLanguage?: DeliveriesListAcceptLanguageEnum;

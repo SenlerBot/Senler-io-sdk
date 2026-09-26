@@ -33,6 +33,8 @@ export interface ProcessesGetDownloadRequest {
 }
 export interface ProcessesListRequest {
     projectId: string;
+    includeTotal?: boolean;
+    cursor?: string;
     type?: ProcessesListTypeEnum;
     status?: ProcessesListStatusEnum;
     limit?: number;

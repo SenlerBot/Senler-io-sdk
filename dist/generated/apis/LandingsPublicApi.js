@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -141,6 +141,35 @@ class LandingsPublicApi extends runtime.BaseAPI {
      */
     async getProjectsLandings(requestParameters, initOverrides) {
         const response = await this.getProjectsLandingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * - .
+     *
+     */
+    async getProjectsLandingsAnalyticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectPublicId'] == null) {
+            throw new runtime.RequiredError('projectPublicId', 'Required parameter "projectPublicId" was null or undefined when calling getProjectsLandingsAnalytics().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/projects/{projectPublicId}/landings/analytics`.replace(`{${"projectPublicId"}}`, encodeURIComponent(String(requestParameters['projectPublicId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPublicAnalyticsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * - .
+     *
+     */
+    async getProjectsLandingsAnalytics(requestParameters, initOverrides) {
+        const response = await this.getProjectsLandingsAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -367,6 +396,13 @@ exports.GetLandingsLaunchAcceptLanguageEnum = {
  * @export
  */
 exports.GetProjectsLandingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

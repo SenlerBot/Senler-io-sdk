@@ -11,6 +11,7 @@
  */
 import type { WidgetFeaturesDto } from './WidgetFeaturesDto';
 import type { WidgetExternalAiSettingsDto } from './WidgetExternalAiSettingsDto';
+import type { WidgetWelcomeSettingsDto } from './WidgetWelcomeSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
  * UpdateWidgetSettingsDto.
@@ -48,6 +49,12 @@ export interface UpdateWidgetSettingsDto {
      * @memberof UpdateWidgetSettingsDto
      */
     displayMode?: UpdateWidgetSettingsDtoDisplayModeEnum;
+    /**
+     *
+     * @type {WidgetWelcomeSettingsDto}
+     * @memberof UpdateWidgetSettingsDto
+     */
+    welcome?: WidgetWelcomeSettingsDto;
     /**
      * CORS
      * @type {Array<string>}

@@ -25,6 +25,10 @@ const DeliveryResponseDto_1 = require("./DeliveryResponseDto");
 function instanceOfListDeliveriesResponseDto(value) {
     if (!('items' in value) || value['items'] === undefined)
         return false;
+    if (!('hasMore' in value) || value['hasMore'] === undefined)
+        return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined)
+        return false;
     return true;
 }
 function ListDeliveriesResponseDtoFromJSON(json) {
@@ -36,6 +40,8 @@ function ListDeliveriesResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'items': (json['items'].map(DeliveryResponseDto_1.DeliveryResponseDtoFromJSON)),
+        'hasMore': json['has_more'],
+        'nextCursor': json['next_cursor'],
     };
 }
 function ListDeliveriesResponseDtoToJSON(json) {
@@ -47,5 +53,7 @@ function ListDeliveriesResponseDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'items': (value['items'].map(DeliveryResponseDto_1.DeliveryResponseDtoToJSON)),
+        'has_more': value['hasMore'],
+        'next_cursor': value['nextCursor'],
     };
 }

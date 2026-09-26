@@ -11,6 +11,7 @@
  */
 import type { WidgetFeaturesDto } from './WidgetFeaturesDto';
 import type { WidgetExternalAiSettingsDto } from './WidgetExternalAiSettingsDto';
+import type { WidgetWelcomeSettingsDto } from './WidgetWelcomeSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 /**
  * WidgetChannelDataDto.
@@ -18,6 +19,12 @@ import type { WidgetThemeDto } from './WidgetThemeDto';
  * @interface WidgetChannelDataDto
  */
 export interface WidgetChannelDataDto {
+    /**
+     *
+     * @type {WidgetWelcomeSettingsDto}
+     * @memberof WidgetChannelDataDto
+     */
+    welcome?: WidgetWelcomeSettingsDto;
     /**
      *
      * @type {boolean}

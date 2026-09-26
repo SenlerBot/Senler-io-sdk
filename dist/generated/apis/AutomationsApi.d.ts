@@ -520,10 +520,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getDialogsRuns(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto>;
     /**
+     * .
      *
      */
     getFunnelOptionsRaw(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>>;
     /**
+     * .
      *
      */
     getFunnelOptions(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto>;

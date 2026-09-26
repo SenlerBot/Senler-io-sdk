@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AnalyticsResponseDto } from '../models/index';
+import type { ScopedAnalyticsResponseDto } from '../models/index';
 export interface GetAnalyticsRequest {
     appId: string;
     period?: string;
@@ -31,22 +31,22 @@ export declare class AppAnalyticsApi extends runtime.BaseAPI {
      * .
      *
      */
-    getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>>;
+    getAnalyticsRaw(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScopedAnalyticsResponseDto>>;
     /**
      * .
      *
      */
-    getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto>;
+    getAnalytics(requestParameters: GetAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScopedAnalyticsResponseDto>;
     /**
      * .
      *
      */
-    getAnalyticsByAgentRaw(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalyticsResponseDto>>;
+    getAnalyticsByAgentRaw(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScopedAnalyticsResponseDto>>;
     /**
      * .
      *
      */
-    getAnalyticsByAgent(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalyticsResponseDto>;
+    getAnalyticsByAgent(requestParameters: GetAnalyticsByAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScopedAnalyticsResponseDto>;
 }
 /**
  * @export

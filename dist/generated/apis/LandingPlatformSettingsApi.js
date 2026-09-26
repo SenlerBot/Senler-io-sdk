@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VkAppTargetAcceptLanguageEnum = exports.UpdateWebAcceptLanguageEnum = exports.UpdateTelegramMiniAppAcceptLanguageEnum = exports.UpdateTelegramMenuButtonListAcceptLanguageEnum = exports.UpdateTelegramMenuButtonLandingAcceptLanguageEnum = exports.UpdateTelegramMenuButtonIconListAcceptLanguageEnum = exports.UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum = exports.TelegramMiniAppVerificationAcceptLanguageEnum = exports.TelegramMenuButtonCheckAcceptLanguageEnum = exports.MaxMiniAppVerificationAcceptLanguageEnum = exports.MaxMiniAppTargetAcceptLanguageEnum = exports.GetWebAcceptLanguageEnum = exports.GetVkAppsAcceptLanguageEnum = exports.GetTelegramMiniAppsAcceptLanguageEnum = exports.GetTelegramMenuButtonsAcceptLanguageEnum = exports.GetMaxMiniAppsAcceptLanguageEnum = exports.DeleteTelegramMenuButtonAcceptLanguageEnum = exports.LandingPlatformSettingsApi = void 0;
+exports.VkAppTargetAcceptLanguageEnum = exports.UpdateWebAcceptLanguageEnum = exports.UpdateTelegramMiniAppAcceptLanguageEnum = exports.UpdateTelegramMenuButtonListAcceptLanguageEnum = exports.UpdateTelegramMenuButtonLandingAcceptLanguageEnum = exports.UpdateTelegramMenuButtonIconListAcceptLanguageEnum = exports.UpdateTelegramMenuButtonBannerGridAcceptLanguageEnum = exports.UpdateAnalyticsAcceptLanguageEnum = exports.TelegramMiniAppVerificationAcceptLanguageEnum = exports.TelegramMenuButtonCheckAcceptLanguageEnum = exports.MaxMiniAppVerificationAcceptLanguageEnum = exports.MaxMiniAppTargetAcceptLanguageEnum = exports.LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum = exports.GetWebAcceptLanguageEnum = exports.GetVkAppsAcceptLanguageEnum = exports.GetTelegramMiniAppsAcceptLanguageEnum = exports.GetTelegramMenuButtonsAcceptLanguageEnum = exports.GetMaxMiniAppsAcceptLanguageEnum = exports.DeleteTelegramMenuButtonAcceptLanguageEnum = exports.LandingPlatformSettingsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -309,6 +309,49 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
+     *
+     */
+    async landingPlatformSettingsGetAnalyticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling landingPlatformSettingsGetAnalytics().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/landings/platform/analytics`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAnalyticsSettingsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async landingPlatformSettingsGetAnalytics(requestParameters, initOverrides) {
+        const response = await this.landingPlatformSettingsGetAnalyticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * MAX- Mini App : .
      * MAX Mini App
      */
@@ -498,6 +541,54 @@ class LandingPlatformSettingsApi extends runtime.BaseAPI {
      */
     async telegramMiniAppVerification(requestParameters, initOverrides) {
         const response = await this.telegramMiniAppVerificationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . - .
+     *
+     */
+    async updateAnalyticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateAnalytics().');
+        }
+        if (requestParameters['landingAnalyticsSettingsDto'] == null) {
+            throw new runtime.RequiredError('landingAnalyticsSettingsDto', 'Required parameter "landingAnalyticsSettingsDto" was null or undefined when calling updateAnalytics().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+        const response = await this.request({
+            path: `/api/landings/platform/analytics`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LandingAnalyticsSettingsDtoToJSON)(requestParameters['landingAnalyticsSettingsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAnalyticsSettingsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . - .
+     *
+     */
+    async updateAnalytics(requestParameters, initOverrides) {
+        const response = await this.updateAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -874,6 +965,13 @@ exports.GetWebAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.LandingPlatformSettingsGetAnalyticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.MaxMiniAppTargetAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -896,6 +994,13 @@ exports.TelegramMenuButtonCheckAcceptLanguageEnum = {
  * @export
  */
 exports.TelegramMiniAppVerificationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateAnalyticsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

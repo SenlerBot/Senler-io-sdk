@@ -16,6 +16,12 @@
  */
 export interface SupportScheduleOperatorDto {
     /**
+     *
+     * @type {string}
+     * @memberof SupportScheduleOperatorDto
+     */
+    groupId: string | null;
+    /**
      * ID
      * @type {string}
      * @memberof SupportScheduleOperatorDto

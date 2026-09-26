@@ -69,6 +69,7 @@ exports.AuditLogResponseDtoEntityTypeEnum = {
     Delivery: 'delivery',
     ProjectTariff: 'project_tariff',
     SupportSchedule: 'support_schedule',
+    SupportOperatorGroup: 'support_operator_group',
     Invitation: 'invitation',
     ApiKey: 'api_key',
     MetricDefinition: 'metric_definition',

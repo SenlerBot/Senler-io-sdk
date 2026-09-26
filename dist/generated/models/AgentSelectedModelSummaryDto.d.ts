@@ -45,6 +45,12 @@ export interface AgentSelectedModelSummaryDto {
      * @memberof AgentSelectedModelSummaryDto
      */
     isSelectable: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSelectedModelSummaryDto
+     */
+    supportsVision: boolean;
 }
 /**
  * Check if a given object implements the AgentSelectedModelSummaryDto interface.

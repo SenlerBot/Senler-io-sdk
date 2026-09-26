@@ -135,6 +135,7 @@ export interface GetListsRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    search?: string;
     acceptLanguage?: GetListsAcceptLanguageEnum;
 }
 
@@ -764,6 +765,10 @@ export class MCPServersApi extends runtime.BaseAPI {
 
         if (requestParameters['offset'] != null) {
             queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

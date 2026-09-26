@@ -19,6 +19,8 @@ exports.UpdateAgentCapabilitiesDtoFromJSON = UpdateAgentCapabilitiesDtoFromJSON;
 exports.UpdateAgentCapabilitiesDtoFromJSONTyped = UpdateAgentCapabilitiesDtoFromJSONTyped;
 exports.UpdateAgentCapabilitiesDtoToJSON = UpdateAgentCapabilitiesDtoToJSON;
 exports.UpdateAgentCapabilitiesDtoToJSONTyped = UpdateAgentCapabilitiesDtoToJSONTyped;
+const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
+const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto");
 /**
  * @export
  */
@@ -62,6 +64,7 @@ function UpdateAgentCapabilitiesDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableAiResponse': json['enable_ai_response'] == null ? undefined : json['enable_ai_response'],
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'] == null ? undefined : json['cancel_pending_response_on_automation_message'],
+        'automationEventPolicy': json['automation_event_policy'] == null ? undefined : (0, AgentAutomationEventPolicyDto_1.AgentAutomationEventPolicyDtoFromJSON)(json['automation_event_policy']),
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
@@ -76,6 +79,7 @@ function UpdateAgentCapabilitiesDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableMuteDialog': json['enable_mute_dialog'] == null ? undefined : json['enable_mute_dialog'],
         'enableDetachFromDialog': json['enable_detach_from_dialog'] == null ? undefined : json['enable_detach_from_dialog'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'] == null ? undefined : json['recipient_messaging_policy'],
+        'agentAssignmentPolicy': json['agent_assignment_policy'] == null ? undefined : (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoFromJSON)(json['agent_assignment_policy']),
     };
 }
 function UpdateAgentCapabilitiesDtoToJSON(json) {
@@ -107,6 +111,7 @@ function UpdateAgentCapabilitiesDtoToJSONTyped(value, ignoreDiscriminator = fals
         'enable_ai_response': value['enableAiResponse'],
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
+        'automation_event_policy': (0, AgentAutomationEventPolicyDto_1.AgentAutomationEventPolicyDtoToJSON)(value['automationEventPolicy']),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
@@ -121,5 +126,6 @@ function UpdateAgentCapabilitiesDtoToJSONTyped(value, ignoreDiscriminator = fals
         'enable_mute_dialog': value['enableMuteDialog'],
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
+        'agent_assignment_policy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoToJSON)(value['agentAssignmentPolicy']),
     };
 }

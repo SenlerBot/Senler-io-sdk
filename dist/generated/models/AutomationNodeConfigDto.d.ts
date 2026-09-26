@@ -19,6 +19,7 @@ import type { AutomationAppStepFieldSnapshotDto } from './AutomationAppStepField
 import type { AutomationMessageButtonDto } from './AutomationMessageButtonDto';
 import type { AutomationTableResultFieldDto } from './AutomationTableResultFieldDto';
 import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
+import type { AutomationPollOptionDto } from './AutomationPollOptionDto';
 import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
 import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
 import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
@@ -28,6 +29,66 @@ import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
  * @interface AutomationNodeConfigDto
  */
 export interface AutomationNodeConfigDto {
+    /**
+     * .
+     * @type {Array<AutomationPollOptionDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollOptions?: Array<AutomationPollOptionDto>;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollMultiple?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollVariableName?: string;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollAllowCustomAnswer?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollReplyVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    pollConfirmText?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiInstruction?: string;
+    /**
+     * ai branches.
+     * @type {Array<AutomationAgentBranchDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiBranches?: Array<AutomationAgentBranchDto>;
+    /**
+     * ai confidence threshold.
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiConfidenceThreshold?: number;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiIncludeDialogHistory?: boolean;
     /**
      * HTTP- .
      * @type {AutomationHttpConfigDto}
@@ -76,6 +137,18 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     incomingMessageVariableName?: string;
+    /**
+     * . .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    incomingAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    incomingAttachmentsVariableScope?: AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum;
     /**
      * .
      * @type {string}
@@ -595,6 +668,18 @@ export interface AutomationNodeConfigDto {
      */
     messageReplyVariableName?: string;
     /**
+     * , reply.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReplyAttachmentsVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReplyAttachmentsVariableScope?: AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum;
+    /**
      * .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -624,6 +709,12 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     waitVariableName?: string;
+    /**
+     * .
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    typingDurationSeconds?: number;
     /**
      * .
      * @type {number}
@@ -811,6 +902,16 @@ export declare const AutomationNodeConfigDtoMessageMatchModeEnum: {
     readonly StartPayloadPrefix: "start_payload_prefix";
 };
 export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeConfigDtoMessageMatchModeEnum[keyof typeof AutomationNodeConfigDtoMessageMatchModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Dialog: "dialog";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum];
 /**
  * @export
  */
@@ -1028,6 +1129,10 @@ export declare const AutomationNodeConfigDtoVariableOperatorEnum: {
     readonly Before: "before";
     readonly After: "after";
     readonly Contains: "contains";
+    readonly HasAttachments: "has_attachments";
+    readonly NoAttachments: "no_attachments";
+    readonly AttachmentType: "attachment_type";
+    readonly AttachmentFormat: "attachment_format";
 };
 export type AutomationNodeConfigDtoVariableOperatorEnum = typeof AutomationNodeConfigDtoVariableOperatorEnum[keyof typeof AutomationNodeConfigDtoVariableOperatorEnum];
 /**
@@ -1135,6 +1240,16 @@ export declare const AutomationNodeConfigDtoMessageReplyVariableScopeEnum: {
     readonly Project: "project";
 };
 export type AutomationNodeConfigDtoMessageReplyVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReplyVariableScopeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Dialog: "dialog";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum];
 /**
  * @export
  */

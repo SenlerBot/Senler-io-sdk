@@ -85,6 +85,7 @@ import { SegmentsPublicApi } from './generated/apis/SegmentsPublicApi';
 import { SpacesApi } from './generated/apis/SpacesApi';
 import { StatisticsApi } from './generated/apis/StatisticsApi';
 import { StorageApi } from './generated/apis/StorageApi';
+import { SupportOperatorsApi } from './generated/apis/SupportOperatorsApi';
 import { SupportSchedulesApi } from './generated/apis/SupportSchedulesApi';
 import { TariffsApi } from './generated/apis/TariffsApi';
 import { TrafficMarksApi } from './generated/apis/TrafficMarksApi';
@@ -175,6 +176,7 @@ export declare class AiSenlerClient {
     readonly spaces: SpacesApi;
     readonly statistics: StatisticsApi;
     readonly storage: StorageApi;
+    readonly supportOperators: SupportOperatorsApi;
     readonly supportSchedules: SupportSchedulesApi;
     readonly tariffs: TariffsApi;
     readonly trafficMarks: TrafficMarksApi;

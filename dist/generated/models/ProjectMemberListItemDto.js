@@ -38,6 +38,8 @@ function instanceOfProjectMemberListItemDto(value) {
         return false;
     if (!('isSupportOperator' in value) || value['isSupportOperator'] === undefined)
         return false;
+    if (!('supportGroupId' in value) || value['supportGroupId'] === undefined)
+        return false;
     if (!('channelsCount' in value) || value['channelsCount'] === undefined)
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
@@ -65,6 +67,7 @@ function ProjectMemberListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
         'isSupportOperator': json['isSupportOperator'],
+        'supportGroupId': json['support_group_id'],
         'channelsCount': json['channelsCount'],
         'isActive': json['isActive'],
         'createdAt': (new Date(json['createdAt'])),
@@ -90,6 +93,7 @@ function ProjectMemberListItemDtoToJSONTyped(value, ignoreDiscriminator = false)
         'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],
         'isSupportOperator': value['isSupportOperator'],
+        'support_group_id': value['supportGroupId'],
         'channelsCount': value['channelsCount'],
         'isActive': value['isActive'],
         'createdAt': ((value['createdAt']).toISOString()),

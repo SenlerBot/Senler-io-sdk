@@ -33,6 +33,12 @@ export interface StorageStats {
     eventCount: number;
     /**
      *
+     * @type {boolean}
+     * @memberof StorageStats
+     */
+    isEstimated?: boolean;
+    /**
+     *
      * @type {string}
      * @memberof StorageStats
      */
@@ -66,6 +72,7 @@ export function StorageStatsFromJSONTyped(json: any, ignoreDiscriminator: boolea
 
         'name': json['name'],
         'eventCount': json['event_count'],
+        'isEstimated': json['is_estimated'] == null ? undefined : json['is_estimated'],
         'oldestEvent': json['oldest_event'] == null ? undefined : json['oldest_event'],
         'newestEvent': json['newest_event'] == null ? undefined : json['newest_event'],
     };
@@ -84,6 +91,7 @@ export function StorageStatsToJSONTyped(value?: StorageStats | null, ignoreDiscr
 
         'name': value['name'],
         'event_count': value['eventCount'],
+        'is_estimated': value['isEstimated'],
         'oldest_event': value['oldestEvent'],
         'newest_event': value['newestEvent'],
     };

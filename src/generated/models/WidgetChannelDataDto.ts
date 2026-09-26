@@ -27,6 +27,13 @@ import {
     WidgetExternalAiSettingsDtoToJSON,
     WidgetExternalAiSettingsDtoToJSONTyped,
 } from './WidgetExternalAiSettingsDto';
+import type { WidgetWelcomeSettingsDto } from './WidgetWelcomeSettingsDto';
+import {
+    WidgetWelcomeSettingsDtoFromJSON,
+    WidgetWelcomeSettingsDtoFromJSONTyped,
+    WidgetWelcomeSettingsDtoToJSON,
+    WidgetWelcomeSettingsDtoToJSONTyped,
+} from './WidgetWelcomeSettingsDto';
 import type { WidgetThemeDto } from './WidgetThemeDto';
 import {
     WidgetThemeDtoFromJSON,
@@ -41,6 +48,12 @@ import {
  * @interface WidgetChannelDataDto
  */
 export interface WidgetChannelDataDto {
+    /**
+     *
+     * @type {WidgetWelcomeSettingsDto}
+     * @memberof WidgetChannelDataDto
+     */
+    welcome?: WidgetWelcomeSettingsDto;
     /**
      *
      * @type {boolean}
@@ -129,6 +142,7 @@ export function WidgetChannelDataDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
+        'welcome': json['welcome'] == null ? undefined : WidgetWelcomeSettingsDtoFromJSON(json['welcome']),
         'offerCreditPurchase': json['offer_credit_purchase'] == null ? undefined : json['offer_credit_purchase'],
         'externalAi': json['external_ai'] == null ? undefined : WidgetExternalAiSettingsDtoFromJSON(json['external_ai']),
         'allowedDomains': json['allowed_domains'] == null ? undefined : json['allowed_domains'],
@@ -151,6 +165,7 @@ export function WidgetChannelDataDtoToJSONTyped(value?: WidgetChannelDataDto | n
 
     return {
 
+        'welcome': WidgetWelcomeSettingsDtoToJSON(value['welcome']),
         'offer_credit_purchase': value['offerCreditPurchase'],
         'external_ai': WidgetExternalAiSettingsDtoToJSON(value['externalAi']),
         'allowed_domains': value['allowedDomains'],

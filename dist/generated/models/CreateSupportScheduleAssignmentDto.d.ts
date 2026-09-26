@@ -16,6 +16,12 @@
  */
 export interface CreateSupportScheduleAssignmentDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof CreateSupportScheduleAssignmentDto
+     */
+    groupId?: string | null;
+    /**
      * , ISO 8601 timezone offset
      * @type {Date}
      * @memberof CreateSupportScheduleAssignmentDto
