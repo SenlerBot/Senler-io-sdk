@@ -12,6 +12,7 @@
 import type { FunnelRuleDto } from './FunnelRuleDto';
 import type { EventFunnelAutomationDto } from './EventFunnelAutomationDto';
 import type { EventFunnelPreviousStageDto } from './EventFunnelPreviousStageDto';
+import type { FunnelMarkerSnapshotDto } from './FunnelMarkerSnapshotDto';
 import type { LeadSubscriptionUtmDto } from './LeadSubscriptionUtmDto';
 /**
  * EventFunnelDto.
@@ -19,6 +20,42 @@ import type { LeadSubscriptionUtmDto } from './LeadSubscriptionUtmDto';
  * @interface EventFunnelDto
  */
 export interface EventFunnelDto {
+    /**
+     * : markers
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    markers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     *
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    fromMarkers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     * : added_markers
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    addedMarkers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     * : removed_markers
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    removedMarkers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     * : requested_add_marker_ids
+     * @type {Array<string>}
+     * @memberof EventFunnelDto
+     */
+    requestedAddMarkerIds?: Array<string>;
+    /**
+     * : requested_remove_marker_ids
+     * @type {Array<string>}
+     * @memberof EventFunnelDto
+     */
+    requestedRemoveMarkerIds?: Array<string>;
     /**
      *
      * @type {string}

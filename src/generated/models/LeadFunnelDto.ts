@@ -28,6 +28,12 @@ import {
  */
 export interface LeadFunnelDto {
     /**
+     *
+     * @type {Array<string>}
+     * @memberof LeadFunnelDto
+     */
+    markerIds?: Array<string>;
+    /**
      * ID
      * @type {string}
      * @memberof LeadFunnelDto
@@ -102,6 +108,7 @@ export function LeadFunnelDtoFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
 
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
         'funnelId': json['funnel_id'],
         'stageId': json['stage_id'],
         'participationId': json['participation_id'],
@@ -124,6 +131,7 @@ export function LeadFunnelDtoToJSONTyped(value?: LeadFunnelDto | null, ignoreDis
 
     return {
 
+        'marker_ids': value['markerIds'],
         'funnel_id': value['funnelId'],
         'stage_id': value['stageId'],
         'participation_id': value['participationId'],

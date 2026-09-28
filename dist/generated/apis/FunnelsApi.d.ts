@@ -61,6 +61,7 @@ export interface GetStagesHistoryRequest {
     to: Date;
     id: string;
     stageId: string;
+    markerFilter?: string;
     utmPaths?: string;
     cursor?: string;
     limit?: number;
@@ -218,12 +219,12 @@ export declare class FunnelsApi extends runtime.BaseAPI {
      */
     previewLeads(requestParameters: PreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPreviewResponseDto>;
     /**
-     * . [from, to), UTM .
+     * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
     statisticsRaw(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelStatisticsResponseDto>>;
     /**
-     * . [from, to), UTM .
+     * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
     statistics(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto>;

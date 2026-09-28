@@ -299,6 +299,18 @@ export interface AutomationNodeConfigDto {
      */
     funnelStageId?: string;
     /**
+     * .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    addMarkerIds?: Array<string>;
+    /**
+     * .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    removeMarkerIds?: Array<string>;
+    /**
      * Mongo ID .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -1503,6 +1515,8 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
         'funnelId': json['funnel_id'] == null ? undefined : json['funnel_id'],
         'funnelStageId': json['funnel_stage_id'] == null ? undefined : json['funnel_stage_id'],
+        'addMarkerIds': json['add_marker_ids'] == null ? undefined : json['add_marker_ids'],
+        'removeMarkerIds': json['remove_marker_ids'] == null ? undefined : json['remove_marker_ids'],
         'targetAutomationId': json['target_automation_id'] == null ? undefined : json['target_automation_id'],
         'targetRunVariableBindings': json['target_run_variable_bindings'] == null ? undefined : ((json['target_run_variable_bindings'] as Array<any>).map(AutomationRunVariableBindingDtoFromJSON)),
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
@@ -1654,6 +1668,8 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'segment_id': value['segmentId'],
         'funnel_id': value['funnelId'],
         'funnel_stage_id': value['funnelStageId'],
+        'add_marker_ids': value['addMarkerIds'],
+        'remove_marker_ids': value['removeMarkerIds'],
         'target_automation_id': value['targetAutomationId'],
         'target_run_variable_bindings': value['targetRunVariableBindings'] == null ? undefined : ((value['targetRunVariableBindings'] as Array<any>).map(AutomationRunVariableBindingDtoToJSON)),
         'agent_id': value['agentId'],

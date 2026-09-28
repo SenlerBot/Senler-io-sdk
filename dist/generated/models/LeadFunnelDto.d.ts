@@ -17,6 +17,12 @@ import type { LeadSubscriptionUtmDto } from './LeadSubscriptionUtmDto';
  */
 export interface LeadFunnelDto {
     /**
+     *
+     * @type {Array<string>}
+     * @memberof LeadFunnelDto
+     */
+    markerIds?: Array<string>;
+    /**
      * ID
      * @type {string}
      * @memberof LeadFunnelDto

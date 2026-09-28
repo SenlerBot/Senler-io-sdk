@@ -20,6 +20,13 @@ import {
     AiResponseActivityDtoToJSON,
     AiResponseActivityDtoToJSONTyped,
 } from './AiResponseActivityDto';
+import type { StreamViBroadcastDto } from './StreamViBroadcastDto';
+import {
+    StreamViBroadcastDtoFromJSON,
+    StreamViBroadcastDtoFromJSONTyped,
+    StreamViBroadcastDtoToJSON,
+    StreamViBroadcastDtoToJSONTyped,
+} from './StreamViBroadcastDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
 import {
     DialogDtoReplyTargetFromJSON,
@@ -409,6 +416,12 @@ export interface DialogListItemDto {
      */
     displayInfo?: DialogDisplayInfoDto;
     /**
+     * StreamVi
+     * @type {StreamViBroadcastDto}
+     * @memberof DialogListItemDto
+     */
+    streamviBroadcast?: StreamViBroadcastDto;
+    /**
      * AI-
      * @type {string}
      * @memberof DialogListItemDto
@@ -649,6 +662,7 @@ export function DialogListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'leadUnreadCount': json['lead_unread_count'],
         'primaryLeadId': json['primary_lead_id'] == null ? undefined : json['primary_lead_id'],
         'displayInfo': json['display_info'] == null ? undefined : DialogDisplayInfoDtoFromJSON(json['display_info']),
+        'streamviBroadcast': json['streamvi_broadcast'] == null ? undefined : StreamViBroadcastDtoFromJSON(json['streamvi_broadcast']),
         'summary': json['summary'] == null ? undefined : json['summary'],
         'summaryGeneratedAt': json['summary_generated_at'] == null ? undefined : (new Date(json['summary_generated_at'])),
         'replyTarget': json['reply_target'] == null ? undefined : DialogDtoReplyTargetFromJSON(json['reply_target']),
@@ -731,6 +745,7 @@ export function DialogListItemDtoToJSONTyped(value?: DialogListItemDto | null, i
         'lead_unread_count': value['leadUnreadCount'],
         'primary_lead_id': value['primaryLeadId'],
         'display_info': DialogDisplayInfoDtoToJSON(value['displayInfo']),
+        'streamvi_broadcast': StreamViBroadcastDtoToJSON(value['streamviBroadcast']),
         'summary': value['summary'],
         'summary_generated_at': value['summaryGeneratedAt'] == null ? undefined : ((value['summaryGeneratedAt']).toISOString()),
         'reply_target': DialogDtoReplyTargetToJSON(value['replyTarget']),

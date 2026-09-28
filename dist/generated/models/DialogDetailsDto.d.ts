@@ -11,6 +11,7 @@
  */
 import type { AiResponseActivityDto } from './AiResponseActivityDto';
 import type { DialogLeadDto } from './DialogLeadDto';
+import type { StreamViBroadcastDto } from './StreamViBroadcastDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
 import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
 import type { DialogDisplayInfoDto } from './DialogDisplayInfoDto';
@@ -344,6 +345,12 @@ export interface DialogDetailsDto {
      * @memberof DialogDetailsDto
      */
     displayInfo?: DialogDisplayInfoDto;
+    /**
+     * StreamVi
+     * @type {StreamViBroadcastDto}
+     * @memberof DialogDetailsDto
+     */
+    streamviBroadcast?: StreamViBroadcastDto;
     /**
      * AI-
      * @type {string}

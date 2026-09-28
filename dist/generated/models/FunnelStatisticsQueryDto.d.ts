@@ -17,6 +17,18 @@ import type { LeadSubscriptionUtmPathDto } from './LeadSubscriptionUtmPathDto';
  */
 export interface FunnelStatisticsQueryDto {
     /**
+     * .
+     * @type {Array<string>}
+     * @memberof FunnelStatisticsQueryDto
+     */
+    markerIds?: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof FunnelStatisticsQueryDto
+     */
+    withoutMarkers?: boolean;
+    /**
      *
      * @type {Date}
      * @memberof FunnelStatisticsQueryDto

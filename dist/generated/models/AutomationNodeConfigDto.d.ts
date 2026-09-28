@@ -210,6 +210,18 @@ export interface AutomationNodeConfigDto {
      */
     funnelStageId?: string;
     /**
+     * .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    addMarkerIds?: Array<string>;
+    /**
+     * .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    removeMarkerIds?: Array<string>;
+    /**
      * Mongo ID .
      * @type {string}
      * @memberof AutomationNodeConfigDto

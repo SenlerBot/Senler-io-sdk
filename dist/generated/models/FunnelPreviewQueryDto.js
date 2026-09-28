@@ -37,6 +37,7 @@ function FunnelPreviewQueryDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'includeCurrentStage': json['include_current_stage'] == null ? undefined : json['include_current_stage'],
         'stageId': json['stage_id'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
     };
@@ -49,6 +50,7 @@ function FunnelPreviewQueryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'include_current_stage': value['includeCurrentStage'],
         'stage_id': value['stageId'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
     };

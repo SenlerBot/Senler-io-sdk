@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { KnowledgeArchivePublicationSummaryDto } from './KnowledgeArchivePublicationSummaryDto';
 import type { KnowledgeArchiveImportReplaceDeletionsSummaryDto } from './KnowledgeArchiveImportReplaceDeletionsSummaryDto';
 import type { KnowledgeArchiveImportFilesSummaryDto } from './KnowledgeArchiveImportFilesSummaryDto';
 import type { KnowledgeArchiveImportFoldersSummaryDto } from './KnowledgeArchiveImportFoldersSummaryDto';
@@ -18,6 +19,12 @@ import type { KnowledgeArchiveImportFoldersSummaryDto } from './KnowledgeArchive
  * @interface KnowledgeArchiveImportSummaryDto
  */
 export interface KnowledgeArchiveImportSummaryDto {
+    /**
+     *
+     * @type {KnowledgeArchivePublicationSummaryDto}
+     * @memberof KnowledgeArchiveImportSummaryDto
+     */
+    publication?: KnowledgeArchivePublicationSummaryDto;
     /**
      * ZIP-
      * @type {string}

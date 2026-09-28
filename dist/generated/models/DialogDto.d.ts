@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StreamViBroadcastDto } from './StreamViBroadcastDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
 import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
 import type { DialogDisplayInfoDto } from './DialogDisplayInfoDto';
@@ -340,6 +341,12 @@ export interface DialogDto {
      * @memberof DialogDto
      */
     displayInfo?: DialogDisplayInfoDto;
+    /**
+     * StreamVi
+     * @type {StreamViBroadcastDto}
+     * @memberof DialogDto
+     */
+    streamviBroadcast?: StreamViBroadcastDto;
     /**
      * AI-
      * @type {string}

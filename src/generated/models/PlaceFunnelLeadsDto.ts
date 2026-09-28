@@ -28,6 +28,18 @@ import {
  */
 export interface PlaceFunnelLeadsDto {
     /**
+     * . ;
+     * @type {Array<string>}
+     * @memberof PlaceFunnelLeadsDto
+     */
+    addMarkerIds?: Array<string>;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof PlaceFunnelLeadsDto
+     */
+    removeMarkerIds?: Array<string>;
+    /**
      * ;
      * @type {boolean}
      * @memberof PlaceFunnelLeadsDto
@@ -80,6 +92,8 @@ export function PlaceFunnelLeadsDtoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
 
+        'addMarkerIds': json['add_marker_ids'] == null ? undefined : json['add_marker_ids'],
+        'removeMarkerIds': json['remove_marker_ids'] == null ? undefined : json['remove_marker_ids'],
         'includePreviousStages': json['include_previous_stages'] == null ? undefined : json['include_previous_stages'],
         'requestedAt': (new Date(json['requested_at'])),
         'requestId': json['request_id'],
@@ -99,6 +113,8 @@ export function PlaceFunnelLeadsDtoToJSONTyped(value?: PlaceFunnelLeadsDto | nul
 
     return {
 
+        'add_marker_ids': value['addMarkerIds'],
+        'remove_marker_ids': value['removeMarkerIds'],
         'include_previous_stages': value['includePreviousStages'],
         'requested_at': ((value['requestedAt']).toISOString()),
         'request_id': value['requestId'],

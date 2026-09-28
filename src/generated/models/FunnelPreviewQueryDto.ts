@@ -28,6 +28,12 @@ import {
  */
 export interface FunnelPreviewQueryDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof FunnelPreviewQueryDto
+     */
+    includeCurrentStage?: boolean;
+    /**
      * ;
      * @type {string}
      * @memberof FunnelPreviewQueryDto
@@ -60,6 +66,7 @@ export function FunnelPreviewQueryDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'includeCurrentStage': json['include_current_stage'] == null ? undefined : json['include_current_stage'],
         'stageId': json['stage_id'],
         'filters': LeadsFilterDtoFromJSON(json['filters']),
     };
@@ -76,6 +83,7 @@ export function FunnelPreviewQueryDtoToJSONTyped(value?: FunnelPreviewQueryDto |
 
     return {
 
+        'include_current_stage': value['includeCurrentStage'],
         'stage_id': value['stageId'],
         'filters': LeadsFilterDtoToJSON(value['filters']),
     };

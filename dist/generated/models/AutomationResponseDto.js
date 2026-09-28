@@ -79,6 +79,8 @@ function instanceOfAutomationResponseDto(value) {
         return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined)
         return false;
+    if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined)
+        return false;
     if (!('migrationEpoch' in value) || value['migrationEpoch'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -108,6 +110,7 @@ function AutomationResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'acceptNewTriggers': json['accept_new_triggers'],
         'isReadOnly': json['is_read_only'],
         'publishedVersionId': json['published_version_id'],
+        'hasUnpublishedChanges': json['has_unpublished_changes'],
         'migrationEpoch': json['migration_epoch'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -134,6 +137,7 @@ function AutomationResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'accept_new_triggers': value['acceptNewTriggers'],
         'is_read_only': value['isReadOnly'],
         'published_version_id': value['publishedVersionId'],
+        'has_unpublished_changes': value['hasUnpublishedChanges'],
         'migration_epoch': value['migrationEpoch'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

@@ -28,6 +28,18 @@ import {
  */
 export interface LeadFunnelFilterDto {
     /**
+     * .
+     * @type {Array<string>}
+     * @memberof LeadFunnelFilterDto
+     */
+    markerIds?: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LeadFunnelFilterDto
+     */
+    withoutMarkers?: boolean;
+    /**
      * ID
      * @type {string}
      * @memberof LeadFunnelFilterDto
@@ -66,6 +78,8 @@ export function LeadFunnelFilterDtoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
 
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
+        'withoutMarkers': json['without_markers'] == null ? undefined : json['without_markers'],
         'funnelId': json['funnel_id'],
         'stageIds': json['stage_ids'],
         'utmPaths': json['utm_paths'] == null ? undefined : ((json['utm_paths'] as Array<any>).map(LeadSubscriptionUtmPathDtoFromJSON)),
@@ -83,6 +97,8 @@ export function LeadFunnelFilterDtoToJSONTyped(value?: LeadFunnelFilterDto | nul
 
     return {
 
+        'marker_ids': value['markerIds'],
+        'without_markers': value['withoutMarkers'],
         'funnel_id': value['funnelId'],
         'stage_ids': value['stageIds'],
         'utm_paths': value['utmPaths'] == null ? undefined : ((value['utmPaths'] as Array<any>).map(LeadSubscriptionUtmPathDtoToJSON)),

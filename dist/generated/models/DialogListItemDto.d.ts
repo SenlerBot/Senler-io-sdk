@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AiResponseActivityDto } from './AiResponseActivityDto';
+import type { StreamViBroadcastDto } from './StreamViBroadcastDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
 import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
 import type { DialogDisplayInfoDto } from './DialogDisplayInfoDto';
@@ -343,6 +344,12 @@ export interface DialogListItemDto {
      * @memberof DialogListItemDto
      */
     displayInfo?: DialogDisplayInfoDto;
+    /**
+     * StreamVi
+     * @type {StreamViBroadcastDto}
+     * @memberof DialogListItemDto
+     */
+    streamviBroadcast?: StreamViBroadcastDto;
     /**
      * AI-
      * @type {string}

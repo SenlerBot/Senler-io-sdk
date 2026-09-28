@@ -22,6 +22,7 @@ exports.EventFunnelDtoToJSONTyped = EventFunnelDtoToJSONTyped;
 const FunnelRuleDto_1 = require("./FunnelRuleDto");
 const EventFunnelAutomationDto_1 = require("./EventFunnelAutomationDto");
 const EventFunnelPreviousStageDto_1 = require("./EventFunnelPreviousStageDto");
+const FunnelMarkerSnapshotDto_1 = require("./FunnelMarkerSnapshotDto");
 const LeadSubscriptionUtmDto_1 = require("./LeadSubscriptionUtmDto");
 /**
  * @export
@@ -77,6 +78,12 @@ function EventFunnelDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'markers': json['markers'] == null ? undefined : (json['markers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoFromJSON)),
+        'fromMarkers': json['from_markers'] == null ? undefined : (json['from_markers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoFromJSON)),
+        'addedMarkers': json['added_markers'] == null ? undefined : (json['added_markers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoFromJSON)),
+        'removedMarkers': json['removed_markers'] == null ? undefined : (json['removed_markers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoFromJSON)),
+        'requestedAddMarkerIds': json['requested_add_marker_ids'] == null ? undefined : json['requested_add_marker_ids'],
+        'requestedRemoveMarkerIds': json['requested_remove_marker_ids'] == null ? undefined : json['requested_remove_marker_ids'],
         'funnelId': json['funnel_id'],
         'funnelName': json['funnel_name'],
         'participationId': json['participation_id'],
@@ -104,6 +111,12 @@ function EventFunnelDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'markers': value['markers'] == null ? undefined : (value['markers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoToJSON)),
+        'from_markers': value['fromMarkers'] == null ? undefined : (value['fromMarkers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoToJSON)),
+        'added_markers': value['addedMarkers'] == null ? undefined : (value['addedMarkers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoToJSON)),
+        'removed_markers': value['removedMarkers'] == null ? undefined : (value['removedMarkers'].map(FunnelMarkerSnapshotDto_1.FunnelMarkerSnapshotDtoToJSON)),
+        'requested_add_marker_ids': value['requestedAddMarkerIds'],
+        'requested_remove_marker_ids': value['requestedRemoveMarkerIds'],
         'funnel_id': value['funnelId'],
         'funnel_name': value['funnelName'],
         'participation_id': value['participationId'],

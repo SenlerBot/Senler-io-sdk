@@ -38,6 +38,7 @@ export interface EventTypeStats {
  * @export
  */
 export declare const EventTypeStatsActionTypeEnum: {
+    readonly FunnelMarkersChanged: "funnel_markers_changed";
     readonly FunnelEntered: "funnel_entered";
     readonly FunnelStageChanged: "funnel_stage_changed";
     readonly FunnelLeft: "funnel_left";

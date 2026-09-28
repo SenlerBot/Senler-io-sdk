@@ -1153,7 +1153,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , status, draft revision .
+     * . : .
      *
      */
     async automationsListRaw(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationListResponseDto>> {
@@ -1200,7 +1200,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , status, draft revision .
+     * . : .
      *
      */
     async automationsList(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto> {

@@ -34,6 +34,13 @@ import {
     EventFunnelPreviousStageDtoToJSON,
     EventFunnelPreviousStageDtoToJSONTyped,
 } from './EventFunnelPreviousStageDto';
+import type { FunnelMarkerSnapshotDto } from './FunnelMarkerSnapshotDto';
+import {
+    FunnelMarkerSnapshotDtoFromJSON,
+    FunnelMarkerSnapshotDtoFromJSONTyped,
+    FunnelMarkerSnapshotDtoToJSON,
+    FunnelMarkerSnapshotDtoToJSONTyped,
+} from './FunnelMarkerSnapshotDto';
 import type { LeadSubscriptionUtmDto } from './LeadSubscriptionUtmDto';
 import {
     LeadSubscriptionUtmDtoFromJSON,
@@ -48,6 +55,42 @@ import {
  * @interface EventFunnelDto
  */
 export interface EventFunnelDto {
+    /**
+     * : markers
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    markers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     *
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    fromMarkers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     * : added_markers
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    addedMarkers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     * : removed_markers
+     * @type {Array<FunnelMarkerSnapshotDto>}
+     * @memberof EventFunnelDto
+     */
+    removedMarkers?: Array<FunnelMarkerSnapshotDto>;
+    /**
+     * : requested_add_marker_ids
+     * @type {Array<string>}
+     * @memberof EventFunnelDto
+     */
+    requestedAddMarkerIds?: Array<string>;
+    /**
+     * : requested_remove_marker_ids
+     * @type {Array<string>}
+     * @memberof EventFunnelDto
+     */
+    requestedRemoveMarkerIds?: Array<string>;
     /**
      *
      * @type {string}
@@ -198,6 +241,12 @@ export function EventFunnelDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'markers': json['markers'] == null ? undefined : ((json['markers'] as Array<any>).map(FunnelMarkerSnapshotDtoFromJSON)),
+        'fromMarkers': json['from_markers'] == null ? undefined : ((json['from_markers'] as Array<any>).map(FunnelMarkerSnapshotDtoFromJSON)),
+        'addedMarkers': json['added_markers'] == null ? undefined : ((json['added_markers'] as Array<any>).map(FunnelMarkerSnapshotDtoFromJSON)),
+        'removedMarkers': json['removed_markers'] == null ? undefined : ((json['removed_markers'] as Array<any>).map(FunnelMarkerSnapshotDtoFromJSON)),
+        'requestedAddMarkerIds': json['requested_add_marker_ids'] == null ? undefined : json['requested_add_marker_ids'],
+        'requestedRemoveMarkerIds': json['requested_remove_marker_ids'] == null ? undefined : json['requested_remove_marker_ids'],
         'funnelId': json['funnel_id'],
         'funnelName': json['funnel_name'],
         'participationId': json['participation_id'],
@@ -229,6 +278,12 @@ export function EventFunnelDtoToJSONTyped(value?: EventFunnelDto | null, ignoreD
 
     return {
 
+        'markers': value['markers'] == null ? undefined : ((value['markers'] as Array<any>).map(FunnelMarkerSnapshotDtoToJSON)),
+        'from_markers': value['fromMarkers'] == null ? undefined : ((value['fromMarkers'] as Array<any>).map(FunnelMarkerSnapshotDtoToJSON)),
+        'added_markers': value['addedMarkers'] == null ? undefined : ((value['addedMarkers'] as Array<any>).map(FunnelMarkerSnapshotDtoToJSON)),
+        'removed_markers': value['removedMarkers'] == null ? undefined : ((value['removedMarkers'] as Array<any>).map(FunnelMarkerSnapshotDtoToJSON)),
+        'requested_add_marker_ids': value['requestedAddMarkerIds'],
+        'requested_remove_marker_ids': value['requestedRemoveMarkerIds'],
         'funnel_id': value['funnelId'],
         'funnel_name': value['funnelName'],
         'participation_id': value['participationId'],

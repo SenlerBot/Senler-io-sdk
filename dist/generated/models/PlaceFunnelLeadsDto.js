@@ -41,6 +41,8 @@ function PlaceFunnelLeadsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'addMarkerIds': json['add_marker_ids'] == null ? undefined : json['add_marker_ids'],
+        'removeMarkerIds': json['remove_marker_ids'] == null ? undefined : json['remove_marker_ids'],
         'includePreviousStages': json['include_previous_stages'] == null ? undefined : json['include_previous_stages'],
         'requestedAt': (new Date(json['requested_at'])),
         'requestId': json['request_id'],
@@ -56,6 +58,8 @@ function PlaceFunnelLeadsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'add_marker_ids': value['addMarkerIds'],
+        'remove_marker_ids': value['removeMarkerIds'],
         'include_previous_stages': value['includePreviousStages'],
         'requested_at': ((value['requestedAt']).toISOString()),
         'request_id': value['requestId'],

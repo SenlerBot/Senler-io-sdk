@@ -47,6 +47,7 @@ function FunnelPreviewLeadDtoFromJSONTyped(json, ignoreDiscriminator) {
         'expectedStageId': json['expected_stage_id'],
         'expectedTransitionId': json['expected_transition_id'],
         'expectedRevision': json['expected_revision'],
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
         'lead': (0, FunnelPreviewLeadDetailsDto_1.FunnelPreviewLeadDetailsDtoFromJSON)(json['lead']),
     };
 }
@@ -62,6 +63,7 @@ function FunnelPreviewLeadDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'expected_stage_id': value['expectedStageId'],
         'expected_transition_id': value['expectedTransitionId'],
         'expected_revision': value['expectedRevision'],
+        'marker_ids': value['markerIds'],
         'lead': (0, FunnelPreviewLeadDetailsDto_1.FunnelPreviewLeadDetailsDtoToJSON)(value['lead']),
     };
 }

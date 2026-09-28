@@ -498,7 +498,7 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , status, draft revision .
+     * . : .
      *
      */
     async automationsListRaw(requestParameters, initOverrides) {
@@ -533,7 +533,7 @@ class AutomationsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationListResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , status, draft revision .
+     * . : .
      *
      */
     async automationsList(requestParameters, initOverrides) {

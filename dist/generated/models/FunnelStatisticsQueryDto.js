@@ -37,6 +37,8 @@ function FunnelStatisticsQueryDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
+        'withoutMarkers': json['without_markers'] == null ? undefined : json['without_markers'],
         'from': (new Date(json['from'])),
         'to': (new Date(json['to'])),
         'utmPaths': json['utm_paths'] == null ? undefined : (json['utm_paths'].map(LeadSubscriptionUtmPathDto_1.LeadSubscriptionUtmPathDtoFromJSON)),
@@ -50,6 +52,8 @@ function FunnelStatisticsQueryDtoToJSONTyped(value, ignoreDiscriminator = false)
         return value;
     }
     return {
+        'marker_ids': value['markerIds'],
+        'without_markers': value['withoutMarkers'],
         'from': ((value['from']).toISOString()),
         'to': ((value['to']).toISOString()),
         'utm_paths': value['utmPaths'] == null ? undefined : (value['utmPaths'].map(LeadSubscriptionUtmPathDto_1.LeadSubscriptionUtmPathDtoToJSON)),

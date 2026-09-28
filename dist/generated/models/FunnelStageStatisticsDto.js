@@ -18,6 +18,7 @@ exports.FunnelStageStatisticsDtoFromJSON = FunnelStageStatisticsDtoFromJSON;
 exports.FunnelStageStatisticsDtoFromJSONTyped = FunnelStageStatisticsDtoFromJSONTyped;
 exports.FunnelStageStatisticsDtoToJSON = FunnelStageStatisticsDtoToJSON;
 exports.FunnelStageStatisticsDtoToJSONTyped = FunnelStageStatisticsDtoToJSONTyped;
+const FunnelMarkerCountDto_1 = require("./FunnelMarkerCountDto");
 /**
  * Check if a given object implements the FunnelStageStatisticsDto interface.
  */
@@ -38,6 +39,7 @@ function FunnelStageStatisticsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'markers': json['markers'] == null ? undefined : (json['markers'].map(FunnelMarkerCountDto_1.FunnelMarkerCountDtoFromJSON)),
         'stageId': json['stage_id'],
         'current': json['current'],
         'passages': json['passages'],
@@ -51,6 +53,7 @@ function FunnelStageStatisticsDtoToJSONTyped(value, ignoreDiscriminator = false)
         return value;
     }
     return {
+        'markers': value['markers'] == null ? undefined : (value['markers'].map(FunnelMarkerCountDto_1.FunnelMarkerCountDtoToJSON)),
         'stage_id': value['stageId'],
         'current': value['current'],
         'passages': value['passages'],

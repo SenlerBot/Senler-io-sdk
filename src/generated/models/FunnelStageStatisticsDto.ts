@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { FunnelMarkerCountDto } from './FunnelMarkerCountDto';
+import {
+    FunnelMarkerCountDtoFromJSON,
+    FunnelMarkerCountDtoFromJSONTyped,
+    FunnelMarkerCountDtoToJSON,
+    FunnelMarkerCountDtoToJSONTyped,
+} from './FunnelMarkerCountDto';
+
 /**
  * FunnelStageStatisticsDto.
  * @export
  * @interface FunnelStageStatisticsDto
  */
 export interface FunnelStageStatisticsDto {
+    /**
+     * ;
+     * @type {Array<FunnelMarkerCountDto>}
+     * @memberof FunnelStageStatisticsDto
+     */
+    markers?: Array<FunnelMarkerCountDto>;
     /**
      * ID
      * @type {string}
@@ -59,6 +73,7 @@ export function FunnelStageStatisticsDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'markers': json['markers'] == null ? undefined : ((json['markers'] as Array<any>).map(FunnelMarkerCountDtoFromJSON)),
         'stageId': json['stage_id'],
         'current': json['current'],
         'passages': json['passages'],
@@ -76,6 +91,7 @@ export function FunnelStageStatisticsDtoToJSONTyped(value?: FunnelStageStatistic
 
     return {
 
+        'markers': value['markers'] == null ? undefined : ((value['markers'] as Array<any>).map(FunnelMarkerCountDtoToJSON)),
         'stage_id': value['stageId'],
         'current': value['current'],
         'passages': value['passages'],

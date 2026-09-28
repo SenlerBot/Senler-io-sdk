@@ -17,6 +17,18 @@ import type { FunnelPlacementDto } from './FunnelPlacementDto';
  */
 export interface PlaceFunnelLeadsDto {
     /**
+     * . ;
+     * @type {Array<string>}
+     * @memberof PlaceFunnelLeadsDto
+     */
+    addMarkerIds?: Array<string>;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof PlaceFunnelLeadsDto
+     */
+    removeMarkerIds?: Array<string>;
+    /**
      * ;
      * @type {boolean}
      * @memberof PlaceFunnelLeadsDto

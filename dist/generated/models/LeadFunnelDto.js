@@ -49,6 +49,7 @@ function LeadFunnelDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
         'funnelId': json['funnel_id'],
         'stageId': json['stage_id'],
         'participationId': json['participation_id'],
@@ -67,6 +68,7 @@ function LeadFunnelDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'marker_ids': value['markerIds'],
         'funnel_id': value['funnelId'],
         'stage_id': value['stageId'],
         'participation_id': value['participationId'],

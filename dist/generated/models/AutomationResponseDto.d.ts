@@ -94,6 +94,12 @@ export interface AutomationResponseDto {
      */
     publishedVersionId: string | null;
     /**
+     * , . . , true.
+     * @type {boolean}
+     * @memberof AutomationResponseDto
+     */
+    hasUnpublishedChanges: boolean;
+    /**
      * migration epoch.
      * @type {number}
      * @memberof AutomationResponseDto

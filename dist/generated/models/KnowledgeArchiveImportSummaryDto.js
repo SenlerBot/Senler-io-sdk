@@ -19,6 +19,7 @@ exports.KnowledgeArchiveImportSummaryDtoFromJSON = KnowledgeArchiveImportSummary
 exports.KnowledgeArchiveImportSummaryDtoFromJSONTyped = KnowledgeArchiveImportSummaryDtoFromJSONTyped;
 exports.KnowledgeArchiveImportSummaryDtoToJSON = KnowledgeArchiveImportSummaryDtoToJSON;
 exports.KnowledgeArchiveImportSummaryDtoToJSONTyped = KnowledgeArchiveImportSummaryDtoToJSONTyped;
+const KnowledgeArchivePublicationSummaryDto_1 = require("./KnowledgeArchivePublicationSummaryDto");
 const KnowledgeArchiveImportReplaceDeletionsSummaryDto_1 = require("./KnowledgeArchiveImportReplaceDeletionsSummaryDto");
 const KnowledgeArchiveImportFilesSummaryDto_1 = require("./KnowledgeArchiveImportFilesSummaryDto");
 const KnowledgeArchiveImportFoldersSummaryDto_1 = require("./KnowledgeArchiveImportFoldersSummaryDto");
@@ -58,6 +59,7 @@ function KnowledgeArchiveImportSummaryDtoFromJSONTyped(json, ignoreDiscriminator
         return json;
     }
     return {
+        'publication': json['publication'] == null ? undefined : (0, KnowledgeArchivePublicationSummaryDto_1.KnowledgeArchivePublicationSummaryDtoFromJSON)(json['publication']),
         'archiveFileName': json['archive_file_name'],
         'rootFolderName': json['root_folder_name'],
         'rootFolderId': json['root_folder_id'],
@@ -75,6 +77,7 @@ function KnowledgeArchiveImportSummaryDtoToJSONTyped(value, ignoreDiscriminator 
         return value;
     }
     return {
+        'publication': (0, KnowledgeArchivePublicationSummaryDto_1.KnowledgeArchivePublicationSummaryDtoToJSON)(value['publication']),
         'archive_file_name': value['archiveFileName'],
         'root_folder_name': value['rootFolderName'],
         'root_folder_id': value['rootFolderId'],

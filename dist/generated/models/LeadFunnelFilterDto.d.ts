@@ -17,6 +17,18 @@ import type { LeadSubscriptionUtmPathDto } from './LeadSubscriptionUtmPathDto';
  */
 export interface LeadFunnelFilterDto {
     /**
+     * .
+     * @type {Array<string>}
+     * @memberof LeadFunnelFilterDto
+     */
+    markerIds?: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LeadFunnelFilterDto
+     */
+    withoutMarkers?: boolean;
+    /**
      * ID
      * @type {string}
      * @memberof LeadFunnelFilterDto

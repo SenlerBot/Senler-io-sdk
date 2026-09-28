@@ -410,12 +410,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsGetVersions(requestParameters: AutomationsGetVersionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionHistoryResponseDto>;
     /**
-     * , status, draft revision .
+     * . : .
      *
      */
     automationsListRaw(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationListResponseDto>>;
     /**
-     * , status, draft revision .
+     * . : .
      *
      */
     automationsList(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto>;

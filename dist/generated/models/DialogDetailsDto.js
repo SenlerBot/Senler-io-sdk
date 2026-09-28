@@ -21,6 +21,7 @@ exports.DialogDetailsDtoToJSON = DialogDetailsDtoToJSON;
 exports.DialogDetailsDtoToJSONTyped = DialogDetailsDtoToJSONTyped;
 const AiResponseActivityDto_1 = require("./AiResponseActivityDto");
 const DialogLeadDto_1 = require("./DialogLeadDto");
+const StreamViBroadcastDto_1 = require("./StreamViBroadcastDto");
 const DialogDtoReplyTarget_1 = require("./DialogDtoReplyTarget");
 const DialogDtoDialogAgentsInner_1 = require("./DialogDtoDialogAgentsInner");
 const DialogDisplayInfoDto_1 = require("./DialogDisplayInfoDto");
@@ -180,6 +181,7 @@ function DialogDetailsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'leadUnreadCount': json['lead_unread_count'],
         'primaryLeadId': json['primary_lead_id'] == null ? undefined : json['primary_lead_id'],
         'displayInfo': json['display_info'] == null ? undefined : (0, DialogDisplayInfoDto_1.DialogDisplayInfoDtoFromJSON)(json['display_info']),
+        'streamviBroadcast': json['streamvi_broadcast'] == null ? undefined : (0, StreamViBroadcastDto_1.StreamViBroadcastDtoFromJSON)(json['streamvi_broadcast']),
         'summary': json['summary'] == null ? undefined : json['summary'],
         'summaryGeneratedAt': json['summary_generated_at'] == null ? undefined : (new Date(json['summary_generated_at'])),
         'replyTarget': json['reply_target'] == null ? undefined : (0, DialogDtoReplyTarget_1.DialogDtoReplyTargetFromJSON)(json['reply_target']),
@@ -259,6 +261,7 @@ function DialogDetailsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'lead_unread_count': value['leadUnreadCount'],
         'primary_lead_id': value['primaryLeadId'],
         'display_info': (0, DialogDisplayInfoDto_1.DialogDisplayInfoDtoToJSON)(value['displayInfo']),
+        'streamvi_broadcast': (0, StreamViBroadcastDto_1.StreamViBroadcastDtoToJSON)(value['streamviBroadcast']),
         'summary': value['summary'],
         'summary_generated_at': value['summaryGeneratedAt'] == null ? undefined : ((value['summaryGeneratedAt']).toISOString()),
         'reply_target': (0, DialogDtoReplyTarget_1.DialogDtoReplyTargetToJSON)(value['replyTarget']),

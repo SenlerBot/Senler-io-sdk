@@ -475,6 +475,9 @@ class FunnelsApi extends runtime.BaseAPI {
         if (requestParameters['to'] != null) {
             queryParameters['to'] = requestParameters['to'].toISOString();
         }
+        if (requestParameters['markerFilter'] != null) {
+            queryParameters['marker_filter'] = requestParameters['markerFilter'];
+        }
         if (requestParameters['utmPaths'] != null) {
             queryParameters['utm_paths'] = requestParameters['utmPaths'];
         }
@@ -676,7 +679,7 @@ class FunnelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . [from, to), UTM .
+     * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
     async statisticsRaw(requestParameters, initOverrides) {
@@ -719,7 +722,7 @@ class FunnelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.FunnelStatisticsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . [from, to), UTM .
+     * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
     async statistics(requestParameters, initOverrides) {

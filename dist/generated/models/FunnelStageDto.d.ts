@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { FunnelMarkerDto } from './FunnelMarkerDto';
 /**
  * FunnelStageDto.
  * @export
  * @interface FunnelStageDto
  */
 export interface FunnelStageDto {
+    /**
+     * . ;
+     * @type {Array<FunnelMarkerDto>}
+     * @memberof FunnelStageDto
+     */
+    markers?: Array<FunnelMarkerDto>;
     /**
      * UUID
      * @type {string}

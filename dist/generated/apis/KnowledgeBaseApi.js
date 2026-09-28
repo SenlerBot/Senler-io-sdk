@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchSearchModeEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesFromUrlAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
+exports.UpdateTablesAcceptLanguageEnum = exports.UpdateFoldersAcceptLanguageEnum = exports.UpdateFilesAcceptLanguageEnum = exports.UpdateArchiveImportsResolutionAcceptLanguageEnum = exports.TablesUploadAcceptLanguageEnum = exports.TablesAcceptLanguageEnum = exports.KnowledgeBaseGetFilesAcceptLanguageEnum = exports.KnowledgeBaseDeleteFilesAcceptLanguageEnum = exports.GetTablesAcceptLanguageEnum = exports.GetSearchAcceptLanguageEnum = exports.GetSearchSearchModeEnum = exports.GetSearchResourceTypeEnum = exports.GetResourcesResolveAcceptLanguageEnum = exports.GetResourcesAcceptLanguageEnum = exports.GetImageRecognitionRunsAcceptLanguageEnum = exports.GetImageContextsExportAcceptLanguageEnum = exports.GetArchivePublicationsCapabilitiesAcceptLanguageEnum = exports.GetArchiveImportsContentAcceptLanguageEnum = exports.GetArchiveImportsContentImageRecognitionModeEnum = exports.GetArchiveImportsContentLocaleEnum = exports.GetArchiveImportsContentDuplicateResolutionEnum = exports.GetArchiveImports2AcceptLanguageEnum = exports.GetArchiveImportsAcceptLanguageEnum = exports.FoldersAcceptLanguageEnum = exports.FilesUploadImageRecognitionModeEnum = exports.FilesUploadLocaleEnum = exports.FilesUploadAcceptLanguageEnum = exports.FilesRecognitionEstimateLocaleEnum = exports.FilesRecognitionEstimateAcceptLanguageEnum = exports.FilesFromUrlAcceptLanguageEnum = exports.FilesAcceptLanguageEnum = exports.DeleteTablesAcceptLanguageEnum = exports.DeleteFoldersAcceptLanguageEnum = exports.DeleteArchiveImportsAcceptLanguageEnum = exports.ArchivePublicationsActivateAcceptLanguageEnum = exports.ArchiveImportsImageRecognitionModeEnum = exports.ArchiveImportsDuplicateResolutionEnum = exports.ArchiveImportsLocaleEnum = exports.ArchiveImportsAcceptLanguageEnum = exports.KnowledgeBaseApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -140,6 +140,55 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async archiveImports(requestParameters, initOverrides) {
         const response = await this.archiveImportsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ZIP. ; .
+     *
+     */
+    async archivePublicationsActivateRaw(requestParameters, initOverrides) {
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError('versionId', 'Required parameter "versionId" was null or undefined when calling archivePublicationsActivate().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling archivePublicationsActivate().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-publications/{versionId}/activate`.replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchivePublicationSummaryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ZIP. ; .
+     *
+     */
+    async archivePublicationsActivate(requestParameters, initOverrides) {
+        const response = await this.archivePublicationsActivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -711,6 +760,50 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async getArchiveImportsContent(requestParameters, initOverrides) {
         const response = await this.getArchiveImportsContentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     *
+     */
+    async getArchivePublicationsCapabilitiesRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getArchivePublicationsCapabilities().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeResult'] != null) {
+            queryParameters['include_result'] = requestParameters['includeResult'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/knowledge-base/archive-publications/capabilities`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeArchivePublicationCapabilitiesDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     */
+    async getArchivePublicationsCapabilities(requestParameters, initOverrides) {
+        const response = await this.getArchivePublicationsCapabilitiesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1432,6 +1525,13 @@ exports.ArchiveImportsImageRecognitionModeEnum = {
 /**
  * @export
  */
+exports.ArchivePublicationsActivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.DeleteArchiveImportsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1550,6 +1650,13 @@ exports.GetArchiveImportsContentImageRecognitionModeEnum = {
  * @export
  */
 exports.GetArchiveImportsContentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetArchivePublicationsCapabilitiesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

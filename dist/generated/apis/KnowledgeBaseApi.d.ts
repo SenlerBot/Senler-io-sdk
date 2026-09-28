@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, ImportProjectKnowledgeImageDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto } from '../models/index';
+import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, ImportProjectKnowledgeImageDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeArchivePublicationCapabilitiesDto, KnowledgeArchivePublicationSummaryDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto } from '../models/index';
 export interface ArchiveImportsRequest {
     projectId: string;
     idempotencyKey: string;
@@ -21,6 +21,12 @@ export interface ArchiveImportsRequest {
     folderId?: string | null;
     duplicateResolution?: ArchiveImportsDuplicateResolutionEnum;
     imageRecognitionMode?: ArchiveImportsImageRecognitionModeEnum;
+}
+export interface ArchivePublicationsActivateRequest {
+    versionId: string;
+    projectId: string;
+    includeResult?: boolean;
+    acceptLanguage?: ArchivePublicationsActivateAcceptLanguageEnum;
 }
 export interface DeleteArchiveImportsRequest {
     operationId: string;
@@ -84,6 +90,11 @@ export interface GetArchiveImportsContentRequest {
     includeResult?: boolean;
     folderId?: string;
     acceptLanguage?: GetArchiveImportsContentAcceptLanguageEnum;
+}
+export interface GetArchivePublicationsCapabilitiesRequest {
+    projectId: string;
+    includeResult?: boolean;
+    acceptLanguage?: GetArchivePublicationsCapabilitiesAcceptLanguageEnum;
 }
 export interface GetImageContextsExportRequest {
     projectId: string;
@@ -176,6 +187,16 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      * ZIP-
      */
     archiveImports(requestParameters: ArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
+     * ZIP. ; .
+     *
+     */
+    archivePublicationsActivateRaw(requestParameters: ArchivePublicationsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchivePublicationSummaryDto>>;
+    /**
+     * ZIP. ; .
+     *
+     */
+    archivePublicationsActivate(requestParameters: ArchivePublicationsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchivePublicationSummaryDto>;
     /**
      * ZIP .
      * ,
@@ -286,6 +307,14 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      *
      */
     getArchiveImportsContent(requestParameters: GetArchiveImportsContentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto>;
+    /**
+     *
+     */
+    getArchivePublicationsCapabilitiesRaw(requestParameters: GetArchivePublicationsCapabilitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchivePublicationCapabilitiesDto>>;
+    /**
+     *
+     */
+    getArchivePublicationsCapabilities(requestParameters: GetArchivePublicationsCapabilitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchivePublicationCapabilitiesDto>;
     /**
      * NDJSON .
      *
@@ -465,6 +494,14 @@ export type ArchiveImportsImageRecognitionModeEnum = typeof ArchiveImportsImageR
 /**
  * @export
  */
+export declare const ArchivePublicationsActivateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ArchivePublicationsActivateAcceptLanguageEnum = typeof ArchivePublicationsActivateAcceptLanguageEnum[keyof typeof ArchivePublicationsActivateAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const DeleteArchiveImportsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -603,6 +640,14 @@ export declare const GetArchiveImportsContentAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetArchiveImportsContentAcceptLanguageEnum = typeof GetArchiveImportsContentAcceptLanguageEnum[keyof typeof GetArchiveImportsContentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetArchivePublicationsCapabilitiesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetArchivePublicationsCapabilitiesAcceptLanguageEnum = typeof GetArchivePublicationsCapabilitiesAcceptLanguageEnum[keyof typeof GetArchivePublicationsCapabilitiesAcceptLanguageEnum];
 /**
  * @export
  */

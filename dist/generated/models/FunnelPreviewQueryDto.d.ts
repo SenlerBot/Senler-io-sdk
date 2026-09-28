@@ -17,6 +17,12 @@ import type { LeadsFilterDto } from './LeadsFilterDto';
  */
 export interface FunnelPreviewQueryDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof FunnelPreviewQueryDto
+     */
+    includeCurrentStage?: boolean;
+    /**
      * ;
      * @type {string}
      * @memberof FunnelPreviewQueryDto

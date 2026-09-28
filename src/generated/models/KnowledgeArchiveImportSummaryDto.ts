@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { KnowledgeArchivePublicationSummaryDto } from './KnowledgeArchivePublicationSummaryDto';
+import {
+    KnowledgeArchivePublicationSummaryDtoFromJSON,
+    KnowledgeArchivePublicationSummaryDtoFromJSONTyped,
+    KnowledgeArchivePublicationSummaryDtoToJSON,
+    KnowledgeArchivePublicationSummaryDtoToJSONTyped,
+} from './KnowledgeArchivePublicationSummaryDto';
 import type { KnowledgeArchiveImportReplaceDeletionsSummaryDto } from './KnowledgeArchiveImportReplaceDeletionsSummaryDto';
 import {
     KnowledgeArchiveImportReplaceDeletionsSummaryDtoFromJSON,
@@ -41,6 +48,12 @@ import {
  * @interface KnowledgeArchiveImportSummaryDto
  */
 export interface KnowledgeArchiveImportSummaryDto {
+    /**
+     *
+     * @type {KnowledgeArchivePublicationSummaryDto}
+     * @memberof KnowledgeArchiveImportSummaryDto
+     */
+    publication?: KnowledgeArchivePublicationSummaryDto;
     /**
      * ZIP-
      * @type {string}
@@ -121,6 +134,7 @@ export function KnowledgeArchiveImportSummaryDtoFromJSONTyped(json: any, ignoreD
     }
     return {
 
+        'publication': json['publication'] == null ? undefined : KnowledgeArchivePublicationSummaryDtoFromJSON(json['publication']),
         'archiveFileName': json['archive_file_name'],
         'rootFolderName': json['root_folder_name'],
         'rootFolderId': json['root_folder_id'],
@@ -142,6 +156,7 @@ export function KnowledgeArchiveImportSummaryDtoToJSONTyped(value?: KnowledgeArc
 
     return {
 
+        'publication': KnowledgeArchivePublicationSummaryDtoToJSON(value['publication']),
         'archive_file_name': value['archiveFileName'],
         'root_folder_name': value['rootFolderName'],
         'root_folder_id': value['rootFolderId'],

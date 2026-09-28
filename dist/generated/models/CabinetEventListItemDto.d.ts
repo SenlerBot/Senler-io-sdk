@@ -263,6 +263,7 @@ export type CabinetEventListItemDtoPlatformTypeEnum = typeof CabinetEventListIte
  * @export
  */
 export declare const CabinetEventListItemDtoActionTypeEnum: {
+    readonly FunnelMarkersChanged: "funnel_markers_changed";
     readonly FunnelEntered: "funnel_entered";
     readonly FunnelStageChanged: "funnel_stage_changed";
     readonly FunnelLeft: "funnel_left";

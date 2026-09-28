@@ -19,6 +19,7 @@ exports.FunnelStageDtoFromJSON = FunnelStageDtoFromJSON;
 exports.FunnelStageDtoFromJSONTyped = FunnelStageDtoFromJSONTyped;
 exports.FunnelStageDtoToJSON = FunnelStageDtoToJSON;
 exports.FunnelStageDtoToJSONTyped = FunnelStageDtoToJSONTyped;
+const FunnelMarkerDto_1 = require("./FunnelMarkerDto");
 /**
  * @export
  */
@@ -51,6 +52,7 @@ function FunnelStageDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'markers': json['markers'] == null ? undefined : (json['markers'].map(FunnelMarkerDto_1.FunnelMarkerDtoFromJSON)),
         'id': json['id'],
         'name': json['name'],
         'color': json['color'],
@@ -64,6 +66,7 @@ function FunnelStageDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'markers': value['markers'] == null ? undefined : (value['markers'].map(FunnelMarkerDto_1.FunnelMarkerDtoToJSON)),
         'id': value['id'],
         'name': value['name'],
         'color': value['color'],

@@ -122,6 +122,7 @@ export interface GetStagesHistoryRequest {
     to: Date;
     id: string;
     stageId: string;
+    markerFilter?: string;
     utmPaths?: string;
     cursor?: string;
     limit?: number;
@@ -761,6 +762,10 @@ export class FunnelsApi extends runtime.BaseAPI {
             queryParameters['to'] = (requestParameters['to'] as any).toISOString();
         }
 
+        if (requestParameters['markerFilter'] != null) {
+            queryParameters['marker_filter'] = requestParameters['markerFilter'];
+        }
+
         if (requestParameters['utmPaths'] != null) {
             queryParameters['utm_paths'] = requestParameters['utmPaths'];
         }
@@ -1037,7 +1042,7 @@ export class FunnelsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . [from, to), UTM .
+     * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
     async statisticsRaw(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelStatisticsResponseDto>> {
@@ -1101,7 +1106,7 @@ export class FunnelsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . [from, to), UTM .
+     * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
     async statistics(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto> {

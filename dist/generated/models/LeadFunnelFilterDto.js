@@ -37,6 +37,8 @@ function LeadFunnelFilterDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
+        'withoutMarkers': json['without_markers'] == null ? undefined : json['without_markers'],
         'funnelId': json['funnel_id'],
         'stageIds': json['stage_ids'],
         'utmPaths': json['utm_paths'] == null ? undefined : (json['utm_paths'].map(LeadSubscriptionUtmPathDto_1.LeadSubscriptionUtmPathDtoFromJSON)),
@@ -50,6 +52,8 @@ function LeadFunnelFilterDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'marker_ids': value['markerIds'],
+        'without_markers': value['withoutMarkers'],
         'funnel_id': value['funnelId'],
         'stage_ids': value['stageIds'],
         'utm_paths': value['utmPaths'] == null ? undefined : (value['utmPaths'].map(LeadSubscriptionUtmPathDto_1.LeadSubscriptionUtmPathDtoToJSON)),

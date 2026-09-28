@@ -28,6 +28,18 @@ import {
  */
 export interface FunnelStatisticsQueryDto {
     /**
+     * .
+     * @type {Array<string>}
+     * @memberof FunnelStatisticsQueryDto
+     */
+    markerIds?: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof FunnelStatisticsQueryDto
+     */
+    withoutMarkers?: boolean;
+    /**
      *
      * @type {Date}
      * @memberof FunnelStatisticsQueryDto
@@ -66,6 +78,8 @@ export function FunnelStatisticsQueryDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
+        'withoutMarkers': json['without_markers'] == null ? undefined : json['without_markers'],
         'from': (new Date(json['from'])),
         'to': (new Date(json['to'])),
         'utmPaths': json['utm_paths'] == null ? undefined : ((json['utm_paths'] as Array<any>).map(LeadSubscriptionUtmPathDtoFromJSON)),
@@ -83,6 +97,8 @@ export function FunnelStatisticsQueryDtoToJSONTyped(value?: FunnelStatisticsQuer
 
     return {
 
+        'marker_ids': value['markerIds'],
+        'without_markers': value['withoutMarkers'],
         'from': ((value['from']).toISOString()),
         'to': ((value['to']).toISOString()),
         'utm_paths': value['utmPaths'] == null ? undefined : ((value['utmPaths'] as Array<any>).map(LeadSubscriptionUtmPathDtoToJSON)),

@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { FunnelMarkerCountDto } from './FunnelMarkerCountDto';
 /**
  * FunnelStageStatisticsDto.
  * @export
  * @interface FunnelStageStatisticsDto
  */
 export interface FunnelStageStatisticsDto {
+    /**
+     * ;
+     * @type {Array<FunnelMarkerCountDto>}
+     * @memberof FunnelStageStatisticsDto
+     */
+    markers?: Array<FunnelMarkerCountDto>;
     /**
      * ID
      * @type {string}

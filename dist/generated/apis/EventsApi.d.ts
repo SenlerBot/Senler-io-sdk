@@ -168,6 +168,7 @@ export type EventsListPeriodEnum = typeof EventsListPeriodEnum[keyof typeof Even
  * @export
  */
 export declare const EventsListActionTypeEnum: {
+    readonly FunnelMarkersChanged: "funnel_markers_changed";
     readonly FunnelEntered: "funnel_entered";
     readonly FunnelStageChanged: "funnel_stage_changed";
     readonly FunnelLeft: "funnel_left";

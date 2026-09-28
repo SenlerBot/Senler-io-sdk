@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { FunnelMarkerDto } from './FunnelMarkerDto';
+import {
+    FunnelMarkerDtoFromJSON,
+    FunnelMarkerDtoFromJSONTyped,
+    FunnelMarkerDtoToJSON,
+    FunnelMarkerDtoToJSONTyped,
+} from './FunnelMarkerDto';
+
 /**
  * FunnelStageDto.
  * @export
  * @interface FunnelStageDto
  */
 export interface FunnelStageDto {
+    /**
+     * . ;
+     * @type {Array<FunnelMarkerDto>}
+     * @memberof FunnelStageDto
+     */
+    markers?: Array<FunnelMarkerDto>;
     /**
      * UUID
      * @type {string}
@@ -75,6 +89,7 @@ export function FunnelStageDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'markers': json['markers'] == null ? undefined : ((json['markers'] as Array<any>).map(FunnelMarkerDtoFromJSON)),
         'id': json['id'],
         'name': json['name'],
         'color': json['color'],
@@ -92,6 +107,7 @@ export function FunnelStageDtoToJSONTyped(value?: FunnelStageDto | null, ignoreD
 
     return {
 
+        'markers': value['markers'] == null ? undefined : ((value['markers'] as Array<any>).map(FunnelMarkerDtoToJSON)),
         'id': value['id'],
         'name': value['name'],
         'color': value['color'],

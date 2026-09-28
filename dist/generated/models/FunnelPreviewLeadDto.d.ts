@@ -42,6 +42,12 @@ export interface FunnelPreviewLeadDto {
     expectedRevision: number;
     /**
      *
+     * @type {Array<string>}
+     * @memberof FunnelPreviewLeadDto
+     */
+    markerIds?: Array<string>;
+    /**
+     *
      * @type {FunnelPreviewLeadDetailsDto}
      * @memberof FunnelPreviewLeadDto
      */

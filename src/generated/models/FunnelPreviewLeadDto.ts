@@ -53,6 +53,12 @@ export interface FunnelPreviewLeadDto {
     expectedRevision: number;
     /**
      *
+     * @type {Array<string>}
+     * @memberof FunnelPreviewLeadDto
+     */
+    markerIds?: Array<string>;
+    /**
+     *
      * @type {FunnelPreviewLeadDetailsDto}
      * @memberof FunnelPreviewLeadDto
      */
@@ -85,6 +91,7 @@ export function FunnelPreviewLeadDtoFromJSONTyped(json: any, ignoreDiscriminator
         'expectedStageId': json['expected_stage_id'],
         'expectedTransitionId': json['expected_transition_id'],
         'expectedRevision': json['expected_revision'],
+        'markerIds': json['marker_ids'] == null ? undefined : json['marker_ids'],
         'lead': FunnelPreviewLeadDetailsDtoFromJSON(json['lead']),
     };
 }
@@ -104,6 +111,7 @@ export function FunnelPreviewLeadDtoToJSONTyped(value?: FunnelPreviewLeadDto | n
         'expected_stage_id': value['expectedStageId'],
         'expected_transition_id': value['expectedTransitionId'],
         'expected_revision': value['expectedRevision'],
+        'marker_ids': value['markerIds'],
         'lead': FunnelPreviewLeadDetailsDtoToJSON(value['lead']),
     };
 }

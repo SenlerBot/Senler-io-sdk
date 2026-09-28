@@ -98,6 +98,12 @@ export interface AutomationResponseDto {
      */
     publishedVersionId: string | null;
     /**
+     * , . . , true.
+     * @type {boolean}
+     * @memberof AutomationResponseDto
+     */
+    hasUnpublishedChanges: boolean;
+    /**
      * migration epoch.
      * @type {number}
      * @memberof AutomationResponseDto
@@ -172,6 +178,7 @@ export function instanceOfAutomationResponseDto(value: object): value is Automat
     if (!('acceptNewTriggers' in value) || value['acceptNewTriggers'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined) return false;
+    if (!('hasUnpublishedChanges' in value) || value['hasUnpublishedChanges'] === undefined) return false;
     if (!('migrationEpoch' in value) || value['migrationEpoch'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -201,6 +208,7 @@ export function AutomationResponseDtoFromJSONTyped(json: any, ignoreDiscriminato
         'acceptNewTriggers': json['accept_new_triggers'],
         'isReadOnly': json['is_read_only'],
         'publishedVersionId': json['published_version_id'],
+        'hasUnpublishedChanges': json['has_unpublished_changes'],
         'migrationEpoch': json['migration_epoch'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -231,6 +239,7 @@ export function AutomationResponseDtoToJSONTyped(value?: AutomationResponseDto |
         'accept_new_triggers': value['acceptNewTriggers'],
         'is_read_only': value['isReadOnly'],
         'published_version_id': value['publishedVersionId'],
+        'has_unpublished_changes': value['hasUnpublishedChanges'],
         'migration_epoch': value['migrationEpoch'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
