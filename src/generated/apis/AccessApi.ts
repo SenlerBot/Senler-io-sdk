@@ -21,8 +21,6 @@ import type {
   ProjectMemberListItemDto,
   RolePresetsResponseDto,
   SuccessResponseDto,
-  TransferOwnershipDto,
-  TransferOwnershipResponseDto,
   UpdateProjectMemberDto,
   UpdateProjectMemberResponseDto,
 } from '../models/index';
@@ -39,10 +37,6 @@ import {
     RolePresetsResponseDtoToJSON,
     SuccessResponseDtoFromJSON,
     SuccessResponseDtoToJSON,
-    TransferOwnershipDtoFromJSON,
-    TransferOwnershipDtoToJSON,
-    TransferOwnershipResponseDtoFromJSON,
-    TransferOwnershipResponseDtoToJSON,
     UpdateProjectMemberDtoFromJSON,
     UpdateProjectMemberDtoToJSON,
     UpdateProjectMemberResponseDtoFromJSON,
@@ -81,12 +75,6 @@ export interface GetMembersChannelsRequest {
 
 export interface GetRolePresetsRequest {
     acceptLanguage?: GetRolePresetsAcceptLanguageEnum;
-}
-
-export interface OwnershipTransferRequest {
-    projectId: string;
-    transferOwnershipDto: TransferOwnershipDto;
-    acceptLanguage?: OwnershipTransferAcceptLanguageEnum;
 }
 
 /**
@@ -424,68 +412,6 @@ export class AccessApi extends runtime.BaseAPI {
         return await response.value();
     }
 
-    /**
-     * . .
-     *
-     */
-    async ownershipTransferRaw(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling ownershipTransfer().'
-            );
-        }
-
-        if (requestParameters['transferOwnershipDto'] == null) {
-            throw new runtime.RequiredError(
-                'transferOwnershipDto',
-                'Required parameter "transferOwnershipDto" was null or undefined when calling ownershipTransfer().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
-        }
-
-        const response = await this.request({
-            path: `/api/access/{projectId}/ownership-transfer`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: TransferOwnershipDtoToJSON(requestParameters['transferOwnershipDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TransferOwnershipResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . .
-     *
-     */
-    async ownershipTransfer(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto> {
-        const response = await this.ownershipTransferRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
 }
 
 /**
@@ -536,11 +462,3 @@ export const GetRolePresetsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetRolePresetsAcceptLanguageEnum = typeof GetRolePresetsAcceptLanguageEnum[keyof typeof GetRolePresetsAcceptLanguageEnum];
-/**
- * @export
- */
-export const OwnershipTransferAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type OwnershipTransferAcceptLanguageEnum = typeof OwnershipTransferAcceptLanguageEnum[keyof typeof OwnershipTransferAcceptLanguageEnum];

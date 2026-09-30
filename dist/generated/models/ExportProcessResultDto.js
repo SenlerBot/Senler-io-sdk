@@ -22,10 +22,6 @@ exports.ExportProcessResultDtoToJSONTyped = ExportProcessResultDtoToJSONTyped;
  * Check if a given object implements the ExportProcessResultDto interface.
  */
 function instanceOfExportProcessResultDto(value) {
-    if (!('s3Key' in value) || value['s3Key'] === undefined)
-        return false;
-    if (!('s3Url' in value) || value['s3Url'] === undefined)
-        return false;
     if (!('fileSize' in value) || value['fileSize'] === undefined)
         return false;
     return true;
@@ -38,8 +34,6 @@ function ExportProcessResultDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        's3Key': json['s3_key'],
-        's3Url': json['s3_url'],
         'fileSize': json['file_size'],
         'format': json['format'] == null ? undefined : json['format'],
         'encoding': json['encoding'] == null ? undefined : json['encoding'],
@@ -56,8 +50,6 @@ function ExportProcessResultDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        's3_key': value['s3Key'],
-        's3_url': value['s3Url'],
         'file_size': value['fileSize'],
         'format': value['format'],
         'encoding': value['encoding'],

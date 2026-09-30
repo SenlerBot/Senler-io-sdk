@@ -24,6 +24,8 @@ import type {
   AppAutomationStepStatusDto,
   AppAutomationStepsResponseDto,
   AppEmbeddedPageTestLaunchResponseDto,
+  AppFunnelElementResponseDto,
+  AppFunnelElementsResponseDto,
   AppListItemResponseDto,
   AppManualToolDefinitionDto,
   AppManualToolResponseDto,
@@ -38,6 +40,7 @@ import type {
   OAuthTokenErrorResponseDto,
   OauthToken200Response,
   ProjectAppOAuthAccessPolicyDto,
+  SaveAppFunnelElementDto,
   SetAppCatalogVisibilityDto,
   UpdateAppActionSettingsDto,
   UpdateAppEmbeddedPageSettingsDto,
@@ -65,6 +68,10 @@ import {
     AppAutomationStepsResponseDtoToJSON,
     AppEmbeddedPageTestLaunchResponseDtoFromJSON,
     AppEmbeddedPageTestLaunchResponseDtoToJSON,
+    AppFunnelElementResponseDtoFromJSON,
+    AppFunnelElementResponseDtoToJSON,
+    AppFunnelElementsResponseDtoFromJSON,
+    AppFunnelElementsResponseDtoToJSON,
     AppListItemResponseDtoFromJSON,
     AppListItemResponseDtoToJSON,
     AppManualToolDefinitionDtoFromJSON,
@@ -93,6 +100,8 @@ import {
     OauthToken200ResponseToJSON,
     ProjectAppOAuthAccessPolicyDtoFromJSON,
     ProjectAppOAuthAccessPolicyDtoToJSON,
+    SaveAppFunnelElementDtoFromJSON,
+    SaveAppFunnelElementDtoToJSON,
     SetAppCatalogVisibilityDtoFromJSON,
     SetAppCatalogVisibilityDtoToJSON,
     UpdateAppActionSettingsDtoFromJSON,
@@ -154,6 +163,12 @@ export interface DeleteAutomationStepsRequest {
     acceptLanguage?: DeleteAutomationStepsAcceptLanguageEnum;
 }
 
+export interface DeleteFunnelElementsRequest {
+    appId: string;
+    elementId: string;
+    acceptLanguage?: DeleteFunnelElementsAcceptLanguageEnum;
+}
+
 export interface DeleteInstallationsRequest {
     appId: string;
     installationId: string;
@@ -166,6 +181,12 @@ export interface DeleteToolsRequest {
     acceptLanguage?: DeleteToolsAcceptLanguageEnum;
 }
 
+export interface FunnelElementsRequest {
+    appId: string;
+    saveAppFunnelElementDto: SaveAppFunnelElementDto;
+    acceptLanguage?: FunnelElementsAcceptLanguageEnum;
+}
+
 export interface GetAutomationStepsRequest {
     appId: string;
     acceptLanguage?: GetAutomationStepsAcceptLanguageEnum;
@@ -175,6 +196,11 @@ export interface GetEmbeddedPageTestRequest {
     id: string;
     projectId: string;
     acceptLanguage?: GetEmbeddedPageTestAcceptLanguageEnum;
+}
+
+export interface GetFunnelElementsRequest {
+    appId: string;
+    acceptLanguage?: GetFunnelElementsAcceptLanguageEnum;
 }
 
 export interface GetInstallationsRequest {
@@ -256,6 +282,13 @@ export interface UpdateEmbeddedPageSettingsRequest {
     id: string;
     updateAppEmbeddedPageSettingsDto: UpdateAppEmbeddedPageSettingsDto;
     acceptLanguage?: UpdateEmbeddedPageSettingsAcceptLanguageEnum;
+}
+
+export interface UpdateFunnelElementsRequest {
+    appId: string;
+    elementId: string;
+    saveAppFunnelElementDto: SaveAppFunnelElementDto;
+    acceptLanguage?: UpdateFunnelElementsAcceptLanguageEnum;
 }
 
 export interface UpdateGeneralSettingsRequest {
@@ -698,6 +731,56 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * , . .
+     *
+     */
+    async deleteFunnelElementsRaw(requestParameters: DeleteFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling deleteFunnelElements().'
+            );
+        }
+
+        if (requestParameters['elementId'] == null) {
+            throw new runtime.RequiredError(
+                'elementId',
+                'Required parameter "elementId" was null or undefined when calling deleteFunnelElements().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements/{elementId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"elementId"}}`, encodeURIComponent(String(requestParameters['elementId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async deleteFunnelElements(requestParameters: DeleteFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteFunnelElementsRaw(requestParameters, initOverrides);
+    }
+
+    /**
      * .
      *
      */
@@ -799,6 +882,60 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . .
+     *
+     */
+    async funnelElementsRaw(requestParameters: FunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppFunnelElementResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling funnelElements().'
+            );
+        }
+
+        if (requestParameters['saveAppFunnelElementDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveAppFunnelElementDto',
+                'Required parameter "saveAppFunnelElementDto" was null or undefined when calling funnelElements().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveAppFunnelElementDtoToJSON(requestParameters['saveAppFunnelElementDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppFunnelElementResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async funnelElements(requestParameters: FunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppFunnelElementResponseDto> {
+        const response = await this.funnelElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      *
      */
@@ -894,6 +1031,50 @@ export class AppsApi extends runtime.BaseAPI {
      */
     async getEmbeddedPageTest(requestParameters: GetEmbeddedPageTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppEmbeddedPageTestLaunchResponseDto> {
         const response = await this.getEmbeddedPageTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getFunnelElementsRaw(requestParameters: GetFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppFunnelElementsResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling getFunnelElements().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppFunnelElementsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getFunnelElements(requestParameters: GetFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppFunnelElementsResponseDto> {
+        const response = await this.getFunnelElementsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1579,6 +1760,67 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . .
+     *
+     */
+    async updateFunnelElementsRaw(requestParameters: UpdateFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppFunnelElementResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling updateFunnelElements().'
+            );
+        }
+
+        if (requestParameters['elementId'] == null) {
+            throw new runtime.RequiredError(
+                'elementId',
+                'Required parameter "elementId" was null or undefined when calling updateFunnelElements().'
+            );
+        }
+
+        if (requestParameters['saveAppFunnelElementDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveAppFunnelElementDto',
+                'Required parameter "saveAppFunnelElementDto" was null or undefined when calling updateFunnelElements().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements/{elementId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"elementId"}}`, encodeURIComponent(String(requestParameters['elementId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveAppFunnelElementDtoToJSON(requestParameters['saveAppFunnelElementDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppFunnelElementResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async updateFunnelElements(requestParameters: UpdateFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppFunnelElementResponseDto> {
+        const response = await this.updateFunnelElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , , .
      *
      */
@@ -1978,6 +2220,14 @@ export type DeleteAutomationStepsAcceptLanguageEnum = typeof DeleteAutomationSte
 /**
  * @export
  */
+export const DeleteFunnelElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteFunnelElementsAcceptLanguageEnum = typeof DeleteFunnelElementsAcceptLanguageEnum[keyof typeof DeleteFunnelElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const DeleteInstallationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1994,6 +2244,14 @@ export type DeleteToolsAcceptLanguageEnum = typeof DeleteToolsAcceptLanguageEnum
 /**
  * @export
  */
+export const FunnelElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FunnelElementsAcceptLanguageEnum = typeof FunnelElementsAcceptLanguageEnum[keyof typeof FunnelElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetAutomationStepsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2007,6 +2265,14 @@ export const GetEmbeddedPageTestAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetEmbeddedPageTestAcceptLanguageEnum = typeof GetEmbeddedPageTestAcceptLanguageEnum[keyof typeof GetEmbeddedPageTestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelElementsAcceptLanguageEnum = typeof GetFunnelElementsAcceptLanguageEnum[keyof typeof GetFunnelElementsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2129,6 +2395,14 @@ export const UpdateEmbeddedPageSettingsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateEmbeddedPageSettingsAcceptLanguageEnum = typeof UpdateEmbeddedPageSettingsAcceptLanguageEnum[keyof typeof UpdateEmbeddedPageSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateFunnelElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateFunnelElementsAcceptLanguageEnum = typeof UpdateFunnelElementsAcceptLanguageEnum[keyof typeof UpdateFunnelElementsAcceptLanguageEnum];
 /**
  * @export
  */

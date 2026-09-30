@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { DeliverySendErrorDto } from './DeliverySendErrorDto';
 /**
  * DeliverySendProcessResultDto.
  * @export
@@ -40,12 +39,6 @@ export interface DeliverySendProcessResultDto {
      * @memberof DeliverySendProcessResultDto
      */
     pausedDailyLimit?: boolean;
-    /**
-     *
-     * @type {Array<DeliverySendErrorDto>}
-     * @memberof DeliverySendProcessResultDto
-     */
-    deliveryErrors?: Array<DeliverySendErrorDto>;
     /**
      *
      * @type {number}

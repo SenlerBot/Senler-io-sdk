@@ -70,6 +70,12 @@ export interface AutomationRunResponseDto {
      */
     manualPaused: boolean;
     /**
+     * , .
+     * @type {boolean}
+     * @memberof AutomationRunResponseDto
+     */
+    paused: boolean;
+    /**
      * lead id.
      * @type {string}
      * @memberof AutomationRunResponseDto
@@ -150,6 +156,7 @@ export function instanceOfAutomationRunResponseDto(value: object): value is Auto
     if (!('migrationEpoch' in value) || value['migrationEpoch'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('manualPaused' in value) || value['manualPaused'] === undefined) return false;
+    if (!('paused' in value) || value['paused'] === undefined) return false;
     if (!('leadId' in value) || value['leadId'] === undefined) return false;
     if (!('dialogId' in value) || value['dialogId'] === undefined) return false;
     if (!('channelId' in value) || value['channelId'] === undefined) return false;
@@ -179,6 +186,7 @@ export function AutomationRunResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'migrationEpoch': json['migration_epoch'],
         'status': json['status'],
         'manualPaused': json['manual_paused'],
+        'paused': json['paused'],
         'leadId': json['lead_id'],
         'dialogId': json['dialog_id'],
         'channelId': json['channel_id'],
@@ -209,6 +217,7 @@ export function AutomationRunResponseDtoToJSONTyped(value?: AutomationRunRespons
         'migration_epoch': value['migrationEpoch'],
         'status': value['status'],
         'manual_paused': value['manualPaused'],
+        'paused': value['paused'],
         'lead_id': value['leadId'],
         'dialog_id': value['dialogId'],
         'channel_id': value['channelId'],

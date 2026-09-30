@@ -138,6 +138,7 @@ export type AuditLogResponseDtoDelegatedActorTypeEnum = typeof AuditLogResponseD
  * @export
  */
 export declare const AuditLogResponseDtoEntityTypeEnum: {
+    readonly ProjectWebhook: "project_webhook";
     readonly Funnel: "funnel";
     readonly Project: "project";
     readonly Agent: "agent";
@@ -186,6 +187,7 @@ export type AuditLogResponseDtoActionEnum = typeof AuditLogResponseDtoActionEnum
  * @export
  */
 export declare const AuditLogResponseDtoEventTypeEnum: {
+    readonly ProjectWebhookChanged: "project_webhook.changed";
     readonly LandingBlockCreated: "landing.block_created";
     readonly LandingBlockUpdated: "landing.block_updated";
     readonly LandingBlockMoved: "landing.block_moved";

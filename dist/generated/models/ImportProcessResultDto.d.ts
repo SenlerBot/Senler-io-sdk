@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ImportErrorDto } from './ImportErrorDto';
 /**
  * ImportProcessResultDto.
  * @export
@@ -34,12 +33,6 @@ export interface ImportProcessResultDto {
      * @memberof ImportProcessResultDto
      */
     failed: number;
-    /**
-     *
-     * @type {Array<ImportErrorDto>}
-     * @memberof ImportProcessResultDto
-     */
-    errors?: Array<ImportErrorDto>;
     /**
      *
      * @type {number}

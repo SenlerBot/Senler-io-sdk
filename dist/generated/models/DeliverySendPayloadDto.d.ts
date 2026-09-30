@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 import type { DeliverySendParamsDto } from './DeliverySendParamsDto';
 /**
  * DeliverySendPayloadDto.
@@ -23,12 +22,6 @@ export interface DeliverySendPayloadDto {
      * @memberof DeliverySendPayloadDto
      */
     projectId: string;
-    /**
-     *
-     * @type {DeliveryAudienceFilterDto}
-     * @memberof DeliverySendPayloadDto
-     */
-    filters?: DeliveryAudienceFilterDto;
     /**
      *
      * @type {DeliverySendParamsDto}

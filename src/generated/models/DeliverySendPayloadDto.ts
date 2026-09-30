@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
-import {
-    DeliveryAudienceFilterDtoFromJSON,
-    DeliveryAudienceFilterDtoFromJSONTyped,
-    DeliveryAudienceFilterDtoToJSON,
-    DeliveryAudienceFilterDtoToJSONTyped,
-} from './DeliveryAudienceFilterDto';
 import type { DeliverySendParamsDto } from './DeliverySendParamsDto';
 import {
     DeliverySendParamsDtoFromJSON,
@@ -40,12 +33,6 @@ export interface DeliverySendPayloadDto {
      * @memberof DeliverySendPayloadDto
      */
     projectId: string;
-    /**
-     *
-     * @type {DeliveryAudienceFilterDto}
-     * @memberof DeliverySendPayloadDto
-     */
-    filters?: DeliveryAudienceFilterDto;
     /**
      *
      * @type {DeliverySendParamsDto}
@@ -74,7 +61,6 @@ export function DeliverySendPayloadDtoFromJSONTyped(json: any, ignoreDiscriminat
     return {
 
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : DeliveryAudienceFilterDtoFromJSON(json['filters']),
         'params': DeliverySendParamsDtoFromJSON(json['params']),
     };
 }
@@ -91,7 +77,6 @@ export function DeliverySendPayloadDtoToJSONTyped(value?: DeliverySendPayloadDto
     return {
 
         'project_id': value['projectId'],
-        'filters': DeliveryAudienceFilterDtoToJSON(value['filters']),
         'params': DeliverySendParamsDtoToJSON(value['params']),
     };
 }

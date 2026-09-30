@@ -10,52 +10,124 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { FunnelConditionOptionsResponseDto, FunnelHistoryResponseDto, FunnelOptionsResponseDto, FunnelPlacementResponseDto, FunnelPreviewQueryDto, FunnelPreviewResponseDto, FunnelResponseDto, FunnelStatisticsQueryDto, FunnelStatisticsResponseDto, FunnelsListResponseDto, LeadSubscriptionUtmTreeResponseDto, PlaceFunnelLeadsDto, SaveFunnelDto, UpdateFunnelDto } from '../models/index';
-export interface DeleteStagesRequest {
+import type { AvailableFunnelAppsResponseDto, ConfigureFunnelAppElementDto, FunnelAppElementResponseDto, FunnelAppElementsResponseDto, FunnelAppImportResponseDto, FunnelAppReportResponseDto, FunnelConditionOptionsResponseDto, FunnelHistoryResponseDto, FunnelOptionsResponseDto, FunnelPlacementResponseDto, FunnelPreviewQueryDto, FunnelPreviewResponseDto, FunnelResponseDto, FunnelStatisticsQueryDto, FunnelStatisticsResponseDto, FunnelsListResponseDto, LeadSubscriptionUtmTreeResponseDto, PlaceFunnelLeadsDto, SaveFunnelAppElementDto, SaveFunnelDto, UpdateFunnelAppElementDto, UpdateFunnelDto } from '../models/index';
+export interface DeleteFunnelAppElementsRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    acceptLanguage?: DeleteFunnelAppElementsAcceptLanguageEnum;
+}
+export interface DeleteFunnelsRequest {
+    projectId: string;
+    revision: number;
+    id: string;
+    acceptLanguage?: DeleteFunnelsAcceptLanguageEnum;
+}
+export interface DeleteFunnelsStagesRequest {
     projectId: string;
     revision: number;
     id: string;
     stageId: string;
-    acceptLanguage?: DeleteStagesAcceptLanguageEnum;
+    acceptLanguage?: DeleteFunnelsStagesAcceptLanguageEnum;
 }
-export interface FunnelsCreateRequest {
+export interface FunnelAppElementsRequest {
+    funnelId: string;
+    projectId: string;
+    saveFunnelAppElementDto: SaveFunnelAppElementDto;
+    acceptLanguage?: FunnelAppElementsAcceptLanguageEnum;
+}
+export interface FunnelAppElementsImportRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    mode: FunnelAppElementsImportModeEnum;
+    timezone: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+    cursor?: string;
+    acceptLanguage?: FunnelAppElementsImportAcceptLanguageEnum;
+}
+export interface FunnelsRequest {
     projectId: string;
     saveFunnelDto: SaveFunnelDto;
-    acceptLanguage?: FunnelsCreateAcceptLanguageEnum;
+    acceptLanguage?: FunnelsAcceptLanguageEnum;
 }
-export interface FunnelsDeactivateRequest {
-    projectId: string;
-    revision: number;
-    id: string;
-    acceptLanguage?: FunnelsDeactivateAcceptLanguageEnum;
-}
-export interface FunnelsGetByIdRequest {
+export interface FunnelsPlaceLeadsRequest {
     projectId: string;
     id: string;
-    acceptLanguage?: FunnelsGetByIdAcceptLanguageEnum;
+    placeFunnelLeadsDto: PlaceFunnelLeadsDto;
+    acceptLanguage?: FunnelsPlaceLeadsAcceptLanguageEnum;
 }
-export interface FunnelsListRequest {
+export interface FunnelsPreviewLeadsRequest {
     projectId: string;
-    acceptLanguage?: FunnelsListAcceptLanguageEnum;
+    id: string;
+    funnelPreviewQueryDto: FunnelPreviewQueryDto;
+    acceptLanguage?: FunnelsPreviewLeadsAcceptLanguageEnum;
 }
-export interface FunnelsUpdateRequest {
+export interface FunnelsStatisticsRequest {
+    projectId: string;
+    id: string;
+    funnelStatisticsQueryDto: FunnelStatisticsQueryDto;
+    acceptLanguage?: FunnelsStatisticsAcceptLanguageEnum;
+}
+export interface FunnelsUpdateFunnelsRequest {
     projectId: string;
     id: string;
     updateFunnelDto: UpdateFunnelDto;
-    acceptLanguage?: FunnelsUpdateAcceptLanguageEnum;
+    acceptLanguage?: FunnelsUpdateFunnelsAcceptLanguageEnum;
 }
-export interface GetConditionOptionsRequest {
+export interface GetFunnelAppElementsRequest {
+    funnelId: string;
     projectId: string;
-    kind: GetConditionOptionsKindEnum;
+    acceptLanguage?: GetFunnelAppElementsAcceptLanguageEnum;
+}
+export interface GetFunnelAppElementsAvailableRequest {
+    projectId: string;
+    acceptLanguage?: GetFunnelAppElementsAvailableAcceptLanguageEnum;
+}
+export interface GetFunnelAppElementsReportRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    mode: GetFunnelAppElementsReportModeEnum;
+    timezone: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+    cursor?: string;
+    acceptLanguage?: GetFunnelAppElementsReportAcceptLanguageEnum;
+}
+export interface GetFunnelAppElementsSummaryRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    mode: GetFunnelAppElementsSummaryModeEnum;
+    timezone: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+    cursor?: string;
+    acceptLanguage?: GetFunnelAppElementsSummaryAcceptLanguageEnum;
+}
+export interface GetFunnelsRequest {
+    projectId: string;
+    acceptLanguage?: GetFunnelsAcceptLanguageEnum;
+}
+export interface GetFunnels2Request {
+    projectId: string;
+    id: string;
+    acceptLanguage?: GetFunnels2AcceptLanguageEnum;
+}
+export interface GetFunnelsConditionOptionsRequest {
+    projectId: string;
+    kind: GetFunnelsConditionOptionsKindEnum;
     resourceId?: string;
     q?: string;
-    acceptLanguage?: GetConditionOptionsAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsConditionOptionsAcceptLanguageEnum;
 }
-export interface GetOptionsRequest {
+export interface GetFunnelsOptionsRequest {
     projectId: string;
-    acceptLanguage?: GetOptionsAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsOptionsAcceptLanguageEnum;
 }
-export interface GetStagesHistoryRequest {
+export interface GetFunnelsStagesHistoryRequest {
     projectId: string;
     from: Date;
     to: Date;
@@ -65,222 +137,415 @@ export interface GetStagesHistoryRequest {
     utmPaths?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetStagesHistoryAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsStagesHistoryAcceptLanguageEnum;
 }
-export interface GetUtmTreeRequest {
+export interface GetFunnelsUtmTreeRequest {
     projectId: string;
     id: string;
     parentId?: string;
     q?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetUtmTreeAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsUtmTreeAcceptLanguageEnum;
 }
-export interface PlaceLeadsRequest {
-    projectId: string;
+export interface UpdateFunnelAppElementsRequest {
+    funnelId: string;
     id: string;
-    placeFunnelLeadsDto: PlaceFunnelLeadsDto;
-    acceptLanguage?: PlaceLeadsAcceptLanguageEnum;
+    projectId: string;
+    updateFunnelAppElementDto: UpdateFunnelAppElementDto;
+    acceptLanguage?: UpdateFunnelAppElementsAcceptLanguageEnum;
 }
-export interface PreviewLeadsRequest {
-    projectId: string;
+export interface UpdateFunnelAppElementsConfigurationRequest {
+    funnelId: string;
     id: string;
-    funnelPreviewQueryDto: FunnelPreviewQueryDto;
-    acceptLanguage?: PreviewLeadsAcceptLanguageEnum;
-}
-export interface StatisticsRequest {
     projectId: string;
-    id: string;
-    funnelStatisticsQueryDto: FunnelStatisticsQueryDto;
-    acceptLanguage?: StatisticsAcceptLanguageEnum;
+    configureFunnelAppElementDto: ConfigureFunnelAppElementDto;
+    acceptLanguage?: UpdateFunnelAppElementsConfigurationAcceptLanguageEnum;
 }
 /**
  *
  */
 export declare class FunnelsApi extends runtime.BaseAPI {
     /**
-     * deleted_at . . .
+     * , . .
      *
      */
-    deleteStagesRaw(requestParameters: DeleteStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
+    deleteFunnelAppElementsRaw(requestParameters: DeleteFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
-     * deleted_at . . .
+     * , . .
      *
      */
-    deleteStages(requestParameters: DeleteStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
-    /**
-     * . , .
-     *
-     */
-    funnelsCreateRaw(requestParameters: FunnelsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
-    /**
-     * . , .
-     *
-     */
-    funnelsCreate(requestParameters: FunnelsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
+    deleteFunnelAppElements(requestParameters: DeleteFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * deleted_at . , . . .
      *
      */
-    funnelsDeactivateRaw(requestParameters: FunnelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    deleteFunnelsRaw(requestParameters: DeleteFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * deleted_at . , . . .
      *
      */
-    funnelsDeactivate(requestParameters: FunnelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteFunnels(requestParameters: DeleteFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * .
+     * deleted_at . . .
      *
      */
-    funnelsGetByIdRaw(requestParameters: FunnelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
+    deleteFunnelsStagesRaw(requestParameters: DeleteFunnelsStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
     /**
-     * .
+     * deleted_at . . .
      *
      */
-    funnelsGetById(requestParameters: FunnelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
+    deleteFunnelsStages(requestParameters: DeleteFunnelsStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
     /**
-     * .
+     * , . .
      *
      */
-    funnelsListRaw(requestParameters: FunnelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelsListResponseDto>>;
+    funnelAppElementsRaw(requestParameters: FunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>>;
     /**
-     * .
+     * , . .
      *
      */
-    funnelsList(requestParameters: FunnelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelsListResponseDto>;
+    funnelAppElements(requestParameters: FunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto>;
     /**
-     * . .
+     * . . ; next_cursor .
      *
      */
-    funnelsUpdateRaw(requestParameters: FunnelsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
+    funnelAppElementsImportRaw(requestParameters: FunnelAppElementsImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppImportResponseDto>>;
     /**
-     * . .
+     * . . ; next_cursor .
      *
      */
-    funnelsUpdate(requestParameters: FunnelsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
+    funnelAppElementsImport(requestParameters: FunnelAppElementsImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppImportResponseDto>;
     /**
-     * . .
+     * . , .
      *
      */
-    getConditionOptionsRaw(requestParameters: GetConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelConditionOptionsResponseDto>>;
+    funnelsRaw(requestParameters: FunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
     /**
-     * . .
+     * . , .
      *
      */
-    getConditionOptions(requestParameters: GetConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelConditionOptionsResponseDto>;
-    /**
-     * .
-     *
-     */
-    getOptionsRaw(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getOptions(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto>;
-    /**
-     * UTM , . , . .
-     *
-     */
-    getStagesHistoryRaw(requestParameters: GetStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelHistoryResponseDto>>;
-    /**
-     * UTM , . , . .
-     *
-     */
-    getStagesHistory(requestParameters: GetStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelHistoryResponseDto>;
-    /**
-     * UTM , , .
-     * UTM
-     */
-    getUtmTreeRaw(requestParameters: GetUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadSubscriptionUtmTreeResponseDto>>;
-    /**
-     * UTM , , .
-     * UTM
-     */
-    getUtmTree(requestParameters: GetUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto>;
+    funnels(requestParameters: FunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
     /**
      * , . , .
      *
      */
-    placeLeadsRaw(requestParameters: PlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPlacementResponseDto>>;
+    funnelsPlaceLeadsRaw(requestParameters: FunnelsPlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPlacementResponseDto>>;
     /**
      * , . , .
      *
      */
-    placeLeads(requestParameters: PlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPlacementResponseDto>;
+    funnelsPlaceLeads(requestParameters: FunnelsPlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPlacementResponseDto>;
     /**
      * . .
      *
      */
-    previewLeadsRaw(requestParameters: PreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPreviewResponseDto>>;
+    funnelsPreviewLeadsRaw(requestParameters: FunnelsPreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPreviewResponseDto>>;
     /**
      * . .
      *
      */
-    previewLeads(requestParameters: PreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPreviewResponseDto>;
+    funnelsPreviewLeads(requestParameters: FunnelsPreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPreviewResponseDto>;
     /**
      * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
-    statisticsRaw(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelStatisticsResponseDto>>;
+    funnelsStatisticsRaw(requestParameters: FunnelsStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelStatisticsResponseDto>>;
     /**
      * . [from, to), . markers.period_count , , . , . . . UTM .
      *
      */
-    statistics(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto>;
+    funnelsStatistics(requestParameters: FunnelsStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto>;
+    /**
+     * . .
+     *
+     */
+    funnelsUpdateFunnelsRaw(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    funnelsUpdateFunnels(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
+    /**
+     * . .
+     *
+     */
+    getFunnelAppElementsRaw(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementsResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    getFunnelAppElements(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementsResponseDto>;
+    /**
+     * . .
+     *
+     */
+    getFunnelAppElementsAvailableRaw(requestParameters: GetFunnelAppElementsAvailableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AvailableFunnelAppsResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    getFunnelAppElementsAvailable(requestParameters: GetFunnelAppElementsAvailableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AvailableFunnelAppsResponseDto>;
+    /**
+     * , . .
+     *
+     */
+    getFunnelAppElementsReportRaw(requestParameters: GetFunnelAppElementsReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppReportResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    getFunnelAppElementsReport(requestParameters: GetFunnelAppElementsReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppReportResponseDto>;
+    /**
+     * . records , next_cursor null. .
+     *
+     */
+    getFunnelAppElementsSummaryRaw(requestParameters: GetFunnelAppElementsSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppReportResponseDto>>;
+    /**
+     * . records , next_cursor null. .
+     *
+     */
+    getFunnelAppElementsSummary(requestParameters: GetFunnelAppElementsSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppReportResponseDto>;
+    /**
+     * .
+     *
+     */
+    getFunnelsRaw(requestParameters: GetFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelsListResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getFunnels(requestParameters: GetFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelsListResponseDto>;
+    /**
+     * .
+     *
+     */
+    getFunnels2Raw(requestParameters: GetFunnels2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getFunnels2(requestParameters: GetFunnels2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
+    /**
+     * . .
+     *
+     */
+    getFunnelsConditionOptionsRaw(requestParameters: GetFunnelsConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelConditionOptionsResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    getFunnelsConditionOptions(requestParameters: GetFunnelsConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelConditionOptionsResponseDto>;
+    /**
+     * .
+     *
+     */
+    getFunnelsOptionsRaw(requestParameters: GetFunnelsOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getFunnelsOptions(requestParameters: GetFunnelsOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto>;
+    /**
+     * UTM , . , . .
+     *
+     */
+    getFunnelsStagesHistoryRaw(requestParameters: GetFunnelsStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelHistoryResponseDto>>;
+    /**
+     * UTM , . , . .
+     *
+     */
+    getFunnelsStagesHistory(requestParameters: GetFunnelsStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelHistoryResponseDto>;
+    /**
+     * UTM , , .
+     * UTM
+     */
+    getFunnelsUtmTreeRaw(requestParameters: GetFunnelsUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadSubscriptionUtmTreeResponseDto>>;
+    /**
+     * UTM , , .
+     * UTM
+     */
+    getFunnelsUtmTree(requestParameters: GetFunnelsUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto>;
+    /**
+     * . .
+     *
+     */
+    updateFunnelAppElementsRaw(requestParameters: UpdateFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    updateFunnelAppElements(requestParameters: UpdateFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto>;
+    /**
+     * . data_source_key ID replace_source=true: . ID . .
+     *
+     */
+    updateFunnelAppElementsConfigurationRaw(requestParameters: UpdateFunnelAppElementsConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>>;
+    /**
+     * . data_source_key ID replace_source=true: . ID . .
+     *
+     */
+    updateFunnelAppElementsConfiguration(requestParameters: UpdateFunnelAppElementsConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto>;
 }
 /**
  * @export
  */
-export declare const DeleteStagesAcceptLanguageEnum: {
+export declare const DeleteFunnelAppElementsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteStagesAcceptLanguageEnum = typeof DeleteStagesAcceptLanguageEnum[keyof typeof DeleteStagesAcceptLanguageEnum];
+export type DeleteFunnelAppElementsAcceptLanguageEnum = typeof DeleteFunnelAppElementsAcceptLanguageEnum[keyof typeof DeleteFunnelAppElementsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const FunnelsCreateAcceptLanguageEnum: {
+export declare const DeleteFunnelsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type FunnelsCreateAcceptLanguageEnum = typeof FunnelsCreateAcceptLanguageEnum[keyof typeof FunnelsCreateAcceptLanguageEnum];
+export type DeleteFunnelsAcceptLanguageEnum = typeof DeleteFunnelsAcceptLanguageEnum[keyof typeof DeleteFunnelsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const FunnelsDeactivateAcceptLanguageEnum: {
+export declare const DeleteFunnelsStagesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type FunnelsDeactivateAcceptLanguageEnum = typeof FunnelsDeactivateAcceptLanguageEnum[keyof typeof FunnelsDeactivateAcceptLanguageEnum];
+export type DeleteFunnelsStagesAcceptLanguageEnum = typeof DeleteFunnelsStagesAcceptLanguageEnum[keyof typeof DeleteFunnelsStagesAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const FunnelsGetByIdAcceptLanguageEnum: {
+export declare const FunnelAppElementsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type FunnelsGetByIdAcceptLanguageEnum = typeof FunnelsGetByIdAcceptLanguageEnum[keyof typeof FunnelsGetByIdAcceptLanguageEnum];
+export type FunnelAppElementsAcceptLanguageEnum = typeof FunnelAppElementsAcceptLanguageEnum[keyof typeof FunnelAppElementsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const FunnelsListAcceptLanguageEnum: {
+export declare const FunnelAppElementsImportModeEnum: {
+    readonly Current: "current";
+    readonly Period: "period";
+    readonly Series: "series";
+};
+export type FunnelAppElementsImportModeEnum = typeof FunnelAppElementsImportModeEnum[keyof typeof FunnelAppElementsImportModeEnum];
+/**
+ * @export
+ */
+export declare const FunnelAppElementsImportAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type FunnelsListAcceptLanguageEnum = typeof FunnelsListAcceptLanguageEnum[keyof typeof FunnelsListAcceptLanguageEnum];
+export type FunnelAppElementsImportAcceptLanguageEnum = typeof FunnelAppElementsImportAcceptLanguageEnum[keyof typeof FunnelAppElementsImportAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const FunnelsUpdateAcceptLanguageEnum: {
+export declare const FunnelsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type FunnelsUpdateAcceptLanguageEnum = typeof FunnelsUpdateAcceptLanguageEnum[keyof typeof FunnelsUpdateAcceptLanguageEnum];
+export type FunnelsAcceptLanguageEnum = typeof FunnelsAcceptLanguageEnum[keyof typeof FunnelsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetConditionOptionsKindEnum: {
+export declare const FunnelsPlaceLeadsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FunnelsPlaceLeadsAcceptLanguageEnum = typeof FunnelsPlaceLeadsAcceptLanguageEnum[keyof typeof FunnelsPlaceLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const FunnelsPreviewLeadsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FunnelsPreviewLeadsAcceptLanguageEnum = typeof FunnelsPreviewLeadsAcceptLanguageEnum[keyof typeof FunnelsPreviewLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const FunnelsStatisticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FunnelsStatisticsAcceptLanguageEnum = typeof FunnelsStatisticsAcceptLanguageEnum[keyof typeof FunnelsStatisticsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const FunnelsUpdateFunnelsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FunnelsUpdateFunnelsAcceptLanguageEnum = typeof FunnelsUpdateFunnelsAcceptLanguageEnum[keyof typeof FunnelsUpdateFunnelsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElementsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelAppElementsAcceptLanguageEnum = typeof GetFunnelAppElementsAcceptLanguageEnum[keyof typeof GetFunnelAppElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElementsAvailableAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelAppElementsAvailableAcceptLanguageEnum = typeof GetFunnelAppElementsAvailableAcceptLanguageEnum[keyof typeof GetFunnelAppElementsAvailableAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElementsReportModeEnum: {
+    readonly Current: "current";
+    readonly Period: "period";
+    readonly Series: "series";
+};
+export type GetFunnelAppElementsReportModeEnum = typeof GetFunnelAppElementsReportModeEnum[keyof typeof GetFunnelAppElementsReportModeEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElementsReportAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelAppElementsReportAcceptLanguageEnum = typeof GetFunnelAppElementsReportAcceptLanguageEnum[keyof typeof GetFunnelAppElementsReportAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElementsSummaryModeEnum: {
+    readonly Current: "current";
+    readonly Period: "period";
+    readonly Series: "series";
+};
+export type GetFunnelAppElementsSummaryModeEnum = typeof GetFunnelAppElementsSummaryModeEnum[keyof typeof GetFunnelAppElementsSummaryModeEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElementsSummaryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelAppElementsSummaryAcceptLanguageEnum = typeof GetFunnelAppElementsSummaryAcceptLanguageEnum[keyof typeof GetFunnelAppElementsSummaryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelsAcceptLanguageEnum = typeof GetFunnelsAcceptLanguageEnum[keyof typeof GetFunnelsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnels2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnels2AcceptLanguageEnum = typeof GetFunnels2AcceptLanguageEnum[keyof typeof GetFunnels2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelsConditionOptionsKindEnum: {
     readonly Segment: "segment";
     readonly Subscription: "subscription";
     readonly Blacklist: "blacklist";
@@ -300,60 +565,52 @@ export declare const GetConditionOptionsKindEnum: {
     readonly Mailing: "mailing";
     readonly Consent: "consent";
 };
-export type GetConditionOptionsKindEnum = typeof GetConditionOptionsKindEnum[keyof typeof GetConditionOptionsKindEnum];
+export type GetFunnelsConditionOptionsKindEnum = typeof GetFunnelsConditionOptionsKindEnum[keyof typeof GetFunnelsConditionOptionsKindEnum];
 /**
  * @export
  */
-export declare const GetConditionOptionsAcceptLanguageEnum: {
+export declare const GetFunnelsConditionOptionsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetConditionOptionsAcceptLanguageEnum = typeof GetConditionOptionsAcceptLanguageEnum[keyof typeof GetConditionOptionsAcceptLanguageEnum];
+export type GetFunnelsConditionOptionsAcceptLanguageEnum = typeof GetFunnelsConditionOptionsAcceptLanguageEnum[keyof typeof GetFunnelsConditionOptionsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetOptionsAcceptLanguageEnum: {
+export declare const GetFunnelsOptionsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetOptionsAcceptLanguageEnum = typeof GetOptionsAcceptLanguageEnum[keyof typeof GetOptionsAcceptLanguageEnum];
+export type GetFunnelsOptionsAcceptLanguageEnum = typeof GetFunnelsOptionsAcceptLanguageEnum[keyof typeof GetFunnelsOptionsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetStagesHistoryAcceptLanguageEnum: {
+export declare const GetFunnelsStagesHistoryAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetStagesHistoryAcceptLanguageEnum = typeof GetStagesHistoryAcceptLanguageEnum[keyof typeof GetStagesHistoryAcceptLanguageEnum];
+export type GetFunnelsStagesHistoryAcceptLanguageEnum = typeof GetFunnelsStagesHistoryAcceptLanguageEnum[keyof typeof GetFunnelsStagesHistoryAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetUtmTreeAcceptLanguageEnum: {
+export declare const GetFunnelsUtmTreeAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetUtmTreeAcceptLanguageEnum = typeof GetUtmTreeAcceptLanguageEnum[keyof typeof GetUtmTreeAcceptLanguageEnum];
+export type GetFunnelsUtmTreeAcceptLanguageEnum = typeof GetFunnelsUtmTreeAcceptLanguageEnum[keyof typeof GetFunnelsUtmTreeAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const PlaceLeadsAcceptLanguageEnum: {
+export declare const UpdateFunnelAppElementsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type PlaceLeadsAcceptLanguageEnum = typeof PlaceLeadsAcceptLanguageEnum[keyof typeof PlaceLeadsAcceptLanguageEnum];
+export type UpdateFunnelAppElementsAcceptLanguageEnum = typeof UpdateFunnelAppElementsAcceptLanguageEnum[keyof typeof UpdateFunnelAppElementsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const PreviewLeadsAcceptLanguageEnum: {
+export declare const UpdateFunnelAppElementsConfigurationAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type PreviewLeadsAcceptLanguageEnum = typeof PreviewLeadsAcceptLanguageEnum[keyof typeof PreviewLeadsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const StatisticsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type StatisticsAcceptLanguageEnum = typeof StatisticsAcceptLanguageEnum[keyof typeof StatisticsAcceptLanguageEnum];
+export type UpdateFunnelAppElementsConfigurationAcceptLanguageEnum = typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum[keyof typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum];

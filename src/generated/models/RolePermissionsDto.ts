@@ -200,6 +200,18 @@ export interface RolePermissionsDto {
      */
     canManageDataSources: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewWebhooks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageWebhooks: boolean;
+    /**
      * API
      * @type {boolean}
      * @memberof RolePermissionsDto
@@ -367,6 +379,8 @@ export function instanceOfRolePermissionsDto(value: object): value is RolePermis
     if (!('canViewMcpServers' in value) || value['canViewMcpServers'] === undefined) return false;
     if (!('canViewDataSources' in value) || value['canViewDataSources'] === undefined) return false;
     if (!('canManageDataSources' in value) || value['canManageDataSources'] === undefined) return false;
+    if (!('canViewWebhooks' in value) || value['canViewWebhooks'] === undefined) return false;
+    if (!('canManageWebhooks' in value) || value['canManageWebhooks'] === undefined) return false;
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined) return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined) return false;
     if (!('canViewProjectApps' in value) || value['canViewProjectApps'] === undefined) return false;
@@ -432,6 +446,8 @@ export function RolePermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'canViewMcpServers': json['can_view_mcp_servers'],
         'canViewDataSources': json['can_view_data_sources'],
         'canManageDataSources': json['can_manage_data_sources'],
+        'canViewWebhooks': json['can_view_webhooks'],
+        'canManageWebhooks': json['can_manage_webhooks'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
         'canViewProjectApps': json['can_view_project_apps'],
@@ -498,6 +514,8 @@ export function RolePermissionsDtoToJSONTyped(value?: RolePermissionsDto | null,
         'can_view_mcp_servers': value['canViewMcpServers'],
         'can_view_data_sources': value['canViewDataSources'],
         'can_manage_data_sources': value['canManageDataSources'],
+        'can_view_webhooks': value['canViewWebhooks'],
+        'can_manage_webhooks': value['canManageWebhooks'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
         'can_view_project_apps': value['canViewProjectApps'],

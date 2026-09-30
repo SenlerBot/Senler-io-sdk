@@ -41,6 +41,8 @@ export declare const AppActionResultMetadataDtoKindEnum: {
     readonly Data: "data";
     readonly AgentToolConfiguration: "agent_tool_configuration";
     readonly AutomationStepConfiguration: "automation_step_configuration";
+    readonly FunnelConfiguration: "funnel_configuration";
+    readonly FunnelReport: "funnel_report";
 };
 export type AppActionResultMetadataDtoKindEnum = typeof AppActionResultMetadataDtoKindEnum[keyof typeof AppActionResultMetadataDtoKindEnum];
 /**

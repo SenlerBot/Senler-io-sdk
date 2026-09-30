@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AttachmentDownloadUrlResponseDto, AttachmentLoadResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportImageDto } from '../models/index';
+import type { AttachmentDownloadUrlResponseDto, AttachmentLoadResponseDto, AttachmentSendToSelfRecipientDto, AttachmentSendToSelfRecipientLinkResponseDto, AttachmentSendToSelfRecipientsResponseDto, AttachmentSendToSelfRequestDto, AttachmentSendToSelfResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto } from '../models/index';
 export interface ChannelsConfirmRequest {
     channelId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -18,7 +18,7 @@ export interface ChannelsConfirmRequest {
 }
 export interface ChannelsFromUrlRequest {
     channelId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: ChannelsFromUrlAcceptLanguageEnum;
 }
 export interface ChannelsUploadUrlRequest {
@@ -33,7 +33,7 @@ export interface DialogsConfirmRequest {
 }
 export interface DialogsFromUrlRequest {
     dialogId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: DialogsFromUrlAcceptLanguageEnum;
 }
 export interface DialogsUploadUrlRequest {
@@ -69,7 +69,7 @@ export interface ProjectsDraftsConfirmRequest {
 export interface ProjectsDraftsFromUrlRequest {
     projectId: string;
     draftId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: ProjectsDraftsFromUrlAcceptLanguageEnum;
 }
 export interface ProjectsDraftsUploadUrlRequest {
@@ -109,12 +109,12 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      */
     channelsConfirm(requestParameters: ChannelsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     channelsFromUrlRaw(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     channelsFromUrl(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
@@ -139,12 +139,12 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      */
     dialogsConfirm(requestParameters: DialogsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     dialogsFromUrlRaw(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     dialogsFromUrl(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
@@ -209,12 +209,12 @@ export declare class AttachmentsApi extends runtime.BaseAPI {
      */
     projectsDraftsConfirm(requestParameters: ProjectsDraftsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
-     * . fileId . 20 , 40 . .
+     * URL attachment_id , PDF , . URL Content-Type. fileId . 20 , 40 URL . .
      * URL attachment_id
      */
     projectsDraftsFromUrlRaw(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * . fileId . 20 , 40 . .
+     * URL attachment_id , PDF , . URL Content-Type. fileId . 20 , 40 URL . .
      * URL attachment_id
      */
     projectsDraftsFromUrl(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;

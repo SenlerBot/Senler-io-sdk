@@ -28,6 +28,12 @@ import {
  */
 export interface WidgetExternalAiSettingsDto {
     /**
+     * MCP WebMCP
+     * @type {boolean}
+     * @memberof WidgetExternalAiSettingsDto
+     */
+    webmcpEnabled?: boolean;
+    /**
      * MCP
      * @type {boolean}
      * @memberof WidgetExternalAiSettingsDto
@@ -65,6 +71,7 @@ export function WidgetExternalAiSettingsDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'webmcpEnabled': json['webmcp_enabled'] == null ? undefined : json['webmcp_enabled'],
         'enabled': json['enabled'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
         'codexPlugin': json['codex_plugin'] == null ? undefined : WidgetExternalAiCodexPluginSettingsDtoFromJSON(json['codex_plugin']),
@@ -82,6 +89,7 @@ export function WidgetExternalAiSettingsDtoToJSONTyped(value?: WidgetExternalAiS
 
     return {
 
+        'webmcp_enabled': value['webmcpEnabled'],
         'enabled': value['enabled'],
         'mcp_server_id': value['mcpServerId'],
         'codex_plugin': WidgetExternalAiCodexPluginSettingsDtoToJSON(value['codexPlugin']),

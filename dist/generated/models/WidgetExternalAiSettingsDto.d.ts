@@ -17,6 +17,12 @@ import type { WidgetExternalAiCodexPluginSettingsDto } from './WidgetExternalAiC
  */
 export interface WidgetExternalAiSettingsDto {
     /**
+     * MCP WebMCP
+     * @type {boolean}
+     * @memberof WidgetExternalAiSettingsDto
+     */
+    webmcpEnabled?: boolean;
+    /**
      * MCP
      * @type {boolean}
      * @memberof WidgetExternalAiSettingsDto

@@ -86,6 +86,8 @@ export declare const UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageProcesses: "can_manage_processes";
     readonly CanViewKnowledgeBase: "can_view_knowledge_base";
     readonly CanManageKnowledgeBase: "can_manage_knowledge_base";
+    readonly CanViewWebhooks: "can_view_webhooks";
+    readonly CanManageWebhooks: "can_manage_webhooks";
     readonly CanViewProjectApps: "can_view_project_apps";
     readonly CanUseProjectApps: "can_use_project_apps";
     readonly CanManageProjectApps: "can_manage_project_apps";

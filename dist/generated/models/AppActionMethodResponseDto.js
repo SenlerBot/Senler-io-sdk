@@ -27,7 +27,8 @@ const AppActionResultMetadataDto_1 = require("./AppActionResultMetadataDto");
 exports.AppActionMethodResponseDtoContextEnum = {
     App: 'app',
     AgentTool: 'agent_tool',
-    AutomationStep: 'automation_step'
+    AutomationStep: 'automation_step',
+    Funnel: 'funnel'
 };
 /**
  * Check if a given object implements the AppActionMethodResponseDto interface.

@@ -26,7 +26,7 @@ export interface ImportImageDto {
      */
     url?: string;
     /**
-     * ID - URL. fileId : url. .
+     * ID - URL. fileId : url. . : . .
      * @type {string}
      * @memberof ImportImageDto
      */

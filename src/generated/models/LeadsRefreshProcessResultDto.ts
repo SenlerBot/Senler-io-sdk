@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LeadsRefreshErrorDto } from './LeadsRefreshErrorDto';
-import {
-    LeadsRefreshErrorDtoFromJSON,
-    LeadsRefreshErrorDtoFromJSONTyped,
-    LeadsRefreshErrorDtoToJSON,
-    LeadsRefreshErrorDtoToJSONTyped,
-} from './LeadsRefreshErrorDto';
-
 /**
  * LeadsRefreshProcessResultDto.
  * @export
@@ -45,12 +37,6 @@ export interface LeadsRefreshProcessResultDto {
      * @memberof LeadsRefreshProcessResultDto
      */
     failed: number;
-    /**
-     *
-     * @type {Array<LeadsRefreshErrorDto>}
-     * @memberof LeadsRefreshProcessResultDto
-     */
-    leadErrors?: Array<LeadsRefreshErrorDto>;
     /**
      *
      * @type {number}
@@ -82,7 +68,6 @@ export function LeadsRefreshProcessResultDtoFromJSONTyped(json: any, ignoreDiscr
         'refreshed': json['refreshed'],
         'skipped': json['skipped'],
         'failed': json['failed'],
-        'leadErrors': json['lead_errors'] == null ? undefined : ((json['lead_errors'] as Array<any>).map(LeadsRefreshErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -101,7 +86,6 @@ export function LeadsRefreshProcessResultDtoToJSONTyped(value?: LeadsRefreshProc
         'refreshed': value['refreshed'],
         'skipped': value['skipped'],
         'failed': value['failed'],
-        'lead_errors': value['leadErrors'] == null ? undefined : ((value['leadErrors'] as Array<any>).map(LeadsRefreshErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

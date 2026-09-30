@@ -39,6 +39,7 @@ export declare class AuditApi extends runtime.BaseAPI {
  * @export
  */
 export declare const AuditListEntityTypeEnum: {
+    readonly ProjectWebhook: "project_webhook";
     readonly Funnel: "funnel";
     readonly Project: "project";
     readonly Agent: "agent";

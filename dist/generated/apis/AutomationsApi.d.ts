@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -18,7 +18,7 @@ export interface AttachmentsConfirmRequest {
 }
 export interface AttachmentsFromUrlRequest {
     automationId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: AttachmentsFromUrlAcceptLanguageEnum;
 }
 export interface AttachmentsUploadUrlRequest {
@@ -118,6 +118,7 @@ export interface GetDialogsRunsRequest {
     leadId?: string;
     dialogId2?: string;
     status?: GetDialogsRunsStatusEnum;
+    state?: GetDialogsRunsStateEnum;
     isTest?: boolean;
     startedAfter?: Date;
     startedBefore?: Date;
@@ -158,6 +159,7 @@ export interface GetRunsRequest {
     leadId?: string;
     dialogId?: string;
     status?: GetRunsStatusEnum;
+    state?: GetRunsStateEnum;
     isTest?: boolean;
     startedAfter?: Date;
     startedBefore?: Date;
@@ -320,12 +322,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     attachmentsConfirm(requestParameters: AttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     attachmentsFromUrlRaw(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     attachmentsFromUrl(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
@@ -1014,6 +1016,17 @@ export type GetDialogsRunsStatusEnum = typeof GetDialogsRunsStatusEnum[keyof typ
 /**
  * @export
  */
+export declare const GetDialogsRunsStateEnum: {
+    readonly Active: "active";
+    readonly Parked: "parked";
+    readonly Completed: "completed";
+    readonly Failed: "failed";
+    readonly Cancelled: "cancelled";
+};
+export type GetDialogsRunsStateEnum = typeof GetDialogsRunsStateEnum[keyof typeof GetDialogsRunsStateEnum];
+/**
+ * @export
+ */
 export declare const GetDialogsRunsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -1086,6 +1099,17 @@ export declare const GetRunsStatusEnum: {
     readonly Cancelled: "cancelled";
 };
 export type GetRunsStatusEnum = typeof GetRunsStatusEnum[keyof typeof GetRunsStatusEnum];
+/**
+ * @export
+ */
+export declare const GetRunsStateEnum: {
+    readonly Active: "active";
+    readonly Parked: "parked";
+    readonly Completed: "completed";
+    readonly Failed: "failed";
+    readonly Cancelled: "cancelled";
+};
+export type GetRunsStateEnum = typeof GetRunsStateEnum[keyof typeof GetRunsStateEnum];
 /**
  * @export
  */

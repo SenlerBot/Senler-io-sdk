@@ -29,7 +29,7 @@ import type {
   ErrorResponse,
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
-  ImportImageDto,
+  ImportAttachmentDto,
   ListDeliveriesResponseDto,
   ScheduleDeliveryDto,
   StartDeliveryResponseDto,
@@ -67,8 +67,8 @@ import {
     GetUploadUrlDtoToJSON,
     GetUploadUrlResponseDtoFromJSON,
     GetUploadUrlResponseDtoToJSON,
-    ImportImageDtoFromJSON,
-    ImportImageDtoToJSON,
+    ImportAttachmentDtoFromJSON,
+    ImportAttachmentDtoToJSON,
     ListDeliveriesResponseDtoFromJSON,
     ListDeliveriesResponseDtoToJSON,
     ScheduleDeliveryDtoFromJSON,
@@ -109,7 +109,7 @@ export interface DeliveriesAttachmentsConfirmRequest {
 
 export interface DeliveriesAttachmentsFromUrlRequest {
     projectId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: DeliveriesAttachmentsFromUrlAcceptLanguageEnum;
 }
 
@@ -442,7 +442,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     async deliveriesAttachmentsFromUrlRaw(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
@@ -453,10 +453,10 @@ export class DeliveriesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importImageDto'] == null) {
+        if (requestParameters['importAttachmentDto'] == null) {
             throw new runtime.RequiredError(
-                'importImageDto',
-                'Required parameter "importImageDto" was null or undefined when calling deliveriesAttachmentsFromUrl().'
+                'importAttachmentDto',
+                'Required parameter "importAttachmentDto" was null or undefined when calling deliveriesAttachmentsFromUrl().'
             );
         }
 
@@ -492,14 +492,14 @@ export class DeliveriesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+            body: ImportAttachmentDtoToJSON(requestParameters['importAttachmentDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     async deliveriesAttachmentsFromUrl(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {

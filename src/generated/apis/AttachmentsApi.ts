@@ -27,7 +27,7 @@ import type {
   ErrorResponse,
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
-  ImportImageDto,
+  ImportAttachmentDto,
 } from '../models/index';
 import {
     AttachmentDownloadUrlResponseDtoFromJSON,
@@ -54,8 +54,8 @@ import {
     GetUploadUrlDtoToJSON,
     GetUploadUrlResponseDtoFromJSON,
     GetUploadUrlResponseDtoToJSON,
-    ImportImageDtoFromJSON,
-    ImportImageDtoToJSON,
+    ImportAttachmentDtoFromJSON,
+    ImportAttachmentDtoToJSON,
 } from '../models/index';
 
 export interface ChannelsConfirmRequest {
@@ -66,7 +66,7 @@ export interface ChannelsConfirmRequest {
 
 export interface ChannelsFromUrlRequest {
     channelId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: ChannelsFromUrlAcceptLanguageEnum;
 }
 
@@ -84,7 +84,7 @@ export interface DialogsConfirmRequest {
 
 export interface DialogsFromUrlRequest {
     dialogId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: DialogsFromUrlAcceptLanguageEnum;
 }
 
@@ -127,7 +127,7 @@ export interface ProjectsDraftsConfirmRequest {
 export interface ProjectsDraftsFromUrlRequest {
     projectId: string;
     draftId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: ProjectsDraftsFromUrlAcceptLanguageEnum;
 }
 
@@ -225,7 +225,7 @@ export class AttachmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async channelsFromUrlRaw(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
@@ -236,10 +236,10 @@ export class AttachmentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importImageDto'] == null) {
+        if (requestParameters['importAttachmentDto'] == null) {
             throw new runtime.RequiredError(
-                'importImageDto',
-                'Required parameter "importImageDto" was null or undefined when calling channelsFromUrl().'
+                'importAttachmentDto',
+                'Required parameter "importAttachmentDto" was null or undefined when calling channelsFromUrl().'
             );
         }
 
@@ -271,14 +271,14 @@ export class AttachmentsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+            body: ImportAttachmentDtoToJSON(requestParameters['importAttachmentDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async channelsFromUrl(requestParameters: ChannelsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
@@ -411,7 +411,7 @@ export class AttachmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async dialogsFromUrlRaw(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
@@ -422,10 +422,10 @@ export class AttachmentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importImageDto'] == null) {
+        if (requestParameters['importAttachmentDto'] == null) {
             throw new runtime.RequiredError(
-                'importImageDto',
-                'Required parameter "importImageDto" was null or undefined when calling dialogsFromUrl().'
+                'importAttachmentDto',
+                'Required parameter "importAttachmentDto" was null or undefined when calling dialogsFromUrl().'
             );
         }
 
@@ -457,14 +457,14 @@ export class AttachmentsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+            body: ImportAttachmentDtoToJSON(requestParameters['importAttachmentDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async dialogsFromUrl(requestParameters: DialogsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
@@ -832,7 +832,7 @@ export class AttachmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . fileId . 20 , 40 . .
+     * URL attachment_id , PDF , . URL Content-Type. fileId . 20 , 40 URL . .
      * URL attachment_id
      */
     async projectsDraftsFromUrlRaw(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
@@ -850,10 +850,10 @@ export class AttachmentsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importImageDto'] == null) {
+        if (requestParameters['importAttachmentDto'] == null) {
             throw new runtime.RequiredError(
-                'importImageDto',
-                'Required parameter "importImageDto" was null or undefined when calling projectsDraftsFromUrl().'
+                'importAttachmentDto',
+                'Required parameter "importAttachmentDto" was null or undefined when calling projectsDraftsFromUrl().'
             );
         }
 
@@ -885,14 +885,14 @@ export class AttachmentsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+            body: ImportAttachmentDtoToJSON(requestParameters['importAttachmentDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . fileId . 20 , 40 . .
+     * URL attachment_id , PDF , . URL Content-Type. fileId . 20 , 40 URL . .
      * URL attachment_id
      */
     async projectsDraftsFromUrl(requestParameters: ProjectsDraftsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {

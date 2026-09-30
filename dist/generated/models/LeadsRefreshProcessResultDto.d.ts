@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsRefreshErrorDto } from './LeadsRefreshErrorDto';
 /**
  * LeadsRefreshProcessResultDto.
  * @export
@@ -34,12 +33,6 @@ export interface LeadsRefreshProcessResultDto {
      * @memberof LeadsRefreshProcessResultDto
      */
     failed: number;
-    /**
-     *
-     * @type {Array<LeadsRefreshErrorDto>}
-     * @memberof LeadsRefreshProcessResultDto
-     */
-    leadErrors?: Array<LeadsRefreshErrorDto>;
     /**
      *
      * @type {number}

@@ -25,7 +25,9 @@ exports.AppActionResultMetadataDtoToJSONTyped = AppActionResultMetadataDtoToJSON
 exports.AppActionResultMetadataDtoKindEnum = {
     Data: 'data',
     AgentToolConfiguration: 'agent_tool_configuration',
-    AutomationStepConfiguration: 'automation_step_configuration'
+    AutomationStepConfiguration: 'automation_step_configuration',
+    FunnelConfiguration: 'funnel_configuration',
+    FunnelReport: 'funnel_report'
 };
 /**
  * Check if a given object implements the AppActionResultMetadataDto interface.

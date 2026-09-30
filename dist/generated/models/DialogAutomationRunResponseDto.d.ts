@@ -58,6 +58,12 @@ export interface DialogAutomationRunResponseDto {
      */
     manualPaused: boolean;
     /**
+     * , .
+     * @type {boolean}
+     * @memberof DialogAutomationRunResponseDto
+     */
+    paused: boolean;
+    /**
      * lead id.
      * @type {string}
      * @memberof DialogAutomationRunResponseDto

@@ -32,12 +32,6 @@ export interface ImportLeadsParamsDto {
      */
     channelType: ImportLeadsParamsDtoChannelTypeEnum;
     /**
-     * ID . MAX chatId, - userId
-     * @type {Array<string>}
-     * @memberof ImportLeadsParamsDto
-     */
-    externalUserIds: Array<string>;
-    /**
      *
      * @type {string}
      * @memberof ImportLeadsParamsDto
@@ -68,7 +62,6 @@ export type ImportLeadsParamsDtoChannelTypeEnum = typeof ImportLeadsParamsDtoCha
 export function instanceOfImportLeadsParamsDto(value: object): value is ImportLeadsParamsDto {
     if (!('channelId' in value) || value['channelId'] === undefined) return false;
     if (!('channelType' in value) || value['channelType'] === undefined) return false;
-    if (!('externalUserIds' in value) || value['externalUserIds'] === undefined) return false;
     return true;
 }
 
@@ -84,7 +77,6 @@ export function ImportLeadsParamsDtoFromJSONTyped(json: any, ignoreDiscriminator
 
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
-        'externalUserIds': json['external_user_ids'],
         'leadSource': json['lead_source'] == null ? undefined : json['lead_source'],
     };
 }
@@ -102,7 +94,6 @@ export function ImportLeadsParamsDtoToJSONTyped(value?: ImportLeadsParamsDto | n
 
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],
-        'external_user_ids': value['externalUserIds'],
         'lead_source': value['leadSource'],
     };
 }

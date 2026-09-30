@@ -121,7 +121,8 @@ export interface AppActionMethodResponseDto {
 export const AppActionMethodResponseDtoContextEnum = {
     App: 'app',
     AgentTool: 'agent_tool',
-    AutomationStep: 'automation_step'
+    AutomationStep: 'automation_step',
+    Funnel: 'funnel'
 } as const;
 export type AppActionMethodResponseDtoContextEnum = typeof AppActionMethodResponseDtoContextEnum[keyof typeof AppActionMethodResponseDtoContextEnum];
 

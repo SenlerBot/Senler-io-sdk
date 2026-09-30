@@ -16,18 +16,6 @@
  */
 export interface ExportProcessResultDto {
     /**
-     * S3
-     * @type {string}
-     * @memberof ExportProcessResultDto
-     */
-    s3Key: string;
-    /**
-     * S3- . 7 .
-     * @type {string}
-     * @memberof ExportProcessResultDto
-     */
-    s3Url: string;
-    /**
      *
      * @type {number}
      * @memberof ExportProcessResultDto

@@ -76,6 +76,8 @@ exports.UserAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanManageProcesses: 'can_manage_processes',
     CanViewKnowledgeBase: 'can_view_knowledge_base',
     CanManageKnowledgeBase: 'can_manage_knowledge_base',
+    CanViewWebhooks: 'can_view_webhooks',
+    CanManageWebhooks: 'can_manage_webhooks',
     CanViewProjectApps: 'can_view_project_apps',
     CanUseProjectApps: 'can_use_project_apps',
     CanManageProjectApps: 'can_manage_project_apps',

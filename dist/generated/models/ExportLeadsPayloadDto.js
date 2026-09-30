@@ -18,7 +18,6 @@ exports.ExportLeadsPayloadDtoFromJSON = ExportLeadsPayloadDtoFromJSON;
 exports.ExportLeadsPayloadDtoFromJSONTyped = ExportLeadsPayloadDtoFromJSONTyped;
 exports.ExportLeadsPayloadDtoToJSON = ExportLeadsPayloadDtoToJSON;
 exports.ExportLeadsPayloadDtoToJSONTyped = ExportLeadsPayloadDtoToJSONTyped;
-const LeadsFilterDto_1 = require("./LeadsFilterDto");
 const ExportLeadsParamsDto_1 = require("./ExportLeadsParamsDto");
 /**
  * Check if a given object implements the ExportLeadsPayloadDto interface.
@@ -39,7 +38,6 @@ function ExportLeadsPayloadDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'params': (0, ExportLeadsParamsDto_1.ExportLeadsParamsDtoFromJSON)(json['params']),
     };
 }
@@ -52,7 +50,6 @@ function ExportLeadsPayloadDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'project_id': value['projectId'],
-        'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'params': (0, ExportLeadsParamsDto_1.ExportLeadsParamsDtoToJSON)(value['params']),
     };
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryStartPreviewResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportImageDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
+import type { ConfirmUploadDto, ConfirmUploadResponseDto, CopyDeliveryDto, CreateDeliveryDto, CreateDeliveryTestRecipientLinkDto, DeliveryAudiencePreviewResponseDto, DeliveryResponseDto, DeliveryStartPreviewResponseDto, DeliveryTestRecipientDto, DeliveryTestRecipientLinkResponseDto, DeliveryTestRecipientsResponseDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ListDeliveriesResponseDto, ScheduleDeliveryDto, StartDeliveryResponseDto, SuccessMessageDto, TestDeliveryDto, TestDeliveryResponseDto, UpdateDeliveryDto } from '../models/index';
 export interface CancelRequest {
     id: string;
     acceptLanguage?: CancelAcceptLanguageEnum;
@@ -31,7 +31,7 @@ export interface DeliveriesAttachmentsConfirmRequest {
 }
 export interface DeliveriesAttachmentsFromUrlRequest {
     projectId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: DeliveriesAttachmentsFromUrlAcceptLanguageEnum;
 }
 export interface DeliveriesAttachmentsUploadUrlRequest {
@@ -156,12 +156,12 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      */
     deliveriesAttachmentsConfirm(requestParameters: DeliveriesAttachmentsConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     deliveriesAttachmentsFromUrlRaw(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>>;
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     deliveriesAttachmentsFromUrl(requestParameters: DeliveriesAttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto>;

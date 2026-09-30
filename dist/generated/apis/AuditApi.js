@@ -117,6 +117,7 @@ exports.AuditApi = AuditApi;
  * @export
  */
 exports.AuditListEntityTypeEnum = {
+    ProjectWebhook: 'project_webhook',
     Funnel: 'funnel',
     Project: 'project',
     Agent: 'agent',

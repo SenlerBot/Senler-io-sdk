@@ -26,12 +26,6 @@ export interface KnowledgeArchivePublicationSummaryDto {
      */
     versionId: string;
     /**
-     * UUID
-     * @type {string}
-     * @memberof KnowledgeArchivePublicationSummaryDto
-     */
-    previousVersionId: string | null;
-    /**
      *
      * @type {Date}
      * @memberof KnowledgeArchivePublicationSummaryDto
@@ -44,7 +38,6 @@ export interface KnowledgeArchivePublicationSummaryDto {
  */
 export function instanceOfKnowledgeArchivePublicationSummaryDto(value: object): value is KnowledgeArchivePublicationSummaryDto {
     if (!('versionId' in value) || value['versionId'] === undefined) return false;
-    if (!('previousVersionId' in value) || value['previousVersionId'] === undefined) return false;
     if (!('activatedAt' in value) || value['activatedAt'] === undefined) return false;
     return true;
 }
@@ -60,7 +53,6 @@ export function KnowledgeArchivePublicationSummaryDtoFromJSONTyped(json: any, ig
     return {
 
         'versionId': json['version_id'],
-        'previousVersionId': json['previous_version_id'],
         'activatedAt': (new Date(json['activated_at'])),
     };
 }
@@ -77,7 +69,6 @@ export function KnowledgeArchivePublicationSummaryDtoToJSONTyped(value?: Knowled
     return {
 
         'version_id': value['versionId'],
-        'previous_version_id': value['previousVersionId'],
         'activated_at': ((value['activatedAt']).toISOString()),
     };
 }

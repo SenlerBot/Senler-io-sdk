@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CentrifugoSubscriptionDto, ErrorResponse, ListProcessesResponseDto, ProcessResponseDto, ProcessResultResponseDto, SuccessMessageDto } from '../models/index';
+import type { CentrifugoSubscriptionDto, ExportDownloadResponseDto, ListProcessesResponseDto, ProcessResponseDto, ProcessResultResponseDto, SuccessMessageDto } from '../models/index';
 export interface GetRealtimeTokenRequest {
     projectId: string;
     acceptLanguage?: GetRealtimeTokenAcceptLanguageEnum;
@@ -86,15 +86,15 @@ export declare class ProcessesApi extends runtime.BaseAPI {
      */
     processesGetById(requestParameters: ProcessesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
-     * S3- .
+     * .
      *
      */
-    processesGetDownloadRaw(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>>;
+    processesGetDownloadRaw(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExportDownloadResponseDto>>;
     /**
-     * S3- .
+     * .
      *
      */
-    processesGetDownload(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse>;
+    processesGetDownload(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ExportDownloadResponseDto>;
     /**
      * (/)
      *

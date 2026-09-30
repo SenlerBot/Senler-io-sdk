@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { DeliverySendErrorDto } from './DeliverySendErrorDto';
-import {
-    DeliverySendErrorDtoFromJSON,
-    DeliverySendErrorDtoFromJSONTyped,
-    DeliverySendErrorDtoToJSON,
-    DeliverySendErrorDtoToJSONTyped,
-} from './DeliverySendErrorDto';
-
 /**
  * DeliverySendProcessResultDto.
  * @export
@@ -53,12 +45,6 @@ export interface DeliverySendProcessResultDto {
     pausedDailyLimit?: boolean;
     /**
      *
-     * @type {Array<DeliverySendErrorDto>}
-     * @memberof DeliverySendProcessResultDto
-     */
-    deliveryErrors?: Array<DeliverySendErrorDto>;
-    /**
-     *
      * @type {number}
      * @memberof DeliverySendProcessResultDto
      */
@@ -89,7 +75,6 @@ export function DeliverySendProcessResultDtoFromJSONTyped(json: any, ignoreDiscr
         'skipped': json['skipped'],
         'failed': json['failed'],
         'pausedDailyLimit': json['paused_daily_limit'] == null ? undefined : json['paused_daily_limit'],
-        'deliveryErrors': json['delivery_errors'] == null ? undefined : ((json['delivery_errors'] as Array<any>).map(DeliverySendErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -109,7 +94,6 @@ export function DeliverySendProcessResultDtoToJSONTyped(value?: DeliverySendProc
         'skipped': value['skipped'],
         'failed': value['failed'],
         'paused_daily_limit': value['pausedDailyLimit'],
-        'delivery_errors': value['deliveryErrors'] == null ? undefined : ((value['deliveryErrors'] as Array<any>).map(DeliverySendErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

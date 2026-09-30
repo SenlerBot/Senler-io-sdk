@@ -28,26 +28,6 @@ export interface DeliverySendParamsDto {
      */
     deliveryRunId: string;
     /**
-     *
-     * @type {string}
-     * @memberof DeliverySendParamsDto
-     */
-    messageText: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof DeliverySendParamsDto
-     */
-    disableLinkPreview?: boolean;
-    /**
-     *
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof DeliverySendParamsDto
-     */
-    attachments?: Array<{
-        [key: string]: any;
-    }>;
-    /**
      * UUID , . Null API key/admin .
      * @type {string}
      * @memberof DeliverySendParamsDto

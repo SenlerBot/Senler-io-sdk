@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsFilterDto } from './LeadsFilterDto';
 /**
  * LeadsRefreshPayloadDto.
  * @export
@@ -22,12 +21,6 @@ export interface LeadsRefreshPayloadDto {
      * @memberof LeadsRefreshPayloadDto
      */
     projectId: string;
-    /**
-     * , refresh
-     * @type {LeadsFilterDto}
-     * @memberof LeadsRefreshPayloadDto
-     */
-    filters?: LeadsFilterDto;
 }
 /**
  * Check if a given object implements the LeadsRefreshPayloadDto interface.

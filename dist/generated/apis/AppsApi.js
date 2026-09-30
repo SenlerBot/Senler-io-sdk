@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateToolsSettingsAcceptLanguageEnum = exports.UpdateToolsAcceptLanguageEnum = exports.UpdateOauthRedirectUrisAcceptLanguageEnum = exports.UpdateOauthAccessUserAcceptLanguageEnum = exports.UpdateOauthAccessProjectAcceptLanguageEnum = exports.UpdateGeneralSettingsAcceptLanguageEnum = exports.UpdateEmbeddedPageSettingsAcceptLanguageEnum = exports.UpdateCatalogVisibilityAcceptLanguageEnum = exports.UpdateAutomationStepsStatusAcceptLanguageEnum = exports.UpdateAutomationStepsAcceptLanguageEnum = exports.UpdateAppActionsAcceptLanguageEnum = exports.UpdateAgentEventsAcceptLanguageEnum = exports.ToolsAcceptLanguageEnum = exports.SubmitForModerationAcceptLanguageEnum = exports.SourceProjectAcceptLanguageEnum = exports.ProvisionAcceptLanguageEnum = exports.OauthTokenAcceptLanguageEnum = exports.OauthTokenGrantTypeEnum = exports.GetInstallationsAcceptLanguageEnum = exports.GetInstallationsStateEnum = exports.GetInstallationsPeriodEnum = exports.GetEmbeddedPageTestAcceptLanguageEnum = exports.GetAutomationStepsAcceptLanguageEnum = exports.DeleteToolsAcceptLanguageEnum = exports.DeleteInstallationsAcceptLanguageEnum = exports.DeleteAutomationStepsAcceptLanguageEnum = exports.DeleteAgentEventsAcceptLanguageEnum = exports.AutomationStepsIconUploadUrlAcceptLanguageEnum = exports.AutomationStepsIconFromUrlAcceptLanguageEnum = exports.AutomationStepsAcceptLanguageEnum = exports.AppsListAcceptLanguageEnum = exports.AppsGetByIdAcceptLanguageEnum = exports.AgentEventsAcceptLanguageEnum = exports.AppsApi = void 0;
+exports.UpdateToolsSettingsAcceptLanguageEnum = exports.UpdateToolsAcceptLanguageEnum = exports.UpdateOauthRedirectUrisAcceptLanguageEnum = exports.UpdateOauthAccessUserAcceptLanguageEnum = exports.UpdateOauthAccessProjectAcceptLanguageEnum = exports.UpdateGeneralSettingsAcceptLanguageEnum = exports.UpdateFunnelElementsAcceptLanguageEnum = exports.UpdateEmbeddedPageSettingsAcceptLanguageEnum = exports.UpdateCatalogVisibilityAcceptLanguageEnum = exports.UpdateAutomationStepsStatusAcceptLanguageEnum = exports.UpdateAutomationStepsAcceptLanguageEnum = exports.UpdateAppActionsAcceptLanguageEnum = exports.UpdateAgentEventsAcceptLanguageEnum = exports.ToolsAcceptLanguageEnum = exports.SubmitForModerationAcceptLanguageEnum = exports.SourceProjectAcceptLanguageEnum = exports.ProvisionAcceptLanguageEnum = exports.OauthTokenAcceptLanguageEnum = exports.OauthTokenGrantTypeEnum = exports.GetInstallationsAcceptLanguageEnum = exports.GetInstallationsStateEnum = exports.GetInstallationsPeriodEnum = exports.GetFunnelElementsAcceptLanguageEnum = exports.GetEmbeddedPageTestAcceptLanguageEnum = exports.GetAutomationStepsAcceptLanguageEnum = exports.FunnelElementsAcceptLanguageEnum = exports.DeleteToolsAcceptLanguageEnum = exports.DeleteInstallationsAcceptLanguageEnum = exports.DeleteFunnelElementsAcceptLanguageEnum = exports.DeleteAutomationStepsAcceptLanguageEnum = exports.DeleteAgentEventsAcceptLanguageEnum = exports.AutomationStepsIconUploadUrlAcceptLanguageEnum = exports.AutomationStepsIconFromUrlAcceptLanguageEnum = exports.AutomationStepsAcceptLanguageEnum = exports.AppsListAcceptLanguageEnum = exports.AppsGetByIdAcceptLanguageEnum = exports.AgentEventsAcceptLanguageEnum = exports.AppsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -339,6 +339,41 @@ class AppsApi extends runtime.BaseAPI {
         await this.deleteAutomationStepsRaw(requestParameters, initOverrides);
     }
     /**
+     * , . .
+     *
+     */
+    async deleteFunnelElementsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling deleteFunnelElements().');
+        }
+        if (requestParameters['elementId'] == null) {
+            throw new runtime.RequiredError('elementId', 'Required parameter "elementId" was null or undefined when calling deleteFunnelElements().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements/{elementId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"elementId"}}`, encodeURIComponent(String(requestParameters['elementId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * , . .
+     *
+     */
+    async deleteFunnelElements(requestParameters, initOverrides) {
+        await this.deleteFunnelElementsRaw(requestParameters, initOverrides);
+    }
+    /**
      * .
      *
      */
@@ -410,6 +445,44 @@ class AppsApi extends runtime.BaseAPI {
         await this.deleteToolsRaw(requestParameters, initOverrides);
     }
     /**
+     * . .
+     *
+     */
+    async funnelElementsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling funnelElements().');
+        }
+        if (requestParameters['saveAppFunnelElementDto'] == null) {
+            throw new runtime.RequiredError('saveAppFunnelElementDto', 'Required parameter "saveAppFunnelElementDto" was null or undefined when calling funnelElements().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SaveAppFunnelElementDtoToJSON)(requestParameters['saveAppFunnelElementDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppFunnelElementResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async funnelElements(requestParameters, initOverrides) {
+        const response = await this.funnelElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , .
      *
      */
@@ -479,6 +552,39 @@ class AppsApi extends runtime.BaseAPI {
      */
     async getEmbeddedPageTest(requestParameters, initOverrides) {
         const response = await this.getEmbeddedPageTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async getFunnelElementsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getFunnelElements().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppFunnelElementsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async getFunnelElements(requestParameters, initOverrides) {
+        const response = await this.getFunnelElementsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -971,6 +1077,47 @@ class AppsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . .
+     *
+     */
+    async updateFunnelElementsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateFunnelElements().');
+        }
+        if (requestParameters['elementId'] == null) {
+            throw new runtime.RequiredError('elementId', 'Required parameter "elementId" was null or undefined when calling updateFunnelElements().');
+        }
+        if (requestParameters['saveAppFunnelElementDto'] == null) {
+            throw new runtime.RequiredError('saveAppFunnelElementDto', 'Required parameter "saveAppFunnelElementDto" was null or undefined when calling updateFunnelElements().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/funnel-elements/{elementId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"elementId"}}`, encodeURIComponent(String(requestParameters['elementId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SaveAppFunnelElementDtoToJSON)(requestParameters['saveAppFunnelElementDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppFunnelElementResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async updateFunnelElements(requestParameters, initOverrides) {
+        const response = await this.updateFunnelElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , , .
      *
      */
@@ -1262,6 +1409,13 @@ exports.DeleteAutomationStepsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.DeleteFunnelElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.DeleteInstallationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1276,6 +1430,13 @@ exports.DeleteToolsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.FunnelElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetAutomationStepsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1284,6 +1445,13 @@ exports.GetAutomationStepsAcceptLanguageEnum = {
  * @export
  */
 exports.GetEmbeddedPageTestAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetFunnelElementsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1391,6 +1559,13 @@ exports.UpdateCatalogVisibilityAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateEmbeddedPageSettingsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateFunnelElementsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

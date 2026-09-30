@@ -35,6 +35,7 @@ function WidgetExternalAiSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'webmcpEnabled': json['webmcp_enabled'] == null ? undefined : json['webmcp_enabled'],
         'enabled': json['enabled'],
         'mcpServerId': json['mcp_server_id'] == null ? undefined : json['mcp_server_id'],
         'codexPlugin': json['codex_plugin'] == null ? undefined : (0, WidgetExternalAiCodexPluginSettingsDto_1.WidgetExternalAiCodexPluginSettingsDtoFromJSON)(json['codex_plugin']),
@@ -48,6 +49,7 @@ function WidgetExternalAiSettingsDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
+        'webmcp_enabled': value['webmcpEnabled'],
         'enabled': value['enabled'],
         'mcp_server_id': value['mcpServerId'],
         'codex_plugin': (0, WidgetExternalAiCodexPluginSettingsDto_1.WidgetExternalAiCodexPluginSettingsDtoToJSON)(value['codexPlugin']),

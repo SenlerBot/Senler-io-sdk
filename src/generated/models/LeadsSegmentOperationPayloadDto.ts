@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LeadsFilterDto } from './LeadsFilterDto';
-import {
-    LeadsFilterDtoFromJSON,
-    LeadsFilterDtoFromJSONTyped,
-    LeadsFilterDtoToJSON,
-    LeadsFilterDtoToJSONTyped,
-} from './LeadsFilterDto';
 import type { LeadsSegmentOperationParamsDto } from './LeadsSegmentOperationParamsDto';
 import {
     LeadsSegmentOperationParamsDtoFromJSON,
@@ -40,12 +33,6 @@ export interface LeadsSegmentOperationPayloadDto {
      * @memberof LeadsSegmentOperationPayloadDto
      */
     projectId: string;
-    /**
-     *
-     * @type {LeadsFilterDto}
-     * @memberof LeadsSegmentOperationPayloadDto
-     */
-    filters?: LeadsFilterDto;
     /**
      *
      * @type {LeadsSegmentOperationParamsDto}
@@ -74,7 +61,6 @@ export function LeadsSegmentOperationPayloadDtoFromJSONTyped(json: any, ignoreDi
     return {
 
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : LeadsFilterDtoFromJSON(json['filters']),
         'params': LeadsSegmentOperationParamsDtoFromJSON(json['params']),
     };
 }
@@ -91,7 +77,6 @@ export function LeadsSegmentOperationPayloadDtoToJSONTyped(value?: LeadsSegmentO
     return {
 
         'project_id': value['projectId'],
-        'filters': LeadsFilterDtoToJSON(value['filters']),
         'params': LeadsSegmentOperationParamsDtoToJSON(value['params']),
     };
 }

@@ -18,7 +18,6 @@ exports.LeadsRefreshProcessResultDtoFromJSON = LeadsRefreshProcessResultDtoFromJ
 exports.LeadsRefreshProcessResultDtoFromJSONTyped = LeadsRefreshProcessResultDtoFromJSONTyped;
 exports.LeadsRefreshProcessResultDtoToJSON = LeadsRefreshProcessResultDtoToJSON;
 exports.LeadsRefreshProcessResultDtoToJSONTyped = LeadsRefreshProcessResultDtoToJSONTyped;
-const LeadsRefreshErrorDto_1 = require("./LeadsRefreshErrorDto");
 /**
  * Check if a given object implements the LeadsRefreshProcessResultDto interface.
  */
@@ -42,7 +41,6 @@ function LeadsRefreshProcessResultDtoFromJSONTyped(json, ignoreDiscriminator) {
         'refreshed': json['refreshed'],
         'skipped': json['skipped'],
         'failed': json['failed'],
-        'leadErrors': json['lead_errors'] == null ? undefined : (json['lead_errors'].map(LeadsRefreshErrorDto_1.LeadsRefreshErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -57,7 +55,6 @@ function LeadsRefreshProcessResultDtoToJSONTyped(value, ignoreDiscriminator = fa
         'refreshed': value['refreshed'],
         'skipped': value['skipped'],
         'failed': value['failed'],
-        'lead_errors': value['leadErrors'] == null ? undefined : (value['leadErrors'].map(LeadsRefreshErrorDto_1.LeadsRefreshErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

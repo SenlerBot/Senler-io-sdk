@@ -24,8 +24,6 @@ exports.KnowledgeArchivePublicationSummaryDtoToJSONTyped = KnowledgeArchivePubli
 function instanceOfKnowledgeArchivePublicationSummaryDto(value) {
     if (!('versionId' in value) || value['versionId'] === undefined)
         return false;
-    if (!('previousVersionId' in value) || value['previousVersionId'] === undefined)
-        return false;
     if (!('activatedAt' in value) || value['activatedAt'] === undefined)
         return false;
     return true;
@@ -39,7 +37,6 @@ function KnowledgeArchivePublicationSummaryDtoFromJSONTyped(json, ignoreDiscrimi
     }
     return {
         'versionId': json['version_id'],
-        'previousVersionId': json['previous_version_id'],
         'activatedAt': (new Date(json['activated_at'])),
     };
 }
@@ -52,7 +49,6 @@ function KnowledgeArchivePublicationSummaryDtoToJSONTyped(value, ignoreDiscrimin
     }
     return {
         'version_id': value['versionId'],
-        'previous_version_id': value['previousVersionId'],
         'activated_at': ((value['activatedAt']).toISOString()),
     };
 }

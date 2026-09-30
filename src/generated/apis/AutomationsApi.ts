@@ -56,6 +56,7 @@ import type {
   GetAutomationAvatarUploadUrlDto,
   GetUploadUrlDto,
   GetUploadUrlResponseDto,
+  ImportAttachmentDto,
   ImportImageDto,
   LayoutAutomationDto,
   PauseAutomationRunDto,
@@ -159,6 +160,8 @@ import {
     GetUploadUrlDtoToJSON,
     GetUploadUrlResponseDtoFromJSON,
     GetUploadUrlResponseDtoToJSON,
+    ImportAttachmentDtoFromJSON,
+    ImportAttachmentDtoToJSON,
     ImportImageDtoFromJSON,
     ImportImageDtoToJSON,
     LayoutAutomationDtoFromJSON,
@@ -207,7 +210,7 @@ export interface AttachmentsConfirmRequest {
 
 export interface AttachmentsFromUrlRequest {
     automationId: string;
-    importImageDto: ImportImageDto;
+    importAttachmentDto: ImportAttachmentDto;
     acceptLanguage?: AttachmentsFromUrlAcceptLanguageEnum;
 }
 
@@ -326,6 +329,7 @@ export interface GetDialogsRunsRequest {
     leadId?: string;
     dialogId2?: string;
     status?: GetDialogsRunsStatusEnum;
+    state?: GetDialogsRunsStateEnum;
     isTest?: boolean;
     startedAfter?: Date;
     startedBefore?: Date;
@@ -372,6 +376,7 @@ export interface GetRunsRequest {
     leadId?: string;
     dialogId?: string;
     status?: GetRunsStatusEnum;
+    state?: GetRunsStateEnum;
     isTest?: boolean;
     startedAfter?: Date;
     startedBefore?: Date;
@@ -614,7 +619,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     async attachmentsFromUrlRaw(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConfirmUploadResponseDto>> {
@@ -625,10 +630,10 @@ export class AutomationsApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importImageDto'] == null) {
+        if (requestParameters['importAttachmentDto'] == null) {
             throw new runtime.RequiredError(
-                'importImageDto',
-                'Required parameter "importImageDto" was null or undefined when calling attachmentsFromUrl().'
+                'importAttachmentDto',
+                'Required parameter "importAttachmentDto" was null or undefined when calling attachmentsFromUrl().'
             );
         }
 
@@ -660,14 +665,14 @@ export class AutomationsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
+            body: ImportAttachmentDtoToJSON(requestParameters['importAttachmentDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ConfirmUploadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     async attachmentsFromUrl(requestParameters: AttachmentsFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConfirmUploadResponseDto> {
@@ -1791,6 +1796,10 @@ export class AutomationsApi extends runtime.BaseAPI {
             queryParameters['status'] = requestParameters['status'];
         }
 
+        if (requestParameters['state'] != null) {
+            queryParameters['state'] = requestParameters['state'];
+        }
+
         if (requestParameters['isTest'] != null) {
             queryParameters['is_test'] = requestParameters['isTest'];
         }
@@ -2176,6 +2185,10 @@ export class AutomationsApi extends runtime.BaseAPI {
 
         if (requestParameters['status'] != null) {
             queryParameters['status'] = requestParameters['status'];
+        }
+
+        if (requestParameters['state'] != null) {
+            queryParameters['state'] = requestParameters['state'];
         }
 
         if (requestParameters['isTest'] != null) {
@@ -4041,6 +4054,17 @@ export type GetDialogsRunsStatusEnum = typeof GetDialogsRunsStatusEnum[keyof typ
 /**
  * @export
  */
+export const GetDialogsRunsStateEnum = {
+    Active: 'active',
+    Parked: 'parked',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
+} as const;
+export type GetDialogsRunsStateEnum = typeof GetDialogsRunsStateEnum[keyof typeof GetDialogsRunsStateEnum];
+/**
+ * @export
+ */
 export const GetDialogsRunsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -4113,6 +4137,17 @@ export const GetRunsStatusEnum = {
     Cancelled: 'cancelled'
 } as const;
 export type GetRunsStatusEnum = typeof GetRunsStatusEnum[keyof typeof GetRunsStatusEnum];
+/**
+ * @export
+ */
+export const GetRunsStateEnum = {
+    Active: 'active',
+    Parked: 'parked',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
+} as const;
+export type GetRunsStateEnum = typeof GetRunsStateEnum[keyof typeof GetRunsStateEnum];
 /**
  * @export
  */

@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LeadsSegmentOperationErrorDto } from './LeadsSegmentOperationErrorDto';
-import {
-    LeadsSegmentOperationErrorDtoFromJSON,
-    LeadsSegmentOperationErrorDtoFromJSONTyped,
-    LeadsSegmentOperationErrorDtoToJSON,
-    LeadsSegmentOperationErrorDtoToJSONTyped,
-} from './LeadsSegmentOperationErrorDto';
-
 /**
  * LeadsSegmentOperationProcessResultDto.
  * @export
@@ -77,12 +69,6 @@ export interface LeadsSegmentOperationProcessResultDto {
     failed: number;
     /**
      *
-     * @type {Array<LeadsSegmentOperationErrorDto>}
-     * @memberof LeadsSegmentOperationProcessResultDto
-     */
-    segmentOperationErrors?: Array<LeadsSegmentOperationErrorDto>;
-    /**
-     *
      * @type {number}
      * @memberof LeadsSegmentOperationProcessResultDto
      */
@@ -122,7 +108,6 @@ export function LeadsSegmentOperationProcessResultDtoFromJSONTyped(json: any, ig
         'automationsStarted': json['automations_started'],
         'skipped': json['skipped'],
         'failed': json['failed'],
-        'segmentOperationErrors': json['segment_operation_errors'] == null ? undefined : ((json['segment_operation_errors'] as Array<any>).map(LeadsSegmentOperationErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -146,7 +131,6 @@ export function LeadsSegmentOperationProcessResultDtoToJSONTyped(value?: LeadsSe
         'automations_started': value['automationsStarted'],
         'skipped': value['skipped'],
         'failed': value['failed'],
-        'segment_operation_errors': value['segmentOperationErrors'] == null ? undefined : ((value['segmentOperationErrors'] as Array<any>).map(LeadsSegmentOperationErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

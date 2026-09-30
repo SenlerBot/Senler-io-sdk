@@ -122,6 +122,7 @@ export class AuditApi extends runtime.BaseAPI {
  * @export
  */
 export const AuditListEntityTypeEnum = {
+    ProjectWebhook: 'project_webhook',
     Funnel: 'funnel',
     Project: 'project',
     Agent: 'agent',

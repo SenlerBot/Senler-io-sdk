@@ -18,7 +18,6 @@ exports.LeadsSegmentOperationPayloadDtoFromJSON = LeadsSegmentOperationPayloadDt
 exports.LeadsSegmentOperationPayloadDtoFromJSONTyped = LeadsSegmentOperationPayloadDtoFromJSONTyped;
 exports.LeadsSegmentOperationPayloadDtoToJSON = LeadsSegmentOperationPayloadDtoToJSON;
 exports.LeadsSegmentOperationPayloadDtoToJSONTyped = LeadsSegmentOperationPayloadDtoToJSONTyped;
-const LeadsFilterDto_1 = require("./LeadsFilterDto");
 const LeadsSegmentOperationParamsDto_1 = require("./LeadsSegmentOperationParamsDto");
 /**
  * Check if a given object implements the LeadsSegmentOperationPayloadDto interface.
@@ -39,7 +38,6 @@ function LeadsSegmentOperationPayloadDtoFromJSONTyped(json, ignoreDiscriminator)
     }
     return {
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'params': (0, LeadsSegmentOperationParamsDto_1.LeadsSegmentOperationParamsDtoFromJSON)(json['params']),
     };
 }
@@ -52,7 +50,6 @@ function LeadsSegmentOperationPayloadDtoToJSONTyped(value, ignoreDiscriminator =
     }
     return {
         'project_id': value['projectId'],
-        'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'params': (0, LeadsSegmentOperationParamsDto_1.LeadsSegmentOperationParamsDtoToJSON)(value['params']),
     };
 }

@@ -40,8 +40,6 @@ function instanceOfImportLeadsParamsDto(value) {
         return false;
     if (!('channelType' in value) || value['channelType'] === undefined)
         return false;
-    if (!('externalUserIds' in value) || value['externalUserIds'] === undefined)
-        return false;
     return true;
 }
 function ImportLeadsParamsDtoFromJSON(json) {
@@ -54,7 +52,6 @@ function ImportLeadsParamsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
-        'externalUserIds': json['external_user_ids'],
         'leadSource': json['lead_source'] == null ? undefined : json['lead_source'],
     };
 }
@@ -68,7 +65,6 @@ function ImportLeadsParamsDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],
-        'external_user_ids': value['externalUserIds'],
         'lead_source': value['leadSource'],
     };
 }

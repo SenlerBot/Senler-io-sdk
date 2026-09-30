@@ -341,6 +341,12 @@ export interface AutomationNodeConfigDto {
      */
     agentProcessCurrentMessage?: boolean;
     /**
+     * , . ; . false , .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentDisableAutoAssignment?: boolean;
+    /**
      * . - .
      * @type {boolean}
      * @memberof AutomationNodeConfigDto
@@ -1522,6 +1528,7 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'agentRole': json['agent_role'] == null ? undefined : json['agent_role'],
         'agentProcessCurrentMessage': json['agent_process_current_message'] == null ? undefined : json['agent_process_current_message'],
+        'agentDisableAutoAssignment': json['agent_disable_auto_assignment'] == null ? undefined : json['agent_disable_auto_assignment'],
         'agentIncludeDialogHistory': json['agent_include_dialog_history'] == null ? undefined : json['agent_include_dialog_history'],
         'agentCommandText': json['agent_command_text'] == null ? undefined : json['agent_command_text'],
         'agentCommandAttachments': json['agent_command_attachments'] == null ? undefined : ((json['agent_command_attachments'] as Array<any>).map(AutomationMessageAttachmentDtoFromJSON)),
@@ -1675,6 +1682,7 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'agent_id': value['agentId'],
         'agent_role': value['agentRole'],
         'agent_process_current_message': value['agentProcessCurrentMessage'],
+        'agent_disable_auto_assignment': value['agentDisableAutoAssignment'],
         'agent_include_dialog_history': value['agentIncludeDialogHistory'],
         'agent_command_text': value['agentCommandText'],
         'agent_command_attachments': value['agentCommandAttachments'] == null ? undefined : ((value['agentCommandAttachments'] as Array<any>).map(AutomationMessageAttachmentDtoToJSON)),

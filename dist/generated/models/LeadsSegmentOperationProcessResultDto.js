@@ -18,7 +18,6 @@ exports.LeadsSegmentOperationProcessResultDtoFromJSON = LeadsSegmentOperationPro
 exports.LeadsSegmentOperationProcessResultDtoFromJSONTyped = LeadsSegmentOperationProcessResultDtoFromJSONTyped;
 exports.LeadsSegmentOperationProcessResultDtoToJSON = LeadsSegmentOperationProcessResultDtoToJSON;
 exports.LeadsSegmentOperationProcessResultDtoToJSONTyped = LeadsSegmentOperationProcessResultDtoToJSONTyped;
-const LeadsSegmentOperationErrorDto_1 = require("./LeadsSegmentOperationErrorDto");
 /**
  * Check if a given object implements the LeadsSegmentOperationProcessResultDto interface.
  */
@@ -57,7 +56,6 @@ function LeadsSegmentOperationProcessResultDtoFromJSONTyped(json, ignoreDiscrimi
         'automationsStarted': json['automations_started'],
         'skipped': json['skipped'],
         'failed': json['failed'],
-        'segmentOperationErrors': json['segment_operation_errors'] == null ? undefined : (json['segment_operation_errors'].map(LeadsSegmentOperationErrorDto_1.LeadsSegmentOperationErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -77,7 +75,6 @@ function LeadsSegmentOperationProcessResultDtoToJSONTyped(value, ignoreDiscrimin
         'automations_started': value['automationsStarted'],
         'skipped': value['skipped'],
         'failed': value['failed'],
-        'segment_operation_errors': value['segmentOperationErrors'] == null ? undefined : (value['segmentOperationErrors'].map(LeadsSegmentOperationErrorDto_1.LeadsSegmentOperationErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

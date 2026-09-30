@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsSegmentOperationErrorDto } from './LeadsSegmentOperationErrorDto';
 /**
  * LeadsSegmentOperationProcessResultDto.
  * @export
@@ -64,12 +63,6 @@ export interface LeadsSegmentOperationProcessResultDto {
      * @memberof LeadsSegmentOperationProcessResultDto
      */
     failed: number;
-    /**
-     *
-     * @type {Array<LeadsSegmentOperationErrorDto>}
-     * @memberof LeadsSegmentOperationProcessResultDto
-     */
-    segmentOperationErrors?: Array<LeadsSegmentOperationErrorDto>;
     /**
      *
      * @type {number}

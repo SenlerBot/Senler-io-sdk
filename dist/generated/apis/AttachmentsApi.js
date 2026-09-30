@@ -99,15 +99,15 @@ class AttachmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async channelsFromUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['channelId'] == null) {
             throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling channelsFromUrl().');
         }
-        if (requestParameters['importImageDto'] == null) {
-            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling channelsFromUrl().');
+        if (requestParameters['importAttachmentDto'] == null) {
+            throw new runtime.RequiredError('importAttachmentDto', 'Required parameter "importAttachmentDto" was null or undefined when calling channelsFromUrl().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -131,12 +131,12 @@ class AttachmentsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+            body: (0, index_1.ImportAttachmentDtoToJSON)(requestParameters['importAttachmentDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ConfirmUploadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async channelsFromUrl(requestParameters, initOverrides) {
@@ -234,15 +234,15 @@ class AttachmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async dialogsFromUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
             throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling dialogsFromUrl().');
         }
-        if (requestParameters['importImageDto'] == null) {
-            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling dialogsFromUrl().');
+        if (requestParameters['importAttachmentDto'] == null) {
+            throw new runtime.RequiredError('importAttachmentDto', 'Required parameter "importAttachmentDto" was null or undefined when calling dialogsFromUrl().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -266,12 +266,12 @@ class AttachmentsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+            body: (0, index_1.ImportAttachmentDtoToJSON)(requestParameters['importAttachmentDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ConfirmUploadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * PNG, JPEG, WebP GIF . 20 40 , ; . fileId . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . 20 40 URL, ; . fileId . .
      * URL attachment_id
      */
     async dialogsFromUrl(requestParameters, initOverrides) {
@@ -539,7 +539,7 @@ class AttachmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . fileId . 20 , 40 . .
+     * URL attachment_id , PDF , . URL Content-Type. fileId . 20 , 40 URL . .
      * URL attachment_id
      */
     async projectsDraftsFromUrlRaw(requestParameters, initOverrides) {
@@ -549,8 +549,8 @@ class AttachmentsApi extends runtime.BaseAPI {
         if (requestParameters['draftId'] == null) {
             throw new runtime.RequiredError('draftId', 'Required parameter "draftId" was null or undefined when calling projectsDraftsFromUrl().');
         }
-        if (requestParameters['importImageDto'] == null) {
-            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling projectsDraftsFromUrl().');
+        if (requestParameters['importAttachmentDto'] == null) {
+            throw new runtime.RequiredError('importAttachmentDto', 'Required parameter "importAttachmentDto" was null or undefined when calling projectsDraftsFromUrl().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -574,12 +574,12 @@ class AttachmentsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+            body: (0, index_1.ImportAttachmentDtoToJSON)(requestParameters['importAttachmentDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ConfirmUploadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . fileId . 20 , 40 . .
+     * URL attachment_id , PDF , . URL Content-Type. fileId . 20 , 40 URL . .
      * URL attachment_id
      */
     async projectsDraftsFromUrl(requestParameters, initOverrides) {

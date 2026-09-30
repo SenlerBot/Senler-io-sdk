@@ -103,6 +103,7 @@ export declare const AppActionMethodResponseDtoContextEnum: {
     readonly App: "app";
     readonly AgentTool: "agent_tool";
     readonly AutomationStep: "automation_step";
+    readonly Funnel: "funnel";
 };
 export type AppActionMethodResponseDtoContextEnum = typeof AppActionMethodResponseDtoContextEnum[keyof typeof AppActionMethodResponseDtoContextEnum];
 /**

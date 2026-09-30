@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsFilterDto } from './LeadsFilterDto';
 import type { ExportLeadsParamsDto } from './ExportLeadsParamsDto';
 /**
  * ExportLeadsPayloadDto.
@@ -23,12 +22,6 @@ export interface ExportLeadsPayloadDto {
      * @memberof ExportLeadsPayloadDto
      */
     projectId: string;
-    /**
-     *
-     * @type {LeadsFilterDto}
-     * @memberof ExportLeadsPayloadDto
-     */
-    filters?: LeadsFilterDto;
     /**
      *
      * @type {ExportLeadsParamsDto}

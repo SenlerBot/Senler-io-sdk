@@ -59,6 +59,12 @@ export interface AutomationRunResponseDto {
      */
     manualPaused: boolean;
     /**
+     * , .
+     * @type {boolean}
+     * @memberof AutomationRunResponseDto
+     */
+    paused: boolean;
+    /**
      * lead id.
      * @type {string}
      * @memberof AutomationRunResponseDto

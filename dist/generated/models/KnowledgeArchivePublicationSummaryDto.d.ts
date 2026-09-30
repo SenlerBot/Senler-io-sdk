@@ -22,12 +22,6 @@ export interface KnowledgeArchivePublicationSummaryDto {
      */
     versionId: string;
     /**
-     * UUID
-     * @type {string}
-     * @memberof KnowledgeArchivePublicationSummaryDto
-     */
-    previousVersionId: string | null;
-    /**
      *
      * @type {Date}
      * @memberof KnowledgeArchivePublicationSummaryDto

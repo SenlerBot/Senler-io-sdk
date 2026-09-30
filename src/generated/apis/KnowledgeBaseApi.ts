@@ -21,8 +21,6 @@ import type {
   ErrorResponse,
   ImportProjectKnowledgeImageDto,
   KnowledgeArchiveImportOperationResponseDto,
-  KnowledgeArchivePublicationCapabilitiesDto,
-  KnowledgeArchivePublicationSummaryDto,
   KnowledgeFileResponseDto,
   KnowledgeFolderResponseDto,
   KnowledgeImageRecognitionEstimateResponseDto,
@@ -48,10 +46,6 @@ import {
     ImportProjectKnowledgeImageDtoToJSON,
     KnowledgeArchiveImportOperationResponseDtoFromJSON,
     KnowledgeArchiveImportOperationResponseDtoToJSON,
-    KnowledgeArchivePublicationCapabilitiesDtoFromJSON,
-    KnowledgeArchivePublicationCapabilitiesDtoToJSON,
-    KnowledgeArchivePublicationSummaryDtoFromJSON,
-    KnowledgeArchivePublicationSummaryDtoToJSON,
     KnowledgeFileResponseDtoFromJSON,
     KnowledgeFileResponseDtoToJSON,
     KnowledgeFolderResponseDtoFromJSON,
@@ -86,13 +80,6 @@ export interface ArchiveImportsRequest {
     folderId?: string | null;
     duplicateResolution?: ArchiveImportsDuplicateResolutionEnum;
     imageRecognitionMode?: ArchiveImportsImageRecognitionModeEnum;
-}
-
-export interface ArchivePublicationsActivateRequest {
-    versionId: string;
-    projectId: string;
-    includeResult?: boolean;
-    acceptLanguage?: ArchivePublicationsActivateAcceptLanguageEnum;
 }
 
 export interface DeleteArchiveImportsRequest {
@@ -167,12 +154,6 @@ export interface GetArchiveImportsContentRequest {
     includeResult?: boolean;
     folderId?: string;
     acceptLanguage?: GetArchiveImportsContentAcceptLanguageEnum;
-}
-
-export interface GetArchivePublicationsCapabilitiesRequest {
-    projectId: string;
-    includeResult?: boolean;
-    acceptLanguage?: GetArchivePublicationsCapabilitiesAcceptLanguageEnum;
 }
 
 export interface GetImageContextsExportRequest {
@@ -390,73 +371,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async archiveImports(requestParameters: ArchiveImportsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
         const response = await this.archiveImportsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * ZIP. ; .
-     *
-     */
-    async archivePublicationsActivateRaw(requestParameters: ArchivePublicationsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchivePublicationSummaryDto>> {
-        if (requestParameters['versionId'] == null) {
-            throw new runtime.RequiredError(
-                'versionId',
-                'Required parameter "versionId" was null or undefined when calling archivePublicationsActivate().'
-            );
-        }
-
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling archivePublicationsActivate().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        if (requestParameters['includeResult'] != null) {
-            queryParameters['include_result'] = requestParameters['includeResult'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
-        }
-
-        const response = await this.request({
-            path: `/api/knowledge-base/archive-publications/{versionId}/activate`.replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchivePublicationSummaryDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * ZIP. ; .
-     *
-     */
-    async archivePublicationsActivate(requestParameters: ArchivePublicationsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchivePublicationSummaryDto> {
-        const response = await this.archivePublicationsActivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1224,64 +1138,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async getArchiveImportsContent(requestParameters: GetArchiveImportsContentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchiveImportOperationResponseDto> {
         const response = await this.getArchiveImportsContentRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     *
-     */
-    async getArchivePublicationsCapabilitiesRaw(requestParameters: GetArchivePublicationsCapabilitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeArchivePublicationCapabilitiesDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getArchivePublicationsCapabilities().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        if (requestParameters['includeResult'] != null) {
-            queryParameters['include_result'] = requestParameters['includeResult'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/knowledge-base/archive-publications/capabilities`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeArchivePublicationCapabilitiesDtoFromJSON(jsonValue));
-    }
-
-    /**
-     *
-     */
-    async getArchivePublicationsCapabilities(requestParameters: GetArchivePublicationsCapabilitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeArchivePublicationCapabilitiesDto> {
-        const response = await this.getArchivePublicationsCapabilitiesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2239,14 +2095,6 @@ export type ArchiveImportsImageRecognitionModeEnum = typeof ArchiveImportsImageR
 /**
  * @export
  */
-export const ArchivePublicationsActivateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type ArchivePublicationsActivateAcceptLanguageEnum = typeof ArchivePublicationsActivateAcceptLanguageEnum[keyof typeof ArchivePublicationsActivateAcceptLanguageEnum];
-/**
- * @export
- */
 export const DeleteArchiveImportsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2385,14 +2233,6 @@ export const GetArchiveImportsContentAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetArchiveImportsContentAcceptLanguageEnum = typeof GetArchiveImportsContentAcceptLanguageEnum[keyof typeof GetArchiveImportsContentAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetArchivePublicationsCapabilitiesAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetArchivePublicationsCapabilitiesAcceptLanguageEnum = typeof GetArchivePublicationsCapabilitiesAcceptLanguageEnum[keyof typeof GetArchivePublicationsCapabilitiesAcceptLanguageEnum];
 /**
  * @export
  */

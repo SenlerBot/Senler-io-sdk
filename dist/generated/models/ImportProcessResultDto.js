@@ -18,7 +18,6 @@ exports.ImportProcessResultDtoFromJSON = ImportProcessResultDtoFromJSON;
 exports.ImportProcessResultDtoFromJSONTyped = ImportProcessResultDtoFromJSONTyped;
 exports.ImportProcessResultDtoToJSON = ImportProcessResultDtoToJSON;
 exports.ImportProcessResultDtoToJSONTyped = ImportProcessResultDtoToJSONTyped;
-const ImportErrorDto_1 = require("./ImportErrorDto");
 /**
  * Check if a given object implements the ImportProcessResultDto interface.
  */
@@ -42,7 +41,6 @@ function ImportProcessResultDtoFromJSONTyped(json, ignoreDiscriminator) {
         'imported': json['imported'],
         'updated': json['updated'],
         'failed': json['failed'],
-        'errors': json['errors'] == null ? undefined : (json['errors'].map(ImportErrorDto_1.ImportErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -57,7 +55,6 @@ function ImportProcessResultDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'imported': value['imported'],
         'updated': value['updated'],
         'failed': value['failed'],
-        'errors': value['errors'] == null ? undefined : (value['errors'].map(ImportErrorDto_1.ImportErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

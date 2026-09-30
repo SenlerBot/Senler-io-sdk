@@ -47,6 +47,8 @@ function instanceOfDialogAutomationRunResponseDto(value) {
         return false;
     if (!('manualPaused' in value) || value['manualPaused'] === undefined)
         return false;
+    if (!('paused' in value) || value['paused'] === undefined)
+        return false;
     if (!('leadId' in value) || value['leadId'] === undefined)
         return false;
     if (!('dialogId' in value) || value['dialogId'] === undefined)
@@ -86,6 +88,7 @@ function DialogAutomationRunResponseDtoFromJSONTyped(json, ignoreDiscriminator) 
         'migrationEpoch': json['migration_epoch'],
         'status': json['status'],
         'manualPaused': json['manual_paused'],
+        'paused': json['paused'],
         'leadId': json['lead_id'],
         'dialogId': json['dialog_id'],
         'channelId': json['channel_id'],
@@ -114,6 +117,7 @@ function DialogAutomationRunResponseDtoToJSONTyped(value, ignoreDiscriminator = 
         'migration_epoch': value['migrationEpoch'],
         'status': value['status'],
         'manual_paused': value['manualPaused'],
+        'paused': value['paused'],
         'lead_id': value['leadId'],
         'dialog_id': value['dialogId'],
         'channel_id': value['channelId'],

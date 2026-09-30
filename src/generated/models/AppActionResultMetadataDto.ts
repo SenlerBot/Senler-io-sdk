@@ -46,7 +46,9 @@ export interface AppActionResultMetadataDto {
 export const AppActionResultMetadataDtoKindEnum = {
     Data: 'data',
     AgentToolConfiguration: 'agent_tool_configuration',
-    AutomationStepConfiguration: 'automation_step_configuration'
+    AutomationStepConfiguration: 'automation_step_configuration',
+    FunnelConfiguration: 'funnel_configuration',
+    FunnelReport: 'funnel_report'
 } as const;
 export type AppActionResultMetadataDtoKindEnum = typeof AppActionResultMetadataDtoKindEnum[keyof typeof AppActionResultMetadataDtoKindEnum];
 

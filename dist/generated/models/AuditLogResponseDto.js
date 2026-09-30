@@ -47,6 +47,7 @@ exports.AuditLogResponseDtoDelegatedActorTypeEnum = {
  * @export
  */
 exports.AuditLogResponseDtoEntityTypeEnum = {
+    ProjectWebhook: 'project_webhook',
     Funnel: 'funnel',
     Project: 'project',
     Agent: 'agent',
@@ -93,6 +94,7 @@ exports.AuditLogResponseDtoActionEnum = {
  * @export
  */
 exports.AuditLogResponseDtoEventTypeEnum = {
+    ProjectWebhookChanged: 'project_webhook.changed',
     LandingBlockCreated: 'landing.block_created',
     LandingBlockUpdated: 'landing.block_updated',
     LandingBlockMoved: 'landing.block_moved',

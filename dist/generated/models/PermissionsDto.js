@@ -114,6 +114,10 @@ function instanceOfPermissionsDto(value) {
         return false;
     if (!('canManageKnowledgeBase' in value) || value['canManageKnowledgeBase'] === undefined)
         return false;
+    if (!('canViewWebhooks' in value) || value['canViewWebhooks'] === undefined)
+        return false;
+    if (!('canManageWebhooks' in value) || value['canManageWebhooks'] === undefined)
+        return false;
     if (!('canViewApiTokens' in value) || value['canViewApiTokens'] === undefined)
         return false;
     if (!('canManageApiTokens' in value) || value['canManageApiTokens'] === undefined)
@@ -188,6 +192,8 @@ function PermissionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'canManageProcesses': json['can_manage_processes'],
         'canViewKnowledgeBase': json['can_view_knowledge_base'],
         'canManageKnowledgeBase': json['can_manage_knowledge_base'],
+        'canViewWebhooks': json['can_view_webhooks'],
+        'canManageWebhooks': json['can_manage_webhooks'],
         'canViewApiTokens': json['can_view_api_tokens'],
         'canManageApiTokens': json['can_manage_api_tokens'],
         'canViewProjectApps': json['can_view_project_apps'],
@@ -253,6 +259,8 @@ function PermissionsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'can_manage_processes': value['canManageProcesses'],
         'can_view_knowledge_base': value['canViewKnowledgeBase'],
         'can_manage_knowledge_base': value['canManageKnowledgeBase'],
+        'can_view_webhooks': value['canViewWebhooks'],
+        'can_manage_webhooks': value['canManageWebhooks'],
         'can_view_api_tokens': value['canViewApiTokens'],
         'can_manage_api_tokens': value['canManageApiTokens'],
         'can_view_project_apps': value['canViewProjectApps'],

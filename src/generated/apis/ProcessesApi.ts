@@ -17,6 +17,7 @@ import * as runtime from '../runtime';
 import type {
   CentrifugoSubscriptionDto,
   ErrorResponse,
+  ExportDownloadResponseDto,
   ListProcessesResponseDto,
   ProcessResponseDto,
   ProcessResultResponseDto,
@@ -27,6 +28,8 @@ import {
     CentrifugoSubscriptionDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ExportDownloadResponseDtoFromJSON,
+    ExportDownloadResponseDtoToJSON,
     ListProcessesResponseDtoFromJSON,
     ListProcessesResponseDtoToJSON,
     ProcessResponseDtoFromJSON,
@@ -291,10 +294,10 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
-     * S3- .
+     * .
      *
      */
-    async processesGetDownloadRaw(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ErrorResponse>> {
+    async processesGetDownloadRaw(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExportDownloadResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -320,7 +323,7 @@ export class ProcessesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
 
         const response = await this.request({
@@ -330,14 +333,14 @@ export class ProcessesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ErrorResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ExportDownloadResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * S3- .
+     * .
      *
      */
-    async processesGetDownload(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ErrorResponse> {
+    async processesGetDownload(requestParameters: ProcessesGetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ExportDownloadResponseDto> {
         const response = await this.processesGetDownloadRaw(requestParameters, initOverrides);
         return await response.value();
     }

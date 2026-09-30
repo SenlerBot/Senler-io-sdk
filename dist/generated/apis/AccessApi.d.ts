@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetMemberChannelsResponseDto, GetProjectMemberResponseDto, ProjectMemberListItemDto, RolePresetsResponseDto, SuccessResponseDto, TransferOwnershipDto, TransferOwnershipResponseDto, UpdateProjectMemberDto, UpdateProjectMemberResponseDto } from '../models/index';
+import type { GetMemberChannelsResponseDto, GetProjectMemberResponseDto, ProjectMemberListItemDto, RolePresetsResponseDto, SuccessResponseDto, UpdateProjectMemberDto, UpdateProjectMemberResponseDto } from '../models/index';
 export interface AccessDeleteMembersRequest {
     projectId: string;
     memberId: string;
@@ -38,11 +38,6 @@ export interface GetMembersChannelsRequest {
 }
 export interface GetRolePresetsRequest {
     acceptLanguage?: GetRolePresetsAcceptLanguageEnum;
-}
-export interface OwnershipTransferRequest {
-    projectId: string;
-    transferOwnershipDto: TransferOwnershipDto;
-    acceptLanguage?: OwnershipTransferAcceptLanguageEnum;
 }
 /**
  *
@@ -108,16 +103,6 @@ export declare class AccessApi extends runtime.BaseAPI {
      *
      */
     getRolePresets(requestParameters?: GetRolePresetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RolePresetsResponseDto>;
-    /**
-     * . .
-     *
-     */
-    ownershipTransferRaw(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TransferOwnershipResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    ownershipTransfer(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto>;
 }
 /**
  * @export
@@ -167,11 +152,3 @@ export declare const GetRolePresetsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetRolePresetsAcceptLanguageEnum = typeof GetRolePresetsAcceptLanguageEnum[keyof typeof GetRolePresetsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const OwnershipTransferAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type OwnershipTransferAcceptLanguageEnum = typeof OwnershipTransferAcceptLanguageEnum[keyof typeof OwnershipTransferAcceptLanguageEnum];

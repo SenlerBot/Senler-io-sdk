@@ -217,7 +217,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * S3- .
+     * .
      *
      */
     async processesGetDownloadRaw(requestParameters, initOverrides) {
@@ -238,7 +238,7 @@ class ProcessesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
             path: `/api/processes/{id}/download`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -246,10 +246,10 @@ class ProcessesApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ErrorResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ExportDownloadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * S3- .
+     * .
      *
      */
     async processesGetDownload(requestParameters, initOverrides) {

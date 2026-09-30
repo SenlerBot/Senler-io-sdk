@@ -18,7 +18,6 @@ exports.LeadsRefreshPayloadDtoFromJSON = LeadsRefreshPayloadDtoFromJSON;
 exports.LeadsRefreshPayloadDtoFromJSONTyped = LeadsRefreshPayloadDtoFromJSONTyped;
 exports.LeadsRefreshPayloadDtoToJSON = LeadsRefreshPayloadDtoToJSON;
 exports.LeadsRefreshPayloadDtoToJSONTyped = LeadsRefreshPayloadDtoToJSONTyped;
-const LeadsFilterDto_1 = require("./LeadsFilterDto");
 /**
  * Check if a given object implements the LeadsRefreshPayloadDto interface.
  */
@@ -36,7 +35,6 @@ function LeadsRefreshPayloadDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
     };
 }
 function LeadsRefreshPayloadDtoToJSON(json) {
@@ -48,6 +46,5 @@ function LeadsRefreshPayloadDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'project_id': value['projectId'],
-        'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
     };
 }

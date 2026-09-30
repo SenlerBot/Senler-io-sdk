@@ -292,6 +292,18 @@ export interface PermissionsDto {
      */
     canManageKnowledgeBase: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewWebhooks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageWebhooks: boolean;
+    /**
      * API
      * @type {boolean}
      * @memberof PermissionsDto

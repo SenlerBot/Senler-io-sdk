@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconImportResponseDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, ImportImageDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SetAppCatalogVisibilityDto, UpdateAppActionSettingsDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
+import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconImportResponseDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppFunnelElementResponseDto, AppFunnelElementsResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, ImportImageDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SaveAppFunnelElementDto, SetAppCatalogVisibilityDto, UpdateAppActionSettingsDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
 export interface AgentEventsRequest {
     appId: string;
     appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
@@ -48,6 +48,11 @@ export interface DeleteAutomationStepsRequest {
     stepId: string;
     acceptLanguage?: DeleteAutomationStepsAcceptLanguageEnum;
 }
+export interface DeleteFunnelElementsRequest {
+    appId: string;
+    elementId: string;
+    acceptLanguage?: DeleteFunnelElementsAcceptLanguageEnum;
+}
 export interface DeleteInstallationsRequest {
     appId: string;
     installationId: string;
@@ -58,6 +63,11 @@ export interface DeleteToolsRequest {
     toolId: string;
     acceptLanguage?: DeleteToolsAcceptLanguageEnum;
 }
+export interface FunnelElementsRequest {
+    appId: string;
+    saveAppFunnelElementDto: SaveAppFunnelElementDto;
+    acceptLanguage?: FunnelElementsAcceptLanguageEnum;
+}
 export interface GetAutomationStepsRequest {
     appId: string;
     acceptLanguage?: GetAutomationStepsAcceptLanguageEnum;
@@ -66,6 +76,10 @@ export interface GetEmbeddedPageTestRequest {
     id: string;
     projectId: string;
     acceptLanguage?: GetEmbeddedPageTestAcceptLanguageEnum;
+}
+export interface GetFunnelElementsRequest {
+    appId: string;
+    acceptLanguage?: GetFunnelElementsAcceptLanguageEnum;
 }
 export interface GetInstallationsRequest {
     appId: string;
@@ -135,6 +149,12 @@ export interface UpdateEmbeddedPageSettingsRequest {
     id: string;
     updateAppEmbeddedPageSettingsDto: UpdateAppEmbeddedPageSettingsDto;
     acceptLanguage?: UpdateEmbeddedPageSettingsAcceptLanguageEnum;
+}
+export interface UpdateFunnelElementsRequest {
+    appId: string;
+    elementId: string;
+    saveAppFunnelElementDto: SaveAppFunnelElementDto;
+    acceptLanguage?: UpdateFunnelElementsAcceptLanguageEnum;
 }
 export interface UpdateGeneralSettingsRequest {
     id: string;
@@ -252,6 +272,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      */
     deleteAutomationSteps(requestParameters: DeleteAutomationStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
+     * , . .
+     *
+     */
+    deleteFunnelElementsRaw(requestParameters: DeleteFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * , . .
+     *
+     */
+    deleteFunnelElements(requestParameters: DeleteFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
      * .
      *
      */
@@ -272,6 +302,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      */
     deleteTools(requestParameters: DeleteToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
+     * . .
+     *
+     */
+    funnelElementsRaw(requestParameters: FunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppFunnelElementResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    funnelElements(requestParameters: FunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppFunnelElementResponseDto>;
+    /**
      * , .
      *
      */
@@ -291,6 +331,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     getEmbeddedPageTest(requestParameters: GetEmbeddedPageTestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppEmbeddedPageTestLaunchResponseDto>;
+    /**
+     * . .
+     *
+     */
+    getFunnelElementsRaw(requestParameters: GetFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppFunnelElementsResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    getFunnelElements(requestParameters: GetFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppFunnelElementsResponseDto>;
     /**
      * , .
      *
@@ -411,6 +461,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     updateEmbeddedPageSettings(requestParameters: UpdateEmbeddedPageSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * . .
+     *
+     */
+    updateFunnelElementsRaw(requestParameters: UpdateFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppFunnelElementResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    updateFunnelElements(requestParameters: UpdateFunnelElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppFunnelElementResponseDto>;
     /**
      * , , .
      *
@@ -539,6 +599,14 @@ export type DeleteAutomationStepsAcceptLanguageEnum = typeof DeleteAutomationSte
 /**
  * @export
  */
+export declare const DeleteFunnelElementsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteFunnelElementsAcceptLanguageEnum = typeof DeleteFunnelElementsAcceptLanguageEnum[keyof typeof DeleteFunnelElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const DeleteInstallationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -555,6 +623,14 @@ export type DeleteToolsAcceptLanguageEnum = typeof DeleteToolsAcceptLanguageEnum
 /**
  * @export
  */
+export declare const FunnelElementsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type FunnelElementsAcceptLanguageEnum = typeof FunnelElementsAcceptLanguageEnum[keyof typeof FunnelElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetAutomationStepsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -568,6 +644,14 @@ export declare const GetEmbeddedPageTestAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetEmbeddedPageTestAcceptLanguageEnum = typeof GetEmbeddedPageTestAcceptLanguageEnum[keyof typeof GetEmbeddedPageTestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelElementsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelElementsAcceptLanguageEnum = typeof GetFunnelElementsAcceptLanguageEnum[keyof typeof GetFunnelElementsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -690,6 +774,14 @@ export declare const UpdateEmbeddedPageSettingsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateEmbeddedPageSettingsAcceptLanguageEnum = typeof UpdateEmbeddedPageSettingsAcceptLanguageEnum[keyof typeof UpdateEmbeddedPageSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateFunnelElementsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateFunnelElementsAcceptLanguageEnum = typeof UpdateFunnelElementsAcceptLanguageEnum[keyof typeof UpdateFunnelElementsAcceptLanguageEnum];
 /**
  * @export
  */

@@ -46,8 +46,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TestDialogMessagesAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsRealtimeSubscription2AcceptLanguageEnum = exports.RunsRealtimeSubscriptionAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.RealtimeSubscriptionAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStatusEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStatusEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
-exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = void 0;
+exports.RunsRealtimeSubscription2AcceptLanguageEnum = exports.RunsRealtimeSubscriptionAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.RealtimeSubscriptionAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
+exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -100,15 +100,15 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     async attachmentsFromUrlRaw(requestParameters, initOverrides) {
         if (requestParameters['automationId'] == null) {
             throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling attachmentsFromUrl().');
         }
-        if (requestParameters['importImageDto'] == null) {
-            throw new runtime.RequiredError('importImageDto', 'Required parameter "importImageDto" was null or undefined when calling attachmentsFromUrl().');
+        if (requestParameters['importAttachmentDto'] == null) {
+            throw new runtime.RequiredError('importAttachmentDto', 'Required parameter "importAttachmentDto" was null or undefined when calling attachmentsFromUrl().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -132,12 +132,12 @@ class AutomationsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ImportImageDtoToJSON)(requestParameters['importImageDto']),
+            body: (0, index_1.ImportAttachmentDtoToJSON)(requestParameters['importAttachmentDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ConfirmUploadResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * PNG, JPEG, WebP GIF . fileId . 20 40 . .
+     * URL attachment_id , PDF, , , . URL Content-Type, HTML-. . fileId . 20 40 URL; . .
      * URL attachment_id
      */
     async attachmentsFromUrl(requestParameters, initOverrides) {
@@ -965,6 +965,9 @@ class AutomationsApi extends runtime.BaseAPI {
         if (requestParameters['status'] != null) {
             queryParameters['status'] = requestParameters['status'];
         }
+        if (requestParameters['state'] != null) {
+            queryParameters['state'] = requestParameters['state'];
+        }
         if (requestParameters['isTest'] != null) {
             queryParameters['is_test'] = requestParameters['isTest'];
         }
@@ -1258,6 +1261,9 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (requestParameters['status'] != null) {
             queryParameters['status'] = requestParameters['status'];
+        }
+        if (requestParameters['state'] != null) {
+            queryParameters['state'] = requestParameters['state'];
         }
         if (requestParameters['isTest'] != null) {
             queryParameters['is_test'] = requestParameters['isTest'];
@@ -2641,6 +2647,16 @@ exports.GetDialogsRunsStatusEnum = {
 /**
  * @export
  */
+exports.GetDialogsRunsStateEnum = {
+    Active: 'active',
+    Parked: 'parked',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
+};
+/**
+ * @export
+ */
 exports.GetDialogsRunsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2698,6 +2714,16 @@ exports.GetOperationsAcceptLanguageEnum = {
  * @export
  */
 exports.GetRunsStatusEnum = {
+    Active: 'active',
+    Parked: 'parked',
+    Completed: 'completed',
+    Failed: 'failed',
+    Cancelled: 'cancelled'
+};
+/**
+ * @export
+ */
+exports.GetRunsStateEnum = {
     Active: 'active',
     Parked: 'parked',
     Completed: 'completed',

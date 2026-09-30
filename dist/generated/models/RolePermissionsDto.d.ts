@@ -196,6 +196,18 @@ export interface RolePermissionsDto {
      */
     canManageDataSources: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewWebhooks: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageWebhooks: boolean;
+    /**
      * API
      * @type {boolean}
      * @memberof RolePermissionsDto

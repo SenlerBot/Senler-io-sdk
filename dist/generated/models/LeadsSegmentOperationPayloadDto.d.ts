@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LeadsFilterDto } from './LeadsFilterDto';
 import type { LeadsSegmentOperationParamsDto } from './LeadsSegmentOperationParamsDto';
 /**
  * LeadsSegmentOperationPayloadDto.
@@ -23,12 +22,6 @@ export interface LeadsSegmentOperationPayloadDto {
      * @memberof LeadsSegmentOperationPayloadDto
      */
     projectId: string;
-    /**
-     *
-     * @type {LeadsFilterDto}
-     * @memberof LeadsSegmentOperationPayloadDto
-     */
-    filters?: LeadsFilterDto;
     /**
      *
      * @type {LeadsSegmentOperationParamsDto}

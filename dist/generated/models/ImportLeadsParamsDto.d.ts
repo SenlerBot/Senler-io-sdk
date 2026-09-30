@@ -28,12 +28,6 @@ export interface ImportLeadsParamsDto {
      */
     channelType: ImportLeadsParamsDtoChannelTypeEnum;
     /**
-     * ID . MAX chatId, - userId
-     * @type {Array<string>}
-     * @memberof ImportLeadsParamsDto
-     */
-    externalUserIds: Array<string>;
-    /**
      *
      * @type {string}
      * @memberof ImportLeadsParamsDto

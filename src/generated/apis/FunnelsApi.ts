@@ -15,7 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
+  AvailableFunnelAppsResponseDto,
+  ConfigureFunnelAppElementDto,
   ErrorResponse,
+  FunnelAppElementResponseDto,
+  FunnelAppElementsResponseDto,
+  FunnelAppImportResponseDto,
+  FunnelAppReportResponseDto,
   FunnelConditionOptionsResponseDto,
   FunnelHistoryResponseDto,
   FunnelOptionsResponseDto,
@@ -28,12 +34,26 @@ import type {
   FunnelsListResponseDto,
   LeadSubscriptionUtmTreeResponseDto,
   PlaceFunnelLeadsDto,
+  SaveFunnelAppElementDto,
   SaveFunnelDto,
+  UpdateFunnelAppElementDto,
   UpdateFunnelDto,
 } from '../models/index';
 import {
+    AvailableFunnelAppsResponseDtoFromJSON,
+    AvailableFunnelAppsResponseDtoToJSON,
+    ConfigureFunnelAppElementDtoFromJSON,
+    ConfigureFunnelAppElementDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    FunnelAppElementResponseDtoFromJSON,
+    FunnelAppElementResponseDtoToJSON,
+    FunnelAppElementsResponseDtoFromJSON,
+    FunnelAppElementsResponseDtoToJSON,
+    FunnelAppImportResponseDtoFromJSON,
+    FunnelAppImportResponseDtoToJSON,
+    FunnelAppReportResponseDtoFromJSON,
+    FunnelAppReportResponseDtoToJSON,
     FunnelConditionOptionsResponseDtoFromJSON,
     FunnelConditionOptionsResponseDtoToJSON,
     FunnelHistoryResponseDtoFromJSON,
@@ -58,65 +78,151 @@ import {
     LeadSubscriptionUtmTreeResponseDtoToJSON,
     PlaceFunnelLeadsDtoFromJSON,
     PlaceFunnelLeadsDtoToJSON,
+    SaveFunnelAppElementDtoFromJSON,
+    SaveFunnelAppElementDtoToJSON,
     SaveFunnelDtoFromJSON,
     SaveFunnelDtoToJSON,
+    UpdateFunnelAppElementDtoFromJSON,
+    UpdateFunnelAppElementDtoToJSON,
     UpdateFunnelDtoFromJSON,
     UpdateFunnelDtoToJSON,
 } from '../models/index';
 
-export interface DeleteStagesRequest {
+export interface DeleteFunnelAppElementsRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    acceptLanguage?: DeleteFunnelAppElementsAcceptLanguageEnum;
+}
+
+export interface DeleteFunnelsRequest {
+    projectId: string;
+    revision: number;
+    id: string;
+    acceptLanguage?: DeleteFunnelsAcceptLanguageEnum;
+}
+
+export interface DeleteFunnelsStagesRequest {
     projectId: string;
     revision: number;
     id: string;
     stageId: string;
-    acceptLanguage?: DeleteStagesAcceptLanguageEnum;
+    acceptLanguage?: DeleteFunnelsStagesAcceptLanguageEnum;
 }
 
-export interface FunnelsCreateRequest {
+export interface FunnelAppElementsRequest {
+    funnelId: string;
+    projectId: string;
+    saveFunnelAppElementDto: SaveFunnelAppElementDto;
+    acceptLanguage?: FunnelAppElementsAcceptLanguageEnum;
+}
+
+export interface FunnelAppElementsImportRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    mode: FunnelAppElementsImportModeEnum;
+    timezone: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+    cursor?: string;
+    acceptLanguage?: FunnelAppElementsImportAcceptLanguageEnum;
+}
+
+export interface FunnelsRequest {
     projectId: string;
     saveFunnelDto: SaveFunnelDto;
-    acceptLanguage?: FunnelsCreateAcceptLanguageEnum;
+    acceptLanguage?: FunnelsAcceptLanguageEnum;
 }
 
-export interface FunnelsDeactivateRequest {
-    projectId: string;
-    revision: number;
-    id: string;
-    acceptLanguage?: FunnelsDeactivateAcceptLanguageEnum;
-}
-
-export interface FunnelsGetByIdRequest {
+export interface FunnelsPlaceLeadsRequest {
     projectId: string;
     id: string;
-    acceptLanguage?: FunnelsGetByIdAcceptLanguageEnum;
+    placeFunnelLeadsDto: PlaceFunnelLeadsDto;
+    acceptLanguage?: FunnelsPlaceLeadsAcceptLanguageEnum;
 }
 
-export interface FunnelsListRequest {
+export interface FunnelsPreviewLeadsRequest {
     projectId: string;
-    acceptLanguage?: FunnelsListAcceptLanguageEnum;
+    id: string;
+    funnelPreviewQueryDto: FunnelPreviewQueryDto;
+    acceptLanguage?: FunnelsPreviewLeadsAcceptLanguageEnum;
 }
 
-export interface FunnelsUpdateRequest {
+export interface FunnelsStatisticsRequest {
+    projectId: string;
+    id: string;
+    funnelStatisticsQueryDto: FunnelStatisticsQueryDto;
+    acceptLanguage?: FunnelsStatisticsAcceptLanguageEnum;
+}
+
+export interface FunnelsUpdateFunnelsRequest {
     projectId: string;
     id: string;
     updateFunnelDto: UpdateFunnelDto;
-    acceptLanguage?: FunnelsUpdateAcceptLanguageEnum;
+    acceptLanguage?: FunnelsUpdateFunnelsAcceptLanguageEnum;
 }
 
-export interface GetConditionOptionsRequest {
+export interface GetFunnelAppElementsRequest {
+    funnelId: string;
     projectId: string;
-    kind: GetConditionOptionsKindEnum;
+    acceptLanguage?: GetFunnelAppElementsAcceptLanguageEnum;
+}
+
+export interface GetFunnelAppElementsAvailableRequest {
+    projectId: string;
+    acceptLanguage?: GetFunnelAppElementsAvailableAcceptLanguageEnum;
+}
+
+export interface GetFunnelAppElementsReportRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    mode: GetFunnelAppElementsReportModeEnum;
+    timezone: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+    cursor?: string;
+    acceptLanguage?: GetFunnelAppElementsReportAcceptLanguageEnum;
+}
+
+export interface GetFunnelAppElementsSummaryRequest {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    mode: GetFunnelAppElementsSummaryModeEnum;
+    timezone: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+    cursor?: string;
+    acceptLanguage?: GetFunnelAppElementsSummaryAcceptLanguageEnum;
+}
+
+export interface GetFunnelsRequest {
+    projectId: string;
+    acceptLanguage?: GetFunnelsAcceptLanguageEnum;
+}
+
+export interface GetFunnels2Request {
+    projectId: string;
+    id: string;
+    acceptLanguage?: GetFunnels2AcceptLanguageEnum;
+}
+
+export interface GetFunnelsConditionOptionsRequest {
+    projectId: string;
+    kind: GetFunnelsConditionOptionsKindEnum;
     resourceId?: string;
     q?: string;
-    acceptLanguage?: GetConditionOptionsAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsConditionOptionsAcceptLanguageEnum;
 }
 
-export interface GetOptionsRequest {
+export interface GetFunnelsOptionsRequest {
     projectId: string;
-    acceptLanguage?: GetOptionsAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsOptionsAcceptLanguageEnum;
 }
 
-export interface GetStagesHistoryRequest {
+export interface GetFunnelsStagesHistoryRequest {
     projectId: string;
     from: Date;
     to: Date;
@@ -126,38 +232,33 @@ export interface GetStagesHistoryRequest {
     utmPaths?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetStagesHistoryAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsStagesHistoryAcceptLanguageEnum;
 }
 
-export interface GetUtmTreeRequest {
+export interface GetFunnelsUtmTreeRequest {
     projectId: string;
     id: string;
     parentId?: string;
     q?: string;
     cursor?: string;
     limit?: number;
-    acceptLanguage?: GetUtmTreeAcceptLanguageEnum;
+    acceptLanguage?: GetFunnelsUtmTreeAcceptLanguageEnum;
 }
 
-export interface PlaceLeadsRequest {
-    projectId: string;
+export interface UpdateFunnelAppElementsRequest {
+    funnelId: string;
     id: string;
-    placeFunnelLeadsDto: PlaceFunnelLeadsDto;
-    acceptLanguage?: PlaceLeadsAcceptLanguageEnum;
+    projectId: string;
+    updateFunnelAppElementDto: UpdateFunnelAppElementDto;
+    acceptLanguage?: UpdateFunnelAppElementsAcceptLanguageEnum;
 }
 
-export interface PreviewLeadsRequest {
-    projectId: string;
+export interface UpdateFunnelAppElementsConfigurationRequest {
+    funnelId: string;
     id: string;
-    funnelPreviewQueryDto: FunnelPreviewQueryDto;
-    acceptLanguage?: PreviewLeadsAcceptLanguageEnum;
-}
-
-export interface StatisticsRequest {
     projectId: string;
-    id: string;
-    funnelStatisticsQueryDto: FunnelStatisticsQueryDto;
-    acceptLanguage?: StatisticsAcceptLanguageEnum;
+    configureFunnelAppElementDto: ConfigureFunnelAppElementDto;
+    acceptLanguage?: UpdateFunnelAppElementsConfigurationAcceptLanguageEnum;
 }
 
 /**
@@ -166,35 +267,28 @@ export interface StatisticsRequest {
 export class FunnelsApi extends runtime.BaseAPI {
 
     /**
-     * deleted_at . . .
+     * , . .
      *
      */
-    async deleteStagesRaw(requestParameters: DeleteStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
-        if (requestParameters['projectId'] == null) {
+    async deleteFunnelAppElementsRaw(requestParameters: DeleteFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['funnelId'] == null) {
             throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling deleteStages().'
-            );
-        }
-
-        if (requestParameters['revision'] == null) {
-            throw new runtime.RequiredError(
-                'revision',
-                'Required parameter "revision" was null or undefined when calling deleteStages().'
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling deleteFunnelAppElements().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling deleteStages().'
+                'Required parameter "id" was null or undefined when calling deleteFunnelAppElements().'
             );
         }
 
-        if (requestParameters['stageId'] == null) {
+        if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
-                'stageId',
-                'Required parameter "stageId" was null or undefined when calling deleteStages().'
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling deleteFunnelAppElements().'
             );
         }
 
@@ -202,10 +296,6 @@ export class FunnelsApi extends runtime.BaseAPI {
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        if (requestParameters['revision'] != null) {
-            queryParameters['revision'] = requestParameters['revision'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -228,113 +318,46 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/funnels/{id}/stages/{stageId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"stageId"}}`, encodeURIComponent(String(requestParameters['stageId']))),
+            path: `/api/funnel-app-elements/{funnelId}/{id}`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelResponseDtoFromJSON(jsonValue));
+        return new runtime.VoidApiResponse(response);
     }
 
     /**
-     * deleted_at . . .
+     * , . .
      *
      */
-    async deleteStages(requestParameters: DeleteStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
-        const response = await this.deleteStagesRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . , .
-     *
-     */
-    async funnelsCreateRaw(requestParameters: FunnelsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling funnelsCreate().'
-            );
-        }
-
-        if (requestParameters['saveFunnelDto'] == null) {
-            throw new runtime.RequiredError(
-                'saveFunnelDto',
-                'Required parameter "saveFunnelDto" was null or undefined when calling funnelsCreate().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
-        }
-
-        const response = await this.request({
-            path: `/api/funnels`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: SaveFunnelDtoToJSON(requestParameters['saveFunnelDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . , .
-     *
-     */
-    async funnelsCreate(requestParameters: FunnelsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
-        const response = await this.funnelsCreateRaw(requestParameters, initOverrides);
-        return await response.value();
+    async deleteFunnelAppElements(requestParameters: DeleteFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteFunnelAppElementsRaw(requestParameters, initOverrides);
     }
 
     /**
      * deleted_at . , . . .
      *
      */
-    async funnelsDeactivateRaw(requestParameters: FunnelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteFunnelsRaw(requestParameters: DeleteFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling funnelsDeactivate().'
+                'Required parameter "projectId" was null or undefined when calling deleteFunnels().'
             );
         }
 
         if (requestParameters['revision'] == null) {
             throw new runtime.RequiredError(
                 'revision',
-                'Required parameter "revision" was null or undefined when calling funnelsDeactivate().'
+                'Required parameter "revision" was null or undefined when calling deleteFunnels().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling funnelsDeactivate().'
+                'Required parameter "id" was null or undefined when calling deleteFunnels().'
             );
         }
 
@@ -381,26 +404,40 @@ export class FunnelsApi extends runtime.BaseAPI {
      * deleted_at . , . . .
      *
      */
-    async funnelsDeactivate(requestParameters: FunnelsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.funnelsDeactivateRaw(requestParameters, initOverrides);
+    async deleteFunnels(requestParameters: DeleteFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteFunnelsRaw(requestParameters, initOverrides);
     }
 
     /**
-     * .
+     * deleted_at . . .
      *
      */
-    async funnelsGetByIdRaw(requestParameters: FunnelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
+    async deleteFunnelsStagesRaw(requestParameters: DeleteFunnelsStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling funnelsGetById().'
+                'Required parameter "projectId" was null or undefined when calling deleteFunnelsStages().'
+            );
+        }
+
+        if (requestParameters['revision'] == null) {
+            throw new runtime.RequiredError(
+                'revision',
+                'Required parameter "revision" was null or undefined when calling deleteFunnelsStages().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling funnelsGetById().'
+                'Required parameter "id" was null or undefined when calling deleteFunnelsStages().'
+            );
+        }
+
+        if (requestParameters['stageId'] == null) {
+            throw new runtime.RequiredError(
+                'stageId',
+                'Required parameter "stageId" was null or undefined when calling deleteFunnelsStages().'
             );
         }
 
@@ -408,6 +445,10 @@ export class FunnelsApi extends runtime.BaseAPI {
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['revision'] != null) {
+            queryParameters['revision'] = requestParameters['revision'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -426,12 +467,12 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
         const response = await this.request({
-            path: `/api/funnels/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
+            path: `/api/funnels/{id}/stages/{stageId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"stageId"}}`, encodeURIComponent(String(requestParameters['stageId']))),
+            method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
@@ -440,23 +481,37 @@ export class FunnelsApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * deleted_at . . .
      *
      */
-    async funnelsGetById(requestParameters: FunnelsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
-        const response = await this.funnelsGetByIdRaw(requestParameters, initOverrides);
+    async deleteFunnelsStages(requestParameters: DeleteFunnelsStagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
+        const response = await this.deleteFunnelsStagesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * .
+     * , . .
      *
      */
-    async funnelsListRaw(requestParameters: FunnelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelsListResponseDto>> {
+    async funnelAppElementsRaw(requestParameters: FunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
+            throw new runtime.RequiredError(
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling funnelAppElements().'
+            );
+        }
+
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling funnelsList().'
+                'Required parameter "projectId" was null or undefined when calling funnelAppElements().'
+            );
+        }
+
+        if (requestParameters['saveFunnelAppElementDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveFunnelAppElementDto',
+                'Required parameter "saveFunnelAppElementDto" was null or undefined when calling funnelAppElements().'
             );
         }
 
@@ -467,6 +522,324 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/{funnelId}`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveFunnelAppElementDtoToJSON(requestParameters['saveFunnelAppElementDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppElementResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async funnelAppElements(requestParameters: FunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto> {
+        const response = await this.funnelAppElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . . ; next_cursor .
+     *
+     */
+    async funnelAppElementsImportRaw(requestParameters: FunnelAppElementsImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppImportResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
+            throw new runtime.RequiredError(
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling funnelAppElementsImport().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling funnelAppElementsImport().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling funnelAppElementsImport().'
+            );
+        }
+
+        if (requestParameters['mode'] == null) {
+            throw new runtime.RequiredError(
+                'mode',
+                'Required parameter "mode" was null or undefined when calling funnelAppElementsImport().'
+            );
+        }
+
+        if (requestParameters['timezone'] == null) {
+            throw new runtime.RequiredError(
+                'timezone',
+                'Required parameter "timezone" was null or undefined when calling funnelAppElementsImport().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['mode'] != null) {
+            queryParameters['mode'] = requestParameters['mode'];
+        }
+
+        if (requestParameters['dateFrom'] != null) {
+            queryParameters['date_from'] = (requestParameters['dateFrom'] as any).toISOString();
+        }
+
+        if (requestParameters['dateTo'] != null) {
+            queryParameters['date_to'] = (requestParameters['dateTo'] as any).toISOString();
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/{funnelId}/{id}/import`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppImportResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . ; next_cursor .
+     *
+     */
+    async funnelAppElementsImport(requestParameters: FunnelAppElementsImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppImportResponseDto> {
+        const response = await this.funnelAppElementsImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , .
+     *
+     */
+    async funnelsRaw(requestParameters: FunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling funnels().'
+            );
+        }
+
+        if (requestParameters['saveFunnelDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveFunnelDto',
+                'Required parameter "saveFunnelDto" was null or undefined when calling funnels().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+
+        const response = await this.request({
+            path: `/api/funnels`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveFunnelDtoToJSON(requestParameters['saveFunnelDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , .
+     *
+     */
+    async funnels(requestParameters: FunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
+        const response = await this.funnelsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . , .
+     *
+     */
+    async funnelsPlaceLeadsRaw(requestParameters: FunnelsPlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPlacementResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling funnelsPlaceLeads().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling funnelsPlaceLeads().'
+            );
+        }
+
+        if (requestParameters['placeFunnelLeadsDto'] == null) {
+            throw new runtime.RequiredError(
+                'placeFunnelLeadsDto',
+                'Required parameter "placeFunnelLeadsDto" was null or undefined when calling funnelsPlaceLeads().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/funnels/{id}/place-leads`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PlaceFunnelLeadsDtoToJSON(requestParameters['placeFunnelLeadsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelPlacementResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . , .
+     *
+     */
+    async funnelsPlaceLeads(requestParameters: FunnelsPlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPlacementResponseDto> {
+        const response = await this.funnelsPlaceLeadsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async funnelsPreviewLeadsRaw(requestParameters: FunnelsPreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPreviewResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling funnelsPreviewLeads().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling funnelsPreviewLeads().'
+            );
+        }
+
+        if (requestParameters['funnelPreviewQueryDto'] == null) {
+            throw new runtime.RequiredError(
+                'funnelPreviewQueryDto',
+                'Required parameter "funnelPreviewQueryDto" was null or undefined when calling funnelsPreviewLeads().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -486,21 +859,95 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/funnels`,
-            method: 'GET',
+            path: `/api/funnels/{id}/preview-leads`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: FunnelPreviewQueryDtoToJSON(requestParameters['funnelPreviewQueryDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelsListResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelPreviewResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * .
+     * . .
      *
      */
-    async funnelsList(requestParameters: FunnelsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelsListResponseDto> {
-        const response = await this.funnelsListRaw(requestParameters, initOverrides);
+    async funnelsPreviewLeads(requestParameters: FunnelsPreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPreviewResponseDto> {
+        const response = await this.funnelsPreviewLeadsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . [from, to), . markers.period_count , , . , . . . UTM .
+     *
+     */
+    async funnelsStatisticsRaw(requestParameters: FunnelsStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelStatisticsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling funnelsStatistics().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling funnelsStatistics().'
+            );
+        }
+
+        if (requestParameters['funnelStatisticsQueryDto'] == null) {
+            throw new runtime.RequiredError(
+                'funnelStatisticsQueryDto',
+                'Required parameter "funnelStatisticsQueryDto" was null or undefined when calling funnelsStatistics().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnels/{id}/statistics`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: FunnelStatisticsQueryDtoToJSON(requestParameters['funnelStatisticsQueryDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelStatisticsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . [from, to), . markers.period_count , , . , . . . UTM .
+     *
+     */
+    async funnelsStatistics(requestParameters: FunnelsStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto> {
+        const response = await this.funnelsStatisticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -508,25 +955,25 @@ export class FunnelsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async funnelsUpdateRaw(requestParameters: FunnelsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
+    async funnelsUpdateFunnelsRaw(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling funnelsUpdate().'
+                'Required parameter "projectId" was null or undefined when calling funnelsUpdateFunnels().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling funnelsUpdate().'
+                'Required parameter "id" was null or undefined when calling funnelsUpdateFunnels().'
             );
         }
 
         if (requestParameters['updateFunnelDto'] == null) {
             throw new runtime.RequiredError(
                 'updateFunnelDto',
-                'Required parameter "updateFunnelDto" was null or undefined when calling funnelsUpdate().'
+                'Required parameter "updateFunnelDto" was null or undefined when calling funnelsUpdateFunnels().'
             );
         }
 
@@ -572,8 +1019,8 @@ export class FunnelsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async funnelsUpdate(requestParameters: FunnelsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
-        const response = await this.funnelsUpdateRaw(requestParameters, initOverrides);
+    async funnelsUpdateFunnels(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
+        const response = await this.funnelsUpdateFunnelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -581,18 +1028,464 @@ export class FunnelsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async getConditionOptionsRaw(requestParameters: GetConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelConditionOptionsResponseDto>> {
+    async getFunnelAppElementsRaw(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementsResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
+            throw new runtime.RequiredError(
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling getFunnelAppElements().'
+            );
+        }
+
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getConditionOptions().'
+                'Required parameter "projectId" was null or undefined when calling getFunnelAppElements().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/{funnelId}`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppElementsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getFunnelAppElements(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementsResponseDto> {
+        const response = await this.getFunnelAppElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getFunnelAppElementsAvailableRaw(requestParameters: GetFunnelAppElementsAvailableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AvailableFunnelAppsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnelAppElementsAvailable().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/available`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AvailableFunnelAppsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getFunnelAppElementsAvailable(requestParameters: GetFunnelAppElementsAvailableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AvailableFunnelAppsResponseDto> {
+        const response = await this.getFunnelAppElementsAvailableRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async getFunnelAppElementsReportRaw(requestParameters: GetFunnelAppElementsReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppReportResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
+            throw new runtime.RequiredError(
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling getFunnelAppElementsReport().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getFunnelAppElementsReport().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnelAppElementsReport().'
+            );
+        }
+
+        if (requestParameters['mode'] == null) {
+            throw new runtime.RequiredError(
+                'mode',
+                'Required parameter "mode" was null or undefined when calling getFunnelAppElementsReport().'
+            );
+        }
+
+        if (requestParameters['timezone'] == null) {
+            throw new runtime.RequiredError(
+                'timezone',
+                'Required parameter "timezone" was null or undefined when calling getFunnelAppElementsReport().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['mode'] != null) {
+            queryParameters['mode'] = requestParameters['mode'];
+        }
+
+        if (requestParameters['dateFrom'] != null) {
+            queryParameters['date_from'] = (requestParameters['dateFrom'] as any).toISOString();
+        }
+
+        if (requestParameters['dateTo'] != null) {
+            queryParameters['date_to'] = (requestParameters['dateTo'] as any).toISOString();
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/{funnelId}/{id}/report`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppReportResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async getFunnelAppElementsReport(requestParameters: GetFunnelAppElementsReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppReportResponseDto> {
+        const response = await this.getFunnelAppElementsReportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . records , next_cursor null. .
+     *
+     */
+    async getFunnelAppElementsSummaryRaw(requestParameters: GetFunnelAppElementsSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppReportResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
+            throw new runtime.RequiredError(
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling getFunnelAppElementsSummary().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getFunnelAppElementsSummary().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnelAppElementsSummary().'
+            );
+        }
+
+        if (requestParameters['mode'] == null) {
+            throw new runtime.RequiredError(
+                'mode',
+                'Required parameter "mode" was null or undefined when calling getFunnelAppElementsSummary().'
+            );
+        }
+
+        if (requestParameters['timezone'] == null) {
+            throw new runtime.RequiredError(
+                'timezone',
+                'Required parameter "timezone" was null or undefined when calling getFunnelAppElementsSummary().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['mode'] != null) {
+            queryParameters['mode'] = requestParameters['mode'];
+        }
+
+        if (requestParameters['dateFrom'] != null) {
+            queryParameters['date_from'] = (requestParameters['dateFrom'] as any).toISOString();
+        }
+
+        if (requestParameters['dateTo'] != null) {
+            queryParameters['date_to'] = (requestParameters['dateTo'] as any).toISOString();
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/{funnelId}/{id}/summary`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppReportResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . records , next_cursor null. .
+     *
+     */
+    async getFunnelAppElementsSummary(requestParameters: GetFunnelAppElementsSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppReportResponseDto> {
+        const response = await this.getFunnelAppElementsSummaryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getFunnelsRaw(requestParameters: GetFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelsListResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnels().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnels`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelsListResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getFunnels(requestParameters: GetFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelsListResponseDto> {
+        const response = await this.getFunnelsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getFunnels2Raw(requestParameters: GetFunnels2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnels2().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getFunnels2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnels/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getFunnels2(requestParameters: GetFunnels2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
+        const response = await this.getFunnels2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getFunnelsConditionOptionsRaw(requestParameters: GetFunnelsConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelConditionOptionsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnelsConditionOptions().'
             );
         }
 
         if (requestParameters['kind'] == null) {
             throw new runtime.RequiredError(
                 'kind',
-                'Required parameter "kind" was null or undefined when calling getConditionOptions().'
+                'Required parameter "kind" was null or undefined when calling getFunnelsConditionOptions().'
             );
         }
 
@@ -647,8 +1540,8 @@ export class FunnelsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async getConditionOptions(requestParameters: GetConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelConditionOptionsResponseDto> {
-        const response = await this.getConditionOptionsRaw(requestParameters, initOverrides);
+    async getFunnelsConditionOptions(requestParameters: GetFunnelsConditionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelConditionOptionsResponseDto> {
+        const response = await this.getFunnelsConditionOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -656,11 +1549,11 @@ export class FunnelsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getOptionsRaw(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>> {
+    async getFunnelsOptionsRaw(requestParameters: GetFunnelsOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelOptionsResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getOptions().'
+                'Required parameter "projectId" was null or undefined when calling getFunnelsOptions().'
             );
         }
 
@@ -703,8 +1596,8 @@ export class FunnelsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getOptions(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto> {
-        const response = await this.getOptionsRaw(requestParameters, initOverrides);
+    async getFunnelsOptions(requestParameters: GetFunnelsOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto> {
+        const response = await this.getFunnelsOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -712,39 +1605,39 @@ export class FunnelsApi extends runtime.BaseAPI {
      * UTM , . , . .
      *
      */
-    async getStagesHistoryRaw(requestParameters: GetStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelHistoryResponseDto>> {
+    async getFunnelsStagesHistoryRaw(requestParameters: GetFunnelsStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelHistoryResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getStagesHistory().'
+                'Required parameter "projectId" was null or undefined when calling getFunnelsStagesHistory().'
             );
         }
 
         if (requestParameters['from'] == null) {
             throw new runtime.RequiredError(
                 'from',
-                'Required parameter "from" was null or undefined when calling getStagesHistory().'
+                'Required parameter "from" was null or undefined when calling getFunnelsStagesHistory().'
             );
         }
 
         if (requestParameters['to'] == null) {
             throw new runtime.RequiredError(
                 'to',
-                'Required parameter "to" was null or undefined when calling getStagesHistory().'
+                'Required parameter "to" was null or undefined when calling getFunnelsStagesHistory().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getStagesHistory().'
+                'Required parameter "id" was null or undefined when calling getFunnelsStagesHistory().'
             );
         }
 
         if (requestParameters['stageId'] == null) {
             throw new runtime.RequiredError(
                 'stageId',
-                'Required parameter "stageId" was null or undefined when calling getStagesHistory().'
+                'Required parameter "stageId" was null or undefined when calling getFunnelsStagesHistory().'
             );
         }
 
@@ -811,8 +1704,8 @@ export class FunnelsApi extends runtime.BaseAPI {
      * UTM , . , . .
      *
      */
-    async getStagesHistory(requestParameters: GetStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelHistoryResponseDto> {
-        const response = await this.getStagesHistoryRaw(requestParameters, initOverrides);
+    async getFunnelsStagesHistory(requestParameters: GetFunnelsStagesHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelHistoryResponseDto> {
+        const response = await this.getFunnelsStagesHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -820,18 +1713,18 @@ export class FunnelsApi extends runtime.BaseAPI {
      * UTM , , .
      * UTM
      */
-    async getUtmTreeRaw(requestParameters: GetUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadSubscriptionUtmTreeResponseDto>> {
+    async getFunnelsUtmTreeRaw(requestParameters: GetFunnelsUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadSubscriptionUtmTreeResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling getUtmTree().'
+                'Required parameter "projectId" was null or undefined when calling getFunnelsUtmTree().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getUtmTree().'
+                'Required parameter "id" was null or undefined when calling getFunnelsUtmTree().'
             );
         }
 
@@ -890,81 +1783,8 @@ export class FunnelsApi extends runtime.BaseAPI {
      * UTM , , .
      * UTM
      */
-    async getUtmTree(requestParameters: GetUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto> {
-        const response = await this.getUtmTreeRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , . , .
-     *
-     */
-    async placeLeadsRaw(requestParameters: PlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPlacementResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling placeLeads().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling placeLeads().'
-            );
-        }
-
-        if (requestParameters['placeFunnelLeadsDto'] == null) {
-            throw new runtime.RequiredError(
-                'placeFunnelLeadsDto',
-                'Required parameter "placeFunnelLeadsDto" was null or undefined when calling placeLeads().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/funnels/{id}/place-leads`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PlaceFunnelLeadsDtoToJSON(requestParameters['placeFunnelLeadsDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelPlacementResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , . , .
-     *
-     */
-    async placeLeads(requestParameters: PlaceLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPlacementResponseDto> {
-        const response = await this.placeLeadsRaw(requestParameters, initOverrides);
+    async getFunnelsUtmTree(requestParameters: GetFunnelsUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto> {
+        const response = await this.getFunnelsUtmTreeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -972,25 +1792,32 @@ export class FunnelsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async previewLeadsRaw(requestParameters: PreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelPreviewResponseDto>> {
-        if (requestParameters['projectId'] == null) {
+    async updateFunnelAppElementsRaw(requestParameters: UpdateFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
             throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling previewLeads().'
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling updateFunnelAppElements().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling previewLeads().'
+                'Required parameter "id" was null or undefined when calling updateFunnelAppElements().'
             );
         }
 
-        if (requestParameters['funnelPreviewQueryDto'] == null) {
+        if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
-                'funnelPreviewQueryDto',
-                'Required parameter "funnelPreviewQueryDto" was null or undefined when calling previewLeads().'
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateFunnelAppElements().'
+            );
+        }
+
+        if (requestParameters['updateFunnelAppElementDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateFunnelAppElementDto',
+                'Required parameter "updateFunnelAppElementDto" was null or undefined when calling updateFunnelAppElements().'
             );
         }
 
@@ -1018,52 +1845,59 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
         const response = await this.request({
-            path: `/api/funnels/{id}/preview-leads`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/funnel-app-elements/{funnelId}/{id}`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: FunnelPreviewQueryDtoToJSON(requestParameters['funnelPreviewQueryDto']),
+            body: UpdateFunnelAppElementDtoToJSON(requestParameters['updateFunnelAppElementDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelPreviewResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppElementResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * . .
      *
      */
-    async previewLeads(requestParameters: PreviewLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelPreviewResponseDto> {
-        const response = await this.previewLeadsRaw(requestParameters, initOverrides);
+    async updateFunnelAppElements(requestParameters: UpdateFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto> {
+        const response = await this.updateFunnelAppElementsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . [from, to), . markers.period_count , , . , . . . UTM .
+     * . data_source_key ID replace_source=true: . ID . .
      *
      */
-    async statisticsRaw(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelStatisticsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
+    async updateFunnelAppElementsConfigurationRaw(requestParameters: UpdateFunnelAppElementsConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
             throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling statistics().'
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling updateFunnelAppElementsConfiguration().'
             );
         }
 
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling statistics().'
+                'Required parameter "id" was null or undefined when calling updateFunnelAppElementsConfiguration().'
             );
         }
 
-        if (requestParameters['funnelStatisticsQueryDto'] == null) {
+        if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
-                'funnelStatisticsQueryDto',
-                'Required parameter "funnelStatisticsQueryDto" was null or undefined when calling statistics().'
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateFunnelAppElementsConfiguration().'
+            );
+        }
+
+        if (requestParameters['configureFunnelAppElementDto'] == null) {
+            throw new runtime.RequiredError(
+                'configureFunnelAppElementDto',
+                'Required parameter "configureFunnelAppElementDto" was null or undefined when calling updateFunnelAppElementsConfiguration().'
             );
         }
 
@@ -1091,26 +1925,26 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
         const response = await this.request({
-            path: `/api/funnels/{id}/statistics`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/funnel-app-elements/{funnelId}/{id}/configuration`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: FunnelStatisticsQueryDtoToJSON(requestParameters['funnelStatisticsQueryDto']),
+            body: ConfigureFunnelAppElementDtoToJSON(requestParameters['configureFunnelAppElementDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelStatisticsResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppElementResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . [from, to), . markers.period_count , , . , . . . UTM .
+     * . data_source_key ID replace_source=true: . ID . .
      *
      */
-    async statistics(requestParameters: StatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto> {
-        const response = await this.statisticsRaw(requestParameters, initOverrides);
+    async updateFunnelAppElementsConfiguration(requestParameters: UpdateFunnelAppElementsConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto> {
+        const response = await this.updateFunnelAppElementsConfigurationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1119,55 +1953,162 @@ export class FunnelsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const DeleteStagesAcceptLanguageEnum = {
+export const DeleteFunnelAppElementsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteStagesAcceptLanguageEnum = typeof DeleteStagesAcceptLanguageEnum[keyof typeof DeleteStagesAcceptLanguageEnum];
+export type DeleteFunnelAppElementsAcceptLanguageEnum = typeof DeleteFunnelAppElementsAcceptLanguageEnum[keyof typeof DeleteFunnelAppElementsAcceptLanguageEnum];
 /**
  * @export
  */
-export const FunnelsCreateAcceptLanguageEnum = {
+export const DeleteFunnelsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type FunnelsCreateAcceptLanguageEnum = typeof FunnelsCreateAcceptLanguageEnum[keyof typeof FunnelsCreateAcceptLanguageEnum];
+export type DeleteFunnelsAcceptLanguageEnum = typeof DeleteFunnelsAcceptLanguageEnum[keyof typeof DeleteFunnelsAcceptLanguageEnum];
 /**
  * @export
  */
-export const FunnelsDeactivateAcceptLanguageEnum = {
+export const DeleteFunnelsStagesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type FunnelsDeactivateAcceptLanguageEnum = typeof FunnelsDeactivateAcceptLanguageEnum[keyof typeof FunnelsDeactivateAcceptLanguageEnum];
+export type DeleteFunnelsStagesAcceptLanguageEnum = typeof DeleteFunnelsStagesAcceptLanguageEnum[keyof typeof DeleteFunnelsStagesAcceptLanguageEnum];
 /**
  * @export
  */
-export const FunnelsGetByIdAcceptLanguageEnum = {
+export const FunnelAppElementsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type FunnelsGetByIdAcceptLanguageEnum = typeof FunnelsGetByIdAcceptLanguageEnum[keyof typeof FunnelsGetByIdAcceptLanguageEnum];
+export type FunnelAppElementsAcceptLanguageEnum = typeof FunnelAppElementsAcceptLanguageEnum[keyof typeof FunnelAppElementsAcceptLanguageEnum];
 /**
  * @export
  */
-export const FunnelsListAcceptLanguageEnum = {
+export const FunnelAppElementsImportModeEnum = {
+    Current: 'current',
+    Period: 'period',
+    Series: 'series'
+} as const;
+export type FunnelAppElementsImportModeEnum = typeof FunnelAppElementsImportModeEnum[keyof typeof FunnelAppElementsImportModeEnum];
+/**
+ * @export
+ */
+export const FunnelAppElementsImportAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type FunnelsListAcceptLanguageEnum = typeof FunnelsListAcceptLanguageEnum[keyof typeof FunnelsListAcceptLanguageEnum];
+export type FunnelAppElementsImportAcceptLanguageEnum = typeof FunnelAppElementsImportAcceptLanguageEnum[keyof typeof FunnelAppElementsImportAcceptLanguageEnum];
 /**
  * @export
  */
-export const FunnelsUpdateAcceptLanguageEnum = {
+export const FunnelsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type FunnelsUpdateAcceptLanguageEnum = typeof FunnelsUpdateAcceptLanguageEnum[keyof typeof FunnelsUpdateAcceptLanguageEnum];
+export type FunnelsAcceptLanguageEnum = typeof FunnelsAcceptLanguageEnum[keyof typeof FunnelsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetConditionOptionsKindEnum = {
+export const FunnelsPlaceLeadsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FunnelsPlaceLeadsAcceptLanguageEnum = typeof FunnelsPlaceLeadsAcceptLanguageEnum[keyof typeof FunnelsPlaceLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const FunnelsPreviewLeadsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FunnelsPreviewLeadsAcceptLanguageEnum = typeof FunnelsPreviewLeadsAcceptLanguageEnum[keyof typeof FunnelsPreviewLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const FunnelsStatisticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FunnelsStatisticsAcceptLanguageEnum = typeof FunnelsStatisticsAcceptLanguageEnum[keyof typeof FunnelsStatisticsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const FunnelsUpdateFunnelsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FunnelsUpdateFunnelsAcceptLanguageEnum = typeof FunnelsUpdateFunnelsAcceptLanguageEnum[keyof typeof FunnelsUpdateFunnelsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElementsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelAppElementsAcceptLanguageEnum = typeof GetFunnelAppElementsAcceptLanguageEnum[keyof typeof GetFunnelAppElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElementsAvailableAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelAppElementsAvailableAcceptLanguageEnum = typeof GetFunnelAppElementsAvailableAcceptLanguageEnum[keyof typeof GetFunnelAppElementsAvailableAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElementsReportModeEnum = {
+    Current: 'current',
+    Period: 'period',
+    Series: 'series'
+} as const;
+export type GetFunnelAppElementsReportModeEnum = typeof GetFunnelAppElementsReportModeEnum[keyof typeof GetFunnelAppElementsReportModeEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElementsReportAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelAppElementsReportAcceptLanguageEnum = typeof GetFunnelAppElementsReportAcceptLanguageEnum[keyof typeof GetFunnelAppElementsReportAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElementsSummaryModeEnum = {
+    Current: 'current',
+    Period: 'period',
+    Series: 'series'
+} as const;
+export type GetFunnelAppElementsSummaryModeEnum = typeof GetFunnelAppElementsSummaryModeEnum[keyof typeof GetFunnelAppElementsSummaryModeEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElementsSummaryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelAppElementsSummaryAcceptLanguageEnum = typeof GetFunnelAppElementsSummaryAcceptLanguageEnum[keyof typeof GetFunnelAppElementsSummaryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelsAcceptLanguageEnum = typeof GetFunnelsAcceptLanguageEnum[keyof typeof GetFunnelsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnels2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnels2AcceptLanguageEnum = typeof GetFunnels2AcceptLanguageEnum[keyof typeof GetFunnels2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelsConditionOptionsKindEnum = {
     Segment: 'segment',
     Subscription: 'subscription',
     Blacklist: 'blacklist',
@@ -1187,60 +2128,52 @@ export const GetConditionOptionsKindEnum = {
     Mailing: 'mailing',
     Consent: 'consent'
 } as const;
-export type GetConditionOptionsKindEnum = typeof GetConditionOptionsKindEnum[keyof typeof GetConditionOptionsKindEnum];
+export type GetFunnelsConditionOptionsKindEnum = typeof GetFunnelsConditionOptionsKindEnum[keyof typeof GetFunnelsConditionOptionsKindEnum];
 /**
  * @export
  */
-export const GetConditionOptionsAcceptLanguageEnum = {
+export const GetFunnelsConditionOptionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetConditionOptionsAcceptLanguageEnum = typeof GetConditionOptionsAcceptLanguageEnum[keyof typeof GetConditionOptionsAcceptLanguageEnum];
+export type GetFunnelsConditionOptionsAcceptLanguageEnum = typeof GetFunnelsConditionOptionsAcceptLanguageEnum[keyof typeof GetFunnelsConditionOptionsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetOptionsAcceptLanguageEnum = {
+export const GetFunnelsOptionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetOptionsAcceptLanguageEnum = typeof GetOptionsAcceptLanguageEnum[keyof typeof GetOptionsAcceptLanguageEnum];
+export type GetFunnelsOptionsAcceptLanguageEnum = typeof GetFunnelsOptionsAcceptLanguageEnum[keyof typeof GetFunnelsOptionsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetStagesHistoryAcceptLanguageEnum = {
+export const GetFunnelsStagesHistoryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetStagesHistoryAcceptLanguageEnum = typeof GetStagesHistoryAcceptLanguageEnum[keyof typeof GetStagesHistoryAcceptLanguageEnum];
+export type GetFunnelsStagesHistoryAcceptLanguageEnum = typeof GetFunnelsStagesHistoryAcceptLanguageEnum[keyof typeof GetFunnelsStagesHistoryAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetUtmTreeAcceptLanguageEnum = {
+export const GetFunnelsUtmTreeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetUtmTreeAcceptLanguageEnum = typeof GetUtmTreeAcceptLanguageEnum[keyof typeof GetUtmTreeAcceptLanguageEnum];
+export type GetFunnelsUtmTreeAcceptLanguageEnum = typeof GetFunnelsUtmTreeAcceptLanguageEnum[keyof typeof GetFunnelsUtmTreeAcceptLanguageEnum];
 /**
  * @export
  */
-export const PlaceLeadsAcceptLanguageEnum = {
+export const UpdateFunnelAppElementsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type PlaceLeadsAcceptLanguageEnum = typeof PlaceLeadsAcceptLanguageEnum[keyof typeof PlaceLeadsAcceptLanguageEnum];
+export type UpdateFunnelAppElementsAcceptLanguageEnum = typeof UpdateFunnelAppElementsAcceptLanguageEnum[keyof typeof UpdateFunnelAppElementsAcceptLanguageEnum];
 /**
  * @export
  */
-export const PreviewLeadsAcceptLanguageEnum = {
+export const UpdateFunnelAppElementsConfigurationAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type PreviewLeadsAcceptLanguageEnum = typeof PreviewLeadsAcceptLanguageEnum[keyof typeof PreviewLeadsAcceptLanguageEnum];
-/**
- * @export
- */
-export const StatisticsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type StatisticsAcceptLanguageEnum = typeof StatisticsAcceptLanguageEnum[keyof typeof StatisticsAcceptLanguageEnum];
+export type UpdateFunnelAppElementsConfigurationAcceptLanguageEnum = typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum[keyof typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum];

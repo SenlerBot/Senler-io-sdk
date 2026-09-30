@@ -252,6 +252,12 @@ export interface AutomationNodeConfigDto {
      */
     agentProcessCurrentMessage?: boolean;
     /**
+     * , . ; . false , .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentDisableAutoAssignment?: boolean;
+    /**
      * . - .
      * @type {boolean}
      * @memberof AutomationNodeConfigDto

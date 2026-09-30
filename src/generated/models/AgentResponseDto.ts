@@ -433,7 +433,7 @@ export interface AgentResponseDto {
      */
     enableLeadBlocking: boolean;
     /**
-     * AI . false ,
+     * . false , ; metrics_collection_enabled=true. true enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentResponseDto
      */
@@ -457,7 +457,7 @@ export interface AgentResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
-     * . false AGENT_ACTION,
+     * . false AGENT_ACTION ; enable_ai_response=true. AI- .
      * @type {boolean}
      * @memberof AgentResponseDto
      */

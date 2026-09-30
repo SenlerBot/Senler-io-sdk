@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ImportErrorDto } from './ImportErrorDto';
-import {
-    ImportErrorDtoFromJSON,
-    ImportErrorDtoFromJSONTyped,
-    ImportErrorDtoToJSON,
-    ImportErrorDtoToJSONTyped,
-} from './ImportErrorDto';
-
 /**
  * ImportProcessResultDto.
  * @export
@@ -45,12 +37,6 @@ export interface ImportProcessResultDto {
      * @memberof ImportProcessResultDto
      */
     failed: number;
-    /**
-     *
-     * @type {Array<ImportErrorDto>}
-     * @memberof ImportProcessResultDto
-     */
-    errors?: Array<ImportErrorDto>;
     /**
      *
      * @type {number}
@@ -82,7 +68,6 @@ export function ImportProcessResultDtoFromJSONTyped(json: any, ignoreDiscriminat
         'imported': json['imported'],
         'updated': json['updated'],
         'failed': json['failed'],
-        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ImportErrorDtoFromJSON)),
         'durationMs': json['duration_ms'] == null ? undefined : json['duration_ms'],
     };
 }
@@ -101,7 +86,6 @@ export function ImportProcessResultDtoToJSONTyped(value?: ImportProcessResultDto
         'imported': value['imported'],
         'updated': value['updated'],
         'failed': value['failed'],
-        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ImportErrorDtoToJSON)),
         'duration_ms': value['durationMs'],
     };
 }

@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LeadsFilterDto } from './LeadsFilterDto';
-import {
-    LeadsFilterDtoFromJSON,
-    LeadsFilterDtoFromJSONTyped,
-    LeadsFilterDtoToJSON,
-    LeadsFilterDtoToJSONTyped,
-} from './LeadsFilterDto';
-
 /**
  * LeadsRefreshPayloadDto.
  * @export
@@ -33,12 +25,6 @@ export interface LeadsRefreshPayloadDto {
      * @memberof LeadsRefreshPayloadDto
      */
     projectId: string;
-    /**
-     * , refresh
-     * @type {LeadsFilterDto}
-     * @memberof LeadsRefreshPayloadDto
-     */
-    filters?: LeadsFilterDto;
 }
 
 /**
@@ -60,7 +46,6 @@ export function LeadsRefreshPayloadDtoFromJSONTyped(json: any, ignoreDiscriminat
     return {
 
         'projectId': json['project_id'],
-        'filters': json['filters'] == null ? undefined : LeadsFilterDtoFromJSON(json['filters']),
     };
 }
 
@@ -76,6 +61,5 @@ export function LeadsRefreshPayloadDtoToJSONTyped(value?: LeadsRefreshPayloadDto
     return {
 
         'project_id': value['projectId'],
-        'filters': LeadsFilterDtoToJSON(value['filters']),
     };
 }

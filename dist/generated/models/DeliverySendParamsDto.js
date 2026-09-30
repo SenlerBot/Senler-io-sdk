@@ -26,8 +26,6 @@ function instanceOfDeliverySendParamsDto(value) {
         return false;
     if (!('deliveryRunId' in value) || value['deliveryRunId'] === undefined)
         return false;
-    if (!('messageText' in value) || value['messageText'] === undefined)
-        return false;
     return true;
 }
 function DeliverySendParamsDtoFromJSON(json) {
@@ -40,9 +38,6 @@ function DeliverySendParamsDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'deliveryId': json['delivery_id'],
         'deliveryRunId': json['delivery_run_id'],
-        'messageText': json['message_text'],
-        'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
-        'attachments': json['attachments'] == null ? undefined : json['attachments'],
         'actorUserId': json['actor_user_id'] == null ? undefined : json['actor_user_id'],
     };
 }
@@ -56,9 +51,6 @@ function DeliverySendParamsDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'delivery_id': value['deliveryId'],
         'delivery_run_id': value['deliveryRunId'],
-        'message_text': value['messageText'],
-        'disable_link_preview': value['disableLinkPreview'],
-        'attachments': value['attachments'],
         'actor_user_id': value['actorUserId'],
     };
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateInvitationDto, InvitationCreatedResponseDto, InvitationListItemDto, InvitationStatus, SuccessResponseDto } from '../models/index';
+import type { InvitationListItemDto, InvitationStatus, SuccessResponseDto } from '../models/index';
 export interface AccessInvitationsDeleteInvitationsRequest {
     projectId: string;
     invitationId: string;
@@ -20,11 +20,6 @@ export interface AccessInvitationsGetInvitationsRequest {
     projectId: string;
     status?: InvitationStatus;
     acceptLanguage?: AccessInvitationsGetInvitationsAcceptLanguageEnum;
-}
-export interface AccessInvitationsInvitationsRequest {
-    projectId: string;
-    createInvitationDto: CreateInvitationDto;
-    acceptLanguage?: AccessInvitationsInvitationsAcceptLanguageEnum;
 }
 /**
  *
@@ -50,16 +45,6 @@ export declare class AccessInvitationsApi extends runtime.BaseAPI {
      *
      */
     accessInvitationsGetInvitations(requestParameters: AccessInvitationsGetInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InvitationListItemDto>>;
-    /**
-     * user_id email. pending- ( 4 ). .
-     *
-     */
-    accessInvitationsInvitationsRaw(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>>;
-    /**
-     * user_id email. pending- ( 4 ). .
-     *
-     */
-    accessInvitationsInvitations(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto>;
 }
 /**
  * @export
@@ -77,11 +62,3 @@ export declare const AccessInvitationsGetInvitationsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AccessInvitationsGetInvitationsAcceptLanguageEnum = typeof AccessInvitationsGetInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsGetInvitationsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const AccessInvitationsInvitationsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type AccessInvitationsInvitationsAcceptLanguageEnum = typeof AccessInvitationsInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsInvitationsAcceptLanguageEnum];
