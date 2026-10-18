@@ -82,6 +82,10 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialog_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialog_variables"]);
         }
         const response = await this.request({
@@ -129,6 +133,10 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialog_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialog_variables"]);
         }
         const response = await this.request({
@@ -162,6 +170,9 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
+        if (requestParameters['appId'] != null) {
+            queryParameters['app_id'] = requestParameters['appId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -172,6 +183,10 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -208,6 +223,9 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
+        if (requestParameters['appId'] != null) {
+            queryParameters['app_id'] = requestParameters['appId'];
+        }
         if (requestParameters['ids'] != null) {
             queryParameters['ids'] = requestParameters['ids'];
         }
@@ -221,6 +239,10 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -276,6 +298,10 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -323,6 +349,10 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialog_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required

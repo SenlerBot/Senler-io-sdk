@@ -17,10 +17,10 @@
 export interface SupportScheduleOperatorDto {
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof SupportScheduleOperatorDto
      */
-    groupId: string | null;
+    groupIds: Array<string>;
     /**
      * ID
      * @type {string}

@@ -342,6 +342,24 @@ export interface CabinetEventListItemDto {
      * @memberof CabinetEventListItemDto
      */
     eventVersion: number;
+    /**
+     * . message_created; , .
+     * @type {string}
+     * @memberof CabinetEventListItemDto
+     */
+    messageDirection?: CabinetEventListItemDtoMessageDirectionEnum;
+    /**
+     * : -, , .
+     * @type {string}
+     * @memberof CabinetEventListItemDto
+     */
+    messageSenderKind?: CabinetEventListItemDtoMessageSenderKindEnum;
+    /**
+     * . only_errors; , .
+     * @type {boolean}
+     * @memberof CabinetEventListItemDto
+     */
+    hasError: boolean;
 }
 
 
@@ -462,6 +480,27 @@ export const CabinetEventListItemDtoTargetTypeEnum = {
 } as const;
 export type CabinetEventListItemDtoTargetTypeEnum = typeof CabinetEventListItemDtoTargetTypeEnum[keyof typeof CabinetEventListItemDtoTargetTypeEnum];
 
+/**
+ * @export
+ */
+export const CabinetEventListItemDtoMessageDirectionEnum = {
+    Inbound: 'inbound',
+    Outbound: 'outbound',
+    Internal: 'internal'
+} as const;
+export type CabinetEventListItemDtoMessageDirectionEnum = typeof CabinetEventListItemDtoMessageDirectionEnum[keyof typeof CabinetEventListItemDtoMessageDirectionEnum];
+
+/**
+ * @export
+ */
+export const CabinetEventListItemDtoMessageSenderKindEnum = {
+    Assistant: 'assistant',
+    Operator: 'operator',
+    Automation: 'automation',
+    Other: 'other'
+} as const;
+export type CabinetEventListItemDtoMessageSenderKindEnum = typeof CabinetEventListItemDtoMessageSenderKindEnum[keyof typeof CabinetEventListItemDtoMessageSenderKindEnum];
+
 
 /**
  * Check if a given object implements the CabinetEventListItemDto interface.
@@ -477,6 +516,7 @@ export function instanceOfCabinetEventListItemDto(value: object): value is Cabin
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('eventVersion' in value) || value['eventVersion'] === undefined) return false;
+    if (!('hasError' in value) || value['hasError'] === undefined) return false;
     return true;
 }
 
@@ -525,6 +565,9 @@ export function CabinetEventListItemDtoFromJSONTyped(json: any, ignoreDiscrimina
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'eventVersion': json['event_version'],
+        'messageDirection': json['message_direction'] == null ? undefined : json['message_direction'],
+        'messageSenderKind': json['message_sender_kind'] == null ? undefined : json['message_sender_kind'],
+        'hasError': json['has_error'],
     };
 }
 
@@ -574,5 +617,8 @@ export function CabinetEventListItemDtoToJSONTyped(value?: CabinetEventListItemD
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'event_version': value['eventVersion'],
+        'message_direction': value['messageDirection'],
+        'message_sender_kind': value['messageSenderKind'],
+        'has_error': value['hasError'],
     };
 }

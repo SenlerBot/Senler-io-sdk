@@ -28,6 +28,18 @@ export interface LandingAnalyticsSettingsDto {
      */
     yandexMetrikaEnabled: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof LandingAnalyticsSettingsDto
+     */
+    yandexMetrikaWebvisorEnabled: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LandingAnalyticsSettingsDto
+     */
+    yandexMetrikaClickmapEnabled: boolean;
+    /**
      * Google Analytics 4; null
      * @type {string}
      * @memberof LandingAnalyticsSettingsDto

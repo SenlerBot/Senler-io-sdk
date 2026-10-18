@@ -16,23 +16,23 @@
 import * as runtime from '../runtime';
 import type {
   CreateLeadVariableDefinitionDto,
-  Deactivate200Response,
   ErrorResponse,
   LeadVariableDefinitionListResponseDto,
   LeadVariableDefinitionResponseDto,
+  ProjectVariablesDeactivate200Response,
   UpdateLeadVariableDefinitionDto,
 } from '../models/index';
 import {
     CreateLeadVariableDefinitionDtoFromJSON,
     CreateLeadVariableDefinitionDtoToJSON,
-    Deactivate200ResponseFromJSON,
-    Deactivate200ResponseToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     LeadVariableDefinitionListResponseDtoFromJSON,
     LeadVariableDefinitionListResponseDtoToJSON,
     LeadVariableDefinitionResponseDtoFromJSON,
     LeadVariableDefinitionResponseDtoToJSON,
+    ProjectVariablesDeactivate200ResponseFromJSON,
+    ProjectVariablesDeactivate200ResponseToJSON,
     UpdateLeadVariableDefinitionDtoFromJSON,
     UpdateLeadVariableDefinitionDtoToJSON,
 } from '../models/index';
@@ -52,12 +52,14 @@ export interface LeadVariableDefinitionsDeactivateRequest {
 export interface LeadVariableDefinitionsGetByIdRequest {
     projectId: string;
     name: string;
+    appId?: string;
     acceptLanguage?: LeadVariableDefinitionsGetByIdAcceptLanguageEnum;
 }
 
 export interface LeadVariableDefinitionsGetByIdsRequest {
     projectId: string;
     ids: Array<string>;
+    appId?: string;
     acceptLanguage?: LeadVariableDefinitionsGetByIdsAcceptLanguageEnum;
 }
 
@@ -124,6 +126,11 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -151,7 +158,7 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      *
      *
      */
-    async leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
+    async leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariablesDeactivate200Response>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
@@ -188,6 +195,11 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -198,14 +210,14 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => Deactivate200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariablesDeactivate200ResponseFromJSON(jsonValue));
     }
 
     /**
      *
      *
      */
-    async leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
+    async leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariablesDeactivate200Response> {
         const response = await this.leadVariableDefinitionsDeactivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -235,6 +247,10 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
 
+        if (requestParameters['appId'] != null) {
+            queryParameters['app_id'] = requestParameters['appId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -249,6 +265,11 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -298,6 +319,10 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
 
+        if (requestParameters['appId'] != null) {
+            queryParameters['app_id'] = requestParameters['appId'];
+        }
+
         if (requestParameters['ids'] != null) {
             queryParameters['ids'] = requestParameters['ids'];
         }
@@ -316,6 +341,11 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -384,6 +414,11 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -456,6 +491,11 @@ export class LeadVariableDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);

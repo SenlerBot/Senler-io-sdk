@@ -34,7 +34,7 @@ export interface BillingAddonCatalogDto {
      */
     id: string;
     /**
-     * : credits, automation_speed, mailing_daily, storage, mailing_messages.
+     * : credits, automation_speed, mailing_daily, api_daily, storage, mailing_messages.
      * @type {string}
      * @memberof BillingAddonCatalogDto
      */
@@ -109,6 +109,7 @@ export const BillingAddonCatalogDtoKindEnum = {
     Credits: 'credits',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
     Storage: 'storage',
     MailingMessages: 'mailing_messages'
 } as const;

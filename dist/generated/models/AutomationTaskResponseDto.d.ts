@@ -10,12 +10,19 @@
  * Do not edit the class manually.
  */
 import type { AutomationHttpResultSummaryDto } from './AutomationHttpResultSummaryDto';
+import type { AutomationTaskIncidentDto } from './AutomationTaskIncidentDto';
 /**
  * AutomationTaskResponseDto.
  * @export
  * @interface AutomationTaskResponseDto
  */
 export interface AutomationTaskResponseDto {
+    /**
+     *
+     * @type {AutomationTaskIncidentDto}
+     * @memberof AutomationTaskResponseDto
+     */
+    incident?: AutomationTaskIncidentDto;
     /**
      * HTTP- , .
      * @type {AutomationHttpResultSummaryDto}
@@ -135,6 +142,7 @@ export declare const AutomationTaskResponseDtoWaitKindEnum: {
     readonly Button: "button";
     readonly Reply: "reply";
     readonly Interaction: "interaction";
+    readonly AppCallback: "app_callback";
 };
 export type AutomationTaskResponseDtoWaitKindEnum = typeof AutomationTaskResponseDtoWaitKindEnum[keyof typeof AutomationTaskResponseDtoWaitKindEnum];
 /**

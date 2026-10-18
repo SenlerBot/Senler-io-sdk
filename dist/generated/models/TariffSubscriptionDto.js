@@ -51,6 +51,8 @@ function instanceOfTariffSubscriptionDto(value) {
         return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined)
         return false;
+    if (!('apiRequestsPerDay' in value) || value['apiRequestsPerDay'] === undefined)
+        return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined)
         return false;
     if (!('status' in value) || value['status'] === undefined)
@@ -81,6 +83,7 @@ function TariffSubscriptionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'isFree': json['is_free'],
         'storageLimitBytes': json['storage_limit_bytes'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
+        'apiRequestsPerDay': json['api_requests_per_day'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'status': json['status'],
         'period': json['period'],
@@ -105,6 +108,7 @@ function TariffSubscriptionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'is_free': value['isFree'],
         'storage_limit_bytes': value['storageLimitBytes'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
+        'api_requests_per_day': value['apiRequestsPerDay'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'status': value['status'],
         'period': value['period'],

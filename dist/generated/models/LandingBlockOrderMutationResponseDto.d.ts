@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingBlockResponseDto } from './LandingBlockResponseDto';
+import type { LandingBlockOrderMutationResponseDtoBlock } from './LandingBlockOrderMutationResponseDtoBlock';
 /**
  * LandingBlockOrderMutationResponseDto.
  * @export
@@ -18,10 +18,10 @@ import type { LandingBlockResponseDto } from './LandingBlockResponseDto';
 export interface LandingBlockOrderMutationResponseDto {
     /**
      *
-     * @type {LandingBlockResponseDto}
+     * @type {LandingBlockOrderMutationResponseDtoBlock}
      * @memberof LandingBlockOrderMutationResponseDto
      */
-    block: LandingBlockResponseDto;
+    block: LandingBlockOrderMutationResponseDtoBlock;
     /**
      *
      * @type {number}

@@ -78,6 +78,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
         const response = await this.request({
@@ -86,7 +90,7 @@ class LeadVariablesApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.Deactivate200ResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariablesDeactivate200ResponseFromJSON)(jsonValue));
     }
     /**
      *
@@ -115,6 +119,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -158,6 +166,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -208,6 +220,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -262,6 +278,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
         const response = await this.request({
@@ -313,6 +333,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
         const response = await this.request({
@@ -357,6 +381,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -407,6 +435,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -461,6 +493,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
         const response = await this.request({
@@ -509,6 +545,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -563,6 +603,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
         const response = await this.request({
@@ -611,6 +655,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -665,6 +713,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
         const response = await this.request({
@@ -713,6 +765,10 @@ class LeadVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required

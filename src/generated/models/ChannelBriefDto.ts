@@ -27,6 +27,13 @@ import {
     ChannelAccessDtoToJSON,
     ChannelAccessDtoToJSONTyped,
 } from './ChannelAccessDto';
+import type { ChannelConnectionIssueDto } from './ChannelConnectionIssueDto';
+import {
+    ChannelConnectionIssueDtoFromJSON,
+    ChannelConnectionIssueDtoFromJSONTyped,
+    ChannelConnectionIssueDtoToJSON,
+    ChannelConnectionIssueDtoToJSONTyped,
+} from './ChannelConnectionIssueDto';
 import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
 import {
     ChannelMigrationStatusDtoFromJSON,
@@ -47,6 +54,12 @@ export interface ChannelBriefDto {
      * @memberof ChannelBriefDto
      */
     id: string;
+    /**
+     * .
+     * @type {Array<ChannelConnectionIssueDto>}
+     * @memberof ChannelBriefDto
+     */
+    connectionIssues?: Array<ChannelConnectionIssueDto>;
     /**
      * ID
      * @type {string}
@@ -183,6 +196,7 @@ export function ChannelBriefDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
 
         'id': json['id'],
+        'connectionIssues': json['connection_issues'] == null ? undefined : ((json['connection_issues'] as Array<any>).map(ChannelConnectionIssueDtoFromJSON)),
         'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -214,6 +228,7 @@ export function ChannelBriefDtoToJSONTyped(value?: ChannelBriefDto | null, ignor
     return {
 
         'id': value['id'],
+        'connection_issues': value['connectionIssues'] == null ? undefined : ((value['connectionIssues'] as Array<any>).map(ChannelConnectionIssueDtoToJSON)),
         'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],

@@ -21,6 +21,7 @@ exports.ChannelBriefDtoToJSON = ChannelBriefDtoToJSON;
 exports.ChannelBriefDtoToJSONTyped = ChannelBriefDtoToJSONTyped;
 const ChannelMigrationBackfillDto_1 = require("./ChannelMigrationBackfillDto");
 const ChannelAccessDto_1 = require("./ChannelAccessDto");
+const ChannelConnectionIssueDto_1 = require("./ChannelConnectionIssueDto");
 const ChannelMigrationStatusDto_1 = require("./ChannelMigrationStatusDto");
 /**
  * @export
@@ -56,6 +57,7 @@ function ChannelBriefDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
+        'connectionIssues': json['connection_issues'] == null ? undefined : (json['connection_issues'].map(ChannelConnectionIssueDto_1.ChannelConnectionIssueDtoFromJSON)),
         'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -83,6 +85,7 @@ function ChannelBriefDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
+        'connection_issues': value['connectionIssues'] == null ? undefined : (value['connectionIssues'].map(ChannelConnectionIssueDto_1.ChannelConnectionIssueDtoToJSON)),
         'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],

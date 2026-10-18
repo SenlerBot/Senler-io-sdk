@@ -71,7 +71,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_members"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_members"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/invitations/{invitationId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"invitationId"}}`, encodeURIComponent(String(requestParameters['invitationId']))),
@@ -107,7 +107,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_members"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_members"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/members/{memberId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
@@ -143,7 +143,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/invitations`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -176,7 +176,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/members`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -212,7 +212,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/members/{memberId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
@@ -249,7 +249,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_members"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_members"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/invitations`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -290,7 +290,7 @@ class AppsMembersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_members"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_members"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/members/{memberId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),

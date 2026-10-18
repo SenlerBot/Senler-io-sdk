@@ -52,11 +52,17 @@ export interface SubscriptionInvoiceLineDto {
      */
     amount: number;
     /**
-     * , (/); : 1.25 = 125
+     * , , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionInvoiceLineDto
      */
     grossAmount: number;
+    /**
+     * . = gross_amount + promo_discount_amount., (/); : 1.25 = 125
+     * @type {number}
+     * @memberof SubscriptionInvoiceLineDto
+     */
+    promoDiscountAmount?: number;
     /**
      * , (/); : 1.25 = 125
      * @type {number}

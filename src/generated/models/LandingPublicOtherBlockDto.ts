@@ -40,13 +40,13 @@ export interface LandingPublicOtherBlockDto {
      */
     action: LandingPublicTextBlockDtoAction | null;
     /**
-     * : other.
+     *
      * @type {string}
      * @memberof LandingPublicOtherBlockDto
      */
     type: LandingPublicOtherBlockDtoTypeEnum;
     /**
-     *
+     * . {}; .
      * @type {object}
      * @memberof LandingPublicOtherBlockDto
      */

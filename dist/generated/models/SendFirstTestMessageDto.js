@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendFirstTestMessageDtoClientTypeEnum = void 0;
+exports.SendFirstTestMessageDtoClientTypeEnum = exports.SendFirstTestMessageDtoContentFormatEnum = void 0;
 exports.instanceOfSendFirstTestMessageDto = instanceOfSendFirstTestMessageDto;
 exports.SendFirstTestMessageDtoFromJSON = SendFirstTestMessageDtoFromJSON;
 exports.SendFirstTestMessageDtoFromJSONTyped = SendFirstTestMessageDtoFromJSONTyped;
@@ -21,6 +21,13 @@ exports.SendFirstTestMessageDtoToJSON = SendFirstTestMessageDtoToJSON;
 exports.SendFirstTestMessageDtoToJSONTyped = SendFirstTestMessageDtoToJSONTyped;
 const MessageAttachmentReferenceDto_1 = require("./MessageAttachmentReferenceDto");
 const MessageButtonDto_1 = require("./MessageButtonDto");
+/**
+ * @export
+ */
+exports.SendFirstTestMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+};
 /**
  * @export
  */
@@ -50,6 +57,7 @@ function SendFirstTestMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'content': json['content'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
@@ -68,6 +76,7 @@ function SendFirstTestMessageDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'content_format': value['contentFormat'],
         'content': value['content'],
         'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],

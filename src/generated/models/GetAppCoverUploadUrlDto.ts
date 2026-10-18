@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GetAppCoverUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAppCoverUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- . : image/png, image/jpeg, image/webp.
      * @type {string}
      * @memberof GetAppCoverUploadUrlDto
@@ -31,6 +37,7 @@ export interface GetAppCoverUploadUrlDto {
  * Check if a given object implements the GetAppCoverUploadUrlDto interface.
  */
 export function instanceOfGetAppCoverUploadUrlDto(value: object): value is GetAppCoverUploadUrlDto {
+    if (!('fileSize' in value) || value['fileSize'] === undefined) return false;
     if (!('fileType' in value) || value['fileType'] === undefined) return false;
     return true;
 }
@@ -45,6 +52,7 @@ export function GetAppCoverUploadUrlDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
     };
 }
@@ -60,6 +68,7 @@ export function GetAppCoverUploadUrlDtoToJSONTyped(value?: GetAppCoverUploadUrlD
 
     return {
 
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
     };
 }

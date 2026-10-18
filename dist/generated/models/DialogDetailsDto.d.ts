@@ -9,18 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AiResponseActivityDto } from './AiResponseActivityDto';
-import type { DialogLeadDto } from './DialogLeadDto';
 import type { StreamViBroadcastDto } from './StreamViBroadcastDto';
 import type { DialogDtoReplyTarget } from './DialogDtoReplyTarget';
-import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
 import type { DialogDisplayInfoDto } from './DialogDisplayInfoDto';
+import type { AiResponseActivityDto } from './AiResponseActivityDto';
+import type { DialogLeadDto } from './DialogLeadDto';
+import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
 import type { DialogLastMessageDto } from './DialogLastMessageDto';
 import type { EventSenderDto } from './EventSenderDto';
 import type { DialogOperatorAssignmentDto } from './DialogOperatorAssignmentDto';
 import type { DialogChannelInfoDto } from './DialogChannelInfoDto';
 import type { DialogCurrentTypingDto } from './DialogCurrentTypingDto';
 import type { DialogFirstMessageDto } from './DialogFirstMessageDto';
+import type { DialogAccessDto } from './DialogAccessDto';
 /**
  * DialogDetailsDto.
  * @export
@@ -268,6 +269,12 @@ export interface DialogDetailsDto {
      */
     isTest: boolean;
     /**
+     * ID , ,
+     * @type {string}
+     * @memberof DialogDetailsDto
+     */
+    readonly testAgentId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof DialogDetailsDto
@@ -424,6 +431,12 @@ export interface DialogDetailsDto {
      */
     isSoundMuted: boolean;
     /**
+     *
+     * @type {DialogAccessDto}
+     * @memberof DialogDetailsDto
+     */
+    access: DialogAccessDto;
+    /**
      * ( VK/TG )
      * @type {DialogLeadDto}
      * @memberof DialogDetailsDto
@@ -508,4 +521,4 @@ export declare function instanceOfDialogDetailsDto(value: object): value is Dial
 export declare function DialogDetailsDtoFromJSON(json: any): DialogDetailsDto;
 export declare function DialogDetailsDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): DialogDetailsDto;
 export declare function DialogDetailsDtoToJSON(json: any): DialogDetailsDto;
-export declare function DialogDetailsDtoToJSONTyped(value?: DialogDetailsDto | null, ignoreDiscriminator?: boolean): any;
+export declare function DialogDetailsDtoToJSONTyped(value?: Omit<DialogDetailsDto, 'test_agent_id'> | null, ignoreDiscriminator?: boolean): any;

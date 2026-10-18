@@ -17,6 +17,12 @@ import type { AutomationGroupBoundsDto } from './AutomationGroupBoundsDto';
  */
 export interface AutomationGroupResponseDto {
     /**
+     * ID . ; .
+     * @type {string}
+     * @memberof AutomationGroupResponseDto
+     */
+    instanceId?: string;
+    /**
      * UUID .
      * @type {string}
      * @memberof AutomationGroupResponseDto

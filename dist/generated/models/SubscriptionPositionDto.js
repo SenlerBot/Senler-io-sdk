@@ -28,6 +28,7 @@ exports.SubscriptionPositionDtoKindEnum = {
     Credits: 'credits',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
     Storage: 'storage'
 };
 /**

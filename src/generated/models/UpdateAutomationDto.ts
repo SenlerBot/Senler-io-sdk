@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AutomationSettingsValuesDto } from './AutomationSettingsValuesDto';
+import {
+    AutomationSettingsValuesDtoFromJSON,
+    AutomationSettingsValuesDtoFromJSONTyped,
+    AutomationSettingsValuesDtoToJSON,
+    AutomationSettingsValuesDtoToJSONTyped,
+} from './AutomationSettingsValuesDto';
+
 /**
  * UpdateAutomationDto.
  * @export
@@ -49,6 +57,12 @@ export interface UpdateAutomationDto {
      * @memberof UpdateAutomationDto
      */
     widgetPublicName?: string | null;
+    /**
+     * . . .
+     * @type {AutomationSettingsValuesDto}
+     * @memberof UpdateAutomationDto
+     */
+    expected?: AutomationSettingsValuesDto;
 }
 
 
@@ -90,6 +104,7 @@ export function UpdateAutomationDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'channelTypes': json['channel_types'] == null ? undefined : new Set(json['channel_types']),
         'widgetPublicNameEnabled': json['widget_public_name_enabled'] == null ? undefined : json['widget_public_name_enabled'],
         'widgetPublicName': json['widget_public_name'] == null ? undefined : json['widget_public_name'],
+        'expected': json['expected'] == null ? undefined : AutomationSettingsValuesDtoFromJSON(json['expected']),
     };
 }
 
@@ -109,5 +124,6 @@ export function UpdateAutomationDtoToJSONTyped(value?: UpdateAutomationDto | nul
         'channel_types': value['channelTypes'] == null ? undefined : Array.from(value['channelTypes'] as Set<any>),
         'widget_public_name_enabled': value['widgetPublicNameEnabled'],
         'widget_public_name': value['widgetPublicName'],
+        'expected': AutomationSettingsValuesDtoToJSON(value['expected']),
     };
 }

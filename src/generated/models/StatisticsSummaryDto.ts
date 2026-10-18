@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatisticsNullableMetricDeltaDto } from './StatisticsNullableMetricDeltaDto';
+import {
+    StatisticsNullableMetricDeltaDtoFromJSON,
+    StatisticsNullableMetricDeltaDtoFromJSONTyped,
+    StatisticsNullableMetricDeltaDtoToJSON,
+    StatisticsNullableMetricDeltaDtoToJSONTyped,
+} from './StatisticsNullableMetricDeltaDto';
 import type { StatisticsAiResponseCostsDto } from './StatisticsAiResponseCostsDto';
 import {
     StatisticsAiResponseCostsDtoFromJSON,
@@ -138,29 +145,29 @@ export interface StatisticsSummaryDto {
      */
     operatorAssignedDialogs: StatisticsMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageFirstResponseTimeSeconds: StatisticsMetricDeltaDto;
+    averageFirstResponseTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageFirstResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    averageFirstResponseRawTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageResponseTimeSeconds: StatisticsMetricDeltaDto;
+    averageResponseTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    averageResponseRawTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
      *
      * @type {StatisticsMetricDeltaDto}
@@ -223,10 +230,10 @@ export function StatisticsSummaryDtoFromJSONTyped(json: any, ignoreDiscriminator
         'closedDialogs': StatisticsMetricDeltaDtoFromJSON(json['closed_dialogs']),
         'unansweredDialogs': StatisticsMetricDeltaDtoFromJSON(json['unanswered_dialogs']),
         'operatorAssignedDialogs': StatisticsMetricDeltaDtoFromJSON(json['operator_assigned_dialogs']),
-        'averageFirstResponseTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_first_response_time_seconds']),
-        'averageFirstResponseRawTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_first_response_raw_time_seconds']),
-        'averageResponseTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_response_time_seconds']),
-        'averageResponseRawTimeSeconds': StatisticsMetricDeltaDtoFromJSON(json['average_response_raw_time_seconds']),
+        'averageFirstResponseTimeSeconds': StatisticsNullableMetricDeltaDtoFromJSON(json['average_first_response_time_seconds']),
+        'averageFirstResponseRawTimeSeconds': StatisticsNullableMetricDeltaDtoFromJSON(json['average_first_response_raw_time_seconds']),
+        'averageResponseTimeSeconds': StatisticsNullableMetricDeltaDtoFromJSON(json['average_response_time_seconds']),
+        'averageResponseRawTimeSeconds': StatisticsNullableMetricDeltaDtoFromJSON(json['average_response_raw_time_seconds']),
         'tokensUsed': StatisticsMetricDeltaDtoFromJSON(json['tokens_used']),
     };
 }
@@ -258,10 +265,10 @@ export function StatisticsSummaryDtoToJSONTyped(value?: StatisticsSummaryDto | n
         'closed_dialogs': StatisticsMetricDeltaDtoToJSON(value['closedDialogs']),
         'unanswered_dialogs': StatisticsMetricDeltaDtoToJSON(value['unansweredDialogs']),
         'operator_assigned_dialogs': StatisticsMetricDeltaDtoToJSON(value['operatorAssignedDialogs']),
-        'average_first_response_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageFirstResponseTimeSeconds']),
-        'average_first_response_raw_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageFirstResponseRawTimeSeconds']),
-        'average_response_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageResponseTimeSeconds']),
-        'average_response_raw_time_seconds': StatisticsMetricDeltaDtoToJSON(value['averageResponseRawTimeSeconds']),
+        'average_first_response_time_seconds': StatisticsNullableMetricDeltaDtoToJSON(value['averageFirstResponseTimeSeconds']),
+        'average_first_response_raw_time_seconds': StatisticsNullableMetricDeltaDtoToJSON(value['averageFirstResponseRawTimeSeconds']),
+        'average_response_time_seconds': StatisticsNullableMetricDeltaDtoToJSON(value['averageResponseTimeSeconds']),
+        'average_response_raw_time_seconds': StatisticsNullableMetricDeltaDtoToJSON(value['averageResponseRawTimeSeconds']),
         'tokens_used': StatisticsMetricDeltaDtoToJSON(value['tokensUsed']),
     };
 }

@@ -13,20 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SegmentResponseDtoStatusEnum = void 0;
 exports.instanceOfSegmentResponseDto = instanceOfSegmentResponseDto;
 exports.SegmentResponseDtoFromJSON = SegmentResponseDtoFromJSON;
 exports.SegmentResponseDtoFromJSONTyped = SegmentResponseDtoFromJSONTyped;
 exports.SegmentResponseDtoToJSON = SegmentResponseDtoToJSON;
 exports.SegmentResponseDtoToJSONTyped = SegmentResponseDtoToJSONTyped;
 const SegmentConsentSnapshotDto_1 = require("./SegmentConsentSnapshotDto");
-/**
- * @export
- */
-exports.SegmentResponseDtoStatusEnum = {
-    Active: 'active',
-    Archived: 'archived'
-};
 /**
  * Check if a given object implements the SegmentResponseDto interface.
  */
@@ -38,8 +30,6 @@ function instanceOfSegmentResponseDto(value) {
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('publicId' in value) || value['publicId'] === undefined)
-        return false;
-    if (!('status' in value) || value['status'] === undefined)
         return false;
     if (!('agentId' in value) || value['agentId'] === undefined)
         return false;
@@ -69,7 +59,6 @@ function SegmentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'],
         'name': json['name'],
         'publicId': json['public_id'],
-        'status': json['status'],
         'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'requiredConsents': (json['required_consents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoFromJSON)),
@@ -91,7 +80,6 @@ function SegmentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'name': value['name'],
         'public_id': value['publicId'],
-        'status': value['status'],
         'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'required_consents': (value['requiredConsents'].map(SegmentConsentSnapshotDto_1.SegmentConsentSnapshotDtoToJSON)),

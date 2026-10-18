@@ -72,6 +72,7 @@ export interface GetAudiencePreviewRequest {
     channelType?: GetAudiencePreviewChannelTypeEnum;
     segmentId?: Array<string>;
     segmentIsMember?: boolean;
+    filterSource?: GetAudiencePreviewFilterSourceEnum;
     limit?: number;
     cursor?: string | null;
     acceptLanguage?: GetAudiencePreviewAcceptLanguageEnum;
@@ -226,12 +227,12 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      */
     deliveriesUpdate(requestParameters: DeliveriesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
-     * .
+     * , , . ; filter_source=query , , . .
      * preview
      */
     getAudiencePreviewRaw(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>>;
     /**
-     * .
+     * , , . ; filter_source=query , , . .
      * preview
      */
     getAudiencePreview(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto>;
@@ -418,6 +419,14 @@ export declare const GetAudiencePreviewChannelTypeEnum: {
     readonly Avito: "avito";
 };
 export type GetAudiencePreviewChannelTypeEnum = typeof GetAudiencePreviewChannelTypeEnum[keyof typeof GetAudiencePreviewChannelTypeEnum];
+/**
+ * @export
+ */
+export declare const GetAudiencePreviewFilterSourceEnum: {
+    readonly Saved: "saved";
+    readonly Query: "query";
+};
+export type GetAudiencePreviewFilterSourceEnum = typeof GetAudiencePreviewFilterSourceEnum[keyof typeof GetAudiencePreviewFilterSourceEnum];
 /**
  * @export
  */

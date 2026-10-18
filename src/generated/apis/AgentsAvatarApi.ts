@@ -15,7 +15,6 @@
 
 import * as runtime from '../runtime';
 import type {
-  AgentConfirmAvatarUploadResponseDto,
   AgentDraftSettingsResponseDto,
   ConfirmS3UploadDto,
   ErrorResponse,
@@ -24,8 +23,6 @@ import type {
   S3UploadUrlResponseDto,
 } from '../models/index';
 import {
-    AgentConfirmAvatarUploadResponseDtoFromJSON,
-    AgentConfirmAvatarUploadResponseDtoToJSON,
     AgentDraftSettingsResponseDtoFromJSON,
     AgentDraftSettingsResponseDtoToJSON,
     ConfirmS3UploadDtoFromJSON,
@@ -40,22 +37,16 @@ import {
     S3UploadUrlResponseDtoToJSON,
 } from '../models/index';
 
-export interface AgentsAvatarAvatarConfirmRequest {
-    agentId: string;
-    confirmS3UploadDto: ConfirmS3UploadDto;
-    acceptLanguage?: AgentsAvatarAvatarConfirmAcceptLanguageEnum;
-}
-
-export interface AgentsAvatarAvatarFromUrlRequest {
-    agentId: string;
-    importImageDto: ImportImageDto;
-    acceptLanguage?: AgentsAvatarAvatarFromUrlAcceptLanguageEnum;
-}
-
 export interface AgentsAvatarAvatarUploadUrlRequest {
     agentId: string;
     getAvatarUploadUrlDto: GetAvatarUploadUrlDto;
     acceptLanguage?: AgentsAvatarAvatarUploadUrlAcceptLanguageEnum;
+}
+
+export interface DraftAvatarConfirmRequest {
+    agentId: string;
+    confirmS3UploadDto: ConfirmS3UploadDto;
+    acceptLanguage?: DraftAvatarConfirmAcceptLanguageEnum;
 }
 
 export interface DraftAvatarFromUrlRequest {
@@ -68,130 +59,6 @@ export interface DraftAvatarFromUrlRequest {
  *
  */
 export class AgentsAvatarApi extends runtime.BaseAPI {
-
-    /**
-     * avatar_url S3.
-     *
-     */
-    async agentsAvatarAvatarConfirmRaw(requestParameters: AgentsAvatarAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentConfirmAvatarUploadResponseDto>> {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError(
-                'agentId',
-                'Required parameter "agentId" was null or undefined when calling agentsAvatarAvatarConfirm().'
-            );
-        }
-
-        if (requestParameters['confirmS3UploadDto'] == null) {
-            throw new runtime.RequiredError(
-                'confirmS3UploadDto',
-                'Required parameter "confirmS3UploadDto" was null or undefined when calling agentsAvatarAvatarConfirm().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{agentId}/avatar/confirm`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ConfirmS3UploadDtoToJSON(requestParameters['confirmS3UploadDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentConfirmAvatarUploadResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * avatar_url S3.
-     *
-     */
-    async agentsAvatarAvatarConfirm(requestParameters: AgentsAvatarAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentConfirmAvatarUploadResponseDto> {
-        const response = await this.agentsAvatarAvatarConfirmRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * PNG, JPEG WebP, . draft/avatar/from-url. 20 40 .
-     * URL attachment_id
-     */
-    async agentsAvatarAvatarFromUrlRaw(requestParameters: AgentsAvatarAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentConfirmAvatarUploadResponseDto>> {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError(
-                'agentId',
-                'Required parameter "agentId" was null or undefined when calling agentsAvatarAvatarFromUrl().'
-            );
-        }
-
-        if (requestParameters['importImageDto'] == null) {
-            throw new runtime.RequiredError(
-                'importImageDto',
-                'Required parameter "importImageDto" was null or undefined when calling agentsAvatarAvatarFromUrl().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{agentId}/avatar/from-url`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ImportImageDtoToJSON(requestParameters['importImageDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentConfirmAvatarUploadResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * PNG, JPEG WebP, . draft/avatar/from-url. 20 40 .
-     * URL attachment_id
-     */
-    async agentsAvatarAvatarFromUrl(requestParameters: AgentsAvatarAvatarFromUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentConfirmAvatarUploadResponseDto> {
-        const response = await this.agentsAvatarAvatarFromUrlRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 
     /**
      * S3- .
@@ -232,6 +99,11 @@ export class AgentsAvatarApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
@@ -252,6 +124,73 @@ export class AgentsAvatarApi extends runtime.BaseAPI {
      */
     async agentsAvatarAvatarUploadUrl(requestParameters: AgentsAvatarAvatarUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {
         const response = await this.agentsAvatarAvatarUploadUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * avatar_url . .
+     *
+     */
+    async draftAvatarConfirmRaw(requestParameters: DraftAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling draftAvatarConfirm().'
+            );
+        }
+
+        if (requestParameters['confirmS3UploadDto'] == null) {
+            throw new runtime.RequiredError(
+                'confirmS3UploadDto',
+                'Required parameter "confirmS3UploadDto" was null or undefined when calling draftAvatarConfirm().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/draft/avatar/confirm`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ConfirmS3UploadDtoToJSON(requestParameters['confirmS3UploadDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * avatar_url . .
+     *
+     */
+    async draftAvatarConfirm(requestParameters: DraftAvatarConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
+        const response = await this.draftAvatarConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -294,6 +233,11 @@ export class AgentsAvatarApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
@@ -322,27 +266,19 @@ export class AgentsAvatarApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const AgentsAvatarAvatarConfirmAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AgentsAvatarAvatarConfirmAcceptLanguageEnum = typeof AgentsAvatarAvatarConfirmAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarConfirmAcceptLanguageEnum];
-/**
- * @export
- */
-export const AgentsAvatarAvatarFromUrlAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type AgentsAvatarAvatarFromUrlAcceptLanguageEnum = typeof AgentsAvatarAvatarFromUrlAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarFromUrlAcceptLanguageEnum];
-/**
- * @export
- */
 export const AgentsAvatarAvatarUploadUrlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type AgentsAvatarAvatarUploadUrlAcceptLanguageEnum = typeof AgentsAvatarAvatarUploadUrlAcceptLanguageEnum[keyof typeof AgentsAvatarAvatarUploadUrlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DraftAvatarConfirmAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DraftAvatarConfirmAcceptLanguageEnum = typeof DraftAvatarConfirmAcceptLanguageEnum[keyof typeof DraftAvatarConfirmAcceptLanguageEnum];
 /**
  * @export
  */

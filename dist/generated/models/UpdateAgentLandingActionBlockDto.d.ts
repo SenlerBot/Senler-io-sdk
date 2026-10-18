@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 import type { CreateAgentLandingActionBlockDtoAction } from './CreateAgentLandingActionBlockDtoAction';
-import type { LandingBlockResponseDtoPayload } from './LandingBlockResponseDtoPayload';
 /**
  * UpdateAgentLandingActionBlockDto.
  * @export
@@ -36,11 +35,13 @@ export interface UpdateAgentLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     *
-     * @type {LandingBlockResponseDtoPayload}
+     * ; type (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof UpdateAgentLandingActionBlockDto
      */
-    payload: LandingBlockResponseDtoPayload;
+    payload: {
+        [key: string]: any;
+    };
     /**
      *
      * @type {CreateAgentLandingActionBlockDtoAction}

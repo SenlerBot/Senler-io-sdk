@@ -74,7 +74,7 @@ class AppAnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/analytics`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -113,7 +113,7 @@ class AppAnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/analytics/by-agent/{agentId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),

@@ -49,7 +49,7 @@ export declare const AutomationAnalysisDtoStatusEnum: {
     readonly InsufficientData: "insufficient_data";
     readonly NoPublishedAutomations: "no_published_automations";
     readonly CollectionError: "collection_error";
-    readonly LegacySummary: "legacy_summary";
+    readonly NotAnalyzed: "not_analyzed";
 };
 export type AutomationAnalysisDtoStatusEnum = typeof AutomationAnalysisDtoStatusEnum[keyof typeof AutomationAnalysisDtoStatusEnum];
 /**

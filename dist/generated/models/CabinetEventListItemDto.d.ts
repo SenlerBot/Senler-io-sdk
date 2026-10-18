@@ -241,6 +241,24 @@ export interface CabinetEventListItemDto {
      * @memberof CabinetEventListItemDto
      */
     eventVersion: number;
+    /**
+     * . message_created; , .
+     * @type {string}
+     * @memberof CabinetEventListItemDto
+     */
+    messageDirection?: CabinetEventListItemDtoMessageDirectionEnum;
+    /**
+     * : -, , .
+     * @type {string}
+     * @memberof CabinetEventListItemDto
+     */
+    messageSenderKind?: CabinetEventListItemDtoMessageSenderKindEnum;
+    /**
+     * . only_errors; , .
+     * @type {boolean}
+     * @memberof CabinetEventListItemDto
+     */
+    hasError: boolean;
 }
 /**
  * @export
@@ -356,6 +374,25 @@ export declare const CabinetEventListItemDtoTargetTypeEnum: {
     readonly Billing: "billing";
 };
 export type CabinetEventListItemDtoTargetTypeEnum = typeof CabinetEventListItemDtoTargetTypeEnum[keyof typeof CabinetEventListItemDtoTargetTypeEnum];
+/**
+ * @export
+ */
+export declare const CabinetEventListItemDtoMessageDirectionEnum: {
+    readonly Inbound: "inbound";
+    readonly Outbound: "outbound";
+    readonly Internal: "internal";
+};
+export type CabinetEventListItemDtoMessageDirectionEnum = typeof CabinetEventListItemDtoMessageDirectionEnum[keyof typeof CabinetEventListItemDtoMessageDirectionEnum];
+/**
+ * @export
+ */
+export declare const CabinetEventListItemDtoMessageSenderKindEnum: {
+    readonly Assistant: "assistant";
+    readonly Operator: "operator";
+    readonly Automation: "automation";
+    readonly Other: "other";
+};
+export type CabinetEventListItemDtoMessageSenderKindEnum = typeof CabinetEventListItemDtoMessageSenderKindEnum[keyof typeof CabinetEventListItemDtoMessageSenderKindEnum];
 /**
  * Check if a given object implements the CabinetEventListItemDto interface.
  */

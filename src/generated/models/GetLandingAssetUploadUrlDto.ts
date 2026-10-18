@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GetLandingAssetUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetLandingAssetUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- . : image/png, image/jpeg, image/webp.
      * @type {string}
      * @memberof GetLandingAssetUploadUrlDto
@@ -31,6 +37,7 @@ export interface GetLandingAssetUploadUrlDto {
  * Check if a given object implements the GetLandingAssetUploadUrlDto interface.
  */
 export function instanceOfGetLandingAssetUploadUrlDto(value: object): value is GetLandingAssetUploadUrlDto {
+    if (!('fileSize' in value) || value['fileSize'] === undefined) return false;
     if (!('fileType' in value) || value['fileType'] === undefined) return false;
     return true;
 }
@@ -45,6 +52,7 @@ export function GetLandingAssetUploadUrlDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
     };
 }
@@ -60,6 +68,7 @@ export function GetLandingAssetUploadUrlDtoToJSONTyped(value?: GetLandingAssetUp
 
     return {
 
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
     };
 }

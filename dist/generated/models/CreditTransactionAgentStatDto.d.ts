@@ -52,23 +52,23 @@ export interface CreditTransactionAgentStatDto {
      */
     totalTokens: number;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionAgentStatDto
      */
-    promptTokens: number;
+    promptTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionAgentStatDto
      */
-    completionTokens: number;
+    completionTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionAgentStatDto
      */
-    cachedTokens: number;
+    cachedTokens: number | null;
 }
 /**
  * Check if a given object implements the CreditTransactionAgentStatDto interface.

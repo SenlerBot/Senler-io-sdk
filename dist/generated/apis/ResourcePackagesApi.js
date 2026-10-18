@@ -80,7 +80,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links`,
@@ -113,7 +113,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links/{id}/access-preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -146,7 +146,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links/{token}/preview`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
@@ -183,7 +183,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links/{token}/import`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
@@ -221,7 +221,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links/{token}/plan`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
@@ -255,7 +255,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links/{id}/revoke`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -289,7 +289,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-packages`,
@@ -327,7 +327,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-packages/{id}/import`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -362,7 +362,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-packages/preview`,
@@ -400,7 +400,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-packages/{id}/share-links`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -438,7 +438,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/resource-package-links/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),

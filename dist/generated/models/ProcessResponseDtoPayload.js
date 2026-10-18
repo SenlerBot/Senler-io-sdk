@@ -22,6 +22,7 @@ const ChannelSpacesRefreshPayloadDto_1 = require("./ChannelSpacesRefreshPayloadD
 const ChannelWebhooksRefreshPayloadDto_1 = require("./ChannelWebhooksRefreshPayloadDto");
 const ChannelsTreeRefreshPayloadDto_1 = require("./ChannelsTreeRefreshPayloadDto");
 const DeliverySendPayloadDto_1 = require("./DeliverySendPayloadDto");
+const DialogBulkProcessPayloadDto_1 = require("./DialogBulkProcessPayloadDto");
 const ExportLeadsPayloadDto_1 = require("./ExportLeadsPayloadDto");
 const ImportLeadsPayloadDto_1 = require("./ImportLeadsPayloadDto");
 const LeadsRefreshPayloadDto_1 = require("./LeadsRefreshPayloadDto");
@@ -48,6 +49,9 @@ function ProcessResponseDtoPayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     if ((0, DeliverySendPayloadDto_1.instanceOfDeliverySendPayloadDto)(json)) {
         return (0, DeliverySendPayloadDto_1.DeliverySendPayloadDtoFromJSONTyped)(json, true);
+    }
+    if ((0, DialogBulkProcessPayloadDto_1.instanceOfDialogBulkProcessPayloadDto)(json)) {
+        return (0, DialogBulkProcessPayloadDto_1.DialogBulkProcessPayloadDtoFromJSONTyped)(json, true);
     }
     if ((0, ExportLeadsPayloadDto_1.instanceOfExportLeadsPayloadDto)(json)) {
         return (0, ExportLeadsPayloadDto_1.ExportLeadsPayloadDtoFromJSONTyped)(json, true);
@@ -87,6 +91,9 @@ function ProcessResponseDtoPayloadToJSONTyped(value, ignoreDiscriminator = false
     }
     if ((0, DeliverySendPayloadDto_1.instanceOfDeliverySendPayloadDto)(value)) {
         return (0, DeliverySendPayloadDto_1.DeliverySendPayloadDtoToJSON)(value);
+    }
+    if ((0, DialogBulkProcessPayloadDto_1.instanceOfDialogBulkProcessPayloadDto)(value)) {
+        return (0, DialogBulkProcessPayloadDto_1.DialogBulkProcessPayloadDtoToJSON)(value);
     }
     if ((0, ExportLeadsPayloadDto_1.instanceOfExportLeadsPayloadDto)(value)) {
         return (0, ExportLeadsPayloadDto_1.ExportLeadsPayloadDtoToJSON)(value);

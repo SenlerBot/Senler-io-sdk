@@ -16,6 +16,12 @@
  */
 export interface SubscriptionRenewalDto {
     /**
+     * , . .
+     * @type {string}
+     * @memberof SubscriptionRenewalDto
+     */
+    promoApplicationId?: string;
+    /**
      * ,
      * @type {string}
      * @memberof SubscriptionRenewalDto

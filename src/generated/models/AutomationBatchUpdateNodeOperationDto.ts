@@ -35,6 +35,12 @@ import {
  */
 export interface AutomationBatchUpdateNodeOperationDto {
     /**
+     * instance_id , . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchUpdateNodeOperationDto
+     */
+    expectedInstanceId?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationBatchUpdateNodeOperationDto
@@ -107,6 +113,7 @@ export function AutomationBatchUpdateNodeOperationDtoFromJSONTyped(json: any, ig
     }
     return {
 
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
         'nodeId': json['node_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -128,6 +135,7 @@ export function AutomationBatchUpdateNodeOperationDtoToJSONTyped(value?: Automat
 
     return {
 
+        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
         'node_id': value['nodeId'],
         'name': value['name'],

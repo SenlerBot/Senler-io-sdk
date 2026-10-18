@@ -19,7 +19,6 @@ import type {
   ArrayVariableValueDto,
   BooleanVariableValueDto,
   DateVariableValueDto,
-  Deactivate200Response,
   ErrorResponse,
   LeadVariableArrayMutationResponseDto,
   LeadVariableResponseDto,
@@ -27,6 +26,7 @@ import type {
   LeadVariableWriteResponseDto,
   NumberVariableValueDto,
   ObjectVariableValueDto,
+  ProjectVariablesDeactivate200Response,
   StringVariableValueDto,
 } from '../models/index';
 import {
@@ -38,8 +38,6 @@ import {
     BooleanVariableValueDtoToJSON,
     DateVariableValueDtoFromJSON,
     DateVariableValueDtoToJSON,
-    Deactivate200ResponseFromJSON,
-    Deactivate200ResponseToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     LeadVariableArrayMutationResponseDtoFromJSON,
@@ -54,6 +52,8 @@ import {
     NumberVariableValueDtoToJSON,
     ObjectVariableValueDtoFromJSON,
     ObjectVariableValueDtoToJSON,
+    ProjectVariablesDeactivate200ResponseFromJSON,
+    ProjectVariablesDeactivate200ResponseToJSON,
     StringVariableValueDtoFromJSON,
     StringVariableValueDtoToJSON,
 } from '../models/index';
@@ -171,7 +171,7 @@ export class LeadVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    async leadVariablesDeleteValuesRaw(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>> {
+    async leadVariablesDeleteValuesRaw(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariablesDeactivate200Response>> {
         if (requestParameters['leadId'] == null) {
             throw new runtime.RequiredError(
                 'leadId',
@@ -204,6 +204,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -214,14 +219,14 @@ export class LeadVariablesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => Deactivate200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectVariablesDeactivate200ResponseFromJSON(jsonValue));
     }
 
     /**
      *
      *
      */
-    async leadVariablesDeleteValues(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response> {
+    async leadVariablesDeleteValues(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariablesDeactivate200Response> {
         const response = await this.leadVariablesDeleteValuesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -254,6 +259,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -313,6 +323,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -385,6 +400,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
@@ -460,6 +480,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -533,6 +558,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -595,6 +625,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
@@ -667,6 +702,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
@@ -742,6 +782,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -813,6 +858,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
@@ -888,6 +938,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -959,6 +1014,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
@@ -1034,6 +1094,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
         }
 
@@ -1105,6 +1170,11 @@ export class LeadVariablesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);

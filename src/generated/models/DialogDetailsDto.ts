@@ -13,20 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AiResponseActivityDto } from './AiResponseActivityDto';
-import {
-    AiResponseActivityDtoFromJSON,
-    AiResponseActivityDtoFromJSONTyped,
-    AiResponseActivityDtoToJSON,
-    AiResponseActivityDtoToJSONTyped,
-} from './AiResponseActivityDto';
-import type { DialogLeadDto } from './DialogLeadDto';
-import {
-    DialogLeadDtoFromJSON,
-    DialogLeadDtoFromJSONTyped,
-    DialogLeadDtoToJSON,
-    DialogLeadDtoToJSONTyped,
-} from './DialogLeadDto';
 import type { StreamViBroadcastDto } from './StreamViBroadcastDto';
 import {
     StreamViBroadcastDtoFromJSON,
@@ -41,13 +27,6 @@ import {
     DialogDtoReplyTargetToJSON,
     DialogDtoReplyTargetToJSONTyped,
 } from './DialogDtoReplyTarget';
-import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
-import {
-    DialogDtoDialogAgentsInnerFromJSON,
-    DialogDtoDialogAgentsInnerFromJSONTyped,
-    DialogDtoDialogAgentsInnerToJSON,
-    DialogDtoDialogAgentsInnerToJSONTyped,
-} from './DialogDtoDialogAgentsInner';
 import type { DialogDisplayInfoDto } from './DialogDisplayInfoDto';
 import {
     DialogDisplayInfoDtoFromJSON,
@@ -55,6 +34,27 @@ import {
     DialogDisplayInfoDtoToJSON,
     DialogDisplayInfoDtoToJSONTyped,
 } from './DialogDisplayInfoDto';
+import type { AiResponseActivityDto } from './AiResponseActivityDto';
+import {
+    AiResponseActivityDtoFromJSON,
+    AiResponseActivityDtoFromJSONTyped,
+    AiResponseActivityDtoToJSON,
+    AiResponseActivityDtoToJSONTyped,
+} from './AiResponseActivityDto';
+import type { DialogLeadDto } from './DialogLeadDto';
+import {
+    DialogLeadDtoFromJSON,
+    DialogLeadDtoFromJSONTyped,
+    DialogLeadDtoToJSON,
+    DialogLeadDtoToJSONTyped,
+} from './DialogLeadDto';
+import type { DialogDtoDialogAgentsInner } from './DialogDtoDialogAgentsInner';
+import {
+    DialogDtoDialogAgentsInnerFromJSON,
+    DialogDtoDialogAgentsInnerFromJSONTyped,
+    DialogDtoDialogAgentsInnerToJSON,
+    DialogDtoDialogAgentsInnerToJSONTyped,
+} from './DialogDtoDialogAgentsInner';
 import type { DialogLastMessageDto } from './DialogLastMessageDto';
 import {
     DialogLastMessageDtoFromJSON,
@@ -97,6 +97,13 @@ import {
     DialogFirstMessageDtoToJSON,
     DialogFirstMessageDtoToJSONTyped,
 } from './DialogFirstMessageDto';
+import type { DialogAccessDto } from './DialogAccessDto';
+import {
+    DialogAccessDtoFromJSON,
+    DialogAccessDtoFromJSONTyped,
+    DialogAccessDtoToJSON,
+    DialogAccessDtoToJSONTyped,
+} from './DialogAccessDto';
 
 /**
  * DialogDetailsDto.
@@ -345,6 +352,12 @@ export interface DialogDetailsDto {
      */
     isTest: boolean;
     /**
+     * ID , ,
+     * @type {string}
+     * @memberof DialogDetailsDto
+     */
+    readonly testAgentId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof DialogDetailsDto
@@ -501,6 +514,12 @@ export interface DialogDetailsDto {
      */
     isSoundMuted: boolean;
     /**
+     *
+     * @type {DialogAccessDto}
+     * @memberof DialogDetailsDto
+     */
+    access: DialogAccessDto;
+    /**
      * ( VK/TG )
      * @type {DialogLeadDto}
      * @memberof DialogDetailsDto
@@ -609,6 +628,7 @@ export function instanceOfDialogDetailsDto(value: object): value is DialogDetail
     if (!('operatorUnreadCount' in value) || value['operatorUnreadCount'] === undefined) return false;
     if (!('leadUnreadCount' in value) || value['leadUnreadCount'] === undefined) return false;
     if (!('isSoundMuted' in value) || value['isSoundMuted'] === undefined) return false;
+    if (!('access' in value) || value['access'] === undefined) return false;
     return true;
 }
 
@@ -662,6 +682,7 @@ export function DialogDetailsDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'isTest': json['is_test'],
+        'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
         'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
@@ -688,6 +709,7 @@ export function DialogDetailsDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'humanHandoff': json['human_handoff'] == null ? undefined : json['human_handoff'],
         'operatorAssignmentSource': json['operator_assignment_source'] == null ? undefined : json['operator_assignment_source'],
         'isSoundMuted': json['is_sound_muted'],
+        'access': DialogAccessDtoFromJSON(json['access']),
         'lead': json['lead'] == null ? undefined : DialogLeadDtoFromJSON(json['lead']),
         'channel': json['channel'] == null ? undefined : DialogChannelInfoDtoFromJSON(json['channel']),
         'currentTyping': json['current_typing'] == null ? undefined : ((json['current_typing'] as Array<any>).map(DialogCurrentTypingDtoFromJSON)),
@@ -699,7 +721,7 @@ export function DialogDetailsDtoToJSON(json: any): DialogDetailsDto {
     return DialogDetailsDtoToJSONTyped(json, false);
 }
 
-export function DialogDetailsDtoToJSONTyped(value?: DialogDetailsDto | null, ignoreDiscriminator: boolean = false): any {
+export function DialogDetailsDtoToJSONTyped(value?: Omit<DialogDetailsDto, 'test_agent_id'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -772,6 +794,7 @@ export function DialogDetailsDtoToJSONTyped(value?: DialogDetailsDto | null, ign
         'human_handoff': value['humanHandoff'],
         'operator_assignment_source': value['operatorAssignmentSource'],
         'is_sound_muted': value['isSoundMuted'],
+        'access': DialogAccessDtoToJSON(value['access']),
         'lead': DialogLeadDtoToJSON(value['lead']),
         'channel': DialogChannelInfoDtoToJSON(value['channel']),
         'current_typing': value['currentTyping'] == null ? undefined : ((value['currentTyping'] as Array<any>).map(DialogCurrentTypingDtoToJSON)),

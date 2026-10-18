@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GenerateSummarizationRequestDto {
     /**
+     * Maximum total charge in credit minor units (1 credit = 10000 units).
+     * @type {number}
+     * @memberof GenerateSummarizationRequestDto
+     */
+    maxCredits: number;
+    /**
      * ID
      * @type {string}
      * @memberof GenerateSummarizationRequestDto
@@ -62,6 +68,7 @@ export type GenerateSummarizationRequestDtoPeriodEnum = typeof GenerateSummariza
  * Check if a given object implements the GenerateSummarizationRequestDto interface.
  */
 export function instanceOfGenerateSummarizationRequestDto(value: object): value is GenerateSummarizationRequestDto {
+    if (!('maxCredits' in value) || value['maxCredits'] === undefined) return false;
     if (!('operationId' in value) || value['operationId'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('modelId' in value) || value['modelId'] === undefined) return false;
@@ -78,6 +85,7 @@ export function GenerateSummarizationRequestDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
+        'maxCredits': json['max_credits'],
         'operationId': json['operation_id'],
         'projectId': json['project_id'],
         'period': json['period'] == null ? undefined : json['period'],
@@ -96,6 +104,7 @@ export function GenerateSummarizationRequestDtoToJSONTyped(value?: GenerateSumma
 
     return {
 
+        'max_credits': value['maxCredits'],
         'operation_id': value['operationId'],
         'project_id': value['projectId'],
         'period': value['period'],

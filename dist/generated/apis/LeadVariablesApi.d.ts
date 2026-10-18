@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, Deactivate200Response, LeadVariableArrayMutationResponseDto, LeadVariableResponseDto, LeadVariableValueResponseDto, LeadVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, StringVariableValueDto } from '../models/index';
+import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, LeadVariableArrayMutationResponseDto, LeadVariableResponseDto, LeadVariableValueResponseDto, LeadVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariablesDeactivate200Response, StringVariableValueDto } from '../models/index';
 export interface LeadVariablesDeleteValuesRequest {
     leadId: string;
     name: string;
@@ -109,12 +109,12 @@ export declare class LeadVariablesApi extends runtime.BaseAPI {
      *
      *
      */
-    leadVariablesDeleteValuesRaw(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
+    leadVariablesDeleteValuesRaw(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariablesDeactivate200Response>>;
     /**
      *
      *
      */
-    leadVariablesDeleteValues(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
+    leadVariablesDeleteValues(requestParameters: LeadVariablesDeleteValuesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariablesDeactivate200Response>;
     /**
      *
      *

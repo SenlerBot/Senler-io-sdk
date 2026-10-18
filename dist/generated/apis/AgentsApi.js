@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateWizardProgressAcceptLanguageEnum = exports.UpdateRestoreAcceptLanguageEnum = exports.UpdateInstructionAcceptLanguageEnum = exports.UpdateInstalledAppEventsAcceptLanguageEnum = exports.UpdateDraftInstructionAcceptLanguageEnum = exports.RevertAcceptLanguageEnum = exports.GetUnpublishedStateAcceptLanguageEnum = exports.GetInstructionAcceptLanguageEnum = exports.GetInstalledAppToolsAcceptLanguageEnum = exports.GetInstalledAppEventsAcceptLanguageEnum = exports.GetDraftInstructionAcceptLanguageEnum = exports.GetDraftAcceptLanguageEnum = exports.GetByListAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = exports.DeleteDraftAcceptLanguageEnum = exports.Deactivate2AcceptLanguageEnum = exports.AgentsListAcceptLanguageEnum = exports.AgentsGetByIdAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.ActivateAcceptLanguageEnum = exports.AcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
+exports.UpdateAgentsWizardProgressAcceptLanguageEnum = exports.UpdateAgentsRestoreAcceptLanguageEnum = exports.UpdateAgentsInstalledAppEventsAcceptLanguageEnum = exports.UpdateAgentsDraftInstructionAcceptLanguageEnum = exports.GetProjectsInstructionMcpToolsAcceptLanguageEnum = exports.GetAgentsUnpublishedStateAcceptLanguageEnum = exports.GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = exports.GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = exports.GetAgentsInstructionAcceptLanguageEnum = exports.GetAgentsInstalledAppToolsAcceptLanguageEnum = exports.GetAgentsInstalledAppEventsAcceptLanguageEnum = exports.GetAgentsDraftInstructionAcceptLanguageEnum = exports.GetAgentsDraftAcceptLanguageEnum = exports.GetAgentsByListAcceptLanguageEnum = exports.GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = exports.GetAgents2AcceptLanguageEnum = exports.GetAgentsAcceptLanguageEnum = exports.DeleteAgentsDraftAcceptLanguageEnum = exports.DeleteAgentsAcceptLanguageEnum = exports.AgentsRevertAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.AgentsActivateAcceptLanguageEnum = exports.AgentsAcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,9 +57,9 @@ class AgentsApi extends runtime.BaseAPI {
      * , . .
      *
      */
-    async acquisitionRaw(requestParameters, initOverrides) {
+    async agentsAcquisitionRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling acquisition().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsAcquisition().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -72,6 +72,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -89,17 +93,17 @@ class AgentsApi extends runtime.BaseAPI {
      * , . .
      *
      */
-    async acquisition(requestParameters, initOverrides) {
-        const response = await this.acquisitionRaw(requestParameters, initOverrides);
+    async agentsAcquisition(requestParameters, initOverrides) {
+        const response = await this.agentsAcquisitionRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * is_active = true . .
      *
      */
-    async activateRaw(requestParameters, initOverrides) {
+    async agentsActivateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling activate().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsActivate().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -112,6 +116,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -129,12 +137,12 @@ class AgentsApi extends runtime.BaseAPI {
      * is_active = true . .
      *
      */
-    async activate(requestParameters, initOverrides) {
-        const response = await this.activateRaw(requestParameters, initOverrides);
+    async agentsActivate(requestParameters, initOverrides) {
+        const response = await this.agentsActivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * . can_manage_agents.
+     * is_active = false . .
      *
      */
     async agentsDeactivateRaw(requestParameters, initOverrides) {
@@ -155,30 +163,35 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
+            path: `/api/agents/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . can_manage_agents.
+     * is_active = false . .
      *
      */
     async agentsDeactivate(requestParameters, initOverrides) {
-        await this.agentsDeactivateRaw(requestParameters, initOverrides);
+        const response = await this.agentsDeactivateRaw(requestParameters, initOverrides);
+        return await response.value();
     }
     /**
      * .
-     * ID
+     *
      */
-    async agentsGetByIdRaw(requestParameters, initOverrides) {
+    async agentsRevertRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsGetById().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsRevert().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -194,31 +207,121 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
+            path: `/api/agents/{id}/revert`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
-     * ID
+     *
      */
-    async agentsGetById(requestParameters, initOverrides) {
-        const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
+    async agentsRevert(requestParameters, initOverrides) {
+        const response = await this.agentsRevertRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async deleteAgentsRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteAgents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async deleteAgents(requestParameters, initOverrides) {
+        await this.deleteAgentsRaw(requestParameters, initOverrides);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteAgentsDraftRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteAgentsDraft().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteAgentsDraft(requestParameters, initOverrides) {
+        await this.deleteAgentsDraftRaw(requestParameters, initOverrides);
     }
     /**
      * . .
      *
      */
-    async agentsListRaw(requestParameters, initOverrides) {
+    async getAgentsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling agentsList().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAgents().');
         }
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
@@ -252,6 +355,10 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -266,17 +373,17 @@ class AgentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async agentsList(requestParameters, initOverrides) {
-        const response = await this.agentsListRaw(requestParameters, initOverrides);
+    async getAgents(requestParameters, initOverrides) {
+        const response = await this.getAgentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * is_active = false . .
-     *
+     * .
+     * ID
      */
-    async deactivate2Raw(requestParameters, initOverrides) {
+    async getAgents2Raw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deactivate2().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgents2().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -292,73 +399,38 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/agents/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSettingsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * is_active = false . .
-     *
+     * .
+     * ID
      */
-    async deactivate2(requestParameters, initOverrides) {
-        const response = await this.deactivate2Raw(requestParameters, initOverrides);
+    async getAgents2(requestParameters, initOverrides) {
+        const response = await this.getAgents2Raw(requestParameters, initOverrides);
         return await response.value();
-    }
-    /**
-     * .
-     *
-     */
-    async deleteDraftRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling deleteDraft().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{id}/draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.VoidApiResponse(response);
-    }
-    /**
-     * .
-     *
-     */
-    async deleteDraft(requestParameters, initOverrides) {
-        await this.deleteDraftRaw(requestParameters, initOverrides);
     }
     /**
      * /, .
      *
      */
-    async getAutoAssignmentPreviewRaw(requestParameters, initOverrides) {
+    async getAgentsAutoAssignmentPreviewRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAutoAssignmentPreview().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsAutoAssignmentPreview().');
         }
         if (requestParameters['autoAssignmentMode'] == null) {
-            throw new runtime.RequiredError('autoAssignmentMode', 'Required parameter "autoAssignmentMode" was null or undefined when calling getAutoAssignmentPreview().');
+            throw new runtime.RequiredError('autoAssignmentMode', 'Required parameter "autoAssignmentMode" was null or undefined when calling getAgentsAutoAssignmentPreview().');
         }
         const queryParameters = {};
         if (requestParameters['autoAssignmentMode'] != null) {
@@ -386,6 +458,10 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -400,17 +476,17 @@ class AgentsApi extends runtime.BaseAPI {
      * /, .
      *
      */
-    async getAutoAssignmentPreview(requestParameters, initOverrides) {
-        const response = await this.getAutoAssignmentPreviewRaw(requestParameters, initOverrides);
+    async getAgentsAutoAssignmentPreview(requestParameters, initOverrides) {
+        const response = await this.getAgentsAutoAssignmentPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * ID MCP
      */
-    async getByListRaw(requestParameters, initOverrides) {
+    async getAgentsByListRaw(requestParameters, initOverrides) {
         if (requestParameters['listId'] == null) {
-            throw new runtime.RequiredError('listId', 'Required parameter "listId" was null or undefined when calling getByList().');
+            throw new runtime.RequiredError('listId', 'Required parameter "listId" was null or undefined when calling getAgentsByList().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -423,6 +499,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -440,17 +520,17 @@ class AgentsApi extends runtime.BaseAPI {
      * .
      * ID MCP
      */
-    async getByList(requestParameters, initOverrides) {
-        const response = await this.getByListRaw(requestParameters, initOverrides);
+    async getAgentsByList(requestParameters, initOverrides) {
+        const response = await this.getAgentsByListRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      *
      */
-    async getDraftRaw(requestParameters, initOverrides) {
+    async getAgentsDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getDraft().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsDraft().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -463,6 +543,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -480,17 +564,17 @@ class AgentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDraft(requestParameters, initOverrides) {
-        const response = await this.getDraftRaw(requestParameters, initOverrides);
+    async getAgentsDraft(requestParameters, initOverrides) {
+        const response = await this.getAgentsDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * . , null.
+     * . , null: AgentAuthoring_createDraftSnapshot . .
      *
      */
-    async getDraftInstructionRaw(requestParameters, initOverrides) {
+    async getAgentsDraftInstructionRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getDraftInstruction().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsDraftInstruction().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -506,6 +590,10 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -517,20 +605,20 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentInstructionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . , null.
+     * . , null: AgentAuthoring_createDraftSnapshot . .
      *
      */
-    async getDraftInstruction(requestParameters, initOverrides) {
-        const response = await this.getDraftInstructionRaw(requestParameters, initOverrides);
+    async getAgentsDraftInstruction(requestParameters, initOverrides) {
+        const response = await this.getAgentsDraftInstructionRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      * ,
      */
-    async getInstalledAppEventsRaw(requestParameters, initOverrides) {
+    async getAgentsInstalledAppEventsRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getInstalledAppEvents().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsInstalledAppEvents().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -543,6 +631,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -560,17 +652,17 @@ class AgentsApi extends runtime.BaseAPI {
      * .
      * ,
      */
-    async getInstalledAppEvents(requestParameters, initOverrides) {
-        const response = await this.getInstalledAppEventsRaw(requestParameters, initOverrides);
+    async getAgentsInstalledAppEvents(requestParameters, initOverrides) {
+        const response = await this.getAgentsInstalledAppEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getInstalledAppToolsRaw(requestParameters, initOverrides) {
+    async getAgentsInstalledAppToolsRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getInstalledAppTools().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsInstalledAppTools().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -583,6 +675,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -600,17 +696,17 @@ class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getInstalledAppTools(requestParameters, initOverrides) {
-        const response = await this.getInstalledAppToolsRaw(requestParameters, initOverrides);
+    async getAgentsInstalledAppTools(requestParameters, initOverrides) {
+        const response = await this.getAgentsInstalledAppToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async getInstructionRaw(requestParameters, initOverrides) {
+    async getAgentsInstructionRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getInstruction().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsInstruction().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -623,6 +719,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -640,17 +740,111 @@ class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getInstruction(requestParameters, initOverrides) {
-        const response = await this.getInstructionRaw(requestParameters, initOverrides);
+    async getAgentsInstruction(requestParameters, initOverrides) {
+        const response = await this.getAgentsInstructionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ID, . .
+     *
+     */
+    async getAgentsOperatorHandoffGroupsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAgentsOperatorHandoffGroups().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/operator-handoff-groups`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.OperatorHandoffGroupDtoFromJSON));
+    }
+    /**
+     * ID, . .
+     *
+     */
+    async getAgentsOperatorHandoffGroups(requestParameters, initOverrides) {
+        const response = await this.getAgentsOperatorHandoffGroupsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . ID . .
+     *
+     */
+    async getAgentsOperatorHandoffOperatorsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAgentsOperatorHandoffOperators().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/operator-handoff-operators`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.OperatorHandoffOperatorDtoFromJSON));
+    }
+    /**
+     * . ID . .
+     *
+     */
+    async getAgentsOperatorHandoffOperators(requestParameters, initOverrides) {
+        const response = await this.getAgentsOperatorHandoffOperatorsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , , .
      *
      */
-    async getUnpublishedStateRaw(requestParameters, initOverrides) {
+    async getAgentsUnpublishedStateRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getUnpublishedState().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsUnpublishedState().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -663,6 +857,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -680,17 +878,20 @@ class AgentsApi extends runtime.BaseAPI {
      * , , .
      *
      */
-    async getUnpublishedState(requestParameters, initOverrides) {
-        const response = await this.getUnpublishedStateRaw(requestParameters, initOverrides);
+    async getAgentsUnpublishedState(requestParameters, initOverrides) {
+        const response = await this.getAgentsUnpublishedStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * .
-     *
+     * . .
+     * MCP-
      */
-    async revertRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling revert().');
+    async getProjectsInstructionMcpToolsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getProjectsInstructionMcpTools().');
+        }
+        if (requestParameters['serverId'] == null) {
+            throw new runtime.RequiredError('serverId', 'Required parameter "serverId" was null or undefined when calling getProjectsInstructionMcpTools().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -706,34 +907,38 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
-            path: `/api/agents/{id}/revert`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/projects/{projectId}/instruction-mcp-tools/{serverId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.InstructionMcpToolDtoFromJSON));
     }
     /**
-     * .
-     *
+     * . .
+     * MCP-
      */
-    async revert(requestParameters, initOverrides) {
-        const response = await this.revertRaw(requestParameters, initOverrides);
+    async getProjectsInstructionMcpTools(requestParameters, initOverrides) {
+        const response = await this.getProjectsInstructionMcpToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * ; . AgentsUser_getDraftInstruction; , . . expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      * : ,
      */
-    async updateDraftInstructionRaw(requestParameters, initOverrides) {
+    async updateAgentsDraftInstructionRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateDraftInstruction().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateAgentsDraftInstruction().');
         }
-        if (requestParameters['patchAgentInstructionDto'] == null) {
-            throw new runtime.RequiredError('patchAgentInstructionDto', 'Required parameter "patchAgentInstructionDto" was null or undefined when calling updateDraftInstruction().');
+        if (requestParameters['updateAgentsDraftInstructionBody'] == null) {
+            throw new runtime.RequiredError('updateAgentsDraftInstructionBody', 'Required parameter "updateAgentsDraftInstructionBody" was null or undefined when calling updateAgentsDraftInstruction().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -747,6 +952,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -757,28 +966,28 @@ class AgentsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.PatchAgentInstructionDtoToJSON)(requestParameters['patchAgentInstructionDto']),
+            body: (0, index_1.UpdateAgentsDraftInstructionBodyToJSON)(requestParameters['updateAgentsDraftInstructionBody']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PatchAgentInstructionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * ; . AgentsUser_getDraftInstruction; , . . expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      * : ,
      */
-    async updateDraftInstruction(requestParameters, initOverrides) {
-        const response = await this.updateDraftInstructionRaw(requestParameters, initOverrides);
+    async updateAgentsDraftInstruction(requestParameters, initOverrides) {
+        const response = await this.updateAgentsDraftInstructionRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * , .
      * ,
      */
-    async updateInstalledAppEventsRaw(requestParameters, initOverrides) {
+    async updateAgentsInstalledAppEventsRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateInstalledAppEvents().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateAgentsInstalledAppEvents().');
         }
         if (requestParameters['updateAgentInstalledAppEventsDto'] == null) {
-            throw new runtime.RequiredError('updateAgentInstalledAppEventsDto', 'Required parameter "updateAgentInstalledAppEventsDto" was null or undefined when calling updateInstalledAppEvents().');
+            throw new runtime.RequiredError('updateAgentInstalledAppEventsDto', 'Required parameter "updateAgentInstalledAppEventsDto" was null or undefined when calling updateAgentsInstalledAppEvents().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -792,6 +1001,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -810,24 +1023,20 @@ class AgentsApi extends runtime.BaseAPI {
      * , .
      * ,
      */
-    async updateInstalledAppEvents(requestParameters, initOverrides) {
-        const response = await this.updateInstalledAppEventsRaw(requestParameters, initOverrides);
+    async updateAgentsInstalledAppEvents(requestParameters, initOverrides) {
+        const response = await this.updateAgentsInstalledAppEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * . can_manage_agents.
      *
      */
-    async updateInstructionRaw(requestParameters, initOverrides) {
+    async updateAgentsRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateInstruction().');
-        }
-        if (requestParameters['patchAgentInstructionDto'] == null) {
-            throw new runtime.RequiredError('patchAgentInstructionDto', 'Required parameter "patchAgentInstructionDto" was null or undefined when calling updateInstruction().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateAgentsRestore().');
         }
         const queryParameters = {};
         const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -840,44 +1049,7 @@ class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{id}/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.PatchAgentInstructionDtoToJSON)(requestParameters['patchAgentInstructionDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PatchAgentInstructionResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
-     *
-     */
-    async updateInstruction(requestParameters, initOverrides) {
-        const response = await this.updateInstructionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * . can_manage_agents.
-     *
-     */
-    async updateRestoreRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateRestore().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -895,20 +1067,20 @@ class AgentsApi extends runtime.BaseAPI {
      * . can_manage_agents.
      *
      */
-    async updateRestore(requestParameters, initOverrides) {
-        const response = await this.updateRestoreRaw(requestParameters, initOverrides);
+    async updateAgentsRestore(requestParameters, initOverrides) {
+        const response = await this.updateAgentsRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
      * .
      *
      */
-    async updateWizardProgressRaw(requestParameters, initOverrides) {
+    async updateAgentsWizardProgressRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateWizardProgress().');
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateAgentsWizardProgress().');
         }
         if (requestParameters['updateWizardProgressDto'] == null) {
-            throw new runtime.RequiredError('updateWizardProgressDto', 'Required parameter "updateWizardProgressDto" was null or undefined when calling updateWizardProgress().');
+            throw new runtime.RequiredError('updateWizardProgressDto', 'Required parameter "updateWizardProgressDto" was null or undefined when calling updateAgentsWizardProgress().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -922,6 +1094,10 @@ class AgentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -940,8 +1116,8 @@ class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateWizardProgress(requestParameters, initOverrides) {
-        const response = await this.updateWizardProgressRaw(requestParameters, initOverrides);
+    async updateAgentsWizardProgress(requestParameters, initOverrides) {
+        const response = await this.updateAgentsWizardProgressRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -949,14 +1125,14 @@ exports.AgentsApi = AgentsApi;
 /**
  * @export
  */
-exports.AcquisitionAcceptLanguageEnum = {
+exports.AgentsAcquisitionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.ActivateAcceptLanguageEnum = {
+exports.AgentsActivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -970,35 +1146,42 @@ exports.AgentsDeactivateAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.AgentsGetByIdAcceptLanguageEnum = {
+exports.AgentsRevertAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.AgentsListAcceptLanguageEnum = {
+exports.DeleteAgentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.Deactivate2AcceptLanguageEnum = {
+exports.DeleteAgentsDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.DeleteDraftAcceptLanguageEnum = {
+exports.GetAgentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = {
+exports.GetAgents2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = {
     Off: 'off',
     AllChannels: 'all_channels',
     SelectedChannels: 'selected_channels'
@@ -1006,7 +1189,7 @@ exports.GetAutoAssignmentPreviewAutoAssignmentModeEnum = {
 /**
  * @export
  */
-exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = {
+exports.GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = {
     All: 'all',
     Private: 'private',
     Group: 'group'
@@ -1014,105 +1197,112 @@ exports.GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = {
 /**
  * @export
  */
-exports.GetAutoAssignmentPreviewAutoAssignmentRoleEnum = {
+exports.GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = {
     Primary: 'primary',
     Background: 'background'
 };
 /**
  * @export
  */
-exports.GetAutoAssignmentPreviewAcceptLanguageEnum = {
+exports.GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetByListAcceptLanguageEnum = {
+exports.GetAgentsByListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetDraftAcceptLanguageEnum = {
+exports.GetAgentsDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetDraftInstructionAcceptLanguageEnum = {
+exports.GetAgentsDraftInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetInstalledAppEventsAcceptLanguageEnum = {
+exports.GetAgentsInstalledAppEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetInstalledAppToolsAcceptLanguageEnum = {
+exports.GetAgentsInstalledAppToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetInstructionAcceptLanguageEnum = {
+exports.GetAgentsInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetUnpublishedStateAcceptLanguageEnum = {
+exports.GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.RevertAcceptLanguageEnum = {
+exports.GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateDraftInstructionAcceptLanguageEnum = {
+exports.GetAgentsUnpublishedStateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateInstalledAppEventsAcceptLanguageEnum = {
+exports.GetProjectsInstructionMcpToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateInstructionAcceptLanguageEnum = {
+exports.UpdateAgentsDraftInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateRestoreAcceptLanguageEnum = {
+exports.UpdateAgentsInstalledAppEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.UpdateWizardProgressAcceptLanguageEnum = {
+exports.UpdateAgentsRestoreAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateAgentsWizardProgressAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

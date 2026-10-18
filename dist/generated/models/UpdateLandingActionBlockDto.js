@@ -19,7 +19,6 @@ exports.UpdateLandingActionBlockDtoFromJSON = UpdateLandingActionBlockDtoFromJSO
 exports.UpdateLandingActionBlockDtoFromJSONTyped = UpdateLandingActionBlockDtoFromJSONTyped;
 exports.UpdateLandingActionBlockDtoToJSON = UpdateLandingActionBlockDtoToJSON;
 exports.UpdateLandingActionBlockDtoToJSONTyped = UpdateLandingActionBlockDtoToJSONTyped;
-const LandingBlockResponseDtoPayload_1 = require("./LandingBlockResponseDtoPayload");
 const CreateLandingActionBlockDtoAction_1 = require("./CreateLandingActionBlockDtoAction");
 /**
  * @export
@@ -56,7 +55,7 @@ function UpdateLandingActionBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
         'expectedRevision': json['expected_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
-        'payload': (0, LandingBlockResponseDtoPayload_1.LandingBlockResponseDtoPayloadFromJSON)(json['payload']),
+        'payload': json['payload'],
         'action': (0, CreateLandingActionBlockDtoAction_1.CreateLandingActionBlockDtoActionFromJSON)(json['action']),
     };
 }
@@ -71,7 +70,7 @@ function UpdateLandingActionBlockDtoToJSONTyped(value, ignoreDiscriminator = fal
         'expected_revision': value['expectedRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
-        'payload': (0, LandingBlockResponseDtoPayload_1.LandingBlockResponseDtoPayloadToJSON)(value['payload']),
+        'payload': value['payload'],
         'action': (0, CreateLandingActionBlockDtoAction_1.CreateLandingActionBlockDtoActionToJSON)(value['action']),
     };
 }

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
+import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
@@ -24,7 +25,7 @@ export interface AgentDraftSettingsResponseDto {
      * @type {Array<string>}
      * @memberof AgentDraftSettingsResponseDto
      */
-    conflictFields: Array<string>;
+    conflictFields: Array<AgentDraftSettingsResponseDtoConflictFieldsEnum>;
     /**
      * UUID
      * @type {string}
@@ -226,6 +227,12 @@ export interface AgentDraftSettingsResponseDto {
      */
     enableButtons: boolean;
     /**
+     * . . .
+     * @type {number}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    maxToolIterations: number;
+    /**
      *
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
@@ -328,7 +335,7 @@ export interface AgentDraftSettingsResponseDto {
      */
     enableLeadBlocking: boolean;
     /**
-     * . false , ; metrics_collection_enabled=true. true enable_user_message=false. AI- .
+     * . false , ; metrics_collection_enabled=true. , true enable_user_message=false. enable_preliminary_response. AI- .
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
      */
@@ -352,7 +359,7 @@ export interface AgentDraftSettingsResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
-     * . false AGENT_ACTION ; enable_ai_response=true. AI- .
+     * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
      */
@@ -370,11 +377,35 @@ export interface AgentDraftSettingsResponseDto {
      */
     disableLinkPreview: boolean;
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    replyToSource: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    enableTyping: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof AgentDraftSettingsResponseDto
      */
     widgetAiProgressMode: AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    widgetQueueMessages: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    widgetShowScheduledActions: boolean;
     /**
      * (send_preliminary_response tool)
      * @type {boolean}
@@ -382,7 +413,7 @@ export interface AgentDraftSettingsResponseDto {
      */
     enablePreliminaryResponse: boolean;
     /**
-     *
+     * , , enable_ai_response=true. enable_user_message, enable_preliminary_response.
      * @type {boolean}
      * @memberof AgentDraftSettingsResponseDto
      */
@@ -475,6 +506,12 @@ export interface AgentDraftSettingsResponseDto {
     agentAssignmentPolicy: AgentAssignmentPolicyDto;
     /**
      *
+     * @type {OperatorHandoffPolicyDto}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    operatorHandoffPolicy: OperatorHandoffPolicyDto;
+    /**
+     *
      * @type {Date}
      * @memberof AgentDraftSettingsResponseDto
      */
@@ -486,6 +523,87 @@ export interface AgentDraftSettingsResponseDto {
      */
     updatedAt: Date;
 }
+/**
+ * @export
+ */
+export declare const AgentDraftSettingsResponseDtoConflictFieldsEnum: {
+    readonly Name: "name";
+    readonly Instruction: "instruction";
+    readonly AvatarUrl: "avatar_url";
+    readonly AgentType: "agent_type";
+    readonly SelectedModelId: "selected_model_id";
+    readonly EventSummaryMode: "event_summary_mode";
+    readonly DialogSummaryMode: "dialog_summary_mode";
+    readonly Meta: "meta";
+    readonly Status: "status";
+    readonly ServerBindingMode: "server_binding_mode";
+    readonly McpServerListId: "mcp_server_list_id";
+    readonly KnowledgeBasePermissions: "knowledge_base_permissions";
+    readonly MetricsCollectionEnabled: "metrics_collection_enabled";
+    readonly MetricsModelId: "metrics_model_id";
+    readonly UseDefaultEventMetrics: "use_default_event_metrics";
+    readonly UseDefaultDiscussionMetrics: "use_default_discussion_metrics";
+    readonly TriggerKeywords: "trigger_keywords";
+    readonly AutostartMode: "autostart_mode";
+    readonly KeywordAssignmentRole: "keyword_assignment_role";
+    readonly KeywordDialogScope: "keyword_dialog_scope";
+    readonly KeywordChannelIds: "keyword_channel_ids";
+    readonly AutoAssignmentMode: "auto_assignment_mode";
+    readonly AutoAssignmentChannelIds: "auto_assignment_channel_ids";
+    readonly AutoAssignmentDialogScope: "auto_assignment_dialog_scope";
+    readonly AutoAssignmentRole: "auto_assignment_role";
+    readonly MaxToolIterations: "max_tool_iterations";
+    readonly EnableButtons: "enable_buttons";
+    readonly EnableWidgetPageActions: "enable_widget_page_actions";
+    readonly EnableCustomAttachments: "enable_custom_attachments";
+    readonly EnableImageGeneration: "enable_image_generation";
+    readonly ImageGenerationModelId: "image_generation_model_id";
+    readonly EnableAudioGeneration: "enable_audio_generation";
+    readonly AudioGenerationModelId: "audio_generation_model_id";
+    readonly EnableVoiceCloning: "enable_voice_cloning";
+    readonly VoiceCloningModelId: "voice_cloning_model_id";
+    readonly EnableSpeechRecognition: "enable_speech_recognition";
+    readonly SpeechRecognitionModelId: "speech_recognition_model_id";
+    readonly EnableImageRecognition: "enable_image_recognition";
+    readonly ImageRecognitionModelId: "image_recognition_model_id";
+    readonly EnableQrCode: "enable_qr_code";
+    readonly EnableChart: "enable_chart";
+    readonly EnableWebSearch: "enable_web_search";
+    readonly EnableSupportScheduleContext: "enable_support_schedule_context";
+    readonly EnableLeadBlocking: "enable_lead_blocking";
+    readonly EnableAiResponse: "enable_ai_response";
+    readonly CancelPendingResponseOnProjectOperatorMessage: "cancel_pending_response_on_project_operator_message";
+    readonly CancelPendingResponseOnAutomationMessage: "cancel_pending_response_on_automation_message";
+    readonly AutomationEventPolicy: "automation_event_policy";
+    readonly EnableUserMessage: "enable_user_message";
+    readonly EnableStreaming: "enable_streaming";
+    readonly DisableLinkPreview: "disable_link_preview";
+    readonly ReplyToSource: "reply_to_source";
+    readonly EnableTyping: "enable_typing";
+    readonly WidgetAiProgressMode: "widget_ai_progress_mode";
+    readonly WidgetQueueMessages: "widget_queue_messages";
+    readonly WidgetShowScheduledActions: "widget_show_scheduled_actions";
+    readonly EnablePreliminaryResponse: "enable_preliminary_response";
+    readonly RespondOnSegmentSubscription: "respond_on_segment_subscription";
+    readonly EnableMessageReactionsContext: "enable_message_reactions_context";
+    readonly EnableSelectiveResponse: "enable_selective_response";
+    readonly EnableOperatorReplySuggestions: "enable_operator_reply_suggestions";
+    readonly EnableScheduling: "enable_scheduling";
+    readonly EnableSkipMetrics: "enable_skip_metrics";
+    readonly EnableMuteDialog: "enable_mute_dialog";
+    readonly EnableDetachFromDialog: "enable_detach_from_dialog";
+    readonly VariableBindings: "variable_bindings";
+    readonly VariablesAccessMode: "variables_access_mode";
+    readonly SegmentAccessPolicy: "segment_access_policy";
+    readonly FunnelAccessPolicy: "funnel_access_policy";
+    readonly RecipientMessagingPolicy: "recipient_messaging_policy";
+    readonly AgentAssignmentPolicy: "agent_assignment_policy";
+    readonly OperatorHandoffPolicy: "operator_handoff_policy";
+    readonly McpServerIds: "mcp_server_ids";
+    readonly KnowledgeBaseSources: "knowledge_base_sources";
+    readonly EnabledMetricIds: "enabled_metric_ids";
+};
+export type AgentDraftSettingsResponseDtoConflictFieldsEnum = typeof AgentDraftSettingsResponseDtoConflictFieldsEnum[keyof typeof AgentDraftSettingsResponseDtoConflictFieldsEnum];
 /**
  * @export
  */
@@ -608,8 +726,8 @@ export type AgentDraftSettingsResponseDtoStatusEnum = typeof AgentDraftSettingsR
  */
 export declare const AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum: {
     readonly SafeProgress: "safe_progress";
+    readonly DetailedProgress: "detailed_progress";
     readonly Typing: "typing";
-    readonly Hidden: "hidden";
 };
 export type AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = typeof AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum[keyof typeof AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum];
 /**

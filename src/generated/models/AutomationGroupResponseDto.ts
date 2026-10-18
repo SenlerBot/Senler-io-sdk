@@ -28,6 +28,12 @@ import {
  */
 export interface AutomationGroupResponseDto {
     /**
+     * ID . ; .
+     * @type {string}
+     * @memberof AutomationGroupResponseDto
+     */
+    instanceId?: string;
+    /**
      * UUID .
      * @type {string}
      * @memberof AutomationGroupResponseDto
@@ -95,6 +101,7 @@ export function AutomationGroupResponseDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'instanceId': json['instance_id'] == null ? undefined : json['instance_id'],
         'groupId': json['group_id'],
         'title': json['title'],
         'description': json['description'],
@@ -116,6 +123,7 @@ export function AutomationGroupResponseDtoToJSONTyped(value?: AutomationGroupRes
 
     return {
 
+        'instance_id': value['instanceId'],
         'group_id': value['groupId'],
         'title': value['title'],
         'description': value['description'],

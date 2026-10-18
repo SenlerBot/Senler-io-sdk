@@ -16,6 +16,12 @@
  */
 export interface DeleteAutomationNodeDto {
     /**
+     * instance_id .
+     * @type {string}
+     * @memberof DeleteAutomationNodeDto
+     */
+    expectedInstanceId: string;
+    /**
      * .
      * @type {number}
      * @memberof DeleteAutomationNodeDto

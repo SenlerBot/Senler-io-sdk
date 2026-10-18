@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
+import {
+    OperatorHandoffPolicyDtoFromJSON,
+    OperatorHandoffPolicyDtoFromJSONTyped,
+    OperatorHandoffPolicyDtoToJSON,
+    OperatorHandoffPolicyDtoToJSONTyped,
+} from './OperatorHandoffPolicyDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import {
     AgentAssignmentPolicyDtoFromJSON,
@@ -40,6 +47,12 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     enableButtons?: boolean;
+    /**
+     * . . .
+     * @type {number}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    maxToolIterations?: number;
     /**
      *
      * @type {boolean}
@@ -143,7 +156,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     enableLeadBlocking?: boolean;
     /**
-     * . false , ; metrics_collection_enabled=true. true enable_user_message=false. AI- .
+     * . false , ; metrics_collection_enabled=true. , true enable_user_message=false. enable_preliminary_response. AI- .
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -167,7 +180,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     automationEventPolicy?: AgentAutomationEventPolicyDto;
     /**
-     * . false AGENT_ACTION ; enable_ai_response=true. AI- .
+     * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -185,11 +198,35 @@ export interface UpdateAgentCapabilitiesDto {
      */
     disableLinkPreview?: boolean;
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    replyToSource?: boolean;
+    /**
+     * , . : , Telegram, MAX, Discord .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    enableTyping?: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof UpdateAgentCapabilitiesDto
      */
     widgetAiProgressMode?: UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    widgetQueueMessages?: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    widgetShowScheduledActions?: boolean;
     /**
      * . true send_preliminary_response tool
      * @type {boolean}
@@ -197,7 +234,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * ,
+     * , , enable_ai_response=true. enable_user_message, enable_preliminary_response.
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -256,6 +293,12 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     agentAssignmentPolicy?: AgentAssignmentPolicyDto;
+    /**
+     *
+     * @type {OperatorHandoffPolicyDto}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    operatorHandoffPolicy?: OperatorHandoffPolicyDto;
 }
 
 
@@ -264,8 +307,8 @@ export interface UpdateAgentCapabilitiesDto {
  */
 export const UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
-    Typing: 'typing',
-    Hidden: 'hidden'
+    DetailedProgress: 'detailed_progress',
+    Typing: 'typing'
 } as const;
 export type UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum = typeof UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum[keyof typeof UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum];
 
@@ -288,6 +331,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
     return {
 
         'enableButtons': json['enable_buttons'] == null ? undefined : json['enable_buttons'],
+        'maxToolIterations': json['max_tool_iterations'] == null ? undefined : json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'] == null ? undefined : json['enable_widget_page_actions'],
         'enableCustomAttachments': json['enable_custom_attachments'] == null ? undefined : json['enable_custom_attachments'],
         'enableImageGeneration': json['enable_image_generation'] == null ? undefined : json['enable_image_generation'],
@@ -312,7 +356,11 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
+        'replyToSource': json['reply_to_source'] == null ? undefined : json['reply_to_source'],
+        'enableTyping': json['enable_typing'] == null ? undefined : json['enable_typing'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'] == null ? undefined : json['widget_ai_progress_mode'],
+        'widgetQueueMessages': json['widget_queue_messages'] == null ? undefined : json['widget_queue_messages'],
+        'widgetShowScheduledActions': json['widget_show_scheduled_actions'] == null ? undefined : json['widget_show_scheduled_actions'],
         'enablePreliminaryResponse': json['enable_preliminary_response'] == null ? undefined : json['enable_preliminary_response'],
         'respondOnSegmentSubscription': json['respond_on_segment_subscription'] == null ? undefined : json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'] == null ? undefined : json['enable_message_reactions_context'],
@@ -324,6 +372,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'enableDetachFromDialog': json['enable_detach_from_dialog'] == null ? undefined : json['enable_detach_from_dialog'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'] == null ? undefined : json['recipient_messaging_policy'],
         'agentAssignmentPolicy': json['agent_assignment_policy'] == null ? undefined : AgentAssignmentPolicyDtoFromJSON(json['agent_assignment_policy']),
+        'operatorHandoffPolicy': json['operator_handoff_policy'] == null ? undefined : OperatorHandoffPolicyDtoFromJSON(json['operator_handoff_policy']),
     };
 }
 
@@ -339,6 +388,7 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
     return {
 
         'enable_buttons': value['enableButtons'],
+        'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],
         'enable_custom_attachments': value['enableCustomAttachments'],
         'enable_image_generation': value['enableImageGeneration'],
@@ -363,7 +413,11 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
+        'reply_to_source': value['replyToSource'],
+        'enable_typing': value['enableTyping'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
+        'widget_queue_messages': value['widgetQueueMessages'],
+        'widget_show_scheduled_actions': value['widgetShowScheduledActions'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
@@ -375,5 +429,6 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'enable_detach_from_dialog': value['enableDetachFromDialog'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'agent_assignment_policy': AgentAssignmentPolicyDtoToJSON(value['agentAssignmentPolicy']),
+        'operator_handoff_policy': OperatorHandoffPolicyDtoToJSON(value['operatorHandoffPolicy']),
     };
 }

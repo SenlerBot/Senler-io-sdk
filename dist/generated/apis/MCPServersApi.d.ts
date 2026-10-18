@@ -10,10 +10,11 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateMcpServerListDto, CreateServerBodyDto, CreateServerResponseDto, CustomMcpOAuthStatusResponseDto, ExportServersResponseDto, GetServerResponseDto, ImportServersResponseDto, ImportServersUserDto, McpServerListResponseDto, McpServerListsResponseDto, McpServerProjectCredentialStatusResponseDto, PaginatedKnowledgeBaseSearchResponseDto, PaginatedServersResponseDto, StartCustomMcpOAuthDto, StartCustomMcpOAuthResponseDto, UpdateMcpServerListDto, UpdateServerBodyDto, UpdateServerResponseDto, UpsertProjectCredentialDto } from '../models/index';
+import type { CreateMcpServerListUserDto, CreateServerBodyDto, CreateServerResponseDto, CustomMcpOAuthStatusResponseDto, ExportServersResponseDto, GetServerResponseDto, ImportServersResponseDto, ImportServersUserDto, McpServerListResponseDto, McpServerListsResponseDto, McpServerProjectCredentialStatusResponseDto, PaginatedKnowledgeBaseSearchResponseDto, PaginatedServersResponseDto, StartCustomMcpOAuthDto, StartCustomMcpOAuthResponseDto, UpdateMcpServerListDto, UpdateServerBodyDto, UpdateServerResponseDto, UpsertProjectCredentialDto } from '../models/index';
 export interface CustomOauthStartRequest {
     projectId: string;
     id: string;
+    authorization: string;
     startCustomMcpOAuthDto: StartCustomMcpOAuthDto;
     acceptLanguage?: CustomOauthStartAcceptLanguageEnum;
 }
@@ -73,7 +74,7 @@ export interface GetProjectCredentialStatusRequest {
 }
 export interface ListsRequest {
     projectId: string;
-    createMcpServerListDto: CreateMcpServerListDto;
+    createMcpServerListUserDto: CreateMcpServerListUserDto;
     acceptLanguage?: ListsAcceptLanguageEnum;
 }
 export interface ListsServersRequest {
@@ -124,6 +125,7 @@ export interface ProjectCredentialManualRequest {
 export interface ProjectCredentialOauthStartRequest {
     projectId: string;
     id: string;
+    authorization: string;
     startCustomMcpOAuthDto: StartCustomMcpOAuthDto;
     acceptLanguage?: ProjectCredentialOauthStartAcceptLanguageEnum;
 }

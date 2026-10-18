@@ -21,10 +21,10 @@ import { mapValues } from '../runtime';
 export interface SupportDirectoryOperatorDto {
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof SupportDirectoryOperatorDto
      */
-    groupId: string | null;
+    groupIds: Array<string>;
     /**
      * ID
      * @type {string}
@@ -69,10 +69,10 @@ export interface SupportDirectoryOperatorDto {
     isActive: boolean;
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof SupportDirectoryOperatorDto
      */
-    effectiveGroupId: string | null;
+    effectiveGroupIds: Array<string>;
     /**
      *
      * @type {boolean}
@@ -85,7 +85,7 @@ export interface SupportDirectoryOperatorDto {
  * Check if a given object implements the SupportDirectoryOperatorDto interface.
  */
 export function instanceOfSupportDirectoryOperatorDto(value: object): value is SupportDirectoryOperatorDto {
-    if (!('groupId' in value) || value['groupId'] === undefined) return false;
+    if (!('groupIds' in value) || value['groupIds'] === undefined) return false;
     if (!('projectMemberId' in value) || value['projectMemberId'] === undefined) return false;
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('email' in value) || value['email'] === undefined) return false;
@@ -93,7 +93,7 @@ export function instanceOfSupportDirectoryOperatorDto(value: object): value is S
     if (!('lastName' in value) || value['lastName'] === undefined) return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
-    if (!('effectiveGroupId' in value) || value['effectiveGroupId'] === undefined) return false;
+    if (!('effectiveGroupIds' in value) || value['effectiveGroupIds'] === undefined) return false;
     if (!('onShift' in value) || value['onShift'] === undefined) return false;
     return true;
 }
@@ -108,7 +108,7 @@ export function SupportDirectoryOperatorDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
-        'groupId': json['group_id'],
+        'groupIds': json['group_ids'],
         'projectMemberId': json['project_member_id'],
         'userId': json['user_id'],
         'email': json['email'],
@@ -116,7 +116,7 @@ export function SupportDirectoryOperatorDtoFromJSONTyped(json: any, ignoreDiscri
         'lastName': json['last_name'],
         'avatarUrl': json['avatar_url'],
         'isActive': json['is_active'],
-        'effectiveGroupId': json['effective_group_id'],
+        'effectiveGroupIds': json['effective_group_ids'],
         'onShift': json['on_shift'],
     };
 }
@@ -132,7 +132,7 @@ export function SupportDirectoryOperatorDtoToJSONTyped(value?: SupportDirectoryO
 
     return {
 
-        'group_id': value['groupId'],
+        'group_ids': value['groupIds'],
         'project_member_id': value['projectMemberId'],
         'user_id': value['userId'],
         'email': value['email'],
@@ -140,7 +140,7 @@ export function SupportDirectoryOperatorDtoToJSONTyped(value?: SupportDirectoryO
         'last_name': value['lastName'],
         'avatar_url': value['avatarUrl'],
         'is_active': value['isActive'],
-        'effective_group_id': value['effectiveGroupId'],
+        'effective_group_ids': value['effectiveGroupIds'],
         'on_shift': value['onShift'],
     };
 }

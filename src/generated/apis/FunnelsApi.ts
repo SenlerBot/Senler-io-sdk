@@ -156,17 +156,17 @@ export interface FunnelsStatisticsRequest {
     acceptLanguage?: FunnelsStatisticsAcceptLanguageEnum;
 }
 
-export interface FunnelsUpdateFunnelsRequest {
-    projectId: string;
-    id: string;
-    updateFunnelDto: UpdateFunnelDto;
-    acceptLanguage?: FunnelsUpdateFunnelsAcceptLanguageEnum;
-}
-
 export interface GetFunnelAppElementsRequest {
     funnelId: string;
     projectId: string;
     acceptLanguage?: GetFunnelAppElementsAcceptLanguageEnum;
+}
+
+export interface GetFunnelAppElements2Request {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    acceptLanguage?: GetFunnelAppElements2AcceptLanguageEnum;
 }
 
 export interface GetFunnelAppElementsAvailableRequest {
@@ -261,6 +261,13 @@ export interface UpdateFunnelAppElementsConfigurationRequest {
     acceptLanguage?: UpdateFunnelAppElementsConfigurationAcceptLanguageEnum;
 }
 
+export interface UpdateFunnelsRequest {
+    projectId: string;
+    id: string;
+    updateFunnelDto: UpdateFunnelDto;
+    acceptLanguage?: UpdateFunnelsAcceptLanguageEnum;
+}
+
 /**
  *
  */
@@ -312,6 +319,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
@@ -385,6 +397,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
@@ -467,6 +484,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
@@ -537,6 +559,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
@@ -644,6 +671,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
@@ -707,6 +739,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
@@ -782,6 +819,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
 
@@ -853,6 +895,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -928,6 +975,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -948,79 +1000,6 @@ export class FunnelsApi extends runtime.BaseAPI {
      */
     async funnelsStatistics(requestParameters: FunnelsStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelStatisticsResponseDto> {
         const response = await this.funnelsStatisticsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . .
-     *
-     */
-    async funnelsUpdateFunnelsRaw(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling funnelsUpdateFunnels().'
-            );
-        }
-
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling funnelsUpdateFunnels().'
-            );
-        }
-
-        if (requestParameters['updateFunnelDto'] == null) {
-            throw new runtime.RequiredError(
-                'updateFunnelDto',
-                'Required parameter "updateFunnelDto" was null or undefined when calling funnelsUpdateFunnels().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
-        }
-
-        const response = await this.request({
-            path: `/api/funnels/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UpdateFunnelDtoToJSON(requestParameters['updateFunnelDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . .
-     *
-     */
-    async funnelsUpdateFunnels(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
-        const response = await this.funnelsUpdateFunnelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1065,6 +1044,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1084,6 +1068,81 @@ export class FunnelsApi extends runtime.BaseAPI {
      */
     async getFunnelAppElements(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementsResponseDto> {
         const response = await this.getFunnelAppElementsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getFunnelAppElements2Raw(requestParameters: GetFunnelAppElements2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>> {
+        if (requestParameters['funnelId'] == null) {
+            throw new runtime.RequiredError(
+                'funnelId',
+                'Required parameter "funnelId" was null or undefined when calling getFunnelAppElements2().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getFunnelAppElements2().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFunnelAppElements2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/funnel-app-elements/{funnelId}/{id}`.replace(`{${"funnelId"}}`, encodeURIComponent(String(requestParameters['funnelId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelAppElementResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getFunnelAppElements2(requestParameters: GetFunnelAppElements2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto> {
+        const response = await this.getFunnelAppElements2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1119,6 +1178,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
@@ -1225,6 +1289,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1329,6 +1398,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1383,6 +1457,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1446,6 +1525,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1523,6 +1607,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
@@ -1577,6 +1666,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1687,6 +1781,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1766,6 +1865,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1843,6 +1947,11 @@ export class FunnelsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
@@ -1925,6 +2034,11 @@ export class FunnelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
 
@@ -1945,6 +2059,84 @@ export class FunnelsApi extends runtime.BaseAPI {
      */
     async updateFunnelAppElementsConfiguration(requestParameters: UpdateFunnelAppElementsConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto> {
         const response = await this.updateFunnelAppElementsConfigurationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async updateFunnelsRaw(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateFunnels().'
+            );
+        }
+
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateFunnels().'
+            );
+        }
+
+        if (requestParameters['updateFunnelDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateFunnelDto',
+                'Required parameter "updateFunnelDto" was null or undefined when calling updateFunnels().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+
+        const response = await this.request({
+            path: `/api/funnels/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateFunnelDtoToJSON(requestParameters['updateFunnelDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FunnelResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async updateFunnels(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto> {
+        const response = await this.updateFunnelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2034,19 +2226,19 @@ export type FunnelsStatisticsAcceptLanguageEnum = typeof FunnelsStatisticsAccept
 /**
  * @export
  */
-export const FunnelsUpdateFunnelsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type FunnelsUpdateFunnelsAcceptLanguageEnum = typeof FunnelsUpdateFunnelsAcceptLanguageEnum[keyof typeof FunnelsUpdateFunnelsAcceptLanguageEnum];
-/**
- * @export
- */
 export const GetFunnelAppElementsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type GetFunnelAppElementsAcceptLanguageEnum = typeof GetFunnelAppElementsAcceptLanguageEnum[keyof typeof GetFunnelAppElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFunnelAppElements2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFunnelAppElements2AcceptLanguageEnum = typeof GetFunnelAppElements2AcceptLanguageEnum[keyof typeof GetFunnelAppElements2AcceptLanguageEnum];
 /**
  * @export
  */
@@ -2177,3 +2369,11 @@ export const UpdateFunnelAppElementsConfigurationAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateFunnelAppElementsConfigurationAcceptLanguageEnum = typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum[keyof typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateFunnelsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateFunnelsAcceptLanguageEnum = typeof UpdateFunnelsAcceptLanguageEnum[keyof typeof UpdateFunnelsAcceptLanguageEnum];

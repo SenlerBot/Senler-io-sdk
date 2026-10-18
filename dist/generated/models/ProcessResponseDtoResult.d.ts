@@ -14,6 +14,7 @@ import type { ChannelSpacesRefreshProcessResultDto } from './ChannelSpacesRefres
 import type { ChannelWebhooksRefreshProcessResultDto } from './ChannelWebhooksRefreshProcessResultDto';
 import type { ChannelsTreeRefreshProcessResultDto } from './ChannelsTreeRefreshProcessResultDto';
 import type { DeliverySendProcessResultDto } from './DeliverySendProcessResultDto';
+import type { DialogBulkProcessResultDto } from './DialogBulkProcessResultDto';
 import type { ExportProcessResultDto } from './ExportProcessResultDto';
 import type { ImportProcessResultDto } from './ImportProcessResultDto';
 import type { LeadsRefreshProcessResultDto } from './LeadsRefreshProcessResultDto';
@@ -24,7 +25,7 @@ import type { ResourcePackageImportProcessResultDto } from './ResourcePackageImp
  *
  * @export
  */
-export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | LeadsSegmentOperationProcessResultDto | ResourcePackageImportProcessResultDto;
+export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | DialogBulkProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | LeadsSegmentOperationProcessResultDto | ResourcePackageImportProcessResultDto;
 export declare function ProcessResponseDtoResultFromJSON(json: any): ProcessResponseDtoResult;
 export declare function ProcessResponseDtoResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProcessResponseDtoResult;
 export declare function ProcessResponseDtoResultToJSON(json: any): any;

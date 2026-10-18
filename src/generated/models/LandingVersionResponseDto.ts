@@ -13,13 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingBlockResponseDto } from './LandingBlockResponseDto';
+import type { LandingVersionResponseDtoBlocksInner } from './LandingVersionResponseDtoBlocksInner';
 import {
-    LandingBlockResponseDtoFromJSON,
-    LandingBlockResponseDtoFromJSONTyped,
-    LandingBlockResponseDtoToJSON,
-    LandingBlockResponseDtoToJSONTyped,
-} from './LandingBlockResponseDto';
+    LandingVersionResponseDtoBlocksInnerFromJSON,
+    LandingVersionResponseDtoBlocksInnerFromJSONTyped,
+    LandingVersionResponseDtoBlocksInnerToJSON,
+    LandingVersionResponseDtoBlocksInnerToJSONTyped,
+} from './LandingVersionResponseDtoBlocksInner';
+import type { LandingPublicationWarningDto } from './LandingPublicationWarningDto';
+import {
+    LandingPublicationWarningDtoFromJSON,
+    LandingPublicationWarningDtoFromJSONTyped,
+    LandingPublicationWarningDtoToJSON,
+    LandingPublicationWarningDtoToJSONTyped,
+} from './LandingPublicationWarningDto';
 import type { LandingSettingsDto } from './LandingSettingsDto';
 import {
     LandingSettingsDtoFromJSON,
@@ -96,10 +103,16 @@ export interface LandingVersionResponseDto {
     deleteAfter: Date | null;
     /**
      *
-     * @type {Array<LandingBlockResponseDto>}
+     * @type {Array<LandingVersionResponseDtoBlocksInner>}
      * @memberof LandingVersionResponseDto
      */
-    blocks: Array<LandingBlockResponseDto>;
+    blocks: Array<LandingVersionResponseDtoBlocksInner>;
+    /**
+     * . ; block_id .
+     * @type {Array<LandingPublicationWarningDto>}
+     * @memberof LandingVersionResponseDto
+     */
+    warnings: Array<LandingPublicationWarningDto>;
 }
 
 
@@ -140,6 +153,7 @@ export function instanceOfLandingVersionResponseDto(value: object): value is Lan
     if (!('publishedAt' in value) || value['publishedAt'] === undefined) return false;
     if (!('deleteAfter' in value) || value['deleteAfter'] === undefined) return false;
     if (!('blocks' in value) || value['blocks'] === undefined) return false;
+    if (!('warnings' in value) || value['warnings'] === undefined) return false;
     return true;
 }
 
@@ -163,7 +177,8 @@ export function LandingVersionResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'settingsRevision': json['settings_revision'],
         'publishedAt': (json['published_at'] == null ? null : new Date(json['published_at'])),
         'deleteAfter': (json['delete_after'] == null ? null : new Date(json['delete_after'])),
-        'blocks': ((json['blocks'] as Array<any>).map(LandingBlockResponseDtoFromJSON)),
+        'blocks': ((json['blocks'] as Array<any>).map(LandingVersionResponseDtoBlocksInnerFromJSON)),
+        'warnings': ((json['warnings'] as Array<any>).map(LandingPublicationWarningDtoFromJSON)),
     };
 }
 
@@ -188,6 +203,7 @@ export function LandingVersionResponseDtoToJSONTyped(value?: LandingVersionRespo
         'settings_revision': value['settingsRevision'],
         'published_at': (value['publishedAt'] == null ? null : (value['publishedAt'] as any).toISOString()),
         'delete_after': (value['deleteAfter'] == null ? null : (value['deleteAfter'] as any).toISOString()),
-        'blocks': ((value['blocks'] as Array<any>).map(LandingBlockResponseDtoToJSON)),
+        'blocks': ((value['blocks'] as Array<any>).map(LandingVersionResponseDtoBlocksInnerToJSON)),
+        'warnings': ((value['warnings'] as Array<any>).map(LandingPublicationWarningDtoToJSON)),
     };
 }

@@ -58,6 +58,12 @@ export interface ProjectTariffItemDto {
      */
     mailingMessagesPerDay: number;
     /**
+     * API-
+     * @type {number}
+     * @memberof ProjectTariffItemDto
+     */
+    apiRequestsPerDay: number;
+    /**
      *
      * @type {number}
      * @memberof ProjectTariffItemDto

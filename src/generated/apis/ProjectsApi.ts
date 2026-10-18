@@ -20,6 +20,7 @@ import type {
   GetProjectsListDataDto,
   ProjectDetailsResponseDto,
   SetDialogSlaEnabledDto,
+  SuccessResponseDto,
   UpdateDialogSlaPriorityThresholdDto,
   UpdateDialogSlaSettingsDto,
   UpdateProjectDto,
@@ -36,6 +37,8 @@ import {
     ProjectDetailsResponseDtoToJSON,
     SetDialogSlaEnabledDtoFromJSON,
     SetDialogSlaEnabledDtoToJSON,
+    SuccessResponseDtoFromJSON,
+    SuccessResponseDtoToJSON,
     UpdateDialogSlaPriorityThresholdDtoFromJSON,
     UpdateDialogSlaPriorityThresholdDtoToJSON,
     UpdateDialogSlaSettingsDtoFromJSON,
@@ -45,6 +48,16 @@ import {
     UpdateProjectResponseDtoFromJSON,
     UpdateProjectResponseDtoToJSON,
 } from '../models/index';
+
+export interface DeactivateRequest {
+    projectId: string;
+    acceptLanguage?: DeactivateAcceptLanguageEnum;
+}
+
+export interface GetByIdRequest {
+    projectId: string;
+    acceptLanguage?: GetByIdAcceptLanguageEnum;
+}
 
 export interface GetDialogSlaSettingsRequest {
     projectId: string;
@@ -95,6 +108,94 @@ export interface UpdateDialogSlaSettingsPrioritiesRequest {
 export class ProjectsApi extends runtime.BaseAPI {
 
     /**
+     * is_active = false ( ). .
+     *
+     */
+    async deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling deactivate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * is_active = false ( ). .
+     *
+     */
+    async deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
+        const response = await this.deactivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectDetailsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getById().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/projects/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectDetailsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectDetailsResponseDto> {
+        const response = await this.getByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * SLA . SLA .
      * SLA-
      */
@@ -122,6 +223,11 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -226,7 +332,7 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
 
         const response = await this.request({
@@ -285,6 +391,11 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
@@ -349,6 +460,11 @@ export class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
         }
 
@@ -409,6 +525,11 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
@@ -480,6 +601,11 @@ export class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
         }
 
@@ -505,6 +631,22 @@ export class ProjectsApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const DeactivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeactivateAcceptLanguageEnum = typeof DeactivateAcceptLanguageEnum[keyof typeof DeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetByIdAcceptLanguageEnum = typeof GetByIdAcceptLanguageEnum[keyof typeof GetByIdAcceptLanguageEnum];
 /**
  * @export
  */

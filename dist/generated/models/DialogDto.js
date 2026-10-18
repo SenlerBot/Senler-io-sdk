@@ -164,6 +164,7 @@ function DialogDtoFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'isTest': json['is_test'],
+        'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
         'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],

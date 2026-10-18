@@ -16,6 +16,12 @@
  */
 export interface GetAppCoverUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAppCoverUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- . : image/png, image/jpeg, image/webp.
      * @type {string}
      * @memberof GetAppCoverUploadUrlDto

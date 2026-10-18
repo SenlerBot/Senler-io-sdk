@@ -20,6 +20,13 @@ import {
     AutomationHttpResultSummaryDtoToJSON,
     AutomationHttpResultSummaryDtoToJSONTyped,
 } from './AutomationHttpResultSummaryDto';
+import type { AutomationTaskIncidentDto } from './AutomationTaskIncidentDto';
+import {
+    AutomationTaskIncidentDtoFromJSON,
+    AutomationTaskIncidentDtoFromJSONTyped,
+    AutomationTaskIncidentDtoToJSON,
+    AutomationTaskIncidentDtoToJSONTyped,
+} from './AutomationTaskIncidentDto';
 
 /**
  * AutomationTaskResponseDto.
@@ -27,6 +34,12 @@ import {
  * @interface AutomationTaskResponseDto
  */
 export interface AutomationTaskResponseDto {
+    /**
+     *
+     * @type {AutomationTaskIncidentDto}
+     * @memberof AutomationTaskResponseDto
+     */
+    incident?: AutomationTaskIncidentDto;
     /**
      * HTTP- , .
      * @type {AutomationHttpResultSummaryDto}
@@ -148,7 +161,8 @@ export const AutomationTaskResponseDtoWaitKindEnum = {
     Timer: 'timer',
     Button: 'button',
     Reply: 'reply',
-    Interaction: 'interaction'
+    Interaction: 'interaction',
+    AppCallback: 'app_callback'
 } as const;
 export type AutomationTaskResponseDtoWaitKindEnum = typeof AutomationTaskResponseDtoWaitKindEnum[keyof typeof AutomationTaskResponseDtoWaitKindEnum];
 
@@ -184,6 +198,7 @@ export function AutomationTaskResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
 
+        'incident': json['incident'] == null ? undefined : AutomationTaskIncidentDtoFromJSON(json['incident']),
         'httpResult': json['http_result'] == null ? undefined : AutomationHttpResultSummaryDtoFromJSON(json['http_result']),
         'id': json['id'],
         'nodeId': json['node_id'],
@@ -214,6 +229,7 @@ export function AutomationTaskResponseDtoToJSONTyped(value?: AutomationTaskRespo
 
     return {
 
+        'incident': AutomationTaskIncidentDtoToJSON(value['incident']),
         'http_result': AutomationHttpResultSummaryDtoToJSON(value['httpResult']),
         'id': value['id'],
         'node_id': value['nodeId'],

@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AiResponseActivityDtoPhaseEnum = void 0;
+exports.AiResponseActivityDtoDetailKeyEnum = exports.AiResponseActivityDtoPhaseEnum = void 0;
 exports.instanceOfAiResponseActivityDto = instanceOfAiResponseActivityDto;
 exports.AiResponseActivityDtoFromJSON = AiResponseActivityDtoFromJSON;
 exports.AiResponseActivityDtoFromJSONTyped = AiResponseActivityDtoFromJSONTyped;
@@ -34,6 +34,20 @@ exports.AiResponseActivityDtoPhaseEnum = {
     PreparingAttachment: 'preparing_attachment',
     ActingOnPage: 'acting_on_page',
     Finalizing: 'finalizing'
+};
+/**
+ * @export
+ */
+exports.AiResponseActivityDtoDetailKeyEnum = {
+    Image: 'image',
+    Audio: 'audio',
+    Chart: 'chart',
+    QrCode: 'qr_code',
+    ImportAttachment: 'import_attachment',
+    AttachResult: 'attach_result',
+    ReadAttachment: 'read_attachment',
+    PageAction: 'page_action',
+    MessageButtons: 'message_buttons'
 };
 /**
  * Check if a given object implements the AiResponseActivityDto interface.
@@ -65,6 +79,8 @@ function AiResponseActivityDtoFromJSONTyped(json, ignoreDiscriminator) {
         'startedAt': (new Date(json['started_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'streaming': json['streaming'] == null ? undefined : json['streaming'],
+        'detailKey': json['detail_key'] == null ? undefined : json['detail_key'],
+        'detail': json['detail'] == null ? undefined : json['detail'],
     };
 }
 function AiResponseActivityDtoToJSON(json) {
@@ -81,5 +97,7 @@ function AiResponseActivityDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'started_at': ((value['startedAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'streaming': value['streaming'],
+        'detail_key': value['detailKey'],
+        'detail': value['detail'],
     };
 }

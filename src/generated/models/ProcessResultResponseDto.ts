@@ -58,8 +58,10 @@ export interface ProcessResultResponseDto {
  * @export
  */
 export const ProcessResultResponseDtoTypeEnum = {
+    DialogsBulkOperation: 'dialogs_bulk_operation',
     LeadsExport: 'leads_export',
     LeadsImport: 'leads_import',
+    LeadsImportSenler: 'leads_import_senler',
     LeadsRefresh: 'leads_refresh',
     LeadsSegmentOperation: 'leads_segment_operation',
     ChannelMigration: 'channel_migration',

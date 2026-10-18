@@ -46,8 +46,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetByVariableSearchArrayNotEmptyAcceptLanguageEnum = exports.GetByVariableSearchArrayNotEmptyOrderEnum = exports.GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthEqualsOrderEnum = exports.GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthAtMostOrderEnum = exports.GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthAtLeastOrderEnum = exports.GetByVariableSearchArrayEmptyAcceptLanguageEnum = exports.GetByVariableSearchArrayEmptyOrderEnum = exports.GetByVariableCountExistsAcceptLanguageEnum = exports.GetByVariableCountEqualsStringAcceptLanguageEnum = exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = exports.GetByVariableCountEqualsNullAcceptLanguageEnum = exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = exports.GetByVariableCountArrayNotEmptyAcceptLanguageEnum = exports.GetByVariableCountArrayLengthEqualsAcceptLanguageEnum = exports.GetByVariableCountArrayLengthAtMostAcceptLanguageEnum = exports.GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum = exports.GetByVariableCountArrayEmptyAcceptLanguageEnum = exports.ExportByDeliveryAcceptLanguageEnum = exports.ByVariableSearchExistsAcceptLanguageEnum = exports.ByVariableSearchEqualsStringAcceptLanguageEnum = exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = exports.ByVariableSearchEqualsNullAcceptLanguageEnum = exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAnyAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAllAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAcceptLanguageEnum = exports.ByVariableExportExistsAcceptLanguageEnum = exports.ByVariableExportEqualsStringAcceptLanguageEnum = exports.ByVariableExportEqualsNumberAcceptLanguageEnum = exports.ByVariableExportEqualsNullAcceptLanguageEnum = exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = exports.ByVariableExportArrayNotEmptyAcceptLanguageEnum = exports.ByVariableExportArrayLengthEqualsAcceptLanguageEnum = exports.ByVariableExportArrayLengthAtMostAcceptLanguageEnum = exports.ByVariableExportArrayLengthAtLeastAcceptLanguageEnum = exports.ByVariableExportArrayEmptyAcceptLanguageEnum = exports.ByVariableExportArrayContainsAnyAcceptLanguageEnum = exports.ByVariableExportArrayContainsAllAcceptLanguageEnum = exports.ByVariableExportArrayContainsAcceptLanguageEnum = exports.ByVariableCountArrayContainsAnyAcceptLanguageEnum = exports.ByVariableCountArrayContainsAllAcceptLanguageEnum = exports.ByVariableCountArrayContainsAcceptLanguageEnum = exports.AutomationOperationAcceptLanguageEnum = exports.AgentOperationAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
-exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.GetSubscriptionUtmTreeAcceptLanguageEnum = exports.GetSubscriptionUtmTreeChannelTypeEnum = exports.GetConsentAcceptancesAcceptLanguageEnum = void 0;
+exports.GetByVariableSearchArrayNotEmptyOrderEnum = exports.GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthEqualsOrderEnum = exports.GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthAtMostOrderEnum = exports.GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthAtLeastOrderEnum = exports.GetByVariableSearchArrayEmptyAcceptLanguageEnum = exports.GetByVariableSearchArrayEmptyOrderEnum = exports.GetByVariableCountExistsAcceptLanguageEnum = exports.GetByVariableCountEqualsStringAcceptLanguageEnum = exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = exports.GetByVariableCountEqualsNullAcceptLanguageEnum = exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = exports.GetByVariableCountArrayNotEmptyAcceptLanguageEnum = exports.GetByVariableCountArrayLengthEqualsAcceptLanguageEnum = exports.GetByVariableCountArrayLengthAtMostAcceptLanguageEnum = exports.GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum = exports.GetByVariableCountArrayEmptyAcceptLanguageEnum = exports.ExportByDeliveryAcceptLanguageEnum = exports.DeleteSegmentsAcceptLanguageEnum = exports.ByVariableSearchExistsAcceptLanguageEnum = exports.ByVariableSearchEqualsStringAcceptLanguageEnum = exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = exports.ByVariableSearchEqualsNullAcceptLanguageEnum = exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAnyAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAllAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAcceptLanguageEnum = exports.ByVariableExportExistsAcceptLanguageEnum = exports.ByVariableExportEqualsStringAcceptLanguageEnum = exports.ByVariableExportEqualsNumberAcceptLanguageEnum = exports.ByVariableExportEqualsNullAcceptLanguageEnum = exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = exports.ByVariableExportArrayNotEmptyAcceptLanguageEnum = exports.ByVariableExportArrayLengthEqualsAcceptLanguageEnum = exports.ByVariableExportArrayLengthAtMostAcceptLanguageEnum = exports.ByVariableExportArrayLengthAtLeastAcceptLanguageEnum = exports.ByVariableExportArrayEmptyAcceptLanguageEnum = exports.ByVariableExportArrayContainsAnyAcceptLanguageEnum = exports.ByVariableExportArrayContainsAllAcceptLanguageEnum = exports.ByVariableExportArrayContainsAcceptLanguageEnum = exports.ByVariableCountArrayContainsAnyAcceptLanguageEnum = exports.ByVariableCountArrayContainsAllAcceptLanguageEnum = exports.ByVariableCountArrayContainsAcceptLanguageEnum = exports.AutomationOperationAcceptLanguageEnum = exports.AgentOperationAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
+exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.UpdateBirthdayAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.GetSubscriptionUtmTreeAcceptLanguageEnum = exports.GetSubscriptionUtmTreeChannelTypeEnum = exports.GetConsentAcceptancesAcceptLanguageEnum = exports.GetByVariableSearchArrayNotEmptyAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -74,6 +74,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -119,6 +123,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -158,6 +166,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -203,6 +215,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -242,6 +258,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -287,6 +307,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -326,6 +350,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -371,6 +399,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -410,6 +442,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -455,6 +491,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -494,6 +534,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -539,6 +583,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -578,6 +626,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -623,6 +675,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -662,6 +718,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -707,6 +767,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -746,6 +810,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -791,6 +859,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -830,6 +902,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -875,6 +951,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -914,6 +994,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -959,6 +1043,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -998,6 +1086,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1043,6 +1135,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1082,6 +1178,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1127,6 +1227,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1166,6 +1270,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1211,6 +1319,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1228,6 +1340,53 @@ class LeadsApi extends runtime.BaseAPI {
      */
     async byVariableSearchExists(requestParameters, initOverrides) {
         const response = await this.byVariableSearchExistsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async deleteSegmentsRaw(requestParameters, initOverrides) {
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling deleteSegments().');
+        }
+        if (requestParameters['segmentId'] == null) {
+            throw new runtime.RequiredError('segmentId', 'Required parameter "segmentId" was null or undefined when calling deleteSegments().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/{leadId}/segments/{segmentId}`.replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))).replace(`{${"segmentId"}}`, encodeURIComponent(String(requestParameters['segmentId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async deleteSegments(requestParameters, initOverrides) {
+        const response = await this.deleteSegmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1250,6 +1409,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1306,6 +1469,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1370,6 +1537,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1428,6 +1599,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1492,6 +1667,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1544,6 +1723,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1608,6 +1791,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1660,6 +1847,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1724,6 +1915,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1785,6 +1980,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1837,6 +2036,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1907,6 +2110,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1986,6 +2193,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -2059,6 +2270,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2138,6 +2353,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -2208,6 +2427,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -2245,6 +2468,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2315,6 +2542,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -2352,6 +2583,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2393,6 +2628,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2438,6 +2677,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -2477,6 +2720,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2522,6 +2769,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -2564,6 +2815,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -2581,6 +2836,102 @@ class LeadsApi extends runtime.BaseAPI {
      */
     async segmentOperation(requestParameters, initOverrides) {
         const response = await this.segmentOperationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async segmentsRaw(requestParameters, initOverrides) {
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling segments().');
+        }
+        if (requestParameters['segmentId'] == null) {
+            throw new runtime.RequiredError('segmentId', 'Required parameter "segmentId" was null or undefined when calling segments().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/{leadId}/segments/{segmentId}`.replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))).replace(`{${"segmentId"}}`, encodeURIComponent(String(requestParameters['segmentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async segments(requestParameters, initOverrides) {
+        const response = await this.segmentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . manual ( null ) . channel . , ; .
+     *
+     */
+    async updateBirthdayRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateBirthday().');
+        }
+        if (requestParameters['updateLeadBirthdayDto'] == null) {
+            throw new runtime.RequiredError('updateLeadBirthdayDto', 'Required parameter "updateLeadBirthdayDto" was null or undefined when calling updateBirthday().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/{id}/birthday`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateLeadBirthdayDtoToJSON)(requestParameters['updateLeadBirthdayDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . manual ( null ) . channel . , ; .
+     *
+     */
+    async updateBirthday(requestParameters, initOverrides) {
+        const response = await this.updateBirthdayRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -2606,6 +2957,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2654,6 +3009,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -2699,6 +3058,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -2719,7 +3082,7 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
+     * .  ** :** - **VK** - users.get (, , , screen_name, ) - **Telegram** - getChat/getFile (, ) - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     async updateSyncProfileRaw(requestParameters, initOverrides) {
@@ -2744,6 +3107,10 @@ class LeadsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
         }
         const response = await this.request({
@@ -2756,7 +3123,7 @@ class LeadsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SyncLeadProfileResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
+     * .  ** :** - **VK** - users.get (, , , screen_name, ) - **Telegram** - getChat/getFile (, ) - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     async updateSyncProfile(requestParameters, initOverrides) {
@@ -2783,6 +3150,10 @@ class LeadsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -3006,6 +3377,13 @@ exports.ByVariableSearchExistsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.DeleteSegmentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.ExportByDeliveryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -3221,6 +3599,20 @@ exports.SearchByDeliveryAcceptLanguageEnum = {
  * @export
  */
 exports.SegmentOperationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SegmentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateBirthdayAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -10,7 +10,11 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CentrifugoSubscriptionDto, ExportDownloadResponseDto, ListProcessesResponseDto, ProcessResponseDto, ProcessResultResponseDto, SuccessMessageDto } from '../models/index';
+import type { CentrifugoSubscriptionDto, CreateSenlerImportProcessDto, ExportDownloadResponseDto, ListProcessesResponseDto, ProcessResponseDto, ProcessResultResponseDto, SenlerImportStatusDto, SuccessMessageDto } from '../models/index';
+export interface GetImportSenlerLeadsRequest {
+    channelId: string;
+    acceptLanguage?: GetImportSenlerLeadsAcceptLanguageEnum;
+}
 export interface GetRealtimeTokenRequest {
     projectId: string;
     acceptLanguage?: GetRealtimeTokenAcceptLanguageEnum;
@@ -18,6 +22,10 @@ export interface GetRealtimeTokenRequest {
 export interface GetResultRequest {
     id: string;
     acceptLanguage?: GetResultAcceptLanguageEnum;
+}
+export interface ImportSenlerLeadsRequest {
+    createSenlerImportProcessDto: CreateSenlerImportProcessDto;
+    acceptLanguage?: ImportSenlerLeadsAcceptLanguageEnum;
 }
 export interface ProcessesDeactivateRequest {
     id: string;
@@ -46,12 +54,20 @@ export interface ProcessesListRequest {
  */
 export declare class ProcessesApi extends runtime.BaseAPI {
     /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     * Senler.ru
+     */
+    getImportSenlerLeadsRaw(requestParameters: GetImportSenlerLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SenlerImportStatusDto>>;
+    /**
+     * Senler.ru
+     */
+    getImportSenlerLeads(requestParameters: GetImportSenlerLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SenlerImportStatusDto>;
+    /**
+     * processes_access:project:{projectId}. subscription_token getData: async () => ({ authorization: subscription_token }).  ** :** - process_created - process_updated , - process_deleted
      *
      */
     getRealtimeTokenRaw(requestParameters: GetRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
     /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     * processes_access:project:{projectId}. subscription_token getData: async () => ({ authorization: subscription_token }).  ** :** - process_created - process_updated , - process_deleted
      *
      */
     getRealtimeToken(requestParameters: GetRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
@@ -65,6 +81,16 @@ export declare class ProcessesApi extends runtime.BaseAPI {
      *
      */
     getResult(requestParameters: GetResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResultResponseDto>;
+    /**
+     * leads_import_senler VK, Telegram MAX . . .
+     * Senler.ru
+     */
+    importSenlerLeadsRaw(requestParameters: ImportSenlerLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * leads_import_senler VK, Telegram MAX . . .
+     * Senler.ru
+     */
+    importSenlerLeads(requestParameters: ImportSenlerLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
      * pending/preparing/processing completed/failed/cancelled
      *
@@ -109,6 +135,14 @@ export declare class ProcessesApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export declare const GetImportSenlerLeadsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetImportSenlerLeadsAcceptLanguageEnum = typeof GetImportSenlerLeadsAcceptLanguageEnum[keyof typeof GetImportSenlerLeadsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetRealtimeTokenAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -122,6 +156,14 @@ export declare const GetResultAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetResultAcceptLanguageEnum = typeof GetResultAcceptLanguageEnum[keyof typeof GetResultAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportSenlerLeadsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportSenlerLeadsAcceptLanguageEnum = typeof ImportSenlerLeadsAcceptLanguageEnum[keyof typeof ImportSenlerLeadsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -150,8 +192,10 @@ export type ProcessesGetDownloadAcceptLanguageEnum = typeof ProcessesGetDownload
  * @export
  */
 export declare const ProcessesListTypeEnum: {
+    readonly DialogsBulkOperation: "dialogs_bulk_operation";
     readonly LeadsExport: "leads_export";
     readonly LeadsImport: "leads_import";
+    readonly LeadsImportSenler: "leads_import_senler";
     readonly LeadsRefresh: "leads_refresh";
     readonly LeadsSegmentOperation: "leads_segment_operation";
     readonly ChannelMigration: "channel_migration";

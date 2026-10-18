@@ -42,6 +42,7 @@ function SubscriptionRenewalDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'period': json['period'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
     };
@@ -54,6 +55,7 @@ function SubscriptionRenewalDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'promo_application_id': value['promoApplicationId'],
         'period': value['period'],
         'use_balance': value['useBalance'],
     };

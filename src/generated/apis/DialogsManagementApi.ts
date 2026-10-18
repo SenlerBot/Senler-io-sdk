@@ -17,6 +17,7 @@ import * as runtime from '../runtime';
 import type {
   AssignAgentToDialogDto,
   CloseDialogDto,
+  CreateDialogBulkOperationDto,
   DeleteMessageResponseDto,
   DialogAiBillingRecoveryBulkRetryResponseDto,
   DialogAiBillingRecoveryEventStatusDto,
@@ -24,6 +25,7 @@ import type {
   DialogAiBillingRecoverySummaryDto,
   DialogAiResponseRecoveryRetryDto,
   DialogAiResponseRecoveryStatusDto,
+  DialogBulkPreviewDto,
   DialogDto,
   DialogParticipantsResponseDto,
   DialogSupportChangeDto,
@@ -31,6 +33,7 @@ import type {
   EditMessageResponseDto,
   ErrorResponse,
   HandoffDialogDto,
+  ProcessResponseDto,
   RetryDialogAiBillingRecoveryDto,
   SetAutoAssignDisabledDto,
   SetDialogPriorityDto,
@@ -44,6 +47,8 @@ import {
     AssignAgentToDialogDtoToJSON,
     CloseDialogDtoFromJSON,
     CloseDialogDtoToJSON,
+    CreateDialogBulkOperationDtoFromJSON,
+    CreateDialogBulkOperationDtoToJSON,
     DeleteMessageResponseDtoFromJSON,
     DeleteMessageResponseDtoToJSON,
     DialogAiBillingRecoveryBulkRetryResponseDtoFromJSON,
@@ -58,6 +63,8 @@ import {
     DialogAiResponseRecoveryRetryDtoToJSON,
     DialogAiResponseRecoveryStatusDtoFromJSON,
     DialogAiResponseRecoveryStatusDtoToJSON,
+    DialogBulkPreviewDtoFromJSON,
+    DialogBulkPreviewDtoToJSON,
     DialogDtoFromJSON,
     DialogDtoToJSON,
     DialogParticipantsResponseDtoFromJSON,
@@ -72,6 +79,8 @@ import {
     ErrorResponseToJSON,
     HandoffDialogDtoFromJSON,
     HandoffDialogDtoToJSON,
+    ProcessResponseDtoFromJSON,
+    ProcessResponseDtoToJSON,
     RetryDialogAiBillingRecoveryDtoFromJSON,
     RetryDialogAiBillingRecoveryDtoToJSON,
     SetAutoAssignDisabledDtoFromJSON,
@@ -87,6 +96,16 @@ import {
     TransferDialogOperatorDtoFromJSON,
     TransferDialogOperatorDtoToJSON,
 } from '../models/index';
+
+export interface BulkRequest {
+    createDialogBulkOperationDto: CreateDialogBulkOperationDto;
+    acceptLanguage?: BulkAcceptLanguageEnum;
+}
+
+export interface BulkCancelRequest {
+    id: string;
+    acceptLanguage?: BulkCancelAcceptLanguageEnum;
+}
 
 export interface DeleteAgentRequest {
     id: string;
@@ -115,6 +134,57 @@ export interface EventsBillingRecoveryRetryRequest {
     dialogId: string;
     eventId: string;
     acceptLanguage?: EventsBillingRecoveryRetryAcceptLanguageEnum;
+}
+
+export interface GetBulkRequest {
+    id: string;
+    acceptLanguage?: GetBulkAcceptLanguageEnum;
+}
+
+export interface GetBulkPreviewRequest {
+    projectId: string;
+    action: GetBulkPreviewActionEnum;
+    scope: GetBulkPreviewScopeEnum;
+    operatorUserIds?: Array<string>;
+    supportGroupId?: Array<string>;
+    supportGroupAssignment?: GetBulkPreviewSupportGroupAssignmentEnum;
+    snoozeStatus?: GetBulkPreviewSnoozeStatusEnum;
+    q?: string;
+    from?: number;
+    size?: number;
+    before?: string;
+    limit?: number;
+    sortBy?: GetBulkPreviewSortByEnum;
+    channelId?: Array<string>;
+    agentId?: Array<string>;
+    testAgentId?: string;
+    testAutomationId?: string;
+    testAutomationTriggerNodeId?: string;
+    testAutomationTriggerSessionId?: string;
+    leadId?: Array<string>;
+    dialogIds?: Array<string>;
+    selectionRef?: string;
+    status?: GetBulkPreviewStatusEnum;
+    operatorResponseStatus?: GetBulkPreviewOperatorResponseStatusEnum;
+    leadResponseStatus?: GetBulkPreviewLeadResponseStatusEnum;
+    operatorAssignment?: GetBulkPreviewOperatorAssignmentEnum;
+    operatorUserId?: string;
+    dialogType?: GetBulkPreviewDialogTypeEnum;
+    externalDialogId?: string;
+    spaceId?: Array<string>;
+    spaceIds?: Array<string>;
+    hasChannel?: boolean;
+    hasLead?: boolean;
+    hasEvents?: boolean;
+    hasMessageNotes?: boolean;
+    isTest?: boolean;
+    autoAssignDisabled?: boolean;
+    muteStatus?: GetBulkPreviewMuteStatusEnum;
+    spamStatus?: GetBulkPreviewSpamStatusEnum;
+    tags?: Array<string>;
+    startedAfter?: string;
+    startedBefore?: string;
+    acceptLanguage?: GetBulkPreviewAcceptLanguageEnum;
 }
 
 export interface GetEventsAiResponseRecoveryRequest {
@@ -263,6 +333,97 @@ export interface UpdateUnarchiveRequest {
 export class DialogsManagementApi extends runtime.BaseAPI {
 
     /**
+     * . ; .
+     *
+     */
+    async bulkRaw(requestParameters: BulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['createDialogBulkOperationDto'] == null) {
+            throw new runtime.RequiredError(
+                'createDialogBulkOperationDto',
+                'Required parameter "createDialogBulkOperationDto" was null or undefined when calling bulk().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/bulk`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDialogBulkOperationDtoToJSON(requestParameters['createDialogBulkOperationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async bulk(requestParameters: BulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.bulkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async bulkCancelRaw(requestParameters: BulkCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling bulkCancel().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/bulk/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async bulkCancel(requestParameters: BulkCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.bulkCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -303,6 +464,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -326,7 +492,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo  ** :** HTTP 202 , . GET /api/events/{eventId}: message_interactions.platform_delete.state pending ( ), succeeded ( ), failed ( error/reason) not_required ( ). . , DELETE.
      *
      */
     async deleteEventsRaw(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteMessageResponseDto>> {
@@ -362,6 +528,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -376,7 +547,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo  ** :** HTTP 202 , . GET /api/events/{eventId}: message_interactions.platform_delete.state pending ( ), succeeded ( ), failed ( error/reason) not_required ( ). . , DELETE.
      *
      */
     async deleteEvents(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteMessageResponseDto> {
@@ -412,6 +583,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -473,6 +649,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -532,6 +713,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -551,6 +737,276 @@ export class DialogsManagementApi extends runtime.BaseAPI {
      */
     async eventsBillingRecoveryRetry(requestParameters: EventsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryRetryResponseDto> {
         const response = await this.eventsBillingRecoveryRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getBulkRaw(requestParameters: GetBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getBulk().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/bulk/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getBulk(requestParameters: GetBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.getBulkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getBulkPreviewRaw(requestParameters: GetBulkPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogBulkPreviewDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getBulkPreview().'
+            );
+        }
+
+        if (requestParameters['action'] == null) {
+            throw new runtime.RequiredError(
+                'action',
+                'Required parameter "action" was null or undefined when calling getBulkPreview().'
+            );
+        }
+
+        if (requestParameters['scope'] == null) {
+            throw new runtime.RequiredError(
+                'scope',
+                'Required parameter "scope" was null or undefined when calling getBulkPreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['operatorUserIds'] != null) {
+            queryParameters['operator_user_ids'] = requestParameters['operatorUserIds'];
+        }
+
+        if (requestParameters['supportGroupId'] != null) {
+            queryParameters['support_group_id'] = requestParameters['supportGroupId'];
+        }
+
+        if (requestParameters['supportGroupAssignment'] != null) {
+            queryParameters['support_group_assignment'] = requestParameters['supportGroupAssignment'];
+        }
+
+        if (requestParameters['snoozeStatus'] != null) {
+            queryParameters['snooze_status'] = requestParameters['snoozeStatus'];
+        }
+
+        if (requestParameters['q'] != null) {
+            queryParameters['q'] = requestParameters['q'];
+        }
+
+        if (requestParameters['from'] != null) {
+            queryParameters['from'] = requestParameters['from'];
+        }
+
+        if (requestParameters['size'] != null) {
+            queryParameters['size'] = requestParameters['size'];
+        }
+
+        if (requestParameters['before'] != null) {
+            queryParameters['before'] = requestParameters['before'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['sortBy'] != null) {
+            queryParameters['sort_by'] = requestParameters['sortBy'];
+        }
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['agentId'] != null) {
+            queryParameters['agent_id'] = requestParameters['agentId'];
+        }
+
+        if (requestParameters['testAgentId'] != null) {
+            queryParameters['test_agent_id'] = requestParameters['testAgentId'];
+        }
+
+        if (requestParameters['testAutomationId'] != null) {
+            queryParameters['test_automation_id'] = requestParameters['testAutomationId'];
+        }
+
+        if (requestParameters['testAutomationTriggerNodeId'] != null) {
+            queryParameters['test_automation_trigger_node_id'] = requestParameters['testAutomationTriggerNodeId'];
+        }
+
+        if (requestParameters['testAutomationTriggerSessionId'] != null) {
+            queryParameters['test_automation_trigger_session_id'] = requestParameters['testAutomationTriggerSessionId'];
+        }
+
+        if (requestParameters['leadId'] != null) {
+            queryParameters['lead_id'] = requestParameters['leadId'];
+        }
+
+        if (requestParameters['dialogIds'] != null) {
+            queryParameters['dialog_ids'] = requestParameters['dialogIds'];
+        }
+
+        if (requestParameters['selectionRef'] != null) {
+            queryParameters['selection_ref'] = requestParameters['selectionRef'];
+        }
+
+        if (requestParameters['status'] != null) {
+            queryParameters['status'] = requestParameters['status'];
+        }
+
+        if (requestParameters['operatorResponseStatus'] != null) {
+            queryParameters['operator_response_status'] = requestParameters['operatorResponseStatus'];
+        }
+
+        if (requestParameters['leadResponseStatus'] != null) {
+            queryParameters['lead_response_status'] = requestParameters['leadResponseStatus'];
+        }
+
+        if (requestParameters['operatorAssignment'] != null) {
+            queryParameters['operator_assignment'] = requestParameters['operatorAssignment'];
+        }
+
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
+        }
+
+        if (requestParameters['dialogType'] != null) {
+            queryParameters['dialog_type'] = requestParameters['dialogType'];
+        }
+
+        if (requestParameters['externalDialogId'] != null) {
+            queryParameters['external_dialog_id'] = requestParameters['externalDialogId'];
+        }
+
+        if (requestParameters['spaceId'] != null) {
+            queryParameters['space_id'] = requestParameters['spaceId'];
+        }
+
+        if (requestParameters['spaceIds'] != null) {
+            queryParameters['space_ids'] = requestParameters['spaceIds'];
+        }
+
+        if (requestParameters['hasChannel'] != null) {
+            queryParameters['has_channel'] = requestParameters['hasChannel'];
+        }
+
+        if (requestParameters['hasLead'] != null) {
+            queryParameters['has_lead'] = requestParameters['hasLead'];
+        }
+
+        if (requestParameters['hasEvents'] != null) {
+            queryParameters['has_events'] = requestParameters['hasEvents'];
+        }
+
+        if (requestParameters['hasMessageNotes'] != null) {
+            queryParameters['has_message_notes'] = requestParameters['hasMessageNotes'];
+        }
+
+        if (requestParameters['isTest'] != null) {
+            queryParameters['is_test'] = requestParameters['isTest'];
+        }
+
+        if (requestParameters['autoAssignDisabled'] != null) {
+            queryParameters['auto_assign_disabled'] = requestParameters['autoAssignDisabled'];
+        }
+
+        if (requestParameters['muteStatus'] != null) {
+            queryParameters['mute_status'] = requestParameters['muteStatus'];
+        }
+
+        if (requestParameters['spamStatus'] != null) {
+            queryParameters['spam_status'] = requestParameters['spamStatus'];
+        }
+
+        if (requestParameters['tags'] != null) {
+            queryParameters['tags'] = requestParameters['tags'];
+        }
+
+        if (requestParameters['startedAfter'] != null) {
+            queryParameters['started_after'] = requestParameters['startedAfter'];
+        }
+
+        if (requestParameters['startedBefore'] != null) {
+            queryParameters['started_before'] = requestParameters['startedBefore'];
+        }
+
+        if (requestParameters['action'] != null) {
+            queryParameters['action'] = requestParameters['action'];
+        }
+
+        if (requestParameters['scope'] != null) {
+            queryParameters['scope'] = requestParameters['scope'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/bulk/preview`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogBulkPreviewDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getBulkPreview(requestParameters: GetBulkPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogBulkPreviewDto> {
+        const response = await this.getBulkPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -589,6 +1045,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -650,6 +1111,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -700,6 +1166,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -754,6 +1225,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -804,6 +1280,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -858,6 +1339,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -908,6 +1394,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -969,6 +1460,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1033,6 +1529,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1095,6 +1596,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1146,6 +1652,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1207,6 +1718,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1271,6 +1787,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1295,7 +1816,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( ).
+     * . .
      *
      */
     async updateArchiveRaw(requestParameters: UpdateArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
@@ -1324,6 +1845,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1338,7 +1864,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * ( ).
+     * . .
      *
      */
     async updateArchive(requestParameters: UpdateArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
@@ -1383,6 +1909,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1454,6 +1985,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1514,6 +2050,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1566,6 +2107,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1616,6 +2162,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1677,6 +2228,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1727,6 +2283,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1788,6 +2349,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
@@ -1852,6 +2418,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1914,6 +2485,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1938,7 +2514,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . .
      *
      */
     async updateUnarchiveRaw(requestParameters: UpdateUnarchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>> {
@@ -1967,6 +2543,11 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
 
@@ -1981,7 +2562,7 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . .
      *
      */
     async updateUnarchive(requestParameters: UpdateUnarchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto> {
@@ -1991,6 +2572,22 @@ export class DialogsManagementApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const BulkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type BulkAcceptLanguageEnum = typeof BulkAcceptLanguageEnum[keyof typeof BulkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const BulkCancelAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type BulkCancelAcceptLanguageEnum = typeof BulkCancelAcceptLanguageEnum[keyof typeof BulkCancelAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2039,6 +2636,129 @@ export const EventsBillingRecoveryRetryAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type EventsBillingRecoveryRetryAcceptLanguageEnum = typeof EventsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof EventsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetBulkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetBulkAcceptLanguageEnum = typeof GetBulkAcceptLanguageEnum[keyof typeof GetBulkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewActionEnum = {
+    MarkRead: 'mark_read',
+    AssignAgent: 'assign_agent',
+    RemoveAgent: 'remove_agent',
+    StartAutomation: 'start_automation',
+    StopAutomation: 'stop_automation',
+    Archive: 'archive',
+    Unarchive: 'unarchive'
+} as const;
+export type GetBulkPreviewActionEnum = typeof GetBulkPreviewActionEnum[keyof typeof GetBulkPreviewActionEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewScopeEnum = {
+    Filtered: 'filtered',
+    Project: 'project'
+} as const;
+export type GetBulkPreviewScopeEnum = typeof GetBulkPreviewScopeEnum[keyof typeof GetBulkPreviewScopeEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewSupportGroupAssignmentEnum = {
+    None: 'none'
+} as const;
+export type GetBulkPreviewSupportGroupAssignmentEnum = typeof GetBulkPreviewSupportGroupAssignmentEnum[keyof typeof GetBulkPreviewSupportGroupAssignmentEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewSnoozeStatusEnum = {
+    Active: 'active',
+    Snoozed: 'snoozed',
+    All: 'all'
+} as const;
+export type GetBulkPreviewSnoozeStatusEnum = typeof GetBulkPreviewSnoozeStatusEnum[keyof typeof GetBulkPreviewSnoozeStatusEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewSortByEnum = {
+    LastEvent: 'last_event',
+    LastMessage: 'last_message',
+    SupportQueue: 'support_queue'
+} as const;
+export type GetBulkPreviewSortByEnum = typeof GetBulkPreviewSortByEnum[keyof typeof GetBulkPreviewSortByEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewStatusEnum = {
+    Active: 'active',
+    Completed: 'completed',
+    Archived: 'archived'
+} as const;
+export type GetBulkPreviewStatusEnum = typeof GetBulkPreviewStatusEnum[keyof typeof GetBulkPreviewStatusEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewOperatorResponseStatusEnum = {
+    Answered: 'answered',
+    Unanswered: 'unanswered'
+} as const;
+export type GetBulkPreviewOperatorResponseStatusEnum = typeof GetBulkPreviewOperatorResponseStatusEnum[keyof typeof GetBulkPreviewOperatorResponseStatusEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewLeadResponseStatusEnum = {
+    Answered: 'answered',
+    Unanswered: 'unanswered',
+    NotApplicable: 'not_applicable'
+} as const;
+export type GetBulkPreviewLeadResponseStatusEnum = typeof GetBulkPreviewLeadResponseStatusEnum[keyof typeof GetBulkPreviewLeadResponseStatusEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewOperatorAssignmentEnum = {
+    Me: 'me',
+    None: 'none'
+} as const;
+export type GetBulkPreviewOperatorAssignmentEnum = typeof GetBulkPreviewOperatorAssignmentEnum[keyof typeof GetBulkPreviewOperatorAssignmentEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewDialogTypeEnum = {
+    PrivateChat: 'private_chat',
+    GroupChat: 'group_chat',
+    WallComments: 'wall_comments'
+} as const;
+export type GetBulkPreviewDialogTypeEnum = typeof GetBulkPreviewDialogTypeEnum[keyof typeof GetBulkPreviewDialogTypeEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewMuteStatusEnum = {
+    All: 'all',
+    Muted: 'muted',
+    NotMuted: 'not_muted'
+} as const;
+export type GetBulkPreviewMuteStatusEnum = typeof GetBulkPreviewMuteStatusEnum[keyof typeof GetBulkPreviewMuteStatusEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewSpamStatusEnum = {
+    All: 'all',
+    Spam: 'spam',
+    NotSpam: 'not_spam'
+} as const;
+export type GetBulkPreviewSpamStatusEnum = typeof GetBulkPreviewSpamStatusEnum[keyof typeof GetBulkPreviewSpamStatusEnum];
+/**
+ * @export
+ */
+export const GetBulkPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetBulkPreviewAcceptLanguageEnum = typeof GetBulkPreviewAcceptLanguageEnum[keyof typeof GetBulkPreviewAcceptLanguageEnum];
 /**
  * @export
  */

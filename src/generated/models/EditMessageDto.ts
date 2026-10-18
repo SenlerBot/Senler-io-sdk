@@ -20,12 +20,29 @@ import { mapValues } from '../runtime';
  */
 export interface EditMessageDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof EditMessageDto
+     */
+    contentFormat?: EditMessageDtoContentFormatEnum;
+    /**
      *
      * @type {string}
      * @memberof EditMessageDto
      */
     content: string;
 }
+
+
+/**
+ * @export
+ */
+export const EditMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+} as const;
+export type EditMessageDtoContentFormatEnum = typeof EditMessageDtoContentFormatEnum[keyof typeof EditMessageDtoContentFormatEnum];
+
 
 /**
  * Check if a given object implements the EditMessageDto interface.
@@ -45,6 +62,7 @@ export function EditMessageDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'content': json['content'],
     };
 }
@@ -60,6 +78,7 @@ export function EditMessageDtoToJSONTyped(value?: EditMessageDto | null, ignoreD
 
     return {
 
+        'content_format': value['contentFormat'],
         'content': value['content'],
     };
 }

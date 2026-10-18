@@ -13,6 +13,7 @@ import type { AutomationVersionInfoDto } from './AutomationVersionInfoDto';
 import type { AutomationEdgeResponseDto } from './AutomationEdgeResponseDto';
 import type { AutomationNodeResponseDto } from './AutomationNodeResponseDto';
 import type { AutomationDraftInfoDto } from './AutomationDraftInfoDto';
+import type { AutomationDraftOperationResponseDto } from './AutomationDraftOperationResponseDto';
 import type { AutomationResponseDto } from './AutomationResponseDto';
 import type { AutomationGroupResponseDto } from './AutomationGroupResponseDto';
 /**
@@ -21,6 +22,12 @@ import type { AutomationGroupResponseDto } from './AutomationGroupResponseDto';
  * @interface AutomationGraphResponseDto
  */
 export interface AutomationGraphResponseDto {
+    /**
+     * . .
+     * @type {AutomationDraftOperationResponseDto}
+     * @memberof AutomationGraphResponseDto
+     */
+    appliedOperation?: AutomationDraftOperationResponseDto;
     /**
      * .
      * @type {AutomationResponseDto}

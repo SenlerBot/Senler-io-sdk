@@ -13,16 +13,97 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentDraftSettingsResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsResponseDtoStatusEnum = exports.AgentDraftSettingsResponseDtoKindEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoAutostartModeEnum = exports.AgentDraftSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsResponseDtoAgentTypeEnum = void 0;
+exports.AgentDraftSettingsResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsResponseDtoStatusEnum = exports.AgentDraftSettingsResponseDtoKindEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoAutostartModeEnum = exports.AgentDraftSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsResponseDtoAgentTypeEnum = exports.AgentDraftSettingsResponseDtoConflictFieldsEnum = void 0;
 exports.instanceOfAgentDraftSettingsResponseDto = instanceOfAgentDraftSettingsResponseDto;
 exports.AgentDraftSettingsResponseDtoFromJSON = AgentDraftSettingsResponseDtoFromJSON;
 exports.AgentDraftSettingsResponseDtoFromJSONTyped = AgentDraftSettingsResponseDtoFromJSONTyped;
 exports.AgentDraftSettingsResponseDtoToJSON = AgentDraftSettingsResponseDtoToJSON;
 exports.AgentDraftSettingsResponseDtoToJSONTyped = AgentDraftSettingsResponseDtoToJSONTyped;
 const AgentSelectedModelSummaryDto_1 = require("./AgentSelectedModelSummaryDto");
+const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
 const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto");
+/**
+ * @export
+ */
+exports.AgentDraftSettingsResponseDtoConflictFieldsEnum = {
+    Name: 'name',
+    Instruction: 'instruction',
+    AvatarUrl: 'avatar_url',
+    AgentType: 'agent_type',
+    SelectedModelId: 'selected_model_id',
+    EventSummaryMode: 'event_summary_mode',
+    DialogSummaryMode: 'dialog_summary_mode',
+    Meta: 'meta',
+    Status: 'status',
+    ServerBindingMode: 'server_binding_mode',
+    McpServerListId: 'mcp_server_list_id',
+    KnowledgeBasePermissions: 'knowledge_base_permissions',
+    MetricsCollectionEnabled: 'metrics_collection_enabled',
+    MetricsModelId: 'metrics_model_id',
+    UseDefaultEventMetrics: 'use_default_event_metrics',
+    UseDefaultDiscussionMetrics: 'use_default_discussion_metrics',
+    TriggerKeywords: 'trigger_keywords',
+    AutostartMode: 'autostart_mode',
+    KeywordAssignmentRole: 'keyword_assignment_role',
+    KeywordDialogScope: 'keyword_dialog_scope',
+    KeywordChannelIds: 'keyword_channel_ids',
+    AutoAssignmentMode: 'auto_assignment_mode',
+    AutoAssignmentChannelIds: 'auto_assignment_channel_ids',
+    AutoAssignmentDialogScope: 'auto_assignment_dialog_scope',
+    AutoAssignmentRole: 'auto_assignment_role',
+    MaxToolIterations: 'max_tool_iterations',
+    EnableButtons: 'enable_buttons',
+    EnableWidgetPageActions: 'enable_widget_page_actions',
+    EnableCustomAttachments: 'enable_custom_attachments',
+    EnableImageGeneration: 'enable_image_generation',
+    ImageGenerationModelId: 'image_generation_model_id',
+    EnableAudioGeneration: 'enable_audio_generation',
+    AudioGenerationModelId: 'audio_generation_model_id',
+    EnableVoiceCloning: 'enable_voice_cloning',
+    VoiceCloningModelId: 'voice_cloning_model_id',
+    EnableSpeechRecognition: 'enable_speech_recognition',
+    SpeechRecognitionModelId: 'speech_recognition_model_id',
+    EnableImageRecognition: 'enable_image_recognition',
+    ImageRecognitionModelId: 'image_recognition_model_id',
+    EnableQrCode: 'enable_qr_code',
+    EnableChart: 'enable_chart',
+    EnableWebSearch: 'enable_web_search',
+    EnableSupportScheduleContext: 'enable_support_schedule_context',
+    EnableLeadBlocking: 'enable_lead_blocking',
+    EnableAiResponse: 'enable_ai_response',
+    CancelPendingResponseOnProjectOperatorMessage: 'cancel_pending_response_on_project_operator_message',
+    CancelPendingResponseOnAutomationMessage: 'cancel_pending_response_on_automation_message',
+    AutomationEventPolicy: 'automation_event_policy',
+    EnableUserMessage: 'enable_user_message',
+    EnableStreaming: 'enable_streaming',
+    DisableLinkPreview: 'disable_link_preview',
+    ReplyToSource: 'reply_to_source',
+    EnableTyping: 'enable_typing',
+    WidgetAiProgressMode: 'widget_ai_progress_mode',
+    WidgetQueueMessages: 'widget_queue_messages',
+    WidgetShowScheduledActions: 'widget_show_scheduled_actions',
+    EnablePreliminaryResponse: 'enable_preliminary_response',
+    RespondOnSegmentSubscription: 'respond_on_segment_subscription',
+    EnableMessageReactionsContext: 'enable_message_reactions_context',
+    EnableSelectiveResponse: 'enable_selective_response',
+    EnableOperatorReplySuggestions: 'enable_operator_reply_suggestions',
+    EnableScheduling: 'enable_scheduling',
+    EnableSkipMetrics: 'enable_skip_metrics',
+    EnableMuteDialog: 'enable_mute_dialog',
+    EnableDetachFromDialog: 'enable_detach_from_dialog',
+    VariableBindings: 'variable_bindings',
+    VariablesAccessMode: 'variables_access_mode',
+    SegmentAccessPolicy: 'segment_access_policy',
+    FunnelAccessPolicy: 'funnel_access_policy',
+    RecipientMessagingPolicy: 'recipient_messaging_policy',
+    AgentAssignmentPolicy: 'agent_assignment_policy',
+    OperatorHandoffPolicy: 'operator_handoff_policy',
+    McpServerIds: 'mcp_server_ids',
+    KnowledgeBaseSources: 'knowledge_base_sources',
+    EnabledMetricIds: 'enabled_metric_ids'
+};
 /**
  * @export
  */
@@ -134,8 +215,8 @@ exports.AgentDraftSettingsResponseDtoStatusEnum = {
  */
 exports.AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
-    Typing: 'typing',
-    Hidden: 'hidden'
+    DetailedProgress: 'detailed_progress',
+    Typing: 'typing'
 };
 /**
  * @export
@@ -185,6 +266,8 @@ function instanceOfAgentDraftSettingsResponseDto(value) {
         return false;
     if (!('enableButtons' in value) || value['enableButtons'] === undefined)
         return false;
+    if (!('maxToolIterations' in value) || value['maxToolIterations'] === undefined)
+        return false;
     if (!('enableWidgetPageActions' in value) || value['enableWidgetPageActions'] === undefined)
         return false;
     if (!('enableCustomAttachments' in value) || value['enableCustomAttachments'] === undefined)
@@ -223,7 +306,15 @@ function instanceOfAgentDraftSettingsResponseDto(value) {
         return false;
     if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined)
         return false;
+    if (!('replyToSource' in value) || value['replyToSource'] === undefined)
+        return false;
+    if (!('enableTyping' in value) || value['enableTyping'] === undefined)
+        return false;
     if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined)
+        return false;
+    if (!('widgetQueueMessages' in value) || value['widgetQueueMessages'] === undefined)
+        return false;
+    if (!('widgetShowScheduledActions' in value) || value['widgetShowScheduledActions'] === undefined)
         return false;
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined)
         return false;
@@ -254,6 +345,8 @@ function instanceOfAgentDraftSettingsResponseDto(value) {
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined)
         return false;
     if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined)
+        return false;
+    if (!('operatorHandoffPolicy' in value) || value['operatorHandoffPolicy'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -303,6 +396,7 @@ function AgentDraftSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'aiConfidenceScore': json['ai_confidence_score'] == null ? undefined : json['ai_confidence_score'],
         'status': json['status'],
         'enableButtons': json['enable_buttons'],
+        'maxToolIterations': json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'],
         'enableCustomAttachments': json['enable_custom_attachments'],
         'enableImageGeneration': json['enable_image_generation'],
@@ -327,7 +421,11 @@ function AgentDraftSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
+        'replyToSource': json['reply_to_source'],
+        'enableTyping': json['enable_typing'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
+        'widgetQueueMessages': json['widget_queue_messages'],
+        'widgetShowScheduledActions': json['widget_show_scheduled_actions'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'respondOnSegmentSubscription': json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
@@ -343,6 +441,7 @@ function AgentDraftSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'funnelAccessPolicy': json['funnel_access_policy'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'agentAssignmentPolicy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoFromJSON)(json['agent_assignment_policy']),
+        'operatorHandoffPolicy': (0, OperatorHandoffPolicyDto_1.OperatorHandoffPolicyDtoFromJSON)(json['operator_handoff_policy']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -389,6 +488,7 @@ function AgentDraftSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'ai_confidence_score': value['aiConfidenceScore'],
         'status': value['status'],
         'enable_buttons': value['enableButtons'],
+        'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],
         'enable_custom_attachments': value['enableCustomAttachments'],
         'enable_image_generation': value['enableImageGeneration'],
@@ -413,7 +513,11 @@ function AgentDraftSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
+        'reply_to_source': value['replyToSource'],
+        'enable_typing': value['enableTyping'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
+        'widget_queue_messages': value['widgetQueueMessages'],
+        'widget_show_scheduled_actions': value['widgetShowScheduledActions'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
@@ -429,6 +533,7 @@ function AgentDraftSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'funnel_access_policy': value['funnelAccessPolicy'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'agent_assignment_policy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoToJSON)(value['agentAssignmentPolicy']),
+        'operator_handoff_policy': (0, OperatorHandoffPolicyDto_1.OperatorHandoffPolicyDtoToJSON)(value['operatorHandoffPolicy']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

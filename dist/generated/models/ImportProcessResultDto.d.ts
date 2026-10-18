@@ -16,6 +16,12 @@
  */
 export interface ImportProcessResultDto {
     /**
+     *
+     * @type {number}
+     * @memberof ImportProcessResultDto
+     */
+    skipped?: number;
+    /**
      * ()
      * @type {number}
      * @memberof ImportProcessResultDto

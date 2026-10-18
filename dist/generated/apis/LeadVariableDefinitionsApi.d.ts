@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateLeadVariableDefinitionDto, Deactivate200Response, LeadVariableDefinitionListResponseDto, LeadVariableDefinitionResponseDto, UpdateLeadVariableDefinitionDto } from '../models/index';
+import type { CreateLeadVariableDefinitionDto, LeadVariableDefinitionListResponseDto, LeadVariableDefinitionResponseDto, ProjectVariablesDeactivate200Response, UpdateLeadVariableDefinitionDto } from '../models/index';
 export interface LeadVariableDefinitionsCreateRequest {
     projectId: string;
     createLeadVariableDefinitionDto: CreateLeadVariableDefinitionDto;
@@ -24,11 +24,13 @@ export interface LeadVariableDefinitionsDeactivateRequest {
 export interface LeadVariableDefinitionsGetByIdRequest {
     projectId: string;
     name: string;
+    appId?: string;
     acceptLanguage?: LeadVariableDefinitionsGetByIdAcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsGetByIdsRequest {
     projectId: string;
     ids: Array<string>;
+    appId?: string;
     acceptLanguage?: LeadVariableDefinitionsGetByIdsAcceptLanguageEnum;
 }
 export interface LeadVariableDefinitionsListRequest {
@@ -62,12 +64,12 @@ export declare class LeadVariableDefinitionsApi extends runtime.BaseAPI {
      *
      *
      */
-    leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
+    leadVariableDefinitionsDeactivateRaw(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariablesDeactivate200Response>>;
     /**
      *
      *
      */
-    leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
+    leadVariableDefinitionsDeactivate(requestParameters: LeadVariableDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariablesDeactivate200Response>;
     /**
      *
      *

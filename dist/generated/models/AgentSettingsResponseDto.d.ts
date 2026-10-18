@@ -14,6 +14,7 @@ import type { AgentStatus } from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
 import type { WizardStep } from './WizardStep';
+import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { McpServerResponseDto } from './McpServerResponseDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
@@ -262,6 +263,12 @@ export interface AgentSettingsResponseDto {
      */
     enableButtons: boolean;
     /**
+     * . . .
+     * @type {number}
+     * @memberof AgentSettingsResponseDto
+     */
+    maxToolIterations: number;
+    /**
      *
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
@@ -364,7 +371,7 @@ export interface AgentSettingsResponseDto {
      */
     enableLeadBlocking: boolean;
     /**
-     * . false , ; metrics_collection_enabled=true. true enable_user_message=false. AI- .
+     * . false , ; metrics_collection_enabled=true. , true enable_user_message=false. enable_preliminary_response. AI- .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -388,7 +395,7 @@ export interface AgentSettingsResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
-     * . false AGENT_ACTION ; enable_ai_response=true. AI- .
+     * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -406,11 +413,35 @@ export interface AgentSettingsResponseDto {
      */
     disableLinkPreview: boolean;
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    replyToSource: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    enableTyping: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof AgentSettingsResponseDto
      */
     widgetAiProgressMode: AgentSettingsResponseDtoWidgetAiProgressModeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    widgetQueueMessages: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    widgetShowScheduledActions: boolean;
     /**
      * (send_preliminary_response tool)
      * @type {boolean}
@@ -418,7 +449,7 @@ export interface AgentSettingsResponseDto {
      */
     enablePreliminaryResponse: boolean;
     /**
-     *
+     * , , enable_ai_response=true. enable_user_message, enable_preliminary_response.
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -509,6 +540,12 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     agentAssignmentPolicy: AgentAssignmentPolicyDto;
+    /**
+     *
+     * @type {OperatorHandoffPolicyDto}
+     * @memberof AgentSettingsResponseDto
+     */
+    operatorHandoffPolicy: OperatorHandoffPolicyDto;
     /**
      *
      * @type {Date}
@@ -625,8 +662,8 @@ export type AgentSettingsResponseDtoAutoAssignmentRoleEnum = typeof AgentSetting
  */
 export declare const AgentSettingsResponseDtoWidgetAiProgressModeEnum: {
     readonly SafeProgress: "safe_progress";
+    readonly DetailedProgress: "detailed_progress";
     readonly Typing: "typing";
-    readonly Hidden: "hidden";
 };
 export type AgentSettingsResponseDtoWidgetAiProgressModeEnum = typeof AgentSettingsResponseDtoWidgetAiProgressModeEnum[keyof typeof AgentSettingsResponseDtoWidgetAiProgressModeEnum];
 /**

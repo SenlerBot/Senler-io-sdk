@@ -71,7 +71,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),
@@ -121,7 +121,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhook-analytics/projects`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -166,7 +166,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhook-analytics/webhooks`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -199,7 +199,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -259,7 +259,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),
@@ -298,7 +298,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries/{taskId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))).replace(`{${"taskId"}}`, encodeURIComponent(String(requestParameters['taskId']))),
@@ -337,7 +337,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries/{taskId}/attempts`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))).replace(`{${"taskId"}}`, encodeURIComponent(String(requestParameters['taskId']))),
@@ -370,7 +370,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/health`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -406,7 +406,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/test-preview`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),
@@ -446,7 +446,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),
@@ -484,7 +484,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -525,7 +525,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries/bulk-resolve`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),
@@ -566,7 +566,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries/bulk-retry`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),
@@ -610,7 +610,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries/{taskId}/resolve`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))).replace(`{${"taskId"}}`, encodeURIComponent(String(requestParameters['taskId']))),
@@ -654,7 +654,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/deliveries/{taskId}/retry`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))).replace(`{${"taskId"}}`, encodeURIComponent(String(requestParameters['taskId']))),
@@ -691,7 +691,7 @@ class AppsWebhooksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_webhooks"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_webhooks"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/webhooks/{webhookId}/test`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"webhookId"}}`, encodeURIComponent(String(requestParameters['webhookId']))),

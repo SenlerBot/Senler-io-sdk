@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateMetricsConfigAcceptLanguageEnum = exports.GetMetricsConfigAcceptLanguageEnum = exports.MetricsConfigApi = void 0;
+exports.GetMetricsConfigAcceptLanguageEnum = exports.MetricsConfigApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -75,6 +75,10 @@ class MetricsConfigApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -93,64 +97,12 @@ class MetricsConfigApi extends runtime.BaseAPI {
         const response = await this.getMetricsConfigRaw(requestParameters, initOverrides);
         return await response.value();
     }
-    /**
-     * . .
-     *
-     */
-    async updateMetricsConfigRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling updateMetricsConfig().');
-        }
-        if (requestParameters['updateAgentMetricsConfigurationDto'] == null) {
-            throw new runtime.RequiredError('updateAgentMetricsConfigurationDto', 'Required parameter "updateAgentMetricsConfigurationDto" was null or undefined when calling updateMetricsConfig().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics-config`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.UpdateAgentMetricsConfigurationDtoToJSON)(requestParameters['updateAgentMetricsConfigurationDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentMetricsConfigurationDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . .
-     *
-     */
-    async updateMetricsConfig(requestParameters, initOverrides) {
-        const response = await this.updateMetricsConfigRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 }
 exports.MetricsConfigApi = MetricsConfigApi;
 /**
  * @export
  */
 exports.GetMetricsConfigAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateMetricsConfigAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

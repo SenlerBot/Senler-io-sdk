@@ -13,16 +13,24 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeadResponseDtoLeadTypeEnum = exports.LeadResponseDtoLeadSourceEnum = exports.LeadResponseDtoChannelTypeEnum = void 0;
+exports.LeadResponseDtoLeadTypeEnum = exports.LeadResponseDtoLeadSourceEnum = exports.LeadResponseDtoChannelTypeEnum = exports.LeadResponseDtoBirthdayModeEnum = void 0;
 exports.instanceOfLeadResponseDto = instanceOfLeadResponseDto;
 exports.LeadResponseDtoFromJSON = LeadResponseDtoFromJSON;
 exports.LeadResponseDtoFromJSONTyped = LeadResponseDtoFromJSONTyped;
 exports.LeadResponseDtoToJSON = LeadResponseDtoToJSON;
 exports.LeadResponseDtoToJSONTyped = LeadResponseDtoToJSONTyped;
 const LeadSpaceLinkResponseDto_1 = require("./LeadSpaceLinkResponseDto");
+const LeadBirthdayDateDto_1 = require("./LeadBirthdayDateDto");
 const LeadFunnelDto_1 = require("./LeadFunnelDto");
 const PendingSegmentResponseDto_1 = require("./PendingSegmentResponseDto");
 const SegmentMembershipResponseDto_1 = require("./SegmentMembershipResponseDto");
+/**
+ * @export
+ */
+exports.LeadResponseDtoBirthdayModeEnum = {
+    Channel: 'channel',
+    Manual: 'manual'
+};
 /**
  * @export
  */
@@ -61,6 +69,12 @@ exports.LeadResponseDtoLeadTypeEnum = {
  * Check if a given object implements the LeadResponseDto interface.
  */
 function instanceOfLeadResponseDto(value) {
+    if (!('birthday' in value) || value['birthday'] === undefined)
+        return false;
+    if (!('birthdayMode' in value) || value['birthdayMode'] === undefined)
+        return false;
+    if (!('birthdayChannel' in value) || value['birthdayChannel'] === undefined)
+        return false;
     if (!('funnels' in value) || value['funnels'] === undefined)
         return false;
     if (!('id' in value) || value['id'] === undefined)
@@ -105,6 +119,11 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'birthday': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoFromJSON)(json['birthday']),
+        'birthdayMode': json['birthday_mode'],
+        'birthdayChannel': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoFromJSON)(json['birthday_channel']),
+        'birthdayUpdatedAt': json['birthday_updated_at'] == null ? undefined : (new Date(json['birthday_updated_at'])),
+        'birthdayChannelUpdatedAt': json['birthday_channel_updated_at'] == null ? undefined : (new Date(json['birthday_channel_updated_at'])),
         'funnels': (json['funnels'].map(LeadFunnelDto_1.LeadFunnelDtoFromJSON)),
         'id': json['id'],
         'channelId': json['channel_id'],
@@ -144,6 +163,11 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'birthday': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoToJSON)(value['birthday']),
+        'birthday_mode': value['birthdayMode'],
+        'birthday_channel': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoToJSON)(value['birthdayChannel']),
+        'birthday_updated_at': value['birthdayUpdatedAt'] == null ? undefined : (value['birthdayUpdatedAt'].toISOString()),
+        'birthday_channel_updated_at': value['birthdayChannelUpdatedAt'] == null ? undefined : (value['birthdayChannelUpdatedAt'].toISOString()),
         'funnels': (value['funnels'].map(LeadFunnelDto_1.LeadFunnelDtoToJSON)),
         'id': value['id'],
         'channel_id': value['channelId'],

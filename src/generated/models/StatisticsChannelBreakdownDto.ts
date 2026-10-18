@@ -128,29 +128,29 @@ export interface StatisticsChannelBreakdownDto {
      */
     operatorAssignedDialogs: number;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */
-    averageFirstResponseTimeSeconds: number;
+    averageFirstResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */
-    averageFirstResponseRawTimeSeconds: number;
+    averageFirstResponseRawTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */
-    averageResponseTimeSeconds: number;
+    averageResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */
-    averageResponseRawTimeSeconds: number;
+    averageResponseRawTimeSeconds: number | null;
     /**
      * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}

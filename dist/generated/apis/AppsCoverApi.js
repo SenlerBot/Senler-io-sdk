@@ -72,7 +72,7 @@ class AppsCoverApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/cover/confirm`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -110,7 +110,7 @@ class AppsCoverApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/cover/from-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -148,7 +148,7 @@ class AppsCoverApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/cover/upload-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -182,7 +182,7 @@ class AppsCoverApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),

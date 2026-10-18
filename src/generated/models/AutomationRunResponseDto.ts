@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AutomationRunAttentionDto } from './AutomationRunAttentionDto';
+import {
+    AutomationRunAttentionDtoFromJSON,
+    AutomationRunAttentionDtoFromJSONTyped,
+    AutomationRunAttentionDtoToJSON,
+    AutomationRunAttentionDtoToJSONTyped,
+} from './AutomationRunAttentionDto';
 import type { AutomationRunDialogDto } from './AutomationRunDialogDto';
 import {
     AutomationRunDialogDtoFromJSON,
@@ -27,6 +34,12 @@ import {
  * @interface AutomationRunResponseDto
  */
 export interface AutomationRunResponseDto {
+    /**
+     * requires_attention.
+     * @type {AutomationRunAttentionDto}
+     * @memberof AutomationRunResponseDto
+     */
+    attention?: AutomationRunAttentionDto;
     /**
      * Mongo ID .
      * @type {string}
@@ -179,6 +192,7 @@ export function AutomationRunResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'attention': json['attention'] == null ? undefined : AutomationRunAttentionDtoFromJSON(json['attention']),
         'id': json['id'],
         'sourceEventId': json['source_event_id'],
         'initialVersionId': json['initial_version_id'],
@@ -210,6 +224,7 @@ export function AutomationRunResponseDtoToJSONTyped(value?: AutomationRunRespons
 
     return {
 
+        'attention': AutomationRunAttentionDtoToJSON(value['attention']),
         'id': value['id'],
         'source_event_id': value['sourceEventId'],
         'initial_version_id': value['initialVersionId'],

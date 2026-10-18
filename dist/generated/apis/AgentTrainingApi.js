@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrainingStartAcceptLanguageEnum = exports.TrainingSelectAcceptLanguageEnum = exports.TrainingPreviewAcceptLanguageEnum = exports.TrainingCancelAcceptLanguageEnum = exports.GetTrainingStatusAcceptLanguageEnum = exports.GetTrainingRealtimeTokenAcceptLanguageEnum = exports.AgentTrainingApi = void 0;
+exports.TrainingStartAcceptLanguageEnum = exports.TrainingPreviewAcceptLanguageEnum = exports.TrainingCancelAcceptLanguageEnum = exports.GetTrainingStatusAcceptLanguageEnum = exports.GetTrainingRealtimeTokenAcceptLanguageEnum = exports.DraftTrainingSelectAcceptLanguageEnum = exports.AgentTrainingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,56 @@ const index_1 = require("../models/index");
  */
 class AgentTrainingApi extends runtime.BaseAPI {
     /**
-     * JWT- Centrifugo .
+     * . . ; .
+     *
+     */
+    async draftTrainingSelectRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling draftTrainingSelect().');
+        }
+        if (requestParameters['selectVariantDto'] == null) {
+            throw new runtime.RequiredError('selectVariantDto', 'Required parameter "selectVariantDto" was null or undefined when calling draftTrainingSelect().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/training/select`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SelectVariantDtoToJSON)(requestParameters['selectVariantDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . ; .
+     *
+     */
+    async draftTrainingSelect(requestParameters, initOverrides) {
+        const response = await this.draftTrainingSelectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * agent_access . subscription_token getData: async () => ({ authorization: subscription_token }).
      * JWT-
      */
     async getTrainingRealtimeTokenRaw(requestParameters, initOverrides) {
@@ -75,6 +124,10 @@ class AgentTrainingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -86,7 +139,7 @@ class AgentTrainingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
     }
     /**
-     * JWT- Centrifugo .
+     * agent_access . subscription_token getData: async () => ({ authorization: subscription_token }).
      * JWT-
      */
     async getTrainingRealtimeToken(requestParameters, initOverrides) {
@@ -112,6 +165,10 @@ class AgentTrainingApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -152,6 +209,10 @@ class AgentTrainingApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -198,6 +259,10 @@ class AgentTrainingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
@@ -215,51 +280,6 @@ class AgentTrainingApi extends runtime.BaseAPI {
      */
     async trainingPreview(requestParameters, initOverrides) {
         const response = await this.trainingPreviewRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     *
-     *
-     */
-    async trainingSelectRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling trainingSelect().');
-        }
-        if (requestParameters['selectVariantDto'] == null) {
-            throw new runtime.RequiredError('selectVariantDto', 'Required parameter "selectVariantDto" was null or undefined when calling trainingSelect().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-        const response = await this.request({
-            path: `/api/agents/{id}/training/select`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SelectVariantDtoToJSON)(requestParameters['selectVariantDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     *
-     *
-     */
-    async trainingSelect(requestParameters, initOverrides) {
-        const response = await this.trainingSelectRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -288,6 +308,10 @@ class AgentTrainingApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
@@ -309,6 +333,13 @@ class AgentTrainingApi extends runtime.BaseAPI {
     }
 }
 exports.AgentTrainingApi = AgentTrainingApi;
+/**
+ * @export
+ */
+exports.DraftTrainingSelectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */
@@ -334,13 +365,6 @@ exports.TrainingCancelAcceptLanguageEnum = {
  * @export
  */
 exports.TrainingPreviewAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.TrainingSelectAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

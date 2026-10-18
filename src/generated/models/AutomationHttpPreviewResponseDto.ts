@@ -46,11 +46,11 @@ export interface AutomationHttpPreviewResponseDto {
      */
     attempts: number;
     /**
-     * error code.
+     * : invalid_request, dns_not_found, dns_unavailable, tls_certificate_invalid, destination_blocked, timeout, routing_unavailable, request_failed, capacity, rate_limit, http_status, delivery_unknown.
      * @type {string}
      * @memberof AutomationHttpPreviewResponseDto
      */
-    errorCode: string | null;
+    errorCode: AutomationHttpPreviewResponseDtoErrorCodeEnum | null;
     /**
      * error message.
      * @type {string}
@@ -83,6 +83,25 @@ export interface AutomationHttpPreviewResponseDto {
     sampleError: AutomationHttpPreviewResponseDtoSampleErrorEnum | null;
 }
 
+
+/**
+ * @export
+ */
+export const AutomationHttpPreviewResponseDtoErrorCodeEnum = {
+    InvalidRequest: 'invalid_request',
+    DnsNotFound: 'dns_not_found',
+    DnsUnavailable: 'dns_unavailable',
+    TlsCertificateInvalid: 'tls_certificate_invalid',
+    DestinationBlocked: 'destination_blocked',
+    Timeout: 'timeout',
+    RoutingUnavailable: 'routing_unavailable',
+    RequestFailed: 'request_failed',
+    Capacity: 'capacity',
+    RateLimit: 'rate_limit',
+    HttpStatus: 'http_status',
+    DeliveryUnknown: 'delivery_unknown'
+} as const;
+export type AutomationHttpPreviewResponseDtoErrorCodeEnum = typeof AutomationHttpPreviewResponseDtoErrorCodeEnum[keyof typeof AutomationHttpPreviewResponseDtoErrorCodeEnum];
 
 /**
  * @export

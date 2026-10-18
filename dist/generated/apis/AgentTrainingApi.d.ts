@@ -10,7 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentResponseDto, CentrifugoSubscriptionDto, SelectVariantDto, StartTrainingDto, StartTrainingResponseDto, TrainingPreviewDto, TrainingPreviewResponseDto, TrainingStatusResponseDto } from '../models/index';
+import type { AgentDraftSettingsResponseDto, CentrifugoSubscriptionDto, SelectVariantDto, StartTrainingDto, StartTrainingResponseDto, TrainingPreviewDto, TrainingPreviewResponseDto, TrainingStatusResponseDto } from '../models/index';
+export interface DraftTrainingSelectRequest {
+    id: string;
+    selectVariantDto: SelectVariantDto;
+    acceptLanguage?: DraftTrainingSelectAcceptLanguageEnum;
+}
 export interface GetTrainingRealtimeTokenRequest {
     id: string;
     acceptLanguage?: GetTrainingRealtimeTokenAcceptLanguageEnum;
@@ -28,11 +33,6 @@ export interface TrainingPreviewRequest {
     trainingPreviewDto: TrainingPreviewDto;
     acceptLanguage?: TrainingPreviewAcceptLanguageEnum;
 }
-export interface TrainingSelectRequest {
-    id: string;
-    selectVariantDto: SelectVariantDto;
-    acceptLanguage?: TrainingSelectAcceptLanguageEnum;
-}
 export interface TrainingStartRequest {
     id: string;
     startTrainingDto: StartTrainingDto;
@@ -43,12 +43,22 @@ export interface TrainingStartRequest {
  */
 export declare class AgentTrainingApi extends runtime.BaseAPI {
     /**
-     * JWT- Centrifugo .
+     * . . ; .
+     *
+     */
+    draftTrainingSelectRaw(requestParameters: DraftTrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
+    /**
+     * . . ; .
+     *
+     */
+    draftTrainingSelect(requestParameters: DraftTrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
+    /**
+     * agent_access . subscription_token getData: async () => ({ authorization: subscription_token }).
      * JWT-
      */
     getTrainingRealtimeTokenRaw(requestParameters: GetTrainingRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
     /**
-     * JWT- Centrifugo .
+     * agent_access . subscription_token getData: async () => ({ authorization: subscription_token }).
      * JWT-
      */
     getTrainingRealtimeToken(requestParameters: GetTrainingRealtimeTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
@@ -86,16 +96,6 @@ export declare class AgentTrainingApi extends runtime.BaseAPI {
      *
      *
      */
-    trainingSelectRaw(requestParameters: TrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentResponseDto>>;
-    /**
-     *
-     *
-     */
-    trainingSelect(requestParameters: TrainingSelectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentResponseDto>;
-    /**
-     *
-     *
-     */
     trainingStartRaw(requestParameters: TrainingStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StartTrainingResponseDto>>;
     /**
      *
@@ -103,6 +103,14 @@ export declare class AgentTrainingApi extends runtime.BaseAPI {
      */
     trainingStart(requestParameters: TrainingStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StartTrainingResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const DraftTrainingSelectAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DraftTrainingSelectAcceptLanguageEnum = typeof DraftTrainingSelectAcceptLanguageEnum[keyof typeof DraftTrainingSelectAcceptLanguageEnum];
 /**
  * @export
  */
@@ -135,14 +143,6 @@ export declare const TrainingPreviewAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TrainingPreviewAcceptLanguageEnum = typeof TrainingPreviewAcceptLanguageEnum[keyof typeof TrainingPreviewAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const TrainingSelectAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type TrainingSelectAcceptLanguageEnum = typeof TrainingSelectAcceptLanguageEnum[keyof typeof TrainingSelectAcceptLanguageEnum];
 /**
  * @export
  */

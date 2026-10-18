@@ -50,12 +50,6 @@ export interface SegmentConsentDocumentResponseDto {
      * @type {string}
      * @memberof SegmentConsentDocumentResponseDto
      */
-    status: SegmentConsentDocumentResponseDtoStatusEnum;
-    /**
-     * .
-     * @type {string}
-     * @memberof SegmentConsentDocumentResponseDto
-     */
     fileUrl: string | null;
     /**
      * .
@@ -68,7 +62,7 @@ export interface SegmentConsentDocumentResponseDto {
      * @type {Date}
      * @memberof SegmentConsentDocumentResponseDto
      */
-    archivedAt: Date | null;
+    deletedAt: Date | null;
     /**
      * .
      * @type {Date}
@@ -82,14 +76,6 @@ export interface SegmentConsentDocumentResponseDto {
      */
     updatedAt: Date;
 }
-/**
- * @export
- */
-export declare const SegmentConsentDocumentResponseDtoStatusEnum: {
-    readonly Active: "active";
-    readonly Archived: "archived";
-};
-export type SegmentConsentDocumentResponseDtoStatusEnum = typeof SegmentConsentDocumentResponseDtoStatusEnum[keyof typeof SegmentConsentDocumentResponseDtoStatusEnum];
 /**
  * Check if a given object implements the SegmentConsentDocumentResponseDto interface.
  */

@@ -74,7 +74,7 @@ export class AppAnalyticsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
 
         const response = await this.request({
@@ -129,7 +129,7 @@ export class AppAnalyticsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
 
         const response = await this.request({

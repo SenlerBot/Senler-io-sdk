@@ -25,22 +25,22 @@ export interface UpdateAcquisitionSegmentDraftRequest {
  */
 export declare class AgentsAcquisitionApi extends runtime.BaseAPI {
     /**
-     * .
+     * . , version_id: null, revision: 0 has_unpublished_changes: false. version_id revision . version_id consent_prompt_text null.
      *
      */
     getAcquisitionSegmentDraftRaw(requestParameters: GetAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSegmentDraftResponseDto>>;
     /**
-     * .
+     * . , version_id: null, revision: 0 has_unpublished_changes: false. version_id revision . version_id consent_prompt_text null.
      *
      */
     getAcquisitionSegmentDraft(requestParameters: GetAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSegmentDraftResponseDto>;
     /**
-     * .
+     * ; . , . expected_version_id expected_revision : , null 0. HTTP 409: . HTTP 409 , , . , version_id: null, revision: 0 has_unpublished_changes: false. ID ; .
      *
      */
     updateAcquisitionSegmentDraftRaw(requestParameters: UpdateAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSegmentDraftResponseDto>>;
     /**
-     * .
+     * ; . , . expected_version_id expected_revision : , null 0. HTTP 409: . HTTP 409 , , . , version_id: null, revision: 0 has_unpublished_changes: false. ID ; .
      *
      */
     updateAcquisitionSegmentDraft(requestParameters: UpdateAcquisitionSegmentDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSegmentDraftResponseDto>;

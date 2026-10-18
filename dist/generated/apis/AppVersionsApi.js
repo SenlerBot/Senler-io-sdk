@@ -71,7 +71,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
@@ -110,7 +110,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}/resources/{appResourceId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))).replace(`{${"appResourceId"}}`, encodeURIComponent(String(requestParameters['appResourceId']))),
@@ -143,7 +143,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -176,7 +176,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/source-resources`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -216,7 +216,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
@@ -257,7 +257,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}/resource-replacements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
@@ -291,7 +291,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -327,7 +327,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_publish_app_versions"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_publish_app_versions"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}/publish`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
@@ -367,7 +367,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}/resource-replacements/preview`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
@@ -408,7 +408,7 @@ class AppVersionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/versions/{versionId}/resources`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),

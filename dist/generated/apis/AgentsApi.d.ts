@@ -10,103 +10,111 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentUnpublishedStateResponseDto, AgentsByListResponseDto, PatchAgentInstructionDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentInstalledAppEventsDto, UpdateWizardProgressDto } from '../models/index';
-export interface AcquisitionRequest {
+import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentUnpublishedStateResponseDto, AgentsByListResponseDto, InstructionMcpToolDto, OperatorHandoffGroupDto, OperatorHandoffOperatorDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentInstalledAppEventsDto, UpdateAgentsDraftInstructionBody, UpdateWizardProgressDto } from '../models/index';
+export interface AgentsAcquisitionRequest {
     id: string;
-    acceptLanguage?: AcquisitionAcceptLanguageEnum;
+    acceptLanguage?: AgentsAcquisitionAcceptLanguageEnum;
 }
-export interface ActivateRequest {
+export interface AgentsActivateRequest {
     id: string;
-    acceptLanguage?: ActivateAcceptLanguageEnum;
+    acceptLanguage?: AgentsActivateAcceptLanguageEnum;
 }
 export interface AgentsDeactivateRequest {
     id: string;
     acceptLanguage?: AgentsDeactivateAcceptLanguageEnum;
 }
-export interface AgentsGetByIdRequest {
+export interface AgentsRevertRequest {
     id: string;
-    acceptLanguage?: AgentsGetByIdAcceptLanguageEnum;
+    acceptLanguage?: AgentsRevertAcceptLanguageEnum;
 }
-export interface AgentsListRequest {
+export interface DeleteAgentsRequest {
+    id: string;
+    acceptLanguage?: DeleteAgentsAcceptLanguageEnum;
+}
+export interface DeleteAgentsDraftRequest {
+    id: string;
+    acceptLanguage?: DeleteAgentsDraftAcceptLanguageEnum;
+}
+export interface GetAgentsRequest {
     projectId: string;
     limit?: number;
     offset?: number;
     search?: string;
     activeOnly?: boolean;
     ids?: Array<string>;
-    acceptLanguage?: AgentsListAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsAcceptLanguageEnum;
 }
-export interface Deactivate2Request {
+export interface GetAgents2Request {
     id: string;
-    acceptLanguage?: Deactivate2AcceptLanguageEnum;
+    acceptLanguage?: GetAgents2AcceptLanguageEnum;
 }
-export interface DeleteDraftRequest {
+export interface GetAgentsAutoAssignmentPreviewRequest {
     id: string;
-    acceptLanguage?: DeleteDraftAcceptLanguageEnum;
-}
-export interface GetAutoAssignmentPreviewRequest {
-    id: string;
-    autoAssignmentMode: GetAutoAssignmentPreviewAutoAssignmentModeEnum;
+    autoAssignmentMode: GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum;
     autoAssignmentChannelIds?: Array<string> | null;
-    autoAssignmentDialogScope?: GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
-    autoAssignmentRole?: GetAutoAssignmentPreviewAutoAssignmentRoleEnum;
-    acceptLanguage?: GetAutoAssignmentPreviewAcceptLanguageEnum;
+    autoAssignmentDialogScope?: GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
+    autoAssignmentRole?: GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum;
+    acceptLanguage?: GetAgentsAutoAssignmentPreviewAcceptLanguageEnum;
 }
-export interface GetByListRequest {
+export interface GetAgentsByListRequest {
     listId: string;
-    acceptLanguage?: GetByListAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsByListAcceptLanguageEnum;
 }
-export interface GetDraftRequest {
+export interface GetAgentsDraftRequest {
     id: string;
-    acceptLanguage?: GetDraftAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsDraftAcceptLanguageEnum;
 }
-export interface GetDraftInstructionRequest {
+export interface GetAgentsDraftInstructionRequest {
     id: string;
-    acceptLanguage?: GetDraftInstructionAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsDraftInstructionAcceptLanguageEnum;
 }
-export interface GetInstalledAppEventsRequest {
+export interface GetAgentsInstalledAppEventsRequest {
     id: string;
-    acceptLanguage?: GetInstalledAppEventsAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsInstalledAppEventsAcceptLanguageEnum;
 }
-export interface GetInstalledAppToolsRequest {
+export interface GetAgentsInstalledAppToolsRequest {
     id: string;
-    acceptLanguage?: GetInstalledAppToolsAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsInstalledAppToolsAcceptLanguageEnum;
 }
-export interface GetInstructionRequest {
+export interface GetAgentsInstructionRequest {
     id: string;
-    acceptLanguage?: GetInstructionAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsInstructionAcceptLanguageEnum;
 }
-export interface GetUnpublishedStateRequest {
+export interface GetAgentsOperatorHandoffGroupsRequest {
+    projectId: string;
+    acceptLanguage?: GetAgentsOperatorHandoffGroupsAcceptLanguageEnum;
+}
+export interface GetAgentsOperatorHandoffOperatorsRequest {
+    projectId: string;
+    acceptLanguage?: GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum;
+}
+export interface GetAgentsUnpublishedStateRequest {
     id: string;
-    acceptLanguage?: GetUnpublishedStateAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsUnpublishedStateAcceptLanguageEnum;
 }
-export interface RevertRequest {
+export interface GetProjectsInstructionMcpToolsRequest {
+    projectId: string;
+    serverId: string;
+    acceptLanguage?: GetProjectsInstructionMcpToolsAcceptLanguageEnum;
+}
+export interface UpdateAgentsDraftInstructionRequest {
     id: string;
-    acceptLanguage?: RevertAcceptLanguageEnum;
+    updateAgentsDraftInstructionBody: UpdateAgentsDraftInstructionBody;
+    acceptLanguage?: UpdateAgentsDraftInstructionAcceptLanguageEnum;
 }
-export interface UpdateDraftInstructionRequest {
-    id: string;
-    patchAgentInstructionDto: PatchAgentInstructionDto;
-    acceptLanguage?: UpdateDraftInstructionAcceptLanguageEnum;
-}
-export interface UpdateInstalledAppEventsRequest {
+export interface UpdateAgentsInstalledAppEventsRequest {
     id: string;
     updateAgentInstalledAppEventsDto: UpdateAgentInstalledAppEventsDto;
-    acceptLanguage?: UpdateInstalledAppEventsAcceptLanguageEnum;
+    acceptLanguage?: UpdateAgentsInstalledAppEventsAcceptLanguageEnum;
 }
-export interface UpdateInstructionRequest {
+export interface UpdateAgentsRestoreRequest {
     id: string;
-    patchAgentInstructionDto: PatchAgentInstructionDto;
-    acceptLanguage?: UpdateInstructionAcceptLanguageEnum;
+    acceptLanguage?: UpdateAgentsRestoreAcceptLanguageEnum;
 }
-export interface UpdateRestoreRequest {
-    id: string;
-    acceptLanguage?: UpdateRestoreAcceptLanguageEnum;
-}
-export interface UpdateWizardProgressRequest {
+export interface UpdateAgentsWizardProgressRequest {
     id: string;
     updateWizardProgressDto: UpdateWizardProgressDto;
-    acceptLanguage?: UpdateWizardProgressAcceptLanguageEnum;
+    acceptLanguage?: UpdateAgentsWizardProgressAcceptLanguageEnum;
 }
 /**
  *
@@ -116,229 +124,249 @@ export declare class AgentsApi extends runtime.BaseAPI {
      * , . .
      *
      */
-    acquisitionRaw(requestParameters: AcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>>;
+    agentsAcquisitionRaw(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>>;
     /**
      * , . .
      *
      */
-    acquisition(requestParameters: AcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto>;
+    agentsAcquisition(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto>;
     /**
      * is_active = true . .
      *
      */
-    activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    agentsActivateRaw(requestParameters: AgentsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * is_active = true . .
      *
      */
-    activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * . can_manage_agents.
-     *
-     */
-    agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
-    /**
-     * . can_manage_agents.
-     *
-     */
-    agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * .
-     * ID
-     */
-    agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     * ID
-     */
-    agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * . .
-     *
-     */
-    agentsListRaw(requestParameters: AgentsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsListResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    agentsList(requestParameters: AgentsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto>;
+    agentsActivate(requestParameters: AgentsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * is_active = false . .
      *
      */
-    deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
      * is_active = false . .
      *
      */
-    deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * .
      *
      */
-    deleteDraftRaw(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    agentsRevertRaw(requestParameters: AgentsRevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
     /**
      * .
      *
      */
-    deleteDraft(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * /, .
-     *
-     */
-    getAutoAssignmentPreviewRaw(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAutoAssignmentPreviewResponseDto>>;
-    /**
-     * /, .
-     *
-     */
-    getAutoAssignmentPreview(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto>;
-    /**
-     * .
-     * ID MCP
-     */
-    getByListRaw(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsByListResponseDto>>;
-    /**
-     * .
-     * ID MCP
-     */
-    getByList(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsByListResponseDto>;
-    /**
-     * , .
-     *
-     */
-    getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsStateResponseDto>>;
-    /**
-     * , .
-     *
-     */
-    getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsStateResponseDto>;
-    /**
-     * . , null.
-     *
-     */
-    getDraftInstructionRaw(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>>;
-    /**
-     * . , null.
-     *
-     */
-    getDraftInstruction(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
-    /**
-     * .
-     * ,
-     */
-    getInstalledAppEventsRaw(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>>;
-    /**
-     * .
-     * ,
-     */
-    getInstalledAppEvents(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
-    /**
-     * .
-     *
-     */
-    getInstalledAppToolsRaw(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>>;
-    /**
-     * .
-     *
-     */
-    getInstalledAppTools(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>>;
-    /**
-     * .
-     *
-     */
-    getInstructionRaw(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>>;
-    /**
-     * .
-     *
-     */
-    getInstruction(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
-    /**
-     * , , .
-     *
-     */
-    getUnpublishedStateRaw(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentUnpublishedStateResponseDto>>;
-    /**
-     * , , .
-     *
-     */
-    getUnpublishedState(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentUnpublishedStateResponseDto>;
-    /**
-     * .
-     *
-     */
-    revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
-    /**
-     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
-     * : ,
-     */
-    updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
-    /**
-     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
-     * : ,
-     */
-    updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
-    /**
-     * , .
-     * ,
-     */
-    updateInstalledAppEventsRaw(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>>;
-    /**
-     * , .
-     * ,
-     */
-    updateInstalledAppEvents(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
-    /**
-     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
-     *
-     */
-    updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
-    /**
-     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
-     *
-     */
-    updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
+    agentsRevert(requestParameters: AgentsRevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
      * . can_manage_agents.
      *
      */
-    updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    deleteAgentsRaw(requestParameters: DeleteAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * . can_manage_agents.
      *
      */
-    updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    deleteAgents(requestParameters: DeleteAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * .
      *
      */
-    updateWizardProgressRaw(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    deleteAgentsDraftRaw(requestParameters: DeleteAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * .
      *
      */
-    updateWizardProgress(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
+    deleteAgentsDraft(requestParameters: DeleteAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * . .
+     *
+     */
+    getAgentsRaw(requestParameters: GetAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsListResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    getAgents(requestParameters: GetAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto>;
+    /**
+     * .
+     * ID
+     */
+    getAgents2Raw(requestParameters: GetAgents2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    /**
+     * .
+     * ID
+     */
+    getAgents2(requestParameters: GetAgents2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    /**
+     * /, .
+     *
+     */
+    getAgentsAutoAssignmentPreviewRaw(requestParameters: GetAgentsAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAutoAssignmentPreviewResponseDto>>;
+    /**
+     * /, .
+     *
+     */
+    getAgentsAutoAssignmentPreview(requestParameters: GetAgentsAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto>;
+    /**
+     * .
+     * ID MCP
+     */
+    getAgentsByListRaw(requestParameters: GetAgentsByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsByListResponseDto>>;
+    /**
+     * .
+     * ID MCP
+     */
+    getAgentsByList(requestParameters: GetAgentsByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsByListResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getAgentsDraftRaw(requestParameters: GetAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsStateResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getAgentsDraft(requestParameters: GetAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsStateResponseDto>;
+    /**
+     * . , null: AgentAuthoring_createDraftSnapshot . .
+     *
+     */
+    getAgentsDraftInstructionRaw(requestParameters: GetAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>>;
+    /**
+     * . , null: AgentAuthoring_createDraftSnapshot . .
+     *
+     */
+    getAgentsDraftInstruction(requestParameters: GetAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
+    /**
+     * .
+     * ,
+     */
+    getAgentsInstalledAppEventsRaw(requestParameters: GetAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>>;
+    /**
+     * .
+     * ,
+     */
+    getAgentsInstalledAppEvents(requestParameters: GetAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
+    /**
+     * .
+     *
+     */
+    getAgentsInstalledAppToolsRaw(requestParameters: GetAgentsInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>>;
+    /**
+     * .
+     *
+     */
+    getAgentsInstalledAppTools(requestParameters: GetAgentsInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>>;
+    /**
+     * .
+     *
+     */
+    getAgentsInstructionRaw(requestParameters: GetAgentsInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getAgentsInstruction(requestParameters: GetAgentsInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto>;
+    /**
+     * ID, . .
+     *
+     */
+    getAgentsOperatorHandoffGroupsRaw(requestParameters: GetAgentsOperatorHandoffGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<OperatorHandoffGroupDto>>>;
+    /**
+     * ID, . .
+     *
+     */
+    getAgentsOperatorHandoffGroups(requestParameters: GetAgentsOperatorHandoffGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<OperatorHandoffGroupDto>>;
+    /**
+     * . ID . .
+     *
+     */
+    getAgentsOperatorHandoffOperatorsRaw(requestParameters: GetAgentsOperatorHandoffOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<OperatorHandoffOperatorDto>>>;
+    /**
+     * . ID . .
+     *
+     */
+    getAgentsOperatorHandoffOperators(requestParameters: GetAgentsOperatorHandoffOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<OperatorHandoffOperatorDto>>;
+    /**
+     * , , .
+     *
+     */
+    getAgentsUnpublishedStateRaw(requestParameters: GetAgentsUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentUnpublishedStateResponseDto>>;
+    /**
+     * , , .
+     *
+     */
+    getAgentsUnpublishedState(requestParameters: GetAgentsUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentUnpublishedStateResponseDto>;
+    /**
+     * . .
+     * MCP-
+     */
+    getProjectsInstructionMcpToolsRaw(requestParameters: GetProjectsInstructionMcpToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<InstructionMcpToolDto>>>;
+    /**
+     * . .
+     * MCP-
+     */
+    getProjectsInstructionMcpTools(requestParameters: GetProjectsInstructionMcpToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InstructionMcpToolDto>>;
+    /**
+     * ; . AgentsUser_getDraftInstruction; , . . expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
+     */
+    updateAgentsDraftInstructionRaw(requestParameters: UpdateAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>>;
+    /**
+     * ; . AgentsUser_getDraftInstruction; , . . expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * : ,
+     */
+    updateAgentsDraftInstruction(requestParameters: UpdateAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto>;
+    /**
+     * , .
+     * ,
+     */
+    updateAgentsInstalledAppEventsRaw(requestParameters: UpdateAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>>;
+    /**
+     * , .
+     * ,
+     */
+    updateAgentsInstalledAppEvents(requestParameters: UpdateAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>>;
+    /**
+     * . can_manage_agents.
+     *
+     */
+    updateAgentsRestoreRaw(requestParameters: UpdateAgentsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
+    /**
+     * . can_manage_agents.
+     *
+     */
+    updateAgentsRestore(requestParameters: UpdateAgentsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateAgentsWizardProgressRaw(requestParameters: UpdateAgentsWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateAgentsWizardProgress(requestParameters: UpdateAgentsWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
 }
 /**
  * @export
  */
-export declare const AcquisitionAcceptLanguageEnum: {
+export declare const AgentsAcquisitionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AcquisitionAcceptLanguageEnum = typeof AcquisitionAcceptLanguageEnum[keyof typeof AcquisitionAcceptLanguageEnum];
+export type AgentsAcquisitionAcceptLanguageEnum = typeof AgentsAcquisitionAcceptLanguageEnum[keyof typeof AgentsAcquisitionAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const ActivateAcceptLanguageEnum: {
+export declare const AgentsActivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type ActivateAcceptLanguageEnum = typeof ActivateAcceptLanguageEnum[keyof typeof ActivateAcceptLanguageEnum];
+export type AgentsActivateAcceptLanguageEnum = typeof AgentsActivateAcceptLanguageEnum[keyof typeof AgentsActivateAcceptLanguageEnum];
 /**
  * @export
  */
@@ -350,170 +378,186 @@ export type AgentsDeactivateAcceptLanguageEnum = typeof AgentsDeactivateAcceptLa
 /**
  * @export
  */
-export declare const AgentsGetByIdAcceptLanguageEnum: {
+export declare const AgentsRevertAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentsGetByIdAcceptLanguageEnum = typeof AgentsGetByIdAcceptLanguageEnum[keyof typeof AgentsGetByIdAcceptLanguageEnum];
+export type AgentsRevertAcceptLanguageEnum = typeof AgentsRevertAcceptLanguageEnum[keyof typeof AgentsRevertAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const AgentsListAcceptLanguageEnum: {
+export declare const DeleteAgentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentsListAcceptLanguageEnum = typeof AgentsListAcceptLanguageEnum[keyof typeof AgentsListAcceptLanguageEnum];
+export type DeleteAgentsAcceptLanguageEnum = typeof DeleteAgentsAcceptLanguageEnum[keyof typeof DeleteAgentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const Deactivate2AcceptLanguageEnum: {
+export declare const DeleteAgentsDraftAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type Deactivate2AcceptLanguageEnum = typeof Deactivate2AcceptLanguageEnum[keyof typeof Deactivate2AcceptLanguageEnum];
+export type DeleteAgentsDraftAcceptLanguageEnum = typeof DeleteAgentsDraftAcceptLanguageEnum[keyof typeof DeleteAgentsDraftAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const DeleteDraftAcceptLanguageEnum: {
+export declare const GetAgentsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type DeleteDraftAcceptLanguageEnum = typeof DeleteDraftAcceptLanguageEnum[keyof typeof DeleteDraftAcceptLanguageEnum];
+export type GetAgentsAcceptLanguageEnum = typeof GetAgentsAcceptLanguageEnum[keyof typeof GetAgentsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetAutoAssignmentPreviewAutoAssignmentModeEnum: {
+export declare const GetAgents2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAgents2AcceptLanguageEnum = typeof GetAgents2AcceptLanguageEnum[keyof typeof GetAgents2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum: {
     readonly Off: "off";
     readonly AllChannels: "all_channels";
     readonly SelectedChannels: "selected_channels";
 };
-export type GetAutoAssignmentPreviewAutoAssignmentModeEnum = typeof GetAutoAssignmentPreviewAutoAssignmentModeEnum[keyof typeof GetAutoAssignmentPreviewAutoAssignmentModeEnum];
+export type GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = typeof GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum[keyof typeof GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum];
 /**
  * @export
  */
-export declare const GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum: {
+export declare const GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum: {
     readonly All: "all";
     readonly Private: "private";
     readonly Group: "group";
 };
-export type GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = typeof GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum[keyof typeof GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum];
+export type GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = typeof GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum[keyof typeof GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum];
 /**
  * @export
  */
-export declare const GetAutoAssignmentPreviewAutoAssignmentRoleEnum: {
+export declare const GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum: {
     readonly Primary: "primary";
     readonly Background: "background";
 };
-export type GetAutoAssignmentPreviewAutoAssignmentRoleEnum = typeof GetAutoAssignmentPreviewAutoAssignmentRoleEnum[keyof typeof GetAutoAssignmentPreviewAutoAssignmentRoleEnum];
+export type GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = typeof GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum[keyof typeof GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum];
 /**
  * @export
  */
-export declare const GetAutoAssignmentPreviewAcceptLanguageEnum: {
+export declare const GetAgentsAutoAssignmentPreviewAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetAutoAssignmentPreviewAcceptLanguageEnum = typeof GetAutoAssignmentPreviewAcceptLanguageEnum[keyof typeof GetAutoAssignmentPreviewAcceptLanguageEnum];
+export type GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = typeof GetAgentsAutoAssignmentPreviewAcceptLanguageEnum[keyof typeof GetAgentsAutoAssignmentPreviewAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetByListAcceptLanguageEnum: {
+export declare const GetAgentsByListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetByListAcceptLanguageEnum = typeof GetByListAcceptLanguageEnum[keyof typeof GetByListAcceptLanguageEnum];
+export type GetAgentsByListAcceptLanguageEnum = typeof GetAgentsByListAcceptLanguageEnum[keyof typeof GetAgentsByListAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetDraftAcceptLanguageEnum: {
+export declare const GetAgentsDraftAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDraftAcceptLanguageEnum = typeof GetDraftAcceptLanguageEnum[keyof typeof GetDraftAcceptLanguageEnum];
+export type GetAgentsDraftAcceptLanguageEnum = typeof GetAgentsDraftAcceptLanguageEnum[keyof typeof GetAgentsDraftAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetDraftInstructionAcceptLanguageEnum: {
+export declare const GetAgentsDraftInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetDraftInstructionAcceptLanguageEnum = typeof GetDraftInstructionAcceptLanguageEnum[keyof typeof GetDraftInstructionAcceptLanguageEnum];
+export type GetAgentsDraftInstructionAcceptLanguageEnum = typeof GetAgentsDraftInstructionAcceptLanguageEnum[keyof typeof GetAgentsDraftInstructionAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetInstalledAppEventsAcceptLanguageEnum: {
+export declare const GetAgentsInstalledAppEventsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetInstalledAppEventsAcceptLanguageEnum = typeof GetInstalledAppEventsAcceptLanguageEnum[keyof typeof GetInstalledAppEventsAcceptLanguageEnum];
+export type GetAgentsInstalledAppEventsAcceptLanguageEnum = typeof GetAgentsInstalledAppEventsAcceptLanguageEnum[keyof typeof GetAgentsInstalledAppEventsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetInstalledAppToolsAcceptLanguageEnum: {
+export declare const GetAgentsInstalledAppToolsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetInstalledAppToolsAcceptLanguageEnum = typeof GetInstalledAppToolsAcceptLanguageEnum[keyof typeof GetInstalledAppToolsAcceptLanguageEnum];
+export type GetAgentsInstalledAppToolsAcceptLanguageEnum = typeof GetAgentsInstalledAppToolsAcceptLanguageEnum[keyof typeof GetAgentsInstalledAppToolsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetInstructionAcceptLanguageEnum: {
+export declare const GetAgentsInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];
+export type GetAgentsInstructionAcceptLanguageEnum = typeof GetAgentsInstructionAcceptLanguageEnum[keyof typeof GetAgentsInstructionAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetUnpublishedStateAcceptLanguageEnum: {
+export declare const GetAgentsOperatorHandoffGroupsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetUnpublishedStateAcceptLanguageEnum = typeof GetUnpublishedStateAcceptLanguageEnum[keyof typeof GetUnpublishedStateAcceptLanguageEnum];
+export type GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = typeof GetAgentsOperatorHandoffGroupsAcceptLanguageEnum[keyof typeof GetAgentsOperatorHandoffGroupsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const RevertAcceptLanguageEnum: {
+export declare const GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type RevertAcceptLanguageEnum = typeof RevertAcceptLanguageEnum[keyof typeof RevertAcceptLanguageEnum];
+export type GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum[keyof typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateDraftInstructionAcceptLanguageEnum: {
+export declare const GetAgentsUnpublishedStateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateDraftInstructionAcceptLanguageEnum = typeof UpdateDraftInstructionAcceptLanguageEnum[keyof typeof UpdateDraftInstructionAcceptLanguageEnum];
+export type GetAgentsUnpublishedStateAcceptLanguageEnum = typeof GetAgentsUnpublishedStateAcceptLanguageEnum[keyof typeof GetAgentsUnpublishedStateAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateInstalledAppEventsAcceptLanguageEnum: {
+export declare const GetProjectsInstructionMcpToolsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateInstalledAppEventsAcceptLanguageEnum = typeof UpdateInstalledAppEventsAcceptLanguageEnum[keyof typeof UpdateInstalledAppEventsAcceptLanguageEnum];
+export type GetProjectsInstructionMcpToolsAcceptLanguageEnum = typeof GetProjectsInstructionMcpToolsAcceptLanguageEnum[keyof typeof GetProjectsInstructionMcpToolsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateInstructionAcceptLanguageEnum: {
+export declare const UpdateAgentsDraftInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateInstructionAcceptLanguageEnum = typeof UpdateInstructionAcceptLanguageEnum[keyof typeof UpdateInstructionAcceptLanguageEnum];
+export type UpdateAgentsDraftInstructionAcceptLanguageEnum = typeof UpdateAgentsDraftInstructionAcceptLanguageEnum[keyof typeof UpdateAgentsDraftInstructionAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateRestoreAcceptLanguageEnum: {
+export declare const UpdateAgentsInstalledAppEventsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateRestoreAcceptLanguageEnum = typeof UpdateRestoreAcceptLanguageEnum[keyof typeof UpdateRestoreAcceptLanguageEnum];
+export type UpdateAgentsInstalledAppEventsAcceptLanguageEnum = typeof UpdateAgentsInstalledAppEventsAcceptLanguageEnum[keyof typeof UpdateAgentsInstalledAppEventsAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const UpdateWizardProgressAcceptLanguageEnum: {
+export declare const UpdateAgentsRestoreAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type UpdateWizardProgressAcceptLanguageEnum = typeof UpdateWizardProgressAcceptLanguageEnum[keyof typeof UpdateWizardProgressAcceptLanguageEnum];
+export type UpdateAgentsRestoreAcceptLanguageEnum = typeof UpdateAgentsRestoreAcceptLanguageEnum[keyof typeof UpdateAgentsRestoreAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateAgentsWizardProgressAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateAgentsWizardProgressAcceptLanguageEnum = typeof UpdateAgentsWizardProgressAcceptLanguageEnum[keyof typeof UpdateAgentsWizardProgressAcceptLanguageEnum];

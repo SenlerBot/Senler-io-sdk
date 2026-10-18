@@ -16,6 +16,12 @@
  */
 export interface GetAvatarUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAvatarUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME
      * @type {string}
      * @memberof GetAvatarUploadUrlDto

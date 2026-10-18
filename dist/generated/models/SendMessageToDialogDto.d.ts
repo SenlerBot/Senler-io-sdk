@@ -18,6 +18,12 @@ import type { MessageButtonDto } from './MessageButtonDto';
  */
 export interface SendMessageToDialogDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof SendMessageToDialogDto
+     */
+    contentFormat?: SendMessageToDialogDtoContentFormatEnum;
+    /**
      *
      * @type {string}
      * @memberof SendMessageToDialogDto
@@ -60,6 +66,14 @@ export interface SendMessageToDialogDto {
      */
     replyToEventId?: string;
 }
+/**
+ * @export
+ */
+export declare const SendMessageToDialogDtoContentFormatEnum: {
+    readonly PlainText: "plain_text";
+    readonly Markdown: "markdown";
+};
+export type SendMessageToDialogDtoContentFormatEnum = typeof SendMessageToDialogDtoContentFormatEnum[keyof typeof SendMessageToDialogDtoContentFormatEnum];
 /**
  * @export
  */

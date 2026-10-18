@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessesListAcceptLanguageEnum = exports.ProcessesListStatusEnum = exports.ProcessesListTypeEnum = exports.ProcessesGetDownloadAcceptLanguageEnum = exports.ProcessesGetByIdAcceptLanguageEnum = exports.ProcessesDeactivateAcceptLanguageEnum = exports.GetResultAcceptLanguageEnum = exports.GetRealtimeTokenAcceptLanguageEnum = exports.ProcessesApi = void 0;
+exports.ProcessesListAcceptLanguageEnum = exports.ProcessesListStatusEnum = exports.ProcessesListTypeEnum = exports.ProcessesGetDownloadAcceptLanguageEnum = exports.ProcessesGetByIdAcceptLanguageEnum = exports.ProcessesDeactivateAcceptLanguageEnum = exports.ImportSenlerLeadsAcceptLanguageEnum = exports.GetResultAcceptLanguageEnum = exports.GetRealtimeTokenAcceptLanguageEnum = exports.GetImportSenlerLeadsAcceptLanguageEnum = exports.ProcessesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,49 @@ const index_1 = require("../models/index");
  */
 class ProcessesApi extends runtime.BaseAPI {
     /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     * Senler.ru
+     */
+    async getImportSenlerLeadsRaw(requestParameters, initOverrides) {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling getImportSenlerLeads().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/processes/import-senler-leads/{channelId}`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SenlerImportStatusDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Senler.ru
+     */
+    async getImportSenlerLeads(requestParameters, initOverrides) {
+        const response = await this.getImportSenlerLeadsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * processes_access:project:{projectId}. subscription_token getData: async () => ({ authorization: subscription_token }).  ** :** - process_created - process_updated , - process_deleted
      *
      */
     async getRealtimeTokenRaw(requestParameters, initOverrides) {
@@ -78,6 +120,10 @@ class ProcessesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -89,7 +135,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
     }
     /**
-     * JWT- Centrifugo processes:project:{projectId}.  ** :** - process_created - process_updated , - process_deleted
+     * processes_access:project:{projectId}. subscription_token getData: async () => ({ authorization: subscription_token }).  ** :** - process_created - process_updated , - process_deleted
      *
      */
     async getRealtimeToken(requestParameters, initOverrides) {
@@ -118,6 +164,10 @@ class ProcessesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -134,6 +184,52 @@ class ProcessesApi extends runtime.BaseAPI {
      */
     async getResult(requestParameters, initOverrides) {
         const response = await this.getResultRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * leads_import_senler VK, Telegram MAX . . .
+     * Senler.ru
+     */
+    async importSenlerLeadsRaw(requestParameters, initOverrides) {
+        if (requestParameters['createSenlerImportProcessDto'] == null) {
+            throw new runtime.RequiredError('createSenlerImportProcessDto', 'Required parameter "createSenlerImportProcessDto" was null or undefined when calling importSenlerLeads().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/processes/import-senler-leads`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateSenlerImportProcessDtoToJSON)(requestParameters['createSenlerImportProcessDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * leads_import_senler VK, Telegram MAX . . .
+     * Senler.ru
+     */
+    async importSenlerLeads(requestParameters, initOverrides) {
+        const response = await this.importSenlerLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -155,6 +251,10 @@ class ProcessesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_processes"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -198,6 +298,10 @@ class ProcessesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -235,6 +339,10 @@ class ProcessesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -299,6 +407,10 @@ class ProcessesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -322,6 +434,13 @@ exports.ProcessesApi = ProcessesApi;
 /**
  * @export
  */
+exports.GetImportSenlerLeadsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetRealtimeTokenAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -330,6 +449,13 @@ exports.GetRealtimeTokenAcceptLanguageEnum = {
  * @export
  */
 exports.GetResultAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportSenlerLeadsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -358,8 +484,10 @@ exports.ProcessesGetDownloadAcceptLanguageEnum = {
  * @export
  */
 exports.ProcessesListTypeEnum = {
+    DialogsBulkOperation: 'dialogs_bulk_operation',
     LeadsExport: 'leads_export',
     LeadsImport: 'leads_import',
+    LeadsImportSenler: 'leads_import_senler',
     LeadsRefresh: 'leads_refresh',
     LeadsSegmentOperation: 'leads_segment_operation',
     ChannelMigration: 'channel_migration',

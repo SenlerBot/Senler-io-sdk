@@ -20,11 +20,11 @@ import { mapValues } from '../runtime';
  */
 export interface CreateSupportScheduleAssignmentDto {
     /**
-     * ; null
-     * @type {string}
+     * ; null , []
+     * @type {Array<string>}
      * @memberof CreateSupportScheduleAssignmentDto
      */
-    groupId?: string | null;
+    groupIds?: Array<string> | null;
     /**
      * , ISO 8601 timezone offset
      * @type {Date}
@@ -77,7 +77,7 @@ export function CreateSupportScheduleAssignmentDtoFromJSONTyped(json: any, ignor
     }
     return {
 
-        'groupId': json['group_id'] == null ? undefined : json['group_id'],
+        'groupIds': json['group_ids'] == null ? undefined : json['group_ids'],
         'startsAt': (new Date(json['starts_at'])),
         'endsAt': (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'],
@@ -97,7 +97,7 @@ export function CreateSupportScheduleAssignmentDtoToJSONTyped(value?: CreateSupp
 
     return {
 
-        'group_id': value['groupId'],
+        'group_ids': value['groupIds'],
         'starts_at': ((value['startsAt']).toISOString()),
         'ends_at': ((value['endsAt']).toISOString()),
         'project_member_id': value['projectMemberId'],

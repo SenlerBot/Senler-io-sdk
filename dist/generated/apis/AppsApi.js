@@ -72,7 +72,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/agent-events`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -106,7 +106,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -136,7 +136,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps`,
@@ -173,7 +173,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -211,7 +211,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps/icon/from-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -249,7 +249,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps/icon/upload-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -286,7 +286,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/agent-events/{eventId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
@@ -321,7 +321,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps/{stepId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
@@ -356,7 +356,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/funnel-elements/{elementId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"elementId"}}`, encodeURIComponent(String(requestParameters['elementId']))),
@@ -391,7 +391,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/installations/{installationId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
@@ -427,7 +427,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/tools/{toolId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"toolId"}}`, encodeURIComponent(String(requestParameters['toolId']))),
@@ -463,7 +463,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/funnel-elements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -497,7 +497,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -536,7 +536,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/embedded-page/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -569,7 +569,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/funnel-elements`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -617,7 +617,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_app_analytics"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_app_analytics"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/installations`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -716,7 +716,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_create_apps"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_create_apps"]);
         }
         const response = await this.request({
             path: `/api/apps/provision`,
@@ -750,7 +750,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{id}/source-project`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -783,7 +783,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_catalog"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_catalog"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/submit-for-moderation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -820,7 +820,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/tools`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -861,7 +861,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/agent-events/{eventId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
@@ -899,7 +899,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/app-actions`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -940,7 +940,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps/{stepId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
@@ -981,7 +981,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/automation-steps/{stepId}/status`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
@@ -1019,7 +1019,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_catalog"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_catalog"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/catalog-visibility`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1057,7 +1057,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/embedded-page-settings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1098,7 +1098,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/funnel-elements/{elementId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"elementId"}}`, encodeURIComponent(String(requestParameters['elementId']))),
@@ -1136,7 +1136,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/general-settings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1174,7 +1174,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_oauth"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_oauth"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/oauth-access/project`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1212,7 +1212,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_oauth"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_oauth"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/oauth-access/user`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1250,7 +1250,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_oauth"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_oauth"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/oauth-redirect-uris`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1291,7 +1291,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/tools/{toolId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"toolId"}}`, encodeURIComponent(String(requestParameters['toolId']))),
@@ -1329,7 +1329,7 @@ class AppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{id}/tools-settings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),

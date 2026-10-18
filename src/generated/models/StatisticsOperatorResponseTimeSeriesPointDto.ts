@@ -32,29 +32,29 @@ export interface StatisticsOperatorResponseTimeSeriesPointDto {
      */
     responsesCount: number;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseTimeSeriesPointDto
      */
-    averageFirstResponseTimeSeconds: number;
+    averageFirstResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseTimeSeriesPointDto
      */
-    averageFirstResponseRawTimeSeconds: number;
+    averageFirstResponseRawTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseTimeSeriesPointDto
      */
-    averageResponseTimeSeconds: number;
+    averageResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseTimeSeriesPointDto
      */
-    averageResponseRawTimeSeconds: number;
+    averageResponseRawTimeSeconds: number | null;
     /**
      * ,
      * @type {number}

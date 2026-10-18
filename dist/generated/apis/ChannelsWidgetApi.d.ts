@@ -45,10 +45,12 @@ export interface WidgetWelcomeIconUploadUrlRequest {
  */
 export declare class ChannelsWidgetApi extends runtime.BaseAPI {
     /**
+     * , , .
      *
      */
     getWidgetWelcomeStepsRaw(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeStepsDto>>;
     /**
+     * , , .
      *
      */
     getWidgetWelcomeSteps(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeStepsDto>;
@@ -93,10 +95,12 @@ export declare class ChannelsWidgetApi extends runtime.BaseAPI {
      */
     widgetWelcomeIconConfirm(requestParameters: WidgetWelcomeIconConfirmRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeIconResponseDto>;
     /**
+     * URL . .
      *
      */
     widgetWelcomeIconUploadUrlRaw(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>>;
     /**
+     * URL . .
      *
      */
     widgetWelcomeIconUploadUrl(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;

@@ -46,13 +46,79 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = exports.UpdateDialogSlaSettingsPrioritiesPriorityEnum = exports.UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = exports.UpdateDialogSlaSettingsAcceptLanguageEnum = exports.UpdateAcceptLanguageEnum = exports.ListAcceptLanguageEnum = exports.ListSourceEnum = exports.GetMeAcceptLanguageEnum = exports.GetDialogSlaSettingsAcceptLanguageEnum = exports.ProjectsApi = void 0;
+exports.UpdateDialogSlaSettingsPrioritiesAcceptLanguageEnum = exports.UpdateDialogSlaSettingsPrioritiesPriorityEnum = exports.UpdateDialogSlaSettingsEnabledAcceptLanguageEnum = exports.UpdateDialogSlaSettingsAcceptLanguageEnum = exports.UpdateAcceptLanguageEnum = exports.ListAcceptLanguageEnum = exports.ListSourceEnum = exports.GetMeAcceptLanguageEnum = exports.GetDialogSlaSettingsAcceptLanguageEnum = exports.GetByIdAcceptLanguageEnum = exports.DeactivateAcceptLanguageEnum = exports.ProjectsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class ProjectsApi extends runtime.BaseAPI {
+    /**
+     * is_active = false ( ). .
+     *
+     */
+    async deactivateRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deactivate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * is_active = false ( ). .
+     *
+     */
+    async deactivate(requestParameters, initOverrides) {
+        const response = await this.deactivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . . .
+     *
+     */
+    async getByIdRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getById().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/projects/{projectId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectDetailsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . .
+     *
+     */
+    async getById(requestParameters, initOverrides) {
+        const response = await this.getByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * SLA . SLA .
      * SLA-
@@ -72,6 +138,10 @@ class ProjectsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -157,7 +227,7 @@ class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/projects`,
@@ -198,6 +268,10 @@ class ProjectsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -246,6 +320,10 @@ class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
         }
         const response = await this.request({
@@ -288,6 +366,10 @@ class ProjectsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -339,6 +421,10 @@ class ProjectsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
         }
         const response = await this.request({
@@ -360,6 +446,20 @@ class ProjectsApi extends runtime.BaseAPI {
     }
 }
 exports.ProjectsApi = ProjectsApi;
+/**
+ * @export
+ */
+exports.DeactivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */

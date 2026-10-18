@@ -32,6 +32,18 @@ export interface LandingAnalyticsSettingsDto {
      */
     yandexMetrikaEnabled: boolean;
     /**
+     *
+     * @type {boolean}
+     * @memberof LandingAnalyticsSettingsDto
+     */
+    yandexMetrikaWebvisorEnabled: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LandingAnalyticsSettingsDto
+     */
+    yandexMetrikaClickmapEnabled: boolean;
+    /**
      * Google Analytics 4; null
      * @type {string}
      * @memberof LandingAnalyticsSettingsDto
@@ -87,6 +99,8 @@ export interface LandingAnalyticsSettingsDto {
 export function instanceOfLandingAnalyticsSettingsDto(value: object): value is LandingAnalyticsSettingsDto {
     if (!('yandexMetrikaId' in value) || value['yandexMetrikaId'] === undefined) return false;
     if (!('yandexMetrikaEnabled' in value) || value['yandexMetrikaEnabled'] === undefined) return false;
+    if (!('yandexMetrikaWebvisorEnabled' in value) || value['yandexMetrikaWebvisorEnabled'] === undefined) return false;
+    if (!('yandexMetrikaClickmapEnabled' in value) || value['yandexMetrikaClickmapEnabled'] === undefined) return false;
     if (!('googleAnalyticsId' in value) || value['googleAnalyticsId'] === undefined) return false;
     if (!('googleAnalyticsEnabled' in value) || value['googleAnalyticsEnabled'] === undefined) return false;
     if (!('facebookPixelId' in value) || value['facebookPixelId'] === undefined) return false;
@@ -110,6 +124,8 @@ export function LandingAnalyticsSettingsDtoFromJSONTyped(json: any, ignoreDiscri
 
         'yandexMetrikaId': json['yandex_metrika_id'],
         'yandexMetrikaEnabled': json['yandex_metrika_enabled'],
+        'yandexMetrikaWebvisorEnabled': json['yandex_metrika_webvisor_enabled'],
+        'yandexMetrikaClickmapEnabled': json['yandex_metrika_clickmap_enabled'],
         'googleAnalyticsId': json['google_analytics_id'],
         'googleAnalyticsEnabled': json['google_analytics_enabled'],
         'facebookPixelId': json['facebook_pixel_id'],
@@ -134,6 +150,8 @@ export function LandingAnalyticsSettingsDtoToJSONTyped(value?: LandingAnalyticsS
 
         'yandex_metrika_id': value['yandexMetrikaId'],
         'yandex_metrika_enabled': value['yandexMetrikaEnabled'],
+        'yandex_metrika_webvisor_enabled': value['yandexMetrikaWebvisorEnabled'],
+        'yandex_metrika_clickmap_enabled': value['yandexMetrikaClickmapEnabled'],
         'google_analytics_id': value['googleAnalyticsId'],
         'google_analytics_enabled': value['googleAnalyticsEnabled'],
         'facebook_pixel_id': value['facebookPixelId'],

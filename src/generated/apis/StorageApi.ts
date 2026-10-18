@@ -16,14 +16,21 @@
 import * as runtime from '../runtime';
 import type {
   ErrorResponse,
+  IncomingStorageCleanupPreviewDto,
+  IncomingStoragePolicyDto,
   StorageFileDeleteResponseDto,
   StorageFilesListResponseDto,
   StorageOrphanedDeleteResponseDto,
   StorageStatsResponseDto,
+  UpdateIncomingStoragePolicyDto,
 } from '../models/index';
 import {
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    IncomingStorageCleanupPreviewDtoFromJSON,
+    IncomingStorageCleanupPreviewDtoToJSON,
+    IncomingStoragePolicyDtoFromJSON,
+    IncomingStoragePolicyDtoToJSON,
     StorageFileDeleteResponseDtoFromJSON,
     StorageFileDeleteResponseDtoToJSON,
     StorageFilesListResponseDtoFromJSON,
@@ -32,6 +39,8 @@ import {
     StorageOrphanedDeleteResponseDtoToJSON,
     StorageStatsResponseDtoFromJSON,
     StorageStatsResponseDtoToJSON,
+    UpdateIncomingStoragePolicyDtoFromJSON,
+    UpdateIncomingStoragePolicyDtoToJSON,
 } from '../models/index';
 
 export interface DeleteFilesRequest {
@@ -55,9 +64,25 @@ export interface GetFilesRequest {
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
 
+export interface GetIncomingPolicyRequest {
+    projectId: string;
+    acceptLanguage?: GetIncomingPolicyAcceptLanguageEnum;
+}
+
+export interface GetIncomingPolicyPreviewRequest {
+    projectId: string;
+    acceptLanguage?: GetIncomingPolicyPreviewAcceptLanguageEnum;
+}
+
 export interface GetStatsRequest {
     projectId: string;
     acceptLanguage?: GetStatsAcceptLanguageEnum;
+}
+
+export interface UpdateIncomingPolicyRequest {
+    projectId: string;
+    updateIncomingStoragePolicyDto: UpdateIncomingStoragePolicyDto;
+    acceptLanguage?: UpdateIncomingPolicyAcceptLanguageEnum;
 }
 
 /**
@@ -93,6 +118,11 @@ export class StorageApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_storage"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_storage"]);
@@ -149,6 +179,11 @@ export class StorageApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_storage"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_storage"]);
@@ -231,6 +266,11 @@ export class StorageApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -250,6 +290,126 @@ export class StorageApi extends runtime.BaseAPI {
      */
     async getFiles(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFilesListResponseDto> {
         const response = await this.getFilesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     *
+     */
+    async getIncomingPolicyRaw(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getIncomingPolicy().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/storage/incoming-policy`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IncomingStoragePolicyDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async getIncomingPolicy(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto> {
+        const response = await this.getIncomingPolicyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . 24 .
+     *
+     */
+    async getIncomingPolicyPreviewRaw(requestParameters: GetIncomingPolicyPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStorageCleanupPreviewDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getIncomingPolicyPreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/storage/incoming-policy/preview`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IncomingStorageCleanupPreviewDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . 24 .
+     *
+     */
+    async getIncomingPolicyPreview(requestParameters: GetIncomingPolicyPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStorageCleanupPreviewDto> {
+        const response = await this.getIncomingPolicyPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -287,6 +447,11 @@ export class StorageApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -306,6 +471,75 @@ export class StorageApi extends runtime.BaseAPI {
      */
     async getStats(requestParameters: GetStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageStatsResponseDto> {
         const response = await this.getStatsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     *
+     */
+    async updateIncomingPolicyRaw(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateIncomingPolicy().'
+            );
+        }
+
+        if (requestParameters['updateIncomingStoragePolicyDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateIncomingStoragePolicyDto',
+                'Required parameter "updateIncomingStoragePolicyDto" was null or undefined when calling updateIncomingPolicy().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_projects"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_projects"]);
+        }
+
+        const response = await this.request({
+            path: `/api/storage/incoming-policy`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateIncomingStoragePolicyDtoToJSON(requestParameters['updateIncomingStoragePolicyDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IncomingStoragePolicyDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async updateIncomingPolicy(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto> {
+        const response = await this.updateIncomingPolicyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -378,8 +612,32 @@ export type GetFilesAcceptLanguageEnum = typeof GetFilesAcceptLanguageEnum[keyof
 /**
  * @export
  */
+export const GetIncomingPolicyAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetIncomingPolicyAcceptLanguageEnum = typeof GetIncomingPolicyAcceptLanguageEnum[keyof typeof GetIncomingPolicyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetIncomingPolicyPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetIncomingPolicyPreviewAcceptLanguageEnum = typeof GetIncomingPolicyPreviewAcceptLanguageEnum[keyof typeof GetIncomingPolicyPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetStatsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type GetStatsAcceptLanguageEnum = typeof GetStatsAcceptLanguageEnum[keyof typeof GetStatsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateIncomingPolicyAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateIncomingPolicyAcceptLanguageEnum = typeof UpdateIncomingPolicyAcceptLanguageEnum[keyof typeof UpdateIncomingPolicyAcceptLanguageEnum];

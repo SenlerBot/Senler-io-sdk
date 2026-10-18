@@ -32,7 +32,7 @@ export interface UpdateOtherLandingBlockDto {
      */
     isVisible: boolean;
     /**
-     * .
+     * . {}; .
      * @type {object}
      * @memberof UpdateOtherLandingBlockDto
      */

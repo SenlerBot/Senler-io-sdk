@@ -16,6 +16,12 @@
  */
 export interface GetLandingAssetUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetLandingAssetUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- . : image/png, image/jpeg, image/webp.
      * @type {string}
      * @memberof GetLandingAssetUploadUrlDto

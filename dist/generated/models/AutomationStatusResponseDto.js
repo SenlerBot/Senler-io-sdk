@@ -26,8 +26,7 @@ exports.AutomationStatusResponseDtoStatusEnum = {
     Draft: 'draft',
     Running: 'running',
     Paused: 'paused',
-    Disabled: 'disabled',
-    Archived: 'archived'
+    Disabled: 'disabled'
 };
 /**
  * Check if a given object implements the AutomationStatusResponseDto interface.

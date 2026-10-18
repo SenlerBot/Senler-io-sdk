@@ -58,29 +58,29 @@ export interface StatisticsOperatorResponseBreakdownDto {
      */
     responsesCount: number;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseBreakdownDto
      */
-    averageFirstResponseTimeSeconds: number;
+    averageFirstResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseBreakdownDto
      */
-    averageFirstResponseRawTimeSeconds: number;
+    averageFirstResponseRawTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseBreakdownDto
      */
-    averageResponseTimeSeconds: number;
+    averageResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseBreakdownDto
      */
-    averageResponseRawTimeSeconds: number;
+    averageResponseRawTimeSeconds: number | null;
 }
 /**
  * Check if a given object implements the StatisticsOperatorResponseBreakdownDto interface.

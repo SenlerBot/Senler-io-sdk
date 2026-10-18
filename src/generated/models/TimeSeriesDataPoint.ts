@@ -44,7 +44,7 @@ export interface TimeSeriesDataPoint {
      */
     providerCost?: number;
     /**
-     * (. financial.client.currency). : financial.client.currency
+     * : RUB USD . ; financial.client.rub_projects_money, usd_projects_money total_rub.
      * @type {number}
      * @memberof TimeSeriesDataPoint
      */

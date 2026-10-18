@@ -32,7 +32,7 @@ export interface StatisticsNullableMetricDeltaDto {
      */
     previousValue: number | null;
     /**
-     * , %; null
+     * , %; null,
      * @type {number}
      * @memberof StatisticsNullableMetricDeltaDto
      */

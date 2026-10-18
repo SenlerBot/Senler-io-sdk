@@ -10,7 +10,15 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DialogSlaSettingsDto, GetProjectsListDataDto, ProjectDetailsResponseDto, SetDialogSlaEnabledDto, UpdateDialogSlaPriorityThresholdDto, UpdateDialogSlaSettingsDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
+import type { DialogSlaSettingsDto, GetProjectsListDataDto, ProjectDetailsResponseDto, SetDialogSlaEnabledDto, SuccessResponseDto, UpdateDialogSlaPriorityThresholdDto, UpdateDialogSlaSettingsDto, UpdateProjectDto, UpdateProjectResponseDto } from '../models/index';
+export interface DeactivateRequest {
+    projectId: string;
+    acceptLanguage?: DeactivateAcceptLanguageEnum;
+}
+export interface GetByIdRequest {
+    projectId: string;
+    acceptLanguage?: GetByIdAcceptLanguageEnum;
+}
 export interface GetDialogSlaSettingsRequest {
     projectId: string;
     acceptLanguage?: GetDialogSlaSettingsAcceptLanguageEnum;
@@ -51,6 +59,26 @@ export interface UpdateDialogSlaSettingsPrioritiesRequest {
  *
  */
 export declare class ProjectsApi extends runtime.BaseAPI {
+    /**
+     * is_active = false ( ). .
+     *
+     */
+    deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    /**
+     * is_active = false ( ). .
+     *
+     */
+    deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
+    /**
+     * . . .
+     *
+     */
+    getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectDetailsResponseDto>>;
+    /**
+     * . . .
+     *
+     */
+    getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectDetailsResponseDto>;
     /**
      * SLA . SLA .
      * SLA-
@@ -122,6 +150,22 @@ export declare class ProjectsApi extends runtime.BaseAPI {
      */
     updateDialogSlaSettingsPriorities(requestParameters: UpdateDialogSlaSettingsPrioritiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogSlaSettingsDto>;
 }
+/**
+ * @export
+ */
+export declare const DeactivateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeactivateAcceptLanguageEnum = typeof DeactivateAcceptLanguageEnum[keyof typeof DeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetByIdAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetByIdAcceptLanguageEnum = typeof GetByIdAcceptLanguageEnum[keyof typeof GetByIdAcceptLanguageEnum];
 /**
  * @export
  */

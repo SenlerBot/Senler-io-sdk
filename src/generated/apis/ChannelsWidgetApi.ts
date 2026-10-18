@@ -96,6 +96,7 @@ export interface WidgetWelcomeIconUploadUrlRequest {
 export class ChannelsWidgetApi extends runtime.BaseAPI {
 
     /**
+     * , , .
      *
      */
     async getWidgetWelcomeStepsRaw(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeStepsDto>> {
@@ -135,6 +136,11 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -149,6 +155,7 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
     }
 
     /**
+     * , , .
      *
      */
     async getWidgetWelcomeSteps(requestParameters: GetWidgetWelcomeStepsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeStepsDto> {
@@ -193,6 +200,11 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
@@ -248,6 +260,11 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
@@ -312,6 +329,11 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
 
@@ -374,6 +396,11 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
 
@@ -398,6 +425,7 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
     }
 
     /**
+     * URL . .
      *
      */
     async widgetWelcomeIconUploadUrlRaw(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<S3UploadUrlResponseDto>> {
@@ -435,6 +463,11 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
 
@@ -450,6 +483,7 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
     }
 
     /**
+     * URL . .
      *
      */
     async widgetWelcomeIconUploadUrl(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto> {

@@ -17,26 +17,17 @@ import * as runtime from '../runtime';
 import type {
   AgentMetricsConfigurationDto,
   ErrorResponse,
-  UpdateAgentMetricsConfigurationDto,
 } from '../models/index';
 import {
     AgentMetricsConfigurationDtoFromJSON,
     AgentMetricsConfigurationDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
-    UpdateAgentMetricsConfigurationDtoFromJSON,
-    UpdateAgentMetricsConfigurationDtoToJSON,
 } from '../models/index';
 
 export interface GetMetricsConfigRequest {
     agentId: string;
     acceptLanguage?: GetMetricsConfigAcceptLanguageEnum;
-}
-
-export interface UpdateMetricsConfigRequest {
-    agentId: string;
-    updateAgentMetricsConfigurationDto: UpdateAgentMetricsConfigurationDto;
-    acceptLanguage?: UpdateMetricsConfigAcceptLanguageEnum;
 }
 
 /**
@@ -74,6 +65,11 @@ export class MetricsConfigApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -96,68 +92,6 @@ export class MetricsConfigApi extends runtime.BaseAPI {
         return await response.value();
     }
 
-    /**
-     * . .
-     *
-     */
-    async updateMetricsConfigRaw(requestParameters: UpdateMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigurationDto>> {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError(
-                'agentId',
-                'Required parameter "agentId" was null or undefined when calling updateMetricsConfig().'
-            );
-        }
-
-        if (requestParameters['updateAgentMetricsConfigurationDto'] == null) {
-            throw new runtime.RequiredError(
-                'updateAgentMetricsConfigurationDto',
-                'Required parameter "updateAgentMetricsConfigurationDto" was null or undefined when calling updateMetricsConfig().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{agentId}/metrics-config`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UpdateAgentMetricsConfigurationDtoToJSON(requestParameters['updateAgentMetricsConfigurationDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentMetricsConfigurationDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . .
-     *
-     */
-    async updateMetricsConfig(requestParameters: UpdateMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigurationDto> {
-        const response = await this.updateMetricsConfigRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
 }
 
 /**
@@ -168,11 +102,3 @@ export const GetMetricsConfigAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetMetricsConfigAcceptLanguageEnum = typeof GetMetricsConfigAcceptLanguageEnum[keyof typeof GetMetricsConfigAcceptLanguageEnum];
-/**
- * @export
- */
-export const UpdateMetricsConfigAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type UpdateMetricsConfigAcceptLanguageEnum = typeof UpdateMetricsConfigAcceptLanguageEnum[keyof typeof UpdateMetricsConfigAcceptLanguageEnum];

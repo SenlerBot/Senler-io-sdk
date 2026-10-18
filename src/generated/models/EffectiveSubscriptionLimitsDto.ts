@@ -38,6 +38,12 @@ export interface EffectiveSubscriptionLimitsDto {
      */
     mailingMessagesPerDay: number;
     /**
+     * API-
+     * @type {number}
+     * @memberof EffectiveSubscriptionLimitsDto
+     */
+    apiRequestsPerDay: number;
+    /**
      *
      * @type {number}
      * @memberof EffectiveSubscriptionLimitsDto
@@ -52,6 +58,7 @@ export function instanceOfEffectiveSubscriptionLimitsDto(value: object): value i
     if (!('creditsPerMonth' in value) || value['creditsPerMonth'] === undefined) return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
+    if (!('apiRequestsPerDay' in value) || value['apiRequestsPerDay'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
     return true;
 }
@@ -69,6 +76,7 @@ export function EffectiveSubscriptionLimitsDtoFromJSONTyped(json: any, ignoreDis
         'creditsPerMonth': json['credits_per_month'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
+        'apiRequestsPerDay': json['api_requests_per_day'],
         'storageLimitBytes': json['storage_limit_bytes'],
     };
 }
@@ -87,6 +95,7 @@ export function EffectiveSubscriptionLimitsDtoToJSONTyped(value?: EffectiveSubsc
         'credits_per_month': value['creditsPerMonth'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
+        'api_requests_per_day': value['apiRequestsPerDay'],
         'storage_limit_bytes': value['storageLimitBytes'],
     };
 }

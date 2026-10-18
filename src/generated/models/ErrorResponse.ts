@@ -22,13 +22,13 @@ import {
 } from './ErrorData';
 
 /**
- * ErrorResponse.
+ * API. error , ; HTTP- .
  * @export
  * @interface ErrorResponse
  */
 export interface ErrorResponse {
     /**
-     *
+     * , , .
      * @type {ErrorData}
      * @memberof ErrorResponse
      */

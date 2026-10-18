@@ -13,16 +13,41 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeliveryAudiencePreviewResponseDtoAudienceScopeEnum = exports.DeliveryAudiencePreviewResponseDtoFilterSourceEnum = void 0;
 exports.instanceOfDeliveryAudiencePreviewResponseDto = instanceOfDeliveryAudiencePreviewResponseDto;
 exports.DeliveryAudiencePreviewResponseDtoFromJSON = DeliveryAudiencePreviewResponseDtoFromJSON;
 exports.DeliveryAudiencePreviewResponseDtoFromJSONTyped = DeliveryAudiencePreviewResponseDtoFromJSONTyped;
 exports.DeliveryAudiencePreviewResponseDtoToJSON = DeliveryAudiencePreviewResponseDtoToJSON;
 exports.DeliveryAudiencePreviewResponseDtoToJSONTyped = DeliveryAudiencePreviewResponseDtoToJSONTyped;
+const DeliveryAudienceFilterDto_1 = require("./DeliveryAudienceFilterDto");
 const DeliveryAudienceRecipientDto_1 = require("./DeliveryAudienceRecipientDto");
+/**
+ * @export
+ */
+exports.DeliveryAudiencePreviewResponseDtoFilterSourceEnum = {
+    Saved: 'saved',
+    Query: 'query'
+};
+/**
+ * @export
+ */
+exports.DeliveryAudiencePreviewResponseDtoAudienceScopeEnum = {
+    AllProject: 'all_project',
+    AllSelectedChannels: 'all_selected_channels',
+    Filtered: 'filtered'
+};
 /**
  * Check if a given object implements the DeliveryAudiencePreviewResponseDto interface.
  */
 function instanceOfDeliveryAudiencePreviewResponseDto(value) {
+    if (!('filters' in value) || value['filters'] === undefined)
+        return false;
+    if (!('savedFilters' in value) || value['savedFilters'] === undefined)
+        return false;
+    if (!('filterSource' in value) || value['filterSource'] === undefined)
+        return false;
+    if (!('audienceScope' in value) || value['audienceScope'] === undefined)
+        return false;
     if (!('totalUniqueRecipients' in value) || value['totalUniqueRecipients'] === undefined)
         return false;
     if (!('items' in value) || value['items'] === undefined)
@@ -39,6 +64,10 @@ function DeliveryAudiencePreviewResponseDtoFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     return {
+        'filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoFromJSON)(json['filters']),
+        'savedFilters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoFromJSON)(json['saved_filters']),
+        'filterSource': json['filter_source'],
+        'audienceScope': json['audience_scope'],
         'totalUniqueRecipients': json['total_unique_recipients'],
         'items': (json['items'].map(DeliveryAudienceRecipientDto_1.DeliveryAudienceRecipientDtoFromJSON)),
         'nextCursor': json['next_cursor'],
@@ -52,6 +81,10 @@ function DeliveryAudiencePreviewResponseDtoToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     return {
+        'filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoToJSON)(value['filters']),
+        'saved_filters': (0, DeliveryAudienceFilterDto_1.DeliveryAudienceFilterDtoToJSON)(value['savedFilters']),
+        'filter_source': value['filterSource'],
+        'audience_scope': value['audienceScope'],
         'total_unique_recipients': value['totalUniqueRecipients'],
         'items': (value['items'].map(DeliveryAudienceRecipientDto_1.DeliveryAudienceRecipientDtoToJSON)),
         'next_cursor': value['nextCursor'],

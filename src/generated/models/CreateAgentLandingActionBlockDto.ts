@@ -20,13 +20,6 @@ import {
     CreateAgentLandingActionBlockDtoActionToJSON,
     CreateAgentLandingActionBlockDtoActionToJSONTyped,
 } from './CreateAgentLandingActionBlockDtoAction';
-import type { LandingBlockResponseDtoPayload } from './LandingBlockResponseDtoPayload';
-import {
-    LandingBlockResponseDtoPayloadFromJSON,
-    LandingBlockResponseDtoPayloadFromJSONTyped,
-    LandingBlockResponseDtoPayloadToJSON,
-    LandingBlockResponseDtoPayloadToJSONTyped,
-} from './LandingBlockResponseDtoPayload';
 
 /**
  * CreateAgentLandingActionBlockDto.
@@ -53,11 +46,11 @@ export interface CreateAgentLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     *
-     * @type {LandingBlockResponseDtoPayload}
+     * ; type (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof CreateAgentLandingActionBlockDto
      */
-    payload: LandingBlockResponseDtoPayload;
+    payload: { [key: string]: any; };
     /**
      *
      * @type {string}
@@ -114,7 +107,7 @@ export function CreateAgentLandingActionBlockDtoFromJSONTyped(json: any, ignoreD
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
-        'payload': LandingBlockResponseDtoPayloadFromJSON(json['payload']),
+        'payload': json['payload'],
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
         'action': json['action'] == null ? undefined : CreateAgentLandingActionBlockDtoActionFromJSON(json['action']),
@@ -135,7 +128,7 @@ export function CreateAgentLandingActionBlockDtoToJSONTyped(value?: CreateAgentL
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
-        'payload': LandingBlockResponseDtoPayloadToJSON(value['payload']),
+        'payload': value['payload'],
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
         'action': CreateAgentLandingActionBlockDtoActionToJSON(value['action']),

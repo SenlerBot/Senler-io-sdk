@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentDraftSettingsResponseDto, AgentInstructionReferenceResponseDto, AgentSettingsResponseDto, CreateAgentAuthoringDraftDto, PublishAgentAuthoringDraftDto, UpdateAgentAssignmentDto, UpdateAgentCapabilitiesDto, UpdateAgentContextDto, UpdateAgentDraftCreationDto, UpdateAgentDraftMetricsDto, UpdateAgentDraftTrainingDto, UpdateAgentDraftWizardDto, UpdateAgentFunnelsDto, UpdateAgentKnowledgeBaseDto, UpdateAgentMetricsDto, UpdateAgentModelDto, UpdateAgentProfileDto, UpdateAgentSegmentPermissionsDto, UpdateAgentSelectedSegmentsDto, UpdateAgentServersDto, UpdateAgentVariableAccessModeDto, UpdateAgentVariableBindingsDto } from '../models/index';
+import type { AgentDraftSettingsResponseDto, AgentInstructionReferenceResponseDto, AgentSettingsResponseDto, CreateAgentAuthoringDraftDto, PublishAgentAuthoringDraftDto, UpdateAgentAssignmentDto, UpdateAgentCapabilitiesDto, UpdateAgentContextDto, UpdateAgentDraftCreationDto, UpdateAgentDraftMetricsDto, UpdateAgentDraftTrainingDto, UpdateAgentDraftWizardDto, UpdateAgentFunnelsDto, UpdateAgentKnowledgeBaseDto, UpdateAgentModelDto, UpdateAgentProfileDto, UpdateAgentSegmentPermissionsDto, UpdateAgentSelectedSegmentsDto, UpdateAgentServersDto, UpdateAgentVariableAccessModeDto, UpdateAgentVariableBindingsDto } from '../models/index';
 export interface DraftPublishRequest {
     id: string;
     publishAgentAuthoringDraftDto: PublishAgentAuthoringDraftDto;
@@ -30,21 +30,6 @@ export interface GetInstructionReferenceRequest {
     resourceId: string;
     locale?: GetInstructionReferenceLocaleEnum;
     acceptLanguage?: GetInstructionReferenceAcceptLanguageEnum;
-}
-export interface UpdateAssignmentRequest {
-    id: string;
-    updateAgentAssignmentDto: UpdateAgentAssignmentDto;
-    acceptLanguage?: UpdateAssignmentAcceptLanguageEnum;
-}
-export interface UpdateCapabilitiesRequest {
-    id: string;
-    updateAgentCapabilitiesDto: UpdateAgentCapabilitiesDto;
-    acceptLanguage?: UpdateCapabilitiesAcceptLanguageEnum;
-}
-export interface UpdateContextRequest {
-    id: string;
-    updateAgentContextDto: UpdateAgentContextDto;
-    acceptLanguage?: UpdateContextAcceptLanguageEnum;
 }
 export interface UpdateDraftAssignmentRequest {
     id: string;
@@ -135,60 +120,6 @@ export interface UpdateDraftWizardRequest {
     updateAgentDraftWizardDto: UpdateAgentDraftWizardDto;
     acceptLanguage?: UpdateDraftWizardAcceptLanguageEnum;
 }
-export interface UpdateFunnelsRequest {
-    id: string;
-    updateAgentFunnelsDto: UpdateAgentFunnelsDto;
-    acceptLanguage?: UpdateFunnelsAcceptLanguageEnum;
-}
-export interface UpdateKnowledgeBaseRequest {
-    id: string;
-    updateAgentKnowledgeBaseDto: UpdateAgentKnowledgeBaseDto;
-    acceptLanguage?: UpdateKnowledgeBaseAcceptLanguageEnum;
-}
-export interface UpdateMetricsRequest {
-    id: string;
-    updateAgentMetricsDto: UpdateAgentMetricsDto;
-    acceptLanguage?: UpdateMetricsAcceptLanguageEnum;
-}
-export interface UpdateModelRequest {
-    id: string;
-    updateAgentModelDto: UpdateAgentModelDto;
-    acceptLanguage?: UpdateModelAcceptLanguageEnum;
-}
-export interface UpdateProfileRequest {
-    id: string;
-    updateAgentProfileDto: UpdateAgentProfileDto;
-    acceptLanguage?: UpdateProfileAcceptLanguageEnum;
-}
-export interface UpdateSegmentsAllRequest {
-    id: string;
-    updateAgentSegmentPermissionsDto: UpdateAgentSegmentPermissionsDto;
-    acceptLanguage?: UpdateSegmentsAllAcceptLanguageEnum;
-}
-export interface UpdateSegmentsNoneRequest {
-    id: string;
-    acceptLanguage?: UpdateSegmentsNoneAcceptLanguageEnum;
-}
-export interface UpdateSegmentsSelectedRequest {
-    id: string;
-    updateAgentSelectedSegmentsDto: UpdateAgentSelectedSegmentsDto;
-    acceptLanguage?: UpdateSegmentsSelectedAcceptLanguageEnum;
-}
-export interface UpdateServersRequest {
-    id: string;
-    updateAgentServersDto: UpdateAgentServersDto;
-    acceptLanguage?: UpdateServersAcceptLanguageEnum;
-}
-export interface UpdateVariablesAccessModeRequest {
-    id: string;
-    updateAgentVariableAccessModeDto: UpdateAgentVariableAccessModeDto;
-    acceptLanguage?: UpdateVariablesAccessModeAcceptLanguageEnum;
-}
-export interface UpdateVariablesBindingsRequest {
-    id: string;
-    updateAgentVariableBindingsDto: UpdateAgentVariableBindingsDto;
-    acceptLanguage?: UpdateVariablesBindingsAcceptLanguageEnum;
-}
 /**
  *
  */
@@ -214,12 +145,12 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      */
     draftSnapshot(requestParameters: DraftSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
-     * . . , instruction, , markdown AgentInstructionReferences_resolve .
+     * . ; publishDraft. . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     draftsRaw(requestParameters: DraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
     /**
-     * . . , instruction, , markdown AgentInstructionReferences_resolve .
+     * . ; publishDraft. . , instruction, , markdown AgentInstructionReferences_resolve .
      *
      */
     drafts(requestParameters: DraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
@@ -233,36 +164,6 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      * @-
      */
     getInstructionReference(requestParameters: GetInstructionReferenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionReferenceResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateAssignmentRaw(requestParameters: UpdateAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateAssignment(requestParameters: UpdateAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateCapabilitiesRaw(requestParameters: UpdateCapabilitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateCapabilities(requestParameters: UpdateCapabilitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateContextRaw(requestParameters: UpdateContextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateContext(requestParameters: UpdateContextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
     /**
      * .
      *
@@ -314,12 +215,12 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      */
     updateDraftFunnels(requestParameters: UpdateDraftFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
-     * .
+     * . . . ; . . .
      *
      */
     updateDraftKnowledgeBaseRaw(requestParameters: UpdateDraftKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
     /**
-     * .
+     * . . . ; . . .
      *
      */
     updateDraftKnowledgeBase(requestParameters: UpdateDraftKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
@@ -443,116 +344,6 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      *
      */
     updateDraftWizard(requestParameters: UpdateDraftWizardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
-    /**
-     * . none .
-     *
-     */
-    updateFunnelsRaw(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * . none .
-     *
-     */
-    updateFunnels(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateKnowledgeBaseRaw(requestParameters: UpdateKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateKnowledgeBase(requestParameters: UpdateKnowledgeBaseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateMetricsRaw(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateMetrics(requestParameters: UpdateMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateModelRaw(requestParameters: UpdateModelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateModel(requestParameters: UpdateModelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * (rename agent). . . .
-     * , ,
-     */
-    updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * (rename agent). . . .
-     * , ,
-     */
-    updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * add/remove.
-     *
-     */
-    updateSegmentsAllRaw(requestParameters: UpdateSegmentsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * add/remove.
-     *
-     */
-    updateSegmentsAll(requestParameters: UpdateSegmentsAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * none ; .
-     *
-     */
-    updateSegmentsNoneRaw(requestParameters: UpdateSegmentsNoneRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * none ; .
-     *
-     */
-    updateSegmentsNone(requestParameters: UpdateSegmentsNoneRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * add/remove.
-     *
-     */
-    updateSegmentsSelectedRaw(requestParameters: UpdateSegmentsSelectedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * add/remove.
-     *
-     */
-    updateSegmentsSelected(requestParameters: UpdateSegmentsSelectedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * MCP-.
-     * MCP-
-     */
-    updateServersRaw(requestParameters: UpdateServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * MCP-.
-     * MCP-
-     */
-    updateServers(requestParameters: UpdateServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * .
-     *
-     */
-    updateVariablesAccessModeRaw(requestParameters: UpdateVariablesAccessModeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * .
-     *
-     */
-    updateVariablesAccessMode(requestParameters: UpdateVariablesAccessModeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
-    /**
-     * , .
-     *
-     */
-    updateVariablesBindingsRaw(requestParameters: UpdateVariablesBindingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>>;
-    /**
-     * , .
-     *
-     */
-    updateVariablesBindings(requestParameters: UpdateVariablesBindingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto>;
 }
 /**
  * @export
@@ -611,30 +402,6 @@ export declare const GetInstructionReferenceAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetInstructionReferenceAcceptLanguageEnum = typeof GetInstructionReferenceAcceptLanguageEnum[keyof typeof GetInstructionReferenceAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateAssignmentAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateAssignmentAcceptLanguageEnum = typeof UpdateAssignmentAcceptLanguageEnum[keyof typeof UpdateAssignmentAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateCapabilitiesAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateCapabilitiesAcceptLanguageEnum = typeof UpdateCapabilitiesAcceptLanguageEnum[keyof typeof UpdateCapabilitiesAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateContextAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateContextAcceptLanguageEnum = typeof UpdateContextAcceptLanguageEnum[keyof typeof UpdateContextAcceptLanguageEnum];
 /**
  * @export
  */
@@ -790,91 +557,3 @@ export declare const UpdateDraftWizardAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateDraftWizardAcceptLanguageEnum = typeof UpdateDraftWizardAcceptLanguageEnum[keyof typeof UpdateDraftWizardAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateFunnelsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateFunnelsAcceptLanguageEnum = typeof UpdateFunnelsAcceptLanguageEnum[keyof typeof UpdateFunnelsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateKnowledgeBaseAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateKnowledgeBaseAcceptLanguageEnum = typeof UpdateKnowledgeBaseAcceptLanguageEnum[keyof typeof UpdateKnowledgeBaseAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateMetricsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateMetricsAcceptLanguageEnum = typeof UpdateMetricsAcceptLanguageEnum[keyof typeof UpdateMetricsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateModelAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateModelAcceptLanguageEnum = typeof UpdateModelAcceptLanguageEnum[keyof typeof UpdateModelAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateProfileAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateProfileAcceptLanguageEnum = typeof UpdateProfileAcceptLanguageEnum[keyof typeof UpdateProfileAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateSegmentsAllAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateSegmentsAllAcceptLanguageEnum = typeof UpdateSegmentsAllAcceptLanguageEnum[keyof typeof UpdateSegmentsAllAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateSegmentsNoneAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateSegmentsNoneAcceptLanguageEnum = typeof UpdateSegmentsNoneAcceptLanguageEnum[keyof typeof UpdateSegmentsNoneAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateSegmentsSelectedAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateSegmentsSelectedAcceptLanguageEnum = typeof UpdateSegmentsSelectedAcceptLanguageEnum[keyof typeof UpdateSegmentsSelectedAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateServersAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateServersAcceptLanguageEnum = typeof UpdateServersAcceptLanguageEnum[keyof typeof UpdateServersAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateVariablesAccessModeAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateVariablesAccessModeAcceptLanguageEnum = typeof UpdateVariablesAccessModeAcceptLanguageEnum[keyof typeof UpdateVariablesAccessModeAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateVariablesBindingsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateVariablesBindingsAcceptLanguageEnum = typeof UpdateVariablesBindingsAcceptLanguageEnum[keyof typeof UpdateVariablesBindingsAcceptLanguageEnum];

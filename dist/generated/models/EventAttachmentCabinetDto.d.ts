@@ -218,6 +218,7 @@ export declare const EventAttachmentCabinetDtoErrorCodeEnum: {
     readonly TelegramBotApiDownloadLimit: "telegram_bot_api_download_limit";
     readonly UploadFailed: "upload_failed";
     readonly SourceUnavailable: "source_unavailable";
+    readonly StorageCleaned: "storage_cleaned";
 };
 export type EventAttachmentCabinetDtoErrorCodeEnum = typeof EventAttachmentCabinetDtoErrorCodeEnum[keyof typeof EventAttachmentCabinetDtoErrorCodeEnum];
 /**

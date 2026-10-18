@@ -71,7 +71,7 @@ class AppVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/variables/{key}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"key"}}`, encodeURIComponent(String(requestParameters['key']))),
@@ -103,7 +103,7 @@ class AppVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/variables`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -143,7 +143,7 @@ class AppVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_settings"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/variables/{key}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"key"}}`, encodeURIComponent(String(requestParameters['key']))),

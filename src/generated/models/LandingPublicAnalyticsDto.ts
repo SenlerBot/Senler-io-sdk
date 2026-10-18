@@ -26,6 +26,18 @@ export interface LandingPublicAnalyticsDto {
      */
     yandexMetrikaId: string | null;
     /**
+     *
+     * @type {boolean}
+     * @memberof LandingPublicAnalyticsDto
+     */
+    yandexMetrikaWebvisorEnabled: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LandingPublicAnalyticsDto
+     */
+    yandexMetrikaClickmapEnabled: boolean;
+    /**
      * Google Analytics 4; null,
      * @type {string}
      * @memberof LandingPublicAnalyticsDto
@@ -56,6 +68,8 @@ export interface LandingPublicAnalyticsDto {
  */
 export function instanceOfLandingPublicAnalyticsDto(value: object): value is LandingPublicAnalyticsDto {
     if (!('yandexMetrikaId' in value) || value['yandexMetrikaId'] === undefined) return false;
+    if (!('yandexMetrikaWebvisorEnabled' in value) || value['yandexMetrikaWebvisorEnabled'] === undefined) return false;
+    if (!('yandexMetrikaClickmapEnabled' in value) || value['yandexMetrikaClickmapEnabled'] === undefined) return false;
     if (!('googleAnalyticsId' in value) || value['googleAnalyticsId'] === undefined) return false;
     if (!('facebookPixelId' in value) || value['facebookPixelId'] === undefined) return false;
     if (!('googleTagManagerId' in value) || value['googleTagManagerId'] === undefined) return false;
@@ -74,6 +88,8 @@ export function LandingPublicAnalyticsDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'yandexMetrikaId': json['yandex_metrika_id'],
+        'yandexMetrikaWebvisorEnabled': json['yandex_metrika_webvisor_enabled'],
+        'yandexMetrikaClickmapEnabled': json['yandex_metrika_clickmap_enabled'],
         'googleAnalyticsId': json['google_analytics_id'],
         'facebookPixelId': json['facebook_pixel_id'],
         'googleTagManagerId': json['google_tag_manager_id'],
@@ -93,6 +109,8 @@ export function LandingPublicAnalyticsDtoToJSONTyped(value?: LandingPublicAnalyt
     return {
 
         'yandex_metrika_id': value['yandexMetrikaId'],
+        'yandex_metrika_webvisor_enabled': value['yandexMetrikaWebvisorEnabled'],
+        'yandex_metrika_clickmap_enabled': value['yandexMetrikaClickmapEnabled'],
         'google_analytics_id': value['googleAnalyticsId'],
         'facebook_pixel_id': value['facebookPixelId'],
         'google_tag_manager_id': value['googleTagManagerId'],

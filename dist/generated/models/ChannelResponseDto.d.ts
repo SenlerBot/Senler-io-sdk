@@ -9,17 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { DiscordChannelDataDto } from './DiscordChannelDataDto';
 import type { WidgetChannelDataDto } from './WidgetChannelDataDto';
-import type { TelegramChannelDataDto } from './TelegramChannelDataDto';
 import type { MAXChannelDataDto } from './MAXChannelDataDto';
-import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
-import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
 import type { VKChannelDataDto } from './VKChannelDataDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
-import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
 import type { SenlerStatusDto } from './SenlerStatusDto';
 import type { AvitoChannelDataDto } from './AvitoChannelDataDto';
+import type { DiscordChannelDataDto } from './DiscordChannelDataDto';
+import type { TelegramChannelDataDto } from './TelegramChannelDataDto';
+import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
+import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
+import type { ChannelConnectionIssueDto } from './ChannelConnectionIssueDto';
+import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
 import type { EmailChannelDataDto } from './EmailChannelDataDto';
 /**
  * ChannelResponseDto.
@@ -33,6 +34,12 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     id: string;
+    /**
+     * .
+     * @type {Array<ChannelConnectionIssueDto>}
+     * @memberof ChannelResponseDto
+     */
+    connectionIssues?: Array<ChannelConnectionIssueDto>;
     /**
      * ID
      * @type {string}
@@ -75,12 +82,6 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     isPaused: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof ChannelResponseDto
-     */
-    webhookSecret?: string | null;
     /**
      * ID
      * @type {string}

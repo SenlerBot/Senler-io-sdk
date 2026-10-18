@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
+exports.OwnershipTransferAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -75,6 +75,10 @@ class AccessApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -118,6 +122,10 @@ class AccessApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -158,6 +166,10 @@ class AccessApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -208,6 +220,10 @@ class AccessApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
@@ -249,6 +265,10 @@ class AccessApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -296,6 +316,44 @@ class AccessApi extends runtime.BaseAPI {
         const response = await this.getRolePresetsRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * . .
+     *
+     */
+    async ownershipTransferRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling ownershipTransfer().');
+        }
+        if (requestParameters['transferOwnershipDto'] == null) {
+            throw new runtime.RequiredError('transferOwnershipDto', 'Required parameter "transferOwnershipDto" was null or undefined when calling ownershipTransfer().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/ownership-transfer`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TransferOwnershipDtoToJSON)(requestParameters['transferOwnershipDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TransferOwnershipResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async ownershipTransfer(requestParameters, initOverrides) {
+        const response = await this.ownershipTransferRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.AccessApi = AccessApi;
 /**
@@ -337,6 +395,13 @@ exports.GetMembersChannelsAcceptLanguageEnum = {
  * @export
  */
 exports.GetRolePresetsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.OwnershipTransferAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

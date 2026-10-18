@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationBatchRemoveNodeOperationDto {
     /**
+     * instance_id . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchRemoveNodeOperationDto
+     */
+    expectedInstanceId?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationBatchRemoveNodeOperationDto
@@ -69,6 +75,7 @@ export function AutomationBatchRemoveNodeOperationDtoFromJSONTyped(json: any, ig
     }
     return {
 
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
         'nodeId': json['node_id'],
         'expectedContentRevision': json['expected_content_revision'],
@@ -86,6 +93,7 @@ export function AutomationBatchRemoveNodeOperationDtoToJSONTyped(value?: Automat
 
     return {
 
+        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
         'node_id': value['nodeId'],
         'expected_content_revision': value['expectedContentRevision'],

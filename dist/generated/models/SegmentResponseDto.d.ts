@@ -41,12 +41,6 @@ export interface SegmentResponseDto {
      */
     publicId: string;
     /**
-     *
-     * @type {string}
-     * @memberof SegmentResponseDto
-     */
-    status: SegmentResponseDtoStatusEnum;
-    /**
      * -
      * @type {string}
      * @memberof SegmentResponseDto
@@ -89,14 +83,6 @@ export interface SegmentResponseDto {
      */
     updatedAt: Date;
 }
-/**
- * @export
- */
-export declare const SegmentResponseDtoStatusEnum: {
-    readonly Active: "active";
-    readonly Archived: "archived";
-};
-export type SegmentResponseDtoStatusEnum = typeof SegmentResponseDtoStatusEnum[keyof typeof SegmentResponseDtoStatusEnum];
 /**
  * Check if a given object implements the SegmentResponseDto interface.
  */

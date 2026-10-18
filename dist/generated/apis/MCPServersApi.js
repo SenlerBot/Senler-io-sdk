@@ -64,6 +64,9 @@ class MCPServersApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling customOauthStart().');
         }
+        if (requestParameters['authorization'] == null) {
+            throw new runtime.RequiredError('authorization', 'Required parameter "authorization" was null or undefined when calling customOauthStart().');
+        }
         if (requestParameters['startCustomMcpOAuthDto'] == null) {
             throw new runtime.RequiredError('startCustomMcpOAuthDto', 'Required parameter "startCustomMcpOAuthDto" was null or undefined when calling customOauthStart().');
         }
@@ -73,6 +76,9 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['authorization'] != null) {
+            headerParameters['authorization'] = String(requestParameters['authorization']);
+        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -82,6 +88,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -126,6 +136,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
@@ -165,6 +179,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -211,6 +229,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -303,6 +325,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -343,6 +369,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -407,6 +437,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -459,6 +493,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -496,6 +534,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -545,6 +587,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -571,8 +617,8 @@ class MCPServersApi extends runtime.BaseAPI {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling lists().');
         }
-        if (requestParameters['createMcpServerListDto'] == null) {
-            throw new runtime.RequiredError('createMcpServerListDto', 'Required parameter "createMcpServerListDto" was null or undefined when calling lists().');
+        if (requestParameters['createMcpServerListUserDto'] == null) {
+            throw new runtime.RequiredError('createMcpServerListUserDto', 'Required parameter "createMcpServerListUserDto" was null or undefined when calling lists().');
         }
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
@@ -592,6 +638,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
@@ -599,7 +649,7 @@ class MCPServersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.CreateMcpServerListDtoToJSON)(requestParameters['createMcpServerListDto']),
+            body: (0, index_1.CreateMcpServerListUserDtoToJSON)(requestParameters['createMcpServerListUserDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.McpServerListResponseDtoFromJSON)(jsonValue));
     }
@@ -633,6 +683,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -683,6 +737,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
@@ -727,6 +785,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -775,6 +837,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -813,6 +879,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -875,6 +945,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -922,6 +996,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -976,6 +1054,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
@@ -1006,6 +1088,9 @@ class MCPServersApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling projectCredentialOauthStart().');
         }
+        if (requestParameters['authorization'] == null) {
+            throw new runtime.RequiredError('authorization', 'Required parameter "authorization" was null or undefined when calling projectCredentialOauthStart().');
+        }
         if (requestParameters['startCustomMcpOAuthDto'] == null) {
             throw new runtime.RequiredError('startCustomMcpOAuthDto', 'Required parameter "startCustomMcpOAuthDto" was null or undefined when calling projectCredentialOauthStart().');
         }
@@ -1015,6 +1100,9 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['authorization'] != null) {
+            headerParameters['authorization'] = String(requestParameters['authorization']);
+        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -1024,6 +1112,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1074,6 +1166,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
@@ -1118,6 +1214,10 @@ class MCPServersApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_mcp_servers"]);
         }
         const response = await this.request({
@@ -1156,6 +1256,10 @@ class MCPServersApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_mcp_servers"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required

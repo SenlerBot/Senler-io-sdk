@@ -58,6 +58,7 @@ export type AutomationBatchAddDraftNodeOperationDtoKindEnum = typeof AutomationB
  * @export
  */
 export declare const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum: {
+    readonly TriggerBirthday: "trigger.birthday";
     readonly TriggerStart: "trigger.start";
     readonly TriggerIncomingMessage: "trigger.incoming_message";
     readonly TriggerSegmentEntered: "trigger.segment_entered";
@@ -70,6 +71,7 @@ export declare const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum: {
     readonly ConditionFunnelStage: "condition.funnel_stage";
     readonly ConditionAutomation: "condition.automation";
     readonly ConditionAgent: "condition.agent";
+    readonly ConditionOperatorAssignment: "condition.operator_assignment";
     readonly ConditionChannelType: "condition.channel_type";
     readonly ConditionTableRow: "condition.table_row";
     readonly BranchRandom: "branch.random";
@@ -85,6 +87,7 @@ export declare const AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum: {
     readonly ActionRemoveAutomation: "action.remove_automation";
     readonly ActionAssignAgent: "action.assign_agent";
     readonly ActionUnassignAgent: "action.unassign_agent";
+    readonly ActionHandoffToOperator: "action.handoff_to_operator";
     readonly ActionTableWrite: "action.table_write";
     readonly ActionHttp: "action.http";
     readonly ActionApp: "action.app";

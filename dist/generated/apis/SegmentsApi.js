@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateConsentDocumentsAcceptLanguageEnum = exports.SegmentsUpdateAcceptLanguageEnum = exports.SegmentsListAcceptLanguageEnum = exports.SegmentsGetMembersAcceptLanguageEnum = exports.SegmentsGetByIdAcceptLanguageEnum = exports.SegmentsDeactivateAcceptLanguageEnum = exports.SegmentsCreateAcceptLanguageEnum = exports.LeadsAcceptLanguageEnum = exports.GetSubscriptionLinksAcceptLanguageEnum = exports.GetReferencesAcceptLanguageEnum = exports.GetMembershipEventsAcceptLanguageEnum = exports.GetConsentTemplatesAcceptLanguageEnum = exports.GetConsentTemplatesLocaleEnum = exports.GetConsentDocumentsVersionsAcceptLanguageEnum = exports.GetConsentDocumentsAcceptLanguageEnum = exports.DeleteLeadsAcceptLanguageEnum = exports.DeleteConsentDocumentsAcceptLanguageEnum = exports.ConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.ConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.ConsentDocumentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
+exports.UpdateConsentDocumentsAcceptLanguageEnum = exports.SegmentsUpdateAcceptLanguageEnum = exports.SegmentsListAcceptLanguageEnum = exports.SegmentsGetMembersAcceptLanguageEnum = exports.SegmentsGetByIdAcceptLanguageEnum = exports.SegmentsDeactivateAcceptLanguageEnum = exports.SegmentsCreateAcceptLanguageEnum = exports.LeadsAcceptLanguageEnum = exports.GetSubscriptionLinksAcceptLanguageEnum = exports.GetReferencesAcceptLanguageEnum = exports.GetMembershipEventsAcceptLanguageEnum = exports.GetConsentTemplatesAcceptLanguageEnum = exports.GetConsentTemplatesLocaleEnum = exports.GetConsentDocumentsVersionsAcceptLanguageEnum = exports.GetConsentDocuments2AcceptLanguageEnum = exports.GetConsentDocumentsAcceptLanguageEnum = exports.DeleteLeadsAcceptLanguageEnum = exports.DeleteConsentDocumentsAcceptLanguageEnum = exports.ConsentDocumentsAssetsUploadUrlAcceptLanguageEnum = exports.ConsentDocumentsAssetsConfirmAcceptLanguageEnum = exports.ConsentDocumentsAcceptLanguageEnum = exports.SegmentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -79,6 +79,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -130,6 +134,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
@@ -178,6 +186,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
@@ -198,7 +210,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
+     * deleted_at. .
      *
      */
     async deleteConsentDocumentsRaw(requestParameters, initOverrides) {
@@ -219,6 +231,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
@@ -230,7 +246,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentConsentDocumentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . .
+     * deleted_at. .
      *
      */
     async deleteConsentDocuments(requestParameters, initOverrides) {
@@ -259,6 +275,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -305,6 +325,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -327,6 +351,50 @@ class SegmentsApi extends runtime.BaseAPI {
      * .
      *
      */
+    async getConsentDocuments2Raw(requestParameters, initOverrides) {
+        if (requestParameters['documentId'] == null) {
+            throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getConsentDocuments2().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/segments/consent-documents/{documentId}`.replace(`{${"documentId"}}`, encodeURIComponent(String(requestParameters['documentId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentConsentDocumentResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getConsentDocuments2(requestParameters, initOverrides) {
+        const response = await this.getConsentDocuments2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
     async getConsentDocumentsVersionsRaw(requestParameters, initOverrides) {
         if (requestParameters['documentId'] == null) {
             throw new runtime.RequiredError('documentId', 'Required parameter "documentId" was null or undefined when calling getConsentDocumentsVersions().');
@@ -342,6 +410,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -391,6 +463,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -428,6 +504,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -480,6 +560,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -517,6 +601,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -560,6 +648,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -610,6 +702,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
@@ -648,6 +744,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -691,6 +791,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -728,6 +832,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -771,6 +879,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -818,6 +930,10 @@ class SegmentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_segments"]);
         }
         const response = await this.request({
@@ -860,6 +976,10 @@ class SegmentsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_segments"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -923,6 +1043,13 @@ exports.DeleteLeadsAcceptLanguageEnum = {
  * @export
  */
 exports.GetConsentDocumentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetConsentDocuments2AcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

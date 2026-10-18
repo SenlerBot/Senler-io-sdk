@@ -62,6 +62,12 @@ export interface TariffResponseDto {
      */
     mailingMessagesPerDay: number;
     /**
+     * API-
+     * @type {number}
+     * @memberof TariffResponseDto
+     */
+    apiRequestsPerDay: number;
+    /**
      *
      * @type {number}
      * @memberof TariffResponseDto
@@ -126,6 +132,7 @@ export function instanceOfTariffResponseDto(value: object): value is TariffRespo
     if (!('nameEn' in value) || value['nameEn'] === undefined) return false;
     if (!('creditsPerMonth' in value) || value['creditsPerMonth'] === undefined) return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined) return false;
+    if (!('apiRequestsPerDay' in value) || value['apiRequestsPerDay'] === undefined) return false;
     if (!('automationStepsPerSecond' in value) || value['automationStepsPerSecond'] === undefined) return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined) return false;
     if (!('isFree' in value) || value['isFree'] === undefined) return false;
@@ -155,6 +162,7 @@ export function TariffResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'descriptionEn': json['description_en'] == null ? undefined : json['description_en'],
         'creditsPerMonth': json['credits_per_month'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
+        'apiRequestsPerDay': json['api_requests_per_day'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'storageLimitBytes': json['storage_limit_bytes'],
         'isFree': json['is_free'],
@@ -185,6 +193,7 @@ export function TariffResponseDtoToJSONTyped(value?: TariffResponseDto | null, i
         'description_en': value['descriptionEn'],
         'credits_per_month': value['creditsPerMonth'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
+        'api_requests_per_day': value['apiRequestsPerDay'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'storage_limit_bytes': value['storageLimitBytes'],
         'is_free': value['isFree'],

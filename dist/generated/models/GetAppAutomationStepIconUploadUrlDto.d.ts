@@ -16,6 +16,12 @@
  */
 export interface GetAppAutomationStepIconUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAppAutomationStepIconUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- .
      * @type {string}
      * @memberof GetAppAutomationStepIconUploadUrlDto

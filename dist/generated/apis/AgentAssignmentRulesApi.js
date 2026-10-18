@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = exports.AgentAssignmentRulesUpdateAcceptLanguageEnum = exports.AgentAssignmentRulesListAcceptLanguageEnum = exports.AgentAssignmentRulesGetByIdAcceptLanguageEnum = exports.AgentAssignmentRulesDeactivateAcceptLanguageEnum = exports.AgentAssignmentRulesCreateAcceptLanguageEnum = exports.AgentAssignmentRulesApi = void 0;
+exports.UpdateRestoreAcceptLanguageEnum = exports.AgentAssignmentRulesUpdateAcceptLanguageEnum = exports.AgentAssignmentRulesListAcceptLanguageEnum = exports.AgentAssignmentRulesGetByIdAcceptLanguageEnum = exports.AgentAssignmentRulesDeactivateAcceptLanguageEnum = exports.AgentAssignmentRulesCreateAcceptLanguageEnum = exports.AgentAssignmentRulesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -79,6 +79,10 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -123,6 +127,10 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
@@ -160,6 +168,10 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -203,6 +215,10 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -250,6 +266,10 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
@@ -273,9 +293,9 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async agentAssignmentRulesUpdateRestoreRaw(requestParameters, initOverrides) {
+    async updateRestoreRaw(requestParameters, initOverrides) {
         if (requestParameters['ruleId'] == null) {
-            throw new runtime.RequiredError('ruleId', 'Required parameter "ruleId" was null or undefined when calling agentAssignmentRulesUpdateRestore().');
+            throw new runtime.RequiredError('ruleId', 'Required parameter "ruleId" was null or undefined when calling updateRestore().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -288,6 +308,10 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -305,8 +329,8 @@ class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async agentAssignmentRulesUpdateRestore(requestParameters, initOverrides) {
-        const response = await this.agentAssignmentRulesUpdateRestoreRaw(requestParameters, initOverrides);
+    async updateRestore(requestParameters, initOverrides) {
+        const response = await this.updateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -349,7 +373,7 @@ exports.AgentAssignmentRulesUpdateAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = {
+exports.UpdateRestoreAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

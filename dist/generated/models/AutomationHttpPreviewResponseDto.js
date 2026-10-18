@@ -13,13 +13,30 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationHttpPreviewResponseDtoSampleErrorEnum = void 0;
+exports.AutomationHttpPreviewResponseDtoSampleErrorEnum = exports.AutomationHttpPreviewResponseDtoErrorCodeEnum = void 0;
 exports.instanceOfAutomationHttpPreviewResponseDto = instanceOfAutomationHttpPreviewResponseDto;
 exports.AutomationHttpPreviewResponseDtoFromJSON = AutomationHttpPreviewResponseDtoFromJSON;
 exports.AutomationHttpPreviewResponseDtoFromJSONTyped = AutomationHttpPreviewResponseDtoFromJSONTyped;
 exports.AutomationHttpPreviewResponseDtoToJSON = AutomationHttpPreviewResponseDtoToJSON;
 exports.AutomationHttpPreviewResponseDtoToJSONTyped = AutomationHttpPreviewResponseDtoToJSONTyped;
 const AutomationHttpResponseSampleDto_1 = require("./AutomationHttpResponseSampleDto");
+/**
+ * @export
+ */
+exports.AutomationHttpPreviewResponseDtoErrorCodeEnum = {
+    InvalidRequest: 'invalid_request',
+    DnsNotFound: 'dns_not_found',
+    DnsUnavailable: 'dns_unavailable',
+    TlsCertificateInvalid: 'tls_certificate_invalid',
+    DestinationBlocked: 'destination_blocked',
+    Timeout: 'timeout',
+    RoutingUnavailable: 'routing_unavailable',
+    RequestFailed: 'request_failed',
+    Capacity: 'capacity',
+    RateLimit: 'rate_limit',
+    HttpStatus: 'http_status',
+    DeliveryUnknown: 'delivery_unknown'
+};
 /**
  * @export
  */

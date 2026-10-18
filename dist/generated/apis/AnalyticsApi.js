@@ -46,13 +46,244 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateSummarizeSettingsAcceptLanguageEnum = exports.SummarizeAcceptLanguageEnum = exports.GetTopMetricsAcceptLanguageEnum = exports.GetTopMetricsTopEnum = exports.GetTopMetricsMetricTypeEnum = exports.GetTopMetricsAgentTypeEnum = exports.GetTopMetricsEvaluationModeEnum = exports.GetTopMetricsPeriodEnum = exports.GetTopAgentsAcceptLanguageEnum = exports.GetTopAgentsTopEnum = exports.GetTopAgentsMetricTypeEnum = exports.GetTopAgentsAgentTypeEnum = exports.GetTopAgentsEvaluationModeEnum = exports.GetTopAgentsPeriodEnum = exports.GetSummarizeSettingsAcceptLanguageEnum = exports.GetSummarizeLatestAcceptLanguageEnum = exports.GetSummarizeHistoryAcceptLanguageEnum = exports.GetSummarizeEstimateAcceptLanguageEnum = exports.GetSummarizeEstimatePeriodEnum = exports.GetSummarizeAcceptLanguageEnum = exports.GetMetricsTopAgentsAcceptLanguageEnum = exports.GetMetricsTopAgentsMetricTypeEnum = exports.GetMetricsTopAgentsAgentTypeEnum = exports.GetMetricsTopAgentsEvaluationModeEnum = exports.GetMetricsTopAgentsPeriodEnum = exports.GetMetricsLogAcceptLanguageEnum = exports.GetMetricsLogSortOrderEnum = exports.GetMetricsLogSortByEnum = exports.GetAgentsTopMetricsAcceptLanguageEnum = exports.GetAgentsTopMetricsMetricTypeEnum = exports.GetAgentsTopMetricsAgentTypeEnum = exports.GetAgentsTopMetricsEvaluationModeEnum = exports.GetAgentsTopMetricsPeriodEnum = exports.AnalyticsApi = void 0;
+exports.GetTopMetricsTopEnum = exports.GetTopMetricsMetricTypeEnum = exports.GetTopMetricsAgentTypeEnum = exports.GetTopMetricsEvaluationModeEnum = exports.GetTopMetricsPeriodEnum = exports.GetTopAgentsAcceptLanguageEnum = exports.GetTopAgentsTopEnum = exports.GetTopAgentsMetricTypeEnum = exports.GetTopAgentsAgentTypeEnum = exports.GetTopAgentsEvaluationModeEnum = exports.GetTopAgentsPeriodEnum = exports.GetSummarizeSettingsAcceptLanguageEnum = exports.GetSummarizeLatestAcceptLanguageEnum = exports.GetSummarizeHistoryAcceptLanguageEnum = exports.GetSummarizeEstimateAcceptLanguageEnum = exports.GetSummarizeEstimatePeriodEnum = exports.GetSummarizeAcceptLanguageEnum = exports.GetMetricsTopAgentsAcceptLanguageEnum = exports.GetMetricsTopAgentsMetricTypeEnum = exports.GetMetricsTopAgentsAgentTypeEnum = exports.GetMetricsTopAgentsEvaluationModeEnum = exports.GetMetricsTopAgentsPeriodEnum = exports.GetMetricsLogAcceptLanguageEnum = exports.GetMetricsLogSortOrderEnum = exports.GetMetricsLogSortByEnum = exports.GetDiagnosticsHistoryAcceptLanguageEnum = exports.GetDiagnosticsEstimateAcceptLanguageEnum = exports.GetDiagnosticsEstimateCheckModeEnum = exports.GetDiagnosticsEntitiesAcceptLanguageEnum = exports.GetDiagnosticsEntitiesEntityTypeEnum = exports.GetDiagnosticsDialogTestsAcceptLanguageEnum = exports.GetDiagnosticsCheckAcceptLanguageEnum = exports.GetDiagnosticsAcceptLanguageEnum = exports.GetDiagnosticsEntityTypeEnum = exports.GetDiagnosticsPeriodDaysEnum = exports.GetAnalysisJobsLatestAcceptLanguageEnum = exports.GetAnalysisJobsLatestKindEnum = exports.GetAnalysisJobsInsightHistoryAcceptLanguageEnum = exports.GetAnalysisJobsAcceptLanguageEnum = exports.GetAgentsTopMetricsAcceptLanguageEnum = exports.GetAgentsTopMetricsMetricTypeEnum = exports.GetAgentsTopMetricsAgentTypeEnum = exports.GetAgentsTopMetricsEvaluationModeEnum = exports.GetAgentsTopMetricsPeriodEnum = exports.DiagnosticsSaveAcceptLanguageEnum = exports.DiagnosticsGenerateAcceptLanguageEnum = exports.AnalysisJobsStopAcceptLanguageEnum = exports.AnalysisJobsResumeAcceptLanguageEnum = exports.AnalysisJobsPauseAcceptLanguageEnum = exports.AnalyticsApi = void 0;
+exports.UpdateSummarizeSettingsAcceptLanguageEnum = exports.SummarizeAcceptLanguageEnum = exports.GetTopMetricsAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class AnalyticsApi extends runtime.BaseAPI {
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Pause analysis after the current paid request has been saved
+     */
+    async analysisJobsPauseRaw(requestParameters, initOverrides) {
+        if (requestParameters['analysisJobQueryDto'] == null) {
+            throw new runtime.RequiredError('analysisJobQueryDto', 'Required parameter "analysisJobQueryDto" was null or undefined when calling analysisJobsPause().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/pause`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AnalysisJobQueryDtoToJSON)(requestParameters['analysisJobQueryDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Pause analysis after the current paid request has been saved
+     */
+    async analysisJobsPause(requestParameters, initOverrides) {
+        const response = await this.analysisJobsPauseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Resume the same analysis with saved progress and an authorized spending limit
+     */
+    async analysisJobsResumeRaw(requestParameters, initOverrides) {
+        if (requestParameters['resumeAnalysisJobDto'] == null) {
+            throw new runtime.RequiredError('resumeAnalysisJobDto', 'Required parameter "resumeAnalysisJobDto" was null or undefined when calling analysisJobsResume().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/resume`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ResumeAnalysisJobDtoToJSON)(requestParameters['resumeAnalysisJobDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Resume the same analysis with saved progress and an authorized spending limit
+     */
+    async analysisJobsResume(requestParameters, initOverrides) {
+        const response = await this.analysisJobsResumeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
+     * Stop an editor dialog test permanently
+     */
+    async analysisJobsStopRaw(requestParameters, initOverrides) {
+        if (requestParameters['analysisJobQueryDto'] == null) {
+            throw new runtime.RequiredError('analysisJobQueryDto', 'Required parameter "analysisJobQueryDto" was null or undefined when calling analysisJobsStop().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/stop`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AnalysisJobQueryDtoToJSON)(requestParameters['analysisJobQueryDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
+    }
+    /**
+     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
+     * Stop an editor dialog test permanently
+     */
+    async analysisJobsStop(requestParameters, initOverrides) {
+        const response = await this.analysisJobsStopRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . . check; .
+     * AI-
+     */
+    async diagnosticsGenerateRaw(requestParameters, initOverrides) {
+        if (requestParameters['generateDiagnosticsDto'] == null) {
+            throw new runtime.RequiredError('generateDiagnosticsDto', 'Required parameter "generateDiagnosticsDto" was null or undefined when calling diagnosticsGenerate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/generate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.GenerateDiagnosticsDtoToJSON)(requestParameters['generateDiagnosticsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsResultDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . check; .
+     * AI-
+     */
+    async diagnosticsGenerate(requestParameters, initOverrides) {
+        const response = await this.diagnosticsGenerateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . AI .
+     *
+     */
+    async diagnosticsSaveRaw(requestParameters, initOverrides) {
+        if (requestParameters['diagnosticsSnapshotQueryDto'] == null) {
+            throw new runtime.RequiredError('diagnosticsSnapshotQueryDto', 'Required parameter "diagnosticsSnapshotQueryDto" was null or undefined when calling diagnosticsSave().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/save`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.DiagnosticsSnapshotQueryDtoToJSON)(requestParameters['diagnosticsSnapshotQueryDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . AI .
+     *
+     */
+    async diagnosticsSave(requestParameters, initOverrides) {
+        const response = await this.diagnosticsSaveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * . , .
      * L1:
@@ -102,6 +333,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -118,6 +353,507 @@ class AnalyticsApi extends runtime.BaseAPI {
      */
     async getAgentsTopMetrics(requestParameters, initOverrides) {
         const response = await this.getAgentsTopMetricsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read background analysis progress
+     */
+    async getAnalysisJobsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAnalysisJobs().');
+        }
+        if (requestParameters['jobId'] == null) {
+            throw new runtime.RequiredError('jobId', 'Required parameter "jobId" was null or undefined when calling getAnalysisJobs().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['jobId'] != null) {
+            queryParameters['job_id'] = requestParameters['jobId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read background analysis progress
+     */
+    async getAnalysisJobs(requestParameters, initOverrides) {
+        const response = await this.getAnalysisJobsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
+     * List saved and unfinished AI summaries
+     */
+    async getAnalysisJobsInsightHistoryRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAnalysisJobsInsightHistory().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/insight-history`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InsightHistoryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
+     * List saved and unfinished AI summaries
+     */
+    async getAnalysisJobsInsightHistory(requestParameters, initOverrides) {
+        const response = await this.getAnalysisJobsInsightHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read the latest background analysis
+     */
+    async getAnalysisJobsLatestRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAnalysisJobsLatest().');
+        }
+        if (requestParameters['kind'] == null) {
+            throw new runtime.RequiredError('kind', 'Required parameter "kind" was null or undefined when calling getAnalysisJobsLatest().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['kind'] != null) {
+            queryParameters['kind'] = requestParameters['kind'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/latest`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
+    }
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read the latest background analysis
+     */
+    async getAnalysisJobsLatest(requestParameters, initOverrides) {
+        const response = await this.getAnalysisJobsLatestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * AI- . , , . .
+     *
+     */
+    async getDiagnosticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDiagnostics().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['periodDays'] != null) {
+            queryParameters['period_days'] = requestParameters['periodDays'];
+        }
+        if (requestParameters['entityType'] != null) {
+            queryParameters['entity_type'] = requestParameters['entityType'];
+        }
+        if (requestParameters['entityRef'] != null) {
+            queryParameters['entity_ref'] = requestParameters['entityRef'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * AI- . , , . .
+     *
+     */
+    async getDiagnostics(requestParameters, initOverrides) {
+        const response = await this.getDiagnosticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , AI-. . snapshot_id ID ID .
+     *
+     */
+    async getDiagnosticsCheckRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDiagnosticsCheck().');
+        }
+        if (requestParameters['snapshotId'] == null) {
+            throw new runtime.RequiredError('snapshotId', 'Required parameter "snapshotId" was null or undefined when calling getDiagnosticsCheck().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['snapshotId'] != null) {
+            queryParameters['snapshot_id'] = requestParameters['snapshotId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/check`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , AI-. . snapshot_id ID ID .
+     *
+     */
+    async getDiagnosticsCheck(requestParameters, initOverrides) {
+        const response = await this.getDiagnosticsCheckRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , 500 . previous_cursor. .
+     *
+     */
+    async getDiagnosticsDialogTestsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDiagnosticsDialogTests().');
+        }
+        if (requestParameters['reportId'] == null) {
+            throw new runtime.RequiredError('reportId', 'Required parameter "reportId" was null or undefined when calling getDiagnosticsDialogTests().');
+        }
+        if (requestParameters['cursor'] == null) {
+            throw new runtime.RequiredError('cursor', 'Required parameter "cursor" was null or undefined when calling getDiagnosticsDialogTests().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['reportId'] != null) {
+            queryParameters['report_id'] = requestParameters['reportId'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/dialog-tests`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogTestingResultDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , 500 . previous_cursor. .
+     *
+     */
+    async getDiagnosticsDialogTests(requestParameters, initOverrides) {
+        const response = await this.getDiagnosticsDialogTestsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . 30 ; entity_type .
+     *
+     */
+    async getDiagnosticsEntitiesRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDiagnosticsEntities().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['entityType'] != null) {
+            queryParameters['entity_type'] = requestParameters['entityType'];
+        }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/entities`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticEntityOptionsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . 30 ; entity_type .
+     *
+     */
+    async getDiagnosticsEntities(requestParameters, initOverrides) {
+        const response = await this.getDiagnosticsEntitiesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * AI- ; .
+     *
+     */
+    async getDiagnosticsEstimateRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDiagnosticsEstimate().');
+        }
+        if (requestParameters['snapshotId'] == null) {
+            throw new runtime.RequiredError('snapshotId', 'Required parameter "snapshotId" was null or undefined when calling getDiagnosticsEstimate().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['snapshotId'] != null) {
+            queryParameters['snapshot_id'] = requestParameters['snapshotId'];
+        }
+        if (requestParameters['checkMode'] != null) {
+            queryParameters['check_mode'] = requestParameters['checkMode'];
+        }
+        if (requestParameters['testAgentVariantId'] != null) {
+            queryParameters['test_agent_variant_id'] = requestParameters['testAgentVariantId'];
+        }
+        if (requestParameters['testTriggerNodeId'] != null) {
+            queryParameters['test_trigger_node_id'] = requestParameters['testTriggerNodeId'];
+        }
+        if (requestParameters['testVariants'] != null) {
+            queryParameters['test_variants'] = requestParameters['testVariants'];
+        }
+        if (requestParameters['testMaxClientMessages'] != null) {
+            queryParameters['test_max_client_messages'] = requestParameters['testMaxClientMessages'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/estimate`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsEstimateDtoFromJSON)(jsonValue));
+    }
+    /**
+     * AI- ; .
+     *
+     */
+    async getDiagnosticsEstimate(requestParameters, initOverrides) {
+        const response = await this.getDiagnosticsEstimateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , 20 , AI-. next_cursor.
+     *
+     */
+    async getDiagnosticsHistoryRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getDiagnosticsHistory().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/diagnostics/history`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsHistoryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , 20 , AI-. next_cursor.
+     *
+     */
+    async getDiagnosticsHistory(requestParameters, initOverrides) {
+        const response = await this.getDiagnosticsHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -196,6 +932,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -263,6 +1003,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -300,6 +1044,10 @@ class AnalyticsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -346,6 +1094,10 @@ class AnalyticsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -398,6 +1150,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -441,6 +1197,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -481,6 +1241,10 @@ class AnalyticsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -551,6 +1315,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -618,6 +1386,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -659,6 +1431,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
         const response = await this.request({
@@ -668,7 +1444,7 @@ class AnalyticsApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.GenerateSummarizationRequestDtoToJSON)(requestParameters['generateSummarizationRequestDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SummarizationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
     }
     /**
      * AI- . model_id . .
@@ -701,6 +1477,10 @@ class AnalyticsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_analytics"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_analytics"]);
         }
         const response = await this.request({
@@ -722,6 +1502,41 @@ class AnalyticsApi extends runtime.BaseAPI {
     }
 }
 exports.AnalyticsApi = AnalyticsApi;
+/**
+ * @export
+ */
+exports.AnalysisJobsPauseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AnalysisJobsResumeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.AnalysisJobsStopAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DiagnosticsGenerateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DiagnosticsSaveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */
@@ -763,6 +1578,104 @@ exports.GetAgentsTopMetricsMetricTypeEnum = {
  * @export
  */
 exports.GetAgentsTopMetricsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAnalysisJobsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAnalysisJobsInsightHistoryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAnalysisJobsLatestKindEnum = {
+    Diagnostics: 'diagnostics',
+    Insight: 'insight'
+};
+/**
+ * @export
+ */
+exports.GetAnalysisJobsLatestAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsPeriodDaysEnum = {
+    NUMBER_7: 7,
+    NUMBER_30: 30
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsEntityTypeEnum = {
+    Agent: 'agent',
+    Automation: 'automation'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsCheckAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsDialogTestsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsEntitiesEntityTypeEnum = {
+    Agent: 'agent',
+    Automation: 'automation'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsEntitiesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsEstimateCheckModeEnum = {
+    Diagnostics: 'diagnostics',
+    DialogTests: 'dialog_tests'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsEstimateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsHistoryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -53,7 +53,7 @@ export interface SupportAutoAssignmentSettingsDto {
      */
     mode: SupportAssignmentMode;
     /**
-     * ; null . .
+     * ; null , . .
      * @type {string}
      * @memberof SupportAutoAssignmentSettingsDto
      */

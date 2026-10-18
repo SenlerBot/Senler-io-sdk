@@ -28,7 +28,7 @@ exports.AutomationAnalysisDtoStatusEnum = {
     InsufficientData: 'insufficient_data',
     NoPublishedAutomations: 'no_published_automations',
     CollectionError: 'collection_error',
-    LegacySummary: 'legacy_summary'
+    NotAnalyzed: 'not_analyzed'
 };
 /**
  * Check if a given object implements the AutomationAnalysisDto interface.

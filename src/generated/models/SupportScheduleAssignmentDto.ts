@@ -20,11 +20,11 @@ import { mapValues } from '../runtime';
  */
 export interface SupportScheduleAssignmentDto {
     /**
-     * ; null
-     * @type {string}
+     * ; null , []
+     * @type {Array<string>}
      * @memberof SupportScheduleAssignmentDto
      */
-    groupId: string | null;
+    groupIds: Array<string> | null;
     /**
      * ID
      * @type {string}
@@ -73,7 +73,7 @@ export interface SupportScheduleAssignmentDto {
  * Check if a given object implements the SupportScheduleAssignmentDto interface.
  */
 export function instanceOfSupportScheduleAssignmentDto(value: object): value is SupportScheduleAssignmentDto {
-    if (!('groupId' in value) || value['groupId'] === undefined) return false;
+    if (!('groupIds' in value) || value['groupIds'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('startsAt' in value) || value['startsAt'] === undefined) return false;
@@ -94,7 +94,7 @@ export function SupportScheduleAssignmentDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
-        'groupId': json['group_id'],
+        'groupIds': json['group_ids'] == null ? null : json['group_ids'],
         'id': json['id'],
         'projectId': json['project_id'],
         'startsAt': (new Date(json['starts_at'])),
@@ -116,7 +116,7 @@ export function SupportScheduleAssignmentDtoToJSONTyped(value?: SupportScheduleA
 
     return {
 
-        'group_id': value['groupId'],
+        'group_ids': value['groupIds'],
         'id': value['id'],
         'project_id': value['projectId'],
         'starts_at': ((value['startsAt']).toISOString()),

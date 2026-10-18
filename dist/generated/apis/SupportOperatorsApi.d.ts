@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { SaveSupportOperatorGroupDto, SuccessResponseDto, SupportAutoAssignmentSettingsDto, SupportOperatorDirectoryDto, SupportOperatorGroupDto } from '../models/index';
+import type { SaveSupportOperatorGroupDto, SuccessResponseDto, SupportAutoAssignmentSettingsDto, SupportGroupRemovalImpactDto, SupportOperatorDirectoryDto, SupportOperatorGroupDto } from '../models/index';
 export interface DeleteSupportOperatorsGroupsRequest {
     projectId: string;
     groupId: string;
@@ -23,6 +23,22 @@ export interface GetSupportOperatorsRequest {
 export interface GetSupportOperatorsAutoAssignmentRequest {
     projectId: string;
     acceptLanguage?: GetSupportOperatorsAutoAssignmentAcceptLanguageEnum;
+}
+export interface GetSupportOperatorsGroupsRequest {
+    projectId: string;
+    groupId: string;
+    acceptLanguage?: GetSupportOperatorsGroupsAcceptLanguageEnum;
+}
+export interface GetSupportOperatorsGroupsRemovalImpactRequest {
+    projectId: string;
+    groupId: string;
+    acceptLanguage?: GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum;
+}
+export interface GetSupportOperatorsMembersGroupRemovalImpactRequest {
+    projectId: string;
+    memberId: string;
+    removedGroupIds: Array<string>;
+    acceptLanguage?: GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum;
 }
 export interface SupportOperatorsGroupsRequest {
     projectId: string;
@@ -78,9 +94,39 @@ export declare class SupportOperatorsApi extends runtime.BaseAPI {
      * .
      *
      */
-    supportOperatorsGroupsRaw(requestParameters: SupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportOperatorGroupDto>>;
+    getSupportOperatorsGroupsRaw(requestParameters: GetSupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportOperatorGroupDto>>;
     /**
      * .
+     *
+     */
+    getSupportOperatorsGroups(requestParameters: GetSupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportOperatorGroupDto>;
+    /**
+     * , . ; .
+     *
+     */
+    getSupportOperatorsGroupsRemovalImpactRaw(requestParameters: GetSupportOperatorsGroupsRemovalImpactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportGroupRemovalImpactDto>>;
+    /**
+     * , . ; .
+     *
+     */
+    getSupportOperatorsGroupsRemovalImpact(requestParameters: GetSupportOperatorsGroupsRemovalImpactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportGroupRemovalImpactDto>;
+    /**
+     * , . ; .
+     *
+     */
+    getSupportOperatorsMembersGroupRemovalImpactRaw(requestParameters: GetSupportOperatorsMembersGroupRemovalImpactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportGroupRemovalImpactDto>>;
+    /**
+     * , . ; .
+     *
+     */
+    getSupportOperatorsMembersGroupRemovalImpact(requestParameters: GetSupportOperatorsMembersGroupRemovalImpactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportGroupRemovalImpactDto>;
+    /**
+     * , .
+     *
+     */
+    supportOperatorsGroupsRaw(requestParameters: SupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportOperatorGroupDto>>;
+    /**
+     * , .
      *
      */
     supportOperatorsGroups(requestParameters: SupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportOperatorGroupDto>;
@@ -95,12 +141,12 @@ export declare class SupportOperatorsApi extends runtime.BaseAPI {
      */
     updateSupportOperatorsAutoAssignment(requestParameters: UpdateSupportOperatorsAutoAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportAutoAssignmentSettingsDto>;
     /**
-     * , ; .
+     * , .
      *
      */
     updateSupportOperatorsGroupsRaw(requestParameters: UpdateSupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportOperatorGroupDto>>;
     /**
-     * , ; .
+     * , .
      *
      */
     updateSupportOperatorsGroups(requestParameters: UpdateSupportOperatorsGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportOperatorGroupDto>;
@@ -129,6 +175,30 @@ export declare const GetSupportOperatorsAutoAssignmentAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetSupportOperatorsAutoAssignmentAcceptLanguageEnum = typeof GetSupportOperatorsAutoAssignmentAcceptLanguageEnum[keyof typeof GetSupportOperatorsAutoAssignmentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetSupportOperatorsGroupsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSupportOperatorsGroupsAcceptLanguageEnum = typeof GetSupportOperatorsGroupsAcceptLanguageEnum[keyof typeof GetSupportOperatorsGroupsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum = typeof GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum[keyof typeof GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum = typeof GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum[keyof typeof GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum];
 /**
  * @export
  */

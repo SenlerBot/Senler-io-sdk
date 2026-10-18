@@ -22,6 +22,8 @@ exports.GetAppCoverUploadUrlDtoToJSONTyped = GetAppCoverUploadUrlDtoToJSONTyped;
  * Check if a given object implements the GetAppCoverUploadUrlDto interface.
  */
 function instanceOfGetAppCoverUploadUrlDto(value) {
+    if (!('fileSize' in value) || value['fileSize'] === undefined)
+        return false;
     if (!('fileType' in value) || value['fileType'] === undefined)
         return false;
     return true;
@@ -34,6 +36,7 @@ function GetAppCoverUploadUrlDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
     };
 }
@@ -45,6 +48,7 @@ function GetAppCoverUploadUrlDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
     };
 }

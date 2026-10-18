@@ -22,6 +22,7 @@ const ChannelSpacesRefreshProcessResultDto_1 = require("./ChannelSpacesRefreshPr
 const ChannelWebhooksRefreshProcessResultDto_1 = require("./ChannelWebhooksRefreshProcessResultDto");
 const ChannelsTreeRefreshProcessResultDto_1 = require("./ChannelsTreeRefreshProcessResultDto");
 const DeliverySendProcessResultDto_1 = require("./DeliverySendProcessResultDto");
+const DialogBulkProcessResultDto_1 = require("./DialogBulkProcessResultDto");
 const ExportProcessResultDto_1 = require("./ExportProcessResultDto");
 const ImportProcessResultDto_1 = require("./ImportProcessResultDto");
 const LeadsRefreshProcessResultDto_1 = require("./LeadsRefreshProcessResultDto");
@@ -48,6 +49,9 @@ function ProcessResponseDtoResultFromJSONTyped(json, ignoreDiscriminator) {
     }
     if ((0, DeliverySendProcessResultDto_1.instanceOfDeliverySendProcessResultDto)(json)) {
         return (0, DeliverySendProcessResultDto_1.DeliverySendProcessResultDtoFromJSONTyped)(json, true);
+    }
+    if ((0, DialogBulkProcessResultDto_1.instanceOfDialogBulkProcessResultDto)(json)) {
+        return (0, DialogBulkProcessResultDto_1.DialogBulkProcessResultDtoFromJSONTyped)(json, true);
     }
     if ((0, ExportProcessResultDto_1.instanceOfExportProcessResultDto)(json)) {
         return (0, ExportProcessResultDto_1.ExportProcessResultDtoFromJSONTyped)(json, true);
@@ -87,6 +91,9 @@ function ProcessResponseDtoResultToJSONTyped(value, ignoreDiscriminator = false)
     }
     if ((0, DeliverySendProcessResultDto_1.instanceOfDeliverySendProcessResultDto)(value)) {
         return (0, DeliverySendProcessResultDto_1.DeliverySendProcessResultDtoToJSON)(value);
+    }
+    if ((0, DialogBulkProcessResultDto_1.instanceOfDialogBulkProcessResultDto)(value)) {
+        return (0, DialogBulkProcessResultDto_1.DialogBulkProcessResultDtoToJSON)(value);
     }
     if ((0, ExportProcessResultDto_1.instanceOfExportProcessResultDto)(value)) {
         return (0, ExportProcessResultDto_1.ExportProcessResultDtoToJSON)(value);

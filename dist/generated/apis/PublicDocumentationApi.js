@@ -176,7 +176,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Markdown, document_ref .
+     * API- , document_ref . .
      *
      */
     async getPageRaw(requestParameters, initOverrides) {
@@ -200,7 +200,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicDocumentationPageDtoFromJSON)(jsonValue));
     }
     /**
-     * Markdown, document_ref .
+     * API- , document_ref . .
      *
      */
     async getPage(requestParameters, initOverrides) {
@@ -208,7 +208,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * ; app ID .
+     * . include_api=true HTTP-; API . app ID .
      * Senler
      */
     async publicDocumentationGetSearchRaw(requestParameters, initOverrides) {
@@ -218,6 +218,9 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         const queryParameters = {};
         if (requestParameters['query'] != null) {
             queryParameters['query'] = requestParameters['query'];
+        }
+        if (requestParameters['includeApi'] != null) {
+            queryParameters['include_api'] = requestParameters['includeApi'];
         }
         if (requestParameters['locale'] != null) {
             queryParameters['locale'] = requestParameters['locale'];
@@ -247,7 +250,7 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicDocumentationSearchResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * ; app ID .
+     * . include_api=true HTTP-; API . app ID .
      * Senler
      */
     async publicDocumentationGetSearch(requestParameters, initOverrides) {

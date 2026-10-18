@@ -50,6 +50,12 @@ export interface ProjectAccessDto {
      */
     channelAccess: ChannelAccessDto;
     /**
+     * , .
+     * @type {boolean}
+     * @memberof ProjectAccessDto
+     */
+    canListDialogs: boolean;
+    /**
      * , . null token/admin synthetic-.
      * @type {Date}
      * @memberof ProjectAccessDto

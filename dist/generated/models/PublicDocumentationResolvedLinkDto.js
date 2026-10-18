@@ -40,6 +40,8 @@ function instanceOfPublicDocumentationResolvedLinkDto(value) {
         return false;
     if (!('targetFileId' in value) || value['targetFileId'] === undefined)
         return false;
+    if (!('documentRef' in value) || value['documentRef'] === undefined)
+        return false;
     return true;
 }
 function PublicDocumentationResolvedLinkDtoFromJSON(json) {
@@ -54,6 +56,7 @@ function PublicDocumentationResolvedLinkDtoFromJSONTyped(json, ignoreDiscriminat
         'kind': json['kind'],
         'url': json['url'],
         'targetFileId': json['target_file_id'],
+        'documentRef': json['document_ref'],
     };
 }
 function PublicDocumentationResolvedLinkDtoToJSON(json) {
@@ -68,5 +71,6 @@ function PublicDocumentationResolvedLinkDtoToJSONTyped(value, ignoreDiscriminato
         'kind': value['kind'],
         'url': value['url'],
         'target_file_id': value['targetFileId'],
+        'document_ref': value['documentRef'],
     };
 }

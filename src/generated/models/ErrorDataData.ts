@@ -22,14 +22,14 @@ import {
 } from './ValidationErrorDto';
 
 /**
- * . DTO data.validation_errors.
+ * ; {}. validation_errors; .
  * @export
  * @interface ErrorDataData
  */
 export interface ErrorDataData {
     [key: string]: any | any;
     /**
-     * DTO
+     * , . , .
      * @type {Array<ValidationErrorDto>}
      * @memberof ErrorDataData
      */

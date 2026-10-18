@@ -28,6 +28,12 @@ export interface AutomationResponseDto {
      */
     projectId: string;
     /**
+     * ID , , null.
+     * @type {string}
+     * @memberof AutomationResponseDto
+     */
+    appId: string | null;
+    /**
      * .
      * @type {string}
      * @memberof AutomationResponseDto
@@ -148,7 +154,6 @@ export declare const AutomationResponseDtoStatusEnum: {
     readonly Running: "running";
     readonly Paused: "paused";
     readonly Disabled: "disabled";
-    readonly Archived: "archived";
 };
 export type AutomationResponseDtoStatusEnum = typeof AutomationResponseDtoStatusEnum[keyof typeof AutomationResponseDtoStatusEnum];
 /**

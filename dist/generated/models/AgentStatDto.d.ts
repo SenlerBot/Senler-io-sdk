@@ -52,29 +52,29 @@ export interface AgentStatDto {
      */
     cost: number;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof AgentStatDto
      */
-    cachedPercentage: number;
+    cachedPercentage: number | null;
     /**
-     * Prompt
+     * Prompt ; null,
      * @type {number}
      * @memberof AgentStatDto
      */
-    promptTokens: number;
+    promptTokens: number | null;
     /**
-     * Completion
+     * Completion ; null,
      * @type {number}
      * @memberof AgentStatDto
      */
-    completionTokens: number;
+    completionTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof AgentStatDto
      */
-    cachedTokens: number;
+    cachedTokens: number | null;
 }
 /**
  * Check if a given object implements the AgentStatDto interface.

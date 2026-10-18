@@ -47,6 +47,13 @@ import {
     DeliverySendPayloadDtoFromJSONTyped,
     DeliverySendPayloadDtoToJSON,
 } from './DeliverySendPayloadDto';
+import type { DialogBulkProcessPayloadDto } from './DialogBulkProcessPayloadDto';
+import {
+    instanceOfDialogBulkProcessPayloadDto,
+    DialogBulkProcessPayloadDtoFromJSON,
+    DialogBulkProcessPayloadDtoFromJSONTyped,
+    DialogBulkProcessPayloadDtoToJSON,
+} from './DialogBulkProcessPayloadDto';
 import type { ExportLeadsPayloadDto } from './ExportLeadsPayloadDto';
 import {
     instanceOfExportLeadsPayloadDto,
@@ -88,7 +95,7 @@ import {
  *
  * @export
  */
-export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | LeadsSegmentOperationPayloadDto | ResourcePackageImportPayloadDto;
+export type ProcessResponseDtoPayload = ChannelMigrationPayloadDto | ChannelSpacesRefreshPayloadDto | ChannelWebhooksRefreshPayloadDto | ChannelsTreeRefreshPayloadDto | DeliverySendPayloadDto | DialogBulkProcessPayloadDto | ExportLeadsPayloadDto | ImportLeadsPayloadDto | LeadsRefreshPayloadDto | LeadsSegmentOperationPayloadDto | ResourcePackageImportPayloadDto;
 
 export function ProcessResponseDtoPayloadFromJSON(json: any): ProcessResponseDtoPayload {
     return ProcessResponseDtoPayloadFromJSONTyped(json, false);
@@ -112,6 +119,9 @@ export function ProcessResponseDtoPayloadFromJSONTyped(json: any, ignoreDiscrimi
     }
     if (instanceOfDeliverySendPayloadDto(json)) {
         return DeliverySendPayloadDtoFromJSONTyped(json, true);
+    }
+    if (instanceOfDialogBulkProcessPayloadDto(json)) {
+        return DialogBulkProcessPayloadDtoFromJSONTyped(json, true);
     }
     if (instanceOfExportLeadsPayloadDto(json)) {
         return ExportLeadsPayloadDtoFromJSONTyped(json, true);
@@ -155,6 +165,9 @@ export function ProcessResponseDtoPayloadToJSONTyped(value?: ProcessResponseDtoP
     }
     if (instanceOfDeliverySendPayloadDto(value)) {
         return DeliverySendPayloadDtoToJSON(value as DeliverySendPayloadDto);
+    }
+    if (instanceOfDialogBulkProcessPayloadDto(value)) {
+        return DialogBulkProcessPayloadDtoToJSON(value as DialogBulkProcessPayloadDto);
     }
     if (instanceOfExportLeadsPayloadDto(value)) {
         return ExportLeadsPayloadDtoToJSON(value as ExportLeadsPayloadDto);

@@ -16,19 +16,27 @@
  */
 export interface CentrifugoSubscriptionDto {
     /**
-     * JWT- Centrifugo .
-     * , .
+     * : , .
+     * *_access (dialog_access, dialogs_access, project_access,
+     * editor_access, landing_access, automation_access, notifications_access, processes_access,
+     * agent_access) getData: async () => ({ authorization: subscription_token });
+     * API.
+     * token Centrifugo.
+     * , , ,
+     * X-Realtime-Protocol: access-v1.
+     * JWT; getToken.
      * @type {string}
      * @memberof CentrifugoSubscriptionDto
      */
     subscriptionToken: string;
     /**
      * . :
-     * - dialog:{dialogId} - (cabinet/admin)
+     * - dialog_access:{dialogId} - (cabinet/admin)
+     * - dialog_access:lead:{projectId}:{channelId}:{leadId} -
      * - dialog:{dialogId}:widget -
-     * - dialogs:project:{projectId} - (admin)
-     * - dialogs:project:{projectId}:user:{userId} -
-     * - processes:project:{projectId} -
+     * - dialogs_access:project:{projectId} - (admin)
+     * - dialogs_access:project:{projectId}:user:{userId} -
+     * - processes_access:project:{projectId} -
      * @type {string}
      * @memberof CentrifugoSubscriptionDto
      */

@@ -34,7 +34,7 @@ export interface SubscriptionPositionDto {
      */
     periodId: string;
     /**
-     * : base_tariff, credits, automation_speed, mailing_daily, storage.
+     * : base_tariff, credits, automation_speed, mailing_daily, api_daily, storage.
      * @type {string}
      * @memberof SubscriptionPositionDto
      */
@@ -128,6 +128,7 @@ export const SubscriptionPositionDtoKindEnum = {
     Credits: 'credits',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
     Storage: 'storage'
 } as const;
 export type SubscriptionPositionDtoKindEnum = typeof SubscriptionPositionDtoKindEnum[keyof typeof SubscriptionPositionDtoKindEnum];

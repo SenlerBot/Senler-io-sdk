@@ -33,9 +33,9 @@ export interface AgentAssignmentRulesUpdateRequest {
     updateAgentAssignmentRuleDto: UpdateAgentAssignmentRuleDto;
     acceptLanguage?: AgentAssignmentRulesUpdateAcceptLanguageEnum;
 }
-export interface AgentAssignmentRulesUpdateRestoreRequest {
+export interface UpdateRestoreRequest {
     ruleId: string;
-    acceptLanguage?: AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum;
+    acceptLanguage?: UpdateRestoreAcceptLanguageEnum;
 }
 /**
  *
@@ -95,12 +95,12 @@ export declare class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    agentAssignmentRulesUpdateRestoreRaw(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
+    updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>>;
     /**
      *
      *
      */
-    agentAssignmentRulesUpdateRestore(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
+    updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto>;
 }
 /**
  * @export
@@ -145,8 +145,8 @@ export type AgentAssignmentRulesUpdateAcceptLanguageEnum = typeof AgentAssignmen
 /**
  * @export
  */
-export declare const AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum: {
+export declare const UpdateRestoreAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum[keyof typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum];
+export type UpdateRestoreAcceptLanguageEnum = typeof UpdateRestoreAcceptLanguageEnum[keyof typeof UpdateRestoreAcceptLanguageEnum];

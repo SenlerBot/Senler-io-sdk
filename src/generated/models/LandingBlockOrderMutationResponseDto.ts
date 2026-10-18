@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingBlockResponseDto } from './LandingBlockResponseDto';
+import type { LandingBlockOrderMutationResponseDtoBlock } from './LandingBlockOrderMutationResponseDtoBlock';
 import {
-    LandingBlockResponseDtoFromJSON,
-    LandingBlockResponseDtoFromJSONTyped,
-    LandingBlockResponseDtoToJSON,
-    LandingBlockResponseDtoToJSONTyped,
-} from './LandingBlockResponseDto';
+    LandingBlockOrderMutationResponseDtoBlockFromJSON,
+    LandingBlockOrderMutationResponseDtoBlockFromJSONTyped,
+    LandingBlockOrderMutationResponseDtoBlockToJSON,
+    LandingBlockOrderMutationResponseDtoBlockToJSONTyped,
+} from './LandingBlockOrderMutationResponseDtoBlock';
 
 /**
  * LandingBlockOrderMutationResponseDto.
@@ -29,10 +29,10 @@ import {
 export interface LandingBlockOrderMutationResponseDto {
     /**
      *
-     * @type {LandingBlockResponseDto}
+     * @type {LandingBlockOrderMutationResponseDtoBlock}
      * @memberof LandingBlockOrderMutationResponseDto
      */
-    block: LandingBlockResponseDto;
+    block: LandingBlockOrderMutationResponseDtoBlock;
     /**
      *
      * @type {number}
@@ -60,7 +60,7 @@ export function LandingBlockOrderMutationResponseDtoFromJSONTyped(json: any, ign
     }
     return {
 
-        'block': LandingBlockResponseDtoFromJSON(json['block']),
+        'block': LandingBlockOrderMutationResponseDtoBlockFromJSON(json['block']),
         'orderRevision': json['order_revision'],
     };
 }
@@ -76,7 +76,7 @@ export function LandingBlockOrderMutationResponseDtoToJSONTyped(value?: LandingB
 
     return {
 
-        'block': LandingBlockResponseDtoToJSON(value['block']),
+        'block': LandingBlockOrderMutationResponseDtoBlockToJSON(value['block']),
         'order_revision': value['orderRevision'],
     };
 }

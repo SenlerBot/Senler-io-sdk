@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingBlockResponseDtoPayload } from './LandingBlockResponseDtoPayload';
-import {
-    LandingBlockResponseDtoPayloadFromJSON,
-    LandingBlockResponseDtoPayloadFromJSONTyped,
-    LandingBlockResponseDtoPayloadToJSON,
-    LandingBlockResponseDtoPayloadToJSONTyped,
-} from './LandingBlockResponseDtoPayload';
 import type { CreateLandingActionBlockDtoAction } from './CreateLandingActionBlockDtoAction';
 import {
     CreateLandingActionBlockDtoActionFromJSON,
@@ -53,11 +46,11 @@ export interface CreateLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     *
-     * @type {LandingBlockResponseDtoPayload}
+     * ; type (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof CreateLandingActionBlockDto
      */
-    payload: LandingBlockResponseDtoPayload;
+    payload: { [key: string]: any; };
     /**
      *
      * @type {CreateLandingActionBlockDtoAction}
@@ -114,7 +107,7 @@ export function CreateLandingActionBlockDtoFromJSONTyped(json: any, ignoreDiscri
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
-        'payload': LandingBlockResponseDtoPayloadFromJSON(json['payload']),
+        'payload': json['payload'],
         'action': json['action'] == null ? undefined : CreateLandingActionBlockDtoActionFromJSON(json['action']),
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
@@ -135,7 +128,7 @@ export function CreateLandingActionBlockDtoToJSONTyped(value?: CreateLandingActi
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
-        'payload': LandingBlockResponseDtoPayloadToJSON(value['payload']),
+        'payload': value['payload'],
         'action': CreateLandingActionBlockDtoActionToJSON(value['action']),
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],

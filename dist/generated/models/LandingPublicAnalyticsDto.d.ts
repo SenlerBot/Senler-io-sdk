@@ -22,6 +22,18 @@ export interface LandingPublicAnalyticsDto {
      */
     yandexMetrikaId: string | null;
     /**
+     *
+     * @type {boolean}
+     * @memberof LandingPublicAnalyticsDto
+     */
+    yandexMetrikaWebvisorEnabled: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof LandingPublicAnalyticsDto
+     */
+    yandexMetrikaClickmapEnabled: boolean;
+    /**
      * Google Analytics 4; null,
      * @type {string}
      * @memberof LandingPublicAnalyticsDto

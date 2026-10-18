@@ -52,6 +52,18 @@ export interface AiResponseActivityDto {
      * @memberof AiResponseActivityDto
      */
     streaming?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof AiResponseActivityDto
+     */
+    detailKey?: AiResponseActivityDtoDetailKeyEnum;
+    /**
+     * MCP-
+     * @type {string}
+     * @memberof AiResponseActivityDto
+     */
+    detail?: string;
 }
 /**
  * @export
@@ -69,6 +81,21 @@ export declare const AiResponseActivityDtoPhaseEnum: {
     readonly Finalizing: "finalizing";
 };
 export type AiResponseActivityDtoPhaseEnum = typeof AiResponseActivityDtoPhaseEnum[keyof typeof AiResponseActivityDtoPhaseEnum];
+/**
+ * @export
+ */
+export declare const AiResponseActivityDtoDetailKeyEnum: {
+    readonly Image: "image";
+    readonly Audio: "audio";
+    readonly Chart: "chart";
+    readonly QrCode: "qr_code";
+    readonly ImportAttachment: "import_attachment";
+    readonly AttachResult: "attach_result";
+    readonly ReadAttachment: "read_attachment";
+    readonly PageAction: "page_action";
+    readonly MessageButtons: "message_buttons";
+};
+export type AiResponseActivityDtoDetailKeyEnum = typeof AiResponseActivityDtoDetailKeyEnum[keyof typeof AiResponseActivityDtoDetailKeyEnum];
 /**
  * Check if a given object implements the AiResponseActivityDto interface.
  */

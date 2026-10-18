@@ -41,6 +41,13 @@ import {
     AutomationDraftInfoDtoToJSON,
     AutomationDraftInfoDtoToJSONTyped,
 } from './AutomationDraftInfoDto';
+import type { AutomationDraftOperationResponseDto } from './AutomationDraftOperationResponseDto';
+import {
+    AutomationDraftOperationResponseDtoFromJSON,
+    AutomationDraftOperationResponseDtoFromJSONTyped,
+    AutomationDraftOperationResponseDtoToJSON,
+    AutomationDraftOperationResponseDtoToJSONTyped,
+} from './AutomationDraftOperationResponseDto';
 import type { AutomationResponseDto } from './AutomationResponseDto';
 import {
     AutomationResponseDtoFromJSON,
@@ -62,6 +69,12 @@ import {
  * @interface AutomationGraphResponseDto
  */
 export interface AutomationGraphResponseDto {
+    /**
+     * . .
+     * @type {AutomationDraftOperationResponseDto}
+     * @memberof AutomationGraphResponseDto
+     */
+    appliedOperation?: AutomationDraftOperationResponseDto;
     /**
      * .
      * @type {AutomationResponseDto}
@@ -128,6 +141,7 @@ export function AutomationGraphResponseDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'appliedOperation': json['applied_operation'] == null ? undefined : AutomationDraftOperationResponseDtoFromJSON(json['applied_operation']),
         'automation': AutomationResponseDtoFromJSON(json['automation']),
         'draft': json['draft'] == null ? undefined : AutomationDraftInfoDtoFromJSON(json['draft']),
         'version': json['version'] == null ? undefined : AutomationVersionInfoDtoFromJSON(json['version']),
@@ -149,6 +163,7 @@ export function AutomationGraphResponseDtoToJSONTyped(value?: AutomationGraphRes
 
     return {
 
+        'applied_operation': AutomationDraftOperationResponseDtoToJSON(value['appliedOperation']),
         'automation': AutomationResponseDtoToJSON(value['automation']),
         'draft': AutomationDraftInfoDtoToJSON(value['draft']),
         'version': AutomationVersionInfoDtoToJSON(value['version']),

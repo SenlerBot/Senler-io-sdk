@@ -26,6 +26,7 @@ exports.SubscriptionScheduledChangeDtoItemKindEnum = {
     BaseTariff: 'base_tariff',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
     Storage: 'storage',
     Credits: 'credits'
 };

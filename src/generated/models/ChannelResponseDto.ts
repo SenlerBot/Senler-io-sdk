@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { DiscordChannelDataDto } from './DiscordChannelDataDto';
-import {
-    DiscordChannelDataDtoFromJSON,
-    DiscordChannelDataDtoFromJSONTyped,
-    DiscordChannelDataDtoToJSON,
-    DiscordChannelDataDtoToJSONTyped,
-} from './DiscordChannelDataDto';
 import type { WidgetChannelDataDto } from './WidgetChannelDataDto';
 import {
     WidgetChannelDataDtoFromJSON,
@@ -27,13 +20,6 @@ import {
     WidgetChannelDataDtoToJSON,
     WidgetChannelDataDtoToJSONTyped,
 } from './WidgetChannelDataDto';
-import type { TelegramChannelDataDto } from './TelegramChannelDataDto';
-import {
-    TelegramChannelDataDtoFromJSON,
-    TelegramChannelDataDtoFromJSONTyped,
-    TelegramChannelDataDtoToJSON,
-    TelegramChannelDataDtoToJSONTyped,
-} from './TelegramChannelDataDto';
 import type { MAXChannelDataDto } from './MAXChannelDataDto';
 import {
     MAXChannelDataDtoFromJSON,
@@ -41,20 +27,6 @@ import {
     MAXChannelDataDtoToJSON,
     MAXChannelDataDtoToJSONTyped,
 } from './MAXChannelDataDto';
-import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
-import {
-    StreamViChannelDataDtoFromJSON,
-    StreamViChannelDataDtoFromJSONTyped,
-    StreamViChannelDataDtoToJSON,
-    StreamViChannelDataDtoToJSONTyped,
-} from './StreamViChannelDataDto';
-import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
-import {
-    ChannelMigrationBackfillDtoFromJSON,
-    ChannelMigrationBackfillDtoFromJSONTyped,
-    ChannelMigrationBackfillDtoToJSON,
-    ChannelMigrationBackfillDtoToJSONTyped,
-} from './ChannelMigrationBackfillDto';
 import type { VKChannelDataDto } from './VKChannelDataDto';
 import {
     VKChannelDataDtoFromJSON,
@@ -69,13 +41,6 @@ import {
     ChannelAccessDtoToJSON,
     ChannelAccessDtoToJSONTyped,
 } from './ChannelAccessDto';
-import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
-import {
-    ChannelMigrationStatusDtoFromJSON,
-    ChannelMigrationStatusDtoFromJSONTyped,
-    ChannelMigrationStatusDtoToJSON,
-    ChannelMigrationStatusDtoToJSONTyped,
-} from './ChannelMigrationStatusDto';
 import type { SenlerStatusDto } from './SenlerStatusDto';
 import {
     SenlerStatusDtoFromJSON,
@@ -90,6 +55,48 @@ import {
     AvitoChannelDataDtoToJSON,
     AvitoChannelDataDtoToJSONTyped,
 } from './AvitoChannelDataDto';
+import type { DiscordChannelDataDto } from './DiscordChannelDataDto';
+import {
+    DiscordChannelDataDtoFromJSON,
+    DiscordChannelDataDtoFromJSONTyped,
+    DiscordChannelDataDtoToJSON,
+    DiscordChannelDataDtoToJSONTyped,
+} from './DiscordChannelDataDto';
+import type { TelegramChannelDataDto } from './TelegramChannelDataDto';
+import {
+    TelegramChannelDataDtoFromJSON,
+    TelegramChannelDataDtoFromJSONTyped,
+    TelegramChannelDataDtoToJSON,
+    TelegramChannelDataDtoToJSONTyped,
+} from './TelegramChannelDataDto';
+import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
+import {
+    StreamViChannelDataDtoFromJSON,
+    StreamViChannelDataDtoFromJSONTyped,
+    StreamViChannelDataDtoToJSON,
+    StreamViChannelDataDtoToJSONTyped,
+} from './StreamViChannelDataDto';
+import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
+import {
+    ChannelMigrationBackfillDtoFromJSON,
+    ChannelMigrationBackfillDtoFromJSONTyped,
+    ChannelMigrationBackfillDtoToJSON,
+    ChannelMigrationBackfillDtoToJSONTyped,
+} from './ChannelMigrationBackfillDto';
+import type { ChannelConnectionIssueDto } from './ChannelConnectionIssueDto';
+import {
+    ChannelConnectionIssueDtoFromJSON,
+    ChannelConnectionIssueDtoFromJSONTyped,
+    ChannelConnectionIssueDtoToJSON,
+    ChannelConnectionIssueDtoToJSONTyped,
+} from './ChannelConnectionIssueDto';
+import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
+import {
+    ChannelMigrationStatusDtoFromJSON,
+    ChannelMigrationStatusDtoFromJSONTyped,
+    ChannelMigrationStatusDtoToJSON,
+    ChannelMigrationStatusDtoToJSONTyped,
+} from './ChannelMigrationStatusDto';
 import type { EmailChannelDataDto } from './EmailChannelDataDto';
 import {
     EmailChannelDataDtoFromJSON,
@@ -110,6 +117,12 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     id: string;
+    /**
+     * .
+     * @type {Array<ChannelConnectionIssueDto>}
+     * @memberof ChannelResponseDto
+     */
+    connectionIssues?: Array<ChannelConnectionIssueDto>;
     /**
      * ID
      * @type {string}
@@ -152,12 +165,6 @@ export interface ChannelResponseDto {
      * @memberof ChannelResponseDto
      */
     isPaused: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof ChannelResponseDto
-     */
-    webhookSecret?: string | null;
     /**
      * ID
      * @type {string}
@@ -326,6 +333,7 @@ export function ChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
 
         'id': json['id'],
+        'connectionIssues': json['connection_issues'] == null ? undefined : ((json['connection_issues'] as Array<any>).map(ChannelConnectionIssueDtoFromJSON)),
         'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -333,7 +341,6 @@ export function ChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'isPaused': json['is_paused'],
-        'webhookSecret': json['webhook_secret'] == null ? undefined : json['webhook_secret'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -370,6 +377,7 @@ export function ChannelResponseDtoToJSONTyped(value?: ChannelResponseDto | null,
     return {
 
         'id': value['id'],
+        'connection_issues': value['connectionIssues'] == null ? undefined : ((value['connectionIssues'] as Array<any>).map(ChannelConnectionIssueDtoToJSON)),
         'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],
@@ -377,7 +385,6 @@ export function ChannelResponseDtoToJSONTyped(value?: ChannelResponseDto | null,
         'external_id': value['externalId'],
         'avatar_url': value['avatarUrl'],
         'is_paused': value['isPaused'],
-        'webhook_secret': value['webhookSecret'],
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

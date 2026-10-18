@@ -46,13 +46,48 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateEventsNoteAcceptLanguageEnum = exports.GetNavigationAcceptLanguageEnum = exports.GetMessageNotesAcceptLanguageEnum = exports.GetLeadConversationSubscriptionAcceptLanguageEnum = exports.GetLeadConversationEventsAcceptLanguageEnum = exports.GetLeadConversationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsNoteAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsApi = void 0;
+exports.UpdateEventsNoteAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.GetUnreadCountAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetNavigationAcceptLanguageEnum = exports.GetMessageNotesAcceptLanguageEnum = exports.GetMarkAllReadBoundaryAcceptLanguageEnum = exports.GetLeadConversationEventsAcceptLanguageEnum = exports.GetLeadConversationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsNoteAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.GetAiResponseQueueAcceptLanguageEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsCreateAcceptLanguageEnum = exports.DialogsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class DialogsApi extends runtime.BaseAPI {
+    /**
+     * . ; force_create=true .
+     *
+     */
+    async dialogsCreateRaw(requestParameters, initOverrides) {
+        if (requestParameters['createDialogDto'] == null) {
+            throw new runtime.RequiredError('createDialogDto', 'Required parameter "createDialogDto" was null or undefined when calling dialogsCreate().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateDialogDtoToJSON)(requestParameters['createDialogDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateDialogResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . ; force_create=true .
+     *
+     */
+    async dialogsCreate(requestParameters, initOverrides) {
+        const response = await this.dialogsCreateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * .
      *
@@ -72,6 +107,10 @@ class DialogsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -116,6 +155,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -155,6 +198,10 @@ class DialogsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -202,6 +249,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -242,6 +293,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -258,6 +313,50 @@ class DialogsApi extends runtime.BaseAPI {
      */
     async getAiCosts(requestParameters, initOverrides) {
         const response = await this.getAiCostsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     * AI-
+     */
+    async getAiResponseQueueRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAiResponseQueue().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{id}/ai-response-queue`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogAiResponseQueueDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     * AI-
+     */
+    async getAiResponseQueue(requestParameters, initOverrides) {
+        const response = await this.getAiResponseQueueRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -318,6 +417,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -358,6 +461,10 @@ class DialogsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -416,6 +523,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -465,6 +576,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -502,6 +617,10 @@ class DialogsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -554,6 +673,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -573,43 +696,39 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . read_before POST /api/dialogs/mark-all-read, .
      *
      */
-    async getLeadConversationSubscriptionRaw(requestParameters, initOverrides) {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getLeadConversationSubscription().');
+    async getMarkAllReadBoundaryRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getMarkAllReadBoundary().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
         if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
-            path: `/api/dialogs/{id}/lead-conversation/subscription`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: `/api/dialogs/mark-all-read/boundary`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CentrifugoSubscriptionDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MarkAllDialogsReadBoundaryResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . read_before POST /api/dialogs/mark-all-read, .
      *
      */
-    async getLeadConversationSubscription(requestParameters, initOverrides) {
-        const response = await this.getLeadConversationSubscriptionRaw(requestParameters, initOverrides);
+    async getMarkAllReadBoundary(requestParameters, initOverrides) {
+        const response = await this.getMarkAllReadBoundaryRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -637,6 +756,10 @@ class DialogsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -683,6 +806,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -699,6 +826,116 @@ class DialogsApi extends runtime.BaseAPI {
      */
     async getNavigation(requestParameters, initOverrides) {
         const response = await this.getNavigationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getTestDialogRaw(requestParameters, initOverrides) {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getTestDialog().');
+        }
+        const queryParameters = {};
+        if (requestParameters['variantId'] != null) {
+            queryParameters['variant_id'] = requestParameters['variantId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/test-dialog/{agentId}`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CurrentTestDialogDataDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     *
+     */
+    async getTestDialog(requestParameters, initOverrides) {
+        const response = await this.getTestDialogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getUnreadCountRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling getUnreadCount().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/unread-count`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UnreadCountResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getUnreadCount(requestParameters, initOverrides) {
+        const response = await this.getUnreadCountRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async testDialogMessagesRaw(requestParameters, initOverrides) {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling testDialogMessages().');
+        }
+        if (requestParameters['sendFirstTestMessageDto'] == null) {
+            throw new runtime.RequiredError('sendFirstTestMessageDto', 'Required parameter "sendFirstTestMessageDto" was null or undefined when calling testDialogMessages().');
+        }
+        const queryParameters = {};
+        if (requestParameters['variantId'] != null) {
+            queryParameters['variant_id'] = requestParameters['variantId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/test-dialog/{agentId}/messages`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SendFirstTestMessageDtoToJSON)(requestParameters['sendFirstTestMessageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SendFirstTestMessageResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async testDialogMessages(requestParameters, initOverrides) {
+        const response = await this.testDialogMessagesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -730,6 +967,10 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
         }
         const response = await this.request({
@@ -751,6 +992,13 @@ class DialogsApi extends runtime.BaseAPI {
     }
 }
 exports.DialogsApi = DialogsApi;
+/**
+ * @export
+ */
+exports.DialogsCreateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */
@@ -783,6 +1031,13 @@ exports.EventsPollSnapshotRefreshAcceptLanguageEnum = {
  * @export
  */
 exports.GetAiCostsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAiResponseQueueAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -838,7 +1093,7 @@ exports.GetLeadConversationEventsAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetLeadConversationSubscriptionAcceptLanguageEnum = {
+exports.GetMarkAllReadBoundaryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -853,6 +1108,27 @@ exports.GetMessageNotesAcceptLanguageEnum = {
  * @export
  */
 exports.GetNavigationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetTestDialogAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetUnreadCountAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.TestDialogMessagesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -40,29 +40,29 @@ export interface ModelStatDto {
      */
     cost: number;
     /**
-     * Prompt
+     * Prompt ; null,
      * @type {number}
      * @memberof ModelStatDto
      */
-    promptTokens: number;
+    promptTokens: number | null;
     /**
-     * Completion
+     * Completion ; null,
      * @type {number}
      * @memberof ModelStatDto
      */
-    completionTokens: number;
+    completionTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof ModelStatDto
      */
-    cachedTokens: number;
+    cachedTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof ModelStatDto
      */
-    cachedPercentage: number;
+    cachedPercentage: number | null;
 }
 /**
  * Check if a given object implements the ModelStatDto interface.

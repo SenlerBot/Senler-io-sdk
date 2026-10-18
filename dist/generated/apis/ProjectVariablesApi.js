@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateValueStringAcceptLanguageEnum = exports.UpdateValueObjectAcceptLanguageEnum = exports.UpdateValueNumberAcceptLanguageEnum = exports.UpdateValueNullAcceptLanguageEnum = exports.UpdateValueDateAcceptLanguageEnum = exports.UpdateValueBooleanAcceptLanguageEnum = exports.UpdateValueArrayAcceptLanguageEnum = exports.UpdateTypeStringAcceptLanguageEnum = exports.UpdateTypeObjectAcceptLanguageEnum = exports.UpdateTypeNumberAcceptLanguageEnum = exports.UpdateTypeJsonStringAcceptLanguageEnum = exports.UpdateTypeJsonObjectAcceptLanguageEnum = exports.UpdateTypeJsonNumberAcceptLanguageEnum = exports.UpdateTypeJsonNullAcceptLanguageEnum = exports.UpdateTypeJsonBooleanAcceptLanguageEnum = exports.UpdateTypeJsonArrayAcceptLanguageEnum = exports.UpdateTypeDateAcceptLanguageEnum = exports.UpdateTypeBooleanAcceptLanguageEnum = exports.UpdateTypeArrayAcceptLanguageEnum = exports.UpdateObjectSchemaAcceptLanguageEnum = exports.UpdateMetadataAcceptLanguageEnum = exports.UpdateArraySchemaAcceptLanguageEnum = exports.StringAcceptLanguageEnum = exports.ProjectVariablesListAcceptLanguageEnum = exports.ObjectAcceptLanguageEnum = exports.NumberAcceptLanguageEnum = exports.JsonStringAcceptLanguageEnum = exports.JsonObjectAcceptLanguageEnum = exports.JsonNumberAcceptLanguageEnum = exports.JsonNullAcceptLanguageEnum = exports.JsonBooleanAcceptLanguageEnum = exports.JsonArrayAcceptLanguageEnum = exports.GetByIdsAcceptLanguageEnum = exports.GetByIdAcceptLanguageEnum = exports.DeactivateAcceptLanguageEnum = exports.DateAcceptLanguageEnum = exports.ArrayAcceptLanguageEnum = exports.BooleanAcceptLanguageEnum = exports.ProjectVariablesApi = void 0;
+exports.UpdateValueStringAcceptLanguageEnum = exports.UpdateValueObjectAcceptLanguageEnum = exports.UpdateValueNumberAcceptLanguageEnum = exports.UpdateValueNullAcceptLanguageEnum = exports.UpdateValueDateAcceptLanguageEnum = exports.UpdateValueBooleanAcceptLanguageEnum = exports.UpdateValueArrayAcceptLanguageEnum = exports.UpdateTypeStringAcceptLanguageEnum = exports.UpdateTypeObjectAcceptLanguageEnum = exports.UpdateTypeNumberAcceptLanguageEnum = exports.UpdateTypeJsonStringAcceptLanguageEnum = exports.UpdateTypeJsonObjectAcceptLanguageEnum = exports.UpdateTypeJsonNumberAcceptLanguageEnum = exports.UpdateTypeJsonNullAcceptLanguageEnum = exports.UpdateTypeJsonBooleanAcceptLanguageEnum = exports.UpdateTypeJsonArrayAcceptLanguageEnum = exports.UpdateTypeDateAcceptLanguageEnum = exports.UpdateTypeBooleanAcceptLanguageEnum = exports.UpdateTypeArrayAcceptLanguageEnum = exports.UpdateObjectSchemaAcceptLanguageEnum = exports.UpdateMetadataAcceptLanguageEnum = exports.UpdateArraySchemaAcceptLanguageEnum = exports.StringAcceptLanguageEnum = exports.ProjectVariablesListAcceptLanguageEnum = exports.ProjectVariablesGetByIdAcceptLanguageEnum = exports.ProjectVariablesDeactivateAcceptLanguageEnum = exports.ObjectAcceptLanguageEnum = exports.NumberAcceptLanguageEnum = exports.JsonStringAcceptLanguageEnum = exports.JsonObjectAcceptLanguageEnum = exports.JsonNumberAcceptLanguageEnum = exports.JsonNullAcceptLanguageEnum = exports.JsonBooleanAcceptLanguageEnum = exports.JsonArrayAcceptLanguageEnum = exports.GetByIdsAcceptLanguageEnum = exports.DateAcceptLanguageEnum = exports.ArrayAcceptLanguageEnum = exports.BooleanAcceptLanguageEnum = exports.ProjectVariablesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -79,6 +79,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -130,6 +134,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -178,6 +186,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -198,98 +210,6 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     *
-     *
-     */
-    async deactivateRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling deactivate().');
-        }
-        if (requestParameters['name'] == null) {
-            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling deactivate().');
-        }
-        const queryParameters = {};
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
-        }
-        const response = await this.request({
-            path: `/api/project-variables/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.Deactivate200ResponseFromJSON)(jsonValue));
-    }
-    /**
-     *
-     *
-     */
-    async deactivate(requestParameters, initOverrides) {
-        const response = await this.deactivateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     *
-     *
-     */
-    async getByIdRaw(requestParameters, initOverrides) {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getById().');
-        }
-        if (requestParameters['name'] == null) {
-            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling getById().');
-        }
-        const queryParameters = {};
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/project-variables/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     *
-     *
-     */
-    async getById(requestParameters, initOverrides) {
-        const response = await this.getByIdRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * ID
      * ID
      */
@@ -304,6 +224,9 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
+        if (requestParameters['appId'] != null) {
+            queryParameters['app_id'] = requestParameters['appId'];
+        }
         if (requestParameters['ids'] != null) {
             queryParameters['ids'] = requestParameters['ids'];
         }
@@ -317,6 +240,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -364,6 +291,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -415,6 +346,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -460,6 +395,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -511,6 +450,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -556,6 +499,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -607,6 +554,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -652,6 +603,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -703,6 +658,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -720,6 +679,109 @@ class ProjectVariablesApi extends runtime.BaseAPI {
      */
     async object(requestParameters, initOverrides) {
         const response = await this.objectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     *
+     *
+     */
+    async projectVariablesDeactivateRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectVariablesDeactivate().');
+        }
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling projectVariablesDeactivate().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
+        }
+        const response = await this.request({
+            path: `/api/project-variables/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariablesDeactivate200ResponseFromJSON)(jsonValue));
+    }
+    /**
+     *
+     *
+     */
+    async projectVariablesDeactivate(requestParameters, initOverrides) {
+        const response = await this.projectVariablesDeactivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     *
+     *
+     */
+    async projectVariablesGetByIdRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectVariablesGetById().');
+        }
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling projectVariablesGetById().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['appId'] != null) {
+            queryParameters['app_id'] = requestParameters['appId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/project-variables/{name}`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectVariableResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     *
+     */
+    async projectVariablesGetById(requestParameters, initOverrides) {
+        const response = await this.projectVariablesGetByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -753,6 +815,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -800,6 +866,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -854,6 +924,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -902,6 +976,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -956,6 +1034,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1004,6 +1086,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1058,6 +1144,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1106,6 +1196,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1160,6 +1254,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1211,6 +1309,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1255,6 +1357,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1305,6 +1411,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1359,6 +1469,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1407,6 +1521,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1461,6 +1579,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1509,6 +1631,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1563,6 +1689,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1611,6 +1741,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1665,6 +1799,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1716,6 +1854,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1760,6 +1902,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1810,6 +1956,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1864,6 +2014,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1915,6 +2069,10 @@ class ProjectVariablesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_project_variables"]);
         }
         const response = await this.request({
@@ -1954,20 +2112,6 @@ exports.ArrayAcceptLanguageEnum = {
  * @export
  */
 exports.DateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.DeactivateAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -2031,6 +2175,20 @@ exports.NumberAcceptLanguageEnum = {
  * @export
  */
 exports.ObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProjectVariablesDeactivateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProjectVariablesGetByIdAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

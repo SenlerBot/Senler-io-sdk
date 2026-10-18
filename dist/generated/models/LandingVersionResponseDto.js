@@ -19,7 +19,8 @@ exports.LandingVersionResponseDtoFromJSON = LandingVersionResponseDtoFromJSON;
 exports.LandingVersionResponseDtoFromJSONTyped = LandingVersionResponseDtoFromJSONTyped;
 exports.LandingVersionResponseDtoToJSON = LandingVersionResponseDtoToJSON;
 exports.LandingVersionResponseDtoToJSONTyped = LandingVersionResponseDtoToJSONTyped;
-const LandingBlockResponseDto_1 = require("./LandingBlockResponseDto");
+const LandingVersionResponseDtoBlocksInner_1 = require("./LandingVersionResponseDtoBlocksInner");
+const LandingPublicationWarningDto_1 = require("./LandingPublicationWarningDto");
 const LandingSettingsDto_1 = require("./LandingSettingsDto");
 /**
  * @export
@@ -64,6 +65,8 @@ function instanceOfLandingVersionResponseDto(value) {
         return false;
     if (!('blocks' in value) || value['blocks'] === undefined)
         return false;
+    if (!('warnings' in value) || value['warnings'] === undefined)
+        return false;
     return true;
 }
 function LandingVersionResponseDtoFromJSON(json) {
@@ -84,7 +87,8 @@ function LandingVersionResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'settingsRevision': json['settings_revision'],
         'publishedAt': (json['published_at'] == null ? null : new Date(json['published_at'])),
         'deleteAfter': (json['delete_after'] == null ? null : new Date(json['delete_after'])),
-        'blocks': (json['blocks'].map(LandingBlockResponseDto_1.LandingBlockResponseDtoFromJSON)),
+        'blocks': (json['blocks'].map(LandingVersionResponseDtoBlocksInner_1.LandingVersionResponseDtoBlocksInnerFromJSON)),
+        'warnings': (json['warnings'].map(LandingPublicationWarningDto_1.LandingPublicationWarningDtoFromJSON)),
     };
 }
 function LandingVersionResponseDtoToJSON(json) {
@@ -105,6 +109,7 @@ function LandingVersionResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'settings_revision': value['settingsRevision'],
         'published_at': (value['publishedAt'] == null ? null : value['publishedAt'].toISOString()),
         'delete_after': (value['deleteAfter'] == null ? null : value['deleteAfter'].toISOString()),
-        'blocks': (value['blocks'].map(LandingBlockResponseDto_1.LandingBlockResponseDtoToJSON)),
+        'blocks': (value['blocks'].map(LandingVersionResponseDtoBlocksInner_1.LandingVersionResponseDtoBlocksInnerToJSON)),
+        'warnings': (value['warnings'].map(LandingPublicationWarningDto_1.LandingPublicationWarningDtoToJSON)),
     };
 }

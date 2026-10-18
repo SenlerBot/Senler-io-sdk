@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
+import {
+    DeliveryAudienceFilterDtoFromJSON,
+    DeliveryAudienceFilterDtoFromJSONTyped,
+    DeliveryAudienceFilterDtoToJSON,
+    DeliveryAudienceFilterDtoToJSONTyped,
+} from './DeliveryAudienceFilterDto';
 import type { DeliveryAudienceRecipientDto } from './DeliveryAudienceRecipientDto';
 import {
     DeliveryAudienceRecipientDtoFromJSON,
@@ -27,6 +34,30 @@ import {
  * @interface DeliveryAudiencePreviewResponseDto
  */
 export interface DeliveryAudiencePreviewResponseDto {
+    /**
+     * ,
+     * @type {DeliveryAudienceFilterDto}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    filters: DeliveryAudienceFilterDto;
+    /**
+     * ,
+     * @type {DeliveryAudienceFilterDto}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    savedFilters: DeliveryAudienceFilterDto;
+    /**
+     *
+     * @type {string}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    filterSource: DeliveryAudiencePreviewResponseDtoFilterSourceEnum;
+    /**
+     * all_project ; all_selected_channels /; filtered . .
+     * @type {string}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    audienceScope: DeliveryAudiencePreviewResponseDtoAudienceScopeEnum;
     /**
      *
      * @type {number}
@@ -47,10 +78,35 @@ export interface DeliveryAudiencePreviewResponseDto {
     nextCursor: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const DeliveryAudiencePreviewResponseDtoFilterSourceEnum = {
+    Saved: 'saved',
+    Query: 'query'
+} as const;
+export type DeliveryAudiencePreviewResponseDtoFilterSourceEnum = typeof DeliveryAudiencePreviewResponseDtoFilterSourceEnum[keyof typeof DeliveryAudiencePreviewResponseDtoFilterSourceEnum];
+
+/**
+ * @export
+ */
+export const DeliveryAudiencePreviewResponseDtoAudienceScopeEnum = {
+    AllProject: 'all_project',
+    AllSelectedChannels: 'all_selected_channels',
+    Filtered: 'filtered'
+} as const;
+export type DeliveryAudiencePreviewResponseDtoAudienceScopeEnum = typeof DeliveryAudiencePreviewResponseDtoAudienceScopeEnum[keyof typeof DeliveryAudiencePreviewResponseDtoAudienceScopeEnum];
+
+
 /**
  * Check if a given object implements the DeliveryAudiencePreviewResponseDto interface.
  */
 export function instanceOfDeliveryAudiencePreviewResponseDto(value: object): value is DeliveryAudiencePreviewResponseDto {
+    if (!('filters' in value) || value['filters'] === undefined) return false;
+    if (!('savedFilters' in value) || value['savedFilters'] === undefined) return false;
+    if (!('filterSource' in value) || value['filterSource'] === undefined) return false;
+    if (!('audienceScope' in value) || value['audienceScope'] === undefined) return false;
     if (!('totalUniqueRecipients' in value) || value['totalUniqueRecipients'] === undefined) return false;
     if (!('items' in value) || value['items'] === undefined) return false;
     if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
@@ -67,6 +123,10 @@ export function DeliveryAudiencePreviewResponseDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'filters': DeliveryAudienceFilterDtoFromJSON(json['filters']),
+        'savedFilters': DeliveryAudienceFilterDtoFromJSON(json['saved_filters']),
+        'filterSource': json['filter_source'],
+        'audienceScope': json['audience_scope'],
         'totalUniqueRecipients': json['total_unique_recipients'],
         'items': ((json['items'] as Array<any>).map(DeliveryAudienceRecipientDtoFromJSON)),
         'nextCursor': json['next_cursor'],
@@ -84,6 +144,10 @@ export function DeliveryAudiencePreviewResponseDtoToJSONTyped(value?: DeliveryAu
 
     return {
 
+        'filters': DeliveryAudienceFilterDtoToJSON(value['filters']),
+        'saved_filters': DeliveryAudienceFilterDtoToJSON(value['savedFilters']),
+        'filter_source': value['filterSource'],
+        'audience_scope': value['audienceScope'],
         'total_unique_recipients': value['totalUniqueRecipients'],
         'items': ((value['items'] as Array<any>).map(DeliveryAudienceRecipientDtoToJSON)),
         'next_cursor': value['nextCursor'],

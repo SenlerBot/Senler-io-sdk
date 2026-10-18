@@ -22,7 +22,7 @@ exports.SupportDirectoryOperatorDtoToJSONTyped = SupportDirectoryOperatorDtoToJS
  * Check if a given object implements the SupportDirectoryOperatorDto interface.
  */
 function instanceOfSupportDirectoryOperatorDto(value) {
-    if (!('groupId' in value) || value['groupId'] === undefined)
+    if (!('groupIds' in value) || value['groupIds'] === undefined)
         return false;
     if (!('projectMemberId' in value) || value['projectMemberId'] === undefined)
         return false;
@@ -38,7 +38,7 @@ function instanceOfSupportDirectoryOperatorDto(value) {
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
         return false;
-    if (!('effectiveGroupId' in value) || value['effectiveGroupId'] === undefined)
+    if (!('effectiveGroupIds' in value) || value['effectiveGroupIds'] === undefined)
         return false;
     if (!('onShift' in value) || value['onShift'] === undefined)
         return false;
@@ -52,7 +52,7 @@ function SupportDirectoryOperatorDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'groupId': json['group_id'],
+        'groupIds': json['group_ids'],
         'projectMemberId': json['project_member_id'],
         'userId': json['user_id'],
         'email': json['email'],
@@ -60,7 +60,7 @@ function SupportDirectoryOperatorDtoFromJSONTyped(json, ignoreDiscriminator) {
         'lastName': json['last_name'],
         'avatarUrl': json['avatar_url'],
         'isActive': json['is_active'],
-        'effectiveGroupId': json['effective_group_id'],
+        'effectiveGroupIds': json['effective_group_ids'],
         'onShift': json['on_shift'],
     };
 }
@@ -72,7 +72,7 @@ function SupportDirectoryOperatorDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
-        'group_id': value['groupId'],
+        'group_ids': value['groupIds'],
         'project_member_id': value['projectMemberId'],
         'user_id': value['userId'],
         'email': value['email'],
@@ -80,7 +80,7 @@ function SupportDirectoryOperatorDtoToJSONTyped(value, ignoreDiscriminator = fal
         'last_name': value['lastName'],
         'avatar_url': value['avatarUrl'],
         'is_active': value['isActive'],
-        'effective_group_id': value['effectiveGroupId'],
+        'effective_group_ids': value['effectiveGroupIds'],
         'on_shift': value['onShift'],
     };
 }

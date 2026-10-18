@@ -10,7 +10,15 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AssignAgentToDialogDto, CloseDialogDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogDto, DialogParticipantsResponseDto, DialogSupportChangeDto, EditMessageDto, EditMessageResponseDto, HandoffDialogDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto, SnoozeDialogDto, SupportOperatorDirectoryDto, TransferDialogOperatorDto } from '../models/index';
+import type { AssignAgentToDialogDto, CloseDialogDto, CreateDialogBulkOperationDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogBulkPreviewDto, DialogDto, DialogParticipantsResponseDto, DialogSupportChangeDto, EditMessageDto, EditMessageResponseDto, HandoffDialogDto, ProcessResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto, SnoozeDialogDto, SupportOperatorDirectoryDto, TransferDialogOperatorDto } from '../models/index';
+export interface BulkRequest {
+    createDialogBulkOperationDto: CreateDialogBulkOperationDto;
+    acceptLanguage?: BulkAcceptLanguageEnum;
+}
+export interface BulkCancelRequest {
+    id: string;
+    acceptLanguage?: BulkCancelAcceptLanguageEnum;
+}
 export interface DeleteAgentRequest {
     id: string;
     role: DeleteAgentRoleEnum;
@@ -34,6 +42,55 @@ export interface EventsBillingRecoveryRetryRequest {
     dialogId: string;
     eventId: string;
     acceptLanguage?: EventsBillingRecoveryRetryAcceptLanguageEnum;
+}
+export interface GetBulkRequest {
+    id: string;
+    acceptLanguage?: GetBulkAcceptLanguageEnum;
+}
+export interface GetBulkPreviewRequest {
+    projectId: string;
+    action: GetBulkPreviewActionEnum;
+    scope: GetBulkPreviewScopeEnum;
+    operatorUserIds?: Array<string>;
+    supportGroupId?: Array<string>;
+    supportGroupAssignment?: GetBulkPreviewSupportGroupAssignmentEnum;
+    snoozeStatus?: GetBulkPreviewSnoozeStatusEnum;
+    q?: string;
+    from?: number;
+    size?: number;
+    before?: string;
+    limit?: number;
+    sortBy?: GetBulkPreviewSortByEnum;
+    channelId?: Array<string>;
+    agentId?: Array<string>;
+    testAgentId?: string;
+    testAutomationId?: string;
+    testAutomationTriggerNodeId?: string;
+    testAutomationTriggerSessionId?: string;
+    leadId?: Array<string>;
+    dialogIds?: Array<string>;
+    selectionRef?: string;
+    status?: GetBulkPreviewStatusEnum;
+    operatorResponseStatus?: GetBulkPreviewOperatorResponseStatusEnum;
+    leadResponseStatus?: GetBulkPreviewLeadResponseStatusEnum;
+    operatorAssignment?: GetBulkPreviewOperatorAssignmentEnum;
+    operatorUserId?: string;
+    dialogType?: GetBulkPreviewDialogTypeEnum;
+    externalDialogId?: string;
+    spaceId?: Array<string>;
+    spaceIds?: Array<string>;
+    hasChannel?: boolean;
+    hasLead?: boolean;
+    hasEvents?: boolean;
+    hasMessageNotes?: boolean;
+    isTest?: boolean;
+    autoAssignDisabled?: boolean;
+    muteStatus?: GetBulkPreviewMuteStatusEnum;
+    spamStatus?: GetBulkPreviewSpamStatusEnum;
+    tags?: Array<string>;
+    startedAfter?: string;
+    startedBefore?: string;
+    acceptLanguage?: GetBulkPreviewAcceptLanguageEnum;
 }
 export interface GetEventsAiResponseRecoveryRequest {
     dialogId: string;
@@ -155,6 +212,26 @@ export interface UpdateUnarchiveRequest {
  */
 export declare class DialogsManagementApi extends runtime.BaseAPI {
     /**
+     * . ; .
+     *
+     */
+    bulkRaw(requestParameters: BulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * . ; .
+     *
+     */
+    bulk(requestParameters: BulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * . .
+     *
+     */
+    bulkCancelRaw(requestParameters: BulkCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    bulkCancel(requestParameters: BulkCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
      * .
      *
      */
@@ -165,12 +242,12 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     deleteAgent(requestParameters: DeleteAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo  ** :** HTTP 202 , . GET /api/events/{eventId}: message_interactions.platform_delete.state pending ( ), succeeded ( ), failed ( error/reason) not_required ( ). . , DELETE.
      *
      */
     deleteEventsRaw(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteMessageResponseDto>>;
     /**
-     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo
+     * .  ** :** - **Telegram**: 48 ( + ) - **VK**: 24 ( ) - **MAX**: 24 ( ) - **Discord**: ( ) - **Widget**: ( )  **:** - (is_deleted=true) - ( ) - Centrifugo  ** :** HTTP 202 , . GET /api/events/{eventId}: message_interactions.platform_delete.state pending ( ), succeeded ( ), failed ( error/reason) not_required ( ). . , DELETE.
      *
      */
     deleteEvents(requestParameters: DeleteEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteMessageResponseDto>;
@@ -204,6 +281,26 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      * AI-
      */
     eventsBillingRecoveryRetry(requestParameters: EventsBillingRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryRetryResponseDto>;
+    /**
+     * .
+     *
+     */
+    getBulkRaw(requestParameters: GetBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getBulk(requestParameters: GetBulkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * . .
+     *
+     */
+    getBulkPreviewRaw(requestParameters: GetBulkPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogBulkPreviewDto>>;
+    /**
+     * . .
+     *
+     */
+    getBulkPreview(requestParameters: GetBulkPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogBulkPreviewDto>;
     /**
      * .
      * AI-
@@ -335,12 +432,12 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateAgent(requestParameters: UpdateAgentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * ( ).
+     * . .
      *
      */
     updateArchiveRaw(requestParameters: UpdateArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
     /**
-     * ( ).
+     * . .
      *
      */
     updateArchive(requestParameters: UpdateArchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
@@ -445,16 +542,32 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     updateSupportAssignment(requestParameters: UpdateSupportAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
     /**
-     * .
+     * . .
      *
      */
     updateUnarchiveRaw(requestParameters: UpdateUnarchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogDto>>;
     /**
-     * .
+     * . .
      *
      */
     updateUnarchive(requestParameters: UpdateUnarchiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogDto>;
 }
+/**
+ * @export
+ */
+export declare const BulkAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type BulkAcceptLanguageEnum = typeof BulkAcceptLanguageEnum[keyof typeof BulkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const BulkCancelAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type BulkCancelAcceptLanguageEnum = typeof BulkCancelAcceptLanguageEnum[keyof typeof BulkCancelAcceptLanguageEnum];
 /**
  * @export
  */
@@ -503,6 +616,129 @@ export declare const EventsBillingRecoveryRetryAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type EventsBillingRecoveryRetryAcceptLanguageEnum = typeof EventsBillingRecoveryRetryAcceptLanguageEnum[keyof typeof EventsBillingRecoveryRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetBulkAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetBulkAcceptLanguageEnum = typeof GetBulkAcceptLanguageEnum[keyof typeof GetBulkAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewActionEnum: {
+    readonly MarkRead: "mark_read";
+    readonly AssignAgent: "assign_agent";
+    readonly RemoveAgent: "remove_agent";
+    readonly StartAutomation: "start_automation";
+    readonly StopAutomation: "stop_automation";
+    readonly Archive: "archive";
+    readonly Unarchive: "unarchive";
+};
+export type GetBulkPreviewActionEnum = typeof GetBulkPreviewActionEnum[keyof typeof GetBulkPreviewActionEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewScopeEnum: {
+    readonly Filtered: "filtered";
+    readonly Project: "project";
+};
+export type GetBulkPreviewScopeEnum = typeof GetBulkPreviewScopeEnum[keyof typeof GetBulkPreviewScopeEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewSupportGroupAssignmentEnum: {
+    readonly None: "none";
+};
+export type GetBulkPreviewSupportGroupAssignmentEnum = typeof GetBulkPreviewSupportGroupAssignmentEnum[keyof typeof GetBulkPreviewSupportGroupAssignmentEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewSnoozeStatusEnum: {
+    readonly Active: "active";
+    readonly Snoozed: "snoozed";
+    readonly All: "all";
+};
+export type GetBulkPreviewSnoozeStatusEnum = typeof GetBulkPreviewSnoozeStatusEnum[keyof typeof GetBulkPreviewSnoozeStatusEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewSortByEnum: {
+    readonly LastEvent: "last_event";
+    readonly LastMessage: "last_message";
+    readonly SupportQueue: "support_queue";
+};
+export type GetBulkPreviewSortByEnum = typeof GetBulkPreviewSortByEnum[keyof typeof GetBulkPreviewSortByEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewStatusEnum: {
+    readonly Active: "active";
+    readonly Completed: "completed";
+    readonly Archived: "archived";
+};
+export type GetBulkPreviewStatusEnum = typeof GetBulkPreviewStatusEnum[keyof typeof GetBulkPreviewStatusEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewOperatorResponseStatusEnum: {
+    readonly Answered: "answered";
+    readonly Unanswered: "unanswered";
+};
+export type GetBulkPreviewOperatorResponseStatusEnum = typeof GetBulkPreviewOperatorResponseStatusEnum[keyof typeof GetBulkPreviewOperatorResponseStatusEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewLeadResponseStatusEnum: {
+    readonly Answered: "answered";
+    readonly Unanswered: "unanswered";
+    readonly NotApplicable: "not_applicable";
+};
+export type GetBulkPreviewLeadResponseStatusEnum = typeof GetBulkPreviewLeadResponseStatusEnum[keyof typeof GetBulkPreviewLeadResponseStatusEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewOperatorAssignmentEnum: {
+    readonly Me: "me";
+    readonly None: "none";
+};
+export type GetBulkPreviewOperatorAssignmentEnum = typeof GetBulkPreviewOperatorAssignmentEnum[keyof typeof GetBulkPreviewOperatorAssignmentEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewDialogTypeEnum: {
+    readonly PrivateChat: "private_chat";
+    readonly GroupChat: "group_chat";
+    readonly WallComments: "wall_comments";
+};
+export type GetBulkPreviewDialogTypeEnum = typeof GetBulkPreviewDialogTypeEnum[keyof typeof GetBulkPreviewDialogTypeEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewMuteStatusEnum: {
+    readonly All: "all";
+    readonly Muted: "muted";
+    readonly NotMuted: "not_muted";
+};
+export type GetBulkPreviewMuteStatusEnum = typeof GetBulkPreviewMuteStatusEnum[keyof typeof GetBulkPreviewMuteStatusEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewSpamStatusEnum: {
+    readonly All: "all";
+    readonly Spam: "spam";
+    readonly NotSpam: "not_spam";
+};
+export type GetBulkPreviewSpamStatusEnum = typeof GetBulkPreviewSpamStatusEnum[keyof typeof GetBulkPreviewSpamStatusEnum];
+/**
+ * @export
+ */
+export declare const GetBulkPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetBulkPreviewAcceptLanguageEnum = typeof GetBulkPreviewAcceptLanguageEnum[keyof typeof GetBulkPreviewAcceptLanguageEnum];
 /**
  * @export
  */

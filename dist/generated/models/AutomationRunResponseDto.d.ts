@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AutomationRunAttentionDto } from './AutomationRunAttentionDto';
 import type { AutomationRunDialogDto } from './AutomationRunDialogDto';
 /**
  * AutomationRunResponseDto.
@@ -16,6 +17,12 @@ import type { AutomationRunDialogDto } from './AutomationRunDialogDto';
  * @interface AutomationRunResponseDto
  */
 export interface AutomationRunResponseDto {
+    /**
+     * requires_attention.
+     * @type {AutomationRunAttentionDto}
+     * @memberof AutomationRunResponseDto
+     */
+    attention?: AutomationRunAttentionDto;
     /**
      * Mongo ID .
      * @type {string}

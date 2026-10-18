@@ -317,6 +317,12 @@ export interface DialogDto {
      */
     isTest: boolean;
     /**
+     * ID , ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    readonly testAgentId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof DialogDto
@@ -610,6 +616,7 @@ export function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'isTest': json['is_test'],
+        'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
         'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
@@ -643,7 +650,7 @@ export function DialogDtoToJSON(json: any): DialogDto {
     return DialogDtoToJSONTyped(json, false);
 }
 
-export function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminator: boolean = false): any {
+export function DialogDtoToJSONTyped(value?: Omit<DialogDto, 'test_agent_id'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

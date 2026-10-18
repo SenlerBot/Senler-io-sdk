@@ -55,9 +55,14 @@ import {
     UpdateStringMetricDtoToJSON,
 } from '../models/index';
 
-export interface MetricsDefinitionsActivateRequest {
+export interface ActivateRequest {
     id: string;
-    acceptLanguage?: MetricsDefinitionsActivateAcceptLanguageEnum;
+    acceptLanguage?: ActivateAcceptLanguageEnum;
+}
+
+export interface Deactivate2Request {
+    id: string;
+    acceptLanguage?: Deactivate2AcceptLanguageEnum;
 }
 
 export interface MetricsDefinitionsArrayRequest {
@@ -73,11 +78,6 @@ export interface MetricsDefinitionsBooleanRequest {
 export interface MetricsDefinitionsDeactivateRequest {
     id: string;
     acceptLanguage?: MetricsDefinitionsDeactivateAcceptLanguageEnum;
-}
-
-export interface MetricsDefinitionsDeactivate2Request {
-    id: string;
-    acceptLanguage?: MetricsDefinitionsDeactivate2AcceptLanguageEnum;
 }
 
 export interface MetricsDefinitionsGetByIdRequest {
@@ -152,11 +152,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async metricsDefinitionsActivateRaw(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
+    async activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling metricsDefinitionsActivate().'
+                'Required parameter "id" was null or undefined when calling activate().'
             );
         }
 
@@ -178,6 +178,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -195,8 +200,65 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async metricsDefinitionsActivate(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
-        const response = await this.metricsDefinitionsActivateRaw(requestParameters, initOverrides);
+    async activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
+        const response = await this.activateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deactivate2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
+        }
+
+        const response = await this.request({
+            path: `/api/metrics/definitions/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MetricDefinitionDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
+        const response = await this.deactivate2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -230,6 +292,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
@@ -287,6 +354,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -340,6 +412,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -359,58 +436,6 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
      */
     async metricsDefinitionsDeactivate(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.metricsDefinitionsDeactivateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * .
-     *
-     */
-    async metricsDefinitionsDeactivate2Raw(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling metricsDefinitionsDeactivate2().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
-        }
-
-        const response = await this.request({
-            path: `/api/metrics/definitions/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => MetricDefinitionDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * .
-     *
-     */
-    async metricsDefinitionsDeactivate2(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {
-        const response = await this.metricsDefinitionsDeactivate2Raw(requestParameters, initOverrides);
-        return await response.value();
     }
 
     /**
@@ -441,6 +466,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -511,6 +541,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -563,6 +598,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
@@ -620,6 +660,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -675,6 +720,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -726,6 +776,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
@@ -787,6 +842,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
@@ -851,6 +911,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -911,6 +976,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
@@ -975,6 +1045,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -1037,6 +1112,11 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_metrics"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_metrics"]);
         }
 
@@ -1065,11 +1145,19 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const MetricsDefinitionsActivateAcceptLanguageEnum = {
+export const ActivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type MetricsDefinitionsActivateAcceptLanguageEnum = typeof MetricsDefinitionsActivateAcceptLanguageEnum[keyof typeof MetricsDefinitionsActivateAcceptLanguageEnum];
+export type ActivateAcceptLanguageEnum = typeof ActivateAcceptLanguageEnum[keyof typeof ActivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const Deactivate2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type Deactivate2AcceptLanguageEnum = typeof Deactivate2AcceptLanguageEnum[keyof typeof Deactivate2AcceptLanguageEnum];
 /**
  * @export
  */
@@ -1094,14 +1182,6 @@ export const MetricsDefinitionsDeactivateAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type MetricsDefinitionsDeactivateAcceptLanguageEnum = typeof MetricsDefinitionsDeactivateAcceptLanguageEnum[keyof typeof MetricsDefinitionsDeactivateAcceptLanguageEnum];
-/**
- * @export
- */
-export const MetricsDefinitionsDeactivate2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type MetricsDefinitionsDeactivate2AcceptLanguageEnum = typeof MetricsDefinitionsDeactivate2AcceptLanguageEnum[keyof typeof MetricsDefinitionsDeactivate2AcceptLanguageEnum];
 /**
  * @export
  */

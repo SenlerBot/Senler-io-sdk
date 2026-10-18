@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GetAppIconUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAppIconUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME-
      * @type {string}
      * @memberof GetAppIconUploadUrlDto
@@ -31,6 +37,7 @@ export interface GetAppIconUploadUrlDto {
  * Check if a given object implements the GetAppIconUploadUrlDto interface.
  */
 export function instanceOfGetAppIconUploadUrlDto(value: object): value is GetAppIconUploadUrlDto {
+    if (!('fileSize' in value) || value['fileSize'] === undefined) return false;
     if (!('fileType' in value) || value['fileType'] === undefined) return false;
     return true;
 }
@@ -45,6 +52,7 @@ export function GetAppIconUploadUrlDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
     };
 }
@@ -60,6 +68,7 @@ export function GetAppIconUploadUrlDtoToJSONTyped(value?: GetAppIconUploadUrlDto
 
     return {
 
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
     };
 }

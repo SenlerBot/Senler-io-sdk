@@ -38,6 +38,7 @@ function DialogCurrentTypingDtoFromJSONTyped(json, ignoreDiscriminator) {
         'sender': (0, TypingSenderDto_1.TypingSenderDtoFromJSON)(json['sender']),
         'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
         'startedAt': json['started_at'] == null ? undefined : json['started_at'],
+        'expiresAt': json['expires_at'] == null ? undefined : (new Date(json['expires_at'])),
         'streaming': json['streaming'] == null ? undefined : json['streaming'],
     };
 }
@@ -52,6 +53,7 @@ function DialogCurrentTypingDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'sender': (0, TypingSenderDto_1.TypingSenderDtoToJSON)(value['sender']),
         'platform_type': value['platformType'],
         'started_at': value['startedAt'],
+        'expires_at': value['expiresAt'] == null ? undefined : ((value['expiresAt']).toISOString()),
         'streaming': value['streaming'],
     };
 }

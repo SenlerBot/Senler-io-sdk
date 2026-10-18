@@ -16,6 +16,12 @@
  */
 export interface SubscriptionRenewalConfirmDto {
     /**
+     * , . .
+     * @type {string}
+     * @memberof SubscriptionRenewalConfirmDto
+     */
+    promoApplicationId?: string;
+    /**
      * ,
      * @type {string}
      * @memberof SubscriptionRenewalConfirmDto

@@ -18,6 +18,7 @@ exports.StatisticsCommunicationsSummaryDtoFromJSON = StatisticsCommunicationsSum
 exports.StatisticsCommunicationsSummaryDtoFromJSONTyped = StatisticsCommunicationsSummaryDtoFromJSONTyped;
 exports.StatisticsCommunicationsSummaryDtoToJSON = StatisticsCommunicationsSummaryDtoToJSON;
 exports.StatisticsCommunicationsSummaryDtoToJSONTyped = StatisticsCommunicationsSummaryDtoToJSONTyped;
+const StatisticsNullableMetricDeltaDto_1 = require("./StatisticsNullableMetricDeltaDto");
 const StatisticsMetricDeltaDto_1 = require("./StatisticsMetricDeltaDto");
 /**
  * Check if a given object implements the StatisticsCommunicationsSummaryDto interface.
@@ -67,10 +68,10 @@ function StatisticsCommunicationsSummaryDtoFromJSONTyped(json, ignoreDiscriminat
         'activeDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['active_dialogs']),
         'unansweredDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['unanswered_dialogs']),
         'operatorAssignedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['operator_assigned_dialogs']),
-        'averageFirstResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_time_seconds']),
-        'averageFirstResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
-        'averageResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
-        'averageResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
+        'averageFirstResponseTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_first_response_time_seconds']),
+        'averageFirstResponseRawTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
+        'averageResponseTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
+        'averageResponseRawTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
         'closedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['closed_dialogs']),
     };
 }
@@ -90,10 +91,10 @@ function StatisticsCommunicationsSummaryDtoToJSONTyped(value, ignoreDiscriminato
         'active_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['activeDialogs']),
         'unanswered_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['unansweredDialogs']),
         'operator_assigned_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['operatorAssignedDialogs']),
-        'average_first_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseTimeSeconds']),
-        'average_first_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
-        'average_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
-        'average_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
+        'average_first_response_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageFirstResponseTimeSeconds']),
+        'average_first_response_raw_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
+        'average_response_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
+        'average_response_raw_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
         'closed_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['closedDialogs']),
     };
 }

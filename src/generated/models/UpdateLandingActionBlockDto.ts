@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingBlockResponseDtoPayload } from './LandingBlockResponseDtoPayload';
-import {
-    LandingBlockResponseDtoPayloadFromJSON,
-    LandingBlockResponseDtoPayloadFromJSONTyped,
-    LandingBlockResponseDtoPayloadToJSON,
-    LandingBlockResponseDtoPayloadToJSONTyped,
-} from './LandingBlockResponseDtoPayload';
 import type { CreateLandingActionBlockDtoAction } from './CreateLandingActionBlockDtoAction';
 import {
     CreateLandingActionBlockDtoActionFromJSON,
@@ -53,11 +46,11 @@ export interface UpdateLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     *
-     * @type {LandingBlockResponseDtoPayload}
+     * ; type (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof UpdateLandingActionBlockDto
      */
-    payload: LandingBlockResponseDtoPayload;
+    payload: { [key: string]: any; };
     /**
      *
      * @type {CreateLandingActionBlockDtoAction}
@@ -103,7 +96,7 @@ export function UpdateLandingActionBlockDtoFromJSONTyped(json: any, ignoreDiscri
         'expectedRevision': json['expected_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
-        'payload': LandingBlockResponseDtoPayloadFromJSON(json['payload']),
+        'payload': json['payload'],
         'action': CreateLandingActionBlockDtoActionFromJSON(json['action']),
     };
 }
@@ -122,7 +115,7 @@ export function UpdateLandingActionBlockDtoToJSONTyped(value?: UpdateLandingActi
         'expected_revision': value['expectedRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
-        'payload': LandingBlockResponseDtoPayloadToJSON(value['payload']),
+        'payload': value['payload'],
         'action': CreateLandingActionBlockDtoActionToJSON(value['action']),
     };
 }

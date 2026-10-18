@@ -52,12 +52,6 @@ export interface SegmentResponseDto {
      */
     publicId: string;
     /**
-     *
-     * @type {string}
-     * @memberof SegmentResponseDto
-     */
-    status: SegmentResponseDtoStatusEnum;
-    /**
      * -
      * @type {string}
      * @memberof SegmentResponseDto
@@ -101,17 +95,6 @@ export interface SegmentResponseDto {
     updatedAt: Date;
 }
 
-
-/**
- * @export
- */
-export const SegmentResponseDtoStatusEnum = {
-    Active: 'active',
-    Archived: 'archived'
-} as const;
-export type SegmentResponseDtoStatusEnum = typeof SegmentResponseDtoStatusEnum[keyof typeof SegmentResponseDtoStatusEnum];
-
-
 /**
  * Check if a given object implements the SegmentResponseDto interface.
  */
@@ -120,7 +103,6 @@ export function instanceOfSegmentResponseDto(value: object): value is SegmentRes
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('publicId' in value) || value['publicId'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('requiredConsents' in value) || value['requiredConsents'] === undefined) return false;
@@ -145,7 +127,6 @@ export function SegmentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'projectId': json['project_id'],
         'name': json['name'],
         'publicId': json['public_id'],
-        'status': json['status'],
         'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'requiredConsents': ((json['required_consents'] as Array<any>).map(SegmentConsentSnapshotDtoFromJSON)),
@@ -171,7 +152,6 @@ export function SegmentResponseDtoToJSONTyped(value?: SegmentResponseDto | null,
         'project_id': value['projectId'],
         'name': value['name'],
         'public_id': value['publicId'],
-        'status': value['status'],
         'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'required_consents': ((value['requiredConsents'] as Array<any>).map(SegmentConsentSnapshotDtoToJSON)),

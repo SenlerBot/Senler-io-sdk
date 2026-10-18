@@ -22,6 +22,8 @@ exports.GetAppAutomationStepIconUploadUrlDtoToJSONTyped = GetAppAutomationStepIc
  * Check if a given object implements the GetAppAutomationStepIconUploadUrlDto interface.
  */
 function instanceOfGetAppAutomationStepIconUploadUrlDto(value) {
+    if (!('fileSize' in value) || value['fileSize'] === undefined)
+        return false;
     if (!('fileType' in value) || value['fileType'] === undefined)
         return false;
     return true;
@@ -34,6 +36,7 @@ function GetAppAutomationStepIconUploadUrlDtoFromJSONTyped(json, ignoreDiscrimin
         return json;
     }
     return {
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
     };
 }
@@ -45,6 +48,7 @@ function GetAppAutomationStepIconUploadUrlDtoToJSONTyped(value, ignoreDiscrimina
         return value;
     }
     return {
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
     };
 }

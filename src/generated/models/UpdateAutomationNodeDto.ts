@@ -35,6 +35,12 @@ import {
  */
 export interface UpdateAutomationNodeDto {
     /**
+     * instance_id . .
+     * @type {string}
+     * @memberof UpdateAutomationNodeDto
+     */
+    expectedInstanceId: string;
+    /**
      * .
      * @type {string}
      * @memberof UpdateAutomationNodeDto
@@ -76,6 +82,7 @@ export interface UpdateAutomationNodeDto {
  * Check if a given object implements the UpdateAutomationNodeDto interface.
  */
 export function instanceOfUpdateAutomationNodeDto(value: object): value is UpdateAutomationNodeDto {
+    if (!('expectedInstanceId' in value) || value['expectedInstanceId'] === undefined) return false;
     if (!('operationId' in value) || value['operationId'] === undefined) return false;
     return true;
 }
@@ -90,6 +97,7 @@ export function UpdateAutomationNodeDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'expectedInstanceId': json['expected_instance_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'config': json['config'] == null ? undefined : AutomationNodeConfigDtoFromJSON(json['config']),
         'position': json['position'] == null ? undefined : AutomationNodePositionDtoFromJSON(json['position']),
@@ -110,6 +118,7 @@ export function UpdateAutomationNodeDtoToJSONTyped(value?: UpdateAutomationNodeD
 
     return {
 
+        'expected_instance_id': value['expectedInstanceId'],
         'name': value['name'],
         'config': AutomationNodeConfigDtoToJSON(value['config']),
         'position': AutomationNodePositionDtoToJSON(value['position']),

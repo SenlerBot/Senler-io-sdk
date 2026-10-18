@@ -69,6 +69,7 @@ export interface GetPageRequest {
 
 export interface PublicDocumentationGetSearchRequest {
     query: string;
+    includeApi?: boolean;
     locale?: PublicDocumentationGetSearchLocaleEnum;
     scope?: PublicDocumentationGetSearchScopeEnum;
     app?: string;
@@ -253,7 +254,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * Markdown, document_ref .
+     * API- , document_ref . .
      *
      */
     async getPageRaw(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationPageDto>> {
@@ -287,7 +288,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * Markdown, document_ref .
+     * API- , document_ref . .
      *
      */
     async getPage(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationPageDto> {
@@ -296,7 +297,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * ; app ID .
+     * . include_api=true HTTP-; API . app ID .
      * Senler
      */
     async publicDocumentationGetSearchRaw(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationSearchResponseDto>> {
@@ -311,6 +312,10 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
 
         if (requestParameters['query'] != null) {
             queryParameters['query'] = requestParameters['query'];
+        }
+
+        if (requestParameters['includeApi'] != null) {
+            queryParameters['include_api'] = requestParameters['includeApi'];
         }
 
         if (requestParameters['locale'] != null) {
@@ -350,7 +355,7 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * ; app ID .
+     * . include_api=true HTTP-; API . app ID .
      * Senler
      */
     async publicDocumentationGetSearch(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationSearchResponseDto> {

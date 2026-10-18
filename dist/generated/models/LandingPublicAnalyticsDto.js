@@ -24,6 +24,10 @@ exports.LandingPublicAnalyticsDtoToJSONTyped = LandingPublicAnalyticsDtoToJSONTy
 function instanceOfLandingPublicAnalyticsDto(value) {
     if (!('yandexMetrikaId' in value) || value['yandexMetrikaId'] === undefined)
         return false;
+    if (!('yandexMetrikaWebvisorEnabled' in value) || value['yandexMetrikaWebvisorEnabled'] === undefined)
+        return false;
+    if (!('yandexMetrikaClickmapEnabled' in value) || value['yandexMetrikaClickmapEnabled'] === undefined)
+        return false;
     if (!('googleAnalyticsId' in value) || value['googleAnalyticsId'] === undefined)
         return false;
     if (!('facebookPixelId' in value) || value['facebookPixelId'] === undefined)
@@ -43,6 +47,8 @@ function LandingPublicAnalyticsDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'yandexMetrikaId': json['yandex_metrika_id'],
+        'yandexMetrikaWebvisorEnabled': json['yandex_metrika_webvisor_enabled'],
+        'yandexMetrikaClickmapEnabled': json['yandex_metrika_clickmap_enabled'],
         'googleAnalyticsId': json['google_analytics_id'],
         'facebookPixelId': json['facebook_pixel_id'],
         'googleTagManagerId': json['google_tag_manager_id'],
@@ -58,6 +64,8 @@ function LandingPublicAnalyticsDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'yandex_metrika_id': value['yandexMetrikaId'],
+        'yandex_metrika_webvisor_enabled': value['yandexMetrikaWebvisorEnabled'],
+        'yandex_metrika_clickmap_enabled': value['yandexMetrikaClickmapEnabled'],
         'google_analytics_id': value['googleAnalyticsId'],
         'facebook_pixel_id': value['facebookPixelId'],
         'google_tag_manager_id': value['googleTagManagerId'],

@@ -27,10 +27,13 @@ import type {
   AgentUnpublishedStateResponseDto,
   AgentsByListResponseDto,
   ErrorResponse,
-  PatchAgentInstructionDto,
+  InstructionMcpToolDto,
+  OperatorHandoffGroupDto,
+  OperatorHandoffOperatorDto,
   PatchAgentInstructionResponseDto,
   SuccessResponseDto,
   UpdateAgentInstalledAppEventsDto,
+  UpdateAgentsDraftInstructionBody,
   UpdateWizardProgressDto,
 } from '../models/index';
 import {
@@ -58,26 +61,32 @@ import {
     AgentsByListResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
-    PatchAgentInstructionDtoFromJSON,
-    PatchAgentInstructionDtoToJSON,
+    InstructionMcpToolDtoFromJSON,
+    InstructionMcpToolDtoToJSON,
+    OperatorHandoffGroupDtoFromJSON,
+    OperatorHandoffGroupDtoToJSON,
+    OperatorHandoffOperatorDtoFromJSON,
+    OperatorHandoffOperatorDtoToJSON,
     PatchAgentInstructionResponseDtoFromJSON,
     PatchAgentInstructionResponseDtoToJSON,
     SuccessResponseDtoFromJSON,
     SuccessResponseDtoToJSON,
     UpdateAgentInstalledAppEventsDtoFromJSON,
     UpdateAgentInstalledAppEventsDtoToJSON,
+    UpdateAgentsDraftInstructionBodyFromJSON,
+    UpdateAgentsDraftInstructionBodyToJSON,
     UpdateWizardProgressDtoFromJSON,
     UpdateWizardProgressDtoToJSON,
 } from '../models/index';
 
-export interface AcquisitionRequest {
+export interface AgentsAcquisitionRequest {
     id: string;
-    acceptLanguage?: AcquisitionAcceptLanguageEnum;
+    acceptLanguage?: AgentsAcquisitionAcceptLanguageEnum;
 }
 
-export interface ActivateRequest {
+export interface AgentsActivateRequest {
     id: string;
-    acceptLanguage?: ActivateAcceptLanguageEnum;
+    acceptLanguage?: AgentsActivateAcceptLanguageEnum;
 }
 
 export interface AgentsDeactivateRequest {
@@ -85,107 +94,117 @@ export interface AgentsDeactivateRequest {
     acceptLanguage?: AgentsDeactivateAcceptLanguageEnum;
 }
 
-export interface AgentsGetByIdRequest {
+export interface AgentsRevertRequest {
     id: string;
-    acceptLanguage?: AgentsGetByIdAcceptLanguageEnum;
+    acceptLanguage?: AgentsRevertAcceptLanguageEnum;
 }
 
-export interface AgentsListRequest {
+export interface DeleteAgentsRequest {
+    id: string;
+    acceptLanguage?: DeleteAgentsAcceptLanguageEnum;
+}
+
+export interface DeleteAgentsDraftRequest {
+    id: string;
+    acceptLanguage?: DeleteAgentsDraftAcceptLanguageEnum;
+}
+
+export interface GetAgentsRequest {
     projectId: string;
     limit?: number;
     offset?: number;
     search?: string;
     activeOnly?: boolean;
     ids?: Array<string>;
-    acceptLanguage?: AgentsListAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsAcceptLanguageEnum;
 }
 
-export interface Deactivate2Request {
+export interface GetAgents2Request {
     id: string;
-    acceptLanguage?: Deactivate2AcceptLanguageEnum;
+    acceptLanguage?: GetAgents2AcceptLanguageEnum;
 }
 
-export interface DeleteDraftRequest {
+export interface GetAgentsAutoAssignmentPreviewRequest {
     id: string;
-    acceptLanguage?: DeleteDraftAcceptLanguageEnum;
-}
-
-export interface GetAutoAssignmentPreviewRequest {
-    id: string;
-    autoAssignmentMode: GetAutoAssignmentPreviewAutoAssignmentModeEnum;
+    autoAssignmentMode: GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum;
     autoAssignmentChannelIds?: Array<string> | null;
-    autoAssignmentDialogScope?: GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
-    autoAssignmentRole?: GetAutoAssignmentPreviewAutoAssignmentRoleEnum;
-    acceptLanguage?: GetAutoAssignmentPreviewAcceptLanguageEnum;
+    autoAssignmentDialogScope?: GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum;
+    autoAssignmentRole?: GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum;
+    acceptLanguage?: GetAgentsAutoAssignmentPreviewAcceptLanguageEnum;
 }
 
-export interface GetByListRequest {
+export interface GetAgentsByListRequest {
     listId: string;
-    acceptLanguage?: GetByListAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsByListAcceptLanguageEnum;
 }
 
-export interface GetDraftRequest {
+export interface GetAgentsDraftRequest {
     id: string;
-    acceptLanguage?: GetDraftAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsDraftAcceptLanguageEnum;
 }
 
-export interface GetDraftInstructionRequest {
+export interface GetAgentsDraftInstructionRequest {
     id: string;
-    acceptLanguage?: GetDraftInstructionAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsDraftInstructionAcceptLanguageEnum;
 }
 
-export interface GetInstalledAppEventsRequest {
+export interface GetAgentsInstalledAppEventsRequest {
     id: string;
-    acceptLanguage?: GetInstalledAppEventsAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsInstalledAppEventsAcceptLanguageEnum;
 }
 
-export interface GetInstalledAppToolsRequest {
+export interface GetAgentsInstalledAppToolsRequest {
     id: string;
-    acceptLanguage?: GetInstalledAppToolsAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsInstalledAppToolsAcceptLanguageEnum;
 }
 
-export interface GetInstructionRequest {
+export interface GetAgentsInstructionRequest {
     id: string;
-    acceptLanguage?: GetInstructionAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsInstructionAcceptLanguageEnum;
 }
 
-export interface GetUnpublishedStateRequest {
+export interface GetAgentsOperatorHandoffGroupsRequest {
+    projectId: string;
+    acceptLanguage?: GetAgentsOperatorHandoffGroupsAcceptLanguageEnum;
+}
+
+export interface GetAgentsOperatorHandoffOperatorsRequest {
+    projectId: string;
+    acceptLanguage?: GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum;
+}
+
+export interface GetAgentsUnpublishedStateRequest {
     id: string;
-    acceptLanguage?: GetUnpublishedStateAcceptLanguageEnum;
+    acceptLanguage?: GetAgentsUnpublishedStateAcceptLanguageEnum;
 }
 
-export interface RevertRequest {
+export interface GetProjectsInstructionMcpToolsRequest {
+    projectId: string;
+    serverId: string;
+    acceptLanguage?: GetProjectsInstructionMcpToolsAcceptLanguageEnum;
+}
+
+export interface UpdateAgentsDraftInstructionRequest {
     id: string;
-    acceptLanguage?: RevertAcceptLanguageEnum;
+    updateAgentsDraftInstructionBody: UpdateAgentsDraftInstructionBody;
+    acceptLanguage?: UpdateAgentsDraftInstructionAcceptLanguageEnum;
 }
 
-export interface UpdateDraftInstructionRequest {
-    id: string;
-    patchAgentInstructionDto: PatchAgentInstructionDto;
-    acceptLanguage?: UpdateDraftInstructionAcceptLanguageEnum;
-}
-
-export interface UpdateInstalledAppEventsRequest {
+export interface UpdateAgentsInstalledAppEventsRequest {
     id: string;
     updateAgentInstalledAppEventsDto: UpdateAgentInstalledAppEventsDto;
-    acceptLanguage?: UpdateInstalledAppEventsAcceptLanguageEnum;
+    acceptLanguage?: UpdateAgentsInstalledAppEventsAcceptLanguageEnum;
 }
 
-export interface UpdateInstructionRequest {
+export interface UpdateAgentsRestoreRequest {
     id: string;
-    patchAgentInstructionDto: PatchAgentInstructionDto;
-    acceptLanguage?: UpdateInstructionAcceptLanguageEnum;
+    acceptLanguage?: UpdateAgentsRestoreAcceptLanguageEnum;
 }
 
-export interface UpdateRestoreRequest {
-    id: string;
-    acceptLanguage?: UpdateRestoreAcceptLanguageEnum;
-}
-
-export interface UpdateWizardProgressRequest {
+export interface UpdateAgentsWizardProgressRequest {
     id: string;
     updateWizardProgressDto: UpdateWizardProgressDto;
-    acceptLanguage?: UpdateWizardProgressAcceptLanguageEnum;
+    acceptLanguage?: UpdateAgentsWizardProgressAcceptLanguageEnum;
 }
 
 /**
@@ -197,11 +216,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * , . .
      *
      */
-    async acquisitionRaw(requestParameters: AcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>> {
+    async agentsAcquisitionRaw(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling acquisition().'
+                'Required parameter "id" was null or undefined when calling agentsAcquisition().'
             );
         }
 
@@ -221,6 +240,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
@@ -240,8 +264,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * , . .
      *
      */
-    async acquisition(requestParameters: AcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto> {
-        const response = await this.acquisitionRaw(requestParameters, initOverrides);
+    async agentsAcquisition(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto> {
+        const response = await this.agentsAcquisitionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -249,11 +273,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * is_active = true . .
      *
      */
-    async activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
+    async agentsActivateRaw(requestParameters: AgentsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling activate().'
+                'Required parameter "id" was null or undefined when calling agentsActivate().'
             );
         }
 
@@ -275,6 +299,11 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
@@ -292,16 +321,16 @@ export class AgentsApi extends runtime.BaseAPI {
      * is_active = true . .
      *
      */
-    async activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
-        const response = await this.activateRaw(requestParameters, initOverrides);
+    async agentsActivate(requestParameters: AgentsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
+        const response = await this.agentsActivateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . can_manage_agents.
+     * is_active = false . .
      *
      */
-    async agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async agentsDeactivateRaw(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -327,36 +356,42 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
         const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
+            path: `/api/agents/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . can_manage_agents.
+     * is_active = false . .
      *
      */
-    async agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.agentsDeactivateRaw(requestParameters, initOverrides);
+    async agentsDeactivate(requestParameters: AgentsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
+        const response = await this.agentsDeactivateRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      * .
-     * ID
+     *
      */
-    async agentsGetByIdRaw(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
+    async agentsRevertRaw(requestParameters: AgentsRevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling agentsGetById().'
+                'Required parameter "id" was null or undefined when calling agentsRevert().'
             );
         }
 
@@ -378,37 +413,154 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
         const response = await this.request({
-            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'GET',
+            path: `/api/agents/{id}/revert`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSettingsResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
-     * ID
+     *
      */
-    async agentsGetById(requestParameters: AgentsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
-        const response = await this.agentsGetByIdRaw(requestParameters, initOverrides);
+    async agentsRevert(requestParameters: AgentsRevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
+        const response = await this.agentsRevertRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async deleteAgentsRaw(requestParameters: DeleteAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deleteAgents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * . can_manage_agents.
+     *
+     */
+    async deleteAgents(requestParameters: DeleteAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteAgentsRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * .
+     *
+     */
+    async deleteAgentsDraftRaw(requestParameters: DeleteAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deleteAgentsDraft().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * .
+     *
+     */
+    async deleteAgentsDraft(requestParameters: DeleteAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteAgentsDraftRaw(requestParameters, initOverrides);
     }
 
     /**
      * . .
      *
      */
-    async agentsListRaw(requestParameters: AgentsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsListResponseDto>> {
+    async getAgentsRaw(requestParameters: GetAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
-                'Required parameter "projectId" was null or undefined when calling agentsList().'
+                'Required parameter "projectId" was null or undefined when calling getAgents().'
             );
         }
 
@@ -454,6 +606,11 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -471,20 +628,20 @@ export class AgentsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    async agentsList(requestParameters: AgentsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto> {
-        const response = await this.agentsListRaw(requestParameters, initOverrides);
+    async getAgents(requestParameters: GetAgentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsListResponseDto> {
+        const response = await this.getAgentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * is_active = false . .
-     *
+     * .
+     * ID
      */
-    async deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
+    async getAgents2Raw(requestParameters: GetAgents2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling deactivate2().'
+                'Required parameter "id" was null or undefined when calling getAgents2().'
             );
         }
 
@@ -506,12 +663,17 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
-            path: `/api/agents/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/agents/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
@@ -520,81 +682,30 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * is_active = false . .
-     *
+     * .
+     * ID
      */
-    async deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
-        const response = await this.deactivate2Raw(requestParameters, initOverrides);
+    async getAgents2(requestParameters: GetAgents2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
+        const response = await this.getAgents2Raw(requestParameters, initOverrides);
         return await response.value();
-    }
-
-    /**
-     * .
-     *
-     */
-    async deleteDraftRaw(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling deleteDraft().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{id}/draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * .
-     *
-     */
-    async deleteDraft(requestParameters: DeleteDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteDraftRaw(requestParameters, initOverrides);
     }
 
     /**
      * /, .
      *
      */
-    async getAutoAssignmentPreviewRaw(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAutoAssignmentPreviewResponseDto>> {
+    async getAgentsAutoAssignmentPreviewRaw(requestParameters: GetAgentsAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAutoAssignmentPreviewResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getAutoAssignmentPreview().'
+                'Required parameter "id" was null or undefined when calling getAgentsAutoAssignmentPreview().'
             );
         }
 
         if (requestParameters['autoAssignmentMode'] == null) {
             throw new runtime.RequiredError(
                 'autoAssignmentMode',
-                'Required parameter "autoAssignmentMode" was null or undefined when calling getAutoAssignmentPreview().'
+                'Required parameter "autoAssignmentMode" was null or undefined when calling getAgentsAutoAssignmentPreview().'
             );
         }
 
@@ -632,6 +743,11 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -649,8 +765,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * /, .
      *
      */
-    async getAutoAssignmentPreview(requestParameters: GetAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto> {
-        const response = await this.getAutoAssignmentPreviewRaw(requestParameters, initOverrides);
+    async getAgentsAutoAssignmentPreview(requestParameters: GetAgentsAutoAssignmentPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAutoAssignmentPreviewResponseDto> {
+        const response = await this.getAgentsAutoAssignmentPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -658,11 +774,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      * ID MCP
      */
-    async getByListRaw(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsByListResponseDto>> {
+    async getAgentsByListRaw(requestParameters: GetAgentsByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentsByListResponseDto>> {
         if (requestParameters['listId'] == null) {
             throw new runtime.RequiredError(
                 'listId',
-                'Required parameter "listId" was null or undefined when calling getByList().'
+                'Required parameter "listId" was null or undefined when calling getAgentsByList().'
             );
         }
 
@@ -682,6 +798,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -701,8 +822,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      * ID MCP
      */
-    async getByList(requestParameters: GetByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsByListResponseDto> {
-        const response = await this.getByListRaw(requestParameters, initOverrides);
+    async getAgentsByList(requestParameters: GetAgentsByListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentsByListResponseDto> {
+        const response = await this.getAgentsByListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -710,11 +831,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDraftRaw(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsStateResponseDto>> {
+    async getAgentsDraftRaw(requestParameters: GetAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsStateResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getDraft().'
+                'Required parameter "id" was null or undefined when calling getAgentsDraft().'
             );
         }
 
@@ -734,6 +855,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -753,20 +879,20 @@ export class AgentsApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDraft(requestParameters: GetDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsStateResponseDto> {
-        const response = await this.getDraftRaw(requestParameters, initOverrides);
+    async getAgentsDraft(requestParameters: GetAgentsDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsStateResponseDto> {
+        const response = await this.getAgentsDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . , null.
+     * . , null: AgentAuthoring_createDraftSnapshot . .
      *
      */
-    async getDraftInstructionRaw(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>> {
+    async getAgentsDraftInstructionRaw(requestParameters: GetAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getDraftInstruction().'
+                'Required parameter "id" was null or undefined when calling getAgentsDraftInstruction().'
             );
         }
 
@@ -788,6 +914,11 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -802,11 +933,11 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . , null.
+     * . , null: AgentAuthoring_createDraftSnapshot . .
      *
      */
-    async getDraftInstruction(requestParameters: GetDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto> {
-        const response = await this.getDraftInstructionRaw(requestParameters, initOverrides);
+    async getAgentsDraftInstruction(requestParameters: GetAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto> {
+        const response = await this.getAgentsDraftInstructionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -814,11 +945,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      * ,
      */
-    async getInstalledAppEventsRaw(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>> {
+    async getAgentsInstalledAppEventsRaw(requestParameters: GetAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getInstalledAppEvents().'
+                'Required parameter "id" was null or undefined when calling getAgentsInstalledAppEvents().'
             );
         }
 
@@ -838,6 +969,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -857,8 +993,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      * ,
      */
-    async getInstalledAppEvents(requestParameters: GetInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>> {
-        const response = await this.getInstalledAppEventsRaw(requestParameters, initOverrides);
+    async getAgentsInstalledAppEvents(requestParameters: GetAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>> {
+        const response = await this.getAgentsInstalledAppEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -866,11 +1002,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getInstalledAppToolsRaw(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>> {
+    async getAgentsInstalledAppToolsRaw(requestParameters: GetAgentsInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppToolsGroupDto>>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getInstalledAppTools().'
+                'Required parameter "id" was null or undefined when calling getAgentsInstalledAppTools().'
             );
         }
 
@@ -890,6 +1026,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -909,8 +1050,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getInstalledAppTools(requestParameters: GetInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>> {
-        const response = await this.getInstalledAppToolsRaw(requestParameters, initOverrides);
+    async getAgentsInstalledAppTools(requestParameters: GetAgentsInstalledAppToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppToolsGroupDto>> {
+        const response = await this.getAgentsInstalledAppToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -918,11 +1059,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getInstructionRaw(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>> {
+    async getAgentsInstructionRaw(requestParameters: GetAgentsInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentInstructionResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getInstruction().'
+                'Required parameter "id" was null or undefined when calling getAgentsInstruction().'
             );
         }
 
@@ -942,6 +1083,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -961,8 +1107,130 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async getInstruction(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto> {
-        const response = await this.getInstructionRaw(requestParameters, initOverrides);
+    async getAgentsInstruction(requestParameters: GetAgentsInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentInstructionResponseDto> {
+        const response = await this.getAgentsInstructionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ID, . .
+     *
+     */
+    async getAgentsOperatorHandoffGroupsRaw(requestParameters: GetAgentsOperatorHandoffGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<OperatorHandoffGroupDto>>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getAgentsOperatorHandoffGroups().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/operator-handoff-groups`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OperatorHandoffGroupDtoFromJSON));
+    }
+
+    /**
+     * ID, . .
+     *
+     */
+    async getAgentsOperatorHandoffGroups(requestParameters: GetAgentsOperatorHandoffGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<OperatorHandoffGroupDto>> {
+        const response = await this.getAgentsOperatorHandoffGroupsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . ID . .
+     *
+     */
+    async getAgentsOperatorHandoffOperatorsRaw(requestParameters: GetAgentsOperatorHandoffOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<OperatorHandoffOperatorDto>>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getAgentsOperatorHandoffOperators().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/operator-handoff-operators`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OperatorHandoffOperatorDtoFromJSON));
+    }
+
+    /**
+     * . ID . .
+     *
+     */
+    async getAgentsOperatorHandoffOperators(requestParameters: GetAgentsOperatorHandoffOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<OperatorHandoffOperatorDto>> {
+        const response = await this.getAgentsOperatorHandoffOperatorsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -970,11 +1238,11 @@ export class AgentsApi extends runtime.BaseAPI {
      * , , .
      *
      */
-    async getUnpublishedStateRaw(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentUnpublishedStateResponseDto>> {
+    async getAgentsUnpublishedStateRaw(requestParameters: GetAgentsUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentUnpublishedStateResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling getUnpublishedState().'
+                'Required parameter "id" was null or undefined when calling getAgentsUnpublishedState().'
             );
         }
 
@@ -994,6 +1262,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1013,20 +1286,27 @@ export class AgentsApi extends runtime.BaseAPI {
      * , , .
      *
      */
-    async getUnpublishedState(requestParameters: GetUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentUnpublishedStateResponseDto> {
-        const response = await this.getUnpublishedStateRaw(requestParameters, initOverrides);
+    async getAgentsUnpublishedState(requestParameters: GetAgentsUnpublishedStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentUnpublishedStateResponseDto> {
+        const response = await this.getAgentsUnpublishedStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * .
-     *
+     * . .
+     * MCP-
      */
-    async revertRaw(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
-        if (requestParameters['id'] == null) {
+    async getProjectsInstructionMcpToolsRaw(requestParameters: GetProjectsInstructionMcpToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<InstructionMcpToolDto>>> {
+        if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling revert().'
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getProjectsInstructionMcpTools().'
+            );
+        }
+
+        if (requestParameters['serverId'] == null) {
+            throw new runtime.RequiredError(
+                'serverId',
+                'Required parameter "serverId" was null or undefined when calling getProjectsInstructionMcpTools().'
             );
         }
 
@@ -1048,44 +1328,49 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
         const response = await this.request({
-            path: `/api/agents/{id}/revert`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'POST',
+            path: `/api/projects/{projectId}/instruction-mcp-tools/{serverId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"serverId"}}`, encodeURIComponent(String(requestParameters['serverId']))),
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(InstructionMcpToolDtoFromJSON));
     }
 
     /**
-     * .
-     *
+     * . .
+     * MCP-
      */
-    async revert(requestParameters: RevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
-        const response = await this.revertRaw(requestParameters, initOverrides);
+    async getProjectsInstructionMcpTools(requestParameters: GetProjectsInstructionMcpToolsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InstructionMcpToolDto>> {
+        const response = await this.getProjectsInstructionMcpToolsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * ; . AgentsUser_getDraftInstruction; , . . expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      * : ,
      */
-    async updateDraftInstructionRaw(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
+    async updateAgentsDraftInstructionRaw(requestParameters: UpdateAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateDraftInstruction().'
+                'Required parameter "id" was null or undefined when calling updateAgentsDraftInstruction().'
             );
         }
 
-        if (requestParameters['patchAgentInstructionDto'] == null) {
+        if (requestParameters['updateAgentsDraftInstructionBody'] == null) {
             throw new runtime.RequiredError(
-                'patchAgentInstructionDto',
-                'Required parameter "patchAgentInstructionDto" was null or undefined when calling updateDraftInstruction().'
+                'updateAgentsDraftInstructionBody',
+                'Required parameter "updateAgentsDraftInstructionBody" was null or undefined when calling updateAgentsDraftInstruction().'
             );
         }
 
@@ -1107,6 +1392,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
@@ -1117,18 +1407,18 @@ export class AgentsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: PatchAgentInstructionDtoToJSON(requestParameters['patchAgentInstructionDto']),
+            body: UpdateAgentsDraftInstructionBodyToJSON(requestParameters['updateAgentsDraftInstructionBody']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PatchAgentInstructionResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * . . , AgentAuthoring_createDraftSnapshot. expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * ; . AgentsUser_getDraftInstruction; , . . expected_updated_at : ; , updated_at , 409 . append_if_missing replace_exact; replace_all . : , , markdown AgentInstructionReferences_resolve . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
      * : ,
      */
-    async updateDraftInstruction(requestParameters: UpdateDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
-        const response = await this.updateDraftInstructionRaw(requestParameters, initOverrides);
+    async updateAgentsDraftInstruction(requestParameters: UpdateAgentsDraftInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
+        const response = await this.updateAgentsDraftInstructionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1136,18 +1426,18 @@ export class AgentsApi extends runtime.BaseAPI {
      * , .
      * ,
      */
-    async updateInstalledAppEventsRaw(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>> {
+    async updateAgentsInstalledAppEventsRaw(requestParameters: UpdateAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AgentInstalledAppEventsGroupDto>>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateInstalledAppEvents().'
+                'Required parameter "id" was null or undefined when calling updateAgentsInstalledAppEvents().'
             );
         }
 
         if (requestParameters['updateAgentInstalledAppEventsDto'] == null) {
             throw new runtime.RequiredError(
                 'updateAgentInstalledAppEventsDto',
-                'Required parameter "updateAgentInstalledAppEventsDto" was null or undefined when calling updateInstalledAppEvents().'
+                'Required parameter "updateAgentInstalledAppEventsDto" was null or undefined when calling updateAgentsInstalledAppEvents().'
             );
         }
 
@@ -1169,6 +1459,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
@@ -1189,35 +1484,26 @@ export class AgentsApi extends runtime.BaseAPI {
      * , .
      * ,
      */
-    async updateInstalledAppEvents(requestParameters: UpdateInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>> {
-        const response = await this.updateInstalledAppEventsRaw(requestParameters, initOverrides);
+    async updateAgentsInstalledAppEvents(requestParameters: UpdateAgentsInstalledAppEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AgentInstalledAppEventsGroupDto>> {
+        const response = await this.updateAgentsInstalledAppEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
+     * . can_manage_agents.
      *
      */
-    async updateInstructionRaw(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchAgentInstructionResponseDto>> {
+    async updateAgentsRestoreRaw(requestParameters: UpdateAgentsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateInstruction().'
-            );
-        }
-
-        if (requestParameters['patchAgentInstructionDto'] == null) {
-            throw new runtime.RequiredError(
-                'patchAgentInstructionDto',
-                'Required parameter "patchAgentInstructionDto" was null or undefined when calling updateInstruction().'
+                'Required parameter "id" was null or undefined when calling updateAgentsRestore().'
             );
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -1233,57 +1519,9 @@ export class AgentsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
         }
 
-        const response = await this.request({
-            path: `/api/agents/{id}/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchAgentInstructionDtoToJSON(requestParameters['patchAgentInstructionDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => PatchAgentInstructionResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , . . expected_updated_at : , 409 . append_if_missing replace_exact; replace_all . , . replace_exact; . append_if_missing . replace_all . , ; . . , . : , . . ; .
-     *
-     */
-    async updateInstruction(requestParameters: UpdateInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchAgentInstructionResponseDto> {
-        const response = await this.updateInstructionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * . can_manage_agents.
-     *
-     */
-    async updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSettingsResponseDto>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling updateRestore().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
@@ -1303,8 +1541,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * . can_manage_agents.
      *
      */
-    async updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
-        const response = await this.updateRestoreRaw(requestParameters, initOverrides);
+    async updateAgentsRestore(requestParameters: UpdateAgentsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSettingsResponseDto> {
+        const response = await this.updateAgentsRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1312,18 +1550,18 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateWizardProgressRaw(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
+    async updateAgentsWizardProgressRaw(requestParameters: UpdateAgentsWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
-                'Required parameter "id" was null or undefined when calling updateWizardProgress().'
+                'Required parameter "id" was null or undefined when calling updateAgentsWizardProgress().'
             );
         }
 
         if (requestParameters['updateWizardProgressDto'] == null) {
             throw new runtime.RequiredError(
                 'updateWizardProgressDto',
-                'Required parameter "updateWizardProgressDto" was null or undefined when calling updateWizardProgress().'
+                'Required parameter "updateWizardProgressDto" was null or undefined when calling updateAgentsWizardProgress().'
             );
         }
 
@@ -1345,6 +1583,11 @@ export class AgentsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
@@ -1365,8 +1608,8 @@ export class AgentsApi extends runtime.BaseAPI {
      * .
      *
      */
-    async updateWizardProgress(requestParameters: UpdateWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
-        const response = await this.updateWizardProgressRaw(requestParameters, initOverrides);
+    async updateAgentsWizardProgress(requestParameters: UpdateAgentsWizardProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
+        const response = await this.updateAgentsWizardProgressRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1375,19 +1618,19 @@ export class AgentsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const AcquisitionAcceptLanguageEnum = {
+export const AgentsAcquisitionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AcquisitionAcceptLanguageEnum = typeof AcquisitionAcceptLanguageEnum[keyof typeof AcquisitionAcceptLanguageEnum];
+export type AgentsAcquisitionAcceptLanguageEnum = typeof AgentsAcquisitionAcceptLanguageEnum[keyof typeof AgentsAcquisitionAcceptLanguageEnum];
 /**
  * @export
  */
-export const ActivateAcceptLanguageEnum = {
+export const AgentsActivateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type ActivateAcceptLanguageEnum = typeof ActivateAcceptLanguageEnum[keyof typeof ActivateAcceptLanguageEnum];
+export type AgentsActivateAcceptLanguageEnum = typeof AgentsActivateAcceptLanguageEnum[keyof typeof AgentsActivateAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1399,170 +1642,186 @@ export type AgentsDeactivateAcceptLanguageEnum = typeof AgentsDeactivateAcceptLa
 /**
  * @export
  */
-export const AgentsGetByIdAcceptLanguageEnum = {
+export const AgentsRevertAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AgentsGetByIdAcceptLanguageEnum = typeof AgentsGetByIdAcceptLanguageEnum[keyof typeof AgentsGetByIdAcceptLanguageEnum];
+export type AgentsRevertAcceptLanguageEnum = typeof AgentsRevertAcceptLanguageEnum[keyof typeof AgentsRevertAcceptLanguageEnum];
 /**
  * @export
  */
-export const AgentsListAcceptLanguageEnum = {
+export const DeleteAgentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AgentsListAcceptLanguageEnum = typeof AgentsListAcceptLanguageEnum[keyof typeof AgentsListAcceptLanguageEnum];
+export type DeleteAgentsAcceptLanguageEnum = typeof DeleteAgentsAcceptLanguageEnum[keyof typeof DeleteAgentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const Deactivate2AcceptLanguageEnum = {
+export const DeleteAgentsDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type Deactivate2AcceptLanguageEnum = typeof Deactivate2AcceptLanguageEnum[keyof typeof Deactivate2AcceptLanguageEnum];
+export type DeleteAgentsDraftAcceptLanguageEnum = typeof DeleteAgentsDraftAcceptLanguageEnum[keyof typeof DeleteAgentsDraftAcceptLanguageEnum];
 /**
  * @export
  */
-export const DeleteDraftAcceptLanguageEnum = {
+export const GetAgentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type DeleteDraftAcceptLanguageEnum = typeof DeleteDraftAcceptLanguageEnum[keyof typeof DeleteDraftAcceptLanguageEnum];
+export type GetAgentsAcceptLanguageEnum = typeof GetAgentsAcceptLanguageEnum[keyof typeof GetAgentsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetAutoAssignmentPreviewAutoAssignmentModeEnum = {
+export const GetAgents2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAgents2AcceptLanguageEnum = typeof GetAgents2AcceptLanguageEnum[keyof typeof GetAgents2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = {
     Off: 'off',
     AllChannels: 'all_channels',
     SelectedChannels: 'selected_channels'
 } as const;
-export type GetAutoAssignmentPreviewAutoAssignmentModeEnum = typeof GetAutoAssignmentPreviewAutoAssignmentModeEnum[keyof typeof GetAutoAssignmentPreviewAutoAssignmentModeEnum];
+export type GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = typeof GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum[keyof typeof GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum];
 /**
  * @export
  */
-export const GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = {
+export const GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = {
     All: 'all',
     Private: 'private',
     Group: 'group'
 } as const;
-export type GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = typeof GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum[keyof typeof GetAutoAssignmentPreviewAutoAssignmentDialogScopeEnum];
+export type GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = typeof GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum[keyof typeof GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum];
 /**
  * @export
  */
-export const GetAutoAssignmentPreviewAutoAssignmentRoleEnum = {
+export const GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = {
     Primary: 'primary',
     Background: 'background'
 } as const;
-export type GetAutoAssignmentPreviewAutoAssignmentRoleEnum = typeof GetAutoAssignmentPreviewAutoAssignmentRoleEnum[keyof typeof GetAutoAssignmentPreviewAutoAssignmentRoleEnum];
+export type GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = typeof GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum[keyof typeof GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum];
 /**
  * @export
  */
-export const GetAutoAssignmentPreviewAcceptLanguageEnum = {
+export const GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetAutoAssignmentPreviewAcceptLanguageEnum = typeof GetAutoAssignmentPreviewAcceptLanguageEnum[keyof typeof GetAutoAssignmentPreviewAcceptLanguageEnum];
+export type GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = typeof GetAgentsAutoAssignmentPreviewAcceptLanguageEnum[keyof typeof GetAgentsAutoAssignmentPreviewAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetByListAcceptLanguageEnum = {
+export const GetAgentsByListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetByListAcceptLanguageEnum = typeof GetByListAcceptLanguageEnum[keyof typeof GetByListAcceptLanguageEnum];
+export type GetAgentsByListAcceptLanguageEnum = typeof GetAgentsByListAcceptLanguageEnum[keyof typeof GetAgentsByListAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetDraftAcceptLanguageEnum = {
+export const GetAgentsDraftAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDraftAcceptLanguageEnum = typeof GetDraftAcceptLanguageEnum[keyof typeof GetDraftAcceptLanguageEnum];
+export type GetAgentsDraftAcceptLanguageEnum = typeof GetAgentsDraftAcceptLanguageEnum[keyof typeof GetAgentsDraftAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetDraftInstructionAcceptLanguageEnum = {
+export const GetAgentsDraftInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetDraftInstructionAcceptLanguageEnum = typeof GetDraftInstructionAcceptLanguageEnum[keyof typeof GetDraftInstructionAcceptLanguageEnum];
+export type GetAgentsDraftInstructionAcceptLanguageEnum = typeof GetAgentsDraftInstructionAcceptLanguageEnum[keyof typeof GetAgentsDraftInstructionAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetInstalledAppEventsAcceptLanguageEnum = {
+export const GetAgentsInstalledAppEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetInstalledAppEventsAcceptLanguageEnum = typeof GetInstalledAppEventsAcceptLanguageEnum[keyof typeof GetInstalledAppEventsAcceptLanguageEnum];
+export type GetAgentsInstalledAppEventsAcceptLanguageEnum = typeof GetAgentsInstalledAppEventsAcceptLanguageEnum[keyof typeof GetAgentsInstalledAppEventsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetInstalledAppToolsAcceptLanguageEnum = {
+export const GetAgentsInstalledAppToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetInstalledAppToolsAcceptLanguageEnum = typeof GetInstalledAppToolsAcceptLanguageEnum[keyof typeof GetInstalledAppToolsAcceptLanguageEnum];
+export type GetAgentsInstalledAppToolsAcceptLanguageEnum = typeof GetAgentsInstalledAppToolsAcceptLanguageEnum[keyof typeof GetAgentsInstalledAppToolsAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetInstructionAcceptLanguageEnum = {
+export const GetAgentsInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];
+export type GetAgentsInstructionAcceptLanguageEnum = typeof GetAgentsInstructionAcceptLanguageEnum[keyof typeof GetAgentsInstructionAcceptLanguageEnum];
 /**
  * @export
  */
-export const GetUnpublishedStateAcceptLanguageEnum = {
+export const GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type GetUnpublishedStateAcceptLanguageEnum = typeof GetUnpublishedStateAcceptLanguageEnum[keyof typeof GetUnpublishedStateAcceptLanguageEnum];
+export type GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = typeof GetAgentsOperatorHandoffGroupsAcceptLanguageEnum[keyof typeof GetAgentsOperatorHandoffGroupsAcceptLanguageEnum];
 /**
  * @export
  */
-export const RevertAcceptLanguageEnum = {
+export const GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type RevertAcceptLanguageEnum = typeof RevertAcceptLanguageEnum[keyof typeof RevertAcceptLanguageEnum];
+export type GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum[keyof typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateDraftInstructionAcceptLanguageEnum = {
+export const GetAgentsUnpublishedStateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateDraftInstructionAcceptLanguageEnum = typeof UpdateDraftInstructionAcceptLanguageEnum[keyof typeof UpdateDraftInstructionAcceptLanguageEnum];
+export type GetAgentsUnpublishedStateAcceptLanguageEnum = typeof GetAgentsUnpublishedStateAcceptLanguageEnum[keyof typeof GetAgentsUnpublishedStateAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateInstalledAppEventsAcceptLanguageEnum = {
+export const GetProjectsInstructionMcpToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateInstalledAppEventsAcceptLanguageEnum = typeof UpdateInstalledAppEventsAcceptLanguageEnum[keyof typeof UpdateInstalledAppEventsAcceptLanguageEnum];
+export type GetProjectsInstructionMcpToolsAcceptLanguageEnum = typeof GetProjectsInstructionMcpToolsAcceptLanguageEnum[keyof typeof GetProjectsInstructionMcpToolsAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateInstructionAcceptLanguageEnum = {
+export const UpdateAgentsDraftInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateInstructionAcceptLanguageEnum = typeof UpdateInstructionAcceptLanguageEnum[keyof typeof UpdateInstructionAcceptLanguageEnum];
+export type UpdateAgentsDraftInstructionAcceptLanguageEnum = typeof UpdateAgentsDraftInstructionAcceptLanguageEnum[keyof typeof UpdateAgentsDraftInstructionAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateRestoreAcceptLanguageEnum = {
+export const UpdateAgentsInstalledAppEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateRestoreAcceptLanguageEnum = typeof UpdateRestoreAcceptLanguageEnum[keyof typeof UpdateRestoreAcceptLanguageEnum];
+export type UpdateAgentsInstalledAppEventsAcceptLanguageEnum = typeof UpdateAgentsInstalledAppEventsAcceptLanguageEnum[keyof typeof UpdateAgentsInstalledAppEventsAcceptLanguageEnum];
 /**
  * @export
  */
-export const UpdateWizardProgressAcceptLanguageEnum = {
+export const UpdateAgentsRestoreAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type UpdateWizardProgressAcceptLanguageEnum = typeof UpdateWizardProgressAcceptLanguageEnum[keyof typeof UpdateWizardProgressAcceptLanguageEnum];
+export type UpdateAgentsRestoreAcceptLanguageEnum = typeof UpdateAgentsRestoreAcceptLanguageEnum[keyof typeof UpdateAgentsRestoreAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateAgentsWizardProgressAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateAgentsWizardProgressAcceptLanguageEnum = typeof UpdateAgentsWizardProgressAcceptLanguageEnum[keyof typeof UpdateAgentsWizardProgressAcceptLanguageEnum];

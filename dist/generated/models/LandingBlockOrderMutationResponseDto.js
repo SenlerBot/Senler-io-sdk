@@ -18,7 +18,7 @@ exports.LandingBlockOrderMutationResponseDtoFromJSON = LandingBlockOrderMutation
 exports.LandingBlockOrderMutationResponseDtoFromJSONTyped = LandingBlockOrderMutationResponseDtoFromJSONTyped;
 exports.LandingBlockOrderMutationResponseDtoToJSON = LandingBlockOrderMutationResponseDtoToJSON;
 exports.LandingBlockOrderMutationResponseDtoToJSONTyped = LandingBlockOrderMutationResponseDtoToJSONTyped;
-const LandingBlockResponseDto_1 = require("./LandingBlockResponseDto");
+const LandingBlockOrderMutationResponseDtoBlock_1 = require("./LandingBlockOrderMutationResponseDtoBlock");
 /**
  * Check if a given object implements the LandingBlockOrderMutationResponseDto interface.
  */
@@ -37,7 +37,7 @@ function LandingBlockOrderMutationResponseDtoFromJSONTyped(json, ignoreDiscrimin
         return json;
     }
     return {
-        'block': (0, LandingBlockResponseDto_1.LandingBlockResponseDtoFromJSON)(json['block']),
+        'block': (0, LandingBlockOrderMutationResponseDtoBlock_1.LandingBlockOrderMutationResponseDtoBlockFromJSON)(json['block']),
         'orderRevision': json['order_revision'],
     };
 }
@@ -49,7 +49,7 @@ function LandingBlockOrderMutationResponseDtoToJSONTyped(value, ignoreDiscrimina
         return value;
     }
     return {
-        'block': (0, LandingBlockResponseDto_1.LandingBlockResponseDtoToJSON)(value['block']),
+        'block': (0, LandingBlockOrderMutationResponseDtoBlock_1.LandingBlockOrderMutationResponseDtoBlockToJSON)(value['block']),
         'order_revision': value['orderRevision'],
     };
 }

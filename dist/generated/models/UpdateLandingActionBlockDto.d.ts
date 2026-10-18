@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingBlockResponseDtoPayload } from './LandingBlockResponseDtoPayload';
 import type { CreateLandingActionBlockDtoAction } from './CreateLandingActionBlockDtoAction';
 /**
  * UpdateLandingActionBlockDto.
@@ -36,11 +35,13 @@ export interface UpdateLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     *
-     * @type {LandingBlockResponseDtoPayload}
+     * ; type (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof UpdateLandingActionBlockDto
      */
-    payload: LandingBlockResponseDtoPayload;
+    payload: {
+        [key: string]: any;
+    };
     /**
      *
      * @type {CreateLandingActionBlockDtoAction}

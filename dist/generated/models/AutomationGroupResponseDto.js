@@ -47,6 +47,7 @@ function AutomationGroupResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'instanceId': json['instance_id'] == null ? undefined : json['instance_id'],
         'groupId': json['group_id'],
         'title': json['title'],
         'description': json['description'],
@@ -64,6 +65,7 @@ function AutomationGroupResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'instance_id': value['instanceId'],
         'group_id': value['groupId'],
         'title': value['title'],
         'description': value['description'],

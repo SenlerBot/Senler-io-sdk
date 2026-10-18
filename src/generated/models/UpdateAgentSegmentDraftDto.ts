@@ -22,37 +22,37 @@ import {
 } from './SegmentRequiredConsentDto';
 
 /**
- * UpdateAgentSegmentDraftDto.
+ * . version_id/revision expected_version_id/expected_revision.
  * @export
  * @interface UpdateAgentSegmentDraftDto
  */
 export interface UpdateAgentSegmentDraftDto {
     /**
-     * ID , , null .
+     * version_id . , null expected_revision: 0. HTTP 409.
      * @type {string}
      * @memberof UpdateAgentSegmentDraftDto
      */
     expectedVersionId: string | null;
     /**
-     * .
+     * revision ; 0, . HTTP 409 .
      * @type {number}
      * @memberof UpdateAgentSegmentDraftDto
      */
     expectedRevision: number;
     /**
-     * , .
+     * . ; .
      * @type {Array<SegmentRequiredConsentDto>}
      * @memberof UpdateAgentSegmentDraftDto
      */
     requiredConsents: Array<SegmentRequiredConsentDto>;
     /**
-     * .
+     * . : null . ; null.
      * @type {string}
      * @memberof UpdateAgentSegmentDraftDto
      */
     consentPromptText: string | null;
     /**
-     * null, .
+     * : primary , background ; null .
      * @type {string}
      * @memberof UpdateAgentSegmentDraftDto
      */

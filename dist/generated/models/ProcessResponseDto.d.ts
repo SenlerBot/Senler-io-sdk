@@ -61,6 +61,12 @@ export interface ProcessResponseDto {
      */
     errorMessage?: string;
     /**
+     * Senler.ru. pending ; failed .
+     * @type {string}
+     * @memberof ProcessResponseDto
+     */
+    errorCode?: ProcessResponseDtoErrorCodeEnum;
+    /**
      * ID
      * @type {string}
      * @memberof ProcessResponseDto
@@ -107,8 +113,10 @@ export interface ProcessResponseDto {
  * @export
  */
 export declare const ProcessResponseDtoTypeEnum: {
+    readonly DialogsBulkOperation: "dialogs_bulk_operation";
     readonly LeadsExport: "leads_export";
     readonly LeadsImport: "leads_import";
+    readonly LeadsImportSenler: "leads_import_senler";
     readonly LeadsRefresh: "leads_refresh";
     readonly LeadsSegmentOperation: "leads_segment_operation";
     readonly ChannelMigration: "channel_migration";
@@ -132,6 +140,17 @@ export declare const ProcessResponseDtoStatusEnum: {
     readonly Cancelled: "cancelled";
 };
 export type ProcessResponseDtoStatusEnum = typeof ProcessResponseDtoStatusEnum[keyof typeof ProcessResponseDtoStatusEnum];
+/**
+ * @export
+ */
+export declare const ProcessResponseDtoErrorCodeEnum: {
+    readonly SenlerImportConnectionRequired: "senler_import_connection_required";
+    readonly SenlerImportConnectionChanged: "senler_import_connection_changed";
+    readonly SenlerImportSourceUnavailable: "senler_import_source_unavailable";
+    readonly SenlerImportSourceRejected: "senler_import_source_rejected";
+    readonly SenlerImportInvalidResponse: "senler_import_invalid_response";
+};
+export type ProcessResponseDtoErrorCodeEnum = typeof ProcessResponseDtoErrorCodeEnum[keyof typeof ProcessResponseDtoErrorCodeEnum];
 /**
  * Check if a given object implements the ProcessResponseDto interface.
  */

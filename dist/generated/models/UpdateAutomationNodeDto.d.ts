@@ -18,6 +18,12 @@ import type { AutomationNodePositionDto } from './AutomationNodePositionDto';
  */
 export interface UpdateAutomationNodeDto {
     /**
+     * instance_id . .
+     * @type {string}
+     * @memberof UpdateAutomationNodeDto
+     */
+    expectedInstanceId: string;
+    /**
      * .
      * @type {string}
      * @memberof UpdateAutomationNodeDto

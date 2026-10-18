@@ -19,18 +19,19 @@ exports.DialogDetailsDtoFromJSON = DialogDetailsDtoFromJSON;
 exports.DialogDetailsDtoFromJSONTyped = DialogDetailsDtoFromJSONTyped;
 exports.DialogDetailsDtoToJSON = DialogDetailsDtoToJSON;
 exports.DialogDetailsDtoToJSONTyped = DialogDetailsDtoToJSONTyped;
-const AiResponseActivityDto_1 = require("./AiResponseActivityDto");
-const DialogLeadDto_1 = require("./DialogLeadDto");
 const StreamViBroadcastDto_1 = require("./StreamViBroadcastDto");
 const DialogDtoReplyTarget_1 = require("./DialogDtoReplyTarget");
-const DialogDtoDialogAgentsInner_1 = require("./DialogDtoDialogAgentsInner");
 const DialogDisplayInfoDto_1 = require("./DialogDisplayInfoDto");
+const AiResponseActivityDto_1 = require("./AiResponseActivityDto");
+const DialogLeadDto_1 = require("./DialogLeadDto");
+const DialogDtoDialogAgentsInner_1 = require("./DialogDtoDialogAgentsInner");
 const DialogLastMessageDto_1 = require("./DialogLastMessageDto");
 const EventSenderDto_1 = require("./EventSenderDto");
 const DialogOperatorAssignmentDto_1 = require("./DialogOperatorAssignmentDto");
 const DialogChannelInfoDto_1 = require("./DialogChannelInfoDto");
 const DialogCurrentTypingDto_1 = require("./DialogCurrentTypingDto");
 const DialogFirstMessageDto_1 = require("./DialogFirstMessageDto");
+const DialogAccessDto_1 = require("./DialogAccessDto");
 /**
  * @export
  */
@@ -118,6 +119,8 @@ function instanceOfDialogDetailsDto(value) {
         return false;
     if (!('isSoundMuted' in value) || value['isSoundMuted'] === undefined)
         return false;
+    if (!('access' in value) || value['access'] === undefined)
+        return false;
     return true;
 }
 function DialogDetailsDtoFromJSON(json) {
@@ -168,6 +171,7 @@ function DialogDetailsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'isTest': json['is_test'],
+        'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
         'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
@@ -194,6 +198,7 @@ function DialogDetailsDtoFromJSONTyped(json, ignoreDiscriminator) {
         'humanHandoff': json['human_handoff'] == null ? undefined : json['human_handoff'],
         'operatorAssignmentSource': json['operator_assignment_source'] == null ? undefined : json['operator_assignment_source'],
         'isSoundMuted': json['is_sound_muted'],
+        'access': (0, DialogAccessDto_1.DialogAccessDtoFromJSON)(json['access']),
         'lead': json['lead'] == null ? undefined : (0, DialogLeadDto_1.DialogLeadDtoFromJSON)(json['lead']),
         'channel': json['channel'] == null ? undefined : (0, DialogChannelInfoDto_1.DialogChannelInfoDtoFromJSON)(json['channel']),
         'currentTyping': json['current_typing'] == null ? undefined : (json['current_typing'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoFromJSON)),
@@ -274,6 +279,7 @@ function DialogDetailsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'human_handoff': value['humanHandoff'],
         'operator_assignment_source': value['operatorAssignmentSource'],
         'is_sound_muted': value['isSoundMuted'],
+        'access': (0, DialogAccessDto_1.DialogAccessDtoToJSON)(value['access']),
         'lead': (0, DialogLeadDto_1.DialogLeadDtoToJSON)(value['lead']),
         'channel': (0, DialogChannelInfoDto_1.DialogChannelInfoDtoToJSON)(value['channel']),
         'current_typing': value['currentTyping'] == null ? undefined : (value['currentTyping'].map(DialogCurrentTypingDto_1.DialogCurrentTypingDtoToJSON)),

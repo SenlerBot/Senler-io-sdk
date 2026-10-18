@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, ImportProjectKnowledgeImageDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, ResolveKnowledgeArchiveImportConflictDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto } from '../models/index';
+import type { AppendTypedKnowledgeTableRowsDto, ClearKnowledgeTableRangeDto, CopyKnowledgeTableRangeDto, CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, FormatKnowledgeTableRangeDto, ImportProjectKnowledgeImageDto, InsertKnowledgeTableColumnsDto, InsertKnowledgeTableRowsDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableMutationResponseDto, KnowledgeTableRangeResponseDto, KnowledgeTableResponseDto, KnowledgeTableRowsResponseDto, KnowledgeTableSchemaResponseDto, KnowledgeTableSheetSessionResponseDto, MergeKnowledgeTableCellsDto, MoveKnowledgeTableColumnsDto, MoveKnowledgeTableRangeDto, MoveKnowledgeTableRowsDto, PaginatedKnowledgeBaseSearchResponseDto, QueryKnowledgeTableRowsDto, ResizeKnowledgeTableColumnsDto, ResizeKnowledgeTableRowsDto, ResolveKnowledgeArchiveImportConflictDto, SetKnowledgeTableColumnsVisibilityDto, SetKnowledgeTableRangeBordersDto, SetKnowledgeTableRowsVisibilityDto, UnmergeKnowledgeTableCellsDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UpdateTypedKnowledgeTableCellsDto, WriteTypedKnowledgeTableRangeDto } from '../models/index';
 export interface ArchiveImportsRequest {
     projectId: string;
     idempotencyKey: string;
@@ -35,6 +35,22 @@ export interface DeleteFoldersRequest {
 export interface DeleteTablesRequest {
     id: string;
     acceptLanguage?: DeleteTablesAcceptLanguageEnum;
+}
+export interface DeleteTablesColumnsRequest {
+    id: string;
+    startColumn: string;
+    count: number;
+    sheetId?: string;
+    dryRun?: boolean;
+    acceptLanguage?: DeleteTablesColumnsAcceptLanguageEnum;
+}
+export interface DeleteTablesRowsRequest {
+    id: string;
+    startRow: number;
+    count: number;
+    sheetId?: string;
+    dryRun?: boolean;
+    acceptLanguage?: DeleteTablesRowsAcceptLanguageEnum;
 }
 export interface FilesRequest {
     createKnowledgeFileDto: CreateKnowledgeFileDto;
@@ -121,6 +137,18 @@ export interface GetTablesRequest {
     id: string;
     acceptLanguage?: GetTablesAcceptLanguageEnum;
 }
+export interface GetTablesRangeRequest {
+    id: string;
+    range: string;
+    sheetId?: string;
+    valueMode?: GetTablesRangeValueModeEnum;
+    expandMergedCells?: boolean;
+    acceptLanguage?: GetTablesRangeAcceptLanguageEnum;
+}
+export interface GetTablesSchemaRequest {
+    id: string;
+    acceptLanguage?: GetTablesSchemaAcceptLanguageEnum;
+}
 export interface KnowledgeBaseDeleteFilesRequest {
     id: string;
     acceptLanguage?: KnowledgeBaseDeleteFilesAcceptLanguageEnum;
@@ -132,6 +160,66 @@ export interface KnowledgeBaseGetFilesRequest {
 export interface TablesRequest {
     createKnowledgeTableDto: CreateKnowledgeTableDto;
     acceptLanguage?: TablesAcceptLanguageEnum;
+}
+export interface TablesColumnsInsertRequest {
+    id: string;
+    insertKnowledgeTableColumnsDto: InsertKnowledgeTableColumnsDto;
+    acceptLanguage?: TablesColumnsInsertAcceptLanguageEnum;
+}
+export interface TablesColumnsMoveRequest {
+    id: string;
+    moveKnowledgeTableColumnsDto: MoveKnowledgeTableColumnsDto;
+    acceptLanguage?: TablesColumnsMoveAcceptLanguageEnum;
+}
+export interface TablesRangeClearRequest {
+    id: string;
+    clearKnowledgeTableRangeDto: ClearKnowledgeTableRangeDto;
+    acceptLanguage?: TablesRangeClearAcceptLanguageEnum;
+}
+export interface TablesRangeCopyRequest {
+    id: string;
+    copyKnowledgeTableRangeDto: CopyKnowledgeTableRangeDto;
+    acceptLanguage?: TablesRangeCopyAcceptLanguageEnum;
+}
+export interface TablesRangeMergeRequest {
+    id: string;
+    mergeKnowledgeTableCellsDto: MergeKnowledgeTableCellsDto;
+    acceptLanguage?: TablesRangeMergeAcceptLanguageEnum;
+}
+export interface TablesRangeMoveRequest {
+    id: string;
+    moveKnowledgeTableRangeDto: MoveKnowledgeTableRangeDto;
+    acceptLanguage?: TablesRangeMoveAcceptLanguageEnum;
+}
+export interface TablesRangeUnmergeRequest {
+    id: string;
+    unmergeKnowledgeTableCellsDto: UnmergeKnowledgeTableCellsDto;
+    acceptLanguage?: TablesRangeUnmergeAcceptLanguageEnum;
+}
+export interface TablesRowsRequest {
+    id: string;
+    appendTypedKnowledgeTableRowsDto: AppendTypedKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsAcceptLanguageEnum;
+}
+export interface TablesRowsInsertRequest {
+    id: string;
+    insertKnowledgeTableRowsDto: InsertKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsInsertAcceptLanguageEnum;
+}
+export interface TablesRowsMoveRequest {
+    id: string;
+    moveKnowledgeTableRowsDto: MoveKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsMoveAcceptLanguageEnum;
+}
+export interface TablesRowsQueryRequest {
+    id: string;
+    queryKnowledgeTableRowsDto: QueryKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsQueryAcceptLanguageEnum;
+}
+export interface TablesSheetSessionRequest {
+    id: string;
+    clientId?: string;
+    acceptLanguage?: TablesSheetSessionAcceptLanguageEnum;
 }
 export interface TablesUploadRequest {
     projectId: string;
@@ -161,6 +249,46 @@ export interface UpdateTablesRequest {
     id: string;
     updateKnowledgeTableDto: UpdateKnowledgeTableDto;
     acceptLanguage?: UpdateTablesAcceptLanguageEnum;
+}
+export interface UpdateTablesCellsRequest {
+    id: string;
+    updateTypedKnowledgeTableCellsDto: UpdateTypedKnowledgeTableCellsDto;
+    acceptLanguage?: UpdateTablesCellsAcceptLanguageEnum;
+}
+export interface UpdateTablesColumnsResizeRequest {
+    id: string;
+    resizeKnowledgeTableColumnsDto: ResizeKnowledgeTableColumnsDto;
+    acceptLanguage?: UpdateTablesColumnsResizeAcceptLanguageEnum;
+}
+export interface UpdateTablesColumnsVisibilityRequest {
+    id: string;
+    setKnowledgeTableColumnsVisibilityDto: SetKnowledgeTableColumnsVisibilityDto;
+    acceptLanguage?: UpdateTablesColumnsVisibilityAcceptLanguageEnum;
+}
+export interface UpdateTablesRangeRequest {
+    id: string;
+    writeTypedKnowledgeTableRangeDto: WriteTypedKnowledgeTableRangeDto;
+    acceptLanguage?: UpdateTablesRangeAcceptLanguageEnum;
+}
+export interface UpdateTablesRangeBordersRequest {
+    id: string;
+    setKnowledgeTableRangeBordersDto: SetKnowledgeTableRangeBordersDto;
+    acceptLanguage?: UpdateTablesRangeBordersAcceptLanguageEnum;
+}
+export interface UpdateTablesRangeFormatRequest {
+    id: string;
+    formatKnowledgeTableRangeDto: FormatKnowledgeTableRangeDto;
+    acceptLanguage?: UpdateTablesRangeFormatAcceptLanguageEnum;
+}
+export interface UpdateTablesRowsResizeRequest {
+    id: string;
+    resizeKnowledgeTableRowsDto: ResizeKnowledgeTableRowsDto;
+    acceptLanguage?: UpdateTablesRowsResizeAcceptLanguageEnum;
+}
+export interface UpdateTablesRowsVisibilityRequest {
+    id: string;
+    setKnowledgeTableRowsVisibilityDto: SetKnowledgeTableRowsVisibilityDto;
+    acceptLanguage?: UpdateTablesRowsVisibilityAcceptLanguageEnum;
 }
 /**
  *
@@ -206,6 +334,26 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      *
      */
     deleteTables(requestParameters: DeleteTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * .
+     *
+     */
+    deleteTablesColumnsRaw(requestParameters: DeleteTablesColumnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    deleteTablesColumns(requestParameters: DeleteTablesColumnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * sheet changeset. start_row 1-based .
+     *
+     */
+    deleteTablesRowsRaw(requestParameters: DeleteTablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * sheet changeset. start_row 1-based .
+     *
+     */
+    deleteTablesRows(requestParameters: DeleteTablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
     /**
      * Markdown- .
      *
@@ -347,6 +495,26 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     getTables(requestParameters: GetTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
     /**
+     * A1 notation, A1:D20. .
+     *
+     */
+    getTablesRangeRaw(requestParameters: GetTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableRangeResponseDto>>;
+    /**
+     * A1 notation, A1:D20. .
+     *
+     */
+    getTablesRange(requestParameters: GetTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableRangeResponseDto>;
+    /**
+     * , . .
+     * workbook
+     */
+    getTablesSchemaRaw(requestParameters: GetTablesSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableSchemaResponseDto>>;
+    /**
+     * , . .
+     * workbook
+     */
+    getTablesSchema(requestParameters: GetTablesSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableSchemaResponseDto>;
+    /**
      * .
      *
      */
@@ -376,6 +544,126 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      *
      */
     tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesColumnsInsertRaw(requestParameters: TablesColumnsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesColumnsInsert(requestParameters: TablesColumnsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesColumnsMoveRaw(requestParameters: TablesColumnsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesColumnsMove(requestParameters: TablesColumnsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRangeClearRaw(requestParameters: TablesRangeClearRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRangeClear(requestParameters: TablesRangeClearRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRangeCopyRaw(requestParameters: TablesRangeCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRangeCopy(requestParameters: TablesRangeCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRangeMergeRaw(requestParameters: TablesRangeMergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRangeMerge(requestParameters: TablesRangeMergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRangeMoveRaw(requestParameters: TablesRangeMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRangeMove(requestParameters: TablesRangeMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRangeUnmergeRaw(requestParameters: TablesRangeUnmergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRangeUnmerge(requestParameters: TablesRangeUnmergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * . row_index column_index 0 ; . JSON API MCP .
+     *
+     */
+    tablesRowsRaw(requestParameters: TablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * . row_index column_index 0 ; . JSON API MCP .
+     *
+     */
+    tablesRows(requestParameters: TablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRowsInsertRaw(requestParameters: TablesRowsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRowsInsert(requestParameters: TablesRowsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesRowsMoveRaw(requestParameters: TablesRowsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesRowsMove(requestParameters: TablesRowsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * , . equals/contains, , limit offset.
+     *
+     */
+    tablesRowsQueryRaw(requestParameters: TablesRowsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableRowsResponseDto>>;
+    /**
+     * , . equals/contains, , limit offset.
+     *
+     */
+    tablesRowsQuery(requestParameters: TablesRowsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableRowsResponseDto>;
+    /**
+     * .
+     *
+     */
+    tablesSheetSessionRaw(requestParameters: TablesSheetSessionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableSheetSessionResponseDto>>;
+    /**
+     * .
+     *
+     */
+    tablesSheetSession(requestParameters: TablesSheetSessionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableSheetSessionResponseDto>;
     /**
      * CSV- XLSX-.
      *
@@ -426,6 +714,86 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      *
      */
     updateTables(requestParameters: UpdateTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto>;
+    /**
+     * JSON-.
+     * text/number/boolean/formula/empty
+     */
+    updateTablesCellsRaw(requestParameters: UpdateTablesCellsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * JSON-.
+     * text/number/boolean/formula/empty
+     */
+    updateTablesCells(requestParameters: UpdateTablesCellsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateTablesColumnsResizeRaw(requestParameters: UpdateTablesColumnsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateTablesColumnsResize(requestParameters: UpdateTablesColumnsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateTablesColumnsVisibilityRaw(requestParameters: UpdateTablesColumnsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateTablesColumnsVisibility(requestParameters: UpdateTablesColumnsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * start_cell. row_index column_index 0 ; . , upsert -.
+     *
+     */
+    updateTablesRangeRaw(requestParameters: UpdateTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * start_cell. row_index column_index 0 ; . , upsert -.
+     *
+     */
+    updateTablesRange(requestParameters: UpdateTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * . , , , outline, border, borders, spreadsheet grid / . scope=all , outer , inner .
+     *
+     */
+    updateTablesRangeBordersRaw(requestParameters: UpdateTablesRangeBordersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * . , , , outline, border, borders, spreadsheet grid / . scope=all , outer , inner .
+     *
+     */
+    updateTablesRangeBorders(requestParameters: UpdateTablesRangeBordersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * , , . , wrap text wrap_text.
+     *
+     */
+    updateTablesRangeFormatRaw(requestParameters: UpdateTablesRangeFormatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * , , . , wrap text wrap_text.
+     *
+     */
+    updateTablesRangeFormat(requestParameters: UpdateTablesRangeFormatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateTablesRowsResizeRaw(requestParameters: UpdateTablesRowsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateTablesRowsResize(requestParameters: UpdateTablesRowsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateTablesRowsVisibilityRaw(requestParameters: UpdateTablesRowsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateTablesRowsVisibility(requestParameters: UpdateTablesRowsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto>;
 }
 /**
  * @export
@@ -486,6 +854,22 @@ export declare const DeleteTablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeleteTablesAcceptLanguageEnum = typeof DeleteTablesAcceptLanguageEnum[keyof typeof DeleteTablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteTablesColumnsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteTablesColumnsAcceptLanguageEnum = typeof DeleteTablesColumnsAcceptLanguageEnum[keyof typeof DeleteTablesColumnsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteTablesRowsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteTablesRowsAcceptLanguageEnum = typeof DeleteTablesRowsAcceptLanguageEnum[keyof typeof DeleteTablesRowsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -671,6 +1055,31 @@ export type GetTablesAcceptLanguageEnum = typeof GetTablesAcceptLanguageEnum[key
 /**
  * @export
  */
+export declare const GetTablesRangeValueModeEnum: {
+    readonly Computed: "computed";
+    readonly Formula: "formula";
+    readonly Both: "both";
+};
+export type GetTablesRangeValueModeEnum = typeof GetTablesRangeValueModeEnum[keyof typeof GetTablesRangeValueModeEnum];
+/**
+ * @export
+ */
+export declare const GetTablesRangeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetTablesRangeAcceptLanguageEnum = typeof GetTablesRangeAcceptLanguageEnum[keyof typeof GetTablesRangeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetTablesSchemaAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetTablesSchemaAcceptLanguageEnum = typeof GetTablesSchemaAcceptLanguageEnum[keyof typeof GetTablesSchemaAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const KnowledgeBaseDeleteFilesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -692,6 +1101,102 @@ export declare const TablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TablesAcceptLanguageEnum = typeof TablesAcceptLanguageEnum[keyof typeof TablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesColumnsInsertAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesColumnsInsertAcceptLanguageEnum = typeof TablesColumnsInsertAcceptLanguageEnum[keyof typeof TablesColumnsInsertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesColumnsMoveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesColumnsMoveAcceptLanguageEnum = typeof TablesColumnsMoveAcceptLanguageEnum[keyof typeof TablesColumnsMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRangeClearAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRangeClearAcceptLanguageEnum = typeof TablesRangeClearAcceptLanguageEnum[keyof typeof TablesRangeClearAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRangeCopyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRangeCopyAcceptLanguageEnum = typeof TablesRangeCopyAcceptLanguageEnum[keyof typeof TablesRangeCopyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRangeMergeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRangeMergeAcceptLanguageEnum = typeof TablesRangeMergeAcceptLanguageEnum[keyof typeof TablesRangeMergeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRangeMoveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRangeMoveAcceptLanguageEnum = typeof TablesRangeMoveAcceptLanguageEnum[keyof typeof TablesRangeMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRangeUnmergeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRangeUnmergeAcceptLanguageEnum = typeof TablesRangeUnmergeAcceptLanguageEnum[keyof typeof TablesRangeUnmergeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRowsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRowsAcceptLanguageEnum = typeof TablesRowsAcceptLanguageEnum[keyof typeof TablesRowsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRowsInsertAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRowsInsertAcceptLanguageEnum = typeof TablesRowsInsertAcceptLanguageEnum[keyof typeof TablesRowsInsertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRowsMoveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRowsMoveAcceptLanguageEnum = typeof TablesRowsMoveAcceptLanguageEnum[keyof typeof TablesRowsMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesRowsQueryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesRowsQueryAcceptLanguageEnum = typeof TablesRowsQueryAcceptLanguageEnum[keyof typeof TablesRowsQueryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TablesSheetSessionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TablesSheetSessionAcceptLanguageEnum = typeof TablesSheetSessionAcceptLanguageEnum[keyof typeof TablesSheetSessionAcceptLanguageEnum];
 /**
  * @export
  */
@@ -732,3 +1237,67 @@ export declare const UpdateTablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateTablesAcceptLanguageEnum = typeof UpdateTablesAcceptLanguageEnum[keyof typeof UpdateTablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesCellsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesCellsAcceptLanguageEnum = typeof UpdateTablesCellsAcceptLanguageEnum[keyof typeof UpdateTablesCellsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesColumnsResizeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesColumnsResizeAcceptLanguageEnum = typeof UpdateTablesColumnsResizeAcceptLanguageEnum[keyof typeof UpdateTablesColumnsResizeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesColumnsVisibilityAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesColumnsVisibilityAcceptLanguageEnum = typeof UpdateTablesColumnsVisibilityAcceptLanguageEnum[keyof typeof UpdateTablesColumnsVisibilityAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesRangeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesRangeAcceptLanguageEnum = typeof UpdateTablesRangeAcceptLanguageEnum[keyof typeof UpdateTablesRangeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesRangeBordersAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesRangeBordersAcceptLanguageEnum = typeof UpdateTablesRangeBordersAcceptLanguageEnum[keyof typeof UpdateTablesRangeBordersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesRangeFormatAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesRangeFormatAcceptLanguageEnum = typeof UpdateTablesRangeFormatAcceptLanguageEnum[keyof typeof UpdateTablesRangeFormatAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesRowsResizeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesRowsResizeAcceptLanguageEnum = typeof UpdateTablesRowsResizeAcceptLanguageEnum[keyof typeof UpdateTablesRowsResizeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateTablesRowsVisibilityAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTablesRowsVisibilityAcceptLanguageEnum = typeof UpdateTablesRowsVisibilityAcceptLanguageEnum[keyof typeof UpdateTablesRowsVisibilityAcceptLanguageEnum];

@@ -18,6 +18,12 @@ import type { AutomationNodePositionDto } from './AutomationNodePositionDto';
  */
 export interface AutomationBatchUpdateNodeOperationDto {
     /**
+     * instance_id , . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchUpdateNodeOperationDto
+     */
+    expectedInstanceId?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationBatchUpdateNodeOperationDto

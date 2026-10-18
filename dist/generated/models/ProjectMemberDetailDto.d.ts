@@ -57,10 +57,10 @@ export interface ProjectMemberDetailDto {
     isSupportOperator: boolean;
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof ProjectMemberDetailDto
      */
-    supportGroupId: string | null;
+    supportGroupIds: Array<string>;
     /**
      *
      * @type {UserResponseDto}

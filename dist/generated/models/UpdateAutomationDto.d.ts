@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AutomationSettingsValuesDto } from './AutomationSettingsValuesDto';
 /**
  * UpdateAutomationDto.
  * @export
@@ -45,6 +46,12 @@ export interface UpdateAutomationDto {
      * @memberof UpdateAutomationDto
      */
     widgetPublicName?: string | null;
+    /**
+     * . . .
+     * @type {AutomationSettingsValuesDto}
+     * @memberof UpdateAutomationDto
+     */
+    expected?: AutomationSettingsValuesDto;
 }
 /**
  * @export

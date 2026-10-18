@@ -71,7 +71,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/files/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -106,7 +106,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/folders/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -141,7 +141,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/pages/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -176,7 +176,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/tables/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -212,7 +212,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/files`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -250,7 +250,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/files/from-url`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -290,7 +290,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const consumes = [
             { contentType: 'multipart/form-data' },
@@ -351,7 +351,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const consumes = [
             { contentType: 'multipart/form-data' },
@@ -421,7 +421,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const consumes = [
             { contentType: 'multipart/form-data' },
@@ -489,7 +489,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/folders`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -527,7 +527,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/tables`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -567,7 +567,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const consumes = [
             { contentType: 'multipart/form-data' },
@@ -628,7 +628,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -664,7 +664,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/files/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -700,7 +700,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/pages/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -736,7 +736,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/resources`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -778,7 +778,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/resources/resolve`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -832,7 +832,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/search`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -868,7 +868,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/tables/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -905,7 +905,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -946,7 +946,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/files/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -987,7 +987,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/folders/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1025,7 +1025,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/order`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -1065,7 +1065,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/pages/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
@@ -1106,7 +1106,7 @@ class AppDocumentationApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_documentation"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_documentation"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/documentation/tables/{id}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),

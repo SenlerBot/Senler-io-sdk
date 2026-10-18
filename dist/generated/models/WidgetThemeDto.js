@@ -22,6 +22,7 @@ exports.WidgetThemeDtoToJSONTyped = WidgetThemeDtoToJSONTyped;
 const WidgetLocalizedTextDto_1 = require("./WidgetLocalizedTextDto");
 const WidgetLocalizedButtonsDto_1 = require("./WidgetLocalizedButtonsDto");
 const ButtonSettingsDto_1 = require("./ButtonSettingsDto");
+const WidgetColorsDto_1 = require("./WidgetColorsDto");
 /**
  * @export
  */
@@ -72,6 +73,7 @@ function WidgetThemeDtoFromJSONTyped(json, ignoreDiscriminator) {
         'width': json['width'] == null ? undefined : json['width'],
         'height': json['height'] == null ? undefined : json['height'],
         'themeMode': json['theme_mode'] == null ? undefined : json['theme_mode'],
+        'colors': json['colors'] == null ? undefined : (0, WidgetColorsDto_1.WidgetColorsDtoFromJSON)(json['colors']),
         'borderRadius': json['border_radius'] == null ? undefined : json['border_radius'],
         'shadowEnabled': json['shadow_enabled'] == null ? undefined : json['shadow_enabled'],
     };
@@ -96,6 +98,7 @@ function WidgetThemeDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'width': value['width'],
         'height': value['height'],
         'theme_mode': value['themeMode'],
+        'colors': (0, WidgetColorsDto_1.WidgetColorsDtoToJSON)(value['colors']),
         'border_radius': value['borderRadius'],
         'shadow_enabled': value['shadowEnabled'],
     };

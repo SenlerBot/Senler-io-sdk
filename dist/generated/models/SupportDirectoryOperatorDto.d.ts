@@ -17,10 +17,10 @@
 export interface SupportDirectoryOperatorDto {
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof SupportDirectoryOperatorDto
      */
-    groupId: string | null;
+    groupIds: Array<string>;
     /**
      * ID
      * @type {string}
@@ -65,10 +65,10 @@ export interface SupportDirectoryOperatorDto {
     isActive: boolean;
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof SupportDirectoryOperatorDto
      */
-    effectiveGroupId: string | null;
+    effectiveGroupIds: Array<string>;
     /**
      *
      * @type {boolean}

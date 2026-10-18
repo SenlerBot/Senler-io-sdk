@@ -85,6 +85,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -133,6 +137,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -187,6 +195,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -235,6 +247,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -289,6 +305,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -309,8 +329,8 @@ class LandingBlocksApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
-     * other
+     * ( other). payload: {}; .
+     *
      */
     async blocksOtherRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
@@ -340,6 +360,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -352,8 +376,8 @@ class LandingBlocksApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
-     * other
+     * ( other). payload: {}; .
+     *
      */
     async blocksOther(requestParameters, initOverrides) {
         const response = await this.blocksOtherRaw(requestParameters, initOverrides);
@@ -388,6 +412,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -442,6 +470,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -490,6 +522,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -544,6 +580,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -592,6 +632,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -649,6 +693,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -700,6 +748,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -757,6 +809,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -808,6 +864,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -865,6 +925,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -916,6 +980,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -973,6 +1041,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -1027,6 +1099,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -1047,8 +1123,8 @@ class LandingBlocksApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
-     * other
+     * ( other) . payload: {}; .
+     *
      */
     async updateBlocksOtherRaw(requestParameters, initOverrides) {
         if (requestParameters['resourceId'] == null) {
@@ -1081,6 +1157,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -1093,8 +1173,8 @@ class LandingBlocksApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
-     * other
+     * ( other) . payload: {}; .
+     *
      */
     async updateBlocksOther(requestParameters, initOverrides) {
         const response = await this.updateBlocksOtherRaw(requestParameters, initOverrides);
@@ -1132,6 +1212,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1189,6 +1273,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -1240,6 +1328,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1297,6 +1389,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
         }
         const response = await this.request({
@@ -1348,6 +1444,10 @@ class LandingBlocksApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required

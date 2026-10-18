@@ -32,6 +32,8 @@ exports.GenerateSummarizationRequestDtoPeriodEnum = {
  * Check if a given object implements the GenerateSummarizationRequestDto interface.
  */
 function instanceOfGenerateSummarizationRequestDto(value) {
+    if (!('maxCredits' in value) || value['maxCredits'] === undefined)
+        return false;
     if (!('operationId' in value) || value['operationId'] === undefined)
         return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
@@ -48,6 +50,7 @@ function GenerateSummarizationRequestDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
+        'maxCredits': json['max_credits'],
         'operationId': json['operation_id'],
         'projectId': json['project_id'],
         'period': json['period'] == null ? undefined : json['period'],
@@ -62,6 +65,7 @@ function GenerateSummarizationRequestDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
+        'max_credits': value['maxCredits'],
         'operation_id': value['operationId'],
         'project_id': value['projectId'],
         'period': value['period'],

@@ -45,6 +45,7 @@ function AutomationBatchUpdateNodeOperationDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
         'nodeId': json['node_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -62,6 +63,7 @@ function AutomationBatchUpdateNodeOperationDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
+        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
         'node_id': value['nodeId'],
         'name': value['name'],

@@ -38,6 +38,7 @@ function ImportProcessResultDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'skipped': json['skipped'] == null ? undefined : json['skipped'],
         'imported': json['imported'],
         'updated': json['updated'],
         'failed': json['failed'],
@@ -52,6 +53,7 @@ function ImportProcessResultDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'skipped': value['skipped'],
         'imported': value['imported'],
         'updated': value['updated'],
         'failed': value['failed'],

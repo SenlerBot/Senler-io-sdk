@@ -35,6 +35,12 @@ export interface DialogCurrentTypingDto {
      */
     startedAt?: string;
     /**
+     * .
+     * @type {Date}
+     * @memberof DialogCurrentTypingDto
+     */
+    expiresAt?: Date;
+    /**
      * true - chunk ( ). false - typing .
      * @type {boolean}
      * @memberof DialogCurrentTypingDto

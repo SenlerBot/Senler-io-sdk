@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface PrepaidRenewalCancellationItemDto {
     /**
-     * : base_tariff, credits, automation_speed, mailing_daily, storage.
+     * : base_tariff, credits, automation_speed, mailing_daily, api_daily, storage.
      * @type {string}
      * @memberof PrepaidRenewalCancellationItemDto
      */
@@ -84,6 +84,7 @@ export const PrepaidRenewalCancellationItemDtoKindEnum = {
     Credits: 'credits',
     AutomationSpeed: 'automation_speed',
     MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
     Storage: 'storage'
 } as const;
 export type PrepaidRenewalCancellationItemDtoKindEnum = typeof PrepaidRenewalCancellationItemDtoKindEnum[keyof typeof PrepaidRenewalCancellationItemDtoKindEnum];

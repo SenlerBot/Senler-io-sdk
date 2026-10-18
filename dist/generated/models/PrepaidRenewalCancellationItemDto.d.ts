@@ -16,7 +16,7 @@
  */
 export interface PrepaidRenewalCancellationItemDto {
     /**
-     * : base_tariff, credits, automation_speed, mailing_daily, storage.
+     * : base_tariff, credits, automation_speed, mailing_daily, api_daily, storage.
      * @type {string}
      * @memberof PrepaidRenewalCancellationItemDto
      */
@@ -78,6 +78,7 @@ export declare const PrepaidRenewalCancellationItemDtoKindEnum: {
     readonly Credits: "credits";
     readonly AutomationSpeed: "automation_speed";
     readonly MailingDaily: "mailing_daily";
+    readonly ApiDaily: "api_daily";
     readonly Storage: "storage";
 };
 export type PrepaidRenewalCancellationItemDtoKindEnum = typeof PrepaidRenewalCancellationItemDtoKindEnum[keyof typeof PrepaidRenewalCancellationItemDtoKindEnum];

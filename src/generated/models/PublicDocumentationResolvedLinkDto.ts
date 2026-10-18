@@ -43,6 +43,12 @@ export interface PublicDocumentationResolvedLinkDto {
      * @memberof PublicDocumentationResolvedLinkDto
      */
     targetFileId: string | null;
+    /**
+     * /api/documentation/page; null ,
+     * @type {string}
+     * @memberof PublicDocumentationResolvedLinkDto
+     */
+    documentRef: string | null;
 }
 
 
@@ -66,6 +72,7 @@ export function instanceOfPublicDocumentationResolvedLinkDto(value: object): val
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
     if (!('targetFileId' in value) || value['targetFileId'] === undefined) return false;
+    if (!('documentRef' in value) || value['documentRef'] === undefined) return false;
     return true;
 }
 
@@ -83,6 +90,7 @@ export function PublicDocumentationResolvedLinkDtoFromJSONTyped(json: any, ignor
         'kind': json['kind'],
         'url': json['url'],
         'targetFileId': json['target_file_id'],
+        'documentRef': json['document_ref'],
     };
 }
 
@@ -101,5 +109,6 @@ export function PublicDocumentationResolvedLinkDtoToJSONTyped(value?: PublicDocu
         'kind': value['kind'],
         'url': value['url'],
         'target_file_id': value['targetFileId'],
+        'document_ref': value['documentRef'],
     };
 }

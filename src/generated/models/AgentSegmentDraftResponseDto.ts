@@ -22,7 +22,7 @@ import {
 } from './SegmentConsentSnapshotDto';
 
 /**
- * AgentSegmentDraftResponseDto.
+ * . ; , version_id: null, revision: 0 has_unpublished_changes: false.
  * @export
  * @interface AgentSegmentDraftResponseDto
  */
@@ -34,37 +34,37 @@ export interface AgentSegmentDraftResponseDto {
      */
     segmentId: string;
     /**
-     * ID null, .
+     * ID , null, . expected_version_id .
      * @type {string}
      * @memberof AgentSegmentDraftResponseDto
      */
     versionId: string | null;
     /**
-     * .
+     * , 0, . expected_revision .
      * @type {number}
      * @memberof AgentSegmentDraftResponseDto
      */
     revision: number;
     /**
-     * .
+     * , . , .
      * @type {Array<SegmentConsentSnapshotDto>}
      * @memberof AgentSegmentDraftResponseDto
      */
     requiredConsents: Array<SegmentConsentSnapshotDto>;
     /**
-     * .
+     * . null , .
      * @type {string}
      * @memberof AgentSegmentDraftResponseDto
      */
     consentPromptText: string | null;
     /**
-     * null, .
+     * : primary , background ; null .
      * @type {string}
      * @memberof AgentSegmentDraftResponseDto
      */
     subscriptionAssignmentRole: AgentSegmentDraftResponseDtoSubscriptionAssignmentRoleEnum | null;
     /**
-     * .
+     * true, ; false, . .
      * @type {boolean}
      * @memberof AgentSegmentDraftResponseDto
      */

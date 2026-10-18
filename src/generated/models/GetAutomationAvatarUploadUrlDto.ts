@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GetAutomationAvatarUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAutomationAvatarUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- .
      * @type {string}
      * @memberof GetAutomationAvatarUploadUrlDto
@@ -37,6 +43,7 @@ export interface GetAutomationAvatarUploadUrlDto {
  * Check if a given object implements the GetAutomationAvatarUploadUrlDto interface.
  */
 export function instanceOfGetAutomationAvatarUploadUrlDto(value: object): value is GetAutomationAvatarUploadUrlDto {
+    if (!('fileSize' in value) || value['fileSize'] === undefined) return false;
     if (!('fileType' in value) || value['fileType'] === undefined) return false;
     if (!('fileName' in value) || value['fileName'] === undefined) return false;
     return true;
@@ -52,6 +59,7 @@ export function GetAutomationAvatarUploadUrlDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
         'fileName': json['fileName'],
     };
@@ -68,6 +76,7 @@ export function GetAutomationAvatarUploadUrlDtoToJSONTyped(value?: GetAutomation
 
     return {
 
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
         'fileName': value['fileName'],
     };

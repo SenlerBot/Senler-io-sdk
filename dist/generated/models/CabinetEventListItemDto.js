@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CabinetEventListItemDtoTargetTypeEnum = exports.CabinetEventListItemDtoActionTypeEnum = exports.CabinetEventListItemDtoPlatformTypeEnum = void 0;
+exports.CabinetEventListItemDtoMessageSenderKindEnum = exports.CabinetEventListItemDtoMessageDirectionEnum = exports.CabinetEventListItemDtoTargetTypeEnum = exports.CabinetEventListItemDtoActionTypeEnum = exports.CabinetEventListItemDtoPlatformTypeEnum = void 0;
 exports.instanceOfCabinetEventListItemDto = instanceOfCabinetEventListItemDto;
 exports.CabinetEventListItemDtoFromJSON = CabinetEventListItemDtoFromJSON;
 exports.CabinetEventListItemDtoFromJSONTyped = CabinetEventListItemDtoFromJSONTyped;
@@ -147,6 +147,23 @@ exports.CabinetEventListItemDtoTargetTypeEnum = {
     Billing: 'billing'
 };
 /**
+ * @export
+ */
+exports.CabinetEventListItemDtoMessageDirectionEnum = {
+    Inbound: 'inbound',
+    Outbound: 'outbound',
+    Internal: 'internal'
+};
+/**
+ * @export
+ */
+exports.CabinetEventListItemDtoMessageSenderKindEnum = {
+    Assistant: 'assistant',
+    Operator: 'operator',
+    Automation: 'automation',
+    Other: 'other'
+};
+/**
  * Check if a given object implements the CabinetEventListItemDto interface.
  */
 function instanceOfCabinetEventListItemDto(value) {
@@ -169,6 +186,8 @@ function instanceOfCabinetEventListItemDto(value) {
     if (!('updatedAt' in value) || value['updatedAt'] === undefined)
         return false;
     if (!('eventVersion' in value) || value['eventVersion'] === undefined)
+        return false;
+    if (!('hasError' in value) || value['hasError'] === undefined)
         return false;
     return true;
 }
@@ -215,6 +234,9 @@ function CabinetEventListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'eventVersion': json['event_version'],
+        'messageDirection': json['message_direction'] == null ? undefined : json['message_direction'],
+        'messageSenderKind': json['message_sender_kind'] == null ? undefined : json['message_sender_kind'],
+        'hasError': json['has_error'],
     };
 }
 function CabinetEventListItemDtoToJSON(json) {
@@ -260,5 +282,8 @@ function CabinetEventListItemDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'event_version': value['eventVersion'],
+        'message_direction': value['messageDirection'],
+        'message_sender_kind': value['messageSenderKind'],
+        'has_error': value['hasError'],
     };
 }

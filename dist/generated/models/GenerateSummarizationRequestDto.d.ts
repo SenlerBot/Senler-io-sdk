@@ -16,6 +16,12 @@
  */
 export interface GenerateSummarizationRequestDto {
     /**
+     * Maximum total charge in credit minor units (1 credit = 10000 units).
+     * @type {number}
+     * @memberof GenerateSummarizationRequestDto
+     */
+    maxCredits: number;
+    /**
      * ID
      * @type {string}
      * @memberof GenerateSummarizationRequestDto

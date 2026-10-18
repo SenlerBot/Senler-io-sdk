@@ -44,6 +44,8 @@ exports.ResourcePackagePlanItemDtoResourceTypeEnum = {
     AgentManualMetric: 'agent_manual_metric',
     AgentMcpBinding: 'agent_mcp_binding',
     AgentChannelBinding: 'agent_channel_binding',
+    AgentOperatorHandoff: 'agent_operator_handoff',
+    AgentOperatorGroups: 'agent_operator_groups',
     AgentVariableDependency: 'agent_variable_dependency',
     AgentAppOwnership: 'agent_app_ownership',
     AppResourceOwnership: 'app_resource_ownership',

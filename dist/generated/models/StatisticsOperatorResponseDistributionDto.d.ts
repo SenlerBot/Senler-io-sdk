@@ -28,29 +28,29 @@ export interface StatisticsOperatorResponseDistributionDto {
      */
     responsesCount: number;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseDistributionDto
      */
-    averageFirstResponseTimeSeconds: number;
+    averageFirstResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseDistributionDto
      */
-    averageFirstResponseRawTimeSeconds: number;
+    averageFirstResponseRawTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseDistributionDto
      */
-    averageResponseTimeSeconds: number;
+    averageResponseTimeSeconds: number | null;
     /**
-     * ,
+     * , ; null
      * @type {number}
      * @memberof StatisticsOperatorResponseDistributionDto
      */
-    averageResponseRawTimeSeconds: number;
+    averageResponseRawTimeSeconds: number | null;
     /**
      * ,
      * @type {number}

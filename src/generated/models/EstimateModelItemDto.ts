@@ -35,6 +35,18 @@ import {
  */
 export interface EstimateModelItemDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof EstimateModelItemDto
+     */
+    usesProjectCredentials: boolean;
+    /**
+     * Senler,
+     * @type {boolean}
+     * @memberof EstimateModelItemDto
+     */
+    platformCredentialsAllowed: boolean;
+    /**
      * ID
      * @type {string}
      * @memberof EstimateModelItemDto
@@ -93,6 +105,8 @@ export type EstimateModelItemDtoBillingModeEnum = typeof EstimateModelItemDtoBil
  * Check if a given object implements the EstimateModelItemDto interface.
  */
 export function instanceOfEstimateModelItemDto(value: object): value is EstimateModelItemDto {
+    if (!('usesProjectCredentials' in value) || value['usesProjectCredentials'] === undefined) return false;
+    if (!('platformCredentialsAllowed' in value) || value['platformCredentialsAllowed'] === undefined) return false;
     if (!('modelId' in value) || value['modelId'] === undefined) return false;
     if (!('modelSlug' in value) || value['modelSlug'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
@@ -113,6 +127,8 @@ export function EstimateModelItemDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
+        'usesProjectCredentials': json['uses_project_credentials'],
+        'platformCredentialsAllowed': json['platform_credentials_allowed'],
         'modelId': json['model_id'],
         'modelSlug': json['model_slug'],
         'displayName': json['display_name'],
@@ -134,6 +150,8 @@ export function EstimateModelItemDtoToJSONTyped(value?: EstimateModelItemDto | n
 
     return {
 
+        'uses_project_credentials': value['usesProjectCredentials'],
+        'platform_credentials_allowed': value['platformCredentialsAllowed'],
         'model_id': value['modelId'],
         'model_slug': value['modelSlug'],
         'display_name': value['displayName'],

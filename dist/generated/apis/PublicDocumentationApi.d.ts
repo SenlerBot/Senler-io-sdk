@@ -35,6 +35,7 @@ export interface GetPageRequest {
 }
 export interface PublicDocumentationGetSearchRequest {
     query: string;
+    includeApi?: boolean;
     locale?: PublicDocumentationGetSearchLocaleEnum;
     scope?: PublicDocumentationGetSearchScopeEnum;
     app?: string;
@@ -87,22 +88,22 @@ export declare class PublicDocumentationApi extends runtime.BaseAPI {
      */
     getAppsTree(requestParameters: GetAppsTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationTreeDto>;
     /**
-     * Markdown, document_ref .
+     * API- , document_ref . .
      *
      */
     getPageRaw(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationPageDto>>;
     /**
-     * Markdown, document_ref .
+     * API- , document_ref . .
      *
      */
     getPage(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationPageDto>;
     /**
-     * ; app ID .
+     * . include_api=true HTTP-; API . app ID .
      * Senler
      */
     publicDocumentationGetSearchRaw(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationSearchResponseDto>>;
     /**
-     * ; app ID .
+     * . include_api=true HTTP-; API . app ID .
      * Senler
      */
     publicDocumentationGetSearch(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationSearchResponseDto>;

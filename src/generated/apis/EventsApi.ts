@@ -64,8 +64,11 @@ export interface EventsListRequest {
     leadId?: string;
     creditTransactionId?: string;
     actionType?: EventsListActionTypeEnum;
+    messageDirection?: EventsListMessageDirectionEnum;
+    messageSenderKind?: EventsListMessageSenderKindEnum;
     targetType?: EventsListTargetTypeEnum;
     targetId?: string;
+    onlyErrors?: boolean;
     onlyRolledBack?: boolean;
     excludeRolledBack?: boolean;
     search?: string;
@@ -147,6 +150,11 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
 
@@ -197,6 +205,11 @@ export class EventsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
@@ -283,12 +296,24 @@ export class EventsApi extends runtime.BaseAPI {
             queryParameters['action_type'] = requestParameters['actionType'];
         }
 
+        if (requestParameters['messageDirection'] != null) {
+            queryParameters['message_direction'] = requestParameters['messageDirection'];
+        }
+
+        if (requestParameters['messageSenderKind'] != null) {
+            queryParameters['message_sender_kind'] = requestParameters['messageSenderKind'];
+        }
+
         if (requestParameters['targetType'] != null) {
             queryParameters['target_type'] = requestParameters['targetType'];
         }
 
         if (requestParameters['targetId'] != null) {
             queryParameters['target_id'] = requestParameters['targetId'];
+        }
+
+        if (requestParameters['onlyErrors'] != null) {
+            queryParameters['only_errors'] = requestParameters['onlyErrors'];
         }
 
         if (requestParameters['onlyRolledBack'] != null) {
@@ -345,6 +370,11 @@ export class EventsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
@@ -407,6 +437,11 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
 
@@ -467,6 +502,11 @@ export class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
 
@@ -525,6 +565,11 @@ export class EventsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
@@ -663,6 +708,25 @@ export const EventsListActionTypeEnum = {
     AppEventReceived: 'app_event_received'
 } as const;
 export type EventsListActionTypeEnum = typeof EventsListActionTypeEnum[keyof typeof EventsListActionTypeEnum];
+/**
+ * @export
+ */
+export const EventsListMessageDirectionEnum = {
+    Inbound: 'inbound',
+    Outbound: 'outbound',
+    Internal: 'internal'
+} as const;
+export type EventsListMessageDirectionEnum = typeof EventsListMessageDirectionEnum[keyof typeof EventsListMessageDirectionEnum];
+/**
+ * @export
+ */
+export const EventsListMessageSenderKindEnum = {
+    Assistant: 'assistant',
+    Operator: 'operator',
+    Automation: 'automation',
+    Other: 'other'
+} as const;
+export type EventsListMessageSenderKindEnum = typeof EventsListMessageSenderKindEnum[keyof typeof EventsListMessageSenderKindEnum];
 /**
  * @export
  */

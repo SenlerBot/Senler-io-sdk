@@ -20,6 +20,13 @@ import {
     LeadSpaceLinkResponseDtoToJSON,
     LeadSpaceLinkResponseDtoToJSONTyped,
 } from './LeadSpaceLinkResponseDto';
+import type { LeadBirthdayDateDto } from './LeadBirthdayDateDto';
+import {
+    LeadBirthdayDateDtoFromJSON,
+    LeadBirthdayDateDtoFromJSONTyped,
+    LeadBirthdayDateDtoToJSON,
+    LeadBirthdayDateDtoToJSONTyped,
+} from './LeadBirthdayDateDto';
 import type { LeadFunnelDto } from './LeadFunnelDto';
 import {
     LeadFunnelDtoFromJSON,
@@ -48,6 +55,36 @@ import {
  * @interface LeadResponseDto
  */
 export interface LeadResponseDto {
+    /**
+     * Effective birthday. A missing year remains absent.
+     * @type {LeadBirthdayDateDto}
+     * @memberof LeadResponseDto
+     */
+    birthday: LeadBirthdayDateDto | null;
+    /**
+     * : channel, manual.
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    birthdayMode: LeadResponseDtoBirthdayModeEnum;
+    /**
+     * Most recently available channel birthday, independent of manual override.
+     * @type {LeadBirthdayDateDto}
+     * @memberof LeadResponseDto
+     */
+    birthdayChannel: LeadBirthdayDateDto | null;
+    /**
+     * Time the effective birthday source was updated
+     * @type {Date}
+     * @memberof LeadResponseDto
+     */
+    birthdayUpdatedAt?: Date | null;
+    /**
+     * Time the channel birthday was checked successfully
+     * @type {Date}
+     * @memberof LeadResponseDto
+     */
+    birthdayChannelUpdatedAt?: Date | null;
     /**
      *
      * @type {Array<LeadFunnelDto>}
@@ -228,6 +265,15 @@ export interface LeadResponseDto {
 /**
  * @export
  */
+export const LeadResponseDtoBirthdayModeEnum = {
+    Channel: 'channel',
+    Manual: 'manual'
+} as const;
+export type LeadResponseDtoBirthdayModeEnum = typeof LeadResponseDtoBirthdayModeEnum[keyof typeof LeadResponseDtoBirthdayModeEnum];
+
+/**
+ * @export
+ */
 export const LeadResponseDtoChannelTypeEnum = {
     Vk: 'vk',
     Tg: 'tg',
@@ -270,6 +316,9 @@ export type LeadResponseDtoLeadTypeEnum = typeof LeadResponseDtoLeadTypeEnum[key
  * Check if a given object implements the LeadResponseDto interface.
  */
 export function instanceOfLeadResponseDto(value: object): value is LeadResponseDto {
+    if (!('birthday' in value) || value['birthday'] === undefined) return false;
+    if (!('birthdayMode' in value) || value['birthdayMode'] === undefined) return false;
+    if (!('birthdayChannel' in value) || value['birthdayChannel'] === undefined) return false;
     if (!('funnels' in value) || value['funnels'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('channelId' in value) || value['channelId'] === undefined) return false;
@@ -300,6 +349,11 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
 
+        'birthday': LeadBirthdayDateDtoFromJSON(json['birthday']),
+        'birthdayMode': json['birthday_mode'],
+        'birthdayChannel': LeadBirthdayDateDtoFromJSON(json['birthday_channel']),
+        'birthdayUpdatedAt': json['birthday_updated_at'] == null ? undefined : (new Date(json['birthday_updated_at'])),
+        'birthdayChannelUpdatedAt': json['birthday_channel_updated_at'] == null ? undefined : (new Date(json['birthday_channel_updated_at'])),
         'funnels': ((json['funnels'] as Array<any>).map(LeadFunnelDtoFromJSON)),
         'id': json['id'],
         'channelId': json['channel_id'],
@@ -343,6 +397,11 @@ export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignor
 
     return {
 
+        'birthday': LeadBirthdayDateDtoToJSON(value['birthday']),
+        'birthday_mode': value['birthdayMode'],
+        'birthday_channel': LeadBirthdayDateDtoToJSON(value['birthdayChannel']),
+        'birthday_updated_at': value['birthdayUpdatedAt'] == null ? undefined : ((value['birthdayUpdatedAt'] as any).toISOString()),
+        'birthday_channel_updated_at': value['birthdayChannelUpdatedAt'] == null ? undefined : ((value['birthdayChannelUpdatedAt'] as any).toISOString()),
         'funnels': ((value['funnels'] as Array<any>).map(LeadFunnelDtoToJSON)),
         'id': value['id'],
         'channel_id': value['channelId'],

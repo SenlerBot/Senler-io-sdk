@@ -16,6 +16,12 @@
  */
 export interface GetAppIconUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAppIconUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME-
      * @type {string}
      * @memberof GetAppIconUploadUrlDto

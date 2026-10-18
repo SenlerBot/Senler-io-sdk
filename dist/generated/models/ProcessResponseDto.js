@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessResponseDtoStatusEnum = exports.ProcessResponseDtoTypeEnum = void 0;
+exports.ProcessResponseDtoErrorCodeEnum = exports.ProcessResponseDtoStatusEnum = exports.ProcessResponseDtoTypeEnum = void 0;
 exports.instanceOfProcessResponseDto = instanceOfProcessResponseDto;
 exports.ProcessResponseDtoFromJSON = ProcessResponseDtoFromJSON;
 exports.ProcessResponseDtoFromJSONTyped = ProcessResponseDtoFromJSONTyped;
@@ -26,8 +26,10 @@ const ProcessResponseDtoResult_1 = require("./ProcessResponseDtoResult");
  * @export
  */
 exports.ProcessResponseDtoTypeEnum = {
+    DialogsBulkOperation: 'dialogs_bulk_operation',
     LeadsExport: 'leads_export',
     LeadsImport: 'leads_import',
+    LeadsImportSenler: 'leads_import_senler',
     LeadsRefresh: 'leads_refresh',
     LeadsSegmentOperation: 'leads_segment_operation',
     ChannelMigration: 'channel_migration',
@@ -48,6 +50,16 @@ exports.ProcessResponseDtoStatusEnum = {
     Completed: 'completed',
     Failed: 'failed',
     Cancelled: 'cancelled'
+};
+/**
+ * @export
+ */
+exports.ProcessResponseDtoErrorCodeEnum = {
+    SenlerImportConnectionRequired: 'senler_import_connection_required',
+    SenlerImportConnectionChanged: 'senler_import_connection_changed',
+    SenlerImportSourceUnavailable: 'senler_import_source_unavailable',
+    SenlerImportSourceRejected: 'senler_import_source_rejected',
+    SenlerImportInvalidResponse: 'senler_import_invalid_response'
 };
 /**
  * Check if a given object implements the ProcessResponseDto interface.
@@ -86,6 +98,7 @@ function ProcessResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'progress': json['progress'] == null ? undefined : (0, ProcessProgressDto_1.ProcessProgressDtoFromJSON)(json['progress']),
         'result': json['result'] == null ? undefined : (0, ProcessResponseDtoResult_1.ProcessResponseDtoResultFromJSON)(json['result']),
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
+        'errorCode': json['error_code'] == null ? undefined : json['error_code'],
         'userId': json['user_id'],
         'projectId': json['project_id'],
         'createdAt': (new Date(json['created_at'])),
@@ -110,6 +123,7 @@ function ProcessResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'progress': (0, ProcessProgressDto_1.ProcessProgressDtoToJSON)(value['progress']),
         'result': (0, ProcessResponseDtoResult_1.ProcessResponseDtoResultToJSON)(value['result']),
         'error_message': value['errorMessage'],
+        'error_code': value['errorCode'],
         'user_id': value['userId'],
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),

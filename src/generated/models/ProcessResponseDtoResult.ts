@@ -47,6 +47,13 @@ import {
     DeliverySendProcessResultDtoFromJSONTyped,
     DeliverySendProcessResultDtoToJSON,
 } from './DeliverySendProcessResultDto';
+import type { DialogBulkProcessResultDto } from './DialogBulkProcessResultDto';
+import {
+    instanceOfDialogBulkProcessResultDto,
+    DialogBulkProcessResultDtoFromJSON,
+    DialogBulkProcessResultDtoFromJSONTyped,
+    DialogBulkProcessResultDtoToJSON,
+} from './DialogBulkProcessResultDto';
 import type { ExportProcessResultDto } from './ExportProcessResultDto';
 import {
     instanceOfExportProcessResultDto,
@@ -88,7 +95,7 @@ import {
  *
  * @export
  */
-export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | LeadsSegmentOperationProcessResultDto | ResourcePackageImportProcessResultDto;
+export type ProcessResponseDtoResult = ChannelMigrationProcessResultDto | ChannelSpacesRefreshProcessResultDto | ChannelWebhooksRefreshProcessResultDto | ChannelsTreeRefreshProcessResultDto | DeliverySendProcessResultDto | DialogBulkProcessResultDto | ExportProcessResultDto | ImportProcessResultDto | LeadsRefreshProcessResultDto | LeadsSegmentOperationProcessResultDto | ResourcePackageImportProcessResultDto;
 
 export function ProcessResponseDtoResultFromJSON(json: any): ProcessResponseDtoResult {
     return ProcessResponseDtoResultFromJSONTyped(json, false);
@@ -112,6 +119,9 @@ export function ProcessResponseDtoResultFromJSONTyped(json: any, ignoreDiscrimin
     }
     if (instanceOfDeliverySendProcessResultDto(json)) {
         return DeliverySendProcessResultDtoFromJSONTyped(json, true);
+    }
+    if (instanceOfDialogBulkProcessResultDto(json)) {
+        return DialogBulkProcessResultDtoFromJSONTyped(json, true);
     }
     if (instanceOfExportProcessResultDto(json)) {
         return ExportProcessResultDtoFromJSONTyped(json, true);
@@ -155,6 +165,9 @@ export function ProcessResponseDtoResultToJSONTyped(value?: ProcessResponseDtoRe
     }
     if (instanceOfDeliverySendProcessResultDto(value)) {
         return DeliverySendProcessResultDtoToJSON(value as DeliverySendProcessResultDto);
+    }
+    if (instanceOfDialogBulkProcessResultDto(value)) {
+        return DialogBulkProcessResultDtoToJSON(value as DialogBulkProcessResultDto);
     }
     if (instanceOfExportProcessResultDto(value)) {
         return ExportProcessResultDtoToJSON(value as ExportProcessResultDto);

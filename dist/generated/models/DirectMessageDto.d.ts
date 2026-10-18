@@ -17,6 +17,12 @@ import type { MessageButtonDto } from './MessageButtonDto';
  */
 export interface DirectMessageDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof DirectMessageDto
+     */
+    contentFormat?: DirectMessageDtoContentFormatEnum;
+    /**
      * ID ,
      * @type {string}
      * @memberof DirectMessageDto
@@ -47,6 +53,14 @@ export interface DirectMessageDto {
      */
     buttons?: Array<MessageButtonDto>;
 }
+/**
+ * @export
+ */
+export declare const DirectMessageDtoContentFormatEnum: {
+    readonly PlainText: "plain_text";
+    readonly Markdown: "markdown";
+};
+export type DirectMessageDtoContentFormatEnum = typeof DirectMessageDtoContentFormatEnum[keyof typeof DirectMessageDtoContentFormatEnum];
 /**
  * Check if a given object implements the DirectMessageDto interface.
  */

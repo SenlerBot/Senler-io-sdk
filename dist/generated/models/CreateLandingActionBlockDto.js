@@ -19,7 +19,6 @@ exports.CreateLandingActionBlockDtoFromJSON = CreateLandingActionBlockDtoFromJSO
 exports.CreateLandingActionBlockDtoFromJSONTyped = CreateLandingActionBlockDtoFromJSONTyped;
 exports.CreateLandingActionBlockDtoToJSON = CreateLandingActionBlockDtoToJSON;
 exports.CreateLandingActionBlockDtoToJSONTyped = CreateLandingActionBlockDtoToJSONTyped;
-const LandingBlockResponseDtoPayload_1 = require("./LandingBlockResponseDtoPayload");
 const CreateLandingActionBlockDtoAction_1 = require("./CreateLandingActionBlockDtoAction");
 /**
  * @export
@@ -54,7 +53,7 @@ function CreateLandingActionBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
-        'payload': (0, LandingBlockResponseDtoPayload_1.LandingBlockResponseDtoPayloadFromJSON)(json['payload']),
+        'payload': json['payload'],
         'action': json['action'] == null ? undefined : (0, CreateLandingActionBlockDtoAction_1.CreateLandingActionBlockDtoActionFromJSON)(json['action']),
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
@@ -71,7 +70,7 @@ function CreateLandingActionBlockDtoToJSONTyped(value, ignoreDiscriminator = fal
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
-        'payload': (0, LandingBlockResponseDtoPayload_1.LandingBlockResponseDtoPayloadToJSON)(value['payload']),
+        'payload': value['payload'],
         'action': (0, CreateLandingActionBlockDtoAction_1.CreateLandingActionBlockDtoActionToJSON)(value['action']),
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],

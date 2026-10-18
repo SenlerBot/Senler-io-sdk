@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface SubscriptionRenewalConfirmDto {
     /**
+     * , . .
+     * @type {string}
+     * @memberof SubscriptionRenewalConfirmDto
+     */
+    promoApplicationId?: string;
+    /**
      * ,
      * @type {string}
      * @memberof SubscriptionRenewalConfirmDto
@@ -74,6 +80,7 @@ export function SubscriptionRenewalConfirmDtoFromJSONTyped(json: any, ignoreDisc
     }
     return {
 
+        'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'period': json['period'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
         'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
@@ -92,6 +99,7 @@ export function SubscriptionRenewalConfirmDtoToJSONTyped(value?: SubscriptionRen
 
     return {
 
+        'promo_application_id': value['promoApplicationId'],
         'period': value['period'],
         'use_balance': value['useBalance'],
         'pay_system_id': value['paySystemId'],

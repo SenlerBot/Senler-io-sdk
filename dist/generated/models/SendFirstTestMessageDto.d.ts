@@ -18,6 +18,12 @@ import type { MessageButtonDto } from './MessageButtonDto';
  */
 export interface SendFirstTestMessageDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof SendFirstTestMessageDto
+     */
+    contentFormat?: SendFirstTestMessageDtoContentFormatEnum;
+    /**
      *
      * @type {string}
      * @memberof SendFirstTestMessageDto
@@ -66,6 +72,14 @@ export interface SendFirstTestMessageDto {
      */
     baseDialogId?: string;
 }
+/**
+ * @export
+ */
+export declare const SendFirstTestMessageDtoContentFormatEnum: {
+    readonly PlainText: "plain_text";
+    readonly Markdown: "markdown";
+};
+export type SendFirstTestMessageDtoContentFormatEnum = typeof SendFirstTestMessageDtoContentFormatEnum[keyof typeof SendFirstTestMessageDtoContentFormatEnum];
 /**
  * @export
  */

@@ -24,11 +24,13 @@ export interface DialogVariableDefinitionsDeactivateRequest {
 export interface DialogVariableDefinitionsGetByIdRequest {
     projectId: string;
     name: string;
+    appId?: string;
     acceptLanguage?: DialogVariableDefinitionsGetByIdAcceptLanguageEnum;
 }
 export interface DialogVariableDefinitionsGetByIdsRequest {
     projectId: string;
     ids: Array<string>;
+    appId?: string;
     acceptLanguage?: DialogVariableDefinitionsGetByIdsAcceptLanguageEnum;
 }
 export interface DialogVariableDefinitionsListRequest {

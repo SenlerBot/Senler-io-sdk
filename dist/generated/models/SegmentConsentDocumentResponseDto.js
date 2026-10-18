@@ -13,19 +13,11 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SegmentConsentDocumentResponseDtoStatusEnum = void 0;
 exports.instanceOfSegmentConsentDocumentResponseDto = instanceOfSegmentConsentDocumentResponseDto;
 exports.SegmentConsentDocumentResponseDtoFromJSON = SegmentConsentDocumentResponseDtoFromJSON;
 exports.SegmentConsentDocumentResponseDtoFromJSONTyped = SegmentConsentDocumentResponseDtoFromJSONTyped;
 exports.SegmentConsentDocumentResponseDtoToJSON = SegmentConsentDocumentResponseDtoToJSON;
 exports.SegmentConsentDocumentResponseDtoToJSONTyped = SegmentConsentDocumentResponseDtoToJSONTyped;
-/**
- * @export
- */
-exports.SegmentConsentDocumentResponseDtoStatusEnum = {
-    Active: 'active',
-    Archived: 'archived'
-};
 /**
  * Check if a given object implements the SegmentConsentDocumentResponseDto interface.
  */
@@ -40,13 +32,11 @@ function instanceOfSegmentConsentDocumentResponseDto(value) {
         return false;
     if (!('version' in value) || value['version'] === undefined)
         return false;
-    if (!('status' in value) || value['status'] === undefined)
-        return false;
     if (!('fileUrl' in value) || value['fileUrl'] === undefined)
         return false;
     if (!('content' in value) || value['content'] === undefined)
         return false;
-    if (!('archivedAt' in value) || value['archivedAt'] === undefined)
+    if (!('deletedAt' in value) || value['deletedAt'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -67,10 +57,9 @@ function SegmentConsentDocumentResponseDtoFromJSONTyped(json, ignoreDiscriminato
         'name': json['name'],
         'description': json['description'],
         'version': json['version'],
-        'status': json['status'],
         'fileUrl': json['file_url'],
         'content': json['content'],
-        'archivedAt': (json['archived_at'] == null ? null : new Date(json['archived_at'])),
+        'deletedAt': (json['deleted_at'] == null ? null : new Date(json['deleted_at'])),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -88,10 +77,9 @@ function SegmentConsentDocumentResponseDtoToJSONTyped(value, ignoreDiscriminator
         'name': value['name'],
         'description': value['description'],
         'version': value['version'],
-        'status': value['status'],
         'file_url': value['fileUrl'],
         'content': value['content'],
-        'archived_at': (value['archivedAt'] == null ? null : value['archivedAt'].toISOString()),
+        'deleted_at': (value['deletedAt'] == null ? null : value['deletedAt'].toISOString()),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

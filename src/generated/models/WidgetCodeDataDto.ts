@@ -46,7 +46,7 @@ export interface WidgetCodeDataDto {
      */
     backendSnippets?: Array<BackendSnippetDto>;
     /**
-     * HMAC- ( identity_verification=true). YOUR_SECRET_KEY
+     * HMAC- ( identity_verification=true can_manage_channel). ; .
      * @type {string}
      * @memberof WidgetCodeDataDto
      */

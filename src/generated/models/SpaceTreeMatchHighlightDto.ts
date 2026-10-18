@@ -24,7 +24,7 @@ export interface SpaceTreeMatchHighlightDto {
      * @type {string}
      * @memberof SpaceTreeMatchHighlightDto
      */
-    field: string;
+    field: SpaceTreeMatchHighlightDtoFieldEnum;
     /**
      * HTML-
      * @type {string}
@@ -32,6 +32,19 @@ export interface SpaceTreeMatchHighlightDto {
      */
     highlighted: string;
 }
+
+
+/**
+ * @export
+ */
+export const SpaceTreeMatchHighlightDtoFieldEnum = {
+    Title: 'title',
+    Text: 'text',
+    Username: 'username',
+    SearchableContent: 'searchable_content'
+} as const;
+export type SpaceTreeMatchHighlightDtoFieldEnum = typeof SpaceTreeMatchHighlightDtoFieldEnum[keyof typeof SpaceTreeMatchHighlightDtoFieldEnum];
+
 
 /**
  * Check if a given object implements the SpaceTreeMatchHighlightDto interface.

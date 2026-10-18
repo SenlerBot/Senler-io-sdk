@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AutomationRunAttentionDto } from './AutomationRunAttentionDto';
+import {
+    AutomationRunAttentionDtoFromJSON,
+    AutomationRunAttentionDtoFromJSONTyped,
+    AutomationRunAttentionDtoToJSON,
+    AutomationRunAttentionDtoToJSONTyped,
+} from './AutomationRunAttentionDto';
+
 /**
  * DialogAutomationRunResponseDto.
  * @export
  * @interface DialogAutomationRunResponseDto
  */
 export interface DialogAutomationRunResponseDto {
+    /**
+     * requires_attention.
+     * @type {AutomationRunAttentionDto}
+     * @memberof DialogAutomationRunResponseDto
+     */
+    attention?: AutomationRunAttentionDto;
     /**
      * Mongo ID .
      * @type {string}
@@ -185,6 +199,7 @@ export function DialogAutomationRunResponseDtoFromJSONTyped(json: any, ignoreDis
     }
     return {
 
+        'attention': json['attention'] == null ? undefined : AutomationRunAttentionDtoFromJSON(json['attention']),
         'id': json['id'],
         'sourceEventId': json['source_event_id'],
         'initialVersionId': json['initial_version_id'],
@@ -218,6 +233,7 @@ export function DialogAutomationRunResponseDtoToJSONTyped(value?: DialogAutomati
 
     return {
 
+        'attention': AutomationRunAttentionDtoToJSON(value['attention']),
         'id': value['id'],
         'source_event_id': value['sourceEventId'],
         'initial_version_id': value['initialVersionId'],

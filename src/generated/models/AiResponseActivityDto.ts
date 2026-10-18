@@ -63,6 +63,18 @@ export interface AiResponseActivityDto {
      * @memberof AiResponseActivityDto
      */
     streaming?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof AiResponseActivityDto
+     */
+    detailKey?: AiResponseActivityDtoDetailKeyEnum;
+    /**
+     * MCP-
+     * @type {string}
+     * @memberof AiResponseActivityDto
+     */
+    detail?: string;
 }
 
 
@@ -82,6 +94,22 @@ export const AiResponseActivityDtoPhaseEnum = {
     Finalizing: 'finalizing'
 } as const;
 export type AiResponseActivityDtoPhaseEnum = typeof AiResponseActivityDtoPhaseEnum[keyof typeof AiResponseActivityDtoPhaseEnum];
+
+/**
+ * @export
+ */
+export const AiResponseActivityDtoDetailKeyEnum = {
+    Image: 'image',
+    Audio: 'audio',
+    Chart: 'chart',
+    QrCode: 'qr_code',
+    ImportAttachment: 'import_attachment',
+    AttachResult: 'attach_result',
+    ReadAttachment: 'read_attachment',
+    PageAction: 'page_action',
+    MessageButtons: 'message_buttons'
+} as const;
+export type AiResponseActivityDtoDetailKeyEnum = typeof AiResponseActivityDtoDetailKeyEnum[keyof typeof AiResponseActivityDtoDetailKeyEnum];
 
 
 /**
@@ -112,6 +140,8 @@ export function AiResponseActivityDtoFromJSONTyped(json: any, ignoreDiscriminato
         'startedAt': (new Date(json['started_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'streaming': json['streaming'] == null ? undefined : json['streaming'],
+        'detailKey': json['detail_key'] == null ? undefined : json['detail_key'],
+        'detail': json['detail'] == null ? undefined : json['detail'],
     };
 }
 
@@ -132,5 +162,7 @@ export function AiResponseActivityDtoToJSONTyped(value?: AiResponseActivityDto |
         'started_at': ((value['startedAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'streaming': value['streaming'],
+        'detail_key': value['detailKey'],
+        'detail': value['detail'],
     };
 }

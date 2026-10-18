@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
+import type { LeadBirthdayDateDto } from './LeadBirthdayDateDto';
 import type { LeadFunnelDto } from './LeadFunnelDto';
 import type { PendingSegmentResponseDto } from './PendingSegmentResponseDto';
 import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDto';
@@ -19,6 +20,36 @@ import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDt
  * @interface LeadResponseDto
  */
 export interface LeadResponseDto {
+    /**
+     * Effective birthday. A missing year remains absent.
+     * @type {LeadBirthdayDateDto}
+     * @memberof LeadResponseDto
+     */
+    birthday: LeadBirthdayDateDto | null;
+    /**
+     * : channel, manual.
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    birthdayMode: LeadResponseDtoBirthdayModeEnum;
+    /**
+     * Most recently available channel birthday, independent of manual override.
+     * @type {LeadBirthdayDateDto}
+     * @memberof LeadResponseDto
+     */
+    birthdayChannel: LeadBirthdayDateDto | null;
+    /**
+     * Time the effective birthday source was updated
+     * @type {Date}
+     * @memberof LeadResponseDto
+     */
+    birthdayUpdatedAt?: Date | null;
+    /**
+     * Time the channel birthday was checked successfully
+     * @type {Date}
+     * @memberof LeadResponseDto
+     */
+    birthdayChannelUpdatedAt?: Date | null;
     /**
      *
      * @type {Array<LeadFunnelDto>}
@@ -194,6 +225,14 @@ export interface LeadResponseDto {
      */
     pendingSegments: Array<PendingSegmentResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const LeadResponseDtoBirthdayModeEnum: {
+    readonly Channel: "channel";
+    readonly Manual: "manual";
+};
+export type LeadResponseDtoBirthdayModeEnum = typeof LeadResponseDtoBirthdayModeEnum[keyof typeof LeadResponseDtoBirthdayModeEnum];
 /**
  * @export
  */

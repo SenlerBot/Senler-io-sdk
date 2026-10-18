@@ -35,6 +35,12 @@ import {
  */
 export interface AutomationNodeResponseDto {
     /**
+     * ID . ; .
+     * @type {string}
+     * @memberof AutomationNodeResponseDto
+     */
+    instanceId?: string;
+    /**
      * UUID .
      * @type {string}
      * @memberof AutomationNodeResponseDto
@@ -83,6 +89,7 @@ export interface AutomationNodeResponseDto {
  * @export
  */
 export const AutomationNodeResponseDtoTypeEnum = {
+    TriggerBirthday: 'trigger.birthday',
     TriggerStart: 'trigger.start',
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
@@ -95,6 +102,7 @@ export const AutomationNodeResponseDtoTypeEnum = {
     ConditionFunnelStage: 'condition.funnel_stage',
     ConditionAutomation: 'condition.automation',
     ConditionAgent: 'condition.agent',
+    ConditionOperatorAssignment: 'condition.operator_assignment',
     ConditionChannelType: 'condition.channel_type',
     ConditionTableRow: 'condition.table_row',
     BranchRandom: 'branch.random',
@@ -110,6 +118,7 @@ export const AutomationNodeResponseDtoTypeEnum = {
     ActionRemoveAutomation: 'action.remove_automation',
     ActionAssignAgent: 'action.assign_agent',
     ActionUnassignAgent: 'action.unassign_agent',
+    ActionHandoffToOperator: 'action.handoff_to_operator',
     ActionTableWrite: 'action.table_write',
     ActionHttp: 'action.http',
     ActionApp: 'action.app',
@@ -143,6 +152,7 @@ export function AutomationNodeResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
 
+        'instanceId': json['instance_id'] == null ? undefined : json['instance_id'],
         'nodeId': json['node_id'],
         'type': json['type'],
         'name': json['name'],
@@ -164,6 +174,7 @@ export function AutomationNodeResponseDtoToJSONTyped(value?: AutomationNodeRespo
 
     return {
 
+        'instance_id': value['instanceId'],
         'node_id': value['nodeId'],
         'type': value['type'],
         'name': value['name'],

@@ -86,10 +86,10 @@ export interface ProjectMemberDetailDto {
     isSupportOperator: boolean;
     /**
      *
-     * @type {string}
+     * @type {Array<string>}
      * @memberof ProjectMemberDetailDto
      */
-    supportGroupId: string | null;
+    supportGroupIds: Array<string>;
     /**
      *
      * @type {UserResponseDto}
@@ -122,7 +122,7 @@ export function instanceOfProjectMemberDetailDto(value: object): value is Projec
     if (!('role' in value) || value['role'] === undefined) return false;
     if (!('permissions' in value) || value['permissions'] === undefined) return false;
     if (!('isSupportOperator' in value) || value['isSupportOperator'] === undefined) return false;
-    if (!('supportGroupId' in value) || value['supportGroupId'] === undefined) return false;
+    if (!('supportGroupIds' in value) || value['supportGroupIds'] === undefined) return false;
     if (!('user' in value) || value['user'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     return true;
@@ -144,7 +144,7 @@ export function ProjectMemberDetailDtoFromJSONTyped(json: any, ignoreDiscriminat
         'role': ProjectRoleFromJSON(json['role']),
         'permissions': PermissionsDtoFromJSON(json['permissions']),
         'isSupportOperator': json['is_support_operator'],
-        'supportGroupId': json['support_group_id'],
+        'supportGroupIds': json['support_group_ids'],
         'user': UserResponseDtoFromJSON(json['user']),
         'channels': json['channels'] == null ? undefined : ((json['channels'] as Array<any>).map(MemberChannelDtoFromJSON)),
         'createdAt': json['created_at'],
@@ -168,7 +168,7 @@ export function ProjectMemberDetailDtoToJSONTyped(value?: ProjectMemberDetailDto
         'role': ProjectRoleToJSON(value['role']),
         'permissions': PermissionsDtoToJSON(value['permissions']),
         'is_support_operator': value['isSupportOperator'],
-        'support_group_id': value['supportGroupId'],
+        'support_group_ids': value['supportGroupIds'],
         'user': UserResponseDtoToJSON(value['user']),
         'channels': value['channels'] == null ? undefined : ((value['channels'] as Array<any>).map(MemberChannelDtoToJSON)),
         'created_at': value['createdAt'],

@@ -46,6 +46,7 @@ function SubscriptionConfigurationDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'tariffId': json['tariff_id'],
         'period': json['period'],
         'addonIds': json['addon_ids'],
@@ -60,6 +61,7 @@ function SubscriptionConfigurationDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'promo_application_id': value['promoApplicationId'],
         'tariff_id': value['tariffId'],
         'period': value['period'],
         'addon_ids': value['addonIds'],

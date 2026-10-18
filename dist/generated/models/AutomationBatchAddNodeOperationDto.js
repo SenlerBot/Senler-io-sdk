@@ -31,6 +31,7 @@ exports.AutomationBatchAddNodeOperationDtoKindEnum = {
  * @export
  */
 exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
+    TriggerBirthday: 'trigger.birthday',
     TriggerStart: 'trigger.start',
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
@@ -43,6 +44,7 @@ exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
     ConditionFunnelStage: 'condition.funnel_stage',
     ConditionAutomation: 'condition.automation',
     ConditionAgent: 'condition.agent',
+    ConditionOperatorAssignment: 'condition.operator_assignment',
     ConditionChannelType: 'condition.channel_type',
     ConditionTableRow: 'condition.table_row',
     BranchRandom: 'branch.random',
@@ -58,6 +60,7 @@ exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
     ActionRemoveAutomation: 'action.remove_automation',
     ActionAssignAgent: 'action.assign_agent',
     ActionUnassignAgent: 'action.unassign_agent',
+    ActionHandoffToOperator: 'action.handoff_to_operator',
     ActionTableWrite: 'action.table_write',
     ActionHttp: 'action.http',
     ActionApp: 'action.app',

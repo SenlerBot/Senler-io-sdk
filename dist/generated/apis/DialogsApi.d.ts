@@ -10,7 +10,11 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CabinetAiCostSummaryDto, CentrifugoSubscriptionDto, DialogDetailsDto, DialogMessageNoteDto, DialogMessageNoteMarkersDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, LeadConversationEventsDto, LeadConversationSummaryDto, PaginatedDialogsDto, QueryDialogsDto, SendMessageResponseDto, UpdateDialogMessageNoteDto } from '../models/index';
+import type { CabinetAiCostSummaryDto, CreateDialogDto, CreateDialogResponseDto, CurrentTestDialogDataDto, DialogAiResponseQueueDto, DialogDetailsDto, DialogMessageNoteDto, DialogMessageNoteMarkersDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, LeadConversationEventsDto, LeadConversationSummaryDto, MarkAllDialogsReadBoundaryResponseDto, PaginatedDialogsDto, QueryDialogsDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SendMessageResponseDto, UnreadCountResponseDto, UpdateDialogMessageNoteDto } from '../models/index';
+export interface DialogsCreateRequest {
+    createDialogDto: CreateDialogDto;
+    acceptLanguage?: DialogsCreateAcceptLanguageEnum;
+}
 export interface DialogsGetByIdRequest {
     id: string;
     acceptLanguage?: DialogsGetByIdAcceptLanguageEnum;
@@ -31,6 +35,10 @@ export interface EventsPollSnapshotRefreshRequest {
 export interface GetAiCostsRequest {
     id: string;
     acceptLanguage?: GetAiCostsAcceptLanguageEnum;
+}
+export interface GetAiResponseQueueRequest {
+    id: string;
+    acceptLanguage?: GetAiResponseQueueAcceptLanguageEnum;
 }
 export interface GetEventsRequest {
     id: string;
@@ -79,9 +87,9 @@ export interface GetLeadConversationEventsRequest {
     limit?: number;
     acceptLanguage?: GetLeadConversationEventsAcceptLanguageEnum;
 }
-export interface GetLeadConversationSubscriptionRequest {
-    id: string;
-    acceptLanguage?: GetLeadConversationSubscriptionAcceptLanguageEnum;
+export interface GetMarkAllReadBoundaryRequest {
+    projectId: string;
+    acceptLanguage?: GetMarkAllReadBoundaryAcceptLanguageEnum;
 }
 export interface GetMessageNotesRequest {
     id: string;
@@ -94,6 +102,21 @@ export interface GetNavigationRequest {
     maxSegments?: number;
     acceptLanguage?: GetNavigationAcceptLanguageEnum;
 }
+export interface GetTestDialogRequest {
+    agentId: string;
+    variantId?: string;
+    acceptLanguage?: GetTestDialogAcceptLanguageEnum;
+}
+export interface GetUnreadCountRequest {
+    dialogId: string;
+    acceptLanguage?: GetUnreadCountAcceptLanguageEnum;
+}
+export interface TestDialogMessagesRequest {
+    agentId: string;
+    sendFirstTestMessageDto: SendFirstTestMessageDto;
+    variantId?: string;
+    acceptLanguage?: TestDialogMessagesAcceptLanguageEnum;
+}
 export interface UpdateEventsNoteRequest {
     id: string;
     eventId: string;
@@ -104,6 +127,16 @@ export interface UpdateEventsNoteRequest {
  *
  */
 export declare class DialogsApi extends runtime.BaseAPI {
+    /**
+     * . ; force_create=true .
+     *
+     */
+    dialogsCreateRaw(requestParameters: DialogsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateDialogResponseDto>>;
+    /**
+     * . ; force_create=true .
+     *
+     */
+    dialogsCreate(requestParameters: DialogsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateDialogResponseDto>;
     /**
      * .
      *
@@ -154,6 +187,16 @@ export declare class DialogsApi extends runtime.BaseAPI {
      * AI
      */
     getAiCosts(requestParameters: GetAiCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetAiCostSummaryDto>;
+    /**
+     * . .
+     * AI-
+     */
+    getAiResponseQueueRaw(requestParameters: GetAiResponseQueueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogAiResponseQueueDto>>;
+    /**
+     * . .
+     * AI-
+     */
+    getAiResponseQueue(requestParameters: GetAiResponseQueueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiResponseQueueDto>;
     /**
      * . before/after limit; inclusive jump around_event_id; q.
      *
@@ -215,15 +258,15 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     getLeadConversationEvents(requestParameters: GetLeadConversationEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadConversationEventsDto>;
     /**
-     * .
+     * . read_before POST /api/dialogs/mark-all-read, .
      *
      */
-    getLeadConversationSubscriptionRaw(requestParameters: GetLeadConversationSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CentrifugoSubscriptionDto>>;
+    getMarkAllReadBoundaryRaw(requestParameters: GetMarkAllReadBoundaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarkAllDialogsReadBoundaryResponseDto>>;
     /**
-     * .
+     * . read_before POST /api/dialogs/mark-all-read, .
      *
      */
-    getLeadConversationSubscription(requestParameters: GetLeadConversationSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CentrifugoSubscriptionDto>;
+    getMarkAllReadBoundary(requestParameters: GetMarkAllReadBoundaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarkAllDialogsReadBoundaryResponseDto>;
     /**
      * , . .
      *
@@ -245,6 +288,36 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     getNavigation(requestParameters: GetNavigationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogNavigationResponseDto>;
     /**
+     * , .
+     *
+     */
+    getTestDialogRaw(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentTestDialogDataDto>>;
+    /**
+     * , .
+     *
+     */
+    getTestDialog(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentTestDialogDataDto>;
+    /**
+     * .
+     *
+     */
+    getUnreadCountRaw(requestParameters: GetUnreadCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnreadCountResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getUnreadCount(requestParameters: GetUnreadCountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UnreadCountResponseDto>;
+    /**
+     * . .
+     *
+     */
+    testDialogMessagesRaw(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    testDialogMessages(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto>;
+    /**
      * . . .
      *
      */
@@ -255,6 +328,14 @@ export declare class DialogsApi extends runtime.BaseAPI {
      */
     updateEventsNote(requestParameters: UpdateEventsNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogMessageNoteDto>;
 }
+/**
+ * @export
+ */
+export declare const DialogsCreateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DialogsCreateAcceptLanguageEnum = typeof DialogsCreateAcceptLanguageEnum[keyof typeof DialogsCreateAcceptLanguageEnum];
 /**
  * @export
  */
@@ -295,6 +376,14 @@ export declare const GetAiCostsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAiCostsAcceptLanguageEnum = typeof GetAiCostsAcceptLanguageEnum[keyof typeof GetAiCostsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAiResponseQueueAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAiResponseQueueAcceptLanguageEnum = typeof GetAiResponseQueueAcceptLanguageEnum[keyof typeof GetAiResponseQueueAcceptLanguageEnum];
 /**
  * @export
  */
@@ -354,11 +443,11 @@ export type GetLeadConversationEventsAcceptLanguageEnum = typeof GetLeadConversa
 /**
  * @export
  */
-export declare const GetLeadConversationSubscriptionAcceptLanguageEnum: {
+export declare const GetMarkAllReadBoundaryAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetLeadConversationSubscriptionAcceptLanguageEnum = typeof GetLeadConversationSubscriptionAcceptLanguageEnum[keyof typeof GetLeadConversationSubscriptionAcceptLanguageEnum];
+export type GetMarkAllReadBoundaryAcceptLanguageEnum = typeof GetMarkAllReadBoundaryAcceptLanguageEnum[keyof typeof GetMarkAllReadBoundaryAcceptLanguageEnum];
 /**
  * @export
  */
@@ -375,6 +464,30 @@ export declare const GetNavigationAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetNavigationAcceptLanguageEnum = typeof GetNavigationAcceptLanguageEnum[keyof typeof GetNavigationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetTestDialogAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetTestDialogAcceptLanguageEnum = typeof GetTestDialogAcceptLanguageEnum[keyof typeof GetTestDialogAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetUnreadCountAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetUnreadCountAcceptLanguageEnum = typeof GetUnreadCountAcceptLanguageEnum[keyof typeof GetUnreadCountAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TestDialogMessagesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TestDialogMessagesAcceptLanguageEnum = typeof TestDialogMessagesAcceptLanguageEnum[keyof typeof TestDialogMessagesAcceptLanguageEnum];
 /**
  * @export
  */

@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GetAppAutomationStepIconUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetAppAutomationStepIconUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- .
      * @type {string}
      * @memberof GetAppAutomationStepIconUploadUrlDto
@@ -31,6 +37,7 @@ export interface GetAppAutomationStepIconUploadUrlDto {
  * Check if a given object implements the GetAppAutomationStepIconUploadUrlDto interface.
  */
 export function instanceOfGetAppAutomationStepIconUploadUrlDto(value: object): value is GetAppAutomationStepIconUploadUrlDto {
+    if (!('fileSize' in value) || value['fileSize'] === undefined) return false;
     if (!('fileType' in value) || value['fileType'] === undefined) return false;
     return true;
 }
@@ -45,6 +52,7 @@ export function GetAppAutomationStepIconUploadUrlDtoFromJSONTyped(json: any, ign
     }
     return {
 
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
     };
 }
@@ -60,6 +68,7 @@ export function GetAppAutomationStepIconUploadUrlDtoToJSONTyped(value?: GetAppAu
 
     return {
 
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
     };
 }

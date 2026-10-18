@@ -478,6 +478,18 @@ export interface CabinetEventDetailDto {
      * @memberof CabinetEventDetailDto
      */
     eventVersion: number;
+    /**
+     * . message_created; , .
+     * @type {string}
+     * @memberof CabinetEventDetailDto
+     */
+    messageDirection?: CabinetEventDetailDtoMessageDirectionEnum;
+    /**
+     * : -, , .
+     * @type {string}
+     * @memberof CabinetEventDetailDto
+     */
+    messageSenderKind?: CabinetEventDetailDtoMessageSenderKindEnum;
 }
 
 
@@ -598,6 +610,27 @@ export const CabinetEventDetailDtoTargetTypeEnum = {
 } as const;
 export type CabinetEventDetailDtoTargetTypeEnum = typeof CabinetEventDetailDtoTargetTypeEnum[keyof typeof CabinetEventDetailDtoTargetTypeEnum];
 
+/**
+ * @export
+ */
+export const CabinetEventDetailDtoMessageDirectionEnum = {
+    Inbound: 'inbound',
+    Outbound: 'outbound',
+    Internal: 'internal'
+} as const;
+export type CabinetEventDetailDtoMessageDirectionEnum = typeof CabinetEventDetailDtoMessageDirectionEnum[keyof typeof CabinetEventDetailDtoMessageDirectionEnum];
+
+/**
+ * @export
+ */
+export const CabinetEventDetailDtoMessageSenderKindEnum = {
+    Assistant: 'assistant',
+    Operator: 'operator',
+    Automation: 'automation',
+    Other: 'other'
+} as const;
+export type CabinetEventDetailDtoMessageSenderKindEnum = typeof CabinetEventDetailDtoMessageSenderKindEnum[keyof typeof CabinetEventDetailDtoMessageSenderKindEnum];
+
 
 /**
  * Check if a given object implements the CabinetEventDetailDto interface.
@@ -672,6 +705,8 @@ export function CabinetEventDetailDtoFromJSONTyped(json: any, ignoreDiscriminato
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'eventVersion': json['event_version'],
+        'messageDirection': json['message_direction'] == null ? undefined : json['message_direction'],
+        'messageSenderKind': json['message_sender_kind'] == null ? undefined : json['message_sender_kind'],
     };
 }
 
@@ -732,5 +767,7 @@ export function CabinetEventDetailDtoToJSONTyped(value?: CabinetEventDetailDto |
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'event_version': value['eventVersion'],
+        'message_direction': value['messageDirection'],
+        'message_sender_kind': value['messageSenderKind'],
     };
 }

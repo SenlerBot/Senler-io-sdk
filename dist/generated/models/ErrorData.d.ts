@@ -11,19 +11,19 @@
  */
 import type { ErrorDataData } from './ErrorDataData';
 /**
- * ErrorData.
+ * API: name, msg data. HTTP- .
  * @export
  * @interface ErrorData
  */
 export interface ErrorData {
     /**
-     * , "auth.unauthorized" "validation.failed"
+     * , auth.unauthorized validation.wrong_params. HTTP- , msg.
      * @type {string}
      * @memberof ErrorData
      */
     name: string;
     /**
-     *
+     * . Accept-Language; .
      * @type {string}
      * @memberof ErrorData
      */

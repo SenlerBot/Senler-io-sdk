@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationNodeConfigDtoAppStepConfigurationPresentationEnum = exports.AutomationNodeConfigDtoAppStepCompletionModeEnum = exports.AutomationNodeConfigDtoAppStepContinuationModeEnum = exports.AutomationNodeConfigDtoAppStepIconPresetEnum = exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = exports.AutomationNodeConfigDtoLoopModeEnum = exports.AutomationNodeConfigDtoWaitVariableScopeEnum = exports.AutomationNodeConfigDtoWaitModeEnum = exports.AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = exports.AutomationNodeConfigDtoMessageVariableContextEnum = exports.AutomationNodeConfigDtoMessageTargetTypeEnum = exports.AutomationNodeConfigDtoMessageChannelTypesEnum = exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoVariableDurationUnitEnum = exports.AutomationNodeConfigDtoVariableValueTypeEnum = exports.AutomationNodeConfigDtoVariableOperatorEnum = exports.AutomationNodeConfigDtoVariableOperationEnum = exports.AutomationNodeConfigDtoVariableTypeEnum = exports.AutomationNodeConfigDtoVariableScopeEnum = exports.AutomationNodeConfigDtoDateTimeConditionEnum = exports.AutomationNodeConfigDtoTableMatchModeEnum = exports.AutomationNodeConfigDtoTableWriteModeEnum = exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = exports.AutomationNodeConfigDtoTableResultModeEnum = exports.AutomationNodeConfigDtoTableStructureModeEnum = exports.AutomationNodeConfigDtoChannelTypesEnum = exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentRoleEnum = exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = exports.AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageMatchModeEnum = exports.AutomationNodeConfigDtoRunReentryModeEnum = exports.AutomationNodeConfigDtoMessageSenderEnum = exports.AutomationNodeConfigDtoEventTypeEnum = void 0;
+exports.AutomationNodeConfigDtoAppStepConfigurationPresentationEnum = exports.AutomationNodeConfigDtoAppStepCompletionModeEnum = exports.AutomationNodeConfigDtoAppStepContinuationModeEnum = exports.AutomationNodeConfigDtoAppStepIconPresetEnum = exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = exports.AutomationNodeConfigDtoLoopModeEnum = exports.AutomationNodeConfigDtoWaitVariableScopeEnum = exports.AutomationNodeConfigDtoWaitModeEnum = exports.AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = exports.AutomationNodeConfigDtoMessageVariableContextEnum = exports.AutomationNodeConfigDtoMessageTargetTypeEnum = exports.AutomationNodeConfigDtoMessageChannelTypesEnum = exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoVariableDurationUnitEnum = exports.AutomationNodeConfigDtoVariableValueTypeEnum = exports.AutomationNodeConfigDtoVariableOperatorEnum = exports.AutomationNodeConfigDtoVariableOperationEnum = exports.AutomationNodeConfigDtoVariableTypeEnum = exports.AutomationNodeConfigDtoVariableScopeEnum = exports.AutomationNodeConfigDtoDateTimeConditionEnum = exports.AutomationNodeConfigDtoTableMatchModeEnum = exports.AutomationNodeConfigDtoTableWriteModeEnum = exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = exports.AutomationNodeConfigDtoTableResultModeEnum = exports.AutomationNodeConfigDtoTableStructureModeEnum = exports.AutomationNodeConfigDtoChannelTypesEnum = exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoOperatorConditionEnum = exports.AutomationNodeConfigDtoOperatorAssignmentModeEnum = exports.AutomationNodeConfigDtoAgentRoleEnum = exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = exports.AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageMatchModeEnum = exports.AutomationNodeConfigDtoRunReentryModeEnum = exports.AutomationNodeConfigDtoMessageSenderEnum = exports.AutomationNodeConfigDtoEventTypeEnum = exports.AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoBirthdayFeb29Enum = exports.AutomationNodeConfigDtoBirthdayRepeatEnum = void 0;
 exports.instanceOfAutomationNodeConfigDto = instanceOfAutomationNodeConfigDto;
 exports.AutomationNodeConfigDtoFromJSON = AutomationNodeConfigDtoFromJSON;
 exports.AutomationNodeConfigDtoFromJSONTyped = AutomationNodeConfigDtoFromJSONTyped;
@@ -21,6 +21,7 @@ exports.AutomationNodeConfigDtoToJSON = AutomationNodeConfigDtoToJSON;
 exports.AutomationNodeConfigDtoToJSONTyped = AutomationNodeConfigDtoToJSONTyped;
 const runtime_1 = require("../runtime");
 const AutomationHttpConfigDto_1 = require("./AutomationHttpConfigDto");
+const AutomationLeadContactDto_1 = require("./AutomationLeadContactDto");
 const AutomationMessageAttachmentDto_1 = require("./AutomationMessageAttachmentDto");
 const AutomationAgentBranchDto_1 = require("./AutomationAgentBranchDto");
 const AutomationTableOutputDto_1 = require("./AutomationTableOutputDto");
@@ -34,6 +35,30 @@ const AutomationPollOptionDto_1 = require("./AutomationPollOptionDto");
 const AutomationVariableDestinationDto_1 = require("./AutomationVariableDestinationDto");
 const AutomationTableWriteDto_1 = require("./AutomationTableWriteDto");
 const AutomationTableFilterDto_1 = require("./AutomationTableFilterDto");
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoBirthdayRepeatEnum = {
+    Yearly: 'yearly',
+    Once: 'once'
+};
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoBirthdayFeb29Enum = {
+    Feb28: 'feb28',
+    Mar1: 'mar1',
+    LeapYear: 'leap_year'
+};
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+};
 /**
  * @export
  */
@@ -96,6 +121,21 @@ exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = {
 exports.AutomationNodeConfigDtoAgentRoleEnum = {
     Primary: 'primary',
     Background: 'background'
+};
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoOperatorAssignmentModeEnum = {
+    Auto: 'auto',
+    Group: 'group',
+    Operator: 'operator'
+};
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoOperatorConditionEnum = {
+    Assigned: 'assigned',
+    Group: 'group'
 };
 /**
  * @export
@@ -472,12 +512,21 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'birthdayDaysBefore': json['birthday_days_before'] == null ? undefined : json['birthday_days_before'],
+        'birthdayTime': json['birthday_time'] == null ? undefined : json['birthday_time'],
+        'birthdayTimezone': json['birthday_timezone'] == null ? undefined : json['birthday_timezone'],
+        'birthdayRepeat': json['birthday_repeat'] == null ? undefined : json['birthday_repeat'],
+        'birthdayFeb29': json['birthday_feb29'] == null ? undefined : json['birthday_feb29'],
         'pollOptions': json['poll_options'] == null ? undefined : (json['poll_options'].map(AutomationPollOptionDto_1.AutomationPollOptionDtoFromJSON)),
         'pollMultiple': json['poll_multiple'] == null ? undefined : json['poll_multiple'],
         'pollVariableName': json['poll_variable_name'] == null ? undefined : json['poll_variable_name'],
         'pollAllowCustomAnswer': json['poll_allow_custom_answer'] == null ? undefined : json['poll_allow_custom_answer'],
         'pollReplyVariableName': json['poll_reply_variable_name'] == null ? undefined : json['poll_reply_variable_name'],
         'pollConfirmText': json['poll_confirm_text'] == null ? undefined : json['poll_confirm_text'],
+        'aiModelId': json['ai_model_id'] == null ? undefined : json['ai_model_id'],
+        'aiAttachments': json['ai_attachments'] == null ? undefined : (json['ai_attachments'].map(AutomationMessageAttachmentDto_1.AutomationMessageAttachmentDtoFromJSON)),
+        'aiAttachmentsVariableScope': json['ai_attachments_variable_scope'] == null ? undefined : json['ai_attachments_variable_scope'],
+        'aiAttachmentsVariableName': json['ai_attachments_variable_name'] == null ? undefined : json['ai_attachments_variable_name'],
         'aiInstruction': json['ai_instruction'] == null ? undefined : json['ai_instruction'],
         'aiBranches': json['ai_branches'] == null ? undefined : (json['ai_branches'].map(AutomationAgentBranchDto_1.AutomationAgentBranchDtoFromJSON)),
         'aiConfidenceThreshold': json['ai_confidence_threshold'] == null ? undefined : json['ai_confidence_threshold'],
@@ -510,6 +559,12 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'agentRole': json['agent_role'] == null ? undefined : json['agent_role'],
         'agentProcessCurrentMessage': json['agent_process_current_message'] == null ? undefined : json['agent_process_current_message'],
         'agentDisableAutoAssignment': json['agent_disable_auto_assignment'] == null ? undefined : json['agent_disable_auto_assignment'],
+        'operatorAssignmentMode': json['operator_assignment_mode'] == null ? undefined : json['operator_assignment_mode'],
+        'operatorGroupId': json['operator_group_id'] == null ? undefined : json['operator_group_id'],
+        'operatorUserId': json['operator_user_id'] == null ? undefined : json['operator_user_id'],
+        'operatorExcludePrimaryAgent': json['operator_exclude_primary_agent'] == null ? undefined : json['operator_exclude_primary_agent'],
+        'operatorExcludeBackgroundAgent': json['operator_exclude_background_agent'] == null ? undefined : json['operator_exclude_background_agent'],
+        'operatorCondition': json['operator_condition'] == null ? undefined : json['operator_condition'],
         'agentIncludeDialogHistory': json['agent_include_dialog_history'] == null ? undefined : json['agent_include_dialog_history'],
         'agentCommandText': json['agent_command_text'] == null ? undefined : json['agent_command_text'],
         'agentCommandAttachments': json['agent_command_attachments'] == null ? undefined : (json['agent_command_attachments'].map(AutomationMessageAttachmentDto_1.AutomationMessageAttachmentDtoFromJSON)),
@@ -560,6 +615,7 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'variableDurationUnit': json['variable_duration_unit'] == null ? undefined : json['variable_duration_unit'],
         'messageText': json['message_text'] == null ? undefined : json['message_text'],
         'messageAttachments': json['message_attachments'] == null ? undefined : (json['message_attachments'].map(AutomationMessageAttachmentDto_1.AutomationMessageAttachmentDtoFromJSON)),
+        'messageLeadContact': json['message_lead_contact'] == null ? undefined : (0, AutomationLeadContactDto_1.AutomationLeadContactDtoFromJSON)(json['message_lead_contact']),
         'messageAttachmentsVariableName': json['message_attachments_variable_name'] == null ? undefined : json['message_attachments_variable_name'],
         'messageAttachmentsVariableScope': json['message_attachments_variable_scope'] == null ? undefined : json['message_attachments_variable_scope'],
         'messageButtons': json['message_buttons'] == null ? undefined : (json['message_buttons'].map(AutomationMessageButtonDto_1.AutomationMessageButtonDtoFromJSON)),
@@ -579,6 +635,7 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'messageTargetVariableName': json['message_target_variable_name'] == null ? undefined : json['message_target_variable_name'],
         'messageReplyToSource': json['message_reply_to_source'] == null ? undefined : json['message_reply_to_source'],
         'messageWaitForReply': json['message_wait_for_reply'] == null ? undefined : json['message_wait_for_reply'],
+        'keepReplyAfterChoice': json['keep_reply_after_choice'] == null ? undefined : json['keep_reply_after_choice'],
         'messageReplyVariableScope': json['message_reply_variable_scope'] == null ? undefined : json['message_reply_variable_scope'],
         'messageReplyVariableName': json['message_reply_variable_name'] == null ? undefined : json['message_reply_variable_name'],
         'messageReplyAttachmentsVariableName': json['message_reply_attachments_variable_name'] == null ? undefined : json['message_reply_attachments_variable_name'],
@@ -622,12 +679,21 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'birthday_days_before': value['birthdayDaysBefore'],
+        'birthday_time': value['birthdayTime'],
+        'birthday_timezone': value['birthdayTimezone'],
+        'birthday_repeat': value['birthdayRepeat'],
+        'birthday_feb29': value['birthdayFeb29'],
         'poll_options': value['pollOptions'] == null ? undefined : (value['pollOptions'].map(AutomationPollOptionDto_1.AutomationPollOptionDtoToJSON)),
         'poll_multiple': value['pollMultiple'],
         'poll_variable_name': value['pollVariableName'],
         'poll_allow_custom_answer': value['pollAllowCustomAnswer'],
         'poll_reply_variable_name': value['pollReplyVariableName'],
         'poll_confirm_text': value['pollConfirmText'],
+        'ai_model_id': value['aiModelId'],
+        'ai_attachments': value['aiAttachments'] == null ? undefined : (value['aiAttachments'].map(AutomationMessageAttachmentDto_1.AutomationMessageAttachmentDtoToJSON)),
+        'ai_attachments_variable_scope': value['aiAttachmentsVariableScope'],
+        'ai_attachments_variable_name': value['aiAttachmentsVariableName'],
         'ai_instruction': value['aiInstruction'],
         'ai_branches': value['aiBranches'] == null ? undefined : (value['aiBranches'].map(AutomationAgentBranchDto_1.AutomationAgentBranchDtoToJSON)),
         'ai_confidence_threshold': value['aiConfidenceThreshold'],
@@ -660,6 +726,12 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'agent_role': value['agentRole'],
         'agent_process_current_message': value['agentProcessCurrentMessage'],
         'agent_disable_auto_assignment': value['agentDisableAutoAssignment'],
+        'operator_assignment_mode': value['operatorAssignmentMode'],
+        'operator_group_id': value['operatorGroupId'],
+        'operator_user_id': value['operatorUserId'],
+        'operator_exclude_primary_agent': value['operatorExcludePrimaryAgent'],
+        'operator_exclude_background_agent': value['operatorExcludeBackgroundAgent'],
+        'operator_condition': value['operatorCondition'],
         'agent_include_dialog_history': value['agentIncludeDialogHistory'],
         'agent_command_text': value['agentCommandText'],
         'agent_command_attachments': value['agentCommandAttachments'] == null ? undefined : (value['agentCommandAttachments'].map(AutomationMessageAttachmentDto_1.AutomationMessageAttachmentDtoToJSON)),
@@ -710,6 +782,7 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'variable_duration_unit': value['variableDurationUnit'],
         'message_text': value['messageText'],
         'message_attachments': value['messageAttachments'] == null ? undefined : (value['messageAttachments'].map(AutomationMessageAttachmentDto_1.AutomationMessageAttachmentDtoToJSON)),
+        'message_lead_contact': (0, AutomationLeadContactDto_1.AutomationLeadContactDtoToJSON)(value['messageLeadContact']),
         'message_attachments_variable_name': value['messageAttachmentsVariableName'],
         'message_attachments_variable_scope': value['messageAttachmentsVariableScope'],
         'message_buttons': value['messageButtons'] == null ? undefined : (value['messageButtons'].map(AutomationMessageButtonDto_1.AutomationMessageButtonDtoToJSON)),
@@ -729,6 +802,7 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'message_target_variable_name': value['messageTargetVariableName'],
         'message_reply_to_source': value['messageReplyToSource'],
         'message_wait_for_reply': value['messageWaitForReply'],
+        'keep_reply_after_choice': value['keepReplyAfterChoice'],
         'message_reply_variable_scope': value['messageReplyVariableScope'],
         'message_reply_variable_name': value['messageReplyVariableName'],
         'message_reply_attachments_variable_name': value['messageReplyAttachmentsVariableName'],

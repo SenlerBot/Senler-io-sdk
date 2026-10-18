@@ -9,7 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingBlockResponseDto } from './LandingBlockResponseDto';
+import type { LandingVersionResponseDtoBlocksInner } from './LandingVersionResponseDtoBlocksInner';
+import type { LandingPublicationWarningDto } from './LandingPublicationWarningDto';
 import type { LandingSettingsDto } from './LandingSettingsDto';
 /**
  * LandingVersionResponseDto.
@@ -79,10 +80,16 @@ export interface LandingVersionResponseDto {
     deleteAfter: Date | null;
     /**
      *
-     * @type {Array<LandingBlockResponseDto>}
+     * @type {Array<LandingVersionResponseDtoBlocksInner>}
      * @memberof LandingVersionResponseDto
      */
-    blocks: Array<LandingBlockResponseDto>;
+    blocks: Array<LandingVersionResponseDtoBlocksInner>;
+    /**
+     * . ; block_id .
+     * @type {Array<LandingPublicationWarningDto>}
+     * @memberof LandingVersionResponseDto
+     */
+    warnings: Array<LandingPublicationWarningDto>;
 }
 /**
  * @export

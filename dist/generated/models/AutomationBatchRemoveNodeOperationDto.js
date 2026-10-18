@@ -45,6 +45,7 @@ function AutomationBatchRemoveNodeOperationDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
         'nodeId': json['node_id'],
         'expectedContentRevision': json['expected_content_revision'],
@@ -58,6 +59,7 @@ function AutomationBatchRemoveNodeOperationDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
+        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
         'node_id': value['nodeId'],
         'expected_content_revision': value['expectedContentRevision'],

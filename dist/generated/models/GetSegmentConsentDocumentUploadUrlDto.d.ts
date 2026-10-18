@@ -16,6 +16,12 @@
  */
 export interface GetSegmentConsentDocumentUploadUrlDto {
     /**
+     *
+     * @type {number}
+     * @memberof GetSegmentConsentDocumentUploadUrlDto
+     */
+    fileSize: number;
+    /**
      * MIME- PDF-. : application/pdf.
      * @type {string}
      * @memberof GetSegmentConsentDocumentUploadUrlDto

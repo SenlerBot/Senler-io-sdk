@@ -22,6 +22,8 @@ exports.GetAutomationAvatarUploadUrlDtoToJSONTyped = GetAutomationAvatarUploadUr
  * Check if a given object implements the GetAutomationAvatarUploadUrlDto interface.
  */
 function instanceOfGetAutomationAvatarUploadUrlDto(value) {
+    if (!('fileSize' in value) || value['fileSize'] === undefined)
+        return false;
     if (!('fileType' in value) || value['fileType'] === undefined)
         return false;
     if (!('fileName' in value) || value['fileName'] === undefined)
@@ -36,6 +38,7 @@ function GetAutomationAvatarUploadUrlDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
+        'fileSize': json['fileSize'],
         'fileType': json['fileType'],
         'fileName': json['fileName'],
     };
@@ -48,6 +51,7 @@ function GetAutomationAvatarUploadUrlDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
+        'fileSize': value['fileSize'],
         'fileType': value['fileType'],
         'fileName': value['fileName'],
     };

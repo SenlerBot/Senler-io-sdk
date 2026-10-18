@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { StorageFileDeleteResponseDto, StorageFilesListResponseDto, StorageOrphanedDeleteResponseDto, StorageStatsResponseDto } from '../models/index';
+import type { IncomingStorageCleanupPreviewDto, IncomingStoragePolicyDto, StorageFileDeleteResponseDto, StorageFilesListResponseDto, StorageOrphanedDeleteResponseDto, StorageStatsResponseDto, UpdateIncomingStoragePolicyDto } from '../models/index';
 export interface DeleteFilesRequest {
     fileId: string;
     acceptLanguage?: DeleteFilesAcceptLanguageEnum;
@@ -29,9 +29,22 @@ export interface GetFilesRequest {
     skip?: number;
     acceptLanguage?: GetFilesAcceptLanguageEnum;
 }
+export interface GetIncomingPolicyRequest {
+    projectId: string;
+    acceptLanguage?: GetIncomingPolicyAcceptLanguageEnum;
+}
+export interface GetIncomingPolicyPreviewRequest {
+    projectId: string;
+    acceptLanguage?: GetIncomingPolicyPreviewAcceptLanguageEnum;
+}
 export interface GetStatsRequest {
     projectId: string;
     acceptLanguage?: GetStatsAcceptLanguageEnum;
+}
+export interface UpdateIncomingPolicyRequest {
+    projectId: string;
+    updateIncomingStoragePolicyDto: UpdateIncomingStoragePolicyDto;
+    acceptLanguage?: UpdateIncomingPolicyAcceptLanguageEnum;
 }
 /**
  *
@@ -68,6 +81,24 @@ export declare class StorageApi extends runtime.BaseAPI {
      */
     getFiles(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFilesListResponseDto>;
     /**
+     *
+     */
+    getIncomingPolicyRaw(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>>;
+    /**
+     *
+     */
+    getIncomingPolicy(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto>;
+    /**
+     * . 24 .
+     *
+     */
+    getIncomingPolicyPreviewRaw(requestParameters: GetIncomingPolicyPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStorageCleanupPreviewDto>>;
+    /**
+     * . 24 .
+     *
+     */
+    getIncomingPolicyPreview(requestParameters: GetIncomingPolicyPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStorageCleanupPreviewDto>;
+    /**
      * , , . , .
      *
      */
@@ -77,6 +108,14 @@ export declare class StorageApi extends runtime.BaseAPI {
      *
      */
     getStats(requestParameters: GetStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageStatsResponseDto>;
+    /**
+     *
+     */
+    updateIncomingPolicyRaw(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>>;
+    /**
+     *
+     */
+    updateIncomingPolicy(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto>;
 }
 /**
  * @export
@@ -145,8 +184,32 @@ export type GetFilesAcceptLanguageEnum = typeof GetFilesAcceptLanguageEnum[keyof
 /**
  * @export
  */
+export declare const GetIncomingPolicyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetIncomingPolicyAcceptLanguageEnum = typeof GetIncomingPolicyAcceptLanguageEnum[keyof typeof GetIncomingPolicyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetIncomingPolicyPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetIncomingPolicyPreviewAcceptLanguageEnum = typeof GetIncomingPolicyPreviewAcceptLanguageEnum[keyof typeof GetIncomingPolicyPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetStatsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetStatsAcceptLanguageEnum = typeof GetStatsAcceptLanguageEnum[keyof typeof GetStatsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateIncomingPolicyAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateIncomingPolicyAcceptLanguageEnum = typeof UpdateIncomingPolicyAcceptLanguageEnum[keyof typeof UpdateIncomingPolicyAcceptLanguageEnum];

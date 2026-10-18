@@ -11,9 +11,13 @@
  */
 import * as runtime from '../runtime';
 import type { CreateArrayMetricDto, CreateBooleanMetricDto, CreateNumberMetricDto, CreateObjectMetricDto, CreateStringMetricDto, MetricDefinitionDto, UpdateArrayMetricDto, UpdateBooleanMetricDto, UpdateNumberMetricDto, UpdateObjectMetricDto, UpdateStringMetricDto } from '../models/index';
-export interface MetricsDefinitionsActivateRequest {
+export interface ActivateRequest {
     id: string;
-    acceptLanguage?: MetricsDefinitionsActivateAcceptLanguageEnum;
+    acceptLanguage?: ActivateAcceptLanguageEnum;
+}
+export interface Deactivate2Request {
+    id: string;
+    acceptLanguage?: Deactivate2AcceptLanguageEnum;
 }
 export interface MetricsDefinitionsArrayRequest {
     createArrayMetricDto: CreateArrayMetricDto;
@@ -26,10 +30,6 @@ export interface MetricsDefinitionsBooleanRequest {
 export interface MetricsDefinitionsDeactivateRequest {
     id: string;
     acceptLanguage?: MetricsDefinitionsDeactivateAcceptLanguageEnum;
-}
-export interface MetricsDefinitionsDeactivate2Request {
-    id: string;
-    acceptLanguage?: MetricsDefinitionsDeactivate2AcceptLanguageEnum;
 }
 export interface MetricsDefinitionsGetByIdRequest {
     id: string;
@@ -91,12 +91,22 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
      * .
      *
      */
-    metricsDefinitionsActivateRaw(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    activateRaw(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
      * .
      *
      */
-    metricsDefinitionsActivate(requestParameters: MetricsDefinitionsActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    activate(requestParameters: ActivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
+    /**
+     * .
+     *
+     */
+    deactivate2Raw(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
+    /**
+     * .
+     *
+     */
+    deactivate2(requestParameters: Deactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
      * .
      * -
@@ -127,16 +137,6 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
      *
      */
     metricsDefinitionsDeactivate(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * .
-     *
-     */
-    metricsDefinitionsDeactivate2Raw(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
-    /**
-     * .
-     *
-     */
-    metricsDefinitionsDeactivate2(requestParameters: MetricsDefinitionsDeactivate2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;
     /**
      * . .
      * ID
@@ -251,11 +251,19 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export declare const MetricsDefinitionsActivateAcceptLanguageEnum: {
+export declare const ActivateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type MetricsDefinitionsActivateAcceptLanguageEnum = typeof MetricsDefinitionsActivateAcceptLanguageEnum[keyof typeof MetricsDefinitionsActivateAcceptLanguageEnum];
+export type ActivateAcceptLanguageEnum = typeof ActivateAcceptLanguageEnum[keyof typeof ActivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const Deactivate2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type Deactivate2AcceptLanguageEnum = typeof Deactivate2AcceptLanguageEnum[keyof typeof Deactivate2AcceptLanguageEnum];
 /**
  * @export
  */
@@ -280,14 +288,6 @@ export declare const MetricsDefinitionsDeactivateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type MetricsDefinitionsDeactivateAcceptLanguageEnum = typeof MetricsDefinitionsDeactivateAcceptLanguageEnum[keyof typeof MetricsDefinitionsDeactivateAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const MetricsDefinitionsDeactivate2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type MetricsDefinitionsDeactivate2AcceptLanguageEnum = typeof MetricsDefinitionsDeactivate2AcceptLanguageEnum[keyof typeof MetricsDefinitionsDeactivate2AcceptLanguageEnum];
 /**
  * @export
  */

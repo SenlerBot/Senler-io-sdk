@@ -230,13 +230,13 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      */
     blocksInteractive(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
     /**
-     * .
-     * other
+     * ( other). payload: {}; .
+     *
      */
     blocksOtherRaw(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
     /**
-     * .
-     * other
+     * ( other). payload: {}; .
+     *
      */
     blocksOther(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
     /**
@@ -370,13 +370,13 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      */
     updateBlocksInteractive(requestParameters: UpdateBlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
-     * other
+     * ( other) . payload: {}; .
+     *
      */
     updateBlocksOtherRaw(requestParameters: UpdateBlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
-     * other
+     * ( other) . payload: {}; .
+     *
      */
     updateBlocksOther(requestParameters: UpdateBlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**

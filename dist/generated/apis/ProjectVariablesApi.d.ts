@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableValueDto, BooleanVariableValueDto, CreateArrayVariableDto, CreateBooleanVariableDto, CreateDateVariableDto, CreateJsonArrayVariableDto, CreateJsonBooleanVariableDto, CreateJsonNullVariableDto, CreateJsonNumberVariableDto, CreateJsonObjectVariableDto, CreateJsonStringVariableDto, CreateNumberVariableDto, CreateObjectVariableDto, CreateStringVariableDto, DateVariableValueDto, Deactivate200Response, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariableListResponseDto, ProjectVariableResponseDto, StringVariableValueDto, UpdateVariableMetadataDto, VariableSchemaValueDto } from '../models/index';
+import type { ArrayVariableValueDto, BooleanVariableValueDto, CreateArrayVariableDto, CreateBooleanVariableDto, CreateDateVariableDto, CreateJsonArrayVariableDto, CreateJsonBooleanVariableDto, CreateJsonNullVariableDto, CreateJsonNumberVariableDto, CreateJsonObjectVariableDto, CreateJsonStringVariableDto, CreateNumberVariableDto, CreateObjectVariableDto, CreateStringVariableDto, DateVariableValueDto, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariableListResponseDto, ProjectVariableResponseDto, ProjectVariablesDeactivate200Response, StringVariableValueDto, UpdateVariableMetadataDto, VariableSchemaValueDto } from '../models/index';
 export interface BooleanRequest {
     projectId: string;
     createBooleanVariableDto: CreateBooleanVariableDto;
@@ -26,19 +26,10 @@ export interface DateRequest {
     createDateVariableDto: CreateDateVariableDto;
     acceptLanguage?: DateAcceptLanguageEnum;
 }
-export interface DeactivateRequest {
-    projectId: string;
-    name: string;
-    acceptLanguage?: DeactivateAcceptLanguageEnum;
-}
-export interface GetByIdRequest {
-    projectId: string;
-    name: string;
-    acceptLanguage?: GetByIdAcceptLanguageEnum;
-}
 export interface GetByIdsRequest {
     projectId: string;
     ids: Array<string>;
+    appId?: string;
     acceptLanguage?: GetByIdsAcceptLanguageEnum;
 }
 export interface JsonArrayRequest {
@@ -80,6 +71,17 @@ export interface ObjectRequest {
     projectId: string;
     createObjectVariableDto: CreateObjectVariableDto;
     acceptLanguage?: ObjectAcceptLanguageEnum;
+}
+export interface ProjectVariablesDeactivateRequest {
+    projectId: string;
+    name: string;
+    acceptLanguage?: ProjectVariablesDeactivateAcceptLanguageEnum;
+}
+export interface ProjectVariablesGetByIdRequest {
+    projectId: string;
+    name: string;
+    appId?: string;
+    acceptLanguage?: ProjectVariablesGetByIdAcceptLanguageEnum;
 }
 export interface ProjectVariablesListRequest {
     projectId: string;
@@ -258,26 +260,6 @@ export declare class ProjectVariablesApi extends runtime.BaseAPI {
      */
     date(requestParameters: DateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
-     *
-     *
-     */
-    deactivateRaw(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deactivate200Response>>;
-    /**
-     *
-     *
-     */
-    deactivate(requestParameters: DeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deactivate200Response>;
-    /**
-     *
-     *
-     */
-    getByIdRaw(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
-    /**
-     *
-     *
-     */
-    getById(requestParameters: GetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
-    /**
      * ID
      * ID
      */
@@ -367,6 +349,26 @@ export declare class ProjectVariablesApi extends runtime.BaseAPI {
      * -
      */
     object(requestParameters: ObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     *
+     *
+     */
+    projectVariablesDeactivateRaw(requestParameters: ProjectVariablesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariablesDeactivate200Response>>;
+    /**
+     *
+     *
+     */
+    projectVariablesDeactivate(requestParameters: ProjectVariablesDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariablesDeactivate200Response>;
+    /**
+     *
+     *
+     */
+    projectVariablesGetByIdRaw(requestParameters: ProjectVariablesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     *
+     *
+     */
+    projectVariablesGetById(requestParameters: ProjectVariablesGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      *
      *
@@ -635,22 +637,6 @@ export type DateAcceptLanguageEnum = typeof DateAcceptLanguageEnum[keyof typeof 
 /**
  * @export
  */
-export declare const DeactivateAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DeactivateAcceptLanguageEnum = typeof DeactivateAcceptLanguageEnum[keyof typeof DeactivateAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetByIdAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetByIdAcceptLanguageEnum = typeof GetByIdAcceptLanguageEnum[keyof typeof GetByIdAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const GetByIdsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -720,6 +706,22 @@ export declare const ObjectAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ObjectAcceptLanguageEnum = typeof ObjectAcceptLanguageEnum[keyof typeof ObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectVariablesDeactivateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectVariablesDeactivateAcceptLanguageEnum = typeof ProjectVariablesDeactivateAcceptLanguageEnum[keyof typeof ProjectVariablesDeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectVariablesGetByIdAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectVariablesGetByIdAcceptLanguageEnum = typeof ProjectVariablesGetByIdAcceptLanguageEnum[keyof typeof ProjectVariablesGetByIdAcceptLanguageEnum];
 /**
  * @export
  */

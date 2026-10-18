@@ -24,6 +24,8 @@ const AutomationNodePositionDto_1 = require("./AutomationNodePositionDto");
  * Check if a given object implements the UpdateAutomationNodeDto interface.
  */
 function instanceOfUpdateAutomationNodeDto(value) {
+    if (!('expectedInstanceId' in value) || value['expectedInstanceId'] === undefined)
+        return false;
     if (!('operationId' in value) || value['operationId'] === undefined)
         return false;
     return true;
@@ -36,6 +38,7 @@ function UpdateAutomationNodeDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'expectedInstanceId': json['expected_instance_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'config': json['config'] == null ? undefined : (0, AutomationNodeConfigDto_1.AutomationNodeConfigDtoFromJSON)(json['config']),
         'position': json['position'] == null ? undefined : (0, AutomationNodePositionDto_1.AutomationNodePositionDtoFromJSON)(json['position']),
@@ -52,6 +55,7 @@ function UpdateAutomationNodeDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'expected_instance_id': value['expectedInstanceId'],
         'name': value['name'],
         'config': (0, AutomationNodeConfigDto_1.AutomationNodeConfigDtoToJSON)(value['config']),
         'position': (0, AutomationNodePositionDto_1.AutomationNodePositionDtoToJSON)(value['position']),

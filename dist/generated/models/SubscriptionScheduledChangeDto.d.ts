@@ -59,6 +59,7 @@ export declare const SubscriptionScheduledChangeDtoItemKindEnum: {
     readonly BaseTariff: "base_tariff";
     readonly AutomationSpeed: "automation_speed";
     readonly MailingDaily: "mailing_daily";
+    readonly ApiDaily: "api_daily";
     readonly Storage: "storage";
     readonly Credits: "credits";
 };

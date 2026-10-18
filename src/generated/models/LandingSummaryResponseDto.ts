@@ -45,10 +45,16 @@ export interface LandingSummaryResponseDto {
     publicId: string;
     /**
      *
-     * @type {string}
+     * @type {boolean}
      * @memberof LandingSummaryResponseDto
      */
-    status: LandingSummaryResponseDtoStatusEnum;
+    isEnabled: boolean;
+    /**
+     *
+     * @type {Date}
+     * @memberof LandingSummaryResponseDto
+     */
+    deletedAt: Date | null;
     /**
      * -
      * @type {string}
@@ -75,17 +81,6 @@ export interface LandingSummaryResponseDto {
     publishedVersionId: string | null;
 }
 
-
-/**
- * @export
- */
-export const LandingSummaryResponseDtoStatusEnum = {
-    Active: 'active',
-    Archived: 'archived'
-} as const;
-export type LandingSummaryResponseDtoStatusEnum = typeof LandingSummaryResponseDtoStatusEnum[keyof typeof LandingSummaryResponseDtoStatusEnum];
-
-
 /**
  * Check if a given object implements the LandingSummaryResponseDto interface.
  */
@@ -94,7 +89,8 @@ export function instanceOfLandingSummaryResponseDto(value: object): value is Lan
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('publicId' in value) || value['publicId'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('isEnabled' in value) || value['isEnabled'] === undefined) return false;
+    if (!('deletedAt' in value) || value['deletedAt'] === undefined) return false;
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('draftVersionId' in value) || value['draftVersionId'] === undefined) return false;
@@ -116,7 +112,8 @@ export function LandingSummaryResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'projectId': json['project_id'],
         'name': json['name'],
         'publicId': json['public_id'],
-        'status': json['status'],
+        'isEnabled': json['is_enabled'],
+        'deletedAt': (json['deleted_at'] == null ? null : new Date(json['deleted_at'])),
         'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'draftVersionId': json['draft_version_id'],
@@ -139,7 +136,8 @@ export function LandingSummaryResponseDtoToJSONTyped(value?: LandingSummaryRespo
         'project_id': value['projectId'],
         'name': value['name'],
         'public_id': value['publicId'],
-        'status': value['status'],
+        'is_enabled': value['isEnabled'],
+        'deleted_at': (value['deletedAt'] == null ? null : (value['deletedAt'] as any).toISOString()),
         'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'draft_version_id': value['draftVersionId'],

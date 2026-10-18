@@ -22,6 +22,7 @@ const AutomationVersionInfoDto_1 = require("./AutomationVersionInfoDto");
 const AutomationEdgeResponseDto_1 = require("./AutomationEdgeResponseDto");
 const AutomationNodeResponseDto_1 = require("./AutomationNodeResponseDto");
 const AutomationDraftInfoDto_1 = require("./AutomationDraftInfoDto");
+const AutomationDraftOperationResponseDto_1 = require("./AutomationDraftOperationResponseDto");
 const AutomationResponseDto_1 = require("./AutomationResponseDto");
 const AutomationGroupResponseDto_1 = require("./AutomationGroupResponseDto");
 /**
@@ -48,6 +49,7 @@ function AutomationGraphResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'appliedOperation': json['applied_operation'] == null ? undefined : (0, AutomationDraftOperationResponseDto_1.AutomationDraftOperationResponseDtoFromJSON)(json['applied_operation']),
         'automation': (0, AutomationResponseDto_1.AutomationResponseDtoFromJSON)(json['automation']),
         'draft': json['draft'] == null ? undefined : (0, AutomationDraftInfoDto_1.AutomationDraftInfoDtoFromJSON)(json['draft']),
         'version': json['version'] == null ? undefined : (0, AutomationVersionInfoDto_1.AutomationVersionInfoDtoFromJSON)(json['version']),
@@ -65,6 +67,7 @@ function AutomationGraphResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'applied_operation': (0, AutomationDraftOperationResponseDto_1.AutomationDraftOperationResponseDtoToJSON)(value['appliedOperation']),
         'automation': (0, AutomationResponseDto_1.AutomationResponseDtoToJSON)(value['automation']),
         'draft': (0, AutomationDraftInfoDto_1.AutomationDraftInfoDtoToJSON)(value['draft']),
         'version': (0, AutomationVersionInfoDto_1.AutomationVersionInfoDtoToJSON)(value['version']),

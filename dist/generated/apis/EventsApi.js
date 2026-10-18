@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetMarketingTrafficSourcesAcceptLanguageEnum = exports.GetMarketingTrafficSourcesPeriodEnum = exports.GetMarketingTrafficChannelsAcceptLanguageEnum = exports.GetMarketingTrafficChannelsPeriodEnum = exports.GetMarketingQuickMetricsAcceptLanguageEnum = exports.GetMarketingQuickMetricsPeriodEnum = exports.EventsListAcceptLanguageEnum = exports.EventsListSortOrderEnum = exports.EventsListSortByEnum = exports.EventsListTargetTypeEnum = exports.EventsListActionTypeEnum = exports.EventsListPeriodEnum = exports.EventsGetByIdAcceptLanguageEnum = exports.EventsGetAnalyticsAcceptLanguageEnum = exports.EventsGetAnalyticsPeriodEnum = exports.EventsApi = void 0;
+exports.GetMarketingTrafficSourcesAcceptLanguageEnum = exports.GetMarketingTrafficSourcesPeriodEnum = exports.GetMarketingTrafficChannelsAcceptLanguageEnum = exports.GetMarketingTrafficChannelsPeriodEnum = exports.GetMarketingQuickMetricsAcceptLanguageEnum = exports.GetMarketingQuickMetricsPeriodEnum = exports.EventsListAcceptLanguageEnum = exports.EventsListSortOrderEnum = exports.EventsListSortByEnum = exports.EventsListTargetTypeEnum = exports.EventsListMessageSenderKindEnum = exports.EventsListMessageDirectionEnum = exports.EventsListActionTypeEnum = exports.EventsListPeriodEnum = exports.EventsGetByIdAcceptLanguageEnum = exports.EventsGetAnalyticsAcceptLanguageEnum = exports.EventsGetAnalyticsPeriodEnum = exports.EventsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -81,6 +81,10 @@ class EventsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -121,6 +125,10 @@ class EventsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -187,11 +195,20 @@ class EventsApi extends runtime.BaseAPI {
         if (requestParameters['actionType'] != null) {
             queryParameters['action_type'] = requestParameters['actionType'];
         }
+        if (requestParameters['messageDirection'] != null) {
+            queryParameters['message_direction'] = requestParameters['messageDirection'];
+        }
+        if (requestParameters['messageSenderKind'] != null) {
+            queryParameters['message_sender_kind'] = requestParameters['messageSenderKind'];
+        }
         if (requestParameters['targetType'] != null) {
             queryParameters['target_type'] = requestParameters['targetType'];
         }
         if (requestParameters['targetId'] != null) {
             queryParameters['target_id'] = requestParameters['targetId'];
+        }
+        if (requestParameters['onlyErrors'] != null) {
+            queryParameters['only_errors'] = requestParameters['onlyErrors'];
         }
         if (requestParameters['onlyRolledBack'] != null) {
             queryParameters['only_rolled_back'] = requestParameters['onlyRolledBack'];
@@ -233,6 +250,10 @@ class EventsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -282,6 +303,10 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
@@ -328,6 +353,10 @@ class EventsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_events"]);
         }
         const response = await this.request({
@@ -371,6 +400,10 @@ class EventsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_events"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -500,6 +533,23 @@ exports.EventsListActionTypeEnum = {
     TimerScheduled: 'timer_scheduled',
     TimerTriggered: 'timer_triggered',
     AppEventReceived: 'app_event_received'
+};
+/**
+ * @export
+ */
+exports.EventsListMessageDirectionEnum = {
+    Inbound: 'inbound',
+    Outbound: 'outbound',
+    Internal: 'internal'
+};
+/**
+ * @export
+ */
+exports.EventsListMessageSenderKindEnum = {
+    Assistant: 'assistant',
+    Operator: 'operator',
+    Automation: 'automation',
+    Other: 'other'
 };
 /**
  * @export

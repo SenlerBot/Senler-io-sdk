@@ -16,11 +16,11 @@
  */
 export interface SupportScheduleAssignmentDto {
     /**
-     * ; null
-     * @type {string}
+     * ; null , []
+     * @type {Array<string>}
      * @memberof SupportScheduleAssignmentDto
      */
-    groupId: string | null;
+    groupIds: Array<string> | null;
     /**
      * ID
      * @type {string}

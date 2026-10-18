@@ -55,7 +55,7 @@ export const AutomationAnalysisDtoStatusEnum = {
     InsufficientData: 'insufficient_data',
     NoPublishedAutomations: 'no_published_automations',
     CollectionError: 'collection_error',
-    LegacySummary: 'legacy_summary'
+    NotAnalyzed: 'not_analyzed'
 } as const;
 export type AutomationAnalysisDtoStatusEnum = typeof AutomationAnalysisDtoStatusEnum[keyof typeof AutomationAnalysisDtoStatusEnum];
 

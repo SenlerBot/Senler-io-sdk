@@ -79,6 +79,12 @@ export interface ProjectAccessDto {
      */
     channelAccess: ChannelAccessDto;
     /**
+     * , .
+     * @type {boolean}
+     * @memberof ProjectAccessDto
+     */
+    canListDialogs: boolean;
+    /**
      * , . null token/admin synthetic-.
      * @type {Date}
      * @memberof ProjectAccessDto
@@ -97,6 +103,7 @@ export function instanceOfProjectAccessDto(value: object): value is ProjectAcces
     if (!('permissions' in value) || value['permissions'] === undefined) return false;
     if (!('hasAccessToAllChannels' in value) || value['hasAccessToAllChannels'] === undefined) return false;
     if (!('channelAccess' in value) || value['channelAccess'] === undefined) return false;
+    if (!('canListDialogs' in value) || value['canListDialogs'] === undefined) return false;
     if (!('grantedAt' in value) || value['grantedAt'] === undefined) return false;
     return true;
 }
@@ -116,6 +123,7 @@ export function ProjectAccessDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'permissions': PermissionsDtoFromJSON(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
         'channelAccess': ChannelAccessDtoFromJSON(json['channelAccess']),
+        'canListDialogs': json['canListDialogs'],
         'grantedAt': (json['grantedAt'] == null ? null : new Date(json['grantedAt'])),
     };
 }
@@ -136,6 +144,7 @@ export function ProjectAccessDtoToJSONTyped(value?: ProjectAccessDto | null, ign
         'permissions': PermissionsDtoToJSON(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],
         'channelAccess': ChannelAccessDtoToJSON(value['channelAccess']),
+        'canListDialogs': value['canListDialogs'],
         'grantedAt': (value['grantedAt'] == null ? null : (value['grantedAt'] as any).toISOString()),
     };
 }

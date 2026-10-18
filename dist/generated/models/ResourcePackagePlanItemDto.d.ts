@@ -83,6 +83,8 @@ export declare const ResourcePackagePlanItemDtoResourceTypeEnum: {
     readonly AgentManualMetric: "agent_manual_metric";
     readonly AgentMcpBinding: "agent_mcp_binding";
     readonly AgentChannelBinding: "agent_channel_binding";
+    readonly AgentOperatorHandoff: "agent_operator_handoff";
+    readonly AgentOperatorGroups: "agent_operator_groups";
     readonly AgentVariableDependency: "agent_variable_dependency";
     readonly AgentAppOwnership: "agent_app_ownership";
     readonly AppResourceOwnership: "app_resource_ownership";

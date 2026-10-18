@@ -338,6 +338,12 @@ export interface DialogListItemDto {
      */
     isTest: boolean;
     /**
+     * ID , ,
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    readonly testAgentId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof DialogListItemDto
@@ -649,6 +655,7 @@ export function DialogListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: b
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'isTest': json['is_test'],
+        'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
         'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
@@ -685,7 +692,7 @@ export function DialogListItemDtoToJSON(json: any): DialogListItemDto {
     return DialogListItemDtoToJSONTyped(json, false);
 }
 
-export function DialogListItemDtoToJSONTyped(value?: DialogListItemDto | null, ignoreDiscriminator: boolean = false): any {
+export function DialogListItemDtoToJSONTyped(value?: Omit<DialogListItemDto, 'test_agent_id'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

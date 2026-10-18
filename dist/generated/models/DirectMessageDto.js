@@ -13,12 +13,20 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DirectMessageDtoContentFormatEnum = void 0;
 exports.instanceOfDirectMessageDto = instanceOfDirectMessageDto;
 exports.DirectMessageDtoFromJSON = DirectMessageDtoFromJSON;
 exports.DirectMessageDtoFromJSONTyped = DirectMessageDtoFromJSONTyped;
 exports.DirectMessageDtoToJSON = DirectMessageDtoToJSON;
 exports.DirectMessageDtoToJSONTyped = DirectMessageDtoToJSONTyped;
 const MessageButtonDto_1 = require("./MessageButtonDto");
+/**
+ * @export
+ */
+exports.DirectMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+};
 /**
  * Check if a given object implements the DirectMessageDto interface.
  */
@@ -39,6 +47,7 @@ function DirectMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'channelId': json['channel_id'],
         'externalId': json['external_id'],
         'content': json['content'],
@@ -54,6 +63,7 @@ function DirectMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'content_format': value['contentFormat'],
         'channel_id': value['channelId'],
         'external_id': value['externalId'],
         'content': value['content'],

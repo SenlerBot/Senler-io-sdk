@@ -13,11 +13,19 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EditMessageDtoContentFormatEnum = void 0;
 exports.instanceOfEditMessageDto = instanceOfEditMessageDto;
 exports.EditMessageDtoFromJSON = EditMessageDtoFromJSON;
 exports.EditMessageDtoFromJSONTyped = EditMessageDtoFromJSONTyped;
 exports.EditMessageDtoToJSON = EditMessageDtoToJSON;
 exports.EditMessageDtoToJSONTyped = EditMessageDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.EditMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+};
 /**
  * Check if a given object implements the EditMessageDto interface.
  */
@@ -34,6 +42,7 @@ function EditMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'content': json['content'],
     };
 }
@@ -45,6 +54,7 @@ function EditMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'content_format': value['contentFormat'],
         'content': value['content'],
     };
 }

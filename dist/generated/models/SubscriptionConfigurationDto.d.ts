@@ -16,6 +16,12 @@
  */
 export interface SubscriptionConfigurationDto {
     /**
+     * , . .
+     * @type {string}
+     * @memberof SubscriptionConfigurationDto
+     */
+    promoApplicationId?: string;
+    /**
      *
      * @type {string}
      * @memberof SubscriptionConfigurationDto

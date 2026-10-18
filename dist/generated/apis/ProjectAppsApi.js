@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetMethodsAcceptLanguageEnum = exports.ExecuteAcceptLanguageEnum = exports.ProjectAppsApi = void 0;
+exports.UpdateInstalledVersionAcceptLanguageEnum = exports.UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum = exports.InstalledVersionRetryAcceptLanguageEnum = exports.InstalledSetupStepsSkipAcceptLanguageEnum = exports.GetInstalledVersionAcceptLanguageEnum = exports.GetInstalledSetupAcceptLanguageEnum = exports.GetInstalledEmbeddedPageAcceptLanguageEnum = exports.GetInstalled2AcceptLanguageEnum = exports.GetInstalledAcceptLanguageEnum = exports.GetInstalledTypeEnum = exports.GetCatalog2AcceptLanguageEnum = exports.GetCatalogAcceptLanguageEnum = exports.GetCatalogTypeEnum = exports.GetActionsMethodsAcceptLanguageEnum = exports.DeleteInstalledAcceptLanguageEnum = exports.CatalogInstallAcceptLanguageEnum = exports.ActionsExecuteAcceptLanguageEnum = exports.ProjectAppsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -57,9 +57,9 @@ class ProjectAppsApi extends runtime.BaseAPI {
      * OpenAPI .
      * MCP-
      */
-    async executeRaw(requestParameters, initOverrides) {
+    async actionsExecuteRaw(requestParameters, initOverrides) {
         if (requestParameters['executeAppActionMethodDto'] == null) {
-            throw new runtime.RequiredError('executeAppActionMethodDto', 'Required parameter "executeAppActionMethodDto" was null or undefined when calling execute().');
+            throw new runtime.RequiredError('executeAppActionMethodDto', 'Required parameter "executeAppActionMethodDto" was null or undefined when calling actionsExecute().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -73,6 +73,10 @@ class ProjectAppsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -91,17 +95,93 @@ class ProjectAppsApi extends runtime.BaseAPI {
      * OpenAPI .
      * MCP-
      */
-    async execute(requestParameters, initOverrides) {
-        const response = await this.executeRaw(requestParameters, initOverrides);
+    async actionsExecute(requestParameters, initOverrides) {
+        const response = await this.actionsExecuteRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async catalogInstallRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling catalogInstall().');
+        }
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling catalogInstall().');
+        }
+        if (requestParameters['installAppDto'] == null) {
+            throw new runtime.RequiredError('installAppDto', 'Required parameter "installAppDto" was null or undefined when calling catalogInstall().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/catalog/{appId}/install`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.InstallAppDtoToJSON)(requestParameters['installAppDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CatalogInstallationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async catalogInstall(requestParameters, initOverrides) {
+        const response = await this.catalogInstallRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async deleteInstalledRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling deleteInstalled().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * .
+     *
+     */
+    async deleteInstalled(requestParameters, initOverrides) {
+        await this.deleteInstalledRaw(requestParameters, initOverrides);
     }
     /**
      * OpenAPI .
      * MCP-
      */
-    async getMethodsRaw(requestParameters, initOverrides) {
+    async getActionsMethodsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getMethods().');
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getActionsMethods().');
         }
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
@@ -120,6 +200,10 @@ class ProjectAppsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_use_project_apps"]);
         }
         const response = await this.request({
@@ -134,8 +218,408 @@ class ProjectAppsApi extends runtime.BaseAPI {
      * OpenAPI .
      * MCP-
      */
-    async getMethods(requestParameters, initOverrides) {
-        const response = await this.getMethodsRaw(requestParameters, initOverrides);
+    async getActionsMethods(requestParameters, initOverrides) {
+        const response = await this.getActionsMethodsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getCatalogRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getCatalog().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/catalog`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.ProjectAppCatalogItemResponseDtoFromJSON));
+    }
+    /**
+     * , .
+     *
+     */
+    async getCatalog(requestParameters, initOverrides) {
+        const response = await this.getCatalogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getCatalog2Raw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getCatalog2().');
+        }
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling getCatalog2().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/catalog/{appId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectAppCatalogItemResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getCatalog2(requestParameters, initOverrides) {
+        const response = await this.getCatalog2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     *
+     */
+    async getInstalledRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getInstalled().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['includeInactive'] != null) {
+            queryParameters['include_inactive'] = requestParameters['includeInactive'];
+        }
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.CatalogInstallationResponseDtoFromJSON));
+    }
+    /**
+     * , .
+     *
+     */
+    async getInstalled(requestParameters, initOverrides) {
+        const response = await this.getInstalledRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getInstalled2Raw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling getInstalled2().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CatalogInstallationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getInstalled2(requestParameters, initOverrides) {
+        const response = await this.getInstalled2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * URL URL , .
+     *
+     */
+    async getInstalledEmbeddedPageRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling getInstalledEmbeddedPage().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/embedded-page`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppEmbeddedPageSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * URL URL , .
+     *
+     */
+    async getInstalledEmbeddedPage(requestParameters, initOverrides) {
+        const response = await this.getInstalledEmbeddedPageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getInstalledSetupRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling getInstalledSetup().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/setup`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InstallationSetupResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getInstalledSetup(requestParameters, initOverrides) {
+        const response = await this.getInstalledSetupRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getInstalledVersionRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling getInstalledVersion().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/version`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppInstallationVersionInfoResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getInstalledVersion(requestParameters, initOverrides) {
+        const response = await this.getInstalledVersionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async installedSetupStepsSkipRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling installedSetupStepsSkip().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling installedSetupStepsSkip().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/setup/steps/{stepId}/skip`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InstallationSetupResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async installedSetupStepsSkip(requestParameters, initOverrides) {
+        const response = await this.installedSetupStepsSkipRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * needs_attention.
+     *
+     */
+    async installedVersionRetryRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling installedVersionRetry().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/version/retry`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CatalogInstallationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * needs_attention.
+     *
+     */
+    async installedVersionRetry(requestParameters, initOverrides) {
+        const response = await this.installedVersionRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateInstalledDeveloperDialogAccessRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling updateInstalledDeveloperDialogAccess().');
+        }
+        if (requestParameters['updateDeveloperDialogAccessDto'] == null) {
+            throw new runtime.RequiredError('updateDeveloperDialogAccessDto', 'Required parameter "updateDeveloperDialogAccessDto" was null or undefined when calling updateInstalledDeveloperDialogAccess().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/developer-dialog-access`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateDeveloperDialogAccessDtoToJSON)(requestParameters['updateDeveloperDialogAccessDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CatalogInstallationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateInstalledDeveloperDialogAccess(requestParameters, initOverrides) {
+        const response = await this.updateInstalledDeveloperDialogAccessRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateInstalledVersionRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling updateInstalledVersion().');
+        }
+        if (requestParameters['upgradeAppInstallationVersionDto'] == null) {
+            throw new runtime.RequiredError('upgradeAppInstallationVersionDto', 'Required parameter "upgradeAppInstallationVersionDto" was null or undefined when calling updateInstalledVersion().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/version`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpgradeAppInstallationVersionDtoToJSON)(requestParameters['upgradeAppInstallationVersionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CatalogInstallationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateInstalledVersion(requestParameters, initOverrides) {
+        const response = await this.updateInstalledVersionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -143,14 +627,121 @@ exports.ProjectAppsApi = ProjectAppsApi;
 /**
  * @export
  */
-exports.ExecuteAcceptLanguageEnum = {
+exports.ActionsExecuteAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
 /**
  * @export
  */
-exports.GetMethodsAcceptLanguageEnum = {
+exports.CatalogInstallAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.DeleteInstalledAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetActionsMethodsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetCatalogTypeEnum = {
+    Oauth: 'oauth',
+    SalesFunnel: 'sales_funnel',
+    Plugin: 'plugin'
+};
+/**
+ * @export
+ */
+exports.GetCatalogAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetCatalog2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstalledTypeEnum = {
+    Oauth: 'oauth',
+    SalesFunnel: 'sales_funnel',
+    Plugin: 'plugin'
+};
+/**
+ * @export
+ */
+exports.GetInstalledAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstalled2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstalledEmbeddedPageAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstalledSetupAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstalledVersionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.InstalledSetupStepsSkipAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.InstalledVersionRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateInstalledVersionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

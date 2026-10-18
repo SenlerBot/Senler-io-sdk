@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface TrafficChannelItemDto {
     /**
-     *
+     * (, tg Telegram)
      * @type {string}
      * @memberof TrafficChannelItemDto
      */

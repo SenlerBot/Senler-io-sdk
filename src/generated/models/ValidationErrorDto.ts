@@ -14,43 +14,43 @@
 
 import { mapValues } from '../runtime';
 /**
- * ValidationErrorDto.
+ * . constraints , children .
  * @export
  * @interface ValidationErrorDto
  */
 export interface ValidationErrorDto {
     /**
-     * ,
+     * , . , .
      * @type {object}
      * @memberof ValidationErrorDto
      */
     target?: object;
     /**
-     * ,
+     * ; .
      * @type {string}
      * @memberof ValidationErrorDto
      */
     property?: string;
     /**
-     * ,
+     * . , .
      * @type {object}
      * @memberof ValidationErrorDto
      */
     value?: object;
     /**
-     *
+     * : , . , children.
      * @type {object}
      * @memberof ValidationErrorDto
      */
     constraints?: object;
     /**
-     *
+     * . ; .
      * @type {Array<ValidationErrorDto>}
      * @memberof ValidationErrorDto
      */
     children: Array<ValidationErrorDto>;
     /**
-     *
+     * . , .
      * @type {object}
      * @memberof ValidationErrorDto
      */

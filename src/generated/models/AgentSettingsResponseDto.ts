@@ -48,6 +48,13 @@ import {
     WizardStepToJSON,
     WizardStepToJSONTyped,
 } from './WizardStep';
+import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
+import {
+    OperatorHandoffPolicyDtoFromJSON,
+    OperatorHandoffPolicyDtoFromJSONTyped,
+    OperatorHandoffPolicyDtoToJSON,
+    OperatorHandoffPolicyDtoToJSONTyped,
+} from './OperatorHandoffPolicyDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import {
     KnowledgeBaseSourceBindingDtoFromJSON,
@@ -325,6 +332,12 @@ export interface AgentSettingsResponseDto {
      */
     enableButtons: boolean;
     /**
+     * . . .
+     * @type {number}
+     * @memberof AgentSettingsResponseDto
+     */
+    maxToolIterations: number;
+    /**
      *
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
@@ -427,7 +440,7 @@ export interface AgentSettingsResponseDto {
      */
     enableLeadBlocking: boolean;
     /**
-     * . false , ; metrics_collection_enabled=true. true enable_user_message=false. AI- .
+     * . false , ; metrics_collection_enabled=true. , true enable_user_message=false. enable_preliminary_response. AI- .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -451,7 +464,7 @@ export interface AgentSettingsResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
-     * . false AGENT_ACTION ; enable_ai_response=true. AI- .
+     * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -469,11 +482,35 @@ export interface AgentSettingsResponseDto {
      */
     disableLinkPreview: boolean;
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    replyToSource: boolean;
+    /**
+     * ,
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    enableTyping: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof AgentSettingsResponseDto
      */
     widgetAiProgressMode: AgentSettingsResponseDtoWidgetAiProgressModeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    widgetQueueMessages: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    widgetShowScheduledActions: boolean;
     /**
      * (send_preliminary_response tool)
      * @type {boolean}
@@ -481,7 +518,7 @@ export interface AgentSettingsResponseDto {
      */
     enablePreliminaryResponse: boolean;
     /**
-     *
+     * , , enable_ai_response=true. enable_user_message, enable_preliminary_response.
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
      */
@@ -564,6 +601,12 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     agentAssignmentPolicy: AgentAssignmentPolicyDto;
+    /**
+     *
+     * @type {OperatorHandoffPolicyDto}
+     * @memberof AgentSettingsResponseDto
+     */
+    operatorHandoffPolicy: OperatorHandoffPolicyDto;
     /**
      *
      * @type {Date}
@@ -691,8 +734,8 @@ export type AgentSettingsResponseDtoAutoAssignmentRoleEnum = typeof AgentSetting
  */
 export const AgentSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
-    Typing: 'typing',
-    Hidden: 'hidden'
+    DetailedProgress: 'detailed_progress',
+    Typing: 'typing'
 } as const;
 export type AgentSettingsResponseDtoWidgetAiProgressModeEnum = typeof AgentSettingsResponseDtoWidgetAiProgressModeEnum[keyof typeof AgentSettingsResponseDtoWidgetAiProgressModeEnum];
 
@@ -731,6 +774,7 @@ export function instanceOfAgentSettingsResponseDto(value: object): value is Agen
     if (!('wizardHistoryDepthDays' in value) || value['wizardHistoryDepthDays'] === undefined) return false;
     if (!('wizardScanChannelHistory' in value) || value['wizardScanChannelHistory'] === undefined) return false;
     if (!('enableButtons' in value) || value['enableButtons'] === undefined) return false;
+    if (!('maxToolIterations' in value) || value['maxToolIterations'] === undefined) return false;
     if (!('enableWidgetPageActions' in value) || value['enableWidgetPageActions'] === undefined) return false;
     if (!('enableCustomAttachments' in value) || value['enableCustomAttachments'] === undefined) return false;
     if (!('enableImageGeneration' in value) || value['enableImageGeneration'] === undefined) return false;
@@ -750,7 +794,11 @@ export function instanceOfAgentSettingsResponseDto(value: object): value is Agen
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
     if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined) return false;
+    if (!('replyToSource' in value) || value['replyToSource'] === undefined) return false;
+    if (!('enableTyping' in value) || value['enableTyping'] === undefined) return false;
     if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined) return false;
+    if (!('widgetQueueMessages' in value) || value['widgetQueueMessages'] === undefined) return false;
+    if (!('widgetShowScheduledActions' in value) || value['widgetShowScheduledActions'] === undefined) return false;
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined) return false;
     if (!('respondOnSegmentSubscription' in value) || value['respondOnSegmentSubscription'] === undefined) return false;
     if (!('enableMessageReactionsContext' in value) || value['enableMessageReactionsContext'] === undefined) return false;
@@ -766,6 +814,7 @@ export function instanceOfAgentSettingsResponseDto(value: object): value is Agen
     if (!('funnelAccessPolicy' in value) || value['funnelAccessPolicy'] === undefined) return false;
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
     if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined) return false;
+    if (!('operatorHandoffPolicy' in value) || value['operatorHandoffPolicy'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
@@ -820,6 +869,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'wizardHistoryDepthDays': json['wizard_history_depth_days'],
         'wizardScanChannelHistory': json['wizard_scan_channel_history'],
         'enableButtons': json['enable_buttons'],
+        'maxToolIterations': json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'],
         'enableCustomAttachments': json['enable_custom_attachments'],
         'enableImageGeneration': json['enable_image_generation'],
@@ -844,7 +894,11 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
+        'replyToSource': json['reply_to_source'],
+        'enableTyping': json['enable_typing'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
+        'widgetQueueMessages': json['widget_queue_messages'],
+        'widgetShowScheduledActions': json['widget_show_scheduled_actions'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'respondOnSegmentSubscription': json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
@@ -860,6 +914,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'funnelAccessPolicy': json['funnel_access_policy'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'agentAssignmentPolicy': AgentAssignmentPolicyDtoFromJSON(json['agent_assignment_policy']),
+        'operatorHandoffPolicy': OperatorHandoffPolicyDtoFromJSON(json['operator_handoff_policy']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -915,6 +970,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'wizard_history_depth_days': value['wizardHistoryDepthDays'],
         'wizard_scan_channel_history': value['wizardScanChannelHistory'],
         'enable_buttons': value['enableButtons'],
+        'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],
         'enable_custom_attachments': value['enableCustomAttachments'],
         'enable_image_generation': value['enableImageGeneration'],
@@ -939,7 +995,11 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
+        'reply_to_source': value['replyToSource'],
+        'enable_typing': value['enableTyping'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
+        'widget_queue_messages': value['widgetQueueMessages'],
+        'widget_show_scheduled_actions': value['widgetShowScheduledActions'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
@@ -955,6 +1015,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'funnel_access_policy': value['funnelAccessPolicy'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'agent_assignment_policy': AgentAssignmentPolicyDtoToJSON(value['agentAssignmentPolicy']),
+        'operator_handoff_policy': OperatorHandoffPolicyDtoToJSON(value['operatorHandoffPolicy']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

@@ -10,15 +10,10 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentMetricsConfigurationDto, UpdateAgentMetricsConfigurationDto } from '../models/index';
+import type { AgentMetricsConfigurationDto } from '../models/index';
 export interface GetMetricsConfigRequest {
     agentId: string;
     acceptLanguage?: GetMetricsConfigAcceptLanguageEnum;
-}
-export interface UpdateMetricsConfigRequest {
-    agentId: string;
-    updateAgentMetricsConfigurationDto: UpdateAgentMetricsConfigurationDto;
-    acceptLanguage?: UpdateMetricsConfigAcceptLanguageEnum;
 }
 /**
  *
@@ -34,16 +29,6 @@ export declare class MetricsConfigApi extends runtime.BaseAPI {
      *
      */
     getMetricsConfig(requestParameters: GetMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigurationDto>;
-    /**
-     * . .
-     *
-     */
-    updateMetricsConfigRaw(requestParameters: UpdateMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentMetricsConfigurationDto>>;
-    /**
-     * . .
-     *
-     */
-    updateMetricsConfig(requestParameters: UpdateMetricsConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentMetricsConfigurationDto>;
 }
 /**
  * @export
@@ -53,11 +38,3 @@ export declare const GetMetricsConfigAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetMetricsConfigAcceptLanguageEnum = typeof GetMetricsConfigAcceptLanguageEnum[keyof typeof GetMetricsConfigAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateMetricsConfigAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateMetricsConfigAcceptLanguageEnum = typeof UpdateMetricsConfigAcceptLanguageEnum[keyof typeof UpdateMetricsConfigAcceptLanguageEnum];

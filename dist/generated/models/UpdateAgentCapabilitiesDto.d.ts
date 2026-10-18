@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
@@ -23,6 +24,12 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     enableButtons?: boolean;
+    /**
+     * . . .
+     * @type {number}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    maxToolIterations?: number;
     /**
      *
      * @type {boolean}
@@ -126,7 +133,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     enableLeadBlocking?: boolean;
     /**
-     * . false , ; metrics_collection_enabled=true. true enable_user_message=false. AI- .
+     * . false , ; metrics_collection_enabled=true. , true enable_user_message=false. enable_preliminary_response. AI- .
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -150,7 +157,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     automationEventPolicy?: AgentAutomationEventPolicyDto;
     /**
-     * . false AGENT_ACTION ; enable_ai_response=true. AI- .
+     * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -168,11 +175,35 @@ export interface UpdateAgentCapabilitiesDto {
      */
     disableLinkPreview?: boolean;
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    replyToSource?: boolean;
+    /**
+     * , . : , Telegram, MAX, Discord .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    enableTyping?: boolean;
+    /**
      * AI
      * @type {string}
      * @memberof UpdateAgentCapabilitiesDto
      */
     widgetAiProgressMode?: UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    widgetQueueMessages?: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    widgetShowScheduledActions?: boolean;
     /**
      * . true send_preliminary_response tool
      * @type {boolean}
@@ -180,7 +211,7 @@ export interface UpdateAgentCapabilitiesDto {
      */
     enablePreliminaryResponse?: boolean;
     /**
-     * ,
+     * , , enable_ai_response=true. enable_user_message, enable_preliminary_response.
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
      */
@@ -241,14 +272,20 @@ export interface UpdateAgentCapabilitiesDto {
      * @memberof UpdateAgentCapabilitiesDto
      */
     agentAssignmentPolicy?: AgentAssignmentPolicyDto;
+    /**
+     *
+     * @type {OperatorHandoffPolicyDto}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    operatorHandoffPolicy?: OperatorHandoffPolicyDto;
 }
 /**
  * @export
  */
 export declare const UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum: {
     readonly SafeProgress: "safe_progress";
+    readonly DetailedProgress: "detailed_progress";
     readonly Typing: "typing";
-    readonly Hidden: "hidden";
 };
 export type UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum = typeof UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum[keyof typeof UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum];
 /**

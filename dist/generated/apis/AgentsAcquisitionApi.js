@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AgentsAcquisitionApi extends runtime.BaseAPI {
     /**
-     * .
+     * . , version_id: null, revision: 0 has_unpublished_changes: false. version_id revision . version_id consent_prompt_text null.
      *
      */
     async getAcquisitionSegmentDraftRaw(requestParameters, initOverrides) {
@@ -75,6 +75,10 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -86,7 +90,7 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSegmentDraftResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . , version_id: null, revision: 0 has_unpublished_changes: false. version_id revision . version_id consent_prompt_text null.
      *
      */
     async getAcquisitionSegmentDraft(requestParameters, initOverrides) {
@@ -94,7 +98,7 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * ; . , . expected_version_id expected_revision : , null 0. HTTP 409: . HTTP 409 , , . , version_id: null, revision: 0 has_unpublished_changes: false. ID ; .
      *
      */
     async updateAcquisitionSegmentDraftRaw(requestParameters, initOverrides) {
@@ -119,6 +123,10 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
         const response = await this.request({
@@ -131,7 +139,7 @@ class AgentsAcquisitionApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSegmentDraftResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * ; . , . expected_version_id expected_revision : , null 0. HTTP 409: . HTTP 409 , , . , version_id: null, revision: 0 has_unpublished_changes: false. ID ; .
      *
      */
     async updateAcquisitionSegmentDraft(requestParameters, initOverrides) {

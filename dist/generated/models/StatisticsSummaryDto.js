@@ -18,6 +18,7 @@ exports.StatisticsSummaryDtoFromJSON = StatisticsSummaryDtoFromJSON;
 exports.StatisticsSummaryDtoFromJSONTyped = StatisticsSummaryDtoFromJSONTyped;
 exports.StatisticsSummaryDtoToJSON = StatisticsSummaryDtoToJSON;
 exports.StatisticsSummaryDtoToJSONTyped = StatisticsSummaryDtoToJSONTyped;
+const StatisticsNullableMetricDeltaDto_1 = require("./StatisticsNullableMetricDeltaDto");
 const StatisticsAiResponseCostsDto_1 = require("./StatisticsAiResponseCostsDto");
 const StatisticsCreditsMetricDeltaDto_1 = require("./StatisticsCreditsMetricDeltaDto");
 const StatisticsMetricDeltaDto_1 = require("./StatisticsMetricDeltaDto");
@@ -93,10 +94,10 @@ function StatisticsSummaryDtoFromJSONTyped(json, ignoreDiscriminator) {
         'closedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['closed_dialogs']),
         'unansweredDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['unanswered_dialogs']),
         'operatorAssignedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['operator_assigned_dialogs']),
-        'averageFirstResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_time_seconds']),
-        'averageFirstResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
-        'averageResponseTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
-        'averageResponseRawTimeSeconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
+        'averageFirstResponseTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_first_response_time_seconds']),
+        'averageFirstResponseRawTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
+        'averageResponseTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
+        'averageResponseRawTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
         'tokensUsed': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['tokens_used']),
     };
 }
@@ -124,10 +125,10 @@ function StatisticsSummaryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'closed_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['closedDialogs']),
         'unanswered_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['unansweredDialogs']),
         'operator_assigned_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['operatorAssignedDialogs']),
-        'average_first_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseTimeSeconds']),
-        'average_first_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
-        'average_response_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
-        'average_response_raw_time_seconds': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
+        'average_first_response_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageFirstResponseTimeSeconds']),
+        'average_first_response_raw_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
+        'average_response_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
+        'average_response_raw_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
         'tokens_used': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['tokensUsed']),
     };
 }

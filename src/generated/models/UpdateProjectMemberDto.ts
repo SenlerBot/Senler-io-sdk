@@ -35,11 +35,11 @@ import {
  */
 export interface UpdateProjectMemberDto {
     /**
-     * ; null
-     * @type {string}
+     * ;
+     * @type {Array<string>}
      * @memberof UpdateProjectMemberDto
      */
-    supportGroupId?: string | null;
+    supportGroupIds?: Array<string>;
     /**
      * . (can_manage_projects, can_manage_access, can_manage_channels ..) .
      *
@@ -123,7 +123,7 @@ export function UpdateProjectMemberDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
-        'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
+        'supportGroupIds': json['support_group_ids'] == null ? undefined : json['support_group_ids'],
         'role': json['role'] == null ? undefined : ProjectRoleFromJSON(json['role']),
         'hasAccessToAllChannels': json['has_access_to_all_channels'] == null ? undefined : json['has_access_to_all_channels'],
         'isSupportOperator': json['is_support_operator'] == null ? undefined : json['is_support_operator'],
@@ -142,7 +142,7 @@ export function UpdateProjectMemberDtoToJSONTyped(value?: UpdateProjectMemberDto
 
     return {
 
-        'support_group_id': value['supportGroupId'],
+        'support_group_ids': value['supportGroupIds'],
         'role': ProjectRoleToJSON(value['role']),
         'has_access_to_all_channels': value['hasAccessToAllChannels'],
         'is_support_operator': value['isSupportOperator'],

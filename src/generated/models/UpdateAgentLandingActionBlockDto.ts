@@ -20,13 +20,6 @@ import {
     CreateAgentLandingActionBlockDtoActionToJSON,
     CreateAgentLandingActionBlockDtoActionToJSONTyped,
 } from './CreateAgentLandingActionBlockDtoAction';
-import type { LandingBlockResponseDtoPayload } from './LandingBlockResponseDtoPayload';
-import {
-    LandingBlockResponseDtoPayloadFromJSON,
-    LandingBlockResponseDtoPayloadFromJSONTyped,
-    LandingBlockResponseDtoPayloadToJSON,
-    LandingBlockResponseDtoPayloadToJSONTyped,
-} from './LandingBlockResponseDtoPayload';
 
 /**
  * UpdateAgentLandingActionBlockDto.
@@ -53,11 +46,11 @@ export interface UpdateAgentLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     *
-     * @type {LandingBlockResponseDtoPayload}
+     * ; type (mixed type)
+     * @type {{ [key: string]: any; }}
      * @memberof UpdateAgentLandingActionBlockDto
      */
-    payload: LandingBlockResponseDtoPayload;
+    payload: { [key: string]: any; };
     /**
      *
      * @type {CreateAgentLandingActionBlockDtoAction}
@@ -103,7 +96,7 @@ export function UpdateAgentLandingActionBlockDtoFromJSONTyped(json: any, ignoreD
         'expectedRevision': json['expected_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
-        'payload': LandingBlockResponseDtoPayloadFromJSON(json['payload']),
+        'payload': json['payload'],
         'action': CreateAgentLandingActionBlockDtoActionFromJSON(json['action']),
     };
 }
@@ -122,7 +115,7 @@ export function UpdateAgentLandingActionBlockDtoToJSONTyped(value?: UpdateAgentL
         'expected_revision': value['expectedRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
-        'payload': LandingBlockResponseDtoPayloadToJSON(value['payload']),
+        'payload': value['payload'],
         'action': CreateAgentLandingActionBlockDtoActionToJSON(value['action']),
     };
 }

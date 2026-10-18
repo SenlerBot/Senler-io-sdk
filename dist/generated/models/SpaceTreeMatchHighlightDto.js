@@ -13,11 +13,21 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SpaceTreeMatchHighlightDtoFieldEnum = void 0;
 exports.instanceOfSpaceTreeMatchHighlightDto = instanceOfSpaceTreeMatchHighlightDto;
 exports.SpaceTreeMatchHighlightDtoFromJSON = SpaceTreeMatchHighlightDtoFromJSON;
 exports.SpaceTreeMatchHighlightDtoFromJSONTyped = SpaceTreeMatchHighlightDtoFromJSONTyped;
 exports.SpaceTreeMatchHighlightDtoToJSON = SpaceTreeMatchHighlightDtoToJSON;
 exports.SpaceTreeMatchHighlightDtoToJSONTyped = SpaceTreeMatchHighlightDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.SpaceTreeMatchHighlightDtoFieldEnum = {
+    Title: 'title',
+    Text: 'text',
+    Username: 'username',
+    SearchableContent: 'searchable_content'
+};
 /**
  * Check if a given object implements the SpaceTreeMatchHighlightDto interface.
  */

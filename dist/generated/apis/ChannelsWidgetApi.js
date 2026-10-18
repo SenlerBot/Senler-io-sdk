@@ -54,6 +54,7 @@ const index_1 = require("../models/index");
  */
 class ChannelsWidgetApi extends runtime.BaseAPI {
     /**
+     * , , .
      *
      */
     async getWidgetWelcomeStepsRaw(requestParameters, initOverrides) {
@@ -80,6 +81,10 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -91,6 +96,7 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetWelcomeStepsDtoFromJSON)(jsonValue));
     }
     /**
+     * , , .
      *
      */
     async getWidgetWelcomeSteps(requestParameters, initOverrides) {
@@ -120,6 +126,10 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -162,6 +172,10 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -210,6 +224,10 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -255,6 +273,10 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -275,6 +297,7 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * URL . .
      *
      */
     async widgetWelcomeIconUploadUrlRaw(requestParameters, initOverrides) {
@@ -299,6 +322,10 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -311,6 +338,7 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.S3UploadUrlResponseDtoFromJSON)(jsonValue));
     }
     /**
+     * URL . .
      *
      */
     async widgetWelcomeIconUploadUrl(requestParameters, initOverrides) {

@@ -72,7 +72,7 @@ class AppAccessGrantsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_catalog"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_catalog"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/access`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -106,7 +106,7 @@ class AppAccessGrantsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/access`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
@@ -142,7 +142,7 @@ class AppAccessGrantsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_app_catalog"]);
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_catalog"]);
         }
         const response = await this.request({
             path: `/api/apps/{appId}/access/{projectId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),

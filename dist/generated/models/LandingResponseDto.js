@@ -13,20 +13,12 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingResponseDtoStatusEnum = void 0;
 exports.instanceOfLandingResponseDto = instanceOfLandingResponseDto;
 exports.LandingResponseDtoFromJSON = LandingResponseDtoFromJSON;
 exports.LandingResponseDtoFromJSONTyped = LandingResponseDtoFromJSONTyped;
 exports.LandingResponseDtoToJSON = LandingResponseDtoToJSON;
 exports.LandingResponseDtoToJSONTyped = LandingResponseDtoToJSONTyped;
 const LandingVersionResponseDto_1 = require("./LandingVersionResponseDto");
-/**
- * @export
- */
-exports.LandingResponseDtoStatusEnum = {
-    Active: 'active',
-    Archived: 'archived'
-};
 /**
  * Check if a given object implements the LandingResponseDto interface.
  */
@@ -39,7 +31,9 @@ function instanceOfLandingResponseDto(value) {
         return false;
     if (!('publicId' in value) || value['publicId'] === undefined)
         return false;
-    if (!('status' in value) || value['status'] === undefined)
+    if (!('isEnabled' in value) || value['isEnabled'] === undefined)
+        return false;
+    if (!('deletedAt' in value) || value['deletedAt'] === undefined)
         return false;
     if (!('agentId' in value) || value['agentId'] === undefined)
         return false;
@@ -71,7 +65,8 @@ function LandingResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'projectId': json['project_id'],
         'name': json['name'],
         'publicId': json['public_id'],
-        'status': json['status'],
+        'isEnabled': json['is_enabled'],
+        'deletedAt': (json['deleted_at'] == null ? null : new Date(json['deleted_at'])),
         'agentId': json['agent_id'],
         'isReadOnly': json['is_read_only'],
         'draftVersionId': json['draft_version_id'],
@@ -94,7 +89,8 @@ function LandingResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'project_id': value['projectId'],
         'name': value['name'],
         'public_id': value['publicId'],
-        'status': value['status'],
+        'is_enabled': value['isEnabled'],
+        'deleted_at': (value['deletedAt'] == null ? null : value['deletedAt'].toISOString()),
         'agent_id': value['agentId'],
         'is_read_only': value['isReadOnly'],
         'draft_version_id': value['draftVersionId'],

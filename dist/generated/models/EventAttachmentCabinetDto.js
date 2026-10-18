@@ -56,7 +56,8 @@ exports.EventAttachmentCabinetDtoErrorCodeEnum = {
     ProjectUploadLimitExceeded: 'project_upload_limit_exceeded',
     TelegramBotApiDownloadLimit: 'telegram_bot_api_download_limit',
     UploadFailed: 'upload_failed',
-    SourceUnavailable: 'source_unavailable'
+    SourceUnavailable: 'source_unavailable',
+    StorageCleaned: 'storage_cleaned'
 };
 /**
  * @export

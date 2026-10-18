@@ -32,6 +32,10 @@ exports.EstimateModelItemDtoBillingModeEnum = {
  * Check if a given object implements the EstimateModelItemDto interface.
  */
 function instanceOfEstimateModelItemDto(value) {
+    if (!('usesProjectCredentials' in value) || value['usesProjectCredentials'] === undefined)
+        return false;
+    if (!('platformCredentialsAllowed' in value) || value['platformCredentialsAllowed'] === undefined)
+        return false;
     if (!('modelId' in value) || value['modelId'] === undefined)
         return false;
     if (!('modelSlug' in value) || value['modelSlug'] === undefined)
@@ -56,6 +60,8 @@ function EstimateModelItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'usesProjectCredentials': json['uses_project_credentials'],
+        'platformCredentialsAllowed': json['platform_credentials_allowed'],
         'modelId': json['model_id'],
         'modelSlug': json['model_slug'],
         'displayName': json['display_name'],
@@ -73,6 +79,8 @@ function EstimateModelItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'uses_project_credentials': value['usesProjectCredentials'],
+        'platform_credentials_allowed': value['platformCredentialsAllowed'],
         'model_id': value['modelId'],
         'model_slug': value['modelSlug'],
         'display_name': value['displayName'],

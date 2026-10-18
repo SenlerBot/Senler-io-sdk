@@ -54,12 +54,6 @@ export interface SegmentConsentDocumentResponseDto {
      * @type {string}
      * @memberof SegmentConsentDocumentResponseDto
      */
-    status: SegmentConsentDocumentResponseDtoStatusEnum;
-    /**
-     * .
-     * @type {string}
-     * @memberof SegmentConsentDocumentResponseDto
-     */
     fileUrl: string | null;
     /**
      * .
@@ -72,7 +66,7 @@ export interface SegmentConsentDocumentResponseDto {
      * @type {Date}
      * @memberof SegmentConsentDocumentResponseDto
      */
-    archivedAt: Date | null;
+    deletedAt: Date | null;
     /**
      * .
      * @type {Date}
@@ -87,17 +81,6 @@ export interface SegmentConsentDocumentResponseDto {
     updatedAt: Date;
 }
 
-
-/**
- * @export
- */
-export const SegmentConsentDocumentResponseDtoStatusEnum = {
-    Active: 'active',
-    Archived: 'archived'
-} as const;
-export type SegmentConsentDocumentResponseDtoStatusEnum = typeof SegmentConsentDocumentResponseDtoStatusEnum[keyof typeof SegmentConsentDocumentResponseDtoStatusEnum];
-
-
 /**
  * Check if a given object implements the SegmentConsentDocumentResponseDto interface.
  */
@@ -107,10 +90,9 @@ export function instanceOfSegmentConsentDocumentResponseDto(value: object): valu
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
     if (!('version' in value) || value['version'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
     if (!('fileUrl' in value) || value['fileUrl'] === undefined) return false;
     if (!('content' in value) || value['content'] === undefined) return false;
-    if (!('archivedAt' in value) || value['archivedAt'] === undefined) return false;
+    if (!('deletedAt' in value) || value['deletedAt'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
@@ -131,10 +113,9 @@ export function SegmentConsentDocumentResponseDtoFromJSONTyped(json: any, ignore
         'name': json['name'],
         'description': json['description'],
         'version': json['version'],
-        'status': json['status'],
         'fileUrl': json['file_url'],
         'content': json['content'],
-        'archivedAt': (json['archived_at'] == null ? null : new Date(json['archived_at'])),
+        'deletedAt': (json['deleted_at'] == null ? null : new Date(json['deleted_at'])),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -156,10 +137,9 @@ export function SegmentConsentDocumentResponseDtoToJSONTyped(value?: SegmentCons
         'name': value['name'],
         'description': value['description'],
         'version': value['version'],
-        'status': value['status'],
         'file_url': value['fileUrl'],
         'content': value['content'],
-        'archived_at': (value['archivedAt'] == null ? null : (value['archivedAt'] as any).toISOString()),
+        'deleted_at': (value['deletedAt'] == null ? null : (value['deletedAt'] as any).toISOString()),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

@@ -19,6 +19,7 @@ exports.UpdateAutomationDtoFromJSON = UpdateAutomationDtoFromJSON;
 exports.UpdateAutomationDtoFromJSONTyped = UpdateAutomationDtoFromJSONTyped;
 exports.UpdateAutomationDtoToJSON = UpdateAutomationDtoToJSON;
 exports.UpdateAutomationDtoToJSONTyped = UpdateAutomationDtoToJSONTyped;
+const AutomationSettingsValuesDto_1 = require("./AutomationSettingsValuesDto");
 /**
  * @export
  */
@@ -51,6 +52,7 @@ function UpdateAutomationDtoFromJSONTyped(json, ignoreDiscriminator) {
         'channelTypes': json['channel_types'] == null ? undefined : new Set(json['channel_types']),
         'widgetPublicNameEnabled': json['widget_public_name_enabled'] == null ? undefined : json['widget_public_name_enabled'],
         'widgetPublicName': json['widget_public_name'] == null ? undefined : json['widget_public_name'],
+        'expected': json['expected'] == null ? undefined : (0, AutomationSettingsValuesDto_1.AutomationSettingsValuesDtoFromJSON)(json['expected']),
     };
 }
 function UpdateAutomationDtoToJSON(json) {
@@ -66,5 +68,6 @@ function UpdateAutomationDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'channel_types': value['channelTypes'] == null ? undefined : Array.from(value['channelTypes']),
         'widget_public_name_enabled': value['widgetPublicNameEnabled'],
         'widget_public_name': value['widgetPublicName'],
+        'expected': (0, AutomationSettingsValuesDto_1.AutomationSettingsValuesDtoToJSON)(value['expected']),
     };
 }

@@ -22,6 +22,8 @@ exports.DeleteAutomationNodeDtoToJSONTyped = DeleteAutomationNodeDtoToJSONTyped;
  * Check if a given object implements the DeleteAutomationNodeDto interface.
  */
 function instanceOfDeleteAutomationNodeDto(value) {
+    if (!('expectedInstanceId' in value) || value['expectedInstanceId'] === undefined)
+        return false;
     if (!('expectedContentRevision' in value) || value['expectedContentRevision'] === undefined)
         return false;
     if (!('operationId' in value) || value['operationId'] === undefined)
@@ -36,6 +38,7 @@ function DeleteAutomationNodeDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'expectedInstanceId': json['expected_instance_id'],
         'expectedContentRevision': json['expected_content_revision'],
         'operationId': json['operation_id'],
     };
@@ -48,6 +51,7 @@ function DeleteAutomationNodeDtoToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
+        'expected_instance_id': value['expectedInstanceId'],
         'expected_content_revision': value['expectedContentRevision'],
         'operation_id': value['operationId'],
     };

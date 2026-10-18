@@ -39,6 +39,12 @@ export interface PublicDocumentationResolvedLinkDto {
      * @memberof PublicDocumentationResolvedLinkDto
      */
     targetFileId: string | null;
+    /**
+     * /api/documentation/page; null ,
+     * @type {string}
+     * @memberof PublicDocumentationResolvedLinkDto
+     */
+    documentRef: string | null;
 }
 /**
  * @export

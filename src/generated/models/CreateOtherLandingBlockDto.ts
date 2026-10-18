@@ -44,7 +44,7 @@ export interface CreateOtherLandingBlockDto {
      */
     beforeBlockId?: string;
     /**
-     * .
+     * . {}; .
      * @type {object}
      * @memberof CreateOtherLandingBlockDto
      */

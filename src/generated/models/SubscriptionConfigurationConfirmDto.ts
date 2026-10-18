@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface SubscriptionConfigurationConfirmDto {
     /**
+     * , . .
+     * @type {string}
+     * @memberof SubscriptionConfigurationConfirmDto
+     */
+    promoApplicationId?: string;
+    /**
      *
      * @type {string}
      * @memberof SubscriptionConfigurationConfirmDto
@@ -88,6 +94,7 @@ export function SubscriptionConfigurationConfirmDtoFromJSONTyped(json: any, igno
     }
     return {
 
+        'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'tariffId': json['tariff_id'],
         'period': json['period'],
         'addonIds': json['addon_ids'],
@@ -108,6 +115,7 @@ export function SubscriptionConfigurationConfirmDtoToJSONTyped(value?: Subscript
 
     return {
 
+        'promo_application_id': value['promoApplicationId'],
         'tariff_id': value['tariffId'],
         'period': value['period'],
         'addon_ids': value['addonIds'],

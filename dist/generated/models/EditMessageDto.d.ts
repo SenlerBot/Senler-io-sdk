@@ -16,12 +16,26 @@
  */
 export interface EditMessageDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof EditMessageDto
+     */
+    contentFormat?: EditMessageDtoContentFormatEnum;
+    /**
      *
      * @type {string}
      * @memberof EditMessageDto
      */
     content: string;
 }
+/**
+ * @export
+ */
+export declare const EditMessageDtoContentFormatEnum: {
+    readonly PlainText: "plain_text";
+    readonly Markdown: "markdown";
+};
+export type EditMessageDtoContentFormatEnum = typeof EditMessageDtoContentFormatEnum[keyof typeof EditMessageDtoContentFormatEnum];
 /**
  * Check if a given object implements the EditMessageDto interface.
  */

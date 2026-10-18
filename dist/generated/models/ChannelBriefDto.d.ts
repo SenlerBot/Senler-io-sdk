@@ -11,6 +11,7 @@
  */
 import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
 import type { ChannelAccessDto } from './ChannelAccessDto';
+import type { ChannelConnectionIssueDto } from './ChannelConnectionIssueDto';
 import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
 /**
  * ChannelBriefDto.
@@ -24,6 +25,12 @@ export interface ChannelBriefDto {
      * @memberof ChannelBriefDto
      */
     id: string;
+    /**
+     * .
+     * @type {Array<ChannelConnectionIssueDto>}
+     * @memberof ChannelBriefDto
+     */
+    connectionIssues?: Array<ChannelConnectionIssueDto>;
     /**
      * ID
      * @type {string}

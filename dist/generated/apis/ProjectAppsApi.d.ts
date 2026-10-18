@@ -10,14 +10,76 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppActionExecutionResponseDto, AppActionMethodResponseDto, ExecuteAppActionMethodDto } from '../models/index';
-export interface ExecuteRequest {
+import type { AppActionExecutionResponseDto, AppActionMethodResponseDto, AppEmbeddedPageSettingsResponseDto, AppInstallationVersionInfoResponseDto, CatalogInstallationResponseDto, ExecuteAppActionMethodDto, InstallAppDto, InstallationSetupResponseDto, ProjectAppCatalogItemResponseDto, UpdateDeveloperDialogAccessDto, UpgradeAppInstallationVersionDto } from '../models/index';
+export interface ActionsExecuteRequest {
     executeAppActionMethodDto: ExecuteAppActionMethodDto;
-    acceptLanguage?: ExecuteAcceptLanguageEnum;
+    acceptLanguage?: ActionsExecuteAcceptLanguageEnum;
 }
-export interface GetMethodsRequest {
+export interface CatalogInstallRequest {
     projectId: string;
-    acceptLanguage?: GetMethodsAcceptLanguageEnum;
+    appId: string;
+    installAppDto: InstallAppDto;
+    acceptLanguage?: CatalogInstallAcceptLanguageEnum;
+}
+export interface DeleteInstalledRequest {
+    installationId: string;
+    acceptLanguage?: DeleteInstalledAcceptLanguageEnum;
+}
+export interface GetActionsMethodsRequest {
+    projectId: string;
+    acceptLanguage?: GetActionsMethodsAcceptLanguageEnum;
+}
+export interface GetCatalogRequest {
+    projectId: string;
+    search?: string;
+    type?: GetCatalogTypeEnum;
+    acceptLanguage?: GetCatalogAcceptLanguageEnum;
+}
+export interface GetCatalog2Request {
+    projectId: string;
+    appId: string;
+    acceptLanguage?: GetCatalog2AcceptLanguageEnum;
+}
+export interface GetInstalledRequest {
+    projectId: string;
+    includeInactive?: boolean;
+    type?: GetInstalledTypeEnum;
+    acceptLanguage?: GetInstalledAcceptLanguageEnum;
+}
+export interface GetInstalled2Request {
+    installationId: string;
+    acceptLanguage?: GetInstalled2AcceptLanguageEnum;
+}
+export interface GetInstalledEmbeddedPageRequest {
+    installationId: string;
+    acceptLanguage?: GetInstalledEmbeddedPageAcceptLanguageEnum;
+}
+export interface GetInstalledSetupRequest {
+    installationId: string;
+    acceptLanguage?: GetInstalledSetupAcceptLanguageEnum;
+}
+export interface GetInstalledVersionRequest {
+    installationId: string;
+    acceptLanguage?: GetInstalledVersionAcceptLanguageEnum;
+}
+export interface InstalledSetupStepsSkipRequest {
+    installationId: string;
+    stepId: string;
+    acceptLanguage?: InstalledSetupStepsSkipAcceptLanguageEnum;
+}
+export interface InstalledVersionRetryRequest {
+    installationId: string;
+    acceptLanguage?: InstalledVersionRetryAcceptLanguageEnum;
+}
+export interface UpdateInstalledDeveloperDialogAccessRequest {
+    installationId: string;
+    updateDeveloperDialogAccessDto: UpdateDeveloperDialogAccessDto;
+    acceptLanguage?: UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum;
+}
+export interface UpdateInstalledVersionRequest {
+    installationId: string;
+    upgradeAppInstallationVersionDto: UpgradeAppInstallationVersionDto;
+    acceptLanguage?: UpdateInstalledVersionAcceptLanguageEnum;
 }
 /**
  *
@@ -27,36 +89,288 @@ export declare class ProjectAppsApi extends runtime.BaseAPI {
      * OpenAPI .
      * MCP-
      */
-    executeRaw(requestParameters: ExecuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppActionExecutionResponseDto>>;
+    actionsExecuteRaw(requestParameters: ActionsExecuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppActionExecutionResponseDto>>;
     /**
      * OpenAPI .
      * MCP-
      */
-    execute(requestParameters: ExecuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppActionExecutionResponseDto>;
+    actionsExecute(requestParameters: ActionsExecuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppActionExecutionResponseDto>;
+    /**
+     * .
+     *
+     */
+    catalogInstallRaw(requestParameters: CatalogInstallRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogInstallationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    catalogInstall(requestParameters: CatalogInstallRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogInstallationResponseDto>;
+    /**
+     * .
+     *
+     */
+    deleteInstalledRaw(requestParameters: DeleteInstalledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * .
+     *
+     */
+    deleteInstalled(requestParameters: DeleteInstalledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * OpenAPI .
      * MCP-
      */
-    getMethodsRaw(requestParameters: GetMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppActionMethodResponseDto>>>;
+    getActionsMethodsRaw(requestParameters: GetActionsMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AppActionMethodResponseDto>>>;
     /**
      * OpenAPI .
      * MCP-
      */
-    getMethods(requestParameters: GetMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppActionMethodResponseDto>>;
+    getActionsMethods(requestParameters: GetActionsMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppActionMethodResponseDto>>;
+    /**
+     * , .
+     *
+     */
+    getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectAppCatalogItemResponseDto>>>;
+    /**
+     * , .
+     *
+     */
+    getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectAppCatalogItemResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getCatalog2Raw(requestParameters: GetCatalog2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectAppCatalogItemResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getCatalog2(requestParameters: GetCatalog2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectAppCatalogItemResponseDto>;
+    /**
+     * , .
+     *
+     */
+    getInstalledRaw(requestParameters: GetInstalledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CatalogInstallationResponseDto>>>;
+    /**
+     * , .
+     *
+     */
+    getInstalled(requestParameters: GetInstalledRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CatalogInstallationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getInstalled2Raw(requestParameters: GetInstalled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogInstallationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getInstalled2(requestParameters: GetInstalled2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogInstallationResponseDto>;
+    /**
+     * URL URL , .
+     *
+     */
+    getInstalledEmbeddedPageRaw(requestParameters: GetInstalledEmbeddedPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppEmbeddedPageSettingsResponseDto>>;
+    /**
+     * URL URL , .
+     *
+     */
+    getInstalledEmbeddedPage(requestParameters: GetInstalledEmbeddedPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppEmbeddedPageSettingsResponseDto>;
+    /**
+     * .
+     *
+     */
+    getInstalledSetupRaw(requestParameters: GetInstalledSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getInstalledSetup(requestParameters: GetInstalledSetupRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto>;
+    /**
+     * .
+     *
+     */
+    getInstalledVersionRaw(requestParameters: GetInstalledVersionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppInstallationVersionInfoResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getInstalledVersion(requestParameters: GetInstalledVersionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppInstallationVersionInfoResponseDto>;
+    /**
+     * .
+     *
+     */
+    installedSetupStepsSkipRaw(requestParameters: InstalledSetupStepsSkipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>>;
+    /**
+     * .
+     *
+     */
+    installedSetupStepsSkip(requestParameters: InstalledSetupStepsSkipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto>;
+    /**
+     * needs_attention.
+     *
+     */
+    installedVersionRetryRaw(requestParameters: InstalledVersionRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogInstallationResponseDto>>;
+    /**
+     * needs_attention.
+     *
+     */
+    installedVersionRetry(requestParameters: InstalledVersionRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogInstallationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateInstalledDeveloperDialogAccessRaw(requestParameters: UpdateInstalledDeveloperDialogAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogInstallationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateInstalledDeveloperDialogAccess(requestParameters: UpdateInstalledDeveloperDialogAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogInstallationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateInstalledVersionRaw(requestParameters: UpdateInstalledVersionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogInstallationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateInstalledVersion(requestParameters: UpdateInstalledVersionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogInstallationResponseDto>;
 }
 /**
  * @export
  */
-export declare const ExecuteAcceptLanguageEnum: {
+export declare const ActionsExecuteAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type ExecuteAcceptLanguageEnum = typeof ExecuteAcceptLanguageEnum[keyof typeof ExecuteAcceptLanguageEnum];
+export type ActionsExecuteAcceptLanguageEnum = typeof ActionsExecuteAcceptLanguageEnum[keyof typeof ActionsExecuteAcceptLanguageEnum];
 /**
  * @export
  */
-export declare const GetMethodsAcceptLanguageEnum: {
+export declare const CatalogInstallAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
-export type GetMethodsAcceptLanguageEnum = typeof GetMethodsAcceptLanguageEnum[keyof typeof GetMethodsAcceptLanguageEnum];
+export type CatalogInstallAcceptLanguageEnum = typeof CatalogInstallAcceptLanguageEnum[keyof typeof CatalogInstallAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteInstalledAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteInstalledAcceptLanguageEnum = typeof DeleteInstalledAcceptLanguageEnum[keyof typeof DeleteInstalledAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetActionsMethodsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetActionsMethodsAcceptLanguageEnum = typeof GetActionsMethodsAcceptLanguageEnum[keyof typeof GetActionsMethodsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetCatalogTypeEnum: {
+    readonly Oauth: "oauth";
+    readonly SalesFunnel: "sales_funnel";
+    readonly Plugin: "plugin";
+};
+export type GetCatalogTypeEnum = typeof GetCatalogTypeEnum[keyof typeof GetCatalogTypeEnum];
+/**
+ * @export
+ */
+export declare const GetCatalogAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetCatalogAcceptLanguageEnum = typeof GetCatalogAcceptLanguageEnum[keyof typeof GetCatalogAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetCatalog2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetCatalog2AcceptLanguageEnum = typeof GetCatalog2AcceptLanguageEnum[keyof typeof GetCatalog2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledTypeEnum: {
+    readonly Oauth: "oauth";
+    readonly SalesFunnel: "sales_funnel";
+    readonly Plugin: "plugin";
+};
+export type GetInstalledTypeEnum = typeof GetInstalledTypeEnum[keyof typeof GetInstalledTypeEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalledAcceptLanguageEnum = typeof GetInstalledAcceptLanguageEnum[keyof typeof GetInstalledAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalled2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalled2AcceptLanguageEnum = typeof GetInstalled2AcceptLanguageEnum[keyof typeof GetInstalled2AcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledEmbeddedPageAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalledEmbeddedPageAcceptLanguageEnum = typeof GetInstalledEmbeddedPageAcceptLanguageEnum[keyof typeof GetInstalledEmbeddedPageAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledSetupAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalledSetupAcceptLanguageEnum = typeof GetInstalledSetupAcceptLanguageEnum[keyof typeof GetInstalledSetupAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstalledVersionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstalledVersionAcceptLanguageEnum = typeof GetInstalledVersionAcceptLanguageEnum[keyof typeof GetInstalledVersionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const InstalledSetupStepsSkipAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type InstalledSetupStepsSkipAcceptLanguageEnum = typeof InstalledSetupStepsSkipAcceptLanguageEnum[keyof typeof InstalledSetupStepsSkipAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const InstalledVersionRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type InstalledVersionRetryAcceptLanguageEnum = typeof InstalledVersionRetryAcceptLanguageEnum[keyof typeof InstalledVersionRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum = typeof UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum[keyof typeof UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateInstalledVersionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateInstalledVersionAcceptLanguageEnum = typeof UpdateInstalledVersionAcceptLanguageEnum[keyof typeof UpdateInstalledVersionAcceptLanguageEnum];

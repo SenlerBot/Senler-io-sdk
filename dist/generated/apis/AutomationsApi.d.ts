@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationRealtimeSubscriptionResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunRealtimeSubscriptionResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -54,6 +54,12 @@ export interface AutomationsGetByIdRequest {
     automationId: string;
     acceptLanguage?: AutomationsGetByIdAcceptLanguageEnum;
 }
+export interface AutomationsGetTestDialogRequest {
+    automationId: string;
+    sessionId?: string;
+    triggerNodeId?: string;
+    acceptLanguage?: AutomationsGetTestDialogAcceptLanguageEnum;
+}
 export interface AutomationsGetVersionsRequest {
     automationId: string;
     limit?: number;
@@ -68,6 +74,12 @@ export interface AutomationsPauseRequest {
     automationId: string;
     acceptLanguage?: AutomationsPauseAcceptLanguageEnum;
 }
+export interface AutomationsTestDialogMessagesRequest {
+    automationId: string;
+    sessionId: string;
+    sendFirstTestMessageDto: SendFirstTestMessageDto;
+    acceptLanguage?: AutomationsTestDialogMessagesAcceptLanguageEnum;
+}
 export interface AutomationsUpdateRequest {
     automationId: string;
     updateAutomationDto: UpdateAutomationDto;
@@ -78,6 +90,11 @@ export interface BatchRequest {
     applyAutomationBatchDto: ApplyAutomationBatchDto;
     xAutomationEditorSessionId?: string;
     acceptLanguage?: BatchAcceptLanguageEnum;
+}
+export interface ChannelsDeliveryRecoveryRetryRequest {
+    channelId: string;
+    incidentId: string;
+    acceptLanguage?: ChannelsDeliveryRecoveryRetryAcceptLanguageEnum;
 }
 export interface DeleteEdgesRequest {
     automationId: string;
@@ -98,10 +115,6 @@ export interface DeleteTestTriggerSessionsRequest {
     sessionId: string;
     acceptLanguage?: DeleteTestTriggerSessionsAcceptLanguageEnum;
 }
-export interface DialogsRunsRealtimeSubscriptionRequest {
-    dialogId: string;
-    acceptLanguage?: DialogsRunsRealtimeSubscriptionAcceptLanguageEnum;
-}
 export interface EdgesRequest {
     automationId: string;
     createAutomationEdgeDto: CreateAutomationEdgeDto;
@@ -111,6 +124,16 @@ export interface EdgesRequest {
 export interface GetAttachmentsRequest {
     automationId: string;
     acceptLanguage?: GetAttachmentsAcceptLanguageEnum;
+}
+export interface GetAttentionRequest {
+    automationId: string;
+    acceptLanguage?: GetAttentionAcceptLanguageEnum;
+}
+export interface GetChannelsDeliveryRecoveryRequest {
+    channelId: string;
+    cursor?: string;
+    limit?: number;
+    acceptLanguage?: GetChannelsDeliveryRecoveryAcceptLanguageEnum;
 }
 export interface GetDialogsRunsRequest {
     dialogId: string;
@@ -153,8 +176,13 @@ export interface GetOperationsRequest {
     limit?: number;
     acceptLanguage?: GetOperationsAcceptLanguageEnum;
 }
+export interface GetOperatorOptionsRequest {
+    projectId: string;
+    acceptLanguage?: GetOperatorOptionsAcceptLanguageEnum;
+}
 export interface GetRunsRequest {
     automationId: string;
+    requiresAttention?: boolean;
     runId?: string;
     leadId?: string;
     dialogId?: string;
@@ -172,12 +200,6 @@ export interface GetRuns2Request {
     automationId: string;
     runId: string;
     acceptLanguage?: GetRuns2AcceptLanguageEnum;
-}
-export interface GetTestDialogRequest {
-    automationId: string;
-    sessionId?: string;
-    triggerNodeId?: string;
-    acceptLanguage?: GetTestDialogAcceptLanguageEnum;
 }
 export interface GetTestTriggerSessionsRequest {
     automationId: string;
@@ -216,11 +238,6 @@ export interface PublishRequest {
     publishAutomationDto: PublishAutomationDto;
     acceptLanguage?: PublishAcceptLanguageEnum;
 }
-export interface RealtimeSubscriptionRequest {
-    automationId: string;
-    xAutomationEditorSessionId?: string;
-    acceptLanguage?: RealtimeSubscriptionAcceptLanguageEnum;
-}
 export interface ResumeRequest {
     automationId: string;
     acceptLanguage?: ResumeAcceptLanguageEnum;
@@ -235,32 +252,23 @@ export interface RunsCancelRequest {
     runId: string;
     acceptLanguage?: RunsCancelAcceptLanguageEnum;
 }
+export interface RunsIncidentsResolveRequest {
+    automationId: string;
+    runId: string;
+    incidentId: string;
+    acceptLanguage?: RunsIncidentsResolveAcceptLanguageEnum;
+}
 export interface RunsPauseRequest {
     automationId: string;
     runId: string;
     pauseAutomationRunDto: PauseAutomationRunDto;
     acceptLanguage?: RunsPauseAcceptLanguageEnum;
 }
-export interface RunsRealtimeSubscriptionRequest {
-    automationId: string;
-    runId: string;
-    acceptLanguage?: RunsRealtimeSubscriptionAcceptLanguageEnum;
-}
-export interface RunsRealtimeSubscription2Request {
-    automationId: string;
-    acceptLanguage?: RunsRealtimeSubscription2AcceptLanguageEnum;
-}
 export interface RunsTasksRetryRequest {
     automationId: string;
     runId: string;
     taskId: string;
     acceptLanguage?: RunsTasksRetryAcceptLanguageEnum;
-}
-export interface TestDialogMessagesRequest {
-    automationId: string;
-    sessionId: string;
-    sendFirstTestMessageDto: SendFirstTestMessageDto;
-    acceptLanguage?: TestDialogMessagesAcceptLanguageEnum;
 }
 export interface TestRunsRequest {
     automationId: string;
@@ -402,6 +410,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsGetById(requestParameters: AutomationsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
+     * , . query-.
+     *
+     */
+    automationsGetTestDialogRaw(requestParameters: AutomationsGetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentAutomationTestDialogDataDto>>;
+    /**
+     * , . query-.
+     *
+     */
+    automationsGetTestDialog(requestParameters: AutomationsGetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto>;
+    /**
      * .
      *
      */
@@ -432,6 +450,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsPause(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
     /**
+     * . .
+     *
+     */
+    automationsTestDialogMessagesRaw(requestParameters: AutomationsTestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    automationsTestDialogMessages(requestParameters: AutomationsTestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto>;
+    /**
      * ; .
      *
      */
@@ -451,6 +479,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      *
      */
     batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
+    /**
+     * . Runner. .
+     *
+     */
+    channelsDeliveryRecoveryRetryRaw(requestParameters: ChannelsDeliveryRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RetryAutomationTaskResponseDto>>;
+    /**
+     * . Runner. .
+     *
+     */
+    channelsDeliveryRecoveryRetry(requestParameters: ChannelsDeliveryRecoveryRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto>;
     /**
      * draft-; published version processes .
      *
@@ -482,16 +520,6 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     deleteTestTriggerSessions(requestParameters: DeleteTestTriggerSessionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
     /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    dialogsRunsRealtimeSubscriptionRaw(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    dialogsRunsRealtimeSubscription(requestParameters: DialogsRunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
-    /**
      * idempotent draft-edge ; validate/publish. : next , .
      *
      */
@@ -511,6 +539,26 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      *
      */
     getAttachments(requestParameters: GetAttachmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAttachmentsResponseDto>;
+    /**
+     * , .
+     * ,
+     */
+    getAttentionRaw(requestParameters: GetAttentionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationAttentionSummaryDto>>;
+    /**
+     * , .
+     * ,
+     */
+    getAttention(requestParameters: GetAttentionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationAttentionSummaryDto>;
+    /**
+     * . , .
+     * -
+     */
+    getChannelsDeliveryRecoveryRaw(requestParameters: GetChannelsDeliveryRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChannelDeliveryRecoveryPageDto>>;
+    /**
+     * . , .
+     * -
+     */
+    getChannelsDeliveryRecovery(requestParameters: GetChannelsDeliveryRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChannelDeliveryRecoveryPageDto>;
     /**
      * .
      *
@@ -572,6 +620,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getOperations(requestParameters: GetOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperationsResponseDto>;
     /**
+     * . .
+     *
+     */
+    getOperatorOptionsRaw(requestParameters: GetOperatorOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOperatorOptionsDto>>;
+    /**
+     * . .
+     *
+     */
+    getOperatorOptions(requestParameters: GetOperatorOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperatorOptionsDto>;
+    /**
      * Automation Runner.
      * durable-
      */
@@ -591,16 +649,6 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      * durable timeline
      */
     getRuns2(requestParameters: GetRuns2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunDetailResponseDto>;
-    /**
-     * , . query-.
-     *
-     */
-    getTestDialogRaw(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CurrentAutomationTestDialogDataDto>>;
-    /**
-     * , . query-.
-     *
-     */
-    getTestDialog(requestParameters: GetTestDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CurrentAutomationTestDialogDataDto>;
     /**
      * , .
      *
@@ -672,16 +720,6 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto>;
     /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    realtimeSubscriptionRaw(requestParameters: RealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRealtimeSubscriptionResponseDto>>;
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    realtimeSubscription(requestParameters: RealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRealtimeSubscriptionResponseDto>;
-    /**
      * parked tasks queued/waiting available_at, API status.
      * parked- Runner
      */
@@ -712,6 +750,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     runsCancel(requestParameters: RunsCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelAutomationRunResponseDto>;
     /**
+     * . , .
+     *
+     */
+    runsIncidentsResolveRaw(requestParameters: RunsIncidentsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * . , .
+     *
+     */
+    runsIncidentsResolve(requestParameters: RunsIncidentsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
      * . Mongo .
      *
      */
@@ -722,26 +770,6 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     runsPause(requestParameters: RunsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PauseAutomationRunResponseDto>;
     /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    runsRealtimeSubscriptionRaw(requestParameters: RunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    runsRealtimeSubscription(requestParameters: RunsRealtimeSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    runsRealtimeSubscription2Raw(requestParameters: RunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationRunRealtimeSubscriptionResponseDto>>;
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    runsRealtimeSubscription2(requestParameters: RunsRealtimeSubscription2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationRunRealtimeSubscriptionResponseDto>;
-    /**
      * , . .
      *
      */
@@ -751,16 +779,6 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      *
      */
     runsTasksRetry(requestParameters: RunsTasksRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RetryAutomationTaskResponseDto>;
-    /**
-     * . .
-     *
-     */
-    testDialogMessagesRaw(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendFirstTestMessageResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    testDialogMessages(requestParameters: TestDialogMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SendFirstTestMessageResponseDto>;
     /**
      * . , execution plan durable start intent. , start intent. production- .
      *
@@ -917,6 +935,14 @@ export type AutomationsGetByIdAcceptLanguageEnum = typeof AutomationsGetByIdAcce
 /**
  * @export
  */
+export declare const AutomationsGetTestDialogAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationsGetTestDialogAcceptLanguageEnum = typeof AutomationsGetTestDialogAcceptLanguageEnum[keyof typeof AutomationsGetTestDialogAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const AutomationsGetVersionsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -941,6 +967,14 @@ export type AutomationsPauseAcceptLanguageEnum = typeof AutomationsPauseAcceptLa
 /**
  * @export
  */
+export declare const AutomationsTestDialogMessagesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AutomationsTestDialogMessagesAcceptLanguageEnum = typeof AutomationsTestDialogMessagesAcceptLanguageEnum[keyof typeof AutomationsTestDialogMessagesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const AutomationsUpdateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -954,6 +988,14 @@ export declare const BatchAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type BatchAcceptLanguageEnum = typeof BatchAcceptLanguageEnum[keyof typeof BatchAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ChannelsDeliveryRecoveryRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = typeof ChannelsDeliveryRecoveryRetryAcceptLanguageEnum[keyof typeof ChannelsDeliveryRecoveryRetryAcceptLanguageEnum];
 /**
  * @export
  */
@@ -981,14 +1023,6 @@ export type DeleteTestTriggerSessionsAcceptLanguageEnum = typeof DeleteTestTrigg
 /**
  * @export
  */
-export declare const DialogsRunsRealtimeSubscriptionAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = typeof DialogsRunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof DialogsRunsRealtimeSubscriptionAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const EdgesAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -1002,6 +1036,22 @@ export declare const GetAttachmentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAttachmentsAcceptLanguageEnum = typeof GetAttachmentsAcceptLanguageEnum[keyof typeof GetAttachmentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAttentionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAttentionAcceptLanguageEnum = typeof GetAttentionAcceptLanguageEnum[keyof typeof GetAttentionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetChannelsDeliveryRecoveryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetChannelsDeliveryRecoveryAcceptLanguageEnum = typeof GetChannelsDeliveryRecoveryAcceptLanguageEnum[keyof typeof GetChannelsDeliveryRecoveryAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1091,6 +1141,14 @@ export type GetOperationsAcceptLanguageEnum = typeof GetOperationsAcceptLanguage
 /**
  * @export
  */
+export declare const GetOperatorOptionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetOperatorOptionsAcceptLanguageEnum = typeof GetOperatorOptionsAcceptLanguageEnum[keyof typeof GetOperatorOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetRunsStatusEnum: {
     readonly Active: "active";
     readonly Parked: "parked";
@@ -1126,14 +1184,6 @@ export declare const GetRuns2AcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetRuns2AcceptLanguageEnum = typeof GetRuns2AcceptLanguageEnum[keyof typeof GetRuns2AcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetTestDialogAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetTestDialogAcceptLanguageEnum = typeof GetTestDialogAcceptLanguageEnum[keyof typeof GetTestDialogAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1193,14 +1243,6 @@ export type PublishAcceptLanguageEnum = typeof PublishAcceptLanguageEnum[keyof t
 /**
  * @export
  */
-export declare const RealtimeSubscriptionAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type RealtimeSubscriptionAcceptLanguageEnum = typeof RealtimeSubscriptionAcceptLanguageEnum[keyof typeof RealtimeSubscriptionAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const ResumeAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -1225,6 +1267,14 @@ export type RunsCancelAcceptLanguageEnum = typeof RunsCancelAcceptLanguageEnum[k
 /**
  * @export
  */
+export declare const RunsIncidentsResolveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type RunsIncidentsResolveAcceptLanguageEnum = typeof RunsIncidentsResolveAcceptLanguageEnum[keyof typeof RunsIncidentsResolveAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const RunsPauseAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -1233,35 +1283,11 @@ export type RunsPauseAcceptLanguageEnum = typeof RunsPauseAcceptLanguageEnum[key
 /**
  * @export
  */
-export declare const RunsRealtimeSubscriptionAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type RunsRealtimeSubscriptionAcceptLanguageEnum = typeof RunsRealtimeSubscriptionAcceptLanguageEnum[keyof typeof RunsRealtimeSubscriptionAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const RunsRealtimeSubscription2AcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type RunsRealtimeSubscription2AcceptLanguageEnum = typeof RunsRealtimeSubscription2AcceptLanguageEnum[keyof typeof RunsRealtimeSubscription2AcceptLanguageEnum];
-/**
- * @export
- */
 export declare const RunsTasksRetryAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type RunsTasksRetryAcceptLanguageEnum = typeof RunsTasksRetryAcceptLanguageEnum[keyof typeof RunsTasksRetryAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const TestDialogMessagesAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type TestDialogMessagesAcceptLanguageEnum = typeof TestDialogMessagesAcceptLanguageEnum[keyof typeof TestDialogMessagesAcceptLanguageEnum];
 /**
  * @export
  */

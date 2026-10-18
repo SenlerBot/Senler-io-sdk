@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendMessageToDialogDtoClientTypeEnum = void 0;
+exports.SendMessageToDialogDtoClientTypeEnum = exports.SendMessageToDialogDtoContentFormatEnum = void 0;
 exports.instanceOfSendMessageToDialogDto = instanceOfSendMessageToDialogDto;
 exports.SendMessageToDialogDtoFromJSON = SendMessageToDialogDtoFromJSON;
 exports.SendMessageToDialogDtoFromJSONTyped = SendMessageToDialogDtoFromJSONTyped;
@@ -21,6 +21,13 @@ exports.SendMessageToDialogDtoToJSON = SendMessageToDialogDtoToJSON;
 exports.SendMessageToDialogDtoToJSONTyped = SendMessageToDialogDtoToJSONTyped;
 const MessageAttachmentReferenceDto_1 = require("./MessageAttachmentReferenceDto");
 const MessageButtonDto_1 = require("./MessageButtonDto");
+/**
+ * @export
+ */
+exports.SendMessageToDialogDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+};
 /**
  * @export
  */
@@ -46,6 +53,7 @@ function SendMessageToDialogDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'content': json['content'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
@@ -63,6 +71,7 @@ function SendMessageToDialogDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'content_format': value['contentFormat'],
         'content': value['content'],
         'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],

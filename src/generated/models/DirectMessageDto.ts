@@ -28,6 +28,12 @@ import {
  */
 export interface DirectMessageDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof DirectMessageDto
+     */
+    contentFormat?: DirectMessageDtoContentFormatEnum;
+    /**
      * ID ,
      * @type {string}
      * @memberof DirectMessageDto
@@ -59,6 +65,17 @@ export interface DirectMessageDto {
     buttons?: Array<MessageButtonDto>;
 }
 
+
+/**
+ * @export
+ */
+export const DirectMessageDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+} as const;
+export type DirectMessageDtoContentFormatEnum = typeof DirectMessageDtoContentFormatEnum[keyof typeof DirectMessageDtoContentFormatEnum];
+
+
 /**
  * Check if a given object implements the DirectMessageDto interface.
  */
@@ -79,6 +96,7 @@ export function DirectMessageDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
 
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'channelId': json['channel_id'],
         'externalId': json['external_id'],
         'content': json['content'],
@@ -98,6 +116,7 @@ export function DirectMessageDtoToJSONTyped(value?: DirectMessageDto | null, ign
 
     return {
 
+        'content_format': value['contentFormat'],
         'channel_id': value['channelId'],
         'external_id': value['externalId'],
         'content': value['content'],

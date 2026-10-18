@@ -10,7 +10,27 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DrillDownByAgentResponseDto, DrillDownByMetricResponseDto, EstimateSummarizationResponseDto, GenerateSummarizationRequestDto, MetricsLogResponseDto, SummarizationHistoryResponseDto, SummarizationResponseDto, SummarizationSettingsResponseDto, TopAgentsResponseDto, TopMetricsResponseDto, UpdateSummarizationSettingsRequestDto } from '../models/index';
+import type { AnalysisJobDto, AnalysisJobQueryDto, DiagnosticEntityOptionsDto, DiagnosticsEstimateDto, DiagnosticsHistoryDto, DiagnosticsResponseDto, DiagnosticsResultDto, DiagnosticsSnapshotQueryDto, DialogTestingResultDto, DrillDownByAgentResponseDto, DrillDownByMetricResponseDto, EstimateSummarizationResponseDto, GenerateDiagnosticsDto, GenerateSummarizationRequestDto, InsightHistoryDto, MetricsLogResponseDto, ResumeAnalysisJobDto, SummarizationHistoryResponseDto, SummarizationResponseDto, SummarizationSettingsResponseDto, TopAgentsResponseDto, TopMetricsResponseDto, UpdateSummarizationSettingsRequestDto } from '../models/index';
+export interface AnalysisJobsPauseRequest {
+    analysisJobQueryDto: AnalysisJobQueryDto;
+    acceptLanguage?: AnalysisJobsPauseAcceptLanguageEnum;
+}
+export interface AnalysisJobsResumeRequest {
+    resumeAnalysisJobDto: ResumeAnalysisJobDto;
+    acceptLanguage?: AnalysisJobsResumeAcceptLanguageEnum;
+}
+export interface AnalysisJobsStopRequest {
+    analysisJobQueryDto: AnalysisJobQueryDto;
+    acceptLanguage?: AnalysisJobsStopAcceptLanguageEnum;
+}
+export interface DiagnosticsGenerateRequest {
+    generateDiagnosticsDto: GenerateDiagnosticsDto;
+    acceptLanguage?: DiagnosticsGenerateAcceptLanguageEnum;
+}
+export interface DiagnosticsSaveRequest {
+    diagnosticsSnapshotQueryDto: DiagnosticsSnapshotQueryDto;
+    acceptLanguage?: DiagnosticsSaveAcceptLanguageEnum;
+}
 export interface GetAgentsTopMetricsRequest {
     agentId: string;
     projectId: string;
@@ -22,6 +42,62 @@ export interface GetAgentsTopMetricsRequest {
     channelId?: string;
     metricType?: GetAgentsTopMetricsMetricTypeEnum;
     acceptLanguage?: GetAgentsTopMetricsAcceptLanguageEnum;
+}
+export interface GetAnalysisJobsRequest {
+    projectId: string;
+    jobId: string;
+    acceptLanguage?: GetAnalysisJobsAcceptLanguageEnum;
+}
+export interface GetAnalysisJobsInsightHistoryRequest {
+    projectId: string;
+    cursor?: string;
+    acceptLanguage?: GetAnalysisJobsInsightHistoryAcceptLanguageEnum;
+}
+export interface GetAnalysisJobsLatestRequest {
+    projectId: string;
+    kind: GetAnalysisJobsLatestKindEnum;
+    acceptLanguage?: GetAnalysisJobsLatestAcceptLanguageEnum;
+}
+export interface GetDiagnosticsRequest {
+    projectId: string;
+    limit?: number;
+    periodDays?: GetDiagnosticsPeriodDaysEnum;
+    entityType?: GetDiagnosticsEntityTypeEnum;
+    entityRef?: string;
+    cursor?: string;
+    acceptLanguage?: GetDiagnosticsAcceptLanguageEnum;
+}
+export interface GetDiagnosticsCheckRequest {
+    projectId: string;
+    snapshotId: string;
+    acceptLanguage?: GetDiagnosticsCheckAcceptLanguageEnum;
+}
+export interface GetDiagnosticsDialogTestsRequest {
+    projectId: string;
+    reportId: string;
+    cursor: string;
+    acceptLanguage?: GetDiagnosticsDialogTestsAcceptLanguageEnum;
+}
+export interface GetDiagnosticsEntitiesRequest {
+    projectId: string;
+    entityType?: GetDiagnosticsEntitiesEntityTypeEnum;
+    search?: string;
+    acceptLanguage?: GetDiagnosticsEntitiesAcceptLanguageEnum;
+}
+export interface GetDiagnosticsEstimateRequest {
+    projectId: string;
+    snapshotId: string;
+    checkMode?: GetDiagnosticsEstimateCheckModeEnum;
+    testAgentVariantId?: string;
+    testTriggerNodeId?: string;
+    testVariants?: number;
+    testMaxClientMessages?: number;
+    acceptLanguage?: GetDiagnosticsEstimateAcceptLanguageEnum;
+}
+export interface GetDiagnosticsHistoryRequest {
+    projectId: string;
+    cursor?: string;
+    acceptLanguage?: GetDiagnosticsHistoryAcceptLanguageEnum;
 }
 export interface GetMetricsLogRequest {
     projectId: string;
@@ -114,6 +190,56 @@ export interface UpdateSummarizeSettingsRequest {
  */
 export declare class AnalyticsApi extends runtime.BaseAPI {
     /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Pause analysis after the current paid request has been saved
+     */
+    analysisJobsPauseRaw(requestParameters: AnalysisJobsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Pause analysis after the current paid request has been saved
+     */
+    analysisJobsPause(requestParameters: AnalysisJobsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Resume the same analysis with saved progress and an authorized spending limit
+     */
+    analysisJobsResumeRaw(requestParameters: AnalysisJobsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Resume the same analysis with saved progress and an authorized spending limit
+     */
+    analysisJobsResume(requestParameters: AnalysisJobsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
+    /**
+     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
+     * Stop an editor dialog test permanently
+     */
+    analysisJobsStopRaw(requestParameters: AnalysisJobsStopRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
+    /**
+     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
+     * Stop an editor dialog test permanently
+     */
+    analysisJobsStop(requestParameters: AnalysisJobsStopRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
+    /**
+     * . . check; .
+     * AI-
+     */
+    diagnosticsGenerateRaw(requestParameters: DiagnosticsGenerateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsResultDto>>;
+    /**
+     * . . check; .
+     * AI-
+     */
+    diagnosticsGenerate(requestParameters: DiagnosticsGenerateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsResultDto>;
+    /**
+     * . AI .
+     *
+     */
+    diagnosticsSaveRaw(requestParameters: DiagnosticsSaveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsResponseDto>>;
+    /**
+     * . AI .
+     *
+     */
+    diagnosticsSave(requestParameters: DiagnosticsSaveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsResponseDto>;
+    /**
      * . , .
      * L1:
      */
@@ -123,6 +249,96 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      * L1:
      */
     getAgentsTopMetrics(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByAgentResponseDto>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read background analysis progress
+     */
+    getAnalysisJobsRaw(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read background analysis progress
+     */
+    getAnalysisJobs(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
+    /**
+     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
+     * List saved and unfinished AI summaries
+     */
+    getAnalysisJobsInsightHistoryRaw(requestParameters: GetAnalysisJobsInsightHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightHistoryDto>>;
+    /**
+     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
+     * List saved and unfinished AI summaries
+     */
+    getAnalysisJobsInsightHistory(requestParameters: GetAnalysisJobsInsightHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InsightHistoryDto>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read the latest background analysis
+     */
+    getAnalysisJobsLatestRaw(requestParameters: GetAnalysisJobsLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
+    /**
+     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
+     * Read the latest background analysis
+     */
+    getAnalysisJobsLatest(requestParameters: GetAnalysisJobsLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
+    /**
+     * AI- . , , . .
+     *
+     */
+    getDiagnosticsRaw(requestParameters: GetDiagnosticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsResponseDto>>;
+    /**
+     * AI- . , , . .
+     *
+     */
+    getDiagnostics(requestParameters: GetDiagnosticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsResponseDto>;
+    /**
+     * , AI-. . snapshot_id ID ID .
+     *
+     */
+    getDiagnosticsCheckRaw(requestParameters: GetDiagnosticsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsResponseDto>>;
+    /**
+     * , AI-. . snapshot_id ID ID .
+     *
+     */
+    getDiagnosticsCheck(requestParameters: GetDiagnosticsCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsResponseDto>;
+    /**
+     * , 500 . previous_cursor. .
+     *
+     */
+    getDiagnosticsDialogTestsRaw(requestParameters: GetDiagnosticsDialogTestsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogTestingResultDto>>;
+    /**
+     * , 500 . previous_cursor. .
+     *
+     */
+    getDiagnosticsDialogTests(requestParameters: GetDiagnosticsDialogTestsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogTestingResultDto>;
+    /**
+     * . 30 ; entity_type .
+     *
+     */
+    getDiagnosticsEntitiesRaw(requestParameters: GetDiagnosticsEntitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticEntityOptionsDto>>;
+    /**
+     * . 30 ; entity_type .
+     *
+     */
+    getDiagnosticsEntities(requestParameters: GetDiagnosticsEntitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticEntityOptionsDto>;
+    /**
+     * AI- ; .
+     *
+     */
+    getDiagnosticsEstimateRaw(requestParameters: GetDiagnosticsEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsEstimateDto>>;
+    /**
+     * AI- ; .
+     *
+     */
+    getDiagnosticsEstimate(requestParameters: GetDiagnosticsEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsEstimateDto>;
+    /**
+     * , 20 , AI-. next_cursor.
+     *
+     */
+    getDiagnosticsHistoryRaw(requestParameters: GetDiagnosticsHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsHistoryDto>>;
+    /**
+     * , 20 , AI-. next_cursor.
+     *
+     */
+    getDiagnosticsHistory(requestParameters: GetDiagnosticsHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsHistoryDto>;
     /**
      * , .
      *
@@ -217,12 +433,12 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      * AI- . model_id . .
      *
      */
-    summarizeRaw(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SummarizationResponseDto>>;
+    summarizeRaw(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
     /**
      * AI- . model_id . .
      *
      */
-    summarize(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationResponseDto>;
+    summarize(requestParameters: SummarizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**
      * / , .
      *
@@ -234,6 +450,46 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      */
     updateSummarizeSettings(requestParameters: UpdateSummarizeSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SummarizationSettingsResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const AnalysisJobsPauseAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AnalysisJobsPauseAcceptLanguageEnum = typeof AnalysisJobsPauseAcceptLanguageEnum[keyof typeof AnalysisJobsPauseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AnalysisJobsResumeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AnalysisJobsResumeAcceptLanguageEnum = typeof AnalysisJobsResumeAcceptLanguageEnum[keyof typeof AnalysisJobsResumeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AnalysisJobsStopAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AnalysisJobsStopAcceptLanguageEnum = typeof AnalysisJobsStopAcceptLanguageEnum[keyof typeof AnalysisJobsStopAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DiagnosticsGenerateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DiagnosticsGenerateAcceptLanguageEnum = typeof DiagnosticsGenerateAcceptLanguageEnum[keyof typeof DiagnosticsGenerateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DiagnosticsSaveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DiagnosticsSaveAcceptLanguageEnum = typeof DiagnosticsSaveAcceptLanguageEnum[keyof typeof DiagnosticsSaveAcceptLanguageEnum];
 /**
  * @export
  */
@@ -283,6 +539,118 @@ export declare const GetAgentsTopMetricsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAgentsTopMetricsAcceptLanguageEnum = typeof GetAgentsTopMetricsAcceptLanguageEnum[keyof typeof GetAgentsTopMetricsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAnalysisJobsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAnalysisJobsAcceptLanguageEnum = typeof GetAnalysisJobsAcceptLanguageEnum[keyof typeof GetAnalysisJobsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAnalysisJobsInsightHistoryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAnalysisJobsInsightHistoryAcceptLanguageEnum = typeof GetAnalysisJobsInsightHistoryAcceptLanguageEnum[keyof typeof GetAnalysisJobsInsightHistoryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAnalysisJobsLatestKindEnum: {
+    readonly Diagnostics: "diagnostics";
+    readonly Insight: "insight";
+};
+export type GetAnalysisJobsLatestKindEnum = typeof GetAnalysisJobsLatestKindEnum[keyof typeof GetAnalysisJobsLatestKindEnum];
+/**
+ * @export
+ */
+export declare const GetAnalysisJobsLatestAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAnalysisJobsLatestAcceptLanguageEnum = typeof GetAnalysisJobsLatestAcceptLanguageEnum[keyof typeof GetAnalysisJobsLatestAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsPeriodDaysEnum: {
+    readonly NUMBER_7: 7;
+    readonly NUMBER_30: 30;
+};
+export type GetDiagnosticsPeriodDaysEnum = typeof GetDiagnosticsPeriodDaysEnum[keyof typeof GetDiagnosticsPeriodDaysEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsEntityTypeEnum: {
+    readonly Agent: "agent";
+    readonly Automation: "automation";
+};
+export type GetDiagnosticsEntityTypeEnum = typeof GetDiagnosticsEntityTypeEnum[keyof typeof GetDiagnosticsEntityTypeEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDiagnosticsAcceptLanguageEnum = typeof GetDiagnosticsAcceptLanguageEnum[keyof typeof GetDiagnosticsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsCheckAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDiagnosticsCheckAcceptLanguageEnum = typeof GetDiagnosticsCheckAcceptLanguageEnum[keyof typeof GetDiagnosticsCheckAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsDialogTestsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDiagnosticsDialogTestsAcceptLanguageEnum = typeof GetDiagnosticsDialogTestsAcceptLanguageEnum[keyof typeof GetDiagnosticsDialogTestsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsEntitiesEntityTypeEnum: {
+    readonly Agent: "agent";
+    readonly Automation: "automation";
+};
+export type GetDiagnosticsEntitiesEntityTypeEnum = typeof GetDiagnosticsEntitiesEntityTypeEnum[keyof typeof GetDiagnosticsEntitiesEntityTypeEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsEntitiesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDiagnosticsEntitiesAcceptLanguageEnum = typeof GetDiagnosticsEntitiesAcceptLanguageEnum[keyof typeof GetDiagnosticsEntitiesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsEstimateCheckModeEnum: {
+    readonly Diagnostics: "diagnostics";
+    readonly DialogTests: "dialog_tests";
+};
+export type GetDiagnosticsEstimateCheckModeEnum = typeof GetDiagnosticsEstimateCheckModeEnum[keyof typeof GetDiagnosticsEstimateCheckModeEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsEstimateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDiagnosticsEstimateAcceptLanguageEnum = typeof GetDiagnosticsEstimateAcceptLanguageEnum[keyof typeof GetDiagnosticsEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsHistoryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetDiagnosticsHistoryAcceptLanguageEnum = typeof GetDiagnosticsHistoryAcceptLanguageEnum[keyof typeof GetDiagnosticsHistoryAcceptLanguageEnum];
 /**
  * @export
  */

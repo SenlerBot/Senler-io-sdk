@@ -51,8 +51,11 @@ export declare const UpdateAppWebhookDtoEventsEnum: {
     readonly LeadCreated: "lead_created";
     readonly LeadUnsubscribed: "lead_unsubscribed";
     readonly LeadBlocked: "lead_blocked";
+    readonly SegmentSubscribed: "segment_subscribed";
+    readonly SegmentUnsubscribed: "segment_unsubscribed";
     readonly MessageUndelivered: "message_undelivered";
     readonly Error: "error";
+    readonly AutomationStepFailed: "automation_step_failed";
 };
 export type UpdateAppWebhookDtoEventsEnum = typeof UpdateAppWebhookDtoEventsEnum[keyof typeof UpdateAppWebhookDtoEventsEnum];
 /**

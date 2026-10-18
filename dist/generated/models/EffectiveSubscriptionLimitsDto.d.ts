@@ -34,6 +34,12 @@ export interface EffectiveSubscriptionLimitsDto {
      */
     mailingMessagesPerDay: number;
     /**
+     * API-
+     * @type {number}
+     * @memberof EffectiveSubscriptionLimitsDto
+     */
+    apiRequestsPerDay: number;
+    /**
      *
      * @type {number}
      * @memberof EffectiveSubscriptionLimitsDto

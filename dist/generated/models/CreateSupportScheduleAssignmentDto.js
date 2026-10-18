@@ -38,7 +38,7 @@ function CreateSupportScheduleAssignmentDtoFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     return {
-        'groupId': json['group_id'] == null ? undefined : json['group_id'],
+        'groupIds': json['group_ids'] == null ? undefined : json['group_ids'],
         'startsAt': (new Date(json['starts_at'])),
         'endsAt': (new Date(json['ends_at'])),
         'projectMemberId': json['project_member_id'],
@@ -54,7 +54,7 @@ function CreateSupportScheduleAssignmentDtoToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     return {
-        'group_id': value['groupId'],
+        'group_ids': value['groupIds'],
         'starts_at': ((value['startsAt']).toISOString()),
         'ends_at': ((value['endsAt']).toISOString()),
         'project_member_id': value['projectMemberId'],

@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface SubscriptionConfigurationDto {
     /**
+     * , . .
+     * @type {string}
+     * @memberof SubscriptionConfigurationDto
+     */
+    promoApplicationId?: string;
+    /**
      *
      * @type {string}
      * @memberof SubscriptionConfigurationDto
@@ -76,6 +82,7 @@ export function SubscriptionConfigurationDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'tariffId': json['tariff_id'],
         'period': json['period'],
         'addonIds': json['addon_ids'],
@@ -94,6 +101,7 @@ export function SubscriptionConfigurationDtoToJSONTyped(value?: SubscriptionConf
 
     return {
 
+        'promo_application_id': value['promoApplicationId'],
         'tariff_id': value['tariffId'],
         'period': value['period'],
         'addon_ids': value['addonIds'],

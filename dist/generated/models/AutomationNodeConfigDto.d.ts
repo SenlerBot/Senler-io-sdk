@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AutomationHttpConfigDto } from './AutomationHttpConfigDto';
+import type { AutomationLeadContactDto } from './AutomationLeadContactDto';
 import type { AutomationMessageAttachmentDto } from './AutomationMessageAttachmentDto';
 import type { AutomationAgentBranchDto } from './AutomationAgentBranchDto';
 import type { AutomationTableOutputDto } from './AutomationTableOutputDto';
@@ -29,6 +30,36 @@ import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
  * @interface AutomationNodeConfigDto
  */
 export interface AutomationNodeConfigDto {
+    /**
+     * Calendar days before the birthday to start the branch; 0 starts on the birthday
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    birthdayDaysBefore?: number;
+    /**
+     * Local birthday branch start time (HH:mm)
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    birthdayTime?: string;
+    /**
+     * IANA time zone for birthday greetings
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    birthdayTimezone?: string;
+    /**
+     * Repeat every year, or start once per lead and birthday entry
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    birthdayRepeat?: AutomationNodeConfigDtoBirthdayRepeatEnum;
+    /**
+     * How to celebrate February 29 in non-leap years
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    birthdayFeb29?: AutomationNodeConfigDtoBirthdayFeb29Enum;
     /**
      * .
      * @type {Array<AutomationPollOptionDto>}
@@ -65,6 +96,30 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     pollConfirmText?: string;
+    /**
+     * decision. Jev 1.13.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiModelId?: string;
+    /**
+     * ai attachments.
+     * @type {Array<AutomationMessageAttachmentDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiAttachments?: Array<AutomationMessageAttachmentDto>;
+    /**
+     * : run, lead, dialog, project.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiAttachmentsVariableScope?: AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum;
+    /**
+     * ai attachments variable name.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    aiAttachmentsVariableName?: string;
     /**
      * .
      * @type {string}
@@ -257,6 +312,42 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     agentDisableAutoAssignment?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorAssignmentMode?: AutomationNodeConfigDtoOperatorAssignmentModeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorGroupId?: string;
+    /**
+     * . .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorUserId?: string;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorExcludePrimaryAgent?: boolean;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorExcludeBackgroundAgent?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorCondition?: AutomationNodeConfigDtoOperatorConditionEnum;
     /**
      * . - .
      * @type {boolean}
@@ -560,6 +651,12 @@ export interface AutomationNodeConfigDto {
      */
     messageAttachments?: Array<AutomationMessageAttachmentDto>;
     /**
+     * : MAX . .
+     * @type {AutomationLeadContactDto}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageLeadContact?: AutomationLeadContactDto;
+    /**
      * Run- , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -626,7 +723,7 @@ export interface AutomationNodeConfigDto {
      */
     messageVkTextButtons?: boolean;
     /**
-     * . , . .
+     * ; . . ; .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
      */
@@ -673,6 +770,12 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     messageWaitForReply?: boolean;
+    /**
+     * . . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    keepReplyAfterChoice?: boolean;
     /**
      * .
      * @type {string}
@@ -881,6 +984,33 @@ export interface AutomationNodeConfigDto {
 /**
  * @export
  */
+export declare const AutomationNodeConfigDtoBirthdayRepeatEnum: {
+    readonly Yearly: "yearly";
+    readonly Once: "once";
+};
+export type AutomationNodeConfigDtoBirthdayRepeatEnum = typeof AutomationNodeConfigDtoBirthdayRepeatEnum[keyof typeof AutomationNodeConfigDtoBirthdayRepeatEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoBirthdayFeb29Enum: {
+    readonly Feb28: "feb28";
+    readonly Mar1: "mar1";
+    readonly LeapYear: "leap_year";
+};
+export type AutomationNodeConfigDtoBirthdayFeb29Enum = typeof AutomationNodeConfigDtoBirthdayFeb29Enum[keyof typeof AutomationNodeConfigDtoBirthdayFeb29Enum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Dialog: "dialog";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = typeof AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum[keyof typeof AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum];
+/**
+ * @export
+ */
 export declare const AutomationNodeConfigDtoEventTypeEnum: {
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
@@ -948,6 +1078,23 @@ export declare const AutomationNodeConfigDtoAgentRoleEnum: {
     readonly Background: "background";
 };
 export type AutomationNodeConfigDtoAgentRoleEnum = typeof AutomationNodeConfigDtoAgentRoleEnum[keyof typeof AutomationNodeConfigDtoAgentRoleEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoOperatorAssignmentModeEnum: {
+    readonly Auto: "auto";
+    readonly Group: "group";
+    readonly Operator: "operator";
+};
+export type AutomationNodeConfigDtoOperatorAssignmentModeEnum = typeof AutomationNodeConfigDtoOperatorAssignmentModeEnum[keyof typeof AutomationNodeConfigDtoOperatorAssignmentModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoOperatorConditionEnum: {
+    readonly Assigned: "assigned";
+    readonly Group: "group";
+};
+export type AutomationNodeConfigDtoOperatorConditionEnum = typeof AutomationNodeConfigDtoOperatorConditionEnum[keyof typeof AutomationNodeConfigDtoOperatorConditionEnum];
 /**
  * @export
  */

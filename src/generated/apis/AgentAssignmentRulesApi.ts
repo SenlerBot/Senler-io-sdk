@@ -64,9 +64,9 @@ export interface AgentAssignmentRulesUpdateRequest {
     acceptLanguage?: AgentAssignmentRulesUpdateAcceptLanguageEnum;
 }
 
-export interface AgentAssignmentRulesUpdateRestoreRequest {
+export interface UpdateRestoreRequest {
     ruleId: string;
-    acceptLanguage?: AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum;
+    acceptLanguage?: UpdateRestoreAcceptLanguageEnum;
 }
 
 /**
@@ -115,6 +115,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
@@ -170,6 +175,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
@@ -220,6 +230,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -276,6 +291,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -339,6 +359,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
@@ -366,11 +391,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async agentAssignmentRulesUpdateRestoreRaw(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
+    async updateRestoreRaw(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAssignmentRuleResponseDto>> {
         if (requestParameters['ruleId'] == null) {
             throw new runtime.RequiredError(
                 'ruleId',
-                'Required parameter "ruleId" was null or undefined when calling agentAssignmentRulesUpdateRestore().'
+                'Required parameter "ruleId" was null or undefined when calling updateRestore().'
             );
         }
 
@@ -392,6 +417,11 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
         }
 
@@ -409,8 +439,8 @@ export class AgentAssignmentRulesApi extends runtime.BaseAPI {
      *
      *
      */
-    async agentAssignmentRulesUpdateRestore(requestParameters: AgentAssignmentRulesUpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
-        const response = await this.agentAssignmentRulesUpdateRestoreRaw(requestParameters, initOverrides);
+    async updateRestore(requestParameters: UpdateRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAssignmentRuleResponseDto> {
+        const response = await this.updateRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -459,8 +489,8 @@ export type AgentAssignmentRulesUpdateAcceptLanguageEnum = typeof AgentAssignmen
 /**
  * @export
  */
-export const AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = {
+export const UpdateRestoreAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
-export type AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum = typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum[keyof typeof AgentAssignmentRulesUpdateRestoreAcceptLanguageEnum];
+export type UpdateRestoreAcceptLanguageEnum = typeof UpdateRestoreAcceptLanguageEnum[keyof typeof UpdateRestoreAcceptLanguageEnum];

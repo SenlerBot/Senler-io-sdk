@@ -79,6 +79,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -121,6 +125,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -169,6 +177,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -210,6 +222,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_delete_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_delete_channels"]);
         }
         const response = await this.request({
@@ -229,7 +245,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . GET /api/channels/:id/widget-code
+     * . HMAC GET /api/channels/:id/widget-code can_manage_channel.
      * ID
      */
     async channelsGetByIdRaw(requestParameters, initOverrides) {
@@ -250,6 +266,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -261,7 +281,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChannelUserResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . GET /api/channels/:id/widget-code
+     * . HMAC GET /api/channels/:id/widget-code can_manage_channel.
      * ID
      */
     async channelsGetById(requestParameters, initOverrides) {
@@ -293,6 +313,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -340,6 +364,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -378,6 +406,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -424,6 +456,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -461,6 +497,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -504,6 +544,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -541,6 +585,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -584,6 +632,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -603,7 +655,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * HTML iframe URL widget . type: widget.  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
+     * HTML iframe URL widget . type: widget. can_manage_channel: .  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
      *
      */
     async getWidgetCodeRaw(requestParameters, initOverrides) {
@@ -627,6 +679,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -638,7 +694,7 @@ class ChannelsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetCodeResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * HTML iframe URL widget . type: widget.  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
+     * HTML iframe URL widget . type: widget. can_manage_channel: .  **identity_verification=true:** - user_hash (HMAC-SHA256 external_id) - - 6 (Node.js, Python, PHP, Ruby, Go, C#) - external_id  **identity_verification=false:** - - external_id  query- `identity_verification` , .
      *
      */
     async getWidgetCode(requestParameters, initOverrides) {
@@ -664,6 +720,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -711,6 +771,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -749,6 +813,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -796,6 +864,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_delete_channels", "can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_delete_channels", "can_manage_channels"]);
         }
         const response = await this.request({
@@ -834,6 +906,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -877,6 +953,10 @@ class ChannelsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
         }
         const response = await this.request({
@@ -914,6 +994,10 @@ class ChannelsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required

@@ -19,17 +19,18 @@ exports.ChannelResponseDtoFromJSON = ChannelResponseDtoFromJSON;
 exports.ChannelResponseDtoFromJSONTyped = ChannelResponseDtoFromJSONTyped;
 exports.ChannelResponseDtoToJSON = ChannelResponseDtoToJSON;
 exports.ChannelResponseDtoToJSONTyped = ChannelResponseDtoToJSONTyped;
-const DiscordChannelDataDto_1 = require("./DiscordChannelDataDto");
 const WidgetChannelDataDto_1 = require("./WidgetChannelDataDto");
-const TelegramChannelDataDto_1 = require("./TelegramChannelDataDto");
 const MAXChannelDataDto_1 = require("./MAXChannelDataDto");
-const StreamViChannelDataDto_1 = require("./StreamViChannelDataDto");
-const ChannelMigrationBackfillDto_1 = require("./ChannelMigrationBackfillDto");
 const VKChannelDataDto_1 = require("./VKChannelDataDto");
 const ChannelAccessDto_1 = require("./ChannelAccessDto");
-const ChannelMigrationStatusDto_1 = require("./ChannelMigrationStatusDto");
 const SenlerStatusDto_1 = require("./SenlerStatusDto");
 const AvitoChannelDataDto_1 = require("./AvitoChannelDataDto");
+const DiscordChannelDataDto_1 = require("./DiscordChannelDataDto");
+const TelegramChannelDataDto_1 = require("./TelegramChannelDataDto");
+const StreamViChannelDataDto_1 = require("./StreamViChannelDataDto");
+const ChannelMigrationBackfillDto_1 = require("./ChannelMigrationBackfillDto");
+const ChannelConnectionIssueDto_1 = require("./ChannelConnectionIssueDto");
+const ChannelMigrationStatusDto_1 = require("./ChannelMigrationStatusDto");
 const EmailChannelDataDto_1 = require("./EmailChannelDataDto");
 /**
  * @export
@@ -69,6 +70,7 @@ function ChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
+        'connectionIssues': json['connection_issues'] == null ? undefined : (json['connection_issues'].map(ChannelConnectionIssueDto_1.ChannelConnectionIssueDtoFromJSON)),
         'publicId': json['public_id'],
         'senlerChannelId': json['senler_channel_id'] == null ? undefined : json['senler_channel_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -76,7 +78,6 @@ function ChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'isPaused': json['is_paused'],
-        'webhookSecret': json['webhook_secret'] == null ? undefined : json['webhook_secret'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -109,6 +110,7 @@ function ChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
+        'connection_issues': value['connectionIssues'] == null ? undefined : (value['connectionIssues'].map(ChannelConnectionIssueDto_1.ChannelConnectionIssueDtoToJSON)),
         'public_id': value['publicId'],
         'senler_channel_id': value['senlerChannelId'],
         'name': value['name'],
@@ -116,7 +118,6 @@ function ChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'external_id': value['externalId'],
         'avatar_url': value['avatarUrl'],
         'is_paused': value['isPaused'],
-        'webhook_secret': value['webhookSecret'],
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

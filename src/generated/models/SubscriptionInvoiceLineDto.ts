@@ -56,11 +56,17 @@ export interface SubscriptionInvoiceLineDto {
      */
     amount: number;
     /**
-     * , (/); : 1.25 = 125
+     * , , (/); : 1.25 = 125
      * @type {number}
      * @memberof SubscriptionInvoiceLineDto
      */
     grossAmount: number;
+    /**
+     * . = gross_amount + promo_discount_amount., (/); : 1.25 = 125
+     * @type {number}
+     * @memberof SubscriptionInvoiceLineDto
+     */
+    promoDiscountAmount?: number;
     /**
      * , (/); : 1.25 = 125
      * @type {number}
@@ -203,6 +209,7 @@ export function SubscriptionInvoiceLineDtoFromJSONTyped(json: any, ignoreDiscrim
         'nameEn': json['name_en'],
         'amount': json['amount'],
         'grossAmount': json['gross_amount'],
+        'promoDiscountAmount': json['promo_discount_amount'] == null ? undefined : json['promo_discount_amount'],
         'creditAmount': json['credit_amount'],
         'externalAmount': json['external_amount'],
         'refundedAmount': json['refunded_amount'],
@@ -234,6 +241,7 @@ export function SubscriptionInvoiceLineDtoToJSONTyped(value?: SubscriptionInvoic
         'name_en': value['nameEn'],
         'amount': value['amount'],
         'gross_amount': value['grossAmount'],
+        'promo_discount_amount': value['promoDiscountAmount'],
         'credit_amount': value['creditAmount'],
         'external_amount': value['externalAmount'],
         'refunded_amount': value['refundedAmount'],

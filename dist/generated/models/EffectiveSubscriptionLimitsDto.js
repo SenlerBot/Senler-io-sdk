@@ -28,6 +28,8 @@ function instanceOfEffectiveSubscriptionLimitsDto(value) {
         return false;
     if (!('mailingMessagesPerDay' in value) || value['mailingMessagesPerDay'] === undefined)
         return false;
+    if (!('apiRequestsPerDay' in value) || value['apiRequestsPerDay'] === undefined)
+        return false;
     if (!('storageLimitBytes' in value) || value['storageLimitBytes'] === undefined)
         return false;
     return true;
@@ -43,6 +45,7 @@ function EffectiveSubscriptionLimitsDtoFromJSONTyped(json, ignoreDiscriminator) 
         'creditsPerMonth': json['credits_per_month'],
         'automationStepsPerSecond': json['automation_steps_per_second'],
         'mailingMessagesPerDay': json['mailing_messages_per_day'],
+        'apiRequestsPerDay': json['api_requests_per_day'],
         'storageLimitBytes': json['storage_limit_bytes'],
     };
 }
@@ -57,6 +60,7 @@ function EffectiveSubscriptionLimitsDtoToJSONTyped(value, ignoreDiscriminator = 
         'credits_per_month': value['creditsPerMonth'],
         'automation_steps_per_second': value['automationStepsPerSecond'],
         'mailing_messages_per_day': value['mailingMessagesPerDay'],
+        'api_requests_per_day': value['apiRequestsPerDay'],
         'storage_limit_bytes': value['storageLimitBytes'],
     };
 }

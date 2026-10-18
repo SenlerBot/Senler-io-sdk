@@ -267,6 +267,12 @@ export interface DialogListItemDto {
      */
     isTest: boolean;
     /**
+     * ID , ,
+     * @type {string}
+     * @memberof DialogListItemDto
+     */
+    readonly testAgentId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof DialogListItemDto
@@ -501,4 +507,4 @@ export declare function instanceOfDialogListItemDto(value: object): value is Dia
 export declare function DialogListItemDtoFromJSON(json: any): DialogListItemDto;
 export declare function DialogListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): DialogListItemDto;
 export declare function DialogListItemDtoToJSON(json: any): DialogListItemDto;
-export declare function DialogListItemDtoToJSONTyped(value?: DialogListItemDto | null, ignoreDiscriminator?: boolean): any;
+export declare function DialogListItemDtoToJSONTyped(value?: Omit<DialogListItemDto, 'test_agent_id'> | null, ignoreDiscriminator?: boolean): any;

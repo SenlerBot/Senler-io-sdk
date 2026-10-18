@@ -15,25 +15,55 @@
 
 import * as runtime from '../runtime';
 import type {
+  AppendTypedKnowledgeTableRowsDto,
+  ClearKnowledgeTableRangeDto,
+  CopyKnowledgeTableRangeDto,
   CreateKnowledgeFileDto,
   CreateKnowledgeFolderDto,
   CreateKnowledgeTableDto,
   ErrorResponse,
+  FormatKnowledgeTableRangeDto,
   ImportProjectKnowledgeImageDto,
+  InsertKnowledgeTableColumnsDto,
+  InsertKnowledgeTableRowsDto,
   KnowledgeArchiveImportOperationResponseDto,
   KnowledgeFileResponseDto,
   KnowledgeFolderResponseDto,
   KnowledgeImageRecognitionEstimateResponseDto,
   KnowledgeImageRecognitionRunResponseDto,
   KnowledgeResourcesResponseDto,
+  KnowledgeTableMutationResponseDto,
+  KnowledgeTableRangeResponseDto,
   KnowledgeTableResponseDto,
+  KnowledgeTableRowsResponseDto,
+  KnowledgeTableSchemaResponseDto,
+  KnowledgeTableSheetSessionResponseDto,
+  MergeKnowledgeTableCellsDto,
+  MoveKnowledgeTableColumnsDto,
+  MoveKnowledgeTableRangeDto,
+  MoveKnowledgeTableRowsDto,
   PaginatedKnowledgeBaseSearchResponseDto,
+  QueryKnowledgeTableRowsDto,
+  ResizeKnowledgeTableColumnsDto,
+  ResizeKnowledgeTableRowsDto,
   ResolveKnowledgeArchiveImportConflictDto,
+  SetKnowledgeTableColumnsVisibilityDto,
+  SetKnowledgeTableRangeBordersDto,
+  SetKnowledgeTableRowsVisibilityDto,
+  UnmergeKnowledgeTableCellsDto,
   UpdateKnowledgeFileDto,
   UpdateKnowledgeFolderDto,
   UpdateKnowledgeTableDto,
+  UpdateTypedKnowledgeTableCellsDto,
+  WriteTypedKnowledgeTableRangeDto,
 } from '../models/index';
 import {
+    AppendTypedKnowledgeTableRowsDtoFromJSON,
+    AppendTypedKnowledgeTableRowsDtoToJSON,
+    ClearKnowledgeTableRangeDtoFromJSON,
+    ClearKnowledgeTableRangeDtoToJSON,
+    CopyKnowledgeTableRangeDtoFromJSON,
+    CopyKnowledgeTableRangeDtoToJSON,
     CreateKnowledgeFileDtoFromJSON,
     CreateKnowledgeFileDtoToJSON,
     CreateKnowledgeFolderDtoFromJSON,
@@ -42,8 +72,14 @@ import {
     CreateKnowledgeTableDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    FormatKnowledgeTableRangeDtoFromJSON,
+    FormatKnowledgeTableRangeDtoToJSON,
     ImportProjectKnowledgeImageDtoFromJSON,
     ImportProjectKnowledgeImageDtoToJSON,
+    InsertKnowledgeTableColumnsDtoFromJSON,
+    InsertKnowledgeTableColumnsDtoToJSON,
+    InsertKnowledgeTableRowsDtoFromJSON,
+    InsertKnowledgeTableRowsDtoToJSON,
     KnowledgeArchiveImportOperationResponseDtoFromJSON,
     KnowledgeArchiveImportOperationResponseDtoToJSON,
     KnowledgeFileResponseDtoFromJSON,
@@ -56,18 +92,54 @@ import {
     KnowledgeImageRecognitionRunResponseDtoToJSON,
     KnowledgeResourcesResponseDtoFromJSON,
     KnowledgeResourcesResponseDtoToJSON,
+    KnowledgeTableMutationResponseDtoFromJSON,
+    KnowledgeTableMutationResponseDtoToJSON,
+    KnowledgeTableRangeResponseDtoFromJSON,
+    KnowledgeTableRangeResponseDtoToJSON,
     KnowledgeTableResponseDtoFromJSON,
     KnowledgeTableResponseDtoToJSON,
+    KnowledgeTableRowsResponseDtoFromJSON,
+    KnowledgeTableRowsResponseDtoToJSON,
+    KnowledgeTableSchemaResponseDtoFromJSON,
+    KnowledgeTableSchemaResponseDtoToJSON,
+    KnowledgeTableSheetSessionResponseDtoFromJSON,
+    KnowledgeTableSheetSessionResponseDtoToJSON,
+    MergeKnowledgeTableCellsDtoFromJSON,
+    MergeKnowledgeTableCellsDtoToJSON,
+    MoveKnowledgeTableColumnsDtoFromJSON,
+    MoveKnowledgeTableColumnsDtoToJSON,
+    MoveKnowledgeTableRangeDtoFromJSON,
+    MoveKnowledgeTableRangeDtoToJSON,
+    MoveKnowledgeTableRowsDtoFromJSON,
+    MoveKnowledgeTableRowsDtoToJSON,
     PaginatedKnowledgeBaseSearchResponseDtoFromJSON,
     PaginatedKnowledgeBaseSearchResponseDtoToJSON,
+    QueryKnowledgeTableRowsDtoFromJSON,
+    QueryKnowledgeTableRowsDtoToJSON,
+    ResizeKnowledgeTableColumnsDtoFromJSON,
+    ResizeKnowledgeTableColumnsDtoToJSON,
+    ResizeKnowledgeTableRowsDtoFromJSON,
+    ResizeKnowledgeTableRowsDtoToJSON,
     ResolveKnowledgeArchiveImportConflictDtoFromJSON,
     ResolveKnowledgeArchiveImportConflictDtoToJSON,
+    SetKnowledgeTableColumnsVisibilityDtoFromJSON,
+    SetKnowledgeTableColumnsVisibilityDtoToJSON,
+    SetKnowledgeTableRangeBordersDtoFromJSON,
+    SetKnowledgeTableRangeBordersDtoToJSON,
+    SetKnowledgeTableRowsVisibilityDtoFromJSON,
+    SetKnowledgeTableRowsVisibilityDtoToJSON,
+    UnmergeKnowledgeTableCellsDtoFromJSON,
+    UnmergeKnowledgeTableCellsDtoToJSON,
     UpdateKnowledgeFileDtoFromJSON,
     UpdateKnowledgeFileDtoToJSON,
     UpdateKnowledgeFolderDtoFromJSON,
     UpdateKnowledgeFolderDtoToJSON,
     UpdateKnowledgeTableDtoFromJSON,
     UpdateKnowledgeTableDtoToJSON,
+    UpdateTypedKnowledgeTableCellsDtoFromJSON,
+    UpdateTypedKnowledgeTableCellsDtoToJSON,
+    WriteTypedKnowledgeTableRangeDtoFromJSON,
+    WriteTypedKnowledgeTableRangeDtoToJSON,
 } from '../models/index';
 
 export interface ArchiveImportsRequest {
@@ -97,6 +169,24 @@ export interface DeleteFoldersRequest {
 export interface DeleteTablesRequest {
     id: string;
     acceptLanguage?: DeleteTablesAcceptLanguageEnum;
+}
+
+export interface DeleteTablesColumnsRequest {
+    id: string;
+    startColumn: string;
+    count: number;
+    sheetId?: string;
+    dryRun?: boolean;
+    acceptLanguage?: DeleteTablesColumnsAcceptLanguageEnum;
+}
+
+export interface DeleteTablesRowsRequest {
+    id: string;
+    startRow: number;
+    count: number;
+    sheetId?: string;
+    dryRun?: boolean;
+    acceptLanguage?: DeleteTablesRowsAcceptLanguageEnum;
 }
 
 export interface FilesRequest {
@@ -198,6 +288,20 @@ export interface GetTablesRequest {
     acceptLanguage?: GetTablesAcceptLanguageEnum;
 }
 
+export interface GetTablesRangeRequest {
+    id: string;
+    range: string;
+    sheetId?: string;
+    valueMode?: GetTablesRangeValueModeEnum;
+    expandMergedCells?: boolean;
+    acceptLanguage?: GetTablesRangeAcceptLanguageEnum;
+}
+
+export interface GetTablesSchemaRequest {
+    id: string;
+    acceptLanguage?: GetTablesSchemaAcceptLanguageEnum;
+}
+
 export interface KnowledgeBaseDeleteFilesRequest {
     id: string;
     acceptLanguage?: KnowledgeBaseDeleteFilesAcceptLanguageEnum;
@@ -211,6 +315,78 @@ export interface KnowledgeBaseGetFilesRequest {
 export interface TablesRequest {
     createKnowledgeTableDto: CreateKnowledgeTableDto;
     acceptLanguage?: TablesAcceptLanguageEnum;
+}
+
+export interface TablesColumnsInsertRequest {
+    id: string;
+    insertKnowledgeTableColumnsDto: InsertKnowledgeTableColumnsDto;
+    acceptLanguage?: TablesColumnsInsertAcceptLanguageEnum;
+}
+
+export interface TablesColumnsMoveRequest {
+    id: string;
+    moveKnowledgeTableColumnsDto: MoveKnowledgeTableColumnsDto;
+    acceptLanguage?: TablesColumnsMoveAcceptLanguageEnum;
+}
+
+export interface TablesRangeClearRequest {
+    id: string;
+    clearKnowledgeTableRangeDto: ClearKnowledgeTableRangeDto;
+    acceptLanguage?: TablesRangeClearAcceptLanguageEnum;
+}
+
+export interface TablesRangeCopyRequest {
+    id: string;
+    copyKnowledgeTableRangeDto: CopyKnowledgeTableRangeDto;
+    acceptLanguage?: TablesRangeCopyAcceptLanguageEnum;
+}
+
+export interface TablesRangeMergeRequest {
+    id: string;
+    mergeKnowledgeTableCellsDto: MergeKnowledgeTableCellsDto;
+    acceptLanguage?: TablesRangeMergeAcceptLanguageEnum;
+}
+
+export interface TablesRangeMoveRequest {
+    id: string;
+    moveKnowledgeTableRangeDto: MoveKnowledgeTableRangeDto;
+    acceptLanguage?: TablesRangeMoveAcceptLanguageEnum;
+}
+
+export interface TablesRangeUnmergeRequest {
+    id: string;
+    unmergeKnowledgeTableCellsDto: UnmergeKnowledgeTableCellsDto;
+    acceptLanguage?: TablesRangeUnmergeAcceptLanguageEnum;
+}
+
+export interface TablesRowsRequest {
+    id: string;
+    appendTypedKnowledgeTableRowsDto: AppendTypedKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsAcceptLanguageEnum;
+}
+
+export interface TablesRowsInsertRequest {
+    id: string;
+    insertKnowledgeTableRowsDto: InsertKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsInsertAcceptLanguageEnum;
+}
+
+export interface TablesRowsMoveRequest {
+    id: string;
+    moveKnowledgeTableRowsDto: MoveKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsMoveAcceptLanguageEnum;
+}
+
+export interface TablesRowsQueryRequest {
+    id: string;
+    queryKnowledgeTableRowsDto: QueryKnowledgeTableRowsDto;
+    acceptLanguage?: TablesRowsQueryAcceptLanguageEnum;
+}
+
+export interface TablesSheetSessionRequest {
+    id: string;
+    clientId?: string;
+    acceptLanguage?: TablesSheetSessionAcceptLanguageEnum;
 }
 
 export interface TablesUploadRequest {
@@ -245,6 +421,54 @@ export interface UpdateTablesRequest {
     id: string;
     updateKnowledgeTableDto: UpdateKnowledgeTableDto;
     acceptLanguage?: UpdateTablesAcceptLanguageEnum;
+}
+
+export interface UpdateTablesCellsRequest {
+    id: string;
+    updateTypedKnowledgeTableCellsDto: UpdateTypedKnowledgeTableCellsDto;
+    acceptLanguage?: UpdateTablesCellsAcceptLanguageEnum;
+}
+
+export interface UpdateTablesColumnsResizeRequest {
+    id: string;
+    resizeKnowledgeTableColumnsDto: ResizeKnowledgeTableColumnsDto;
+    acceptLanguage?: UpdateTablesColumnsResizeAcceptLanguageEnum;
+}
+
+export interface UpdateTablesColumnsVisibilityRequest {
+    id: string;
+    setKnowledgeTableColumnsVisibilityDto: SetKnowledgeTableColumnsVisibilityDto;
+    acceptLanguage?: UpdateTablesColumnsVisibilityAcceptLanguageEnum;
+}
+
+export interface UpdateTablesRangeRequest {
+    id: string;
+    writeTypedKnowledgeTableRangeDto: WriteTypedKnowledgeTableRangeDto;
+    acceptLanguage?: UpdateTablesRangeAcceptLanguageEnum;
+}
+
+export interface UpdateTablesRangeBordersRequest {
+    id: string;
+    setKnowledgeTableRangeBordersDto: SetKnowledgeTableRangeBordersDto;
+    acceptLanguage?: UpdateTablesRangeBordersAcceptLanguageEnum;
+}
+
+export interface UpdateTablesRangeFormatRequest {
+    id: string;
+    formatKnowledgeTableRangeDto: FormatKnowledgeTableRangeDto;
+    acceptLanguage?: UpdateTablesRangeFormatAcceptLanguageEnum;
+}
+
+export interface UpdateTablesRowsResizeRequest {
+    id: string;
+    resizeKnowledgeTableRowsDto: ResizeKnowledgeTableRowsDto;
+    acceptLanguage?: UpdateTablesRowsResizeAcceptLanguageEnum;
+}
+
+export interface UpdateTablesRowsVisibilityRequest {
+    id: string;
+    setKnowledgeTableRowsVisibilityDto: SetKnowledgeTableRowsVisibilityDto;
+    acceptLanguage?: UpdateTablesRowsVisibilityAcceptLanguageEnum;
 }
 
 /**
@@ -309,6 +533,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -419,6 +648,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -468,6 +702,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -521,6 +760,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -540,6 +784,180 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async deleteTables(requestParameters: DeleteTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteTablesRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * .
+     *
+     */
+    async deleteTablesColumnsRaw(requestParameters: DeleteTablesColumnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deleteTablesColumns().'
+            );
+        }
+
+        if (requestParameters['startColumn'] == null) {
+            throw new runtime.RequiredError(
+                'startColumn',
+                'Required parameter "startColumn" was null or undefined when calling deleteTablesColumns().'
+            );
+        }
+
+        if (requestParameters['count'] == null) {
+            throw new runtime.RequiredError(
+                'count',
+                'Required parameter "count" was null or undefined when calling deleteTablesColumns().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['sheetId'] != null) {
+            queryParameters['sheet_id'] = requestParameters['sheetId'];
+        }
+
+        if (requestParameters['dryRun'] != null) {
+            queryParameters['dry_run'] = requestParameters['dryRun'];
+        }
+
+        if (requestParameters['startColumn'] != null) {
+            queryParameters['start_column'] = requestParameters['startColumn'];
+        }
+
+        if (requestParameters['count'] != null) {
+            queryParameters['count'] = requestParameters['count'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/columns`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async deleteTablesColumns(requestParameters: DeleteTablesColumnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.deleteTablesColumnsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * sheet changeset. start_row 1-based .
+     *
+     */
+    async deleteTablesRowsRaw(requestParameters: DeleteTablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deleteTablesRows().'
+            );
+        }
+
+        if (requestParameters['startRow'] == null) {
+            throw new runtime.RequiredError(
+                'startRow',
+                'Required parameter "startRow" was null or undefined when calling deleteTablesRows().'
+            );
+        }
+
+        if (requestParameters['count'] == null) {
+            throw new runtime.RequiredError(
+                'count',
+                'Required parameter "count" was null or undefined when calling deleteTablesRows().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['sheetId'] != null) {
+            queryParameters['sheet_id'] = requestParameters['sheetId'];
+        }
+
+        if (requestParameters['startRow'] != null) {
+            queryParameters['start_row'] = requestParameters['startRow'];
+        }
+
+        if (requestParameters['count'] != null) {
+            queryParameters['count'] = requestParameters['count'];
+        }
+
+        if (requestParameters['dryRun'] != null) {
+            queryParameters['dry_run'] = requestParameters['dryRun'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * sheet changeset. start_row 1-based .
+     *
+     */
+    async deleteTablesRows(requestParameters: DeleteTablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.deleteTablesRowsRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -572,6 +990,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -627,6 +1050,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -687,6 +1115,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -775,6 +1208,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -872,6 +1310,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -944,6 +1387,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1009,6 +1457,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1119,6 +1572,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1184,6 +1642,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1253,6 +1716,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1311,6 +1779,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1379,6 +1852,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1468,6 +1946,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1520,6 +2003,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -1539,6 +2027,143 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async getTables(requestParameters: GetTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.getTablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A1 notation, A1:D20. .
+     *
+     */
+    async getTablesRangeRaw(requestParameters: GetTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableRangeResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getTablesRange().'
+            );
+        }
+
+        if (requestParameters['range'] == null) {
+            throw new runtime.RequiredError(
+                'range',
+                'Required parameter "range" was null or undefined when calling getTablesRange().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['range'] != null) {
+            queryParameters['range'] = requestParameters['range'];
+        }
+
+        if (requestParameters['sheetId'] != null) {
+            queryParameters['sheet_id'] = requestParameters['sheetId'];
+        }
+
+        if (requestParameters['valueMode'] != null) {
+            queryParameters['value_mode'] = requestParameters['valueMode'];
+        }
+
+        if (requestParameters['expandMergedCells'] != null) {
+            queryParameters['expand_merged_cells'] = requestParameters['expandMergedCells'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableRangeResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * A1 notation, A1:D20. .
+     *
+     */
+    async getTablesRange(requestParameters: GetTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableRangeResponseDto> {
+        const response = await this.getTablesRangeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . .
+     * workbook
+     */
+    async getTablesSchemaRaw(requestParameters: GetTablesSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableSchemaResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getTablesSchema().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/schema`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableSchemaResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     * workbook
+     */
+    async getTablesSchema(requestParameters: GetTablesSchemaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableSchemaResponseDto> {
+        const response = await this.getTablesSchemaRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1570,6 +2195,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -1621,6 +2251,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
@@ -1677,6 +2312,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -1697,6 +2337,804 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async tables(requestParameters: TablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.tablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesColumnsInsertRaw(requestParameters: TablesColumnsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesColumnsInsert().'
+            );
+        }
+
+        if (requestParameters['insertKnowledgeTableColumnsDto'] == null) {
+            throw new runtime.RequiredError(
+                'insertKnowledgeTableColumnsDto',
+                'Required parameter "insertKnowledgeTableColumnsDto" was null or undefined when calling tablesColumnsInsert().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/columns/insert`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: InsertKnowledgeTableColumnsDtoToJSON(requestParameters['insertKnowledgeTableColumnsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesColumnsInsert(requestParameters: TablesColumnsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesColumnsInsertRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesColumnsMoveRaw(requestParameters: TablesColumnsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesColumnsMove().'
+            );
+        }
+
+        if (requestParameters['moveKnowledgeTableColumnsDto'] == null) {
+            throw new runtime.RequiredError(
+                'moveKnowledgeTableColumnsDto',
+                'Required parameter "moveKnowledgeTableColumnsDto" was null or undefined when calling tablesColumnsMove().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/columns/move`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MoveKnowledgeTableColumnsDtoToJSON(requestParameters['moveKnowledgeTableColumnsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesColumnsMove(requestParameters: TablesColumnsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesColumnsMoveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeClearRaw(requestParameters: TablesRangeClearRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRangeClear().'
+            );
+        }
+
+        if (requestParameters['clearKnowledgeTableRangeDto'] == null) {
+            throw new runtime.RequiredError(
+                'clearKnowledgeTableRangeDto',
+                'Required parameter "clearKnowledgeTableRangeDto" was null or undefined when calling tablesRangeClear().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/clear`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ClearKnowledgeTableRangeDtoToJSON(requestParameters['clearKnowledgeTableRangeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeClear(requestParameters: TablesRangeClearRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRangeClearRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeCopyRaw(requestParameters: TablesRangeCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRangeCopy().'
+            );
+        }
+
+        if (requestParameters['copyKnowledgeTableRangeDto'] == null) {
+            throw new runtime.RequiredError(
+                'copyKnowledgeTableRangeDto',
+                'Required parameter "copyKnowledgeTableRangeDto" was null or undefined when calling tablesRangeCopy().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/copy`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CopyKnowledgeTableRangeDtoToJSON(requestParameters['copyKnowledgeTableRangeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeCopy(requestParameters: TablesRangeCopyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRangeCopyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeMergeRaw(requestParameters: TablesRangeMergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRangeMerge().'
+            );
+        }
+
+        if (requestParameters['mergeKnowledgeTableCellsDto'] == null) {
+            throw new runtime.RequiredError(
+                'mergeKnowledgeTableCellsDto',
+                'Required parameter "mergeKnowledgeTableCellsDto" was null or undefined when calling tablesRangeMerge().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/merge`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MergeKnowledgeTableCellsDtoToJSON(requestParameters['mergeKnowledgeTableCellsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeMerge(requestParameters: TablesRangeMergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRangeMergeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeMoveRaw(requestParameters: TablesRangeMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRangeMove().'
+            );
+        }
+
+        if (requestParameters['moveKnowledgeTableRangeDto'] == null) {
+            throw new runtime.RequiredError(
+                'moveKnowledgeTableRangeDto',
+                'Required parameter "moveKnowledgeTableRangeDto" was null or undefined when calling tablesRangeMove().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/move`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MoveKnowledgeTableRangeDtoToJSON(requestParameters['moveKnowledgeTableRangeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeMove(requestParameters: TablesRangeMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRangeMoveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeUnmergeRaw(requestParameters: TablesRangeUnmergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRangeUnmerge().'
+            );
+        }
+
+        if (requestParameters['unmergeKnowledgeTableCellsDto'] == null) {
+            throw new runtime.RequiredError(
+                'unmergeKnowledgeTableCellsDto',
+                'Required parameter "unmergeKnowledgeTableCellsDto" was null or undefined when calling tablesRangeUnmerge().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/unmerge`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UnmergeKnowledgeTableCellsDtoToJSON(requestParameters['unmergeKnowledgeTableCellsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRangeUnmerge(requestParameters: TablesRangeUnmergeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRangeUnmergeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . row_index column_index 0 ; . JSON API MCP .
+     *
+     */
+    async tablesRowsRaw(requestParameters: TablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRows().'
+            );
+        }
+
+        if (requestParameters['appendTypedKnowledgeTableRowsDto'] == null) {
+            throw new runtime.RequiredError(
+                'appendTypedKnowledgeTableRowsDto',
+                'Required parameter "appendTypedKnowledgeTableRowsDto" was null or undefined when calling tablesRows().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AppendTypedKnowledgeTableRowsDtoToJSON(requestParameters['appendTypedKnowledgeTableRowsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . row_index column_index 0 ; . JSON API MCP .
+     *
+     */
+    async tablesRows(requestParameters: TablesRowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRowsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRowsInsertRaw(requestParameters: TablesRowsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRowsInsert().'
+            );
+        }
+
+        if (requestParameters['insertKnowledgeTableRowsDto'] == null) {
+            throw new runtime.RequiredError(
+                'insertKnowledgeTableRowsDto',
+                'Required parameter "insertKnowledgeTableRowsDto" was null or undefined when calling tablesRowsInsert().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows/insert`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: InsertKnowledgeTableRowsDtoToJSON(requestParameters['insertKnowledgeTableRowsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRowsInsert(requestParameters: TablesRowsInsertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRowsInsertRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRowsMoveRaw(requestParameters: TablesRowsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRowsMove().'
+            );
+        }
+
+        if (requestParameters['moveKnowledgeTableRowsDto'] == null) {
+            throw new runtime.RequiredError(
+                'moveKnowledgeTableRowsDto',
+                'Required parameter "moveKnowledgeTableRowsDto" was null or undefined when calling tablesRowsMove().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows/move`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MoveKnowledgeTableRowsDtoToJSON(requestParameters['moveKnowledgeTableRowsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesRowsMove(requestParameters: TablesRowsMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.tablesRowsMoveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . equals/contains, , limit offset.
+     *
+     */
+    async tablesRowsQueryRaw(requestParameters: TablesRowsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableRowsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesRowsQuery().'
+            );
+        }
+
+        if (requestParameters['queryKnowledgeTableRowsDto'] == null) {
+            throw new runtime.RequiredError(
+                'queryKnowledgeTableRowsDto',
+                'Required parameter "queryKnowledgeTableRowsDto" was null or undefined when calling tablesRowsQuery().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows/query`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: QueryKnowledgeTableRowsDtoToJSON(requestParameters['queryKnowledgeTableRowsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableRowsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . equals/contains, , limit offset.
+     *
+     */
+    async tablesRowsQuery(requestParameters: TablesRowsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableRowsResponseDto> {
+        const response = await this.tablesRowsQueryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesSheetSessionRaw(requestParameters: TablesSheetSessionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableSheetSessionResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling tablesSheetSession().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['clientId'] != null) {
+            queryParameters['client_id'] = requestParameters['clientId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/sheet-session`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableSheetSessionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async tablesSheetSession(requestParameters: TablesSheetSessionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableSheetSessionResponseDto> {
+        const response = await this.tablesSheetSessionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1735,6 +3173,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -1846,6 +3289,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -1906,6 +3354,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
@@ -1970,6 +3423,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -2032,6 +3490,11 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
         }
 
@@ -2052,6 +3515,542 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      */
     async updateTables(requestParameters: UpdateTablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableResponseDto> {
         const response = await this.updateTablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * JSON-.
+     * text/number/boolean/formula/empty
+     */
+    async updateTablesCellsRaw(requestParameters: UpdateTablesCellsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesCells().'
+            );
+        }
+
+        if (requestParameters['updateTypedKnowledgeTableCellsDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateTypedKnowledgeTableCellsDto',
+                'Required parameter "updateTypedKnowledgeTableCellsDto" was null or undefined when calling updateTablesCells().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/cells`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateTypedKnowledgeTableCellsDtoToJSON(requestParameters['updateTypedKnowledgeTableCellsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * JSON-.
+     * text/number/boolean/formula/empty
+     */
+    async updateTablesCells(requestParameters: UpdateTablesCellsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesCellsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesColumnsResizeRaw(requestParameters: UpdateTablesColumnsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesColumnsResize().'
+            );
+        }
+
+        if (requestParameters['resizeKnowledgeTableColumnsDto'] == null) {
+            throw new runtime.RequiredError(
+                'resizeKnowledgeTableColumnsDto',
+                'Required parameter "resizeKnowledgeTableColumnsDto" was null or undefined when calling updateTablesColumnsResize().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/columns/resize`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ResizeKnowledgeTableColumnsDtoToJSON(requestParameters['resizeKnowledgeTableColumnsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesColumnsResize(requestParameters: UpdateTablesColumnsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesColumnsResizeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesColumnsVisibilityRaw(requestParameters: UpdateTablesColumnsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesColumnsVisibility().'
+            );
+        }
+
+        if (requestParameters['setKnowledgeTableColumnsVisibilityDto'] == null) {
+            throw new runtime.RequiredError(
+                'setKnowledgeTableColumnsVisibilityDto',
+                'Required parameter "setKnowledgeTableColumnsVisibilityDto" was null or undefined when calling updateTablesColumnsVisibility().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/columns/visibility`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetKnowledgeTableColumnsVisibilityDtoToJSON(requestParameters['setKnowledgeTableColumnsVisibilityDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesColumnsVisibility(requestParameters: UpdateTablesColumnsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesColumnsVisibilityRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * start_cell. row_index column_index 0 ; . , upsert -.
+     *
+     */
+    async updateTablesRangeRaw(requestParameters: UpdateTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesRange().'
+            );
+        }
+
+        if (requestParameters['writeTypedKnowledgeTableRangeDto'] == null) {
+            throw new runtime.RequiredError(
+                'writeTypedKnowledgeTableRangeDto',
+                'Required parameter "writeTypedKnowledgeTableRangeDto" was null or undefined when calling updateTablesRange().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: WriteTypedKnowledgeTableRangeDtoToJSON(requestParameters['writeTypedKnowledgeTableRangeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * start_cell. row_index column_index 0 ; . , upsert -.
+     *
+     */
+    async updateTablesRange(requestParameters: UpdateTablesRangeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesRangeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , , , outline, border, borders, spreadsheet grid / . scope=all , outer , inner .
+     *
+     */
+    async updateTablesRangeBordersRaw(requestParameters: UpdateTablesRangeBordersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesRangeBorders().'
+            );
+        }
+
+        if (requestParameters['setKnowledgeTableRangeBordersDto'] == null) {
+            throw new runtime.RequiredError(
+                'setKnowledgeTableRangeBordersDto',
+                'Required parameter "setKnowledgeTableRangeBordersDto" was null or undefined when calling updateTablesRangeBorders().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/borders`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetKnowledgeTableRangeBordersDtoToJSON(requestParameters['setKnowledgeTableRangeBordersDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , , , outline, border, borders, spreadsheet grid / . scope=all , outer , inner .
+     *
+     */
+    async updateTablesRangeBorders(requestParameters: UpdateTablesRangeBordersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesRangeBordersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , , . , wrap text wrap_text.
+     *
+     */
+    async updateTablesRangeFormatRaw(requestParameters: UpdateTablesRangeFormatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesRangeFormat().'
+            );
+        }
+
+        if (requestParameters['formatKnowledgeTableRangeDto'] == null) {
+            throw new runtime.RequiredError(
+                'formatKnowledgeTableRangeDto',
+                'Required parameter "formatKnowledgeTableRangeDto" was null or undefined when calling updateTablesRangeFormat().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/range/format`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: FormatKnowledgeTableRangeDtoToJSON(requestParameters['formatKnowledgeTableRangeDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , . , wrap text wrap_text.
+     *
+     */
+    async updateTablesRangeFormat(requestParameters: UpdateTablesRangeFormatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesRangeFormatRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesRowsResizeRaw(requestParameters: UpdateTablesRowsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesRowsResize().'
+            );
+        }
+
+        if (requestParameters['resizeKnowledgeTableRowsDto'] == null) {
+            throw new runtime.RequiredError(
+                'resizeKnowledgeTableRowsDto',
+                'Required parameter "resizeKnowledgeTableRowsDto" was null or undefined when calling updateTablesRowsResize().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows/resize`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ResizeKnowledgeTableRowsDtoToJSON(requestParameters['resizeKnowledgeTableRowsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesRowsResize(requestParameters: UpdateTablesRowsResizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesRowsResizeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesRowsVisibilityRaw(requestParameters: UpdateTablesRowsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeTableMutationResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateTablesRowsVisibility().'
+            );
+        }
+
+        if (requestParameters['setKnowledgeTableRowsVisibilityDto'] == null) {
+            throw new runtime.RequiredError(
+                'setKnowledgeTableRowsVisibilityDto',
+                'Required parameter "setKnowledgeTableRowsVisibilityDto" was null or undefined when calling updateTablesRowsVisibility().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_knowledge_base"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_knowledge_base"]);
+        }
+
+        const response = await this.request({
+            path: `/api/knowledge-base/tables/{id}/rows/visibility`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetKnowledgeTableRowsVisibilityDtoToJSON(requestParameters['setKnowledgeTableRowsVisibilityDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeTableMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateTablesRowsVisibility(requestParameters: UpdateTablesRowsVisibilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeTableMutationResponseDto> {
+        const response = await this.updateTablesRowsVisibilityRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2116,6 +4115,22 @@ export const DeleteTablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type DeleteTablesAcceptLanguageEnum = typeof DeleteTablesAcceptLanguageEnum[keyof typeof DeleteTablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DeleteTablesColumnsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteTablesColumnsAcceptLanguageEnum = typeof DeleteTablesColumnsAcceptLanguageEnum[keyof typeof DeleteTablesColumnsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const DeleteTablesRowsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteTablesRowsAcceptLanguageEnum = typeof DeleteTablesRowsAcceptLanguageEnum[keyof typeof DeleteTablesRowsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2301,6 +4316,31 @@ export type GetTablesAcceptLanguageEnum = typeof GetTablesAcceptLanguageEnum[key
 /**
  * @export
  */
+export const GetTablesRangeValueModeEnum = {
+    Computed: 'computed',
+    Formula: 'formula',
+    Both: 'both'
+} as const;
+export type GetTablesRangeValueModeEnum = typeof GetTablesRangeValueModeEnum[keyof typeof GetTablesRangeValueModeEnum];
+/**
+ * @export
+ */
+export const GetTablesRangeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetTablesRangeAcceptLanguageEnum = typeof GetTablesRangeAcceptLanguageEnum[keyof typeof GetTablesRangeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetTablesSchemaAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetTablesSchemaAcceptLanguageEnum = typeof GetTablesSchemaAcceptLanguageEnum[keyof typeof GetTablesSchemaAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const KnowledgeBaseDeleteFilesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2322,6 +4362,102 @@ export const TablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type TablesAcceptLanguageEnum = typeof TablesAcceptLanguageEnum[keyof typeof TablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesColumnsInsertAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesColumnsInsertAcceptLanguageEnum = typeof TablesColumnsInsertAcceptLanguageEnum[keyof typeof TablesColumnsInsertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesColumnsMoveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesColumnsMoveAcceptLanguageEnum = typeof TablesColumnsMoveAcceptLanguageEnum[keyof typeof TablesColumnsMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRangeClearAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRangeClearAcceptLanguageEnum = typeof TablesRangeClearAcceptLanguageEnum[keyof typeof TablesRangeClearAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRangeCopyAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRangeCopyAcceptLanguageEnum = typeof TablesRangeCopyAcceptLanguageEnum[keyof typeof TablesRangeCopyAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRangeMergeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRangeMergeAcceptLanguageEnum = typeof TablesRangeMergeAcceptLanguageEnum[keyof typeof TablesRangeMergeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRangeMoveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRangeMoveAcceptLanguageEnum = typeof TablesRangeMoveAcceptLanguageEnum[keyof typeof TablesRangeMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRangeUnmergeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRangeUnmergeAcceptLanguageEnum = typeof TablesRangeUnmergeAcceptLanguageEnum[keyof typeof TablesRangeUnmergeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRowsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRowsAcceptLanguageEnum = typeof TablesRowsAcceptLanguageEnum[keyof typeof TablesRowsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRowsInsertAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRowsInsertAcceptLanguageEnum = typeof TablesRowsInsertAcceptLanguageEnum[keyof typeof TablesRowsInsertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRowsMoveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRowsMoveAcceptLanguageEnum = typeof TablesRowsMoveAcceptLanguageEnum[keyof typeof TablesRowsMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesRowsQueryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesRowsQueryAcceptLanguageEnum = typeof TablesRowsQueryAcceptLanguageEnum[keyof typeof TablesRowsQueryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TablesSheetSessionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TablesSheetSessionAcceptLanguageEnum = typeof TablesSheetSessionAcceptLanguageEnum[keyof typeof TablesSheetSessionAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2362,3 +4498,67 @@ export const UpdateTablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateTablesAcceptLanguageEnum = typeof UpdateTablesAcceptLanguageEnum[keyof typeof UpdateTablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesCellsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesCellsAcceptLanguageEnum = typeof UpdateTablesCellsAcceptLanguageEnum[keyof typeof UpdateTablesCellsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesColumnsResizeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesColumnsResizeAcceptLanguageEnum = typeof UpdateTablesColumnsResizeAcceptLanguageEnum[keyof typeof UpdateTablesColumnsResizeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesColumnsVisibilityAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesColumnsVisibilityAcceptLanguageEnum = typeof UpdateTablesColumnsVisibilityAcceptLanguageEnum[keyof typeof UpdateTablesColumnsVisibilityAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesRangeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesRangeAcceptLanguageEnum = typeof UpdateTablesRangeAcceptLanguageEnum[keyof typeof UpdateTablesRangeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesRangeBordersAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesRangeBordersAcceptLanguageEnum = typeof UpdateTablesRangeBordersAcceptLanguageEnum[keyof typeof UpdateTablesRangeBordersAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesRangeFormatAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesRangeFormatAcceptLanguageEnum = typeof UpdateTablesRangeFormatAcceptLanguageEnum[keyof typeof UpdateTablesRangeFormatAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesRowsResizeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesRowsResizeAcceptLanguageEnum = typeof UpdateTablesRowsResizeAcceptLanguageEnum[keyof typeof UpdateTablesRowsResizeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateTablesRowsVisibilityAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateTablesRowsVisibilityAcceptLanguageEnum = typeof UpdateTablesRowsVisibilityAcceptLanguageEnum[keyof typeof UpdateTablesRowsVisibilityAcceptLanguageEnum];

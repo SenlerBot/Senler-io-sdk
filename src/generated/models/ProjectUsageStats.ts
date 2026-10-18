@@ -56,7 +56,7 @@ export interface ProjectUsageStats {
      */
     providerCost: number;
     /**
-     * . : financial.client.currency
+     * : RUB USD . ; financial.client.rub_projects_money, usd_projects_money total_rub.
      * @type {number}
      * @memberof ProjectUsageStats
      */

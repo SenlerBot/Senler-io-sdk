@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface DeleteAutomationNodeDto {
     /**
+     * instance_id .
+     * @type {string}
+     * @memberof DeleteAutomationNodeDto
+     */
+    expectedInstanceId: string;
+    /**
      * .
      * @type {number}
      * @memberof DeleteAutomationNodeDto
@@ -37,6 +43,7 @@ export interface DeleteAutomationNodeDto {
  * Check if a given object implements the DeleteAutomationNodeDto interface.
  */
 export function instanceOfDeleteAutomationNodeDto(value: object): value is DeleteAutomationNodeDto {
+    if (!('expectedInstanceId' in value) || value['expectedInstanceId'] === undefined) return false;
     if (!('expectedContentRevision' in value) || value['expectedContentRevision'] === undefined) return false;
     if (!('operationId' in value) || value['operationId'] === undefined) return false;
     return true;
@@ -52,6 +59,7 @@ export function DeleteAutomationNodeDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'expectedInstanceId': json['expected_instance_id'],
         'expectedContentRevision': json['expected_content_revision'],
         'operationId': json['operation_id'],
     };
@@ -68,6 +76,7 @@ export function DeleteAutomationNodeDtoToJSONTyped(value?: DeleteAutomationNodeD
 
     return {
 
+        'expected_instance_id': value['expectedInstanceId'],
         'expected_content_revision': value['expectedContentRevision'],
         'operation_id': value['operationId'],
     };

@@ -264,6 +264,12 @@ export interface DialogDto {
      */
     isTest: boolean;
     /**
+     * ID , ,
+     * @type {string}
+     * @memberof DialogDto
+     */
+    readonly testAgentId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof DialogDto
@@ -480,4 +486,4 @@ export declare function instanceOfDialogDto(value: object): value is DialogDto;
 export declare function DialogDtoFromJSON(json: any): DialogDto;
 export declare function DialogDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): DialogDto;
 export declare function DialogDtoToJSON(json: any): DialogDto;
-export declare function DialogDtoToJSONTyped(value?: DialogDto | null, ignoreDiscriminator?: boolean): any;
+export declare function DialogDtoToJSONTyped(value?: Omit<DialogDto, 'test_agent_id'> | null, ignoreDiscriminator?: boolean): any;

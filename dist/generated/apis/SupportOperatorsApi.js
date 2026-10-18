@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateSupportOperatorsGroupsAcceptLanguageEnum = exports.UpdateSupportOperatorsAutoAssignmentAcceptLanguageEnum = exports.SupportOperatorsGroupsAcceptLanguageEnum = exports.GetSupportOperatorsAutoAssignmentAcceptLanguageEnum = exports.GetSupportOperatorsAcceptLanguageEnum = exports.DeleteSupportOperatorsGroupsAcceptLanguageEnum = exports.SupportOperatorsApi = void 0;
+exports.UpdateSupportOperatorsGroupsAcceptLanguageEnum = exports.UpdateSupportOperatorsAutoAssignmentAcceptLanguageEnum = exports.SupportOperatorsGroupsAcceptLanguageEnum = exports.GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum = exports.GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum = exports.GetSupportOperatorsGroupsAcceptLanguageEnum = exports.GetSupportOperatorsAutoAssignmentAcceptLanguageEnum = exports.GetSupportOperatorsAcceptLanguageEnum = exports.DeleteSupportOperatorsGroupsAcceptLanguageEnum = exports.SupportOperatorsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -75,6 +75,10 @@ class SupportOperatorsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -118,6 +122,10 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -158,6 +166,10 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -178,6 +190,153 @@ class SupportOperatorsApi extends runtime.BaseAPI {
     }
     /**
      * .
+     *
+     */
+    async getSupportOperatorsGroupsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSupportOperatorsGroups().');
+        }
+        if (requestParameters['groupId'] == null) {
+            throw new runtime.RequiredError('groupId', 'Required parameter "groupId" was null or undefined when calling getSupportOperatorsGroups().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-operators/groups/{groupId}`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"groupId"}}`, encodeURIComponent(String(requestParameters['groupId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportOperatorGroupDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getSupportOperatorsGroups(requestParameters, initOverrides) {
+        const response = await this.getSupportOperatorsGroupsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . ; .
+     *
+     */
+    async getSupportOperatorsGroupsRemovalImpactRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSupportOperatorsGroupsRemovalImpact().');
+        }
+        if (requestParameters['groupId'] == null) {
+            throw new runtime.RequiredError('groupId', 'Required parameter "groupId" was null or undefined when calling getSupportOperatorsGroupsRemovalImpact().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-operators/groups/{groupId}/removal-impact`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"groupId"}}`, encodeURIComponent(String(requestParameters['groupId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportGroupRemovalImpactDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . ; .
+     *
+     */
+    async getSupportOperatorsGroupsRemovalImpact(requestParameters, initOverrides) {
+        const response = await this.getSupportOperatorsGroupsRemovalImpactRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . ; .
+     *
+     */
+    async getSupportOperatorsMembersGroupRemovalImpactRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSupportOperatorsMembersGroupRemovalImpact().');
+        }
+        if (requestParameters['memberId'] == null) {
+            throw new runtime.RequiredError('memberId', 'Required parameter "memberId" was null or undefined when calling getSupportOperatorsMembersGroupRemovalImpact().');
+        }
+        if (requestParameters['removedGroupIds'] == null) {
+            throw new runtime.RequiredError('removedGroupIds', 'Required parameter "removedGroupIds" was null or undefined when calling getSupportOperatorsMembersGroupRemovalImpact().');
+        }
+        const queryParameters = {};
+        if (requestParameters['removedGroupIds'] != null) {
+            queryParameters['removed_group_ids'] = requestParameters['removedGroupIds'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-operators/members/{memberId}/group-removal-impact`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportGroupRemovalImpactDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . ; .
+     *
+     */
+    async getSupportOperatorsMembersGroupRemovalImpact(requestParameters, initOverrides) {
+        const response = await this.getSupportOperatorsMembersGroupRemovalImpactRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
      *
      */
     async supportOperatorsGroupsRaw(requestParameters, initOverrides) {
@@ -202,6 +361,10 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
@@ -214,7 +377,7 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportOperatorGroupDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * , .
      *
      */
     async supportOperatorsGroups(requestParameters, initOverrides) {
@@ -247,6 +410,10 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
@@ -267,7 +434,7 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , ; .
+     * , .
      *
      */
     async updateSupportOperatorsGroupsRaw(requestParameters, initOverrides) {
@@ -295,6 +462,10 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
         }
         const response = await this.request({
@@ -307,7 +478,7 @@ class SupportOperatorsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportOperatorGroupDtoFromJSON)(jsonValue));
     }
     /**
-     * , ; .
+     * , .
      *
      */
     async updateSupportOperatorsGroups(requestParameters, initOverrides) {
@@ -334,6 +505,27 @@ exports.GetSupportOperatorsAcceptLanguageEnum = {
  * @export
  */
 exports.GetSupportOperatorsAutoAssignmentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetSupportOperatorsGroupsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetSupportOperatorsGroupsRemovalImpactAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetSupportOperatorsMembersGroupRemovalImpactAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

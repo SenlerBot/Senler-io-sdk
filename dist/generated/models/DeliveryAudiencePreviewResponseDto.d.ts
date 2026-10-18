@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
 import type { DeliveryAudienceRecipientDto } from './DeliveryAudienceRecipientDto';
 /**
  * DeliveryAudiencePreviewResponseDto.
@@ -16,6 +17,30 @@ import type { DeliveryAudienceRecipientDto } from './DeliveryAudienceRecipientDt
  * @interface DeliveryAudiencePreviewResponseDto
  */
 export interface DeliveryAudiencePreviewResponseDto {
+    /**
+     * ,
+     * @type {DeliveryAudienceFilterDto}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    filters: DeliveryAudienceFilterDto;
+    /**
+     * ,
+     * @type {DeliveryAudienceFilterDto}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    savedFilters: DeliveryAudienceFilterDto;
+    /**
+     *
+     * @type {string}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    filterSource: DeliveryAudiencePreviewResponseDtoFilterSourceEnum;
+    /**
+     * all_project ; all_selected_channels /; filtered . .
+     * @type {string}
+     * @memberof DeliveryAudiencePreviewResponseDto
+     */
+    audienceScope: DeliveryAudiencePreviewResponseDtoAudienceScopeEnum;
     /**
      *
      * @type {number}
@@ -35,6 +60,23 @@ export interface DeliveryAudiencePreviewResponseDto {
      */
     nextCursor: string | null;
 }
+/**
+ * @export
+ */
+export declare const DeliveryAudiencePreviewResponseDtoFilterSourceEnum: {
+    readonly Saved: "saved";
+    readonly Query: "query";
+};
+export type DeliveryAudiencePreviewResponseDtoFilterSourceEnum = typeof DeliveryAudiencePreviewResponseDtoFilterSourceEnum[keyof typeof DeliveryAudiencePreviewResponseDtoFilterSourceEnum];
+/**
+ * @export
+ */
+export declare const DeliveryAudiencePreviewResponseDtoAudienceScopeEnum: {
+    readonly AllProject: "all_project";
+    readonly AllSelectedChannels: "all_selected_channels";
+    readonly Filtered: "filtered";
+};
+export type DeliveryAudiencePreviewResponseDtoAudienceScopeEnum = typeof DeliveryAudiencePreviewResponseDtoAudienceScopeEnum[keyof typeof DeliveryAudiencePreviewResponseDtoAudienceScopeEnum];
 /**
  * Check if a given object implements the DeliveryAudiencePreviewResponseDto interface.
  */

@@ -45,8 +45,10 @@ export interface ProcessResultResponseDto {
  * @export
  */
 export declare const ProcessResultResponseDtoTypeEnum: {
+    readonly DialogsBulkOperation: "dialogs_bulk_operation";
     readonly LeadsExport: "leads_export";
     readonly LeadsImport: "leads_import";
+    readonly LeadsImportSenler: "leads_import_senler";
     readonly LeadsRefresh: "leads_refresh";
     readonly LeadsSegmentOperation: "leads_segment_operation";
     readonly ChannelMigration: "channel_migration";

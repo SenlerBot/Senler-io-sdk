@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CountLeadsByVariableResponseDto, CountVariableLeadsByArrayItemDto, CountVariableLeadsByArrayItemsDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByArrayItemDto, ExportVariableLeadsByArrayItemsDto, ExportVariableLeadsByArrayLengthDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByArrayItemDto, SearchVariableLeadsByArrayItemsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
+import type { CountLeadsByVariableResponseDto, CountVariableLeadsByArrayItemDto, CountVariableLeadsByArrayItemsDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByArrayItemDto, ExportVariableLeadsByArrayItemsDto, ExportVariableLeadsByArrayLengthDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByArrayItemDto, SearchVariableLeadsByArrayItemsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadBirthdayDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
     acceptLanguage?: ExportAcceptLanguageEnum;
@@ -122,6 +122,11 @@ export interface ByVariableSearchEqualsStringRequest {
 export interface ByVariableSearchExistsRequest {
     searchVariableLeadsDto: SearchVariableLeadsDto;
     acceptLanguage?: ByVariableSearchExistsAcceptLanguageEnum;
+}
+export interface DeleteSegmentsRequest {
+    leadId: string;
+    segmentId: string;
+    acceptLanguage?: DeleteSegmentsAcceptLanguageEnum;
 }
 export interface ExportByDeliveryRequest {
     exportLeadsByDeliveryDto: ExportLeadsByDeliveryDto;
@@ -305,6 +310,16 @@ export interface SearchByDeliveryRequest {
 export interface SegmentOperationRequest {
     createLeadsSegmentOperationProcessDto: CreateLeadsSegmentOperationProcessDto;
     acceptLanguage?: SegmentOperationAcceptLanguageEnum;
+}
+export interface SegmentsRequest {
+    leadId: string;
+    segmentId: string;
+    acceptLanguage?: SegmentsAcceptLanguageEnum;
+}
+export interface UpdateBirthdayRequest {
+    id: string;
+    updateLeadBirthdayDto: UpdateLeadBirthdayDto;
+    acceptLanguage?: UpdateBirthdayAcceptLanguageEnum;
 }
 export interface UpdateBlacklistRequest {
     id: string;
@@ -615,6 +630,16 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     byVariableSearchExists(requestParameters: ByVariableSearchExistsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchLeadsByVariableResponseDto>;
     /**
+     * . .
+     *
+     */
+    deleteSegmentsRaw(requestParameters: DeleteSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    deleteSegments(requestParameters: DeleteSegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    /**
      * .
      *
      */
@@ -855,6 +880,26 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     segmentOperation(requestParameters: SegmentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
+     * . .
+     *
+     */
+    segmentsRaw(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    segments(requestParameters: SegmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    /**
+     * . manual ( null ) . channel . , ; .
+     *
+     */
+    updateBirthdayRaw(requestParameters: UpdateBirthdayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadResponseDto>>;
+    /**
+     * . manual ( null ) . channel . , ; .
+     *
+     */
+    updateBirthday(requestParameters: UpdateBirthdayRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
+    /**
      * .
      *
      */
@@ -885,12 +930,12 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     updateProjectOperator(requestParameters: UpdateProjectOperatorRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
-     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
+     * .  ** :** - **VK** - users.get (, , , screen_name, ) - **Telegram** - getChat/getFile (, ) - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     updateSyncProfileRaw(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SyncLeadProfileResponseDto>>;
     /**
-     * .  ** :** - **VK** - users.get (, , , screen_name) - **Telegram** - getUserProfilePhotos/getFile () - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
+     * .  ** :** - **VK** - users.get (, , , screen_name, ) - **Telegram** - getChat/getFile (, ) - **MAX** - / platform API - **Avito** - - **Discord** - - **Email** - Gravatar- email-  **:** - - ( `force: true`)
      *
      */
     updateSyncProfile(requestParameters: UpdateSyncProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncLeadProfileResponseDto>;
@@ -1129,6 +1174,14 @@ export declare const ByVariableSearchExistsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ByVariableSearchExistsAcceptLanguageEnum = typeof ByVariableSearchExistsAcceptLanguageEnum[keyof typeof ByVariableSearchExistsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const DeleteSegmentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteSegmentsAcceptLanguageEnum = typeof DeleteSegmentsAcceptLanguageEnum[keyof typeof DeleteSegmentsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1380,6 +1433,22 @@ export declare const SegmentOperationAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type SegmentOperationAcceptLanguageEnum = typeof SegmentOperationAcceptLanguageEnum[keyof typeof SegmentOperationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SegmentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SegmentsAcceptLanguageEnum = typeof SegmentsAcceptLanguageEnum[keyof typeof SegmentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateBirthdayAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBirthdayAcceptLanguageEnum = typeof UpdateBirthdayAcceptLanguageEnum[keyof typeof UpdateBirthdayAcceptLanguageEnum];
 /**
  * @export
  */

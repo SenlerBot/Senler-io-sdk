@@ -98,6 +98,12 @@ export interface QueryDialogsDto {
      */
     agentId?: Array<string>;
     /**
+     * , . .
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAgentId?: string;
+    /**
      * ID
      * @type {string}
      * @memberof QueryDialogsDto
@@ -384,6 +390,7 @@ export function QueryDialogsDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'projectId': json['project_id'],
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
+        'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
         'testAutomationId': json['test_automation_id'] == null ? undefined : json['test_automation_id'],
         'testAutomationTriggerNodeId': json['test_automation_trigger_node_id'] == null ? undefined : json['test_automation_trigger_node_id'],
         'testAutomationTriggerSessionId': json['test_automation_trigger_session_id'] == null ? undefined : json['test_automation_trigger_session_id'],
@@ -437,6 +444,7 @@ export function QueryDialogsDtoToJSONTyped(value?: QueryDialogsDto | null, ignor
         'project_id': value['projectId'],
         'channel_id': value['channelId'],
         'agent_id': value['agentId'],
+        'test_agent_id': value['testAgentId'],
         'test_automation_id': value['testAutomationId'],
         'test_automation_trigger_node_id': value['testAutomationTriggerNodeId'],
         'test_automation_trigger_session_id': value['testAutomationTriggerSessionId'],

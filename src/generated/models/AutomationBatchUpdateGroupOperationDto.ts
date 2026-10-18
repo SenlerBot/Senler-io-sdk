@@ -28,6 +28,12 @@ import {
  */
 export interface AutomationBatchUpdateGroupOperationDto {
     /**
+     * instance_id . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchUpdateGroupOperationDto
+     */
+    expectedInstanceId?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationBatchUpdateGroupOperationDto
@@ -106,6 +112,7 @@ export function AutomationBatchUpdateGroupOperationDtoFromJSONTyped(json: any, i
     }
     return {
 
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
         'groupId': json['group_id'],
         'title': json['title'] == null ? undefined : json['title'],
@@ -128,6 +135,7 @@ export function AutomationBatchUpdateGroupOperationDtoToJSONTyped(value?: Automa
 
     return {
 
+        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
         'group_id': value['groupId'],
         'title': value['title'],

@@ -17,6 +17,12 @@ import type { AutomationGroupBoundsDto } from './AutomationGroupBoundsDto';
  */
 export interface AutomationBatchUpdateGroupOperationDto {
     /**
+     * instance_id . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchUpdateGroupOperationDto
+     */
+    expectedInstanceId?: string;
+    /**
      * .
      * @type {string}
      * @memberof AutomationBatchUpdateGroupOperationDto

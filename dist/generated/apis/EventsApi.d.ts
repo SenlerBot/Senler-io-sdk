@@ -33,8 +33,11 @@ export interface EventsListRequest {
     leadId?: string;
     creditTransactionId?: string;
     actionType?: EventsListActionTypeEnum;
+    messageDirection?: EventsListMessageDirectionEnum;
+    messageSenderKind?: EventsListMessageSenderKindEnum;
     targetType?: EventsListTargetTypeEnum;
     targetId?: string;
+    onlyErrors?: boolean;
     onlyRolledBack?: boolean;
     excludeRolledBack?: boolean;
     search?: string;
@@ -239,6 +242,25 @@ export declare const EventsListActionTypeEnum: {
     readonly AppEventReceived: "app_event_received";
 };
 export type EventsListActionTypeEnum = typeof EventsListActionTypeEnum[keyof typeof EventsListActionTypeEnum];
+/**
+ * @export
+ */
+export declare const EventsListMessageDirectionEnum: {
+    readonly Inbound: "inbound";
+    readonly Outbound: "outbound";
+    readonly Internal: "internal";
+};
+export type EventsListMessageDirectionEnum = typeof EventsListMessageDirectionEnum[keyof typeof EventsListMessageDirectionEnum];
+/**
+ * @export
+ */
+export declare const EventsListMessageSenderKindEnum: {
+    readonly Assistant: "assistant";
+    readonly Operator: "operator";
+    readonly Automation: "automation";
+    readonly Other: "other";
+};
+export type EventsListMessageSenderKindEnum = typeof EventsListMessageSenderKindEnum[keyof typeof EventsListMessageSenderKindEnum];
 /**
  * @export
  */

@@ -36,7 +36,6 @@ export declare const AutomationStatusResponseDtoStatusEnum: {
     readonly Running: "running";
     readonly Paused: "paused";
     readonly Disabled: "disabled";
-    readonly Archived: "archived";
 };
 export type AutomationStatusResponseDtoStatusEnum = typeof AutomationStatusResponseDtoStatusEnum[keyof typeof AutomationStatusResponseDtoStatusEnum];
 /**

@@ -39,6 +39,10 @@ export interface GetConsentDocumentsRequest {
     projectId: string;
     acceptLanguage?: GetConsentDocumentsAcceptLanguageEnum;
 }
+export interface GetConsentDocuments2Request {
+    documentId: string;
+    acceptLanguage?: GetConsentDocuments2AcceptLanguageEnum;
+}
 export interface GetConsentDocumentsVersionsRequest {
     documentId: string;
     acceptLanguage?: GetConsentDocumentsVersionsAcceptLanguageEnum;
@@ -132,12 +136,12 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     consentDocumentsAssetsUploadUrl(requestParameters: ConsentDocumentsAssetsUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
     /**
-     * . .
+     * deleted_at. .
      *
      */
     deleteConsentDocumentsRaw(requestParameters: DeleteConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
     /**
-     * . .
+     * deleted_at. .
      *
      */
     deleteConsentDocuments(requestParameters: DeleteConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
@@ -161,6 +165,16 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      *
      */
     getConsentDocuments(requestParameters: GetConsentDocumentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentsListResponseDto>;
+    /**
+     * .
+     *
+     */
+    getConsentDocuments2Raw(requestParameters: GetConsentDocuments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentConsentDocumentResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getConsentDocuments2(requestParameters: GetConsentDocuments2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentConsentDocumentResponseDto>;
     /**
      * .
      *
@@ -340,6 +354,14 @@ export declare const GetConsentDocumentsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetConsentDocumentsAcceptLanguageEnum = typeof GetConsentDocumentsAcceptLanguageEnum[keyof typeof GetConsentDocumentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetConsentDocuments2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetConsentDocuments2AcceptLanguageEnum = typeof GetConsentDocuments2AcceptLanguageEnum[keyof typeof GetConsentDocuments2AcceptLanguageEnum];
 /**
  * @export
  */

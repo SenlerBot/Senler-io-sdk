@@ -41,8 +41,7 @@ export const AutomationStatusResponseDtoStatusEnum = {
     Draft: 'draft',
     Running: 'running',
     Paused: 'paused',
-    Disabled: 'disabled',
-    Archived: 'archived'
+    Disabled: 'disabled'
 } as const;
 export type AutomationStatusResponseDtoStatusEnum = typeof AutomationStatusResponseDtoStatusEnum[keyof typeof AutomationStatusResponseDtoStatusEnum];
 

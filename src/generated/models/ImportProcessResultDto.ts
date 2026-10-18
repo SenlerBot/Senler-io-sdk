@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface ImportProcessResultDto {
     /**
+     *
+     * @type {number}
+     * @memberof ImportProcessResultDto
+     */
+    skipped?: number;
+    /**
      * ()
      * @type {number}
      * @memberof ImportProcessResultDto
@@ -65,6 +71,7 @@ export function ImportProcessResultDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'skipped': json['skipped'] == null ? undefined : json['skipped'],
         'imported': json['imported'],
         'updated': json['updated'],
         'failed': json['failed'],
@@ -83,6 +90,7 @@ export function ImportProcessResultDtoToJSONTyped(value?: ImportProcessResultDto
 
     return {
 
+        'skipped': value['skipped'],
         'imported': value['imported'],
         'updated': value['updated'],
         'failed': value['failed'],

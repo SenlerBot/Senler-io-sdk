@@ -40,29 +40,29 @@ export interface CreditTransactionModelStatDto {
      */
     totalTokens: number;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionModelStatDto
      */
-    promptTokens: number;
+    promptTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionModelStatDto
      */
-    completionTokens: number;
+    completionTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionModelStatDto
      */
-    cachedTokens: number;
+    cachedTokens: number | null;
     /**
-     *
+     * ; null,
      * @type {number}
      * @memberof CreditTransactionModelStatDto
      */
-    cachedPercentage: number;
+    cachedPercentage: number | null;
 }
 /**
  * Check if a given object implements the CreditTransactionModelStatDto interface.

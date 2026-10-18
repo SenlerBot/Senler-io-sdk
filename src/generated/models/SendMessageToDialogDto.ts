@@ -35,6 +35,12 @@ import {
  */
 export interface SendMessageToDialogDto {
     /**
+     * content, . plain_text ; markdown , , , , <u></u> <spoiler> </spoiler>. .
+     * @type {string}
+     * @memberof SendMessageToDialogDto
+     */
+    contentFormat?: SendMessageToDialogDtoContentFormatEnum;
+    /**
      *
      * @type {string}
      * @memberof SendMessageToDialogDto
@@ -82,6 +88,15 @@ export interface SendMessageToDialogDto {
 /**
  * @export
  */
+export const SendMessageToDialogDtoContentFormatEnum = {
+    PlainText: 'plain_text',
+    Markdown: 'markdown'
+} as const;
+export type SendMessageToDialogDtoContentFormatEnum = typeof SendMessageToDialogDtoContentFormatEnum[keyof typeof SendMessageToDialogDtoContentFormatEnum];
+
+/**
+ * @export
+ */
 export const SendMessageToDialogDtoClientTypeEnum = {
     Web: 'web',
     Cursor: 'cursor',
@@ -109,6 +124,7 @@ export function SendMessageToDialogDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
         'content': json['content'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
@@ -130,6 +146,7 @@ export function SendMessageToDialogDtoToJSONTyped(value?: SendMessageToDialogDto
 
     return {
 
+        'content_format': value['contentFormat'],
         'content': value['content'],
         'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],

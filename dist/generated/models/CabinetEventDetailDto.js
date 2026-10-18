@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CabinetEventDetailDtoTargetTypeEnum = exports.CabinetEventDetailDtoActionTypeEnum = exports.CabinetEventDetailDtoPlatformTypeEnum = void 0;
+exports.CabinetEventDetailDtoMessageSenderKindEnum = exports.CabinetEventDetailDtoMessageDirectionEnum = exports.CabinetEventDetailDtoTargetTypeEnum = exports.CabinetEventDetailDtoActionTypeEnum = exports.CabinetEventDetailDtoPlatformTypeEnum = void 0;
 exports.instanceOfCabinetEventDetailDto = instanceOfCabinetEventDetailDto;
 exports.CabinetEventDetailDtoFromJSON = CabinetEventDetailDtoFromJSON;
 exports.CabinetEventDetailDtoFromJSONTyped = CabinetEventDetailDtoFromJSONTyped;
@@ -157,6 +157,23 @@ exports.CabinetEventDetailDtoTargetTypeEnum = {
     Billing: 'billing'
 };
 /**
+ * @export
+ */
+exports.CabinetEventDetailDtoMessageDirectionEnum = {
+    Inbound: 'inbound',
+    Outbound: 'outbound',
+    Internal: 'internal'
+};
+/**
+ * @export
+ */
+exports.CabinetEventDetailDtoMessageSenderKindEnum = {
+    Assistant: 'assistant',
+    Operator: 'operator',
+    Automation: 'automation',
+    Other: 'other'
+};
+/**
  * Check if a given object implements the CabinetEventDetailDto interface.
  */
 function instanceOfCabinetEventDetailDto(value) {
@@ -236,6 +253,8 @@ function CabinetEventDetailDtoFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'eventVersion': json['event_version'],
+        'messageDirection': json['message_direction'] == null ? undefined : json['message_direction'],
+        'messageSenderKind': json['message_sender_kind'] == null ? undefined : json['message_sender_kind'],
     };
 }
 function CabinetEventDetailDtoToJSON(json) {
@@ -292,5 +311,7 @@ function CabinetEventDetailDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'event_version': value['eventVersion'],
+        'message_direction': value['messageDirection'],
+        'message_sender_kind': value['messageSenderKind'],
     };
 }

@@ -41,10 +41,16 @@ export interface LandingSummaryResponseDto {
     publicId: string;
     /**
      *
-     * @type {string}
+     * @type {boolean}
      * @memberof LandingSummaryResponseDto
      */
-    status: LandingSummaryResponseDtoStatusEnum;
+    isEnabled: boolean;
+    /**
+     *
+     * @type {Date}
+     * @memberof LandingSummaryResponseDto
+     */
+    deletedAt: Date | null;
     /**
      * -
      * @type {string}
@@ -70,14 +76,6 @@ export interface LandingSummaryResponseDto {
      */
     publishedVersionId: string | null;
 }
-/**
- * @export
- */
-export declare const LandingSummaryResponseDtoStatusEnum: {
-    readonly Active: "active";
-    readonly Archived: "archived";
-};
-export type LandingSummaryResponseDtoStatusEnum = typeof LandingSummaryResponseDtoStatusEnum[keyof typeof LandingSummaryResponseDtoStatusEnum];
 /**
  * Check if a given object implements the LandingSummaryResponseDto interface.
  */

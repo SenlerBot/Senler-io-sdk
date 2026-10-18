@@ -94,6 +94,12 @@ export interface QueryDialogsDto {
      */
     agentId?: Array<string>;
     /**
+     * , . .
+     * @type {string}
+     * @memberof QueryDialogsDto
+     */
+    testAgentId?: string;
+    /**
      * ID
      * @type {string}
      * @memberof QueryDialogsDto

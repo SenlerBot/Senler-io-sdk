@@ -15,14 +15,20 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateInvitationDto,
   ErrorResponse,
+  InvitationCreatedResponseDto,
   InvitationListItemDto,
   InvitationStatus,
   SuccessResponseDto,
 } from '../models/index';
 import {
+    CreateInvitationDtoFromJSON,
+    CreateInvitationDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    InvitationCreatedResponseDtoFromJSON,
+    InvitationCreatedResponseDtoToJSON,
     InvitationListItemDtoFromJSON,
     InvitationListItemDtoToJSON,
     InvitationStatusFromJSON,
@@ -41,6 +47,12 @@ export interface AccessInvitationsGetInvitationsRequest {
     projectId: string;
     status?: InvitationStatus;
     acceptLanguage?: AccessInvitationsGetInvitationsAcceptLanguageEnum;
+}
+
+export interface AccessInvitationsInvitationsRequest {
+    projectId: string;
+    createInvitationDto: CreateInvitationDto;
+    acceptLanguage?: AccessInvitationsInvitationsAcceptLanguageEnum;
 }
 
 /**
@@ -83,6 +95,11 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
@@ -141,6 +158,11 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
 
@@ -163,6 +185,60 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * user_id email. pending- ( 4 ). .
+     *
+     */
+    async accessInvitationsInvitationsRaw(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling accessInvitationsInvitations().'
+            );
+        }
+
+        if (requestParameters['createInvitationDto'] == null) {
+            throw new runtime.RequiredError(
+                'createInvitationDto',
+                'Required parameter "createInvitationDto" was null or undefined when calling accessInvitationsInvitations().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+
+        const response = await this.request({
+            path: `/api/access/{projectId}/invitations`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateInvitationDtoToJSON(requestParameters['createInvitationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => InvitationCreatedResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * user_id email. pending- ( 4 ). .
+     *
+     */
+    async accessInvitationsInvitations(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto> {
+        const response = await this.accessInvitationsInvitationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -181,3 +257,11 @@ export const AccessInvitationsGetInvitationsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type AccessInvitationsGetInvitationsAcceptLanguageEnum = typeof AccessInvitationsGetInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsGetInvitationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const AccessInvitationsInvitationsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AccessInvitationsInvitationsAcceptLanguageEnum = typeof AccessInvitationsInvitationsAcceptLanguageEnum[keyof typeof AccessInvitationsInvitationsAcceptLanguageEnum];

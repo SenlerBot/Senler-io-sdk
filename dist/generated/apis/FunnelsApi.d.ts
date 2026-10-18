@@ -70,16 +70,16 @@ export interface FunnelsStatisticsRequest {
     funnelStatisticsQueryDto: FunnelStatisticsQueryDto;
     acceptLanguage?: FunnelsStatisticsAcceptLanguageEnum;
 }
-export interface FunnelsUpdateFunnelsRequest {
-    projectId: string;
-    id: string;
-    updateFunnelDto: UpdateFunnelDto;
-    acceptLanguage?: FunnelsUpdateFunnelsAcceptLanguageEnum;
-}
 export interface GetFunnelAppElementsRequest {
     funnelId: string;
     projectId: string;
     acceptLanguage?: GetFunnelAppElementsAcceptLanguageEnum;
+}
+export interface GetFunnelAppElements2Request {
+    funnelId: string;
+    id: string;
+    projectId: string;
+    acceptLanguage?: GetFunnelAppElements2AcceptLanguageEnum;
 }
 export interface GetFunnelAppElementsAvailableRequest {
     projectId: string;
@@ -161,6 +161,12 @@ export interface UpdateFunnelAppElementsConfigurationRequest {
     projectId: string;
     configureFunnelAppElementDto: ConfigureFunnelAppElementDto;
     acceptLanguage?: UpdateFunnelAppElementsConfigurationAcceptLanguageEnum;
+}
+export interface UpdateFunnelsRequest {
+    projectId: string;
+    id: string;
+    updateFunnelDto: UpdateFunnelDto;
+    acceptLanguage?: UpdateFunnelsAcceptLanguageEnum;
 }
 /**
  *
@@ -260,22 +266,22 @@ export declare class FunnelsApi extends runtime.BaseAPI {
      * . .
      *
      */
-    funnelsUpdateFunnelsRaw(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
-    /**
-     * . .
-     *
-     */
-    funnelsUpdateFunnels(requestParameters: FunnelsUpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
-    /**
-     * . .
-     *
-     */
     getFunnelAppElementsRaw(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementsResponseDto>>;
     /**
      * . .
      *
      */
     getFunnelAppElements(requestParameters: GetFunnelAppElementsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementsResponseDto>;
+    /**
+     * .
+     *
+     */
+    getFunnelAppElements2Raw(requestParameters: GetFunnelAppElements2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelAppElementResponseDto>>;
+    /**
+     * .
+     *
+     */
+    getFunnelAppElements2(requestParameters: GetFunnelAppElements2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto>;
     /**
      * . .
      *
@@ -386,6 +392,16 @@ export declare class FunnelsApi extends runtime.BaseAPI {
      *
      */
     updateFunnelAppElementsConfiguration(requestParameters: UpdateFunnelAppElementsConfigurationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelAppElementResponseDto>;
+    /**
+     * . .
+     *
+     */
+    updateFunnelsRaw(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FunnelResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    updateFunnels(requestParameters: UpdateFunnelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelResponseDto>;
 }
 /**
  * @export
@@ -471,19 +487,19 @@ export type FunnelsStatisticsAcceptLanguageEnum = typeof FunnelsStatisticsAccept
 /**
  * @export
  */
-export declare const FunnelsUpdateFunnelsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type FunnelsUpdateFunnelsAcceptLanguageEnum = typeof FunnelsUpdateFunnelsAcceptLanguageEnum[keyof typeof FunnelsUpdateFunnelsAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const GetFunnelAppElementsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetFunnelAppElementsAcceptLanguageEnum = typeof GetFunnelAppElementsAcceptLanguageEnum[keyof typeof GetFunnelAppElementsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetFunnelAppElements2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetFunnelAppElements2AcceptLanguageEnum = typeof GetFunnelAppElements2AcceptLanguageEnum[keyof typeof GetFunnelAppElements2AcceptLanguageEnum];
 /**
  * @export
  */
@@ -614,3 +630,11 @@ export declare const UpdateFunnelAppElementsConfigurationAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateFunnelAppElementsConfigurationAcceptLanguageEnum = typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum[keyof typeof UpdateFunnelAppElementsConfigurationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateFunnelsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateFunnelsAcceptLanguageEnum = typeof UpdateFunnelsAcceptLanguageEnum[keyof typeof UpdateFunnelsAcceptLanguageEnum];

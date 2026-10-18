@@ -30,8 +30,11 @@ exports.CreateAppWebhookDtoEventsEnum = {
     LeadCreated: 'lead_created',
     LeadUnsubscribed: 'lead_unsubscribed',
     LeadBlocked: 'lead_blocked',
+    SegmentSubscribed: 'segment_subscribed',
+    SegmentUnsubscribed: 'segment_unsubscribed',
     MessageUndelivered: 'message_undelivered',
-    Error: 'error'
+    Error: 'error',
+    AutomationStepFailed: 'automation_step_failed'
 };
 /**
  * Check if a given object implements the CreateAppWebhookDto interface.

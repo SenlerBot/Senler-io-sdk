@@ -18,6 +18,18 @@ import type { EstimatedCostDto } from './EstimatedCostDto';
  */
 export interface EstimateModelItemDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof EstimateModelItemDto
+     */
+    usesProjectCredentials: boolean;
+    /**
+     * Senler,
+     * @type {boolean}
+     * @memberof EstimateModelItemDto
+     */
+    platformCredentialsAllowed: boolean;
+    /**
      * ID
      * @type {string}
      * @memberof EstimateModelItemDto

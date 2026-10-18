@@ -20,6 +20,7 @@ exports.AutomationTaskResponseDtoFromJSONTyped = AutomationTaskResponseDtoFromJS
 exports.AutomationTaskResponseDtoToJSON = AutomationTaskResponseDtoToJSON;
 exports.AutomationTaskResponseDtoToJSONTyped = AutomationTaskResponseDtoToJSONTyped;
 const AutomationHttpResultSummaryDto_1 = require("./AutomationHttpResultSummaryDto");
+const AutomationTaskIncidentDto_1 = require("./AutomationTaskIncidentDto");
 /**
  * @export
  */
@@ -40,7 +41,8 @@ exports.AutomationTaskResponseDtoWaitKindEnum = {
     Timer: 'timer',
     Button: 'button',
     Reply: 'reply',
-    Interaction: 'interaction'
+    Interaction: 'interaction',
+    AppCallback: 'app_callback'
 };
 /**
  * Check if a given object implements the AutomationTaskResponseDto interface.
@@ -84,6 +86,7 @@ function AutomationTaskResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'incident': json['incident'] == null ? undefined : (0, AutomationTaskIncidentDto_1.AutomationTaskIncidentDtoFromJSON)(json['incident']),
         'httpResult': json['http_result'] == null ? undefined : (0, AutomationHttpResultSummaryDto_1.AutomationHttpResultSummaryDtoFromJSON)(json['http_result']),
         'id': json['id'],
         'nodeId': json['node_id'],
@@ -110,6 +113,7 @@ function AutomationTaskResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         return value;
     }
     return {
+        'incident': (0, AutomationTaskIncidentDto_1.AutomationTaskIncidentDtoToJSON)(value['incident']),
         'http_result': (0, AutomationHttpResultSummaryDto_1.AutomationHttpResultSummaryDtoToJSON)(value['httpResult']),
         'id': value['id'],
         'node_id': value['nodeId'],

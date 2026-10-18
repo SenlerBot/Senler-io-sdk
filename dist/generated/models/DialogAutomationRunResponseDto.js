@@ -19,6 +19,7 @@ exports.DialogAutomationRunResponseDtoFromJSON = DialogAutomationRunResponseDtoF
 exports.DialogAutomationRunResponseDtoFromJSONTyped = DialogAutomationRunResponseDtoFromJSONTyped;
 exports.DialogAutomationRunResponseDtoToJSON = DialogAutomationRunResponseDtoToJSON;
 exports.DialogAutomationRunResponseDtoToJSONTyped = DialogAutomationRunResponseDtoToJSONTyped;
+const AutomationRunAttentionDto_1 = require("./AutomationRunAttentionDto");
 /**
  * @export
  */
@@ -81,6 +82,7 @@ function DialogAutomationRunResponseDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
+        'attention': json['attention'] == null ? undefined : (0, AutomationRunAttentionDto_1.AutomationRunAttentionDtoFromJSON)(json['attention']),
         'id': json['id'],
         'sourceEventId': json['source_event_id'],
         'initialVersionId': json['initial_version_id'],
@@ -110,6 +112,7 @@ function DialogAutomationRunResponseDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
+        'attention': (0, AutomationRunAttentionDto_1.AutomationRunAttentionDtoToJSON)(value['attention']),
         'id': value['id'],
         'source_event_id': value['sourceEventId'],
         'initial_version_id': value['initialVersionId'],

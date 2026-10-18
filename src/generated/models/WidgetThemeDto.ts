@@ -34,6 +34,13 @@ import {
     ButtonSettingsDtoToJSON,
     ButtonSettingsDtoToJSONTyped,
 } from './ButtonSettingsDto';
+import type { WidgetColorsDto } from './WidgetColorsDto';
+import {
+    WidgetColorsDtoFromJSON,
+    WidgetColorsDtoFromJSONTyped,
+    WidgetColorsDtoToJSON,
+    WidgetColorsDtoToJSONTyped,
+} from './WidgetColorsDto';
 
 /**
  * WidgetThemeDto.
@@ -114,6 +121,12 @@ export interface WidgetThemeDto {
      */
     themeMode?: WidgetThemeDtoThemeModeEnum;
     /**
+     * .
+     * @type {WidgetColorsDto}
+     * @memberof WidgetThemeDto
+     */
+    colors?: WidgetColorsDto;
+    /**
      * . 12
      * @type {number}
      * @memberof WidgetThemeDto
@@ -188,6 +201,7 @@ export function WidgetThemeDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'width': json['width'] == null ? undefined : json['width'],
         'height': json['height'] == null ? undefined : json['height'],
         'themeMode': json['theme_mode'] == null ? undefined : json['theme_mode'],
+        'colors': json['colors'] == null ? undefined : WidgetColorsDtoFromJSON(json['colors']),
         'borderRadius': json['border_radius'] == null ? undefined : json['border_radius'],
         'shadowEnabled': json['shadow_enabled'] == null ? undefined : json['shadow_enabled'],
     };
@@ -216,6 +230,7 @@ export function WidgetThemeDtoToJSONTyped(value?: WidgetThemeDto | null, ignoreD
         'width': value['width'],
         'height': value['height'],
         'theme_mode': value['themeMode'],
+        'colors': WidgetColorsDtoToJSON(value['colors']),
         'border_radius': value['borderRadius'],
         'shadow_enabled': value['shadowEnabled'],
     };

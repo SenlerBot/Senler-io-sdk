@@ -58,6 +58,12 @@ export interface TariffResponseDto {
      */
     mailingMessagesPerDay: number;
     /**
+     * API-
+     * @type {number}
+     * @memberof TariffResponseDto
+     */
+    apiRequestsPerDay: number;
+    /**
      *
      * @type {number}
      * @memberof TariffResponseDto

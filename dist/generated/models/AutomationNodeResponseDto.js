@@ -25,6 +25,7 @@ const AutomationNodePositionDto_1 = require("./AutomationNodePositionDto");
  * @export
  */
 exports.AutomationNodeResponseDtoTypeEnum = {
+    TriggerBirthday: 'trigger.birthday',
     TriggerStart: 'trigger.start',
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
@@ -37,6 +38,7 @@ exports.AutomationNodeResponseDtoTypeEnum = {
     ConditionFunnelStage: 'condition.funnel_stage',
     ConditionAutomation: 'condition.automation',
     ConditionAgent: 'condition.agent',
+    ConditionOperatorAssignment: 'condition.operator_assignment',
     ConditionChannelType: 'condition.channel_type',
     ConditionTableRow: 'condition.table_row',
     BranchRandom: 'branch.random',
@@ -52,6 +54,7 @@ exports.AutomationNodeResponseDtoTypeEnum = {
     ActionRemoveAutomation: 'action.remove_automation',
     ActionAssignAgent: 'action.assign_agent',
     ActionUnassignAgent: 'action.unassign_agent',
+    ActionHandoffToOperator: 'action.handoff_to_operator',
     ActionTableWrite: 'action.table_write',
     ActionHttp: 'action.http',
     ActionApp: 'action.app',
@@ -86,6 +89,7 @@ function AutomationNodeResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'instanceId': json['instance_id'] == null ? undefined : json['instance_id'],
         'nodeId': json['node_id'],
         'type': json['type'],
         'name': json['name'],
@@ -103,6 +107,7 @@ function AutomationNodeResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         return value;
     }
     return {
+        'instance_id': value['instanceId'],
         'node_id': value['nodeId'],
         'type': value['type'],
         'name': value['name'],

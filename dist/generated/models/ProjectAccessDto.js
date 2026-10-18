@@ -36,6 +36,8 @@ function instanceOfProjectAccessDto(value) {
         return false;
     if (!('channelAccess' in value) || value['channelAccess'] === undefined)
         return false;
+    if (!('canListDialogs' in value) || value['canListDialogs'] === undefined)
+        return false;
     if (!('grantedAt' in value) || value['grantedAt'] === undefined)
         return false;
     return true;
@@ -53,6 +55,7 @@ function ProjectAccessDtoFromJSONTyped(json, ignoreDiscriminator) {
         'permissions': (0, PermissionsDto_1.PermissionsDtoFromJSON)(json['permissions']),
         'hasAccessToAllChannels': json['hasAccessToAllChannels'],
         'channelAccess': (0, ChannelAccessDto_1.ChannelAccessDtoFromJSON)(json['channelAccess']),
+        'canListDialogs': json['canListDialogs'],
         'grantedAt': (json['grantedAt'] == null ? null : new Date(json['grantedAt'])),
     };
 }
@@ -69,6 +72,7 @@ function ProjectAccessDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'permissions': (0, PermissionsDto_1.PermissionsDtoToJSON)(value['permissions']),
         'hasAccessToAllChannels': value['hasAccessToAllChannels'],
         'channelAccess': (0, ChannelAccessDto_1.ChannelAccessDtoToJSON)(value['channelAccess']),
+        'canListDialogs': value['canListDialogs'],
         'grantedAt': (value['grantedAt'] == null ? null : value['grantedAt'].toISOString()),
     };
 }

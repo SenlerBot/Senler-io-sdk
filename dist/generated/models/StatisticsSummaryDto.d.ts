@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StatisticsNullableMetricDeltaDto } from './StatisticsNullableMetricDeltaDto';
 import type { StatisticsAiResponseCostsDto } from './StatisticsAiResponseCostsDto';
 import type { StatisticsCreditsMetricDeltaDto } from './StatisticsCreditsMetricDeltaDto';
 import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
@@ -115,29 +116,29 @@ export interface StatisticsSummaryDto {
      */
     operatorAssignedDialogs: StatisticsMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageFirstResponseTimeSeconds: StatisticsMetricDeltaDto;
+    averageFirstResponseTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageFirstResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    averageFirstResponseRawTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageResponseTimeSeconds: StatisticsMetricDeltaDto;
+    averageResponseTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
+     * , ; null
+     * @type {StatisticsNullableMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    averageResponseRawTimeSeconds: StatisticsMetricDeltaDto;
+    averageResponseRawTimeSeconds: StatisticsNullableMetricDeltaDto;
     /**
      *
      * @type {StatisticsMetricDeltaDto}

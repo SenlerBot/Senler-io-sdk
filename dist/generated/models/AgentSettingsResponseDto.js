@@ -24,6 +24,7 @@ const AgentStatus_1 = require("./AgentStatus");
 const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
 const AgentSelectedModelSummaryDto_1 = require("./AgentSelectedModelSummaryDto");
 const WizardStep_1 = require("./WizardStep");
+const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const McpServerResponseDto_1 = require("./McpServerResponseDto");
 const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
@@ -123,8 +124,8 @@ exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = {
  */
 exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
-    Typing: 'typing',
-    Hidden: 'hidden'
+    DetailedProgress: 'detailed_progress',
+    Typing: 'typing'
 };
 /**
  * @export
@@ -178,6 +179,8 @@ function instanceOfAgentSettingsResponseDto(value) {
         return false;
     if (!('enableButtons' in value) || value['enableButtons'] === undefined)
         return false;
+    if (!('maxToolIterations' in value) || value['maxToolIterations'] === undefined)
+        return false;
     if (!('enableWidgetPageActions' in value) || value['enableWidgetPageActions'] === undefined)
         return false;
     if (!('enableCustomAttachments' in value) || value['enableCustomAttachments'] === undefined)
@@ -216,7 +219,15 @@ function instanceOfAgentSettingsResponseDto(value) {
         return false;
     if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined)
         return false;
+    if (!('replyToSource' in value) || value['replyToSource'] === undefined)
+        return false;
+    if (!('enableTyping' in value) || value['enableTyping'] === undefined)
+        return false;
     if (!('widgetAiProgressMode' in value) || value['widgetAiProgressMode'] === undefined)
+        return false;
+    if (!('widgetQueueMessages' in value) || value['widgetQueueMessages'] === undefined)
+        return false;
+    if (!('widgetShowScheduledActions' in value) || value['widgetShowScheduledActions'] === undefined)
         return false;
     if (!('enablePreliminaryResponse' in value) || value['enablePreliminaryResponse'] === undefined)
         return false;
@@ -247,6 +258,8 @@ function instanceOfAgentSettingsResponseDto(value) {
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined)
         return false;
     if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined)
+        return false;
+    if (!('operatorHandoffPolicy' in value) || value['operatorHandoffPolicy'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -301,6 +314,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'wizardHistoryDepthDays': json['wizard_history_depth_days'],
         'wizardScanChannelHistory': json['wizard_scan_channel_history'],
         'enableButtons': json['enable_buttons'],
+        'maxToolIterations': json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'],
         'enableCustomAttachments': json['enable_custom_attachments'],
         'enableImageGeneration': json['enable_image_generation'],
@@ -325,7 +339,11 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
+        'replyToSource': json['reply_to_source'],
+        'enableTyping': json['enable_typing'],
         'widgetAiProgressMode': json['widget_ai_progress_mode'],
+        'widgetQueueMessages': json['widget_queue_messages'],
+        'widgetShowScheduledActions': json['widget_show_scheduled_actions'],
         'enablePreliminaryResponse': json['enable_preliminary_response'],
         'respondOnSegmentSubscription': json['respond_on_segment_subscription'],
         'enableMessageReactionsContext': json['enable_message_reactions_context'],
@@ -341,6 +359,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'funnelAccessPolicy': json['funnel_access_policy'],
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'agentAssignmentPolicy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoFromJSON)(json['agent_assignment_policy']),
+        'operatorHandoffPolicy': (0, OperatorHandoffPolicyDto_1.OperatorHandoffPolicyDtoFromJSON)(json['operator_handoff_policy']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
     };
@@ -392,6 +411,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'wizard_history_depth_days': value['wizardHistoryDepthDays'],
         'wizard_scan_channel_history': value['wizardScanChannelHistory'],
         'enable_buttons': value['enableButtons'],
+        'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],
         'enable_custom_attachments': value['enableCustomAttachments'],
         'enable_image_generation': value['enableImageGeneration'],
@@ -416,7 +436,11 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
+        'reply_to_source': value['replyToSource'],
+        'enable_typing': value['enableTyping'],
         'widget_ai_progress_mode': value['widgetAiProgressMode'],
+        'widget_queue_messages': value['widgetQueueMessages'],
+        'widget_show_scheduled_actions': value['widgetShowScheduledActions'],
         'enable_preliminary_response': value['enablePreliminaryResponse'],
         'respond_on_segment_subscription': value['respondOnSegmentSubscription'],
         'enable_message_reactions_context': value['enableMessageReactionsContext'],
@@ -432,6 +456,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'funnel_access_policy': value['funnelAccessPolicy'],
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'agent_assignment_policy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoToJSON)(value['agentAssignmentPolicy']),
+        'operator_handoff_policy': (0, OperatorHandoffPolicyDto_1.OperatorHandoffPolicyDtoToJSON)(value['operatorHandoffPolicy']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
     };

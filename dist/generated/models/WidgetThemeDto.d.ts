@@ -12,6 +12,7 @@
 import type { WidgetLocalizedTextDto } from './WidgetLocalizedTextDto';
 import type { WidgetLocalizedButtonsDto } from './WidgetLocalizedButtonsDto';
 import type { ButtonSettingsDto } from './ButtonSettingsDto';
+import type { WidgetColorsDto } from './WidgetColorsDto';
 /**
  * WidgetThemeDto.
  * @export
@@ -90,6 +91,12 @@ export interface WidgetThemeDto {
      * @memberof WidgetThemeDto
      */
     themeMode?: WidgetThemeDtoThemeModeEnum;
+    /**
+     * .
+     * @type {WidgetColorsDto}
+     * @memberof WidgetThemeDto
+     */
+    colors?: WidgetColorsDto;
     /**
      * . 12
      * @type {number}

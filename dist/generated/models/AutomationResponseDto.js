@@ -46,8 +46,7 @@ exports.AutomationResponseDtoStatusEnum = {
     Draft: 'draft',
     Running: 'running',
     Paused: 'paused',
-    Disabled: 'disabled',
-    Archived: 'archived'
+    Disabled: 'disabled'
 };
 /**
  * Check if a given object implements the AutomationResponseDto interface.
@@ -56,6 +55,8 @@ function instanceOfAutomationResponseDto(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
+        return false;
+    if (!('appId' in value) || value['appId'] === undefined)
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
@@ -99,6 +100,7 @@ function AutomationResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'projectId': json['project_id'],
+        'appId': json['app_id'],
         'name': json['name'],
         'description': json['description'],
         'avatarUrl': json['avatar_url'],
@@ -126,6 +128,7 @@ function AutomationResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'id': value['id'],
         'project_id': value['projectId'],
+        'app_id': value['appId'],
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],

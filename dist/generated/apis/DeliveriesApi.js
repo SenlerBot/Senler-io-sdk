@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateScheduleAcceptLanguageEnum = exports.TestRecipientVkConfirmAcceptLanguageEnum = exports.TestRecipientLinkAcceptLanguageEnum = exports.TestAcceptLanguageEnum = exports.StartAcceptLanguageEnum = exports.GetTestRecipientsAcceptLanguageEnum = exports.GetStartPreviewAcceptLanguageEnum = exports.GetAudiencePreviewAcceptLanguageEnum = exports.GetAudiencePreviewChannelTypeEnum = exports.DeliveriesUpdateAcceptLanguageEnum = exports.DeliveriesListAcceptLanguageEnum = exports.DeliveriesListTabEnum = exports.DeliveriesGetByIdAcceptLanguageEnum = exports.DeliveriesDeactivateAcceptLanguageEnum = exports.DeliveriesCreateAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsFromUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeleteScheduleAcceptLanguageEnum = exports.CopyAcceptLanguageEnum = exports.CancelAcceptLanguageEnum = exports.DeliveriesApi = void 0;
+exports.UpdateScheduleAcceptLanguageEnum = exports.TestRecipientVkConfirmAcceptLanguageEnum = exports.TestRecipientLinkAcceptLanguageEnum = exports.TestAcceptLanguageEnum = exports.StartAcceptLanguageEnum = exports.GetTestRecipientsAcceptLanguageEnum = exports.GetStartPreviewAcceptLanguageEnum = exports.GetAudiencePreviewAcceptLanguageEnum = exports.GetAudiencePreviewFilterSourceEnum = exports.GetAudiencePreviewChannelTypeEnum = exports.DeliveriesUpdateAcceptLanguageEnum = exports.DeliveriesListAcceptLanguageEnum = exports.DeliveriesListTabEnum = exports.DeliveriesGetByIdAcceptLanguageEnum = exports.DeliveriesDeactivateAcceptLanguageEnum = exports.DeliveriesCreateAcceptLanguageEnum = exports.DeliveriesAttachmentsUploadUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsFromUrlAcceptLanguageEnum = exports.DeliveriesAttachmentsConfirmAcceptLanguageEnum = exports.DeleteScheduleAcceptLanguageEnum = exports.CopyAcceptLanguageEnum = exports.CancelAcceptLanguageEnum = exports.DeliveriesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -72,6 +72,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -120,6 +124,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -159,6 +167,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -206,6 +218,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -257,6 +273,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -302,6 +322,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -353,6 +377,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -394,6 +422,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -431,6 +463,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -489,6 +525,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -533,6 +573,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -553,7 +597,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * , , . ; filter_source=query , , . .
      * preview
      */
     async getAudiencePreviewRaw(requestParameters, initOverrides) {
@@ -576,6 +620,9 @@ class DeliveriesApi extends runtime.BaseAPI {
         if (requestParameters['segmentIsMember'] != null) {
             queryParameters['segment_is_member'] = requestParameters['segmentIsMember'];
         }
+        if (requestParameters['filterSource'] != null) {
+            queryParameters['filter_source'] = requestParameters['filterSource'];
+        }
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
         }
@@ -595,6 +642,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -606,7 +657,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryAudiencePreviewResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * , , . ; filter_source=query , , . .
      * preview
      */
     async getAudiencePreview(requestParameters, initOverrides) {
@@ -632,6 +683,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -681,6 +736,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -718,6 +777,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -762,6 +825,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -810,6 +877,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -855,6 +926,10 @@ class DeliveriesApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_deliveries"]);
         }
         const response = await this.request({
@@ -897,6 +972,10 @@ class DeliveriesApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_deliveries"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1019,6 +1098,13 @@ exports.GetAudiencePreviewChannelTypeEnum = {
     Streamvi: 'streamvi',
     Email: 'email',
     Avito: 'avito'
+};
+/**
+ * @export
+ */
+exports.GetAudiencePreviewFilterSourceEnum = {
+    Saved: 'saved',
+    Query: 'query'
 };
 /**
  * @export

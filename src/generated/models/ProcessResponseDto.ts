@@ -84,6 +84,12 @@ export interface ProcessResponseDto {
      */
     errorMessage?: string;
     /**
+     * Senler.ru. pending ; failed .
+     * @type {string}
+     * @memberof ProcessResponseDto
+     */
+    errorCode?: ProcessResponseDtoErrorCodeEnum;
+    /**
      * ID
      * @type {string}
      * @memberof ProcessResponseDto
@@ -132,8 +138,10 @@ export interface ProcessResponseDto {
  * @export
  */
 export const ProcessResponseDtoTypeEnum = {
+    DialogsBulkOperation: 'dialogs_bulk_operation',
     LeadsExport: 'leads_export',
     LeadsImport: 'leads_import',
+    LeadsImportSenler: 'leads_import_senler',
     LeadsRefresh: 'leads_refresh',
     LeadsSegmentOperation: 'leads_segment_operation',
     ChannelMigration: 'channel_migration',
@@ -158,6 +166,18 @@ export const ProcessResponseDtoStatusEnum = {
     Cancelled: 'cancelled'
 } as const;
 export type ProcessResponseDtoStatusEnum = typeof ProcessResponseDtoStatusEnum[keyof typeof ProcessResponseDtoStatusEnum];
+
+/**
+ * @export
+ */
+export const ProcessResponseDtoErrorCodeEnum = {
+    SenlerImportConnectionRequired: 'senler_import_connection_required',
+    SenlerImportConnectionChanged: 'senler_import_connection_changed',
+    SenlerImportSourceUnavailable: 'senler_import_source_unavailable',
+    SenlerImportSourceRejected: 'senler_import_source_rejected',
+    SenlerImportInvalidResponse: 'senler_import_invalid_response'
+} as const;
+export type ProcessResponseDtoErrorCodeEnum = typeof ProcessResponseDtoErrorCodeEnum[keyof typeof ProcessResponseDtoErrorCodeEnum];
 
 
 /**
@@ -192,6 +212,7 @@ export function ProcessResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'progress': json['progress'] == null ? undefined : ProcessProgressDtoFromJSON(json['progress']),
         'result': json['result'] == null ? undefined : ProcessResponseDtoResultFromJSON(json['result']),
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
+        'errorCode': json['error_code'] == null ? undefined : json['error_code'],
         'userId': json['user_id'],
         'projectId': json['project_id'],
         'createdAt': (new Date(json['created_at'])),
@@ -220,6 +241,7 @@ export function ProcessResponseDtoToJSONTyped(value?: ProcessResponseDto | null,
         'progress': ProcessProgressDtoToJSON(value['progress']),
         'result': ProcessResponseDtoResultToJSON(value['result']),
         'error_message': value['errorMessage'],
+        'error_code': value['errorCode'],
         'user_id': value['userId'],
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),

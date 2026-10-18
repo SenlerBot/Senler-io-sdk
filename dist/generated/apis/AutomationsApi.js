@@ -46,8 +46,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RunsRealtimeSubscription2AcceptLanguageEnum = exports.RunsRealtimeSubscriptionAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.RealtimeSubscriptionAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
-exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = void 0;
+exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
+exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -77,6 +77,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -125,6 +129,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -167,6 +175,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -215,6 +227,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -260,6 +276,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -302,6 +322,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -353,6 +377,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -391,6 +419,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -433,6 +465,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -449,6 +485,56 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async automationsGetById(requestParameters, initOverrides) {
         const response = await this.automationsGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . query-.
+     *
+     */
+    async automationsGetTestDialogRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling automationsGetTestDialog().');
+        }
+        const queryParameters = {};
+        if (requestParameters['sessionId'] != null) {
+            queryParameters['session_id'] = requestParameters['sessionId'];
+        }
+        if (requestParameters['triggerNodeId'] != null) {
+            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-dialog`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CurrentAutomationTestDialogDataDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . query-.
+     *
+     */
+    async automationsGetTestDialog(requestParameters, initOverrides) {
+        const response = await this.automationsGetTestDialogRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -476,6 +562,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -522,6 +612,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -562,6 +656,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -578,6 +676,61 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async automationsPause(requestParameters, initOverrides) {
         const response = await this.automationsPauseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async automationsTestDialogMessagesRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling automationsTestDialogMessages().');
+        }
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError('sessionId', 'Required parameter "sessionId" was null or undefined when calling automationsTestDialogMessages().');
+        }
+        if (requestParameters['sendFirstTestMessageDto'] == null) {
+            throw new runtime.RequiredError('sendFirstTestMessageDto', 'Required parameter "sendFirstTestMessageDto" was null or undefined when calling automationsTestDialogMessages().');
+        }
+        const queryParameters = {};
+        if (requestParameters['sessionId'] != null) {
+            queryParameters['session_id'] = requestParameters['sessionId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+        const response = await this.request({
+            path: `/api/automations/{automationId}/test-dialog/messages`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SendFirstTestMessageDtoToJSON)(requestParameters['sendFirstTestMessageDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SendFirstTestMessageResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async automationsTestDialogMessages(requestParameters, initOverrides) {
+        const response = await this.automationsTestDialogMessagesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -603,6 +756,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -654,6 +811,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -671,6 +832,53 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async batch(requestParameters, initOverrides) {
         const response = await this.batchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . Runner. .
+     *
+     */
+    async channelsDeliveryRecoveryRetryRaw(requestParameters, initOverrides) {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling channelsDeliveryRecoveryRetry().');
+        }
+        if (requestParameters['incidentId'] == null) {
+            throw new runtime.RequiredError('incidentId', 'Required parameter "incidentId" was null or undefined when calling channelsDeliveryRecoveryRetry().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+        const response = await this.request({
+            path: `/api/automations/channels/{channelId}/delivery-recovery/{incidentId}/retry`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))).replace(`{${"incidentId"}}`, encodeURIComponent(String(requestParameters['incidentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.RetryAutomationTaskResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . Runner. .
+     *
+     */
+    async channelsDeliveryRecoveryRetry(requestParameters, initOverrides) {
+        const response = await this.channelsDeliveryRecoveryRetryRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -702,6 +910,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -755,6 +967,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -798,6 +1014,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -814,46 +1034,6 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async deleteTestTriggerSessions(requestParameters, initOverrides) {
         const response = await this.deleteTestTriggerSessionsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async dialogsRunsRealtimeSubscriptionRaw(requestParameters, initOverrides) {
-        if (requestParameters['dialogId'] == null) {
-            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling dialogsRunsRealtimeSubscription().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/automations/dialogs/{dialogId}/runs/realtime-subscription`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationRunRealtimeSubscriptionResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async dialogsRunsRealtimeSubscription(requestParameters, initOverrides) {
-        const response = await this.dialogsRunsRealtimeSubscriptionRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -882,6 +1062,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -926,6 +1110,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -942,6 +1130,100 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async getAttachments(requestParameters, initOverrides) {
         const response = await this.getAttachmentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , .
+     * ,
+     */
+    async getAttentionRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling getAttention().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/{automationId}/attention`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationAttentionSummaryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , .
+     * ,
+     */
+    async getAttention(requestParameters, initOverrides) {
+        const response = await this.getAttentionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , .
+     * -
+     */
+    async getChannelsDeliveryRecoveryRaw(requestParameters, initOverrides) {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling getChannelsDeliveryRecovery().');
+        }
+        const queryParameters = {};
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/channels/{channelId}/delivery-recovery`.replace(`{${"channelId"}}`, encodeURIComponent(String(requestParameters['channelId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChannelDeliveryRecoveryPageDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , .
+     * -
+     */
+    async getChannelsDeliveryRecovery(requestParameters, initOverrides) {
+        const response = await this.getChannelsDeliveryRecoveryRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -999,6 +1281,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1042,6 +1328,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1082,6 +1372,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1134,6 +1428,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1174,6 +1472,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1223,6 +1525,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1242,6 +1548,53 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . .
+     *
+     */
+    async getOperatorOptionsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getOperatorOptions().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/operator-options`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationOperatorOptionsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async getOperatorOptions(requestParameters, initOverrides) {
+        const response = await this.getOperatorOptionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Automation Runner.
      * durable-
      */
@@ -1250,6 +1603,9 @@ class AutomationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling getRuns().');
         }
         const queryParameters = {};
+        if (requestParameters['requiresAttention'] != null) {
+            queryParameters['requires_attention'] = requestParameters['requiresAttention'];
+        }
         if (requestParameters['runId'] != null) {
             queryParameters['run_id'] = requestParameters['runId'];
         }
@@ -1296,6 +1652,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1339,6 +1699,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
         }
         const response = await this.request({
@@ -1355,52 +1719,6 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async getRuns2(requestParameters, initOverrides) {
         const response = await this.getRuns2Raw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * , . query-.
-     *
-     */
-    async getTestDialogRaw(requestParameters, initOverrides) {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling getTestDialog().');
-        }
-        const queryParameters = {};
-        if (requestParameters['sessionId'] != null) {
-            queryParameters['session_id'] = requestParameters['sessionId'];
-        }
-        if (requestParameters['triggerNodeId'] != null) {
-            queryParameters['trigger_node_id'] = requestParameters['triggerNodeId'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-        const response = await this.request({
-            path: `/api/automations/{automationId}/test-dialog`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CurrentAutomationTestDialogDataDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , . query-.
-     *
-     */
-    async getTestDialog(requestParameters, initOverrides) {
-        const response = await this.getTestDialogRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1425,6 +1743,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1465,6 +1787,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1512,6 +1838,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1563,6 +1893,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -1611,6 +1945,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -1653,6 +1991,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1701,6 +2043,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -1718,49 +2064,6 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async publish(requestParameters, initOverrides) {
         const response = await this.publishRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    async realtimeSubscriptionRaw(requestParameters, initOverrides) {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling realtimeSubscription().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xAutomationEditorSessionId'] != null) {
-            headerParameters['x-automation-editor-session-id'] = String(requestParameters['xAutomationEditorSessionId']);
-        }
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/automations/{automationId}/realtime-subscription`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationRealtimeSubscriptionResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * token draft-; collaboration-state API .
-     * Centrifugo presence
-     */
-    async realtimeSubscription(requestParameters, initOverrides) {
-        const response = await this.realtimeSubscriptionRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1782,6 +2085,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -1829,6 +2136,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -1873,6 +2184,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -1890,6 +2205,55 @@ class AutomationsApi extends runtime.BaseAPI {
     async runsCancel(requestParameters, initOverrides) {
         const response = await this.runsCancelRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+    /**
+     * . , .
+     *
+     */
+    async runsIncidentsResolveRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling runsIncidentsResolve().');
+        }
+        if (requestParameters['runId'] == null) {
+            throw new runtime.RequiredError('runId', 'Required parameter "runId" was null or undefined when calling runsIncidentsResolve().');
+        }
+        if (requestParameters['incidentId'] == null) {
+            throw new runtime.RequiredError('incidentId', 'Required parameter "incidentId" was null or undefined when calling runsIncidentsResolve().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+        const response = await this.request({
+            path: `/api/automations/{automationId}/runs/{runId}/incidents/{incidentId}/resolve`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))).replace(`{${"incidentId"}}`, encodeURIComponent(String(requestParameters['incidentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * . , .
+     *
+     */
+    async runsIncidentsResolve(requestParameters, initOverrides) {
+        await this.runsIncidentsResolveRaw(requestParameters, initOverrides);
     }
     /**
      * . Mongo .
@@ -1920,6 +2284,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -1937,89 +2305,6 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async runsPause(requestParameters, initOverrides) {
         const response = await this.runsPauseRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    async runsRealtimeSubscriptionRaw(requestParameters, initOverrides) {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling runsRealtimeSubscription().');
-        }
-        if (requestParameters['runId'] == null) {
-            throw new runtime.RequiredError('runId', 'Required parameter "runId" was null or undefined when calling runsRealtimeSubscription().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/automations/{automationId}/runs/{runId}/realtime-subscription`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters['runId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationRunRealtimeSubscriptionResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Centrifugo . channel subscription_token realtime-; , .
-     *
-     */
-    async runsRealtimeSubscription(requestParameters, initOverrides) {
-        const response = await this.runsRealtimeSubscriptionRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async runsRealtimeSubscription2Raw(requestParameters, initOverrides) {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling runsRealtimeSubscription2().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/automations/{automationId}/runs/realtime-subscription`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationRunRealtimeSubscriptionResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * Centrifugo . channel subscription_token realtime-; .
-     *
-     */
-    async runsRealtimeSubscription2(requestParameters, initOverrides) {
-        const response = await this.runsRealtimeSubscription2Raw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -2050,6 +2335,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -2066,57 +2355,6 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async runsTasksRetry(requestParameters, initOverrides) {
         const response = await this.runsTasksRetryRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * . .
-     *
-     */
-    async testDialogMessagesRaw(requestParameters, initOverrides) {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling testDialogMessages().');
-        }
-        if (requestParameters['sessionId'] == null) {
-            throw new runtime.RequiredError('sessionId', 'Required parameter "sessionId" was null or undefined when calling testDialogMessages().');
-        }
-        if (requestParameters['sendFirstTestMessageDto'] == null) {
-            throw new runtime.RequiredError('sendFirstTestMessageDto', 'Required parameter "sendFirstTestMessageDto" was null or undefined when calling testDialogMessages().');
-        }
-        const queryParameters = {};
-        if (requestParameters['sessionId'] != null) {
-            queryParameters['session_id'] = requestParameters['sessionId'];
-        }
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-        const response = await this.request({
-            path: `/api/automations/{automationId}/test-dialog/messages`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SendFirstTestMessageDtoToJSON)(requestParameters['sendFirstTestMessageDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SendFirstTestMessageResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * . .
-     *
-     */
-    async testDialogMessages(requestParameters, initOverrides) {
-        const response = await this.testDialogMessagesRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -2142,6 +2380,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2190,6 +2432,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -2235,6 +2481,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2289,6 +2539,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -2337,6 +2591,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -2382,6 +2640,10 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
             headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
         }
         const response = await this.request({
@@ -2420,6 +2682,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2470,6 +2736,10 @@ class AutomationsApi extends runtime.BaseAPI {
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
         }
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -2560,6 +2830,13 @@ exports.AutomationsGetByIdAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.AutomationsGetTestDialogAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.AutomationsGetVersionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2581,6 +2858,13 @@ exports.AutomationsPauseAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.AutomationsTestDialogMessagesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.AutomationsUpdateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2589,6 +2873,13 @@ exports.AutomationsUpdateAcceptLanguageEnum = {
  * @export
  */
 exports.BatchAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -2616,13 +2907,6 @@ exports.DeleteTestTriggerSessionsAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.DialogsRunsRealtimeSubscriptionAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.EdgesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2631,6 +2915,20 @@ exports.EdgesAcceptLanguageEnum = {
  * @export
  */
 exports.GetAttachmentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAttentionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -2713,6 +3011,13 @@ exports.GetOperationsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetOperatorOptionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetRunsStatusEnum = {
     Active: 'active',
     Parked: 'parked',
@@ -2741,13 +3046,6 @@ exports.GetRunsAcceptLanguageEnum = {
  * @export
  */
 exports.GetRuns2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetTestDialogAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -2803,13 +3101,6 @@ exports.PublishAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.RealtimeSubscriptionAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.ResumeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2831,6 +3122,13 @@ exports.RunsCancelAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.RunsIncidentsResolveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.RunsPauseAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2838,28 +3136,7 @@ exports.RunsPauseAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.RunsRealtimeSubscriptionAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.RunsRealtimeSubscription2AcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.RunsTasksRetryAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.TestDialogMessagesAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
