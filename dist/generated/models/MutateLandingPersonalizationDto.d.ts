@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingVariantInitialContentDto } from './LandingVariantInitialContentDto';
 import type { UpdateLandingBlockDto } from './UpdateLandingBlockDto';
 import type { LandingVariantBindingDto } from './LandingVariantBindingDto';
 import type { LandingRuleDto } from './LandingRuleDto';
@@ -54,6 +55,12 @@ export interface MutateLandingPersonalizationDto {
      * @memberof MutateLandingPersonalizationDto
      */
     sourceVariantId?: string;
+    /**
+     * . create_variant, source_variant_id; .
+     * @type {LandingVariantInitialContentDto}
+     * @memberof MutateLandingPersonalizationDto
+     */
+    initialContent?: LandingVariantInitialContentDto;
     /**
      * name.
      * @type {string}

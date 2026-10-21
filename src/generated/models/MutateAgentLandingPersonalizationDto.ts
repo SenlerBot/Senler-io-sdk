@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AgentLandingVariantInitialContentDto } from './AgentLandingVariantInitialContentDto';
+import {
+    AgentLandingVariantInitialContentDtoFromJSON,
+    AgentLandingVariantInitialContentDtoFromJSONTyped,
+    AgentLandingVariantInitialContentDtoToJSON,
+    AgentLandingVariantInitialContentDtoToJSONTyped,
+} from './AgentLandingVariantInitialContentDto';
 import type { LandingVariantBindingDto } from './LandingVariantBindingDto';
 import {
     LandingVariantBindingDtoFromJSON,
@@ -121,6 +128,12 @@ export interface MutateAgentLandingPersonalizationDto {
     rule?: LandingRuleDto;
     /**
      * ;
+     * @type {AgentLandingVariantInitialContentDto}
+     * @memberof MutateAgentLandingPersonalizationDto
+     */
+    initialContent?: AgentLandingVariantInitialContentDto;
+    /**
+     * ;
      * @type {UpdateAgentLandingBlockDto}
      * @memberof MutateAgentLandingPersonalizationDto
      */
@@ -180,6 +193,7 @@ export function MutateAgentLandingPersonalizationDtoFromJSONTyped(json: any, ign
         'variantBindings': json['variant_bindings'] == null ? undefined : ((json['variant_bindings'] as Array<any>).map(LandingVariantBindingDtoFromJSON)),
         'orderedVariantIds': json['ordered_variant_ids'] == null ? undefined : json['ordered_variant_ids'],
         'rule': json['rule'] == null ? undefined : LandingRuleDtoFromJSON(json['rule']),
+        'initialContent': json['initial_content'] == null ? undefined : AgentLandingVariantInitialContentDtoFromJSON(json['initial_content']),
         'content': json['content'] == null ? undefined : UpdateAgentLandingBlockDtoFromJSON(json['content']),
     };
 }
@@ -208,6 +222,7 @@ export function MutateAgentLandingPersonalizationDtoToJSONTyped(value?: MutateAg
         'variant_bindings': value['variantBindings'] == null ? undefined : ((value['variantBindings'] as Array<any>).map(LandingVariantBindingDtoToJSON)),
         'ordered_variant_ids': value['orderedVariantIds'],
         'rule': LandingRuleDtoToJSON(value['rule']),
+        'initial_content': AgentLandingVariantInitialContentDtoToJSON(value['initialContent']),
         'content': UpdateAgentLandingBlockDtoToJSON(value['content']),
     };
 }

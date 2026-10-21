@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateRealtimeFocusAcceptLanguageEnum = exports.UpdateDraftAcceptLanguageEnum = exports.PublicationsRestoreAcceptLanguageEnum = exports.PreviewLeadAcceptLanguageEnum = exports.PreviewAcceptLanguageEnum = exports.PersonalizationAcceptLanguageEnum = exports.LandingsUpdateAcceptLanguageEnum = exports.LandingsPublishAcceptLanguageEnum = exports.LandingsListAcceptLanguageEnum = exports.LandingsGetByIdAcceptLanguageEnum = exports.LandingsDeactivateAcceptLanguageEnum = exports.LandingsCreateAcceptLanguageEnum = exports.GetShareLinksAcceptLanguageEnum = exports.GetRulesResultsAcceptLanguageEnum = exports.GetPublicationsAcceptLanguageEnum = exports.GetPublicationValidationAcceptLanguageEnum = exports.DuplicateAcceptLanguageEnum = exports.DeleteBlocksAcceptLanguageEnum = exports.BlocksMoveAcceptLanguageEnum = exports.AssetsUploadUrlAcceptLanguageEnum = exports.AssetsFromUrlAcceptLanguageEnum = exports.AssetsConfirmAcceptLanguageEnum = exports.LandingsApi = void 0;
+exports.UpdateRealtimeFocusAcceptLanguageEnum = exports.UpdateDraftAcceptLanguageEnum = exports.PublicationsRestoreAcceptLanguageEnum = exports.PreviewLeadAcceptLanguageEnum = exports.PreviewAcceptLanguageEnum = exports.PersonalizationAcceptLanguageEnum = exports.LandingsUpdateAcceptLanguageEnum = exports.LandingsPublishAcceptLanguageEnum = exports.LandingsListAcceptLanguageEnum = exports.LandingsGetByIdAcceptLanguageEnum = exports.LandingsDeactivateAcceptLanguageEnum = exports.LandingsCreateAcceptLanguageEnum = exports.GetStatisticsAcceptLanguageEnum = exports.GetStatisticsDaysEnum = exports.GetShareLinksAcceptLanguageEnum = exports.GetRulesResultsAcceptLanguageEnum = exports.GetPublicationsAcceptLanguageEnum = exports.GetPublicationValidationAcceptLanguageEnum = exports.DuplicateAcceptLanguageEnum = exports.DeleteBlocksAcceptLanguageEnum = exports.BlocksMoveAcceptLanguageEnum = exports.AssetsUploadUrlAcceptLanguageEnum = exports.AssetsFromUrlAcceptLanguageEnum = exports.AssetsConfirmAcceptLanguageEnum = exports.LandingsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -545,6 +545,53 @@ class LandingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , , . , . . .
+     * ,
+     */
+    async getStatisticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingId'] == null) {
+            throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling getStatistics().');
+        }
+        const queryParameters = {};
+        if (requestParameters['days'] != null) {
+            queryParameters['days'] = requestParameters['days'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/landings/{landingId}/statistics`.replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingStatisticsReportDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , , . , . . .
+     * ,
+     */
+    async getStatistics(requestParameters, initOverrides) {
+        const response = await this.getStatisticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , .
      *
      */
@@ -893,7 +940,7 @@ class LandingsApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.MutateLandingPersonalizationDtoToJSON)(requestParameters['mutateLandingPersonalizationDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPersonalizationMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * settings_revision. ID. .
@@ -1233,6 +1280,21 @@ exports.GetRulesResultsAcceptLanguageEnum = {
  * @export
  */
 exports.GetShareLinksAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetStatisticsDaysEnum = {
+    NUMBER_7: 7,
+    NUMBER_30: 30,
+    NUMBER_90: 90
+};
+/**
+ * @export
+ */
+exports.GetStatisticsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

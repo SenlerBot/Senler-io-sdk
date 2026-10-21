@@ -19,6 +19,7 @@ exports.MutateAgentLandingPersonalizationDtoFromJSON = MutateAgentLandingPersona
 exports.MutateAgentLandingPersonalizationDtoFromJSONTyped = MutateAgentLandingPersonalizationDtoFromJSONTyped;
 exports.MutateAgentLandingPersonalizationDtoToJSON = MutateAgentLandingPersonalizationDtoToJSON;
 exports.MutateAgentLandingPersonalizationDtoToJSONTyped = MutateAgentLandingPersonalizationDtoToJSONTyped;
+const AgentLandingVariantInitialContentDto_1 = require("./AgentLandingVariantInitialContentDto");
 const LandingVariantBindingDto_1 = require("./LandingVariantBindingDto");
 const LandingRuleDto_1 = require("./LandingRuleDto");
 const UpdateAgentLandingBlockDto_1 = require("./UpdateAgentLandingBlockDto");
@@ -70,6 +71,7 @@ function MutateAgentLandingPersonalizationDtoFromJSONTyped(json, ignoreDiscrimin
         'variantBindings': json['variant_bindings'] == null ? undefined : (json['variant_bindings'].map(LandingVariantBindingDto_1.LandingVariantBindingDtoFromJSON)),
         'orderedVariantIds': json['ordered_variant_ids'] == null ? undefined : json['ordered_variant_ids'],
         'rule': json['rule'] == null ? undefined : (0, LandingRuleDto_1.LandingRuleDtoFromJSON)(json['rule']),
+        'initialContent': json['initial_content'] == null ? undefined : (0, AgentLandingVariantInitialContentDto_1.AgentLandingVariantInitialContentDtoFromJSON)(json['initial_content']),
         'content': json['content'] == null ? undefined : (0, UpdateAgentLandingBlockDto_1.UpdateAgentLandingBlockDtoFromJSON)(json['content']),
     };
 }
@@ -94,6 +96,7 @@ function MutateAgentLandingPersonalizationDtoToJSONTyped(value, ignoreDiscrimina
         'variant_bindings': value['variantBindings'] == null ? undefined : (value['variantBindings'].map(LandingVariantBindingDto_1.LandingVariantBindingDtoToJSON)),
         'ordered_variant_ids': value['orderedVariantIds'],
         'rule': (0, LandingRuleDto_1.LandingRuleDtoToJSON)(value['rule']),
+        'initial_content': (0, AgentLandingVariantInitialContentDto_1.AgentLandingVariantInitialContentDtoToJSON)(value['initialContent']),
         'content': (0, UpdateAgentLandingBlockDto_1.UpdateAgentLandingBlockDtoToJSON)(value['content']),
     };
 }

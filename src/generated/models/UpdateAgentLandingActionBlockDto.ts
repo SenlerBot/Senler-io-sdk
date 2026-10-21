@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { UpdateAgentLandingBlockDtoAction } from './UpdateAgentLandingBlockDtoAction';
+import type { AgentLandingVariantInitialContentDtoAction } from './AgentLandingVariantInitialContentDtoAction';
 import {
-    UpdateAgentLandingBlockDtoActionFromJSON,
-    UpdateAgentLandingBlockDtoActionFromJSONTyped,
-    UpdateAgentLandingBlockDtoActionToJSON,
-    UpdateAgentLandingBlockDtoActionToJSONTyped,
-} from './UpdateAgentLandingBlockDtoAction';
+    AgentLandingVariantInitialContentDtoActionFromJSON,
+    AgentLandingVariantInitialContentDtoActionFromJSONTyped,
+    AgentLandingVariantInitialContentDtoActionToJSON,
+    AgentLandingVariantInitialContentDtoActionToJSONTyped,
+} from './AgentLandingVariantInitialContentDtoAction';
 
 /**
  * UpdateAgentLandingActionBlockDto.
@@ -53,10 +53,10 @@ export interface UpdateAgentLandingActionBlockDto {
     payload: { [key: string]: any; };
     /**
      *
-     * @type {UpdateAgentLandingBlockDtoAction}
+     * @type {AgentLandingVariantInitialContentDtoAction}
      * @memberof UpdateAgentLandingActionBlockDto
      */
-    action: UpdateAgentLandingBlockDtoAction | null;
+    action: AgentLandingVariantInitialContentDtoAction | null;
 }
 
 
@@ -97,7 +97,7 @@ export function UpdateAgentLandingActionBlockDtoFromJSONTyped(json: any, ignoreD
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
-        'action': UpdateAgentLandingBlockDtoActionFromJSON(json['action']),
+        'action': AgentLandingVariantInitialContentDtoActionFromJSON(json['action']),
     };
 }
 
@@ -116,6 +116,6 @@ export function UpdateAgentLandingActionBlockDtoToJSONTyped(value?: UpdateAgentL
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
-        'action': UpdateAgentLandingBlockDtoActionToJSON(value['action']),
+        'action': AgentLandingVariantInitialContentDtoActionToJSON(value['action']),
     };
 }

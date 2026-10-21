@@ -20,6 +20,18 @@ import { mapValues } from '../runtime';
  */
 export interface RecordLandingVariantEventDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof RecordLandingVariantEventDto
+     */
+    pageObserved?: boolean;
+    /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof RecordLandingVariantEventDto
+     */
+    observedBlockIds?: Array<string>;
+    /**
      * , ,
      * @type {Array<string>}
      * @memberof RecordLandingVariantEventDto
@@ -38,7 +50,7 @@ export interface RecordLandingVariantEventDto {
      */
     eventId: string;
     /**
-     * : exposure, click, activity.
+     * : view, exposure, click, activity.
      * @type {string}
      * @memberof RecordLandingVariantEventDto
      */
@@ -62,6 +74,7 @@ export interface RecordLandingVariantEventDto {
  * @export
  */
 export const RecordLandingVariantEventDtoKindEnum = {
+    View: 'view',
     Exposure: 'exposure',
     Click: 'click',
     Activity: 'activity'
@@ -89,6 +102,8 @@ export function RecordLandingVariantEventDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
+        'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
         'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'],
         'eventId': json['event_id'],
@@ -109,6 +124,8 @@ export function RecordLandingVariantEventDtoToJSONTyped(value?: RecordLandingVar
 
     return {
 
+        'page_observed': value['pageObserved'],
+        'observed_block_ids': value['observedBlockIds'],
         'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'event_id': value['eventId'],

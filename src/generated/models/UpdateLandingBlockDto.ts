@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { UpdateLandingBlockDtoAction } from './UpdateLandingBlockDtoAction';
+import type { LandingVariantInitialContentDtoAction } from './LandingVariantInitialContentDtoAction';
 import {
-    UpdateLandingBlockDtoActionFromJSON,
-    UpdateLandingBlockDtoActionFromJSONTyped,
-    UpdateLandingBlockDtoActionToJSON,
-    UpdateLandingBlockDtoActionToJSONTyped,
-} from './UpdateLandingBlockDtoAction';
+    LandingVariantInitialContentDtoActionFromJSON,
+    LandingVariantInitialContentDtoActionFromJSONTyped,
+    LandingVariantInitialContentDtoActionToJSON,
+    LandingVariantInitialContentDtoActionToJSONTyped,
+} from './LandingVariantInitialContentDtoAction';
 
 /**
  * UpdateLandingBlockDto.
@@ -53,10 +53,10 @@ export interface UpdateLandingBlockDto {
     payload: { [key: string]: any; };
     /**
      *
-     * @type {UpdateLandingBlockDtoAction}
+     * @type {LandingVariantInitialContentDtoAction}
      * @memberof UpdateLandingBlockDto
      */
-    action: UpdateLandingBlockDtoAction | null;
+    action: LandingVariantInitialContentDtoAction | null;
 }
 
 
@@ -104,7 +104,7 @@ export function UpdateLandingBlockDtoFromJSONTyped(json: any, ignoreDiscriminato
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
-        'action': UpdateLandingBlockDtoActionFromJSON(json['action']),
+        'action': LandingVariantInitialContentDtoActionFromJSON(json['action']),
     };
 }
 
@@ -123,6 +123,6 @@ export function UpdateLandingBlockDtoToJSONTyped(value?: UpdateLandingBlockDto |
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
-        'action': UpdateLandingBlockDtoActionToJSON(value['action']),
+        'action': LandingVariantInitialContentDtoActionToJSON(value['action']),
     };
 }

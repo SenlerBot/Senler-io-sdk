@@ -19,7 +19,7 @@ exports.CreateAgentLandingActionBlockDtoFromJSON = CreateAgentLandingActionBlock
 exports.CreateAgentLandingActionBlockDtoFromJSONTyped = CreateAgentLandingActionBlockDtoFromJSONTyped;
 exports.CreateAgentLandingActionBlockDtoToJSON = CreateAgentLandingActionBlockDtoToJSON;
 exports.CreateAgentLandingActionBlockDtoToJSONTyped = CreateAgentLandingActionBlockDtoToJSONTyped;
-const UpdateAgentLandingBlockDtoAction_1 = require("./UpdateAgentLandingBlockDtoAction");
+const AgentLandingVariantInitialContentDtoAction_1 = require("./AgentLandingVariantInitialContentDtoAction");
 /**
  * @export
  */
@@ -57,7 +57,7 @@ function CreateAgentLandingActionBlockDtoFromJSONTyped(json, ignoreDiscriminator
         'payload': json['payload'],
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
-        'action': json['action'] == null ? undefined : (0, UpdateAgentLandingBlockDtoAction_1.UpdateAgentLandingBlockDtoActionFromJSON)(json['action']),
+        'action': json['action'] == null ? undefined : (0, AgentLandingVariantInitialContentDtoAction_1.AgentLandingVariantInitialContentDtoActionFromJSON)(json['action']),
     };
 }
 function CreateAgentLandingActionBlockDtoToJSON(json) {
@@ -75,6 +75,6 @@ function CreateAgentLandingActionBlockDtoToJSONTyped(value, ignoreDiscriminator 
         'payload': value['payload'],
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
-        'action': (0, UpdateAgentLandingBlockDtoAction_1.UpdateAgentLandingBlockDtoActionToJSON)(value['action']),
+        'action': (0, AgentLandingVariantInitialContentDtoAction_1.AgentLandingVariantInitialContentDtoActionToJSON)(value['action']),
     };
 }

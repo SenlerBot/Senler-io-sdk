@@ -17,6 +17,18 @@ import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
  */
 export interface CreateLandingSubscriptionContextDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    pageObserved?: boolean;
+    /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    observedBlockIds?: Array<string>;
+    /**
      * , ,
      * @type {Array<string>}
      * @memberof CreateLandingSubscriptionContextDto

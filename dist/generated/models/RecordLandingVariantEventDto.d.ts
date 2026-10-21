@@ -16,6 +16,18 @@
  */
 export interface RecordLandingVariantEventDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof RecordLandingVariantEventDto
+     */
+    pageObserved?: boolean;
+    /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof RecordLandingVariantEventDto
+     */
+    observedBlockIds?: Array<string>;
+    /**
      * , ,
      * @type {Array<string>}
      * @memberof RecordLandingVariantEventDto
@@ -34,7 +46,7 @@ export interface RecordLandingVariantEventDto {
      */
     eventId: string;
     /**
-     * : exposure, click, activity.
+     * : view, exposure, click, activity.
      * @type {string}
      * @memberof RecordLandingVariantEventDto
      */
@@ -56,6 +68,7 @@ export interface RecordLandingVariantEventDto {
  * @export
  */
 export declare const RecordLandingVariantEventDtoKindEnum: {
+    readonly View: "view";
     readonly Exposure: "exposure";
     readonly Click: "click";
     readonly Activity: "activity";

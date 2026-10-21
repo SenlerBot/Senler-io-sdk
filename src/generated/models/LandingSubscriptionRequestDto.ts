@@ -96,6 +96,18 @@ export interface LandingSubscriptionRequestDto {
      */
     utmTerm?: string;
     /**
+     *
+     * @type {boolean}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    pageObserved?: boolean;
+    /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    observedBlockIds?: Array<string>;
+    /**
      * , ,
      * @type {Array<string>}
      * @memberof LandingSubscriptionRequestDto
@@ -168,6 +180,8 @@ export function LandingSubscriptionRequestDtoFromJSONTyped(json: any, ignoreDisc
         'utmCampaign': json['utm_campaign'] == null ? undefined : json['utm_campaign'],
         'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
         'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
+        'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
+        'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
         'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'] == null ? undefined : json['event_token'],
         'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
@@ -196,6 +210,8 @@ export function LandingSubscriptionRequestDtoToJSONTyped(value?: LandingSubscrip
         'utm_campaign': value['utmCampaign'],
         'utm_content': value['utmContent'],
         'utm_term': value['utmTerm'],
+        'page_observed': value['pageObserved'],
+        'observed_block_ids': value['observedBlockIds'],
         'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),

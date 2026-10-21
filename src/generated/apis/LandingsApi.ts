@@ -28,12 +28,14 @@ import type {
   LandingDraftConflictResponseDto,
   LandingExperimentReportDto,
   LandingListResponseDto,
+  LandingPersonalizationMutationResponseDto,
   LandingPreviewResponseDto,
   LandingPublicationValidationDto,
   LandingPublicationsListResponseDto,
   LandingRealtimeFocusResponseDto,
   LandingResponseDto,
   LandingShareLinksResponseDto,
+  LandingStatisticsReportDto,
   LandingSummaryResponseDto,
   MoveLandingBlockDto,
   MutateLandingPersonalizationDto,
@@ -71,6 +73,8 @@ import {
     LandingExperimentReportDtoToJSON,
     LandingListResponseDtoFromJSON,
     LandingListResponseDtoToJSON,
+    LandingPersonalizationMutationResponseDtoFromJSON,
+    LandingPersonalizationMutationResponseDtoToJSON,
     LandingPreviewResponseDtoFromJSON,
     LandingPreviewResponseDtoToJSON,
     LandingPublicationValidationDtoFromJSON,
@@ -83,6 +87,8 @@ import {
     LandingResponseDtoToJSON,
     LandingShareLinksResponseDtoFromJSON,
     LandingShareLinksResponseDtoToJSON,
+    LandingStatisticsReportDtoFromJSON,
+    LandingStatisticsReportDtoToJSON,
     LandingSummaryResponseDtoFromJSON,
     LandingSummaryResponseDtoToJSON,
     MoveLandingBlockDtoFromJSON,
@@ -162,6 +168,12 @@ export interface GetRulesResultsRequest {
 export interface GetShareLinksRequest {
     landingId: string;
     acceptLanguage?: GetShareLinksAcceptLanguageEnum;
+}
+
+export interface GetStatisticsRequest {
+    landingId: string;
+    days?: GetStatisticsDaysEnum;
+    acceptLanguage?: GetStatisticsAcceptLanguageEnum;
 }
 
 export interface LandingsCreateRequest {
@@ -921,6 +933,67 @@ export class LandingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * , , . , . . .
+     * ,
+     */
+    async getStatisticsRaw(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingStatisticsReportDto>> {
+        if (requestParameters['landingId'] == null) {
+            throw new runtime.RequiredError(
+                'landingId',
+                'Required parameter "landingId" was null or undefined when calling getStatistics().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['days'] != null) {
+            queryParameters['days'] = requestParameters['days'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/landings/{landingId}/statistics`.replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingStatisticsReportDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , . , . . .
+     * ,
+     */
+    async getStatistics(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingStatisticsReportDto> {
+        const response = await this.getStatisticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      *
      */
@@ -1332,7 +1405,7 @@ export class LandingsApi extends runtime.BaseAPI {
      * settings_revision. ID. .
      * ,
      */
-    async personalizationRaw(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>> {
+    async personalizationRaw(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPersonalizationMutationResponseDto>> {
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError(
                 'landingId',
@@ -1394,14 +1467,14 @@ export class LandingsApi extends runtime.BaseAPI {
             body: MutateLandingPersonalizationDtoToJSON(requestParameters['mutateLandingPersonalizationDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPersonalizationMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * settings_revision. ID. .
      * ,
      */
-    async personalization(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto> {
+    async personalization(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPersonalizationMutationResponseDto> {
         const response = await this.personalizationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1853,6 +1926,23 @@ export const GetShareLinksAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetShareLinksAcceptLanguageEnum = typeof GetShareLinksAcceptLanguageEnum[keyof typeof GetShareLinksAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetStatisticsDaysEnum = {
+    NUMBER_7: 7,
+    NUMBER_30: 30,
+    NUMBER_90: 90
+} as const;
+export type GetStatisticsDaysEnum = typeof GetStatisticsDaysEnum[keyof typeof GetStatisticsDaysEnum];
+/**
+ * @export
+ */
+export const GetStatisticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetStatisticsAcceptLanguageEnum = typeof GetStatisticsAcceptLanguageEnum[keyof typeof GetStatisticsAcceptLanguageEnum];
 /**
  * @export
  */

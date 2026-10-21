@@ -11,12 +11,6 @@
  */
 import * as runtime from '../runtime';
 import type { CreateTrafficMarkDto, TrafficMarkResponseDto, TrafficMarkStatisticsResponseDto, TrafficMarkStatisticsTreeResponseDto, TrafficMarksListResponseDto } from '../models/index';
-export interface GetStatisticsRequest {
-    projectId: string;
-    period: GetStatisticsPeriodEnum;
-    channelId?: string;
-    acceptLanguage?: GetStatisticsAcceptLanguageEnum;
-}
 export interface GetStatisticsTreeRequest {
     projectId: string;
     period: GetStatisticsTreePeriodEnum;
@@ -40,6 +34,12 @@ export interface TrafficMarksDeactivateRequest {
     trafficMarkId: string;
     acceptLanguage?: TrafficMarksDeactivateAcceptLanguageEnum;
 }
+export interface TrafficMarksGetStatisticsRequest {
+    projectId: string;
+    period: TrafficMarksGetStatisticsPeriodEnum;
+    channelId?: string;
+    acceptLanguage?: TrafficMarksGetStatisticsAcceptLanguageEnum;
+}
 export interface TrafficMarksListRequest {
     projectId: string;
     acceptLanguage?: TrafficMarksListAcceptLanguageEnum;
@@ -48,16 +48,6 @@ export interface TrafficMarksListRequest {
  *
  */
 export declare class TrafficMarksApi extends runtime.BaseAPI {
-    /**
-     * . , , .
-     *
-     */
-    getStatisticsRaw(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkStatisticsResponseDto>>;
-    /**
-     * . , , .
-     *
-     */
-    getStatistics(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarkStatisticsResponseDto>;
     /**
      * parent_id utm_source. UTM-; .
      * UTM
@@ -99,6 +89,16 @@ export declare class TrafficMarksApi extends runtime.BaseAPI {
      */
     trafficMarksDeactivate(requestParameters: TrafficMarksDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarkResponseDto>;
     /**
+     * . , , .
+     *
+     */
+    trafficMarksGetStatisticsRaw(requestParameters: TrafficMarksGetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkStatisticsResponseDto>>;
+    /**
+     * . , , .
+     *
+     */
+    trafficMarksGetStatistics(requestParameters: TrafficMarksGetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarkStatisticsResponseDto>;
+    /**
      * .
      * UTM-
      */
@@ -109,24 +109,6 @@ export declare class TrafficMarksApi extends runtime.BaseAPI {
      */
     trafficMarksList(requestParameters: TrafficMarksListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarksListResponseDto>;
 }
-/**
- * @export
- */
-export declare const GetStatisticsPeriodEnum: {
-    readonly _24h: "24h";
-    readonly _7d: "7d";
-    readonly _30d: "30d";
-    readonly _90d: "90d";
-};
-export type GetStatisticsPeriodEnum = typeof GetStatisticsPeriodEnum[keyof typeof GetStatisticsPeriodEnum];
-/**
- * @export
- */
-export declare const GetStatisticsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetStatisticsAcceptLanguageEnum = typeof GetStatisticsAcceptLanguageEnum[keyof typeof GetStatisticsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -169,6 +151,24 @@ export declare const TrafficMarksDeactivateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type TrafficMarksDeactivateAcceptLanguageEnum = typeof TrafficMarksDeactivateAcceptLanguageEnum[keyof typeof TrafficMarksDeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const TrafficMarksGetStatisticsPeriodEnum: {
+    readonly _24h: "24h";
+    readonly _7d: "7d";
+    readonly _30d: "30d";
+    readonly _90d: "90d";
+};
+export type TrafficMarksGetStatisticsPeriodEnum = typeof TrafficMarksGetStatisticsPeriodEnum[keyof typeof TrafficMarksGetStatisticsPeriodEnum];
+/**
+ * @export
+ */
+export declare const TrafficMarksGetStatisticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type TrafficMarksGetStatisticsAcceptLanguageEnum = typeof TrafficMarksGetStatisticsAcceptLanguageEnum[keyof typeof TrafficMarksGetStatisticsAcceptLanguageEnum];
 /**
  * @export
  */

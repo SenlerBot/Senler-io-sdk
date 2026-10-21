@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingListResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, MutateLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingListResponseDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, LandingSummaryResponseDto, MoveLandingBlockDto, MutateLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface AssetsConfirmRequest {
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
@@ -61,6 +61,11 @@ export interface GetRulesResultsRequest {
 export interface GetShareLinksRequest {
     landingId: string;
     acceptLanguage?: GetShareLinksAcceptLanguageEnum;
+}
+export interface GetStatisticsRequest {
+    landingId: string;
+    days?: GetStatisticsDaysEnum;
+    acceptLanguage?: GetStatisticsAcceptLanguageEnum;
 }
 export interface LandingsCreateRequest {
     projectId: string;
@@ -233,6 +238,16 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     getShareLinks(requestParameters: GetShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
     /**
+     * , , . , . . .
+     * ,
+     */
+    getStatisticsRaw(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingStatisticsReportDto>>;
+    /**
+     * , , . , . . .
+     * ,
+     */
+    getStatistics(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingStatisticsReportDto>;
+    /**
      * , .
      *
      */
@@ -296,12 +311,12 @@ export declare class LandingsApi extends runtime.BaseAPI {
      * settings_revision. ID. .
      * ,
      */
-    personalizationRaw(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    personalizationRaw(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPersonalizationMutationResponseDto>>;
     /**
      * settings_revision. ID. .
      * ,
      */
-    personalization(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    personalization(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPersonalizationMutationResponseDto>;
     /**
      * rule_outcomes ; input_data , -. . A/B-.
      *
@@ -433,6 +448,23 @@ export declare const GetShareLinksAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetShareLinksAcceptLanguageEnum = typeof GetShareLinksAcceptLanguageEnum[keyof typeof GetShareLinksAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetStatisticsDaysEnum: {
+    readonly NUMBER_7: 7;
+    readonly NUMBER_30: 30;
+    readonly NUMBER_90: 90;
+};
+export type GetStatisticsDaysEnum = typeof GetStatisticsDaysEnum[keyof typeof GetStatisticsDaysEnum];
+/**
+ * @export
+ */
+export declare const GetStatisticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetStatisticsAcceptLanguageEnum = typeof GetStatisticsAcceptLanguageEnum[keyof typeof GetStatisticsAcceptLanguageEnum];
 /**
  * @export
  */

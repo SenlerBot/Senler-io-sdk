@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { UpdateLandingBlockDtoAction } from './UpdateLandingBlockDtoAction';
+import type { LandingVariantInitialContentDtoAction } from './LandingVariantInitialContentDtoAction';
 import {
-    UpdateLandingBlockDtoActionFromJSON,
-    UpdateLandingBlockDtoActionFromJSONTyped,
-    UpdateLandingBlockDtoActionToJSON,
-    UpdateLandingBlockDtoActionToJSONTyped,
-} from './UpdateLandingBlockDtoAction';
+    LandingVariantInitialContentDtoActionFromJSON,
+    LandingVariantInitialContentDtoActionFromJSONTyped,
+    LandingVariantInitialContentDtoActionToJSON,
+    LandingVariantInitialContentDtoActionToJSONTyped,
+} from './LandingVariantInitialContentDtoAction';
 
 /**
  * CreateLandingActionBlockDto.
@@ -59,10 +59,10 @@ export interface CreateLandingActionBlockDto {
     payload: { [key: string]: any; };
     /**
      *
-     * @type {UpdateLandingBlockDtoAction}
+     * @type {LandingVariantInitialContentDtoAction}
      * @memberof CreateLandingActionBlockDto
      */
-    action?: UpdateLandingBlockDtoAction | null;
+    action?: LandingVariantInitialContentDtoAction | null;
     /**
      *
      * @type {string}
@@ -115,7 +115,7 @@ export function CreateLandingActionBlockDtoFromJSONTyped(json: any, ignoreDiscri
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
-        'action': json['action'] == null ? undefined : UpdateLandingBlockDtoActionFromJSON(json['action']),
+        'action': json['action'] == null ? undefined : LandingVariantInitialContentDtoActionFromJSON(json['action']),
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
     };
@@ -137,7 +137,7 @@ export function CreateLandingActionBlockDtoToJSONTyped(value?: CreateLandingActi
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
-        'action': UpdateLandingBlockDtoActionToJSON(value['action']),
+        'action': LandingVariantInitialContentDtoActionToJSON(value['action']),
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
     };

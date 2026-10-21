@@ -28,17 +28,17 @@ import {
 } from './LandingOpenUrlActionInputDto';
 
 /**
- * @type UpdateAgentLandingBlockDtoAction
+ * @type AgentLandingVariantInitialContentDtoAction
  *
  * @export
  */
-export type UpdateAgentLandingBlockDtoAction = { type: 'open_url' } & LandingOpenUrlActionInputDto | { type: 'subscribe_segment' } & AgentLandingSubscribeActionInputDto;
+export type AgentLandingVariantInitialContentDtoAction = { type: 'open_url' } & LandingOpenUrlActionInputDto | { type: 'subscribe_segment' } & AgentLandingSubscribeActionInputDto;
 
-export function UpdateAgentLandingBlockDtoActionFromJSON(json: any): UpdateAgentLandingBlockDtoAction {
-    return UpdateAgentLandingBlockDtoActionFromJSONTyped(json, false);
+export function AgentLandingVariantInitialContentDtoActionFromJSON(json: any): AgentLandingVariantInitialContentDtoAction {
+    return AgentLandingVariantInitialContentDtoActionFromJSONTyped(json, false);
 }
 
-export function UpdateAgentLandingBlockDtoActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateAgentLandingBlockDtoAction {
+export function AgentLandingVariantInitialContentDtoActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): AgentLandingVariantInitialContentDtoAction {
     if (json == null) {
         return json;
     }
@@ -48,15 +48,15 @@ export function UpdateAgentLandingBlockDtoActionFromJSONTyped(json: any, ignoreD
         case 'subscribe_segment':
             return Object.assign({}, AgentLandingSubscribeActionInputDtoFromJSONTyped(json, true), { type: 'subscribe_segment' } as const);
         default:
-            throw new Error(`No variant of UpdateAgentLandingBlockDtoAction exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of AgentLandingVariantInitialContentDtoAction exists with 'type=${json['type']}'`);
     }
 }
 
-export function UpdateAgentLandingBlockDtoActionToJSON(json: any): any {
-    return UpdateAgentLandingBlockDtoActionToJSONTyped(json, false);
+export function AgentLandingVariantInitialContentDtoActionToJSON(json: any): any {
+    return AgentLandingVariantInitialContentDtoActionToJSONTyped(json, false);
 }
 
-export function UpdateAgentLandingBlockDtoActionToJSONTyped(value?: UpdateAgentLandingBlockDtoAction | null, ignoreDiscriminator: boolean = false): any {
+export function AgentLandingVariantInitialContentDtoActionToJSONTyped(value?: AgentLandingVariantInitialContentDtoAction | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -66,7 +66,7 @@ export function UpdateAgentLandingBlockDtoActionToJSONTyped(value?: UpdateAgentL
         case 'subscribe_segment':
             return Object.assign({}, AgentLandingSubscribeActionInputDtoToJSON(value), { type: 'subscribe_segment' } as const);
         default:
-            throw new Error(`No variant of UpdateAgentLandingBlockDtoAction exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of AgentLandingVariantInitialContentDtoAction exists with 'type=${value['type']}'`);
     }
 
 }

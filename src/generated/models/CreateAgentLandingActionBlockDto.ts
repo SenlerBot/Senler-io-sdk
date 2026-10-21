@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { UpdateAgentLandingBlockDtoAction } from './UpdateAgentLandingBlockDtoAction';
+import type { AgentLandingVariantInitialContentDtoAction } from './AgentLandingVariantInitialContentDtoAction';
 import {
-    UpdateAgentLandingBlockDtoActionFromJSON,
-    UpdateAgentLandingBlockDtoActionFromJSONTyped,
-    UpdateAgentLandingBlockDtoActionToJSON,
-    UpdateAgentLandingBlockDtoActionToJSONTyped,
-} from './UpdateAgentLandingBlockDtoAction';
+    AgentLandingVariantInitialContentDtoActionFromJSON,
+    AgentLandingVariantInitialContentDtoActionFromJSONTyped,
+    AgentLandingVariantInitialContentDtoActionToJSON,
+    AgentLandingVariantInitialContentDtoActionToJSONTyped,
+} from './AgentLandingVariantInitialContentDtoAction';
 
 /**
  * CreateAgentLandingActionBlockDto.
@@ -71,10 +71,10 @@ export interface CreateAgentLandingActionBlockDto {
     beforeBlockId?: string;
     /**
      *
-     * @type {UpdateAgentLandingBlockDtoAction}
+     * @type {AgentLandingVariantInitialContentDtoAction}
      * @memberof CreateAgentLandingActionBlockDto
      */
-    action?: UpdateAgentLandingBlockDtoAction | null;
+    action?: AgentLandingVariantInitialContentDtoAction | null;
 }
 
 
@@ -117,7 +117,7 @@ export function CreateAgentLandingActionBlockDtoFromJSONTyped(json: any, ignoreD
         'payload': json['payload'],
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
-        'action': json['action'] == null ? undefined : UpdateAgentLandingBlockDtoActionFromJSON(json['action']),
+        'action': json['action'] == null ? undefined : AgentLandingVariantInitialContentDtoActionFromJSON(json['action']),
     };
 }
 
@@ -139,6 +139,6 @@ export function CreateAgentLandingActionBlockDtoToJSONTyped(value?: CreateAgentL
         'payload': value['payload'],
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
-        'action': UpdateAgentLandingBlockDtoActionToJSON(value['action']),
+        'action': AgentLandingVariantInitialContentDtoActionToJSON(value['action']),
     };
 }

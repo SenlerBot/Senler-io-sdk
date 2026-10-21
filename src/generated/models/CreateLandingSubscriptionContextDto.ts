@@ -28,6 +28,18 @@ import {
  */
 export interface CreateLandingSubscriptionContextDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    pageObserved?: boolean;
+    /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    observedBlockIds?: Array<string>;
+    /**
      * , ,
      * @type {Array<string>}
      * @memberof CreateLandingSubscriptionContextDto
@@ -107,6 +119,8 @@ export function CreateLandingSubscriptionContextDtoFromJSONTyped(json: any, igno
     }
     return {
 
+        'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
+        'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
         'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'] == null ? undefined : json['event_token'],
         'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
@@ -131,6 +145,8 @@ export function CreateLandingSubscriptionContextDtoToJSONTyped(value?: CreateLan
 
     return {
 
+        'page_observed': value['pageObserved'],
+        'observed_block_ids': value['observedBlockIds'],
         'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),

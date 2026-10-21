@@ -13,16 +13,16 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentLandingBlockDtoActionFromJSON = UpdateAgentLandingBlockDtoActionFromJSON;
-exports.UpdateAgentLandingBlockDtoActionFromJSONTyped = UpdateAgentLandingBlockDtoActionFromJSONTyped;
-exports.UpdateAgentLandingBlockDtoActionToJSON = UpdateAgentLandingBlockDtoActionToJSON;
-exports.UpdateAgentLandingBlockDtoActionToJSONTyped = UpdateAgentLandingBlockDtoActionToJSONTyped;
+exports.AgentLandingVariantInitialContentDtoActionFromJSON = AgentLandingVariantInitialContentDtoActionFromJSON;
+exports.AgentLandingVariantInitialContentDtoActionFromJSONTyped = AgentLandingVariantInitialContentDtoActionFromJSONTyped;
+exports.AgentLandingVariantInitialContentDtoActionToJSON = AgentLandingVariantInitialContentDtoActionToJSON;
+exports.AgentLandingVariantInitialContentDtoActionToJSONTyped = AgentLandingVariantInitialContentDtoActionToJSONTyped;
 const AgentLandingSubscribeActionInputDto_1 = require("./AgentLandingSubscribeActionInputDto");
 const LandingOpenUrlActionInputDto_1 = require("./LandingOpenUrlActionInputDto");
-function UpdateAgentLandingBlockDtoActionFromJSON(json) {
-    return UpdateAgentLandingBlockDtoActionFromJSONTyped(json, false);
+function AgentLandingVariantInitialContentDtoActionFromJSON(json) {
+    return AgentLandingVariantInitialContentDtoActionFromJSONTyped(json, false);
 }
-function UpdateAgentLandingBlockDtoActionFromJSONTyped(json, ignoreDiscriminator) {
+function AgentLandingVariantInitialContentDtoActionFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
@@ -32,13 +32,13 @@ function UpdateAgentLandingBlockDtoActionFromJSONTyped(json, ignoreDiscriminator
         case 'subscribe_segment':
             return Object.assign({}, (0, AgentLandingSubscribeActionInputDto_1.AgentLandingSubscribeActionInputDtoFromJSONTyped)(json, true), { type: 'subscribe_segment' });
         default:
-            throw new Error(`No variant of UpdateAgentLandingBlockDtoAction exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of AgentLandingVariantInitialContentDtoAction exists with 'type=${json['type']}'`);
     }
 }
-function UpdateAgentLandingBlockDtoActionToJSON(json) {
-    return UpdateAgentLandingBlockDtoActionToJSONTyped(json, false);
+function AgentLandingVariantInitialContentDtoActionToJSON(json) {
+    return AgentLandingVariantInitialContentDtoActionToJSONTyped(json, false);
 }
-function UpdateAgentLandingBlockDtoActionToJSONTyped(value, ignoreDiscriminator = false) {
+function AgentLandingVariantInitialContentDtoActionToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
@@ -48,6 +48,6 @@ function UpdateAgentLandingBlockDtoActionToJSONTyped(value, ignoreDiscriminator 
         case 'subscribe_segment':
             return Object.assign({}, (0, AgentLandingSubscribeActionInputDto_1.AgentLandingSubscribeActionInputDtoToJSON)(value), { type: 'subscribe_segment' });
         default:
-            throw new Error(`No variant of UpdateAgentLandingBlockDtoAction exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of AgentLandingVariantInitialContentDtoAction exists with 'type=${value['type']}'`);
     }
 }

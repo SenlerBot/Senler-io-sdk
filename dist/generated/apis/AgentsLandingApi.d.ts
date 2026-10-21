@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
@@ -38,6 +38,11 @@ export interface GetLandingRulesResultsRequest {
 export interface GetLandingShareLinksRequest {
     agentId: string;
     acceptLanguage?: GetLandingShareLinksAcceptLanguageEnum;
+}
+export interface GetLandingStatisticsRequest {
+    agentId: string;
+    days?: GetLandingStatisticsDaysEnum;
+    acceptLanguage?: GetLandingStatisticsAcceptLanguageEnum;
 }
 export interface LandingAssetsConfirmRequest {
     agentId: string;
@@ -154,6 +159,16 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
     /**
+     * , . .
+     * ,
+     */
+    getLandingStatisticsRaw(requestParameters: GetLandingStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingStatisticsReportDto>>;
+    /**
+     * , . .
+     * ,
+     */
+    getLandingStatistics(requestParameters: GetLandingStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingStatisticsReportDto>;
+    /**
      * S3- . url .
      *
      */
@@ -197,12 +212,12 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      * . ; expected_revision .
      *
      */
-    landingPersonalizationRaw(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    landingPersonalizationRaw(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPersonalizationMutationResponseDto>>;
     /**
      * . ; expected_revision .
      *
      */
-    landingPersonalization(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    landingPersonalization(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPersonalizationMutationResponseDto>;
     /**
      * rule_outcomes ; input_data . . A/B-.
      *
@@ -292,6 +307,23 @@ export declare const GetLandingShareLinksAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetLandingShareLinksAcceptLanguageEnum = typeof GetLandingShareLinksAcceptLanguageEnum[keyof typeof GetLandingShareLinksAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLandingStatisticsDaysEnum: {
+    readonly NUMBER_7: 7;
+    readonly NUMBER_30: 30;
+    readonly NUMBER_90: 90;
+};
+export type GetLandingStatisticsDaysEnum = typeof GetLandingStatisticsDaysEnum[keyof typeof GetLandingStatisticsDaysEnum];
+/**
+ * @export
+ */
+export declare const GetLandingStatisticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingStatisticsAcceptLanguageEnum = typeof GetLandingStatisticsAcceptLanguageEnum[keyof typeof GetLandingStatisticsAcceptLanguageEnum];
 /**
  * @export
  */

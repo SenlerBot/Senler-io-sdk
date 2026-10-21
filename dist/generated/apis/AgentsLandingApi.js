@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateLandingDraftAcceptLanguageEnum = exports.LandingPreviewLeadAcceptLanguageEnum = exports.LandingPreviewAcceptLanguageEnum = exports.LandingPersonalizationAcceptLanguageEnum = exports.LandingBlocksMoveAcceptLanguageEnum = exports.LandingAssetsUploadUrlAcceptLanguageEnum = exports.LandingAssetsFromUrlAcceptLanguageEnum = exports.LandingAssetsConfirmAcceptLanguageEnum = exports.GetLandingShareLinksAcceptLanguageEnum = exports.GetLandingRulesResultsAcceptLanguageEnum = exports.GetLandingPublicationsAcceptLanguageEnum = exports.GetLandingPublicationValidationAcceptLanguageEnum = exports.GetLandingAcceptLanguageEnum = exports.DeleteLandingBlocksAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
+exports.UpdateLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateLandingDraftAcceptLanguageEnum = exports.LandingPreviewLeadAcceptLanguageEnum = exports.LandingPreviewAcceptLanguageEnum = exports.LandingPersonalizationAcceptLanguageEnum = exports.LandingBlocksMoveAcceptLanguageEnum = exports.LandingAssetsUploadUrlAcceptLanguageEnum = exports.LandingAssetsFromUrlAcceptLanguageEnum = exports.LandingAssetsConfirmAcceptLanguageEnum = exports.GetLandingStatisticsAcceptLanguageEnum = exports.GetLandingStatisticsDaysEnum = exports.GetLandingShareLinksAcceptLanguageEnum = exports.GetLandingRulesResultsAcceptLanguageEnum = exports.GetLandingPublicationsAcceptLanguageEnum = exports.GetLandingPublicationValidationAcceptLanguageEnum = exports.GetLandingAcceptLanguageEnum = exports.DeleteLandingBlocksAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -335,6 +335,53 @@ class AgentsLandingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , . .
+     * ,
+     */
+    async getLandingStatisticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getLandingStatistics().');
+        }
+        const queryParameters = {};
+        if (requestParameters['days'] != null) {
+            queryParameters['days'] = requestParameters['days'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/statistics`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingStatisticsReportDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     * ,
+     */
+    async getLandingStatistics(requestParameters, initOverrides) {
+        const response = await this.getLandingStatisticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * S3- . url .
      *
      */
@@ -584,7 +631,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.MutateAgentLandingPersonalizationDtoToJSON)(requestParameters['mutateAgentLandingPersonalizationDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPersonalizationMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * . ; expected_revision .
@@ -843,6 +890,21 @@ exports.GetLandingRulesResultsAcceptLanguageEnum = {
  * @export
  */
 exports.GetLandingShareLinksAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLandingStatisticsDaysEnum = {
+    NUMBER_7: 7,
+    NUMBER_30: 30,
+    NUMBER_90: 90
+};
+/**
+ * @export
+ */
+exports.GetLandingStatisticsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

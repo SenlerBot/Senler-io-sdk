@@ -73,6 +73,18 @@ export interface LandingSubscriptionRequestDto {
      */
     utmTerm?: string;
     /**
+     *
+     * @type {boolean}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    pageObserved?: boolean;
+    /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    observedBlockIds?: Array<string>;
+    /**
      * , ,
      * @type {Array<string>}
      * @memberof LandingSubscriptionRequestDto

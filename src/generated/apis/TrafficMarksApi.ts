@@ -37,13 +37,6 @@ import {
     TrafficMarksListResponseDtoToJSON,
 } from '../models/index';
 
-export interface GetStatisticsRequest {
-    projectId: string;
-    period: GetStatisticsPeriodEnum;
-    channelId?: string;
-    acceptLanguage?: GetStatisticsAcceptLanguageEnum;
-}
-
 export interface GetStatisticsTreeRequest {
     projectId: string;
     period: GetStatisticsTreePeriodEnum;
@@ -71,6 +64,13 @@ export interface TrafficMarksDeactivateRequest {
     acceptLanguage?: TrafficMarksDeactivateAcceptLanguageEnum;
 }
 
+export interface TrafficMarksGetStatisticsRequest {
+    projectId: string;
+    period: TrafficMarksGetStatisticsPeriodEnum;
+    channelId?: string;
+    acceptLanguage?: TrafficMarksGetStatisticsAcceptLanguageEnum;
+}
+
 export interface TrafficMarksListRequest {
     projectId: string;
     acceptLanguage?: TrafficMarksListAcceptLanguageEnum;
@@ -80,82 +80,6 @@ export interface TrafficMarksListRequest {
  *
  */
 export class TrafficMarksApi extends runtime.BaseAPI {
-
-    /**
-     * . , , .
-     *
-     */
-    async getStatisticsRaw(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkStatisticsResponseDto>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getStatistics().'
-            );
-        }
-
-        if (requestParameters['period'] == null) {
-            throw new runtime.RequiredError(
-                'period',
-                'Required parameter "period" was null or undefined when calling getStatistics().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        if (requestParameters['period'] != null) {
-            queryParameters['period'] = requestParameters['period'];
-        }
-
-        if (requestParameters['channelId'] != null) {
-            queryParameters['channel_id'] = requestParameters['channelId'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/traffic-marks/statistics`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TrafficMarkStatisticsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * . , , .
-     *
-     */
-    async getStatistics(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarkStatisticsResponseDto> {
-        const response = await this.getStatisticsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 
     /**
      * parent_id utm_source. UTM-; .
@@ -442,6 +366,82 @@ export class TrafficMarksApi extends runtime.BaseAPI {
     }
 
     /**
+     * . , , .
+     *
+     */
+    async trafficMarksGetStatisticsRaw(requestParameters: TrafficMarksGetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrafficMarkStatisticsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling trafficMarksGetStatistics().'
+            );
+        }
+
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling trafficMarksGetStatistics().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/traffic-marks/statistics`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TrafficMarkStatisticsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , , .
+     *
+     */
+    async trafficMarksGetStatistics(requestParameters: TrafficMarksGetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrafficMarkStatisticsResponseDto> {
+        const response = await this.trafficMarksGetStatisticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      * UTM-
      */
@@ -507,24 +507,6 @@ export class TrafficMarksApi extends runtime.BaseAPI {
 /**
  * @export
  */
-export const GetStatisticsPeriodEnum = {
-    _24h: '24h',
-    _7d: '7d',
-    _30d: '30d',
-    _90d: '90d'
-} as const;
-export type GetStatisticsPeriodEnum = typeof GetStatisticsPeriodEnum[keyof typeof GetStatisticsPeriodEnum];
-/**
- * @export
- */
-export const GetStatisticsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetStatisticsAcceptLanguageEnum = typeof GetStatisticsAcceptLanguageEnum[keyof typeof GetStatisticsAcceptLanguageEnum];
-/**
- * @export
- */
 export const GetStatisticsTreePeriodEnum = {
     _24h: '24h',
     _7d: '7d',
@@ -564,6 +546,24 @@ export const TrafficMarksDeactivateAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type TrafficMarksDeactivateAcceptLanguageEnum = typeof TrafficMarksDeactivateAcceptLanguageEnum[keyof typeof TrafficMarksDeactivateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const TrafficMarksGetStatisticsPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+} as const;
+export type TrafficMarksGetStatisticsPeriodEnum = typeof TrafficMarksGetStatisticsPeriodEnum[keyof typeof TrafficMarksGetStatisticsPeriodEnum];
+/**
+ * @export
+ */
+export const TrafficMarksGetStatisticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type TrafficMarksGetStatisticsAcceptLanguageEnum = typeof TrafficMarksGetStatisticsAcceptLanguageEnum[keyof typeof TrafficMarksGetStatisticsAcceptLanguageEnum];
 /**
  * @export
  */

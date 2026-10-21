@@ -23,6 +23,7 @@ exports.RecordLandingVariantEventDtoToJSONTyped = RecordLandingVariantEventDtoTo
  * @export
  */
 exports.RecordLandingVariantEventDtoKindEnum = {
+    View: 'view',
     Exposure: 'exposure',
     Click: 'click',
     Activity: 'activity'
@@ -47,6 +48,8 @@ function RecordLandingVariantEventDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
+        'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
         'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'],
         'eventId': json['event_id'],
@@ -63,6 +66,8 @@ function RecordLandingVariantEventDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'page_observed': value['pageObserved'],
+        'observed_block_ids': value['observedBlockIds'],
         'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'event_id': value['eventId'],

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingVariantInitialContentDto } from './LandingVariantInitialContentDto';
+import {
+    LandingVariantInitialContentDtoFromJSON,
+    LandingVariantInitialContentDtoFromJSONTyped,
+    LandingVariantInitialContentDtoToJSON,
+    LandingVariantInitialContentDtoToJSONTyped,
+} from './LandingVariantInitialContentDto';
 import type { UpdateLandingBlockDto } from './UpdateLandingBlockDto';
 import {
     UpdateLandingBlockDtoFromJSON,
@@ -77,6 +84,12 @@ export interface MutateLandingPersonalizationDto {
      * @memberof MutateLandingPersonalizationDto
      */
     sourceVariantId?: string;
+    /**
+     * . create_variant, source_variant_id; .
+     * @type {LandingVariantInitialContentDto}
+     * @memberof MutateLandingPersonalizationDto
+     */
+    initialContent?: LandingVariantInitialContentDto;
     /**
      * name.
      * @type {string}
@@ -173,6 +186,7 @@ export function MutateLandingPersonalizationDtoFromJSONTyped(json: any, ignoreDi
         'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'blockVariantId': json['block_variant_id'] == null ? undefined : json['block_variant_id'],
         'sourceVariantId': json['source_variant_id'] == null ? undefined : json['source_variant_id'],
+        'initialContent': json['initial_content'] == null ? undefined : LandingVariantInitialContentDtoFromJSON(json['initial_content']),
         'name': json['name'] == null ? undefined : json['name'],
         'outcomeId': json['outcome_id'] == null ? undefined : json['outcome_id'],
         'ruleId': json['rule_id'] == null ? undefined : json['rule_id'],
@@ -201,6 +215,7 @@ export function MutateLandingPersonalizationDtoToJSONTyped(value?: MutateLanding
         'block_id': value['blockId'],
         'block_variant_id': value['blockVariantId'],
         'source_variant_id': value['sourceVariantId'],
+        'initial_content': LandingVariantInitialContentDtoToJSON(value['initialContent']),
         'name': value['name'],
         'outcome_id': value['outcomeId'],
         'rule_id': value['ruleId'],

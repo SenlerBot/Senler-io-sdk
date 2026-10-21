@@ -19,6 +19,7 @@ exports.MutateLandingPersonalizationDtoFromJSON = MutateLandingPersonalizationDt
 exports.MutateLandingPersonalizationDtoFromJSONTyped = MutateLandingPersonalizationDtoFromJSONTyped;
 exports.MutateLandingPersonalizationDtoToJSON = MutateLandingPersonalizationDtoToJSON;
 exports.MutateLandingPersonalizationDtoToJSONTyped = MutateLandingPersonalizationDtoToJSONTyped;
+const LandingVariantInitialContentDto_1 = require("./LandingVariantInitialContentDto");
 const UpdateLandingBlockDto_1 = require("./UpdateLandingBlockDto");
 const LandingVariantBindingDto_1 = require("./LandingVariantBindingDto");
 const LandingRuleDto_1 = require("./LandingRuleDto");
@@ -63,6 +64,7 @@ function MutateLandingPersonalizationDtoFromJSONTyped(json, ignoreDiscriminator)
         'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'blockVariantId': json['block_variant_id'] == null ? undefined : json['block_variant_id'],
         'sourceVariantId': json['source_variant_id'] == null ? undefined : json['source_variant_id'],
+        'initialContent': json['initial_content'] == null ? undefined : (0, LandingVariantInitialContentDto_1.LandingVariantInitialContentDtoFromJSON)(json['initial_content']),
         'name': json['name'] == null ? undefined : json['name'],
         'outcomeId': json['outcome_id'] == null ? undefined : json['outcome_id'],
         'ruleId': json['rule_id'] == null ? undefined : json['rule_id'],
@@ -87,6 +89,7 @@ function MutateLandingPersonalizationDtoToJSONTyped(value, ignoreDiscriminator =
         'block_id': value['blockId'],
         'block_variant_id': value['blockVariantId'],
         'source_variant_id': value['sourceVariantId'],
+        'initial_content': (0, LandingVariantInitialContentDto_1.LandingVariantInitialContentDtoToJSON)(value['initialContent']),
         'name': value['name'],
         'outcome_id': value['outcomeId'],
         'rule_id': value['ruleId'],
