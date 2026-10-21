@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CreateLandingActionBlockDtoAction } from './CreateLandingActionBlockDtoAction';
+import type { UpdateLandingBlockDtoAction } from './UpdateLandingBlockDtoAction';
 import {
-    CreateLandingActionBlockDtoActionFromJSON,
-    CreateLandingActionBlockDtoActionFromJSONTyped,
-    CreateLandingActionBlockDtoActionToJSON,
-    CreateLandingActionBlockDtoActionToJSONTyped,
-} from './CreateLandingActionBlockDtoAction';
+    UpdateLandingBlockDtoActionFromJSON,
+    UpdateLandingBlockDtoActionFromJSONTyped,
+    UpdateLandingBlockDtoActionToJSON,
+    UpdateLandingBlockDtoActionToJSONTyped,
+} from './UpdateLandingBlockDtoAction';
 
 /**
  * CreateLandingActionBlockDto.
@@ -27,6 +27,12 @@ import {
  * @interface CreateLandingActionBlockDto
  */
 export interface CreateLandingActionBlockDto {
+    /**
+     * ;
+     * @type {string}
+     * @memberof CreateLandingActionBlockDto
+     */
+    pageVariantId?: string;
     /**
      *
      * @type {number}
@@ -53,10 +59,10 @@ export interface CreateLandingActionBlockDto {
     payload: { [key: string]: any; };
     /**
      *
-     * @type {CreateLandingActionBlockDtoAction}
+     * @type {UpdateLandingBlockDtoAction}
      * @memberof CreateLandingActionBlockDto
      */
-    action?: CreateLandingActionBlockDtoAction | null;
+    action?: UpdateLandingBlockDtoAction | null;
     /**
      *
      * @type {string}
@@ -104,11 +110,12 @@ export function CreateLandingActionBlockDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
-        'action': json['action'] == null ? undefined : CreateLandingActionBlockDtoActionFromJSON(json['action']),
+        'action': json['action'] == null ? undefined : UpdateLandingBlockDtoActionFromJSON(json['action']),
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
     };
@@ -125,11 +132,12 @@ export function CreateLandingActionBlockDtoToJSONTyped(value?: CreateLandingActi
 
     return {
 
+        'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
-        'action': CreateLandingActionBlockDtoActionToJSON(value['action']),
+        'action': UpdateLandingBlockDtoActionToJSON(value['action']),
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
     };

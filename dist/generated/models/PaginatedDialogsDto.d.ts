@@ -23,11 +23,11 @@ export interface PaginatedDialogsDto {
      */
     items: Array<DialogListItemDto>;
     /**
-     *
+     * . include_total=false.
      * @type {number}
      * @memberof PaginatedDialogsDto
      */
-    total: number;
+    total?: number;
     /**
      *
      * @type {string}

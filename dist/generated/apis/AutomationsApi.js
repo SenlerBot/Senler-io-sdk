@@ -46,8 +46,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
-exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = void 0;
+exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOptionsAcceptLanguageEnum = exports.GetOptionsChannelTypeEnum = exports.GetOptionsTypeEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsListChannelTypeEnum = exports.AutomationsListTypeEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
+exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -598,6 +598,33 @@ class AutomationsApi extends runtime.BaseAPI {
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+        if (requestParameters['publishedOnly'] != null) {
+            queryParameters['published_only'] = requestParameters['publishedOnly'];
+        }
+        if (requestParameters['runnableOnly'] != null) {
+            queryParameters['runnable_only'] = requestParameters['runnableOnly'];
+        }
+        if (requestParameters['channelType'] != null) {
+            queryParameters['channel_type'] = requestParameters['channelType'];
+        }
+        if (requestParameters['excludeId'] != null) {
+            queryParameters['exclude_id'] = requestParameters['excludeId'];
         }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
@@ -1592,6 +1619,80 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async getOperatorOptions(requestParameters, initOverrides) {
         const response = await this.getOperatorOptionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ID. .
+     *
+     */
+    async getOptionsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getOptions().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+        if (requestParameters['publishedOnly'] != null) {
+            queryParameters['published_only'] = requestParameters['publishedOnly'];
+        }
+        if (requestParameters['runnableOnly'] != null) {
+            queryParameters['runnable_only'] = requestParameters['runnableOnly'];
+        }
+        if (requestParameters['channelType'] != null) {
+            queryParameters['channel_type'] = requestParameters['channelType'];
+        }
+        if (requestParameters['excludeId'] != null) {
+            queryParameters['exclude_id'] = requestParameters['excludeId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/options`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationOptionsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ID. .
+     *
+     */
+    async getOptions(requestParameters, initOverrides) {
+        const response = await this.getOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -2844,6 +2945,29 @@ exports.AutomationsGetVersionsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.AutomationsListTypeEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
+};
+/**
+ * @export
+ */
+exports.AutomationsListChannelTypeEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
+};
+/**
+ * @export
+ */
 exports.AutomationsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -3012,6 +3136,36 @@ exports.GetOperationsAcceptLanguageEnum = {
  * @export
  */
 exports.GetOperatorOptionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetOptionsTypeEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
+};
+/**
+ * @export
+ */
+exports.GetOptionsChannelTypeEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
+};
+/**
+ * @export
+ */
+exports.GetOptionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

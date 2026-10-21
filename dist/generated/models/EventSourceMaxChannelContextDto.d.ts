@@ -11,12 +11,19 @@
  */
 import type { EventSourceMaxChannelDataDto } from './EventSourceMaxChannelDataDto';
 import type { EventAttributionDto } from './EventAttributionDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceMaxChannelContextDto.
  * @export
  * @interface EventSourceMaxChannelContextDto
  */
 export interface EventSourceMaxChannelContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceMaxChannelContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

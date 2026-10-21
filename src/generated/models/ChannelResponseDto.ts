@@ -69,6 +69,13 @@ import {
     TelegramChannelDataDtoToJSON,
     TelegramChannelDataDtoToJSONTyped,
 } from './TelegramChannelDataDto';
+import type { FacebookChannelDataDto } from './FacebookChannelDataDto';
+import {
+    FacebookChannelDataDtoFromJSON,
+    FacebookChannelDataDtoFromJSONTyped,
+    FacebookChannelDataDtoToJSON,
+    FacebookChannelDataDtoToJSONTyped,
+} from './FacebookChannelDataDto';
 import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
 import {
     StreamViChannelDataDtoFromJSON,
@@ -76,6 +83,20 @@ import {
     StreamViChannelDataDtoToJSON,
     StreamViChannelDataDtoToJSONTyped,
 } from './StreamViChannelDataDto';
+import type { InstChannelDataDto } from './InstChannelDataDto';
+import {
+    InstChannelDataDtoFromJSON,
+    InstChannelDataDtoFromJSONTyped,
+    InstChannelDataDtoToJSON,
+    InstChannelDataDtoToJSONTyped,
+} from './InstChannelDataDto';
+import type { WhatsAppChannelDataDto } from './WhatsAppChannelDataDto';
+import {
+    WhatsAppChannelDataDtoFromJSON,
+    WhatsAppChannelDataDtoFromJSONTyped,
+    WhatsAppChannelDataDtoToJSON,
+    WhatsAppChannelDataDtoToJSONTyped,
+} from './WhatsAppChannelDataDto';
 import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
 import {
     ChannelMigrationBackfillDtoFromJSON,
@@ -214,6 +235,24 @@ export interface ChannelResponseDto {
      */
     dataAvito?: AvitoChannelDataDto;
     /**
+     * Instagram (type=inst)
+     * @type {InstChannelDataDto}
+     * @memberof ChannelResponseDto
+     */
+    dataInst?: InstChannelDataDto;
+    /**
+     * Facebook (type=facebook)
+     * @type {FacebookChannelDataDto}
+     * @memberof ChannelResponseDto
+     */
+    dataFacebook?: FacebookChannelDataDto;
+    /**
+     * WhatsApp (type=whatsapp)
+     * @type {WhatsAppChannelDataDto}
+     * @memberof ChannelResponseDto
+     */
+    dataWhatsapp?: WhatsAppChannelDataDto;
+    /**
      * Discord- ( type=discord)
      * @type {DiscordChannelDataDto}
      * @memberof ChannelResponseDto
@@ -305,7 +344,10 @@ export const ChannelResponseDtoTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ChannelResponseDtoTypeEnum = typeof ChannelResponseDtoTypeEnum[keyof typeof ChannelResponseDtoTypeEnum];
 
@@ -349,6 +391,9 @@ export function ChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'dataVk': json['data_vk'] == null ? undefined : VKChannelDataDtoFromJSON(json['data_vk']),
         'dataMax': json['data_max'] == null ? undefined : MAXChannelDataDtoFromJSON(json['data_max']),
         'dataAvito': json['data_avito'] == null ? undefined : AvitoChannelDataDtoFromJSON(json['data_avito']),
+        'dataInst': json['data_inst'] == null ? undefined : InstChannelDataDtoFromJSON(json['data_inst']),
+        'dataFacebook': json['data_facebook'] == null ? undefined : FacebookChannelDataDtoFromJSON(json['data_facebook']),
+        'dataWhatsapp': json['data_whatsapp'] == null ? undefined : WhatsAppChannelDataDtoFromJSON(json['data_whatsapp']),
         'dataDiscord': json['data_discord'] == null ? undefined : DiscordChannelDataDtoFromJSON(json['data_discord']),
         'dataWidget': json['data_widget'] == null ? undefined : WidgetChannelDataDtoFromJSON(json['data_widget']),
         'dataStreamvi': json['data_streamvi'] == null ? undefined : StreamViChannelDataDtoFromJSON(json['data_streamvi']),
@@ -393,6 +438,9 @@ export function ChannelResponseDtoToJSONTyped(value?: ChannelResponseDto | null,
         'data_vk': VKChannelDataDtoToJSON(value['dataVk']),
         'data_max': MAXChannelDataDtoToJSON(value['dataMax']),
         'data_avito': AvitoChannelDataDtoToJSON(value['dataAvito']),
+        'data_inst': InstChannelDataDtoToJSON(value['dataInst']),
+        'data_facebook': FacebookChannelDataDtoToJSON(value['dataFacebook']),
+        'data_whatsapp': WhatsAppChannelDataDtoToJSON(value['dataWhatsapp']),
         'data_discord': DiscordChannelDataDtoToJSON(value['dataDiscord']),
         'data_widget': WidgetChannelDataDtoToJSON(value['dataWidget']),
         'data_streamvi': StreamViChannelDataDtoToJSON(value['dataStreamvi']),

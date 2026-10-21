@@ -38,6 +38,8 @@ exports.SubscriptionRenewalPreviewResponseDtoCurrencyEnum = {
  * Check if a given object implements the SubscriptionRenewalPreviewResponseDto interface.
  */
 function instanceOfSubscriptionRenewalPreviewResponseDto(value) {
+    if (!('quoteHash' in value) || value['quoteHash'] === undefined)
+        return false;
     if (!('period' in value) || value['period'] === undefined)
         return false;
     if (!('currency' in value) || value['currency'] === undefined)
@@ -64,6 +66,7 @@ function SubscriptionRenewalPreviewResponseDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
+        'quoteHash': json['quote_hash'],
         'period': json['period'],
         'currency': json['currency'],
         'totalAmount': json['total_amount'],
@@ -82,6 +85,7 @@ function SubscriptionRenewalPreviewResponseDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
+        'quote_hash': value['quoteHash'],
         'period': value['period'],
         'currency': value['currency'],
         'total_amount': value['totalAmount'],

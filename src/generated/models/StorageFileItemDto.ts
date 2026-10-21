@@ -175,6 +175,9 @@ export const StorageFileItemDtoPlatformTypeEnum = {
     Streamvi: 'streamvi',
     Email: 'email',
     Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp',
     Web: 'web',
     Ai: 'ai',
     Automation: 'automation'

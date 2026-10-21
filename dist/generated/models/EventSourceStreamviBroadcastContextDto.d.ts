@@ -11,12 +11,19 @@
  */
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceStreamviBroadcastDataDto } from './EventSourceStreamviBroadcastDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceStreamviBroadcastContextDto.
  * @export
  * @interface EventSourceStreamviBroadcastContextDto
  */
 export interface EventSourceStreamviBroadcastContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceStreamviBroadcastContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

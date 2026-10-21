@@ -40,6 +40,7 @@ function AppDeveloperEmbeddedPageSettingsResponseDtoFromJSONTyped(json, ignoreDi
         return json;
     }
     return {
+        'maxWidth': json['max_width'] == null ? undefined : json['max_width'],
         'enabled': json['enabled'],
         'url': json['url'],
         'developerModeEnabled': json['developer_mode_enabled'],
@@ -54,6 +55,7 @@ function AppDeveloperEmbeddedPageSettingsResponseDtoToJSONTyped(value, ignoreDis
         return value;
     }
     return {
+        'max_width': value['maxWidth'],
         'enabled': value['enabled'],
         'url': value['url'],
         'developer_mode_enabled': value['developerModeEnabled'],

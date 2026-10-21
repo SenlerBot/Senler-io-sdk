@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
+import type { AgentListItemDto } from './AgentListItemDto';
 /**
  * AgentSettingsListResponseDto.
  * @export
@@ -17,11 +17,11 @@ import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
  */
 export interface AgentSettingsListResponseDto {
     /**
-     *
-     * @type {Array<AgentSettingsResponseDto>}
+     * . ID .
+     * @type {Array<AgentListItemDto>}
      * @memberof AgentSettingsListResponseDto
      */
-    items: Array<AgentSettingsResponseDto>;
+    items: Array<AgentListItemDto>;
     /**
      *
      * @type {number}

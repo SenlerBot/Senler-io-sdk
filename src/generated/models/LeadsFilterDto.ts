@@ -174,7 +174,10 @@ export const LeadsFilterDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type LeadsFilterDtoChannelTypeEnum = typeof LeadsFilterDtoChannelTypeEnum[keyof typeof LeadsFilterDtoChannelTypeEnum];
 

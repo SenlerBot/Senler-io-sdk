@@ -9,12 +9,31 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * CreateLandingSubscriptionContextDto.
  * @export
  * @interface CreateLandingSubscriptionContextDto
  */
 export interface CreateLandingSubscriptionContextDto {
+    /**
+     * , ,
+     * @type {Array<string>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    observedExperimentIds?: Array<string>;
+    /**
+     * resolve
+     * @type {string}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    eventToken?: string;
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      * ID .
      * @type {string}

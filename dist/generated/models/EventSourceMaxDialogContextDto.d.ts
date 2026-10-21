@@ -11,12 +11,19 @@
  */
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceMaxDialogDataDto } from './EventSourceMaxDialogDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceMaxDialogContextDto.
  * @export
  * @interface EventSourceMaxDialogContextDto
  */
 export interface EventSourceMaxDialogContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceMaxDialogContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

@@ -20,6 +20,13 @@ import {
     EventAttributionDtoToJSON,
     EventAttributionDtoToJSONTyped,
 } from './EventAttributionDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
+import {
+    AnalyticsSnapshotDtoFromJSON,
+    AnalyticsSnapshotDtoFromJSONTyped,
+    AnalyticsSnapshotDtoToJSON,
+    AnalyticsSnapshotDtoToJSONTyped,
+} from './AnalyticsSnapshotDto';
 import type { EventSourceVkWallPostCommentDataDto } from './EventSourceVkWallPostCommentDataDto';
 import {
     EventSourceVkWallPostCommentDataDtoFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface EventSourceVkWallPostCommentContextDto
  */
 export interface EventSourceVkWallPostCommentContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceVkWallPostCommentContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}
@@ -100,6 +113,7 @@ export function EventSourceVkWallPostCommentContextDtoFromJSONTyped(json: any, i
     }
     return {
 
+        'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : EventAttributionDtoFromJSON(json['attribution']),
         'kind': json['kind'],
@@ -118,6 +132,7 @@ export function EventSourceVkWallPostCommentContextDtoToJSONTyped(value?: EventS
 
     return {
 
+        'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': EventAttributionDtoToJSON(value['attribution']),
         'kind': value['kind'],

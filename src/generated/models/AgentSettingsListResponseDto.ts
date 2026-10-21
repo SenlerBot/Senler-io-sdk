@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AgentSettingsResponseDto } from './AgentSettingsResponseDto';
+import type { AgentListItemDto } from './AgentListItemDto';
 import {
-    AgentSettingsResponseDtoFromJSON,
-    AgentSettingsResponseDtoFromJSONTyped,
-    AgentSettingsResponseDtoToJSON,
-    AgentSettingsResponseDtoToJSONTyped,
-} from './AgentSettingsResponseDto';
+    AgentListItemDtoFromJSON,
+    AgentListItemDtoFromJSONTyped,
+    AgentListItemDtoToJSON,
+    AgentListItemDtoToJSONTyped,
+} from './AgentListItemDto';
 
 /**
  * AgentSettingsListResponseDto.
@@ -28,11 +28,11 @@ import {
  */
 export interface AgentSettingsListResponseDto {
     /**
-     *
-     * @type {Array<AgentSettingsResponseDto>}
+     * . ID .
+     * @type {Array<AgentListItemDto>}
      * @memberof AgentSettingsListResponseDto
      */
-    items: Array<AgentSettingsResponseDto>;
+    items: Array<AgentListItemDto>;
     /**
      *
      * @type {number}
@@ -74,7 +74,7 @@ export function AgentSettingsListResponseDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
-        'items': ((json['items'] as Array<any>).map(AgentSettingsResponseDtoFromJSON)),
+        'items': ((json['items'] as Array<any>).map(AgentListItemDtoFromJSON)),
         'total': json['total'],
         'limit': json['limit'],
         'offset': json['offset'],
@@ -92,7 +92,7 @@ export function AgentSettingsListResponseDtoToJSONTyped(value?: AgentSettingsLis
 
     return {
 
-        'items': ((value['items'] as Array<any>).map(AgentSettingsResponseDtoToJSON)),
+        'items': ((value['items'] as Array<any>).map(AgentListItemDtoToJSON)),
         'total': value['total'],
         'limit': value['limit'],
         'offset': value['offset'],

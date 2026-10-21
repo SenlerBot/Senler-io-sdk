@@ -11,12 +11,19 @@
  */
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceWidgetLeadDataDto } from './EventSourceWidgetLeadDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceWidgetLeadContextDto.
  * @export
  * @interface EventSourceWidgetLeadContextDto
  */
 export interface EventSourceWidgetLeadContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceWidgetLeadContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

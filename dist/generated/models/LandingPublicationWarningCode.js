@@ -20,11 +20,16 @@ exports.LandingPublicationWarningCodeFromJSONTyped = LandingPublicationWarningCo
 exports.LandingPublicationWarningCodeToJSON = LandingPublicationWarningCodeToJSON;
 exports.LandingPublicationWarningCodeToJSONTyped = LandingPublicationWarningCodeToJSONTyped;
 /**
- * . button_not_configured: ; .
+ * . .
  * @export
  */
 exports.LandingPublicationWarningCode = {
-    ButtonNotConfigured: 'button_not_configured'
+    ButtonNotConfigured: 'button_not_configured',
+    TextEmpty: 'text_empty',
+    ImageEmpty: 'image_empty',
+    VideoEmpty: 'video_empty',
+    ItemsEmpty: 'items_empty',
+    ItemEmpty: 'item_empty'
 };
 function instanceOfLandingPublicationWarningCode(value) {
     for (const key in exports.LandingPublicationWarningCode) {

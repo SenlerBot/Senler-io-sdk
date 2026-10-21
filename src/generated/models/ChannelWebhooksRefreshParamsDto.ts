@@ -51,7 +51,10 @@ export const ChannelWebhooksRefreshParamsDtoChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ChannelWebhooksRefreshParamsDtoChannelTypesEnum = typeof ChannelWebhooksRefreshParamsDtoChannelTypesEnum[keyof typeof ChannelWebhooksRefreshParamsDtoChannelTypesEnum];
 

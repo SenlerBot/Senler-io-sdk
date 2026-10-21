@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -180,12 +180,18 @@ class LandingsPublicApi extends runtime.BaseAPI {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchBotSubscriptionLink().');
         }
+        if (requestParameters['origin'] == null) {
+            throw new runtime.RequiredError('origin', 'Required parameter "origin" was null or undefined when calling landingsLaunchBotSubscriptionLink().');
+        }
         if (requestParameters['createLandingSubscriptionContextDto'] == null) {
             throw new runtime.RequiredError('createLandingSubscriptionContextDto', 'Required parameter "createLandingSubscriptionContextDto" was null or undefined when calling landingsLaunchBotSubscriptionLink().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['origin'] != null) {
+            headerParameters['origin'] = String(requestParameters['origin']);
+        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -214,12 +220,18 @@ class LandingsPublicApi extends runtime.BaseAPI {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchMiniAppLaunch().');
         }
+        if (requestParameters['origin'] == null) {
+            throw new runtime.RequiredError('origin', 'Required parameter "origin" was null or undefined when calling landingsLaunchMiniAppLaunch().');
+        }
         if (requestParameters['createLandingSubscriptionContextDto'] == null) {
             throw new runtime.RequiredError('createLandingSubscriptionContextDto', 'Required parameter "createLandingSubscriptionContextDto" was null or undefined when calling landingsLaunchMiniAppLaunch().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['origin'] != null) {
+            headerParameters['origin'] = String(requestParameters['origin']);
+        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -248,12 +260,18 @@ class LandingsPublicApi extends runtime.BaseAPI {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchSubscribe().');
         }
+        if (requestParameters['origin'] == null) {
+            throw new runtime.RequiredError('origin', 'Required parameter "origin" was null or undefined when calling landingsLaunchSubscribe().');
+        }
         if (requestParameters['landingSubscriptionRequestDto'] == null) {
             throw new runtime.RequiredError('landingSubscriptionRequestDto', 'Required parameter "landingSubscriptionRequestDto" was null or undefined when calling landingsLaunchSubscribe().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['origin'] != null) {
+            headerParameters['origin'] = String(requestParameters['origin']);
+        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }
@@ -376,6 +394,73 @@ class LandingsPublicApi extends runtime.BaseAPI {
         const response = await this.landingsLaunchVariablesRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * VK, Telegram MAX , . . ; - 3 .
+     *
+     */
+    async landingsResolveRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsResolve().');
+        }
+        if (requestParameters['resolveLandingDto'] == null) {
+            throw new runtime.RequiredError('resolveLandingDto', 'Required parameter "resolveLandingDto" was null or undefined when calling landingsResolve().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/resolve`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ResolveLandingDtoToJSON)(requestParameters['resolveLandingDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResolvedResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * VK, Telegram MAX , . . ; - 3 .
+     *
+     */
+    async landingsResolve(requestParameters, initOverrides) {
+        const response = await this.landingsResolveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . ; .
+     *
+     */
+    async landingsVariantEventsRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsVariantEvents().');
+        }
+        if (requestParameters['recordLandingVariantEventDto'] == null) {
+            throw new runtime.RequiredError('recordLandingVariantEventDto', 'Required parameter "recordLandingVariantEventDto" was null or undefined when calling landingsVariantEvents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/variant-events`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.RecordLandingVariantEventDtoToJSON)(requestParameters['recordLandingVariantEventDto']),
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * . ; .
+     *
+     */
+    async landingsVariantEvents(requestParameters, initOverrides) {
+        await this.landingsVariantEventsRaw(requestParameters, initOverrides);
+    }
 }
 exports.LandingsPublicApi = LandingsPublicApi;
 /**
@@ -445,6 +530,20 @@ exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = {
  * @export
  */
 exports.LandingsLaunchVariablesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsResolveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsVariantEventsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

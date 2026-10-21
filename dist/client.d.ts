@@ -39,6 +39,7 @@ import { ChannelsDiscordApi } from './generated/apis/ChannelsDiscordApi';
 import { ChannelsEmailApi } from './generated/apis/ChannelsEmailApi';
 import { ChannelsHistoryApi } from './generated/apis/ChannelsHistoryApi';
 import { ChannelsMAXApi } from './generated/apis/ChannelsMAXApi';
+import { ChannelsMetaApi } from './generated/apis/ChannelsMetaApi';
 import { ChannelsTelegramApi } from './generated/apis/ChannelsTelegramApi';
 import { ChannelsVKApi } from './generated/apis/ChannelsVKApi';
 import { ChannelsWidgetApi } from './generated/apis/ChannelsWidgetApi';
@@ -132,6 +133,7 @@ export declare class AiSenlerClient {
     readonly channelsEmail: ChannelsEmailApi;
     readonly channelsHistory: ChannelsHistoryApi;
     readonly channelsMAX: ChannelsMAXApi;
+    readonly channelsMeta: ChannelsMetaApi;
     readonly channelsTelegram: ChannelsTelegramApi;
     readonly channelsVK: ChannelsVKApi;
     readonly channelsWidget: ChannelsWidgetApi;

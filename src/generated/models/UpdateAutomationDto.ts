@@ -77,7 +77,10 @@ export const UpdateAutomationDtoChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type UpdateAutomationDtoChannelTypesEnum = typeof UpdateAutomationDtoChannelTypesEnum[keyof typeof UpdateAutomationDtoChannelTypesEnum];
 

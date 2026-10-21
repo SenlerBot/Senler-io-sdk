@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CreateLandingActionBlockDtoAction } from './CreateLandingActionBlockDtoAction';
+import type { UpdateLandingBlockDtoAction } from './UpdateLandingBlockDtoAction';
 import {
-    CreateLandingActionBlockDtoActionFromJSON,
-    CreateLandingActionBlockDtoActionFromJSONTyped,
-    CreateLandingActionBlockDtoActionToJSON,
-    CreateLandingActionBlockDtoActionToJSONTyped,
-} from './CreateLandingActionBlockDtoAction';
+    UpdateLandingBlockDtoActionFromJSON,
+    UpdateLandingBlockDtoActionFromJSONTyped,
+    UpdateLandingBlockDtoActionToJSON,
+    UpdateLandingBlockDtoActionToJSONTyped,
+} from './UpdateLandingBlockDtoAction';
 
 /**
  * UpdateLandingActionBlockDto.
@@ -53,10 +53,10 @@ export interface UpdateLandingActionBlockDto {
     payload: { [key: string]: any; };
     /**
      *
-     * @type {CreateLandingActionBlockDtoAction}
+     * @type {UpdateLandingBlockDtoAction}
      * @memberof UpdateLandingActionBlockDto
      */
-    action: CreateLandingActionBlockDtoAction | null;
+    action: UpdateLandingBlockDtoAction | null;
 }
 
 
@@ -97,7 +97,7 @@ export function UpdateLandingActionBlockDtoFromJSONTyped(json: any, ignoreDiscri
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
-        'action': CreateLandingActionBlockDtoActionFromJSON(json['action']),
+        'action': UpdateLandingBlockDtoActionFromJSON(json['action']),
     };
 }
 
@@ -116,6 +116,6 @@ export function UpdateLandingActionBlockDtoToJSONTyped(value?: UpdateLandingActi
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
-        'action': CreateLandingActionBlockDtoActionToJSON(value['action']),
+        'action': UpdateLandingBlockDtoActionToJSON(value['action']),
     };
 }

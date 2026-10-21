@@ -17,7 +17,10 @@ import type { SenlerStatusDto } from './SenlerStatusDto';
 import type { AvitoChannelDataDto } from './AvitoChannelDataDto';
 import type { DiscordChannelDataDto } from './DiscordChannelDataDto';
 import type { TelegramChannelDataDto } from './TelegramChannelDataDto';
+import type { FacebookChannelDataDto } from './FacebookChannelDataDto';
 import type { StreamViChannelDataDto } from './StreamViChannelDataDto';
+import type { InstChannelDataDto } from './InstChannelDataDto';
+import type { WhatsAppChannelDataDto } from './WhatsAppChannelDataDto';
 import type { ChannelMigrationBackfillDto } from './ChannelMigrationBackfillDto';
 import type { ChannelConnectionIssueDto } from './ChannelConnectionIssueDto';
 import type { ChannelMigrationStatusDto } from './ChannelMigrationStatusDto';
@@ -131,6 +134,24 @@ export interface ChannelResponseDto {
      */
     dataAvito?: AvitoChannelDataDto;
     /**
+     * Instagram (type=inst)
+     * @type {InstChannelDataDto}
+     * @memberof ChannelResponseDto
+     */
+    dataInst?: InstChannelDataDto;
+    /**
+     * Facebook (type=facebook)
+     * @type {FacebookChannelDataDto}
+     * @memberof ChannelResponseDto
+     */
+    dataFacebook?: FacebookChannelDataDto;
+    /**
+     * WhatsApp (type=whatsapp)
+     * @type {WhatsAppChannelDataDto}
+     * @memberof ChannelResponseDto
+     */
+    dataWhatsapp?: WhatsAppChannelDataDto;
+    /**
      * Discord- ( type=discord)
      * @type {DiscordChannelDataDto}
      * @memberof ChannelResponseDto
@@ -221,6 +242,9 @@ export declare const ChannelResponseDtoTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type ChannelResponseDtoTypeEnum = typeof ChannelResponseDtoTypeEnum[keyof typeof ChannelResponseDtoTypeEnum];
 /**

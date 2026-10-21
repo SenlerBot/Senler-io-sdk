@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, ResolveLandingVariablesRequestDto } from '../models/index';
+import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingResolvedResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, RecordLandingVariantEventDto, ResolveLandingDto, ResolveLandingVariablesRequestDto } from '../models/index';
 export interface GetLandingsRequest {
     landingPublicId: string;
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
@@ -30,16 +30,19 @@ export interface GetProjectsLandingsAnalyticsRequest {
 }
 export interface LandingsLaunchBotSubscriptionLinkRequest {
     token: string;
+    origin: string;
     createLandingSubscriptionContextDto: CreateLandingSubscriptionContextDto;
     acceptLanguage?: LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum;
 }
 export interface LandingsLaunchMiniAppLaunchRequest {
     token: string;
+    origin: string;
     createLandingSubscriptionContextDto: CreateLandingSubscriptionContextDto;
     acceptLanguage?: LandingsLaunchMiniAppLaunchAcceptLanguageEnum;
 }
 export interface LandingsLaunchSubscribeRequest {
     token: string;
+    origin: string;
     landingSubscriptionRequestDto: LandingSubscriptionRequestDto;
     acceptLanguage?: LandingsLaunchSubscribeAcceptLanguageEnum;
 }
@@ -57,6 +60,16 @@ export interface LandingsLaunchVariablesRequest {
     token: string;
     resolveLandingVariablesRequestDto: ResolveLandingVariablesRequestDto;
     acceptLanguage?: LandingsLaunchVariablesAcceptLanguageEnum;
+}
+export interface LandingsResolveRequest {
+    landingPublicId: string;
+    resolveLandingDto: ResolveLandingDto;
+    acceptLanguage?: LandingsResolveAcceptLanguageEnum;
+}
+export interface LandingsVariantEventsRequest {
+    landingPublicId: string;
+    recordLandingVariantEventDto: RecordLandingVariantEventDto;
+    acceptLanguage?: LandingsVariantEventsAcceptLanguageEnum;
 }
 /**
  *
@@ -162,6 +175,26 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      *
      */
     landingsLaunchVariables(requestParameters: LandingsLaunchVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVariablesDto>;
+    /**
+     * VK, Telegram MAX , . . ; - 3 .
+     *
+     */
+    landingsResolveRaw(requestParameters: LandingsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResolvedResponseDto>>;
+    /**
+     * VK, Telegram MAX , . . ; - 3 .
+     *
+     */
+    landingsResolve(requestParameters: LandingsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResolvedResponseDto>;
+    /**
+     * . ; .
+     *
+     */
+    landingsVariantEventsRaw(requestParameters: LandingsVariantEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * . ; .
+     *
+     */
+    landingsVariantEvents(requestParameters: LandingsVariantEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }
 /**
  * @export
@@ -243,3 +276,19 @@ export declare const LandingsLaunchVariablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsLaunchVariablesAcceptLanguageEnum = typeof LandingsLaunchVariablesAcceptLanguageEnum[keyof typeof LandingsLaunchVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsResolveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsResolveAcceptLanguageEnum = typeof LandingsResolveAcceptLanguageEnum[keyof typeof LandingsResolveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsVariantEventsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsVariantEventsAcceptLanguageEnum = typeof LandingsVariantEventsAcceptLanguageEnum[keyof typeof LandingsVariantEventsAcceptLanguageEnum];

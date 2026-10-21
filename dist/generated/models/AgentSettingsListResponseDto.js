@@ -18,7 +18,7 @@ exports.AgentSettingsListResponseDtoFromJSON = AgentSettingsListResponseDtoFromJ
 exports.AgentSettingsListResponseDtoFromJSONTyped = AgentSettingsListResponseDtoFromJSONTyped;
 exports.AgentSettingsListResponseDtoToJSON = AgentSettingsListResponseDtoToJSON;
 exports.AgentSettingsListResponseDtoToJSONTyped = AgentSettingsListResponseDtoToJSONTyped;
-const AgentSettingsResponseDto_1 = require("./AgentSettingsResponseDto");
+const AgentListItemDto_1 = require("./AgentListItemDto");
 /**
  * Check if a given object implements the AgentSettingsListResponseDto interface.
  */
@@ -41,7 +41,7 @@ function AgentSettingsListResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'items': (json['items'].map(AgentSettingsResponseDto_1.AgentSettingsResponseDtoFromJSON)),
+        'items': (json['items'].map(AgentListItemDto_1.AgentListItemDtoFromJSON)),
         'total': json['total'],
         'limit': json['limit'],
         'offset': json['offset'],
@@ -55,7 +55,7 @@ function AgentSettingsListResponseDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
-        'items': (value['items'].map(AgentSettingsResponseDto_1.AgentSettingsResponseDtoToJSON)),
+        'items': (value['items'].map(AgentListItemDto_1.AgentListItemDtoToJSON)),
         'total': value['total'],
         'limit': value['limit'],
         'offset': value['offset'],

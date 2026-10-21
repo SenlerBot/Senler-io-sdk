@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingListResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingSummaryResponseDto, MoveLandingBlockDto, MutateLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface AssetsConfirmRequest {
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
@@ -45,9 +45,18 @@ export interface DuplicateRequest {
     duplicateLandingDto: DuplicateLandingDto;
     acceptLanguage?: DuplicateAcceptLanguageEnum;
 }
+export interface GetPublicationValidationRequest {
+    landingId: string;
+    acceptLanguage?: GetPublicationValidationAcceptLanguageEnum;
+}
 export interface GetPublicationsRequest {
     landingId: string;
     acceptLanguage?: GetPublicationsAcceptLanguageEnum;
+}
+export interface GetRulesResultsRequest {
+    landingId: string;
+    ruleId: string;
+    acceptLanguage?: GetRulesResultsAcceptLanguageEnum;
 }
 export interface GetShareLinksRequest {
     landingId: string;
@@ -84,6 +93,22 @@ export interface LandingsUpdateRequest {
     xLandingEditorSessionId: string;
     updateLandingDto: UpdateLandingDto;
     acceptLanguage?: LandingsUpdateAcceptLanguageEnum;
+}
+export interface PersonalizationRequest {
+    landingId: string;
+    xLandingEditorSessionId: string;
+    mutateLandingPersonalizationDto: MutateLandingPersonalizationDto;
+    acceptLanguage?: PersonalizationAcceptLanguageEnum;
+}
+export interface PreviewRequest {
+    landingId: string;
+    previewAnonymousLandingDto: PreviewAnonymousLandingDto;
+    acceptLanguage?: PreviewAcceptLanguageEnum;
+}
+export interface PreviewLeadRequest {
+    landingId: string;
+    previewLeadLandingDto: PreviewLeadLandingDto;
+    acceptLanguage?: PreviewLeadAcceptLanguageEnum;
 }
 export interface PublicationsRestoreRequest {
     landingId: string;
@@ -168,6 +193,16 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     duplicate(requestParameters: DuplicateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
     /**
+     * . .
+     *
+     */
+    getPublicationValidationRaw(requestParameters: GetPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationValidationDto>>;
+    /**
+     * . .
+     *
+     */
+    getPublicationValidation(requestParameters: GetPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationValidationDto>;
+    /**
      * .
      *
      */
@@ -177,6 +212,16 @@ export declare class LandingsApi extends runtime.BaseAPI {
      *
      */
     getPublications(requestParameters: GetPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
+    /**
+     * , . ; .
+     * A/B
+     */
+    getRulesResultsRaw(requestParameters: GetRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingExperimentReportDto>>;
+    /**
+     * , . ; .
+     * A/B
+     */
+    getRulesResults(requestParameters: GetRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingExperimentReportDto>;
     /**
      * - VK, Telegram MAX. .
      *
@@ -247,6 +292,36 @@ export declare class LandingsApi extends runtime.BaseAPI {
      *
      */
     landingsUpdate(requestParameters: LandingsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    /**
+     * settings_revision. ID. .
+     * ,
+     */
+    personalizationRaw(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    /**
+     * settings_revision. ID. .
+     * ,
+     */
+    personalization(requestParameters: PersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    /**
+     * rule_outcomes ; input_data , -. . A/B-.
+     *
+     */
+    previewRaw(requestParameters: PreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPreviewResponseDto>>;
+    /**
+     * rule_outcomes ; input_data , -. . A/B-.
+     *
+     */
+    preview(requestParameters: PreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto>;
+    /**
+     * input_data ; . - . A/B-; .
+     *
+     */
+    previewLeadRaw(requestParameters: PreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPreviewResponseDto>>;
+    /**
+     * input_data ; . - . A/B-; .
+     *
+     */
+    previewLead(requestParameters: PreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto>;
     /**
      * .
      *
@@ -329,11 +404,27 @@ export type DuplicateAcceptLanguageEnum = typeof DuplicateAcceptLanguageEnum[key
 /**
  * @export
  */
+export declare const GetPublicationValidationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetPublicationValidationAcceptLanguageEnum = typeof GetPublicationValidationAcceptLanguageEnum[keyof typeof GetPublicationValidationAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetPublicationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetPublicationsAcceptLanguageEnum = typeof GetPublicationsAcceptLanguageEnum[keyof typeof GetPublicationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetRulesResultsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetRulesResultsAcceptLanguageEnum = typeof GetRulesResultsAcceptLanguageEnum[keyof typeof GetRulesResultsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -390,6 +481,30 @@ export declare const LandingsUpdateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsUpdateAcceptLanguageEnum = typeof LandingsUpdateAcceptLanguageEnum[keyof typeof LandingsUpdateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const PersonalizationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type PersonalizationAcceptLanguageEnum = typeof PersonalizationAcceptLanguageEnum[keyof typeof PersonalizationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const PreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type PreviewAcceptLanguageEnum = typeof PreviewAcceptLanguageEnum[keyof typeof PreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const PreviewLeadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type PreviewLeadAcceptLanguageEnum = typeof PreviewLeadAcceptLanguageEnum[keyof typeof PreviewLeadAcceptLanguageEnum];
 /**
  * @export
  */

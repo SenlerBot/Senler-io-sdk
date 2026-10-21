@@ -25,8 +25,6 @@ const DialogSearchTopMatchDto_1 = require("./DialogSearchTopMatchDto");
 function instanceOfDialogSearchResultDto(value) {
     if (!('score' in value) || value['score'] === undefined)
         return false;
-    if (!('totalMatches' in value) || value['totalMatches'] === undefined)
-        return false;
     if (!('topMatch' in value) || value['topMatch'] === undefined)
         return false;
     return true;
@@ -40,7 +38,7 @@ function DialogSearchResultDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'score': json['score'],
-        'totalMatches': json['total_matches'],
+        'totalMatches': json['total_matches'] == null ? undefined : json['total_matches'],
         'topMatch': (0, DialogSearchTopMatchDto_1.DialogSearchTopMatchDtoFromJSON)(json['top_match']),
     };
 }

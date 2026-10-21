@@ -50,6 +50,18 @@ export interface DialogBulkFiltersDto {
      */
     q?: string;
     /**
+     * . false search.total_matches .
+     * @type {boolean}
+     * @memberof DialogBulkFiltersDto
+     */
+    includeMatchCounts?: boolean;
+    /**
+     * q. false total . cursor- .
+     * @type {boolean}
+     * @memberof DialogBulkFiltersDto
+     */
+    includeTotal?: boolean;
+    /**
      * UUID (, 20 ).
      * @type {Array<string>}
      * @memberof DialogBulkFiltersDto
@@ -335,6 +347,8 @@ export function DialogBulkFiltersDtoFromJSONTyped(json: any, ignoreDiscriminator
         'supportGroupAssignment': json['support_group_assignment'] == null ? undefined : json['support_group_assignment'],
         'snoozeStatus': json['snooze_status'] == null ? undefined : json['snooze_status'],
         'q': json['q'] == null ? undefined : json['q'],
+        'includeMatchCounts': json['include_match_counts'] == null ? undefined : json['include_match_counts'],
+        'includeTotal': json['include_total'] == null ? undefined : json['include_total'],
         'channelId': json['channel_id'] == null ? undefined : json['channel_id'],
         'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
         'testAgentId': json['test_agent_id'] == null ? undefined : json['test_agent_id'],
@@ -383,6 +397,8 @@ export function DialogBulkFiltersDtoToJSONTyped(value?: DialogBulkFiltersDto | n
         'support_group_assignment': value['supportGroupAssignment'],
         'snooze_status': value['snoozeStatus'],
         'q': value['q'],
+        'include_match_counts': value['includeMatchCounts'],
+        'include_total': value['includeTotal'],
         'channel_id': value['channelId'],
         'agent_id': value['agentId'],
         'test_agent_id': value['testAgentId'],

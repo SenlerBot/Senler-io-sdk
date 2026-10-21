@@ -60,6 +60,7 @@ function AgentInstalledAppToolsGroupDtoFromJSONTyped(json, ignoreDiscriminator) 
         'appName': json['app_name'],
         'appIconUrl': json['app_icon_url'],
         'configurationUrl': json['configuration_url'],
+        'configurationMaxWidth': json['configuration_max_width'] == null ? undefined : json['configuration_max_width'],
         'availabilityStatus': json['availability_status'],
         'tools': (json['tools'].map(AgentInstalledAppToolDto_1.AgentInstalledAppToolDtoFromJSON)),
     };
@@ -77,6 +78,7 @@ function AgentInstalledAppToolsGroupDtoToJSONTyped(value, ignoreDiscriminator = 
         'app_name': value['appName'],
         'app_icon_url': value['appIconUrl'],
         'configuration_url': value['configurationUrl'],
+        'configuration_max_width': value['configurationMaxWidth'],
         'availability_status': value['availabilityStatus'],
         'tools': (value['tools'].map(AgentInstalledAppToolDto_1.AgentInstalledAppToolDtoToJSON)),
     };

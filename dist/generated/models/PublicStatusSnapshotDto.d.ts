@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicStatusLoadedRangeDto } from './PublicStatusLoadedRangeDto';
 import type { PublicStatusOverallDto } from './PublicStatusOverallDto';
 import type { PublicStatusGroupDto } from './PublicStatusGroupDto';
 /**
@@ -35,6 +36,12 @@ export interface PublicStatusSnapshotDto {
      * @memberof PublicStatusSnapshotDto
      */
     rangeEndedAt: Date;
+    /**
+     * , . . , .
+     * @type {Array<PublicStatusLoadedRangeDto>}
+     * @memberof PublicStatusSnapshotDto
+     */
+    historyLoadedRanges: Array<PublicStatusLoadedRangeDto>;
     /**
      * .
      * @type {string}

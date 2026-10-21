@@ -22,6 +22,8 @@ const EventSourceDiscordChannelContextDto_1 = require("./EventSourceDiscordChann
 const EventSourceDiscordDmContextDto_1 = require("./EventSourceDiscordDmContextDto");
 const EventSourceDiscordThreadContextDto_1 = require("./EventSourceDiscordThreadContextDto");
 const EventSourceEmailThreadContextDto_1 = require("./EventSourceEmailThreadContextDto");
+const EventSourceFacebookDmContextDto_1 = require("./EventSourceFacebookDmContextDto");
+const EventSourceInstDmContextDto_1 = require("./EventSourceInstDmContextDto");
 const EventSourceMaxChannelContextDto_1 = require("./EventSourceMaxChannelContextDto");
 const EventSourceMaxChatContextDto_1 = require("./EventSourceMaxChatContextDto");
 const EventSourceMaxDialogContextDto_1 = require("./EventSourceMaxDialogContextDto");
@@ -30,6 +32,7 @@ const EventSourceTelegramChatContextDto_1 = require("./EventSourceTelegramChatCo
 const EventSourceTelegramTopicContextDto_1 = require("./EventSourceTelegramTopicContextDto");
 const EventSourceVkPeerContextDto_1 = require("./EventSourceVkPeerContextDto");
 const EventSourceVkWallPostCommentContextDto_1 = require("./EventSourceVkWallPostCommentContextDto");
+const EventSourceWhatsAppChatContextDto_1 = require("./EventSourceWhatsAppChatContextDto");
 const EventSourceWidgetLeadContextDto_1 = require("./EventSourceWidgetLeadContextDto");
 function DialogChatEventDtoSourceContextFromJSON(json) {
     return DialogChatEventDtoSourceContextFromJSONTyped(json, false);
@@ -49,6 +52,10 @@ function DialogChatEventDtoSourceContextFromJSONTyped(json, ignoreDiscriminator)
             return Object.assign({}, (0, EventSourceDiscordThreadContextDto_1.EventSourceDiscordThreadContextDtoFromJSONTyped)(json, true), { kind: 'discord_thread' });
         case 'email_thread':
             return Object.assign({}, (0, EventSourceEmailThreadContextDto_1.EventSourceEmailThreadContextDtoFromJSONTyped)(json, true), { kind: 'email_thread' });
+        case 'facebook_dm':
+            return Object.assign({}, (0, EventSourceFacebookDmContextDto_1.EventSourceFacebookDmContextDtoFromJSONTyped)(json, true), { kind: 'facebook_dm' });
+        case 'inst_dm':
+            return Object.assign({}, (0, EventSourceInstDmContextDto_1.EventSourceInstDmContextDtoFromJSONTyped)(json, true), { kind: 'inst_dm' });
         case 'max_channel':
             return Object.assign({}, (0, EventSourceMaxChannelContextDto_1.EventSourceMaxChannelContextDtoFromJSONTyped)(json, true), { kind: 'max_channel' });
         case 'max_chat':
@@ -65,6 +72,8 @@ function DialogChatEventDtoSourceContextFromJSONTyped(json, ignoreDiscriminator)
             return Object.assign({}, (0, EventSourceVkPeerContextDto_1.EventSourceVkPeerContextDtoFromJSONTyped)(json, true), { kind: 'vk_peer' });
         case 'vk_wall_post_comment':
             return Object.assign({}, (0, EventSourceVkWallPostCommentContextDto_1.EventSourceVkWallPostCommentContextDtoFromJSONTyped)(json, true), { kind: 'vk_wall_post_comment' });
+        case 'whatsapp_chat':
+            return Object.assign({}, (0, EventSourceWhatsAppChatContextDto_1.EventSourceWhatsAppChatContextDtoFromJSONTyped)(json, true), { kind: 'whatsapp_chat' });
         case 'widget_lead':
             return Object.assign({}, (0, EventSourceWidgetLeadContextDto_1.EventSourceWidgetLeadContextDtoFromJSONTyped)(json, true), { kind: 'widget_lead' });
         default:
@@ -89,6 +98,10 @@ function DialogChatEventDtoSourceContextToJSONTyped(value, ignoreDiscriminator =
             return Object.assign({}, (0, EventSourceDiscordThreadContextDto_1.EventSourceDiscordThreadContextDtoToJSON)(value), { kind: 'discord_thread' });
         case 'email_thread':
             return Object.assign({}, (0, EventSourceEmailThreadContextDto_1.EventSourceEmailThreadContextDtoToJSON)(value), { kind: 'email_thread' });
+        case 'facebook_dm':
+            return Object.assign({}, (0, EventSourceFacebookDmContextDto_1.EventSourceFacebookDmContextDtoToJSON)(value), { kind: 'facebook_dm' });
+        case 'inst_dm':
+            return Object.assign({}, (0, EventSourceInstDmContextDto_1.EventSourceInstDmContextDtoToJSON)(value), { kind: 'inst_dm' });
         case 'max_channel':
             return Object.assign({}, (0, EventSourceMaxChannelContextDto_1.EventSourceMaxChannelContextDtoToJSON)(value), { kind: 'max_channel' });
         case 'max_chat':
@@ -105,6 +118,8 @@ function DialogChatEventDtoSourceContextToJSONTyped(value, ignoreDiscriminator =
             return Object.assign({}, (0, EventSourceVkPeerContextDto_1.EventSourceVkPeerContextDtoToJSON)(value), { kind: 'vk_peer' });
         case 'vk_wall_post_comment':
             return Object.assign({}, (0, EventSourceVkWallPostCommentContextDto_1.EventSourceVkWallPostCommentContextDtoToJSON)(value), { kind: 'vk_wall_post_comment' });
+        case 'whatsapp_chat':
+            return Object.assign({}, (0, EventSourceWhatsAppChatContextDto_1.EventSourceWhatsAppChatContextDtoToJSON)(value), { kind: 'whatsapp_chat' });
         case 'widget_lead':
             return Object.assign({}, (0, EventSourceWidgetLeadContextDto_1.EventSourceWidgetLeadContextDtoToJSON)(value), { kind: 'widget_lead' });
         default:

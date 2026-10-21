@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppendTypedKnowledgeTableRowsDto, ClearKnowledgeTableRangeDto, CopyKnowledgeTableRangeDto, CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, FormatKnowledgeTableRangeDto, ImportProjectKnowledgeImageDto, InsertKnowledgeTableColumnsDto, InsertKnowledgeTableRowsDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableMutationResponseDto, KnowledgeTableRangeResponseDto, KnowledgeTableResponseDto, KnowledgeTableRowsResponseDto, KnowledgeTableSchemaResponseDto, KnowledgeTableSheetSessionResponseDto, MergeKnowledgeTableCellsDto, MoveKnowledgeTableColumnsDto, MoveKnowledgeTableRangeDto, MoveKnowledgeTableRowsDto, PaginatedKnowledgeBaseSearchResponseDto, QueryKnowledgeTableRowsDto, ResizeKnowledgeTableColumnsDto, ResizeKnowledgeTableRowsDto, ResolveKnowledgeArchiveImportConflictDto, SetKnowledgeTableColumnsVisibilityDto, SetKnowledgeTableRangeBordersDto, SetKnowledgeTableRowsVisibilityDto, UnmergeKnowledgeTableCellsDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UpdateTypedKnowledgeTableCellsDto, WriteTypedKnowledgeTableRangeDto } from '../models/index';
+import type { AppendTypedKnowledgeTableRowsDto, ClearKnowledgeTableRangeDto, CopyKnowledgeTableRangeDto, CreateKnowledgeFileDto, CreateKnowledgeFolderDto, CreateKnowledgeTableDto, FormatKnowledgeTableRangeDto, ImportProjectKnowledgeImageDto, InsertKnowledgeTableColumnsDto, InsertKnowledgeTableRowsDto, KnowledgeArchiveImportOperationResponseDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeImageRecognitionRunResponseDto, KnowledgeResourceListResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableMutationResponseDto, KnowledgeTableRangeResponseDto, KnowledgeTableResponseDto, KnowledgeTableRowsResponseDto, KnowledgeTableSchemaResponseDto, KnowledgeTableSheetSessionResponseDto, MergeKnowledgeTableCellsDto, MoveKnowledgeTableColumnsDto, MoveKnowledgeTableRangeDto, MoveKnowledgeTableRowsDto, PaginatedKnowledgeBaseSearchResponseDto, QueryKnowledgeTableRowsDto, ResizeKnowledgeTableColumnsDto, ResizeKnowledgeTableRowsDto, ResolveKnowledgeArchiveImportConflictDto, SetKnowledgeTableColumnsVisibilityDto, SetKnowledgeTableRangeBordersDto, SetKnowledgeTableRowsVisibilityDto, UnmergeKnowledgeTableCellsDto, UpdateKnowledgeFileDto, UpdateKnowledgeFolderDto, UpdateKnowledgeTableDto, UpdateTypedKnowledgeTableCellsDto, WriteTypedKnowledgeTableRangeDto } from '../models/index';
 export interface ArchiveImportsRequest {
     projectId: string;
     idempotencyKey: string;
@@ -113,6 +113,8 @@ export interface GetImageRecognitionRunsRequest {
 }
 export interface GetResourcesRequest {
     projectId: string;
+    limit?: number;
+    cursor?: string;
     parentFolderId?: string | null;
     acceptLanguage?: GetResourcesAcceptLanguageEnum;
 }
@@ -458,12 +460,12 @@ export declare class KnowledgeBaseApi extends runtime.BaseAPI {
      * , .
      *
      */
-    getResourcesRaw(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>>;
+    getResourcesRaw(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourceListResponseDto>>;
     /**
      * , .
      *
      */
-    getResources(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto>;
+    getResources(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourceListResponseDto>;
     /**
      * , ID .
      *

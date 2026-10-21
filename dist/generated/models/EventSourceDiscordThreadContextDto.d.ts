@@ -11,12 +11,19 @@
  */
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceDiscordThreadDataDto } from './EventSourceDiscordThreadDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceDiscordThreadContextDto.
  * @export
  * @interface EventSourceDiscordThreadContextDto
  */
 export interface EventSourceDiscordThreadContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceDiscordThreadContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

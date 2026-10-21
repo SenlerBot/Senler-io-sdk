@@ -150,6 +150,8 @@ export interface GetBulkPreviewRequest {
     supportGroupAssignment?: GetBulkPreviewSupportGroupAssignmentEnum;
     snoozeStatus?: GetBulkPreviewSnoozeStatusEnum;
     q?: string;
+    includeMatchCounts?: boolean;
+    includeTotal?: boolean;
     from?: number;
     size?: number;
     before?: string;
@@ -830,6 +832,14 @@ export class DialogsManagementApi extends runtime.BaseAPI {
 
         if (requestParameters['q'] != null) {
             queryParameters['q'] = requestParameters['q'];
+        }
+
+        if (requestParameters['includeMatchCounts'] != null) {
+            queryParameters['include_match_counts'] = requestParameters['includeMatchCounts'];
+        }
+
+        if (requestParameters['includeTotal'] != null) {
+            queryParameters['include_total'] = requestParameters['includeTotal'];
         }
 
         if (requestParameters['from'] != null) {

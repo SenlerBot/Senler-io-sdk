@@ -35,17 +35,17 @@ import {
  */
 export interface AutomationBatchUpdateNodeOperationDto {
     /**
-     * instance_id , . expected_draft_revision.
-     * @type {string}
-     * @memberof AutomationBatchUpdateNodeOperationDto
-     */
-    expectedInstanceId?: string;
-    /**
      * .
      * @type {string}
      * @memberof AutomationBatchUpdateNodeOperationDto
      */
     kind: AutomationBatchUpdateNodeOperationDtoKindEnum;
+    /**
+     * instance_id , . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchUpdateNodeOperationDto
+     */
+    expectedInstanceId?: string;
     /**
      * UUID .
      * @type {string}
@@ -113,8 +113,8 @@ export function AutomationBatchUpdateNodeOperationDtoFromJSONTyped(json: any, ig
     }
     return {
 
-        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'nodeId': json['node_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'config': json['config'] == null ? undefined : AutomationNodeConfigDtoFromJSON(json['config']),
@@ -135,8 +135,8 @@ export function AutomationBatchUpdateNodeOperationDtoToJSONTyped(value?: Automat
 
     return {
 
-        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
+        'expected_instance_id': value['expectedInstanceId'],
         'node_id': value['nodeId'],
         'name': value['name'],
         'config': AutomationNodeConfigDtoToJSON(value['config']),

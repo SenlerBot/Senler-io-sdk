@@ -17,6 +17,12 @@ import type { LandingVideoBlockPayloadDto } from './LandingVideoBlockPayloadDto'
  */
 export interface CreateVideoLandingBlockDto {
     /**
+     * ;
+     * @type {string}
+     * @memberof CreateVideoLandingBlockDto
+     */
+    pageVariantId?: string;
+    /**
      *
      * @type {number}
      * @memberof CreateVideoLandingBlockDto

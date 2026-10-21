@@ -1003,6 +1003,12 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getResources().');
         }
         const queryParameters = {};
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
         }
@@ -1034,7 +1040,7 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeResourcesResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.KnowledgeResourceListResponseDtoFromJSON)(jsonValue));
     }
     /**
      * , .

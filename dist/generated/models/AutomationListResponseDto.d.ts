@@ -22,6 +22,12 @@ export interface AutomationListResponseDto {
      * @memberof AutomationListResponseDto
      */
     items: Array<AutomationResponseDto>;
+    /**
+     * ; null .
+     * @type {string}
+     * @memberof AutomationListResponseDto
+     */
+    nextCursor: string | null;
 }
 /**
  * Check if a given object implements the AutomationListResponseDto interface.

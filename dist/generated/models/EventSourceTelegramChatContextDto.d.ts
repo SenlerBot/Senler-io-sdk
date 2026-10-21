@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { EventAttributionDto } from './EventAttributionDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 import type { EventSourceTelegramChatDataDto } from './EventSourceTelegramChatDataDto';
 /**
  * EventSourceTelegramChatContextDto.
@@ -17,6 +18,12 @@ import type { EventSourceTelegramChatDataDto } from './EventSourceTelegramChatDa
  * @interface EventSourceTelegramChatContextDto
  */
 export interface EventSourceTelegramChatContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceTelegramChatContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

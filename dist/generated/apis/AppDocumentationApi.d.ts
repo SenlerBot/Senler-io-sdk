@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppDocumentationPageResponseDto, AppDocumentationSettingsResponseDto, CreateAppDocumentationFileDto, CreateAppDocumentationFolderDto, CreateAppDocumentationTableDto, ImportKnowledgeImageDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, UpdateAppDocumentationFileDto, UpdateAppDocumentationFolderDto, UpdateAppDocumentationOrderDto, UpdateAppDocumentationPageDto, UpdateAppDocumentationSettingsDto, UpdateAppDocumentationTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
+import type { AppDocumentationPageResponseDto, AppDocumentationSettingsResponseDto, CreateAppDocumentationFileDto, CreateAppDocumentationFolderDto, CreateAppDocumentationTableDto, ImportKnowledgeImageDto, KnowledgeFileResponseDto, KnowledgeFolderResponseDto, KnowledgeImageRecognitionEstimateResponseDto, KnowledgeResourceListResponseDto, KnowledgeResourcesResponseDto, KnowledgeTableResponseDto, PaginatedKnowledgeBaseSearchResponseDto, UpdateAppDocumentationFileDto, UpdateAppDocumentationFolderDto, UpdateAppDocumentationOrderDto, UpdateAppDocumentationPageDto, UpdateAppDocumentationSettingsDto, UpdateAppDocumentationTableDto, UploadKnowledgeArchiveResponseDto } from '../models/index';
 export interface DeleteDocumentationFilesRequest {
     appId: string;
     id: string;
@@ -316,12 +316,12 @@ export declare class AppDocumentationApi extends runtime.BaseAPI {
      * , .
      *
      */
-    getDocumentationResourcesRaw(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>>;
+    getDocumentationResourcesRaw(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourceListResponseDto>>;
     /**
      * , .
      *
      */
-    getDocumentationResources(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto>;
+    getDocumentationResources(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourceListResponseDto>;
     /**
      * .
      *

@@ -21,6 +21,7 @@ exports.LandingVersionResponseDtoToJSON = LandingVersionResponseDtoToJSON;
 exports.LandingVersionResponseDtoToJSONTyped = LandingVersionResponseDtoToJSONTyped;
 const LandingVersionResponseDtoBlocksInner_1 = require("./LandingVersionResponseDtoBlocksInner");
 const LandingPublicationWarningDto_1 = require("./LandingPublicationWarningDto");
+const LandingPersonalizationResponseDto_1 = require("./LandingPersonalizationResponseDto");
 const LandingSettingsDto_1 = require("./LandingSettingsDto");
 /**
  * @export
@@ -43,6 +44,8 @@ exports.LandingVersionResponseDtoStatusEnum = {
  * Check if a given object implements the LandingVersionResponseDto interface.
  */
 function instanceOfLandingVersionResponseDto(value) {
+    if (!('personalization' in value) || value['personalization'] === undefined)
+        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('name' in value) || value['name'] === undefined)
@@ -77,6 +80,7 @@ function LandingVersionResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'personalization': (0, LandingPersonalizationResponseDto_1.LandingPersonalizationResponseDtoFromJSON)(json['personalization']),
         'id': json['id'],
         'name': json['name'],
         'kind': json['kind'],
@@ -99,6 +103,7 @@ function LandingVersionResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         return value;
     }
     return {
+        'personalization': (0, LandingPersonalizationResponseDto_1.LandingPersonalizationResponseDtoToJSON)(value['personalization']),
         'id': value['id'],
         'name': value['name'],
         'kind': value['kind'],

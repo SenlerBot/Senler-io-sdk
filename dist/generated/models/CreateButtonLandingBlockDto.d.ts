@@ -17,6 +17,12 @@ import type { LandingButtonBlockPayloadDto } from './LandingButtonBlockPayloadDt
  */
 export interface CreateButtonLandingBlockDto {
     /**
+     * ;
+     * @type {string}
+     * @memberof CreateButtonLandingBlockDto
+     */
+    pageVariantId?: string;
+    /**
      *
      * @type {number}
      * @memberof CreateButtonLandingBlockDto

@@ -50,6 +50,18 @@ export interface QueryDialogsDto {
      */
     q?: string;
     /**
+     * . false search.total_matches .
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    includeMatchCounts?: boolean;
+    /**
+     * q. false total . cursor- .
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    includeTotal?: boolean;
+    /**
      * q.
      * @type {number}
      * @memberof QueryDialogsDto
@@ -382,6 +394,8 @@ export function QueryDialogsDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'supportGroupAssignment': json['support_group_assignment'] == null ? undefined : json['support_group_assignment'],
         'snoozeStatus': json['snooze_status'] == null ? undefined : json['snooze_status'],
         'q': json['q'] == null ? undefined : json['q'],
+        'includeMatchCounts': json['include_match_counts'] == null ? undefined : json['include_match_counts'],
+        'includeTotal': json['include_total'] == null ? undefined : json['include_total'],
         'from': json['from'] == null ? undefined : json['from'],
         'size': json['size'] == null ? undefined : json['size'],
         'before': json['before'] == null ? undefined : json['before'],
@@ -436,6 +450,8 @@ export function QueryDialogsDtoToJSONTyped(value?: QueryDialogsDto | null, ignor
         'support_group_assignment': value['supportGroupAssignment'],
         'snooze_status': value['snoozeStatus'],
         'q': value['q'],
+        'include_match_counts': value['includeMatchCounts'],
+        'include_total': value['includeTotal'],
         'from': value['from'],
         'size': value['size'],
         'before': value['before'],

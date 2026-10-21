@@ -30,6 +30,7 @@ import type {
   AutomationNodeResponseDto,
   AutomationOperationsResponseDto,
   AutomationOperatorOptionsDto,
+  AutomationOptionsResponseDto,
   AutomationResponseDto,
   AutomationRunDetailResponseDto,
   AutomationRunsResponseDto,
@@ -109,6 +110,8 @@ import {
     AutomationOperationsResponseDtoToJSON,
     AutomationOperatorOptionsDtoFromJSON,
     AutomationOperatorOptionsDtoToJSON,
+    AutomationOptionsResponseDtoFromJSON,
+    AutomationOptionsResponseDtoToJSON,
     AutomationResponseDtoFromJSON,
     AutomationResponseDtoToJSON,
     AutomationRunDetailResponseDtoFromJSON,
@@ -273,6 +276,15 @@ export interface AutomationsGetVersionsRequest {
 
 export interface AutomationsListRequest {
     projectId: string;
+    limit?: number;
+    cursor?: string;
+    search?: string;
+    ids?: Array<string>;
+    type?: AutomationsListTypeEnum;
+    publishedOnly?: boolean;
+    runnableOnly?: boolean;
+    channelType?: AutomationsListChannelTypeEnum;
+    excludeId?: string;
     acceptLanguage?: AutomationsListAcceptLanguageEnum;
 }
 
@@ -403,6 +415,20 @@ export interface GetOperationsRequest {
 export interface GetOperatorOptionsRequest {
     projectId: string;
     acceptLanguage?: GetOperatorOptionsAcceptLanguageEnum;
+}
+
+export interface GetOptionsRequest {
+    projectId: string;
+    limit?: number;
+    cursor?: string;
+    search?: string;
+    ids?: Array<string>;
+    type?: GetOptionsTypeEnum;
+    publishedOnly?: boolean;
+    runnableOnly?: boolean;
+    channelType?: GetOptionsChannelTypeEnum;
+    excludeId?: string;
+    acceptLanguage?: GetOptionsAcceptLanguageEnum;
 }
 
 export interface GetRunsRequest {
@@ -1300,6 +1326,42 @@ export class AutomationsApi extends runtime.BaseAPI {
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+
+        if (requestParameters['publishedOnly'] != null) {
+            queryParameters['published_only'] = requestParameters['publishedOnly'];
+        }
+
+        if (requestParameters['runnableOnly'] != null) {
+            queryParameters['runnable_only'] = requestParameters['runnableOnly'];
+        }
+
+        if (requestParameters['channelType'] != null) {
+            queryParameters['channel_type'] = requestParameters['channelType'];
+        }
+
+        if (requestParameters['excludeId'] != null) {
+            queryParameters['exclude_id'] = requestParameters['excludeId'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -2629,6 +2691,103 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async getOperatorOptions(requestParameters: GetOperatorOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperatorOptionsDto> {
         const response = await this.getOperatorOptionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ID. .
+     *
+     */
+    async getOptionsRaw(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOptionsResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getOptions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
+
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+
+        if (requestParameters['publishedOnly'] != null) {
+            queryParameters['published_only'] = requestParameters['publishedOnly'];
+        }
+
+        if (requestParameters['runnableOnly'] != null) {
+            queryParameters['runnable_only'] = requestParameters['runnableOnly'];
+        }
+
+        if (requestParameters['channelType'] != null) {
+            queryParameters['channel_type'] = requestParameters['channelType'];
+        }
+
+        if (requestParameters['excludeId'] != null) {
+            queryParameters['exclude_id'] = requestParameters['excludeId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/options`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationOptionsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ID. .
+     *
+     */
+    async getOptions(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOptionsResponseDto> {
+        const response = await this.getOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4330,6 +4489,31 @@ export type AutomationsGetVersionsAcceptLanguageEnum = typeof AutomationsGetVers
 /**
  * @export
  */
+export const AutomationsListTypeEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
+} as const;
+export type AutomationsListTypeEnum = typeof AutomationsListTypeEnum[keyof typeof AutomationsListTypeEnum];
+/**
+ * @export
+ */
+export const AutomationsListChannelTypeEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
+} as const;
+export type AutomationsListChannelTypeEnum = typeof AutomationsListChannelTypeEnum[keyof typeof AutomationsListChannelTypeEnum];
+/**
+ * @export
+ */
 export const AutomationsListAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -4525,6 +4709,39 @@ export const GetOperatorOptionsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetOperatorOptionsAcceptLanguageEnum = typeof GetOperatorOptionsAcceptLanguageEnum[keyof typeof GetOperatorOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetOptionsTypeEnum = {
+    Contextual: 'contextual',
+    Background: 'background'
+} as const;
+export type GetOptionsTypeEnum = typeof GetOptionsTypeEnum[keyof typeof GetOptionsTypeEnum];
+/**
+ * @export
+ */
+export const GetOptionsChannelTypeEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
+} as const;
+export type GetOptionsChannelTypeEnum = typeof GetOptionsChannelTypeEnum[keyof typeof GetOptionsChannelTypeEnum];
+/**
+ * @export
+ */
+export const GetOptionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetOptionsAcceptLanguageEnum = typeof GetOptionsAcceptLanguageEnum[keyof typeof GetOptionsAcceptLanguageEnum];
 /**
  * @export
  */

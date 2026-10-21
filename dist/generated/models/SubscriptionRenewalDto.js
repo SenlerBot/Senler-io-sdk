@@ -42,6 +42,7 @@ function SubscriptionRenewalDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'renewalAt': json['renewal_at'] == null ? undefined : (new Date(json['renewal_at'])),
         'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'period': json['period'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
@@ -55,6 +56,7 @@ function SubscriptionRenewalDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'renewal_at': value['renewalAt'] == null ? undefined : ((value['renewalAt']).toISOString()),
         'promo_application_id': value['promoApplicationId'],
         'period': value['period'],
         'use_balance': value['useBalance'],

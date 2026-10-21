@@ -45,7 +45,10 @@ export const ChannelsTreeRefreshChannelDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ChannelsTreeRefreshChannelDtoChannelTypeEnum = typeof ChannelsTreeRefreshChannelDtoChannelTypeEnum[keyof typeof ChannelsTreeRefreshChannelDtoChannelTypeEnum];
 

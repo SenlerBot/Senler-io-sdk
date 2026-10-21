@@ -56,6 +56,8 @@ export interface GetBulkPreviewRequest {
     supportGroupAssignment?: GetBulkPreviewSupportGroupAssignmentEnum;
     snoozeStatus?: GetBulkPreviewSnoozeStatusEnum;
     q?: string;
+    includeMatchCounts?: boolean;
+    includeTotal?: boolean;
     from?: number;
     size?: number;
     before?: string;

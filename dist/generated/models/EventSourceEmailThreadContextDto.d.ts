@@ -11,12 +11,19 @@
  */
 import type { EventSourceEmailThreadDataDto } from './EventSourceEmailThreadDataDto';
 import type { EventAttributionDto } from './EventAttributionDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceEmailThreadContextDto.
  * @export
  * @interface EventSourceEmailThreadContextDto
  */
 export interface EventSourceEmailThreadContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceEmailThreadContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

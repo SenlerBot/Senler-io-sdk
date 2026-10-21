@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AcceptedSegmentConsentDto } from './AcceptedSegmentConsentDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 import type { LandingContactDto } from './LandingContactDto';
 /**
  * LandingSubscriptionRequestDto.
@@ -71,6 +72,24 @@ export interface LandingSubscriptionRequestDto {
      * @memberof LandingSubscriptionRequestDto
      */
     utmTerm?: string;
+    /**
+     * , ,
+     * @type {Array<string>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    observedExperimentIds?: Array<string>;
+    /**
+     * resolve
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    eventToken?: string;
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      * , .
      * @type {Array<AcceptedSegmentConsentDto>}

@@ -20,6 +20,13 @@ import {
     EventAttributionDtoToJSON,
     EventAttributionDtoToJSONTyped,
 } from './EventAttributionDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
+import {
+    AnalyticsSnapshotDtoFromJSON,
+    AnalyticsSnapshotDtoFromJSONTyped,
+    AnalyticsSnapshotDtoToJSON,
+    AnalyticsSnapshotDtoToJSONTyped,
+} from './AnalyticsSnapshotDto';
 import type { EventSourceTelegramChatDataDto } from './EventSourceTelegramChatDataDto';
 import {
     EventSourceTelegramChatDataDtoFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface EventSourceTelegramChatContextDto
  */
 export interface EventSourceTelegramChatContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceTelegramChatContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}
@@ -100,6 +113,7 @@ export function EventSourceTelegramChatContextDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : EventAttributionDtoFromJSON(json['attribution']),
         'kind': json['kind'],
@@ -118,6 +132,7 @@ export function EventSourceTelegramChatContextDtoToJSONTyped(value?: EventSource
 
     return {
 
+        'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': EventAttributionDtoToJSON(value['attribution']),
         'kind': value['kind'],

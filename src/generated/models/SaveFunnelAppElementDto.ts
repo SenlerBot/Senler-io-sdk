@@ -20,6 +20,13 @@ import {
     FunnelIdentityBindingDtoToJSON,
     FunnelIdentityBindingDtoToJSONTyped,
 } from './FunnelIdentityBindingDto';
+import type { FunnelAnalyticsBindingDto } from './FunnelAnalyticsBindingDto';
+import {
+    FunnelAnalyticsBindingDtoFromJSON,
+    FunnelAnalyticsBindingDtoFromJSONTyped,
+    FunnelAnalyticsBindingDtoToJSON,
+    FunnelAnalyticsBindingDtoToJSONTyped,
+} from './FunnelAnalyticsBindingDto';
 
 /**
  * SaveFunnelAppElementDto.
@@ -45,6 +52,12 @@ export interface SaveFunnelAppElementDto {
      * @memberof SaveFunnelAppElementDto
      */
     position: number;
+    /**
+     * . identity_binding.
+     * @type {FunnelAnalyticsBindingDto}
+     * @memberof SaveFunnelAppElementDto
+     */
+    analyticsBinding?: FunnelAnalyticsBindingDto | null;
     /**
      * , metrika:counter:42. .
      * @type {string}
@@ -112,6 +125,7 @@ export function SaveFunnelAppElementDtoFromJSONTyped(json: any, ignoreDiscrimina
         'title': json['title'],
         'beforeStageId': json['before_stage_id'],
         'position': json['position'],
+        'analyticsBinding': json['analytics_binding'] == null ? undefined : FunnelAnalyticsBindingDtoFromJSON(json['analytics_binding']),
         'dataSourceKey': json['data_source_key'],
         '_configuration': json['configuration'],
         'identityBinding': FunnelIdentityBindingDtoFromJSON(json['identity_binding']),
@@ -135,6 +149,7 @@ export function SaveFunnelAppElementDtoToJSONTyped(value?: SaveFunnelAppElementD
         'title': value['title'],
         'before_stage_id': value['beforeStageId'],
         'position': value['position'],
+        'analytics_binding': FunnelAnalyticsBindingDtoToJSON(value['analyticsBinding']),
         'data_source_key': value['dataSourceKey'],
         'configuration': value['_configuration'],
         'identity_binding': FunnelIdentityBindingDtoToJSON(value['identityBinding']),

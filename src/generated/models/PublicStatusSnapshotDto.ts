@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicStatusLoadedRangeDto } from './PublicStatusLoadedRangeDto';
+import {
+    PublicStatusLoadedRangeDtoFromJSON,
+    PublicStatusLoadedRangeDtoFromJSONTyped,
+    PublicStatusLoadedRangeDtoToJSON,
+    PublicStatusLoadedRangeDtoToJSONTyped,
+} from './PublicStatusLoadedRangeDto';
 import type { PublicStatusOverallDto } from './PublicStatusOverallDto';
 import {
     PublicStatusOverallDtoFromJSON,
@@ -52,6 +59,12 @@ export interface PublicStatusSnapshotDto {
      * @memberof PublicStatusSnapshotDto
      */
     rangeEndedAt: Date;
+    /**
+     * , . . , .
+     * @type {Array<PublicStatusLoadedRangeDto>}
+     * @memberof PublicStatusSnapshotDto
+     */
+    historyLoadedRanges: Array<PublicStatusLoadedRangeDto>;
     /**
      * .
      * @type {string}
@@ -103,6 +116,7 @@ export function instanceOfPublicStatusSnapshotDto(value: object): value is Publi
     if (!('generatedAt' in value) || value['generatedAt'] === undefined) return false;
     if (!('rangeStartedAt' in value) || value['rangeStartedAt'] === undefined) return false;
     if (!('rangeEndedAt' in value) || value['rangeEndedAt'] === undefined) return false;
+    if (!('historyLoadedRanges' in value) || value['historyLoadedRanges'] === undefined) return false;
     if (!('period' in value) || value['period'] === undefined) return false;
     if (!('refreshAfterSeconds' in value) || value['refreshAfterSeconds'] === undefined) return false;
     if (!('stale' in value) || value['stale'] === undefined) return false;
@@ -124,6 +138,7 @@ export function PublicStatusSnapshotDtoFromJSONTyped(json: any, ignoreDiscrimina
         'generatedAt': (new Date(json['generatedAt'])),
         'rangeStartedAt': (new Date(json['rangeStartedAt'])),
         'rangeEndedAt': (new Date(json['rangeEndedAt'])),
+        'historyLoadedRanges': ((json['historyLoadedRanges'] as Array<any>).map(PublicStatusLoadedRangeDtoFromJSON)),
         'period': json['period'],
         'refreshAfterSeconds': json['refreshAfterSeconds'],
         'stale': json['stale'],
@@ -146,6 +161,7 @@ export function PublicStatusSnapshotDtoToJSONTyped(value?: PublicStatusSnapshotD
         'generatedAt': ((value['generatedAt']).toISOString()),
         'rangeStartedAt': ((value['rangeStartedAt']).toISOString()),
         'rangeEndedAt': ((value['rangeEndedAt']).toISOString()),
+        'historyLoadedRanges': ((value['historyLoadedRanges'] as Array<any>).map(PublicStatusLoadedRangeDtoToJSON)),
         'period': value['period'],
         'refreshAfterSeconds': value['refreshAfterSeconds'],
         'stale': value['stale'],

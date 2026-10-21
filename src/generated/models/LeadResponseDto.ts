@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LeadAnalyticsIdentifierDto } from './LeadAnalyticsIdentifierDto';
+import {
+    LeadAnalyticsIdentifierDtoFromJSON,
+    LeadAnalyticsIdentifierDtoFromJSONTyped,
+    LeadAnalyticsIdentifierDtoToJSON,
+    LeadAnalyticsIdentifierDtoToJSONTyped,
+} from './LeadAnalyticsIdentifierDto';
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
 import {
     LeadSpaceLinkResponseDtoFromJSON,
@@ -55,6 +62,12 @@ import {
  * @interface LeadResponseDto
  */
 export interface LeadResponseDto {
+    /**
+     * . .
+     * @type {Array<LeadAnalyticsIdentifierDto>}
+     * @memberof LeadResponseDto
+     */
+    readonly analyticsIdentifiers: Array<LeadAnalyticsIdentifierDto>;
     /**
      * Effective birthday. A missing year remains absent.
      * @type {LeadBirthdayDateDto}
@@ -282,7 +295,10 @@ export const LeadResponseDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type LeadResponseDtoChannelTypeEnum = typeof LeadResponseDtoChannelTypeEnum[keyof typeof LeadResponseDtoChannelTypeEnum];
 
@@ -316,6 +332,7 @@ export type LeadResponseDtoLeadTypeEnum = typeof LeadResponseDtoLeadTypeEnum[key
  * Check if a given object implements the LeadResponseDto interface.
  */
 export function instanceOfLeadResponseDto(value: object): value is LeadResponseDto {
+    if (!('analyticsIdentifiers' in value) || value['analyticsIdentifiers'] === undefined) return false;
     if (!('birthday' in value) || value['birthday'] === undefined) return false;
     if (!('birthdayMode' in value) || value['birthdayMode'] === undefined) return false;
     if (!('birthdayChannel' in value) || value['birthdayChannel'] === undefined) return false;
@@ -349,6 +366,7 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
 
+        'analyticsIdentifiers': ((json['analytics_identifiers'] as Array<any>).map(LeadAnalyticsIdentifierDtoFromJSON)),
         'birthday': LeadBirthdayDateDtoFromJSON(json['birthday']),
         'birthdayMode': json['birthday_mode'],
         'birthdayChannel': LeadBirthdayDateDtoFromJSON(json['birthday_channel']),
@@ -390,7 +408,7 @@ export function LeadResponseDtoToJSON(json: any): LeadResponseDto {
     return LeadResponseDtoToJSONTyped(json, false);
 }
 
-export function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignoreDiscriminator: boolean = false): any {
+export function LeadResponseDtoToJSONTyped(value?: Omit<LeadResponseDto, 'analytics_identifiers'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

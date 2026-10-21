@@ -45,8 +45,8 @@ function AutomationBatchUpdateNodeOperationDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
-        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'nodeId': json['node_id'],
         'name': json['name'] == null ? undefined : json['name'],
         'config': json['config'] == null ? undefined : (0, AutomationNodeConfigDto_1.AutomationNodeConfigDtoFromJSON)(json['config']),
@@ -63,8 +63,8 @@ function AutomationBatchUpdateNodeOperationDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
-        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
+        'expected_instance_id': value['expectedInstanceId'],
         'node_id': value['nodeId'],
         'name': value['name'],
         'config': (0, AutomationNodeConfigDto_1.AutomationNodeConfigDtoToJSON)(value['config']),

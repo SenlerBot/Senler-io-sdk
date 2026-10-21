@@ -27,6 +27,13 @@ import {
     EventSourceAvitoChatDataDtoToJSON,
     EventSourceAvitoChatDataDtoToJSONTyped,
 } from './EventSourceAvitoChatDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
+import {
+    AnalyticsSnapshotDtoFromJSON,
+    AnalyticsSnapshotDtoFromJSONTyped,
+    AnalyticsSnapshotDtoToJSON,
+    AnalyticsSnapshotDtoToJSONTyped,
+} from './AnalyticsSnapshotDto';
 
 /**
  * EventSourceAvitoChatContextDto.
@@ -34,6 +41,12 @@ import {
  * @interface EventSourceAvitoChatContextDto
  */
 export interface EventSourceAvitoChatContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceAvitoChatContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}
@@ -100,6 +113,7 @@ export function EventSourceAvitoChatContextDtoFromJSONTyped(json: any, ignoreDis
     }
     return {
 
+        'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : EventAttributionDtoFromJSON(json['attribution']),
         'kind': json['kind'],
@@ -118,6 +132,7 @@ export function EventSourceAvitoChatContextDtoToJSONTyped(value?: EventSourceAvi
 
     return {
 
+        'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': EventAttributionDtoToJSON(value['attribution']),
         'kind': value['kind'],

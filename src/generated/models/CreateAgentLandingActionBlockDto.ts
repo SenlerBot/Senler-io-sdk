@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CreateAgentLandingActionBlockDtoAction } from './CreateAgentLandingActionBlockDtoAction';
+import type { UpdateAgentLandingBlockDtoAction } from './UpdateAgentLandingBlockDtoAction';
 import {
-    CreateAgentLandingActionBlockDtoActionFromJSON,
-    CreateAgentLandingActionBlockDtoActionFromJSONTyped,
-    CreateAgentLandingActionBlockDtoActionToJSON,
-    CreateAgentLandingActionBlockDtoActionToJSONTyped,
-} from './CreateAgentLandingActionBlockDtoAction';
+    UpdateAgentLandingBlockDtoActionFromJSON,
+    UpdateAgentLandingBlockDtoActionFromJSONTyped,
+    UpdateAgentLandingBlockDtoActionToJSON,
+    UpdateAgentLandingBlockDtoActionToJSONTyped,
+} from './UpdateAgentLandingBlockDtoAction';
 
 /**
  * CreateAgentLandingActionBlockDto.
@@ -27,6 +27,12 @@ import {
  * @interface CreateAgentLandingActionBlockDto
  */
 export interface CreateAgentLandingActionBlockDto {
+    /**
+     * ;
+     * @type {string}
+     * @memberof CreateAgentLandingActionBlockDto
+     */
+    pageVariantId?: string;
     /**
      *
      * @type {number}
@@ -65,10 +71,10 @@ export interface CreateAgentLandingActionBlockDto {
     beforeBlockId?: string;
     /**
      *
-     * @type {CreateAgentLandingActionBlockDtoAction}
+     * @type {UpdateAgentLandingBlockDtoAction}
      * @memberof CreateAgentLandingActionBlockDto
      */
-    action?: CreateAgentLandingActionBlockDtoAction | null;
+    action?: UpdateAgentLandingBlockDtoAction | null;
 }
 
 
@@ -104,13 +110,14 @@ export function CreateAgentLandingActionBlockDtoFromJSONTyped(json: any, ignoreD
     }
     return {
 
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
-        'action': json['action'] == null ? undefined : CreateAgentLandingActionBlockDtoActionFromJSON(json['action']),
+        'action': json['action'] == null ? undefined : UpdateAgentLandingBlockDtoActionFromJSON(json['action']),
     };
 }
 
@@ -125,12 +132,13 @@ export function CreateAgentLandingActionBlockDtoToJSONTyped(value?: CreateAgentL
 
     return {
 
+        'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
-        'action': CreateAgentLandingActionBlockDtoActionToJSON(value['action']),
+        'action': UpdateAgentLandingBlockDtoActionToJSON(value['action']),
     };
 }

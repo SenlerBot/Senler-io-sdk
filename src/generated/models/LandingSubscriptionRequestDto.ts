@@ -20,6 +20,13 @@ import {
     AcceptedSegmentConsentDtoToJSON,
     AcceptedSegmentConsentDtoToJSONTyped,
 } from './AcceptedSegmentConsentDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
+import {
+    AnalyticsSnapshotDtoFromJSON,
+    AnalyticsSnapshotDtoFromJSONTyped,
+    AnalyticsSnapshotDtoToJSON,
+    AnalyticsSnapshotDtoToJSONTyped,
+} from './AnalyticsSnapshotDto';
 import type { LandingContactDto } from './LandingContactDto';
 import {
     LandingContactDtoFromJSON,
@@ -89,6 +96,24 @@ export interface LandingSubscriptionRequestDto {
      */
     utmTerm?: string;
     /**
+     * , ,
+     * @type {Array<string>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    observedExperimentIds?: Array<string>;
+    /**
+     * resolve
+     * @type {string}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    eventToken?: string;
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
+    /**
      * , .
      * @type {Array<AcceptedSegmentConsentDto>}
      * @memberof LandingSubscriptionRequestDto
@@ -143,6 +168,9 @@ export function LandingSubscriptionRequestDtoFromJSONTyped(json: any, ignoreDisc
         'utmCampaign': json['utm_campaign'] == null ? undefined : json['utm_campaign'],
         'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
         'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
+        'eventToken': json['event_token'] == null ? undefined : json['event_token'],
+        'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'acceptedConsents': json['accepted_consents'] == null ? undefined : ((json['accepted_consents'] as Array<any>).map(AcceptedSegmentConsentDtoFromJSON)),
         'contact': json['contact'] == null ? undefined : LandingContactDtoFromJSON(json['contact']),
     };
@@ -168,6 +196,9 @@ export function LandingSubscriptionRequestDtoToJSONTyped(value?: LandingSubscrip
         'utm_campaign': value['utmCampaign'],
         'utm_content': value['utmContent'],
         'utm_term': value['utmTerm'],
+        'observed_experiment_ids': value['observedExperimentIds'],
+        'event_token': value['eventToken'],
+        'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'accepted_consents': value['acceptedConsents'] == null ? undefined : ((value['acceptedConsents'] as Array<any>).map(AcceptedSegmentConsentDtoToJSON)),
         'contact': LandingContactDtoToJSON(value['contact']),
     };

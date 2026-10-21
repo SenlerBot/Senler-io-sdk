@@ -202,7 +202,10 @@ exports.AutomationNodeConfigDtoChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 };
 /**
  * @export
@@ -382,7 +385,10 @@ exports.AutomationNodeConfigDtoMessageChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 };
 /**
  * @export

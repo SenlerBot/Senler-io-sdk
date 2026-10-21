@@ -21,6 +21,7 @@ exports.EventSourceWidgetLeadDataDtoToJSON = EventSourceWidgetLeadDataDtoToJSON;
 exports.EventSourceWidgetLeadDataDtoToJSONTyped = EventSourceWidgetLeadDataDtoToJSONTyped;
 const WidgetCustomActionCapabilityDto_1 = require("./WidgetCustomActionCapabilityDto");
 const EventSourceWidgetContextItemDto_1 = require("./EventSourceWidgetContextItemDto");
+const WidgetRequestContextDto_1 = require("./WidgetRequestContextDto");
 /**
  * @export
  */
@@ -44,6 +45,8 @@ function EventSourceWidgetLeadDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'builtInUi': json['built_in_ui'] == null ? undefined : json['built_in_ui'],
+        'request': json['request'] == null ? undefined : (0, WidgetRequestContextDto_1.WidgetRequestContextDtoFromJSON)(json['request']),
         'leadId': json['lead_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'contextItems': json['context_items'] == null ? undefined : (json['context_items'].map(EventSourceWidgetContextItemDto_1.EventSourceWidgetContextItemDtoFromJSON)),
@@ -59,6 +62,8 @@ function EventSourceWidgetLeadDataDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'built_in_ui': value['builtInUi'],
+        'request': (0, WidgetRequestContextDto_1.WidgetRequestContextDtoToJSON)(value['request']),
         'lead_id': value['leadId'],
         'user_id': value['userId'],
         'context_items': value['contextItems'] == null ? undefined : (value['contextItems'].map(EventSourceWidgetContextItemDto_1.EventSourceWidgetContextItemDtoToJSON)),

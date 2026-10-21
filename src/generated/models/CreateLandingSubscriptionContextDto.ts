@@ -13,12 +13,38 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
+import {
+    AnalyticsSnapshotDtoFromJSON,
+    AnalyticsSnapshotDtoFromJSONTyped,
+    AnalyticsSnapshotDtoToJSON,
+    AnalyticsSnapshotDtoToJSONTyped,
+} from './AnalyticsSnapshotDto';
+
 /**
  * CreateLandingSubscriptionContextDto.
  * @export
  * @interface CreateLandingSubscriptionContextDto
  */
 export interface CreateLandingSubscriptionContextDto {
+    /**
+     * , ,
+     * @type {Array<string>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    observedExperimentIds?: Array<string>;
+    /**
+     * resolve
+     * @type {string}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    eventToken?: string;
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      * ID .
      * @type {string}
@@ -81,6 +107,9 @@ export function CreateLandingSubscriptionContextDtoFromJSONTyped(json: any, igno
     }
     return {
 
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
+        'eventToken': json['event_token'] == null ? undefined : json['event_token'],
+        'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'channelPublicId': json['channel_public_id'],
         'trafficMarkPublicId': json['traffic_mark_public_id'] == null ? undefined : json['traffic_mark_public_id'],
         'utmSource': json['utm_source'] == null ? undefined : json['utm_source'],
@@ -102,6 +131,9 @@ export function CreateLandingSubscriptionContextDtoToJSONTyped(value?: CreateLan
 
     return {
 
+        'observed_experiment_ids': value['observedExperimentIds'],
+        'event_token': value['eventToken'],
+        'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'channel_public_id': value['channelPublicId'],
         'traffic_mark_public_id': value['trafficMarkPublicId'],
         'utm_source': value['utmSource'],

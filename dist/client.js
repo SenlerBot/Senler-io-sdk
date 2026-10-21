@@ -42,6 +42,7 @@ const ChannelsDiscordApi_1 = require("./generated/apis/ChannelsDiscordApi");
 const ChannelsEmailApi_1 = require("./generated/apis/ChannelsEmailApi");
 const ChannelsHistoryApi_1 = require("./generated/apis/ChannelsHistoryApi");
 const ChannelsMAXApi_1 = require("./generated/apis/ChannelsMAXApi");
+const ChannelsMetaApi_1 = require("./generated/apis/ChannelsMetaApi");
 const ChannelsTelegramApi_1 = require("./generated/apis/ChannelsTelegramApi");
 const ChannelsVKApi_1 = require("./generated/apis/ChannelsVKApi");
 const ChannelsWidgetApi_1 = require("./generated/apis/ChannelsWidgetApi");
@@ -155,6 +156,7 @@ class AiSenlerClient {
         this.channelsEmail = new ChannelsEmailApi_1.ChannelsEmailApi(configuration);
         this.channelsHistory = new ChannelsHistoryApi_1.ChannelsHistoryApi(configuration);
         this.channelsMAX = new ChannelsMAXApi_1.ChannelsMAXApi(configuration);
+        this.channelsMeta = new ChannelsMetaApi_1.ChannelsMetaApi(configuration);
         this.channelsTelegram = new ChannelsTelegramApi_1.ChannelsTelegramApi(configuration);
         this.channelsVK = new ChannelsVKApi_1.ChannelsVKApi(configuration);
         this.channelsWidget = new ChannelsWidgetApi_1.ChannelsWidgetApi(configuration);

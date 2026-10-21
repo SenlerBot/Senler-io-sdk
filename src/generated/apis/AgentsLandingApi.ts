@@ -24,11 +24,17 @@ import type {
   LandingBlockDeleteMutationResponseDto,
   LandingBlockOrderMutationResponseDto,
   LandingDraftConflictResponseDto,
+  LandingExperimentReportDto,
+  LandingPreviewResponseDto,
+  LandingPublicationValidationDto,
   LandingPublicationsListResponseDto,
   LandingRealtimeFocusResponseDto,
   LandingResponseDto,
   LandingShareLinksResponseDto,
   MoveLandingBlockDto,
+  MutateAgentLandingPersonalizationDto,
+  PreviewAnonymousLandingDto,
+  PreviewLeadLandingDto,
   S3UploadUrlResponseDto,
   UpdateLandingDraftDto,
   UpdateLandingRealtimeFocusDto,
@@ -52,6 +58,12 @@ import {
     LandingBlockOrderMutationResponseDtoToJSON,
     LandingDraftConflictResponseDtoFromJSON,
     LandingDraftConflictResponseDtoToJSON,
+    LandingExperimentReportDtoFromJSON,
+    LandingExperimentReportDtoToJSON,
+    LandingPreviewResponseDtoFromJSON,
+    LandingPreviewResponseDtoToJSON,
+    LandingPublicationValidationDtoFromJSON,
+    LandingPublicationValidationDtoToJSON,
     LandingPublicationsListResponseDtoFromJSON,
     LandingPublicationsListResponseDtoToJSON,
     LandingRealtimeFocusResponseDtoFromJSON,
@@ -62,6 +74,12 @@ import {
     LandingShareLinksResponseDtoToJSON,
     MoveLandingBlockDtoFromJSON,
     MoveLandingBlockDtoToJSON,
+    MutateAgentLandingPersonalizationDtoFromJSON,
+    MutateAgentLandingPersonalizationDtoToJSON,
+    PreviewAnonymousLandingDtoFromJSON,
+    PreviewAnonymousLandingDtoToJSON,
+    PreviewLeadLandingDtoFromJSON,
+    PreviewLeadLandingDtoToJSON,
     S3UploadUrlResponseDtoFromJSON,
     S3UploadUrlResponseDtoToJSON,
     UpdateLandingDraftDtoFromJSON,
@@ -83,9 +101,20 @@ export interface GetLandingRequest {
     acceptLanguage?: GetLandingAcceptLanguageEnum;
 }
 
+export interface GetLandingPublicationValidationRequest {
+    agentId: string;
+    acceptLanguage?: GetLandingPublicationValidationAcceptLanguageEnum;
+}
+
 export interface GetLandingPublicationsRequest {
     agentId: string;
     acceptLanguage?: GetLandingPublicationsAcceptLanguageEnum;
+}
+
+export interface GetLandingRulesResultsRequest {
+    agentId: string;
+    ruleId: string;
+    acceptLanguage?: GetLandingRulesResultsAcceptLanguageEnum;
 }
 
 export interface GetLandingShareLinksRequest {
@@ -117,6 +146,25 @@ export interface LandingBlocksMoveRequest {
     xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
     acceptLanguage?: LandingBlocksMoveAcceptLanguageEnum;
+}
+
+export interface LandingPersonalizationRequest {
+    agentId: string;
+    xLandingEditorSessionId: string;
+    mutateAgentLandingPersonalizationDto: MutateAgentLandingPersonalizationDto;
+    acceptLanguage?: LandingPersonalizationAcceptLanguageEnum;
+}
+
+export interface LandingPreviewRequest {
+    agentId: string;
+    previewAnonymousLandingDto: PreviewAnonymousLandingDto;
+    acceptLanguage?: LandingPreviewAcceptLanguageEnum;
+}
+
+export interface LandingPreviewLeadRequest {
+    agentId: string;
+    previewLeadLandingDto: PreviewLeadLandingDto;
+    acceptLanguage?: LandingPreviewLeadAcceptLanguageEnum;
 }
 
 export interface UpdateLandingDraftRequest {
@@ -281,6 +329,63 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
+     * . , , .
+     *
+     */
+    async getLandingPublicationValidationRaw(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationValidationDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling getLandingPublicationValidation().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/publication-validation`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPublicationValidationDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , , .
+     *
+     */
+    async getLandingPublicationValidation(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationValidationDto> {
+        const response = await this.getLandingPublicationValidationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -334,6 +439,70 @@ export class AgentsLandingApi extends runtime.BaseAPI {
      */
     async getLandingPublications(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto> {
         const response = await this.getLandingPublicationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . ; .
+     * A/B
+     */
+    async getLandingRulesResultsRaw(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingExperimentReportDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling getLandingRulesResults().'
+            );
+        }
+
+        if (requestParameters['ruleId'] == null) {
+            throw new runtime.RequiredError(
+                'ruleId',
+                'Required parameter "ruleId" was null or undefined when calling getLandingRulesResults().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/rules/{ruleId}/results`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingExperimentReportDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . ; .
+     * A/B
+     */
+    async getLandingRulesResults(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingExperimentReportDto> {
+        const response = await this.getLandingRulesResultsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -681,6 +850,218 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
+     * . ; expected_revision .
+     *
+     */
+    async landingPersonalizationRaw(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling landingPersonalization().'
+            );
+        }
+
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingPersonalization().'
+            );
+        }
+
+        if (requestParameters['mutateAgentLandingPersonalizationDto'] == null) {
+            throw new runtime.RequiredError(
+                'mutateAgentLandingPersonalizationDto',
+                'Required parameter "mutateAgentLandingPersonalizationDto" was null or undefined when calling landingPersonalization().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/personalization`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MutateAgentLandingPersonalizationDtoToJSON(requestParameters['mutateAgentLandingPersonalizationDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; expected_revision .
+     *
+     */
+    async landingPersonalization(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto> {
+        const response = await this.landingPersonalizationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * rule_outcomes ; input_data . . A/B-.
+     *
+     */
+    async landingPreviewRaw(requestParameters: LandingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPreviewResponseDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling landingPreview().'
+            );
+        }
+
+        if (requestParameters['previewAnonymousLandingDto'] == null) {
+            throw new runtime.RequiredError(
+                'previewAnonymousLandingDto',
+                'Required parameter "previewAnonymousLandingDto" was null or undefined when calling landingPreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/preview`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PreviewAnonymousLandingDtoToJSON(requestParameters['previewAnonymousLandingDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPreviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * rule_outcomes ; input_data . . A/B-.
+     *
+     */
+    async landingPreview(requestParameters: LandingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto> {
+        const response = await this.landingPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * input_data ; . - . A/B-; .
+     *
+     */
+    async landingPreviewLeadRaw(requestParameters: LandingPreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPreviewResponseDto>> {
+        if (requestParameters['agentId'] == null) {
+            throw new runtime.RequiredError(
+                'agentId',
+                'Required parameter "agentId" was null or undefined when calling landingPreviewLead().'
+            );
+        }
+
+        if (requestParameters['previewLeadLandingDto'] == null) {
+            throw new runtime.RequiredError(
+                'previewLeadLandingDto',
+                'Required parameter "previewLeadLandingDto" was null or undefined when calling landingPreviewLead().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{agentId}/landing/preview-lead`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PreviewLeadLandingDtoToJSON(requestParameters['previewLeadLandingDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingPreviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * input_data ; . - . A/B-; .
+     *
+     */
+    async landingPreviewLead(requestParameters: LandingPreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto> {
+        const response = await this.landingPreviewLeadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -857,11 +1238,27 @@ export type GetLandingAcceptLanguageEnum = typeof GetLandingAcceptLanguageEnum[k
 /**
  * @export
  */
+export const GetLandingPublicationValidationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingPublicationValidationAcceptLanguageEnum = typeof GetLandingPublicationValidationAcceptLanguageEnum[keyof typeof GetLandingPublicationValidationAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetLandingPublicationsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type GetLandingPublicationsAcceptLanguageEnum = typeof GetLandingPublicationsAcceptLanguageEnum[keyof typeof GetLandingPublicationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetLandingRulesResultsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingRulesResultsAcceptLanguageEnum = typeof GetLandingRulesResultsAcceptLanguageEnum[keyof typeof GetLandingRulesResultsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -902,6 +1299,30 @@ export const LandingBlocksMoveAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LandingBlocksMoveAcceptLanguageEnum = typeof LandingBlocksMoveAcceptLanguageEnum[keyof typeof LandingBlocksMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingPersonalizationAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingPersonalizationAcceptLanguageEnum = typeof LandingPersonalizationAcceptLanguageEnum[keyof typeof LandingPersonalizationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingPreviewAcceptLanguageEnum = typeof LandingPreviewAcceptLanguageEnum[keyof typeof LandingPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingPreviewLeadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingPreviewLeadAcceptLanguageEnum = typeof LandingPreviewLeadAcceptLanguageEnum[keyof typeof LandingPreviewLeadAcceptLanguageEnum];
 /**
  * @export
  */

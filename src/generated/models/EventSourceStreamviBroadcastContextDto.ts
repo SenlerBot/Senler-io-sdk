@@ -27,6 +27,13 @@ import {
     EventSourceStreamviBroadcastDataDtoToJSON,
     EventSourceStreamviBroadcastDataDtoToJSONTyped,
 } from './EventSourceStreamviBroadcastDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
+import {
+    AnalyticsSnapshotDtoFromJSON,
+    AnalyticsSnapshotDtoFromJSONTyped,
+    AnalyticsSnapshotDtoToJSON,
+    AnalyticsSnapshotDtoToJSONTyped,
+} from './AnalyticsSnapshotDto';
 
 /**
  * EventSourceStreamviBroadcastContextDto.
@@ -34,6 +41,12 @@ import {
  * @interface EventSourceStreamviBroadcastContextDto
  */
 export interface EventSourceStreamviBroadcastContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceStreamviBroadcastContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}
@@ -100,6 +113,7 @@ export function EventSourceStreamviBroadcastContextDtoFromJSONTyped(json: any, i
     }
     return {
 
+        'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : EventAttributionDtoFromJSON(json['attribution']),
         'kind': json['kind'],
@@ -118,6 +132,7 @@ export function EventSourceStreamviBroadcastContextDtoToJSONTyped(value?: EventS
 
     return {
 
+        'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': EventAttributionDtoToJSON(value['attribution']),
         'kind': value['kind'],

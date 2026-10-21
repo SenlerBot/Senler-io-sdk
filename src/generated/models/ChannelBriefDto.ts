@@ -170,7 +170,10 @@ export const ChannelBriefDtoTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ChannelBriefDtoTypeEnum = typeof ChannelBriefDtoTypeEnum[keyof typeof ChannelBriefDtoTypeEnum];
 

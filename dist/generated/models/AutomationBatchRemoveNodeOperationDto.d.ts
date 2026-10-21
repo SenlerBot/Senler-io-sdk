@@ -16,17 +16,17 @@
  */
 export interface AutomationBatchRemoveNodeOperationDto {
     /**
-     * instance_id . expected_draft_revision.
-     * @type {string}
-     * @memberof AutomationBatchRemoveNodeOperationDto
-     */
-    expectedInstanceId?: string;
-    /**
      * .
      * @type {string}
      * @memberof AutomationBatchRemoveNodeOperationDto
      */
     kind: AutomationBatchRemoveNodeOperationDtoKindEnum;
+    /**
+     * instance_id . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchRemoveNodeOperationDto
+     */
+    expectedInstanceId?: string;
     /**
      * UUID .
      * @type {string}

@@ -20,6 +20,13 @@ import {
     FunnelIdentityBindingDtoToJSON,
     FunnelIdentityBindingDtoToJSONTyped,
 } from './FunnelIdentityBindingDto';
+import type { FunnelAnalyticsBindingDto } from './FunnelAnalyticsBindingDto';
+import {
+    FunnelAnalyticsBindingDtoFromJSON,
+    FunnelAnalyticsBindingDtoFromJSONTyped,
+    FunnelAnalyticsBindingDtoToJSON,
+    FunnelAnalyticsBindingDtoToJSONTyped,
+} from './FunnelAnalyticsBindingDto';
 import type { AppFunnelElementResponseDto } from './AppFunnelElementResponseDto';
 import {
     AppFunnelElementResponseDtoFromJSON,
@@ -52,6 +59,12 @@ export interface FunnelAppElementResponseDto {
      * @memberof FunnelAppElementResponseDto
      */
     position: number;
+    /**
+     * . identity_binding.
+     * @type {FunnelAnalyticsBindingDto}
+     * @memberof FunnelAppElementResponseDto
+     */
+    analyticsBinding?: FunnelAnalyticsBindingDto | null;
     /**
      * , . .
      * @type {object}
@@ -147,6 +160,7 @@ export function FunnelAppElementResponseDtoFromJSONTyped(json: any, ignoreDiscri
         'title': json['title'],
         'beforeStageId': json['before_stage_id'],
         'position': json['position'],
+        'analyticsBinding': json['analytics_binding'] == null ? undefined : FunnelAnalyticsBindingDtoFromJSON(json['analytics_binding']),
         '_configuration': json['configuration'],
         'identityBinding': FunnelIdentityBindingDtoFromJSON(json['identity_binding']),
         'installationId': json['installation_id'],
@@ -174,6 +188,7 @@ export function FunnelAppElementResponseDtoToJSONTyped(value?: FunnelAppElementR
         'title': value['title'],
         'before_stage_id': value['beforeStageId'],
         'position': value['position'],
+        'analytics_binding': FunnelAnalyticsBindingDtoToJSON(value['analyticsBinding']),
         'configuration': value['_configuration'],
         'identity_binding': FunnelIdentityBindingDtoToJSON(value['identityBinding']),
         'installation_id': value['installationId'],

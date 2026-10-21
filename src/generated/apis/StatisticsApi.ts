@@ -22,6 +22,7 @@ import type {
   CabinetStatisticsLeadsResponseDto,
   CabinetStatisticsOverviewResponseDto,
   ErrorResponse,
+  StatisticsAiResponseCostsDto,
 } from '../models/index';
 import {
     CabinetStatisticsAiResponseToolsResponseDtoFromJSON,
@@ -38,6 +39,8 @@ import {
     CabinetStatisticsOverviewResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    StatisticsAiResponseCostsDtoFromJSON,
+    StatisticsAiResponseCostsDtoToJSON,
 } from '../models/index';
 
 export interface GetCommunicationsRequest {
@@ -56,6 +59,15 @@ export interface GetCostsRequest {
     operatorUserId?: string;
     timezone?: string;
     acceptLanguage?: GetCostsAcceptLanguageEnum;
+}
+
+export interface GetCostsAiResponseSummaryRequest {
+    period: GetCostsAiResponseSummaryPeriodEnum;
+    projectId: string;
+    channelId?: string;
+    operatorUserId?: string;
+    timezone?: string;
+    acceptLanguage?: GetCostsAiResponseSummaryAcceptLanguageEnum;
 }
 
 export interface GetCostsAiResponseToolsRequest {
@@ -267,6 +279,90 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto> {
         const response = await this.getCostsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     * AI-
+     */
+    async getCostsAiResponseSummaryRaw(requestParameters: GetCostsAiResponseSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StatisticsAiResponseCostsDto>> {
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling getCostsAiResponseSummary().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getCostsAiResponseSummary().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/analytics/costs/ai-response-summary`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StatisticsAiResponseCostsDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     * AI-
+     */
+    async getCostsAiResponseSummary(requestParameters: GetCostsAiResponseSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StatisticsAiResponseCostsDto> {
+        const response = await this.getCostsAiResponseSummaryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -656,6 +752,24 @@ export const GetCostsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetCostsAcceptLanguageEnum = typeof GetCostsAcceptLanguageEnum[keyof typeof GetCostsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetCostsAiResponseSummaryPeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+} as const;
+export type GetCostsAiResponseSummaryPeriodEnum = typeof GetCostsAiResponseSummaryPeriodEnum[keyof typeof GetCostsAiResponseSummaryPeriodEnum];
+/**
+ * @export
+ */
+export const GetCostsAiResponseSummaryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetCostsAiResponseSummaryAcceptLanguageEnum = typeof GetCostsAiResponseSummaryAcceptLanguageEnum[keyof typeof GetCostsAiResponseSummaryAcceptLanguageEnum];
 /**
  * @export
  */

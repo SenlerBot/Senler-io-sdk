@@ -31,7 +31,10 @@ exports.UpdateAutomationDtoChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 };
 /**
  * Check if a given object implements the UpdateAutomationDto interface.

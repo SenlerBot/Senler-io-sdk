@@ -10,11 +10,16 @@
  * Do not edit the class manually.
  */
 /**
- * . button_not_configured: ; .
+ * . .
  * @export
  */
 export declare const LandingPublicationWarningCode: {
     readonly ButtonNotConfigured: "button_not_configured";
+    readonly TextEmpty: "text_empty";
+    readonly ImageEmpty: "image_empty";
+    readonly VideoEmpty: "video_empty";
+    readonly ItemsEmpty: "items_empty";
+    readonly ItemEmpty: "item_empty";
 };
 export type LandingPublicationWarningCode = typeof LandingPublicationWarningCode[keyof typeof LandingPublicationWarningCode];
 export declare function instanceOfLandingPublicationWarningCode(value: any): boolean;

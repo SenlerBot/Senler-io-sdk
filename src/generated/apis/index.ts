@@ -39,6 +39,7 @@ export { ChannelsDiscordApi } from './ChannelsDiscordApi';
 export { ChannelsEmailApi } from './ChannelsEmailApi';
 export { ChannelsHistoryApi } from './ChannelsHistoryApi';
 export { ChannelsMAXApi } from './ChannelsMAXApi';
+export { ChannelsMetaApi } from './ChannelsMetaApi';
 export { ChannelsTelegramApi } from './ChannelsTelegramApi';
 export { ChannelsVKApi } from './ChannelsVKApi';
 export { ChannelsWidgetApi } from './ChannelsWidgetApi';

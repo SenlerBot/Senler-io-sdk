@@ -330,6 +330,9 @@ export declare const DialogChatEventDtoPlatformTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
     readonly Web: "web";
     readonly Ai: "ai";
     readonly Automation: "automation";

@@ -33,8 +33,6 @@ exports.PaginatedDialogsDtoPaginationTypeEnum = {
 function instanceOfPaginatedDialogsDto(value) {
     if (!('items' in value) || value['items'] === undefined)
         return false;
-    if (!('total' in value) || value['total'] === undefined)
-        return false;
     if (!('paginationType' in value) || value['paginationType'] === undefined)
         return false;
     if (!('queryTimeMs' in value) || value['queryTimeMs'] === undefined)
@@ -50,7 +48,7 @@ function PaginatedDialogsDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'items': (json['items'].map(DialogListItemDto_1.DialogListItemDtoFromJSON)),
-        'total': json['total'],
+        'total': json['total'] == null ? undefined : json['total'],
         'paginationType': json['pagination_type'],
         'queryTimeMs': json['query_time_ms'],
         'query': json['query'] == null ? undefined : json['query'],

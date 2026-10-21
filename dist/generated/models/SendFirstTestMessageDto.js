@@ -20,6 +20,7 @@ exports.SendFirstTestMessageDtoFromJSONTyped = SendFirstTestMessageDtoFromJSONTy
 exports.SendFirstTestMessageDtoToJSON = SendFirstTestMessageDtoToJSON;
 exports.SendFirstTestMessageDtoToJSONTyped = SendFirstTestMessageDtoToJSONTyped;
 const MessageAttachmentReferenceDto_1 = require("./MessageAttachmentReferenceDto");
+const WhatsAppTemplateInputDto_1 = require("./WhatsAppTemplateInputDto");
 const MessageButtonDto_1 = require("./MessageButtonDto");
 /**
  * @export
@@ -58,6 +59,7 @@ function SendFirstTestMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
+        'whatsappTemplate': json['whatsapp_template'] == null ? undefined : (0, WhatsAppTemplateInputDto_1.WhatsAppTemplateInputDtoFromJSON)(json['whatsapp_template']),
         'content': json['content'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
@@ -77,6 +79,7 @@ function SendFirstTestMessageDtoToJSONTyped(value, ignoreDiscriminator = false) 
     }
     return {
         'content_format': value['contentFormat'],
+        'whatsapp_template': (0, WhatsAppTemplateInputDto_1.WhatsAppTemplateInputDtoToJSON)(value['whatsappTemplate']),
         'content': value['content'],
         'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],

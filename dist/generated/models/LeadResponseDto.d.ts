@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LeadAnalyticsIdentifierDto } from './LeadAnalyticsIdentifierDto';
 import type { LeadSpaceLinkResponseDto } from './LeadSpaceLinkResponseDto';
 import type { LeadBirthdayDateDto } from './LeadBirthdayDateDto';
 import type { LeadFunnelDto } from './LeadFunnelDto';
@@ -20,6 +21,12 @@ import type { SegmentMembershipResponseDto } from './SegmentMembershipResponseDt
  * @interface LeadResponseDto
  */
 export interface LeadResponseDto {
+    /**
+     * . .
+     * @type {Array<LeadAnalyticsIdentifierDto>}
+     * @memberof LeadResponseDto
+     */
+    readonly analyticsIdentifiers: Array<LeadAnalyticsIdentifierDto>;
     /**
      * Effective birthday. A missing year remains absent.
      * @type {LeadBirthdayDateDto}
@@ -245,6 +252,9 @@ export declare const LeadResponseDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type LeadResponseDtoChannelTypeEnum = typeof LeadResponseDtoChannelTypeEnum[keyof typeof LeadResponseDtoChannelTypeEnum];
 /**
@@ -277,4 +287,4 @@ export declare function instanceOfLeadResponseDto(value: object): value is LeadR
 export declare function LeadResponseDtoFromJSON(json: any): LeadResponseDto;
 export declare function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): LeadResponseDto;
 export declare function LeadResponseDtoToJSON(json: any): LeadResponseDto;
-export declare function LeadResponseDtoToJSONTyped(value?: LeadResponseDto | null, ignoreDiscriminator?: boolean): any;
+export declare function LeadResponseDtoToJSONTyped(value?: Omit<LeadResponseDto, 'analytics_identifiers'> | null, ignoreDiscriminator?: boolean): any;

@@ -33,6 +33,12 @@ export interface AutomationListResponseDto {
      * @memberof AutomationListResponseDto
      */
     items: Array<AutomationResponseDto>;
+    /**
+     * ; null .
+     * @type {string}
+     * @memberof AutomationListResponseDto
+     */
+    nextCursor: string | null;
 }
 
 /**
@@ -40,6 +46,7 @@ export interface AutomationListResponseDto {
  */
 export function instanceOfAutomationListResponseDto(value: object): value is AutomationListResponseDto {
     if (!('items' in value) || value['items'] === undefined) return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +61,7 @@ export function AutomationListResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'items': ((json['items'] as Array<any>).map(AutomationResponseDtoFromJSON)),
+        'nextCursor': json['next_cursor'],
     };
 }
 
@@ -69,5 +77,6 @@ export function AutomationListResponseDtoToJSONTyped(value?: AutomationListRespo
     return {
 
         'items': ((value['items'] as Array<any>).map(AutomationResponseDtoToJSON)),
+        'next_cursor': value['nextCursor'],
     };
 }

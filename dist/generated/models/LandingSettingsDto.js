@@ -53,6 +53,7 @@ function LandingSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'visitorName': json['visitor_name'] == null ? undefined : json['visitor_name'],
         'language': json['language'],
         'listVisible': json['list_visible'],
         'theme': (0, LandingTheme_1.LandingThemeFromJSON)(json['theme']),
@@ -69,6 +70,7 @@ function LandingSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'visitor_name': value['visitorName'],
         'language': value['language'],
         'list_visible': value['listVisible'],
         'theme': (0, LandingTheme_1.LandingThemeToJSON)(value['theme']),

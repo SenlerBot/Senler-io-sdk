@@ -44,8 +44,8 @@ function AutomationBatchUpdateGroupOperationDtoFromJSONTyped(json, ignoreDiscrim
         return json;
     }
     return {
-        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'groupId': json['group_id'],
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
@@ -63,8 +63,8 @@ function AutomationBatchUpdateGroupOperationDtoToJSONTyped(value, ignoreDiscrimi
         return value;
     }
     return {
-        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
+        'expected_instance_id': value['expectedInstanceId'],
         'group_id': value['groupId'],
         'title': value['title'],
         'description': value['description'],

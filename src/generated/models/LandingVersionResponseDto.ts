@@ -27,6 +27,13 @@ import {
     LandingPublicationWarningDtoToJSON,
     LandingPublicationWarningDtoToJSONTyped,
 } from './LandingPublicationWarningDto';
+import type { LandingPersonalizationResponseDto } from './LandingPersonalizationResponseDto';
+import {
+    LandingPersonalizationResponseDtoFromJSON,
+    LandingPersonalizationResponseDtoFromJSONTyped,
+    LandingPersonalizationResponseDtoToJSON,
+    LandingPersonalizationResponseDtoToJSONTyped,
+} from './LandingPersonalizationResponseDto';
 import type { LandingSettingsDto } from './LandingSettingsDto';
 import {
     LandingSettingsDtoFromJSON,
@@ -41,6 +48,12 @@ import {
  * @interface LandingVersionResponseDto
  */
 export interface LandingVersionResponseDto {
+    /**
+     *
+     * @type {LandingPersonalizationResponseDto}
+     * @memberof LandingVersionResponseDto
+     */
+    personalization: LandingPersonalizationResponseDto;
     /**
      * ID
      * @type {string}
@@ -142,6 +155,7 @@ export type LandingVersionResponseDtoStatusEnum = typeof LandingVersionResponseD
  * Check if a given object implements the LandingVersionResponseDto interface.
  */
 export function instanceOfLandingVersionResponseDto(value: object): value is LandingVersionResponseDto {
+    if (!('personalization' in value) || value['personalization'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('kind' in value) || value['kind'] === undefined) return false;
@@ -167,6 +181,7 @@ export function LandingVersionResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
 
+        'personalization': LandingPersonalizationResponseDtoFromJSON(json['personalization']),
         'id': json['id'],
         'name': json['name'],
         'kind': json['kind'],
@@ -193,6 +208,7 @@ export function LandingVersionResponseDtoToJSONTyped(value?: LandingVersionRespo
 
     return {
 
+        'personalization': LandingPersonalizationResponseDtoToJSON(value['personalization']),
         'id': value['id'],
         'name': value['name'],
         'kind': value['kind'],

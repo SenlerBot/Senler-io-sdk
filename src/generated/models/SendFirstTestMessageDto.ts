@@ -20,6 +20,13 @@ import {
     MessageAttachmentReferenceDtoToJSON,
     MessageAttachmentReferenceDtoToJSONTyped,
 } from './MessageAttachmentReferenceDto';
+import type { WhatsAppTemplateInputDto } from './WhatsAppTemplateInputDto';
+import {
+    WhatsAppTemplateInputDtoFromJSON,
+    WhatsAppTemplateInputDtoFromJSONTyped,
+    WhatsAppTemplateInputDtoToJSON,
+    WhatsAppTemplateInputDtoToJSONTyped,
+} from './WhatsAppTemplateInputDto';
 import type { MessageButtonDto } from './MessageButtonDto';
 import {
     MessageButtonDtoFromJSON,
@@ -40,6 +47,12 @@ export interface SendFirstTestMessageDto {
      * @memberof SendFirstTestMessageDto
      */
     contentFormat?: SendFirstTestMessageDtoContentFormatEnum;
+    /**
+     * WhatsApp. ; .
+     * @type {WhatsAppTemplateInputDto}
+     * @memberof SendFirstTestMessageDto
+     */
+    whatsappTemplate?: WhatsAppTemplateInputDto;
     /**
      *
      * @type {string}
@@ -133,6 +146,7 @@ export function SendFirstTestMessageDtoFromJSONTyped(json: any, ignoreDiscrimina
     return {
 
         'contentFormat': json['content_format'] == null ? undefined : json['content_format'],
+        'whatsappTemplate': json['whatsapp_template'] == null ? undefined : WhatsAppTemplateInputDtoFromJSON(json['whatsapp_template']),
         'content': json['content'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
         'clientType': json['client_type'] == null ? undefined : json['client_type'],
@@ -156,6 +170,7 @@ export function SendFirstTestMessageDtoToJSONTyped(value?: SendFirstTestMessageD
     return {
 
         'content_format': value['contentFormat'],
+        'whatsapp_template': WhatsAppTemplateInputDtoToJSON(value['whatsappTemplate']),
         'content': value['content'],
         'disable_link_preview': value['disableLinkPreview'],
         'client_type': value['clientType'],

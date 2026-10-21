@@ -31,6 +31,7 @@ import type {
   KnowledgeFolderResponseDto,
   KnowledgeImageRecognitionEstimateResponseDto,
   KnowledgeImageRecognitionRunResponseDto,
+  KnowledgeResourceListResponseDto,
   KnowledgeResourcesResponseDto,
   KnowledgeTableMutationResponseDto,
   KnowledgeTableRangeResponseDto,
@@ -90,6 +91,8 @@ import {
     KnowledgeImageRecognitionEstimateResponseDtoToJSON,
     KnowledgeImageRecognitionRunResponseDtoFromJSON,
     KnowledgeImageRecognitionRunResponseDtoToJSON,
+    KnowledgeResourceListResponseDtoFromJSON,
+    KnowledgeResourceListResponseDtoToJSON,
     KnowledgeResourcesResponseDtoFromJSON,
     KnowledgeResourcesResponseDtoToJSON,
     KnowledgeTableMutationResponseDtoFromJSON,
@@ -260,6 +263,8 @@ export interface GetImageRecognitionRunsRequest {
 
 export interface GetResourcesRequest {
     projectId: string;
+    limit?: number;
+    cursor?: string;
     parentFolderId?: string | null;
     acceptLanguage?: GetResourcesAcceptLanguageEnum;
 }
@@ -1747,7 +1752,7 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getResourcesRaw(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>> {
+    async getResourcesRaw(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourceListResponseDto>> {
         if (requestParameters['projectId'] == null) {
             throw new runtime.RequiredError(
                 'projectId',
@@ -1756,6 +1761,14 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
@@ -1796,14 +1809,14 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeResourcesResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeResourceListResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * , .
      *
      */
-    async getResources(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto> {
+    async getResources(requestParameters: GetResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourceListResponseDto> {
         const response = await this.getResourcesRaw(requestParameters, initOverrides);
         return await response.value();
     }

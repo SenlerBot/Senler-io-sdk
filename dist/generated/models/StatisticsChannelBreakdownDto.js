@@ -30,7 +30,10 @@ exports.StatisticsChannelBreakdownDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 };
 /**
  * @export
@@ -44,6 +47,9 @@ exports.StatisticsChannelBreakdownDtoPlatformTypeEnum = {
     Streamvi: 'streamvi',
     Email: 'email',
     Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp',
     Web: 'web',
     Ai: 'ai',
     Automation: 'automation'

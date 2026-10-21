@@ -16,6 +16,12 @@
  */
 export interface CreateOtherLandingBlockDto {
     /**
+     * ;
+     * @type {string}
+     * @memberof CreateOtherLandingBlockDto
+     */
+    pageVariantId?: string;
+    /**
      *
      * @type {number}
      * @memberof CreateOtherLandingBlockDto

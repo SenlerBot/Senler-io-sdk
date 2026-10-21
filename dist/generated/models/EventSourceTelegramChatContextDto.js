@@ -20,6 +20,7 @@ exports.EventSourceTelegramChatContextDtoFromJSONTyped = EventSourceTelegramChat
 exports.EventSourceTelegramChatContextDtoToJSON = EventSourceTelegramChatContextDtoToJSON;
 exports.EventSourceTelegramChatContextDtoToJSONTyped = EventSourceTelegramChatContextDtoToJSONTyped;
 const EventAttributionDto_1 = require("./EventAttributionDto");
+const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 const EventSourceTelegramChatDataDto_1 = require("./EventSourceTelegramChatDataDto");
 /**
  * @export
@@ -55,6 +56,7 @@ function EventSourceTelegramChatContextDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
+        'analytics': json['analytics'] == null ? undefined : (json['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : (0, EventAttributionDto_1.EventAttributionDtoFromJSON)(json['attribution']),
         'kind': json['kind'],
@@ -69,6 +71,7 @@ function EventSourceTelegramChatContextDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
+        'analytics': value['analytics'] == null ? undefined : (value['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': (0, EventAttributionDto_1.EventAttributionDtoToJSON)(value['attribution']),
         'kind': value['kind'],

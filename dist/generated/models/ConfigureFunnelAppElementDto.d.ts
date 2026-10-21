@@ -10,12 +10,19 @@
  * Do not edit the class manually.
  */
 import type { FunnelIdentityBindingDto } from './FunnelIdentityBindingDto';
+import type { FunnelAnalyticsBindingDto } from './FunnelAnalyticsBindingDto';
 /**
  * ConfigureFunnelAppElementDto.
  * @export
  * @interface ConfigureFunnelAppElementDto
  */
 export interface ConfigureFunnelAppElementDto {
+    /**
+     * . identity_binding.
+     * @type {FunnelAnalyticsBindingDto}
+     * @memberof ConfigureFunnelAppElementDto
+     */
+    analyticsBinding?: FunnelAnalyticsBindingDto | null;
     /**
      * , metrika:counter:42. .
      * @type {string}

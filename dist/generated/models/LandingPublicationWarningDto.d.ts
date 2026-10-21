@@ -23,7 +23,7 @@ export interface LandingPublicationWarningDto {
      */
     blockId: string;
     /**
-     * . button_not_configured: ; .
+     * . .
      * @type {LandingPublicationWarningCode}
      * @memberof LandingPublicationWarningDto
      */
@@ -34,6 +34,18 @@ export interface LandingPublicationWarningDto {
      * @memberof LandingPublicationWarningDto
      */
     message: string;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    itemId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    field: string | null;
 }
 /**
  * Check if a given object implements the LandingPublicationWarningDto interface.

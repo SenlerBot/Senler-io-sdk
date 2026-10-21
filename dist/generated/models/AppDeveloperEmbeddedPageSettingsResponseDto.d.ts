@@ -16,6 +16,12 @@
  */
 export interface AppDeveloperEmbeddedPageSettingsResponseDto {
     /**
+     * iframe CSS px; null 1024 px
+     * @type {number}
+     * @memberof AppDeveloperEmbeddedPageSettingsResponseDto
+     */
+    maxWidth?: number | null;
+    /**
      *
      * @type {boolean}
      * @memberof AppDeveloperEmbeddedPageSettingsResponseDto

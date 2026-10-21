@@ -124,6 +124,9 @@ export declare const StatisticsOperatorResponseChannelDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type StatisticsOperatorResponseChannelDtoChannelTypeEnum = typeof StatisticsOperatorResponseChannelDtoChannelTypeEnum[keyof typeof StatisticsOperatorResponseChannelDtoChannelTypeEnum];
 /**
@@ -138,6 +141,9 @@ export declare const StatisticsOperatorResponseChannelDtoPlatformTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
     readonly Web: "web";
     readonly Ai: "ai";
     readonly Automation: "automation";

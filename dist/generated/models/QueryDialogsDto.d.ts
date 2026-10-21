@@ -46,6 +46,18 @@ export interface QueryDialogsDto {
      */
     q?: string;
     /**
+     * . false search.total_matches .
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    includeMatchCounts?: boolean;
+    /**
+     * q. false total . cursor- .
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    includeTotal?: boolean;
+    /**
      * q.
      * @type {number}
      * @memberof QueryDialogsDto

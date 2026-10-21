@@ -34,11 +34,11 @@ export interface DialogSearchResultDto {
      */
     score: number;
     /**
-     *
+     * . include_match_counts=false.
      * @type {number}
      * @memberof DialogSearchResultDto
      */
-    totalMatches: number;
+    totalMatches?: number;
     /**
      *
      * @type {DialogSearchTopMatchDto}
@@ -52,7 +52,6 @@ export interface DialogSearchResultDto {
  */
 export function instanceOfDialogSearchResultDto(value: object): value is DialogSearchResultDto {
     if (!('score' in value) || value['score'] === undefined) return false;
-    if (!('totalMatches' in value) || value['totalMatches'] === undefined) return false;
     if (!('topMatch' in value) || value['topMatch'] === undefined) return false;
     return true;
 }
@@ -68,7 +67,7 @@ export function DialogSearchResultDtoFromJSONTyped(json: any, ignoreDiscriminato
     return {
 
         'score': json['score'],
-        'totalMatches': json['total_matches'],
+        'totalMatches': json['total_matches'] == null ? undefined : json['total_matches'],
         'topMatch': DialogSearchTopMatchDtoFromJSON(json['top_match']),
     };
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
@@ -22,9 +22,18 @@ export interface GetLandingRequest {
     agentId: string;
     acceptLanguage?: GetLandingAcceptLanguageEnum;
 }
+export interface GetLandingPublicationValidationRequest {
+    agentId: string;
+    acceptLanguage?: GetLandingPublicationValidationAcceptLanguageEnum;
+}
 export interface GetLandingPublicationsRequest {
     agentId: string;
     acceptLanguage?: GetLandingPublicationsAcceptLanguageEnum;
+}
+export interface GetLandingRulesResultsRequest {
+    agentId: string;
+    ruleId: string;
+    acceptLanguage?: GetLandingRulesResultsAcceptLanguageEnum;
 }
 export interface GetLandingShareLinksRequest {
     agentId: string;
@@ -51,6 +60,22 @@ export interface LandingBlocksMoveRequest {
     xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
     acceptLanguage?: LandingBlocksMoveAcceptLanguageEnum;
+}
+export interface LandingPersonalizationRequest {
+    agentId: string;
+    xLandingEditorSessionId: string;
+    mutateAgentLandingPersonalizationDto: MutateAgentLandingPersonalizationDto;
+    acceptLanguage?: LandingPersonalizationAcceptLanguageEnum;
+}
+export interface LandingPreviewRequest {
+    agentId: string;
+    previewAnonymousLandingDto: PreviewAnonymousLandingDto;
+    acceptLanguage?: LandingPreviewAcceptLanguageEnum;
+}
+export interface LandingPreviewLeadRequest {
+    agentId: string;
+    previewLeadLandingDto: PreviewLeadLandingDto;
+    acceptLanguage?: LandingPreviewLeadAcceptLanguageEnum;
 }
 export interface UpdateLandingDraftRequest {
     agentId: string;
@@ -89,6 +114,16 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     getLanding(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
     /**
+     * . , , .
+     *
+     */
+    getLandingPublicationValidationRaw(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationValidationDto>>;
+    /**
+     * . , , .
+     *
+     */
+    getLandingPublicationValidation(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationValidationDto>;
+    /**
      * .
      *
      */
@@ -98,6 +133,16 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      *
      */
     getLandingPublications(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
+    /**
+     * , . ; .
+     * A/B
+     */
+    getLandingRulesResultsRaw(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingExperimentReportDto>>;
+    /**
+     * , . ; .
+     * A/B
+     */
+    getLandingRulesResults(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingExperimentReportDto>;
     /**
      * VK, Telegram MAX, .
      *
@@ -149,6 +194,36 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     landingBlocksMove(requestParameters: LandingBlocksMoveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
     /**
+     * . ; expected_revision .
+     *
+     */
+    landingPersonalizationRaw(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
+    /**
+     * . ; expected_revision .
+     *
+     */
+    landingPersonalization(requestParameters: LandingPersonalizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    /**
+     * rule_outcomes ; input_data . . A/B-.
+     *
+     */
+    landingPreviewRaw(requestParameters: LandingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPreviewResponseDto>>;
+    /**
+     * rule_outcomes ; input_data . . A/B-.
+     *
+     */
+    landingPreview(requestParameters: LandingPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto>;
+    /**
+     * input_data ; . - . A/B-; .
+     *
+     */
+    landingPreviewLeadRaw(requestParameters: LandingPreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPreviewResponseDto>>;
+    /**
+     * input_data ; . - . A/B-; .
+     *
+     */
+    landingPreviewLead(requestParameters: LandingPreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto>;
+    /**
      * .
      *
      */
@@ -188,11 +263,27 @@ export type GetLandingAcceptLanguageEnum = typeof GetLandingAcceptLanguageEnum[k
 /**
  * @export
  */
+export declare const GetLandingPublicationValidationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingPublicationValidationAcceptLanguageEnum = typeof GetLandingPublicationValidationAcceptLanguageEnum[keyof typeof GetLandingPublicationValidationAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetLandingPublicationsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetLandingPublicationsAcceptLanguageEnum = typeof GetLandingPublicationsAcceptLanguageEnum[keyof typeof GetLandingPublicationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLandingRulesResultsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingRulesResultsAcceptLanguageEnum = typeof GetLandingRulesResultsAcceptLanguageEnum[keyof typeof GetLandingRulesResultsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -233,6 +324,30 @@ export declare const LandingBlocksMoveAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingBlocksMoveAcceptLanguageEnum = typeof LandingBlocksMoveAcceptLanguageEnum[keyof typeof LandingBlocksMoveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingPersonalizationAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingPersonalizationAcceptLanguageEnum = typeof LandingPersonalizationAcceptLanguageEnum[keyof typeof LandingPersonalizationAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingPreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingPreviewAcceptLanguageEnum = typeof LandingPreviewAcceptLanguageEnum[keyof typeof LandingPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingPreviewLeadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingPreviewLeadAcceptLanguageEnum = typeof LandingPreviewLeadAcceptLanguageEnum[keyof typeof LandingPreviewLeadAcceptLanguageEnum];
 /**
  * @export
  */

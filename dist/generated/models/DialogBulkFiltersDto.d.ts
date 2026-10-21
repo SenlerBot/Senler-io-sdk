@@ -46,6 +46,18 @@ export interface DialogBulkFiltersDto {
      */
     q?: string;
     /**
+     * . false search.total_matches .
+     * @type {boolean}
+     * @memberof DialogBulkFiltersDto
+     */
+    includeMatchCounts?: boolean;
+    /**
+     * q. false total . cursor- .
+     * @type {boolean}
+     * @memberof DialogBulkFiltersDto
+     */
+    includeTotal?: boolean;
+    /**
      * UUID (, 20 ).
      * @type {Array<string>}
      * @memberof DialogBulkFiltersDto

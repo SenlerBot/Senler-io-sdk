@@ -47,6 +47,20 @@ import {
     DialogEmailReplyTargetDtoFromJSONTyped,
     DialogEmailReplyTargetDtoToJSON,
 } from './DialogEmailReplyTargetDto';
+import type { DialogFacebookDmReplyTargetDto } from './DialogFacebookDmReplyTargetDto';
+import {
+    instanceOfDialogFacebookDmReplyTargetDto,
+    DialogFacebookDmReplyTargetDtoFromJSON,
+    DialogFacebookDmReplyTargetDtoFromJSONTyped,
+    DialogFacebookDmReplyTargetDtoToJSON,
+} from './DialogFacebookDmReplyTargetDto';
+import type { DialogInstDmReplyTargetDto } from './DialogInstDmReplyTargetDto';
+import {
+    instanceOfDialogInstDmReplyTargetDto,
+    DialogInstDmReplyTargetDtoFromJSON,
+    DialogInstDmReplyTargetDtoFromJSONTyped,
+    DialogInstDmReplyTargetDtoToJSON,
+} from './DialogInstDmReplyTargetDto';
 import type { DialogMaxChannelReplyTargetDto } from './DialogMaxChannelReplyTargetDto';
 import {
     instanceOfDialogMaxChannelReplyTargetDto,
@@ -103,6 +117,13 @@ import {
     DialogVkWallPostCommentsReplyTargetDtoFromJSONTyped,
     DialogVkWallPostCommentsReplyTargetDtoToJSON,
 } from './DialogVkWallPostCommentsReplyTargetDto';
+import type { DialogWhatsAppChatReplyTargetDto } from './DialogWhatsAppChatReplyTargetDto';
+import {
+    instanceOfDialogWhatsAppChatReplyTargetDto,
+    DialogWhatsAppChatReplyTargetDtoFromJSON,
+    DialogWhatsAppChatReplyTargetDtoFromJSONTyped,
+    DialogWhatsAppChatReplyTargetDtoToJSON,
+} from './DialogWhatsAppChatReplyTargetDto';
 import type { DialogWidgetReplyTargetDto } from './DialogWidgetReplyTargetDto';
 import {
     instanceOfDialogWidgetReplyTargetDto,
@@ -116,7 +137,7 @@ import {
  *
  * @export
  */
-export type DialogDtoReplyTarget = { kind: 'avito_chat' } & DialogAvitoChatReplyTargetDto | { kind: 'discord_channel' } & DialogDiscordChannelReplyTargetDto | { kind: 'discord_dm' } & DialogDiscordDmReplyTargetDto | { kind: 'discord_thread' } & DialogDiscordThreadReplyTargetDto | { kind: 'email_thread' } & DialogEmailReplyTargetDto | { kind: 'max_channel' } & DialogMaxChannelReplyTargetDto | { kind: 'max_chat' } & DialogMaxChatReplyTargetDto | { kind: 'max_dialog' } & DialogMaxDialogReplyTargetDto | { kind: 'streamvi_broadcast' } & DialogStreamviReplyTargetDto | { kind: 'telegram_chat' } & DialogTelegramChatReplyTargetDto | { kind: 'telegram_topic' } & DialogTelegramTopicReplyTargetDto | { kind: 'vk_peer' } & DialogVkPeerReplyTargetDto | { kind: 'vk_wall_post_comments' } & DialogVkWallPostCommentsReplyTargetDto | { kind: 'widget_lead' } & DialogWidgetReplyTargetDto;
+export type DialogDtoReplyTarget = { kind: 'avito_chat' } & DialogAvitoChatReplyTargetDto | { kind: 'discord_channel' } & DialogDiscordChannelReplyTargetDto | { kind: 'discord_dm' } & DialogDiscordDmReplyTargetDto | { kind: 'discord_thread' } & DialogDiscordThreadReplyTargetDto | { kind: 'email_thread' } & DialogEmailReplyTargetDto | { kind: 'facebook_dm' } & DialogFacebookDmReplyTargetDto | { kind: 'inst_dm' } & DialogInstDmReplyTargetDto | { kind: 'max_channel' } & DialogMaxChannelReplyTargetDto | { kind: 'max_chat' } & DialogMaxChatReplyTargetDto | { kind: 'max_dialog' } & DialogMaxDialogReplyTargetDto | { kind: 'streamvi_broadcast' } & DialogStreamviReplyTargetDto | { kind: 'telegram_chat' } & DialogTelegramChatReplyTargetDto | { kind: 'telegram_topic' } & DialogTelegramTopicReplyTargetDto | { kind: 'vk_peer' } & DialogVkPeerReplyTargetDto | { kind: 'vk_wall_post_comments' } & DialogVkWallPostCommentsReplyTargetDto | { kind: 'whatsapp_chat' } & DialogWhatsAppChatReplyTargetDto | { kind: 'widget_lead' } & DialogWidgetReplyTargetDto;
 
 export function DialogDtoReplyTargetFromJSON(json: any): DialogDtoReplyTarget {
     return DialogDtoReplyTargetFromJSONTyped(json, false);
@@ -137,6 +158,10 @@ export function DialogDtoReplyTargetFromJSONTyped(json: any, ignoreDiscriminator
             return Object.assign({}, DialogDiscordThreadReplyTargetDtoFromJSONTyped(json, true), { kind: 'discord_thread' } as const);
         case 'email_thread':
             return Object.assign({}, DialogEmailReplyTargetDtoFromJSONTyped(json, true), { kind: 'email_thread' } as const);
+        case 'facebook_dm':
+            return Object.assign({}, DialogFacebookDmReplyTargetDtoFromJSONTyped(json, true), { kind: 'facebook_dm' } as const);
+        case 'inst_dm':
+            return Object.assign({}, DialogInstDmReplyTargetDtoFromJSONTyped(json, true), { kind: 'inst_dm' } as const);
         case 'max_channel':
             return Object.assign({}, DialogMaxChannelReplyTargetDtoFromJSONTyped(json, true), { kind: 'max_channel' } as const);
         case 'max_chat':
@@ -153,6 +178,8 @@ export function DialogDtoReplyTargetFromJSONTyped(json: any, ignoreDiscriminator
             return Object.assign({}, DialogVkPeerReplyTargetDtoFromJSONTyped(json, true), { kind: 'vk_peer' } as const);
         case 'vk_wall_post_comments':
             return Object.assign({}, DialogVkWallPostCommentsReplyTargetDtoFromJSONTyped(json, true), { kind: 'vk_wall_post_comments' } as const);
+        case 'whatsapp_chat':
+            return Object.assign({}, DialogWhatsAppChatReplyTargetDtoFromJSONTyped(json, true), { kind: 'whatsapp_chat' } as const);
         case 'widget_lead':
             return Object.assign({}, DialogWidgetReplyTargetDtoFromJSONTyped(json, true), { kind: 'widget_lead' } as const);
         default:
@@ -179,6 +206,10 @@ export function DialogDtoReplyTargetToJSONTyped(value?: DialogDtoReplyTarget | n
             return Object.assign({}, DialogDiscordThreadReplyTargetDtoToJSON(value), { kind: 'discord_thread' } as const);
         case 'email_thread':
             return Object.assign({}, DialogEmailReplyTargetDtoToJSON(value), { kind: 'email_thread' } as const);
+        case 'facebook_dm':
+            return Object.assign({}, DialogFacebookDmReplyTargetDtoToJSON(value), { kind: 'facebook_dm' } as const);
+        case 'inst_dm':
+            return Object.assign({}, DialogInstDmReplyTargetDtoToJSON(value), { kind: 'inst_dm' } as const);
         case 'max_channel':
             return Object.assign({}, DialogMaxChannelReplyTargetDtoToJSON(value), { kind: 'max_channel' } as const);
         case 'max_chat':
@@ -195,6 +226,8 @@ export function DialogDtoReplyTargetToJSONTyped(value?: DialogDtoReplyTarget | n
             return Object.assign({}, DialogVkPeerReplyTargetDtoToJSON(value), { kind: 'vk_peer' } as const);
         case 'vk_wall_post_comments':
             return Object.assign({}, DialogVkWallPostCommentsReplyTargetDtoToJSON(value), { kind: 'vk_wall_post_comments' } as const);
+        case 'whatsapp_chat':
+            return Object.assign({}, DialogWhatsAppChatReplyTargetDtoToJSON(value), { kind: 'whatsapp_chat' } as const);
         case 'widget_lead':
             return Object.assign({}, DialogWidgetReplyTargetDtoToJSON(value), { kind: 'widget_lead' } as const);
         default:

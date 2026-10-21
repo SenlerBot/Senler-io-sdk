@@ -64,6 +64,9 @@ export declare const SpaceDetailsChannelDtoTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type SpaceDetailsChannelDtoTypeEnum = typeof SpaceDetailsChannelDtoTypeEnum[keyof typeof SpaceDetailsChannelDtoTypeEnum];
 /**

@@ -57,7 +57,10 @@ export const DeliveryAudienceRouteDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type DeliveryAudienceRouteDtoChannelTypeEnum = typeof DeliveryAudienceRouteDtoChannelTypeEnum[keyof typeof DeliveryAudienceRouteDtoChannelTypeEnum];
 

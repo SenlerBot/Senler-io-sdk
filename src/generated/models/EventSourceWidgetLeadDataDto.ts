@@ -27,6 +27,13 @@ import {
     EventSourceWidgetContextItemDtoToJSON,
     EventSourceWidgetContextItemDtoToJSONTyped,
 } from './EventSourceWidgetContextItemDto';
+import type { WidgetRequestContextDto } from './WidgetRequestContextDto';
+import {
+    WidgetRequestContextDtoFromJSON,
+    WidgetRequestContextDtoFromJSONTyped,
+    WidgetRequestContextDtoToJSON,
+    WidgetRequestContextDtoToJSONTyped,
+} from './WidgetRequestContextDto';
 
 /**
  * EventSourceWidgetLeadDataDto.
@@ -34,6 +41,18 @@ import {
  * @interface EventSourceWidgetLeadDataDto
  */
 export interface EventSourceWidgetLeadDataDto {
+    /**
+     * .
+     * @type {boolean}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    builtInUi?: boolean;
+    /**
+     *
+     * @type {WidgetRequestContextDto}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    request?: WidgetRequestContextDto;
     /**
      * ID
      * @type {string}
@@ -95,6 +114,8 @@ export function EventSourceWidgetLeadDataDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'builtInUi': json['built_in_ui'] == null ? undefined : json['built_in_ui'],
+        'request': json['request'] == null ? undefined : WidgetRequestContextDtoFromJSON(json['request']),
         'leadId': json['lead_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'contextItems': json['context_items'] == null ? undefined : ((json['context_items'] as Array<any>).map(EventSourceWidgetContextItemDtoFromJSON)),
@@ -114,6 +135,8 @@ export function EventSourceWidgetLeadDataDtoToJSONTyped(value?: EventSourceWidge
 
     return {
 
+        'built_in_ui': value['builtInUi'],
+        'request': WidgetRequestContextDtoToJSON(value['request']),
         'lead_id': value['leadId'],
         'user_id': value['userId'],
         'context_items': value['contextItems'] == null ? undefined : ((value['contextItems'] as Array<any>).map(EventSourceWidgetContextItemDtoToJSON)),

@@ -140,6 +140,9 @@ export declare const ChannelBriefDtoTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type ChannelBriefDtoTypeEnum = typeof ChannelBriefDtoTypeEnum[keyof typeof ChannelBriefDtoTypeEnum];
 /**

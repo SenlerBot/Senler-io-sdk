@@ -25,6 +25,12 @@ export interface ProjectDetailsResponseDto {
      */
     project: ProjectResponseDto;
     /**
+     * : , RU . ; .
+     * @type {boolean}
+     * @memberof ProjectDetailsResponseDto
+     */
+    showRussianPlatformNotice: boolean;
+    /**
      *
      * @type {ProjectAccessDto}
      * @memberof ProjectDetailsResponseDto

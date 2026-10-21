@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface CreateOtherLandingBlockDto {
     /**
+     * ;
+     * @type {string}
+     * @memberof CreateOtherLandingBlockDto
+     */
+    pageVariantId?: string;
+    /**
      *
      * @type {number}
      * @memberof CreateOtherLandingBlockDto
@@ -71,6 +77,7 @@ export function CreateOtherLandingBlockDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'isVisible': json['is_visible'],
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
@@ -90,6 +97,7 @@ export function CreateOtherLandingBlockDtoToJSONTyped(value?: CreateOtherLanding
 
     return {
 
+        'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'is_visible': value['isVisible'],
         'after_block_id': value['afterBlockId'],

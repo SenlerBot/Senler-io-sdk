@@ -51,7 +51,10 @@ export const ImportLeadsParamsDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ImportLeadsParamsDtoChannelTypeEnum = typeof ImportLeadsParamsDtoChannelTypeEnum[keyof typeof ImportLeadsParamsDtoChannelTypeEnum];
 

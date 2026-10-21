@@ -21,6 +21,12 @@ export interface LandingSettingsDto {
      * @type {string}
      * @memberof LandingSettingsDto
      */
+    visitorName?: string | null;
+    /**
+     * . null
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
     language: LandingSettingsDtoLanguageEnum | null;
     /**
      *

@@ -32,6 +32,12 @@ export interface LandingSettingsDto {
      * @type {string}
      * @memberof LandingSettingsDto
      */
+    visitorName?: string | null;
+    /**
+     * . null
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
     language: LandingSettingsDtoLanguageEnum | null;
     /**
      *
@@ -99,6 +105,7 @@ export function LandingSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
+        'visitorName': json['visitor_name'] == null ? undefined : json['visitor_name'],
         'language': json['language'],
         'listVisible': json['list_visible'],
         'theme': LandingThemeFromJSON(json['theme']),
@@ -119,6 +126,7 @@ export function LandingSettingsDtoToJSONTyped(value?: LandingSettingsDto | null,
 
     return {
 
+        'visitor_name': value['visitorName'],
         'language': value['language'],
         'list_visible': value['listVisible'],
         'theme': LandingThemeToJSON(value['theme']),

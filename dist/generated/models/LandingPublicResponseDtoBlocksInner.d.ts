@@ -21,7 +21,7 @@ import type { LandingPublicTimerBlockDto } from './LandingPublicTimerBlockDto';
 import type { LandingPublicVideoBlockDto } from './LandingPublicVideoBlockDto';
 /**
  * @type LandingPublicResponseDtoBlocksInner
- * :
+ * : . , .
  * @export
  */
 export type LandingPublicResponseDtoBlocksInner = {

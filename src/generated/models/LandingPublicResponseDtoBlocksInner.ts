@@ -85,7 +85,7 @@ import {
 
 /**
  * @type LandingPublicResponseDtoBlocksInner
- * :
+ * : . , .
  * @export
  */
 export type LandingPublicResponseDtoBlocksInner = { type: 'button' } & LandingPublicButtonBlockDto | { type: 'cover' } & LandingPublicCoverBlockDto | { type: 'features' } & LandingPublicFeaturesBlockDto | { type: 'image' } & LandingPublicImageBlockDto | { type: 'other' } & LandingPublicOtherBlockDto | { type: 'products' } & LandingPublicProductsBlockDto | { type: 'reviews' } & LandingPublicReviewsBlockDto | { type: 'text' } & LandingPublicTextBlockDto | { type: 'timer' } & LandingPublicTimerBlockDto | { type: 'video' } & LandingPublicVideoBlockDto;

@@ -1273,7 +1273,10 @@ export const AutomationNodeConfigDtoChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type AutomationNodeConfigDtoChannelTypesEnum = typeof AutomationNodeConfigDtoChannelTypesEnum[keyof typeof AutomationNodeConfigDtoChannelTypesEnum];
 
@@ -1487,7 +1490,10 @@ export const AutomationNodeConfigDtoMessageChannelTypesEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type AutomationNodeConfigDtoMessageChannelTypesEnum = typeof AutomationNodeConfigDtoMessageChannelTypesEnum[keyof typeof AutomationNodeConfigDtoMessageChannelTypesEnum];
 

@@ -45,6 +45,18 @@ export interface SubscriptionRenewalConfirmDto {
      * @memberof SubscriptionRenewalConfirmDto
      */
     paymentMethodId?: string;
+    /**
+     *
+     * @type {Date}
+     * @memberof SubscriptionRenewalConfirmDto
+     */
+    renewalAt: Date;
+    /**
+     * , preview
+     * @type {string}
+     * @memberof SubscriptionRenewalConfirmDto
+     */
+    quoteHash: string;
 }
 /**
  * @export

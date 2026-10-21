@@ -48,6 +48,12 @@ export interface ProjectDetailsResponseDto {
      */
     project: ProjectResponseDto;
     /**
+     * : , RU . ; .
+     * @type {boolean}
+     * @memberof ProjectDetailsResponseDto
+     */
+    showRussianPlatformNotice: boolean;
+    /**
      *
      * @type {ProjectAccessDto}
      * @memberof ProjectDetailsResponseDto
@@ -66,6 +72,7 @@ export interface ProjectDetailsResponseDto {
  */
 export function instanceOfProjectDetailsResponseDto(value: object): value is ProjectDetailsResponseDto {
     if (!('project' in value) || value['project'] === undefined) return false;
+    if (!('showRussianPlatformNotice' in value) || value['showRussianPlatformNotice'] === undefined) return false;
     if (!('access' in value) || value['access'] === undefined) return false;
     if (!('balance' in value) || value['balance'] === undefined) return false;
     return true;
@@ -82,6 +89,7 @@ export function ProjectDetailsResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'project': ProjectResponseDtoFromJSON(json['project']),
+        'showRussianPlatformNotice': json['show_russian_platform_notice'],
         'access': ProjectAccessDtoFromJSON(json['access']),
         'balance': ProjectBalanceInfoDtoFromJSON(json['balance']),
     };
@@ -99,6 +107,7 @@ export function ProjectDetailsResponseDtoToJSONTyped(value?: ProjectDetailsRespo
     return {
 
         'project': ProjectResponseDtoToJSON(value['project']),
+        'show_russian_platform_notice': value['showRussianPlatformNotice'],
         'access': ProjectAccessDtoToJSON(value['access']),
         'balance': ProjectBalanceInfoDtoToJSON(value['balance']),
     };

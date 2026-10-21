@@ -17,6 +17,12 @@ import type { LandingFeaturesBlockPayloadDto } from './LandingFeaturesBlockPaylo
  */
 export interface CreateFeaturesLandingBlockDto {
     /**
+     * ;
+     * @type {string}
+     * @memberof CreateFeaturesLandingBlockDto
+     */
+    pageVariantId?: string;
+    /**
      *
      * @type {number}
      * @memberof CreateFeaturesLandingBlockDto

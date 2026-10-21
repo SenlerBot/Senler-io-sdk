@@ -20,6 +20,7 @@ exports.LandingSubscriptionRequestDtoFromJSONTyped = LandingSubscriptionRequestD
 exports.LandingSubscriptionRequestDtoToJSON = LandingSubscriptionRequestDtoToJSON;
 exports.LandingSubscriptionRequestDtoToJSONTyped = LandingSubscriptionRequestDtoToJSONTyped;
 const AcceptedSegmentConsentDto_1 = require("./AcceptedSegmentConsentDto");
+const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 const LandingContactDto_1 = require("./LandingContactDto");
 /**
  * @export
@@ -58,6 +59,9 @@ function LandingSubscriptionRequestDtoFromJSONTyped(json, ignoreDiscriminator) {
         'utmCampaign': json['utm_campaign'] == null ? undefined : json['utm_campaign'],
         'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
         'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
+        'eventToken': json['event_token'] == null ? undefined : json['event_token'],
+        'analytics': json['analytics'] == null ? undefined : (json['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoFromJSON)),
         'acceptedConsents': json['accepted_consents'] == null ? undefined : (json['accepted_consents'].map(AcceptedSegmentConsentDto_1.AcceptedSegmentConsentDtoFromJSON)),
         'contact': json['contact'] == null ? undefined : (0, LandingContactDto_1.LandingContactDtoFromJSON)(json['contact']),
     };
@@ -79,6 +83,9 @@ function LandingSubscriptionRequestDtoToJSONTyped(value, ignoreDiscriminator = f
         'utm_campaign': value['utmCampaign'],
         'utm_content': value['utmContent'],
         'utm_term': value['utmTerm'],
+        'observed_experiment_ids': value['observedExperimentIds'],
+        'event_token': value['eventToken'],
+        'analytics': value['analytics'] == null ? undefined : (value['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoToJSON)),
         'accepted_consents': value['acceptedConsents'] == null ? undefined : (value['acceptedConsents'].map(AcceptedSegmentConsentDto_1.AcceptedSegmentConsentDtoToJSON)),
         'contact': (0, LandingContactDto_1.LandingContactDtoToJSON)(value['contact']),
     };

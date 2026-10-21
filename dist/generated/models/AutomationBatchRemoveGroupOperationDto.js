@@ -45,8 +45,8 @@ function AutomationBatchRemoveGroupOperationDtoFromJSONTyped(json, ignoreDiscrim
         return json;
     }
     return {
-        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'groupId': json['group_id'],
         'expectedContentRevision': json['expected_content_revision'],
     };
@@ -59,8 +59,8 @@ function AutomationBatchRemoveGroupOperationDtoToJSONTyped(value, ignoreDiscrimi
         return value;
     }
     return {
-        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
+        'expected_instance_id': value['expectedInstanceId'],
         'group_id': value['groupId'],
         'expected_content_revision': value['expectedContentRevision'],
     };

@@ -21,6 +21,7 @@ exports.EventSourceAvitoChatContextDtoToJSON = EventSourceAvitoChatContextDtoToJ
 exports.EventSourceAvitoChatContextDtoToJSONTyped = EventSourceAvitoChatContextDtoToJSONTyped;
 const EventAttributionDto_1 = require("./EventAttributionDto");
 const EventSourceAvitoChatDataDto_1 = require("./EventSourceAvitoChatDataDto");
+const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 /**
  * @export
  */
@@ -55,6 +56,7 @@ function EventSourceAvitoChatContextDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
+        'analytics': json['analytics'] == null ? undefined : (json['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : (0, EventAttributionDto_1.EventAttributionDtoFromJSON)(json['attribution']),
         'kind': json['kind'],
@@ -69,6 +71,7 @@ function EventSourceAvitoChatContextDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
+        'analytics': value['analytics'] == null ? undefined : (value['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': (0, EventAttributionDto_1.EventAttributionDtoToJSON)(value['attribution']),
         'kind': value['kind'],

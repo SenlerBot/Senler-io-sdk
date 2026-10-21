@@ -14,6 +14,8 @@ import type { DialogDiscordChannelReplyTargetDto } from './DialogDiscordChannelR
 import type { DialogDiscordDmReplyTargetDto } from './DialogDiscordDmReplyTargetDto';
 import type { DialogDiscordThreadReplyTargetDto } from './DialogDiscordThreadReplyTargetDto';
 import type { DialogEmailReplyTargetDto } from './DialogEmailReplyTargetDto';
+import type { DialogFacebookDmReplyTargetDto } from './DialogFacebookDmReplyTargetDto';
+import type { DialogInstDmReplyTargetDto } from './DialogInstDmReplyTargetDto';
 import type { DialogMaxChannelReplyTargetDto } from './DialogMaxChannelReplyTargetDto';
 import type { DialogMaxChatReplyTargetDto } from './DialogMaxChatReplyTargetDto';
 import type { DialogMaxDialogReplyTargetDto } from './DialogMaxDialogReplyTargetDto';
@@ -22,6 +24,7 @@ import type { DialogTelegramChatReplyTargetDto } from './DialogTelegramChatReply
 import type { DialogTelegramTopicReplyTargetDto } from './DialogTelegramTopicReplyTargetDto';
 import type { DialogVkPeerReplyTargetDto } from './DialogVkPeerReplyTargetDto';
 import type { DialogVkWallPostCommentsReplyTargetDto } from './DialogVkWallPostCommentsReplyTargetDto';
+import type { DialogWhatsAppChatReplyTargetDto } from './DialogWhatsAppChatReplyTargetDto';
 import type { DialogWidgetReplyTargetDto } from './DialogWidgetReplyTargetDto';
 /**
  * @type DialogDtoReplyTarget
@@ -39,6 +42,10 @@ export type DialogDtoReplyTarget = {
 } & DialogDiscordThreadReplyTargetDto | {
     kind: 'email_thread';
 } & DialogEmailReplyTargetDto | {
+    kind: 'facebook_dm';
+} & DialogFacebookDmReplyTargetDto | {
+    kind: 'inst_dm';
+} & DialogInstDmReplyTargetDto | {
     kind: 'max_channel';
 } & DialogMaxChannelReplyTargetDto | {
     kind: 'max_chat';
@@ -55,6 +62,8 @@ export type DialogDtoReplyTarget = {
 } & DialogVkPeerReplyTargetDto | {
     kind: 'vk_wall_post_comments';
 } & DialogVkWallPostCommentsReplyTargetDto | {
+    kind: 'whatsapp_chat';
+} & DialogWhatsAppChatReplyTargetDto | {
     kind: 'widget_lead';
 } & DialogWidgetReplyTargetDto;
 export declare function DialogDtoReplyTargetFromJSON(json: any): DialogDtoReplyTarget;

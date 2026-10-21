@@ -47,6 +47,12 @@ export interface AgentInstalledAppToolsGroupDto {
      */
     configurationUrl: string | null;
     /**
+     * iframe CSS px; null 1024 px
+     * @type {number}
+     * @memberof AgentInstalledAppToolsGroupDto
+     */
+    configurationMaxWidth?: number | null;
+    /**
      * : available, temporarily_unavailable.
      * @type {string}
      * @memberof AgentInstalledAppToolsGroupDto

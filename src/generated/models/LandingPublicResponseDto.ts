@@ -72,13 +72,13 @@ export interface LandingPublicResponseDto {
      */
     settings: LandingSettingsDto;
     /**
-     *
+     * . 0
      * @type {number}
      * @memberof LandingPublicResponseDto
      */
     publicationNumber: number;
     /**
-     *
+     * . , .
      * @type {Array<LandingPublicResponseDtoBlocksInner>}
      * @memberof LandingPublicResponseDto
      */

@@ -129,7 +129,10 @@ export const StatisticsOperatorResponseChannelDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type StatisticsOperatorResponseChannelDtoChannelTypeEnum = typeof StatisticsOperatorResponseChannelDtoChannelTypeEnum[keyof typeof StatisticsOperatorResponseChannelDtoChannelTypeEnum];
 
@@ -145,6 +148,9 @@ export const StatisticsOperatorResponseChannelDtoPlatformTypeEnum = {
     Streamvi: 'streamvi',
     Email: 'email',
     Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp',
     Web: 'web',
     Ai: 'ai',
     Automation: 'automation'

@@ -172,6 +172,9 @@ export declare const StatisticsChannelBreakdownDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type StatisticsChannelBreakdownDtoChannelTypeEnum = typeof StatisticsChannelBreakdownDtoChannelTypeEnum[keyof typeof StatisticsChannelBreakdownDtoChannelTypeEnum];
 /**
@@ -186,6 +189,9 @@ export declare const StatisticsChannelBreakdownDtoPlatformTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
     readonly Web: "web";
     readonly Ai: "ai";
     readonly Automation: "automation";

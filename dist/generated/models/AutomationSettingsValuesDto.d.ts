@@ -58,6 +58,9 @@ export declare const AutomationSettingsValuesDtoChannelTypesEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type AutomationSettingsValuesDtoChannelTypesEnum = typeof AutomationSettingsValuesDtoChannelTypesEnum[keyof typeof AutomationSettingsValuesDtoChannelTypesEnum];
 /**

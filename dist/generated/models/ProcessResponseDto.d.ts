@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ProcessInitiatorDto } from './ProcessInitiatorDto';
 import type { ProcessResponseDtoPayload } from './ProcessResponseDtoPayload';
 import type { ProcessProgressDto } from './ProcessProgressDto';
 import type { ProcessResponseDtoResult } from './ProcessResponseDtoResult';
@@ -67,11 +68,17 @@ export interface ProcessResponseDto {
      */
     errorCode?: ProcessResponseDtoErrorCodeEnum;
     /**
-     * ID
+     * ID -. Null , API- .
      * @type {string}
      * @memberof ProcessResponseDto
      */
-    userId: string;
+    userId: string | null;
+    /**
+     *
+     * @type {ProcessInitiatorDto}
+     * @memberof ProcessResponseDto
+     */
+    initiator: ProcessInitiatorDto;
     /**
      * ID . Null admin/global .
      * @type {string}

@@ -19,6 +19,7 @@ exports.PublicStatusSnapshotDtoFromJSON = PublicStatusSnapshotDtoFromJSON;
 exports.PublicStatusSnapshotDtoFromJSONTyped = PublicStatusSnapshotDtoFromJSONTyped;
 exports.PublicStatusSnapshotDtoToJSON = PublicStatusSnapshotDtoToJSON;
 exports.PublicStatusSnapshotDtoToJSONTyped = PublicStatusSnapshotDtoToJSONTyped;
+const PublicStatusLoadedRangeDto_1 = require("./PublicStatusLoadedRangeDto");
 const PublicStatusOverallDto_1 = require("./PublicStatusOverallDto");
 const PublicStatusGroupDto_1 = require("./PublicStatusGroupDto");
 /**
@@ -38,6 +39,8 @@ function instanceOfPublicStatusSnapshotDto(value) {
     if (!('rangeStartedAt' in value) || value['rangeStartedAt'] === undefined)
         return false;
     if (!('rangeEndedAt' in value) || value['rangeEndedAt'] === undefined)
+        return false;
+    if (!('historyLoadedRanges' in value) || value['historyLoadedRanges'] === undefined)
         return false;
     if (!('period' in value) || value['period'] === undefined)
         return false;
@@ -62,6 +65,7 @@ function PublicStatusSnapshotDtoFromJSONTyped(json, ignoreDiscriminator) {
         'generatedAt': (new Date(json['generatedAt'])),
         'rangeStartedAt': (new Date(json['rangeStartedAt'])),
         'rangeEndedAt': (new Date(json['rangeEndedAt'])),
+        'historyLoadedRanges': (json['historyLoadedRanges'].map(PublicStatusLoadedRangeDto_1.PublicStatusLoadedRangeDtoFromJSON)),
         'period': json['period'],
         'refreshAfterSeconds': json['refreshAfterSeconds'],
         'stale': json['stale'],
@@ -80,6 +84,7 @@ function PublicStatusSnapshotDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'generatedAt': ((value['generatedAt']).toISOString()),
         'rangeStartedAt': ((value['rangeStartedAt']).toISOString()),
         'rangeEndedAt': ((value['rangeEndedAt']).toISOString()),
+        'historyLoadedRanges': (value['historyLoadedRanges'].map(PublicStatusLoadedRangeDto_1.PublicStatusLoadedRangeDtoToJSON)),
         'period': value['period'],
         'refreshAfterSeconds': value['refreshAfterSeconds'],
         'stale': value['stale'],

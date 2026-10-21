@@ -1167,6 +1167,9 @@ export declare const AutomationNodeConfigDtoChannelTypesEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type AutomationNodeConfigDtoChannelTypesEnum = typeof AutomationNodeConfigDtoChannelTypesEnum[keyof typeof AutomationNodeConfigDtoChannelTypesEnum];
 /**
@@ -1364,6 +1367,9 @@ export declare const AutomationNodeConfigDtoMessageChannelTypesEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type AutomationNodeConfigDtoMessageChannelTypesEnum = typeof AutomationNodeConfigDtoMessageChannelTypesEnum[keyof typeof AutomationNodeConfigDtoMessageChannelTypesEnum];
 /**

@@ -46,6 +46,12 @@ export interface EventSourceWidgetContextItemDto {
      */
     role: EventSourceWidgetContextItemDtoRoleEnum;
     /**
+     * , . false.
+     * @type {boolean}
+     * @memberof EventSourceWidgetContextItemDto
+     */
+    hidden?: boolean;
+    /**
      *
      * @type {EventSourceWidgetContextItemDisplayDto}
      * @memberof EventSourceWidgetContextItemDto
@@ -108,6 +114,7 @@ export function EventSourceWidgetContextItemDtoFromJSONTyped(json: any, ignoreDi
         'id': json['id'],
         'kind': json['kind'],
         'role': json['role'],
+        'hidden': json['hidden'] == null ? undefined : json['hidden'],
         'display': EventSourceWidgetContextItemDisplayDtoFromJSON(json['display']),
         'ref': json['ref'] == null ? undefined : json['ref'],
         'snapshot': json['snapshot'] == null ? undefined : json['snapshot'],
@@ -129,6 +136,7 @@ export function EventSourceWidgetContextItemDtoToJSONTyped(value?: EventSourceWi
         'id': value['id'],
         'kind': value['kind'],
         'role': value['role'],
+        'hidden': value['hidden'],
         'display': EventSourceWidgetContextItemDisplayDtoToJSON(value['display']),
         'ref': value['ref'],
         'snapshot': value['snapshot'],

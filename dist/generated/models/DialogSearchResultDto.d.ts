@@ -23,11 +23,11 @@ export interface DialogSearchResultDto {
      */
     score: number;
     /**
-     *
+     * . include_match_counts=false.
      * @type {number}
      * @memberof DialogSearchResultDto
      */
-    totalMatches: number;
+    totalMatches?: number;
     /**
      *
      * @type {DialogSearchTopMatchDto}

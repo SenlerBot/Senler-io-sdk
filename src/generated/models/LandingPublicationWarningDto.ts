@@ -34,7 +34,7 @@ export interface LandingPublicationWarningDto {
      */
     blockId: string;
     /**
-     * . button_not_configured: ; .
+     * . .
      * @type {LandingPublicationWarningCode}
      * @memberof LandingPublicationWarningDto
      */
@@ -45,6 +45,18 @@ export interface LandingPublicationWarningDto {
      * @memberof LandingPublicationWarningDto
      */
     message: string;
+    /**
+     * ID ,
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    itemId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    field: string | null;
 }
 
 
@@ -56,6 +68,8 @@ export function instanceOfLandingPublicationWarningDto(value: object): value is 
     if (!('blockId' in value) || value['blockId'] === undefined) return false;
     if (!('code' in value) || value['code'] === undefined) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
+    if (!('itemId' in value) || value['itemId'] === undefined) return false;
+    if (!('field' in value) || value['field'] === undefined) return false;
     return true;
 }
 
@@ -72,6 +86,8 @@ export function LandingPublicationWarningDtoFromJSONTyped(json: any, ignoreDiscr
         'blockId': json['block_id'],
         'code': LandingPublicationWarningCodeFromJSON(json['code']),
         'message': json['message'],
+        'itemId': json['item_id'],
+        'field': json['field'],
     };
 }
 
@@ -89,5 +105,7 @@ export function LandingPublicationWarningDtoToJSONTyped(value?: LandingPublicati
         'block_id': value['blockId'],
         'code': LandingPublicationWarningCodeToJSON(value['code']),
         'message': value['message'],
+        'item_id': value['itemId'],
+        'field': value['field'],
     };
 }

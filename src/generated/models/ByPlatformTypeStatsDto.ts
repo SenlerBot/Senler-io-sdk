@@ -52,6 +52,24 @@ export interface ByPlatformTypeStatsDto {
      */
     avito?: CategoryStatsDto;
     /**
+     * Instagram
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    inst?: CategoryStatsDto;
+    /**
+     * Facebook
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    facebook?: CategoryStatsDto;
+    /**
+     * WhatsApp
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    whatsapp?: CategoryStatsDto;
+    /**
      * Discord
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto
@@ -116,6 +134,9 @@ export function ByPlatformTypeStatsDtoFromJSONTyped(json: any, ignoreDiscriminat
         'tg': json['tg'] == null ? undefined : CategoryStatsDtoFromJSON(json['tg']),
         'max': json['max'] == null ? undefined : CategoryStatsDtoFromJSON(json['max']),
         'avito': json['avito'] == null ? undefined : CategoryStatsDtoFromJSON(json['avito']),
+        'inst': json['inst'] == null ? undefined : CategoryStatsDtoFromJSON(json['inst']),
+        'facebook': json['facebook'] == null ? undefined : CategoryStatsDtoFromJSON(json['facebook']),
+        'whatsapp': json['whatsapp'] == null ? undefined : CategoryStatsDtoFromJSON(json['whatsapp']),
         'discord': json['discord'] == null ? undefined : CategoryStatsDtoFromJSON(json['discord']),
         'widget': json['widget'] == null ? undefined : CategoryStatsDtoFromJSON(json['widget']),
         'streamvi': json['streamvi'] == null ? undefined : CategoryStatsDtoFromJSON(json['streamvi']),
@@ -141,6 +162,9 @@ export function ByPlatformTypeStatsDtoToJSONTyped(value?: ByPlatformTypeStatsDto
         'tg': CategoryStatsDtoToJSON(value['tg']),
         'max': CategoryStatsDtoToJSON(value['max']),
         'avito': CategoryStatsDtoToJSON(value['avito']),
+        'inst': CategoryStatsDtoToJSON(value['inst']),
+        'facebook': CategoryStatsDtoToJSON(value['facebook']),
+        'whatsapp': CategoryStatsDtoToJSON(value['whatsapp']),
         'discord': CategoryStatsDtoToJSON(value['discord']),
         'widget': CategoryStatsDtoToJSON(value['widget']),
         'streamvi': CategoryStatsDtoToJSON(value['streamvi']),

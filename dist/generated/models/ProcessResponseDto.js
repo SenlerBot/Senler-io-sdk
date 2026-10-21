@@ -19,6 +19,7 @@ exports.ProcessResponseDtoFromJSON = ProcessResponseDtoFromJSON;
 exports.ProcessResponseDtoFromJSONTyped = ProcessResponseDtoFromJSONTyped;
 exports.ProcessResponseDtoToJSON = ProcessResponseDtoToJSON;
 exports.ProcessResponseDtoToJSONTyped = ProcessResponseDtoToJSONTyped;
+const ProcessInitiatorDto_1 = require("./ProcessInitiatorDto");
 const ProcessResponseDtoPayload_1 = require("./ProcessResponseDtoPayload");
 const ProcessProgressDto_1 = require("./ProcessProgressDto");
 const ProcessResponseDtoResult_1 = require("./ProcessResponseDtoResult");
@@ -75,6 +76,8 @@ function instanceOfProcessResponseDto(value) {
         return false;
     if (!('userId' in value) || value['userId'] === undefined)
         return false;
+    if (!('initiator' in value) || value['initiator'] === undefined)
+        return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -100,6 +103,7 @@ function ProcessResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
         'errorCode': json['error_code'] == null ? undefined : json['error_code'],
         'userId': json['user_id'],
+        'initiator': (0, ProcessInitiatorDto_1.ProcessInitiatorDtoFromJSON)(json['initiator']),
         'projectId': json['project_id'],
         'createdAt': (new Date(json['created_at'])),
         'startedAt': json['started_at'] == null ? undefined : (new Date(json['started_at'])),
@@ -125,6 +129,7 @@ function ProcessResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'error_message': value['errorMessage'],
         'error_code': value['errorCode'],
         'user_id': value['userId'],
+        'initiator': (0, ProcessInitiatorDto_1.ProcessInitiatorDtoToJSON)(value['initiator']),
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),
         'started_at': value['startedAt'] == null ? undefined : ((value['startedAt']).toISOString()),

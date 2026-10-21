@@ -14,11 +14,16 @@
 
 
 /**
- * . button_not_configured: ; .
+ * . .
  * @export
  */
 export const LandingPublicationWarningCode = {
-    ButtonNotConfigured: 'button_not_configured'
+    ButtonNotConfigured: 'button_not_configured',
+    TextEmpty: 'text_empty',
+    ImageEmpty: 'image_empty',
+    VideoEmpty: 'video_empty',
+    ItemsEmpty: 'items_empty',
+    ItemEmpty: 'item_empty'
 } as const;
 export type LandingPublicationWarningCode = typeof LandingPublicationWarningCode[keyof typeof LandingPublicationWarningCode];
 

@@ -25,6 +25,7 @@ import type {
   KnowledgeFileResponseDto,
   KnowledgeFolderResponseDto,
   KnowledgeImageRecognitionEstimateResponseDto,
+  KnowledgeResourceListResponseDto,
   KnowledgeResourcesResponseDto,
   KnowledgeTableResponseDto,
   PaginatedKnowledgeBaseSearchResponseDto,
@@ -58,6 +59,8 @@ import {
     KnowledgeFolderResponseDtoToJSON,
     KnowledgeImageRecognitionEstimateResponseDtoFromJSON,
     KnowledgeImageRecognitionEstimateResponseDtoToJSON,
+    KnowledgeResourceListResponseDtoFromJSON,
+    KnowledgeResourceListResponseDtoToJSON,
     KnowledgeResourcesResponseDtoFromJSON,
     KnowledgeResourcesResponseDtoToJSON,
     KnowledgeTableResponseDtoFromJSON,
@@ -1189,7 +1192,7 @@ export class AppDocumentationApi extends runtime.BaseAPI {
      * , .
      *
      */
-    async getDocumentationResourcesRaw(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourcesResponseDto>> {
+    async getDocumentationResourcesRaw(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<KnowledgeResourceListResponseDto>> {
         if (requestParameters['appId'] == null) {
             throw new runtime.RequiredError(
                 'appId',
@@ -1221,14 +1224,14 @@ export class AppDocumentationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeResourcesResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => KnowledgeResourceListResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * , .
      *
      */
-    async getDocumentationResources(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourcesResponseDto> {
+    async getDocumentationResources(requestParameters: GetDocumentationResourcesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<KnowledgeResourceListResponseDto> {
         const response = await this.getDocumentationResourcesRaw(requestParameters, initOverrides);
         return await response.value();
     }

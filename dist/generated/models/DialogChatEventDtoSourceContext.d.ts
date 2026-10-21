@@ -14,6 +14,8 @@ import type { EventSourceDiscordChannelContextDto } from './EventSourceDiscordCh
 import type { EventSourceDiscordDmContextDto } from './EventSourceDiscordDmContextDto';
 import type { EventSourceDiscordThreadContextDto } from './EventSourceDiscordThreadContextDto';
 import type { EventSourceEmailThreadContextDto } from './EventSourceEmailThreadContextDto';
+import type { EventSourceFacebookDmContextDto } from './EventSourceFacebookDmContextDto';
+import type { EventSourceInstDmContextDto } from './EventSourceInstDmContextDto';
 import type { EventSourceMaxChannelContextDto } from './EventSourceMaxChannelContextDto';
 import type { EventSourceMaxChatContextDto } from './EventSourceMaxChatContextDto';
 import type { EventSourceMaxDialogContextDto } from './EventSourceMaxDialogContextDto';
@@ -22,6 +24,7 @@ import type { EventSourceTelegramChatContextDto } from './EventSourceTelegramCha
 import type { EventSourceTelegramTopicContextDto } from './EventSourceTelegramTopicContextDto';
 import type { EventSourceVkPeerContextDto } from './EventSourceVkPeerContextDto';
 import type { EventSourceVkWallPostCommentContextDto } from './EventSourceVkWallPostCommentContextDto';
+import type { EventSourceWhatsAppChatContextDto } from './EventSourceWhatsAppChatContextDto';
 import type { EventSourceWidgetLeadContextDto } from './EventSourceWidgetLeadContextDto';
 /**
  * @type DialogChatEventDtoSourceContext
@@ -39,6 +42,10 @@ export type DialogChatEventDtoSourceContext = {
 } & EventSourceDiscordThreadContextDto | {
     kind: 'email_thread';
 } & EventSourceEmailThreadContextDto | {
+    kind: 'facebook_dm';
+} & EventSourceFacebookDmContextDto | {
+    kind: 'inst_dm';
+} & EventSourceInstDmContextDto | {
     kind: 'max_channel';
 } & EventSourceMaxChannelContextDto | {
     kind: 'max_chat';
@@ -55,6 +62,8 @@ export type DialogChatEventDtoSourceContext = {
 } & EventSourceVkPeerContextDto | {
     kind: 'vk_wall_post_comment';
 } & EventSourceVkWallPostCommentContextDto | {
+    kind: 'whatsapp_chat';
+} & EventSourceWhatsAppChatContextDto | {
     kind: 'widget_lead';
 } & EventSourceWidgetLeadContextDto;
 export declare function DialogChatEventDtoSourceContextFromJSON(json: any): DialogChatEventDtoSourceContext;

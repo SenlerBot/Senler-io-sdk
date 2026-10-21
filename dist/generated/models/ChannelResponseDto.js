@@ -27,7 +27,10 @@ const SenlerStatusDto_1 = require("./SenlerStatusDto");
 const AvitoChannelDataDto_1 = require("./AvitoChannelDataDto");
 const DiscordChannelDataDto_1 = require("./DiscordChannelDataDto");
 const TelegramChannelDataDto_1 = require("./TelegramChannelDataDto");
+const FacebookChannelDataDto_1 = require("./FacebookChannelDataDto");
 const StreamViChannelDataDto_1 = require("./StreamViChannelDataDto");
+const InstChannelDataDto_1 = require("./InstChannelDataDto");
+const WhatsAppChannelDataDto_1 = require("./WhatsAppChannelDataDto");
 const ChannelMigrationBackfillDto_1 = require("./ChannelMigrationBackfillDto");
 const ChannelConnectionIssueDto_1 = require("./ChannelConnectionIssueDto");
 const ChannelMigrationStatusDto_1 = require("./ChannelMigrationStatusDto");
@@ -43,7 +46,10 @@ exports.ChannelResponseDtoTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 };
 /**
  * Check if a given object implements the ChannelResponseDto interface.
@@ -86,6 +92,9 @@ function ChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'dataVk': json['data_vk'] == null ? undefined : (0, VKChannelDataDto_1.VKChannelDataDtoFromJSON)(json['data_vk']),
         'dataMax': json['data_max'] == null ? undefined : (0, MAXChannelDataDto_1.MAXChannelDataDtoFromJSON)(json['data_max']),
         'dataAvito': json['data_avito'] == null ? undefined : (0, AvitoChannelDataDto_1.AvitoChannelDataDtoFromJSON)(json['data_avito']),
+        'dataInst': json['data_inst'] == null ? undefined : (0, InstChannelDataDto_1.InstChannelDataDtoFromJSON)(json['data_inst']),
+        'dataFacebook': json['data_facebook'] == null ? undefined : (0, FacebookChannelDataDto_1.FacebookChannelDataDtoFromJSON)(json['data_facebook']),
+        'dataWhatsapp': json['data_whatsapp'] == null ? undefined : (0, WhatsAppChannelDataDto_1.WhatsAppChannelDataDtoFromJSON)(json['data_whatsapp']),
         'dataDiscord': json['data_discord'] == null ? undefined : (0, DiscordChannelDataDto_1.DiscordChannelDataDtoFromJSON)(json['data_discord']),
         'dataWidget': json['data_widget'] == null ? undefined : (0, WidgetChannelDataDto_1.WidgetChannelDataDtoFromJSON)(json['data_widget']),
         'dataStreamvi': json['data_streamvi'] == null ? undefined : (0, StreamViChannelDataDto_1.StreamViChannelDataDtoFromJSON)(json['data_streamvi']),
@@ -126,6 +135,9 @@ function ChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'data_vk': (0, VKChannelDataDto_1.VKChannelDataDtoToJSON)(value['dataVk']),
         'data_max': (0, MAXChannelDataDto_1.MAXChannelDataDtoToJSON)(value['dataMax']),
         'data_avito': (0, AvitoChannelDataDto_1.AvitoChannelDataDtoToJSON)(value['dataAvito']),
+        'data_inst': (0, InstChannelDataDto_1.InstChannelDataDtoToJSON)(value['dataInst']),
+        'data_facebook': (0, FacebookChannelDataDto_1.FacebookChannelDataDtoToJSON)(value['dataFacebook']),
+        'data_whatsapp': (0, WhatsAppChannelDataDto_1.WhatsAppChannelDataDtoToJSON)(value['dataWhatsapp']),
         'data_discord': (0, DiscordChannelDataDto_1.DiscordChannelDataDtoToJSON)(value['dataDiscord']),
         'data_widget': (0, WidgetChannelDataDto_1.WidgetChannelDataDtoToJSON)(value['dataWidget']),
         'data_streamvi': (0, StreamViChannelDataDto_1.StreamViChannelDataDtoToJSON)(value['dataStreamvi']),

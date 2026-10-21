@@ -177,7 +177,10 @@ export const StatisticsChannelBreakdownDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type StatisticsChannelBreakdownDtoChannelTypeEnum = typeof StatisticsChannelBreakdownDtoChannelTypeEnum[keyof typeof StatisticsChannelBreakdownDtoChannelTypeEnum];
 
@@ -193,6 +196,9 @@ export const StatisticsChannelBreakdownDtoPlatformTypeEnum = {
     Streamvi: 'streamvi',
     Email: 'email',
     Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp',
     Web: 'web',
     Ai: 'ai',
     Automation: 'automation'

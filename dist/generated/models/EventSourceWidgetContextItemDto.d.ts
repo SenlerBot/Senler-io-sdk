@@ -35,6 +35,12 @@ export interface EventSourceWidgetContextItemDto {
      */
     role: EventSourceWidgetContextItemDtoRoleEnum;
     /**
+     * , . false.
+     * @type {boolean}
+     * @memberof EventSourceWidgetContextItemDto
+     */
+    hidden?: boolean;
+    /**
      *
      * @type {EventSourceWidgetContextItemDisplayDto}
      * @memberof EventSourceWidgetContextItemDto

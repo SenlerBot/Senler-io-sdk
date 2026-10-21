@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -68,6 +68,15 @@ export interface AutomationsGetVersionsRequest {
 }
 export interface AutomationsListRequest {
     projectId: string;
+    limit?: number;
+    cursor?: string;
+    search?: string;
+    ids?: Array<string>;
+    type?: AutomationsListTypeEnum;
+    publishedOnly?: boolean;
+    runnableOnly?: boolean;
+    channelType?: AutomationsListChannelTypeEnum;
+    excludeId?: string;
     acceptLanguage?: AutomationsListAcceptLanguageEnum;
 }
 export interface AutomationsPauseRequest {
@@ -179,6 +188,19 @@ export interface GetOperationsRequest {
 export interface GetOperatorOptionsRequest {
     projectId: string;
     acceptLanguage?: GetOperatorOptionsAcceptLanguageEnum;
+}
+export interface GetOptionsRequest {
+    projectId: string;
+    limit?: number;
+    cursor?: string;
+    search?: string;
+    ids?: Array<string>;
+    type?: GetOptionsTypeEnum;
+    publishedOnly?: boolean;
+    runnableOnly?: boolean;
+    channelType?: GetOptionsChannelTypeEnum;
+    excludeId?: string;
+    acceptLanguage?: GetOptionsAcceptLanguageEnum;
 }
 export interface GetRunsRequest {
     automationId: string;
@@ -630,6 +652,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getOperatorOptions(requestParameters: GetOperatorOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOperatorOptionsDto>;
     /**
+     * ID. .
+     *
+     */
+    getOptionsRaw(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationOptionsResponseDto>>;
+    /**
+     * ID. .
+     *
+     */
+    getOptions(requestParameters: GetOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationOptionsResponseDto>;
+    /**
      * Automation Runner.
      * durable-
      */
@@ -951,6 +983,31 @@ export type AutomationsGetVersionsAcceptLanguageEnum = typeof AutomationsGetVers
 /**
  * @export
  */
+export declare const AutomationsListTypeEnum: {
+    readonly Contextual: "contextual";
+    readonly Background: "background";
+};
+export type AutomationsListTypeEnum = typeof AutomationsListTypeEnum[keyof typeof AutomationsListTypeEnum];
+/**
+ * @export
+ */
+export declare const AutomationsListChannelTypeEnum: {
+    readonly Vk: "vk";
+    readonly Tg: "tg";
+    readonly Max: "max";
+    readonly Discord: "discord";
+    readonly Widget: "widget";
+    readonly Streamvi: "streamvi";
+    readonly Email: "email";
+    readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
+};
+export type AutomationsListChannelTypeEnum = typeof AutomationsListChannelTypeEnum[keyof typeof AutomationsListChannelTypeEnum];
+/**
+ * @export
+ */
 export declare const AutomationsListAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -1146,6 +1203,39 @@ export declare const GetOperatorOptionsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetOperatorOptionsAcceptLanguageEnum = typeof GetOperatorOptionsAcceptLanguageEnum[keyof typeof GetOperatorOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetOptionsTypeEnum: {
+    readonly Contextual: "contextual";
+    readonly Background: "background";
+};
+export type GetOptionsTypeEnum = typeof GetOptionsTypeEnum[keyof typeof GetOptionsTypeEnum];
+/**
+ * @export
+ */
+export declare const GetOptionsChannelTypeEnum: {
+    readonly Vk: "vk";
+    readonly Tg: "tg";
+    readonly Max: "max";
+    readonly Discord: "discord";
+    readonly Widget: "widget";
+    readonly Streamvi: "streamvi";
+    readonly Email: "email";
+    readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
+};
+export type GetOptionsChannelTypeEnum = typeof GetOptionsChannelTypeEnum[keyof typeof GetOptionsChannelTypeEnum];
+/**
+ * @export
+ */
+export declare const GetOptionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetOptionsAcceptLanguageEnum = typeof GetOptionsAcceptLanguageEnum[keyof typeof GetOptionsAcceptLanguageEnum];
 /**
  * @export
  */

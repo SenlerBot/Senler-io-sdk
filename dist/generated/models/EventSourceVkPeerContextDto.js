@@ -21,6 +21,7 @@ exports.EventSourceVkPeerContextDtoToJSON = EventSourceVkPeerContextDtoToJSON;
 exports.EventSourceVkPeerContextDtoToJSONTyped = EventSourceVkPeerContextDtoToJSONTyped;
 const EventAttributionDto_1 = require("./EventAttributionDto");
 const EventSourceVkPeerDataDto_1 = require("./EventSourceVkPeerDataDto");
+const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 /**
  * @export
  */
@@ -55,6 +56,7 @@ function EventSourceVkPeerContextDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'analytics': json['analytics'] == null ? undefined : (json['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoFromJSON)),
         'direction': json['direction'],
         'attribution': json['attribution'] == null ? undefined : (0, EventAttributionDto_1.EventAttributionDtoFromJSON)(json['attribution']),
         'kind': json['kind'],
@@ -69,6 +71,7 @@ function EventSourceVkPeerContextDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
+        'analytics': value['analytics'] == null ? undefined : (value['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoToJSON)),
         'direction': value['direction'],
         'attribution': (0, EventAttributionDto_1.EventAttributionDtoToJSON)(value['attribution']),
         'kind': value['kind'],

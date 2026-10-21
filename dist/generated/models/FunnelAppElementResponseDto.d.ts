@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { FunnelIdentityBindingDto } from './FunnelIdentityBindingDto';
+import type { FunnelAnalyticsBindingDto } from './FunnelAnalyticsBindingDto';
 import type { AppFunnelElementResponseDto } from './AppFunnelElementResponseDto';
 /**
  * FunnelAppElementResponseDto.
@@ -35,6 +36,12 @@ export interface FunnelAppElementResponseDto {
      * @memberof FunnelAppElementResponseDto
      */
     position: number;
+    /**
+     * . identity_binding.
+     * @type {FunnelAnalyticsBindingDto}
+     * @memberof FunnelAppElementResponseDto
+     */
+    analyticsBinding?: FunnelAnalyticsBindingDto | null;
     /**
      * , . .
      * @type {object}

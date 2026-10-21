@@ -88,6 +88,9 @@ export declare const SpacesTreeRootChannelDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type SpacesTreeRootChannelDtoChannelTypeEnum = typeof SpacesTreeRootChannelDtoChannelTypeEnum[keyof typeof SpacesTreeRootChannelDtoChannelTypeEnum];
 /**

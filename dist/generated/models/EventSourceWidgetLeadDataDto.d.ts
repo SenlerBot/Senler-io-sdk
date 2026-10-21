@@ -11,12 +11,25 @@
  */
 import type { WidgetCustomActionCapabilityDto } from './WidgetCustomActionCapabilityDto';
 import type { EventSourceWidgetContextItemDto } from './EventSourceWidgetContextItemDto';
+import type { WidgetRequestContextDto } from './WidgetRequestContextDto';
 /**
  * EventSourceWidgetLeadDataDto.
  * @export
  * @interface EventSourceWidgetLeadDataDto
  */
 export interface EventSourceWidgetLeadDataDto {
+    /**
+     * .
+     * @type {boolean}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    builtInUi?: boolean;
+    /**
+     *
+     * @type {WidgetRequestContextDto}
+     * @memberof EventSourceWidgetLeadDataDto
+     */
+    request?: WidgetRequestContextDto;
     /**
      * ID
      * @type {string}

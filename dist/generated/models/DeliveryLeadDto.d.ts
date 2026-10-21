@@ -119,6 +119,9 @@ export declare const DeliveryLeadDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type DeliveryLeadDtoChannelTypeEnum = typeof DeliveryLeadDtoChannelTypeEnum[keyof typeof DeliveryLeadDtoChannelTypeEnum];
 /**

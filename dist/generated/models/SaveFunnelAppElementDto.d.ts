@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { FunnelIdentityBindingDto } from './FunnelIdentityBindingDto';
+import type { FunnelAnalyticsBindingDto } from './FunnelAnalyticsBindingDto';
 /**
  * SaveFunnelAppElementDto.
  * @export
@@ -34,6 +35,12 @@ export interface SaveFunnelAppElementDto {
      * @memberof SaveFunnelAppElementDto
      */
     position: number;
+    /**
+     * . identity_binding.
+     * @type {FunnelAnalyticsBindingDto}
+     * @memberof SaveFunnelAppElementDto
+     */
+    analyticsBinding?: FunnelAnalyticsBindingDto | null;
     /**
      * , metrika:counter:42. .
      * @type {string}

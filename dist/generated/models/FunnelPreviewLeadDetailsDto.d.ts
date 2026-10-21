@@ -106,6 +106,9 @@ export declare const FunnelPreviewLeadDetailsDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type FunnelPreviewLeadDetailsDtoChannelTypeEnum = typeof FunnelPreviewLeadDetailsDtoChannelTypeEnum[keyof typeof FunnelPreviewLeadDetailsDtoChannelTypeEnum];
 /**

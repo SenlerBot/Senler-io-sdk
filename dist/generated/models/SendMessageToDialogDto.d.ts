@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { MessageAttachmentReferenceDto } from './MessageAttachmentReferenceDto';
+import type { WhatsAppTemplateInputDto } from './WhatsAppTemplateInputDto';
 import type { MessageButtonDto } from './MessageButtonDto';
 /**
  * SendMessageToDialogDto.
@@ -23,6 +24,12 @@ export interface SendMessageToDialogDto {
      * @memberof SendMessageToDialogDto
      */
     contentFormat?: SendMessageToDialogDtoContentFormatEnum;
+    /**
+     * WhatsApp. ; .
+     * @type {WhatsAppTemplateInputDto}
+     * @memberof SendMessageToDialogDto
+     */
+    whatsappTemplate?: WhatsAppTemplateInputDto;
     /**
      *
      * @type {string}

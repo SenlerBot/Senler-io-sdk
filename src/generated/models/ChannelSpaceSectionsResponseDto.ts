@@ -53,7 +53,10 @@ export const ChannelSpaceSectionsResponseDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ChannelSpaceSectionsResponseDtoChannelTypeEnum = typeof ChannelSpaceSectionsResponseDtoChannelTypeEnum[keyof typeof ChannelSpaceSectionsResponseDtoChannelTypeEnum];
 

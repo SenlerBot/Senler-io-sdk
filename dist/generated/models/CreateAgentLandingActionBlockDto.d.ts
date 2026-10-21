@@ -9,13 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CreateAgentLandingActionBlockDtoAction } from './CreateAgentLandingActionBlockDtoAction';
+import type { UpdateAgentLandingBlockDtoAction } from './UpdateAgentLandingBlockDtoAction';
 /**
  * CreateAgentLandingActionBlockDto.
  * @export
  * @interface CreateAgentLandingActionBlockDto
  */
 export interface CreateAgentLandingActionBlockDto {
+    /**
+     * ;
+     * @type {string}
+     * @memberof CreateAgentLandingActionBlockDto
+     */
+    pageVariantId?: string;
     /**
      *
      * @type {number}
@@ -56,10 +62,10 @@ export interface CreateAgentLandingActionBlockDto {
     beforeBlockId?: string;
     /**
      *
-     * @type {CreateAgentLandingActionBlockDtoAction}
+     * @type {UpdateAgentLandingBlockDtoAction}
      * @memberof CreateAgentLandingActionBlockDto
      */
-    action?: CreateAgentLandingActionBlockDtoAction | null;
+    action?: UpdateAgentLandingBlockDtoAction | null;
 }
 /**
  * @export

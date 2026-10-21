@@ -18,6 +18,7 @@ exports.CreateLandingSubscriptionContextDtoFromJSON = CreateLandingSubscriptionC
 exports.CreateLandingSubscriptionContextDtoFromJSONTyped = CreateLandingSubscriptionContextDtoFromJSONTyped;
 exports.CreateLandingSubscriptionContextDtoToJSON = CreateLandingSubscriptionContextDtoToJSON;
 exports.CreateLandingSubscriptionContextDtoToJSONTyped = CreateLandingSubscriptionContextDtoToJSONTyped;
+const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 /**
  * Check if a given object implements the CreateLandingSubscriptionContextDto interface.
  */
@@ -34,6 +35,9 @@ function CreateLandingSubscriptionContextDtoFromJSONTyped(json, ignoreDiscrimina
         return json;
     }
     return {
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
+        'eventToken': json['event_token'] == null ? undefined : json['event_token'],
+        'analytics': json['analytics'] == null ? undefined : (json['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoFromJSON)),
         'channelPublicId': json['channel_public_id'],
         'trafficMarkPublicId': json['traffic_mark_public_id'] == null ? undefined : json['traffic_mark_public_id'],
         'utmSource': json['utm_source'] == null ? undefined : json['utm_source'],
@@ -51,6 +55,9 @@ function CreateLandingSubscriptionContextDtoToJSONTyped(value, ignoreDiscriminat
         return value;
     }
     return {
+        'observed_experiment_ids': value['observedExperimentIds'],
+        'event_token': value['eventToken'],
+        'analytics': value['analytics'] == null ? undefined : (value['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoToJSON)),
         'channel_public_id': value['channelPublicId'],
         'traffic_mark_public_id': value['trafficMarkPublicId'],
         'utm_source': value['utmSource'],

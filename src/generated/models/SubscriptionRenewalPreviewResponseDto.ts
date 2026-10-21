@@ -32,6 +32,12 @@ export interface SubscriptionRenewalPreviewResponseDto {
      * @type {string}
      * @memberof SubscriptionRenewalPreviewResponseDto
      */
+    quoteHash: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SubscriptionRenewalPreviewResponseDto
+     */
     period: SubscriptionRenewalPreviewResponseDtoPeriodEnum;
     /**
      * : USD, RUB.
@@ -101,6 +107,7 @@ export type SubscriptionRenewalPreviewResponseDtoCurrencyEnum = typeof Subscript
  * Check if a given object implements the SubscriptionRenewalPreviewResponseDto interface.
  */
 export function instanceOfSubscriptionRenewalPreviewResponseDto(value: object): value is SubscriptionRenewalPreviewResponseDto {
+    if (!('quoteHash' in value) || value['quoteHash'] === undefined) return false;
     if (!('period' in value) || value['period'] === undefined) return false;
     if (!('currency' in value) || value['currency'] === undefined) return false;
     if (!('totalAmount' in value) || value['totalAmount'] === undefined) return false;
@@ -122,6 +129,7 @@ export function SubscriptionRenewalPreviewResponseDtoFromJSONTyped(json: any, ig
     }
     return {
 
+        'quoteHash': json['quote_hash'],
         'period': json['period'],
         'currency': json['currency'],
         'totalAmount': json['total_amount'],
@@ -144,6 +152,7 @@ export function SubscriptionRenewalPreviewResponseDtoToJSONTyped(value?: Subscri
 
     return {
 
+        'quote_hash': value['quoteHash'],
         'period': value['period'],
         'currency': value['currency'],
         'total_amount': value['totalAmount'],

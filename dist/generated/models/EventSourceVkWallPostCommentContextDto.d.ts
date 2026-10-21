@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { EventAttributionDto } from './EventAttributionDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 import type { EventSourceVkWallPostCommentDataDto } from './EventSourceVkWallPostCommentDataDto';
 /**
  * EventSourceVkWallPostCommentContextDto.
@@ -17,6 +18,12 @@ import type { EventSourceVkWallPostCommentDataDto } from './EventSourceVkWallPos
  * @interface EventSourceVkWallPostCommentContextDto
  */
 export interface EventSourceVkWallPostCommentContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceVkWallPostCommentContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

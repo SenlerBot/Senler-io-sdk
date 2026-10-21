@@ -19,7 +19,7 @@ exports.CreateLandingActionBlockDtoFromJSON = CreateLandingActionBlockDtoFromJSO
 exports.CreateLandingActionBlockDtoFromJSONTyped = CreateLandingActionBlockDtoFromJSONTyped;
 exports.CreateLandingActionBlockDtoToJSON = CreateLandingActionBlockDtoToJSON;
 exports.CreateLandingActionBlockDtoToJSONTyped = CreateLandingActionBlockDtoToJSONTyped;
-const CreateLandingActionBlockDtoAction_1 = require("./CreateLandingActionBlockDtoAction");
+const UpdateLandingBlockDtoAction_1 = require("./UpdateLandingBlockDtoAction");
 /**
  * @export
  */
@@ -50,11 +50,12 @@ function CreateLandingActionBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
         'isVisible': json['is_visible'],
         'payload': json['payload'],
-        'action': json['action'] == null ? undefined : (0, CreateLandingActionBlockDtoAction_1.CreateLandingActionBlockDtoActionFromJSON)(json['action']),
+        'action': json['action'] == null ? undefined : (0, UpdateLandingBlockDtoAction_1.UpdateLandingBlockDtoActionFromJSON)(json['action']),
         'afterBlockId': json['after_block_id'] == null ? undefined : json['after_block_id'],
         'beforeBlockId': json['before_block_id'] == null ? undefined : json['before_block_id'],
     };
@@ -67,11 +68,12 @@ function CreateLandingActionBlockDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
+        'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],
         'is_visible': value['isVisible'],
         'payload': value['payload'],
-        'action': (0, CreateLandingActionBlockDtoAction_1.CreateLandingActionBlockDtoActionToJSON)(value['action']),
+        'action': (0, UpdateLandingBlockDtoAction_1.UpdateLandingBlockDtoActionToJSON)(value['action']),
         'after_block_id': value['afterBlockId'],
         'before_block_id': value['beforeBlockId'],
     };

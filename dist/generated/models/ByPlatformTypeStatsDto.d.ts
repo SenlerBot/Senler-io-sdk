@@ -41,6 +41,24 @@ export interface ByPlatformTypeStatsDto {
      */
     avito?: CategoryStatsDto;
     /**
+     * Instagram
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    inst?: CategoryStatsDto;
+    /**
+     * Facebook
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    facebook?: CategoryStatsDto;
+    /**
+     * WhatsApp
+     * @type {CategoryStatsDto}
+     * @memberof ByPlatformTypeStatsDto
+     */
+    whatsapp?: CategoryStatsDto;
+    /**
      * Discord
      * @type {CategoryStatsDto}
      * @memberof ByPlatformTypeStatsDto

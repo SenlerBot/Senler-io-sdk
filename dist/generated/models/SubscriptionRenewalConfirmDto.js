@@ -32,6 +32,10 @@ exports.SubscriptionRenewalConfirmDtoPeriodEnum = {
 function instanceOfSubscriptionRenewalConfirmDto(value) {
     if (!('period' in value) || value['period'] === undefined)
         return false;
+    if (!('renewalAt' in value) || value['renewalAt'] === undefined)
+        return false;
+    if (!('quoteHash' in value) || value['quoteHash'] === undefined)
+        return false;
     return true;
 }
 function SubscriptionRenewalConfirmDtoFromJSON(json) {
@@ -47,6 +51,8 @@ function SubscriptionRenewalConfirmDtoFromJSONTyped(json, ignoreDiscriminator) {
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
         'paySystemId': json['pay_system_id'] == null ? undefined : json['pay_system_id'],
         'paymentMethodId': json['payment_method_id'] == null ? undefined : json['payment_method_id'],
+        'renewalAt': (new Date(json['renewal_at'])),
+        'quoteHash': json['quote_hash'],
     };
 }
 function SubscriptionRenewalConfirmDtoToJSON(json) {
@@ -62,5 +68,7 @@ function SubscriptionRenewalConfirmDtoToJSONTyped(value, ignoreDiscriminator = f
         'use_balance': value['useBalance'],
         'pay_system_id': value['paySystemId'],
         'payment_method_id': value['paymentMethodId'],
+        'renewal_at': ((value['renewalAt']).toISOString()),
+        'quote_hash': value['quoteHash'],
     };
 }

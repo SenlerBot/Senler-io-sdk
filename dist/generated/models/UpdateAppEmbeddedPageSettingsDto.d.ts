@@ -16,6 +16,12 @@
  */
 export interface UpdateAppEmbeddedPageSettingsDto {
     /**
+     * iframe CSS px. null 1024 px.
+     * @type {number}
+     * @memberof UpdateAppEmbeddedPageSettingsDto
+     */
+    maxWidth?: number | null;
+    /**
      * . URL .
      * @type {boolean}
      * @memberof UpdateAppEmbeddedPageSettingsDto

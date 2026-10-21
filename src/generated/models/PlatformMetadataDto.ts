@@ -113,7 +113,10 @@ export const PlatformMetadataDtoIdEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type PlatformMetadataDtoIdEnum = typeof PlatformMetadataDtoIdEnum[keyof typeof PlatformMetadataDtoIdEnum];
 

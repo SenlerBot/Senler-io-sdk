@@ -19,6 +19,7 @@ exports.SaveFunnelAppElementDtoFromJSONTyped = SaveFunnelAppElementDtoFromJSONTy
 exports.SaveFunnelAppElementDtoToJSON = SaveFunnelAppElementDtoToJSON;
 exports.SaveFunnelAppElementDtoToJSONTyped = SaveFunnelAppElementDtoToJSONTyped;
 const FunnelIdentityBindingDto_1 = require("./FunnelIdentityBindingDto");
+const FunnelAnalyticsBindingDto_1 = require("./FunnelAnalyticsBindingDto");
 /**
  * Check if a given object implements the SaveFunnelAppElementDto interface.
  */
@@ -54,6 +55,7 @@ function SaveFunnelAppElementDtoFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'beforeStageId': json['before_stage_id'],
         'position': json['position'],
+        'analyticsBinding': json['analytics_binding'] == null ? undefined : (0, FunnelAnalyticsBindingDto_1.FunnelAnalyticsBindingDtoFromJSON)(json['analytics_binding']),
         'dataSourceKey': json['data_source_key'],
         '_configuration': json['configuration'],
         'identityBinding': (0, FunnelIdentityBindingDto_1.FunnelIdentityBindingDtoFromJSON)(json['identity_binding']),
@@ -73,6 +75,7 @@ function SaveFunnelAppElementDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'title': value['title'],
         'before_stage_id': value['beforeStageId'],
         'position': value['position'],
+        'analytics_binding': (0, FunnelAnalyticsBindingDto_1.FunnelAnalyticsBindingDtoToJSON)(value['analyticsBinding']),
         'data_source_key': value['dataSourceKey'],
         'configuration': value['_configuration'],
         'identity_binding': (0, FunnelIdentityBindingDto_1.FunnelIdentityBindingDtoToJSON)(value['identityBinding']),

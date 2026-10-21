@@ -93,7 +93,10 @@ export const SpacesTreeRootChannelDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type SpacesTreeRootChannelDtoChannelTypeEnum = typeof SpacesTreeRootChannelDtoChannelTypeEnum[keyof typeof SpacesTreeRootChannelDtoChannelTypeEnum];
 

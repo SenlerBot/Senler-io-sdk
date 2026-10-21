@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface SubscriptionRenewalDto {
     /**
+     * ,
+     * @type {Date}
+     * @memberof SubscriptionRenewalDto
+     */
+    renewalAt?: Date;
+    /**
      * , . .
      * @type {string}
      * @memberof SubscriptionRenewalDto
@@ -68,6 +74,7 @@ export function SubscriptionRenewalDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'renewalAt': json['renewal_at'] == null ? undefined : (new Date(json['renewal_at'])),
         'promoApplicationId': json['promo_application_id'] == null ? undefined : json['promo_application_id'],
         'period': json['period'],
         'useBalance': json['use_balance'] == null ? undefined : json['use_balance'],
@@ -85,6 +92,7 @@ export function SubscriptionRenewalDtoToJSONTyped(value?: SubscriptionRenewalDto
 
     return {
 
+        'renewal_at': value['renewalAt'] == null ? undefined : ((value['renewalAt']).toISOString()),
         'promo_application_id': value['promoApplicationId'],
         'period': value['period'],
         'use_balance': value['useBalance'],

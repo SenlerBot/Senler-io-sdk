@@ -16,6 +16,12 @@
  */
 export interface SubscriptionRenewalDto {
     /**
+     * ,
+     * @type {Date}
+     * @memberof SubscriptionRenewalDto
+     */
+    renewalAt?: Date;
+    /**
      * , . .
      * @type {string}
      * @memberof SubscriptionRenewalDto

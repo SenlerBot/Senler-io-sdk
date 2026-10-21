@@ -38,6 +38,7 @@ function AppEmbeddedPageSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     return {
+        'maxWidth': json['max_width'] == null ? undefined : json['max_width'],
         'enabled': json['enabled'],
         'url': json['url'],
         'title': json['title'],
@@ -51,6 +52,7 @@ function AppEmbeddedPageSettingsResponseDtoToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     return {
+        'max_width': value['maxWidth'],
         'enabled': value['enabled'],
         'url': value['url'],
         'title': value['title'],

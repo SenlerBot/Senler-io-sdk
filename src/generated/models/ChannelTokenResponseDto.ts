@@ -291,7 +291,10 @@ export const ChannelTokenResponseDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 } as const;
 export type ChannelTokenResponseDtoChannelTypeEnum = typeof ChannelTokenResponseDtoChannelTypeEnum[keyof typeof ChannelTokenResponseDtoChannelTypeEnum];
 

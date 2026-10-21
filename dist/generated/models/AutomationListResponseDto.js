@@ -25,6 +25,8 @@ const AutomationResponseDto_1 = require("./AutomationResponseDto");
 function instanceOfAutomationListResponseDto(value) {
     if (!('items' in value) || value['items'] === undefined)
         return false;
+    if (!('nextCursor' in value) || value['nextCursor'] === undefined)
+        return false;
     return true;
 }
 function AutomationListResponseDtoFromJSON(json) {
@@ -36,6 +38,7 @@ function AutomationListResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'items': (json['items'].map(AutomationResponseDto_1.AutomationResponseDtoFromJSON)),
+        'nextCursor': json['next_cursor'],
     };
 }
 function AutomationListResponseDtoToJSON(json) {
@@ -47,5 +50,6 @@ function AutomationListResponseDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'items': (value['items'].map(AutomationResponseDto_1.AutomationResponseDtoToJSON)),
+        'next_cursor': value['nextCursor'],
     };
 }

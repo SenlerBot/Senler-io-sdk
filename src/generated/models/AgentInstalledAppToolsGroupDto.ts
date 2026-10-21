@@ -58,6 +58,12 @@ export interface AgentInstalledAppToolsGroupDto {
      */
     configurationUrl: string | null;
     /**
+     * iframe CSS px; null 1024 px
+     * @type {number}
+     * @memberof AgentInstalledAppToolsGroupDto
+     */
+    configurationMaxWidth?: number | null;
+    /**
      * : available, temporarily_unavailable.
      * @type {string}
      * @memberof AgentInstalledAppToolsGroupDto
@@ -111,6 +117,7 @@ export function AgentInstalledAppToolsGroupDtoFromJSONTyped(json: any, ignoreDis
         'appName': json['app_name'],
         'appIconUrl': json['app_icon_url'],
         'configurationUrl': json['configuration_url'],
+        'configurationMaxWidth': json['configuration_max_width'] == null ? undefined : json['configuration_max_width'],
         'availabilityStatus': json['availability_status'],
         'tools': ((json['tools'] as Array<any>).map(AgentInstalledAppToolDtoFromJSON)),
     };
@@ -132,6 +139,7 @@ export function AgentInstalledAppToolsGroupDtoToJSONTyped(value?: AgentInstalled
         'app_name': value['appName'],
         'app_icon_url': value['appIconUrl'],
         'configuration_url': value['configurationUrl'],
+        'configuration_max_width': value['configurationMaxWidth'],
         'availability_status': value['availabilityStatus'],
         'tools': ((value['tools'] as Array<any>).map(AgentInstalledAppToolDtoToJSON)),
     };

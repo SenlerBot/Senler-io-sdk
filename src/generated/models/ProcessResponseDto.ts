@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ProcessInitiatorDto } from './ProcessInitiatorDto';
+import {
+    ProcessInitiatorDtoFromJSON,
+    ProcessInitiatorDtoFromJSONTyped,
+    ProcessInitiatorDtoToJSON,
+    ProcessInitiatorDtoToJSONTyped,
+} from './ProcessInitiatorDto';
 import type { ProcessResponseDtoPayload } from './ProcessResponseDtoPayload';
 import {
     ProcessResponseDtoPayloadFromJSON,
@@ -90,11 +97,17 @@ export interface ProcessResponseDto {
      */
     errorCode?: ProcessResponseDtoErrorCodeEnum;
     /**
-     * ID
+     * ID -. Null , API- .
      * @type {string}
      * @memberof ProcessResponseDto
      */
-    userId: string;
+    userId: string | null;
+    /**
+     *
+     * @type {ProcessInitiatorDto}
+     * @memberof ProcessResponseDto
+     */
+    initiator: ProcessInitiatorDto;
     /**
      * ID . Null admin/global .
      * @type {string}
@@ -189,6 +202,7 @@ export function instanceOfProcessResponseDto(value: object): value is ProcessRes
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('payload' in value) || value['payload'] === undefined) return false;
     if (!('userId' in value) || value['userId'] === undefined) return false;
+    if (!('initiator' in value) || value['initiator'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('retryCount' in value) || value['retryCount'] === undefined) return false;
@@ -214,6 +228,7 @@ export function ProcessResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
         'errorCode': json['error_code'] == null ? undefined : json['error_code'],
         'userId': json['user_id'],
+        'initiator': ProcessInitiatorDtoFromJSON(json['initiator']),
         'projectId': json['project_id'],
         'createdAt': (new Date(json['created_at'])),
         'startedAt': json['started_at'] == null ? undefined : (new Date(json['started_at'])),
@@ -243,6 +258,7 @@ export function ProcessResponseDtoToJSONTyped(value?: ProcessResponseDto | null,
         'error_message': value['errorMessage'],
         'error_code': value['errorCode'],
         'user_id': value['userId'],
+        'initiator': ProcessInitiatorDtoToJSON(value['initiator']),
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),
         'started_at': value['startedAt'] == null ? undefined : ((value['startedAt']).toISOString()),

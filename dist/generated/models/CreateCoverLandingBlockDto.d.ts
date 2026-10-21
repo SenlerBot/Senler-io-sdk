@@ -17,6 +17,12 @@ import type { LandingCoverBlockPayloadDto } from './LandingCoverBlockPayloadDto'
  */
 export interface CreateCoverLandingBlockDto {
     /**
+     * ;
+     * @type {string}
+     * @memberof CreateCoverLandingBlockDto
+     */
+    pageVariantId?: string;
+    /**
      *
      * @type {number}
      * @memberof CreateCoverLandingBlockDto

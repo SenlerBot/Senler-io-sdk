@@ -11,12 +11,19 @@
  */
 import type { EventAttributionDto } from './EventAttributionDto';
 import type { EventSourceTelegramTopicDataDto } from './EventSourceTelegramTopicDataDto';
+import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * EventSourceTelegramTopicContextDto.
  * @export
  * @interface EventSourceTelegramTopicContextDto
  */
 export interface EventSourceTelegramTopicContextDto {
+    /**
+     * . AI.
+     * @type {Array<AnalyticsSnapshotDto>}
+     * @memberof EventSourceTelegramTopicContextDto
+     */
+    analytics?: Array<AnalyticsSnapshotDto>;
     /**
      *
      * @type {string}

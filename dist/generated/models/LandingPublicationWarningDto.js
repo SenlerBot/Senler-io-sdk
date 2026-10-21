@@ -29,6 +29,10 @@ function instanceOfLandingPublicationWarningDto(value) {
         return false;
     if (!('message' in value) || value['message'] === undefined)
         return false;
+    if (!('itemId' in value) || value['itemId'] === undefined)
+        return false;
+    if (!('field' in value) || value['field'] === undefined)
+        return false;
     return true;
 }
 function LandingPublicationWarningDtoFromJSON(json) {
@@ -42,6 +46,8 @@ function LandingPublicationWarningDtoFromJSONTyped(json, ignoreDiscriminator) {
         'blockId': json['block_id'],
         'code': (0, LandingPublicationWarningCode_1.LandingPublicationWarningCodeFromJSON)(json['code']),
         'message': json['message'],
+        'itemId': json['item_id'],
+        'field': json['field'],
     };
 }
 function LandingPublicationWarningDtoToJSON(json) {
@@ -55,5 +61,7 @@ function LandingPublicationWarningDtoToJSONTyped(value, ignoreDiscriminator = fa
         'block_id': value['blockId'],
         'code': (0, LandingPublicationWarningCode_1.LandingPublicationWarningCodeToJSON)(value['code']),
         'message': value['message'],
+        'item_id': value['itemId'],
+        'field': value['field'],
     };
 }

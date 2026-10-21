@@ -46,6 +46,9 @@ export declare const ImportLeadsParamsDtoChannelTypeEnum: {
     readonly Streamvi: "streamvi";
     readonly Email: "email";
     readonly Avito: "avito";
+    readonly Inst: "inst";
+    readonly Facebook: "facebook";
+    readonly Whatsapp: "whatsapp";
 };
 export type ImportLeadsParamsDtoChannelTypeEnum = typeof ImportLeadsParamsDtoChannelTypeEnum[keyof typeof ImportLeadsParamsDtoChannelTypeEnum];
 /**

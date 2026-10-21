@@ -19,6 +19,7 @@ exports.LeadResponseDtoFromJSON = LeadResponseDtoFromJSON;
 exports.LeadResponseDtoFromJSONTyped = LeadResponseDtoFromJSONTyped;
 exports.LeadResponseDtoToJSON = LeadResponseDtoToJSON;
 exports.LeadResponseDtoToJSONTyped = LeadResponseDtoToJSONTyped;
+const LeadAnalyticsIdentifierDto_1 = require("./LeadAnalyticsIdentifierDto");
 const LeadSpaceLinkResponseDto_1 = require("./LeadSpaceLinkResponseDto");
 const LeadBirthdayDateDto_1 = require("./LeadBirthdayDateDto");
 const LeadFunnelDto_1 = require("./LeadFunnelDto");
@@ -42,7 +43,10 @@ exports.LeadResponseDtoChannelTypeEnum = {
     Widget: 'widget',
     Streamvi: 'streamvi',
     Email: 'email',
-    Avito: 'avito'
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
 };
 /**
  * @export
@@ -69,6 +73,8 @@ exports.LeadResponseDtoLeadTypeEnum = {
  * Check if a given object implements the LeadResponseDto interface.
  */
 function instanceOfLeadResponseDto(value) {
+    if (!('analyticsIdentifiers' in value) || value['analyticsIdentifiers'] === undefined)
+        return false;
     if (!('birthday' in value) || value['birthday'] === undefined)
         return false;
     if (!('birthdayMode' in value) || value['birthdayMode'] === undefined)
@@ -119,6 +125,7 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'analyticsIdentifiers': (json['analytics_identifiers'].map(LeadAnalyticsIdentifierDto_1.LeadAnalyticsIdentifierDtoFromJSON)),
         'birthday': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoFromJSON)(json['birthday']),
         'birthdayMode': json['birthday_mode'],
         'birthdayChannel': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoFromJSON)(json['birthday_channel']),

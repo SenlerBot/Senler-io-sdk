@@ -27,6 +27,8 @@ const ProjectResponseDto_1 = require("./ProjectResponseDto");
 function instanceOfProjectDetailsResponseDto(value) {
     if (!('project' in value) || value['project'] === undefined)
         return false;
+    if (!('showRussianPlatformNotice' in value) || value['showRussianPlatformNotice'] === undefined)
+        return false;
     if (!('access' in value) || value['access'] === undefined)
         return false;
     if (!('balance' in value) || value['balance'] === undefined)
@@ -42,6 +44,7 @@ function ProjectDetailsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'project': (0, ProjectResponseDto_1.ProjectResponseDtoFromJSON)(json['project']),
+        'showRussianPlatformNotice': json['show_russian_platform_notice'],
         'access': (0, ProjectAccessDto_1.ProjectAccessDtoFromJSON)(json['access']),
         'balance': (0, ProjectBalanceInfoDto_1.ProjectBalanceInfoDtoFromJSON)(json['balance']),
     };
@@ -55,6 +58,7 @@ function ProjectDetailsResponseDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'project': (0, ProjectResponseDto_1.ProjectResponseDtoToJSON)(value['project']),
+        'show_russian_platform_notice': value['showRussianPlatformNotice'],
         'access': (0, ProjectAccessDto_1.ProjectAccessDtoToJSON)(value['access']),
         'balance': (0, ProjectBalanceInfoDto_1.ProjectBalanceInfoDtoToJSON)(value['balance']),
     };

@@ -20,17 +20,17 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationBatchRemoveGroupOperationDto {
     /**
-     * instance_id . expected_draft_revision.
-     * @type {string}
-     * @memberof AutomationBatchRemoveGroupOperationDto
-     */
-    expectedInstanceId?: string;
-    /**
      * , .
      * @type {string}
      * @memberof AutomationBatchRemoveGroupOperationDto
      */
     kind: AutomationBatchRemoveGroupOperationDtoKindEnum;
+    /**
+     * instance_id . expected_draft_revision.
+     * @type {string}
+     * @memberof AutomationBatchRemoveGroupOperationDto
+     */
+    expectedInstanceId?: string;
     /**
      * UUID .
      * @type {string}
@@ -75,8 +75,8 @@ export function AutomationBatchRemoveGroupOperationDtoFromJSONTyped(json: any, i
     }
     return {
 
-        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'kind': json['kind'],
+        'expectedInstanceId': json['expected_instance_id'] == null ? undefined : json['expected_instance_id'],
         'groupId': json['group_id'],
         'expectedContentRevision': json['expected_content_revision'],
     };
@@ -93,8 +93,8 @@ export function AutomationBatchRemoveGroupOperationDtoToJSONTyped(value?: Automa
 
     return {
 
-        'expected_instance_id': value['expectedInstanceId'],
         'kind': value['kind'],
+        'expected_instance_id': value['expectedInstanceId'],
         'group_id': value['groupId'],
         'expected_content_revision': value['expectedContentRevision'],
     };

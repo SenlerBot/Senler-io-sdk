@@ -21,6 +21,12 @@ export interface SubscriptionRenewalPreviewResponseDto {
      * @type {string}
      * @memberof SubscriptionRenewalPreviewResponseDto
      */
+    quoteHash: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SubscriptionRenewalPreviewResponseDto
+     */
     period: SubscriptionRenewalPreviewResponseDtoPeriodEnum;
     /**
      * : USD, RUB.

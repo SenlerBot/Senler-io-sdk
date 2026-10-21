@@ -11,6 +11,7 @@
  */
 import type { LandingVersionResponseDtoBlocksInner } from './LandingVersionResponseDtoBlocksInner';
 import type { LandingPublicationWarningDto } from './LandingPublicationWarningDto';
+import type { LandingPersonalizationResponseDto } from './LandingPersonalizationResponseDto';
 import type { LandingSettingsDto } from './LandingSettingsDto';
 /**
  * LandingVersionResponseDto.
@@ -18,6 +19,12 @@ import type { LandingSettingsDto } from './LandingSettingsDto';
  * @interface LandingVersionResponseDto
  */
 export interface LandingVersionResponseDto {
+    /**
+     *
+     * @type {LandingPersonalizationResponseDto}
+     * @memberof LandingVersionResponseDto
+     */
+    personalization: LandingPersonalizationResponseDto;
     /**
      * ID
      * @type {string}

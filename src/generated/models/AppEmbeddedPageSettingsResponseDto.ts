@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface AppEmbeddedPageSettingsResponseDto {
     /**
+     * iframe CSS px; null 1024 px
+     * @type {number}
+     * @memberof AppEmbeddedPageSettingsResponseDto
+     */
+    maxWidth?: number | null;
+    /**
      *
      * @type {boolean}
      * @memberof AppEmbeddedPageSettingsResponseDto
@@ -59,6 +65,7 @@ export function AppEmbeddedPageSettingsResponseDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'maxWidth': json['max_width'] == null ? undefined : json['max_width'],
         'enabled': json['enabled'],
         'url': json['url'],
         'title': json['title'],
@@ -76,6 +83,7 @@ export function AppEmbeddedPageSettingsResponseDtoToJSONTyped(value?: AppEmbedde
 
     return {
 
+        'max_width': value['maxWidth'],
         'enabled': value['enabled'],
         'url': value['url'],
         'title': value['title'],
